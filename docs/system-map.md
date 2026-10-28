@@ -23,6 +23,7 @@
 | 경매소 | `src/features/auctions/` | [경매](systems/auctions.md) |
 | 출석 | `src/features/attendance/` | [출석](systems/attendance.md) |
 | 오락실 | `src/features/arcade/` | [오락실](systems/arcade.md) |
+| 만선 승부장 | `src/features/voyage-bets/` | [예측·정산과 운영](systems/voyage-bets.md) |
 | 지도 상점 | `src/features/regions/map-shop.tsx` | [지도 상점](systems/map-shop.md) |
 | 친구 수족관 | `src/features/friends/friend-aquarium-page.tsx` | [방문·먹이·청소](systems/friend-aquarium-visits.md) |
 | 낚싯대·창고 | `src/features/fishing/warehouse-page.tsx` | [인벤토리](systems/rod-inventory.md) |

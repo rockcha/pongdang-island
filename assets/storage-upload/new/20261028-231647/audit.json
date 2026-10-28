@@ -1,0 +1,280 @@
+{
+  "results": [
+    {
+      "id": "plunder-black-sail-captain-pongi",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-231647\\fish\\epic\\plunder-black-sail-captain-pongi_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            200,
+            1187,
+            832
+          ],
+          "margin": 18,
+          "occupancy": 0.9465709728867624,
+          "opaque": 592273,
+          "transparent": 955978,
+          "soft": 615947
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-black-sail-captain-pongi",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-231647\\fish\\epic\\plunder-black-sail-captain-pongi_v1_sprite.png",
+      "width": 1446,
+      "height": 1446,
+      "cell": 723,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            150,
+            229,
+            446,
+            309
+          ],
+          "margin": 127,
+          "occupancy": 0.6168741355463347,
+          "opaque": 86420,
+          "transparent": 428914,
+          "soft": 93502
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            125,
+            229,
+            471,
+            309
+          ],
+          "margin": 125,
+          "occupancy": 0.6514522821576764,
+          "opaque": 84169,
+          "transparent": 430563,
+          "soft": 91740
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            125,
+            229,
+            471,
+            309
+          ],
+          "margin": 125,
+          "occupancy": 0.6514522821576764,
+          "opaque": 85606,
+          "transparent": 427386,
+          "soft": 94962
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            124,
+            229,
+            472,
+            309
+          ],
+          "margin": 124,
+          "occupancy": 0.65283540802213,
+          "opaque": 83372,
+          "transparent": 429680,
+          "soft": 92600
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-safecracker-pongi",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-231647\\fish\\epic\\plunder-safecracker-pongi_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            14,
+            250,
+            1232,
+            761
+          ],
+          "margin": 8,
+          "occupancy": 0.9824561403508771,
+          "opaque": 518609,
+          "transparent": 1016885,
+          "soft": 555359
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-safecracker-pongi",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-231647\\fish\\epic\\plunder-safecracker-pongi_v1_sprite.png",
+      "width": 1446,
+      "height": 1446,
+      "cell": 723,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            118,
+            259,
+            524,
+            306
+          ],
+          "margin": 81,
+          "occupancy": 0.7247579529737206,
+          "opaque": 96723,
+          "transparent": 416125,
+          "soft": 106178
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            100,
+            264,
+            544,
+            303
+          ],
+          "margin": 79,
+          "occupancy": 0.7524204702627939,
+          "opaque": 94758,
+          "transparent": 414228,
+          "soft": 108198
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            109,
+            265,
+            533,
+            314
+          ],
+          "margin": 81,
+          "occupancy": 0.7372060857538036,
+          "opaque": 94343,
+          "transparent": 417147,
+          "soft": 105289
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            102,
+            264,
+            540,
+            304
+          ],
+          "margin": 81,
+          "occupancy": 0.7468879668049793,
+          "opaque": 94764,
+          "transparent": 414620,
+          "soft": 107846
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-red-knot-bosun-pongi",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-231647\\fish\\epic\\plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            21,
+            234,
+            1219,
+            803
+          ],
+          "margin": 14,
+          "occupancy": 0.9720893141945773,
+          "opaque": 585989,
+          "transparent": 955003,
+          "soft": 617166
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-red-knot-bosun-pongi",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-231647\\fish\\epic\\plunder-red-knot-bosun-pongi_v1_sprite.png",
+      "width": 1446,
+      "height": 1446,
+      "cell": 723,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            153,
+            234,
+            471,
+            302
+          ],
+          "margin": 99,
+          "occupancy": 0.6514522821576764,
+          "opaque": 87380,
+          "transparent": 410878,
+          "soft": 111649
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            142,
+            267,
+            482,
+            277
+          ],
+          "margin": 99,
+          "occupancy": 0.6666666666666666,
+          "opaque": 84569,
+          "transparent": 414302,
+          "soft": 108185
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            148,
+            266,
+            475,
+            287
+          ],
+          "margin": 100,
+          "occupancy": 0.656984785615491,
+          "opaque": 82971,
+          "transparent": 418615,
+          "soft": 104012
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            148,
+            244,
+            475,
+            290
+          ],
+          "margin": 100,
+          "occupancy": 0.656984785615491,
+          "opaque": 83796,
+          "transparent": 414886,
+          "soft": 107677
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import {readAccountResource} from '@/lib/account-cache'
+import {starruinsArtUrl} from '@/features/aquarium/starruins-art'
 import { createClient } from '@/lib/client'
 import type { Rarity } from '@/lib/game/rarity'
 export type CollectibleKind = 'fish'|'trash'|'decoration'|'map'|'relic'
@@ -11,6 +12,8 @@ export type CollectionState = {items:OwnedCollectible[];catalog:CatalogEntry[]}
 export const kindLabels:Record<CollectibleKind,string>={fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도 조각',relic:'유물'}
 const refreshedCloudArt=new Set(['map/routes/map-cloudferry_thumbnail.png','equipment/rods/cloudferry/thumbnail.png'])
 export function collectibleUrl(path:string){
+  const reviewed=starruinsArtUrl(path)
+  if(reviewed)return reviewed
   if(path.startsWith('/'))return path
   if(path.startsWith('relics/'))return '/'+path
   if(/^https?:\/\//i.test(path))return path

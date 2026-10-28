@@ -29,6 +29,8 @@ const PortPage=lazy(()=>import('@/features/port/port-page').then(module=>({defau
 const FriendExpeditionPage=lazy(()=>import('@/features/expeditions/friend-expedition-page').then(module=>({default:module.FriendExpeditionPage})))
 const SettingsPage=lazy(()=>import('@/pages/settings-page').then(module=>({default:module.SettingsPage})))
 const SavingsPage=lazy(()=>import('@/features/savings/savings-page').then(module=>({default:module.SavingsPage})))
+const VoyageBetsPage=lazy(()=>import('@/features/voyage-bets/voyage-bets-page').then(module=>({default:module.VoyageBetsPage})))
+const VoyageBetsTestPage=lazy(()=>import('@/features/voyage-bets/voyage-bets-test-page').then(module=>({default:module.VoyageBetsTestPage})))
 const SuggestionsPage=lazy(()=>import('@/features/suggestions/suggestions-page').then(module=>({default:module.SuggestionsPage})))
 const SuggestionDetail=lazy(()=>import('@/features/suggestions/suggestions-page').then(module=>({default:module.SuggestionDetail})))
 const BugReportsPage=lazy(()=>import('@/features/bugs/bug-reports-page').then(module=>({default:module.BugReportsPage})))
@@ -36,6 +38,7 @@ const BugReportDetail=lazy(()=>import('@/features/bugs/bug-reports-page').then(m
 const RegionPage=lazy(()=>import('@/features/regions/region-page').then(module=>({default:module.RegionPage})))
 const SailingPage=lazy(()=>import('@/features/regions/sailing-page').then(module=>({default:module.SailingPage})))
 const FishingShortcutPage=lazy(()=>import('@/features/regions/fishing-shortcut-page').then(module=>({default:module.FishingShortcutPage})))
+const FishingRecordsPage=lazy(()=>import('@/features/fishing-records/fishing-records-page').then(module=>({default:module.FishingRecordsPage})))
 const ShopPage=lazy(()=>import('@/features/gold/shop-page').then(module=>({default:module.ShopPage})))
 const ExchangePage=lazy(()=>import('@/features/exchange/exchange-page').then(module=>({default:module.ExchangePage})))
 const FleaMarketPage=lazy(()=>import('@/features/flea-market/flea-market-page').then(module=>({default:module.FleaMarketPage})))
@@ -105,6 +108,7 @@ export function AppRoutes() {
             <Route path="relics" element={<RelicPage />} />
             <Route path="harbor" element={<HarborPage />} />
             <Route path="fishing" element={<FishingShortcutPage />} />
+            <Route path="fishing-records" element={<FishingRecordsPage />} />
             <Route path="farm" element={<FarmPage />} />
             <Route path="music-room" element={<MusicRoomPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />
@@ -116,6 +120,8 @@ export function AppRoutes() {
             <Route path="decoration-shop" element={<DecorationShopPage />} />
             <Route path="item-shop" element={<ShopPage key="item-shop" items />} />
             <Route path="savings" element={<SavingsPage />} />
+            <Route path="voyage-bets" element={<VoyageBetsPage />} />
+            <Route path="voyage-bets-test" element={<VoyageBetsTestPage />} />
             <Route path="warehouse" element={<WarehousePage />} />
             <Route path="arcade" element={<ArcadePage />} />
             <Route path="arcade/:gameId" element={<ArcadeGamePage />} />

@@ -32,7 +32,7 @@ export function AppQueryProvider({ children }: { children: ReactNode }) {
   },[])
   useEffect(()=>{
     const timer=setInterval(()=>{
-      if(!document.hidden)void appQueryClient.refetchQueries({type:'active',predicate:q=>['merchant','menu-status'].includes(String(q.queryKey[2]))},{cancelRefetch:false})
+      if(!document.hidden)void appQueryClient.refetchQueries({type:'active',predicate:q=>['merchant','menu-status','voyage-bets'].includes(String(q.queryKey[2]))},{cancelRefetch:false})
     },30_000)
     return()=>clearInterval(timer)
   },[])
@@ -52,7 +52,7 @@ export function AppQueryProvider({ children }: { children: ReactNode }) {
 export function useAccountResource<T>(
   resource: AccountResource,
   read: (signal: AbortSignal) => Promise<T>,
-  options: { enabled?: boolean; standalone?: boolean; previewId?: string } = {},
+  options: { enabled?: boolean; standalone?: boolean; previewId?: string; staleTime?: number } = {},
 ) {
   const { session, recovery } = useAuth()
   const owner = session?.user.id
@@ -67,6 +67,7 @@ export function useAccountResource<T>(
         read,
       ),
       enabled: options.enabled !== false && (!!owner || standalone) && !recovery,
+      ...(options.staleTime !== undefined ? { staleTime: options.staleTime } : {}),
       ...(standalone ? { gcTime: 0, staleTime: 0 } : {}),
     },
     appQueryClient,

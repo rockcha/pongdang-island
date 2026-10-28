@@ -2,10 +2,17 @@ import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {PushSettings} from '@/features/notifications/push-settings'
 const api=vi.hoisted(()=>({supportsPush:vi.fn(),needsHomeScreen:vi.fn(),pushConfiguration:vi.fn(),currentPushDevice:vi.fn(),enablePush:vi.fn(),disablePush:vi.fn(),savePushCategories:vi.fn(),queuePushTest:vi.fn()}))
-vi.mock('@/features/notifications/push-device',()=>({...api,pushCategories:['production','bait-production','expedition','harbor','bait-production-expiring','production-expiring'],defaultPushCategories:['production','bait-production','expedition','harbor']}))
+vi.mock('@/features/notifications/push-device',()=>({...api,pushCategories:['production','bait-production','expedition','harbor','bait-production-expiring','production-expiring','voyage-bets'],defaultPushCategories:['production','bait-production','expedition','harbor']}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'owner'}}})}))
 beforeEach(()=>{api.supportsPush.mockReturnValue(true);api.needsHomeScreen.mockReturnValue(false);api.pushConfiguration.mockResolvedValue({configured:true,publicKey:'public-key'});api.currentPushDevice.mockResolvedValue({registered:false,categories:[]});api.enablePush.mockResolvedValue({registered:true});api.queuePushTest.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();vi.resetAllMocks()})
+it('leaves voyage reminders off until the device explicitly opts in',async()=>{
+ api.currentPushDevice.mockResolvedValue({registered:true,categories:[]})
+ render(<PushSettings/>);const checkbox=await screen.findByRole('checkbox',{name:'만선 승부장 · 출항 1시간 전'}) as HTMLInputElement
+ expect(checkbox.checked).toBe(false)
+ fireEvent.click(checkbox)
+ await waitFor(()=>expect(api.savePushCategories).toHaveBeenCalledWith(['voyage-bets']))
+})
 it('enables only on interaction and queues an explicit self-test',async()=>{
  render(<PushSettings/>);const toggle=await screen.findByRole('switch',{name:'이 기기 푸시 알림'})
  await waitFor(()=>expect(toggle.hasAttribute('disabled')).toBe(false))

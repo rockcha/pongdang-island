@@ -1,6 +1,7 @@
 import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {waitFor} from '@testing-library/react'
+import {useCollectionFilterStore} from '@/features/collection/use-collection-filters'
 import {appQueryClient} from '@/lib/account-cache'
 import {CollectionBook,CollectionDialog} from '@/features/collection/collection-dialog'
 const {load}=vi.hoisted(()=>({load:vi.fn()}))
@@ -10,7 +11,7 @@ vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name,className}:{name:string;className?:string})=><span role="img" aria-label={name} className={className}/>}))
 vi.mock('@/features/collection/api',()=>({loadCollection:load,kindLabels:{fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도 조각',relic:'유물'}}))
-afterEach(()=>{cleanup();vi.clearAllMocks();localStorage.clear()})
+afterEach(()=>{cleanup();vi.clearAllMocks();localStorage.clear();useCollectionFilterStore.setState({owners:{}})})
 const coral={id:'coral',name:'산호빛 여울'},moon={id:'mistmoon',name:'안개달 해역'}
 const base={description:'작은 바다 친구의 이야기',size:52,speed:.05,thumbnail_path:'preview.png',discovered:false}
 const shared={...base,id:'shared',discovered:true,name:'공통 물고기',kind:'fish',rarity:'common',sell_price:30,habitats:[coral,moon]}
@@ -24,6 +25,45 @@ async function open(add?:()=>void){
  await screen.findByRole('article',{name:'공통 물고기'})
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
+it('opens the aquarium catalog from its caption inside the same toolbar button',async()=>{
+ load.mockResolvedValue({items:[],catalog:[shared]})
+ render(<CollectionDialog toolbarLabel="바다 도감"/>)
+ const caption=screen.getByText('바다 도감')
+ expect(caption.closest('button')).toBe(screen.getByRole('button',{name:'바다 도감'}))
+ fireEvent.click(caption)
+ expect(await screen.findByRole('dialog',{name:'개체 도감'})).toBeTruthy()
+})
+it('searches names immediately, ignores spaces, and clears without exposing dropdowns',async()=>{
+ await open()
+ expect(screen.queryByRole('combobox')).toBeNull()
+ fireEvent.change(screen.getByRole('searchbox',{name:'도감 이름 검색'}),{target:{value:'산 호 물고기'}})
+ expect(cards()).toEqual([native.name])
+ expect(screen.getByText('검색 결과 1종')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'검색어 지우기'}))
+ expect(cards()).toHaveLength(3)
+ await choose('등급 선택','희귀')
+ expect(screen.getByRole('button',{name:'도감 필터 1개 적용 중'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'희귀 필터 해제'}))
+ expect(cards()).toHaveLength(3)
+})
+it('shares search and filters between the page and aquarium dialog but keeps item preferences separate',async()=>{
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ const view=render(<CollectionBook rememberFiltersFor="me"/>)
+ await screen.findByRole('article',{name:shared.name})
+ fireEvent.change(screen.getByRole('searchbox'),{target:{value:'산호'}})
+ await choose('등급 선택','희귀')
+ view.unmount()
+ const dialog=render(<CollectionDialog/>)
+ fireEvent.click(screen.getByRole('button',{name:'개체 도감'}))
+ await screen.findByRole('article',{name:native.name})
+ expect((screen.getByRole('searchbox') as HTMLInputElement).value).toBe('산호')
+ expect(screen.getByRole('button',{name:'희귀 필터 해제'})).toBeTruthy()
+ dialog.unmount()
+ render(<CollectionBook mode="items" rememberFiltersFor="me"/>)
+ await screen.findByRole('article',{name:map.name})
+ expect((screen.getByRole('searchbox') as HTMLInputElement).value).toBe('')
+ expect(screen.queryByRole('button',{name:'희귀 필터 해제'})).toBeNull()
+})
 it('opens the fishing item catalog as a centered modal with maps and relics only',async()=>{
  load.mockResolvedValue({items:[],catalog:[shared,map]})
  render(<CollectionDialog items fishing dock iconOnly/>)
@@ -51,16 +91,23 @@ it('filters the relic catalog by functional category and shows effects instead o
  render(<CollectionBook mode="items"/>)
  fireEvent.click(screen.getByRole('button',{name:'유물'}))
  await screen.findByRole('article',{name:'voyage'})
- fireEvent.click(screen.getByRole('combobox',{name:'유물 효과'}))
- fireEvent.keyDown(await screen.findByRole('option',{name:'항해'}),{key:'Enter'})
+ await choose('유물 효과','항해')
  await waitFor(()=>expect(cards()).toEqual(['voyage']))
  expect(screen.getByText('어선 항해 시간 단축')).toBeTruthy()
  expect(screen.queryByLabelText(/가치 .*골드/)).toBeNull()
 })
+async function openFilters(){
+ fireEvent.click(screen.getByRole('button',{name:/^도감 필터/}))
+ return screen.findByRole('dialog',{name:'도감 필터'})
+}
+async function closeFilters(){
+ fireEvent.click(screen.getByRole('button',{name:'결과 보기'}))
+ await waitFor(()=>expect(screen.queryByRole('dialog',{name:'도감 필터'})).toBeNull())
+}
 async function selectStatus(name:string){
- fireEvent.click(screen.getByRole('combobox',{name:'도감 발견 상태'}))
- fireEvent.keyDown(await screen.findByRole('option',{name}),{key:'Enter'})
- await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
+ const panel=await openFilters()
+ fireEvent.click(within(panel).getByRole('button',{name,exact:true}))
+ await closeFilters()
 }
 it('distinguishes undiscovered, currently owned and previously discovered species using storage and aquarium items',async()=>{
  load.mockResolvedValue({items:[{species_id:shared.id,tank_id:null},{species_id:shared.id,tank_id:'aquarium'}],catalog:[shared,native,decoration]})
@@ -81,11 +128,11 @@ it('uses acquired maps and actual relic ownership rather than relic discovery hi
  expect(screen.queryByRole('combobox',{name:'지도 해역'})).toBeNull()
  expect(screen.queryByRole('combobox',{name:'도감 상태'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'유물'}))
- fireEvent.click(screen.getByRole('button',{name:'발견'}))
+ await selectStatus('발견')
  await waitFor(()=>expect(cards()).toEqual(['kept','sold']))
  expect(screen.queryByRole('combobox',{name:'도감 상태'})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'미발견'}));expect(cards()).toEqual([])
- fireEvent.click(screen.getByRole('button',{name:'전체'}));expect(cards()).toEqual(['kept','sold'])
+ await selectStatus('미발견');expect(cards()).toEqual([])
+ await selectStatus('전체');expect(cards()).toEqual(['kept','sold'])
  fireEvent.click(screen.getByRole('button',{name:'지도 조각'}))
  expect(cards()).toEqual(['획득한 지도','지도 조각'])
  expect(screen.queryByRole('combobox',{name:'도감 상태'})).toBeNull()
@@ -143,9 +190,12 @@ it('previews undiscovered creatures in color without changing discovery records'
 })
 
 async function choose(label:string, option:string){
+ await openFilters()
  fireEvent.mouseDown(screen.getByRole('combobox',{name:label}))
  fireEvent.click(screen.getByRole('combobox',{name:label}))
  fireEvent.keyDown(await screen.findByRole('option',{name:option}),{key:'Enter'})
+ await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
+ await closeFilters()
 }
 it('filters common species and provides a Halloween filter without inventing event members',async()=>{
  await open()
@@ -165,7 +215,7 @@ it('opens undiscovered details, marks native species, and keeps filters after de
  expect(screen.queryByText(/가치순/)).toBeNull()
  expect(screen.queryByRole('button',{name:'지도'})).toBeNull()
  expect(screen.queryByText('작은 바다 친구의 이야기')).toBeNull()
- expect(screen.queryByRole('searchbox')).toBeNull()
+ expect(screen.getByRole('searchbox',{name:'도감 이름 검색'})).toBeTruthy()
  const locked=screen.getByRole('button',{name:'달빛 장식물 미발견'}) as HTMLButtonElement
  expect(locked.disabled).toBe(false)
  fireEvent.click(locked)
@@ -220,8 +270,8 @@ it('restores fishing collection filters after reopening and remounting the fishi
  await screen.findByRole('article',{name:'산호 물고기'})
  expect(cards()).toEqual(['산호 물고기'])
  expect(screen.getByRole('button',{name:'물고기'}).getAttribute('aria-pressed')).toBe('true')
- expect(screen.getByRole('combobox',{name:'도감 서식지'}).textContent).toContain('산호빛 여울')
- expect(screen.getByRole('combobox',{name:'등급 선택'}).textContent).toContain('희귀')
+ expect(screen.getByRole('button',{name:'산호빛 여울 필터 해제'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'희귀 필터 해제'})).toBeTruthy()
  view.unmount()
  render(<CollectionDialog fishing/>)
  fireEvent.click(screen.getByRole('button',{name:'개체 도감'}))
@@ -239,11 +289,11 @@ it('orders map pieces numerically, shows numbered names and keeps uncollected ar
  expect(screen.getByText('수집 1 / 3조각')).toBeTruthy()
  const unlocked=screen.getByRole('article',{name:'산호빛 여울 1번째 지도'}),locked=screen.getByRole('article',{name:'산호빛 여울 2번째 지도'})
  expect(within(locked).getByRole('heading',{name:'2번째 지도'})).toBeTruthy()
- expect(within(locked).getByText('미획득')).toBeTruthy()
+ expect(within(locked).queryByText('미획득')).toBeNull()
  expect(within(locked).getByRole('img').classList.contains('grayscale')).toBe(true)
- expect(within(unlocked).getByText('획득 완료')).toBeTruthy()
+ expect(within(unlocked).queryByText('획득 완료')).toBeNull()
  expect(within(unlocked).getByRole('img').classList.contains('grayscale')).toBe(false)
- fireEvent.click(within(locked).getByRole('button',{name:'산호빛 여울 2번째 지도 미획득'}))
+ fireEvent.click(within(locked).getByRole('button',{name:'산호빛 여울 2번째 지도 상세 보기'}))
  const detail=await screen.findByRole('dialog')
  expect(within(detail).getByRole('heading',{name:'산호빛 여울 2번째 지도'})).toBeTruthy()
  expect(detail.querySelector('.grayscale')).toBeTruthy()

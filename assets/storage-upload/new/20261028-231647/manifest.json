@@ -1,0 +1,229 @@
+{
+  "tool": "image_gen built-in",
+  "status": "remote deployed and verified",
+  "references": [
+    {
+      "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "role": "epic rendering style only"
+    },
+    {
+      "path": "assets/references/collectible-style/common-rare-pongi.png",
+      "role": "Pongi otter character identity only"
+    }
+  ],
+  "items": [
+    {
+      "id": "plunder-black-sail-captain-pongi",
+      "name": "검은돛 선장 퐁이",
+      "rarity": "epic",
+      "frames": 4,
+      "thumbnail_path": "fish/epic/plunder-black-sail-captain-pongi_v1_thumbnail.png",
+      "storage_path": "fish/epic/plunder-black-sail-captain-pongi_v1_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Create ONE full-body isolated epic-tier game collectible thumbnail PNG, genuinely transparent background, square composition with generous 12% clear padding, no text or UI. Reference 1 is ONLY the soft painterly fantasy rendering style: delicate colored edges, rich soft gradients, dimensional gentle lighting; do NOT copy its stingray anatomy, purple palette, stars or wing fins. Reference 2 is ONLY Pongi character identity: a cute rounded golden-brown OTTER with cream muzzle and belly, rounded small ears, dark little nose, whiskers, short paws, thick tapered otter tail. Preserve this otter identity but replace thick cartoon outlines with refined soft fantasy painting. No fishing hook, fishing line or starfish accessory. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Keep this exact right-facing orientation in the thumbnail and ALL FOUR animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. This output is a SINGLE thumbnail, not an animation sheet. Clean smooth alpha silhouette, no matte fringe, no floating particles, no halo, no ground shadow, no scenery. Character: Black Sail Captain Pongi. Golden-brown and cream otter swimming horizontally right, proud warm smirk and one gently raised eyebrow. Worn ink-navy tricorn hat with a small brass otter-face and crossed-anchors emblem, one softly folded corner. Short deep-navy captain coat with burgundy lining and aged brass buttons; coat tails stream left. Small highly readable brass compass pendant on chest, rolled navigation journal secured at waist. Cozy brave captain personality, small cute compact proportions. Entire hat, paws and otter tail visible.",
+      "facing_direction": "right",
+      "movement_proposal": {
+        "movement_type": "swim",
+        "swim_y_min": 0.3,
+        "swim_y_max": 0.7,
+        "travel_direction": "both",
+        "flip_with_direction": true
+      },
+      "sprite_sheet_path": "fish/epic/plunder-black-sail-captain-pongi_v1_sprite.png",
+      "spritePrompt": "Edit the attached 2x2 transparent character placement guide into a FOUR FRAME otter swimming animation sprite sheet. Keep the guide's EXACT four small character placements, head coordinates, character scale, wide transparent gutters and large outer padding. DO NOT ENLARGE the characters. Image 1 is the spatial layout to preserve. Image 2 is the high-resolution identity reference, not a request for a large full-canvas character. Change only the tail and trailing coat fabric in each of the four guide poses to form an actual swimming cycle: tail up, tail level, tail down, tail level returning. Slight synchronized hind paw propulsion. Preserve the stable captain face, tricorn, torso and forepaws, compass and journal. The entire four-character layout must remain well inside its four square cells, no cropped whiskers or tail. Use case: stylized-concept. Produce a production game animation SPRITE SHEET, square PNG, true transparent alpha. EXACTLY 2 columns by 2 rows of FOUR equally sized square cells; one complete identical character per cell. Read order top-left, top-right, bottom-left, bottom-right is frames 0,1,2,3. The attached image is the approved character IDENTITY AND STYLE reference: preserve precise otter face, fur colors, all clothing, equipment, materials, and proportions. Refined soft fantasy painted rendering with delicate colored edges, no thick black line. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Keep this exact right-facing orientation in the thumbnail and ALL FOUR animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. In each cell the otter swims horizontally toward the right in mid-water. Keep the rigid head, eyes, nose, torso center, torso size, and clothing identity EXACTLY registered to the SAME LOCAL coordinates across ALL FOUR cells. No vertical shift between upper row and lower row. No camera movement, no scale changes. Fit entire pose to 68% of each cell's width, minimum 16% transparent margin at EVERY cell edge; nothing cut off, crossing cell edges or touching neighboring cells. Four genuinely distinct phases of a smooth small-amplitude swimming cycle: 0 tail gently up, 1 tail neutral, 2 tail gently down, 3 tail returning neutral, hind paws move subtly together; short forepaws remain stable and natural, no large single-arm paddling. Secondary cloth movement follows tail phase with slight delay. All eyes open, no blink-only frames, no duplicate poses. Loop 0->1->2->3->0 smoothly. Crisp clean alpha silhouette, no halos or background residue, no scenery, particles, ground shadow, grids, frames, labels, numbers, text or watermark. ",
+      "layoutGuide": "artifacts/pirate-pongi-guides/plunder-black-sail-captain-pongi_v1.png",
+      "sell_price": 1180,
+      "kind": "fish",
+      "native_region_id": "plunder",
+      "cell": 723,
+      "atlasPacking": {
+        "method": "Whole-frame integer translation with uniform transparent padding; no scaling or recoloring; every nonzero-alpha pixel preserved",
+        "sourceCell": 627,
+        "padding": 48,
+        "sourceRegistration": "frame-registration.json",
+        "runtimeOffsetsRequired": false
+      },
+      "catalog": {
+        "id": "plunder-black-sail-captain-pongi",
+        "kind": "fish",
+        "name": "검은돛 선장 퐁이",
+        "description": "검은 삼각모와 붉은 안감 코트를 두른 작은 선장이에요. 가슴의 황동 나침반으로 동료들이 돌아갈 길을 찾아요.",
+        "swim_y_min": "0.30",
+        "swim_y_max": "0.70",
+        "speed": "0.021",
+        "size": 150,
+        "rarity": "epic",
+        "thumbnail_path": "fish/epic/plunder-black-sail-captain-pongi_v1_thumbnail.png",
+        "sell_price": 1180,
+        "sprite_sheet_path": "fish/epic/plunder-black-sail-captain-pongi_v1_sprite.png",
+        "native_region_id": "plunder",
+        "movement_type": "swim",
+        "flip_with_direction": true,
+        "travel_direction": "both"
+      },
+      "sizeRationale": "Uniformly padded atlas preserves every source RGBA pixel and registered head position; size compensates transparent padding without frame scaling.",
+      "generatedSources": {
+        "thumbnail": "sources/plunder-black-sail-captain-pongi-thumbnail.generated.source",
+        "sprite": "sources/plunder-black-sail-captain-pongi-sprite.generated.source"
+      }
+    },
+    {
+      "id": "plunder-safecracker-pongi",
+      "name": "금고털이 퐁이",
+      "rarity": "epic",
+      "frames": 4,
+      "thumbnail_path": "fish/epic/plunder-safecracker-pongi_v1_thumbnail.png",
+      "storage_path": "fish/epic/plunder-safecracker-pongi_v1_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Create ONE full-body isolated epic-tier game collectible thumbnail PNG, genuinely transparent background, square composition with generous 12% clear padding, no text or UI. Reference 1 is ONLY the soft painterly fantasy rendering style: delicate colored edges, rich soft gradients, dimensional gentle lighting; do NOT copy its stingray anatomy, purple palette, stars or wing fins. Reference 2 is ONLY Pongi character identity: a cute rounded golden-brown OTTER with cream muzzle and belly, rounded small ears, dark little nose, whiskers, short paws, thick tapered otter tail. Preserve this otter identity but replace thick cartoon outlines with refined soft fantasy painting. No fishing hook, fishing line or starfish accessory. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Keep this exact right-facing orientation in the thumbnail and ALL FOUR animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. This output is a SINGLE thumbnail, not an animation sheet. Clean smooth alpha silhouette, no matte fringe, no floating particles, no halo, no ground shadow, no scenery. Character: Safecracker Pongi. Golden-brown and cream otter swimming horizontally right, plump cheeks and playful sideways glance while clearly facing right. Teal knotted headscarf with a tiny brass key tucked into its knot, short weathered gray-brown leather vest. Small antique matte-brass strongbox strapped snug against belly, smaller than torso, securely held with short paws, a single gold coin peeks through a narrow lid gap. Slight forward lean from the weight, headscarf ends trail left, thick tapered otter tail visible. Mischievous lovable expression, no weapons.",
+      "facing_direction": "right",
+      "movement_proposal": {
+        "movement_type": "swim",
+        "swim_y_min": 0.3,
+        "swim_y_max": 0.7,
+        "travel_direction": "both",
+        "flip_with_direction": true
+      },
+      "sprite_sheet_path": "fish/epic/plunder-safecracker-pongi_v1_sprite.png",
+      "spritePrompt": "Edit the attached 2x2 transparent placement guide into a FOUR FRAME otter swimming animation sprite sheet. Preserve EXACT four small character placements, wide transparent gutters and large outer padding from image 1. Do NOT enlarge characters. Image 2 is high-resolution identity reference only. Safecracker Pongi: preserve golden-brown and cream otter, teal knotted headscarf with key, brown leather vest, small brass strongbox held securely against belly. Four genuinely distinct swimming tail phases up->level->down->return level, hind paws subtly paddle together. Short forepaws and box remain stable. Teal scarf tails ripple with four different curved shapes, head/body/box remain stable. Use case: stylized-concept. Produce a production game animation SPRITE SHEET, square PNG, true transparent alpha. EXACTLY 2 columns by 2 rows of FOUR equally sized square cells; one complete identical character per cell. Read order top-left, top-right, bottom-left, bottom-right is frames 0,1,2,3. The attached image is the approved character IDENTITY AND STYLE reference: preserve precise otter face, fur colors, all clothing, equipment, materials, and proportions. Refined soft fantasy painted rendering with delicate colored edges, no thick black line. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Keep this exact right-facing orientation in the thumbnail and ALL FOUR animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. In each cell the otter swims horizontally toward the right in mid-water. Keep the rigid head, eyes, nose, torso center, torso size, and clothing identity EXACTLY registered to the SAME LOCAL coordinates across ALL FOUR cells. No vertical shift between upper row and lower row. No camera movement, no scale changes. Fit entire pose to 68% of each cell's width, minimum 16% transparent margin at EVERY cell edge; nothing cut off, crossing cell edges or touching neighboring cells. Four genuinely distinct phases of a smooth small-amplitude swimming cycle: 0 tail gently up, 1 tail neutral, 2 tail gently down, 3 tail returning neutral, hind paws move subtly together; short forepaws remain stable and natural, no large single-arm paddling. Secondary cloth movement follows tail phase with slight delay. All eyes open, no blink-only frames, no duplicate poses. Loop 0->1->2->3->0 smoothly. Crisp clean alpha silhouette, no halos or background residue, no scenery, particles, ground shadow, grids, frames, labels, numbers, text or watermark. ",
+      "layoutGuide": "artifacts/pirate-pongi-guides/plunder-safecracker-pongi_v1.png",
+      "sell_price": 1160,
+      "kind": "fish",
+      "native_region_id": "plunder",
+      "cell": 723,
+      "atlasPacking": {
+        "method": "Whole-frame integer translation with uniform transparent padding; no scaling or recoloring; every nonzero-alpha pixel preserved",
+        "sourceCell": 627,
+        "padding": 48,
+        "sourceRegistration": "frame-registration.json",
+        "runtimeOffsetsRequired": false
+      },
+      "catalog": {
+        "id": "plunder-safecracker-pongi",
+        "kind": "fish",
+        "name": "금고털이 퐁이",
+        "description": "청록 두건에 열쇠를 숨기고 작은 황동 금고를 꼭 안은 퐁이예요. 자기 금고의 비밀번호는 자주 잊어버려요.",
+        "swim_y_min": "0.30",
+        "swim_y_max": "0.70",
+        "speed": "0.023",
+        "size": 136,
+        "rarity": "epic",
+        "thumbnail_path": "fish/epic/plunder-safecracker-pongi_v1_thumbnail.png",
+        "sell_price": 1160,
+        "sprite_sheet_path": "fish/epic/plunder-safecracker-pongi_v1_sprite.png",
+        "native_region_id": "plunder",
+        "movement_type": "swim",
+        "flip_with_direction": true,
+        "travel_direction": "both"
+      },
+      "sizeRationale": "Uniformly padded atlas preserves every source RGBA pixel and registered head position; size compensates transparent padding without frame scaling.",
+      "generatedSources": {
+        "thumbnail": "sources/plunder-safecracker-pongi-thumbnail.generated.source",
+        "sprite": "sources/plunder-safecracker-pongi-sprite.generated.source"
+      }
+    },
+    {
+      "id": "plunder-red-knot-bosun-pongi",
+      "name": "붉은매듭 갑판장 퐁이",
+      "rarity": "epic",
+      "frames": 4,
+      "thumbnail_path": "fish/epic/plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+      "storage_path": "fish/epic/plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Create ONE full-body isolated epic-tier game collectible thumbnail PNG, genuinely transparent background, square composition with generous 12% clear padding, no text or UI. Reference 1 is ONLY the soft painterly fantasy rendering style: delicate colored edges, rich soft gradients, dimensional gentle lighting; do NOT copy its stingray anatomy, purple palette, stars or wing fins. Reference 2 is ONLY Pongi character identity: a cute rounded golden-brown OTTER with cream muzzle and belly, rounded small ears, dark little nose, whiskers, short paws, thick tapered otter tail. Preserve this otter identity but replace thick cartoon outlines with refined soft fantasy painting. No fishing hook, fishing line or starfish accessory. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Keep this exact right-facing orientation in the thumbnail and ALL FOUR animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. This output is a SINGLE thumbnail, not an animation sheet. Clean smooth alpha silhouette, no matte fringe, no floating particles, no halo, no ground shadow, no scenery. Character: Red Knot Bosun Pongi. Golden-brown and cream otter swimming horizontally right with determined bright eyes and a confident friendly grin. Brick-red headscarf with a thick distinctive swallowtail knot, rolled-edge short dark-teal work vest, little brass anchor belt buckle. A neatly coiled thick natural hemp rope worn securely along side/back, one short loose rope end streams left. Sturdy energetic compact otter body, all four short paws and thick tapered otter tail visible. Subtle textile weave and rope twist detail, restrained fantasy richness, no hat, no safe, no compass.",
+      "facing_direction": "right",
+      "movement_proposal": {
+        "movement_type": "swim",
+        "swim_y_min": 0.3,
+        "swim_y_max": 0.7,
+        "travel_direction": "both",
+        "flip_with_direction": true
+      },
+      "sprite_sheet_path": "fish/epic/plunder-red-knot-bosun-pongi_v1_sprite.png",
+      "spritePrompt": "Edit the attached 2x2 transparent placement guide into a FOUR FRAME otter swimming animation sprite sheet. Preserve EXACT four small character placements, wide transparent gutters and large outer padding from image 1. Do NOT enlarge characters. Image 2 is high-resolution identity reference only. Red Knot Bosun Pongi: preserve golden-brown and cream otter, brick-red knotted bandana, dark teal work vest, brass anchor buckle, coiled hemp rope secured along its back. Four genuinely distinct swimming tail phases up->level->down->return level, hind paws subtly paddle together. Both short forepaws stable, no large single-arm paddling. Red bandana ends and loose rope tip ripple with four different curved shapes; secured rope coil, head and torso remain stable. Use case: stylized-concept. Produce a production game animation SPRITE SHEET, square PNG, true transparent alpha. EXACTLY 2 columns by 2 rows of FOUR equally sized square cells; one complete identical character per cell. Read order top-left, top-right, bottom-left, bottom-right is frames 0,1,2,3. The attached image is the approved character IDENTITY AND STYLE reference: preserve precise otter face, fur colors, all clothing, equipment, materials, and proportions. Refined soft fantasy painted rendering with delicate colored edges, no thick black line. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Keep this exact right-facing orientation in the thumbnail and ALL FOUR animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. In each cell the otter swims horizontally toward the right in mid-water. Keep the rigid head, eyes, nose, torso center, torso size, and clothing identity EXACTLY registered to the SAME LOCAL coordinates across ALL FOUR cells. No vertical shift between upper row and lower row. No camera movement, no scale changes. Fit entire pose to 68% of each cell's width, minimum 16% transparent margin at EVERY cell edge; nothing cut off, crossing cell edges or touching neighboring cells. Four genuinely distinct phases of a smooth small-amplitude swimming cycle: 0 tail gently up, 1 tail neutral, 2 tail gently down, 3 tail returning neutral, hind paws move subtly together; short forepaws remain stable and natural, no large single-arm paddling. Secondary cloth movement follows tail phase with slight delay. All eyes open, no blink-only frames, no duplicate poses. Loop 0->1->2->3->0 smoothly. Crisp clean alpha silhouette, no halos or background residue, no scenery, particles, ground shadow, grids, frames, labels, numbers, text or watermark. ",
+      "layoutGuide": "artifacts/pirate-pongi-guides/plunder-red-knot-bosun-pongi_v1.png",
+      "sell_price": 1140,
+      "kind": "fish",
+      "native_region_id": "plunder",
+      "cell": 723,
+      "atlasPacking": {
+        "method": "Whole-frame integer translation with uniform transparent padding; no scaling or recoloring; every nonzero-alpha pixel preserved",
+        "sourceCell": 627,
+        "padding": 48,
+        "sourceRegistration": "frame-registration.json",
+        "runtimeOffsetsRequired": false
+      },
+      "catalog": {
+        "id": "plunder-red-knot-bosun-pongi",
+        "kind": "fish",
+        "name": "붉은매듭 갑판장 퐁이",
+        "description": "붉은 머릿수건과 밧줄 꾸러미를 두른 씩씩한 갑판장이에요. 단단한 매듭만큼 동료와의 약속도 풀리지 않아요.",
+        "swim_y_min": "0.30",
+        "swim_y_max": "0.70",
+        "speed": "0.024",
+        "size": 145,
+        "rarity": "epic",
+        "thumbnail_path": "fish/epic/plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+        "sell_price": 1140,
+        "sprite_sheet_path": "fish/epic/plunder-red-knot-bosun-pongi_v1_sprite.png",
+        "native_region_id": "plunder",
+        "movement_type": "swim",
+        "flip_with_direction": true,
+        "travel_direction": "both"
+      },
+      "sizeRationale": "Uniformly padded atlas preserves every source RGBA pixel and registered head position; size compensates transparent padding without frame scaling.",
+      "generatedSources": {
+        "thumbnail": "sources/plunder-red-knot-bosun-pongi-thumbnail.generated.source",
+        "sprite": "sources/plunder-red-knot-bosun-pongi-sprite.generated.source"
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "fish/epic/plunder-black-sail-captain-pongi_v1_thumbnail.png",
+      "sha256": "560222249bfd554edf8376c93690eef5308e22baa778546ab28d086def1d78e5",
+      "bytes": 1258572
+    },
+    {
+      "path": "fish/epic/plunder-black-sail-captain-pongi_v1_sprite.png",
+      "sha256": "5612f7e44cafbb5363d64fb6190e5e0694f7ac115278bc4c451cb40a65d345d6",
+      "bytes": 1158554
+    },
+    {
+      "path": "fish/epic/plunder-safecracker-pongi_v1_thumbnail.png",
+      "sha256": "228d8c0a152cb45b2730678ca4298166bd12a776d64c6e9cc969c2e74a2558be",
+      "bytes": 1089592
+    },
+    {
+      "path": "fish/epic/plunder-safecracker-pongi_v1_sprite.png",
+      "sha256": "1efe55a0f6efbe6340234ec155f41b6d32fba9378c3bbd6d91add42a286db6f1",
+      "bytes": 1267069
+    },
+    {
+      "path": "fish/epic/plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+      "sha256": "3705d3e4d0ef6a808efbe3200460d89cd283df0a939e8734cff54e8a2c01ba3a",
+      "bytes": 1253298
+    },
+    {
+      "path": "fish/epic/plunder-red-knot-bosun-pongi_v1_sprite.png",
+      "sha256": "d3882d18a955bb993bff610f8456af5058ce352851c1dd6f8264ceee93978cd9",
+      "bytes": 1182161
+    }
+  ],
+  "deployment": {
+    "project": "ewafafphiovbpjwogwzn",
+    "capturedAt": "2026-10-28T14:41:58.788Z",
+    "scope": "Only 3 new catalog rows and plunder habitats, optional remote right-facing metadata, 6 public PNGs and two new migration records",
+    "fullSchemaParity": false,
+    "frontendDeployed": false,
+    "migrations": [
+      "20261028142356_plunder_three_epic_pirate_pongis.sql",
+      "20261028143916_pirate_pongi_remote_facing_metadata.sql"
+    ]
+  },
+  "review": {
+    "sourceRegistration": "frame-registration.json",
+    "packedRegistration": "packed-registration.json",
+    "rgbaVerification": "packing-verification.json",
+    "edgeAudit": "audit.json",
+    "browserVerification": "browser-verification.json",
+    "screenshots": "artifacts/pirate-pongi-review"
+  }
+}

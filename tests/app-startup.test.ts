@@ -18,6 +18,8 @@ it('provides recovery when the entry module fails without React running',()=>{
  win.dispatchEvent(new win.ErrorEvent('error',{filename:'https://example.test/assets/index-old.js?token=secret'}))
  expect(win.document.getElementById('app-startup')!.hidden).toBe(false)
  expect(win.document.getElementById('app-startup-retry')!.hidden).toBe(false)
+ expect(win.document.getElementById('app-startup-title')!.textContent).toBe('좀 문제가 생겼어요.')
+ expect(win.document.getElementById('app-startup-image')!.getAttribute('src')).toBe('/branding/pongi-startup-error.png')
  const record=JSON.parse(win.sessionStorage.getItem('pongdang:last-startup-error')!)
  expect(record.file).toBe('index-old.js')
  expect(JSON.stringify(record)).not.toContain('secret')
@@ -30,7 +32,7 @@ it('hides after mounting but recovers a later chunk load failure',()=>{
  expect(win.document.getElementById('app-startup')!.hidden).toBe(true)
  win.dispatchEvent(new win.Event('vite:preloadError'))
  expect(win.document.getElementById('app-startup')!.hidden).toBe(false)
- expect(win.document.getElementById('app-startup-title')!.textContent).toContain('불러오지 못했어요')
+ expect(win.document.getElementById('app-startup-title')!.textContent).toBe('좀 문제가 생겼어요.')
 })
 
 it('works when storage is unavailable',()=>{

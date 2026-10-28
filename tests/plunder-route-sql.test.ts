@@ -11,11 +11,14 @@ beforeAll(async()=>{
 },180000)
 afterAll(async()=>{await db?.close()})
 
-it('registers every requested native and exact fish-rarity average',async()=>{
+it('preserves the original natives and adds the three upper-mid epic pirate Pongi fish',async()=>{
   const groups=(await db.query("select rarity::text rarity,count(*)::int n,avg(sell_price)::float average from public.collectible_species where native_region_id='plunder' and kind='fish' group by rarity order by average")).rows
-  expect(groups).toEqual([{rarity:'common',n:12,average:55},{rarity:'rare',n:8,average:240},{rarity:'epic',n:5,average:750},{rarity:'mythic',n:3,average:2800}])
-  expect((await db.query("select kind::text kind,count(*)::int n from public.collectible_species where native_region_id='plunder' group by kind order by kind::text")).rows).toEqual([{kind:'decoration',n:11},{kind:'fish',n:28},{kind:'trash',n:8}])
-  expect((await db.query("select count(*)::int n from public.collectible_habitats h join public.collectible_species s on s.id=h.species_id where s.native_region_id='plunder' and h.region_id='plunder'")).rows[0]).toEqual({n:47})
+  expect(groups).toEqual([{rarity:'common',n:12,average:55},{rarity:'rare',n:8,average:240},{rarity:'epic',n:8,average:903.75},{rarity:'mythic',n:3,average:2800}])
+  expect((await db.query("select kind::text kind,count(*)::int n from public.collectible_species where native_region_id='plunder' group by kind order by kind::text")).rows).toEqual([{kind:'decoration',n:11},{kind:'fish',n:31},{kind:'trash',n:8}])
+  expect((await db.query("select count(*)::int n from public.collectible_habitats h join public.collectible_species s on s.id=h.species_id where s.native_region_id='plunder' and h.region_id='plunder'")).rows[0]).toEqual({n:50})
+  const pongis=(await db.query("select id,sell_price,movement_type,swim_y_min::float y_min,swim_y_max::float y_max,flip_with_direction,travel_direction from public.collectible_species where id in ('plunder-black-sail-captain-pongi','plunder-safecracker-pongi','plunder-red-knot-bosun-pongi') order by id")).rows
+  expect(pongis.map(s=>[s.id,s.sell_price])).toEqual([['plunder-black-sail-captain-pongi',1180],['plunder-red-knot-bosun-pongi',1140],['plunder-safecracker-pongi',1160]])
+  for(const species of pongis)expect(species).toMatchObject({movement_type:'swim',y_min:.3,y_max:.7,flip_with_direction:true,travel_direction:'both'})
 })
 it('keeps grounded species on the bottom and static items stationary with lower prices',async()=>{
   expect((await db.query("select count(*)::int n from public.collectible_species where native_region_id='plunder' and movement_type='crawl' and swim_y_min<0.8")).rows[0]).toEqual({n:0})
@@ -26,6 +29,17 @@ it('keeps grounded species on the bottom and static items stationary with lower 
     expect(price('trash')).toBeLessThan(price('decoration'))
     expect(price('decoration')).toBeLessThan(price('fish'))
   }
+})
+it('fills optional remote facing metadata for only the three new Pongi fish',async()=>{
+  const {readFileSync}=await import('node:fs')
+  const sql=readFileSync('supabase/migrations/20261028143916_pirate_pongi_remote_facing_metadata.sql','utf8').split('\n').filter(line=>!/^\s*(begin|commit);\s*$/i.test(line)).join('\n')
+  await db.exec("begin; alter table public.collectible_species add column facing_direction text default 'left';")
+  try{
+    await db.exec(sql)
+    expect((await db.query("select id from public.collectible_species where facing_direction='right' order by id")).rows.map(r=>r.id)).toEqual(['plunder-black-sail-captain-pongi','plunder-red-knot-bosun-pongi','plunder-safecracker-pongi'])
+    await db.exec(sql)
+    expect((await db.query("select count(*)::int n from public.collectible_species where facing_direction='right'")).rows[0]).toEqual({n:3})
+  }finally{await db.exec('rollback;')}
 })
 it('unlocks with four distinct fishing pieces and removes completed-map candidates',async()=>{
   const current=async()=>((await db.query('select public.region_map() r')).rows[0].r.regions as {id:string;unlocked:boolean;mapPieceCount:number;mapPieces:number[]}[]).find(r=>r.id==='plunder')!

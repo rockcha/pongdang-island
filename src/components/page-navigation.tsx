@@ -1,6 +1,6 @@
 import {useLocation,useNavigate} from 'react-router'
 import type {ComponentType} from 'react'
-import {ChevronLeft,House,Handshake,Mail,Download,FishingRod,Gamepad2,Megaphone,PackageOpen,Info,Wrench,CalendarDays} from 'lucide-react'
+import {ChevronLeft,House,Handshake,Mail,Download,FishingRod,Gamepad2,Megaphone,PackageOpen,Info,Wrench,CalendarDays,FlaskConical,NotebookPen} from 'lucide-react'
 import {appArt} from './app-art'
 import {HeaderPlaceNavigation,headerPlaces,menuIcons} from './header-place-navigation'
 import {arcadeGames} from '@/features/arcade/games'
@@ -39,7 +39,9 @@ export function pageNavigation(pathname:string,noticeCategory?:string){
  if(path==='/notifications')Icon=Mail
  if(path==='/download')Icon=Download
  if(/^\/(region|sailing)\//.test(path))Icon=FishingRod
- const fallback=action?.to??(path.startsWith('/friends/')?'/friends':/^\/(region|sailing)\//.test(path)?'/harbor':path.startsWith('/square/')?'/square':path==='/aquarium'?'/island-news':'/aquarium')
+ if(path==='/voyage-bets-test'){label='만선 승부장 테스트';Icon=FlaskConical}
+ if(path==='/fishing-records'){label='오늘의 낚시 기록';Icon=NotebookPen;action={to:'/fishing',label:'낚시로'}}
+ const fallback=path==='/voyage-bets-test'?'/voyage-bets':action?.to??(path.startsWith('/friends/')?'/friends':/^\/(region|sailing)\//.test(path)?'/harbor':path.startsWith('/square/')?'/square':path==='/aquarium'?'/island-news':'/aquarium')
  return {label,Icon,action,fallback}
 }
 

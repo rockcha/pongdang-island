@@ -15,6 +15,8 @@ it('identifies root, nested, game and notice pages without breadcrumbs',()=>{
  expect(pageNavigation('/square/notices/new').label).toBe('공지 작성')
  expect(pageNavigation('/shipyard').action).toEqual({to:'/port',label:'항구로'})
  expect(pageNavigation('/warehouse').action).toEqual({to:'/shop',label:'낚시 상점'})
+ expect(pageNavigation('/fishing-records').label).toBe('오늘의 낚시 기록')
+ expect(pageNavigation('/fishing-records').fallback).toBe('/fishing')
  expect(pageNavigation('/friends/user/aquarium')).toMatchObject({label:'친구 아쿠아리움',fallback:'/friends'})
 })
 it('hides list and guide actions and falls back safely on direct entry',()=>{

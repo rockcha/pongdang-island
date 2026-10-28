@@ -1,0 +1,1266 @@
+{
+  "tool": "built-in image_gen",
+  "status": "Local art replacement wired to existing catalog paths; no catalog, prices, releases or remote storage changes",
+  "style_reference": "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png",
+  "scope": "16 currently registered starruins-native collectibles; excludes unreleased expansion",
+  "items": [
+    {
+      "id": "tile-fitting-crab",
+      "name": "타일맞춤 게",
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "crawl",
+      "size": 54,
+      "native_region_id": "starruins",
+      "visual": "A cute small sandy crab carrying a turquoise ivory mosaic tile on its shell, ancient Atlantis spiral wave and trident tile insignia",
+      "motion": "Small alternating walking-leg steps beneath rigid tile and shell; claws flex slightly. Shell remains level; no body bounce.",
+      "idle": false,
+      "path": "fish/normal/tile-fitting-crab",
+      "frames": 4,
+      "design": "A small living blue crab with six visible walking legs and two small claws, carrying one square cobalt ceramic mosaic tile on its shell, yellow curved wave inlay. Natural crab anatomy, right-facing three-quarter.",
+      "movement_type": "crawl",
+      "swim_y_min": 0.84,
+      "swim_y_max": 0.94,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/normal/tile-fitting-crab_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/tile-fitting-crab_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A small living blue crab with six visible walking legs and two small claws, carrying one square cobalt ceramic mosaic tile on its shell, yellow curved wave inlay. Natural crab anatomy, right-facing three-quarter. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-cecc761d-cbb1-410d-a122-61eaaa77d133.png",
+          "prompt": "ONE isolated square collectible thumbnail: A small living blue crab with six visible walking legs and two small claws, carrying one square cobalt ceramic mosaic tile on its shell, yellow curved wave inlay. Natural crab anatomy, right-facing three-quarter. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-d72db4bd-2c4c-41c6-b262-dcdc76f066bf.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A small living blue crab with six visible walking legs and two small claws, carrying one square cobalt ceramic mosaic tile on its shell, yellow curved wave inlay. Natural crab anatomy, right-facing three-quarter. Genuine small articulated animation: Small alternating walking-leg steps beneath rigid tile and shell; claws flex slightly. Shell remains level; no body bounce. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. Whole silhouette within central 64% of EACH cell, minimum 15% actual clear alpha margin on every edge in every frame, all tentacles/fins/staff/feet intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery. Critical redo: previous crab sheet was rejected because claws were clipped at the cell edges. Redraw ALL claws and legs fully from the identity reference. Scale every crab down to HALF the previous apparent width; only central 50% width and height of each quadrant may contain artwork. All leftmost/rightmost claws must be far from vertical grid boundaries. Big transparent margins are mandatory. Do NOT crop the sheet canvas to the subjects.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/normal/tile-fitting-crab_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/tile-fitting-crab-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          301,
+          251,
+          50,
+          44
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.1502013422818793,
+        "translate": [
+          -26.5,
+          -72.5
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -33,
+            "dy": 3,
+            "rmse": 33.219059722601344
+          },
+          {
+            "frame": 2,
+            "dx": 1,
+            "dy": -79,
+            "rmse": 16.372999078184463
+          },
+          {
+            "frame": 3,
+            "dx": -26,
+            "dy": -78,
+            "rmse": 19.92287500880836
+          }
+        ]
+      },
+      "hashes": {
+        "fish/normal/tile-fitting-crab_bluegold_v2_thumbnail.png": "53e0d346db993483146401e4c5405be56c540d6f6f22f15de61c62cd2e3a2bfe",
+        "fish/normal/tile-fitting-crab_bluegold_v2_sprite.png": "384552b4cb0298fe74b2808fb5e8c69ace8e459baabd248fb76b93cf3ea22f43"
+      }
+    },
+    {
+      "id": "teacup-nest-blenny",
+      "name": "찻잔둥지 블레니",
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "size": 62,
+      "native_region_id": "starruins",
+      "visual": "A cute cream blue blenny peeking from a cracked ivory royal teacup bearing teal Atlantis wave and trident emblem, broken handle, fish head looks right",
+      "motion": "Cup and fish head anchor remain absolutely stationary; small paired pectoral fins flutter and short exposed tail tip responds to water. No head peeking up and down.",
+      "idle": true,
+      "path": "fish/normal/teacup-nest-blenny",
+      "frames": 4,
+      "design": "A tiny sky-blue blenny peeking out of a cracked lapis-blue royal teacup with a broken handle, warm yellow rim and curved yellow scroll ornament. Small fish head looks right, cup fully visible.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.84,
+      "swim_y_max": 0.94,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "thumbnail_path": "fish/normal/teacup-nest-blenny_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/teacup-nest-blenny_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A tiny sky-blue blenny peeking out of a cracked lapis-blue royal teacup with a broken handle, warm yellow rim and curved yellow scroll ornament. Small fish head looks right, cup fully visible. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-cfc48ac8-a0bd-4060-a88e-26cb43fd2608.png",
+          "prompt": "ONE isolated square collectible thumbnail: A tiny sky-blue blenny peeking out of a cracked lapis-blue royal teacup with a broken handle, warm yellow rim and curved yellow scroll ornament. Small fish head looks right, cup fully visible. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-842a816d-6d8b-4d61-a71c-aa6c36fc9a1e.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A tiny sky-blue blenny peeking out of a cracked lapis-blue royal teacup with a broken handle, warm yellow rim and curved yellow scroll ornament. Small fish head looks right, cup fully visible. Genuine small articulated animation: Cup and fish head anchor remain absolutely stationary; small paired pectoral fins flutter and short exposed tail tip responds to water. No head peeking up and down. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/normal/teacup-nest-blenny_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/teacup-nest-blenny-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          295,
+          357,
+          56,
+          50
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.2570660146699266,
+        "translate": [
+          0.5,
+          -6.5
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 13.151710621058461
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -6,
+            "rmse": 8.04678656320696
+          },
+          {
+            "frame": 3,
+            "dx": -1,
+            "dy": -6,
+            "rmse": 15.012043668613515
+          }
+        ]
+      },
+      "hashes": {
+        "fish/normal/teacup-nest-blenny_bluegold_v2_thumbnail.png": "2845d0444f30b229f9c0701ff5faa428291c796e274c7934cf1e6a10d9ff4181",
+        "fish/normal/teacup-nest-blenny_bluegold_v2_sprite.png": "5146bf3aaae225bbd61e1531ea666dffb21de61a678d7b1617359942da3d0f06"
+      }
+    },
+    {
+      "id": "cracked-perfume-vial",
+      "name": "금 간 향유병",
+      "rarity": "common",
+      "kind": "decoration",
+      "movement": "swim",
+      "size": 42,
+      "native_region_id": "starruins",
+      "visual": "A cracked tiny turquoise glass perfume vial with little handles, weathered bronze stopper, Atlantis wave and trident royal emblem, worn golden sand inside",
+      "motion": "static",
+      "idle": false,
+      "path": "trash/normal/cracked-perfume-vial",
+      "frames": 1,
+      "design": "A tiny cracked cobalt-blue glass perfume vial with two small loop handles, worn golden-yellow stopper and simple yellow wave filigree, a little pale sediment inside. One complete small ancient object.",
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "thumbnail_path": "decorations/normal/cracked-perfume-vial_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": null,
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A tiny cracked cobalt-blue glass perfume vial with two small loop handles, worn golden-yellow stopper and simple yellow wave filigree, a little pale sediment inside. One complete small ancient object. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-0de37cc5-d07a-4738-acd9-ebfcc777ec61.png",
+          "prompt": "ONE isolated square collectible thumbnail: A tiny cracked cobalt-blue glass perfume vial with two small loop handles, worn golden-yellow stopper and simple yellow wave filigree, a little pale sediment inside. One complete small ancient object. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        }
+      },
+      "hashes": {
+        "decorations/normal/cracked-perfume-vial_bluegold_v2_thumbnail.png": "61c02a6fbb889bf77a24720ed2016137f4f97e57a5e9cff9f906d4208886f618"
+      }
+    },
+    {
+      "id": "lost-atlantean-crown",
+      "name": "잃어버린 왕관",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "size": 48,
+      "native_region_id": "starruins",
+      "visual": "A small weathered bronze crown with one empty gem socket, draped short seaweed strand, ancient Atlantis spiral wave and trident engraving",
+      "motion": "static",
+      "idle": false,
+      "path": "trash/normal/lost-atlantean-crown",
+      "frames": 1,
+      "design": "A lost ancient royal crown made of worn warm yellow gold with small lapis-blue ceramic inserts, one empty stone socket and restrained wave-shaped scroll relief, one short blue seaweed strand. No weapon or trident shapes.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "thumbnail_path": "trash/normal/lost-atlantean-crown_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": null,
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A lost ancient royal crown made of worn warm yellow gold with small lapis-blue ceramic inserts, one empty stone socket and restrained wave-shaped scroll relief, one short blue seaweed strand. No weapon or trident shapes. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-fdfe2a2d-5165-4434-b7dd-35b952b28157.png",
+          "prompt": "ONE isolated square collectible thumbnail: A lost ancient royal crown made of worn warm yellow gold with small lapis-blue ceramic inserts, one empty stone socket and restrained wave-shaped scroll relief, one short blue seaweed strand. No weapon or trident shapes. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        }
+      },
+      "hashes": {
+        "trash/normal/lost-atlantean-crown_bluegold_v2_thumbnail.png": "216b5a669e3ef09c2e775e83ea6628cf8a9427273e04337dbd00a6cb6d8e6a87"
+      }
+    },
+    {
+      "id": "amphora-home-octopus",
+      "name": "항아리집 문어",
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "pulse",
+      "size": 62,
+      "native_region_id": "starruins",
+      "visual": "A cute apricot octopus wearing a small broken turquoise Greek amphora like a helmet, Atlantis spiral wave trident emblem on amphora, big glossy eyes looking screen right",
+      "motion": "Amphora and head stay rigid; lower arm tips gather, gently extend and relax in a compact propulsion loop. No mantle lifting.",
+      "idle": false,
+      "path": "fish/normal/amphora-home-octopus",
+      "frames": 4,
+      "design": "A small blue living octopus wearing a broken rounded lapis ceramic amphora as a helmet, small yellow curved waves on the pot, natural compact eight arms gathered beneath, calm eye looks right. Clearly octopus and amphora, not humanoid.",
+      "movement_type": "pulse",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.7,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/normal/amphora-home-octopus_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/amphora-home-octopus_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A small blue living octopus wearing a broken rounded lapis ceramic amphora as a helmet, small yellow curved waves on the pot, natural compact eight arms gathered beneath, calm eye looks right. Clearly octopus and amphora, not humanoid. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-943c67b7-fc5e-4163-b271-2f98bc15fd73.png",
+          "prompt": "ONE isolated square collectible thumbnail: A small blue living octopus wearing a broken rounded lapis ceramic amphora as a helmet, small yellow curved waves on the pot, natural compact eight arms gathered beneath, calm eye looks right. Clearly octopus and amphora, not humanoid. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-a2991714-978a-43d3-a30c-1d1b32d58936.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A small blue living octopus wearing a broken rounded lapis ceramic amphora as a helmet, small yellow curved waves on the pot, natural compact eight arms gathered beneath, calm eye looks right. Clearly octopus and amphora, not humanoid. Genuine small articulated animation: Amphora and head stay rigid; lower arm tips gather, gently extend and relax in a compact propulsion loop. No mantle lifting. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/normal/amphora-home-octopus_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/amphora-home-octopus-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          426,
+          288,
+          50,
+          50
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.0471283095723012,
+        "translate": [
+          -29.5,
+          -27
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -8,
+            "dy": 0,
+            "rmse": 12.36477024665623
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -35,
+            "rmse": 11.584240876216304
+          },
+          {
+            "frame": 3,
+            "dx": -8,
+            "dy": -35,
+            "rmse": 17.85710776071687
+          }
+        ]
+      },
+      "hashes": {
+        "fish/normal/amphora-home-octopus_bluegold_v2_thumbnail.png": "5aea94d03803db07e2b49498ad346117222db380e5db8532b60c4174f5ae4dc4",
+        "fish/normal/amphora-home-octopus_bluegold_v2_sprite.png": "01dc4628fa9023bd31479ca4731fe9c8a1748e683112c83c1f8ecc46bd42c8b9"
+      }
+    },
+    {
+      "id": "broken-kingdom-tile",
+      "name": "깨진 왕국 타일",
+      "rarity": "rare",
+      "kind": "trash",
+      "movement": "swim",
+      "size": 46,
+      "native_region_id": "starruins",
+      "visual": "A broken ivory and turquoise mosaic tile piece with intricate bronze Atlantis trident sunken kingdom seal, chipped edges, small barnacle",
+      "motion": "static",
+      "idle": false,
+      "path": "trash/rare/broken-kingdom-tile",
+      "frames": 1,
+      "design": "One broken cobalt and sky-blue ancient kingdom mosaic tile fragment with warm yellow flowing wave inlay, chipped pale stone edges, one tiny barnacle. Abstract curve decoration only.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "thumbnail_path": "trash/rare/broken-kingdom-tile_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": null,
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: One broken cobalt and sky-blue ancient kingdom mosaic tile fragment with warm yellow flowing wave inlay, chipped pale stone edges, one tiny barnacle. Abstract curve decoration only. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-7a73e93a-da2d-4599-bcc3-c2ceb25c9cfd.png",
+          "prompt": "ONE isolated square collectible thumbnail: One broken cobalt and sky-blue ancient kingdom mosaic tile fragment with warm yellow flowing wave inlay, chipped pale stone edges, one tiny barnacle. Abstract curve decoration only. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        }
+      },
+      "hashes": {
+        "trash/rare/broken-kingdom-tile_bluegold_v2_thumbnail.png": "71e7d63c223171eab67d36828ed3958eb69d2dbf5e6711cab7eaa7c16a5482ef"
+      }
+    },
+    {
+      "id": "sunken-kingdom-fountain",
+      "name": "잠긴 왕국 분수",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 90,
+      "native_region_id": "starruins",
+      "visual": "A miniature ivory marble seashell fountain with patinated bronze trident spout, teal mosaic basin and Atlantis wave motifs, tiny pearl water beads",
+      "motion": "Stone pedestal, basin and spout stationary; only thin attached water arc and contained basin ripples change smoothly. No jumping detached drops.",
+      "idle": true,
+      "path": "decorations/rare/sunken-kingdom-fountain",
+      "frames": 4,
+      "design": "A complete miniature ancient seashell fountain, cobalt and pale blue ceramic basin on a low pale stone base, golden-yellow curved wave ornaments and a simple curved SHELL spout, a thin attached arc of pale water flowing into basin. No trident spout.",
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "thumbnail_path": "decorations/rare/sunken-kingdom-fountain_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "decorations/rare/sunken-kingdom-fountain_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A complete miniature ancient seashell fountain, cobalt and pale blue ceramic basin on a low pale stone base, golden-yellow curved wave ornaments and a simple curved SHELL spout, a thin attached arc of pale water flowing into basin. No trident spout. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-a41c2aac-0013-48b1-8bf1-f802f6412336.png",
+          "prompt": "ONE isolated square collectible thumbnail: A complete miniature ancient seashell fountain, cobalt and pale blue ceramic basin on a low pale stone base, golden-yellow curved wave ornaments and a simple curved SHELL spout, a thin attached arc of pale water flowing into basin. No trident spout. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle.  Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-078e6545-7e73-467b-ad8f-51bd819a0482.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A complete miniature ancient seashell fountain, cobalt and pale blue ceramic basin on a low pale stone base, golden-yellow curved wave ornaments and a simple curved SHELL spout, a thin attached arc of pale water flowing into basin. No trident spout. Genuine small articulated animation: Stone pedestal, basin and spout stationary; only thin attached water arc and contained basin ripples change smoothly. No jumping detached drops. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation.  IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/decorations/rare/sunken-kingdom-fountain_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/sunken-kingdom-fountain-guide.png"
+          ]
+        }
+      },
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          314,
+          514,
+          63,
+          28
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.2154609929078013,
+        "translate": [
+          -27,
+          -39.5
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -2,
+            "dy": 0,
+            "rmse": 9.455409134710242
+          },
+          {
+            "frame": 2,
+            "dx": -1,
+            "dy": -27,
+            "rmse": 9.331781333547355
+          },
+          {
+            "frame": 3,
+            "dx": -2,
+            "dy": -27,
+            "rmse": 9.759000729485331
+          }
+        ]
+      },
+      "hashes": {
+        "decorations/rare/sunken-kingdom-fountain_bluegold_v2_thumbnail.png": "d93581845093ec706303096c348810322d5f08b78c3c047136d0a7f993381dfb",
+        "decorations/rare/sunken-kingdom-fountain_bluegold_v2_sprite.png": "3f40e41440e6a51517a3be86e64e008757cd8ed1e61ce964207838c6820e9022"
+      }
+    },
+    {
+      "id": "azure-armored-sea-turtle",
+      "name": "청금갑옷 바다거북",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 90,
+      "native_region_id": "starruins",
+      "visual": "A cute ivory sea turtle with bronze gold and turquoise shell armor plates engraved Atlantis spiral wave and trident crest, friendly glossy eyes",
+      "motion": "Four natural flippers execute small coordinated propulsion strokes; rigid shell, neck and head remain level and fixed. No one-sided arm flap.",
+      "idle": false,
+      "path": "fish/rare/azure-armored-sea-turtle",
+      "frames": 4,
+      "design": "A living sea turtle with lapis-blue shell plates edged warm golden yellow, simple curved yellow wave inlays, pale sky-blue skin and four natural flippers. Readable natural sea turtle anatomy, head right and shell trailing left.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/rare/azure-armored-sea-turtle_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/azure-armored-sea-turtle_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A living sea turtle with lapis-blue shell plates edged warm golden yellow, simple curved yellow wave inlays, pale sky-blue skin and four natural flippers. Readable natural sea turtle anatomy, head right and shell trailing left. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-976a7665-5da1-408a-9197-8368c606b180.png",
+          "prompt": "ONE isolated square collectible thumbnail: A living sea turtle with lapis-blue shell plates edged warm golden yellow, simple curved yellow wave inlays, pale sky-blue skin and four natural flippers. Readable natural sea turtle anatomy, head right and shell trailing left. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-c44fa2eb-b378-4a40-8e7d-417071be0189.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A living sea turtle with lapis-blue shell plates edged warm golden yellow, simple curved yellow wave inlays, pale sky-blue skin and four natural flippers. Readable natural sea turtle anatomy, head right and shell trailing left. Genuine small articulated animation: Four natural flippers execute small coordinated propulsion strokes; rigid shell, neck and head remain level and fixed. No one-sided arm flap. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/rare/azure-armored-sea-turtle_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/azure-armored-sea-turtle-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          470,
+          276,
+          47,
+          41
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.0365725806451613,
+        "translate": [
+          -1,
+          -32.5
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 13.923499534445867
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -32,
+            "rmse": 16.58958365102288
+          },
+          {
+            "frame": 3,
+            "dx": -1,
+            "dy": -32,
+            "rmse": 10.242702105820095
+          }
+        ]
+      },
+      "hashes": {
+        "fish/rare/azure-armored-sea-turtle_bluegold_v2_thumbnail.png": "54e87c6f469b91a4004305a57262bbedd87c45bb58a737732000c38bb67b63d4",
+        "fish/rare/azure-armored-sea-turtle_bluegold_v2_sprite.png": "558b81a2ac08c11987dda64030654d2a131905bf18bfda927a32c98832b590f8"
+      }
+    },
+    {
+      "id": "templekeeper-moray",
+      "name": "신전지기 곰치",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 96,
+      "native_region_id": "starruins",
+      "visual": "An elegant cute long ivory moray eel, fine gold fluted-column lines and turquoise Atlantis wave markings along body, sapphire eyes, gentle face",
+      "motion": "A shallow traveling wave moves only along rear two thirds and dorsal fin ridge; rigid head and front quarter remain at identical coordinates.",
+      "idle": false,
+      "path": "fish/rare/templekeeper-moray",
+      "frames": 4,
+      "design": "A long slender blue living moray eel, broad blunt eel head on right, tapering sinuous body trailing left, thin dorsal ridge, pale sky-blue jaw, sparse yellow curved wave markings along blue skin. No arms, wings or armor suit.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/rare/templekeeper-moray_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/templekeeper-moray_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A long slender blue living moray eel, broad blunt eel head on right, tapering sinuous body trailing left, thin dorsal ridge, pale sky-blue jaw, sparse yellow curved wave markings along blue skin. No arms, wings or armor suit. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-88df53e1-7e0c-425b-a548-54b436513904.png",
+          "prompt": "ONE isolated square collectible thumbnail: A long slender blue living moray eel, broad blunt eel head on right, tapering sinuous body trailing left, thin dorsal ridge, pale sky-blue jaw, sparse yellow curved wave markings along blue skin. No arms, wings or armor suit. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-b1ef00f1-6079-48d2-b83e-5bf48c65a1f1.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A long slender blue living moray eel, broad blunt eel head on right, tapering sinuous body trailing left, thin dorsal ridge, pale sky-blue jaw, sparse yellow curved wave markings along blue skin. No arms, wings or armor suit. Genuine small articulated animation: A shallow traveling wave moves only along rear two thirds and dorsal fin ridge; rigid head and front quarter remain at identical coordinates. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/rare/templekeeper-moray_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/templekeeper-moray-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          520,
+          433,
+          44,
+          38
+        ],
+        "cell": 627,
+        "scale": 0.9521531100478469,
+        "displayScale": 0.9999558905639307,
+        "translate": [
+          -4.995215311004756,
+          -43.557416267942585
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -12,
+            "dy": 3,
+            "rmse": 20.359997229358534
+          },
+          {
+            "frame": 2,
+            "dx": 9,
+            "dy": -82,
+            "rmse": 26.12519169356736
+          },
+          {
+            "frame": 3,
+            "dx": -32,
+            "dy": -81,
+            "rmse": 22.277906728531033
+          }
+        ]
+      },
+      "hashes": {
+        "fish/rare/templekeeper-moray_bluegold_v2_thumbnail.png": "18eabce49913410bb6a1320b5ca53c0d45275f4566e04bb2778991fed83d8b04",
+        "fish/rare/templekeeper-moray_bluegold_v2_sprite.png": "78a2052e057898843beb41719fa3ab651ed33ab8d8269cf850b0e8eb49cc2145"
+      }
+    },
+    {
+      "id": "mask-changing-octopus",
+      "name": "가면바꿔 문어",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "pulse",
+      "size": 76,
+      "native_region_id": "starruins",
+      "visual": "A cute teal octopus carrying one small ivory bronze ancient Atlantis theater mask with wave crest in a short arm beside face, glossy eyes looking right",
+      "motion": "Lower arm tips gather and release gently, mask-holding arm tilts mask very slightly without hiding face; rigid head and eye fixed.",
+      "idle": false,
+      "path": "fish/rare/mask-changing-octopus",
+      "frames": 4,
+      "design": "A small living cobalt-blue octopus holding one small ancient pale-blue theater mask with golden-yellow curved trim in a short arm beside its cheek; natural eight compact arms, right-facing head. Mask stays beside face without hiding eye.",
+      "movement_type": "pulse",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.7,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/rare/mask-changing-octopus_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mask-changing-octopus_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A small living cobalt-blue octopus holding one small ancient pale-blue theater mask with golden-yellow curved trim in a short arm beside its cheek; natural eight compact arms, right-facing head. Mask stays beside face without hiding eye. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-1d0f32dc-55ff-444a-9886-a929d8f7b65f.png",
+          "prompt": "ONE isolated square collectible thumbnail: A small living cobalt-blue octopus holding one small ancient pale-blue theater mask with golden-yellow curved trim in a short arm beside its cheek; natural eight compact arms, right-facing head. Mask stays beside face without hiding eye. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-e66031ad-bea7-4b1e-b017-ef55ad6005c7.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A small living cobalt-blue octopus holding one small ancient pale-blue theater mask with golden-yellow curved trim in a short arm beside its cheek; natural eight compact arms, right-facing head. Mask stays beside face without hiding eye. Genuine small articulated animation: Lower arm tips gather and release gently, mask-holding arm tilts mask very slightly without hiding face; rigid head and eye fixed. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/rare/mask-changing-octopus_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/mask-changing-octopus-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          408,
+          295,
+          50,
+          50
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.0428803245436105,
+        "translate": [
+          -34.5,
+          -30.5
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -27,
+            "dy": 0,
+            "rmse": 14.798122484482413
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -34,
+            "rmse": 14.317096030771228
+          },
+          {
+            "frame": 3,
+            "dx": -23,
+            "dy": -34,
+            "rmse": 16.440255682939217
+          }
+        ]
+      },
+      "hashes": {
+        "fish/rare/mask-changing-octopus_bluegold_v2_thumbnail.png": "bb63ab17b35692e944c2411a2f69dd153e6da0a7fd71a79c1e6ed3b589d5c336",
+        "fish/rare/mask-changing-octopus_bluegold_v2_sprite.png": "8bcf84099b168ba83f9e0de1bfcc192382e4689d77f829bde5c810959a3c1633"
+      }
+    },
+    {
+      "id": "letter-carrier-ray",
+      "name": "편지배달 가오리",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 88,
+      "native_region_id": "starruins",
+      "visual": "A cute pale blue stingray with cream underside, small shell mail satchel under belly embossed with bronze Atlantis trident wax seal, right profile",
+      "motion": "Small continuous wave in disc outer margins and tail tip, strap softly responds; central disc and head fixed. No large wing flaps.",
+      "idle": false,
+      "path": "fish/rare/letter-carrier-ray",
+      "frames": 4,
+      "design": "A living blue stingray with natural broad diamond-shaped disc, pale sky-blue underside, restrained golden-yellow curved wave markings, a small blue shell mail satchel beneath belly and one little rolled pale letter. Head at right and thin tail trailing left. No shark silhouette.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/rare/letter-carrier-ray_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/letter-carrier-ray_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A living blue stingray with natural broad diamond-shaped disc, pale sky-blue underside, restrained golden-yellow curved wave markings, a small blue shell mail satchel beneath belly and one little rolled pale letter. Head at right and thin tail trailing left. No shark silhouette. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-1e0b702b-6b2c-493f-9ab8-bdbc2edde31a.png",
+          "prompt": "Redesign the ray from reference1, preserve its REAL FLAT STINGRAY anatomy. A broad low flattened diamond-shaped wing disc is the MAIN BODY, eyes on upper front right, tiny mouth below right, long thin whip tail trails left. NO dorsal fin, NO upright shark fin, NO shark snout, NO shark gill marks, NO narrow torpedo fish body. Small shell mail satchel hangs beneath disc on one fine strap. Cobalt and sky-blue skin, simple golden-yellow curved wave patterns along outer wing margins and satchel. Reference2 supplies only soft colored outlines, smooth hand-painted shading and blue/yellow ceramic/gold palette; do not copy its vial shape. Face right in side-threequarter view enough from above to clearly see wide flat stingray disc. Full body fits central72% square canvas; clean true alpha transparency, no background, scene, external glow, dust, letters or trident.",
+          "references": [
+            "assets/storage-upload/new/20261015-213344/fish/rare/letter-carrier-ray_thumbnail.png",
+            "assets/storage-upload/new/20261029-055051/decorations/normal/cracked-perfume-vial_bluegold_v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-0a01ea3d-2624-4d91-9dc8-a8c54a3b615b.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A living blue stingray with natural broad diamond-shaped disc, pale sky-blue underside, restrained golden-yellow curved wave markings, a small blue shell mail satchel beneath belly and one little rolled pale letter. Head at right and thin tail trailing left. No shark silhouette. Genuine small articulated animation: Small continuous wave in disc outer margins and tail tip, strap softly responds; central disc and head fixed. No large wing flaps. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/rare/letter-carrier-ray_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/letter-carrier-ray-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          470,
+          364,
+          44,
+          41
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.0081176470588233,
+        "translate": [
+          -10,
+          -47.5
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 3,
+            "dy": 0,
+            "rmse": 20.070737998626853
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -30,
+            "rmse": 12.808154024831584
+          },
+          {
+            "frame": 3,
+            "dx": 3,
+            "dy": -30,
+            "rmse": 24.76910037392019
+          }
+        ]
+      },
+      "hashes": {
+        "fish/rare/letter-carrier-ray_bluegold_v2_thumbnail.png": "8d4b3c51b01ef28e5dd242a80be0e21c8eaaec29111c6b12bc7cc30b2722eb64",
+        "fish/rare/letter-carrier-ray_bluegold_v2_sprite.png": "8a9652c36fdddbba0d6f47e078615c2da8f761ce665651c1a8ccc4ed1ccf537f"
+      }
+    },
+    {
+      "id": "atlantean-guard-shark",
+      "name": "아틀란티스 근위상어",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 114,
+      "native_region_id": "starruins",
+      "visual": "A majestic streamlined deep teal shark with elegant bronze segmented guard armor, turquoise translucent fins, fine Atlantis spiral wave and trident insignia, sophisticated fantasy, no human limbs",
+      "motion": "Restrained tail propulsion: tail neutral, gently flexed one side, neutral passing, gently opposite side. Tiny fin-tip water response; rigid face, armored chest and dorsal root fixed. No flapping pectoral fins.",
+      "idle": false,
+      "path": "fish/epic/atlantean-guard-shark",
+      "frames": 4,
+      "design": "The approved exact blue and yellow shark with the curved-wave forehead ornament, NO trident. Preserve its design exactly.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/epic/atlantean-guard-shark_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/atlantean-guard-shark_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: The approved exact blue and yellow shark with the curved-wave forehead ornament, NO trident. Preserve its design exactly. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "reference": "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png",
+          "role": "approved identity reused",
+          "prompt": "Edit the supplied shark concept image. Keep the exact same shark, right-facing pose, anatomy, eye, blue-and-yellow palette, golden armor, painterly dimensional rendering, ceramic texture, composition and transparent background. Make ONE targeted design correction: REMOVE the trident symbol from the forehead armor completely. Replace that trident emblem with a simple elegant flowing golden yellow spiral-wave flourish, matching the existing abstract yellow curved ornaments on the dorsal and pectoral fins. Only abstract curved wave/scroll decoration, no trident, no weapons, no heraldic pictogram, no letters. Retain the blue inset and harmonious gold border of the forehead armor, integrate the new flowing curved ornament naturally. Preserve all other details and complete silhouette. True alpha transparent PNG, no backdrop, no detached effects, no text."
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-2b7baaa9-b86b-4c79-a267-34590b46613e.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. The approved exact blue and yellow shark with the curved-wave forehead ornament, NO trident. Preserve its design exactly. Genuine small articulated animation: Restrained tail propulsion: tail neutral, gently flexed one side, neutral passing, gently opposite side. Tiny fin-tip water response; rigid face, armored chest and dorsal root fixed. No flapping pectoral fins. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. Whole silhouette within central 64% of EACH cell, minimum 15% actual clear alpha margin on every edge in every frame, all tentacles/fins/staff/feet intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/epic/atlantean-guard-shark_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/atlantean-guard-shark-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          483,
+          357,
+          44,
+          44
+        ],
+        "cell": 627,
+        "scale": 0.8851674641148325,
+        "displayScale": 0.9997233102293344,
+        "translate": [
+          23.16507177033492,
+          -11.356459330143537
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -25,
+            "dy": 0,
+            "rmse": 16.624914369035945
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -52,
+            "rmse": 14.563233767875106
+          },
+          {
+            "frame": 3,
+            "dx": -26,
+            "dy": -53,
+            "rmse": 22.377295040583732
+          }
+        ]
+      },
+      "hashes": {
+        "fish/epic/atlantean-guard-shark_bluegold_v2_thumbnail.png": "7edd7bf495c06709a19e58ff6b12abdfb3a06e392310a658019b804db23832e7",
+        "fish/epic/atlantean-guard-shark_bluegold_v2_sprite.png": "f5ac47489893fcc559eda16693ff95db5116626fc11fbd782f480423b6417bce"
+      }
+    },
+    {
+      "id": "living-mosaic-ray",
+      "name": "살아 있는 모자이크 가오리",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 108,
+      "native_region_id": "starruins",
+      "visual": "An elegant ray made of nacre ivory turquoise and bronze mosaic tiles with Atlantis wave-trident royal seal across back, thin turquoise light visible between tiles, refined fantasy",
+      "motion": "A shallow wave travels through flexible outer mosaic disc edges, tail tip follows gently; face and central mosaic body anchor fixed. No torso rotation.",
+      "idle": false,
+      "path": "fish/epic/living-mosaic-ray",
+      "frames": 4,
+      "design": "An elegant natural ray with a broad low diamond-shaped disc composed of flexible lapis-blue and pale sky-blue mosaic scales, warm golden-yellow curved inlay between selected tiles, pale underside and a slender tail left. Head right. No huge upward wings or ribbon tail.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/epic/living-mosaic-ray_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/living-mosaic-ray_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: An elegant natural ray with a broad low diamond-shaped disc composed of flexible lapis-blue and pale sky-blue mosaic scales, warm golden-yellow curved inlay between selected tiles, pale underside and a slender tail left. Head right. No huge upward wings or ribbon tail. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-6cd398da-b1f0-4d75-9074-fe7da4442851.png",
+          "prompt": "Redesign reference1 as ONE natural flat ray made of flexible mosaic scales: a BROAD LOW DIAMOND-SHAPED FLAT DISC is the entire main body, small head integrated into front RIGHT edge, two small eyes on upper surface, a single thin whip tail trailing LEFT. Subtle side-threequarter view from above so broad flat disc is readable. Lapis-blue and sky-blue ceramic mosaic scales and simple warm yellow curved wave inlay, pale underside. NO upright dorsal fin, NO shark fin, NO horn, NO shark gills, NO thick torpedo fish body, NO shark snout, NO extra wing tips pointing straight up. Reference2 supplies soft smooth painterly ceramic and yellow-gold material/color rendering ONLY. Do not copy vial anatomy. Complete full ray and thin whip tail inside central72% square canvas. True alpha transparency, no scene, background, glow, particles, text or trident. Refined storybook fantasy painting, soft colored contours and dimensional shading.",
+          "references": [
+            "assets/storage-upload/new/20261015-213344/fish/epic/living-mosaic-ray_thumbnail.png",
+            "assets/storage-upload/new/20261029-055051/decorations/normal/cracked-perfume-vial_bluegold_v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-51841630-698c-4c84-8666-14b3308e5017.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. An elegant natural ray with a broad low diamond-shaped disc composed of flexible lapis-blue and pale sky-blue mosaic scales, warm golden-yellow curved inlay between selected tiles, pale underside and a slender tail left. Head right. No huge upward wings or ribbon tail. Genuine small articulated animation: A shallow wave travels through flexible outer mosaic disc edges, tail tip follows gently; face and central mosaic body anchor fixed. No torso rotation. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/epic/living-mosaic-ray_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/living-mosaic-ray-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          470,
+          382,
+          44,
+          44
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.000272373540856,
+        "translate": [
+          -27,
+          -45
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -23,
+            "dy": 3,
+            "rmse": 37.20383791432754
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -50,
+            "rmse": 21.004153028495207
+          },
+          {
+            "frame": 3,
+            "dx": -19,
+            "dy": -50,
+            "rmse": 20.777819370130683
+          }
+        ]
+      },
+      "hashes": {
+        "fish/epic/living-mosaic-ray_bluegold_v2_thumbnail.png": "ce1a973462804ef93db45546360aa22e23583f93f5c7401d4c0b416020bddec1",
+        "fish/epic/living-mosaic-ray_bluegold_v2_sprite.png": "213cf5518f4f524f326e802a9a6a9a8e68559aff1cafb03d76b29dfc4f2aa6b7"
+      }
+    },
+    {
+      "id": "palace-lantern-anglerfish",
+      "name": "궁전등불 아귀",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 104,
+      "native_region_id": "starruins",
+      "visual": "An enchanting deep indigo anglerfish, friendly expressive sapphire eye, ornate small bronze palace chandelier as head lure with hanging teal crystal prisms, Atlantis wave markings, refined fantasy",
+      "motion": "Tail gently beats and tiny fins move; lure stalk bends a little and lantern pendants sway subtly; rigid eye/head/body fixed. No whole-lantern flashing or head movement.",
+      "idle": false,
+      "path": "fish/epic/palace-lantern-anglerfish",
+      "frames": 4,
+      "design": "A rounded deep cobalt-blue anglerfish with a modest natural eye, pale-blue jaw and warm yellow curved scroll markings. Its bent natural lure stalk holds one small golden palace lantern with blue glass panels and short dangling crystal pendants. Head and mouth right, little tail left, friendly mysterious expression.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.8,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/epic/palace-lantern-anglerfish_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/palace-lantern-anglerfish_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A rounded deep cobalt-blue anglerfish with a modest natural eye, pale-blue jaw and warm yellow curved scroll markings. Its bent natural lure stalk holds one small golden palace lantern with blue glass panels and short dangling crystal pendants. Head and mouth right, little tail left, friendly mysterious expression. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-f4cd4407-d369-4243-8e3e-57b91c4c3bfc.png",
+          "prompt": "ONE isolated square collectible thumbnail: A rounded deep cobalt-blue anglerfish with a modest natural eye, pale-blue jaw and warm yellow curved scroll markings. Its bent natural lure stalk holds one small golden palace lantern with blue glass panels and short dangling crystal pendants. Head and mouth right, little tail left, friendly mysterious expression. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-1ce4871c-f209-45fe-bd1e-9f69b7a8b308.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A rounded deep cobalt-blue anglerfish with a modest natural eye, pale-blue jaw and warm yellow curved scroll markings. Its bent natural lure stalk holds one small golden palace lantern with blue glass panels and short dangling crystal pendants. Head and mouth right, little tail left, friendly mysterious expression. Genuine small articulated animation: Tail gently beats and tiny fins move; lure stalk bends a little and lantern pendants sway subtly; rigid eye/head/body fixed. No whole-lantern flashing or head movement. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/epic/palace-lantern-anglerfish_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/palace-lantern-anglerfish-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          401,
+          314,
+          44,
+          50
+        ],
+        "cell": 627,
+        "scale": 1,
+        "displayScale": 1.0733611691022964,
+        "translate": [
+          -11.5,
+          -13.5
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -14,
+            "dy": 0,
+            "rmse": 14.213980966005293
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -9,
+            "rmse": 15.196039215635674
+          },
+          {
+            "frame": 3,
+            "dx": -10,
+            "dy": -9,
+            "rmse": 15.594462315256681
+          }
+        ]
+      },
+      "hashes": {
+        "fish/epic/palace-lantern-anglerfish_bluegold_v2_thumbnail.png": "b4a2c24228f786fbc9babcd6c4fc929a09a4319b711228a08eeb11c767405a35",
+        "fish/epic/palace-lantern-anglerfish_bluegold_v2_sprite.png": "27973ae70c2e44d8542385dc05e944120e10fd51315ff6eb14785cdc6bcdb5a5"
+      }
+    },
+    {
+      "id": "atlantean-giant-squid",
+      "name": "아틀란티스 거대오징어",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "pulse",
+      "size": 120,
+      "native_region_id": "starruins",
+      "visual": "A grand turquoise and ivory giant squid with flowing long arms and translucent gold-edged side fins, intricate bronze Atlantis wave-trident geometric markings on mantle, elegant rich fantasy",
+      "motion": "Tentacle tips gather and release in gentle jet-propulsion phases, narrow mantle-fin edges ripple; rigid eye, head and central mantle fixed, no whole-body squeezing or rising.",
+      "idle": false,
+      "path": "fish/epic/atlantean-giant-squid",
+      "frames": 4,
+      "design": "A grand long blue giant squid, tapered lapis mantle trailing left, small right-facing head, two triangular mantle fins, eight flowing blue arms and two longer feeding tentacles extending toward right, sky-blue undersides, restrained golden-yellow curved inlays on mantle and fin edges. Clearly elongated squid anatomy, no ray wings.",
+      "movement_type": "pulse",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.7,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "thumbnail_path": "fish/epic/atlantean-giant-squid_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/atlantean-giant-squid_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A grand long blue giant squid, tapered lapis mantle trailing left, small right-facing head, two triangular mantle fins, eight flowing blue arms and two longer feeding tentacles extending toward right, sky-blue undersides, restrained golden-yellow curved inlays on mantle and fin edges. Clearly elongated squid anatomy, no ray wings. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-39171304-d5da-4d5c-b74e-59516ca3fa99.png",
+          "prompt": "ONE isolated square collectible thumbnail: A grand long blue giant squid, tapered lapis mantle trailing left, small right-facing head, two triangular mantle fins, eight flowing blue arms and two longer feeding tentacles extending toward right, sky-blue undersides, restrained golden-yellow curved inlays on mantle and fin edges. Clearly elongated squid anatomy, no ray wings. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-637ab726-6681-4c76-9f0d-65e268f2283a.png",
+          "prompt": "Production aquarium animation sheet, 2 columns by 2 rows, square, 4 equal SQUARE cells, row-major order. Reference1 is exact approved identity, reference2 is ONLY a repeated-image position/size guide, NOT a valid final animation. Preserve exact anatomy, colors, ornaments, face, camera angle and rigid head size from reference1. A grand long blue giant squid, tapered lapis mantle trailing left, small right-facing head, two triangular mantle fins, eight flowing blue arms and two longer feeding tentacles extending toward right, sky-blue undersides, restrained golden-yellow curved inlays on mantle and fin edges. Clearly elongated squid anatomy, no ray wings. Genuine small articulated animation: Tentacle tips gather and release in gentle jet-propulsion phases, narrow mantle-fin edges ripple; rigid eye, head and central mantle fixed, no whole-body squeezing or rising. Cycle: neutral, flex, neutral passing, opposite flex; smooth return to0. CRITICAL: eyes, head, rigid torso or shell or pedestal are at IDENTICAL cell-relative coordinates and size in EVERY cell, including top row to bottom row. Do not recenter the silhouette as limbs move. No vertical drift, bounce, zoom, body rotation, scale or opacity animation. Right-facing profile in ALL poses. IMPORTANT SMALL SUBJECTS: Whole silhouette including moving extremities fits ONLY the central 50% of EACH cell, with 25% actual clear alpha padding on all FOUR sides of EVERY cell. These large empty margins are intentional and mandatory; do NOT crop transparent whitespace or fill the quadrants. Entire anatomy intact. Small restrained movement, no giant wing flaps. No clone-only frames or light-only animation. True transparent PNG, clean colored edges, no background, matte fringe, grid, text, numbers, dust or scenery.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/epic/atlantean-giant-squid_bluegold_v2_thumbnail.png",
+            "artifacts/starruins-bluegold-guides/atlantean-giant-squid-guide.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          345,
+          326,
+          38,
+          38
+        ],
+        "cell": 627,
+        "scale": 0.9186602870813397,
+        "displayScale": 0.9993978794642858,
+        "translate": [
+          8.96411483253587,
+          -18.59569377990431
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 27,
+            "dy": 0,
+            "rmse": 30.016809886122893
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": -52,
+            "rmse": 22.30076152280548
+          },
+          {
+            "frame": 3,
+            "dx": 25,
+            "dy": -52,
+            "rmse": 18.198080072996582
+          }
+        ]
+      },
+      "hashes": {
+        "fish/epic/atlantean-giant-squid_bluegold_v2_thumbnail.png": "9b33e4db729822ccfe21690fcaa31a0f36917432996c93099eb9adbf590decad",
+        "fish/epic/atlantean-giant-squid_bluegold_v2_sprite.png": "ef37fd8b06ab9d7a28a5129af4be11d46b670542673a55fc24a279ee36edffa5"
+      }
+    },
+    {
+      "id": "atlantean-sentinel",
+      "name": "아틀란티스 수호병",
+      "rarity": "mythic",
+      "kind": "fish",
+      "movement": "fixed",
+      "size": 132,
+      "native_region_id": "starruins",
+      "visual": "A magnificent ancient Atlantis automaton guardian knight, ivory marble and aged bronze articulated armor, luminous turquoise crystal core, elaborate spiral wave-trident glyphs, long deep teal flowing cape, upright trident planted in ground, helmet in clear screen-right side-three-quarter profile, monumental refined fantasy",
+      "motion": "Frames0-3: cape hem and waist ribbons flow in a small current, armor joints and planted feet fixed. Frames4-7: fingers gently tighten around staff, shield wrist tilts slightly outward, returns, then neutral recovery. Helmet/chest/pelvis/feet and staff stay at identical coordinates throughout. No stepping, head turn, whole-body bounce or brightness-only animation.",
+      "idle": true,
+      "path": "fish/mythic/atlantean-sentinel",
+      "frames": 8,
+      "design": "A full-body ancient underwater automaton guardian knight, upright on two planted feet, cobalt-blue ceramic articulated armor with warm golden-yellow trim and abstract curved wave inlays, pale stone joints, deep-blue flowing cape, a small blue-and-yellow shell-shaped shield and one simple rounded-top ceremonial staff. Helmet faces right. NO trident anywhere, no three-pronged weapon, no heraldic pictogram. Complete feet and staff tip visible.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.84,
+      "swim_y_max": 0.94,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "thumbnail_path": "fish/mythic/atlantean-sentinel_bluegold_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/atlantean-sentinel_swim8_bluegold_v2_sprite.png",
+      "thumbnailPrompt": "ONE isolated square collectible thumbnail: A full-body ancient underwater automaton guardian knight, upright on two planted feet, cobalt-blue ceramic articulated armor with warm golden-yellow trim and abstract curved wave inlays, pale stone joints, deep-blue flowing cape, a small blue-and-yellow shell-shaped shield and one simple rounded-top ceremonial staff. Helmet faces right. NO trident anywhere, no three-pronged weapon, no heraldic pictogram. Complete feet and staff tip visible. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+      "generation": {
+        "thumbnail": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-2cf53936-9f6e-4d2e-80af-f633852235d2.png",
+          "prompt": "ONE isolated square collectible thumbnail: A full-body ancient underwater automaton guardian knight, upright on two planted feet, cobalt-blue ceramic articulated armor with warm golden-yellow trim and abstract curved wave inlays, pale stone joints, deep-blue flowing cape, a small blue-and-yellow shell-shaped shield and one simple rounded-top ceremonial staff. Helmet faces right. NO trident anywhere, no three-pronged weapon, no heraldic pictogram. Complete feet and staff tip visible. Soft polished storybook fantasy game painting matching the approved reference: rich cobalt/lapis blue, pale sky-blue underside, warm yellow-gold curved ornaments, tactile blue ceramic and brushed soft gold, soft colored contours, dimensional smooth gradients, readable friendly proportions. The reference is STYLE AND PALETTE ONLY, never copy its shark anatomy into this subject. Keep species identity and distinct body proportions. No trident, three-pronged symbols, letters or heraldic logos; only simple flowing yellow wave/spiral decorations. No heavy black outlines, plastic toy render or detached sparkle. Face SCREEN RIGHT, head/front on right and body/rear left; no front-facing or left-facing animal. Whole subject inside central 78% of canvas, generous alpha padding on all sides. True transparent alpha PNG, clean antialiasing, no white/black matte fringe, background, checkerboard, scenery, external shadow, dust, grid, text or watermark.",
+          "references": [
+            "assets/storage-upload/new/20261029-054632/fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png"
+          ]
+        },
+        "sprite": {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a18441-c3bf-7f51-8ab6-5c6209839f89\\exec-edbbde63-49a6-43b6-b158-ba689668c3ab.png",
+          "prompt": "Edit this exact 4-column by 2-row eight-pose blue-gold guardian sprite sheet ONLY to correct safe framing. Keep every distinct pose, anatomy, armor, cape motion, staff, shield and right-facing helmet EXACTLY as supplied. Within EACH of the eight equal square cells, uniformly REDUCE each complete character to 75% its current size, using one consistent scale and same rigid head/torso placement. Reconstruct no new anatomy because complete characters already fit. Preserve ALL feet, cape and staff tips. Need at least 15% actual fully transparent padding on every side of EVERY cell. Do NOT crop away blank canvas margins. Keep 4x2 layout and 2:1 image aspect, true alpha transparency. No borders, labels, background, grid or trident. Do not change the eight different physical motion poses into clones.",
+          "references": [
+            "assets/storage-upload/new/20261029-055051/fish/mythic/atlantean-sentinel_swim8_bluegold_v2_sprite.png"
+          ]
+        }
+      },
+      "facing_direction": "right",
+      "registration": {
+        "method": "Visually selected opaque rigid anchor; RGB translation measured on source; one common scale and center for entire loop baked into final PNG",
+        "patch": [
+          244,
+          191,
+          22,
+          22
+        ],
+        "cell": 444,
+        "scale": 1,
+        "displayScale": 2.167142857142857,
+        "translate": [
+          5.5,
+          -1
+        ],
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 20.050814353786233
+          },
+          {
+            "frame": 2,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 18.182452048609946
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 17.85313347846814
+          },
+          {
+            "frame": 4,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 27.8447846328536
+          },
+          {
+            "frame": 5,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 27.993860934140542
+          },
+          {
+            "frame": 6,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 28.87148246973127
+          },
+          {
+            "frame": 7,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 27.815589716020764
+          }
+        ]
+      },
+      "hashes": {
+        "fish/mythic/atlantean-sentinel_bluegold_v2_thumbnail.png": "9e47850c5b31071f18fb3386488dbd5324918f7b60f40d4992fc17b2d0196a98",
+        "fish/mythic/atlantean-sentinel_swim8_bluegold_v2_sprite.png": "c67d8ca872e1c2b12a9158d0e4f4c73c9c2bac9972617d514a36ce17ba5acb9c"
+      }
+    }
+  ]
+}

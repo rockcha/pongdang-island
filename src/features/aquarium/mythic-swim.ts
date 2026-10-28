@@ -1,4 +1,5 @@
 import additionalSheets from './mythic-action-layouts.json'
+import starruinsBluegoldSheets from './starruins-bluegold-mythic-layouts.json'
 import sharedMythicSheets from './shared-mythic-action-layouts.json'
 import nyamnyamMythicSheets from './nyamnyam-mythic-action-layouts.json'
 import primalMythicSheets from './primal-mythic-action-layouts.json'
@@ -15,6 +16,7 @@ export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_spr
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
  ...fireflyMythicSheets,
+ ...starruinsBluegoldSheets,
  ...mechsanctumMythicSheets,
  ...plunderMythicSheets,
  ...dreamabyssMythicSheets,
@@ -30,7 +32,6 @@ const sheets:MythicSheet[]=[
  {id:'nivella-snowflake-dancer',aliases:['nivella-snowflake-dancer'],scale:1,cell:443.5,shifts:[[0,0],[-6.5,1],[-5,4],[-7.5,1],[-1,-7.5],[-2.5,-13.5],[-9,-9.5],[-5.5,0.5]]},
  {id:'plios-blackwave-king',aliases:['plios-blackwave-king'],scale:1,cell:443.5,shifts:[[0,0],[2.5,-1],[-3,0],[-13.5,-1],[1,-31.5],[3.5,-31.5],[-2,-32.5],[-13.5,-33.5]]},
  {id:'lunea-mistmoon-goddess',aliases:['lunea-mistmoon-goddess'],scale:1.15,cell:443.5,shifts:[[0,0],[1,0],[2,1],[-7,1],[-6,-36],[0,-36],[3,-36],[3,-36]]},
- {id:'atlantean-sentinel',aliases:['atlantean-sentinel','atlantean-sentinel-walk','atlantean-sentinel-standing'],scale:1.04,cell:443.5,shifts:[[0,0],[-18.5,0],[-36,0],[-36.5,0],[0,-13.5],[-18.5,-13.5],[-36,-13.5],[-35.5,-13.5]]},
  {id:'pongi-explorer',aliases:['pongi-explorer','pongi-explorer-cruise'],scale:1,cell:443.5,shifts:[[0,0],[-5.5,0],[-15,-1],[-21.5,0],[0,-46.5],[-5.5,-45.5],[-14,-46.5],[-21.5,-45.5]]},
  {id:'ancient-coral-giant-crab',aliases:['ancient-coral-giant-crab','ancient-coral-giant-crab-walk'],scale:1,cell:443.5,shifts:[[0,0],[-2.5,-1],[-2,0],[-2.5,0],[0,-28.5],[-0.5,-28.5],[-1,-28.5],[-2.5,-28.5]]},
  {id:'dawn-narwhal',aliases:['dawn-narwhal'],scale:1,cell:443.5,shifts:[[0,0],[0.5,0],[1,0],[-0.5,0],[0,-54.5],[-0.5,-53.5],[1,-52.5],[0.5,-52.5]]},
@@ -59,7 +60,7 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
   const cycle=[0,1,2,3,2,1,0,1,2,3,2,1,0,4,5,5,6,7,0,1,2,3,2,1]
   return cycle[Math.min(cycle.length-1,Math.floor(phase*4))]
  }
- if([...fireflyMythicSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
+ if([...fireflyMythicSheets,...starruinsBluegoldSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
   // Reversible propulsion for four seconds, then anticipation, action, return,
   // recovery. The recovery drawing matches the next cycle's neutral pose.
   return phase<4?[0,1,2,3,2,1][Math.floor(phase*3)%6]:4+Math.min(3,Math.floor((phase-4)*2))

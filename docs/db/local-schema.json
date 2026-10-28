@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "e846952741a30916efbb8368a70b80c771e77cde8f8f50ea622a0d0350b81270",
+  "migrationHash": "80da5b9a1c1c68ca64793756a6d49cf785f5f4f410911010038863b6f567af82",
   "structure": {
     "enums": [
       {
@@ -493,6 +493,54 @@
       {
         "rls": true,
         "name": "title_fishing_log",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_bet_models",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_bet_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_bet_plans",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_bet_rounds",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_bets",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_race_bets",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_race_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "voyage_rank_calibrations",
         "schema": "app_private",
         "force_rls": false
       },
@@ -5553,6 +5601,536 @@
         "table": "title_fishing_log",
         "schema": "app_private",
         "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "valid_from",
+        "type": "timestamp with time zone",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "valid_until",
+        "type": "timestamp with time zone",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "data",
+        "type": "jsonb",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "request",
+        "type": "jsonb",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "delta",
+        "type": "integer",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "round_id",
+        "type": "uuid",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "company_id",
+        "type": "text",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "model_id",
+        "type": "text",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_id",
+        "type": "text",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "count_per_region",
+        "type": "integer",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "regions",
+        "type": "text[]",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "target_sales",
+        "type": "integer",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "total_cost",
+        "type": "integer",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "actual_sales",
+        "type": "integer",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "stage_targets",
+        "type": "integer[]",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "calibration_id",
+        "type": "text",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "voyage_day",
+        "type": "date",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "slot",
+        "type": "smallint",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "opens_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "departs_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "results_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "settled_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "rules",
+        "type": "text",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "default": "'ranking'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "plan_id",
+        "type": "uuid",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "side",
+        "type": "text",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "stake",
+        "type": "integer",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "payout",
+        "type": "integer",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "paid_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "round_id",
+        "type": "uuid",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "plan_id",
+        "type": "uuid",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "stake",
+        "type": "integer",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "payout",
+        "type": "integer",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "paid_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "reward_gift_id",
+        "type": "uuid",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "request",
+        "type": "jsonb",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "delta",
+        "type": "integer",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "model_id",
+        "type": "text",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "data",
+        "type": "jsonb",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "default": null,
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -11276,6 +11854,12 @@
         "definition": "CREATE UNIQUE INDEX prepared_fishing_casts_pkey ON app_private.prepared_fishing_casts USING btree (user_id, operation_id)"
       },
       {
+        "name": "prepared_fishing_daily",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CREATE INDEX prepared_fishing_daily ON app_private.prepared_fishing_casts USING btree (user_id, created_at)"
+      },
+      {
         "name": "prepared_fishing_one_active",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -11370,6 +11954,12 @@
         "table": "push_deliveries",
         "schema": "app_private",
         "definition": "CREATE INDEX push_delivery_pending ON app_private.push_deliveries USING btree (available_at, id) WHERE (status = ANY (ARRAY['pending'::text, 'sending'::text]))"
+      },
+      {
+        "name": "voyage_bet_push_once",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bet_push_once ON app_private.push_deliveries USING btree (subscription_id, source_id) WHERE (category = 'voyage-bets'::text)"
       },
       {
         "name": "push_subscriptions_endpoint_key",
@@ -11514,6 +12104,126 @@
         "table": "title_fishing_log",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX title_fishing_log_user_id_event_key_key ON app_private.title_fishing_log USING btree (user_id, event_key)"
+      },
+      {
+        "name": "voyage_bet_models_period",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_bet_models_period ON app_private.voyage_bet_models USING btree (valid_from DESC)"
+      },
+      {
+        "name": "voyage_bet_models_pkey",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bet_models_pkey ON app_private.voyage_bet_models USING btree (id)"
+      },
+      {
+        "name": "voyage_bet_operations_pkey",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bet_operations_pkey ON app_private.voyage_bet_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "voyage_bet_plans_calibration",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_bet_plans_calibration ON app_private.voyage_bet_plans USING btree (calibration_id)"
+      },
+      {
+        "name": "voyage_bet_plans_pkey",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bet_plans_pkey ON app_private.voyage_bet_plans USING btree (id)"
+      },
+      {
+        "name": "voyage_bet_plans_round_id_company_id_key",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bet_plans_round_id_company_id_key ON app_private.voyage_bet_plans USING btree (round_id, company_id)"
+      },
+      {
+        "name": "voyage_bet_rounds_due",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_bet_rounds_due ON app_private.voyage_bet_rounds USING btree (results_at) WHERE (settled_at IS NULL)"
+      },
+      {
+        "name": "voyage_bet_rounds_pkey",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bet_rounds_pkey ON app_private.voyage_bet_rounds USING btree (id)"
+      },
+      {
+        "name": "voyage_bet_rounds_voyage_day_slot_key",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bet_rounds_voyage_day_slot_key ON app_private.voyage_bet_rounds USING btree (voyage_day, slot)"
+      },
+      {
+        "name": "voyage_bets_pending_payout",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_bets_pending_payout ON app_private.voyage_bets USING btree (user_id, plan_id) WHERE ((payout > 0) AND (paid_at IS NULL))"
+      },
+      {
+        "name": "voyage_bets_pkey",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_bets_pkey ON app_private.voyage_bets USING btree (user_id, plan_id)"
+      },
+      {
+        "name": "voyage_bets_plan",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_bets_plan ON app_private.voyage_bets USING btree (plan_id, user_id)"
+      },
+      {
+        "name": "voyage_race_bets_pending",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_race_bets_pending ON app_private.voyage_race_bets USING btree (user_id, round_id) WHERE ((payout > 0) AND (paid_at IS NULL))"
+      },
+      {
+        "name": "voyage_race_bets_pkey",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_race_bets_pkey ON app_private.voyage_race_bets USING btree (user_id, round_id)"
+      },
+      {
+        "name": "voyage_race_bets_plan",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_race_bets_plan ON app_private.voyage_race_bets USING btree (plan_id)"
+      },
+      {
+        "name": "voyage_race_bets_round",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "CREATE INDEX voyage_race_bets_round ON app_private.voyage_race_bets USING btree (round_id, user_id)"
+      },
+      {
+        "name": "voyage_race_reward_gift",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_race_reward_gift ON app_private.voyage_race_bets USING btree (reward_gift_id) WHERE (reward_gift_id IS NOT NULL)"
+      },
+      {
+        "name": "voyage_race_operations_pkey",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_race_operations_pkey ON app_private.voyage_race_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "voyage_rank_calibrations_id_key",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_rank_calibrations_id_key ON app_private.voyage_rank_calibrations USING btree (id)"
+      },
+      {
+        "name": "voyage_rank_calibrations_pkey",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX voyage_rank_calibrations_pkey ON app_private.voyage_rank_calibrations USING btree (model_id)"
       },
       {
         "name": "aquarium_backgrounds_image_path_key",
@@ -11880,6 +12590,12 @@
         "table": "collectible_gifts",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX one_welcome_bait_per_player ON public.collectible_gifts USING btree (recipient_id) WHERE ((source = 'system'::text) AND ((species ->> 'id'::text) = 'welcome-bait'::text))"
+      },
+      {
+        "name": "voyage_race_reward_once",
+        "table": "collectible_gifts",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX voyage_race_reward_once ON public.collectible_gifts USING btree (recipient_id, reward_id) WHERE ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id ~~ 'voyage-race:%'::text))"
       },
       {
         "name": "collectible_habitats_pkey",
@@ -14635,7 +15351,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_gift_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_collectible_gift(p_gift_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();g public.collectible_gifts;v_count integer;v_inventory integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=v_uid for update;\n select * into g from public.collectible_gifts where id=p_gift_id and recipient_id=v_uid and not exchange_hold for update;\n if not found then raise exception 'GIFT_NOT_FOUND';end if;\n if g.status='claimed' then return to_jsonb(g);end if;\n if g.reward_kind='gold' then\n  update public.player_wallets set gold=gold+g.quantity,updated_at=now() where user_id=v_uid and gold<=1000000000-g.quantity;\n  if not found then raise exception 'GOLD_LIMIT';end if;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,g.id,'charge','exchange:claim:'||g.id,g.quantity);\n elsif g.reward_kind in ('bait','fuel') then\n  select coalesce((inventory->>g.reward_id)::integer,0) into v_inventory from public.player_wallets where user_id=v_uid;\n  if v_inventory>2147483647-g.quantity then raise exception 'INVENTORY_LIMIT';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,array[g.reward_id],to_jsonb(v_inventory+g.quantity)),updated_at=now() where user_id=v_uid;\n else\n  perform app_private.aquarium_state();\n  perform 1 from public.player_collectibles where user_id=v_uid and escrow_gift_id=g.id order by id for update;\n  select count(*) into v_count from public.player_collectibles where user_id=v_uid and escrow_gift_id=g.id and sold_at is null;\n  if v_count<>g.quantity then raise exception 'GIFT_UNAVAILABLE';end if;\n  update public.player_collectibles set tank_id=null,escrow_gift_id=null where user_id=v_uid and escrow_gift_id=g.id;\n  -- Gifts enter storage; only actual catches unlock the collection.\n end if;\n update public.collectible_gifts set status='claimed',claimed_at=now() where id=g.id returning * into g;\n update public.notifications set read_at=coalesce(read_at,now()) where recipient_id=v_uid and gift_id=g.id and kind='gift_received';\n if g.sender_id is not null and g.source='friend' then\n  insert into public.notifications(recipient_id,actor_id,category,kind,title,body,gift_id)\n  values(g.sender_id,v_uid,'gift','gift_claimed','선물을 받았어요',g.recipient_name||'님이 보낸 선물을 받았어요.',g.id) on conflict do nothing;\n end if;\n return to_jsonb(g);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_collectible_gift(p_gift_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();g public.collectible_gifts;v_count integer;v_inventory integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=v_uid for update;\n select * into g from public.collectible_gifts where id=p_gift_id and recipient_id=v_uid and not exchange_hold for update;\n if not found then raise exception 'GIFT_NOT_FOUND';end if;\n if g.status='claimed' then return to_jsonb(g);end if;\n if g.reward_kind='gold' then\n  update public.player_wallets set gold=gold+g.quantity,updated_at=now() where user_id=v_uid and gold<=1000000000-g.quantity;\n  if not found then raise exception 'GOLD_LIMIT';end if;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,g.id,'charge',case when g.source='system' and g.reward_id like 'voyage-race:%' then 'voyage:claim:'||g.id else 'exchange:claim:'||g.id end,g.quantity);\n elsif g.reward_kind in ('bait','fuel') then\n  select coalesce((inventory->>g.reward_id)::integer,0) into v_inventory from public.player_wallets where user_id=v_uid;\n  if v_inventory>2147483647-g.quantity then raise exception 'INVENTORY_LIMIT';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,array[g.reward_id],to_jsonb(v_inventory+g.quantity)),updated_at=now() where user_id=v_uid;\n else\n  perform app_private.aquarium_state();\n  perform 1 from public.player_collectibles where user_id=v_uid and escrow_gift_id=g.id order by id for update;\n  select count(*) into v_count from public.player_collectibles where user_id=v_uid and escrow_gift_id=g.id and sold_at is null;\n  if v_count<>g.quantity then raise exception 'GIFT_UNAVAILABLE';end if;\n  update public.player_collectibles set tank_id=null,escrow_gift_id=null where user_id=v_uid and escrow_gift_id=g.id;\n  -- Gifts enter storage; only actual catches unlock the collection.\n end if;\n update public.collectible_gifts set status='claimed',claimed_at=now() where id=g.id returning * into g;\n update public.notifications set read_at=coalesce(read_at,now()) where recipient_id=v_uid and gift_id=g.id and kind='gift_received';\n if g.sender_id is not null and g.source='friend' then\n  insert into public.notifications(recipient_id,actor_id,category,kind,title,body,gift_id)\n  values(g.sender_id,v_uid,'gift','gift_claimed','선물을 받았어요',g.recipient_name||'님이 보낸 선물을 받았어요.',g.id) on conflict do nothing;\n end if;\n return to_jsonb(g);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -16465,7 +17181,7 @@
         ],
         "schema": "app_private",
         "arguments": "q app_private.push_deliveries, u uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.push_delivery_current(q app_private.push_deliveries, u uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select case q.category\n when 'test' then true\n when 'production-expiring' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now() and expires_at<=now()+interval '5 minutes')\n when 'bait-production-expiring' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now() and expires_at<=now()+interval '5 minutes')\n when 'production' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'bait-production' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'expedition' then exists(select 1 from public.fishing_expeditions where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n when 'harbor' then exists(select 1 from public.harbor_voyages where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n else false end\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.push_delivery_current(q app_private.push_deliveries, u uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select case q.category\n when 'test' then true\n when 'voyage-bets' then exists(select 1 from app_private.voyage_bet_rounds where id=q.source_id and opens_at=q.source_started_at and opens_at<=now() and departs_at>now())\n when 'production-expiring' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now() and expires_at<=now()+interval '5 minutes')\n when 'bait-production-expiring' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now() and expires_at<=now()+interval '5 minutes')\n when 'production' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'bait-production' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'expedition' then exists(select 1 from public.fishing_expeditions where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n when 'harbor' then exists(select 1 from public.harbor_voyages where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n else false end\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -17209,6 +17925,16 @@
         "securityDefiner": true
       },
       {
+        "name": "today_fishing_records",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.today_fishing_records()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v_now timestamptz:=statement_timestamp();v_day date;v_start timestamptz;v_end timestamptz;result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n v_day:=(v_now at time zone 'Asia/Seoul')::date;\n v_start:=v_day::timestamp at time zone 'Asia/Seoul';\n v_end:=(v_day+1)::timestamp at time zone 'Asia/Seoul';\n with records as materialized (\n  select p.bait_id,a.rarity,a.operation_id is not null completed\n  from app_private.prepared_fishing_casts p\n  left join public.fishing_attempts a on a.user_id=p.user_id and a.operation_id=p.operation_id\n  where p.user_id=u and p.created_at>=v_start and p.created_at<v_end and p.created_at<=v_now\n  union all\n  select a.bait_id,a.rarity,true\n  from public.fishing_attempts a\n  where a.user_id=u and a.created_at>=v_start and a.created_at<v_end and a.created_at<=v_now\n   and not exists(select 1 from app_private.prepared_fishing_casts p where p.user_id=u and p.operation_id=a.operation_id)\n ), bait_counts as (\n  select bait_id,count(*) used from records group by bait_id\n )\n select jsonb_build_object(\n  'serverNow',v_now,'day',v_day,'nextResetAt',v_end,\n  'totalCasts',count(*),'caughtCount',count(*) filter(where rarity is not null),\n  'failedCount',count(*) filter(where completed and rarity is null),'unfinishedCount',count(*) filter(where not completed),\n  'rarities',jsonb_build_object('mythic',count(*) filter(where rarity='mythic'),'epic',count(*) filter(where rarity='epic'),'rare',count(*) filter(where rarity='rare'),'common',count(*) filter(where rarity='common')),\n  'baits',(select coalesce(jsonb_agg(jsonb_build_object('id',bc.bait_id,'name',coalesce(b.name,bc.bait_id),'imagePath',b.image_path,'used',bc.used) order by bc.used desc,bc.bait_id),'[]'::jsonb)\n   from bait_counts bc left join public.fishing_baits b on b.id=bc.bait_id)\n ) into result from records;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "trade_fishing_rod",
         "config": [
           "search_path=\"\""
@@ -17299,13 +18025,143 @@
         "securityDefiner": true
       },
       {
+        "name": "voyage_bet_draw",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "m jsonb, bid text, region text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_bet_draw(m jsonb, bid text, region text)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare roll integer:=floor(random()*10000); b jsonb:=m->'baits'->bid; grade text; g jsonb; ids jsonb; sid text;\n shared_n integer;home_n integer;away_n integer;weight integer;\nbegin\n grade:=case when roll<(b->>'mythic')::int then 'mythic'\n  when roll<(b->>'mythic')::int+(b->>'epic')::int then 'epic'\n  when roll<(b->>'mythic')::int+(b->>'epic')::int+(b->>'rare')::int then 'rare' else 'common' end;\n g:=m->'pools'->bid->grade;\n shared_n:=jsonb_array_length(g->'shared');home_n:=jsonb_array_length(g->'home'->region);\n away_n:=jsonb_array_length(g->'native')-home_n;\n weight:=case when shared_n>0 then 80 else 0 end+case when home_n>0 then 25 else 0 end+case when away_n>0 then 5 else 0 end;\n if weight=0 then raise exception 'VOYAGE_MODEL_EMPTY';end if;\n roll:=floor(random()*weight);\n if shared_n>0 and roll<80 then ids:=g->'shared';\n elsif home_n>0 and roll<(case when shared_n>0 then 80 else 0 end)+25 then ids:=g->'home'->region;\n else\n  ids:=g->'native';\n  loop\n   sid:=ids->>floor(random()*jsonb_array_length(ids))::int;\n   exit when m->'species'->sid->>'region' is distinct from region;\n  end loop;\n  return sid;\n end if;\n return ids->>floor(random()*jsonb_array_length(ids))::int;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_bet_make_plans",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_round uuid, p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_bet_make_plans(p_round uuid, p_at timestamp with time zone)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n perform app_private.voyage_bet_make_plans_base(p_round,p_at);\n if(select rules='ranking' from app_private.voyage_bet_rounds where id=p_round) then perform app_private.voyage_race_prepare(p_round);end if;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_bet_make_plans_base",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_round uuid, p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_bet_make_plans_base(p_round uuid, p_at timestamp with time zone)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare model app_private.voyage_bet_models;company jsonb;opt jsonb;bid text;n integer;radius integer;\n places text[];place text;sid text;item jsonb;counts jsonb;items jsonb;results jsonb;total integer;sales integer;target integer;j integer;\nbegin\n select * into model from app_private.voyage_bet_models where valid_from<=p_at and (valid_until is null or valid_until>p_at) order by valid_from desc limit 1;\n if model.id is null then raise exception 'VOYAGE_MODEL_UNAVAILABLE';end if;\n for company in select value from jsonb_array_elements(model.data->'companies') loop\n  select value into opt from jsonb_array_elements(model.data->'options') where value->>'companyId'=company->>'id' order by random() limit 1;\n  bid:=opt->>'baitId';radius:=(jsonb_array_length(opt->'counts')-1)/2;\n  n:=(opt->>'base')::int-radius+floor(random()*(radius+1))::int+floor(random()*(radius+1))::int;\n  places:=array(select key from jsonb_each_text(model.data->'regions') order by random() limit 3);\n  target:=(model.data->'targets'->>(bid||':'||n||':'||places[1]))::int;\n  if target is null then raise exception 'VOYAGE_TARGET_UNAVAILABLE';end if;\n  -- This target is conditional only on public information, not places[2:3].\n  results:='[]'::jsonb;total:=0;\n  foreach place in array places loop\n   counts:='{}'::jsonb;sales:=0;\n   for j in 1..n loop\n    sid:=app_private.voyage_bet_draw(model.data,bid,place);\n    sales:=sales+(model.data->'species'->sid->>'price')::int;\n    counts:=jsonb_set(counts,array[sid],to_jsonb(coalesce((counts->>sid)::int,0)+1));\n   end loop;\n   select coalesce(jsonb_agg((model.data->'species'->e.key)||jsonb_build_object('quantity',e.value::int) order by (model.data->'species'->e.key->>'price')::int desc,e.key),'[]'::jsonb) into items from jsonb_each_text(counts)e;\n   results:=results||jsonb_build_array(jsonb_build_object('regionId',place,'regionName',model.data->'regions'->>place,'sales',sales,'catches',items));\n   total:=total+sales;\n  end loop;\n  insert into app_private.voyage_bet_plans(round_id,company_id,model_id,bait_id,count_per_region,regions,target_sales,total_cost,actual_sales,result)\n  values(p_round,company->>'id',model.id,bid,n,places,target,3*n*(model.data->'baits'->bid->>'price')::int+(model.data->>'fuelCost')::int,total,results);\n end loop;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_bets_maintenance",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_now timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_bets_maintenance(p_now timestamp with time zone DEFAULT clock_timestamp())\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_day date;v_slot integer;departure timestamptz;opening timestamptz;rid uuid;r record;b record;balance integer;refund boolean;reward_gift uuid;\n created integer:=0;settled integer:=0;paid integer:=0;queued integer:=0;\nbegin\n if not pg_try_advisory_xact_lock(84732019) then return jsonb_build_object('busy',true);end if;\n for v_day in select ((p_now at time zone 'Asia/Seoul')::date+i) from generate_series(0,2)i loop\n  foreach v_slot in array array[9,20] loop\n   departure:=(v_day+make_time(v_slot,0,0)) at time zone 'Asia/Seoul';opening:=departure-interval '1 hour';\n   if departure<=p_now or exists(select 1 from app_private.voyage_bet_rounds where voyage_day=v_day and (slot=v_slot or (v_slot=20 and slot=19))) then continue;end if;\n   if not exists(select 1 from app_private.voyage_bet_models m join app_private.voyage_rank_calibrations c on c.model_id=m.id where valid_from<=opening and(valid_until is null or valid_until>opening)) then continue;end if;\n   insert into app_private.voyage_bet_rounds(voyage_day,slot,opens_at,departs_at,results_at,rules) values(v_day,v_slot,opening,departure,departure+interval '3 hours','ranking') returning id into rid;\n   perform app_private.voyage_bet_make_plans(rid,opening);created:=created+1;\n  end loop;\n end loop;\n for r in select * from app_private.voyage_bet_rounds where results_at<=p_now and settled_at is null order by results_at for update skip locked loop\n  if r.rules='legacy' then\n   update app_private.voyage_bets bet set payout=case when p.actual_sales=p.target_sales then bet.stake when(bet.side='above' and p.actual_sales>p.target_sales)or(bet.side='below' and p.actual_sales<p.target_sales)then bet.stake*19/10 else 0 end\n    from app_private.voyage_bet_plans p where p.id=bet.plan_id and p.round_id=r.id;\n   update app_private.voyage_bets bet set paid_at=p_now from app_private.voyage_bet_plans p where p.id=bet.plan_id and p.round_id=r.id and bet.payout=0;\n  else\n   if(select count(*)<>4 from app_private.voyage_race_board(r.id,3)) then raise exception 'VOYAGE_RANK_INCOMPLETE';end if;\n   select exists(select 1 from app_private.voyage_race_board(r.id,3) where place<=2 and tied) into refund;\n   update app_private.voyage_race_bets bet set payout=case when refund then bet.stake when board.place=1 then bet.stake*3 when board.place=2 then bet.stake*6/5 else 0 end\n    from app_private.voyage_race_board(r.id,3) board where bet.round_id=r.id and board.plan_id=bet.plan_id;\n   update app_private.voyage_race_bets set paid_at=p_now where round_id=r.id and payout=0;\n  end if;\n  update app_private.voyage_bet_rounds set settled_at=p_now where id=r.id;settled:=settled+1;\n end loop;\n -- Preserve outstanding credits from legacy rounds as well as new rank bets.\n for b in select * from app_private.voyage_bets where payout>0 and paid_at is null order by user_id,plan_id for update skip locked loop\n  insert into public.player_wallets(user_id) values(b.user_id) on conflict do nothing;\n  select gold into balance from public.player_wallets where user_id=b.user_id for update;\n  if balance::bigint+b.payout>1000000000 then continue;end if;\n  update public.player_wallets set gold=gold+b.payout,updated_at=clock_timestamp() where user_id=b.user_id;\n  update app_private.voyage_bets set paid_at=p_now where user_id=b.user_id and plan_id=b.plan_id;paid:=paid+1;\n end loop;\n -- paid_at records delivery, while the gift's claimed_at records wallet receipt.\n for b in select bet.*,round_row.departs_at\n  from app_private.voyage_race_bets bet\n  join app_private.voyage_bet_rounds round_row on round_row.id=bet.round_id\n  where bet.payout>0 and bet.paid_at is null and round_row.settled_at is not null\n  order by bet.user_id,bet.round_id for update of bet skip locked loop\n  insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n  select '만선 승부장',b.user_id,profile.nickname,gen_random_uuid(),'{}'::uuid[],\n   jsonb_build_object('id','voyage-race:'||b.round_id,'name','만선 승부장 정산 보상'),b.payout,\n   to_char(b.departs_at at time zone 'Asia/Seoul','MM/DD HH24:MI')||' 출항 · '||b.payout||'골드 (원금 포함)','system','gold','voyage-race:'||b.round_id\n  from public.player_profiles profile where profile.id=b.user_id\n  on conflict(recipient_id,reward_id) where source='system' and reward_kind='gold' and reward_id like 'voyage-race:%' do nothing;\n  select id into strict reward_gift from public.collectible_gifts\n   where recipient_id=b.user_id and source='system' and reward_kind='gold' and reward_id='voyage-race:'||b.round_id;\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(b.user_id,'gift','gift_received','만선 승부장 정산 결과',b.payout||'골드가 도착했어요. 보관함에서 받아주세요.',reward_gift) on conflict do nothing;\n  update app_private.voyage_race_bets set paid_at=p_now,reward_gift_id=reward_gift where user_id=b.user_id and round_id=b.round_id;\n  paid:=paid+1;\n end loop;\n insert into app_private.push_deliveries(subscription_id,category,source_id,source_started_at,payload,expires_at)\n select s.id,'voyage-bets',vr.id,vr.opens_at,jsonb_build_object('userId',s.user_id,'title','만선 승부장 · 출항 1시간 전','body','네 회사의 출항 계획이 공개됐어요. 출항 전까지 예측에 참여해 보세요.','url','/voyage-bets','tag','voyage-bets:'||vr.id),vr.departs_at\n from app_private.voyage_bet_rounds vr cross join app_private.push_subscriptions s\n where vr.opens_at<=p_now and vr.departs_at>p_now and 'voyage-bets'=any(s.categories)\n on conflict(subscription_id,source_id) where category='voyage-bets' do nothing;\n get diagnostics queued=row_count;\n return jsonb_build_object('created',created,'settled',settled,'paid',paid,'queued',queued);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "voyage_bets_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "u uuid, p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_bets_payload(u uuid, p_at timestamp with time zone)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare company_list jsonb;round_list jsonb;\nbegin\n select data->'companies' into company_list from app_private.voyage_bet_models order by valid_from limit 1;\n select coalesce(jsonb_agg(jsonb_build_object(\n  'id',r.id,'opensAt',r.opens_at,'departsAt',r.departs_at,'resultsAt',r.results_at,\n  'phase',case when p_at<r.opens_at then 'scheduled' when p_at<r.departs_at then 'open' when p_at<r.results_at then 'sailing' when r.settled_at is null then 'settling' else 'settled' end,\n  'myStake',(select coalesce(sum(b.stake),0) from app_private.voyage_bets b join app_private.voyage_bet_plans p on p.id=b.plan_id where p.round_id=r.id and b.user_id=u),\n  'plans',(select coalesce(jsonb_agg(jsonb_build_object(\n   'id',p.id,'companyId',p.company_id,\n   'bait',case when p_at>=r.opens_at then m.data->'baits'->p.bait_id else null end,\n   'countPerRegion',case when p_at>=r.opens_at then p.count_per_region else null end,\n   'publicRegion',case when p_at>=r.opens_at then jsonb_build_object('id',p.regions[1],'name',m.data->'regions'->>p.regions[1]) else null end,\n   'targetSales',case when p_at>=r.opens_at then p.target_sales else null end,\n   'totalCost',case when p_at>=r.opens_at then p.total_cost else null end,\n   'result',case when p_at>=r.results_at then jsonb_build_object('sales',p.actual_sales,'profit',p.actual_sales-p.total_cost,'outcome',case when p.actual_sales>p.target_sales then 'above' when p.actual_sales<p.target_sales then 'below' else 'tie' end,'regions',p.result) else null end,\n   'myBet',(select jsonb_build_object('side',b.side,'stake',b.stake,'payout',b.payout,'paidAt',b.paid_at) from app_private.voyage_bets b where b.user_id=u and b.plan_id=p.id and b.stake>0)\n  ) order by p.company_id),'[]'::jsonb) from app_private.voyage_bet_plans p join app_private.voyage_bet_models m on m.id=p.model_id where p.round_id=r.id)\n ) order by r.departs_at),'[]'::jsonb) into round_list\n from(select * from app_private.voyage_bet_rounds where departs_at>=p_at-interval '7 days' order by departs_at desc limit 18)r;\n return jsonb_build_object('serverNow',p_at,'companies',coalesce(company_list,'[]'::jsonb),'rounds',round_list,'roundLimit',500,'payoutMultiplier',1.9,\n  'pendingPayout',(select coalesce(sum(b.payout),0) from app_private.voyage_bets b where b.user_id=u and b.payout>0 and b.paid_at is null));\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_bets_place",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_bets_place(p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();req jsonb;old_req jsonb;p app_private.voyage_bet_plans;r app_private.voyage_bet_rounds;\n wallet public.player_wallets;old_stake integer;total integer;delta integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_plan_id is null or p_side is null or p_side not in('above','below') or p_stake is null or p_stake<0 or p_stake>500 or p_stake%100<>0 then raise exception 'INVALID_VOYAGE_BET';end if;\n req:=jsonb_build_object('planId',p_plan_id,'side',p_side,'stake',p_stake);\n select request into old_req from app_private.voyage_bet_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if old_req<>req then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.voyage_bets_payload(u,clock_timestamp())||jsonb_build_object('replayed',true);\n end if;\n select * into p from app_private.voyage_bet_plans where id=p_plan_id;\n if p.id is null then raise exception 'VOYAGE_NOT_FOUND';end if;\n select * into r from app_private.voyage_bet_rounds where id=p.round_id for update;\n if r.rules<>'legacy' then raise exception 'VOYAGE_RULES_CHANGED';end if;\n if clock_timestamp()<r.opens_at then raise exception 'VOYAGE_NOT_OPEN';end if;\n if clock_timestamp()>=r.departs_at or r.settled_at is not null then raise exception 'VOYAGE_CLOSED';end if;\n insert into public.player_wallets(user_id) values(u) on conflict do nothing;\n select * into wallet from public.player_wallets where user_id=u for update;\n -- Recheck after the shared wallet lock, including same-operation cross-round races.\n select request into old_req from app_private.voyage_bet_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if old_req<>req then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.voyage_bets_payload(u,clock_timestamp())||jsonb_build_object('replayed',true);\n end if;\n if clock_timestamp()>=r.departs_at then raise exception 'VOYAGE_CLOSED';end if;\n select coalesce(stake,0) into old_stake from app_private.voyage_bets where user_id=u and plan_id=p.id;\n old_stake:=coalesce(old_stake,0);\n select coalesce(sum(b.stake),0) into total from app_private.voyage_bets b join app_private.voyage_bet_plans x on x.id=b.plan_id where b.user_id=u and x.round_id=r.id;\n if total-old_stake+p_stake>500 then raise exception 'VOYAGE_ROUND_LIMIT';end if;\n delta:=old_stake-p_stake;\n if wallet.gold+delta<0 then raise exception 'INSUFFICIENT_GOLD';end if;\n if wallet.gold::bigint+delta>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+delta,updated_at=clock_timestamp() where user_id=u;\n insert into app_private.voyage_bets(user_id,plan_id,side,stake) values(u,p.id,p_side,p_stake)\n on conflict(user_id,plan_id) do update set side=excluded.side,stake=excluded.stake,updated_at=clock_timestamp();\n insert into app_private.voyage_bet_operations(user_id,operation_id,request,delta) values(u,p_operation_id,req,delta);\n return app_private.voyage_bets_payload(u,clock_timestamp())||jsonb_build_object('replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "voyage_bets_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_bets_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return app_private.voyage_bets_payload(u,clock_timestamp());\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "voyage_race_board",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_round uuid, p_stage integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_race_board(p_round uuid, p_stage integer)\n RETURNS TABLE(plan_id uuid, sales bigint, target bigint, place integer, tied boolean)\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n with totals as(\n  select p.id,coalesce((select sum((value->>'sales')::bigint) from jsonb_array_elements(p.result) with ordinality where ordinality<=p_stage),0) sales,\n   p.stage_targets[p_stage]::bigint target\n  from app_private.voyage_bet_plans p where p.round_id=p_round and p_stage between 1 and 3 and p.stage_targets is not null\n ) select a.id,a.sales,a.target,\n  (1+(select count(*) from totals b where b.sales*a.target>a.sales*b.target))::int,\n  exists(select 1 from totals b where b.id<>a.id and b.sales*a.target=a.sales*b.target)\n from totals a\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_race_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "u uuid, p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_race_payload(u uuid, p_at timestamp with time zone)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare companies jsonb;rounds jsonb;\nbegin\n select data->'companies' into companies from app_private.voyage_bet_models order by valid_from desc limit 1;\n select coalesce(jsonb_agg(jsonb_build_object(\n  'id',r.id,'opensAt',r.opens_at,'departsAt',r.departs_at,'resultsAt',r.results_at,\n  'phase',case when p_at<r.opens_at then 'scheduled' when p_at<r.departs_at then 'open' when p_at<r.results_at then 'sailing' when r.settled_at is null then 'settling' else 'settled' end,\n  'completedRegions',r.stage,'nextRevealAt',case when r.stage<3 then r.departs_at+(r.stage+1)*interval '1 hour' else null end,\n  'refunded',case when r.stage=3 then exists(select 1 from app_private.voyage_race_board(r.id,3) where place<=2 and tied) else false end,\n  'myStake',coalesce(b.stake,0),\n  'myBet',case when b.stake>0 then jsonb_build_object('planId',b.plan_id,'stake',b.stake,'payout',b.payout,'paidAt',b.paid_at,'rewardGiftId',b.reward_gift_id,'rewardClaimedAt',gift.claimed_at) else null end,\n  'plans',(select jsonb_agg(jsonb_build_object(\n   'id',p.id,'companyId',p.company_id,\n   'bait',case when p_at>=r.opens_at then m.data->'baits'->p.bait_id else null end,\n   'countPerRegion',case when p_at>=r.opens_at then p.count_per_region else null end,\n   'publicRegion',case when p_at>=r.opens_at then jsonb_build_object('id',p.regions[1],'name',m.data->'regions'->>p.regions[1]) else null end,\n   'targetSales',case when p_at>=r.opens_at then p.target_sales else null end,\n   'totalCost',case when p_at>=r.opens_at then p.total_cost else null end,\n   'progress',case when r.stage>0 then jsonb_build_object('sales',board.sales,'target',board.target,'achievement',round(board.sales::numeric/board.target*100,2),'rank',board.place,'tied',board.tied,\n     'regions',(select jsonb_agg(value order by ordinality) from jsonb_array_elements(p.result) with ordinality where ordinality<=r.stage)) else null end,\n   'result',case when r.stage=3 then jsonb_build_object('sales',board.sales,'profit',board.sales-p.total_cost,'rank',board.place,'tied',board.tied,'regions',p.result) else null end\n  ) order by p.company_id) from app_private.voyage_bet_plans p join app_private.voyage_bet_models m on m.id=p.model_id\n   left join lateral(select * from app_private.voyage_race_board(r.id,r.stage) where plan_id=p.id)board on true where p.round_id=r.id)\n ) order by r.departs_at),'[]'::jsonb) into rounds\n from(select *,greatest(0,least(3,floor(extract(epoch from(p_at-departs_at))/3600)::int)) stage from app_private.voyage_bet_rounds\n  where rules='ranking' and departs_at>=p_at-interval '7 days' order by departs_at desc limit 18)r\n left join app_private.voyage_race_bets b on b.round_id=r.id and b.user_id=u\n left join public.collectible_gifts gift on gift.id=b.reward_gift_id and gift.recipient_id=u;\n return jsonb_build_object('serverNow',p_at,'companies',coalesce(companies,'[]'::jsonb),'rounds',rounds,'roundLimit',500,'firstMultiplier',3,'secondMultiplier',1.2,\n  'pendingPayout',(select coalesce(sum(payout),0) from(select payout from app_private.voyage_race_bets where user_id=u and payout>0 and paid_at is null union all select payout from app_private.voyage_bets where user_id=u and payout>0 and paid_at is null)t));\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_race_place",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_race_place(p_operation_id uuid, p_plan_id uuid, p_stake integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();req jsonb;old_req jsonb;p app_private.voyage_bet_plans;r app_private.voyage_bet_rounds;wallet public.player_wallets;old_stake integer;delta integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_plan_id is null or p_stake is null or p_stake<0 or p_stake>500 or p_stake%100<>0 then raise exception 'INVALID_VOYAGE_BET';end if;\n req:=jsonb_build_object('planId',p_plan_id,'stake',p_stake);\n select request into old_req from app_private.voyage_race_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if old_req<>req then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.voyage_race_payload(u,clock_timestamp())||jsonb_build_object('replayed',true);\n end if;\n select * into p from app_private.voyage_bet_plans where id=p_plan_id;\n if p.id is null then raise exception 'VOYAGE_NOT_FOUND';end if;\n select * into r from app_private.voyage_bet_rounds where id=p.round_id for update;\n if r.rules<>'ranking' then raise exception 'VOYAGE_RULES_CHANGED';end if;\n insert into public.player_wallets(user_id) values(u) on conflict do nothing;\n select * into wallet from public.player_wallets where user_id=u for update;\n select request into old_req from app_private.voyage_race_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if old_req<>req then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.voyage_race_payload(u,clock_timestamp())||jsonb_build_object('replayed',true);\n end if;\n if clock_timestamp()<r.opens_at then raise exception 'VOYAGE_NOT_OPEN';end if;\n if clock_timestamp()>=r.departs_at or r.settled_at is not null then raise exception 'VOYAGE_CLOSED';end if;\n select coalesce(stake,0) into old_stake from app_private.voyage_race_bets where user_id=u and round_id=r.id;\n delta:=coalesce(old_stake,0)-p_stake;\n if wallet.gold+delta<0 then raise exception 'INSUFFICIENT_GOLD';end if;\n if wallet.gold::bigint+delta>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+delta,updated_at=clock_timestamp() where user_id=u;\n insert into app_private.voyage_race_bets(user_id,round_id,plan_id,stake) values(u,r.id,p.id,p_stake)\n on conflict(user_id,round_id) do update set plan_id=excluded.plan_id,stake=excluded.stake,updated_at=clock_timestamp();\n insert into app_private.voyage_race_operations(user_id,operation_id,request,delta) values(u,p_operation_id,req,delta);\n return app_private.voyage_race_payload(u,clock_timestamp())||jsonb_build_object('replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "voyage_race_prepare",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_round uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_race_prepare(p_round uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare p record;cal app_private.voyage_rank_calibrations;goals integer[];\nbegin\n for p in select * from app_private.voyage_bet_plans where round_id=p_round loop\n  select * into cal from app_private.voyage_rank_calibrations where model_id=p.model_id;\n  if cal.id is null then raise exception 'VOYAGE_RANK_MODEL_UNAVAILABLE';end if;\n  select array_agg(value::int order by ordinality) into goals from jsonb_array_elements_text(cal.data->'targets'->(p.bait_id||':'||p.count_per_region||':'||p.regions[1])) with ordinality;\n  if cardinality(goals) is distinct from 3 then raise exception 'VOYAGE_RANK_TARGET_UNAVAILABLE';end if;\n  update app_private.voyage_bet_plans set stage_targets=goals,target_sales=goals[3],calibration_id=cal.id where id=p.id;\n end loop;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_race_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_race_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();begin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return app_private.voyage_race_payload(u,clock_timestamp());\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "voyage_race_test_sample",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.voyage_race_test_sample()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();t timestamptz:=clock_timestamp();departure timestamptz;opening timestamptz;\n rid uuid:=gen_random_uuid();sample jsonb:='{}'::jsonb;state jsonb;one_round jsonb;step text;at_time timestamptz;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if not app_private.notice_is_operator() then raise exception 'OPERATOR_REQUIRED';end if;\n departure:=((t at time zone 'Asia/Seoul')::date+time '09:00') at time zone 'Asia/Seoul';\n if t>=departure-interval '1 hour' then departure:=((t at time zone 'Asia/Seoul')::date+time '20:00') at time zone 'Asia/Seoul';end if;\n if t>=departure-interval '1 hour' then departure:=(((t at time zone 'Asia/Seoul')::date+1)+time '09:00') at time zone 'Asia/Seoul';end if;\n opening:=departure-interval '1 hour';\n -- This subtransaction is ALWAYS rolled back. Reuse the production engine,\n -- but never retain a round/plan, access a wallet, settle a real bet or enqueue\n -- a notification. The artificial unique day is not used for displayed times.\n begin\n  insert into app_private.voyage_bet_rounds(id,voyage_day,slot,opens_at,departs_at,results_at,rules)\n  values(rid,date '3000-01-01'+floor(random()*365000)::int,9,opening,departure,departure+interval '3 hours','ranking');\n  perform app_private.voyage_bet_make_plans(rid,opening);\n  foreach step in array array['scheduled','open','sailing','one','two','final'] loop\n   at_time:=case step when 'scheduled' then opening-interval '1 minute' when 'open' then opening+interval '1 second'\n    when 'sailing' then departure when 'one' then departure+interval '1 hour' when 'two' then departure+interval '2 hours' else departure+interval '3 hours' end;\n   if step='final' then update app_private.voyage_bet_rounds set settled_at=at_time where id=rid;end if;\n   state:=app_private.voyage_race_payload(u,at_time);\n   select value into one_round from jsonb_array_elements(state->'rounds') where value->>'id'=rid::text;\n   if one_round is null then raise exception 'VOYAGE_TEST_SAMPLE_UNAVAILABLE';end if;\n   state:=jsonb_set(jsonb_set(state,'{rounds}',jsonb_build_array(one_round)),'{pendingPayout}','0'::jsonb);\n   sample:=jsonb_set(sample,array[step],state);\n  end loop;\n  raise exception using errcode='ZX001',message='ROLLBACK_VOYAGE_TEST_SAMPLE';\n exception when sqlstate 'ZX001' then\n  -- PL/pgSQL variables survive, all database writes above do not.\n  null;\n end;\n return sample;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "web_push_device",
         "config": [
           "search_path=\"\""
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_subscription jsonb, p_categories text[]",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_device(p_action text, p_subscription jsonb, p_categories text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); e text:=p_subscription->>'endpoint'; s app_private.push_subscriptions; n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('state','save','delete','test') or e is null or length(e)>2048 then raise exception 'INVALID_PUSH_DEVICE';end if;\n select * into s from app_private.push_subscriptions where endpoint=e and user_id=u for update;\n if p_action='state' then return jsonb_build_object('registered',s.id is not null,'categories',coalesce(s.categories,array[]::text[]));end if;\n if p_action='delete' then delete from app_private.push_subscriptions where id=s.id;return jsonb_build_object('registered',false);end if;\n if p_action='test' then\n  if s.id is null then raise exception 'PUSH_NOT_REGISTERED';end if;\n  if s.last_test_at>clock_timestamp()-interval '1 minute' then raise exception 'PUSH_TEST_RATE_LIMIT';end if;\n  update app_private.push_subscriptions set last_test_at=clock_timestamp() where id=s.id;\n  insert into app_private.push_deliveries(subscription_id,category,payload,expires_at)\n  values(s.id,'test',jsonb_build_object('userId',u,'title','퐁당! 알림이 도착했어요','body','이 기기에서 생산 완료·통발·귀항 소식을 받을 수 있어요.','url','/settings','tag','push-test:'||gen_random_uuid()),clock_timestamp()+interval '5 minutes');\n  return jsonb_build_object('queued',true);\n end if;\n if e !~ '^https://(fcm\\.googleapis\\.com|([a-z0-9-]+\\.)*push\\.services\\.mozilla\\.com|([a-z0-9-]+\\.)*push\\.apple\\.com|([a-z0-9-]+\\.)*notify\\.windows\\.com)/[^[:space:]#]+$'\n or coalesce(p_subscription#>>'{keys,p256dh}','') !~ '^[A-Za-z0-9_-]{87}=?$'\n or coalesce(p_subscription#>>'{keys,auth}','') !~ '^[A-Za-z0-9_-]{22}={0,2}$'\n or p_categories is null or not (p_categories <@ array['production','bait-production','expedition','harbor','production-expiring','bait-production-expiring']::text[])\n or cardinality(p_categories)>6 then raise exception 'INVALID_PUSH_DEVICE';end if;\n -- Serialize this user's cap, and never transfer another account's endpoint.\n perform 1 from auth.users where id=u for update;\n if exists(select 1 from app_private.push_subscriptions where endpoint=e and user_id<>u) then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n select count(*) into n from app_private.push_subscriptions where user_id=u;\n if s.id is null and n>=10 then raise exception 'PUSH_DEVICE_LIMIT';end if;\n insert into app_private.push_subscriptions(user_id,endpoint,p256dh,auth,categories)\n values(u,e,p_subscription#>>'{keys,p256dh}',p_subscription#>>'{keys,auth}',p_categories)\n on conflict(endpoint) do update set p256dh=excluded.p256dh,auth=excluded.auth,categories=excluded.categories,updated_at=clock_timestamp()\n where app_private.push_subscriptions.user_id=u;\n get diagnostics n=row_count;\n if n=0 then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n return jsonb_build_object('registered',true,'categories',p_categories);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_device(p_action text, p_subscription jsonb, p_categories text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();e text:=p_subscription->>'endpoint';s app_private.push_subscriptions;n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','save','delete','test') or e is null or length(e)>2048 then raise exception 'INVALID_PUSH_DEVICE';end if;\n select * into s from app_private.push_subscriptions where endpoint=e and user_id=u for update;\n if p_action='state' then return jsonb_build_object('registered',s.id is not null,'categories',coalesce(s.categories,array[]::text[]));end if;\n if p_action='delete' then delete from app_private.push_subscriptions where id=s.id;return jsonb_build_object('registered',false);end if;\n if p_action='test' then\n  if s.id is null then raise exception 'PUSH_NOT_REGISTERED';end if;\n  if s.last_test_at>clock_timestamp()-interval '1 minute' then raise exception 'PUSH_TEST_RATE_LIMIT';end if;\n  update app_private.push_subscriptions set last_test_at=clock_timestamp() where id=s.id;\n  insert into app_private.push_deliveries(subscription_id,category,payload,expires_at)\n  values(s.id,'test',jsonb_build_object('userId',u,'title','퐁당! 알림이 도착했어요','body','이 기기에서 생산 완료·통발·귀항 소식을 받을 수 있어요.','url','/settings','tag','push-test:'||gen_random_uuid()),clock_timestamp()+interval '5 minutes');\n  return jsonb_build_object('queued',true);\n end if;\n if e !~ '^https://(fcm\\.googleapis\\.com|([a-z0-9-]+\\.)*push\\.services\\.mozilla\\.com|([a-z0-9-]+\\.)*push\\.apple\\.com|([a-z0-9-]+\\.)*notify\\.windows\\.com)/[^[:space:]#]+$'\n or coalesce(p_subscription#>>'{keys,p256dh}','') !~ '^[A-Za-z0-9_-]{87}=?$'\n or coalesce(p_subscription#>>'{keys,auth}','') !~ '^[A-Za-z0-9_-]{22}={0,2}$'\n or p_categories is null or not(p_categories<@array['production','bait-production','expedition','harbor','production-expiring','bait-production-expiring','voyage-bets']::text[])\n or cardinality(p_categories)>7 then raise exception 'INVALID_PUSH_DEVICE';end if;\n perform 1 from auth.users where id=u for update;\n if exists(select 1 from app_private.push_subscriptions where endpoint=e and user_id<>u) then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n select count(*) into n from app_private.push_subscriptions where user_id=u;\n if s.id is null and n>=10 then raise exception 'PUSH_DEVICE_LIMIT';end if;\n insert into app_private.push_subscriptions(user_id,endpoint,p256dh,auth,categories)\n values(u,e,p_subscription#>>'{keys,p256dh}',p_subscription#>>'{keys,auth}',p_categories)\n on conflict(endpoint) do update set p256dh=excluded.p256dh,auth=excluded.auth,categories=excluded.categories,updated_at=clock_timestamp()\n where app_private.push_subscriptions.user_id=u;\n get diagnostics n=row_count;\n if n=0 then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n return jsonb_build_object('registered',true,'categories',p_categories);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -19099,6 +19955,16 @@
         "securityDefiner": false
       },
       {
+        "name": "today_fishing_records",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.today_fishing_records()\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select app_private.today_fishing_records()\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "trade_fishing_rod",
         "config": [
           "search_path=\"\""
@@ -19136,6 +20002,56 @@
         "schema": "public",
         "arguments": "p_region_id text",
         "definition": "CREATE OR REPLACE FUNCTION public.travel_region(p_region_id text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.travel_region(p_region_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_bets_place",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.voyage_bets_place(p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.voyage_bets_place(p_operation_id,p_plan_id,p_side,p_stake)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_bets_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.voyage_bets_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.voyage_bets_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_race_place",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.voyage_race_place(p_operation_id uuid, p_plan_id uuid, p_stake integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.voyage_race_place(p_operation_id,p_plan_id,p_stake)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_race_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.voyage_race_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.voyage_race_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "voyage_race_test_sample",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.voyage_race_test_sample()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.voyage_race_test_sample()$function$\n",
         "securityDefiner": false
       },
       {
@@ -22800,7 +23716,7 @@
         "name": "push_deliveries_category_check",
         "table": "push_deliveries",
         "schema": "app_private",
-        "definition": "CHECK ((category = ANY (ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'test'::text, 'production-expiring'::text, 'bait-production-expiring'::text])))"
+        "definition": "CHECK ((category = ANY (ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'test'::text, 'production-expiring'::text, 'bait-production-expiring'::text, 'voyage-bets'::text])))"
       },
       {
         "name": "push_deliveries_category_not_null",
@@ -22884,7 +23800,7 @@
         "name": "push_subscriptions_categories_check",
         "table": "push_subscriptions",
         "schema": "app_private",
-        "definition": "CHECK ((categories <@ ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'production-expiring'::text, 'bait-production-expiring'::text]))"
+        "definition": "CHECK ((categories <@ ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'production-expiring'::text, 'bait-production-expiring'::text, 'voyage-bets'::text]))"
       },
       {
         "name": "push_subscriptions_categories_not_null",
@@ -23521,6 +24437,540 @@
         "table": "title_fishing_log",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "voyage_bet_models_check",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "CHECK (((valid_until IS NULL) OR (valid_until > valid_from)))"
+      },
+      {
+        "name": "voyage_bet_models_data_check",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_typeof(data) = 'object'::text))"
+      },
+      {
+        "name": "voyage_bet_models_data_not_null",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "NOT NULL data"
+      },
+      {
+        "name": "voyage_bet_models_id_check",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "CHECK ((length(id) = 64))"
+      },
+      {
+        "name": "voyage_bet_models_id_not_null",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "voyage_bet_models_pkey",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "voyage_bet_models_valid_from_not_null",
+        "table": "voyage_bet_models",
+        "schema": "app_private",
+        "definition": "NOT NULL valid_from"
+      },
+      {
+        "name": "voyage_bet_operations_created_at_not_null",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "voyage_bet_operations_delta_not_null",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL delta"
+      },
+      {
+        "name": "voyage_bet_operations_operation_id_not_null",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "voyage_bet_operations_pkey",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "voyage_bet_operations_request_not_null",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL request"
+      },
+      {
+        "name": "voyage_bet_operations_user_id_fkey",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "voyage_bet_operations_user_id_not_null",
+        "table": "voyage_bet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "voyage_bet_plans_actual_sales_check",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK ((actual_sales >= 0))"
+      },
+      {
+        "name": "voyage_bet_plans_actual_sales_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL actual_sales"
+      },
+      {
+        "name": "voyage_bet_plans_bait_id_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL bait_id"
+      },
+      {
+        "name": "voyage_bet_plans_calibration_id_fkey",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (calibration_id) REFERENCES app_private.voyage_rank_calibrations(id)"
+      },
+      {
+        "name": "voyage_bet_plans_company_id_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL company_id"
+      },
+      {
+        "name": "voyage_bet_plans_count_per_region_check",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK (((count_per_region >= 1) AND (count_per_region <= 200)))"
+      },
+      {
+        "name": "voyage_bet_plans_count_per_region_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL count_per_region"
+      },
+      {
+        "name": "voyage_bet_plans_id_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "voyage_bet_plans_model_id_fkey",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (model_id) REFERENCES app_private.voyage_bet_models(id)"
+      },
+      {
+        "name": "voyage_bet_plans_model_id_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL model_id"
+      },
+      {
+        "name": "voyage_bet_plans_pkey",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "voyage_bet_plans_regions_check",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK ((cardinality(regions) = 3))"
+      },
+      {
+        "name": "voyage_bet_plans_regions_check1",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK (((regions[1] <> regions[2]) AND (regions[1] <> regions[3]) AND (regions[2] <> regions[3])))"
+      },
+      {
+        "name": "voyage_bet_plans_regions_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL regions"
+      },
+      {
+        "name": "voyage_bet_plans_result_check",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_typeof(result) = 'array'::text))"
+      },
+      {
+        "name": "voyage_bet_plans_result_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL result"
+      },
+      {
+        "name": "voyage_bet_plans_round_id_company_id_key",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "UNIQUE (round_id, company_id)"
+      },
+      {
+        "name": "voyage_bet_plans_round_id_fkey",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (round_id) REFERENCES app_private.voyage_bet_rounds(id)"
+      },
+      {
+        "name": "voyage_bet_plans_round_id_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL round_id"
+      },
+      {
+        "name": "voyage_bet_plans_stage_targets_check",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK (((stage_targets IS NULL) OR ((cardinality(stage_targets) = 3) AND (stage_targets[1] > 0) AND (stage_targets[2] > stage_targets[1]) AND (stage_targets[3] > stage_targets[2]))))"
+      },
+      {
+        "name": "voyage_bet_plans_target_sales_check",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK ((target_sales > 0))"
+      },
+      {
+        "name": "voyage_bet_plans_target_sales_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL target_sales"
+      },
+      {
+        "name": "voyage_bet_plans_total_cost_check",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "CHECK ((total_cost > 0))"
+      },
+      {
+        "name": "voyage_bet_plans_total_cost_not_null",
+        "table": "voyage_bet_plans",
+        "schema": "app_private",
+        "definition": "NOT NULL total_cost"
+      },
+      {
+        "name": "voyage_bet_rounds_check",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "CHECK (((departs_at = (opens_at + '00:30:00'::interval)) OR (departs_at = (opens_at + '01:00:00'::interval))))"
+      },
+      {
+        "name": "voyage_bet_rounds_check1",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "CHECK ((results_at = (departs_at + '03:00:00'::interval)))"
+      },
+      {
+        "name": "voyage_bet_rounds_departs_at_not_null",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL departs_at"
+      },
+      {
+        "name": "voyage_bet_rounds_id_not_null",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "voyage_bet_rounds_opens_at_not_null",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL opens_at"
+      },
+      {
+        "name": "voyage_bet_rounds_pkey",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "voyage_bet_rounds_results_at_not_null",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL results_at"
+      },
+      {
+        "name": "voyage_bet_rounds_rules_check",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "CHECK ((rules = ANY (ARRAY['legacy'::text, 'ranking'::text])))"
+      },
+      {
+        "name": "voyage_bet_rounds_rules_not_null",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL rules"
+      },
+      {
+        "name": "voyage_bet_rounds_slot_check",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "CHECK ((slot = ANY (ARRAY[9, 19, 20])))"
+      },
+      {
+        "name": "voyage_bet_rounds_slot_not_null",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL slot"
+      },
+      {
+        "name": "voyage_bet_rounds_voyage_day_not_null",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL voyage_day"
+      },
+      {
+        "name": "voyage_bet_rounds_voyage_day_slot_key",
+        "table": "voyage_bet_rounds",
+        "schema": "app_private",
+        "definition": "UNIQUE (voyage_day, slot)"
+      },
+      {
+        "name": "voyage_bets_payout_check",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "CHECK (((payout >= 0) AND (payout <= 950)))"
+      },
+      {
+        "name": "voyage_bets_pkey",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, plan_id)"
+      },
+      {
+        "name": "voyage_bets_plan_id_fkey",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (plan_id) REFERENCES app_private.voyage_bet_plans(id)"
+      },
+      {
+        "name": "voyage_bets_plan_id_not_null",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL plan_id"
+      },
+      {
+        "name": "voyage_bets_side_check",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "CHECK ((side = ANY (ARRAY['above'::text, 'below'::text])))"
+      },
+      {
+        "name": "voyage_bets_side_not_null",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL side"
+      },
+      {
+        "name": "voyage_bets_stake_check",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "CHECK ((((stake >= 0) AND (stake <= 500)) AND ((stake % 100) = 0)))"
+      },
+      {
+        "name": "voyage_bets_stake_not_null",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL stake"
+      },
+      {
+        "name": "voyage_bets_updated_at_not_null",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "voyage_bets_user_id_fkey",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "voyage_bets_user_id_not_null",
+        "table": "voyage_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "voyage_race_bets_payout_check",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "CHECK (((payout >= 0) AND (payout <= 1500)))"
+      },
+      {
+        "name": "voyage_race_bets_pkey",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, round_id)"
+      },
+      {
+        "name": "voyage_race_bets_plan_id_fkey",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (plan_id) REFERENCES app_private.voyage_bet_plans(id)"
+      },
+      {
+        "name": "voyage_race_bets_plan_id_not_null",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL plan_id"
+      },
+      {
+        "name": "voyage_race_bets_reward_gift_id_fkey",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (reward_gift_id) REFERENCES collectible_gifts(id)"
+      },
+      {
+        "name": "voyage_race_bets_round_id_fkey",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (round_id) REFERENCES app_private.voyage_bet_rounds(id)"
+      },
+      {
+        "name": "voyage_race_bets_round_id_not_null",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL round_id"
+      },
+      {
+        "name": "voyage_race_bets_stake_check",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "CHECK ((((stake >= 0) AND (stake <= 500)) AND ((stake % 100) = 0)))"
+      },
+      {
+        "name": "voyage_race_bets_stake_not_null",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL stake"
+      },
+      {
+        "name": "voyage_race_bets_updated_at_not_null",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "voyage_race_bets_user_id_fkey",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "voyage_race_bets_user_id_not_null",
+        "table": "voyage_race_bets",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "voyage_race_operations_created_at_not_null",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "voyage_race_operations_delta_not_null",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL delta"
+      },
+      {
+        "name": "voyage_race_operations_operation_id_not_null",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "voyage_race_operations_pkey",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "voyage_race_operations_request_not_null",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL request"
+      },
+      {
+        "name": "voyage_race_operations_user_id_fkey",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "voyage_race_operations_user_id_not_null",
+        "table": "voyage_race_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "voyage_rank_calibrations_data_check",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_typeof(data) = 'object'::text))"
+      },
+      {
+        "name": "voyage_rank_calibrations_data_not_null",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "NOT NULL data"
+      },
+      {
+        "name": "voyage_rank_calibrations_id_check",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "CHECK ((length(id) = 64))"
+      },
+      {
+        "name": "voyage_rank_calibrations_id_key",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "UNIQUE (id)"
+      },
+      {
+        "name": "voyage_rank_calibrations_id_not_null",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "voyage_rank_calibrations_model_id_fkey",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (model_id) REFERENCES app_private.voyage_bet_models(id)"
+      },
+      {
+        "name": "voyage_rank_calibrations_model_id_not_null",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "NOT NULL model_id"
+      },
+      {
+        "name": "voyage_rank_calibrations_pkey",
+        "table": "voyage_rank_calibrations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (model_id)"
       },
       {
         "name": "aquarium_backgrounds_id_not_null",
@@ -24816,7 +26266,7 @@
         "name": "gift_asset_shape",
         "table": "collectible_gifts",
         "schema": "public",
-        "definition": "CHECK ((((reward_kind = 'collectible'::text) AND ((quantity >= 1) AND (quantity <=\nCASE\n    WHEN (source = 'exchange'::text) THEN 100\n    ELSE 20\nEND)) AND (cardinality(collectible_ids) = quantity)) OR ((source = 'exchange'::text) AND (reward_kind = 'gold'::text) AND ((quantity >= 1) AND (quantity <= 1000000000)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'exchange'::text) AND (reward_kind = 'bait'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0) AND (reward_id IS NOT NULL)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['welcome'::text, 'operator-gold-20261020'::text, 'operator-gold-20261020-round2'::text, 'operator-gold-20261021-supply'::text])) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'exchange'::text) AND (reward_kind = 'fuel'::text) AND (reward_id = 'fuel'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'system'::text) AND (reward_kind = 'bait'::text) AND (reward_id = 'bait'::text) AND ((species ->> 'id'::text) = ANY (ARRAY['welcome-bait'::text, 'operator-worm-20261020'::text])) AND (quantity = 5) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id ~~ 'arcade-weekly:%'::text) AND (quantity = ANY (ARRAY[2000, 1500, 1000, 650, 400, 200])) AND ((species ->> 'game'::text) = ANY (ARRAY['shadow'::text, 'memory'::text, 'pongi-whack'::text])) AND (reward_id = ((('arcade-weekly:'::text || (species ->> 'game'::text)) || ':'::text) || (species ->> 'week_start'::text))) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['giseong-catch-202610:giseong-fish'::text, 'giseong-catch-202610:giseong-webfoot-octopus'::text])) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 300) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = 'operator-update-20261023-nyamnyam'::text) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 1000) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (sender_id IS NULL) AND (NOT exchange_hold) AND (cardinality(collectible_ids) = 0) AND\nCASE\n    WHEN (reward_id ~ '^level-up:[1-9][0-9]{0,8}$'::text) THEN (((split_part(reward_id, ':'::text, 2))::bigint >= 2) AND (quantity = LEAST((1000000000)::bigint, (100 * (((split_part(reward_id, ':'::text, 2))::bigint + 9) / 10)))) AND ((species ->> 'id'::text) = reward_id))\n    ELSE false\nEND) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = 'halloween-20261024-gold-500'::text) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'bait'::text) AND (reward_id = 'bait_special'::text) AND ((species ->> 'id'::text) = 'aquarium-apology-20261025'::text) AND (quantity = 2) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold))))"
+        "definition": "CHECK ((((reward_kind = 'collectible'::text) AND ((quantity >= 1) AND (quantity <=\nCASE\n    WHEN (source = 'exchange'::text) THEN 100\n    ELSE 20\nEND)) AND (cardinality(collectible_ids) = quantity)) OR ((source = 'exchange'::text) AND (reward_kind = 'gold'::text) AND ((quantity >= 1) AND (quantity <= 1000000000)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'exchange'::text) AND (reward_kind = 'bait'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0) AND (reward_id IS NOT NULL)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['welcome'::text, 'operator-gold-20261020'::text, 'operator-gold-20261020-round2'::text, 'operator-gold-20261021-supply'::text])) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'exchange'::text) AND (reward_kind = 'fuel'::text) AND (reward_id = 'fuel'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'system'::text) AND (reward_kind = 'bait'::text) AND (reward_id = 'bait'::text) AND ((species ->> 'id'::text) = ANY (ARRAY['welcome-bait'::text, 'operator-worm-20261020'::text])) AND (quantity = 5) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id ~~ 'arcade-weekly:%'::text) AND (quantity = ANY (ARRAY[2000, 1500, 1000, 650, 400, 200])) AND ((species ->> 'game'::text) = ANY (ARRAY['shadow'::text, 'memory'::text, 'pongi-whack'::text])) AND (reward_id = ((('arcade-weekly:'::text || (species ->> 'game'::text)) || ':'::text) || (species ->> 'week_start'::text))) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['giseong-catch-202610:giseong-fish'::text, 'giseong-catch-202610:giseong-webfoot-octopus'::text])) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 300) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = 'operator-update-20261023-nyamnyam'::text) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 1000) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (sender_id IS NULL) AND (NOT exchange_hold) AND (cardinality(collectible_ids) = 0) AND\nCASE\n    WHEN (reward_id ~ '^level-up:[1-9][0-9]{0,8}$'::text) THEN (((split_part(reward_id, ':'::text, 2))::bigint >= 2) AND (quantity = LEAST((1000000000)::bigint, (100 * (((split_part(reward_id, ':'::text, 2))::bigint + 9) / 10)))) AND ((species ->> 'id'::text) = reward_id))\n    ELSE false\nEND) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = 'halloween-20261024-gold-500'::text) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'bait'::text) AND (reward_id = 'bait_special'::text) AND ((species ->> 'id'::text) = 'aquarium-apology-20261025'::text) AND (quantity = 2) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (sender_id IS NULL) AND (NOT exchange_hold) AND (cardinality(collectible_ids) = 0) AND ((quantity >= 1) AND (quantity <= 1500)) AND (reward_id ~ '^voyage-race:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'::text) AND ((species ->> 'id'::text) = reward_id))))"
       },
       {
         "name": "gift_hold_shape",
@@ -41651,6 +43101,27 @@
         "arguments": ""
       },
       {
+        "name": "today_fishing_records",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "today_fishing_records",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "today_fishing_records",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "trade_fishing_rod",
         "role": "anon",
         "schema": "app_private",
@@ -41834,6 +43305,279 @@
       },
       {
         "name": "validate_fishing_map_blueprint",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_bet_draw",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "m jsonb, bid text, region text"
+      },
+      {
+        "name": "voyage_bet_draw",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "m jsonb, bid text, region text"
+      },
+      {
+        "name": "voyage_bet_draw",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "m jsonb, bid text, region text"
+      },
+      {
+        "name": "voyage_bet_make_plans",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bet_make_plans",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bet_make_plans",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bet_make_plans_base",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bet_make_plans_base",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bet_make_plans_base",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bets_maintenance",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_now timestamp with time zone"
+      },
+      {
+        "name": "voyage_bets_maintenance",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_now timestamp with time zone"
+      },
+      {
+        "name": "voyage_bets_maintenance",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_now timestamp with time zone"
+      },
+      {
+        "name": "voyage_bets_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "u uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bets_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "u uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bets_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "u uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_bets_place",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer"
+      },
+      {
+        "name": "voyage_bets_place",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer"
+      },
+      {
+        "name": "voyage_bets_place",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer"
+      },
+      {
+        "name": "voyage_bets_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_bets_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_bets_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_board",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_stage integer"
+      },
+      {
+        "name": "voyage_race_board",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_stage integer"
+      },
+      {
+        "name": "voyage_race_board",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid, p_stage integer"
+      },
+      {
+        "name": "voyage_race_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "u uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_race_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "u uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_race_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "u uuid, p_at timestamp with time zone"
+      },
+      {
+        "name": "voyage_race_place",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer"
+      },
+      {
+        "name": "voyage_race_place",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer"
+      },
+      {
+        "name": "voyage_race_place",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer"
+      },
+      {
+        "name": "voyage_race_prepare",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid"
+      },
+      {
+        "name": "voyage_race_prepare",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid"
+      },
+      {
+        "name": "voyage_race_prepare",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_round uuid"
+      },
+      {
+        "name": "voyage_race_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_test_sample",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_test_sample",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_test_sample",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -45620,6 +47364,27 @@
         "arguments": ""
       },
       {
+        "name": "today_fishing_records",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "today_fishing_records",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "today_fishing_records",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "trade_fishing_rod",
         "role": "anon",
         "schema": "public",
@@ -45702,6 +47467,111 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_region_id text"
+      },
+      {
+        "name": "voyage_bets_place",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer"
+      },
+      {
+        "name": "voyage_bets_place",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer"
+      },
+      {
+        "name": "voyage_bets_place",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_side text, p_stake integer"
+      },
+      {
+        "name": "voyage_bets_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_bets_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_bets_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_place",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer"
+      },
+      {
+        "name": "voyage_race_place",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer"
+      },
+      {
+        "name": "voyage_race_place",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_plan_id uuid, p_stake integer"
+      },
+      {
+        "name": "voyage_race_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_test_sample",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_test_sample",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "voyage_race_test_sample",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "web_push_device",

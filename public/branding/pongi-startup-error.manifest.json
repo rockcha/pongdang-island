@@ -1,0 +1,11 @@
+{
+  "generator": "image_gen (built-in)",
+  "prompt": "Edit the supplied PNG of Pongi, the cozy fishing-island mascot, into a gently flustered surprised error-state illustration. Preserve the EXACT same character identity, warm caramel-brown otter fur, cream muzzle chest and tummy, tiny round ears, dark paw pads, chubby seated body and thick curved tail, red-and-cream fishing bobber perched on its head, hand-painted cartoon shading and clean dark-brown outlines. Keep full body seated, similar scale and composition, facing viewer. Change the expression and paws: eyebrows raised unevenly with a worried crease, small surprised open mouth shaped like an 'o', round startled eyes still warm and cute, one little paw on cheek and the other slightly lifted in an uncertain gesture, two small pale-blue sweat drops next to its temple. The expression says 'Oops, something went wrong' in a reassuring charming way, not sad or crying, no panic. No letters, no words, no punctuation, no scene, no background shape or pedestal, no detached objects except the tiny sweat drops. Genuinely transparent background, preserve alpha. Large clean silhouette, full body visible including head bobber and tail with safe transparent margins. Match original style very closely. Produce a single production-ready square mascot PNG.",
+  "reference": "public/branding/pongi-startup.png",
+  "source": "assets/branding/source/pongi-startup-error.png",
+  "asset": "public/branding/pongi-startup-error.png",
+  "width": 512,
+  "height": 512,
+  "transparent": true,
+  "sha256": "2b2cc0fc09a36f816fee669877a9bc2bddae4cf62ec04c166840d14cb7eba612"
+}

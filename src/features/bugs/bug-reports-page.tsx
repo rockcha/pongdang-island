@@ -16,6 +16,7 @@ import { useSocial } from '@/features/social/social-provider'
 import { randomId } from '@/lib/random-id'
 import { confirmBugReport, deleteBugReport, loadBugReport, loadBugReports, saveBugReport, bugReportError } from './api'
 import type { BugReport } from './api'
+import {markContentSeen} from '@/lib/content-seen'
 
 
 function VerificationStatus({post}:{post:BugReport}){return post.confirmed_at?<span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary"><CheckCheck className="size-3"/>버그 확인</span>:<span className="shrink-0 rounded-full bg-secondary px-2 py-0.5 text-[11px] text-muted-foreground">확인 대기</span>}
@@ -27,7 +28,7 @@ export function BugReportsPage(){
  const [friendsOnly,setFriendsOnly]=useState(false)
  const [mine,setMine]=useState(false),[page,setPage]=useState(0),[retry,setRetry]=useState(0)
  const [feed,setFeed]=useState<{items:BugReport[];total:number}|null>(null),[error,setError]=useState(''),[editor,setEditor]=useState(false)
- useEffect(()=>{let active=true;setFeed(null);setError('');void loadBugReports(page,mine?userId:null,friendsOnly?userId:null).then(data=>{if(active)setFeed(data)}).catch(e=>{if(active)setError(bugReportError(e))});return()=>{active=false}},[page,mine,friendsOnly,userId,retry])
+ useEffect(()=>{let active=true;setFeed(null);setError('');void loadBugReports(page,mine?userId:null,friendsOnly?userId:null).then(data=>{if(active){setFeed(data);if(page===0&&!mine&&!friendsOnly)markContentSeen(userId,'bugs',data.items.map(post=>post.created_at))}}).catch(e=>{if(active)setError(bugReportError(e))});return()=>{active=false}},[page,mine,friendsOnly,userId,retry])
  return <section className="flex min-h-0 w-full flex-1 flex-col">
   <header className="flex shrink-0 items-center justify-between border-b px-3">
    <div role="group" aria-label="제보 분류" className="flex gap-1">
@@ -51,11 +52,11 @@ export function BugReportDetail(){
  return <Detail key={bugReportId} id={bugReportId??''}/>
 }
 function Detail({id}:{id:string}){
- const {session}=useAuth(),navigate=useNavigate(),gold=useGold(),social=useSocial()
+ const {session}=useAuth(),navigate=useNavigate(),gold=useGold(),social=useSocial(),userId=session?.user.id??''
  const [post,setPost]=useState<BugReport|null>(null),[loading,setLoading]=useState(true),[error,setError]=useState(''),[operator,setOperator]=useState(false),[retry,setRetry]=useState(0)
  const [editor,setEditor]=useState(false),[confirm,setConfirm]=useState<'delete'|'verify'|null>(null),[busy,setBusy]=useState(false),[actionError,setActionError]=useState('')
  const lock=useRef(false)
- useEffect(()=>{let active=true;setLoading(true);setError('');void Promise.all([loadBugReport(id),isNoticeOperator()]).then(([data,admin])=>{if(active){setPost(data);setOperator(admin)}}).catch(e=>{if(active)setError(bugReportError(e))}).finally(()=>{if(active)setLoading(false)});return()=>{active=false}},[id,retry])
+ useEffect(()=>{let active=true;setLoading(true);setError('');void Promise.all([loadBugReport(id),isNoticeOperator()]).then(([data,admin])=>{if(active){setPost(data);setOperator(admin);if(data)markContentSeen(userId,'bugs',[data.created_at])}}).catch(e=>{if(active)setError(bugReportError(e))}).finally(()=>{if(active)setLoading(false)});return()=>{active=false}},[id,retry,userId])
  async function act(){if(lock.current||!post||!confirm)return;lock.current=true;setBusy(true);setActionError('');try{if(confirm==='delete'){await deleteBugReport(post.id);toast.success('제보를 삭제했어요.');navigate('/square/bugs',{replace:true})}else{setPost(await confirmBugReport(post.id));toast.success('확인 알림과 특수미끼 1개를 지급했어요.');void gold.refresh();void social.refresh()}setConfirm(null)}catch(e){setActionError(bugReportError(e))}finally{lock.current=false;setBusy(false)}}
  return <article className="flex min-h-0 w-full flex-1 flex-col"><div className="flex shrink-0 items-center justify-end px-2 [&:not(:has(button))]:hidden">{post&&post.author_id===session?.user.id&&!post.confirmed_at&&<div className="flex"><Button variant="ghost" className="min-h-11 gap-1.5 px-3" aria-label="제보 수정" disabled={busy} onClick={()=>setEditor(true)}><Pencil className="size-4"/>수정</Button><Button variant="ghost" className="min-h-11 gap-1.5 px-3 text-muted-foreground" aria-label="제보 삭제" disabled={busy} onClick={()=>{setActionError('');setConfirm('delete')}}><Trash2 className="size-4"/>삭제</Button></div>}</div><div className="min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain px-4 py-5">{loading?<Skeleton/>:error?<div role="alert" className="space-y-3 text-sm"><p>{error}</p><Button variant="outline" onClick={()=>setRetry(v=>v+1)}>다시 불러오기</Button></div>:!post?<p className="py-10 text-center text-sm text-muted-foreground">글이 삭제되었거나 볼 수 없는 제보예요.</p>:<><header className="space-y-3 border-b pb-5"><div className="flex items-start gap-2"><h1 className="min-w-0 flex-1 break-words text-xl leading-8 [overflow-wrap:anywhere]">{post.title}</h1><VerificationStatus post={post}/></div><FeedbackAuthors kind="bug" ids={[post.id]}><FeedbackPostAuthor post={post}/></FeedbackAuthors></header><p className="whitespace-pre-wrap break-words text-sm leading-7 [overflow-wrap:anywhere]">{post.body}</p><FeedbackReactions kind="bug" ids={[post.id]}><FeedbackVoteButtons id={post.id}/></FeedbackReactions>{post.confirmed_at?<div className="rounded-xl bg-primary/5 p-4 text-sm leading-6"><p className="flex items-center gap-2 font-medium text-primary"><CheckCheck className="size-4"/>운영팀이 확인한 버그예요.</p><p className="mt-1 text-xs text-muted-foreground">작성자에게 랜덤 특수미끼 1개와 확인 알림을 보냈어요.</p></div>:<RewardInfo/>}{operator&&!post.confirmed_at&&<Button className="min-h-12 w-full rounded-xl" disabled={busy} onClick={()=>{setActionError('');setConfirm('verify')}}><CheckCheck className="size-4"/>버그로 확인하기</Button>}<FeedbackComments kind="bug" id={post.id} operator={operator}/></>}</div>
  {editor&&post&&<BugReportEditor post={post} onClose={()=>setEditor(false)} onSaved={saved=>{setPost(saved);setEditor(false)}}/>}

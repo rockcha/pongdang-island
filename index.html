@@ -18,7 +18,7 @@
   </head>
   <body>
     <div id="app-startup" class="island-startup" role="status" aria-live="polite">
-      <div class="island-startup-art" aria-hidden="true"><img src="/branding/pongi-startup.png" alt="" width="512" height="512" fetchpriority="high" /></div>
+      <div class="island-startup-art" aria-hidden="true"><img id="app-startup-image" src="/branding/pongi-startup.png" alt="" width="512" height="512" fetchpriority="high" /></div>
       <p class="island-startup-brand" aria-hidden="true">퐁당섬</p>
       <p class="island-startup-tagline">손끝에서 시작하는 작은 바다</p>
       <strong id="app-startup-title" class="island-startup-title">섬으로 가는 중…</strong>
@@ -36,11 +36,19 @@
         var detail = document.getElementById('app-startup-detail')
         var retry = document.getElementById('app-startup-retry')
         var repair = document.getElementById('app-startup-repair')
+        var art = document.getElementById('app-startup-image')
+        var errorArtRequested = false
         var ready = false
         function fail(reason, source) {
           clearTimeout(timer)
           panel.hidden = false
-          title.textContent = '앱을 불러오지 못했어요'
+          panel.dataset.state = 'error'
+          title.textContent = '좀 문제가 생겼어요.'
+          if (!errorArtRequested) {
+            errorArtRequested = true
+            art.onerror = function () { art.onerror = null; art.src = '/branding/pongi-startup.png' }
+            art.src = '/branding/pongi-startup-error.png'
+          }
           detail.textContent = '인터넷 연결을 확인하고 다시 시도해 주세요.'
           retry.hidden = false
           repair.hidden = false

@@ -12,7 +12,12 @@ vi.mock('@/features/notices/api',()=>({isNoticeOperator:mock.operator}))
 vi.mock('@/features/bugs/api',async original=>({...await original<typeof import('@/features/bugs/api')>(),loadBugReports:mock.feed,loadBugReport:mock.detail,saveBugReport:mock.save,confirmBugReport:mock.adopt,deleteBugReport:mock.remove}))
 const post={id:'idea',author_id:'other',author_name:'섬친구',title:'새로운 바다',body:'바다를 더 만들어주세요.',confirmed_at:null,confirmed_by:null,reward:{},created_at:'2026-10-18T00:00:00Z',updated_at:'2026-10-18T00:00:00Z'}
 beforeEach(()=>{vi.clearAllMocks();mock.feed.mockResolvedValue({items:[post],total:1});mock.detail.mockResolvedValue(post);mock.operator.mockResolvedValue(false);mock.save.mockResolvedValue(post);mock.refresh.mockResolvedValue(undefined);mock.remove.mockResolvedValue({id:post.id});mock.adopt.mockResolvedValue({...post,confirmed_at:'2026-10-18T01:00:00Z'})})
-afterEach(cleanup)
+afterEach(()=>{cleanup();localStorage.clear()})
+it('acknowledges the timestamp actually returned by the bug feed',async()=>{
+ render(<MemoryRouter><BugReportsPage/></MemoryRouter>)
+ await screen.findByText(post.title)
+ expect(localStorage.getItem('pongdang:content-seen:me:bugs')).toBe(String(Date.parse(post.created_at)))
+})
 it('retains draft and request ID after failure, with no visibility checkbox or reply form',async()=>{
  mock.save.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce(post)
  render(<MemoryRouter><BugReportsPage/></MemoryRouter>)

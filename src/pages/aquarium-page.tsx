@@ -424,12 +424,8 @@ export function AquariumPage() {
         }
         managementControls={
           <>
-            <div className="flex flex-col items-center gap-1">
-              <CollectionDialog onAddTemporary={operator && tank ? addTemporary : undefined} />
-              <span className="text-[10px] text-muted-foreground">바다 도감</span>
-            </div>
+            <CollectionDialog toolbarLabel="바다 도감" onAddTemporary={operator && tank ? addTemporary : undefined} />
             {state && tank ? (
-              <div className="flex flex-col items-center gap-1">
                 <AquariumBackgroundDialog
                   state={state}
                   selectedId={tank.background_id}
@@ -440,8 +436,6 @@ export function AquariumPage() {
                   error={!!goldLoadError}
                   onAct={act}
                 />
-                <span className="text-[10px] text-muted-foreground">배경 바꾸기</span>
-              </div>
             ) : null}
             <Tooltip>
               <TooltipTrigger

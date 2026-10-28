@@ -1,4 +1,5 @@
 import sharedCreatureLayouts from './shared-creature-frame-layouts.json'
+import starruinsBluegoldLayouts from './starruins-bluegold-frame-layouts.json'
 import nyamnyamLayouts from './nyamnyam-frame-layouts.json'
 import oceanCreatureLayouts from './ocean-creature-frame-layouts.json'
 import sharedExpansionLayouts from './shared-expansion-frame-layouts.json'
@@ -107,6 +108,11 @@ const layouts:Record<string,readonly (readonly [number,number,number])[]>={
 }
 
 export function swimFrameLayout(path:string,frame:number){
+ const aligned:Record<string,{cell:number;scale:number;shifts:number[][]}>=starruinsBluegoldLayouts
+ if(Object.hasOwn(aligned,path)){
+  const layout=aligned[path]
+  return {originX:.5,originY:.5,scale:layout.scale}
+ }
  const reviewed:Record<string,{cell:number;scale?:number;shifts:number[][]}>=reviewedLayouts
  const correction=reviewed[path]
  if(correction){const [x,y]=correction.shifts[frame]??[0,0];return {originX:.5+x/correction.cell,originY:.5+y/correction.cell,scale:correction.scale??1}}

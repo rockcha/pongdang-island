@@ -1,8 +1,8 @@
 import {createClient} from '@/lib/client'
 
-export const pushCategories=['production','bait-production','expedition','harbor','bait-production-expiring','production-expiring'] as const
+export const pushCategories=['production','bait-production','expedition','harbor','bait-production-expiring','production-expiring','voyage-bets'] as const
 export type PushCategory=typeof pushCategories[number]
-export const defaultPushCategories:PushCategory[]=pushCategories.filter(category=>!category.endsWith('-expiring'))
+export const defaultPushCategories:PushCategory[]=pushCategories.filter(category=>!category.endsWith('-expiring')&&category!=='voyage-bets')
 export type PushDeviceState={registered:boolean;categories:PushCategory[]}
 export const supportsPush=()=>typeof window!=='undefined'&&window.isSecureContext&&'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window
 export const needsHomeScreen=()=>/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.matchMedia('(display-mode: standalone)').matches&&!(navigator as Navigator&{standalone?:boolean}).standalone

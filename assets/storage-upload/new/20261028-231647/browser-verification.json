@@ -1,0 +1,255 @@
+{
+  "capturedAt": "2026-10-28T14:37:11.970Z",
+  "scope": "Local browser with production Phaser tank and collection renderer; remote image requests served local approved PNGs",
+  "results": [
+    {
+      "width": 1100,
+      "height": 1050,
+      "dpr": 1,
+      "liveTankCount": 3,
+      "collectionPreviews": 3,
+      "moving": true,
+      "reducedMotionStable": true,
+      "before": {
+        "clock": 2.0706343333333317,
+        "view": 0,
+        "width": 1010,
+        "viewportWidth": 1010,
+        "height": 420,
+        "inhabitants": [
+          {
+            "id": "plunder-black-sail-captain-pongi",
+            "x": 817.9017400224146,
+            "y": 173.19564372777288,
+            "size": 150,
+            "direction": 1,
+            "angle": -1.2719240093753328,
+            "frame": 2
+          },
+          {
+            "id": "plunder-safecracker-pongi",
+            "x": 429.25342547345736,
+            "y": 168.76321611797553,
+            "size": 136,
+            "direction": 1,
+            "angle": -2.325100557603974,
+            "frame": 3
+          },
+          {
+            "id": "plunder-red-knot-bosun-pongi",
+            "x": 51.64779099979897,
+            "y": 144.6135254683047,
+            "size": 145,
+            "direction": 1,
+            "angle": -1.173944774409538,
+            "frame": 1
+          }
+        ]
+      },
+      "after": {
+        "clock": 9.961232333333239,
+        "view": 0,
+        "width": 1010,
+        "viewportWidth": 1010,
+        "height": 420,
+        "inhabitants": [
+          {
+            "id": "plunder-black-sail-captain-pongi",
+            "x": 835.4699358623935,
+            "y": 170.20799951632452,
+            "size": 150,
+            "direction": 1,
+            "angle": -3.752892320337415,
+            "frame": 2
+          },
+          {
+            "id": "plunder-safecracker-pongi",
+            "x": 510.04042308275484,
+            "y": 161.6607702420191,
+            "size": 136,
+            "direction": 1,
+            "angle": -5.449940573631693,
+            "frame": 3
+          },
+          {
+            "id": "plunder-red-knot-bosun-pongi",
+            "x": 283.50076892509776,
+            "y": 139.01181387400004,
+            "size": 145,
+            "direction": 1,
+            "angle": -1.547256122372411,
+            "frame": 1
+          }
+        ]
+      },
+      "errors": [],
+      "failed": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "liveTankCount": 3,
+      "collectionPreviews": 3,
+      "moving": true,
+      "reducedMotionStable": true,
+      "before": {
+        "clock": 2.0931900000000017,
+        "view": 0,
+        "width": 350,
+        "viewportWidth": 350,
+        "height": 440,
+        "inhabitants": [
+          {
+            "id": "plunder-black-sail-captain-pongi",
+            "x": 190.21040828764794,
+            "y": 186.02449215787783,
+            "size": 150,
+            "direction": 1,
+            "angle": -0.3277349710686861,
+            "frame": 2
+          },
+          {
+            "id": "plunder-safecracker-pongi",
+            "x": 93.91752789320914,
+            "y": 197.36303654112695,
+            "size": 136,
+            "direction": -1,
+            "angle": 1.0918897546463247,
+            "frame": 3
+          },
+          {
+            "id": "plunder-red-knot-bosun-pongi",
+            "x": 24.199254836438215,
+            "y": 110.39212347022927,
+            "size": 145,
+            "direction": 1,
+            "angle": 2.226129242354496,
+            "frame": 1
+          }
+        ]
+      },
+      "after": {
+        "clock": 10.326919999999914,
+        "view": 0,
+        "width": 350,
+        "viewportWidth": 350,
+        "height": 440,
+        "inhabitants": [
+          {
+            "id": "plunder-black-sail-captain-pongi",
+            "x": 194.49807160644656,
+            "y": 182.62645330289257,
+            "size": 150,
+            "direction": 1,
+            "angle": -0.877562962910953,
+            "frame": 3
+          },
+          {
+            "id": "plunder-safecracker-pongi",
+            "x": 73.7622142827746,
+            "y": 187.41136147736114,
+            "size": 136,
+            "direction": -1,
+            "angle": 5.526383043779268,
+            "frame": 0
+          },
+          {
+            "id": "plunder-red-knot-bosun-pongi",
+            "x": 77.53927191418158,
+            "y": 117.39143676379956,
+            "size": 145,
+            "direction": 1,
+            "angle": 8.421113876273001,
+            "frame": 2
+          }
+        ]
+      },
+      "errors": [],
+      "failed": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "liveTankCount": 3,
+      "collectionPreviews": 3,
+      "moving": true,
+      "reducedMotionStable": true,
+      "before": {
+        "clock": 2.038401934942655,
+        "view": 0,
+        "width": 350,
+        "viewportWidth": 350,
+        "height": 440,
+        "inhabitants": [
+          {
+            "id": "plunder-black-sail-captain-pongi",
+            "x": 190.2108446667496,
+            "y": 186.02420683245467,
+            "size": 150,
+            "direction": 1,
+            "angle": -0.32820608747172625,
+            "frame": 2
+          },
+          {
+            "id": "plunder-safecracker-pongi",
+            "x": 93.91615168564292,
+            "y": 197.36243271117252,
+            "size": 136,
+            "direction": -1,
+            "angle": 1.0930675497417939,
+            "frame": 3
+          },
+          {
+            "id": "plunder-red-knot-bosun-pongi",
+            "x": 24.203183492897207,
+            "y": 110.39256733647035,
+            "size": 145,
+            "direction": 1,
+            "angle": 2.228568239218262,
+            "frame": 1
+          }
+        ]
+      },
+      "after": {
+        "clock": 11.084855275893418,
+        "view": 0,
+        "width": 350,
+        "viewportWidth": 350,
+        "height": 440,
+        "inhabitants": [
+          {
+            "id": "plunder-black-sail-captain-pongi",
+            "x": 194.97782162445506,
+            "y": 182.16311438967466,
+            "size": 150,
+            "direction": 1,
+            "angle": -0.8837642668928984,
+            "frame": 1
+          },
+          {
+            "id": "plunder-safecracker-pongi",
+            "x": 70.67256536275549,
+            "y": 185.69876854282495,
+            "size": 136,
+            "direction": -1,
+            "angle": 5.707256758253332,
+            "frame": 2
+          },
+          {
+            "id": "plunder-red-knot-bosun-pongi",
+            "x": 85.09882288217166,
+            "y": 118.55553738602204,
+            "size": 145,
+            "direction": 1,
+            "angle": 8.803496105495338,
+            "frame": 1
+          }
+        ]
+      },
+      "errors": [],
+      "failed": []
+    }
+  ]
+}

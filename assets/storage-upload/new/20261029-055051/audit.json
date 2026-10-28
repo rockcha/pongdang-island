@@ -1,0 +1,1331 @@
+{
+  "results": [
+    {
+      "id": "tile-fitting-crab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\tile-fitting-crab-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            223,
+            1173,
+            796
+          ],
+          "margin": 21,
+          "occupancy": 0.9354066985645934,
+          "opaque": 473353,
+          "transparent": 1074137,
+          "soft": 497781
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tile-fitting-crab",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\tile-fitting-crab-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            117,
+            236,
+            442,
+            301
+          ],
+          "margin": 68,
+          "occupancy": 0.7049441786283892,
+          "opaque": 72181,
+          "transparent": 309572,
+          "soft": 83293
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            85,
+            240,
+            446,
+            293
+          ],
+          "margin": 85,
+          "occupancy": 0.7113237639553429,
+          "opaque": 70630,
+          "transparent": 311362,
+          "soft": 81449
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            119,
+            158,
+            437,
+            290
+          ],
+          "margin": 71,
+          "occupancy": 0.696969696969697,
+          "opaque": 70652,
+          "transparent": 311038,
+          "soft": 81926
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            94,
+            158,
+            440,
+            290
+          ],
+          "margin": 93,
+          "occupancy": 0.7017543859649122,
+          "opaque": 70226,
+          "transparent": 311665,
+          "soft": 81258
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "teacup-nest-blenny",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\teacup-nest-blenny-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            188,
+            1162,
+            925
+          ],
+          "margin": 45,
+          "occupancy": 0.9266347687400319,
+          "opaque": 596473,
+          "transparent": 959487,
+          "soft": 611936
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "teacup-nest-blenny",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\teacup-nest-blenny-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            109,
+            158,
+            409,
+            329
+          ],
+          "margin": 109,
+          "occupancy": 0.6523125996810207,
+          "opaque": 76586,
+          "transparent": 306102,
+          "soft": 86711
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            108,
+            154,
+            409,
+            333
+          ],
+          "margin": 108,
+          "occupancy": 0.6523125996810207,
+          "opaque": 76706,
+          "transparent": 305574,
+          "soft": 87213
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            109,
+            151,
+            409,
+            330
+          ],
+          "margin": 109,
+          "occupancy": 0.6523125996810207,
+          "opaque": 76325,
+          "transparent": 304562,
+          "soft": 88265
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            108,
+            149,
+            409,
+            332
+          ],
+          "margin": 108,
+          "occupancy": 0.6523125996810207,
+          "opaque": 76296,
+          "transparent": 305016,
+          "soft": 87799
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "cracked-perfume-vial",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\cracked-perfume-vial-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            279,
+            62,
+            698,
+            1130
+          ],
+          "margin": 62,
+          "occupancy": 0.9011164274322169,
+          "opaque": 501265,
+          "transparent": 1057218,
+          "soft": 514509
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "lost-atlantean-crown",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\lost-atlantean-crown-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            33,
+            181,
+            1189,
+            909
+          ],
+          "margin": 32,
+          "occupancy": 0.9481658692185008,
+          "opaque": 629645,
+          "transparent": 920358,
+          "soft": 651690
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "amphora-home-octopus",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\amphora-home-octopus-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            134,
+            110,
+            1033,
+            1030
+          ],
+          "margin": 87,
+          "occupancy": 0.8237639553429027,
+          "opaque": 699791,
+          "transparent": 857943,
+          "soft": 713427
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "amphora-home-octopus",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\amphora-home-octopus-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            124,
+            124,
+            438,
+            433
+          ],
+          "margin": 65,
+          "occupancy": 0.6985645933014354,
+          "opaque": 125297,
+          "transparent": 261224,
+          "soft": 131500
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            90,
+            124,
+            467,
+            434
+          ],
+          "margin": 69,
+          "occupancy": 0.74481658692185,
+          "opaque": 122859,
+          "transparent": 262477,
+          "soft": 130321
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            130,
+            90,
+            422,
+            431
+          ],
+          "margin": 75,
+          "occupancy": 0.6874003189792663,
+          "opaque": 122653,
+          "transparent": 263854,
+          "soft": 128822
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            93,
+            90,
+            488,
+            433
+          ],
+          "margin": 46,
+          "occupancy": 0.7783094098883573,
+          "opaque": 128606,
+          "transparent": 256721,
+          "soft": 136009
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "broken-kingdom-tile",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\broken-kingdom-tile-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            104,
+            139,
+            1068,
+            1007
+          ],
+          "margin": 82,
+          "occupancy": 0.8516746411483254,
+          "opaque": 610697,
+          "transparent": 952097,
+          "soft": 620230
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sunken-kingdom-fountain",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\sunken-kingdom-fountain-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            170,
+            138,
+            967,
+            1024
+          ],
+          "margin": 92,
+          "occupancy": 0.8165869218500797,
+          "opaque": 548553,
+          "transparent": 1008614,
+          "soft": 563370
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sunken-kingdom-fountain",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\sunken-kingdom-fountain-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            140,
+            143,
+            401,
+            422
+          ],
+          "margin": 62,
+          "occupancy": 0.6730462519936204,
+          "opaque": 95378,
+          "transparent": 289744,
+          "soft": 102769
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            139,
+            143,
+            401,
+            422
+          ],
+          "margin": 62,
+          "occupancy": 0.6730462519936204,
+          "opaque": 95899,
+          "transparent": 288782,
+          "soft": 103746
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            140,
+            115,
+            401,
+            423
+          ],
+          "margin": 86,
+          "occupancy": 0.6746411483253588,
+          "opaque": 95712,
+          "transparent": 287143,
+          "soft": 105418
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            139,
+            115,
+            401,
+            423
+          ],
+          "margin": 87,
+          "occupancy": 0.6746411483253588,
+          "opaque": 95422,
+          "transparent": 288247,
+          "soft": 104379
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "azure-armored-sea-turtle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\azure-armored-sea-turtle-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            18,
+            316,
+            1220,
+            727
+          ],
+          "margin": 16,
+          "occupancy": 0.9728867623604466,
+          "opaque": 475439,
+          "transparent": 1084163,
+          "soft": 487420
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "azure-armored-sea-turtle",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\azure-armored-sea-turtle-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            67,
+            203,
+            485,
+            288
+          ],
+          "margin": 67,
+          "occupancy": 0.773524720893142,
+          "opaque": 76204,
+          "transparent": 309492,
+          "soft": 83321
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            71,
+            203,
+            480,
+            277
+          ],
+          "margin": 71,
+          "occupancy": 0.7655502392344498,
+          "opaque": 73709,
+          "transparent": 310044,
+          "soft": 82835
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            68,
+            170,
+            484,
+            283
+          ],
+          "margin": 68,
+          "occupancy": 0.7719298245614035,
+          "opaque": 72658,
+          "transparent": 311634,
+          "soft": 81215
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            76,
+            170,
+            486,
+            274
+          ],
+          "margin": 65,
+          "occupancy": 0.7751196172248804,
+          "opaque": 73769,
+          "transparent": 311269,
+          "soft": 81599
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "templekeeper-moray",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\templekeeper-moray-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            48,
+            281,
+            1190,
+            674
+          ],
+          "margin": 16,
+          "occupancy": 0.94896331738437,
+          "opaque": 373402,
+          "transparent": 1184099,
+          "soft": 387735
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "templekeeper-moray",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\templekeeper-moray-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            91,
+            274,
+            513,
+            265
+          ],
+          "margin": 23,
+          "occupancy": 0.8181818181818182,
+          "opaque": 68089,
+          "transparent": 318048,
+          "soft": 74552
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            55,
+            215,
+            538,
+            327
+          ],
+          "margin": 34,
+          "occupancy": 0.8580542264752791,
+          "opaque": 76288,
+          "transparent": 308873,
+          "soft": 83718
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            74,
+            262,
+            535,
+            193
+          ],
+          "margin": 18,
+          "occupancy": 0.8532695374800638,
+          "opaque": 56790,
+          "transparent": 324892,
+          "soft": 67900
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            40,
+            159,
+            532,
+            298
+          ],
+          "margin": 40,
+          "occupancy": 0.8484848484848485,
+          "opaque": 68363,
+          "transparent": 316031,
+          "soft": 76736
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "mask-changing-octopus",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\mask-changing-octopus-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            59,
+            208,
+            1158,
+            908
+          ],
+          "margin": 37,
+          "occupancy": 0.9234449760765551,
+          "opaque": 626358,
+          "transparent": 924113,
+          "soft": 647048
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "mask-changing-octopus",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\mask-changing-octopus-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            104,
+            149,
+            491,
+            391
+          ],
+          "margin": 32,
+          "occupancy": 0.7830940988835726,
+          "opaque": 117428,
+          "transparent": 260089,
+          "soft": 132562
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            98,
+            149,
+            466,
+            383
+          ],
+          "margin": 63,
+          "occupancy": 0.7432216905901117,
+          "opaque": 113377,
+          "transparent": 266472,
+          "soft": 126207
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            102,
+            117,
+            490,
+            383
+          ],
+          "margin": 35,
+          "occupancy": 0.7814992025518341,
+          "opaque": 115560,
+          "transparent": 262133,
+          "soft": 130502
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            97,
+            118,
+            473,
+            375
+          ],
+          "margin": 57,
+          "occupancy": 0.7543859649122807,
+          "opaque": 110948,
+          "transparent": 268536,
+          "soft": 124191
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "letter-carrier-ray",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\letter-carrier-ray-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            9,
+            254,
+            1238,
+            803
+          ],
+          "margin": 7,
+          "occupancy": 0.9872408293460925,
+          "opaque": 363609,
+          "transparent": 1198603,
+          "soft": 373267
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "letter-carrier-ray",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\letter-carrier-ray-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            77,
+            212,
+            500,
+            308
+          ],
+          "margin": 50,
+          "occupancy": 0.7974481658692185,
+          "opaque": 59936,
+          "transparent": 325007,
+          "soft": 67816
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            87,
+            201,
+            495,
+            319
+          ],
+          "margin": 45,
+          "occupancy": 0.7894736842105263,
+          "opaque": 62075,
+          "transparent": 322429,
+          "soft": 70381
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            69,
+            186,
+            508,
+            306
+          ],
+          "margin": 50,
+          "occupancy": 0.810207336523126,
+          "opaque": 59717,
+          "transparent": 322471,
+          "soft": 70332
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            79,
+            193,
+            502,
+            299
+          ],
+          "margin": 46,
+          "occupancy": 0.8006379585326954,
+          "opaque": 60748,
+          "transparent": 321036,
+          "soft": 71782
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "atlantean-guard-shark",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\fish\\epic\\atlantean-guard-shark_bluegold_v2_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            38,
+            266,
+            1200,
+            708
+          ],
+          "margin": 16,
+          "occupancy": 0.9569377990430622,
+          "opaque": 360669,
+          "transparent": 1197370,
+          "soft": 374190
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "atlantean-guard-shark",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\atlantean-guard-shark-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            38,
+            207,
+            580,
+            323
+          ],
+          "margin": 9,
+          "occupancy": 0.9250398724082934,
+          "opaque": 80284,
+          "transparent": 298516,
+          "soft": 94367
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            50,
+            206,
+            542,
+            320
+          ],
+          "margin": 35,
+          "occupancy": 0.8644338118022329,
+          "opaque": 78821,
+          "transparent": 302976,
+          "soft": 89918
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            60,
+            152,
+            559,
+            323
+          ],
+          "margin": 8,
+          "occupancy": 0.8915470494417863,
+          "opaque": 80520,
+          "transparent": 295722,
+          "soft": 97205
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            27,
+            155,
+            565,
+            323
+          ],
+          "margin": 27,
+          "occupancy": 0.9011164274322169,
+          "opaque": 79754,
+          "transparent": 297045,
+          "soft": 95898
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "living-mosaic-ray",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\living-mosaic-ray-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            20,
+            160,
+            1219,
+            855
+          ],
+          "margin": 15,
+          "occupancy": 0.9720893141945773,
+          "opaque": 421913,
+          "transparent": 1135440,
+          "soft": 436659
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "living-mosaic-ray",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\living-mosaic-ray-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            85,
+            185,
+            510,
+            348
+          ],
+          "margin": 32,
+          "occupancy": 0.8133971291866029,
+          "opaque": 75475,
+          "transparent": 290546,
+          "soft": 102315
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            64,
+            191,
+            500,
+            338
+          ],
+          "margin": 63,
+          "occupancy": 0.7974481658692185,
+          "opaque": 72500,
+          "transparent": 296514,
+          "soft": 96391
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            85,
+            138,
+            510,
+            338
+          ],
+          "margin": 32,
+          "occupancy": 0.8133971291866029,
+          "opaque": 72515,
+          "transparent": 292345,
+          "soft": 100642
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            65,
+            138,
+            514,
+            333
+          ],
+          "margin": 48,
+          "occupancy": 0.8197767145135566,
+          "opaque": 74097,
+          "transparent": 295111,
+          "soft": 97855
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "palace-lantern-anglerfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\palace-lantern-anglerfish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            31,
+            172,
+            1201,
+            892
+          ],
+          "margin": 22,
+          "occupancy": 0.9577352472089314,
+          "opaque": 546365,
+          "transparent": 1002941,
+          "soft": 568865
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "palace-lantern-anglerfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\palace-lantern-anglerfish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            105,
+            160,
+            443,
+            326
+          ],
+          "margin": 79,
+          "occupancy": 0.7065390749601276,
+          "opaque": 76707,
+          "transparent": 305973,
+          "soft": 86812
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            72,
+            160,
+            479,
+            325
+          ],
+          "margin": 72,
+          "occupancy": 0.7639553429027113,
+          "opaque": 76143,
+          "transparent": 305369,
+          "soft": 87448
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            112,
+            152,
+            433,
+            334
+          ],
+          "margin": 82,
+          "occupancy": 0.6905901116427432,
+          "opaque": 73783,
+          "transparent": 308579,
+          "soft": 84291
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            86,
+            151,
+            454,
+            324
+          ],
+          "margin": 86,
+          "occupancy": 0.7240829346092504,
+          "opaque": 73481,
+          "transparent": 308919,
+          "soft": 83996
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "atlantean-giant-squid",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\atlantean-giant-squid-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            28,
+            260,
+            1201,
+            799
+          ],
+          "margin": 25,
+          "occupancy": 0.9577352472089314,
+          "opaque": 321007,
+          "transparent": 1216511,
+          "soft": 355008
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "atlantean-giant-squid",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\atlantean-giant-squid-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            53,
+            190,
+            559,
+            343
+          ],
+          "margin": 15,
+          "occupancy": 0.8915470494417863,
+          "opaque": 67584,
+          "transparent": 303481,
+          "soft": 89257
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            79,
+            190,
+            477,
+            327
+          ],
+          "margin": 71,
+          "occupancy": 0.7607655502392344,
+          "opaque": 61065,
+          "transparent": 316384,
+          "soft": 76455
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            53,
+            139,
+            559,
+            343
+          ],
+          "margin": 15,
+          "occupancy": 0.8915470494417863,
+          "opaque": 67382,
+          "transparent": 305171,
+          "soft": 87641
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            79,
+            139,
+            515,
+            330
+          ],
+          "margin": 33,
+          "occupancy": 0.8213716108452951,
+          "opaque": 63024,
+          "transparent": 309140,
+          "soft": 83728
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "atlantean-sentinel",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\atlantean-sentinel-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            62,
+            38,
+            1115,
+            1179
+          ],
+          "margin": 37,
+          "occupancy": 0.9401913875598086,
+          "opaque": 611156,
+          "transparent": 935139,
+          "soft": 636593
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "atlantean-sentinel",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261029-055051\\sources\\atlantean-sentinel-sprite.source",
+      "width": 1774,
+      "height": 887,
+      "cell": 443.5,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            143,
+            144,
+            157,
+            158
+          ],
+          "margin": 141.5,
+          "occupancy": 0.35625704622322435,
+          "opaque": 12953,
+          "transparent": 179045,
+          "soft": 17165
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            132,
+            144,
+            167,
+            158
+          ],
+          "margin": 132,
+          "occupancy": 0.3765501691093574,
+          "opaque": 13538,
+          "transparent": 177947,
+          "soft": 18262
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            133,
+            144,
+            166,
+            158
+          ],
+          "margin": 133,
+          "occupancy": 0.3742953776775648,
+          "opaque": 13513,
+          "transparent": 178453,
+          "soft": 17735
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            140,
+            144,
+            159,
+            158
+          ],
+          "margin": 140,
+          "occupancy": 0.35851183765501693,
+          "opaque": 12987,
+          "transparent": 178785,
+          "soft": 17433
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            143,
+            143,
+            158,
+            159
+          ],
+          "margin": 141.5,
+          "occupancy": 0.35851183765501693,
+          "opaque": 13098,
+          "transparent": 179074,
+          "soft": 17146
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            145,
+            143,
+            154,
+            159
+          ],
+          "margin": 141.5,
+          "occupancy": 0.35851183765501693,
+          "opaque": 13242,
+          "transparent": 179052,
+          "soft": 17157
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            133,
+            143,
+            167,
+            159
+          ],
+          "margin": 133,
+          "occupancy": 0.3765501691093574,
+          "opaque": 13653,
+          "transparent": 177664,
+          "soft": 18558
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            140,
+            143,
+            159,
+            159
+          ],
+          "margin": 140,
+          "occupancy": 0.35851183765501693,
+          "opaque": 13224,
+          "transparent": 178421,
+          "soft": 17796
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

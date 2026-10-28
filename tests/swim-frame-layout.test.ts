@@ -134,13 +134,30 @@ it('keeps the moon archive base stable while bookmarks move',()=>{
 })
 it('stabilizes Atlantis heads and decoration bases without rescaling frames',async()=>{
  const {readFileSync}=await import('node:fs')
+ const {starruinsArtUrl}=await import('@/features/aquarium/starruins-art')
+ const {mythicSwimAsset,mythicSwimLayout}=await import('@/features/aquarium/mythic-swim')
+ const refreshed=JSON.parse(readFileSync('assets/storage-upload/new/20261029-055051/final-verification.json','utf8')).results
  const rows=JSON.parse(readFileSync('assets/storage-upload/new/20261015-213344/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}[]
  expect(rows).toHaveLength(15)
- for(const row of rows)for(const f of row.frames){
+ for(const row of rows){
+  const id=row.storage_path.split('/').pop()!.replace('_sprite.png','')
+  const current=starruinsArtUrl(row.storage_path)?refreshed.find((s:{id:string})=>s.id===id):undefined
+  if(current){
+   const enhanced=mythicSwimAsset(row.storage_path,'mythic')
+   for(const f of current.frames){
+    const layout=enhanced?mythicSwimLayout(enhanced.path,f.frame)!:swimFrameLayout(row.storage_path,f.frame)
+    expect(layout.originX).toBe(.5)
+    expect(layout.originY).toBe(.5)
+    expect(layout.scale).toBe(current.displayScale)
+    expect(Math.abs(f.anchor.dx)).toBeLessThanOrEqual(1)
+    expect(Math.abs(f.anchor.dy)).toBeLessThanOrEqual(1)
+   }
+  }else for(const f of row.frames){
   const layout=swimFrameLayout(row.storage_path,f.frame)
   expect((f.dx/627-layout.originX)*132).toBeCloseTo(-66,2)
   expect((f.dy/627-layout.originY)*132).toBeCloseTo(-66,2)
   expect(layout.scale).toBe(1)
+  }
  }
 })
 it('anchors the walking sentinel head while feet alternate',()=>{

@@ -1,0 +1,113 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261028-231647/fish/epic/plunder-black-sail-captain-pongi_v1_sprite.png",
+        "storage_path":  "fish/epic/plunder-black-sail-captain-pongi_v1_sprite.png",
+        "patch":  [
+                      410,
+                      280,
+                      65,
+                      55
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  5.0299937694369126
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  4.9766800678371572
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  5.955928653400905
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261028-231647/fish/epic/plunder-safecracker-pongi_v1_sprite.png",
+        "storage_path":  "fish/epic/plunder-safecracker-pongi_v1_sprite.png",
+        "patch":  [
+                      450,
+                      295,
+                      65,
+                      55
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -14,
+                           "dy":  0,
+                           "rmse":  7.6464567896122126
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -40,
+                           "rmse":  9.66765311471256
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -13,
+                           "dy":  -39,
+                           "rmse":  10.84958601728248
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261028-231647/fish/epic/plunder-red-knot-bosun-pongi_v1_sprite.png",
+        "storage_path":  "fish/epic/plunder-red-knot-bosun-pongi_v1_sprite.png",
+        "patch":  [
+                      440,
+                      280,
+                      65,
+                      55
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -12,
+                           "dy":  0,
+                           "rmse":  8.3025187853938753
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -25,
+                           "rmse":  6.9653534242964907
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -25,
+                           "rmse":  7.6185212494753953
+                       }
+                   ]
+    }
+]

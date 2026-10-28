@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen",
+  "status": "concept only; not uploaded",
+  "reference": {
+    "path": "fish/epic/atlantean-guard-shark-bluegold-concept_thumbnail.png",
+    "role": "edit target"
+  },
+  "storage_path": "fish/epic/atlantean-guard-shark-bluegold-concept-v2_thumbnail.png",
+  "prompt": "Edit the supplied shark concept image. Keep the exact same shark, right-facing pose, anatomy, eye, blue-and-yellow palette, golden armor, painterly dimensional rendering, ceramic texture, composition and transparent background. Make ONE targeted design correction: REMOVE the trident symbol from the forehead armor completely. Replace that trident emblem with a simple elegant flowing golden yellow spiral-wave flourish, matching the existing abstract yellow curved ornaments on the dorsal and pectoral fins. Only abstract curved wave/scroll decoration, no trident, no weapons, no heraldic pictogram, no letters. Retain the blue inset and harmonious gold border of the forehead armor, integrate the new flowing curved ornament naturally. Preserve all other details and complete silhouette. True alpha transparent PNG, no backdrop, no detached effects, no text.",
+  "visual_review": "Trident removed; yellow curved wave ornament replaces it. Right facing full silhouette retained."
+}

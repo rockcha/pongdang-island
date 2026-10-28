@@ -1,0 +1,847 @@
+{
+  "passed": true,
+  "scope": "Measured final PNG anchors and complete silhouettes; translation only, same scale for all poses; original sources separately audited",
+  "results": [
+    {
+      "id": "tile-fitting-crab",
+      "cell": 627,
+      "displayScale": 1.1502013422818793,
+      "patch": [
+        275,
+        179,
+        50,
+        44
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 91,
+          "occupancy": 0.7049441786283892,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 89,
+          "occupancy": 0.7113237639553429,
+          "changedPixelsFromFirst": 68720,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 33.219059722601344
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 92,
+          "occupancy": 0.696969696969697,
+          "changedPixelsFromFirst": 54944,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 16.372999078184463
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 93,
+          "occupancy": 0.7017543859649122,
+          "changedPixelsFromFirst": 55639,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 19.92287500880836
+          }
+        }
+      ]
+    },
+    {
+      "id": "teacup-nest-blenny",
+      "cell": 627,
+      "displayScale": 1.2570660146699266,
+      "patch": [
+        296,
+        351,
+        56,
+        50
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 108,
+          "occupancy": 0.6523125996810207,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 108,
+          "occupancy": 0.6523125996810207,
+          "changedPixelsFromFirst": 27589,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 13.151710621058461
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 108,
+          "occupancy": 0.6523125996810207,
+          "changedPixelsFromFirst": 26534,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 8.04678656320696
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 108,
+          "occupancy": 0.6523125996810207,
+          "changedPixelsFromFirst": 32691,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 15.012043668613515
+          }
+        }
+      ]
+    },
+    {
+      "id": "amphora-home-octopus",
+      "cell": 627,
+      "displayScale": 1.0471283095723012,
+      "patch": [
+        397,
+        261,
+        50,
+        50
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 94,
+          "occupancy": 0.6985645933014354,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 69,
+          "occupancy": 0.74481658692185,
+          "changedPixelsFromFirst": 76802,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 12.36477024665623
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 98,
+          "occupancy": 0.6874003189792663,
+          "changedPixelsFromFirst": 67556,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 11.584240876216304
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 67,
+          "occupancy": 0.7783094098883573,
+          "changedPixelsFromFirst": 82834,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 17.85710776071687
+          }
+        }
+      ]
+    },
+    {
+      "id": "sunken-kingdom-fountain",
+      "cell": 627,
+      "displayScale": 1.2154609929078013,
+      "patch": [
+        287,
+        475,
+        63,
+        28
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 101,
+          "occupancy": 0.6730462519936204,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 101,
+          "occupancy": 0.6730462519936204,
+          "changedPixelsFromFirst": 26272,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 9.455409134710242
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 101,
+          "occupancy": 0.6746411483253588,
+          "changedPixelsFromFirst": 37763,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 9.331781333547355
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 101,
+          "occupancy": 0.6746411483253588,
+          "changedPixelsFromFirst": 36449,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 9.759000729485331
+          }
+        }
+      ]
+    },
+    {
+      "id": "azure-armored-sea-turtle",
+      "cell": 627,
+      "displayScale": 1.0365725806451613,
+      "patch": [
+        469,
+        244,
+        47,
+        41
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 66,
+          "occupancy": 0.773524720893142,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 71,
+          "occupancy": 0.7655502392344498,
+          "changedPixelsFromFirst": 42562,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 13.923499534445867
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 67,
+          "occupancy": 0.7719298245614035,
+          "changedPixelsFromFirst": 43678,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 16.58958365102288
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 65,
+          "occupancy": 0.7751196172248804,
+          "changedPixelsFromFirst": 47486,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 10.242702105820095
+          }
+        }
+      ]
+    },
+    {
+      "id": "templekeeper-moray",
+      "cell": 627,
+      "displayScale": 0.9999558905639307,
+      "patch": [
+        490,
+        369,
+        42,
+        36
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 57,
+          "occupancy": 0.7783094098883573,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 57,
+          "occupancy": 0.8165869218500797,
+          "changedPixelsFromFirst": 62415,
+          "anchor": {
+            "frame": 1,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 20.488927032726263
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 56,
+          "occupancy": 0.8133971291866029,
+          "changedPixelsFromFirst": 56492,
+          "anchor": {
+            "frame": 2,
+            "dx": -1,
+            "dy": 1,
+            "rmse": 24.72329006076197
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 57,
+          "occupancy": 0.8086124401913876,
+          "changedPixelsFromFirst": 47129,
+          "anchor": {
+            "frame": 3,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 23.038044363513976
+          }
+        }
+      ]
+    },
+    {
+      "id": "mask-changing-octopus",
+      "cell": 627,
+      "displayScale": 1.0428803245436105,
+      "patch": [
+        374,
+        265,
+        50,
+        50
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 66,
+          "occupancy": 0.7830940988835726,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 70,
+          "occupancy": 0.7432216905901117,
+          "changedPixelsFromFirst": 87727,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 14.798122484482413
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 68,
+          "occupancy": 0.7814992025518341,
+          "changedPixelsFromFirst": 74610,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 14.317096030771228
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 68,
+          "occupancy": 0.7543859649122807,
+          "changedPixelsFromFirst": 96454,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 16.440255682939217
+          }
+        }
+      ]
+    },
+    {
+      "id": "letter-carrier-ray",
+      "cell": 627,
+      "displayScale": 1.0081176470588233,
+      "patch": [
+        460,
+        317,
+        44,
+        41
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 60,
+          "occupancy": 0.7974481658692185,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 58,
+          "occupancy": 0.7894736842105263,
+          "changedPixelsFromFirst": 38887,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 20.070737998626853
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 59,
+          "occupancy": 0.810207336523126,
+          "changedPixelsFromFirst": 33327,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 12.808154024831584
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 59,
+          "occupancy": 0.8006379585326954,
+          "changedPixelsFromFirst": 42143,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 24.76910037392019
+          }
+        }
+      ]
+    },
+    {
+      "id": "atlantean-guard-shark",
+      "cell": 627,
+      "displayScale": 0.9997233102293344,
+      "patch": [
+        451,
+        305,
+        39,
+        39
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 56,
+          "occupancy": 0.8197767145135566,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 58,
+          "occupancy": 0.7655502392344498,
+          "changedPixelsFromFirst": 45153,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 16.85054386072945
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 56,
+          "occupancy": 0.7894736842105263,
+          "changedPixelsFromFirst": 44981,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 14.87293320135051
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 57,
+          "occupancy": 0.7990430622009569,
+          "changedPixelsFromFirst": 47252,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 22.42723275909824
+          }
+        }
+      ]
+    },
+    {
+      "id": "living-mosaic-ray",
+      "cell": 627,
+      "displayScale": 1.000272373540856,
+      "patch": [
+        443,
+        337,
+        44,
+        44
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 58,
+          "occupancy": 0.8133971291866029,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 60,
+          "occupancy": 0.7974481658692185,
+          "changedPixelsFromFirst": 75587,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 37.20383791432754
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 58,
+          "occupancy": 0.8133971291866029,
+          "changedPixelsFromFirst": 67100,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 21.004153028495207
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 56,
+          "occupancy": 0.8197767145135566,
+          "changedPixelsFromFirst": 71605,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 20.777819370130683
+          }
+        }
+      ]
+    },
+    {
+      "id": "palace-lantern-anglerfish",
+      "cell": 627,
+      "displayScale": 1.0733611691022964,
+      "patch": [
+        390,
+        301,
+        44,
+        50
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 90,
+          "occupancy": 0.7065390749601276,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 73,
+          "occupancy": 0.7639553429027113,
+          "changedPixelsFromFirst": 56150,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 14.213980966005293
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 93,
+          "occupancy": 0.6905901116427432,
+          "changedPixelsFromFirst": 59855,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 15.196039215635674
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 85,
+          "occupancy": 0.7240829346092504,
+          "changedPixelsFromFirst": 57304,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 15.594462315256681
+          }
+        }
+      ]
+    },
+    {
+      "id": "atlantean-giant-squid",
+      "cell": 627,
+      "displayScale": 0.9993978794642858,
+      "patch": [
+        326,
+        281,
+        35,
+        35
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 56,
+          "occupancy": 0.8181818181818182,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 56,
+          "occupancy": 0.7001594896331739,
+          "changedPixelsFromFirst": 58307,
+          "anchor": {
+            "frame": 1,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 25.953952278774207
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 56,
+          "occupancy": 0.8181818181818182,
+          "changedPixelsFromFirst": 53735,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 1,
+            "rmse": 27.692445319577285
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 58,
+          "occupancy": 0.7543859649122807,
+          "changedPixelsFromFirst": 59636,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 21.3310952602064
+          }
+        }
+      ]
+    },
+    {
+      "id": "atlantean-sentinel",
+      "cell": 444,
+      "displayScale": 2.167142857142857,
+      "patch": [
+        250,
+        190,
+        22,
+        22
+      ],
+      "frames": [
+        {
+          "frame": 0,
+          "margin": 137,
+          "occupancy": 0.3581081081081081,
+          "changedPixelsFromFirst": 0,
+          "anchor": {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          }
+        },
+        {
+          "frame": 1,
+          "margin": 137,
+          "occupancy": 0.3783783783783784,
+          "changedPixelsFromFirst": 10939,
+          "anchor": {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 20.050814353786233
+          }
+        },
+        {
+          "frame": 2,
+          "margin": 137,
+          "occupancy": 0.3761261261261261,
+          "changedPixelsFromFirst": 9880,
+          "anchor": {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 18.182452048609946
+          }
+        },
+        {
+          "frame": 3,
+          "margin": 137,
+          "occupancy": 0.36036036036036034,
+          "changedPixelsFromFirst": 10081,
+          "anchor": {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 17.85313347846814
+          }
+        },
+        {
+          "frame": 4,
+          "margin": 137,
+          "occupancy": 0.3581081081081081,
+          "changedPixelsFromFirst": 10928,
+          "anchor": {
+            "frame": 4,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 27.8447846328536
+          }
+        },
+        {
+          "frame": 5,
+          "margin": 137,
+          "occupancy": 0.3581081081081081,
+          "changedPixelsFromFirst": 12163,
+          "anchor": {
+            "frame": 5,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 27.993860934140542
+          }
+        },
+        {
+          "frame": 6,
+          "margin": 137,
+          "occupancy": 0.3738738738738739,
+          "changedPixelsFromFirst": 12259,
+          "anchor": {
+            "frame": 6,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 28.87148246973127
+          }
+        },
+        {
+          "frame": 7,
+          "margin": 137,
+          "occupancy": 0.3581081081081081,
+          "changedPixelsFromFirst": 12020,
+          "anchor": {
+            "frame": 7,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 27.815589716020764
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -5,10 +5,10 @@
     640
   ],
   "summary": {
-    "count": 790,
-    "sourceBytes": 907651558,
-    "smallBytes": 21403322,
-    "largeBytes": 57875068,
+    "count": 793,
+    "sourceBytes": 911352157,
+    "smallBytes": 21489708,
+    "largeBytes": 58121950,
     "smallReductionPercent": 97.64
   },
   "items": [
@@ -4793,6 +4793,26 @@
       }
     },
     {
+      "key": "fish/epic/plunder-black-sail-captain-pongi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261028-231647/fish/epic/plunder-black-sail-captain-pongi_v1_thumbnail.png",
+      "sourceHash": "560222249bfd554edf8376c93690eef5308e22baa778546ab28d086def1d78e5",
+      "sourceBytes": 1258572,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ed983b949f75842f72560aa8-320.webp",
+        "bytes": 27000,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cbb6230c6511ec564df8339e-640.webp",
+        "bytes": 75968,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/epic/plunder-loot-king-hermit_v1_thumbnail.png",
       "source": "assets/storage-upload/new/20261027-034411/fish/epic/plunder-loot-king-hermit_v1_thumbnail.png",
       "sourceHash": "db15ce23bed4b9f3c04a2a30e1125f87c9bcda4ca6b39e227b1e5859cba87b6d",
@@ -4808,6 +4828,46 @@
       "large": {
         "url": "/game-art/thumbnails/50e1912c0fcfa56d20c16371-640.webp",
         "bytes": 147246,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261028-231647/fish/epic/plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+      "sourceHash": "3705d3e4d0ef6a808efbe3200460d89cd283df0a939e8734cff54e8a2c01ba3a",
+      "sourceBytes": 1253298,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/943b604cbe37b050fb8ac200-320.webp",
+        "bytes": 29548,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/dce6608cb800f54fba347d0c-640.webp",
+        "bytes": 82362,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/plunder-safecracker-pongi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261028-231647/fish/epic/plunder-safecracker-pongi_v1_thumbnail.png",
+      "sourceHash": "228d8c0a152cb45b2730678ca4298166bd12a776d64c6e9cc969c2e74a2558be",
+      "sourceBytes": 1089592,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9ad6768c5b10af5afe38eedd-320.webp",
+        "bytes": 25314,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2a8e036560a2e98db86420bf-640.webp",
+        "bytes": 72016,
         "width": 640,
         "height": 640
       }
@@ -5474,20 +5534,20 @@
     },
     {
       "key": "fish/mythic/atlantean-sentinel_thumbnail.png",
-      "source": "assets/storage-upload/new/20261015-213344/fish/mythic/atlantean-sentinel_thumbnail.png",
-      "sourceHash": "f35422d345b70ec3445008eb2940921d87bc7416578c00cbfa11f872f91d4842",
-      "sourceBytes": 1391075,
+      "source": "public/game-art/starruins-bluegold/fish/mythic/atlantean-sentinel_bluegold_v2_thumbnail.png",
+      "sourceHash": "9e47850c5b31071f18fb3386488dbd5324918f7b60f40d4992fc17b2d0196a98",
+      "sourceBytes": 1624063,
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "small": {
-        "url": "/game-art/thumbnails/13f59f7b45d7651c64be3ff9-320.webp",
-        "bytes": 35406,
+        "url": "/game-art/thumbnails/c28c09b0f415c560a59e9f8e-320.webp",
+        "bytes": 40550,
         "width": 320,
         "height": 320
       },
       "large": {
-        "url": "/game-art/thumbnails/54e74ef98988efa000efaf71-640.webp",
-        "bytes": 100052,
+        "url": "/game-art/thumbnails/daac297570388e84392c6edd-640.webp",
+        "bytes": 115406,
         "width": 640,
         "height": 640
       }
@@ -13774,20 +13834,20 @@
     },
     {
       "key": "trash/normal/cracked-perfume-vial_thumbnail.png",
-      "source": "assets/storage-upload/new/20261015-213344/trash/normal/cracked-perfume-vial_thumbnail.png",
-      "sourceHash": "f09c900e515614a10accd2e4dc31b1e6bf660201bf06080f9eaf4f747f99b864",
-      "sourceBytes": 1407471,
+      "source": "public/game-art/starruins-bluegold/decorations/normal/cracked-perfume-vial_bluegold_v2_thumbnail.png",
+      "sourceHash": "61c02a6fbb889bf77a24720ed2016137f4f97e57a5e9cff9f906d4208886f618",
+      "sourceBytes": 1273620,
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "small": {
-        "url": "/game-art/thumbnails/1ff54f3ca7237dfa3a2c2f85-320.webp",
-        "bytes": 30754,
+        "url": "/game-art/thumbnails/11657b9ecb6f5a351102f22d-320.webp",
+        "bytes": 30134,
         "width": 320,
         "height": 320
       },
       "large": {
-        "url": "/game-art/thumbnails/12031bf85be7df69d4d61654-640.webp",
-        "bytes": 90488,
+        "url": "/game-art/thumbnails/c79ee2c9e8dbb6440fe8d07e-640.webp",
+        "bytes": 91670,
         "width": 640,
         "height": 640
       }

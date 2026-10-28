@@ -334,7 +334,6 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   padding: 6px;
   font-size: 11px;
 }
-.aquarium-manager > div button[data-slot="dialog-trigger"] { min-height: 44px; height: 44px; }
 .aquarium-manager button[data-slot="dialog-trigger"] > :is(img,svg) { width: 30px; height: 30px; }
 .aquarium-manager button[data-slot="dialog-trigger"] > span.rounded-full { position: absolute; top: 0; right: 6px; }
 .aquarium-manager button[data-slot="dialog-trigger"]:hover { background: var(--secondary); }

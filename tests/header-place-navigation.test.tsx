@@ -27,8 +27,8 @@ it('shows seven representative icons with visible labels and an active category'
  expect(screen.getByRole('button',{name:'바다'}).getAttribute('aria-current')).toBe('location')
 })
 it.each([
- ['내 섬',['/my-island','/aquarium','/profile','/music-room','/arcade','/savings']],
- ['바다',['/harbor','/fishing','/expeditions','/port']],
+ ['내 섬',['/my-island','/aquarium','/profile','/music-room','/arcade','/voyage-bets','/savings']],
+ ['바다',['/harbor','/fishing','/fishing-records','/expeditions','/port']],
  ['소식',['/island-news','/square/notices','/square/suggestions','/square/bugs']],
  ['생산',['/bait-production','/my-bait-production','/production','/farm']],
  ['장터',['/shop','/item-shop','/decoration-shop','/shipyard','/bait-production-shop','/production-shop','/flea-market','/exchange','/merchant-orders']],
@@ -43,7 +43,7 @@ it('keeps every normal-player destination reachable in exactly one category',asy
  render(<MemoryRouter><View/></MemoryRouter>);const paths:string[]=[]
  for(const group of groups){const menu=await open(group);paths.push(...within(menu).getAllByRole('menuitem').map(i=>i.getAttribute('href')!));await close(menu)}
  expect(new Set(paths).size).toBe(paths.length)
- expect(paths.sort()).toEqual(headerPlaces.filter(p=>p.to!=='/collection-animation').map(p=>p.to).sort())
+ expect(paths.sort()).toEqual([...headerPlaces.filter(p=>p.to!=='/collection-animation').map(p=>p.to),'/fishing-records'].sort())
 })
 it('navigates from each new category using the existing dropdown links',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
@@ -66,6 +66,14 @@ it('preserves operator-only animation collection access',async()=>{
  expect(within(menu).queryByRole('menuitem',{name:/애니메이션 도감/})).toBeNull()
  mock.operator=true;view.rerender(<MemoryRouter><View/></MemoryRouter>);menu=screen.getByRole('menu')
  expect(within(menu).getByRole('menuitem',{name:/애니메이션 도감.*운영자/})).toBeTruthy()
+})
+it('shows the operator test page immediately after voyage bets only to operators',async()=>{
+ const view=render(<MemoryRouter><View/></MemoryRouter>);let menu=await open('내 섬')
+ expect(within(menu).queryByRole('menuitem',{name:/만선 승부장 테스트/})).toBeNull()
+ mock.operator=true;view.rerender(<MemoryRouter><View/></MemoryRouter>);menu=screen.getByRole('menu')
+ const items=within(menu).getAllByRole('menuitem'),at=items.findIndex(i=>i.getAttribute('href')==='/voyage-bets')
+ expect(items[at+1].getAttribute('href')).toBe('/voyage-bets-test')
+ expect(items[at+1].textContent).toContain('운영자')
 })
 it('routes production, harbor, savings and community activity dots to their new categories',()=>{
  mock.newContent.bugs=true;mock.newContent.exchange=true;mock.harbor={ready:1,total:2};mock.fuel={ready:1,total:3}

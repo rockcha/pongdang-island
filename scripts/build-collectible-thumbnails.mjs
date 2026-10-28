@@ -6,6 +6,7 @@ import path from 'node:path'
 const profile='webp-q88-alpha100-inside-v1',out='public/game-art/thumbnails'
 const manifestPath='assets/optimized-thumbnails/manifest.json'
 const catalog=JSON.parse(await readFile('supabase/catalog/catalog.json','utf8'))
+const starruinsArt=JSON.parse(await readFile('src/features/aquarium/starruins-bluegold-assets.json','utf8'))
 const keys=[...new Set([...catalog.collectible_species,...catalog.region_maps].map(s=>s.thumbnail_path))].sort()
 const candidates=new Map()
 async function walk(dir){
@@ -30,7 +31,8 @@ for(const key of keys){
   const stamp=p=>p.match(/\/(\d{8}-\d{6})\//)?.[1]??''
   return stamp(a)<stamp(b)?1:stamp(a)>stamp(b)?-1:a.localeCompare(b)
  })
- let source=files[0],input
+ const replacement=starruinsArt[key]
+ let source=replacement?.small?'public'+replacement.url:files[0],input
  if(source)input=await readFile(source)
  else{
   source=`.cache/thumbnail-sources/${hash(key).slice(0,24)}.png`

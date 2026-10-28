@@ -13,7 +13,7 @@ export function AppReady(){
 
 export function AppRecovery(){
   useEffect(()=>window.pongdangStartup?.fail('render-error'),[])
-  return <p role="alert">앱을 불러오지 못했어요. <button type="button" onClick={()=>window.location.reload()}>다시 시도</button></p>
+  return <p role="alert">좀 문제가 생겼어요. <button type="button" onClick={()=>window.location.reload()}>다시 시도</button></p>
 }
 
 export class AppRecoveryBoundary extends Component<{children:ReactNode},{failed:boolean}>{

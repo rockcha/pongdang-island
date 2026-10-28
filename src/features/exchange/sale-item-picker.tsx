@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {Check,Search} from 'lucide-react'
 import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs'
 import {AssetView} from './asset-view'
+import {ShopSalePrice} from './shop-sale-price'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import {LandscapeImage} from '@/components/landscape-image'
 import type {ExchangeAsset,ExchangeInventory} from './api'
@@ -25,7 +26,7 @@ export function SaleItemPicker({value,onChange,inventory,disabled,loading=false,
    return <li key={`${asset.kind}:${asset.id}`} className="min-w-0"><button type="button" disabled={disabled||(multiple&&!active&&value.length>=10)} aria-label={`${asset.name} 선택 · 보유 ${asset.available}개`} aria-pressed={active} onClick={()=>onChange(!multiple?[{...asset,quantity:1}]:active?value.filter(item=>item.kind!==asset.kind||item.id!==asset.id):[...value,{...asset,quantity:1}])} className={`relative flex w-full items-center rounded-lg border text-left transition-colors hover:bg-secondary/40 focus-visible:outline-2 focus-visible:outline-primary ${multiple?'h-full min-h-20 gap-2 px-2.5 py-3':'min-h-20 justify-between gap-3 px-3 py-3'} ${active?'border-primary/60 bg-primary/5':'border-border/60 bg-background'}`}>
     {multiple?<>
      {asset.kind==='collectible'?<CollectibleThumbnail path={asset.thumbnail_path??''} name={asset.name} className="size-9 shrink-0"/>:<LandscapeImage src={asset.thumbnail_path??''} alt="" className="size-9 shrink-0 object-contain"/>}
-     <span className="min-w-0 flex-1"><span className="line-clamp-2 break-words text-xs leading-5">{asset.name}</span><span className="mt-0.5 block text-[10px] tabular-nums text-muted-foreground">×{asset.available?.toLocaleString('ko-KR')}</span></span>
+     <span className="min-w-0 flex-1"><span className="line-clamp-2 break-words text-xs leading-5">{asset.name}</span><span className="mt-0.5 block text-[10px] tabular-nums text-muted-foreground">×{asset.available?.toLocaleString('ko-KR')}</span><ShopSalePrice asset={asset} compact/></span>
      {active&&<Check className="absolute right-1.5 top-1.5 size-3 text-primary" aria-hidden="true"/>}
     </>:<><AssetView asset={asset} compact showQuantity={false}/><span className="flex shrink-0 items-center gap-2 text-xs text-muted-foreground">보유 {asset.available}개{active&&<Check className="size-4 text-primary" aria-hidden="true"/>}</span></>}
    </button></li>

@@ -6,6 +6,7 @@ import {VisitableAvatar as PlayerAvatar} from '@/features/profile/visitable-avat
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import {LandscapeImage} from '@/components/landscape-image'
 import {exchangeOfferItems,type ExchangeListing} from './api'
+import {ShopSalePrice} from './shop-sale-price'
 
 export function SaleListingRow({listing,owner}:{listing:ExchangeListing;owner:string}){
  const mine=listing.owner_id===owner
@@ -19,6 +20,7 @@ export function SaleListingRow({listing,owner}:{listing:ExchangeListing;owner:st
     <div className="min-w-0 flex-1 space-y-1.5">
      <div className="flex items-start gap-2"><h2 className="line-clamp-2 min-w-0 break-words text-sm font-medium leading-6">{listing.title||listing.offer.name+' 판매합니다'}</h2>{mine&&<span className="mt-1 shrink-0 rounded bg-secondary/70 px-1.5 py-0.5 text-[9px] text-primary">내 글</span>}</div>
      <p className="truncate text-[11px] text-muted-foreground">{bundle?`${items.length}종 묶음`:listing.offer.name}<span className="mx-1.5 opacity-50">·</span>{bundle?'총 ':''}{listing.offer.quantity.toLocaleString('ko-KR')}개</p>
+     {!bundle&&<ShopSalePrice asset={listing.offer}/>}
      <p className="flex items-center gap-1 text-base tabular-nums text-primary"><GoldIcon className="size-4"/>{listing.wanted.quantity.toLocaleString('ko-KR')}{listing.status!=='active'&&<span className="ml-1.5 text-[10px] text-muted-foreground">{listing.status==='completed'?'판매 완료':'판매 취소'}</span>}</p>
     </div>
    </div>

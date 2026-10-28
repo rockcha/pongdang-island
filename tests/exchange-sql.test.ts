@@ -161,6 +161,20 @@ it('protects tables and internal helpers from direct client access',async()=>{
  await expect(user(maker,"update public.exchange_listings set status='cancelled'")).rejects.toThrow('permission denied')
  await expect(user(maker,"select app_private.exchange_reserve($1,'{}')",[maker])).rejects.toThrow('permission denied')
 })
+it('adds current shop prices to inventory and legacy listings without changing retry snapshots',async()=>{
+ await seedItem(maker)
+ const op=crypto.randomUUID(),listing=await sale('collectible','soft-sea-cucumber',1,300,op)
+ const original=(await db.query("select sell_price from public.collectible_species where id='soft-sea-cucumber'")).rows[0].sell_price
+ await db.query("update public.collectible_species set sell_price=sell_price+7 where id='soft-sea-cucumber'")
+ const inventory=(await user(maker,'select public.exchange_inventory() value')).rows[0].value
+ expect(inventory.assets.find((a:any)=>a.id==='soft-sea-cucumber').sell_price).toBe(original+7)
+ const feed=(await user(taker,"select public.exchange_state('all','',0) value")).rows[0].value
+ expect(feed.items[0].offer.sell_price).toBe(original+7)
+ const detail=(await user(taker,'select public.exchange_listing_detail($1) value',[listing.id])).rows[0].value
+ expect(detail.listing.offer.sell_price).toBe(original+7)
+ expect(detail.listing.wanted.quantity).toBe(300)
+ expect((await sale('collectible','soft-sea-cucumber',1,300,op)).id).toBe(listing.id)
+})
 it('returns legacy buy and barter escrow while preserving valid sales during migration',async()=>{
  const legacy=await createLocalDatabase()
  try{

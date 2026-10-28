@@ -2,7 +2,7 @@ import {fuelDisplay} from '@/lib/fuel-display'
 import {questProgressChanged} from '@/features/quests/progress-events'
 import {createClient} from '@/lib/client'
 export type AssetKind='gold'|'bait'|'fuel'|'collectible'
-export type ExchangeAsset={kind:AssetKind;id:string;name:string;quantity:number;thumbnail_path:string|null;subtype?:'fish'|'trash'|'decoration';available?:number;items?:ExchangeAsset[]}
+export type ExchangeAsset={kind:AssetKind;id:string;name:string;quantity:number;thumbnail_path:string|null;subtype?:'fish'|'trash'|'decoration';sell_price?:number|null;available?:number;items?:ExchangeAsset[]}
 export const exchangeOfferItems=(asset:ExchangeAsset)=>asset.items?.length?asset.items:[asset]
 export type ExchangeListing={id:string;title?:string|null;owner_id:string;owner_name:string;owner_avatar_path?:string|null;side:'buy'|'sell';offer:ExchangeAsset;wanted:ExchangeAsset;status:'active'|'completed'|'cancelled';taker_id:string|null;created_at:string;closed_at:string|null;like_count?:number;comment_count?:number;liked?:boolean}
 export type ExchangeComment={id:string;user_id:string;body:string;created_at:string;author_name:string;author_avatar_path:string|null}

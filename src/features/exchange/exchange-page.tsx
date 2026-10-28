@@ -1,3 +1,4 @@
+import {ShopSalePrice} from './shop-sale-price'
 import {EmptyState} from '@/components/empty-state'
 import {useEffect,useRef,useState} from 'react'
 import {Plus,RefreshCw,Store,ClipboardList,Search,X} from 'lucide-react'
@@ -70,7 +71,7 @@ function AccountExchange({owner}:{owner:string}){
    <div className="shrink-0 space-y-3 border-t bg-secondary/30 px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
     {offers.length>0&&<ul aria-label="선택한 판매 물품" className="max-h-28 divide-y divide-border/40 overflow-y-auto overscroll-contain">{offers.map((asset,index)=><li key={`${asset.kind}:${asset.id}`} className="flex min-h-11 items-center gap-2">
      {asset.kind==='collectible'?<CollectibleThumbnail path={asset.thumbnail_path??''} name={asset.name} className="size-7 shrink-0"/>:<LandscapeImage src={asset.thumbnail_path??''} alt="" className="size-7 shrink-0 object-contain"/>}
-     <span className="min-w-0 flex-1 truncate text-xs" title={asset.name}>{asset.name}</span>
+     <span className="min-w-0 flex-1"><span className="block truncate text-xs" title={asset.name}>{asset.name}</span><ShopSalePrice asset={asset}/></span>
      <label className="flex shrink-0 items-center gap-1 text-xs text-muted-foreground"><span aria-hidden="true">×</span><input aria-label={offers.length===1?'판매 수량':`${asset.name} 판매 수량`} type="number" inputMode="numeric" min={1} max={Math.min(asset.kind==='collectible'?20:9999,stock(asset))} value={asset.quantity||''} disabled={busy||!!pending.current||inventoryLoading} className="h-9 w-14 rounded-md border border-border/60 bg-background px-1.5 text-center text-xs tabular-nums outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50" onChange={e=>setOffers(items=>items.map((a,i)=>i===index?{...a,quantity:Number(e.target.value)}:a))}/></label>
      <Button variant="ghost" size="icon" className="size-11 shrink-0 text-muted-foreground" disabled={busy||!!pending.current} aria-label={`${asset.name} 선택 해제`} onClick={()=>setOffers(items=>items.filter((_,i)=>i!==index))}><X aria-hidden="true" className="size-3.5"/></Button>
     </li>)}</ul>}

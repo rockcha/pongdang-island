@@ -85,6 +85,17 @@ it('searches title and item names, filters tabs and protects every private table
  await expect(db.query('select public.flea_state()')).rejects.toThrow('permission denied')
  await db.exec('rollback to savepoint anon_call;release savepoint anon_call')
 })
+it('reads current shop prices without rewriting escrow, unit prices or retry identity',async()=>{
+ const op=crypto.randomUUID(),p=await post('sell',items,op)
+ const original=(await db.query("select sell_price from public.collectible_species where id='soft-sea-cucumber'")).rows[0].sell_price
+ expect(p.items.find((i:any)=>i.asset.kind==='collectible').asset.sell_price).toBe(original)
+ await db.query("update public.collectible_species set sell_price=sell_price+7 where id='soft-sea-cucumber'")
+ const result=await user(taker,"select public.flea_state('sell','','all',false,0) value")
+ expect(result.items[0].items.find((i:any)=>i.asset.kind==='collectible').asset.sell_price).toBe(original+7)
+ expect(result.items[0].items.find((i:any)=>i.asset.kind==='collectible').unit_price).toBe(30)
+ expect((await post('sell',items,op)).id).toBe(p.id)
+ expect((await db.query("select asset ? 'sell_price' as priced from app_private.flea_lines where post_id=$1 and kind='collectible'",[p.id])).rows[0].priced).toBe(false)
+})
 it('rejects bait, relics, maps, invalid prices and stock not in storage without consuming anything',async()=>{
  for(const data of [[{...items[0],kind:'bait',id:'bait'}],[{...items[1],id:'map-bluegrove'}],[{...items[0],unit_price:0}],[items[0],items[0]],[{...items[0],quantity:9999,unit_price:1000000000}]])await expect(post('buy',data)).rejects.toThrow(/INVALID_FLEA|INVALID_EXCHANGE_ASSET/)
  await expect(post('buy',[{...items[0],unit_price:1000}])).rejects.toThrow('INSUFFICIENT_GOLD')

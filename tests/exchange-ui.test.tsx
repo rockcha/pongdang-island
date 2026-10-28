@@ -8,7 +8,7 @@ vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh:mock.refresh
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({refresh:mock.refresh})}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span>{name} 그림</span>}))
 vi.mock('@/features/exchange/api',async original=>({...await original<typeof import('@/features/exchange/api')>(),loadExchange:mock.load,loadExchangeInventory:mock.inventory,postExchange:mock.post,actExchange:mock.act}))
-const fish={kind:'collectible',id:'soft-sea-cucumber',name:'말랑 해삼',quantity:1,thumbnail_path:'fish.png',available:2}
+const fish={kind:'collectible',id:'soft-sea-cucumber',name:'말랑 해삼',quantity:1,thumbnail_path:'fish.png',available:2,sell_price:30}
 const money={kind:'gold',id:'gold',name:'골드',quantity:300,thumbnail_path:null}
 const listing={id:'listing',owner_id:'other',owner_name:'섬친구',side:'sell',offer:fish,wanted:money,status:'active',taker_id:null,created_at:'2026-10-17T00:00:00Z',closed_at:null}
 beforeEach(()=>{vi.clearAllMocks();mock.load.mockResolvedValue({items:[listing],total:1});mock.inventory.mockResolvedValue({gold:5000,assets:[fish]});mock.post.mockResolvedValue({...listing,owner_id:'me'});mock.act.mockResolvedValue({...listing,status:'completed'});mock.refresh.mockResolvedValue(undefined)})
@@ -33,6 +33,7 @@ it('selects different item types with separate quantities and posts one total pr
 })
 it('opens posts from the list without purchase actions',async()=>{
  setup();const link=await screen.findByRole('link',{name:'말랑 해삼 상세 보기'})
+ expect(within(link.parentElement!).getByLabelText('상점 판매가 개당 30골드')).toBeTruthy()
  expect(link.getAttribute('href')).toBe('/exchange/listing')
  expect(within(link.parentElement!).getByText('섬친구')).toBeTruthy()
  expect(within(link.parentElement!).getByText('300')).toBeTruthy()

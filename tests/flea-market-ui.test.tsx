@@ -9,7 +9,7 @@ vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
 vi.mock('@/features/flea-market/api',async original=>({...await original<typeof import('@/features/flea-market/api')>(),readFlea:api.feed,readFleaInventory:api.stock,postFlea:api.post,tradeFlea:api.trade,cancelFlea:api.cancel}))
 const fuel={kind:'fuel',id:'fuel',name:'연료',quantity:1,available:8,thumbnail_path:'/app-icons/fuel.png'}
-const fish={kind:'collectible',id:'fish',name:'복어',subtype:'fish',quantity:1,available:2,thumbnail_path:'fish.png'}
+const fish={kind:'collectible',id:'fish',name:'복어',subtype:'fish',quantity:1,available:2,sell_price:30,thumbnail_path:'fish.png'}
 const post={id:'post',owner_id:'other',owner_name:'이웃퐁',side:'sell',title:'남는 물건 정리해요',status:'active',escrow_gold:0,created_at:'2026-10-28T00:00:00Z',items:[{id:'line-fuel',asset:fuel,quantity:10,remaining:10,unit_price:30},{id:'line-fish',asset:fish,quantity:10,remaining:10,unit_price:20}]}
 beforeEach(()=>{
  vi.clearAllMocks();appQueryClient.clear()
@@ -51,6 +51,7 @@ it('selects multiple quantities and preserves exactly one payload after uncertai
  api.trade.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce(post)
  setup();fireEvent.click(await screen.findByRole('button',{name:/남는 물건 정리해요/}))
  const dialog=screen.getByRole('dialog')
+ expect(within(dialog).getByLabelText('상점 판매가 개당 30골드')).toBeTruthy()
  fireEvent.change(within(dialog).getByLabelText('연료 거래 수량'),{target:{value:3}})
  fireEvent.change(within(dialog).getByLabelText('복어 거래 수량'),{target:{value:2}})
  fireEvent.click(within(dialog).getByRole('button',{name:'선택한 수량 구매하기'}))
@@ -81,6 +82,7 @@ it('caps sale registration at owned stock while buy requests can exceed owned st
  setup();fireEvent.click(screen.getByRole('button',{name:'글쓰기'}))
  const dialog=screen.getByRole('dialog')
  fireEvent.click(await within(dialog).findByRole('button',{name:'복어 추가'}))
+ expect(within(within(dialog).getByLabelText('선택한 물품')).getByLabelText('상점 판매가 개당 30골드')).toBeTruthy()
  const quantity=within(dialog).getByLabelText('복어 수량') as HTMLInputElement
  fireEvent.change(quantity,{target:{value:'999'}})
  expect(quantity.value).toBe('2')

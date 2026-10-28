@@ -28,6 +28,7 @@ vi.mock('@/features/hall-of-fame/api', async (importOriginal) => ({
 const player = { id: 'friend', nickname: '바다퐁', avatar_path: null, value: 1200, rank: 1 }
 const wall = { total: 0, comments: [] }
 beforeEach(() => {
+  vi.stubGlobal('matchMedia',()=>({matches:false}))
   vi.clearAllMocks()
   appQueryClient.clear()
   api.feed.mockResolvedValue({ rankings: { casts: [player] }, generatedAt: '2026-10-21T10:00:00Z' })
@@ -35,24 +36,33 @@ beforeEach(() => {
   api.action.mockResolvedValue(wall)
   api.counts.mockResolvedValue({ casts: 0 })
 })
-afterEach(cleanup)
-it('pins an exact rank outside TOP 5 and highlights the caller among two neighbors on each side',async()=>{
- const neighbors=Array.from({length:5},(_,i)=>({...player,id:i===2?'me':`near-${i}`,nickname:i===2?'내퐁이':`이웃${i}`,rank:126+i,value:12452-i}))
- api.feed.mockResolvedValue({rankings:{casts:[player]},personal:{casts:{rank:128,value:12450,neighbors},fish:{rank:null,value:42,neighbors:[]}},generatedAt:new Date().toISOString()})
+afterEach(()=>{cleanup();vi.unstubAllGlobals()})
+it('browses every rank horizontally and centers the caller within its own section',async()=>{
+ const players=Array.from({length:130},(_,i)=>({...player,id:i===127?'me':`rank-${i}`,nickname:i===127?'내퐁이':`이웃${i}`,rank:i+1,value:130-i}))
+ api.feed.mockResolvedValue({rankings:{casts:players},generatedAt:new Date().toISOString()})
  render(<HallPage/>)
- const card=screen.getByRole('region',{name:'내 순위'})
- expect(await within(card).findByText('내 순위 128위 · 내 기록 12,450회')).toBeTruthy()
- expect(screen.getByLabelText('기록 목록').contains(card)).toBe(false)
- fireEvent.click(within(card).getByRole('button',{name:'내 주변 보기'}))
- const dialog=screen.getByRole('dialog')
- expect(within(dialog).getAllByRole('listitem')).toHaveLength(5)
- expect(dialog.querySelector('[aria-current="true"]')?.textContent).toContain('내퐁이 · 나')
- fireEvent.keyDown(dialog,{key:'Escape'})
- fireEvent.change(screen.getByRole('combobox',{name:'내 순위 종목'}),{target:{value:'fish'}})
- expect(screen.getByText('집계 범위 밖 · 내 기록 42마리')).toBeTruthy()
- expect(screen.getByRole('button',{name:'내 주변 보기'}).hasAttribute('disabled')).toBe(true)
- fireEvent.click(screen.getByRole('tab',{name:'별별 기록'}))
- expect(screen.getByText('아직 기록이 없어요')).toBeTruthy()
+ const row=await screen.findByRole('list',{name:'낚싯대 과로 유발자 순위'})
+ expect(within(row).getAllByRole('listitem')).toHaveLength(130)
+ expect(screen.queryByRole('combobox')).toBeNull()
+ expect(screen.queryByRole('region',{name:'내 순위'})).toBeNull()
+ const mine=row.querySelector('[aria-current="true"]') as HTMLElement
+ expect(mine.textContent).toContain('내퐁이 · 나')
+ const scrollTo=vi.fn()
+ Object.defineProperties(row,{clientWidth:{value:300},scrollTo:{value:scrollTo}})
+ Object.defineProperties(mine,{clientWidth:{value:72}})
+ vi.spyOn(row,'getBoundingClientRect').mockReturnValue({left:20} as DOMRect)
+ vi.spyOn(mine,'getBoundingClientRect').mockReturnValue({left:1000} as DOMRect)
+ const card=row.closest('section')!
+ fireEvent.click(within(card).getByRole('button',{name:'내 등수 보기'}))
+ expect(scrollTo).toHaveBeenCalledWith({left:866,behavior:'smooth'})
+ expect(row.style.paddingInline).toBe('114px')
+ row.scrollLeft=980
+ fireEvent.pointerDown(row)
+ expect(row.style.paddingInline).toBe('')
+ expect(scrollTo).toHaveBeenLastCalledWith({left:866,behavior:'instant'})
+ const other=screen.getByRole('heading',{name:'물고기 출석부 반장'}).closest('section')!
+ expect(within(other).getByRole('button',{name:'내 등수 보기'}).hasAttribute('disabled')).toBe(true)
+ expect(screen.queryByRole('dialog')).toBeNull()
 })
 it('orders both tabs and opens section discussions', async () => {
   render(<HallPage />)

@@ -4,7 +4,7 @@ import {experienceChanged} from '@/features/experience/api'
 import {createClient} from '@/lib/client'
 import type {OwnedCollectible} from '@/features/collection/api'
 import type {AquariumTank} from '@/features/aquarium/api'
-export type FriendAquarium={owner:{id:string;nickname:string;avatar_path:string|null};tanks:AquariumTank[];inhabitants:OwnedCollectible[];backgrounds:{id:string;name:string;image_path:string}[]}
+export type FriendAquarium={isFriend?:boolean;owner:{id:string;nickname:string;avatar_path:string|null};tanks:AquariumTank[];inhabitants:OwnedCollectible[];backgrounds:{id:string;name:string;image_path:string}[]}
 export type FeedingResult={id:string;clicks:number;completed:boolean;replayed:boolean}
 export type CleaningResult={id:string;strokes:number;completed:boolean;replayed:boolean}
 export async function cleanFriendAquarium(tank:string,operation:string,step:number){const {data,error}=await createClient().rpc('clean_friend_aquarium',{p_tank:tank,p_operation:operation,p_step:step});if(error)throw error;if(data.completed){questProgressChanged();experienceChanged()}return {...data,clicks:data.strokes}}

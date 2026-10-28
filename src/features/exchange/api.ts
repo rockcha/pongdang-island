@@ -25,6 +25,6 @@ export function exchangeError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
  const errors:Record<string,string>={INVALID_EXCHANGE_TITLE:'제목은 줄바꿈 없이 80자 이내로 적어주세요.',EXCHANGE_UNAVAILABLE:'이미 판매되었거나 취소된 글이에요. 목록을 다시 확인해주세요.',EXCHANGE_INSUFFICIENT_ITEMS:'창고의 개체 또는 보유 미끼·연료가 부족해요. 전시 중인 개체는 창고로 옮겨주세요.',INSUFFICIENT_GOLD:'보유 골드가 부족해요.',EXCHANGE_LISTING_LIMIT:'거래 중인 글은 최대 10개까지 등록할 수 있어요.',EXCHANGE_SELF_TRADE:'내 판매 글은 구매할 수 없어요.',EXCHANGE_FORBIDDEN:'내 글만 취소할 수 있어요.',INVALID_EXCHANGE_ASSET:'교환 물품과 수량을 확인해주세요.',INVALID_EXCHANGE:'판매 물품과 수량, 골드 가격을 확인해주세요.',OPERATION_CONFLICT:'이전 등록 내용을 바꾸지 말고 결과를 다시 확인해주세요.'}
  const discussion:Record<string,string>={EXCHANGE_NOT_FOUND:'판매글을 찾을 수 없어요.',INVALID_EXCHANGE_COMMENT:'댓글은 1~500자로 적어주세요.',EXCHANGE_COMMENT_FORBIDDEN:'내 댓글만 삭제할 수 있어요.'}
- return Object.entries({EXCHANGE_BUNDLE_LIMIT:'한 글에 최대 10종, 개체는 합계 20개까지 판매할 수 있어요.',...errors,...discussion}).find(([key])=>message.includes(key))?.[1]??'거래를 확인하지 못했어요. 연결을 확인한 뒤 다시 시도해주세요.'
+ return Object.entries({EXCHANGE_BAIT_DISABLED:'미끼는 거래할 수 없어요. 기존 미끼 판매 물품은 우편함에서 돌려받을 수 있어요.',EXCHANGE_BUNDLE_LIMIT:'한 글에 최대 10종, 개체는 합계 20개까지 판매할 수 있어요.',...errors,...discussion}).find(([key])=>message.includes(key))?.[1]??'거래를 확인하지 못했어요. 연결을 확인한 뒤 다시 시도해주세요.'
 }
 export function exchangeChanged(){window.dispatchEvent(new Event('collectibles-changed'));window.dispatchEvent(new Event('exchange-changed'));window.dispatchEvent(new Event('fishing-rods-changed'))}

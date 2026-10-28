@@ -126,14 +126,14 @@ export function resourceChanged<T>(
 }
 
 export const resourceEvents: Record<string, string[]> = {
-  'wallet-changed': ['wallet'],
+  'wallet-changed': ['wallet','flea-inventory'],
   'attendance-changed': ['wallet'],
   'experience-changed': ['experience'],
   'personal-bait-changed': ['menu-status'],
-  'production-changed': ['production', 'wallet', 'menu-status'],
-  'bait-production-changed': ['bait-production', 'wallet', 'menu-status'],
-  'harbor-changed': ['harbor', 'wallet', 'menu-status'],
-  'expedition-changed': ['expedition', 'wallet', 'menu-status'],
+  'production-changed': ['production', 'wallet', 'menu-status','flea-inventory'],
+  'bait-production-changed': ['bait-production', 'wallet', 'menu-status','flea-inventory'],
+  'harbor-changed': ['harbor', 'wallet', 'menu-status','flea-inventory'],
+  'expedition-changed': ['expedition', 'wallet', 'menu-status','flea-inventory'],
   'savings-changed': ['savings', 'wallet', 'menu-status'],
   'relic-loadout-changed': [
     'relics',
@@ -145,6 +145,7 @@ export const resourceEvents: Record<string, string[]> = {
     'menu-status',
   ],
   'collectibles-changed': [
+    'flea-inventory',
     'merchant',
     'menu-status',
     'aquarium',
@@ -154,8 +155,8 @@ export const resourceEvents: Record<string, string[]> = {
     'exchange-inventory',
     'titles',
   ],
-  'aquarium-changed': ['aquarium', 'storage', 'collection', 'merchant', 'menu-status'],
-  'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox', 'merchant', 'menu-status'],
+  'aquarium-changed': ['aquarium', 'storage', 'collection', 'merchant', 'menu-status','flea-inventory'],
+  'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox', 'merchant', 'menu-status','flea-inventory'],
   'friends-changed': ['friend-aquarium', 'aquarium-likes', 'friend-expedition'],
 }
 let subscribers = 0

@@ -58,6 +58,7 @@ export const headerPlaces = [
   { to: '/expeditions', label: '통발', icon: appArt.expeditions },
   { to: '/farm', label: '농장', icon: appArt.farm },
   { to: '/exchange', label: '거래소', icon: Handshake },
+  { to: '/flea-market', label: '벼룩시장', icon: Store },
   { to: '/merchant-orders', label: '바다 상인의 의뢰', icon: appArt.merchantOrders },
   { to: '/savings', label: '조개 적금', icon: Shell },
   { to: '/warehouse', label: '창고', icon: Warehouse },
@@ -77,7 +78,7 @@ export const menuIcons:Record<string,typeof House>={
  '/profile':UserRound,'/aquarium':Fish,'/music-room':AudioLines,'/decoration-shop':Shapes,
  '/harbor':MapOutline,'/fishing':FishingRod,'/expeditions':ShoppingBasket,'/shop':FishingRod,'/item-shop':ShoppingBag,
  '/port':Anchor,'/shipyard':ShipOutline,'/production':Flame,'/bait-production':Factory,'/my-bait-production':FlaskConical,'/farm':Sprout,'/production-shop':Factory,'/bait-production-shop':ShoppingBag,
- '/exchange':TradeIcon,'/merchant-orders':ClipboardList,'/savings':Landmark,'/storage':Package,'/warehouse':WarehouseOutline,'/collection':BookOpen,'/titles':Medal,'/relics':Gem,'/collection-animation':BookOpen,
+ '/flea-market':ShoppingBasket,'/exchange':TradeIcon,'/merchant-orders':ClipboardList,'/savings':Landmark,'/storage':Package,'/warehouse':WarehouseOutline,'/collection':BookOpen,'/titles':Medal,'/relics':Gem,'/collection-animation':BookOpen,
  '/friends':LighthouseOutline,'/board':MessageSquare,'/showcase':Images,'/hall-of-fame':Trophy,'/arcade':GameIcon,'/island-news':Newspaper,'/square/notices':Megaphone,'/development-fund':Heart,'/square/sponsorship':Gift,'/square/begging':Mail,'/square/suggestions':Lightbulb,'/square/bugs':Bug,
 }
 
@@ -91,13 +92,14 @@ export function HeaderPlaceNavigation() {
   const savings = useSavingsStatus(),
     { operator } = useOperator()
   const current = /^\/(region|sailing)\//.test(pathname) ? '/fishing' : pathname
+  const merchantReady=(activity['/merchant-orders']?.ready??0)>0
   const hasNewContent=(to:string)=>
     (to==='/board'&&newContent.board)||
     (to==='/showcase'&&newContent.showcase)||
     (to==='/square/suggestions'&&newContent.suggestions)||
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)
-    ||(to==='/merchant-orders'&&newContent.merchant)
+    ||(to==='/merchant-orders'&&merchantReady)
 
   return (
     <nav aria-label="장소 바로가기" className="grid w-[224px] shrink-0 grid-cols-7 gap-1 sm:w-[252px]">
@@ -108,7 +110,6 @@ export function HeaderPlaceNavigation() {
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
-        const merchantReady=(activity['/merchant-orders']?.ready??0)>0
         const hasActivity=items.some(item=>(item.to!=='/merchant-orders'&&hasNewContent(item.to))||!!activity[item.to]?.ready||(item.to==='/savings'&&!!savings))
         const CategoryIcon=group.icon
         return (
@@ -122,7 +123,7 @@ export function HeaderPlaceNavigation() {
             >
               <CategoryIcon aria-hidden="true" className="size-5 shrink-0" strokeWidth={1.7}/>
               <span className="sr-only">{group.label}</span>
-              {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} style={group.label==='장터'&&merchantReady?{backgroundColor:'#f97316'}:undefined} className="category-activity-dot absolute right-1 top-1"/>}
+              {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} className="category-activity-dot absolute right-1 top-1"/>}
             </Menu.Trigger>
             <Menu.Portal>
               <Menu.Positioner
@@ -149,13 +150,12 @@ export function HeaderPlaceNavigation() {
                       >
                         <span className="relative grid size-8 shrink-0 place-items-center">
                           <ItemOutline aria-hidden="true" className="size-5 text-primary/80" strokeWidth={1.7}/>
-                          {to==='/merchant-orders'&&merchantReady&&<span role="img" aria-label="납품 가능한 의뢰 있음" className="absolute right-0 top-0 size-1.5 rounded-full bg-orange-500"/>}
                         </span>
                         <span className="min-w-0 flex-1"><span className="block truncate">{label}</span>{activity[to]&&<MenuActivityLine activity={activity[to]}/>}</span>
                         {to==='/relics'&&equippedRelic&&<span className="flex max-w-20 shrink-0 items-center gap-1" title={`장착 중: ${equippedRelic.name}`}><CollectibleThumbnail path={equippedRelic.thumbnail_path} name={`장착 중: ${equippedRelic.name}`} className="size-6 shrink-0"/><span className="min-w-0 truncate text-[10px]">{equippedRelic.name}</span></span>}
                         {hasNewContent(to) && (
                           <span
-                            aria-label={to==='/merchant-orders'?'새 의뢰 있음':'새 글 있음'}
+                            aria-label={to==='/merchant-orders'?'납품 가능한 의뢰 있음':'새 글 있음'}
                             className="text-[9px] font-bold tracking-wider text-rose-600 dark:text-rose-400"
                           >
                             NEW

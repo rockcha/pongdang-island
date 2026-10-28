@@ -1,0 +1,118 @@
+import {useEffect,useState} from 'react'
+import {Plus,RefreshCw,Search,ChevronRight,Check,X,ShoppingBasket,HandCoins} from 'lucide-react'
+import {useAuth} from '@/components/auth-provider'
+import {Button} from '@/components/ui/button'
+import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
+import {Tabs,TabsList,TabsTrigger} from '@/components/ui/tabs'
+import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
+import {GoldIcon} from '@/features/gold/gold-provider'
+import {useAccountResource} from '@/lib/account-query'
+import {PlayerVisitMenu} from '@/features/profile/player-visit-menu'
+import type {ExchangeAsset} from '@/features/exchange/api'
+import {cancelFlea,fleaError,postFlea,readFlea,readFleaInventory,tradeFlea,type FleaPost,type FleaDraft,type FleaTrade} from './api'
+import {useFleaMutation} from './use-flea-mutation'
+
+const number=(value:number)=>value.toLocaleString('ko-KR')
+function quantityWithin(value:string,limit:number){const n=Number(value);return Number.isFinite(n)?Math.max(0,Math.min(Math.floor(n),Math.max(0,limit))):0}
+const field='h-11 min-w-0 rounded-lg border border-border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50'
+const kinds=[['all','전체'],['fish','물고기'],['decoration','장식물'],['trash','쓰레기'],['fuel','연료']] as const
+function Picture({asset,compact=false}:{asset:ExchangeAsset;compact?:boolean}){return asset.kind==='collectible'?<CollectibleThumbnail path={asset.thumbnail_path??''} name={asset.name} className={`${compact?'size-7':'size-9'} shrink-0`}/>:<img src={asset.thumbnail_path??'/app-icons/fuel.png'} alt="" className={`${compact?'size-7':'size-9'} shrink-0 object-contain`}/>}
+function Amount({value}:{value:number}){return <span className="inline-flex items-center gap-1 whitespace-nowrap tabular-nums"><GoldIcon className="size-4"/>{number(value)}</span>}
+
+export function FleaMarketPage(){const {session}=useAuth();return <Market key={session?.user.id??'guest'} owner={session?.user.id??''}/>}
+function Market({owner}:{owner:string}){
+ const [side,setSide]=useState<'sell'|'buy'>('sell'),[search,setSearch]=useState(''),[query,setQuery]=useState(''),[kind,setKind]=useState('all'),[mine,setMine]=useState(false),[offset,setOffset]=useState(0)
+ const [compose,setCompose]=useState(false),[selected,setSelected]=useState<FleaPost|null>(null)
+ useEffect(()=>{const timer=setTimeout(()=>{setQuery(search.trim());setOffset(0)},250);return()=>clearTimeout(timer)},[search])
+ const filter={side,query,kind,mine,offset}
+ const feed=useAccountResource(['flea',side,query,kind,mine,offset],signal=>readFlea(filter,signal))
+ const selectedPost=feed.data?.items.find(p=>p.id===selected?.id)??selected
+ return <section className="flex min-h-0 min-w-0 flex-1 flex-col">
+  <div className="shrink-0 space-y-3 border-b border-border/60 px-4 py-3">
+   <Tabs value={side} onValueChange={v=>{setSide(v as 'sell'|'buy');setOffset(0)}}>
+    <TabsList aria-label="벼룩시장 거래 종류" className="w-full"><TabsTrigger value="sell" className="min-h-12 flex-1 gap-2"><ShoppingBasket className="size-4"/>팔아요</TabsTrigger><TabsTrigger value="buy" className="min-h-12 flex-1 gap-2"><HandCoins className="size-4"/>사요</TabsTrigger></TabsList>
+   </Tabs>
+   <div className="flex gap-2"><label className="relative min-w-0 flex-1"><Search aria-hidden="true" className="absolute left-3 top-3.5 size-4 text-muted-foreground"/><input className={`${field} w-full pl-9`} type="search" aria-label="벼룩시장 검색" placeholder="글 제목이나 물품 이름 검색" maxLength={80} value={search} onChange={e=>setSearch(e.target.value)}/></label><Button variant="ghost" size="icon" aria-label="벼룩시장 새로고침" disabled={feed.isFetching} onClick={()=>void feed.refetch()}><RefreshCw className={`size-4 ${feed.isFetching?'motion-safe:animate-spin':''}`}/></Button></div>
+   <div className="flex items-center gap-2"><div role="group" aria-label="물품 분류" className="flex min-w-0 flex-1 gap-1 overflow-x-auto [scrollbar-width:none]">{kinds.map(([id,label])=><button key={id} type="button" aria-pressed={kind===id} onClick={()=>{setKind(id);setOffset(0)}} className={`min-h-9 shrink-0 rounded-full px-2.5 text-xs ${kind===id?'bg-secondary text-primary':'text-muted-foreground hover:bg-secondary/40'}`}>{label}</button>)}</div><label className="flex min-h-11 shrink-0 items-center gap-1.5 text-xs text-muted-foreground"><input type="checkbox" checked={mine} onChange={e=>{setMine(e.target.checked);setOffset(0)}} className="accent-primary"/>내 글</label></div>
+  </div>
+  <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain p-4" aria-busy={feed.isFetching}>
+   {feed.error&&<div role="alert" className="rounded-xl border p-4 text-sm"><p>{fleaError(feed.error)}</p><Button variant="ghost" onClick={()=>void feed.refetch()}>다시 불러오기</Button></div>}
+   {!feed.data&&feed.isPending?<p role="status" className="py-16 text-center text-sm text-muted-foreground">이웃의 가게를 둘러보는 중…</p>:feed.data?.items.length===0?<div className="py-16 text-center"><ShoppingBasket className="mx-auto mb-3 size-8 text-primary/50"/><p className="text-sm">{query?'검색한 물품이 없어요.':mine?'등록한 글이 없어요.':'아직 열린 가게가 없어요.'}</p><p className="mt-2 text-xs text-muted-foreground">{side==='sell'?'남는 물건을 이웃과 나눠보세요.':'필요한 물건을 구해보세요.'}</p></div>:feed.data?.items.map(post=><article key={post.id} className="relative block w-full rounded-2xl border border-border/70 bg-card p-4 text-left transition-colors hover:border-primary/40 focus-within:ring-2 focus-within:ring-ring">
+    <button type="button" aria-label={`${post.title} 상세 보기`} onClick={()=>setSelected(post)} className="absolute inset-0 rounded-2xl outline-none"/>
+    <div className="pointer-events-none">
+    <div className="flex items-start gap-2"><h2 className="min-w-0 flex-1 break-words text-sm font-medium">{post.title}</h2>{post.status!=='active'&&<span className="shrink-0 rounded-full bg-secondary px-2 py-0.5 text-[10px] text-muted-foreground">{post.status==='completed'?'거래 완료':'마감'}</span>}<ChevronRight aria-hidden="true" className="size-4 shrink-0 text-muted-foreground"/></div>
+    <div className="mt-1 flex items-center gap-1"><PlayerVisitMenu userId={post.owner_id} nickname={post.owner_name} avatarPath={post.owner_avatar_path} mine={post.owner_id===owner}/><p className="min-w-0 truncate text-[11px] text-muted-foreground">{post.owner_name}{post.owner_id===owner?' · 내 글':''} · {new Date(post.created_at).toLocaleDateString('ko-KR')}</p></div>
+    <ul className="mt-3 space-y-2">{[...post.items].sort((a,b)=>Number(b.asset.name.includes(query))-Number(a.asset.name.includes(query))).slice(0,2).map(item=><li key={item.id} className="flex items-center gap-2.5"><Picture asset={item.asset}/><span className="min-w-0 flex-1"><span className="block truncate text-xs">{item.asset.name}</span><span className="mt-0.5 block text-[10px] tabular-nums text-muted-foreground">{post.side==='sell'?'남은':'더 구해요'} {number(item.remaining)}개</span></span><span className="text-right text-xs"><span className="mb-0.5 block text-[10px] text-muted-foreground">개당</span><Amount value={item.unit_price}/></span></li>)}</ul>
+    {post.items.length>2&&<p className="mt-2 text-[10px] text-muted-foreground">외 {post.items.length-2}종</p>}
+    </div>
+   </article>)}
+   {feed.data&&feed.data.total>20&&<div className="flex items-center justify-center gap-3 py-2"><Button variant="ghost" disabled={offset===0} onClick={()=>setOffset(v=>Math.max(0,v-20))}>이전</Button><span className="text-xs tabular-nums">{offset/20+1} / {Math.ceil(feed.data.total/20)}</span><Button variant="ghost" disabled={offset+20>=feed.data.total} onClick={()=>setOffset(v=>v+20)}>다음</Button></div>}
+  </div>
+  <div className="flex shrink-0 items-center justify-between gap-3 border-t border-border/60 bg-background px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"><p className="text-[11px] text-muted-foreground">필요한 만큼, 이웃과 거래해요.</p><Button className="min-h-11 gap-1.5 rounded-xl" onClick={()=>setCompose(true)}><Plus className="size-4"/>글쓰기</Button></div>
+  {compose&&<Composer side={side} onClose={()=>setCompose(false)}/>}
+  {selectedPost&&<TradeDialog key={selectedPost.id} post={selectedPost} owner={owner} onClose={()=>setSelected(null)}/>}
+ </section>
+}
+
+type DraftItem={asset:ExchangeAsset;quantity:number;price:number}
+function Composer({side,onClose}:{side:'sell'|'buy';onClose:()=>void}){
+ const compactField=field.replace('h-11','h-9').replace('px-3','px-1')+' [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
+ const stock=useAccountResource('flea-inventory',readFleaInventory)
+ const [title,setTitle]=useState(''),[query,setQuery]=useState(''),[kind,setKind]=useState('all'),[items,setItems]=useState<DraftItem[]>([])
+ const mutation=useFleaMutation(postFlea),frozen=mutation.busy||mutation.pending
+ const assets=(stock.data?.assets??[]).filter(a=>a.kind==='fuel'||a.kind==='collectible')
+ const results=assets.filter(a=>(side==='buy'||(a.available??0)>0)&&(kind==='all'||a.kind===kind||a.subtype===kind)&&a.name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()))
+ const total=items.reduce((n,item)=>n+item.quantity*item.price,0)
+ const max=(a:ExchangeAsset)=>Math.min(a.kind==='collectible'?20:9999,side==='buy'?9999:(stock.data?.assets.find(item=>item.kind===a.kind&&item.id===a.id)?.available??0))
+ const valid=!!title.trim()&&items.length>0&&items.length<=5&&items.every(i=>Number.isSafeInteger(i.quantity)&&i.quantity>=1&&i.quantity<=max(i.asset)&&Number.isSafeInteger(i.price)&&i.price>=1&&i.price<=1000000000)&&items.filter(i=>i.asset.kind==='collectible').reduce((n,i)=>n+i.quantity,0)<=20&&total<=1000000000&&(side==='sell'||total<=(stock.data?.gold??0))
+ async function submit(){const args:FleaDraft={p_side:side,p_title:title.trim(),p_items:items.map(i=>({kind:i.asset.kind as 'fuel'|'collectible',id:i.asset.id,quantity:i.quantity,unit_price:i.price})),p_operation_id:crypto.randomUUID()};if(await mutation.run(args))onClose()}
+ function update(index:number,patch:Partial<DraftItem>){setItems(list=>list.map((item,i)=>i===index?{...item,...patch}:item))}
+ return <Dialog open onOpenChange={open=>{if(!open&&!frozen)onClose()}}><DialogContent className="flex h-[min(760px,94dvh)] max-w-md flex-col gap-0 overflow-hidden p-0" showCloseButton={!frozen}>
+  <DialogHeader className="shrink-0 border-b px-4 py-3"><DialogTitle>{side==='sell'?'내 가게 열기':'구매 요청하기'}</DialogTitle><DialogDescription className="text-xs [@media(max-height:620px)]:sr-only">{side==='sell'?'물건과 개당 가격을 정해 가게를 열어요.':'구할 물건과 개당 가격을 정해요.'}</DialogDescription></DialogHeader>
+  <div className="shrink-0 space-y-2 border-b px-4 py-2.5">
+   <label className="flex items-center gap-2 text-xs"><span className="shrink-0 text-muted-foreground">제목</span><input aria-label="글 제목" className={`${field} h-10 w-full`} maxLength={80} value={title} disabled={frozen} placeholder={side==='sell'?'가게 이름이나 판매할 물건':'어떤 물건을 구하시나요?'} onChange={e=>setTitle(e.target.value)}/></label>
+   <div className="relative"><Search aria-hidden="true" className="absolute left-3 top-3 size-4 text-muted-foreground"/><input type="search" aria-label="추가할 물품 검색" placeholder="물품 이름 검색" className={`${field} h-10 w-full pl-9`} maxLength={80} value={query} disabled={frozen} onChange={e=>setQuery(e.target.value)}/></div>
+   <div role="group" aria-label="추가할 물품 분류" className="flex gap-1 overflow-x-auto [scrollbar-width:none]">{kinds.map(([id,label])=><button key={id} disabled={frozen} aria-pressed={kind===id} onClick={()=>setKind(id)} className={`min-h-8 shrink-0 rounded-full px-2.5 text-xs ${kind===id?'bg-secondary text-primary':'text-muted-foreground'}`}>{label}</button>)}</div>
+  </div>
+  {items.length>0&&<section aria-label="선택한 물품" className="flex max-h-[min(12rem,22dvh)] shrink-0 flex-col border-b bg-secondary/20 px-4">
+   <div className="grid shrink-0 grid-cols-[minmax(0,1fr)_3rem_4.5rem_1.75rem] items-center gap-1.5 py-2 text-[10px] text-muted-foreground"><h3>선택 {items.length} / 5종</h3><span className="text-center">수량</span><span className="text-center">개당 가격</span><span/></div>
+   <div className="min-h-0 overflow-y-auto overscroll-contain pb-1">{items.map((item,index)=><div key={`${item.asset.kind}:${item.asset.id}`} className="grid grid-cols-[minmax(0,1fr)_3rem_4.5rem_1.75rem] items-center gap-1.5 border-t border-border/40 py-1">
+    <div className="flex min-w-0 items-center gap-1.5"><Picture asset={item.asset} compact/><span className="min-w-0 truncate text-[11px]" title={item.asset.name}>{item.asset.name}</span></div>
+    <input aria-label={`${item.asset.name} 수량`} className={`${compactField} w-full text-center text-xs tabular-nums`} type="number" inputMode="numeric" min={1} max={max(item.asset)} value={item.quantity||''} disabled={frozen} onChange={e=>update(index,{quantity:quantityWithin(e.target.value,max(item.asset))})}/>
+    <input aria-label={`${item.asset.name} 개당 가격`} className={`${compactField} w-full text-center text-xs tabular-nums`} type="number" inputMode="numeric" min={1} max={1000000000} value={item.price||''} disabled={frozen} onChange={e=>update(index,{price:Number(e.target.value)})}/>
+    <Button variant="ghost" size="icon" className="h-9 w-7" aria-label={`${item.asset.name} 선택 해제`} disabled={frozen} onClick={()=>setItems(list=>list.filter((_,i)=>i!==index))}><X className="size-3"/></Button>
+   </div>)}</div>
+  </section>}
+  <section aria-label="물품 선택" className="flex min-h-0 flex-1 flex-col px-4">
+   <div className="flex shrink-0 items-center justify-between py-2 text-[10px] text-muted-foreground"><h3>물품 추가</h3><span>{items.length} / 5종 · 최대 5종 선택</span></div>
+   <div aria-label="추가할 물품 목록" className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-2">
+    {stock.error?<div role="alert" className="text-xs text-destructive">물품을 불러오지 못했어요.<Button variant="ghost" onClick={()=>void stock.refetch()}>다시 불러오기</Button></div>:stock.isPending?<p role="status" className="py-6 text-center text-xs text-muted-foreground">물품을 확인하는 중…</p>:<><ul className="grid grid-cols-2 gap-1.5">{results.slice(0,60).map(asset=>{const chosen=items.some(i=>i.asset.kind===asset.kind&&i.asset.id===asset.id);return <li key={`${asset.kind}:${asset.id}`} className="min-w-0"><button type="button" aria-label={`${asset.name} 추가`} disabled={frozen||chosen||items.length>=5} onClick={()=>setItems(list=>[...list,{asset,quantity:1,price:1}])} className={`flex min-h-14 w-full items-center gap-1.5 rounded-lg border p-2 text-left transition-colors disabled:opacity-50 ${chosen?'border-primary/30 bg-primary/5':'border-border/50 hover:bg-secondary/30'}`}><Picture asset={asset} compact/><span className="min-w-0 flex-1"><span className="block truncate text-[11px]" title={asset.name}>{asset.name}</span><span className="mt-0.5 block text-[10px] text-muted-foreground">보유 {number(asset.available??0)}개</span></span>{chosen?<Check className="size-3 shrink-0 text-primary"/>:<Plus className="size-3 shrink-0 text-muted-foreground"/>}</button></li>})}</ul>{results.length===0&&<p className="py-6 text-center text-xs text-muted-foreground">선택할 수 있는 물품이 없어요.</p>}{results.length>60&&<p className="py-2 text-xs text-muted-foreground">이름으로 검색하면 다른 물품도 찾을 수 있어요.</p>}</>}
+   </div>
+  </section>
+  <div className="shrink-0 space-y-2 border-t bg-background px-4 py-3"><div className="flex items-center justify-between text-sm"><span className="text-xs text-muted-foreground">{side==='buy'?'맡길 구매대금':'모두 판매하면'}</span><Amount value={total}/></div><p className="text-[10px] text-muted-foreground">{side==='buy'?`보유 ${number(stock.data?.gold??0)} · 남은 금액은 마감 시 반환돼요.`:'거래·회수 물품은 우편함으로 도착해요.'}</p>{mutation.error&&<p role="alert" className="text-xs text-destructive">{mutation.error}</p>}<Button className="min-h-11 w-full rounded-xl" disabled={mutation.busy||(!mutation.pending&&!valid)} onClick={()=>void submit()}>{mutation.pending?'이전 등록 결과 다시 확인':side==='buy'?'골드 맡기고 등록':'물건 맡기고 등록'}</Button></div>
+ </DialogContent></Dialog>
+}
+
+type DetailRequest=FleaTrade|{p_post_id:string;p_operation_id:string}
+function TradeDialog({post,owner,onClose}:{post:FleaPost;owner:string;onClose:()=>void}){
+ const mine=post.owner_id===owner,buying=post.side==='sell'
+ const stock=useAccountResource('flea-inventory',readFleaInventory,{enabled:!buying&&!mine})
+ const [quantities,setQuantities]=useState<Record<string,number>>({})
+ const mutation=useFleaMutation<DetailRequest>(args=>'p_items'in args?tradeFlea(args):cancelFlea(args))
+ const frozen=mutation.busy||mutation.pending
+ const available=(item:FleaPost['items'][number])=>buying?item.remaining:Math.min(item.remaining,stock.data?.assets.find(a=>a.kind===item.asset.kind&&a.id===item.asset.id)?.available??0)
+ const chosen=post.items.filter(i=>(quantities[i.id]??0)>0)
+ const total=chosen.reduce((n,i)=>n+(quantities[i.id]??0)*i.unit_price,0)
+ const valid=post.status==='active'&&!mine&&chosen.length>0&&chosen.every(i=>Number.isSafeInteger(quantities[i.id])&&quantities[i.id]<=available(i))
+ async function submit(cancel=false){const args=cancel?{p_post_id:post.id,p_operation_id:crypto.randomUUID()}:{p_post_id:post.id,p_items:chosen.map(i=>({id:i.id,quantity:quantities[i.id]})),p_operation_id:crypto.randomUUID()};if(await mutation.run(args))onClose()}
+ return <Dialog open onOpenChange={open=>{if(!open&&!frozen)onClose()}}><DialogContent showCloseButton={!frozen} className="flex max-h-[85dvh] max-w-md flex-col gap-0 overflow-hidden p-0">
+  <DialogHeader className="shrink-0 border-b px-5 py-4"><DialogTitle className="break-words pr-5 leading-6">{post.title}</DialogTitle><div className="flex items-center gap-1"><PlayerVisitMenu userId={post.owner_id} nickname={post.owner_name} avatarPath={post.owner_avatar_path} mine={mine}/><DialogDescription>{post.owner_name} · {buying?'팔아요':'사요'}{post.status!=='active'?' · 마감':''}</DialogDescription></div></DialogHeader>
+  <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain px-5 py-4">{post.items.map(item=><section key={item.id} className={`rounded-xl border p-3 ${(quantities[item.id]??0)>0?'border-primary/40 bg-primary/5':'border-border/60'}`}><div className="flex items-center gap-2.5"><Picture asset={item.asset}/><div className="min-w-0 flex-1"><h3 className="text-sm">{item.asset.name}</h3><p className="mt-1 text-[11px] text-muted-foreground">{buying?'남은':'더 구해요'} {number(item.remaining)}개</p></div><div className="text-right text-xs"><p className="mb-1 text-[10px] text-muted-foreground">개당</p><Amount value={item.unit_price}/></div></div>
+   {!mine&&post.status==='active'&&<div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border/40 pt-3"><span className="text-[11px] text-muted-foreground">{buying?'구매 수량':`판매 가능 ${number(available(item))}개`}</span><div className="flex items-center gap-1"><Button variant="ghost" size="icon" aria-label={`${item.asset.name} 수량 줄이기`} disabled={frozen||!(quantities[item.id]>0)} onClick={()=>setQuantities(q=>({...q,[item.id]:Math.max(0,(q[item.id]??0)-1)}))}>−</Button><input aria-label={`${item.asset.name} 거래 수량`} type="number" inputMode="numeric" min={0} max={available(item)} value={quantities[item.id]??0} disabled={frozen||available(item)===0} onChange={e=>setQuantities(q=>({...q,[item.id]:quantityWithin(e.target.value,available(item))}))} className={`${field} w-16 px-1 text-center tabular-nums`}/><Button variant="ghost" size="icon" aria-label={`${item.asset.name} 수량 늘리기`} disabled={frozen||(quantities[item.id]??0)>=available(item)} onClick={()=>setQuantities(q=>({...q,[item.id]:(q[item.id]??0)+1}))}>+</Button></div></div>}
+  </section>)}
+  {!buying&&<p className="flex items-center justify-between text-xs text-muted-foreground"><span>맡겨둔 구매대금</span><Amount value={post.escrow_gold}/></p>}
+  {stock.error&&!buying&&!mine&&<div role="alert" className="text-xs text-destructive">보유 물품을 확인하지 못했어요.<Button variant="ghost" onClick={()=>void stock.refetch()}>다시 확인</Button></div>}
+  </div>
+  <div className="shrink-0 space-y-3 border-t px-5 py-4">{mutation.error&&<p role="alert" className="text-xs text-destructive">{mutation.error}</p>}{mine?<><p className="text-xs text-muted-foreground">{buying?'남은 물건은 우편함으로 돌려받아요.':'사용되지 않은 구매대금은 즉시 돌려받아요.'}</p><Button variant="outline" className="min-h-11 w-full rounded-xl" disabled={mutation.busy||post.status!=='active'} onClick={()=>void submit(true)}>{mutation.pending?'이전 처리 결과 다시 확인':'마감하고 남은 물건·대금 회수'}</Button></>:<><div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">{buying?'결제할 금액':'받을 금액'}</span><Amount value={total}/></div><p className="text-[11px] text-muted-foreground">{buying?'물건은 우편함으로 도착해요.':'물건을 보내고 골드는 즉시 받아요.'}</p><Button className="min-h-11 w-full rounded-xl" disabled={mutation.busy||(!mutation.pending&&!valid)} onClick={()=>void submit()}>{mutation.pending?'이전 거래 결과 다시 확인':buying?'선택한 수량 구매하기':'선택한 수량 판매하기'}</Button></>}</div>
+ </DialogContent></Dialog>
+}

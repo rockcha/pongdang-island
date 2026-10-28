@@ -3,10 +3,10 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { MemoryRouter, Route, Routes,useNavigate } from 'react-router'
 import { FriendAquariumPage } from '@/features/friends/friend-aquarium-page'
 import type {ReactNode} from 'react'
-const mock=vi.hoisted(()=>({world:undefined as undefined|{columns:number;initialView?:number;initialZoom?:number;preserveArrangement?:boolean;onViewChange?:(view:number)=>void},items:[] as {id:string;interaction_locked?:boolean;position_x?:number}[]}))
+const mock=vi.hoisted(()=>({isFriend:true,world:undefined as undefined|{columns:number;initialView?:number;initialZoom?:number;preserveArrangement?:boolean;onViewChange?:(view:number)=>void},items:[] as {id:string;interaction_locked?:boolean;position_x?:number}[]}))
 vi.mock('@/features/friends/aquarium-api', () => ({
   loadFriendAquarium: async () => ({
-    owner: { id: 'friend', nickname: '친구퐁이', avatar_path: null },
+    isFriend:mock.isFriend,owner: { id: 'friend', nickname: '친구퐁이', avatar_path: null },
     tanks: [
       { id: 'one', name: '첫 어항', background_id: 'default' },
       { id: 'two', name: '두 번째 어항', background_id: 'default' },
@@ -24,7 +24,17 @@ vi.mock('@/features/friends/aquarium-care', () => ({
   AquariumCare: ({ tank }: { tank: string }) => <div>돌보기 {tank}</div>,
 }))
 function Back(){const navigate=useNavigate();return <button onClick={()=>navigate(-1)}>브라우저 뒤로</button>}
-afterEach(cleanup)
+afterEach(()=>{cleanup();mock.isFriend=true})
+it('lets a non-friend browse tanks while hiding friend-only actions',async()=>{
+ mock.isFriend=false
+ render(<MemoryRouter initialEntries={['/friends/friend/aquarium']}><Routes><Route path="/friends/:ownerId/aquarium" element={<FriendAquariumPage/>}/></Routes></MemoryRouter>)
+ fireEvent.click(await screen.findByRole('button',{name:'첫 어항 어항 열기'}))
+ expect(screen.getByText('둘러보기')).toBeTruthy()
+ expect(screen.getByTestId('inhabitants')).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'통발 유인'})).toBeNull()
+ expect(screen.queryByText('돌보기 one')).toBeNull()
+ expect(screen.queryByRole('button',{name:'아쿠아리움 좋아요'})).toBeNull()
+})
 it('shows the owner and browses friend tanks without a collectible list', async () => {
   render(
     <MemoryRouter initialEntries={['/friends/friend/aquarium']}>

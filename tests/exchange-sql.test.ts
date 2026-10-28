@@ -24,19 +24,19 @@ beforeEach(async()=>{
  await db.exec('begin')
  for(const [id,nickname] of [[maker,'판매자'],[taker,'교환자'],[other,'구경꾼']]){
   await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,nickname])
-  await db.query(`insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{"bait_special":10,"bait":10}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory`,[id])
+  await db.query(`insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{"fuel":10,"bait_special":10,"bait":10}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory`,[id])
  }
 })
 afterEach(async()=>{await db.exec('rollback')})
 
 const sale=(kind='collectible',id='soft-sea-cucumber',quantity=1,price=300,operation=crypto.randomUUID())=>post(maker,'sell',kind,id,quantity,'gold','gold',price,operation)
 const bundle=(items:unknown[],price=300,operation=crypto.randomUUID())=>user(maker,'select public.exchange_post_bundle($1::jsonb,$2,$3) value',[JSON.stringify(items),price,operation]).then(result=>result.rows[0].value)
-const mixed=[{kind:'bait',id:'bait',quantity:2},{kind:'collectible',id:'soft-sea-cucumber',quantity:1}]
+const mixed=[{kind:'fuel',id:'fuel',quantity:2},{kind:'collectible',id:'soft-sea-cucumber',quantity:1}]
 it('settles every bundle item and the total payment exactly once',async()=>{
  const item=await seedItem(maker),op=crypto.randomUUID(),listing=await bundle(mixed,700,op)
  expect(listing.offer.items).toHaveLength(2)
  expect((await bundle([...mixed].reverse(),700,op)).id).toBe(listing.id)
- expect((await wallet(maker)).inventory.bait).toBe(8)
+ expect((await wallet(maker)).inventory.fuel).toBe(8)
  await expect(bundle(mixed,701,op)).rejects.toThrow('OPERATION_CONFLICT')
  const search=(await user(taker,"select public.exchange_state('all','해삼',0) value")).rows[0].value
  expect(search.total).toBe(1)
@@ -46,7 +46,7 @@ it('settles every bundle item and the total payment exactly once',async()=>{
  const parcels=(await db.query('select gift_id from app_private.exchange_bundle_gifts where listing_id=$1',[listing.id])).rows
  expect(parcels).toHaveLength(2)
  for(const parcel of parcels){await claim(taker,parcel.gift_id);await claim(taker,parcel.gift_id)}
- expect((await wallet(taker)).inventory.bait).toBe(12)
+ expect((await wallet(taker)).inventory.fuel).toBe(12)
  expect((await user(taker,'select id from public.player_collectibles where id=$1',[item])).rows).toHaveLength(1)
  const payments=(await db.query("select id from public.collectible_gifts where recipient_id=$1 and reward_kind='gold' and source='exchange'",[maker])).rows
  expect(payments).toHaveLength(1)
@@ -56,7 +56,7 @@ it('settles every bundle item and the total payment exactly once',async()=>{
 })
 it('rolls back all reservations on a missing bundle item and returns every cancelled item',async()=>{
  await expect(bundle(mixed)).rejects.toThrow('EXCHANGE_INSUFFICIENT_ITEMS')
- expect((await wallet(maker)).inventory.bait).toBe(10)
+ expect((await wallet(maker)).inventory.fuel).toBe(10)
  expect((await db.query("select * from public.collectible_gifts where source='exchange'")).rows).toHaveLength(0)
  await seedItem(maker)
  const listing=await bundle(mixed,6000)
@@ -66,37 +66,37 @@ it('rolls back all reservations on a missing bundle item and returns every cance
  await act(listing.id,'cancel',maker);await act(listing.id,'cancel',maker)
  const parcels=(await db.query('select gift_id from app_private.exchange_bundle_gifts where listing_id=$1',[listing.id])).rows
  for(const parcel of parcels)await claim(maker,parcel.gift_id)
- expect((await wallet(maker)).inventory.bait).toBe(10)
+ expect((await wallet(maker)).inventory.fuel).toBe(10)
  expect((await user(maker,'select * from public.player_collectibles')).rows).toHaveLength(1)
 })
 it('rejects malformed, duplicate and oversized bundles before reserving stock',async()=>{
  for(const items of [[],Array(11).fill(mixed[0]),[mixed[0],mixed[0]],[{kind:'gold',id:'gold',quantity:1}],[{kind:'collectible',id:'map-bluegrove',quantity:1}],mixed.map(a=>({...a,quantity:0})),[{kind:'collectible',id:'soft-sea-cucumber',quantity:20},{kind:'collectible',id:'glass-bottle',quantity:1}]]){
   await expect(bundle(items)).rejects.toThrow(/INVALID_EXCHANGE_ASSET|EXCHANGE_BUNDLE_LIMIT/)
  }
- expect((await wallet(maker)).inventory.bait).toBe(10)
+ expect((await wallet(maker)).inventory.fuel).toBe(10)
  expect((await db.query('select * from public.exchange_listings')).rows).toHaveLength(0)
 })
 it('shares only seller avatar through listings without broadening profile access',async()=>{
  const path=maker+'/avatar.webp'
  await db.query('update public.player_profiles set avatar_path=$1 where id=$2',[path,maker])
- await sale('bait','bait',1)
+ await sale('fuel','fuel',1)
  expect((await user(taker,'select avatar_path from public.player_profiles where id=$1',[maker])).rows).toHaveLength(0)
  const page=(await user(taker,"select public.exchange_state('all','',0) value")).rows[0].value
  expect(page.items[0].owner_avatar_path).toBe(path)
  expect(page.items[0]).not.toHaveProperty('friend_code')
 })
 it('stores and searches custom titles and keeps retries atomic',async()=>{
- const op=crypto.randomUUID(),args=['sell','bait','bait',2,'gold','gold',300,op,'  레전드 해파리 팝니다  ']
+ const op=crypto.randomUUID(),args=['sell','fuel','fuel',2,'gold','gold',300,op,'  레전드 해파리 팝니다  ']
  const sql='select public.exchange_post($1,$2,$3,$4,$5,$6,$7,$8,$9) value'
  const first=(await user(maker,sql,args)).rows[0].value
  expect(first.title).toBe('레전드 해파리 팝니다')
  expect((await user(maker,sql,args)).rows[0].value.id).toBe(first.id)
- expect((await wallet(maker)).inventory.bait).toBe(8)
+ expect((await wallet(maker)).inventory.fuel).toBe(8)
  await expect(user(maker,sql,[...args.slice(0,8),'다른 제목'])).rejects.toThrow(/CONFLICT/)
  const search=(await user(taker,"select public.exchange_state('all','레전드',0) s")).rows[0].s
  expect(search.total).toBe(1);expect(search.items[0].title).toBe(first.title)
  for(const title of ['x'.repeat(81),'줄바꿈\n제목'])await expect(user(maker,sql,[...args.slice(0,7),crypto.randomUUID(),title])).rejects.toThrow(/INVALID_EXCHANGE_TITLE/)
- expect((await wallet(maker)).inventory.bait).toBe(8)
+ expect((await wallet(maker)).inventory.fuel).toBe(8)
 })
 it('lets a non-friend buy an escrowed individual for gold and notifies both parties once',async()=>{
  const item=await seedItem(maker),listing=await sale()
@@ -116,30 +116,30 @@ it('lets a non-friend buy an escrowed individual for gold and notifies both part
  expect((await db.query("select title from public.notifications where kind='gift_received' and gift_id in (select id from public.collectible_gifts where source='exchange') order by title")).rows.map((r:any)=>r.title)).toEqual(['구매가 완료됐어요','판매가 성사됐어요'])
  await expect(act(listing.id,'accept',other)).rejects.toThrow('EXCHANGE_UNAVAILABLE')
 })
-it('sells bait in a bundle and restores quantities through gifts',async()=>{
- const listing=await sale('bait','bait_special',3,500)
- expect((await wallet(maker)).inventory.bait_special).toBe(7)
+it('sells fuel in a bundle and restores quantities through gifts',async()=>{
+ const listing=await sale('fuel','fuel',3,500)
+ expect((await wallet(maker)).inventory.fuel).toBe(7)
  await act(listing.id);await claim(taker,listing.escrow_gift_id);await claim(taker,listing.escrow_gift_id)
- expect((await wallet(taker)).inventory.bait_special).toBe(13)
+ expect((await wallet(taker)).inventory.fuel).toBe(13)
  expect((await wallet(taker)).gold).toBe(4500)
 })
 it('rejects buy orders, barter, gold offers and invalid quantities on the server',async()=>{
  await seedItem(maker)
  await expect(post()).rejects.toThrow('INVALID_EXCHANGE')
- await expect(post(maker,'sell','collectible','soft-sea-cucumber',1,'bait','bait',1)).rejects.toThrow('INVALID_EXCHANGE')
+ await expect(post(maker,'sell','collectible','soft-sea-cucumber',1,'bait','bait',1)).rejects.toThrow('EXCHANGE_BAIT_DISABLED')
  await expect(post(maker,'sell','gold','gold',1,'gold','gold',2)).rejects.toThrow('INVALID_EXCHANGE')
  await expect(sale('collectible','map-bluegrove')).rejects.toThrow('INVALID_EXCHANGE_ASSET')
- await expect(sale('bait','bait_special',0)).rejects.toThrow('INVALID_EXCHANGE_ASSET')
- await expect(sale('bait','bait_special',1,0)).rejects.toThrow('INVALID_EXCHANGE_ASSET')
+ await expect(sale('fuel','fuel',0)).rejects.toThrow('INVALID_EXCHANGE_ASSET')
+ await expect(sale('fuel','fuel',1,0)).rejects.toThrow('INVALID_EXCHANGE_ASSET')
 })
-it('returns cancelled bait by mail and protects against self purchases and unauthorized cancellation',async()=>{
- const listing=await sale('bait','bait_special',3)
+it('returns cancelled fuel by mail and protects against self purchases and unauthorized cancellation',async()=>{
+ const listing=await sale('fuel','fuel',3)
  await expect(act(listing.id,'cancel',other)).rejects.toThrow('EXCHANGE_FORBIDDEN')
  await expect(act(listing.id,'accept',maker)).rejects.toThrow('EXCHANGE_SELF_TRADE')
  await act(listing.id,'cancel',maker);await act(listing.id,'cancel',maker)
- expect((await wallet(maker)).inventory.bait_special).toBe(7)
+ expect((await wallet(maker)).inventory.fuel).toBe(7)
  await claim(maker,listing.escrow_gift_id)
- expect((await wallet(maker)).inventory.bait_special).toBe(10)
+ expect((await wallet(maker)).inventory.fuel).toBe(10)
  await expect(act(listing.id)).rejects.toThrow('EXCHANGE_UNAVAILABLE')
 })
 it('keeps stock reserved after an unaffordable purchase and blocks selling it twice',async()=>{
@@ -150,12 +150,12 @@ it('keeps stock reserved after an unaffordable purchase and blocks selling it tw
  expect((await wallet(taker)).gold).toBe(5000)
 })
 it('preserves post idempotency and the active listing limit',async()=>{
- const op=crypto.randomUUID(),first=await sale('bait','bait_special',1,300,op)
- expect((await sale('bait','bait_special',1,300,op)).id).toBe(first.id)
- expect((await wallet(maker)).inventory.bait_special).toBe(9)
- await expect(sale('bait','bait_special',1,301,op)).rejects.toThrow('OPERATION_CONFLICT')
- for(let i=1;i<10;i++)await sale('bait','bait_special',1,300)
- await expect(sale('bait','bait',1,300)).rejects.toThrow('EXCHANGE_LISTING_LIMIT')
+ const op=crypto.randomUUID(),first=await sale('fuel','fuel',1,300,op)
+ expect((await sale('fuel','fuel',1,300,op)).id).toBe(first.id)
+ expect((await wallet(maker)).inventory.fuel).toBe(9)
+ await expect(sale('fuel','fuel',1,301,op)).rejects.toThrow('OPERATION_CONFLICT')
+ for(let i=1;i<10;i++)await sale('fuel','fuel',1,300)
+ await expect(sale('fuel','fuel',1,300)).rejects.toThrow('EXCHANGE_LISTING_LIMIT')
 })
 it('protects tables and internal helpers from direct client access',async()=>{
  await expect(user(maker,"update public.exchange_listings set status='cancelled'")).rejects.toThrow('permission denied')
@@ -203,7 +203,7 @@ it('escrows fuel once, sells to a stranger and claims it once without collectibl
  expect((await wallet(taker)).gold).toBe(4700)
  await expect(claim(other,listing.escrow_gift_id)).rejects.toThrow('GIFT_NOT_FOUND')
  await claim(taker,listing.escrow_gift_id);await claim(taker,listing.escrow_gift_id)
- expect((await wallet(taker)).inventory.fuel).toBe(4)
+ expect((await wallet(taker)).inventory.fuel).toBe(14)
  expect((await db.query('select * from public.player_discoveries where user_id=$1',[taker])).rows).toHaveLength(0)
 })
 it('returns cancelled fuel once and rejects invalid or unavailable stock atomically',async()=>{

@@ -2,7 +2,7 @@ import {useEffect,useState} from 'react'
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import {Dialog,DialogContent,DialogDescription,DialogTitle} from '@/components/ui/dialog'
 import {Button} from '@/components/ui/button'
-import {PlayerAvatar} from '@/features/profile/player-avatar'
+import {VisitableAvatar as PlayerAvatar} from '@/features/profile/visitable-avatar'
 import {loadShowcaseReactionPeople,showcaseReactions,type ShowcasePost,type ShowcaseReaction,type ShowcaseReactionPeople} from './api'
 
 export function ShowcaseReactionPeopleDialog({post,initialReaction,onClose}:{post:ShowcasePost;initialReaction:ShowcaseReaction;onClose:()=>void}){

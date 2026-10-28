@@ -1,7 +1,7 @@
 import {Trash2} from 'lucide-react'
 import {useState} from 'react'
 import {ShowcaseReactionPeopleDialog} from './showcase-reaction-people'
-import {PlayerAvatar} from '@/features/profile/player-avatar'
+import {VisitableAvatar as PlayerAvatar} from '@/features/profile/visitable-avatar'
 import {BoardTime} from '@/features/board/board-time'
 import {CatchMoment} from './catch-moment'
 import {showcaseReactions,type ShowcasePost,type ShowcaseReaction} from './api'

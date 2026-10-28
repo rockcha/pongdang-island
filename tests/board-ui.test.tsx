@@ -71,6 +71,21 @@ function show(detail = false) {
     </MemoryRouter>,
   )
 }
+it('opens the author visit menu without navigating to the post',async()=>{
+ api.feed.mockResolvedValue({items:[{...post,author_id:'friend'}],total:1})
+ show();fireEvent.click(await screen.findByRole('button',{name:'퐁이 방문 메뉴'}))
+ const menu=await screen.findByRole('menu',{name:'퐁이 방문'})
+ expect(within(menu).getByRole('menuitem',{name:'친구 추가'})).toBeTruthy()
+ expect(within(menu).getByRole('menuitem',{name:'아쿠아리움 방문'}).getAttribute('href')).toBe('/friends/friend/aquarium')
+ expect(api.detail).not.toHaveBeenCalled()
+ expect(document.querySelector('a button,button button')).toBeNull()
+})
+it('offers visits from comment avatars in the post detail',async()=>{
+ show(true);fireEvent.click(await screen.findByRole('button',{name:'친구 방문 메뉴'}))
+ const menu=await screen.findByRole('menu',{name:'친구 방문'})
+ expect(within(menu).getByRole('menuitem',{name:'아쿠아리움 방문'}).getAttribute('href')).toBe('/friends/friend/aquarium')
+ expect(document.querySelector('a button,button button')).toBeNull()
+})
 it('loads latest, popular and own posts without showing a square parent', async () => {
   show()
   await screen.findByText('오늘의 바다')

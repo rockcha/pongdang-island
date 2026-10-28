@@ -128,6 +128,10 @@ export type Database = {
       auction_post:{Args:import('@/features/auctions/api').AuctionPost;Returns:import('@/features/auctions/api').Auction}
       auction_bid:{Args:{p_id:string;p_amount:number;p_operation_id:string};Returns:import('@/features/auctions/api').Auction}
       auction_cancel:{Args:{p_id:string};Returns:import('@/features/auctions/api').Auction}
+      flea_state:{Args:{p_side?:string;p_query?:string;p_kind?:string;p_mine?:boolean;p_offset?:number};Returns:import('@/features/flea-market/api').FleaFeed}
+      flea_post:{Args:import('@/features/flea-market/api').FleaDraft;Returns:import('@/features/flea-market/api').FleaPost}
+      flea_trade:{Args:import('@/features/flea-market/api').FleaTrade;Returns:import('@/features/flea-market/api').FleaPost}
+      flea_cancel:{Args:{p_post_id:string;p_operation_id:string};Returns:import('@/features/flea-market/api').FleaPost}
       exchange_state:{Args:{p_tab?:string;p_query?:string;p_offset?:number};Returns:import('@/features/exchange/api').ExchangePage}
       edit_exchange_listing_title:{Args:{p_listing_id:string;p_title:string};Returns:undefined}
       exchange_listing_detail:{Args:{p_listing_id:string;p_offset?:number};Returns:import('@/features/exchange/api').ExchangeDetail}

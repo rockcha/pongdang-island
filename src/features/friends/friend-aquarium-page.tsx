@@ -111,7 +111,7 @@ function Visit({ owner }: { owner: string }) {
             >
               {data.owner.nickname}
             </Link>
-            <AquariumLike owner={owner}/>
+            {data.isFriend!==false?<AquariumLike owner={owner}/>:<span className="ml-auto rounded-full bg-secondary/50 px-2 py-1 text-[10px] text-muted-foreground">둘러보기</span>}
             {expanded&&<><Button
               variant="ghost"
               size="icon"
@@ -140,9 +140,9 @@ function Visit({ owner }: { owner: string }) {
             </Button>
             </>}
           </div>
-          <FriendAquariumActions owner={owner} nickname={data.owner.nickname}/>
+          {data.isFriend!==false&&<FriendAquariumActions owner={owner} nickname={data.owner.nickname}/>}
           {expanded?<FriendTankScene key={tank.id} name={tank.name} items={items} background={background}>
-            <AquariumCare key={'care:' + tank.id} tank={tank.id} />
+            {data.isFriend!==false&&<AquariumCare key={'care:' + tank.id} tank={tank.id} />}
           </FriendTankScene>:<AquariumOverview label="친구 어항 목록" state={{tanks:data.tanks,catalog:data.backgrounds}} items={allItems} busy={false} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>selectTank(id)}/>}
           <div className="flex shrink-0 divide-x divide-border border-t bg-background pb-[env(safe-area-inset-bottom)]">
             <Link

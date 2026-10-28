@@ -12,10 +12,13 @@ it('requires friendship and three ordered steps, permits unlimited repeats and d
   for(const id of [a,b,c]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query("insert into public.player_profiles(id,nickname) values($1,'테스트') on conflict do nothing",[id])}
   await db.query("insert into public.friend_requests(sender_id,recipient_id,status) values($1,$2,'accepted')",[a,b])
   const tank=(await db.query('insert into public.aquarium_tanks(user_id) values($1) returning id',[b])).rows[0].id
+  await db.query("insert into public.player_collectibles(user_id,species_id,tank_id) values($1,'soft-sea-cucumber',null)",[b])
   await db.query("select set_config('request.jwt.claim.sub',$1,true)",[a]);await db.exec('set local role authenticated')
   const visit=(await db.query('select public.friend_aquarium($1) r',[b])).rows[0].r
   expect(visit.owner.id).toBe(b);expect(visit.tanks).toHaveLength(1);expect(visit.inhabitants).toEqual([])
-  await reject('select public.friend_aquarium($1)',[c],'FRIENDSHIP_REQUIRED')
+  const stranger=(await db.query('select public.friend_aquarium($1) r',[c])).rows[0].r
+  expect(stranger.owner.id).toBe(c);expect(stranger.isFriend).toBe(false)
+  expect(visit.isFriend).toBe(true)
   const op=crypto.randomUUID()
   const feed=async(step:number,operation=op)=>(await db.query('select public.feed_friend_aquarium($1,$2,$3) r',[tank,operation,step])).rows[0].r
   await reject('select public.feed_friend_aquarium($1,$2,3)',[tank,op],'FEEDING_STEP_REQUIRED')
@@ -35,6 +38,8 @@ it('requires friendship and three ordered steps, permits unlimited repeats and d
   await reject('select public.feed_friend_aquarium($1,$2,1)',[tank,crypto.randomUUID()],'FRIENDSHIP_REQUIRED')
   await db.exec('reset role');await db.query("update public.friend_requests set status='removed' where sender_id=$1",[a])
   await db.query("select set_config('request.jwt.claim.sub',$1,true)",[a]);await db.exec('set local role authenticated')
-  await reject('select public.friend_aquarium($1)',[b],'FRIENDSHIP_REQUIRED')
+  const former=(await db.query('select public.friend_aquarium($1) r',[b])).rows[0].r
+  expect(former.isFriend).toBe(false);expect(former.tanks).toHaveLength(1)
+  expect(former.inhabitants).toEqual([])
  }finally{await db.exec('rollback;reset role')}
 })

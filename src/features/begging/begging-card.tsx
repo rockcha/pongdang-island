@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react'
 import { Check, ChevronRight, HeartHandshake } from 'lucide-react'
 import { BoardTime } from '@/features/board/board-time'
-import { PlayerAvatar } from '@/features/profile/player-avatar'
+import {VisitableAvatar as PlayerAvatar} from '@/features/profile/visitable-avatar'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { Button } from '@/components/ui/button'
 import type { BeggingRecord, BeggingRequest } from './api'
@@ -29,7 +29,7 @@ export function BeggingCard({
     >
       <div className="space-y-4 p-4">
         <header className="flex min-w-0 items-center gap-2.5">
-          <PlayerAvatar
+          <PlayerAvatar userId={post.owner.id}
             nickname={post.owner.nickname}
             path={post.owner.avatarPath}
             className="size-9"

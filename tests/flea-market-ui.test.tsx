@@ -1,0 +1,103 @@
+import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
+import {MemoryRouter} from 'react-router'
+import {beforeEach,afterEach,it,expect,vi} from 'vitest'
+import {FleaMarketPage} from '@/features/flea-market/flea-market-page'
+import {appQueryClient} from '@/lib/account-cache'
+const api=vi.hoisted(()=>({feed:vi.fn(),stock:vi.fn(),post:vi.fn(),trade:vi.fn(),cancel:vi.fn()}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
+vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
+vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
+vi.mock('@/features/flea-market/api',async original=>({...await original<typeof import('@/features/flea-market/api')>(),readFlea:api.feed,readFleaInventory:api.stock,postFlea:api.post,tradeFlea:api.trade,cancelFlea:api.cancel}))
+const fuel={kind:'fuel',id:'fuel',name:'연료',quantity:1,available:8,thumbnail_path:'/app-icons/fuel.png'}
+const fish={kind:'collectible',id:'fish',name:'복어',subtype:'fish',quantity:1,available:2,thumbnail_path:'fish.png'}
+const post={id:'post',owner_id:'other',owner_name:'이웃퐁',side:'sell',title:'남는 물건 정리해요',status:'active',escrow_gold:0,created_at:'2026-10-28T00:00:00Z',items:[{id:'line-fuel',asset:fuel,quantity:10,remaining:10,unit_price:30},{id:'line-fish',asset:fish,quantity:10,remaining:10,unit_price:20}]}
+beforeEach(()=>{
+ vi.clearAllMocks();appQueryClient.clear()
+ api.feed.mockImplementation(async f=>({items:[{...post,side:f.side}],total:1}))
+ api.stock.mockResolvedValue({gold:5000,assets:[fuel,fish,{kind:'bait',id:'bait',name:'일반 미끼',available:10}]})
+ for(const fn of [api.post,api.trade,api.cancel])fn.mockResolvedValue(post)
+})
+afterEach(cleanup)
+const setup=()=>render(<MemoryRouter><FleaMarketPage/></MemoryRouter>)
+it('opens a compact avatar menu without opening the listing and links directly to both visits',async()=>{
+ setup()
+ fireEvent.click(await screen.findByRole('button',{name:'이웃퐁 방문 메뉴'}))
+ const menu=await screen.findByRole('menu',{name:'이웃퐁 방문'})
+ expect(within(menu).queryByRole('menuitem',{name:'통발 방문'})).toBeNull()
+ expect(within(menu).getByRole('menuitem',{name:'친구 추가'})).toBeTruthy()
+ expect(within(menu).getByRole('menuitem',{name:'아쿠아리움 방문'}).getAttribute('href')).toBe('/friends/other/aquarium')
+ expect(screen.queryByRole('dialog')).toBeNull()
+ expect(document.querySelector('button button')).toBeNull()
+})
+it('uses personal aquarium and trap routes for the owner',async()=>{
+ api.feed.mockResolvedValue({items:[{...post,owner_id:'me'}],total:1})
+ setup();fireEvent.click(await screen.findByRole('button',{name:'이웃퐁 방문 메뉴'}))
+ const menu=await screen.findByRole('menu',{name:'이웃퐁 방문'})
+ expect(within(menu).getByRole('menuitem',{name:'통발 방문'}).getAttribute('href')).toBe('/expeditions')
+ expect(within(menu).getByRole('menuitem',{name:'아쿠아리움 방문'}).getAttribute('href')).toBe('/aquarium')
+})
+it('searches by title or item, switches buy and sell tabs and separates query filters',async()=>{
+ setup();await screen.findByRole('button',{name:/남는 물건 정리해요/})
+ fireEvent.change(screen.getByRole('searchbox',{name:'벼룩시장 검색'}),{target:{value:'복어'}})
+ await waitFor(()=>expect(api.feed.mock.calls.at(-1)[0]).toMatchObject({query:'복어',side:'sell'}))
+ fireEvent.click(screen.getByRole('tab',{name:'사요'}))
+ await waitFor(()=>expect(api.feed.mock.calls.at(-1)[0]).toMatchObject({query:'복어',side:'buy'}))
+ fireEvent.click(screen.getByRole('button',{name:'물고기'}))
+ await waitFor(()=>expect(api.feed.mock.calls.at(-1)[0]).toMatchObject({kind:'fish'}))
+ fireEvent.click(screen.getByRole('checkbox',{name:'내 글'}))
+ await waitFor(()=>expect(api.feed.mock.calls.at(-1)[0]).toMatchObject({mine:true}))
+})
+it('selects multiple quantities and preserves exactly one payload after uncertain trade failure',async()=>{
+ api.trade.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce(post)
+ setup();fireEvent.click(await screen.findByRole('button',{name:/남는 물건 정리해요/}))
+ const dialog=screen.getByRole('dialog')
+ fireEvent.change(within(dialog).getByLabelText('연료 거래 수량'),{target:{value:3}})
+ fireEvent.change(within(dialog).getByLabelText('복어 거래 수량'),{target:{value:2}})
+ fireEvent.click(within(dialog).getByRole('button',{name:'선택한 수량 구매하기'}))
+ await within(dialog).findByRole('alert')
+ expect(within(dialog).getByLabelText('연료 거래 수량').hasAttribute('disabled')).toBe(true)
+ fireEvent.click(within(dialog).getByRole('button',{name:'이전 거래 결과 다시 확인'}))
+ await waitFor(()=>expect(api.trade).toHaveBeenCalledTimes(2))
+ expect(api.trade.mock.calls[0][0]).toEqual(api.trade.mock.calls[1][0])
+ expect(api.trade.mock.calls[0][0]).toMatchObject({p_post_id:'post',p_items:[{id:'line-fuel',quantity:3},{id:'line-fish',quantity:2}]})
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+})
+it('posts a buy request with independent unit prices and the summed escrow without allowing bait',async()=>{
+ setup();fireEvent.click(screen.getByRole('tab',{name:'사요'}));fireEvent.click(screen.getByRole('button',{name:'글쓰기'}))
+ const dialog=screen.getByRole('dialog')
+ fireEvent.change(within(dialog).getByLabelText('글 제목'),{target:{value:'연료랑 복어 구해요'}})
+ fireEvent.click(await within(dialog).findByRole('button',{name:'연료 추가'}));fireEvent.click(within(dialog).getByRole('button',{name:'복어 추가'}))
+ for(const [name,price] of [['연료',20],['복어',30]]){
+  fireEvent.change(within(dialog).getByLabelText(`${name} 수량`),{target:{value:10}})
+  fireEvent.change(within(dialog).getByLabelText(`${name} 개당 가격`),{target:{value:price}})
+ }
+ expect(within(dialog).getByText('500')).toBeTruthy()
+ expect(within(dialog).queryByRole('button',{name:'일반 미끼 추가'})).toBeNull()
+ fireEvent.click(within(dialog).getByRole('button',{name:'골드 맡기고 등록'}))
+ await waitFor(()=>expect(api.post).toHaveBeenCalledOnce())
+ expect(api.post.mock.calls[0][0]).toMatchObject({p_side:'buy',p_title:'연료랑 복어 구해요',p_items:[{kind:'fuel',id:'fuel',quantity:10,unit_price:20},{kind:'collectible',id:'fish',quantity:10,unit_price:30}]})
+})
+it('caps sale registration at owned stock while buy requests can exceed owned stock',async()=>{
+ setup();fireEvent.click(screen.getByRole('button',{name:'글쓰기'}))
+ const dialog=screen.getByRole('dialog')
+ fireEvent.click(await within(dialog).findByRole('button',{name:'복어 추가'}))
+ const quantity=within(dialog).getByLabelText('복어 수량') as HTMLInputElement
+ fireEvent.change(quantity,{target:{value:'999'}})
+ expect(quantity.value).toBe('2')
+ fireEvent.change(quantity,{target:{value:'1.5'}})
+ expect(quantity.value).toBe('1')
+})
+it('limits supplies to available stock and lets only the owner recover remaining escrow',async()=>{
+ setup();fireEvent.click(screen.getByRole('tab',{name:'사요'}))
+ fireEvent.click(await screen.findByRole('button',{name:/남는 물건 정리해요/}))
+ const dialog=screen.getByRole('dialog')
+ await waitFor(()=>expect(within(dialog).getByLabelText('복어 거래 수량').getAttribute('max')).toBe('2'))
+ fireEvent.change(within(dialog).getByLabelText('복어 거래 수량'),{target:{value:3}})
+ expect((within(dialog).getByLabelText('복어 거래 수량') as HTMLInputElement).value).toBe('2')
+ expect(within(dialog).getByRole('button',{name:'선택한 수량 판매하기'}).hasAttribute('disabled')).toBe(false)
+ cleanup();appQueryClient.clear();api.feed.mockResolvedValue({items:[{...post,owner_id:'me',side:'buy',escrow_gold:500}],total:1})
+ setup();fireEvent.click(await screen.findByRole('button',{name:/남는 물건 정리해요/}))
+ fireEvent.click(screen.getByRole('button',{name:'마감하고 남은 물건·대금 회수'}))
+ await waitFor(()=>expect(api.cancel).toHaveBeenCalledOnce())
+ expect(api.cancel.mock.calls[0][0]).toMatchObject({p_post_id:'post'})
+})

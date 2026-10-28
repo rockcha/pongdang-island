@@ -1,7 +1,7 @@
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import {createContext,useContext,useEffect,useState,type ReactNode} from 'react'
 import {useAuth} from '@/components/auth-provider'
-import {PlayerAvatar} from '@/features/profile/player-avatar'
+import {VisitableAvatar as PlayerAvatar} from '@/features/profile/visitable-avatar'
 import {createClient} from '@/lib/client'
 import {BoardTime} from './board-time'
 import type {FeedbackKind} from './feedback-reactions'

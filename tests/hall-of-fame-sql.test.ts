@@ -131,31 +131,49 @@ afterAll(async () => {
 })
 
 describe('hall of fame rankings', () => {
-  it('uses the same signup-time and UUID tie order for TOP 5, personal rank and neighbors',async()=>{
+  it('ranks a player with no activity at zero and preserves zero-rate eligibility',async()=>{
+    await db.exec('begin')
+    try{
+      const newcomer='00000000-0000-0000-0000-000000000899'
+      await db.query('insert into auth.users(id,raw_user_meta_data) values($1,$2)',[newcomer,JSON.stringify({game_nickname:'새내기퐁'})])
+      await asUser(newcomer,'select public.sync_player_profile() data')
+      const result=await asUser<HallFeed>(newcomer,'select public.hall_of_fame() data')
+      expect(result.rankings.casts).toHaveLength(8)
+      expect(result.rankings.casts.at(-1)).toMatchObject({id:newcomer,rank:8,value:0})
+      expect(result.personal?.casts).toMatchObject({rank:8,value:0})
+      expect(result.personal?.casts.neighbors.some(p=>p.id===newcomer)).toBe(true)
+      expect(result.rankings.trash.every(p=>p.value===0)).toBe(true)
+      expect(result.rankings.trash.at(-1)).toMatchObject({id:newcomer,rank:8})
+      expect(result.rankings.mythic_rate.some(p=>p.id===newcomer)).toBe(false)
+      await db.query("update app_private.title_fishing_log set rarity='common' where user_id=$1 and source='manual'",[ids[0]])
+      expect((await feed()).rankings.mythic_rate).toEqual([expect.objectContaining({id:ids[0],rank:1,value:0})])
+    }finally{await db.exec('rollback')}
+  })
+  it('uses the same signup-time and UUID tie order for all ranks, personal rank and neighbors',async()=>{
     await db.exec('begin')
     try{
       await db.query('update public.player_profiles set created_at=$1 where id=any($2::uuid[])',['2026-01-02T00:00:00Z',ids])
       await db.query('update public.player_profiles set created_at=$1 where id=$2',['2026-01-01T00:00:00Z',ids[6]])
       for(const user of ids)await db.query(`insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward) values($1,gen_random_uuid(),'calm',20,0,array_fill(0,array[12]),array[0,20,20,40],0,0)`,[user])
       const result=await asUser<HallFeed>(ids[3],'select public.hall_of_fame() data')
-      expect(result.rankings.ladder_plays.map(p=>p.id)).toEqual([ids[6],ids[0],ids[1],ids[2],ids[3]])
+      expect(result.rankings.ladder_plays.map(p=>p.id)).toEqual([ids[6],...ids.slice(0,6)])
       expect(result.personal?.ladder_plays.rank).toBe(5)
       expect(result.personal?.ladder_plays.neighbors.map(p=>p.id)).toEqual(ids.slice(1,6))
       expect(result.personal?.ladder_plays.neighbors.map(p=>p.rank)).toEqual([3,4,5,6,7])
     }finally{await db.exec('rollback')}
   })
-  it('returns exact personal rank beyond TOP 5 and neighbors from the same ordered snapshot',async()=>{
+  it('returns every rank beyond TOP 5 along with exact personal rank and neighbors from the same ordered snapshot',async()=>{
     const result=await asUser<HallFeed>(ids[1],'select public.hall_of_fame() data')
-    expect(result.rankings.casts.some(p=>p.id===ids[1])).toBe(false)
+    expect(result.rankings.casts.some(p=>p.id===ids[1])).toBe(true)
     expect(result.personal?.casts).toMatchObject({rank:7,value:1})
     expect(result.personal?.casts.neighbors.map(p=>p.rank)).toEqual([5,6,7])
     const middle=await asUser<HallFeed>(ids[4],'select public.hall_of_fame() data')
     expect(middle.personal?.casts.rank).toBe(4)
     expect(middle.personal?.casts.neighbors.map(p=>p.rank)).toEqual([2,3,4,5,6])
     expect(middle.personal?.mythic_rate).toMatchObject({rank:null,value:0,neighbors:[]})
-    expect(middle.personal?.cleanings).toBeUndefined()
+    expect(middle.personal?.cleanings).toMatchObject({value:0})
   })
-  it('splits arcade starts by game, counts each run once, and preserves top-five exclusion rules',async()=>{
+  it('splits arcade starts by game, counts each run once, and preserves account exclusion rules',async()=>{
     await db.exec('begin')
     try{
       for(const [i,user] of ids.entries())await db.query(`insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward)
@@ -163,7 +181,7 @@ describe('hall of fame rankings', () => {
       await db.query(`insert into public.odd_even_runs(user_id,operation_id,wins,round,stage) values($1,gen_random_uuid(),5,6,'decision')`,[ids[0]])
       await db.query(`insert into public.brick_game_runs(user_id,operation_id,seed,finished_at) select $1,gen_random_uuid(),i,case when i<3 then now() else null end from generate_series(1,3)i`,[ids[0]])
       let rankings=(await feed()).rankings
-      expect(rankings.ladder_plays).toHaveLength(5)
+      expect(rankings.ladder_plays).toHaveLength(7)
       expect(rankings.ladder_plays[0]).toMatchObject({id:ids[6],value:7,rank:1})
       expect(rankings.odd_even_plays[0]).toMatchObject({id:ids[0],value:1})
       expect(rankings.brick_plays[0]).toMatchObject({id:ids[0],value:3})
@@ -175,20 +193,20 @@ describe('hall of fame rankings', () => {
       await db.query('update auth.users set email=$1 where id=$2',['1@1.com',ids[6]])
       rankings=(await feed()).rankings
       expect(rankings.ladder_plays[0]).toMatchObject({id:ids[5],value:6,rank:1})
-      expect(rankings.ladder_plays).toHaveLength(5)
+      expect(rankings.ladder_plays).toHaveLength(6)
       expect(rankings.ladder_plays.some(p=>p.id===ids[6])).toBe(false)
     }finally{await db.exec('rollback')}
   })
-  it('combines catch sources, excludes gifts and non-fish, and limits every category to five', async () => {
+  it('combines catch sources, excludes gifts and non-fish, and includes every eligible participant', async () => {
     const { rankings } = await feed()
-    expect(rankings.casts).toHaveLength(5)
+    expect(rankings.casts).toHaveLength(7)
     expect(rankings.casts[0]).toMatchObject({ id: ids[0], value: 100, rank: 1 })
     expect(rankings.casts[1]).toMatchObject({ id: ids[6], value: 6 })
     expect(rankings.fish[0].value).toBe(62)
     expect(rankings.mythic[0].value).toBe(3)
     expect(rankings.failure_rate).toHaveLength(1)
     expect(rankings.failure_rate[0].value).toBe(40)
-    expect(Object.values(rankings).every((rows) => rows.length <= 5)).toBe(true)
+    expect(rankings.casts.map(p=>p.rank)).toEqual([1,2,3,4,5,6,7])
   })
   it('uses ordered results and Korean calendar days for personal bests', async () => {
     const { rankings } = await feed()
@@ -196,7 +214,8 @@ describe('hall of fame rankings', () => {
     expect(rankings.success_run).toBeUndefined()
     expect(rankings.failure_run[0].value).toBe(40)
     expect(rankings.days).toBeUndefined()
-    expect(rankings.trash).toBeUndefined() // Expedition trash is not manual fishing trash.
+    expect(rankings.trash).toHaveLength(7)
+    expect(rankings.trash.every(p=>p.value===0)).toBe(true) // Expedition trash is not manual fishing trash.
     expect(rankings.collection[0].value).toBeGreaterThan(0)
   })
   it('counts completed help actions once and combines different minigames', async () => {
@@ -210,12 +229,12 @@ describe('hall of fame rankings', () => {
     expect(rankings.mythic_rate).toHaveLength(1)
     expect(rankings.mythic_rate[0]).toMatchObject({ id: ids[0], value: 1 })
   })
-  it('excludes the requested account before selecting TOP 5 in every category', async () => {
+  it('excludes the requested account before ranking all participants in every category', async () => {
     await db.exec('begin')
     try {
       await db.query('update auth.users set email=$1 where id=$2', ['1@1.com', ids[0]])
       const { rankings } = await feed()
-      expect(rankings.casts).toHaveLength(5)
+      expect(rankings.casts).toHaveLength(6)
       expect(rankings.casts[0]).toMatchObject({ id: ids[6], value: 6, rank: 1 })
       for (const rows of Object.values(rankings))
         expect(rows.some((p) => p.id === ids[0])).toBe(false)

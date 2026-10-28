@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "de19e45bf37af1458be6f710e943fee8ae3949d85ce307597f7ca84d4114c544",
+  "migrationHash": "568ff94a2f57286949dc77a06bc8d8cc209b8c6537af2c3ccb3e7bd4b9e75664",
   "structure": {
     "enums": [
       {
@@ -193,6 +193,24 @@
       {
         "rls": true,
         "name": "fishing_maintenance",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "flea_lines",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "flea_posts",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "flea_receipts",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2247,6 +2265,226 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "post_id",
+        "type": "uuid",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "kind",
+        "type": "text",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "item_id",
+        "type": "text",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "asset",
+        "type": "jsonb",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "integer",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "remaining",
+        "type": "integer",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "unit_price",
+        "type": "integer",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "escrow_gift_id",
+        "type": "uuid",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "owner_id",
+        "type": "uuid",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "side",
+        "type": "text",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": "'active'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "escrow_gold",
+        "type": "bigint",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "closed_at",
+        "type": "timestamp with time zone",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "request",
+        "type": "jsonb",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -10642,6 +10880,48 @@
         "definition": "CREATE UNIQUE INDEX fishing_maintenance_pkey ON app_private.fishing_maintenance USING btree (id)"
       },
       {
+        "name": "flea_lines_escrow_gift_id_key",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX flea_lines_escrow_gift_id_key ON app_private.flea_lines USING btree (escrow_gift_id)"
+      },
+      {
+        "name": "flea_lines_pkey",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX flea_lines_pkey ON app_private.flea_lines USING btree (id)"
+      },
+      {
+        "name": "flea_lines_post_id_kind_item_id_key",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX flea_lines_post_id_kind_item_id_key ON app_private.flea_lines USING btree (post_id, kind, item_id)"
+      },
+      {
+        "name": "flea_posts_feed",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "CREATE INDEX flea_posts_feed ON app_private.flea_posts USING btree (side, created_at DESC, id) WHERE (status = 'active'::text)"
+      },
+      {
+        "name": "flea_posts_owner",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "CREATE INDEX flea_posts_owner ON app_private.flea_posts USING btree (owner_id, created_at DESC, id)"
+      },
+      {
+        "name": "flea_posts_pkey",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX flea_posts_pkey ON app_private.flea_posts USING btree (id)"
+      },
+      {
+        "name": "flea_receipts_pkey",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX flea_receipts_pkey ON app_private.flea_receipts USING btree (user_id, operation_id)"
+      },
+      {
         "name": "gold_settings_pkey",
         "table": "gold_settings",
         "schema": "app_private",
@@ -13536,6 +13816,13 @@
         "definition": "CREATE TRIGGER pongdang_native_region BEFORE INSERT OR UPDATE OF name, kind, native_region_id ON public.collectible_species FOR EACH ROW EXECUTE FUNCTION app_private.apply_pongdang_native_region()"
       },
       {
+        "name": "block_exchange_bait",
+        "table": "exchange_listings",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER block_exchange_bait BEFORE INSERT OR UPDATE OF status, offer, wanted ON public.exchange_listings FOR EACH ROW EXECUTE FUNCTION app_private.block_exchange_bait()"
+      },
+      {
         "name": "title_exchange",
         "table": "exchange_listings",
         "schema": "public",
@@ -14114,6 +14401,16 @@
         "arguments": "p_tab text, p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION app_private.begging_state(p_tab text DEFAULT 'active'::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();items jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tab is null or p_tab not in ('active','mine') or p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_BEGGING';end if;\n select coalesce(jsonb_agg(app_private.begging_payload(q.id) order by q.created_at desc,q.id),'[]'::jsonb) into items from (\n  select r.id,r.created_at from app_private.begging_requests r where\n  (p_tab='active' and r.status='active' and r.creator_id is not null) or(p_tab='mine' and r.creator_id=u)\n  order by r.created_at desc,r.id limit 11 offset p_offset\n )q;\n return jsonb_build_object('items',case when jsonb_array_length(items)>10 then items-10 else items end,'hasMore',jsonb_array_length(items)>10);\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "block_exchange_bait",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.block_exchange_bait()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if new.status in ('active','completed') and (app_private.exchange_has_bait(new.offer) or app_private.exchange_has_bait(new.wanted)) then raise exception 'EXCHANGE_BAIT_DISABLED';end if;\n return new;\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "board_action",
@@ -14712,7 +15009,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_kind text, p_id text, p_quantity integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_asset(p_kind text, p_id text, p_quantity integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_name text;v_path text;v_subtype text;\nbegin\n if p_quantity is null or p_quantity<1 then raise exception 'INVALID_EXCHANGE_ASSET';end if;\n if p_kind='gold' and p_id='gold' and p_quantity<=1000000000 then\n  return jsonb_build_object('kind','gold','id','gold','quantity',p_quantity,'name','골드','thumbnail_path',null);\n elsif p_kind='fuel' and p_id='fuel' and p_quantity<=9999 then\n  return jsonb_build_object('kind','fuel','id','fuel','quantity',p_quantity,'name','기름','thumbnail_path','/app-icons/fuel.png');\n elsif p_kind='bait' and p_quantity<=9999 then\n  select name,image_path into v_name,v_path from public.fishing_baits where id=p_id;\n elsif p_kind='collectible' and p_quantity<=20 then\n  select name,thumbnail_path,kind::text into v_name,v_path,v_subtype from public.collectible_species\n   where id=p_id and kind in ('fish','trash','decoration') and id not like 'test-%';\n else raise exception 'INVALID_EXCHANGE_ASSET';end if;\n if v_name is null then raise exception 'INVALID_EXCHANGE_ASSET';end if;\n return jsonb_build_object('kind',p_kind,'id',p_id,'quantity',p_quantity,'name',v_name,'thumbnail_path',v_path,'subtype',v_subtype);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_asset(p_kind text, p_id text, p_quantity integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_name text;v_path text;v_subtype text;\nbegin\n if p_quantity is null or p_quantity<1 then raise exception 'INVALID_EXCHANGE_ASSET';end if;\n if p_kind='gold' and p_id='gold' and p_quantity<=1000000000 then\n  return jsonb_build_object('kind','gold','id','gold','quantity',p_quantity,'name','골드','thumbnail_path',null);\n elsif p_kind='fuel' and p_id='fuel' and p_quantity<=9999 then\n  return jsonb_build_object('kind','fuel','id','fuel','quantity',p_quantity,'name','기름','thumbnail_path','/app-icons/fuel.png');\n elsif p_kind='bait' and p_quantity<=9999 then\n  raise exception 'EXCHANGE_BAIT_DISABLED';\n elsif p_kind='collectible' and p_quantity<=20 then\n  select name,thumbnail_path,kind::text into v_name,v_path,v_subtype from public.collectible_species\n   where id=p_id and kind in ('fish','trash','decoration') and id not like 'test-%';\n else raise exception 'INVALID_EXCHANGE_ASSET';end if;\n if v_name is null then raise exception 'INVALID_EXCHANGE_ASSET';end if;\n return jsonb_build_object('kind',p_kind,'id',p_id,'quantity',p_quantity,'name',v_name,'thumbnail_path',v_path,'subtype',v_subtype);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -14726,13 +15023,23 @@
         "securityDefiner": false
       },
       {
+        "name": "exchange_has_bait",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_asset jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_has_bait(p_asset jsonb)\n RETURNS boolean\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\n select coalesce(p_asset->>'kind'='bait',false) or exists(select 1 from jsonb_array_elements(case when jsonb_typeof(p_asset->'items')='array' then p_asset->'items' else '[]'::jsonb end) x where x->>'kind'='bait')\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "exchange_inventory",
         "config": [
           "search_path=\"\""
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_inventory()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n return jsonb_build_object('gold',(select gold from public.player_wallets where user_id=v_uid),\n 'assets',coalesce((select jsonb_agg(app_private.exchange_asset('collectible',s.id,1)||jsonb_build_object('available',(\n  select count(*) from public.player_collectibles c where c.user_id=v_uid and c.species_id=s.id and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null\n ))) from public.collectible_species s where s.kind in ('fish','trash','decoration') and s.id not like 'test-%'),'[]'::jsonb)||\n coalesce((select jsonb_agg(app_private.exchange_asset('bait',b.id,1)||jsonb_build_object('available',coalesce((w.inventory->>b.id)::integer,0)))\n from public.fishing_baits b cross join public.player_wallets w where w.user_id=v_uid),'[]'::jsonb)||jsonb_build_array(app_private.exchange_asset('fuel','fuel',1)||jsonb_build_object('available',(select coalesce((inventory->>'fuel')::integer,0) from public.player_wallets where user_id=v_uid))));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_inventory()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n return jsonb_build_object('gold',(select gold from public.player_wallets where user_id=v_uid),\n 'assets',coalesce((select jsonb_agg(app_private.exchange_asset('collectible',s.id,1)||jsonb_build_object('available',(\n  select count(*) from public.player_collectibles c where c.user_id=v_uid and c.species_id=s.id and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null\n ))) from public.collectible_species s where s.kind in ('fish','trash','decoration') and s.id not like 'test-%'),'[]'::jsonb)||\njsonb_build_array(app_private.exchange_asset('fuel','fuel',1)||jsonb_build_object('available',(select coalesce((inventory->>'fuel')::integer,0) from public.player_wallets where user_id=v_uid))));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15076,13 +15383,83 @@
         "securityDefiner": false
       },
       {
+        "name": "flea_cancel",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_post_id uuid, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_cancel(p_post_id uuid, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();p app_private.flea_posts;l app_private.flea_lines;old app_private.flea_receipts;request jsonb;result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_FLEA';end if;\n request:=jsonb_build_object('action','cancel','post',p_post_id);\n perform app_private.get_gold_wallet();perform 1 from public.player_wallets where user_id=u for update;\n select * into old from app_private.flea_receipts where user_id=u and operation_id=p_operation_id;\n if found then if old.request<>request then raise exception 'OPERATION_CONFLICT';end if;return old.result;end if;\n select * into p from app_private.flea_posts where id=p_post_id for update;\n if not found then raise exception 'FLEA_NOT_FOUND';end if;\n if p.owner_id<>u then raise exception 'FLEA_FORBIDDEN';end if;\n if p.status<>'active' then raise exception 'FLEA_CLOSED';end if;\n if p.side='buy' then perform app_private.flea_gold(u,p.escrow_gold::integer,p.id);\n else\n  for l in select * from app_private.flea_lines where post_id=p.id and remaining>0 order by id for update loop\n   perform app_private.flea_deliver(l.escrow_gift_id,l.remaining,u);\n  end loop;\n end if;\n update app_private.flea_posts set status='cancelled',escrow_gold=0,closed_at=now() where id=p.id;\n result:=app_private.flea_post_payload(p.id);\n insert into app_private.flea_receipts(user_id,operation_id,request,result) values(u,p_operation_id,request,result);\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "flea_deliver",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_gift uuid, p_quantity integer, p_recipient uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_deliver(p_gift uuid, p_quantity integer, p_recipient uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare g public.collectible_gifts;parcel uuid;ids uuid[];\nbegin\n select * into g from public.collectible_gifts where id=p_gift and exchange_hold and source='exchange' for update;\n if not found or p_quantity<1 or p_quantity>g.quantity then raise exception 'FLEA_STOCK_CHANGED';end if;\n if p_quantity=g.quantity then parcel:=g.id;\n else\n  ids:=case when g.reward_kind='collectible' then g.collectible_ids[1:p_quantity] else '{}'::uuid[] end;\n  if g.reward_kind='collectible' and cardinality(ids)<>p_quantity then raise exception 'FLEA_STOCK_CHANGED';end if;\n  insert into public.collectible_gifts(sender_id,recipient_id,sender_name,recipient_name,operation_id,collectible_ids,species,quantity,message,source,exchange_hold,reward_kind,reward_id)\n  values(g.sender_id,g.recipient_id,g.sender_name,g.recipient_name,gen_random_uuid(),ids,g.species,p_quantity,'벼룩시장 거래 물품이에요.','exchange',true,g.reward_kind,g.reward_id) returning id into parcel;\n  update public.collectible_gifts set quantity=quantity-p_quantity,\n   collectible_ids=case when reward_kind='collectible' then collectible_ids[p_quantity+1:cardinality(collectible_ids)] else collectible_ids end where id=g.id;\n  update public.player_collectibles set escrow_gift_id=parcel where id=any(ids) and escrow_gift_id=g.id;\n end if;\n perform app_private.exchange_deliver(parcel,p_recipient,'벼룩시장 물품이 도착했어요. 우편함에서 받아주세요.');\n update public.notifications set title='벼룩시장 물품이 도착했어요' where gift_id=parcel and kind='gift_received';\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_gold",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid, p_delta integer, p_post uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_gold(p_user uuid, p_delta integer, p_post uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if p_delta=0 then return;end if;\n update public.player_wallets set gold=(gold::bigint+p_delta)::integer,updated_at=now()\n where user_id=p_user and gold::bigint+p_delta between 0 and 2147483647;\n if not found then\n  if p_delta<0 then raise exception 'INSUFFICIENT_GOLD';else raise exception 'FLEA_GOLD_LIMIT';end if;\n end if;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n values(p_user,gen_random_uuid(),case when p_delta<0 then 'buy' else 'sell' end,'flea:'||p_post,p_delta);\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_post",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_post(p_side text, p_title text, p_items jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();request jsonb;old app_private.flea_receipts;part jsonb;asset jsonb;assets jsonb:='[]';keys text[]:='{}';k text;\n total bigint:=0;collectibles integer:=0;parcel uuid;post_id uuid;result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_side is null or p_side not in ('sell','buy') or p_title is null or char_length(btrim(p_title)) not between 1 and 80\n or p_title ~ '[[:cntrl:]]' or jsonb_typeof(p_items) is distinct from 'array' then raise exception 'INVALID_FLEA';end if;\n if jsonb_array_length(p_items) not between 1 and 5 then raise exception 'FLEA_ITEM_LIMIT';end if;\n request:=jsonb_build_object('action','post','side',p_side,'title',btrim(p_title),'items',p_items);\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=u for update;\n select * into old from app_private.flea_receipts where user_id=u and operation_id=p_operation_id;\n if found then if old.request<>request then raise exception 'OPERATION_CONFLICT';end if;return old.result;end if;\n if(select count(*) from app_private.flea_posts where owner_id=u and status='active')>=5 then raise exception 'FLEA_POST_LIMIT';end if;\n for part in select value from jsonb_array_elements(p_items) order by value->>'kind',value->>'id' loop\n  if jsonb_typeof(part) is distinct from 'object' or coalesce(part->>'kind','') not in ('collectible','fuel') or coalesce(part->>'quantity','') !~ '^[1-9][0-9]{0,3}$'\n  or coalesce(part->>'unit_price','') !~ '^[1-9][0-9]{0,9}$' then raise exception 'INVALID_FLEA';end if;\n  k:=(part->>'kind')||':'||(part->>'id');\n  if k=any(keys) then raise exception 'INVALID_FLEA';end if;keys:=array_append(keys,k);\n  asset:=app_private.exchange_asset(part->>'kind',part->>'id',(part->>'quantity')::integer);\n  if (part->>'unit_price')::bigint>1000000000 then raise exception 'INVALID_FLEA';end if;\n  total:=total+(part->>'quantity')::integer*(part->>'unit_price')::bigint;\n  if total>1000000000 then raise exception 'INVALID_FLEA';end if;\n  if part->>'kind'='collectible' then collectibles:=collectibles+(part->>'quantity')::integer;end if;\n  assets:=assets||jsonb_build_array(jsonb_build_object('asset',asset,'price',(part->>'unit_price')::integer));\n end loop;\n if collectibles>20 then raise exception 'FLEA_ITEM_LIMIT';end if;\n insert into app_private.flea_posts(owner_id,side,title,escrow_gold) values(u,p_side,btrim(p_title),case when p_side='buy' then total else 0 end) returning id into post_id;\n if p_side='buy' then perform app_private.flea_gold(u,-total::integer,post_id);end if;\n for part in select value from jsonb_array_elements(assets) loop\n  asset:=part->'asset';parcel:=null;\n  if p_side='sell' then parcel:=app_private.exchange_reserve(u,asset);end if;\n  insert into app_private.flea_lines(post_id,kind,item_id,asset,quantity,remaining,unit_price,escrow_gift_id)\n  values(post_id,asset->>'kind',asset->>'id',asset||jsonb_build_object('quantity',1),(asset->>'quantity')::integer,(asset->>'quantity')::integer,(part->>'price')::integer,parcel);\n end loop;\n result:=app_private.flea_post_payload(post_id);\n insert into app_private.flea_receipts(user_id,operation_id,request,result) values(u,p_operation_id,request,result);\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "flea_post_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_post_payload(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('id',p.id,'owner_id',p.owner_id,'owner_name',u.nickname,'owner_avatar_path',u.avatar_path,\n 'side',p.side,'title',p.title,'status',p.status,'escrow_gold',p.escrow_gold,'created_at',p.created_at,\n 'items',coalesce((select jsonb_agg(jsonb_build_object('id',l.id,'asset',l.asset,'quantity',l.quantity,\n 'remaining',l.remaining,'unit_price',l.unit_price) order by l.kind,l.item_id) from app_private.flea_lines l where l.post_id=p.id),'[]'::jsonb))\n from app_private.flea_posts p join public.player_profiles u on u.id=p.owner_id where p.id=p_id\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_state(p_side text DEFAULT 'sell'::text, p_query text DEFAULT ''::text, p_kind text DEFAULT 'all'::text, p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v_ids uuid[];v_total bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_side is null or p_side not in ('sell','buy') or p_kind is null or p_kind not in ('all','fish','decoration','trash','fuel') or p_mine is null\n or p_offset is null or p_offset<0 or p_offset>100000 or p_query is null or char_length(p_query)>80 then raise exception 'INVALID_FLEA';end if;\n with matched as materialized (\n  select p.id,p.created_at from app_private.flea_posts p\n  where p.side=p_side and (case when p_mine then p.owner_id=u else p.status='active' end)\n  and (btrim(p_query)='' or position(lower(btrim(p_query)) in lower(p.title))>0 or exists(\n   select 1 from app_private.flea_lines l where l.post_id=p.id and position(replace(lower(btrim(p_query)),'연료','기름') in lower(l.asset->>'name'))>0))\n  and (p_kind='all' or exists(select 1 from app_private.flea_lines l where l.post_id=p.id and\n   (l.kind=p_kind or l.asset->>'subtype'=p_kind)))\n ) select (select count(*) from matched),(select array_agg(id order by created_at desc,id) from(select * from matched order by created_at desc,id limit 20 offset p_offset) q)\n into v_total,v_ids;\n return jsonb_build_object('items',coalesce((select jsonb_agg(app_private.flea_post_payload(id) order by ord) from unnest(v_ids) with ordinality q(id,ord)),'[]'::jsonb),'total',v_total);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "flea_trade",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_trade(p_post_id uuid, p_items jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();owner uuid;p app_private.flea_posts;l app_private.flea_lines;old app_private.flea_receipts;request jsonb;result jsonb;part jsonb;qty integer;total bigint:=0;keys uuid[]:='{}';parcel uuid;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or jsonb_typeof(p_items) is distinct from 'array' then raise exception 'INVALID_FLEA';end if;\n if jsonb_array_length(p_items) not between 1 and 5 then raise exception 'INVALID_FLEA';end if;\n request:=jsonb_build_object('action','trade','post',p_post_id,'items',p_items);\n select owner_id into owner from app_private.flea_posts where id=p_post_id;\n if owner is null then raise exception 'FLEA_NOT_FOUND';end if;\n if owner=u then raise exception 'FLEA_SELF_TRADE';end if;\n perform app_private.get_gold_wallet();\n -- All marketplace mutations lock wallets in the same order before their post.\n perform 1 from public.player_wallets where user_id in(u,owner) order by user_id for update;\n select * into old from app_private.flea_receipts where user_id=u and operation_id=p_operation_id;\n if found then if old.request<>request then raise exception 'OPERATION_CONFLICT';end if;return old.result;end if;\n select * into p from app_private.flea_posts where id=p_post_id for update;\n if p.status<>'active' then raise exception 'FLEA_CLOSED';end if;\n for part in select value from jsonb_array_elements(p_items) order by value->>'id' loop\n  if coalesce(part->>'quantity','') !~ '^[1-9][0-9]{0,3}$' then raise exception 'INVALID_FLEA';end if;\n  select * into l from app_private.flea_lines where post_id=p.id and id=(part->>'id')::uuid for update;\n  if not found or l.id=any(keys) then raise exception 'INVALID_FLEA';end if;\n  keys:=array_append(keys,l.id);qty:=(part->>'quantity')::integer;\n  if qty>l.remaining then raise exception 'FLEA_STOCK_CHANGED';end if;\n  total:=total+qty::bigint*l.unit_price;\n  if p.side='sell' then perform app_private.flea_deliver(l.escrow_gift_id,qty,u);\n  else\n   parcel:=app_private.exchange_reserve(u,l.asset||jsonb_build_object('quantity',qty));\n   perform app_private.flea_deliver(parcel,qty,owner);\n  end if;\n  update app_private.flea_lines set remaining=remaining-qty where id=l.id;\n end loop;\n if p.side='sell' then\n  perform app_private.flea_gold(u,-total::integer,p.id);perform app_private.flea_gold(owner,total::integer,p.id);\n else\n  if p.escrow_gold<total then raise exception 'FLEA_STOCK_CHANGED';end if;\n  update app_private.flea_posts set escrow_gold=escrow_gold-total where id=p.id;\n  perform app_private.flea_gold(u,total::integer,p.id);\n end if;\n if not exists(select 1 from app_private.flea_lines where post_id=p.id and remaining>0) then\n  update app_private.flea_posts set status='completed',closed_at=now() where id=p.id;\n end if;\n result:=app_private.flea_post_payload(p.id);\n insert into app_private.flea_receipts(user_id,operation_id,request,result) values(u,p_operation_id,request,result);\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "friend_aquarium",
         "config": [
           "search_path=\"\""
         ],
         "schema": "app_private",
         "arguments": "p_owner uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_aquarium(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n perform app_private.require_aquarium_friend(p_owner);\n return jsonb_build_object(\n 'owner',(select jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path) from public.player_profiles where id=p_owner),\n 'tanks',coalesce((select jsonb_agg(jsonb_build_object('id',id,'name',name,'background_id',background_id,'is_default',is_default,'created_at',created_at,'display_order',display_order) order by display_order,created_at,id) from public.aquarium_tanks where user_id=p_owner),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n join public.aquarium_tanks t on t.id=c.tank_id and t.user_id=p_owner\n where c.user_id=p_owner and c.sold_at is null and c.escrow_gift_id is null and s.kind in('fish','trash','decoration')),'[]'::jsonb),\n 'backgrounds',(select coalesce(jsonb_agg(jsonb_build_object('id',id,'name',name,'image_path',image_path)),'[]'::jsonb) from public.aquarium_backgrounds));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_aquarium(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_owner is null or not exists(select 1 from public.player_profiles where id=p_owner) then raise exception 'TANK_NOT_FOUND';end if;\n return jsonb_build_object(\n 'isFriend',exists(select 1 from public.friend_requests where status='accepted' and ((sender_id=auth.uid() and recipient_id=p_owner) or (recipient_id=auth.uid() and sender_id=p_owner))),\n 'owner',(select jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path) from public.player_profiles where id=p_owner),\n 'tanks',coalesce((select jsonb_agg(jsonb_build_object('id',id,'name',name,'background_id',background_id,'is_default',is_default,'created_at',created_at,'display_order',display_order) order by display_order,created_at,id) from public.aquarium_tanks where user_id=p_owner),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n join public.aquarium_tanks t on t.id=c.tank_id and t.user_id=p_owner\n where c.user_id=p_owner and c.sold_at is null and c.escrow_gift_id is null and s.kind in('fish','trash','decoration')),'[]'::jsonb),\n 'backgrounds',(select coalesce(jsonb_agg(jsonb_build_object('id',id,'name',name,'image_path',image_path)),'[]'::jsonb) from public.aquarium_backgrounds));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15242,7 +15619,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.hall_of_fame()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;caller uuid:=auth.uid();\nbegin\n if caller is null then raise exception 'AUTH_REQUIRED';end if;\n with participants as materialized (\n  select p.id,p.nickname,p.avatar_path,p.created_at from public.player_profiles p\n  join auth.users u on u.id=p.id where lower(coalesce(u.email,''))<>'1@1.com'\n ), logs as materialized (\n  select l.user_id,l.id,l.occurred_at,l.source,l.kind,l.rarity,l.species_id\n  from app_private.title_fishing_log l join participants p on p.id=l.user_id\n ), catches as materialized (\n  select user_id,kind,rarity from logs where species_id is not null\n  union all\n  select v.user_id,item->'species'->>'kind',item->'species'->>'rarity'\n  from public.harbor_voyages v join participants p on p.id=v.user_id\n  cross join lateral jsonb_array_elements(coalesce(v.result->'items','[]'::jsonb)) item\n  where v.claimed_at is not null\n ), manual as materialized (\n  select *, (occurred_at at time zone 'Asia/Seoul')::date play_day,\n   row_number() over(partition by user_id order by occurred_at,id)\n   -row_number() over(partition by user_id,(species_id is not null) order by occurred_at,id) run\n  from logs where source='manual'\n ), fishing as (\n  select user_id,count(*) attempts,count(*) filter(where species_id is null) failures,\n   count(*) filter(where species_id is not null and rarity='mythic') mythic\n  from manual group by user_id\n ), totals as (\n  select user_id,count(*) filter(where kind='fish') fish,count(*) filter(where rarity='mythic') mythic,\n   count(*) filter(where kind='decoration') decorations from catches group by user_id\n ), daily as (\n  select user_id,play_day,count(*) n from manual group by user_id,play_day\n ), runs as (\n  select user_id,max(n) filter(where success) success,max(n) filter(where not success) failure\n  from (select user_id,species_id is not null success,run,count(*) n from manual group by user_id,(species_id is not null),run) s group by user_id\n ), games as materialized (\n  select user_id,'brick_plays'::text game from public.brick_game_runs\n  union all select user_id,'shadow_plays' from public.shadow_game_runs\n  union all select user_id,'memory_plays' from public.memory_game_runs\n  union all select user_id,'odd_even_plays' from public.odd_even_runs\n  union all select user_id,'ladder_plays' from app_private.ladder_runs\n ), arcade as (\n  select user_id,sum(delta::bigint) filter(where delta>0) earned,-sum(delta::bigint) filter(where delta<0) spent\n  from public.gold_transactions where item_id like 'arcade:%' group by user_id\n ), sales as (\n  select case when side='sell' then owner_id else taker_id end user_id from public.exchange_listings where status='completed'\n ), purchases as (\n  select case when side='sell' then taker_id else owner_id end user_id from public.exchange_listings where status='completed'\n ), reactions as materialized (\n  select c.author_id user_id,r.value from app_private.hall_section_comment_reactions r\n  join app_private.hall_section_comments c on c.id=r.comment_id where r.user_id<>c.author_id\n  union all select target_id user_id,value from app_private.hall_reactions\n  union all\n  select coalesce(c.author_id,p.author_id),r.value from public.board_reactions r\n  join public.board_posts p on p.id=r.post_id left join public.board_comments c on c.id=r.comment_id\n  where r.user_id<>coalesce(c.author_id,p.author_id) and (r.comment_id is null or not c.deleted)\n ), helps as (\n  select visitor_id user_id from public.aquarium_feedings where completed_at is not null and visitor_id<>owner_id\n  union all select visitor_id from public.aquarium_cleanings where completed_at is not null and visitor_id<>owner_id\n  union all select helper_id from app_private.expedition_boosts\n ), metrics as materialized (\n  select user_id,'casts' key,attempts::numeric value from fishing\n  union all select user_id,'fish',fish from totals\n  union all select d.user_id,'collection',100.0*count(*)/greatest((select count(*) from public.collectible_species where kind<>'map'),1)\n   from public.player_discoveries d join public.collectible_species s on s.id=d.species_id where s.kind<>'map' group by d.user_id\n  union all select user_id,'mythic',mythic from totals\n  union all select user_id,'mythic_rate',100.0*mythic/attempts from fishing where attempts>=100\n  union all select user_id,'failure_rate',100.0*failures/attempts from fishing where attempts>=100\n  union all select sender_id,'gifts',count(*) from public.collectible_gifts where source='friend' and sender_id<>recipient_id group by sender_id\n  union all select user_id,'sales',count(*) from sales group by user_id\n  union all select user_id,'purchases',count(*) from purchases group by user_id\n  union all select user_id,'titles',count(*) from public.player_titles group by user_id\n  union all select visitor_id,'cleanings',count(*) from public.aquarium_cleanings where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select visitor_id,'feedings',count(*) from public.aquarium_feedings where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select user_id,'voyages',count(*) from public.harbor_voyages group by user_id\n  union all select user_id,'games',count(*) from games group by user_id\n  union all select user_id,game,count(*) from games group by user_id,game\n  union all select user_id,'arcade_earned',earned from arcade\n  union all select user_id,'arcade_spent',spent from arcade\n  union all select user_id,'decorations',decorations from totals\n  union all select p.user_id,'control_miss',count(*) from app_private.prepared_fishing_casts p where p.finished_at is not null and p.result->>'failure_reason'='minigame' group by p.user_id\n  union all select user_id,'daily',max(n) from daily group by user_id\n  union all select user_id,'failure_run',failure from runs\n  union all select user_id,'trash',count(*) from manual where kind='trash' group by user_id\n  union all select user_id,'likes',count(*) from reactions where value=1 group by user_id\n  union all select user_id,'dislikes',count(*) from reactions where value=-1 group by user_id\n  union all select user_id,'helps',count(*) from helps group by user_id\n ), ranked as materialized (\n  select m.*,p.nickname,p.avatar_path,row_number() over(partition by key order by value desc,p.created_at,p.id) rank\n  from metrics m join participants p on p.id=m.user_id where m.value>0\n ), own_metrics as (\n  select key,value from metrics where user_id=caller\n  union all select 'mythic_rate',100.0*mythic/attempts from fishing where user_id=caller and attempts between 1 and 99\n  union all select 'failure_rate',100.0*failures/attempts from fishing where user_id=caller and attempts between 1 and 99\n ), grouped as (\n  select key,jsonb_agg(jsonb_build_object('id',user_id,'level',app_private.player_level(user_id),'levelProgress',app_private.player_level_progress(user_id),'nickname',nickname,'avatar_path',avatar_path,'value',value,'rank',rank) order by rank) rows\n  from ranked where rank<=5 group by key\n ), personal as (\n  select m.key,jsonb_build_object('rank',mine.rank,'value',m.value,'neighbors',coalesce((\n   select jsonb_agg(jsonb_build_object('id',r.user_id,'level',app_private.player_level(r.user_id),'levelProgress',app_private.player_level_progress(r.user_id),'nickname',r.nickname,'avatar_path',r.avatar_path,'value',r.value,'rank',r.rank) order by r.rank)\n   from ranked r where r.key=m.key and r.rank between mine.rank-2 and mine.rank+2\n  ),'[]'::jsonb)) payload\n  from own_metrics m left join ranked mine on mine.key=m.key and mine.user_id=caller\n )\n select jsonb_build_object('rankings',coalesce((select jsonb_object_agg(key,rows) from grouped),'{}'::jsonb),\n  'personal',coalesce((select jsonb_object_agg(key,payload) from personal),'{}'::jsonb),'generatedAt',statement_timestamp()) into result;\n return result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.hall_of_fame()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;caller uuid:=auth.uid();\nbegin\n if caller is null then raise exception 'AUTH_REQUIRED';end if;\n with participants as materialized (\n  select p.id,p.nickname,p.avatar_path,p.created_at from public.player_profiles p\n  join auth.users u on u.id=p.id where lower(coalesce(u.email,''))<>'1@1.com'\n ), logs as materialized (\n  select l.user_id,l.id,l.occurred_at,l.source,l.kind,l.rarity,l.species_id\n  from app_private.title_fishing_log l join participants p on p.id=l.user_id\n ), catches as materialized (\n  select user_id,kind,rarity from logs where species_id is not null\n  union all\n  select v.user_id,item->'species'->>'kind',item->'species'->>'rarity'\n  from public.harbor_voyages v join participants p on p.id=v.user_id\n  cross join lateral jsonb_array_elements(coalesce(v.result->'items','[]'::jsonb)) item\n  where v.claimed_at is not null\n ), manual as materialized (\n  select *, (occurred_at at time zone 'Asia/Seoul')::date play_day,\n   row_number() over(partition by user_id order by occurred_at,id)\n   -row_number() over(partition by user_id,(species_id is not null) order by occurred_at,id) run\n  from logs where source='manual'\n ), fishing as (\n  select user_id,count(*) attempts,count(*) filter(where species_id is null) failures,\n   count(*) filter(where species_id is not null and rarity='mythic') mythic\n  from manual group by user_id\n ), totals as (\n  select user_id,count(*) filter(where kind='fish') fish,count(*) filter(where rarity='mythic') mythic,\n   count(*) filter(where kind='decoration') decorations from catches group by user_id\n ), daily as (\n  select user_id,play_day,count(*) n from manual group by user_id,play_day\n ), runs as (\n  select user_id,max(n) filter(where success) success,max(n) filter(where not success) failure\n  from (select user_id,species_id is not null success,run,count(*) n from manual group by user_id,(species_id is not null),run) s group by user_id\n ), games as materialized (\n  select user_id,'brick_plays'::text game from public.brick_game_runs\n  union all select user_id,'shadow_plays' from public.shadow_game_runs\n  union all select user_id,'memory_plays' from public.memory_game_runs\n  union all select user_id,'odd_even_plays' from public.odd_even_runs\n  union all select user_id,'ladder_plays' from app_private.ladder_runs\n ), arcade as (\n  select user_id,sum(delta::bigint) filter(where delta>0) earned,-sum(delta::bigint) filter(where delta<0) spent\n  from public.gold_transactions where item_id like 'arcade:%' group by user_id\n ), sales as (\n  select case when side='sell' then owner_id else taker_id end user_id from public.exchange_listings where status='completed'\n ), purchases as (\n  select case when side='sell' then taker_id else owner_id end user_id from public.exchange_listings where status='completed'\n ), reactions as materialized (\n  select c.author_id user_id,r.value from app_private.hall_section_comment_reactions r\n  join app_private.hall_section_comments c on c.id=r.comment_id where r.user_id<>c.author_id\n  union all select target_id user_id,value from app_private.hall_reactions\n  union all\n  select coalesce(c.author_id,p.author_id),r.value from public.board_reactions r\n  join public.board_posts p on p.id=r.post_id left join public.board_comments c on c.id=r.comment_id\n  where r.user_id<>coalesce(c.author_id,p.author_id) and (r.comment_id is null or not c.deleted)\n ), helps as (\n  select visitor_id user_id from public.aquarium_feedings where completed_at is not null and visitor_id<>owner_id\n  union all select visitor_id from public.aquarium_cleanings where completed_at is not null and visitor_id<>owner_id\n  union all select helper_id from app_private.expedition_boosts\n ), metrics as materialized (\n  select user_id,'casts' key,attempts::numeric value from fishing\n  union all select user_id,'fish',fish from totals\n  union all select d.user_id,'collection',100.0*count(*)/greatest((select count(*) from public.collectible_species where kind<>'map'),1)\n   from public.player_discoveries d join public.collectible_species s on s.id=d.species_id where s.kind<>'map' group by d.user_id\n  union all select user_id,'mythic',mythic from totals\n  union all select user_id,'mythic_rate',100.0*mythic/attempts from fishing where attempts>=100\n  union all select user_id,'failure_rate',100.0*failures/attempts from fishing where attempts>=100\n  union all select sender_id,'gifts',count(*) from public.collectible_gifts where source='friend' and sender_id<>recipient_id group by sender_id\n  union all select user_id,'sales',count(*) from sales group by user_id\n  union all select user_id,'purchases',count(*) from purchases group by user_id\n  union all select user_id,'titles',count(*) from public.player_titles group by user_id\n  union all select visitor_id,'cleanings',count(*) from public.aquarium_cleanings where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select visitor_id,'feedings',count(*) from public.aquarium_feedings where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select user_id,'voyages',count(*) from public.harbor_voyages group by user_id\n  union all select user_id,'games',count(*) from games group by user_id\n  union all select user_id,game,count(*) from games group by user_id,game\n  union all select user_id,'arcade_earned',earned from arcade\n  union all select user_id,'arcade_spent',spent from arcade\n  union all select user_id,'decorations',decorations from totals\n  union all select p.user_id,'control_miss',count(*) from app_private.prepared_fishing_casts p where p.finished_at is not null and p.result->>'failure_reason'='minigame' group by p.user_id\n  union all select user_id,'daily',max(n) from daily group by user_id\n  union all select user_id,'failure_run',failure from runs\n  union all select user_id,'trash',count(*) from manual where kind='trash' group by user_id\n  union all select user_id,'likes',count(*) from reactions where value=1 group by user_id\n  union all select user_id,'dislikes',count(*) from reactions where value=-1 group by user_id\n  union all select user_id,'helps',count(*) from helps group by user_id\n ), category_keys(key) as (values ('casts'),('fish'),('collection'),('mythic'),('mythic_rate'),('gifts'),('sales'),('purchases'),('titles'),('cleanings'),('feedings'),('voyages'),('failure_rate'),('games'),('daily'),('control_miss'),('decorations'),('trash'),('arcade_earned'),('arcade_spent'),('failure_run'),('likes'),('dislikes'),('helps'),('ladder_plays'),('odd_even_plays'),('brick_plays'),('shadow_plays'),('memory_plays')), complete_metrics as materialized (\n  select p.id user_id,c.key,coalesce(m.value,0::numeric) value\n  from participants p cross join category_keys c\n  left join metrics m on m.user_id=p.id and m.key=c.key\n  -- Rate records still require 100 casts, even when their percentage is zero.\n  where c.key not in ('mythic_rate','failure_rate') or m.user_id is not null\n ), ranked as materialized (\n  select m.*,p.nickname,p.avatar_path,row_number() over(partition by key order by value desc,p.created_at,p.id) rank\n  from complete_metrics m join participants p on p.id=m.user_id\n ), own_metrics as (\n  select key,value from complete_metrics where user_id=caller\n  union all select 'mythic_rate',100.0*mythic/attempts from fishing where user_id=caller and attempts between 1 and 99\n  union all select 'failure_rate',100.0*failures/attempts from fishing where user_id=caller and attempts between 1 and 99\n ), grouped as (\n  select key,jsonb_agg(jsonb_build_object('id',user_id,'level',app_private.player_level(user_id),'levelProgress',app_private.player_level_progress(user_id),'nickname',nickname,'avatar_path',avatar_path,'value',value,'rank',rank) order by rank) rows\n  from ranked group by key\n ), personal as (\n  select m.key,jsonb_build_object('rank',mine.rank,'value',m.value,'neighbors',coalesce((\n   select jsonb_agg(jsonb_build_object('id',r.user_id,'level',app_private.player_level(r.user_id),'levelProgress',app_private.player_level_progress(r.user_id),'nickname',r.nickname,'avatar_path',r.avatar_path,'value',r.value,'rank',r.rank) order by r.rank)\n   from ranked r where r.key=m.key and r.rank between mine.rank-2 and mine.rank+2\n  ),'[]'::jsonb)) payload\n  from own_metrics m left join ranked mine on mine.key=m.key and mine.user_id=caller\n )\n select jsonb_build_object('rankings',coalesce((select jsonb_object_agg(key,rows) from grouped),'{}'::jsonb),\n  'personal',coalesce((select jsonb_object_agg(key,payload) from personal),'{}'::jsonb),'generatedAt',statement_timestamp()) into result;\n return result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17726,6 +18103,46 @@
         "securityDefiner": false
       },
       {
+        "name": "flea_cancel",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_post_id uuid, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.flea_cancel(p_post_id uuid, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.flea_cancel(p_post_id,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_post",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.flea_post(p_side text, p_title text, p_items jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.flea_post(p_side,p_title,p_items,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.flea_state(p_side text DEFAULT 'sell'::text, p_query text DEFAULT ''::text, p_kind text DEFAULT 'all'::text, p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.flea_state(p_side,p_query,p_kind,p_mine,p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_trade",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.flea_trade(p_post_id uuid, p_items jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.flea_trade(p_post_id,p_items,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "friend_aquarium",
         "config": [
           "search_path=\"\""
@@ -20048,6 +20465,228 @@
         "table": "fishing_maintenance",
         "schema": "app_private",
         "definition": "NOT NULL starts_at"
+      },
+      {
+        "name": "flea_lines_asset_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL asset"
+      },
+      {
+        "name": "flea_lines_check",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "CHECK (((remaining >= 0) AND (remaining <= quantity)))"
+      },
+      {
+        "name": "flea_lines_escrow_gift_id_fkey",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (escrow_gift_id) REFERENCES collectible_gifts(id)"
+      },
+      {
+        "name": "flea_lines_escrow_gift_id_key",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "UNIQUE (escrow_gift_id)"
+      },
+      {
+        "name": "flea_lines_id_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "flea_lines_item_id_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL item_id"
+      },
+      {
+        "name": "flea_lines_kind_check",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "CHECK ((kind = ANY (ARRAY['collectible'::text, 'fuel'::text])))"
+      },
+      {
+        "name": "flea_lines_kind_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL kind"
+      },
+      {
+        "name": "flea_lines_pkey",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "flea_lines_post_id_fkey",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (post_id) REFERENCES app_private.flea_posts(id)"
+      },
+      {
+        "name": "flea_lines_post_id_kind_item_id_key",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "UNIQUE (post_id, kind, item_id)"
+      },
+      {
+        "name": "flea_lines_post_id_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL post_id"
+      },
+      {
+        "name": "flea_lines_quantity_check",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "CHECK (((quantity >= 1) AND (quantity <= 9999)))"
+      },
+      {
+        "name": "flea_lines_quantity_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "flea_lines_remaining_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL remaining"
+      },
+      {
+        "name": "flea_lines_unit_price_check",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "CHECK (((unit_price >= 1) AND (unit_price <= 1000000000)))"
+      },
+      {
+        "name": "flea_lines_unit_price_not_null",
+        "table": "flea_lines",
+        "schema": "app_private",
+        "definition": "NOT NULL unit_price"
+      },
+      {
+        "name": "flea_posts_created_at_not_null",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "flea_posts_escrow_gold_check",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "CHECK (((escrow_gold >= 0) AND (escrow_gold <= 1000000000)))"
+      },
+      {
+        "name": "flea_posts_escrow_gold_not_null",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "NOT NULL escrow_gold"
+      },
+      {
+        "name": "flea_posts_id_not_null",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "flea_posts_owner_id_fkey",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (owner_id) REFERENCES player_profiles(id)"
+      },
+      {
+        "name": "flea_posts_owner_id_not_null",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "NOT NULL owner_id"
+      },
+      {
+        "name": "flea_posts_pkey",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "flea_posts_side_check",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "CHECK ((side = ANY (ARRAY['sell'::text, 'buy'::text])))"
+      },
+      {
+        "name": "flea_posts_side_not_null",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "NOT NULL side"
+      },
+      {
+        "name": "flea_posts_status_check",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "CHECK ((status = ANY (ARRAY['active'::text, 'completed'::text, 'cancelled'::text])))"
+      },
+      {
+        "name": "flea_posts_status_not_null",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "NOT NULL status"
+      },
+      {
+        "name": "flea_posts_title_check",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "CHECK ((((char_length(title) >= 1) AND (char_length(title) <= 80)) AND (title !~ '[[:cntrl:]]'::text)))"
+      },
+      {
+        "name": "flea_posts_title_not_null",
+        "table": "flea_posts",
+        "schema": "app_private",
+        "definition": "NOT NULL title"
+      },
+      {
+        "name": "flea_receipts_created_at_not_null",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "flea_receipts_operation_id_not_null",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "flea_receipts_pkey",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "flea_receipts_request_not_null",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL request"
+      },
+      {
+        "name": "flea_receipts_result_not_null",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL result"
+      },
+      {
+        "name": "flea_receipts_user_id_fkey",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id)"
+      },
+      {
+        "name": "flea_receipts_user_id_not_null",
+        "table": "flea_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "gold_settings_id_check",
@@ -35106,6 +35745,27 @@
         "arguments": "p_tab text, p_offset integer"
       },
       {
+        "name": "block_exchange_bait",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "block_exchange_bait",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "block_exchange_bait",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "board_action",
         "role": "anon",
         "schema": "app_private",
@@ -36387,6 +37047,27 @@
         "arguments": "p_gift uuid, p_recipient uuid, p_message text"
       },
       {
+        "name": "exchange_has_bait",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_asset jsonb"
+      },
+      {
+        "name": "exchange_has_bait",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_asset jsonb"
+      },
+      {
+        "name": "exchange_has_bait",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_asset jsonb"
+      },
+      {
         "name": "exchange_inventory",
         "role": "anon",
         "schema": "app_private",
@@ -37120,6 +37801,153 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_bait_id text"
+      },
+      {
+        "name": "flea_cancel",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "flea_cancel",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_post_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "flea_cancel",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "flea_deliver",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_gift uuid, p_quantity integer, p_recipient uuid"
+      },
+      {
+        "name": "flea_deliver",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_gift uuid, p_quantity integer, p_recipient uuid"
+      },
+      {
+        "name": "flea_deliver",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_gift uuid, p_quantity integer, p_recipient uuid"
+      },
+      {
+        "name": "flea_gold",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_delta integer, p_post uuid"
+      },
+      {
+        "name": "flea_gold",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_delta integer, p_post uuid"
+      },
+      {
+        "name": "flea_gold",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_delta integer, p_post uuid"
+      },
+      {
+        "name": "flea_post",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_post",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_post",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_post_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "flea_post_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "flea_post_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "flea_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "flea_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "flea_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "flea_trade",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_trade",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_trade",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid"
       },
       {
         "name": "friend_aquarium",
@@ -42685,6 +43513,90 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "flea_cancel",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "flea_cancel",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_post_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "flea_cancel",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "flea_post",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_post",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_post",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "flea_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "flea_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "flea_trade",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_trade",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_trade",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_items jsonb, p_operation_id uuid"
       },
       {
         "name": "friend_aquarium",

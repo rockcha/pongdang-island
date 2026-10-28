@@ -1,4 +1,4 @@
-import {useRef,useState} from 'react'
+import {useRef} from 'react'
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import {HallCategoryIcon,HallTabIcon} from './hall-category-icon'
 import {Crown,RefreshCw} from 'lucide-react'
@@ -6,26 +6,44 @@ import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
-import {hallError,readHall,type HallPlayer,type PersonalHallRank} from './api'
+import {hallError,readHall,type HallPlayer} from './api'
 import {useAccountResource} from '@/lib/account-query'
-import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
 import { formatHallValue, funCategories, hallCategories, type HallCategory } from './categories'
 
 function RankingCard({category,players}:{category:HallCategory;players:HallPlayer[]}) {
   const {session}=useAuth()
+  const track=useRef<HTMLOListElement>(null)
+  const mine=useRef<HTMLLIElement>(null)
+  const hasRank=players.some(player=>player.id===session?.user.id)
+  function resumeBrowsing(){
+    const row=track.current
+    if(!row||!row.style.paddingInline)return
+    const left=Math.max(0,row.scrollLeft-parseFloat(row.style.paddingInline))
+    row.style.paddingInline=''
+    row.scrollTo({left,behavior:'instant'})
+  }
+  function centerMine(){
+    const row=track.current,item=mine.current
+    if(!row||!item)return
+    // Edge space is only needed for centering; ordinary browsing starts at rank one.
+    row.style.paddingInline=`${Math.max(0,(row.clientWidth-item.clientWidth)/2)}px`
+    const left=row.scrollLeft+item.getBoundingClientRect().left-row.getBoundingClientRect().left-(row.clientWidth-item.clientWidth)/2
+    row.scrollTo({left,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})
+  }
   return (
     <section className="rounded-2xl border border-border/70 bg-card px-4 pb-4 pt-4">
       <div className="mb-4 flex items-start gap-2.5">
         <HallCategoryIcon category={category}/>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <h3 className="text-sm font-medium">{category.label}</h3>
           <p className="mt-1 text-xs leading-5 text-muted-foreground">{category.title}</p>
         </div>
+        <Button variant="ghost" size="sm" className="shrink-0 px-2 text-xs" disabled={!hasRank} onClick={centerMine}>내 등수 보기</Button>
       </div>
       {players.length ? (
-        <ol className="grid grid-cols-5 gap-1 pt-3">
+        <ol ref={track} aria-label={`${category.label} 순위`} tabIndex={0} onPointerDown={resumeBrowsing} onWheel={resumeBrowsing} onKeyDown={resumeBrowsing} className="relative flex gap-1 overflow-x-auto overscroll-x-contain pt-4 pb-2 [scrollbar-width:thin]">
           {players.map((player) => (
-            <li key={player.id} className="min-w-0">
+            <li ref={player.id===session?.user.id?mine:undefined} aria-current={player.id===session?.user.id?'true':undefined} key={player.id} className={`w-18 shrink-0 rounded-xl ${player.id===session?.user.id?'bg-primary/10 ring-1 ring-inset ring-primary/25':''}`}>
               <PlayerIdentityLink
                 to={player.id === session?.user.id ? '/aquarium' : `/friends/${player.id}/aquarium`}
                 title={`${player.nickname} 아쿠아리움 방문`}
@@ -46,13 +64,13 @@ function RankingCard({category,players}:{category:HallCategory;players:HallPlaye
                     className={`size-10 ring-2 ${player.rank === 1 ? 'ring-amber-300/80' : 'ring-secondary'}`}
                   />
                   <span
-                    className={`absolute -bottom-1 -right-1 flex size-4 items-center justify-center rounded-full border-2 border-card text-[9px] tabular-nums ${player.rank === 1 ? 'bg-amber-200 text-amber-950' : 'bg-secondary text-muted-foreground'}`}
+                    className={`absolute -bottom-1 -right-1 flex min-w-4 h-4 px-0.5 items-center justify-center rounded-full border-2 border-card text-[9px] tabular-nums ${player.rank === 1 ? 'bg-amber-200 text-amber-950' : 'bg-secondary text-muted-foreground'}`}
                   >
                     {player.rank}
                   </span>
                 </span>
                 <span className="mt-1 flex w-full min-w-0 items-center justify-center gap-0.5 text-[10px]"><span className="truncate">
-                  {player.nickname}
+                  {player.nickname}{player.id===session?.user.id?' · 나':''}
                 </span></span>
                 <span
                   className="mt-0.5 w-full truncate text-center text-[10px] tabular-nums text-primary"
@@ -80,10 +98,6 @@ function RankingCard({category,players}:{category:HallCategory;players:HallPlaye
 export function HallPage() {
   const query = useAccountResource('hall',readHall)
   const feed=query.data, error=query.error?hallError(query.error):'', loading=query.isFetching
-  const [tab,setTab]=useState('honor')
-  const [categoryId,setCategoryId]=useState<string>(hallCategories[0].id)
-  const categories=tab==='honor'?hallCategories:funCategories
-  const category=categories.find(item=>item.id===categoryId)??categories[0]
   const list = useRef<HTMLDivElement>(null)
   function refresh() {
     void query.refetch()
@@ -91,9 +105,7 @@ export function HallPage() {
   return (
     <Tabs
       defaultValue="honor"
-      onValueChange={(value) => {
-        setTab(value)
-        setCategoryId((value==='honor'?hallCategories:funCategories)[0].id)
+      onValueChange={() => {
         if (list.current) list.current.scrollTop = 0
       }}
       className="flex min-h-0 flex-1 flex-col overflow-hidden"
@@ -112,7 +124,7 @@ export function HallPage() {
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="text-[11px] leading-relaxed text-muted-foreground">
-              각 부문의 TOP 5 기록을 확인해요.
+              각 부문을 좌우로 넘겨 모든 순위를 확인해요.
             </p>
           </div>
           <Button
@@ -127,9 +139,6 @@ export function HallPage() {
             />
           </Button>
         </div>
-      </div>
-      <div className="shrink-0 border-b border-border/60 px-4 py-3">
-        <PersonalRank key={category.id} category={category} categories={categories} onCategory={setCategoryId} record={feed?.personal?.[category.id]} loading={!feed&&loading} failed={!feed&&!!error}/>
       </div>
       <div
         ref={list}
@@ -189,30 +198,4 @@ export function HallPage() {
       </div>
     </Tabs>
   )
-}
-
-function PersonalRank({category,categories,onCategory,record,loading,failed}:{category:HallCategory;categories:readonly HallCategory[];onCategory:(id:string)=>void;record?:PersonalHallRank;loading:boolean;failed:boolean}) {
-  const {session}=useAuth()
-  const [open,setOpen]=useState(false)
-  const hasRecord=(record?.value??0)>0
-  return <section aria-label="내 순위" className="rounded-2xl border border-primary/20 bg-primary/5 p-3">
-    <div className="flex items-center justify-between gap-2">
-      <label className="min-w-0 flex-1 text-xs text-muted-foreground">내 순위 · 누적
-        <select aria-label="내 순위 종목" value={category.id} onChange={event=>onCategory(event.target.value)} className="mt-1 block min-h-10 w-full rounded-lg border border-border bg-background px-2 text-sm text-foreground">
-          {categories.map(item=><option key={item.id} value={item.id}>{item.label}</option>)}
-        </select>
-      </label>
-      <Button variant="outline" size="sm" className="mt-4 shrink-0" disabled={!record?.rank||!record.neighbors.length} onClick={()=>setOpen(true)}>내 주변 보기</Button>
-    </div>
-    <p className="mt-2 text-sm font-medium" aria-live="polite">{loading?'내 순위를 불러오는 중…':failed?'내 순위를 불러오지 못했어요':!hasRecord?'아직 기록이 없어요':record?.rank?`내 순위 ${record.rank.toLocaleString('ko-KR')}위 · 내 기록 ${formatHallValue(record.value!,category.unit)}`:`집계 범위 밖 · 내 기록 ${formatHallValue(record!.value!,category.unit)}`}</p>
-    <Dialog open={open} onOpenChange={setOpen}><DialogContent className="max-h-[80dvh] overflow-y-auto sm:max-w-md">
-      <DialogHeader><DialogTitle>내 주변 순위</DialogTitle><DialogDescription>{category.label} · 누적 기록 기준</DialogDescription></DialogHeader>
-      <ol className="space-y-2">{record?.neighbors.map(player=><li key={player.id} aria-current={player.id===session?.user.id?'true':undefined} className={`rounded-xl p-3 ${player.id===session?.user.id?'bg-primary/10 ring-1 ring-primary/30':'bg-secondary/30'}`}>
-        <PlayerIdentityLink to={player.id===session?.user.id?'/aquarium':`/friends/${player.id}/aquarium`} title={`${player.nickname} 어항 방문`} label={`${player.rank}위 ${player.nickname}, ${formatHallValue(player.value,category.unit)}`} className="flex items-center gap-3">
-          <span className="w-10 shrink-0 text-xs tabular-nums">{player.rank}위</span><PlayerAvatar userId={player.id} nickname={player.nickname} path={player.avatar_path} level={player.level} levelProgress={player.levelProgress} className="size-9"/>
-          <span className="min-w-0 flex-1 truncate text-sm">{player.nickname}{player.id===session?.user.id?' · 나':''}</span><span className="shrink-0 text-xs tabular-nums text-primary">{formatHallValue(player.value,category.unit)}</span>
-        </PlayerIdentityLink>
-      </li>)}</ol>
-    </DialogContent></Dialog>
-  </section>
 }

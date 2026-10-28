@@ -6,6 +6,7 @@ export const placeGroups = [
     sections: [
       { label: '나의 공간', paths: ['/my-island', '/aquarium', '/profile'] },
       { label: '쉬어가기', paths: ['/music-room', '/arcade'] },
+      { label: '골드 관리', paths: ['/savings'] },
     ],
   },
   {
@@ -30,8 +31,7 @@ export const placeGroups = [
     sections: [
       { label: '상점거리', paths: ['/shop', '/item-shop', '/decoration-shop'] },
       { label: '시설 구매', paths: ['/shipyard', '/bait-production-shop', '/production-shop'] },
-      { label: '거래·의뢰', paths: ['/exchange', '/merchant-orders'] },
-      { label: '골드 관리', paths: ['/savings'] },
+      { label: '거래·의뢰', paths: ['/flea-market', '/exchange', '/merchant-orders'] },
     ],
   },
   {
@@ -43,20 +43,20 @@ export const placeGroups = [
     ],
   },
   {
+    id: 'news',
+    label: '소식',
+    sections: [
+      { label: '섬 소식', paths: ['/island-news', '/square/notices'] },
+      { label: '의견 보내기', paths: ['/square/suggestions', '/square/bugs'] },
+    ],
+  },
+  {
     id: 'community',
     label: '광장',
     sections: [
       { label: '교류', paths: ['/friends', '/board', '/showcase'] },
       { label: '명예', paths: ['/hall-of-fame'] },
       { label: '함께하기', paths: ['/development-fund', '/square/sponsorship', '/square/begging'] },
-    ],
-  },
-  {
-    id: 'news',
-    label: '소식',
-    sections: [
-      { label: '섬 소식', paths: ['/island-news', '/square/notices'] },
-      { label: '의견 보내기', paths: ['/square/suggestions', '/square/bugs'] },
     ],
   },
 ]

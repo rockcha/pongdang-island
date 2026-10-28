@@ -38,6 +38,7 @@ const SailingPage=lazy(()=>import('@/features/regions/sailing-page').then(module
 const FishingShortcutPage=lazy(()=>import('@/features/regions/fishing-shortcut-page').then(module=>({default:module.FishingShortcutPage})))
 const ShopPage=lazy(()=>import('@/features/gold/shop-page').then(module=>({default:module.ShopPage})))
 const ExchangePage=lazy(()=>import('@/features/exchange/exchange-page').then(module=>({default:module.ExchangePage})))
+const FleaMarketPage=lazy(()=>import('@/features/flea-market/flea-market-page').then(module=>({default:module.FleaMarketPage})))
 const ExchangeDetailPage=lazy(()=>import('@/features/exchange/exchange-detail-page').then(module=>({default:module.ExchangeDetailPage})))
 const NoticePage=lazy(()=>import('@/features/notices/notice-page').then(module=>({default:module.NoticePage})))
 const NoticeDetail=lazy(()=>import('@/features/notices/notice-page').then(module=>({default:module.NoticeDetail})))
@@ -141,6 +142,7 @@ export function AppRoutes() {
             <Route path="merchant-street" element={<Navigate to="/shop" replace />} />
             <Route path="merchant-orders" element={<MerchantPage />} />
             <Route path="exchange" element={<ExchangePage />} />
+            <Route path="flea-market" element={<FleaMarketPage />} />
             <Route path="exchange/:listingId" element={<ExchangeDetailPage />} />
             <Route path="merchant-street/exchange" element={<Navigate to="/exchange" replace />} />
             <Route path="merchant-street/auctions" element={<Navigate to="/exchange" replace />} />

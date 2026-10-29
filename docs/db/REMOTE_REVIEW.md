@@ -671,3 +671,14 @@ Storage가 직접 DELETE를 차단해 최초 적용 시도는 롤백됐다. 비�
 - Project: ewafafphiovbpjwogwzn; checked at 2026-10-28 11:56:26 UTC. Applied only local migration 20261028115413_increase_future_fishing_wait_one_second.sql via MCP; remote history version is 20261028115619. No history repair or unrelated pending migration was applied.
 - Requeried prepare_discovery_cast definition MD5: e1e696e2e30bcf62a857c0a3b355237f, matching the local expected definition. All 29 bait profiles have base bounds 13/25 seconds, including non-null night bounds. Rod/relic reductions remain unchanged.
 - This migration does not update prepared casts. Local PostgreSQL regression tests verify active-cast preservation, retries, and exactly +1 second for future casts with the same RNG seed in both confirmation/reward modes. All 14 targeted tests and db:verify passed. Full remote schema/history parity and individual live-cast timings were outside this check.
+# 2026-10-29 벼룩시장·퐁이잡기 퀘스트 집계
+
+프로젝트 `ewafafphiovbpjwogwzn`에서 관련 집계 함수의 변경 전 정의가 로컬과 일치함을 확인한 뒤 `20261029124728` migration을 적용했다. 적용 후 해당 함수 정의의 해시를 로컬 재생 결과와 비교하고 migration 이력을 다시 조회했다. 확인 범위는 이번 집계 변경이며 전체 원격 구조의 호환성을 뜻하지 않는다. UI 갱신·배지·어선 결과창·고래 프레임 보정은 프런트엔드 배포가 별도로 필요하고, 실제 휴대폰의 다중 탭 알림 수신은 검증하지 않았다.
+
+## 2026-10-29 세공 유물 자랑하기
+
+프로젝트 `ewafafphiovbpjwogwzn`, 23:51 KST에 `20261029144537`만 적용했다. 사전 조회한 기존 두 함수 정의는 로컬과 일치했다. 적용 뒤 관련 세 함수 정의를 로컬 재생 결과와 비교하고, migration 기록·등급 제약·공개 RPC의 로그인 사용자 실행 권한·익명 게시 차단·내부 도우미 직접 호출 차단을 재조회했다. 실제 플레이어 게시물은 생성하지 않았으며 전체 원격 구조 비교는 범위 밖이다. 화면 변경은 별도 프런트엔드 배포가 필요하다.
+
+## 2026-10-30 미끼 반환·적금 이자 유물
+
+프로젝트 `ewafafphiovbpjwogwzn`, 00:20 KST에 `20261029150506`, `20261029151020`만 한 트랜잭션으로 적용했다. 사전 조회한 관련 다섯 함수와 효과 제약은 로컬 기존 상태와 일치했고, 신규 유물 ID와 적금 스냅샷 컬럼이 없음을 확인했다. 적용 뒤 함수 정의·카탈로그·로그인 사용자 실행 권한·익명 호출 차단·기존 적금 보너스 미변경을 재조회했다. 여섯 공개 PNG는 업로드 후 로컬 바이트 해시와 비교했다. 실제 플레이어의 낚시·가입·세공을 실행하지 않았으며 전체 원격 스키마 비교는 하지 않았다. 적금 미리보기와 미끼 반환 알림 등 화면 변경은 별도 프런트엔드 배포가 필요하다.

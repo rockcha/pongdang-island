@@ -34868,6 +34868,17 @@
       "sell_price": 1300
     },
     {
+      "id": "coin-cradling-clam",
+      "name": "동전을 품은 조개",
+      "description": "만기 이자 +2%",
+      "rarity": "rare",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/coin-cradling-clam_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "savings_interest_bonus_percent",
+      "effect_value": 2,
+      "sell_price": 200
+    },
+    {
       "id": "current-piercing-needle",
       "name": "물살을 가르는 바늘",
       "description": "낚시 대기 시간 1초 단축 · 장착 중에만 효과가 적용돼요.",
@@ -34887,7 +34898,7 @@
       "enabled": true,
       "effect_kind": "personal_bait_hours",
       "effect_value": 8,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "fish-calling-bell",
@@ -34942,7 +34953,7 @@
       "enabled": false,
       "effect_kind": "pongi_whack_golden_count",
       "effect_value": 10,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "golden-pongi-invitation-bell",
@@ -34986,7 +34997,7 @@
       "enabled": true,
       "effect_kind": "harbor_duration_percent",
       "effect_value": 10,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "instant-fishing-hook",
@@ -34997,7 +35008,7 @@
       "enabled": true,
       "effect_kind": "fishing_wait_seconds",
       "effect_value": 2,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "ocean-memory-compass",
@@ -35008,7 +35019,7 @@
       "enabled": true,
       "effect_kind": "direct_relic_chance_percent",
       "effect_value": 6,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "ocean-seed",
@@ -35019,7 +35030,7 @@
       "enabled": true,
       "effect_kind": "bait_active_slots",
       "effect_value": 2,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "old-captain-seal",
@@ -35041,7 +35052,40 @@
       "enabled": true,
       "effect_kind": "fuel_active_slots",
       "effect_value": 2,
-      "sell_price": 3000
+      "sell_price": 2800
+    },
+    {
+      "id": "returning-bait-pouch",
+      "name": "돌아오는 미끼 주머니",
+      "description": "직접 낚시 성공 시 미끼 반환 확률 1%",
+      "rarity": "rare",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/returning-bait-pouch_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "bait_refund_percent",
+      "effect_value": 1,
+      "sell_price": 200
+    },
+    {
+      "id": "sea-king-endless-bait-pot",
+      "name": "해왕의 끝없는 미끼 항아리",
+      "description": "직접 낚시 성공 시 미끼 반환 확률 5%",
+      "rarity": "mythic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/sea-king-endless-bait-pot_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "bait_refund_percent",
+      "effect_value": 5,
+      "sell_price": 2800
+    },
+    {
+      "id": "sea-king-golden-vault",
+      "name": "해왕의 황금 금고",
+      "description": "만기 이자 +10%",
+      "rarity": "mythic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/sea-king-golden-vault_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "savings_interest_bonus_percent",
+      "effect_value": 10,
+      "sell_price": 2800
     },
     {
       "id": "sea-king-shipwright-edict",
@@ -35052,7 +35096,7 @@
       "enabled": false,
       "effect_kind": "boat_discount_gold",
       "effect_value": 400,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "sea-king-summoning-bell",
@@ -35063,7 +35107,7 @@
       "enabled": true,
       "effect_kind": "trap_seconds_per_bait",
       "effect_value": 180,
-      "sell_price": 3000
+      "sell_price": 2800
     },
     {
       "id": "sea-king-trade-ledger",
@@ -35074,7 +35118,18 @@
       "enabled": true,
       "effect_kind": "bait_discount_gold",
       "effect_value": 2,
-      "sell_price": 3000
+      "sell_price": 2800
+    },
+    {
+      "id": "sea-merchant-pearl-vault",
+      "name": "바다상인의 진주 금고",
+      "description": "만기 이자 +5%",
+      "rarity": "epic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/sea-merchant-pearl-vault_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "savings_interest_bonus_percent",
+      "effect_value": 5,
+      "sell_price": 1300
     },
     {
       "id": "sea-merchant-shell-token",
@@ -35154,6 +35209,17 @@
       "sell_price": 1300
     },
     {
+      "id": "tide-return-bait-box",
+      "name": "밀물이 돌려준 미끼함",
+      "description": "직접 낚시 성공 시 미끼 반환 확률 3%",
+      "rarity": "epic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/tide-return-bait-box_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "bait_refund_percent",
+      "effect_value": 3,
+      "sell_price": 1300
+    },
+    {
       "id": "trace-seeking-compass",
       "name": "흔적을 찾는 나침반",
       "description": "유물 발견 확률 +1%p",
@@ -35195,7 +35261,7 @@
       "enabled": true,
       "effect_kind": "direct_map_chance_percent",
       "effect_value": 5,
-      "sell_price": 3000
+      "sell_price": 2800
     }
   ],
   "island_shop_items": [

@@ -20,7 +20,10 @@ import plunderLayouts from './plunder-frame-layouts.json'
 import sharedWondersLayouts from './shared-wonders-frame-layouts.json'
 import mechsanctumLayouts from './mechsanctum-frame-layouts.json'
 import fireflyLayouts from './firefly-frame-layouts.json'
-const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...fireflyLayouts,...mechsanctumLayouts,...sharedWondersLayouts,...plunderLayouts,...oceanCreatureLayouts,...nyamnyamLayouts,...dreamabyssLayouts,...sharedCreatureLayouts,...sharedCollectibleLayouts,...sharedExpansionLayouts,...commonFuelLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts,...halloweenLayouts}
+const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={
+ // Rigid eye patch [440,275,80,75]; measured RGB RMSE <19 on the current Storage sheet.
+ 'fish/rare/cloud-humpback_sprite.png':{cell:627,shifts:[[0,0],[-23,-3],[0,-57],[-14,-59]]},
+ ...fireflyLayouts,...mechsanctumLayouts,...sharedWondersLayouts,...plunderLayouts,...oceanCreatureLayouts,...nyamnyamLayouts,...dreamabyssLayouts,...sharedCreatureLayouts,...sharedCollectibleLayouts,...sharedExpansionLayouts,...commonFuelLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts,...halloweenLayouts}
 // Frame registration measured from each sheet's rigid head/body (or nautilus shell).
 // Coordinates are in a 96x96 sampling grid, relative to each frame's center.
 const layouts:Record<string,readonly (readonly [number,number,number])[]>={

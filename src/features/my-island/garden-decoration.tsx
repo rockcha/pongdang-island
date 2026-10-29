@@ -1,11 +1,15 @@
 ﻿import type {Facility} from './island-model'
 import {villageKinds} from './village-decoration-catalog'
 import {VillageDecoration} from './village-decoration'
+import {facilityPng} from './facility-png-art'
+import {FrontFence,FrontSign} from './front-decoration-art'
 type Connections={north:boolean;east:boolean;south:boolean;west:boolean}
 type Props={f:Facility;rotation?:number;label?:string;connections?:Connections}
 const outline='#917c60'
 function Flowers({color}:{color:string}){return <>{[[8,14],[21,11],[16,21],[27,22]].map(([x,y],i)=><g key={i}><path d={`M${x} ${y+6}q-8 1-5-4 5-2 5 4m0 0q7 2 5-4-4-2-5 4`} fill="#92ad7b"/>{[[0,-3],[3,0],[0,3],[-3,0]].map(([dx,dy],n)=><circle key={n} cx={x+dx} cy={y+dy} r="3" fill={color} stroke="#fff4dd" strokeWidth=".4"/>)}<circle cx={x} cy={y} r="1.2" fill="#f7e9bd"/></g>)}</>}
 export function GardenDecoration({f,rotation=0,label,connections}:Props){
+ if(facilityPng(f)&&f.kind==='arrow-sign')return <FrontSign f={f} rotation={rotation} label={label}/>
+ if(facilityPng(f)&&(f.kind==='wood-fence'||f.kind==='stone-wall'))return <FrontFence f={f} rotation={rotation} connections={connections}/>
  if(villageKinds.has(f.kind))return <g data-garden={f.kind}><VillageDecoration f={f}/></g>
  const horizontal=rotation%180===0,reverse=rotation===180||rotation===270,w=(horizontal?f.w:f.h)*32,h=(horizontal?f.h:f.w)*32
  const base=<ellipse cx={w/2} cy={h-2} rx={w*.46} ry="3" fill="#688263" opacity=".16"/>

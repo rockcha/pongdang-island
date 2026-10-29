@@ -2,6 +2,7 @@
 import catalog from '../supabase/catalog/catalog.json'
 import {afterAll,afterEach,beforeAll,beforeEach,expect,it} from 'vitest'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
+import {catalogSql} from '../scripts/db/catalog.mjs'
 
 let db:Awaited<ReturnType<typeof createLocalDatabase>>
 let uid:string
@@ -45,7 +46,7 @@ afterEach(async()=>{await db.exec('rollback;reset role')})
 it('sells all catalog relics once, preserves discovery and allows catching them again',async()=>{
  const relics=(await db.query('select id,rarity,sell_price from public.fishing_relics order by id')).rows
  for(const relic of relics){
-  expect(relic.sell_price).toBe({rare:200,epic:1300,mythic:3000}[relic.rarity])
+  expect(relic.sell_price).toBe({rare:200,epic:1300,mythic:2800}[relic.rarity])
   await enableOnly(relic.id,relic.rarity)
   const caught=await prepare();expect((await finish(caught.operation_id)).attempt.firstDiscovery).toBe(true)
   const balance=await gold(),op=crypto.randomUUID()
@@ -61,6 +62,13 @@ it('sells all catalog relics once, preserves discovery and allows catching them 
   await rejected(()=>user('select public.sell_relic($1,$2,$3) s',[relic.id,op,relic.sell_price+1]),'OPERATION_CONFLICT')
  }
 },30000)
+it('generates a scoped price-only relic update without changing availability or ownership',async()=>{
+ const mythics=catalog.fishing_relics.filter(r=>r.rarity==='mythic')
+ const sql=catalogSql(catalog,{tables:['fishing_relics'],ids:mythics.map(r=>r.id),pricesOnly:true})
+ expect(sql).toContain('update public.fishing_relics s set sell_price=p.sell_price')
+ expect(sql).not.toMatch(/insert into|enabled|player_|shell-hourglass/)
+ expect(mythics.every(r=>r.sell_price===2800)).toBe(true)
+})
 
 it('blocks equipped, unowned, stale-price and unaffordable wallet-limit sales atomically',async()=>{
  await enableOnly('shell-hourglass','rare');const p=await prepare();await finish(p.operation_id)

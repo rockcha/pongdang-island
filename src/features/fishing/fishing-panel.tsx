@@ -160,6 +160,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
    const data=await finishFishing(pending.current.id,pending.current.won)
    const localReason=pending.current.reason
    pending.current=null
+   if(active.current&&data.baitRefunded)toast.success('유물의 힘으로 미끼 1개가 돌아왔어요!',{id:`bait-refund:${data.attempt.operation_id}`})
    if(active.current)showResult(data.attempt,!data.failure_reason||data.failure_reason==='minigame'?localReason:data.failure_reason)
    await Promise.allSettled([refresh(),reload()])
   }catch(cause){if(active.current)showError(cause)}

@@ -1,0 +1,872 @@
+[
+  {
+    "id": "aquarium",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 619970,
+    "semi": 14576,
+    "opaque": 937970,
+    "edge": 0,
+    "softFraction": 0.015
+  },
+  {
+    "id": "aquascape-stall",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 565371,
+    "semi": 15663,
+    "opaque": 991482,
+    "edge": 0,
+    "softFraction": 0.016
+  },
+  {
+    "id": "arcade-cabinet",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 878193,
+    "semi": 15128,
+    "opaque": 679195,
+    "edge": 0,
+    "softFraction": 0.022
+  },
+  {
+    "id": "arrow-sign",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1015829,
+    "semi": 13807,
+    "opaque": 542880,
+    "edge": 0,
+    "softFraction": 0.025
+  },
+  {
+    "id": "bait-stall",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 616302,
+    "semi": 36624,
+    "opaque": 919590,
+    "edge": 0,
+    "softFraction": 0.038
+  },
+  {
+    "id": "bait",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 637515,
+    "semi": 15846,
+    "opaque": 919155,
+    "edge": 0,
+    "softFraction": 0.017
+  },
+  {
+    "id": "beach-chair",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 866069,
+    "semi": 28978,
+    "opaque": 677469,
+    "edge": 0,
+    "softFraction": 0.041
+  },
+  {
+    "id": "bench",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 912242,
+    "semi": 37756,
+    "opaque": 622518,
+    "edge": 0,
+    "softFraction": 0.057
+  },
+  {
+    "id": "books",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 727298,
+    "semi": 14997,
+    "opaque": 830221,
+    "edge": 0,
+    "softFraction": 0.018
+  },
+  {
+    "id": "bread-display",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 634829,
+    "semi": 23236,
+    "opaque": 914451,
+    "edge": 0,
+    "softFraction": 0.025
+  },
+  {
+    "id": "bridge",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 906425,
+    "semi": 19881,
+    "opaque": 646210,
+    "edge": 0,
+    "softFraction": 0.03
+  },
+  {
+    "id": "butterfly-flowerbed",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 916782,
+    "semi": 26826,
+    "opaque": 628908,
+    "edge": 0,
+    "softFraction": 0.041
+  },
+  {
+    "id": "community-board",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 652026,
+    "semi": 51672,
+    "opaque": 868818,
+    "edge": 0,
+    "softFraction": 0.056
+  },
+  {
+    "id": "coral-planter",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 951952,
+    "semi": 22106,
+    "opaque": 598458,
+    "edge": 0,
+    "softFraction": 0.036
+  },
+  {
+    "id": "destination",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 586713,
+    "semi": 18698,
+    "opaque": 967105,
+    "edge": 0,
+    "softFraction": 0.019
+  },
+  {
+    "id": "dock",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 714435,
+    "semi": 14908,
+    "opaque": 843173,
+    "edge": 0,
+    "softFraction": 0.017
+  },
+  {
+    "id": "droplet-lamp",
+    "width": 1199,
+    "height": 1312,
+    "transparent": 1302549,
+    "semi": 19789,
+    "opaque": 250750,
+    "edge": 0,
+    "softFraction": 0.073
+  },
+  {
+    "id": "fish-fountain",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 878202,
+    "semi": 15688,
+    "opaque": 678626,
+    "edge": 0,
+    "softFraction": 0.023
+  },
+  {
+    "id": "fishing-log",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 689843,
+    "semi": 16117,
+    "opaque": 866556,
+    "edge": 0,
+    "softFraction": 0.018
+  },
+  {
+    "id": "fishing-spot",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1126779,
+    "semi": 25836,
+    "opaque": 419901,
+    "edge": 0,
+    "softFraction": 0.058
+  },
+  {
+    "id": "flea-market",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 482263,
+    "semi": 24212,
+    "opaque": 1066041,
+    "edge": 0,
+    "softFraction": 0.022
+  },
+  {
+    "id": "floor-brick",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-dirt",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-grass",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-gravel",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-moonstone",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-sand",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-shell-mosaic",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-star-mosaic",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-stone",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-teal-glass",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "floor-wood",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 0,
+    "semi": 0,
+    "opaque": 1572516,
+    "edge": 5012,
+    "softFraction": 0
+  },
+  {
+    "id": "flower-arch",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1027422,
+    "semi": 37877,
+    "opaque": 507217,
+    "edge": 0,
+    "softFraction": 0.069
+  },
+  {
+    "id": "flower-bicycle",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1152326,
+    "semi": 28323,
+    "opaque": 391867,
+    "edge": 0,
+    "softFraction": 0.067
+  },
+  {
+    "id": "flowers",
+    "width": 1536,
+    "height": 1024,
+    "transparent": 908625,
+    "semi": 18515,
+    "opaque": 645724,
+    "edge": 0,
+    "softFraction": 0.028
+  },
+  {
+    "id": "fuel-stall",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 651730,
+    "semi": 29221,
+    "opaque": 891565,
+    "edge": 0,
+    "softFraction": 0.032
+  },
+  {
+    "id": "fuel",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 640454,
+    "semi": 17240,
+    "opaque": 914822,
+    "edge": 0,
+    "softFraction": 0.018
+  },
+  {
+    "id": "fund",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 911862,
+    "semi": 14948,
+    "opaque": 645706,
+    "edge": 0,
+    "softFraction": 0.023
+  },
+  {
+    "id": "gallery",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 584673,
+    "semi": 22193,
+    "opaque": 965650,
+    "edge": 0,
+    "softFraction": 0.022
+  },
+  {
+    "id": "garden",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 807711,
+    "semi": 20994,
+    "opaque": 743811,
+    "edge": 0,
+    "softFraction": 0.027
+  },
+  {
+    "id": "gift-table",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 820239,
+    "semi": 22841,
+    "opaque": 729436,
+    "edge": 0,
+    "softFraction": 0.03
+  },
+  {
+    "id": "gramophone",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 921813,
+    "semi": 17762,
+    "opaque": 632941,
+    "edge": 0,
+    "softFraction": 0.027
+  },
+  {
+    "id": "home",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 618848,
+    "semi": 16858,
+    "opaque": 936810,
+    "edge": 0,
+    "softFraction": 0.018
+  },
+  {
+    "id": "hydrangea-blue",
+    "width": 1536,
+    "height": 1024,
+    "transparent": 875143,
+    "semi": 14984,
+    "opaque": 682737,
+    "edge": 0,
+    "softFraction": 0.021
+  },
+  {
+    "id": "hydrangea-lilac",
+    "width": 1536,
+    "height": 1024,
+    "transparent": 740010,
+    "semi": 16025,
+    "opaque": 816829,
+    "edge": 0,
+    "softFraction": 0.019
+  },
+  {
+    "id": "hydrangea-pink",
+    "width": 1536,
+    "height": 1024,
+    "transparent": 754576,
+    "semi": 16519,
+    "opaque": 801769,
+    "edge": 0,
+    "softFraction": 0.02
+  },
+  {
+    "id": "idea-box",
+    "width": 1205,
+    "height": 1305,
+    "transparent": 993245,
+    "semi": 18170,
+    "opaque": 561110,
+    "edge": 0,
+    "softFraction": 0.031
+  },
+  {
+    "id": "item-archive",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 777219,
+    "semi": 19453,
+    "opaque": 775844,
+    "edge": 0,
+    "softFraction": 0.024
+  },
+  {
+    "id": "lamp",
+    "width": 1145,
+    "height": 1374,
+    "transparent": 1299781,
+    "semi": 12168,
+    "opaque": 261281,
+    "edge": 0,
+    "softFraction": 0.044
+  },
+  {
+    "id": "letter-tree",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 734852,
+    "semi": 21739,
+    "opaque": 815925,
+    "edge": 0,
+    "softFraction": 0.026
+  },
+  {
+    "id": "lighthouse",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1163478,
+    "semi": 13956,
+    "opaque": 395082,
+    "edge": 0,
+    "softFraction": 0.034
+  },
+  {
+    "id": "mail",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1136472,
+    "semi": 12506,
+    "opaque": 423538,
+    "edge": 0,
+    "softFraction": 0.029
+  },
+  {
+    "id": "mailbox-planter",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1085340,
+    "semi": 16112,
+    "opaque": 471064,
+    "edge": 0,
+    "softFraction": 0.033
+  },
+  {
+    "id": "map-table",
+    "width": 1536,
+    "height": 1024,
+    "transparent": 778442,
+    "semi": 19478,
+    "opaque": 774944,
+    "edge": 0,
+    "softFraction": 0.025
+  },
+  {
+    "id": "market",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 577997,
+    "semi": 36649,
+    "opaque": 957870,
+    "edge": 0,
+    "softFraction": 0.037
+  },
+  {
+    "id": "merchant-desk",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 609098,
+    "semi": 28670,
+    "opaque": 934748,
+    "edge": 0,
+    "softFraction": 0.03
+  },
+  {
+    "id": "name-sign",
+    "width": 1536,
+    "height": 1024,
+    "transparent": 905917,
+    "semi": 21072,
+    "opaque": 645875,
+    "edge": 0,
+    "softFraction": 0.032
+  },
+  {
+    "id": "newsstand",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 528763,
+    "semi": 23051,
+    "opaque": 1020702,
+    "edge": 0,
+    "softFraction": 0.022
+  },
+  {
+    "id": "notice-board",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 697535,
+    "semi": 19987,
+    "opaque": 854994,
+    "edge": 0,
+    "softFraction": 0.023
+  },
+  {
+    "id": "parasol",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1152869,
+    "semi": 15559,
+    "opaque": 404088,
+    "edge": 0,
+    "softFraction": 0.037
+  },
+  {
+    "id": "pastel-surfboard",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1122910,
+    "semi": 11204,
+    "opaque": 438402,
+    "edge": 0,
+    "softFraction": 0.025
+  },
+  {
+    "id": "picnic-table",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1037247,
+    "semi": 21758,
+    "opaque": 513511,
+    "edge": 0,
+    "softFraction": 0.041
+  },
+  {
+    "id": "pine",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 980310,
+    "semi": 25762,
+    "opaque": 566444,
+    "edge": 0,
+    "softFraction": 0.044
+  },
+  {
+    "id": "podium",
+    "width": 1312,
+    "height": 1199,
+    "transparent": 778605,
+    "semi": 33420,
+    "opaque": 761063,
+    "edge": 0,
+    "softFraction": 0.042
+  },
+  {
+    "id": "pond",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1029176,
+    "semi": 25000,
+    "opaque": 518340,
+    "edge": 0,
+    "softFraction": 0.046
+  },
+  {
+    "id": "pongi-statue",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1045420,
+    "semi": 17810,
+    "opaque": 509286,
+    "edge": 0,
+    "softFraction": 0.034
+  },
+  {
+    "id": "reeds",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1023813,
+    "semi": 29533,
+    "opaque": 519170,
+    "edge": 0,
+    "softFraction": 0.054
+  },
+  {
+    "id": "relic-case",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 716664,
+    "semi": 18108,
+    "opaque": 837744,
+    "edge": 0,
+    "softFraction": 0.021
+  },
+  {
+    "id": "repair-bench",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 621424,
+    "semi": 17182,
+    "opaque": 933910,
+    "edge": 0,
+    "softFraction": 0.018
+  },
+  {
+    "id": "rubber-duck",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 987074,
+    "semi": 10117,
+    "opaque": 575325,
+    "edge": 0,
+    "softFraction": 0.017
+  },
+  {
+    "id": "shell-fountain",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 816060,
+    "semi": 13320,
+    "opaque": 743136,
+    "edge": 0,
+    "softFraction": 0.018
+  },
+  {
+    "id": "shell-safe",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 667871,
+    "semi": 14709,
+    "opaque": 889936,
+    "edge": 0,
+    "softFraction": 0.016
+  },
+  {
+    "id": "shipyard",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 656742,
+    "semi": 22883,
+    "opaque": 892891,
+    "edge": 0,
+    "softFraction": 0.025
+  },
+  {
+    "id": "shop",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 682933,
+    "semi": 16820,
+    "opaque": 872763,
+    "edge": 0,
+    "softFraction": 0.019
+  },
+  {
+    "id": "sleeping-cat",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 890012,
+    "semi": 12520,
+    "opaque": 669984,
+    "edge": 0,
+    "softFraction": 0.018
+  },
+  {
+    "id": "stash",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 675374,
+    "semi": 16810,
+    "opaque": 880332,
+    "edge": 0,
+    "softFraction": 0.019
+  },
+  {
+    "id": "stepping-stones",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1058168,
+    "semi": 10766,
+    "opaque": 503582,
+    "edge": 0,
+    "softFraction": 0.021
+  },
+  {
+    "id": "stone-wall",
+    "width": 1900,
+    "height": 828,
+    "transparent": 692953,
+    "semi": 23384,
+    "opaque": 856863,
+    "edge": 0,
+    "softFraction": 0.027
+  },
+  {
+    "id": "supply-cart",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 714692,
+    "semi": 35283,
+    "opaque": 822541,
+    "edge": 0,
+    "softFraction": 0.041
+  },
+  {
+    "id": "title-flag",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 1109051,
+    "semi": 19474,
+    "opaque": 443991,
+    "edge": 0,
+    "softFraction": 0.042
+  },
+  {
+    "id": "trap-rack",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 644041,
+    "semi": 28000,
+    "opaque": 900475,
+    "edge": 0,
+    "softFraction": 0.03
+  },
+  {
+    "id": "tree",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 789908,
+    "semi": 17126,
+    "opaque": 765482,
+    "edge": 0,
+    "softFraction": 0.022
+  },
+  {
+    "id": "voyage-prediction",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 813111,
+    "semi": 35670,
+    "opaque": 723735,
+    "edge": 0,
+    "softFraction": 0.047
+  },
+  {
+    "id": "warehouse",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 791879,
+    "semi": 16220,
+    "opaque": 764417,
+    "edge": 0,
+    "softFraction": 0.021
+  },
+  {
+    "id": "water-lily",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 965676,
+    "semi": 13214,
+    "opaque": 593626,
+    "edge": 0,
+    "softFraction": 0.022
+  },
+  {
+    "id": "wood-fence",
+    "width": 1536,
+    "height": 1024,
+    "transparent": 864609,
+    "semi": 27723,
+    "opaque": 680532,
+    "edge": 0,
+    "softFraction": 0.039
+  },
+  {
+    "id": "workshop",
+    "width": 1254,
+    "height": 1254,
+    "transparent": 632064,
+    "semi": 17529,
+    "opaque": 922923,
+    "edge": 0,
+    "softFraction": 0.019
+  }
+]

@@ -5,7 +5,7 @@ import { ConfirmDialog } from '@/components/confirm-dialog'
 import { useAuth } from '@/components/auth-provider'
 import { useGold } from '@/features/gold/gold-provider'
 import { randomId } from '@/lib/random-id'
-import { changeSavings, isSavingsRejection, loadSavings, savingsError } from './api'
+import { changeSavings, isSavingsRejection, readSavings, savingsError } from './api'
 import type { SavingsAction, SavingsResult, SavingsState } from './api'
 import { savingsStatus } from './savings-time'
 import {
@@ -14,6 +14,7 @@ import {
   SavingsMoney as Money,
   SavingsPlanPanel,
 } from './savings-panels'
+import {useAccountState} from '@/lib/account-query'
 import './savings.css'
 
 const plans = [
@@ -41,9 +42,9 @@ export function SavingsPage() {
 }
 function AccountSavings() {
   const gold = useGold()
-  const [data, setData] = useState<SavingsState | null>(null),
-    [loadError, setLoadError] = useState(''),
-    [error, setError] = useState('')
+  const [data, setData, query] = useAccountState<SavingsState>('savings',readSavings)
+  const loadError=query.error?savingsError(query.error):''
+  const [error,setError]=useState('')
   const [term, setTerm] = useState<3 | 5 | 7>(3),
     [amount, setAmount] = useState('100'),
     [busy, setBusy] = useState(false)
@@ -52,49 +53,17 @@ function AccountSavings() {
   const [receipt, setReceipt] = useState<SavingsResult['receipt'] | null>(null)
   const [clock, setClock] = useState<{ server: number; sample: number } | null>(null),
     [tick, setTick] = useState(() => performance.now())
-  const request = useRef(0),
-    alive = useRef(true),
+  const alive = useRef(true),
     locked = useRef(false),
     operation = useRef<SavingsAction | null>(null)
-  const apply = useCallback((next: SavingsState) => {
-    setData(next)
-    const sample = performance.now()
-    setClock({ server: Date.parse(next.serverNow), sample })
-    setTick(sample)
-    setLoadError('')
-  }, [])
-  const reload = useCallback(async () => {
-    if (locked.current) return
-    const version = ++request.current
-    try {
-      const next = await loadSavings()
-      if (alive.current && version === request.current) apply(next)
-    } catch (e) {
-      if (alive.current && version === request.current) setLoadError(savingsError(e))
-    }
-  }, [apply])
   useEffect(() => {
-    alive.current = true
-    void reload()
-    const focus = () => {
-      if (document.visibilityState === 'visible') {
-        setTick(performance.now())
-        void reload()
-      }
-    }
-    window.addEventListener('focus', focus)
-    window.addEventListener('online', focus)
-    document.addEventListener('visibilitychange', focus)
-    const timer = setInterval(() => setTick(performance.now()), 1000)
-    return () => {
-      alive.current = false
-      request.current++
-      clearInterval(timer)
-      window.removeEventListener('focus', focus)
-      window.removeEventListener('online', focus)
-      document.removeEventListener('visibilitychange', focus)
-    }
-  }, [reload])
+    if(!data)return
+    const sample = performance.now()
+    setClock({ server: Date.parse(data.serverNow)+Math.max(0,Date.now()-query.dataUpdatedAt), sample })
+    setTick(sample)
+  }, [data,query.dataUpdatedAt])
+  const reload=useCallback(async()=>{if(!locked.current)await query.refetch({cancelRefetch:false})},[query.refetch])
+  useEffect(()=>{alive.current=true;const timer=setInterval(()=>setTick(performance.now()),1000);return()=>{alive.current=false;clearInterval(timer)}},[])
   const account = data?.account ?? null,
     now = clock ? clock.server + tick - clock.sample : 0
   const status = account ? savingsStatus(account, now) : null
@@ -116,7 +85,9 @@ function AccountSavings() {
     valid = /^\d+$/.test(amount) && Number.isSafeInteger(daily) && daily >= 10 && daily <= 5000
   const plan = plans.find((p) => p.days === term)!,
     principal = valid ? daily * term : 0,
-    bonus = Math.floor((principal * plan.bonus) / 100)
+    baseBonus = Math.floor((principal * plan.bonus) / 100),
+    relicBonusPercent=data?.relicBonusPercent??0,
+    bonus = baseBonus+Math.floor(baseBonus*relicBonusPercent/100)
   async function run(args: Omit<SavingsAction, 'p_operation_id'>) {
     if (locked.current) return
     if (operation.current) {
@@ -130,13 +101,12 @@ function AccountSavings() {
     locked.current = true
     setBusy(true)
     setError('')
-    request.current++
     operation.current ??= { ...args, p_operation_id: randomId() }
     setPending(operation.current)
     try {
       const next = await changeSavings(operation.current)
       if (alive.current) {
-        apply(next)
+        setData(next)
         setConfirm(null)
         setReceipt(next.receipt.action === 'withdraw' ? next.receipt : null)
         operation.current = null
@@ -227,6 +197,7 @@ function AccountSavings() {
                   principal={principal}
                   bonus={bonus}
                   bonusPercent={plan.bonus}
+                  relicBonusPercent={relicBonusPercent}
                   onTerm={setTerm}
                   onAmount={setAmount}
                   onStart={() => {

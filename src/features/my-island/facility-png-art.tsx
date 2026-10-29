@@ -1,18 +1,17 @@
 import type { Facility } from './island-model'
 import sprites from './island-png-manifest.json'
+import {destinationArtwork} from './destination-art'
+import {buildingViewBox} from './island-art-sizing'
 
 export function facilityPng(f:Facility) {
- return (sprites as Record<string,string>)[f.kind]
+ const art=sprites as Record<string,string>
+ return art[f.id.split('~')[0]]??(f.kind==='destination'?art[destinationArtwork(f.to??'')??'destination']:art[f.kind])
 }
-const bounds:Record<string,[number,number,number,number]>={
- warehouse:[-12,-50,120,120],lighthouse:[-10,-85,90,170],
- tree:[-10,-60,84,128],pine:[-10,-60,84,128],
- flowers:[-8,-12,80,44],bench:[-8,-24,80,60],
-}
-export function FacilityPngArt({src,kind}:{src:string;kind:string}) {
- const [x,y,width,height]=bounds[kind]??[-16,-55,128,152]
- // Mirror around the illustration's center; keep the placement and labels intact.
- return <g transform={`translate(${2*x+width} 0) scale(-1 1)`} data-png-mirrored="true">
-  <image href={src} x={x} y={y} width={width} height={height} preserveAspectRatio="xMidYMax meet" aria-hidden="true" data-facility-png/>
+export function FacilityPngArt({src,f}:{src:string;f:Facility}) {
+ const bridge=f.kind==='bridge'
+ const [x,y,width,boxHeight]=bridge?[0,0,f.w*32,f.h*32]:buildingViewBox(f,0).split(' ').map(Number)
+ const height=Math.min(boxHeight,f.h*32-y)
+ return <g data-png-view="front">
+  <image href={src} x={x} y={y} width={width} height={height} preserveAspectRatio={bridge?'none':'xMidYMax meet'} aria-hidden="true" data-facility-png/>
  </g>
 }

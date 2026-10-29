@@ -22,3 +22,7 @@ function chime(name,notes,duration){
 }
 chime('relic-equip',[[659.25,0,.38],[987.77,.07,.32],[1318.51,.14,.28]],.48)
 chime('relic-unequip',[[783.99,0,.34],[523.25,.065,.30]],.34)
+// Four-second gathering motif, followed by a distinct confirmed outcome.
+chime('relic-forge',Array.from({length:24},(_,i)=>[329.63*2**(i/30),.12+i*.153,.12+i*.003]),4)
+chime('relic-success',[[523.25,0,.28],[659.25,.1,.27],[783.99,.2,.25],[1046.5,.32,.3],[1318.51,.4,.18]],1.05)
+chime('relic-failure',[[440,0,.22],[369.99,.12,.19],[261.63,.25,.15]],.85)

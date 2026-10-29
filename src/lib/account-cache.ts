@@ -141,6 +141,7 @@ export const resourceEvents: Record<string, string[]> = {
   'savings-changed': ['savings', 'wallet', 'menu-status'],
   'relic-loadout-changed': [
     'relics',
+    'savings',
     'wallet',
     'fishing',
     'production',

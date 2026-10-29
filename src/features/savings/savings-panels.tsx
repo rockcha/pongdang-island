@@ -36,6 +36,7 @@ type PlanProps = {
   principal: number
   bonus: number
   bonusPercent: number
+  relicBonusPercent?: number
   onTerm: (term: 3 | 5 | 7) => void
   onAmount: (amount: string) => void
   onStart: () => void
@@ -50,6 +51,7 @@ export function SavingsPlanPanel({
   principal,
   bonus,
   bonusPercent,
+  relicBonusPercent=0,
   onTerm,
   onAmount,
   onStart,
@@ -84,6 +86,7 @@ export function SavingsPlanPanel({
           ))}
         </div>
       </fieldset>
+      {relicBonusPercent>0&&<p className="rounded-xl bg-secondary/50 px-3 py-2 text-xs leading-5 text-primary">유물 효과 · 만기 이자 +{relicBonusPercent}%<span className="block text-[10px] text-muted-foreground">모든 기간에 적용 · 가입 시 확정</span></p>}
       <div className="space-y-2.5">
         <div className="flex items-center justify-between gap-2">
           <label htmlFor="savings-amount" className="text-xs font-medium">
@@ -138,7 +141,7 @@ export function SavingsPlanPanel({
             <dd className="tabular-nums">{valid ? number(principal) : '—'}골드</dd>
           </div>
           <div className="flex items-center justify-between gap-2">
-            <dt className="text-muted-foreground">만기 보너스 {bonusPercent}%</dt>
+            <dt className="text-muted-foreground">만기 보너스 {bonusPercent}%{relicBonusPercent>0&&<span className="block text-[10px]">이자에 유물 보너스 +{relicBonusPercent}% 포함</span>}</dt>
             <dd className="tabular-nums text-primary">{valid ? '+' + number(bonus) : '—'}골드</dd>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border/60 pt-3">
@@ -225,6 +228,7 @@ export function SavingsAccountPanel({
             </span>
             <Shell aria-hidden="true" className="size-8 text-primary/45" strokeWidth={1.3} />
           </div>
+          {(account.relicBonusPercent??0)>0&&<p className="mt-2 text-[11px] text-primary">만기 이자 +{account.relicBonusPercent}% · 가입 시 확정</p>}
           <h2 id="savings-balance-title" className="mt-4 text-xs text-muted-foreground">
             모은 골드
           </h2>

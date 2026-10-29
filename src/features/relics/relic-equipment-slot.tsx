@@ -9,8 +9,8 @@ export type RelicTransition={id:string;kind:'equip'|'unequip';relic:Relic}
 
 export function relicEffectDescription(description:string){
  return description
-  .replace(/^장착한 상태로 출항하는 어선의 항해 시간이 (\d+)% 줄어들어요\. 진행 중인 항해와 통발에는 적용되지 않아요\.$/,'어선 항해 시간 $1% 단축')
-  .replace(/\s*·?\s*장착 중에만 (?:효과가 적용돼요|발동됩니다)\.?\s*$/,'').trim()
+  .replace(/장착한 상태로 출항하는 어선의 항해 시간이 (\d+)% 줄어들어요\. 진행 중인 항해와 통발에는 적용되지 않아요\./g,'어선 항해 시간 -$1%')
+  .replace(/\s*·?\s*장착 중에만 (?:효과가 적용돼요|발동됩니다)\.?/g,'').trim()
 }
 
 export function RelicEffectText({description}:{description:string}){
@@ -26,10 +26,10 @@ export function RelicEquipmentSlot({relic,transition,disabled,canChoose,onChoose
    {[0,1,2].map(i=><span key={i} className="relic-transition-ring relic-equip-pulse absolute -inset-1 rounded-full"/>)}
    <span className="relic-transition-sparks absolute -inset-8 rounded-full"/>
   </div>}
-  {relic?<div className="flex items-center gap-5 py-3">
+  {relic?<button type="button" aria-label="장착 유물 교체" disabled={disabled||!canChoose} onClick={onChoose} className="flex w-full items-center gap-5 rounded-xl py-3 text-left outline-none transition-colors hover:bg-secondary/40 focus-visible:ring-2 focus-visible:ring-ring">
    <div className="relic-equipped-art relic-equipped-medallion relative isolate grid size-24 shrink-0 place-items-center"><RelicArtwork relic={relic} name={`장착 중: ${relic.name}`} className="relative size-20"/></div>
    <div className="min-w-0 flex-1"><RarityBadge rarity={relic.rarity}/><p className="mt-2 text-base font-semibold leading-6">{relic.name}</p><p className="mt-2 text-xs leading-5 text-muted-foreground"><span className="mb-0.5 block text-[10px] text-primary">현재 효과</span><RelicEffectText description={relic.description}/></p></div>
-  </div>:<button type="button" aria-label="유물 선택" disabled={disabled||!canChoose} onClick={onChoose} className="mt-3 flex min-h-28 w-full items-center gap-4 rounded-xl border border-dashed border-border/70 px-4 text-left text-xs text-muted-foreground outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default">
+  </button>:<button type="button" aria-label="유물 선택" disabled={disabled||!canChoose} onClick={onChoose} className="mt-3 flex min-h-28 w-full items-center gap-4 rounded-xl border border-dashed border-border/70 px-4 text-left text-xs text-muted-foreground outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default">
    <RelicIcon className="size-10 shrink-0 opacity-35"/><span className="flex-1">유물을 선택해 주세요</span><Plus aria-hidden="true" className="size-4 shrink-0 opacity-55"/>
   </button>}
  </section>

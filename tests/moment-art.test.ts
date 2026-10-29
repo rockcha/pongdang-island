@@ -48,3 +48,11 @@ it('does not let a stalled font request block a valid catch image indefinitely',
  await vi.advanceTimersByTimeAsync(1500);await task
  expect(fills).toContain('#101b2a')
 })
+it('paints a crafted attachment at the lower right of the original relic',async()=>{
+ const {paintCatchMoment}=await import('@/features/showcase/moment-art')
+ const species={...practiceSpecies('epic'),kind:'relic' as const,crafted:true,attached:{id:'attached',name:'결합 유물',thumbnail_path:'attached.png'}}
+ await paintCatchMoment(document.createElement('canvas'),{species,regionName:'유물 세공'})
+ // The shared optimized mock URL is cached, but both artwork placements must exist.
+ const placements=mock.draw.mock.calls.filter(([,x,y])=>x>=230&&y>=145)
+ expect(placements.some(([,x,y,w,h])=>x>=735&&y>=510&&w<=140&&h<=140)).toBe(true)
+})

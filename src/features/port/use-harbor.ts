@@ -19,7 +19,10 @@ export function useHarbor(onClaim?:(batches:CatchBatch[])=>void){
  const [now,setNow]=useState(Date.now),[departure,setDeparture]=useState<string|null>(null)
  const lock=useRef(false),alive=useRef(true),revision=useRef(0),offset=useRef(0)
  function remember(args:HarborAction|null){setPending(args);try{if(args)localStorage.setItem(key,JSON.stringify(args));else localStorage.removeItem(key)}catch{/* Requests still remain in memory when storage is unavailable. */}}
- function apply(data:HarborState){offset.current=Date.parse(data.serverNow)-Date.now();setNow(Date.now()+offset.current);setState(previous=>({...data,receipt:data.receipt??previous?.receipt}))}
+ function apply(data:HarborState){offset.current=Date.parse(data.serverNow)-Date.now();setNow(Date.now()+offset.current);setState(previous=>({...data,
+  // A late arrival acknowledgement or cached refresh must not erase the open catch results.
+  receipt:data.receipt?.results?data.receipt:previous?.receipt?.results?previous.receipt:data.receipt??previous?.receipt,
+ }))}
  async function reload(){if(lock.current)return;const version=++revision.current;try{const data=await loadHarbor();if(alive.current&&version===revision.current&&!lock.current){apply(data);setError('')}}catch(e){if(alive.current&&version===revision.current)setError(harborError(e))}}
  const onRefresh=useEffectEvent(()=>{void reload()})
  useEffect(()=>{

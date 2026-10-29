@@ -19,13 +19,14 @@ export function Building({ f, rotation = 0,label,connections }: { f: Facility; r
   rotation=supportsSavedRotation(f.id)?rotation:0
   if(f.kind==='arrow-sign')return <GardenDecoration f={f} rotation={rotation===180||rotation===270?180:0} label={label}/>
   if(rotation&&!usesDirectionalFenceArt(f))return <g data-art-direction={rotation} data-art-rotation={rotation} transform={buildingRotationTransform(f,rotation)}><Building f={f} label={label} connections={connections}/></g>
+  const png=facilityPng(f)
+  if(png&&!usesDirectionalFenceArt(f))return <g className={f.category==='building'?'island-building-art':undefined} data-art-direction="0" data-garden={gardenKinds.has(f.kind)?f.kind:undefined} data-waterway={['bridge','stepping-stones','reeds'].includes(f.kind)?f.kind:undefined}><FacilityPngArt src={png} f={f}/>{f.kind==='name-sign'&&<text x={f.w*16} y={18} textAnchor="middle" fill="#705b3e" fontSize="8" fontFamily="inherit">{label||'나의 퐁당섬'}</text>}</g>
   if(gardenKinds.has(f.kind))return <GardenDecoration f={f} rotation={rotation} label={label} connections={connections}/>
   if(['bridge','stepping-stones','reeds'].includes(f.kind))return <WaterwayDecoration f={f} rotation={rotation}/>
   const { w, h, sx, sy, x, y } = artGeometry(f)
-  const png=facilityPng(f)
   return (
     <g className={f.category === 'building' ? 'island-building-art' : undefined} data-art-direction="0" transform={`translate(${x} ${y}) scale(${sx} ${sy})`}>
-      {png?<FacilityPngArt src={png} kind={f.kind}/>:<NativeBuilding f={{ ...f, w, h }} />}
+      <NativeBuilding f={{ ...f, w, h }} />
     </g>
   )
 }

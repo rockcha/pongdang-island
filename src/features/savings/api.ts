@@ -1,8 +1,8 @@
 import {createClient} from '@/lib/client'
 import {readAccountResource} from '@/lib/account-cache'
 import {accountCommand} from '@/lib/account-command'
-export type SavingsAccount={id:string;term_days:3|5|7;daily_amount:number;paid_count:number;started_at:string;closed_at:string|null;close_kind:'matured'|'cancelled'|'missed'|null;payout:number|null;principal:number;bonusPercent:number;expectedBonus:number;expectedPayout:number;maturesAt:string;nextOpenAt:string|null;depositDeadline:string|null;status:'waiting'|'due'|'matured'|'missed'|'closed'}
-export type SavingsState={account:SavingsAccount|null;history:SavingsAccount[];serverNow:string;gold:number}
+export type SavingsAccount={relicBonusPercent?:number;id:string;term_days:3|5|7;daily_amount:number;paid_count:number;started_at:string;closed_at:string|null;close_kind:'matured'|'cancelled'|'missed'|null;payout:number|null;principal:number;bonusPercent:number;expectedBonus:number;expectedPayout:number;maturesAt:string;nextOpenAt:string|null;depositDeadline:string|null;status:'waiting'|'due'|'matured'|'missed'|'closed'}
+export type SavingsState={relicBonusPercent?:number;account:SavingsAccount|null;history:SavingsAccount[];serverNow:string;gold:number}
 export type SavingsAction={p_action:'open'|'deposit'|'withdraw';p_operation_id:string;p_account_id?:string;p_term_days?:number;p_daily_amount?:number}
 export type SavingsResult=SavingsState&{receipt:{action:SavingsAction['p_action'];accountId:string;paidCount:number;payout:number;bonus:number;closeKind:SavingsAccount['close_kind']};replayed:boolean}
 export const loadSavings=()=>readAccountResource('savings',readSavings)

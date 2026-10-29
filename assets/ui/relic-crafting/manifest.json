@@ -1,0 +1,8 @@
+{
+  "source": "craft-icon.png",
+  "runtime": "public/app-icons/relic-craft.png",
+  "generator": "image_gen",
+  "styleReference": "public/app-icons/relic.png",
+  "description": "Golden jeweler hammer, turquoise gem and small bronze anvil; transparent painted fantasy toolbar icon.",
+  "processing": "Trim transparent padding and contain within 128 by 128 pixels with sharp; display at 28 by 28 pixels."
+}

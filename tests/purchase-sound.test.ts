@@ -1,5 +1,5 @@
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
-import {playPurchaseSound,playSaleSound,playRewardSound,playRelicEquipSound,playRelicUnequipSound} from '@/features/gold/purchase-sound'
+import {playPurchaseSound,playSaleSound,playRewardSound,playRelicEquipSound,playRelicUnequipSound,playRelicForgeSound,playRelicResultSound} from '@/features/gold/purchase-sound'
 import {saveFishingSound} from '@/features/fishing/sound-preference'
 let players:FakeAudio[]=[]
 class FakeAudio extends EventTarget{
@@ -8,6 +8,18 @@ class FakeAudio extends EventTarget{
 }
 beforeEach(()=>{players=[];localStorage.clear();vi.useFakeTimers();vi.stubGlobal('Audio',FakeAudio)})
 afterEach(()=>{vi.runOnlyPendingTimers();vi.useRealTimers();vi.unstubAllGlobals();localStorage.clear()})
+it('stops forging for the result, deduplicates replay and respects mute',()=>{
+ const stop=playRelicForgeSound('forge-a')
+ expect(players[0].src).toBe('/sounds/relic-forge.wav')
+ stop?.();expect(players[0].pause).toHaveBeenCalled()
+ playRelicResultSound('forge-a',true)
+ expect(players[1].src).toBe('/sounds/relic-success.wav')
+ playRelicResultSound('forge-a',true);expect(players).toHaveLength(2)
+ playRelicResultSound('forge-b',false)
+ expect(players[2].src).toBe('/sounds/relic-failure.wav')
+ saveFishingSound(false);expect(players[2].pause).toHaveBeenCalled()
+ playRelicForgeSound('forge-muted');expect(players).toHaveLength(3)
+})
 it('uses distinct relic chimes, deduplicates retries and obeys mute',()=>{
  playRelicEquipSound('relic-confirmed-equip')
  expect(players[0].src).toBe('/sounds/relic-equip.wav')

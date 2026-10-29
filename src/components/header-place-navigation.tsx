@@ -106,7 +106,6 @@ export function HeaderPlaceNavigation() {
     (to==='/showcase'&&newContent.showcase)||
     (to==='/square/suggestions'&&newContent.suggestions)||
     (to==='/square/bugs'&&newContent.bugs)||
-    (to==='/exchange'&&newContent.exchange)||
     (to==='/flea-market'&&newContent.flea)
     ||(to==='/merchant-orders'&&merchantReady)
 
@@ -120,7 +119,7 @@ export function HeaderPlaceNavigation() {
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
-        const hasActivity=items.some(item=>(item.to!=='/merchant-orders'&&hasNewContent(item.to))||!!activity[item.to]?.ready||(item.to==='/savings'&&!!savings))
+        const hasActivity=items.some(item=>(item.to!=='/merchant-orders'&&hasNewContent(item.to))||(group.id!=='market'&&!!activity[item.to]?.ready)||(item.to==='/savings'&&!!savings))
         return (
           <Menu.Root key={pathname + group.label}>
             <Menu.Trigger

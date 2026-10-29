@@ -7,6 +7,17 @@ beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},1
 afterAll(async()=>{await db?.close()})
 beforeEach(async()=>{await db.exec(`begin;insert into auth.users(id) values('${owner}'),('${other}');insert into public.player_profiles(id,nickname) values('${owner}','퐁이도전자'),('${other}','다른도전자');insert into public.player_wallets(user_id,gold) values('${owner}',100),('${other}',100) on conflict(user_id) do update set gold=100;`);await db.query("select set_config('request.jwt.claim.sub',$1,true)",[owner])})
 afterEach(async()=>{await db.exec('rollback;reset role')})
+it('counts a paid Pongi Whack start for the daily game quest, never state reads or retries',async()=>{
+ const quest=async()=>(await db.query('select public.quest_state() s')).rows[0].s.daily.quests.find((q:any)=>q.id==='game')
+ expect(await quest()).toMatchObject({progress:0,complete:false})
+ await action('state')
+ expect(await quest()).toMatchObject({progress:0})
+ const operation=crypto.randomUUID()
+ await action('start',operation);await action('start',operation)
+ expect(await quest()).toMatchObject({progress:1,complete:true})
+ await db.query("select set_config('request.jwt.claim.sub',$1,true)",[other])
+ expect(await quest()).toMatchObject({progress:0,complete:false})
+})
 async function action(action:string,op:string|null=null,id:string|null=null,hits:any[]=[]){return (await db.query('select public.pongi_whack_action($1,$2,$3,$4) r',[action,op,id,JSON.stringify(hits)])).rows[0].r}
 it('charges once, retries the same operation safely, and excludes abandoned runs',async()=>{
  const op=crypto.randomUUID(),s=await action('start',op)

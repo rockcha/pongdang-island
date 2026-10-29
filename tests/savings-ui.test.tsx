@@ -6,7 +6,7 @@ import type {SavingsAccount} from '@/features/savings/api'
 const mock=vi.hoisted(()=>({load:vi.fn(),change:vi.fn(),refresh:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh:mock.refresh}),GoldIcon:()=>null}))
-vi.mock('@/features/savings/api',async original=>({...await original<typeof import('@/features/savings/api')>(),loadSavings:mock.load,changeSavings:mock.change}))
+vi.mock('@/features/savings/api',async original=>({...await original<typeof import('@/features/savings/api')>(),loadSavings:mock.load,readSavings:mock.load,changeSavings:mock.change}))
 const base={account:null,history:[],gold:10000,serverNow:'2026-10-18T12:00:00Z'}
 function account(overrides:Partial<SavingsAccount>={}):SavingsAccount{return {id:'savings',term_days:7,daily_amount:1000,paid_count:1,started_at:'2026-10-17T11:00:00Z',closed_at:null,close_kind:null,payout:null,principal:1000,bonusPercent:30,expectedBonus:2100,expectedPayout:9100,maturesAt:'2026-10-24T11:00:00Z',nextOpenAt:'2026-10-18T11:00:00Z',depositDeadline:'2026-10-19T11:00:00Z',status:'due',...overrides}}
 beforeEach(()=>{vi.clearAllMocks();mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
@@ -20,6 +20,16 @@ it('previews the selected total and confirms the immediate first installment',as
  expect(within(dialog).getByText(/지금 첫 100골드를 넣고/)).toBeTruthy()
  fireEvent.click(within(dialog).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(mock.change).toHaveBeenCalledWith(expect.objectContaining({p_action:'open',p_term_days:7,p_daily_amount:100,p_operation_id:expect.any(String)})))
+})
+it('adds the relic percentage to interest rather than principal across all terms',async()=>{
+ mock.load.mockResolvedValue({...base,relicBonusPercent:10})
+ render(<SavingsPage/>)
+ await screen.findByText('유물 효과 · 만기 이자 +10%')
+ expect(screen.getByText('366')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:/5일.*25/}))
+ expect(screen.getByText('637')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:/7일.*30/}))
+ expect(screen.getByText('931')).toBeTruthy()
 })
 it('retains the same operation when retrying an uncertain payment',async()=>{
  mock.load.mockResolvedValue({...base,account:account()})

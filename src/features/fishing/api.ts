@@ -9,7 +9,7 @@ export type FishingAttempt = { firstDiscovery?:boolean; operation_id:string; reg
 export type PreparedBaitProfile={common_bp:number;rare_bp:number;epic_bp:number;mythic_bp:number;effect_kind:string;target_kinds:string[];period?:'day'|'night'|null}
 export type PreparedFishing = {confirm_bite?:boolean;fight_started_at?:string|null;server_now?:string;bait_profile?:PreparedBaitProfile|null;operation_id:string;region_id:string;bait_id:string;eligible:boolean;species:Species|null;rarity:Rarity;wait_seconds:number;failure_at:number;failure_reason:'bait'|'escape'|'wave';expires_at:string;finished:boolean;result:FishingResult|null}
 export type FishingState = {successChanceBp?:number;prepared?:PreparedFishing|null; baits:FishingBait[];regionId?:string;regionName?:string;mapChanceBp?:number }
-export type FishingResult = { attempt:FishingAttempt; replayed:boolean;failure_reason?:string|null }
+export type FishingResult = { baitRefunded?:boolean;refundedBaitId?:string|null; attempt:FishingAttempt; replayed:boolean;failure_reason?:string|null }
 export async function loadFishing() {
  const {data,error}=await createClient().rpc('fishing_state')
  if(error)throw error

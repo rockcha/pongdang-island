@@ -279,7 +279,7 @@ export function CollectionBook({
     enabled: mode === 'items' && tab === 'relic',
   })
   const effectCategory = (kind: string) =>
-    kind.startsWith('harbor_') || kind.startsWith('boat_')
+    kind.startsWith('savings_') ? 'savings' : kind.startsWith('harbor_') || kind.startsWith('boat_')
       ? 'voyage'
       : kind.includes('active_slots') ||
           kind === 'production_auto_claim' ||
@@ -417,6 +417,7 @@ export function CollectionBook({
                       voyage: '항해',
                       production: '생산',
                       arcade: '미니게임',
+                      savings: '적금',
                     } as Record<string, string>
                   )[effect],
                   clear: () => setEffect('all'),
@@ -536,6 +537,7 @@ export function CollectionBook({
                 { value: 'voyage', label: '항해' },
                 { value: 'production', label: '생산' },
                 { value: 'arcade', label: '미니게임' },
+                { value: 'savings', label: '적금' },
               ]}
             />
           </section>

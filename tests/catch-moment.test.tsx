@@ -42,3 +42,12 @@ it('keeps failed images unready, supports retry and ignores an old paint after s
  paint.mockResolvedValue(undefined);fireEvent.click(screen.getByRole('button',{name:'다시 불러오기'}))
  await waitFor(()=>expect(ready).toHaveBeenLastCalledWith(true))
 })
+it('requires both crafted relic images before accepting fallback artwork',async()=>{
+ paint.mockRejectedValue(new Error('canvas blocked'))
+ const species={...practiceSpecies('epic'),kind:'relic' as const,crafted:true,attached:{id:'b',name:'결합 조개',thumbnail_path:'attached.png'}},ready=vi.fn()
+ render(<CatchMoment species={species} onReadyChange={ready}/>)
+ const base=await screen.findByRole('img',{name:species.name})
+ fireEvent.load(base);expect(ready).toHaveBeenLastCalledWith(false)
+ fireEvent.load(screen.getByRole('img',{name:'결합 유물: 결합 조개'}))
+ expect(ready).toHaveBeenLastCalledWith(true)
+})

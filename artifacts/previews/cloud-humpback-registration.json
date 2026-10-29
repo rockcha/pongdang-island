@@ -1,0 +1,40 @@
+{
+  "file": "assets/storage-upload/collectibles/fish/rare/cloud-humpback_sprite.png",
+  "storage_path": "fish/rare/cloud-humpback_sprite.png",
+  "patch": [
+    440,
+    275,
+    80,
+    75
+  ],
+  "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+  "frames": [
+    {
+      "frame": 0,
+      "dx": 0,
+      "dy": 0,
+      "rmse": 0
+    },
+    {
+      "frame": 1,
+      "dx": -23,
+      "dy": -3,
+      "rmse": 13.665474202719246
+    },
+    {
+      "frame": 2,
+      "dx": 0,
+      "dy": -57,
+      "rmse": 9.22243640982866
+    },
+    {
+      "frame": 3,
+      "dx": -14,
+      "dy": -59,
+      "rmse": 18.461401174703216
+    }
+  ],
+  "sourceHash": "0e10608590ba2f0e22b72204a22a4e55df33db656ef9def326dea5986bd1d8d0",
+  "remoteMatches": true,
+  "cell": 627
+}

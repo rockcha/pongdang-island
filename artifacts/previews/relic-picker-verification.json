@@ -1,0 +1,289 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "mode": "success",
+    "motion": "no-preference",
+    "fontSize": 16,
+    "dark": false,
+    "modal": false,
+    "inventory": {
+      "rare": "color(srgb 0.907765 0.934274 0.975059)",
+      "epic": "color(srgb 0.959059 0.913098 0.975529)",
+      "mythic": "color(srgb 0.989647 0.953098 0.881882)"
+    },
+    "tabs": {
+      "radius": "0px",
+      "width": 390,
+      "children": [
+        195,
+        195
+      ]
+    },
+    "columns": 3,
+    "selection": {
+      "width": 390,
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false
+    },
+    "result": {
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false,
+      "english": false,
+      "footer": {
+        "top": 737,
+        "bottom": 844,
+        "visible": true
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "mode": "failure",
+    "motion": "reduce",
+    "fontSize": 16,
+    "dark": false,
+    "modal": false,
+    "inventory": {
+      "rare": "color(srgb 0.907765 0.934274 0.975059)",
+      "epic": "color(srgb 0.959059 0.913098 0.975529)",
+      "mythic": "color(srgb 0.989647 0.953098 0.881882)"
+    },
+    "tabs": {
+      "radius": "0px",
+      "width": 320,
+      "children": [
+        160,
+        160
+      ]
+    },
+    "columns": 3,
+    "selection": {
+      "width": 320,
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false
+    },
+    "result": {
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false,
+      "english": false,
+      "footer": {
+        "top": 501,
+        "bottom": 568,
+        "visible": true
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "mode": "success",
+    "motion": "reduce",
+    "fontSize": 16,
+    "dark": false,
+    "modal": false,
+    "inventory": {
+      "rare": "color(srgb 0.907765 0.934274 0.975059)",
+      "epic": "color(srgb 0.959059 0.913098 0.975529)",
+      "mythic": "color(srgb 0.989647 0.953098 0.881882)"
+    },
+    "tabs": {
+      "radius": "0px",
+      "width": 520,
+      "children": [
+        260,
+        260
+      ]
+    },
+    "columns": 3,
+    "selection": {
+      "width": 520,
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false
+    },
+    "result": {
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false,
+      "english": false,
+      "footer": {
+        "top": 283,
+        "bottom": 390,
+        "visible": true
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 1000,
+    "height": 900,
+    "mode": "failure",
+    "motion": "reduce",
+    "fontSize": 16,
+    "dark": true,
+    "modal": false,
+    "inventory": {
+      "rare": "color(srgb 0.193412 0.188863 0.219294)",
+      "epic": "color(srgb 0.244706 0.167686 0.219765)",
+      "mythic": "color(srgb 0.275294 0.207686 0.126118)"
+    },
+    "tabs": {
+      "radius": "0px",
+      "width": 520,
+      "children": [
+        260,
+        260
+      ]
+    },
+    "columns": 3,
+    "selection": {
+      "width": 520,
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false
+    },
+    "result": {
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false,
+      "english": false,
+      "footer": {
+        "top": 833,
+        "bottom": 900,
+        "visible": true
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "mode": "success",
+    "motion": "reduce",
+    "fontSize": 20,
+    "dark": false,
+    "modal": false,
+    "inventory": {
+      "rare": "color(srgb 0.907765 0.934274 0.975059)",
+      "epic": "color(srgb 0.959059 0.913098 0.975529)",
+      "mythic": "color(srgb 0.989647 0.953098 0.881882)"
+    },
+    "tabs": {
+      "radius": "0px",
+      "width": 320,
+      "children": [
+        160,
+        160
+      ]
+    },
+    "columns": 3,
+    "selection": {
+      "width": 320,
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false
+    },
+    "result": {
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false,
+      "english": false,
+      "footer": {
+        "top": 434.5,
+        "bottom": 568,
+        "visible": true
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "mode": "failure",
+    "motion": "reduce",
+    "fontSize": 16,
+    "dark": false,
+    "modal": true,
+    "inventory": {
+      "rare": "color(srgb 0.907765 0.934274 0.975059)",
+      "epic": "color(srgb 0.959059 0.913098 0.975529)",
+      "mythic": "color(srgb 0.989647 0.953098 0.881882)"
+    },
+    "tabs": {
+      "radius": "0px",
+      "width": 256,
+      "children": [
+        128,
+        128
+      ]
+    },
+    "columns": 3,
+    "selection": {
+      "width": 256,
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false
+    },
+    "result": {
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false,
+      "english": false,
+      "footer": {
+        "top": 442.3984375,
+        "bottom": 509.3984375,
+        "visible": true
+      }
+    },
+    "errors": []
+  },
+  {
+    "width": 844,
+    "height": 390,
+    "mode": "failure",
+    "motion": "reduce",
+    "fontSize": 16,
+    "dark": false,
+    "modal": true,
+    "inventory": {
+      "rare": "color(srgb 0.907765 0.934274 0.975059)",
+      "epic": "color(srgb 0.959059 0.913098 0.975529)",
+      "mythic": "color(srgb 0.989647 0.953098 0.881882)"
+    },
+    "tabs": {
+      "radius": "0px",
+      "width": 480,
+      "children": [
+        240,
+        240
+      ]
+    },
+    "columns": 3,
+    "selection": {
+      "width": 480,
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false
+    },
+    "result": {
+      "overflow": false,
+      "scrolls": false,
+      "clipped": false,
+      "english": false,
+      "footer": {
+        "top": 277.75,
+        "bottom": 344.75,
+        "visible": true
+      }
+    },
+    "errors": []
+  }
+]

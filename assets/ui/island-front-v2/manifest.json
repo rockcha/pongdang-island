@@ -1,0 +1,1748 @@
+{
+  "generator": "built-in image_gen",
+  "viewpoint": "Front elevation for objects; top-down full-bleed square textures for floors. Saved object rotations and dynamic labels are preserved.",
+  "displayMirror": false,
+  "assets": [
+    {
+      "id": "bread-display",
+      "name": "빵 진열대",
+      "kind": "bread-display",
+      "w": 2,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One cozy bakery bread display rack: honey wood front shelf with small cream linen, a few golden round breads and two croissants, low front-facing wood frame with teal trim. Not a whole bakery building, no canopy or text.",
+      "source": "bread-display.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/54dba783742ad5fb08d61754-256.png",
+        "bytes": 29123,
+        "width": 256,
+        "height": 214
+      }
+    },
+    {
+      "id": "mailbox-planter",
+      "name": "우편함 화단",
+      "kind": "mailbox-planter",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A decorative small pastel coral mailbox on a wooden post, integrated cream planter overflowing with tiny coral flowers and sage leaves, brass envelope emblem. Front elevation, no building, distinct from standard red mailbox.",
+      "source": "mailbox-planter.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/dbf1307e4782507d6fbac488-256.png",
+        "bytes": 18961,
+        "width": 170,
+        "height": 256
+      }
+    },
+    {
+      "id": "flower-bicycle",
+      "name": "꽃바구니 자전거",
+      "kind": "flower-bicycle",
+      "w": 2,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One vintage teal bicycle parked with FRONT WHEEL TOWARD VIEWER: curved handlebar symmetric, cream front basket filled with small coral and yellow flowers, slim rear saddle visible behind. Direct front view, not side-view bicycle.",
+      "source": "flower-bicycle.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/c1d8f73d08b5e7d6a108081a-256.png",
+        "bytes": 19570,
+        "width": 217,
+        "height": 256
+      }
+    },
+    {
+      "id": "pastel-surfboard",
+      "name": "파스텔 서핑보드",
+      "kind": "pastel-surfboard",
+      "w": 1,
+      "h": 2,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One upright pastel coral-and-cream surfboard resting in a tiny honey wood stand, broad front face toward viewer, simple teal wave stripe, no letters, no beach scene.",
+      "source": "pastel-surfboard.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/a5cded220ffce7c9044f7356-256.png",
+        "bytes": 14245,
+        "width": 113,
+        "height": 256
+      }
+    },
+    {
+      "id": "butterfly-flowerbed",
+      "name": "나비 화단",
+      "kind": "butterfly-flowerbed",
+      "w": 2,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Low clustered flower bed with coral, lavender and yellow blossoms and sage leaves, one small cream-and-teal butterfly hovering very close above center. Front elevation, compact isolated ornament, no pot or building.",
+      "source": "butterfly-flowerbed.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/0c1cb54b50643e5c1ca2077c-256.png",
+        "bytes": 25302,
+        "width": 256,
+        "height": 198
+      }
+    },
+    {
+      "id": "fish-fountain",
+      "name": "물고기 분수",
+      "kind": "fish-fountain",
+      "w": 2,
+      "h": 2,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Small garden fish fountain: a carved cream fish statue facing viewer at center, a gentle short turquoise water arc into a low round cream stone bowl, tiny teal accent. Front elevation, no aquarium house.",
+      "source": "fish-fountain.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/3dacab9ee50fd5b8c0951782-256.png",
+        "bytes": 26945,
+        "width": 256,
+        "height": 236
+      }
+    },
+    {
+      "id": "droplet-lamp",
+      "name": "물방울 가로등",
+      "kind": "droplet-lamp",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One elegant small lamppost: thin honey-bronze pole and a single large pale blue water-droplet-shaped glass lantern hanging centrally from cream curved top, teal base. Front elevation, clear narrow silhouette, no building.",
+      "source": "droplet-lamp.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/c82b6076adc781561f4d8f11-256.png",
+        "bytes": 10812,
+        "width": 107,
+        "height": 256
+      }
+    },
+    {
+      "id": "coral-planter",
+      "name": "산호 화분",
+      "kind": "coral-planter",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One cream ceramic planter with thin teal band and small orange scallop emblem, holding a branching coral-orange decorative coral and two sage sea-plant leaves. Front-facing pot, no water tank or building.",
+      "source": "coral-planter.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/70066581b7d322e8f5adfb5e-256.png",
+        "bytes": 23510,
+        "width": 184,
+        "height": 256
+      }
+    },
+    {
+      "id": "arrow-sign",
+      "name": "나무 화살표 표지판",
+      "kind": "arrow-sign",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One wooden directional sign on a single short honey-brown post. WIDE BLANK wooden ARROW pointing RIGHT across the top, cream inset plaque for later game text. Front elevation, no writing, no pictures, no shells or roof, no extra scenery.",
+      "source": "arrow-sign.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/f2bf5d6dde293d1db12b69e0-256.png",
+        "bytes": 20034,
+        "width": 256,
+        "height": 236
+      }
+    },
+    {
+      "id": "name-sign",
+      "name": "이름 간판",
+      "kind": "name-sign",
+      "w": 2,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A wide BLANK cream inset name plaque in honey wood frame, two short supporting posts, small restrained teal corner trim. Straight-on FRONT view, no writing or pictograms, no roof, no flowers obscuring plaque, wide readable central cream area.",
+      "source": "name-sign.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/4d708d6e03ad10c808212365-256.png",
+        "bytes": 13835,
+        "width": 256,
+        "height": 124
+      }
+    },
+    {
+      "id": "pongi-statue",
+      "name": "낚시하는 퐁이 동상",
+      "kind": "pongi-statue",
+      "w": 2,
+      "h": 2,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small carved cream-stone statue of Pongi the otter on a low round pedestal, sitting facing directly forward holding a slender fishing rod. THIRD REFERENCE is the actual character identity: round little ears, cream muzzle, otter nose, starfish hairclip; preserve it as sculpted stone, not fur. First two references for illustration technique only. Whole rod and fishing line visible, transparent margins, front elevation.",
+      "source": "pongi-statue.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png",
+        "../../../public/branding/pongi.png"
+      ],
+      "output": {
+        "url": "/game-art/island/133bba946b0b8ca464bbfe33-256.png",
+        "bytes": 23014,
+        "width": 161,
+        "height": 256
+      }
+    },
+    {
+      "id": "shell-fountain",
+      "name": "조개 분수대",
+      "kind": "shell-fountain",
+      "w": 2,
+      "h": 2,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small cream carved scallop-shell fountain: centered large upright shell pouring a gentle turquoise stream into a low round cream stone basin, teal trim. Front elevation, symmetric, no aquarium building, compact isolated fountain.",
+      "source": "shell-fountain.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/7efe1fa6489e604f709aecf7-256.png",
+        "bytes": 31852,
+        "width": 233,
+        "height": 256
+      }
+    },
+    {
+      "id": "wood-fence",
+      "name": "나무 울타리",
+      "kind": "wood-fence",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: ONE horizontal segment of a simple honey wood garden picket fence, two stout vertical posts and two horizontal rails with five rounded vertical boards, front elevation. Straight horizontal contact baseline, NO roof, NO plants, no letters, clean edges.",
+      "source": "wood-fence.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/ac5f9dd7e5ed06f3d04c4174-256.png",
+        "bytes": 15670,
+        "width": 256,
+        "height": 119
+      }
+    },
+    {
+      "id": "stone-wall",
+      "name": "낮은 돌담",
+      "kind": "stone-wall",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: ONE low horizontal garden wall segment made of a few large rounded warm gray/cream stones, mortar lines in warm brown, flat slightly irregular top. Front elevation with no side wall or top-down slab perspective, no plants or ornaments.",
+      "source": "stone-wall.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/3ac98524393c0c38c3ece31e-256.png",
+        "bytes": 14411,
+        "width": 256,
+        "height": 78
+      }
+    },
+    {
+      "id": "flower-arch",
+      "name": "꽃 아치",
+      "kind": "flower-arch",
+      "w": 2,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One freestanding honey wood garden arch with two vertical posts and rounded open archway, climbing sage vines and small coral/cream flowers around the outer frame. Entire open passage transparent, FRONT elevation, no doorway or building.",
+      "source": "flower-arch.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/951e0f53e3318572f8ad807f-256.png",
+        "bytes": 23825,
+        "width": 230,
+        "height": 256
+      }
+    },
+    {
+      "id": "hydrangea-blue",
+      "name": "푸른 수국 화단",
+      "kind": "hydrangea",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One low dense BLUE hydrangea flowerbed with rounded powder blue flower clusters, small cream highlights, broad sage leaves and subtle soil base. Front elevation, no pot or building, clean low-wide silhouette.",
+      "source": "hydrangea-blue.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/e97bf70428c2bdb1c44ecd80-256.png",
+        "bytes": 20409,
+        "width": 256,
+        "height": 120
+      }
+    },
+    {
+      "id": "hydrangea-pink",
+      "name": "분홍 수국 화단",
+      "kind": "hydrangea",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One low dense PINK hydrangea flowerbed with rounded dusty pink flower clusters, small cream highlights, broad sage leaves and subtle soil base. Front elevation, no pot or building, clean low-wide silhouette.",
+      "source": "hydrangea-pink.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/48d1fde9f26043a6dcbe1547-256.png",
+        "bytes": 21628,
+        "width": 256,
+        "height": 129
+      }
+    },
+    {
+      "id": "hydrangea-lilac",
+      "name": "보랏빛 수국 화단",
+      "kind": "hydrangea",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One low dense LILAC hydrangea flowerbed with rounded lavender flower clusters, small cream highlights, broad sage leaves and subtle soil base. Front elevation, no pot or building, clean low-wide silhouette.",
+      "source": "hydrangea-lilac.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/9d3a4a0dd17ae63dc2d2c530-256.png",
+        "bytes": 23211,
+        "width": 256,
+        "height": 140
+      }
+    },
+    {
+      "id": "water-lily",
+      "name": "호수 수련",
+      "kind": "water-lily",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One blooming pale pink water lily on two broad sage-green lily pads, low frontal elevation just enough to show the blossom, compact delicate silhouette. No water background, no ripples outside plant, no pot or ground shadow.",
+      "source": "water-lily.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/666c627f16abc2f0b1b082ea-256.png",
+        "bytes": 21393,
+        "width": 256,
+        "height": 173
+      }
+    },
+    {
+      "id": "parasol",
+      "name": "해변 파라솔",
+      "kind": "parasol",
+      "w": 2,
+      "h": 2,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One small beach parasol with alternating cream and coral-orange rounded fabric panels, straight slender honey wood center pole and small round teal weighted stand, front-facing, fully visible. No beach, chair, extra ground or shadow.",
+      "source": "parasol.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/8446b578bca0662e80aefe96-256.png",
+        "bytes": 15539,
+        "width": 237,
+        "height": 256
+      }
+    },
+    {
+      "id": "beach-chair",
+      "name": "비치체어",
+      "kind": "beach-chair",
+      "w": 1,
+      "h": 2,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One cozy deck chair facing straight toward the viewer, sage-green and cream striped fabric, honey wooden frame and two visible front legs, backrest upright. No side perspective, no parasol or scenery.",
+      "source": "beach-chair.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/d0a28ab9f21ad332511c0cf9-256.png",
+        "bytes": 25991,
+        "width": 230,
+        "height": 256
+      }
+    },
+    {
+      "id": "picnic-table",
+      "name": "피크닉 테이블",
+      "kind": "picnic-table",
+      "w": 2,
+      "h": 2,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One wooden picnic table facing directly toward viewer along its LONG edge, honey wood tabletop across image with cream trim, two side benches, sturdy A-frame supports. Front elevation, no food, roof or scenery.",
+      "source": "picnic-table.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/b8ff08f27f21133a9b1fe1be-256.png",
+        "bytes": 15022,
+        "width": 256,
+        "height": 141
+      }
+    },
+    {
+      "id": "sleeping-cat",
+      "name": "잠자는 고양이",
+      "kind": "sleeping-cat",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One small curled sleeping ginger cat, viewed from the front, face centered resting on front paws, eyes gently closed, tail curled along body, cream muzzle and warm brown outline. Natural small cat, not otter, no props or background shadow.",
+      "source": "sleeping-cat.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/40598fe3a1e1217e37d6fc83-256.png",
+        "bytes": 24650,
+        "width": 256,
+        "height": 163
+      }
+    },
+    {
+      "id": "bridge",
+      "name": "긴 나무다리",
+      "kind": "bridge",
+      "w": 1,
+      "h": 3,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One small wooden footbridge viewed straight-on toward its FRONT entrance, parallel honey wood handrails left and right, short plank deck receding centrally to far end, cream rope rail details. Balanced orthographic frontal view, no water or terrain, no isometric side view, compact isolated bridge.",
+      "source": "bridge.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/5f25882a2b1c9af0edb3ca35-256.png",
+        "bytes": 22134,
+        "width": 256,
+        "height": 187
+      }
+    },
+    {
+      "id": "stepping-stones",
+      "name": "물길 징검돌",
+      "kind": "stepping-stones",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Three chunky rounded cream-gray stepping stones in a small connected cluster seen in a shallow frontal top view, warm brown contours and subtle smooth highlights, no shadows outside stones, no water or surrounding terrain.",
+      "source": "stepping-stones.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/eeff22431741d6c8b17e9f08-256.png",
+        "bytes": 17501,
+        "width": 256,
+        "height": 136
+      }
+    },
+    {
+      "id": "reeds",
+      "name": "물가 갈대",
+      "kind": "reeds",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One compact clump of sage green waterside reeds with three brown cattail heads and long curved leaves, straight-on front elevation, small roots hidden in a subtle low soil base. No pond, water background, glow, haze or detached shadow.",
+      "source": "reeds.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/5ef6627134489452c5694bce-256.png",
+        "bytes": 23243,
+        "width": 224,
+        "height": 256
+      }
+    },
+    {
+      "id": "title-flag",
+      "name": "칭호",
+      "kind": "title-flag",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A freestanding ceremonial title banner stand: one warm honey wood mast, teal-and-cream hanging pennant with gold star insignia, small cream carved pedestal. Front elevation, no writing, NOT a house.",
+      "source": "title-flag.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/c0645dfe7458742d2f790927-384.png",
+        "bytes": 30533,
+        "width": 239,
+        "height": 384
+      }
+    },
+    {
+      "id": "relic-case",
+      "name": "유물",
+      "kind": "relic-case",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Small front-facing relic display cabinet: honey wood and cream trim, teal glass enclosure containing one glowing amber crystal artifact on a velvet cushion, brass corners. Low museum showcase, no building roof.",
+      "source": "relic-case.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/7aa3416bf4247932e89ce393-384.png",
+        "bytes": 49617,
+        "width": 332,
+        "height": 384
+      }
+    },
+    {
+      "id": "map-table",
+      "name": "지도",
+      "kind": "map-table",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: An explorer's wooden chart table: wide front-on sturdy desk, parchment sea map spread over the top, brass compass and closed scrolls, teal apron, four short legs. No text; no house.",
+      "source": "map-table.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/2391073246db51581174d7b3-384.png",
+        "bytes": 35965,
+        "width": 384,
+        "height": 236
+      }
+    },
+    {
+      "id": "notice-board",
+      "name": "공지",
+      "kind": "notice-board",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Outdoor announcement board: rectangular honey wood board on two stout legs, terracotta little rain canopy, pinned cream paper notices with simple pictograms only. Front-on, no readable text.",
+      "source": "notice-board.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/6ecd7011b8807cfa8bf25427-384.png",
+        "bytes": 50606,
+        "width": 384,
+        "height": 355
+      }
+    },
+    {
+      "id": "community-board",
+      "name": "자유게시판",
+      "kind": "community-board",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Community bulletin stand: wide sage-green framed board on two wooden legs, cream scalloped little canopy, overlapping coral/cream cards and envelope pictograms, small flower corner. Front-on, not a building.",
+      "source": "community-board.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/cabcbf092025afc2e5b42833-384.png",
+        "bytes": 52812,
+        "width": 384,
+        "height": 381
+      }
+    },
+    {
+      "id": "gramophone",
+      "name": "음악 감상",
+      "kind": "gramophone",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A vintage gramophone: large flared brass flowerlike horn facing straight toward viewer, round record on honey wooden player cabinet, brass crank, teal detail, no roof or building.",
+      "source": "gramophone.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/1550f77cfb9bca26a0c3b0ce-384.png",
+        "bytes": 40884,
+        "width": 297,
+        "height": 384
+      }
+    },
+    {
+      "id": "shell-safe",
+      "name": "조개 적금",
+      "kind": "shell-safe",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small freestanding cream and teal bank safe shaped like a scallop shell, front-on gold combination dial and centered handle, sturdy small feet. No building, no roof.",
+      "source": "shell-safe.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/4a003e364723539e567a64fc-384.png",
+        "bytes": 67314,
+        "width": 384,
+        "height": 381
+      }
+    },
+    {
+      "id": "arcade-cabinet",
+      "name": "미니게임",
+      "kind": "arcade-cabinet",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One charming upright arcade game cabinet, front-facing cream body, teal trims, dark blue screen with a little fish and star game pictogram, coral joystick and two yellow buttons. No text, no building.",
+      "source": "arcade-cabinet.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/765b71da6efaef1fc351856c-384.png",
+        "bytes": 46893,
+        "width": 266,
+        "height": 384
+      }
+    },
+    {
+      "id": "books",
+      "name": "개체 도감",
+      "kind": "books",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A freestanding creature encyclopedia archive: honey wood shelving cabinet with cream carved frame, three large illustrated blue/teal books on its shelves and a small fish emblem. Front-facing bookcase, no house or dome.",
+      "source": "books.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/d1ceaf7b08ead509ff3db7f0-384.png",
+        "bytes": 47390,
+        "width": 315,
+        "height": 384
+      }
+    },
+    {
+      "id": "stash",
+      "name": "보관함",
+      "kind": "stash",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One compact storage treasure chest: honey wood planks, teal metal bands, cream inset panels, large brass central latch, slightly domed closed lid. Straight-on front, no side face visible, no building.",
+      "source": "stash.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/1b6ac1fc0d393852efceedb5-384.png",
+        "bytes": 45718,
+        "width": 384,
+        "height": 303
+      }
+    },
+    {
+      "id": "lighthouse",
+      "name": "등대",
+      "kind": "lighthouse",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Tall narrow cream lighthouse with coral-orange horizontal bands, teal lantern cap, small front door and centered glass lantern, little brass railing. Symmetric front elevation, no dome building copied from reference.",
+      "source": "lighthouse.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/478fdeb78c1437a0d8e4f521-384.png",
+        "bytes": 28256,
+        "width": 192,
+        "height": 384
+      }
+    },
+    {
+      "id": "shipyard",
+      "name": "조선소",
+      "kind": "shipyard",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Small seaside shipyard workshop: cream walls, dusty blue gabled roof, wide centered open boat shed containing a wooden boat hull seen BOW-ON, brass anchor emblem, two timber supports. Distinct workshop silhouette, not an aquarium dome.",
+      "source": "shipyard.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/c454f2b3191bd26e672a1aee-384.png",
+        "bytes": 56302,
+        "width": 384,
+        "height": 358
+      }
+    },
+    {
+      "id": "shop",
+      "name": "낚시 상점",
+      "kind": "shop",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "source": "shop.png",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Fishing tackle shop: cream walls, terracotta gabled roof, centered hook pictogram above the door, orange/cream awning, two fishing rods beside the entrance and one tackle crate.",
+      "references": [
+        "../island-facilities-v1/aquarium.png",
+        "aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/82f33c507417de6bdc3b97a5-384.png",
+        "bytes": 55627,
+        "width": 367,
+        "height": 384
+      }
+    },
+    {
+      "id": "fuel",
+      "name": "연료 생산시설",
+      "kind": "fuel",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Fuel refinery: small cream workshop, amber roof, copper distillation tank and curved pipe beside the front facade, amber fuel can, centered door, flame-drop emblem; no smoke.",
+      "source": "fuel.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/dc347f097219f76f56fdec41-384.png",
+        "bytes": 57911,
+        "width": 384,
+        "height": 380
+      }
+    },
+    {
+      "id": "aquarium",
+      "name": "아쿠아리움 2",
+      "kind": "aquarium",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "source": "aquarium.png",
+      "prompt": "Edit target: supplied aquarium sprite. Preserve this exact polished cozy Korean seaside game illustration style, warm brown outlines, clean cel shading, cream stone, teal glass dome and orange fish. Change CAMERA ONLY to perfectly straight-on FRONT ELEVATION, eye level, central symmetrical facade, door centered, no visible left or right side walls, no isometric angle, no top-down view. Both halves balanced. Keep round dome, seashell emblem, blue double doors, lanterns, fish windows, coral trim. Entire object and base in frame, compact square composition with 8% clear transparent margin. Truly transparent background, sharp clean alpha edges; no scenery, no extra ground tile, no text, no ground shadow. Deliver one front-facing game sprite, not a sheet.",
+      "references": [
+        "../island-facilities-v1/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/4633945a26e70b796da3a950-384.png",
+        "bytes": 57996,
+        "width": 383,
+        "height": 384
+      }
+    },
+    {
+      "id": "mail",
+      "name": "우편함",
+      "kind": "mail",
+      "w": 1,
+      "h": 1,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One free-standing red-coral seaside MAILBOX on a honey wood post, cream envelope pictogram, little teal roof and brass latch. Front-on, simple friendly silhouette, NO building, NO door, no aquarium dome.",
+      "source": "mail.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/a38bc2684ccd4bd48dd7feaa-384.png",
+        "bytes": 28647,
+        "width": 219,
+        "height": 384
+      }
+    },
+    {
+      "id": "bait",
+      "name": "미끼 생산소",
+      "kind": "bait",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Bait-making workshop: cream walls, sage roof, centered door, worm pictogram, mixing vat with wooden paddle and cream bait jars on a front shelf.",
+      "source": "bait.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/27da6f79c469cf2fd5867c75-384.png",
+        "bytes": 62219,
+        "width": 380,
+        "height": 384
+      }
+    },
+    {
+      "id": "warehouse",
+      "name": "창고",
+      "kind": "warehouse",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Seaside storage warehouse: cream walls, honey-orange roof, wide plank double doors with brass padlock, one closed crate and coil of rope beside entrance.",
+      "source": "warehouse.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/e7a03b5c774eaf80320d4fc5-384.png",
+        "bytes": 54218,
+        "width": 384,
+        "height": 373
+      }
+    },
+    {
+      "id": "dock",
+      "name": "어선 시설",
+      "kind": "dock",
+      "w": 2,
+      "h": 3,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Compact harbor reception hut on wooden pier, front-on facade with cream walls and teal gabled roof, centered door, anchor symbol, small lifebuoy on front rail, mooring bollards and two ropes. No water or scenery, no boat blocking the hut.",
+      "source": "dock.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/974a8ff094416519bf2de9ed-384.png",
+        "bytes": 53764,
+        "width": 384,
+        "height": 358
+      }
+    },
+    {
+      "id": "tree",
+      "name": "동글 나무",
+      "kind": "tree",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: ONE rounded broadleaf tree with honey brown trunk and three softly rounded sage and leafy green foliage clusters, small roots at its base. Straight-on front silhouette, no ornaments, no scenery, no building, no pot.",
+      "source": "tree.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/232275fa391b4502aa1bdcf7-256.png",
+        "bytes": 29308,
+        "width": 256,
+        "height": 255
+      }
+    },
+    {
+      "id": "pine",
+      "name": "솔솔 소나무",
+      "kind": "pine",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: ONE small friendly pine tree: three tiers of rounded deep sage needle foliage, honey brown trunk, simple bold clean silhouette. Straight-on front, no decorations, no pot, no building.",
+      "source": "pine.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/db42dbf68c7df18ed1909ce6-256.png",
+        "bytes": 22613,
+        "width": 210,
+        "height": 256
+      }
+    },
+    {
+      "id": "flowers",
+      "name": "봄꽃 화단",
+      "kind": "flowers",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A compact spring flower bed: rounded cluster of small cream, coral and pale yellow flowers with sage leaves and subtle low soil mound. Front elevation, low wide silhouette, no edging frame, no pot or building.",
+      "source": "flowers.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/1efbfb39ae6e796a455167d0-256.png",
+        "bytes": 19797,
+        "width": 256,
+        "height": 132
+      }
+    },
+    {
+      "id": "bench",
+      "name": "나무 벤치",
+      "kind": "bench",
+      "w": 2,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A cozy honey wood garden bench with cream curved armrests and dark teal iron legs, wide backrest with three wooden slats, two front legs evenly visible. Perfectly front-on, no visible side face, no plants or buildings.",
+      "source": "bench.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/66a92477ff9d74017005faf6-256.png",
+        "bytes": 18543,
+        "width": 256,
+        "height": 191
+      }
+    },
+    {
+      "id": "lamp",
+      "name": "별빛 가로등",
+      "kind": "lamp",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: ONE freestanding star-light lamppost: slender honey wood and muted teal pole, golden five-point star lantern in a cream frame at top, small stable base. Front elevation, no surrounding scenery or building.",
+      "source": "lamp.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/210a6a565c82546fd2e9bef8-256.png",
+        "bytes": 10873,
+        "width": 97,
+        "height": 256
+      }
+    },
+    {
+      "id": "pond",
+      "name": "작은 연못",
+      "kind": "pond",
+      "w": 2,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: ONE small oval garden pond ornament: low cream stone rim, calm turquoise water surface, a few rounded stones and one small lotus at rim. Symmetrical frontal oblique elevation only enough to show water; no side-facing perspective or landscape.",
+      "source": "pond.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/186147845f7982e09688cffa-256.png",
+        "bytes": 19159,
+        "width": 256,
+        "height": 128
+      }
+    },
+    {
+      "id": "rubber-duck",
+      "name": "고무오리",
+      "kind": "rubber-duck",
+      "w": 1,
+      "h": 1,
+      "category": "decoration",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: ONE adorable small yellow rubber duck seen directly FROM THE FRONT: orange bill centered toward viewer, two small dark eyes balanced left/right, rounded body with wings tucked, no human clothes, no scenery or base.",
+      "source": "rubber-duck.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/2da614f24a17b1f58ad50893-256.png",
+        "bytes": 24306,
+        "width": 221,
+        "height": 256
+      }
+    },
+    {
+      "id": "voyage-prediction",
+      "name": "voyage-prediction",
+      "to": "/voyage-bets",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Freestanding voyage prediction board: cream framed square nautical board on two honey wood legs, central coral-and-teal sailboat pictogram, two small round golden token trays below. No numbers or writing, front-facing game facility.",
+      "source": "voyage-prediction.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/dfb8baa69167172e90b2429c-384.png",
+        "bytes": 45730,
+        "width": 345,
+        "height": 384
+      }
+    },
+    {
+      "id": "fishing-log",
+      "name": "fishing-log",
+      "to": "/fishing-records",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A large open fishing journal on a compact wooden reading stand, cream pages, a simple teal fish illustration and a few tiny geometric lines, coral bookmark and brass pen. Front-on, no readable writing.",
+      "source": "fishing-log.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/ba88861925c4d828eee74ba5-384.png",
+        "bytes": 48555,
+        "width": 384,
+        "height": 319
+      }
+    },
+    {
+      "id": "home",
+      "name": "home",
+      "to": "/profile",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small cozy seaside cottage: warm cream walls, dusty lavender gabled roof, centered arched wood door, one window on each side, small terracotta flowerpots. Simple recognizable home, no aquarium dome.",
+      "source": "home.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/cc96ee4fe959ac032079eeab-384.png",
+        "bytes": 56110,
+        "width": 384,
+        "height": 340
+      }
+    },
+    {
+      "id": "newsstand",
+      "name": "newsstand",
+      "to": "/island-news",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Small outdoor newspaper kiosk: honey wood front counter, coral-and-cream striped canvas awning, orderly cream paper bundles with tiny geometric marks, teal trim. Front elevation, no readable lettering.",
+      "source": "newsstand.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/2c48b4df32b72d2edbe4d4a9-384.png",
+        "bytes": 57570,
+        "width": 384,
+        "height": 371
+      }
+    },
+    {
+      "id": "fund",
+      "name": "fund",
+      "to": "/development-fund",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A freestanding island development donation pedestal with a big glass savings jar holding a few gold coins, sprouting small green island pictogram and blank cream plaque. Front-facing, not a house.",
+      "source": "fund.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/c37141431962737d571d8237-384.png",
+        "bytes": 39376,
+        "width": 305,
+        "height": 384
+      }
+    },
+    {
+      "id": "fuel-stall",
+      "name": "fuel-stall",
+      "to": "/production-shop",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Small fuel supply market booth: amber striped canopy, honey wood front counter with one copper fuel tank, two golden fuel cans with drop pictograms. Open front stall, not enclosed factory or aquarium.",
+      "source": "fuel-stall.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/a12be6f670b513ef5a07cb0a-384.png",
+        "bytes": 52715,
+        "width": 374,
+        "height": 384
+      }
+    },
+    {
+      "id": "bait-stall",
+      "name": "bait-stall",
+      "to": "/bait-production-shop",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Small bait supply market booth: sage and cream striped canopy, honey wood counter with three bait jars and mixing spoon, small worm-shaped pictogram. Open-front stall, not a factory.",
+      "source": "bait-stall.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/68e728747dae03014dc3bf88-384.png",
+        "bytes": 57812,
+        "width": 384,
+        "height": 382
+      }
+    },
+    {
+      "id": "fishing-spot",
+      "name": "fishing-spot",
+      "to": "/fishing",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One fishing spot structure: small honey wood deck with two short front posts, a fishing rod on a holder centered and a cream bucket with bobber. Straight-on elevation, no water plane, no scene, no person, compact isolated object.",
+      "source": "fishing-spot.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/2d21cb19db474ea4d5835fc2-384.png",
+        "bytes": 31732,
+        "width": 347,
+        "height": 384
+      }
+    },
+    {
+      "id": "aquascape-stall",
+      "name": "aquascape-stall",
+      "to": "/decoration-shop",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Open-front aquarium decoration stall: cream and teal scalloped awning, honey wood counter displaying one pink coral, sea plant pot and small stone arch, glass display shelf. No building copied from aquarium.",
+      "source": "aquascape-stall.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/2d101e7577854ddafc67b7d2-384.png",
+        "bytes": 55661,
+        "width": 384,
+        "height": 360
+      }
+    },
+    {
+      "id": "supply-cart",
+      "name": "supply-cart",
+      "to": "/item-shop",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small wheeled fishing-supply pushcart front elevation: honey wood cart, coral fabric canopy, two wheels visible evenly at left and right, cream tackle boxes and a rolled rope on the front shelf.",
+      "source": "supply-cart.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/a3cc0e18dddff4ca65e45151-384.png",
+        "bytes": 59949,
+        "width": 374,
+        "height": 384
+      }
+    },
+    {
+      "id": "trap-rack",
+      "name": "trap-rack",
+      "to": "/expeditions",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A freestanding wooden crab-trap preparation rack: front-on honey wood frame with three woven fishing pots, coiled rope and small orange buoy; cream and teal accents. Not a house, no scenery.",
+      "source": "trap-rack.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/738216468bcf0a9309c921ce-384.png",
+        "bytes": 75529,
+        "width": 384,
+        "height": 366
+      }
+    },
+    {
+      "id": "garden",
+      "name": "garden",
+      "to": "/farm",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A compact island farm plot: honey wood rectangular raised planter seen nearly front-on, front panel fully visible, a row of leafy carrots and small pink blossoms, cream watering can beside. No entire garden scene.",
+      "source": "garden.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/4b13b9781f26be92d45d060c-384.png",
+        "bytes": 42489,
+        "width": 384,
+        "height": 259
+      }
+    },
+    {
+      "id": "market",
+      "name": "market",
+      "to": "/exchange",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small trading exchange market stall front elevation, teal striped canopy, cream frame, wood counter holding two orange fish on a simple tray and a brass balance scale, small gold coin pouch. No writing.",
+      "source": "market.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/119b4245ad8789092096834a-384.png",
+        "bytes": 58359,
+        "width": 384,
+        "height": 378
+      }
+    },
+    {
+      "id": "flea-market",
+      "name": "flea-market",
+      "to": "/flea-market",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A cozy small flea-market stall, peach and cream patchwork canopy, open wooden front counter with a simple ceramic pot, folded fabric, secondhand treasure box and tiny blank price tags. Front elevation, no readable text.",
+      "source": "flea-market.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/175cd964b8db533a5c9d2f6e-384.png",
+        "bytes": 64695,
+        "width": 384,
+        "height": 365
+      }
+    },
+    {
+      "id": "item-archive",
+      "name": "item-archive",
+      "to": "/item-collection",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A freestanding collection cabinet: cream arched wood display with four compartments containing a gold coin, fishing lure, blue bottle and orange seashell, small brass handles. Front-on, no aquarium architecture.",
+      "source": "item-archive.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/caaf078cf69b50324610ded7-384.png",
+        "bytes": 46589,
+        "width": 290,
+        "height": 384
+      }
+    },
+    {
+      "id": "merchant-desk",
+      "name": "merchant-desk",
+      "to": "/merchant-orders",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A traveling merchant order desk: broad honey wood counter with cream parchment order scrolls, brass scale, small sealed parcel, teal banner and single simple striped canopy. No text, front-on.",
+      "source": "merchant-desk.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/30ebeddcb917113b169a9826-384.png",
+        "bytes": 62555,
+        "width": 384,
+        "height": 378
+      }
+    },
+    {
+      "id": "podium",
+      "name": "podium",
+      "to": "/hall-of-fame",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small hall-of-fame award podium: three cream blocks with honey wood faces, tallest middle block bearing one gold trophy cup, teal ribbon and coral laurel emblem, no numeric labels. Symmetric front elevation.",
+      "source": "podium.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/1cfeb71b80c891051dc062be-384.png",
+        "bytes": 47065,
+        "width": 384,
+        "height": 322
+      }
+    },
+    {
+      "id": "gallery",
+      "name": "gallery",
+      "to": "/showcase",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A small seaside showcase gallery building: cream front facade, sage gabled roof, central open doorway and two framed display windows with stylized sea-creature silhouettes, coral trim. No readable signage.",
+      "source": "gallery.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/13b18b7d60c7419fab4c0f88-384.png",
+        "bytes": 55619,
+        "width": 384,
+        "height": 350
+      }
+    },
+    {
+      "id": "gift-table",
+      "name": "gift-table",
+      "to": "/square/sponsorship",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A freestanding gift exchange table: honey wood table with teal cloth, three cream and coral wrapped presents with big bows, small gold bell; straight-on elevation, not a house.",
+      "source": "gift-table.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/934200d7923a2818134cbc5f-384.png",
+        "bytes": 47475,
+        "width": 384,
+        "height": 333
+      }
+    },
+    {
+      "id": "letter-tree",
+      "name": "letter-tree",
+      "to": "/square/begging",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A freestanding small rounded leafy tree with honey-brown trunk, several cream envelopes tied to low branches with coral ribbons, tiny wooden donation letterbox beside trunk. Front-on, no ground landscape.",
+      "source": "letter-tree.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/68a550518c5a1d1f8932be1c-384.png",
+        "bytes": 56361,
+        "width": 358,
+        "height": 384
+      }
+    },
+    {
+      "id": "idea-box",
+      "name": "idea-box",
+      "to": "/square/suggestions",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: One freestanding cream and honey wood suggestion box on a teal post, coral slot and small golden lightbulb pictogram, a blank cream card poking out. Front elevation, no text, no building.",
+      "source": "idea-box.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/d51f20f0359c256b1b5db604-384.png",
+        "bytes": 34112,
+        "width": 247,
+        "height": 384
+      }
+    },
+    {
+      "id": "repair-bench",
+      "name": "repair-bench",
+      "to": "/square/bugs",
+      "category": "building",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A little maintenance repair workbench: honey wood table with teal drawers, pegboard behind with hammer and wrench, brass gear and small unfinished wooden part on tabletop. Front elevation, no letters.",
+      "source": "repair-bench.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/ab3a7dd2b15016845954a202-384.png",
+        "bytes": 55374,
+        "width": 373,
+        "height": 384
+      }
+    },
+    {
+      "id": "floor-grass",
+      "name": "잔디 타일",
+      "price": 10,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Muted sage-green short grass, simple small rounded leaf tufts dispersed evenly, gentle warm green tonal variation; quiet natural lawn, no flowers, no brown border.",
+      "source": "floor-grass.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/13d4dfbec30f6d198d391b6f-256.png",
+        "bytes": 55858,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-dirt",
+      "name": "흙길",
+      "price": 10,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Warm soft honey-tan compacted earth path, tiny rounded sand grains and a few faint smooth patches, very low contrast, no stones larger than tiny pebbles.",
+      "source": "floor-dirt.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/bd58ac48c65cfbdf45123901-256.png",
+        "bytes": 37118,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-gravel",
+      "name": "자갈길",
+      "price": 10,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Dense small rounded warm gray and cream pebbles, subtle brown outlines, softly shaded natural stone surface, distributed evenly with no giant focal stones.",
+      "source": "floor-gravel.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/09a3b4e003aeacda17122087-256.png",
+        "bytes": 53312,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-sand",
+      "name": "모래 바닥",
+      "price": 10,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Warm pale cream beach sand, gentle sparse golden grains and very faint shallow ripples, no shells, no stars, no footprints, quiet low contrast.",
+      "source": "floor-sand.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/fa2df188e26aac279623ba26-256.png",
+        "bytes": 29271,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-stone",
+      "name": "돌 포장길",
+      "price": 20,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Soft warm gray and cream irregular flagstone paving, a few broad rounded stones meeting across thin warm gray mortar joints, clean hand-painted cartoon shapes.",
+      "source": "floor-stone.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/fcb4d94c20972e84e35db7bd-256.png",
+        "bytes": 40161,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-brick",
+      "name": "벽돌길",
+      "price": 20,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Terracotta orange rounded rectangular brick paving, staggered running-bond pattern, subtle cream mortar joints and small smooth highlights, no border or slab.",
+      "source": "floor-brick.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/dbd567736e39dd0c494b63c7-256.png",
+        "bytes": 42920,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-wood",
+      "name": "나무 데크",
+      "price": 20,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Honey-brown wooden deck planks running vertically, soft warm brown grain, straight narrow seams, understated small brass nails, even material pattern, no edging platform.",
+      "source": "floor-wood.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/32ca11c10c334593be25a8f9-256.png",
+        "bytes": 49126,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-moonstone",
+      "name": "푸른 달빛 돌길",
+      "price": 30,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Pale dusty blue moonstone paving, rounded irregular blue-gray stones with very subtle cream highlights and restrained cool blue glints, flat non-glowing ground.",
+      "source": "floor-moonstone.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/cbbd687a73bb2ec80c9621d8-256.png",
+        "bytes": 53130,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-star-mosaic",
+      "name": "별무늬 모자이크",
+      "price": 40,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Warm cream and dusty teal mosaic paving with a repeating small golden five-point star motif inlaid among small tiles; flat pattern, no glowing stars or raised medallion.",
+      "source": "floor-star-mosaic.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/1976e02bac64315075f48681-256.png",
+        "bytes": 46478,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-teal-glass",
+      "name": "청록 유리 타일",
+      "price": 30,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Muted turquoise and teal square glass tile paving, thin cream grout, simple restrained small pale highlights, flat translucent-looking ceramic surface with no watery landscape or aquarium.",
+      "source": "floor-teal-glass.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/49986a1ed37b1ce84141d892-256.png",
+        "bytes": 40152,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "floor-shell-mosaic",
+      "name": "조개 모자이크",
+      "price": 40,
+      "category": "floor",
+      "prompt": "Create ONE perfectly square, full-bleed seamless repeatable ground texture for a cozy hand-painted 2D seaside game. Match reference warm fine brown contours, clean smooth cel shading, soft cream highlights and restrained natural detail. Orthographic TOP-DOWN planar surface, NOT a perspective slab or cube. Uniform lighting, no cast shadows, border, frame, margin, text, scenery or props. Fill the ENTIRE canvas edge to edge with the material and make opposite edges visually continuous, no central medallion. Readable unobtrusive ground at 32px. Subject: Warm cream ceramic mosaic paving with repeating small peach scallop shell motifs and dusty teal accents, flat inlaid pattern, no raised shells, no central medallion.",
+      "source": "floor-shell-mosaic.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/b51cf0687bf2a62606857e39-256.png",
+        "bytes": 53006,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "workshop",
+      "name": "나만의 미끼 공방",
+      "kind": "workshop",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: Personal fishing-bait craft workshop: cream facade, dusty lavender gabled roof, round bait-bowl pictogram, centered wooden door, hand-mixing bowl and amber jars at the front. Distinct from green bait factory.",
+      "source": "workshop.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/bbdc267ab2efbd87b2085e97-384.png",
+        "bytes": 57648,
+        "width": 384,
+        "height": 364
+      }
+    },
+    {
+      "id": "destination",
+      "name": "섬 안내 건물",
+      "kind": "destination",
+      "w": 2,
+      "h": 2,
+      "category": "building",
+      "prompt": "Style reference is the first image: the existing aquarium. Second image is CAMERA reference: front-facing aquarium. Create ONE standalone sprite for the SAME cozy Korean seaside island game: clean polished 2D illustration, warm fine dark-brown outlines, rounded chunky shapes, warm cream/honey wood, teal/sage/terracotta accents, simple smooth cel shading and restrained highlights. Match the illustration quality of references. CAMERA: straight-on FRONT ELEVATION, centered facade, upright verticals, horizontal front baseline; NO isometric or three-quarter angle, NO visible side walls. Entire single object centered, fully visible with 8% transparent margin. No text, letters, labels, UI, scenery, surrounding ground tile, detached ground shadow, or extra objects. Clean true transparent alpha edges. The reference supplies drawing technique and palette ONLY: do NOT copy its aquarium architecture, dome, seashells, lanterns or gold finial into unrelated objects. Subject silhouette must stay literal and distinct. Preserve recognizable function and details; no cartoon faces on inanimate objects. Intended readable at 64–96px game scale. Subject: A compact generic seaside visitor information cottage, warm cream facade, terracotta gable roof, centered wood door, a simple teal compass rose emblem above doorway, front-on with no side wall.",
+      "source": "destination.png",
+      "references": [
+        "../../../assets/ui/island-facilities-v1/aquarium.png",
+        "../../../assets/ui/island-front-v2/aquarium.png"
+      ],
+      "output": {
+        "url": "/game-art/island/76466406beeed557715085a4-384.png",
+        "bytes": 56506,
+        "width": 384,
+        "height": 357
+      }
+    }
+  ],
+  "outputDirectory": "public/game-art/island"
+}

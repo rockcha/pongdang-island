@@ -18,10 +18,10 @@ beforeEach(()=>{mock.fleaReady=0;mock.relic=null;mock.newContent={board:false,ex
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
-it('keeps sellable request counts and the market dot without NEW after all posts have been read',async()=>{
+it('keeps sellable request counts without a market dot when no actual NEW remains',async()=>{
  mock.fleaReady=2
  const view=render(<MemoryRouter><View/></MemoryRouter>)
- expect(screen.getByRole('button',{name:'장터'}).querySelector('[data-category-activity]')).toBeTruthy()
+ expect(screen.getByRole('button',{name:'장터'}).querySelector('[data-category-activity]')).toBeNull()
  const menu=await open('장터')
  const flea=within(menu).getByRole('menuitem',{name:/벼룩시장.*2건 판매 가능/})
  expect(flea.textContent).not.toContain('NEW')
@@ -94,8 +94,8 @@ it('shows the operator test page immediately after voyage bets only to operators
 it('routes production, harbor, savings and community activity dots to their new categories',()=>{
  mock.newContent.bugs=true;mock.newContent.exchange=true;mock.harbor={ready:1,total:2};mock.fuel={ready:1,total:3}
  const view=render(<MemoryRouter><View/></MemoryRouter>)
- for(const label of ['소식','장터','낚시','생산'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeTruthy()
- for(const label of ['내 섬','광장','수집'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeNull()
+ for(const label of ['소식','낚시','생산'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeTruthy()
+ for(const label of ['내 섬','광장','수집','장터'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeNull()
  mock.newContent.bugs=false;mock.newContent.exchange=false;mock.harbor=null;mock.fuel=null;view.rerender(<MemoryRouter><View/></MemoryRouter>)
  expect(document.querySelectorAll('[data-category-activity]')).toHaveLength(0)
  mock.savings='수령 가능';view.rerender(<MemoryRouter><View/></MemoryRouter>)

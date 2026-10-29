@@ -1,0 +1,7 @@
+<!doctype html><html lang="ko"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>구름 혹등고래 동작 비교</title><style>body{margin:24px;background:#fff5e6;color:#654932;font:14px system-ui}main{display:flex;flex-wrap:wrap;gap:20px}canvas{width:300px;max-width:100%;background:#d1e7e6;border-radius:20px}section{max-width:100%}</style><h1>구름 혹등고래 동작 비교</h1><main><section><h2>기존</h2><canvas id="before" width="320" height="320"></canvas></section><section><h2>보정 후</h2><canvas id="after" width="320" height="320"></canvas></section></main><script type="module">
+import {swimFrameLayout} from '/src/features/aquarium/swim-frame-layout.ts';
+import {premiumSwimFrame} from '/src/features/aquarium/premium-swim-frame.ts';
+const path='fish/rare/cloud-humpback_sprite.png',image=new Image();image.src='/assets/storage-upload/collectibles/'+path;await image.decode();
+const start=performance.now(),cell=image.width/2;
+function draw(t){const time=(t-start)/1000;for(const id of ['before','after']){const context=document.getElementById(id).getContext('2d'),frame=id==='before'?Math.floor(time*3)%4:premiumSwimFrame(path,time,0,0),layout=id==='before'?{originX:.5,originY:.5,scale:1}:swimFrameLayout(path,frame),size=250*layout.scale;context.clearRect(0,0,320,320);context.drawImage(image,frame%2*cell,Math.floor(frame/2)*cell,cell,cell,160-layout.originX*size,160-layout.originY*size,size,size)}requestAnimationFrame(draw)}requestAnimationFrame(draw);
+</script></html>

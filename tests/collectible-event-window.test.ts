@@ -11,7 +11,9 @@ it('uses inclusive KST start and exclusive end while ordinary species remain ava
   ['2026-10-23T23:59:59.999+09:00', false],
   ['2026-10-24T00:00:00+09:00', true],
   ['2026-10-31T23:59:59.999+09:00', true],
-  ['2026-11-01T00:00:00+09:00', false],
+  ['2026-11-01T00:00:00+09:00', true],
+  ['2026-11-08T23:59:59.999+09:00', true],
+  ['2026-11-09T00:00:00+09:00', false],
  ] as const) {
   const { rows } = await db.query('select app_private.collectible_available_at($1,$2::timestamptz) event, app_private.collectible_available_at($3,$2::timestamptz) ordinary', ['halloween-test-fish', at, 'ordinary-fish'])
   expect(rows[0]).toEqual({ event: allowed, ordinary: true })

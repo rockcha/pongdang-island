@@ -1,0 +1,154 @@
+{
+  "results": [
+    {
+      "id": "returning-bait-pouch",
+      "type": "thumbnail",
+      "file": "assets\\generated\\economic-relics-20261030\\returning-bait-pouch.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            160,
+            137,
+            944,
+            996
+          ],
+          "margin": 121,
+          "occupancy": 0.7942583732057417,
+          "opaque": 705832,
+          "transparent": 857427,
+          "soft": 714116
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tide-return-bait-box",
+      "type": "thumbnail",
+      "file": "assets\\generated\\economic-relics-20261030\\tide-return-bait-box.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            179,
+            82,
+            950,
+            1062
+          ],
+          "margin": 82,
+          "occupancy": 0.84688995215311,
+          "opaque": 646390,
+          "transparent": 912906,
+          "soft": 659351
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sea-king-endless-bait-pot",
+      "type": "thumbnail",
+      "file": "assets\\generated\\economic-relics-20261030\\sea-king-endless-bait-pot.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            119,
+            62,
+            1016,
+            1137
+          ],
+          "margin": 55,
+          "occupancy": 0.9066985645933014,
+          "opaque": 614853,
+          "transparent": 930334,
+          "soft": 641155
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coin-cradling-clam",
+      "type": "thumbnail",
+      "file": "assets\\generated\\economic-relics-20261030\\coin-cradling-clam.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            104,
+            104,
+            1048,
+            1052
+          ],
+          "margin": 98,
+          "occupancy": 0.8389154704944178,
+          "opaque": 806920,
+          "transparent": 759396,
+          "soft": 811728
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sea-merchant-pearl-vault",
+      "type": "thumbnail",
+      "file": "assets\\generated\\economic-relics-20261030\\sea-merchant-pearl-vault.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            82,
+            92,
+            1109,
+            1073
+          ],
+          "margin": 63,
+          "occupancy": 0.8843700159489634,
+          "opaque": 886011,
+          "transparent": 673390,
+          "soft": 898363
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sea-king-golden-vault",
+      "type": "thumbnail",
+      "file": "assets\\generated\\economic-relics-20261030\\sea-king-golden-vault.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            75,
+            51,
+            1127,
+            1144
+          ],
+          "margin": 51,
+          "occupancy": 0.9122807017543859,
+          "opaque": 835669,
+          "transparent": 714060,
+          "soft": 857559
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

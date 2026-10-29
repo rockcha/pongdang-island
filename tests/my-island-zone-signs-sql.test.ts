@@ -79,7 +79,7 @@ it('grants category signs once without moving an existing island, then saves a v
         crypto.randomUUID(),
       ])
     ).rows[0].s
-  expect(saved.island.document.layout).toHaveLength(50)
+  expect(saved.island.document.layout).toEqual(recommendation.layout)
   expect(saved.island.items).toEqual(state.items)
   expect((await db.query('select public.get_gold_wallet() w')).rows[0].w.gold).toBe(4321)
   await db.exec('reset role')

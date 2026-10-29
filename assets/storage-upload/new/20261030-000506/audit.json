@@ -1,0 +1,154 @@
+{
+  "results": [
+    {
+      "id": "returning-bait-pouch",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-000506\\relics\\rare\\returning-bait-pouch_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            65,
+            56,
+            386,
+            407
+          ],
+          "margin": 49,
+          "occupancy": 0.794921875,
+          "opaque": 117943,
+          "transparent": 142241,
+          "soft": 119035
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tide-return-bait-box",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-000506\\relics\\epic\\tide-return-bait-box_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            73,
+            33,
+            388,
+            434
+          ],
+          "margin": 33,
+          "occupancy": 0.84765625,
+          "opaque": 108037,
+          "transparent": 151912,
+          "soft": 109406
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sea-king-endless-bait-pot",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-000506\\relics\\mythic\\sea-king-endless-bait-pot_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            25,
+            415,
+            465
+          ],
+          "margin": 22,
+          "occupancy": 0.908203125,
+          "opaque": 102987,
+          "transparent": 154610,
+          "soft": 105936
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coin-cradling-clam",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-000506\\relics\\rare\\coin-cradling-clam_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            42,
+            42,
+            429,
+            430
+          ],
+          "margin": 40,
+          "occupancy": 0.83984375,
+          "opaque": 134804,
+          "transparent": 125527,
+          "soft": 135688
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sea-merchant-pearl-vault",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-000506\\relics\\epic\\sea-merchant-pearl-vault_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            33,
+            37,
+            454,
+            439
+          ],
+          "margin": 25,
+          "occupancy": 0.88671875,
+          "opaque": 148017,
+          "transparent": 111662,
+          "soft": 149440
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sea-king-golden-vault",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-000506\\relics\\mythic\\sea-king-golden-vault_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            30,
+            21,
+            461,
+            467
+          ],
+          "margin": 21,
+          "occupancy": 0.912109375,
+          "opaque": 139763,
+          "transparent": 118712,
+          "soft": 141921
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

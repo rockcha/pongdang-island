@@ -18,6 +18,17 @@ const trip={boat_id:'raft-1',id:'voyage1',vessel_id:vessel.id,vessel_snapshot:ve
 beforeEach(()=>{mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks();vi.useRealTimers()})
 function show(shipyard=false){return render(<MemoryRouter><PortPage shipyard={shipyard}/></MemoryRouter>)}
+it('keeps slot-one catch results open when a late arrival receipt is refreshed',async()=>{
+ mock.load.mockResolvedValue({...base,voyages:[{...trip,returns_at:'2026-10-19T09:59:00Z',arrival_seen_at:base.serverNow}]})
+ mock.action.mockResolvedValue({...base,receipt:{action:'claim_all',results:[{voyageId:trip.id,vesselName:vessel.name,attempted:2,failed:2,succeeded:0,items:[]}]}})
+ show();fireEvent.click(await screen.findByRole('button',{name:'어획물 수령 · 1척'}))
+ expect(await screen.findByRole('dialog',{name:'조업 결과'})).toBeTruthy()
+ mock.load.mockResolvedValue({...base,receipt:{action:'arrive'}})
+ fireEvent(window,new Event('harbor-changed'))
+ await waitFor(()=>expect(mock.load).toHaveBeenCalledTimes(2))
+ expect(screen.getByRole('dialog',{name:'조업 결과'})).toBeTruthy()
+ expect(screen.getByText('이번에는 낚은 개체가 없어요.')).toBeTruthy()
+})
 it('confirms the selected shipyard quantity, total price and resulting ownership in one request',async()=>{
  mock.load.mockResolvedValue({...base,boatPurchaseLimit:100})
  mock.action.mockResolvedValue({...base,boatPurchaseLimit:100,vessels:[{...vessel,ownedCount:3},second],receipt:{action:'buy',quantity:2}})

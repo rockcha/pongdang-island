@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/client'
 import { accountCommand } from '@/lib/account-command'
+import {questProgressChanged} from '@/features/quests/progress-events'
 import type { WhackHit, WhackTarget } from './pongi-whack-model'
 import type { MemoryLeaderboard } from './memory-api'
 export type WhackRun = {
@@ -38,6 +39,7 @@ export function actWhack(args: WhackAction) {
       resource: 'pongi-whack',
       invalidate: args.p_action === 'finish' ? ['pongi-whack-ranking'] : [],
       event: args.p_action === 'start' || args.p_action === 'finish' ? 'wallet-changed' : undefined,
+      after:()=>{if(args.p_action==='start')questProgressChanged()},
     },
   )
 }

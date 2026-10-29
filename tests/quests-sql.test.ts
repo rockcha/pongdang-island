@@ -7,6 +7,7 @@ async function user(sql,args=[],who=uid){await db.exec('savepoint request;set ro
 async function state(){return (await user('select public.quest_state() s')).rows[0].s}
 async function claim(kind,start,id,who=uid){return (await user('select public.claim_quest($1,$2,$3) s',[kind,start,id],who)).rows[0].s}
 async function gold(){return (await db.query('select gold from public.player_wallets where user_id=$1',[uid])).rows[0].gold}
+async function fuel(){return (await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel??0}
 async function ledger(item,n=1){for(let i=0;i<n;i++)await db.query("insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values($1,gen_random_uuid(),'buy',$2,-10)",[uid,item])}
 async function attempts(n=5){for(let i=0;i<n;i++)await db.query("insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id) values($1,gen_random_uuid(),'pongdang','bait')",[uid])}
 async function help(n=30,helper=uid,createdAt=new Date().toISOString()){
@@ -15,7 +16,7 @@ async function help(n=30,helper=uid,createdAt=new Date().toISOString()){
 }
 async function catchFish(species){const id=(await db.query('insert into public.player_collectibles(user_id,species_id) values($1,$2) returning id',[uid,species])).rows[0].id;await db.query("insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,collectible_id) values($1,gen_random_uuid(),'pongdang','bait',$2)",[uid,id])}
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
-beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'퀘스트'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,50000,'{\"bait\":100}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory",[id])}})
+beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'퀘스트'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,50000,'{\"bait\":100,\"fuel\":100}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory",[id])}})
 afterEach(async()=>{await db.exec('rollback')})
 afterAll(async()=>{await db?.close()})
 it('returns requested goals and rewards with no progress for a new player',async()=>{
@@ -30,14 +31,14 @@ it('returns requested goals and rewards with no progress for a new player',async
  await expect(claim('daily',s.daily.start,'all')).rejects.toThrow(/INCOMPLETE/)
 })
 it('does not pay fuel again for a quest already claimed before the reward changed',async()=>{
- await user("select public.exchange_post('sell','bait','bait',1,'gold','gold',30,gen_random_uuid())")
- const s=await state()
+ await user("select public.exchange_post('sell','fuel','fuel',1,'gold','gold',30,gen_random_uuid())")
+ const s=await state(),beforeFuel=await fuel()
  await db.query("insert into app_private.quest_claims(user_id,period_kind,period_start,quest_id,gold) values($1,'daily',$2,'post',30)",[uid,s.daily.start])
  expect((await claim('daily',s.daily.start,'post')).creditedFuel).toBe(0)
- expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBeUndefined()
+ expect(await fuel()).toBe(beforeFuel)
 })
 it('checks the fuel cap atomically and can grant fuel when gold is already full',async()=>{
- await user("select public.exchange_post('sell','bait','bait',1,'gold','gold',30,gen_random_uuid())")
+ await user("select public.exchange_post('sell','fuel','fuel',1,'gold','gold',30,gen_random_uuid())")
  const s=await state()
  await db.query("update public.player_wallets set gold=1000000000,inventory=jsonb_set(inventory,'{fuel}','100000') where user_id=$1",[uid])
  await expect(claim('daily',s.daily.start,'post')).rejects.toThrow(/FUEL_LIMIT/)
@@ -87,13 +88,13 @@ it('includes collected expedition catches but not failed attempts or mere depart
 })
 it('grants the daily completion bonus once and does not require individual claims first',async()=>{
  await attempts();await catchFish('god-devouring-leviathan');await ledger('arcade:shadow')
- await user("select public.exchange_post('sell','bait','bait',1,'gold','gold',30,gen_random_uuid())")
+ await user("select public.exchange_post('sell','fuel','fuel',1,'gold','gold',30,gen_random_uuid())")
  await db.query("insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,returns_at) values($1,'dinghy','pongdang','{}','{}',now()+interval '1 hour')",[uid])
  const tank=(await user('select public.aquarium_state() s',[],other)).rows[0].s.tanks[0].id
  await db.query('insert into public.aquarium_feedings(visitor_id,owner_id,tank_id,operation_id,clicks,completed_at) values($1,$2,$3,gen_random_uuid(),3,now())',[uid,other,tank])
- const s=await state();expect(s.daily.bonusReady).toBe(true);const before=await gold()
+ const s=await state();expect(s.daily.bonusReady).toBe(true);const before=await gold(),beforeFuel=await fuel()
  for(const id of ['post','depart','care']){expect((await claim('daily',s.daily.start,id)).creditedFuel).toBe(1);expect((await claim('daily',s.daily.start,id)).creditedFuel).toBe(0)}
- expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBe(3)
+ expect(await fuel()).toBe(beforeFuel+3)
  expect((await claim('daily',s.daily.start,'all')).credited).toBe(200)
  expect((await claim('daily',s.daily.start,'all')).credited).toBe(0);expect(await gold()).toBe(before+200)
 })
@@ -112,7 +113,7 @@ it('counts real trades and sent gifts separately and pays all weekly rewards onl
   await user("select public.send_collectible_gift($1,$2,'',gen_random_uuid())",[other,[item]])
  }
  for(let i=0;i<7;i++){
-  const listing=(await user("select public.exchange_post('sell','bait','bait',1,'gold','gold',30,gen_random_uuid()) s")).rows[0].s
+  const listing=(await user("select public.exchange_post('sell','fuel','fuel',1,'gold','gold',30,gen_random_uuid()) s")).rows[0].s
   await user("select public.exchange_action($1,'accept')",[listing.id],other)
  }
  await attempts(40);await catchFish('god-devouring-leviathan')
@@ -121,9 +122,9 @@ it('counts real trades and sent gifts separately and pays all weekly rewards onl
  await help()
  const s=await state();expect(s.weekly.bonusReady).toBe(true)
  expect(s.weekly.quests.find(q=>q.id==='gift').progress).toBe(3);expect(s.weekly.quests.find(q=>q.id==='trade').progress).toBe(7)
- const before=await gold()
+ const before=await gold(),beforeFuel=await fuel()
  for(const q of s.weekly.quests){const result=await claim('weekly',s.weekly.start,q.id);expect(result.credited).toBe(q.reward);expect(result.creditedFuel).toBe(q.rewardFuel??0)}
- expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBe(8)
+ expect(await fuel()).toBe(beforeFuel+8)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(1000)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(0)
  expect(await gold()).toBe(before+1560)

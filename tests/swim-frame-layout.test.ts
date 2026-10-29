@@ -1,5 +1,15 @@
 import {expect,it} from 'vitest'
 import {swimFrameLayout} from '@/features/aquarium/swim-frame-layout'
+it('pins the cloud humpback eye through the row change and both headings',()=>{
+ const offsets=[[0,0],[-23,-3],[0,-57],[-14,-59]]
+ for(const [frame,[dx,dy]] of offsets.entries()){
+  const layout=swimFrameLayout('fish/rare/cloud-humpback_sprite.png',frame)
+  expect(layout.scale).toBe(1)
+  expect(480+dx-layout.originX*627).toBeCloseTo(166.5)
+  expect(312+dy-layout.originY*627).toBeCloseTo(-1.5)
+  expect(627-(480+dx)-(1-layout.originX)*627).toBeCloseTo(-166.5)
+ }
+})
 
 it('keeps the thread snail shell stationary instead of anchoring its stretching face',()=>{
  // Shell-spiral patch positions measured from the four 627px atlas cells.

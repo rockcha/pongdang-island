@@ -1,5 +1,6 @@
 import {createClient} from '@/lib/client'
 import {accountCommand} from '@/lib/account-command'
+import {questProgressChanged} from '@/features/quests/progress-events'
 import {fuelDisplay} from '@/lib/fuel-display'
 import type {ExchangeAsset,ExchangeInventory} from '@/features/exchange/api'
 export type FleaItem={id:string;asset:ExchangeAsset;quantity:number;remaining:number;unit_price:number}
@@ -22,7 +23,7 @@ export async function readFleaInventory(signal:AbortSignal):Promise<ExchangeInve
 }
 const effects={invalidate:['flea','new-content','flea-inventory','wallet','gifts','gift','inbox','exchange-inventory','storage','merchant','hall','menu-status']}
 export function postFlea(args:FleaDraft):Promise<FleaPost>{return accountCommand(async()=>{const {data,error}=await createClient().rpc('flea_post',args);if(error)throw error;return fuelDisplay(data)},effects)}
-export function tradeFlea(args:FleaTrade):Promise<FleaPost>{return accountCommand(async()=>{const {data,error}=await createClient().rpc('flea_trade',args);if(error)throw error;return fuelDisplay(data)},effects)}
+export function tradeFlea(args:FleaTrade):Promise<FleaPost>{return accountCommand(async()=>{const {data,error}=await createClient().rpc('flea_trade',args);if(error)throw error;return fuelDisplay(data)},{...effects,after:questProgressChanged})}
 export function cancelFlea(args:{p_post_id:string;p_operation_id:string}):Promise<FleaPost>{return accountCommand(async()=>{const {data,error}=await createClient().rpc('flea_cancel',args);if(error)throw error;return fuelDisplay(data)},effects)}
 export function confirmedFleaFailure(cause:unknown){return /^(P0001|22P02|22003|23514)$/.test(String((cause as {code?:string})?.code??''))}
 export function fleaError(cause:unknown){

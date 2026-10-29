@@ -1,5 +1,10 @@
 import {expect,it} from 'vitest'
 import {premiumSwimFrame} from '@/features/aquarium/premium-swim-frame'
+it('reverses cloud whale poses at the end instead of snapping back and respects reduced motion',()=>{
+ const path='fish/rare/cloud-humpback_sprite.png'
+ expect([0,.25,.5,.75,1,1.25,1.5].map(t=>premiumSwimFrame(path,t,0,0))).toEqual([0,1,2,3,2,1,0])
+ expect(premiumSwimFrame(path,.75,0,3,true)).toBe(0)
+})
 
 it.each(['fish/normal/mistbread-sponge_sprite.png','fish/normal/whisper-pipefish_sprite.png','fish/normal/dream-thread-worm_sprite.png','fish/rare/mist-whisker-catfish_sprite.png','fish/rare/moonshadow-flounder_sprite.png','fish/epic/lunea-knight_sprite.png','fish/epic/lunea-archivist_sprite.png','fish/mythic/lunea-mistmoon-goddess_sprite.png'])('animates all four current-response frames for %s',path=>{
  expect([0,.25,.5,.75].map(t=>premiumSwimFrame(path,t,0,0))).toEqual([0,1,2,3])

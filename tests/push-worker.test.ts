@@ -29,6 +29,15 @@ it('still shows a system notification when the app is minimized',async()=>{
  await app.send('push',{data:{json:()=>({userId:'owner',title:'완료',url:'/production',tag:'notice:1'})}})
  expect(postMessage).not.toHaveBeenCalled();expect(app.showNotification).toHaveBeenCalledOnce()
 })
+it('offers multiple tabs in order and uses only the focused tab acknowledgement',async()=>{
+ const background=vi.fn((message,ports)=>{ports[0].postMessage({shown:false});ports[0].close()})
+ const focused=vi.fn((message,ports)=>{ports[0].postMessage({shown:true});ports[0].close()})
+ const later=vi.fn()
+ const app=setup('owner',{windows:[{visibilityState:'hidden',postMessage:later},{visibilityState:'visible',postMessage:background},{visibilityState:'visible',postMessage:focused},{visibilityState:'visible',postMessage:later}]})
+ await app.send('push',{data:{json:()=>({userId:'owner',title:'Ready',url:'/production',tag:'notice:tabs'})}})
+ expect(background).toHaveBeenCalledOnce();expect(focused).toHaveBeenCalledOnce()
+ expect(later).not.toHaveBeenCalled();expect(app.showNotification).not.toHaveBeenCalled()
+})
 it('preserves WebKit system notifications even when a foreground card is acknowledged',async()=>{
  const postMessage=vi.fn((message,ports)=>{ports[0].postMessage({shown:true});ports[0].close()})
  const app=setup('owner',{userAgent:'Version/18.0 Safari/605.1.15',windows:[{visibilityState:'visible',postMessage}]})

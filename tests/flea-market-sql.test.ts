@@ -26,6 +26,17 @@ beforeEach(async()=>{
  }
 })
 afterEach(async()=>{await db.exec('rollback')})
+it('counts successful partial fills for both weekly traders, without counting replays or cancellations',async()=>{
+ const p=await post('sell',[{...items[0],quantity:10}]),first=crypto.randomUUID()
+ const progress=async(who:string)=>(await user(who,'select public.quest_state() value')).weekly.quests.find((q:any)=>q.id==='trade')
+ for(let i=0;i<7;i++)await trade(p.id,[{id:p.items[0].id,quantity:1}],i===0?first:crypto.randomUUID())
+ await trade(p.id,[{id:p.items[0].id,quantity:1}],first)
+ expect(await progress(taker)).toMatchObject({progress:7,complete:true})
+ expect(await progress(maker)).toMatchObject({progress:7,complete:true})
+ expect(await progress(other)).toMatchObject({progress:0,complete:false})
+ await cancel(p.id)
+ expect(await progress(taker)).toMatchObject({progress:7,complete:true})
+})
 it.each(['sell','buy'])('hides completed and cancelled %s posts from both public and owner feeds without deleting history',async(side)=>{
  const one=[{...items[0],quantity:1}]
  const cancelled=await post(side,one)

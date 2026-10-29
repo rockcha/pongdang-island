@@ -25,6 +25,7 @@ const currentSheets=new Set([
 // These sheets reserve frames 1/2 for half-closed/closed eyes.
 // Swim between open-eyed frames; blink briefly every 4–6 seconds per individual.
 export function premiumSwimFrame(path:string|null,time:number,seed:number,fallback:number,reduced=false){
+ if(path==='fish/rare/cloud-humpback_sprite.png')return reduced?0:[0,1,2,3,2,1][((Math.floor(time*4+seed)%6)+6)%6]
  if(path&&Object.hasOwn(starruinsBluegoldLayouts,path)){
   return reduced?0:[0,1,2,3,2,1][((Math.floor(time*3+seed)%6)+6)%6]
  }

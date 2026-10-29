@@ -13,15 +13,15 @@ export function catalogSql(catalog, {tables,ids,pricesOnly=false} = {}) {
   const managed=[...(catalog.fishing_relics?['fishing_relics']:[]),...(catalog.bait_production_facilities?['bait_production_facilities']:[]),'regions',...(catalog.fishing_map_blueprints?.length?['fishing_map_blueprints']:[]), 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[]),...(catalog.fishing_rods?['fishing_rods']:[]),...(catalog.harbor_vessels?['harbor_vessels']:[]),...(catalog.title_catalog?['title_catalog']:[]),...(catalog.production_facilities?['production_facilities']:[]),...(catalog.retained_species_details?['retained_species_details']:[]),...(catalog.fishing_bait_balance_profiles?['fishing_bait_balance_profiles']:[])]
   if(catalog.island_shop_items)managed.push('island_shop_items','island_starters')
   if(tables?.some(table=>!managed.includes(table)&&table!=='retained_species_prices'))throw new Error('Unsupported scoped catalog table')
-  if(pricesOnly&&(!tables?.length||tables.some(table=>!['collectible_species','retained_species_prices'].includes(table))))throw new Error('Price-only generation requires explicit species tables')
+  if(pricesOnly&&(!tables?.length||tables.some(table=>!['collectible_species','retained_species_prices','fishing_relics'].includes(table))))throw new Error('Price-only generation requires explicit species or relic tables')
   if(ids&&(!tables?.length||ids.some(id=>!tables.some(table=>catalog[table].some(row=>(row.id??row.region_id)===id)))))throw new Error('Unknown scoped catalog id')
   for (const table of tables??managed) {
     const rows = ids?catalog[table].filter(row=>ids.includes(row.id??row.region_id)):catalog[table]
     if(ids&&!rows.length)continue
     if(table==='fishing_relics'&&Array.isArray(rows)&&!rows.length)continue
     if (!Array.isArray(rows) || !rows.length) throw new Error(`Empty catalog: ${table}`)
-    if(pricesOnly&&table==='collectible_species'){
-      statements.push(`update public.collectible_species s set sell_price=p.sell_price from (values\n${rows.map(p=>`(${literal(p.id)},${literal(p.sell_price)})`).join(',\n')}) as p(id,sell_price) where s.id=p.id;`)
+    if(pricesOnly&&['collectible_species','fishing_relics'].includes(table)){
+      statements.push(`update public.${table} s set sell_price=p.sell_price from (values\n${rows.map(p=>`(${literal(p.id)},${literal(p.sell_price)})`).join(',\n')}) as p(id,sell_price) where s.id=p.id;`)
       continue
     }
     if(table==='retained_species_prices'){

@@ -5,6 +5,7 @@ import {regionIcons} from '@/features/regions/region-icons'
 import {limitedCollectionEvent} from '@/features/collection/limited-events'
 import {optimizedThumbnailUrl} from '@/features/collection/thumbnail-art'
 import {catchMomentTheme} from './moment-theme'
+import {relicEffectDescription} from '@/features/relics/relic-equipment-slot'
 
 export type CatchMomentArt={species:Species;firstDiscovery?:boolean;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;renderVersion?:1}
 export const catchImageSize=1080
@@ -45,15 +46,17 @@ function badge(ctx:CanvasRenderingContext2D,text:string,x:number,y:number,width:
 // Reveal, editor and feed share this painter, independent of viewport and animation timing.
 export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomentArt,size=catchImageSize){
  const {species,firstDiscovery,practice,preview,regionName,caughtAt}=input
+ const description=species.kind==='relic'?relicEffectDescription(species.description??''):species.description
  const theme=catchMomentTheme(species,regionName)
  const native=species.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  const titleIcon=limitedCollectionEvent(species.id)?.iconPath??native?.src
  const titleIcons=[species.kind==='relic'?'/app-icons/relic.png':undefined,titleIcon].filter((path):path is string=>!!path)
  const region=Object.values(regionIcons).find(item=>item.name===regionName)
- const [creature,loadedTitleImages,regionImage]=await Promise.all([
+ const [creature,loadedTitleImages,regionImage,attachment]=await Promise.all([
   loadMomentCreature(species.thumbnail_path),
   Promise.all(titleIcons.map(path=>loadImage(path).catch(()=>null))),
   region?loadImage(region.src).catch(()=>null):Promise.resolve(null),
+  species.attached?loadMomentCreature(species.attached.thumbnail_path):Promise.resolve(null),
   loadMomentFont(`${species.name} ${species.description??''} ${regionName??''} ${rarities[species.rarity].label} 미리보기 실제 포획 기록이 아니에요 NEW 0123456789`),
  ])
  const titleImages=loadedTitleImages.filter((image):image is HTMLImageElement=>image!==null)
@@ -79,6 +82,11 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  ctx.restore()
  ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.font=`500 28px ${font}`;ctx.fillStyle='#ffffffa6'
  ctx.save();ctx.shadowColor=color+'99';ctx.shadowBlur=55;fitImage(ctx,creature,230,145,620,510);ctx.restore()
+ if(attachment){
+  ctx.fillStyle=theme.background;ctx.strokeStyle=color+'80';ctx.lineWidth=3
+  ctx.beginPath();ctx.arc(805,580,83,0,Math.PI*2);ctx.fill();ctx.stroke()
+  fitImage(ctx,attachment,735,510,140,140)
+ }
  const isNew=firstDiscovery&&!practice,gradeWidth=104,newWidth=90,gap=16,total=gradeWidth+(isNew?newWidth+gap:0)
  const gradeBadge=catchBadgeColors(species.rarity)
  badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,gradeBadge.background,30,gradeBadge.text)
@@ -92,7 +100,7 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  })
  const descriptionY=802+(nameLines.length-1)*70+57
  ctx.font=`400 33px ${font}`;ctx.fillStyle=theme.muted
- wrapMomentText(species.description,t=>ctx.measureText(t).width,900,2).forEach((line,index)=>ctx.fillText(line,540,descriptionY+index*43))
+ wrapMomentText(description,t=>ctx.measureText(t).width,900,2).forEach((line,index)=>ctx.fillText(line,540,descriptionY+index*43))
  const date=caughtAt&&!Number.isNaN(Date.parse(caughtAt))?new Date(caughtAt).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}):''
  const metadata=[regionImage?undefined:regionName,date].filter(Boolean).join(' · ')
  ctx.font=`400 26px ${font}`;ctx.fillStyle=theme.metadata

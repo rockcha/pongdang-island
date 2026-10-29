@@ -1,0 +1,117 @@
+{
+  "tool": "built-in image_gen",
+  "createdAt": "2026-10-28T23:27:04+09:00",
+  "items": [
+    {
+      "id": "nyamnyam-pongi-donut-float",
+      "name": "도넛 튜브 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "sell_price": 910,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/nyamnyam-pongi-donut-float_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/nyamnyam-pongi-donut-float_v1_sprite.png",
+      "movement_type": "swim",
+      "swim_y_min": "0.12",
+      "swim_y_max": "0.56",
+      "speed": "0.027",
+      "size": 112,
+      "native_region_id": "nyamnyam",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "Epic painting style only"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "Pongi identity only"
+        }
+      ],
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Asset type: ONE epic-tier cute aquarium collectible thumbnail. Output SQUARE transparent PNG, equal width and height. Single COMPLETE character centered inside central 65% of square, abundant fully transparent blank margin at least 15% all around. Every whisker, tail, food prop and hat tip fully visible, not cropped. Reference 1 is PAINTING STYLE ONLY: premium softly shaded fantasy illustration with delicate warm colored contours and dimensional materials, not thick cartoon outlines; never copy stingray silhouette, wing fins, star patterns or purple palette, no checkerboard/UI. Reference 2 is CHARACTER IDENTITY ONLY: Pongi, warm caramel baby OTTER, cream muzzle/cheeks and belly, rounded ears, small brown nose, fine whiskers, cute round little paws, broad tapered brown OTTER tail, pink starfish beside one ear. Recognizable otter, not cat or bear. Do not copy fishing rod, hook or thick dark outlines. Face SCREEN RIGHT in side or side-three-quarter view: muzzle and nose point right; tail trails behind left. No front-facing face. Cozy charming premium food-fantasy painting. Smooth clean antialiased silhouette with no white/black matte fringe, no external glow or particles. NO background, floor, bubbles, haze, detached crumbs, shadow, text, numbers, letters, logos or watermark. TRUE alpha transparency outside actual subject. Pongi wears a large strawberry-pink glazed DONUT swimming ring around its waist. Golden baked dough ring with a few neat colorful sprinkles, visible hole around otter body, not a solid disc. Both forepaws hug ONE little rounded clear glass milk bottle with ivory milk and a simple pale blue cap, NO label. Otter's happy head points RIGHT, little hind feet extend below and behind the ring ready to paddle, broad brown tail trails LEFT. A small mint ribbon tied on side of ring. Pink starfish stays by ear. Entire tube, bottle, feet and tail visible, balanced compact floating pose. No splash or water surface.",
+        "sprite": "SQUARE transparent PNG SPRITE ATLAS, STRICT 2x2 grid of FOUR equal square cells, four SMALL COMPLETE identical Pongi otter characters, each in its own quadrant. Attached exact final thumbnail is identity, costume/props and style reference. Each whole subject occupies ONLY 50% of its cell's longest dimension with HUGE fully transparent gutters at least 20% on each edge. Centers exactly at whole-canvas positions 25/25,75/25,25/75,75/75 percent. Do NOT zoom or crop to fill canvas. Full ears/hat, whiskers, bottle, ring, bread basket, apron, popcorn, paws and tail safely inside their own cells. HEAD, eyes, muzzle and rigid torso stay at EXACT same relative coordinates, scale and orientation in all four cells; no rescaling, vertical shifts, camera changes, morphing or face rotation. Same eyes open and smile; not blink-only frames. Face SCREEN RIGHT in side-three-quarter profile throughout. Four small distinct gradual sequential poses in row-major 0,1,2,3 order that loop smoothly 3->0. A four-phase gentle SWIMMING cycle toward RIGHT: hind feet alternately paddle beneath donut ring, broad tail subtly sweeps, mint ribbon ends ripple with current. Forepaws keep hugging the SAME milk bottle, ring size/shape and icing/sprinkles identical in all cells. Head and ring body position stable, no bobbing. Preserve premium softly shaded fantasy illustration, warm caramel otter identity, cream muzzle, pink starfish, fine colored contour lines, original anatomy and palette. TRUE alpha transparency outside subject. No background, glow halo, particles, crumbs, bubbles, haze, ground shadow, text, dividers, labels, watermark or matte fringe. Wide EMPTY outer margins and central cross between the FOUR complete subjects."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-d51befa4-674e-4e68-99c1-a22f6c093b61.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-06a9f7d4-d5c4-4e90-9687-53b3387bf205.png"
+      }
+    },
+    {
+      "id": "nyamnyam-pongi-little-baker",
+      "name": "꼬마 제빵사 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "sell_price": 920,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/nyamnyam-pongi-little-baker_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/nyamnyam-pongi-little-baker_v1_sprite.png",
+      "movement_type": "crawl",
+      "swim_y_min": "0.90",
+      "swim_y_max": "0.96",
+      "speed": "0.017",
+      "size": 112,
+      "native_region_id": "nyamnyam",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "Epic painting style only"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "Pongi identity only"
+        }
+      ],
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Asset type: ONE epic-tier cute aquarium collectible thumbnail. Output SQUARE transparent PNG, equal width and height. Single COMPLETE character centered inside central 65% of square, abundant fully transparent blank margin at least 15% all around. Every whisker, tail, food prop and hat tip fully visible, not cropped. Reference 1 is PAINTING STYLE ONLY: premium softly shaded fantasy illustration with delicate warm colored contours and dimensional materials, not thick cartoon outlines; never copy stingray silhouette, wing fins, star patterns or purple palette, no checkerboard/UI. Reference 2 is CHARACTER IDENTITY ONLY: Pongi, warm caramel baby OTTER, cream muzzle/cheeks and belly, rounded ears, small brown nose, fine whiskers, cute round little paws, broad tapered brown OTTER tail, pink starfish beside one ear. Recognizable otter, not cat or bear. Do not copy fishing rod, hook or thick dark outlines. Face SCREEN RIGHT in side or side-three-quarter view: muzzle and nose point right; tail trails behind left. No front-facing face. Cozy charming premium food-fantasy painting. Smooth clean antialiased silhouette with no white/black matte fringe, no external glow or particles. NO background, floor, bubbles, haze, detached crumbs, shadow, text, numbers, letters, logos or watermark. TRUE alpha transparency outside actual subject. Pongi as a LITTLE BAKER WALKING on its short hind feet toward RIGHT in a clear side-three-quarter view. Cream soft baker toque, pale sage-green apron with small neck tie and rounded pocket; a subtle tiny flour smudge on cheek, no floating flour. Front paws carry one small wicker BREAD BASKET at waist containing two simple golden bread rolls. ONE short baguette tucked diagonally under left arm extending gently back LEFT, not over face. Round ears, original cream otter muzzle and pink starfish pinned on hat brim remain visible. Both little hind feet fully visible in a grounded walking stance, no floor drawn. Wide brown otter tail trails LEFT near foot height. Happy busy baker, clean warm bread texture, simple readable props. Not floating, not sitting, not humanoid long legs.",
+        "sprite": "SQUARE transparent PNG SPRITE ATLAS, STRICT 2x2 grid of FOUR equal square cells, four SMALL COMPLETE identical Pongi otter characters, each in its own quadrant. Attached exact final thumbnail is identity, costume/props and style reference. Each whole subject occupies ONLY 50% of its cell's longest dimension with HUGE fully transparent gutters at least 20% on each edge. Centers exactly at whole-canvas positions 25/25,75/25,25/75,75/75 percent. Do NOT zoom or crop to fill canvas. Full ears/hat, whiskers, bottle, ring, bread basket, apron, popcorn, paws and tail safely inside their own cells. HEAD, eyes, muzzle and rigid torso stay at EXACT same relative coordinates, scale and orientation in all four cells; no rescaling, vertical shifts, camera changes, morphing or face rotation. Same eyes open and smile; not blink-only frames. Face SCREEN RIGHT in side-three-quarter profile throughout. Four small distinct gradual sequential poses in row-major 0,1,2,3 order that loop smoothly 3->0. A four-phase WALKING cycle toward RIGHT on short hind feet, NOT swimming: alternate left/right foot stepping and lifting slightly, keep head and torso stable with no vertical bob. The wicker bread basket and two rolls, baguette and forepaws remain stable in shape and position. Apron tie and broad otter tail sway gently. Baker hat base stable; hat tip softly responds. Imaginary ground at same position in every cell, but draw no floor. Preserve premium softly shaded fantasy illustration, warm caramel otter identity, cream muzzle, pink starfish, fine colored contour lines, original anatomy and palette. TRUE alpha transparency outside subject. No background, glow halo, particles, crumbs, bubbles, haze, ground shadow, text, dividers, labels, watermark or matte fringe. Wide EMPTY outer margins and central cross between the FOUR complete subjects."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-246230cc-5007-49d5-a7a5-c13be1c8f937.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-c6bd0013-4bc6-4b22-a176-26a8738f6fa0.png"
+      }
+    },
+    {
+      "id": "nyamnyam-pongi-popcorn-courier",
+      "name": "팝콘 배달부 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "sell_price": 900,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/nyamnyam-pongi-popcorn-courier_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/nyamnyam-pongi-popcorn-courier_v1_sprite.png",
+      "movement_type": "swim",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.68",
+      "speed": "0.032",
+      "size": 112,
+      "native_region_id": "nyamnyam",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "Epic painting style only"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "Pongi identity only"
+        }
+      ],
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Asset type: ONE epic-tier cute aquarium collectible thumbnail. Output SQUARE transparent PNG, equal width and height. Single COMPLETE character centered inside central 65% of square, abundant fully transparent blank margin at least 15% all around. Every whisker, tail, food prop and hat tip fully visible, not cropped. Reference 1 is PAINTING STYLE ONLY: premium softly shaded fantasy illustration with delicate warm colored contours and dimensional materials, not thick cartoon outlines; never copy stingray silhouette, wing fins, star patterns or purple palette, no checkerboard/UI. Reference 2 is CHARACTER IDENTITY ONLY: Pongi, warm caramel baby OTTER, cream muzzle/cheeks and belly, rounded ears, small brown nose, fine whiskers, cute round little paws, broad tapered brown OTTER tail, pink starfish beside one ear. Recognizable otter, not cat or bear. Do not copy fishing rod, hook or thick dark outlines. Face SCREEN RIGHT in side or side-three-quarter view: muzzle and nose point right; tail trails behind left. No front-facing face. Cozy charming premium food-fantasy painting. Smooth clean antialiased silhouette with no white/black matte fringe, no external glow or particles. NO background, floor, bubbles, haze, detached crumbs, shadow, text, numbers, letters, logos or watermark. TRUE alpha transparency outside actual subject. Pongi as a POPCORN COURIER swimming forward RIGHT, body leaning slightly forward. Both round forepaws hug ONE small red-and-cream VERTICAL STRIPED popcorn carton at chest. Few large softly shaded butter-yellow popcorn pieces peek securely above rim, no floating pieces. ONE popcorn kernel rests on top of Pongi's head beside its normal pink starfish. Short pale butter-yellow neckerchief trails LEFT, no hat. Entire face, paws, carton, two little hind feet paddling backward and broad brown otter tail trailing LEFT fully visible. Bright friendly determined face, cheeks cream, cute small round ears, compact clear silhouette. No words on carton, no movie tickets or extra props.",
+        "sprite": "SQUARE transparent PNG SPRITE ATLAS, STRICT 2x2 grid of FOUR equal square cells, four SMALL COMPLETE identical Pongi otter characters, each in its own quadrant. Attached exact final thumbnail is identity, costume/props and style reference. Each whole subject occupies ONLY 50% of its cell's longest dimension with HUGE fully transparent gutters at least 20% on each edge. Centers exactly at whole-canvas positions 25/25,75/25,25/75,75/75 percent. Do NOT zoom or crop to fill canvas. Full ears/hat, whiskers, bottle, ring, bread basket, apron, popcorn, paws and tail safely inside their own cells. HEAD, eyes, muzzle and rigid torso stay at EXACT same relative coordinates, scale and orientation in all four cells; no rescaling, vertical shifts, camera changes, morphing or face rotation. Same eyes open and smile; not blink-only frames. Face SCREEN RIGHT in side-three-quarter profile throughout. Four small distinct gradual sequential poses in row-major 0,1,2,3 order that loop smoothly 3->0. A four-phase forward SWIMMING cycle toward RIGHT: hind feet alternately paddle, broad otter tail subtly sweeps and yellow scarf ends ripple with current. Both forepaws keep hugging the SAME red/ivory popcorn carton. Carton and popcorn remain identical and contained, ONE kernel remains on head. No spilling or detached popcorn, head and torso stable. Preserve premium softly shaded fantasy illustration, warm caramel otter identity, cream muzzle, pink starfish, fine colored contour lines, original anatomy and palette. TRUE alpha transparency outside subject. No background, glow halo, particles, crumbs, bubbles, haze, ground shadow, text, dividers, labels, watermark or matte fringe. Wide EMPTY outer margins and central cross between the FOUR complete subjects."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-85413f1e-022b-498e-9fbe-b54717e62775.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-a9431c9f-f70e-44f3-91d5-afa9e484f375.png"
+      }
+    }
+  ]
+}

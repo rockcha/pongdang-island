@@ -1,0 +1,113 @@
+{
+  "tool": "built-in image_gen",
+  "createdAt": "2026-10-28T21:45:26+09:00",
+  "items": [
+    {
+      "id": "rice-grain-amphipod",
+      "name": "쌀알 옆새우",
+      "kind": "fish",
+      "rarity": "common",
+      "sell_price": 35,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/rice-grain-amphipod_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/rice-grain-amphipod_v1_sprite.png",
+      "movement_type": "crawl",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.96",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_role": "Style only; sprite references the final identity thumbnail.",
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Asset type: a single transparent PNG collectible thumbnail for a cozy Korean aquarium game. Style reference image is ONLY a guide to warm soft cartoon coloring and thin clean brown contours, never copy otter anatomy or its props. Very clean, simple, cute, readable small icon. Restrained soft shading, small natural eyes only on animals that have them, no enormous glossy eyes, no toy plastic shine. One isolated subject, centered, entire silhouette and delicate parts inside 12% clear margins. No text, prices, numbers, watermarks, background, ground shadow, bubbles or detached decorative particles. True alpha transparency with pristine antialiased edges; no white/black matte fringe or fuzzy halo. A tiny cream-colored rice-grain amphipod, shrimp-like but naturally side-compressed and segmented, head on RIGHT, small dark eye on right, curved back, very short peach legs neatly clustered below, two short fine antennae extending right. Gentle cute expression through posture. A single animal, horizontal side view, no floor.",
+        "sprite": "Use the image as exact character identity reference. Generate a square 2 by 2 animation sprite sheet, exactly four equal square cells, no dividers. Same cream rice-grain amphipod in EACH cell, head pointing RIGHT in all four cells. Body/head location, eye coordinate, body size, coloring and camera must remain identical between cells. The eyes stay open. Four distinct successive alternating steps of the small legs, with antennae bending subtly in sequence; stable armored back, no body bobbing or camera changes. Row major order 0 1 2 3, seamless walking cycle. Subject spans 82% of each cell width, all antennae/legs/tail complete, minimum 8% transparent clearance on every cell edge. Isolated clean true transparent alpha background. Warm softly shaded cartoon, thin warm brown contours, clean antialiased edges, no fringe, no shadows, no particles, no text, no numbering. REVISION: Previous sheet was too crowded. Regenerate the sheet with EACH ANIMAL at ONLY 72 percent of its square cell width, centered at x=50%, y=50% inside each cell, leaving at least 14 percent empty transparent clearance on ALL sides including antenna tips, foot and shell. Entire artwork must fit safely in each of the FOUR equal square cells, never crossing the invisible vertical center line or outer canvas edges. Draw from the original identity thumbnail, not a cropped previous sprite. Same identity, same stable shell/back geometry and four ordered small walking movements. Strict 2x2 grid, exactly four complete animals."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-f812bc51-1f3b-405a-a891-63719ef6b89d.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-1160f282-45b3-4785-8b58-3fd79f036844.png"
+      },
+      "speed": "0.018",
+      "size": 64,
+      "native_region_id": null
+    },
+    {
+      "id": "hat-limpet",
+      "name": "모자 삿갓조개",
+      "kind": "fish",
+      "rarity": "common",
+      "sell_price": 35,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/hat-limpet_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/hat-limpet_v1_sprite.png",
+      "movement_type": "crawl",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.96",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_role": "Style only; sprite references the final identity thumbnail.",
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Asset type: a single transparent PNG collectible thumbnail for a cozy Korean aquarium game. Style reference image is ONLY a guide to warm soft cartoon coloring and thin clean brown contours, never copy otter anatomy or its props. Very clean, simple, cute, readable small icon. Restrained soft shading, small natural eyes only on animals that have them, no enormous glossy eyes, no toy plastic shine. One isolated subject, centered, entire silhouette and delicate parts inside 12% clear margins. No text, prices, numbers, watermarks, background, ground shadow, bubbles or detached decorative particles. True alpha transparency with pristine antialiased edges; no white/black matte fringe or fuzzy halo. A tiny limpet seen from a right-facing three-quarter SIDE view: a low conical warm sandy beige shell like a slightly tilted sun hat, simple few radial ridges, soft ivory muscular foot visible underneath, head and two tiny subtle tentacles peeking to the RIGHT. Keep natural limpet proportions, no giant cartoon face, no separate hat accessory. Entire low oval foot and shell visible.",
+        "sprite": "Use the image as exact character identity reference. Generate a square 2 by 2 animation sprite sheet, exactly four equal square cells, no dividers. Same sandy conical-shell limpet in EACH cell, head/tentacles pointing RIGHT in every cell. Shell and head location, size, body proportions, eye coordinates, color and camera must remain identical between cells. Four distinct successive subtle creeping movements: muscular foot edge makes a small contraction wave, two tentacles bend slightly forward then relax, keeping shell rigid and stable. NOT four blinks, not whole body bobbing or rescaling. Row major order 0 1 2 3 forms a seamless cycle. Subject spans 82% of each cell width with at least 8% true transparent clearance each edge, entire shell and tentacles contained. Warm soft cartoon matching reference, thin brown contour and simple warm shading. True alpha transparency, clean antialiased edges, no matte fringe, no text, no labels, no shadows. REVISION: Previous sheet was too crowded. Regenerate the sheet with EACH ANIMAL at ONLY 72 percent of its square cell width, centered at x=50%, y=50% inside each cell, leaving at least 14 percent empty transparent clearance on ALL sides including antenna tips, foot and shell. Entire artwork must fit safely in each of the FOUR equal square cells, never crossing the invisible vertical center line or outer canvas edges. Draw from the original identity thumbnail, not a cropped previous sprite. Same identity, same stable shell/back geometry and four ordered small walking movements. Strict 2x2 grid, exactly four complete animals."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-ef8b834d-03c2-49bd-8147-b6f300c0e366.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-3d3947d6-3cc7-4e9f-b59c-10be70fb31c3.png"
+      },
+      "speed": "0.009",
+      "size": 64,
+      "native_region_id": null
+    },
+    {
+      "id": "shell-bead-curtain",
+      "name": "조개구슬 실커튼",
+      "kind": "decoration",
+      "rarity": "common",
+      "sell_price": 30,
+      "frames": 1,
+      "thumbnail_path": "decorations/normal/shell-bead-curtain_v1_thumbnail.png",
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_role": "Style only; sprite references the final identity thumbnail.",
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Asset type: a single transparent PNG collectible thumbnail for a cozy Korean aquarium game. Style reference image is ONLY a guide to warm soft cartoon coloring and thin clean brown contours, never copy otter anatomy or its props. Very clean, simple, cute, readable small icon. Restrained soft shading, small natural eyes only on animals that have them, no enormous glossy eyes, no toy plastic shine. One isolated subject, centered, entire silhouette and delicate parts inside 12% clear margins. No text, prices, numbers, watermarks, background, ground shadow, bubbles or detached decorative particles. True alpha transparency with pristine antialiased edges; no white/black matte fringe or fuzzy halo. A small freestanding aquarium ornament: one simple short pale driftwood crossbar supported by two slim posts with tiny rounded feet, exactly THREE hanging strings of little cream, pale pink and pale seafoam shell beads. Clean sparse arrangement, each string clearly attached to crossbar, rounded shells, warmly shaded. Front three-quarter view. No face, no eyes. Whole object, base included. No surrounding scene."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-ecd7f1b6-78d0-4e77-87a9-8f6f912fcd3d.png"
+      },
+      "speed": "0",
+      "size": 92,
+      "native_region_id": null
+    },
+    {
+      "id": "missing-tooth-comb",
+      "name": "빗살 빠진 머리빗",
+      "kind": "trash",
+      "rarity": "common",
+      "sell_price": 3,
+      "frames": 1,
+      "thumbnail_path": "trash/normal/missing-tooth-comb_v1_thumbnail.png",
+      "movement_type": "fixed",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.86",
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_role": "Style only; sprite references the final identity thumbnail.",
+      "prompts": {
+        "thumbnail": "Edit this exact image: remove the small DETACHED broken tooth fragment floating in the gap below the comb spine. That small loose fragment must become fully transparent empty space; preserve the short broken stump attached to spine. Keep the coral pink comb, handle, teeth, seaweed, colors, composition, style, resolution and all other pixels visually unchanged. One connected comb object only, no floating debris. Preserve true alpha transparent background and clean edges.",
+        "thumbnail_initial": "Use case: stylized-concept. Asset type: a single transparent PNG collectible thumbnail for a cozy Korean aquarium game. Style reference image is ONLY a guide to warm soft cartoon coloring and thin clean brown contours, never copy otter anatomy or its props. Very clean, simple, cute, readable small icon. Restrained soft shading, small natural eyes only on animals that have them, no enormous glossy eyes, no toy plastic shine. One isolated subject, centered, entire silhouette and delicate parts inside 12% clear margins. No text, prices, numbers, watermarks, background, ground shadow, bubbles or detached decorative particles. True alpha transparency with pristine antialiased edges; no white/black matte fringe or fuzzy halo. One cute humble discarded hair comb, rounded muted dusty coral pink plastic handle and spine with a neat row of broad teeth, exactly TWO adjacent teeth broken short leaving a readable gap; one very short muted green seaweed strand caught near that gap. Slight diagonal three-quarter view, simple clean shape, gentle worn edges, NOT dirty or gross. No face, no eyes. No other objects."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-432f7221-bda5-4cb9-b491-51a4f0ad2c29.png"
+      },
+      "speed": "0.001",
+      "size": 62,
+      "native_region_id": null
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "checkedAt": "2026-10-28T13:56:47.991Z",
+  "scope": "Four public images match exact losslessly compressed local bytes",
+  "files": [
+    {
+      "path": "fish/epic/halloween-pongi-candy-devil_v1_thumbnail.png",
+      "bytes": 701317,
+      "sha256": "63a3a3fda1e2eacf0c7817513852e38404f7bb23117ca733a181c7e54c279f83"
+    },
+    {
+      "path": "fish/epic/halloween-pongi-candy-devil_v1_sprite.png",
+      "bytes": 758863,
+      "sha256": "966c29177042e14fd76af36cfb03f36f6be342cf9c99875c3aab83cfa4bcac55"
+    },
+    {
+      "path": "fish/epic/halloween-pongi-ghost-blanket_v1_thumbnail.png",
+      "bytes": 524142,
+      "sha256": "48077bffd607c7432541a6d41ee70bd6bc26b0d974982112e323aac20df0479d"
+    },
+    {
+      "path": "fish/epic/halloween-pongi-ghost-blanket_v1_sprite.png",
+      "bytes": 688392,
+      "sha256": "ec4a6c2357b933f2b0f74c42cda6087e5b9db9a146f92f556df8f793642777b0"
+    }
+  ]
+}

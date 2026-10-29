@@ -32,9 +32,10 @@ const {
 } = appArt
 
 export const headerPlaces = [
-  { to: '/fishing-records', label: '오늘의 낚시 기록', icon: NotebookPen },
   { to: '/my-island', label: '나의 퐁당섬', icon: appArt.island },
   { to: '/profile', label: '내 정보', icon: appArt.profile },
+  { to: '/voyage-bets', label: '만선 승부장', icon: appArt.shipyard },
+  { to: '/fishing-records', label: '오늘의 낚시 기록', icon: NotebookPen },
   { to: '/square/notices', label: '공지', icon: appArt.notices },
   { to: '/port', label: '어선 파견', icon: appArt.port },
   { to: '/music-room', label: '음악 감상', icon: appArt.music },
@@ -66,7 +67,6 @@ export const headerPlaces = [
   { to: '/savings', label: '조개 적금', icon: Shell },
   { to: '/warehouse', label: '창고', icon: Warehouse },
   { to: '/arcade', label: '미니게임', icon: Gamepad2 },
-  { to: '/voyage-bets', label: '만선 승부장', icon: Ship },
   { to: '/friends', label: '등대', icon: TowerControl },
   { to: '/hall-of-fame', label: '명예의 전당', icon: appArt.ranking },
   { to: '/board', label: '자유게시판', icon: PlazaIcon },
@@ -116,7 +116,6 @@ export function HeaderPlaceNavigation() {
       {groups.map((group) => {
         const items = group.sections.flatMap(section=>section.paths)
           .flatMap(path=>operator&&path==='/voyage-bets'?[path,'/voyage-bets-test']:[path])
-          .flatMap(path=>path==='/fishing'?[path,'/fishing-records']:[path])
           .filter((path) => path !== '/collection-animation' || operator)
           .map((path) => path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
         const selected = items.find(

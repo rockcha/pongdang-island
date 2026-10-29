@@ -34,6 +34,7 @@ import {
   RotateCcw,
   Pencil,
   MoreHorizontal,
+  MapPin,
 } from 'lucide-react'
 import { useAuth } from '@/components/auth-provider'
 import { GoldIcon, useGold } from '@/features/gold/gold-provider'
@@ -84,6 +85,8 @@ import {
 import type { Cell, Facility, IslandState, Placement, FloorKind } from './island-model'
 import { FloorPatterns, FloorSwatch } from './floor-art'
 import { Building } from './island-art'
+import { FacilityCaption } from './facility-caption'
+import { IslandPlacesDialog } from './island-places-dialog'
 import { buildingViewBox } from './island-art-sizing'
 import './my-island.css'
 import './island-account.css'
@@ -135,27 +138,28 @@ const Terrain = memo(function Terrain({
     <g pointerEvents="none">
       <defs>
         <pattern id="island-water" width="95" height="75" patternUnits="userSpaceOnUse">
-          <rect width="95" height="75" fill="#8ec9cc" />
+          <rect width="95" height="75" fill="#80bec5" />
           <path
             d="M10 28q10 5 20 0M55 60q9 4 18 0"
-            stroke="#d5eee4"
+            stroke="#d9f3e8"
             opacity=".45"
             fill="none"
             strokeWidth="2"
           />
         </pattern>
         <pattern id="island-ground" width="48" height="48" patternUnits="userSpaceOnUse">
-          <rect width="48" height="48" fill="#e7d2b5" />
-          <path d="M9 29h3m21-9h2" stroke="#d0b793" opacity=".5" fill="none" />
+          <rect width="48" height="48" fill="#efddbc" />
+          <path d="M9 29h3m21-9h2" stroke="#ceb18a" opacity=".32" fill="none" />
         </pattern>
         <pattern id="island-grid" width="32" height="32" patternUnits="userSpaceOnUse">
           <path d="M32 0H0V32" fill="none" stroke="#ffffe9" strokeOpacity=".4" strokeWidth="1" />
         </pattern>
       </defs>
       <rect x="-2000" y="-2000" width="5280" height="5152" fill="url(#island-water)" />
-      <path d={outline} fill="none" stroke="#c8e9df" strokeWidth="14" strokeLinejoin="round" />
+      <path d={outline} fill="none" stroke="#64a4ad" strokeWidth="23" strokeLinejoin="round" opacity=".4" transform="translate(0 6)" />
+      <path d={outline} fill="none" stroke="#c7eadd" strokeWidth="15" strokeLinejoin="round" />
       <path d={outline} fill="url(#island-ground)" fillRule="evenodd" />
-      <path d={outline} fill="none" stroke="#eddbac" strokeWidth="6" strokeLinejoin="round" />
+      <path d={outline} fill="none" stroke="#fff0cd" strokeWidth="6" strokeLinejoin="round" />
       <text x="640" y="1100" textAnchor="middle" fill="#e5f2dc" fontSize="14" letterSpacing="7">
         PONGDANG ISLAND
       </text>
@@ -171,7 +175,7 @@ const defaultCamera = (): Camera => ({
 const accountCamera = (): Camera => ({
   x: 640,
   y: 575,
-  zoom: window.innerWidth > window.innerHeight ? 0.92 : 1.28,
+  zoom: window.innerWidth > window.innerHeight ? (window.innerHeight < 600 ? 2.1 : 1.35) : 3,
 })
 type Gesture = {
   kind:
@@ -235,7 +239,7 @@ function AccountIsland({ userId }: { userId: string }) {
   return (
     <IslandEditor
       storageKey={`pongdang:island:v2:${userId}`}
-      managed={pageBuildings}
+      managed={pageBuildings.filter(f=>query.data.catalog.some(item=>item.family==='facility'&&item.id===f.id))}
       account={{
         snapshot: query.data,
         gold: gold.wallet.gold,
@@ -283,6 +287,7 @@ export function IslandEditor({
   const [history, setHistory] = useState<IslandState[]>([]),
     [editing, setEditing] = useState(!account),
     [more, setMore] = useState(false),
+    [placesOpen, setPlacesOpen] = useState(false),
     [offer, setOffer] = useState<IslandOffer | null>(null),
     [selling, setSelling] = useState<string | null>(null),
     [tradeOpen, setTradeOpen] = useState(false),
@@ -1393,6 +1398,8 @@ export function IslandEditor({
                   label={p.label}
                   connections={decorationConnections(state.layout, p)}
                 />
+                {f.category === 'building' && (scale >= .65 || selected === p.id) &&
+                  <FacilityCaption facility={f} width={bounds.w*32} height={bounds.h*32} selected={selected===p.id}/>}
               </g>
             )
           })}
@@ -2144,6 +2151,7 @@ export function IslandEditor({
       )}
       {account && !editing && (
         <nav className="island-browse-dock" aria-label="나의 섬 메뉴">
+          <button onClick={()=>setPlacesOpen(true)}><MapPin size={19}/><span>장소 찾기</span></button>
           <button
             onClick={() => {
               setEditing(true)
@@ -2179,6 +2187,7 @@ export function IslandEditor({
           </button>
         </nav>
       )}
+      <IslandPlacesDialog open={placesOpen} onOpenChange={setPlacesOpen} facilities={pageBuildings}/>
       {editing && (
         <nav className="island-dock" aria-label="섬 꾸미기 도구">
           <button

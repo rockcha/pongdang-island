@@ -152,7 +152,7 @@ it('provides exactly one navigation building per destination', () => {
   expect(items.find((f) => f.id === 'mail~owned:mail')?.to).toBe('/notifications')
   expect(items.find((f) => f.to === '/collection')).toMatchObject({
     id: 'books~owned:hub',
-    name: '도감',
+    name: '개체 도감',
     kind: 'books',
     w: 1,
     h: 1,

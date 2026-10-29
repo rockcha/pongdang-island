@@ -1,0 +1,833 @@
+{
+  "batch": "20261028-211818",
+  "tool": "built-in image_gen",
+  "status": "in_progress",
+  "scope": "24 new collectible artworks; local generation only, no Storage upload or database registration",
+  "items": [
+    {
+      "id": "coral-apricot-clownfish",
+      "name": "살구줄 흰동가리",
+      "region": "coral",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "Small apricot-orange clownfish with two creamy white curved bands subtly edged russet, rounded peach fins, compact natural fish anatomy.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.75,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/coral-apricot-clownfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/coral-apricot-clownfish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-192806/fish/rare/coral-hat-octopus_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 살구줄 흰동가리, common fish, warm pastel coral reef. Subject: Small apricot-orange clownfish with two creamy white curved bands subtly edged russet, rounded peach fins, compact natural fish anatomy. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:/Users/ojr55/.codex/generated_images/01a181a9-2249-7170-942b-f215322b45bd/exec-1e85beaa-0576-4ff7-bbcf-68e404ccfa85.png",
+          "sha256": "88ba7a9dacfa02ccbfe181d37606b21890243f61b440dde5bf4c579293c54322",
+          "created_at": "2026-10-28T12:23:10.788Z"
+        }
+      },
+      "sprite_references": [
+        "fish/normal/coral-apricot-clownfish_v1_thumbnail.png",
+        "guides/coral-apricot-clownfish-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 살구줄 흰동가리. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "coral-mint-cleaner-wrasse",
+      "name": "민트비늘 청소놀래기",
+      "region": "coral",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "Slender small cleaner wrasse, mint turquoise scales, one fine coral-pink lateral stripe, narrow snout and small translucent fins; naturally long sleek fish, not round or chubby.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.75,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/coral-mint-cleaner-wrasse_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/coral-mint-cleaner-wrasse_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-192806/fish/rare/coral-hat-octopus_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 민트비늘 청소놀래기, common fish, warm pastel coral reef. Subject: Slender small cleaner wrasse, mint turquoise scales, one fine coral-pink lateral stripe, narrow snout and small translucent fins; naturally long sleek fish, not round or chubby. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-e4524d77-4943-43e6-b42e-3cb13b7f8cb9.png",
+          "sha256": "f02316ab4c774b34e90a0897a92d3250e71632d07c7c2a569123c10395ee201a",
+          "created_at": "2026-10-28T12:23:12.144Z"
+        }
+      },
+      "sprite_references": [
+        "fish/normal/coral-mint-cleaner-wrasse_v1_thumbnail.png",
+        "guides/coral-mint-cleaner-wrasse-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 민트비늘 청소놀래기. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "coral-lemon-tail-filefish",
+      "name": "레몬꼬리 쥐치",
+      "region": "coral",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "Laterally flat pale seafoam filefish with tiny pursed snout, subtly angular diamond body, a bright lemon-yellow fan tail and small dorsal trigger spine; small believable fish eye.",
+      "movement_type": "swim",
+      "swim_y_min": 0.25,
+      "swim_y_max": 0.8,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/coral-lemon-tail-filefish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/coral-lemon-tail-filefish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-192806/fish/rare/coral-hat-octopus_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 레몬꼬리 쥐치, common fish, warm pastel coral reef. Subject: Laterally flat pale seafoam filefish with tiny pursed snout, subtly angular diamond body, a bright lemon-yellow fan tail and small dorsal trigger spine; small believable fish eye. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-be59907c-9c13-4584-9707-219e64523237.png",
+          "sha256": "1eca498557176d1fee7f0385f35679e737b4a002ecfeeac7cc257b835e6f8043",
+          "created_at": "2026-10-28T12:23:13.440Z"
+        }
+      },
+      "sprite_references": [
+        "fish/normal/coral-lemon-tail-filefish_v1_thumbnail.png",
+        "guides/coral-lemon-tail-filefish-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 레몬꼬리 쥐치. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "coral-sandspot-goby",
+      "name": "모래점 망둑어",
+      "region": "coral",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "Low elongated sandy beige goby with coral-colored speckles, broad translucent peach pectoral fins, two small dorsal fins, gently alert small eyes and an easy-to-read horizontal silhouette.",
+      "movement_type": "swim",
+      "swim_y_min": 0.68,
+      "swim_y_max": 0.9,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/coral-sandspot-goby_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/coral-sandspot-goby_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-192806/fish/rare/coral-hat-octopus_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 모래점 망둑어, common fish, warm pastel coral reef. Subject: Low elongated sandy beige goby with coral-colored speckles, broad translucent peach pectoral fins, two small dorsal fins, gently alert small eyes and an easy-to-read horizontal silhouette. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-8c68019d-8345-4409-8396-80fc5e934a8b.png",
+          "sha256": "46627daa2b7a44435ff380208c1358c1d95c8a917bf7b47b37a08919afe0691c",
+          "created_at": "2026-10-28T12:23:14.398Z"
+        }
+      },
+      "sprite_references": [
+        "fish/normal/coral-sandspot-goby_v1_thumbnail.png",
+        "guides/coral-sandspot-goby-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 모래점 망둑어. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "coral-glassflower-cuttlefish",
+      "name": "유리꽃 갑오징어",
+      "region": "coral",
+      "kind": "fish",
+      "rarity": "epic",
+      "concept": "A real cuttlefish silhouette: oval broad mantle trailing LEFT behind a distinct head at RIGHT, short arms pointing RIGHT. Translucent mint mantle fringed by a continuous peach-lavender petal-like undulating fin, delicate opalescent tissue and restrained pearl lighting; NOT a jellyfish, octopus or ray.",
+      "movement_type": "pulse",
+      "swim_y_min": 0.25,
+      "swim_y_max": 0.72,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/coral-glassflower-cuttlefish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/coral-glassflower-cuttlefish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261015-133650/fish/epic/coral-crowned-turtle_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 유리꽃 갑오징어, epic fish, warm pastel coral reef. Subject: A real cuttlefish silhouette: oval broad mantle trailing LEFT behind a distinct head at RIGHT, short arms pointing RIGHT. Translucent mint mantle fringed by a continuous peach-lavender petal-like undulating fin, delicate opalescent tissue and restrained pearl lighting; NOT a jellyfish, octopus or ray. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Soft sophisticated fantasy illustration, delicate colored contours, rich smooth gradients, dimensional gentle shading, subtle translucency and material detail. Do not reuse the ray silhouette or upswept wings; no thick cartoon outlines. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-c16f2e3c-9886-48ae-bff3-1a3318a85103.png",
+          "sha256": "b903e0f4cd3721e775ccd716eb83d6b010f8c9c9f1c88e294ccba7b220d652d3",
+          "created_at": "2026-10-28T12:26:47.710Z"
+        }
+      },
+      "sprite_references": [
+        "fish/epic/coral-glassflower-cuttlefish_v1_thumbnail.png",
+        "guides/coral-glassflower-cuttlefish-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 유리꽃 갑오징어. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: gentle coordinated mantle/bell compression with a wave passing through the continuous side fin and trailing soft arms/tentacles; rigid head/face remains anchored. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "coral-pearlbeak-parrotfish",
+      "name": "진주부리 앵무고기",
+      "region": "coral",
+      "kind": "fish",
+      "rarity": "epic",
+      "concept": "A parrotfish with a clear fused pearly beak, robust elongated oval body, turquoise and apricot mosaic scales with soft nacre iridescence, small realistic eye, flowing but anatomically normal fins. No armor, crown or jewels.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.75,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/coral-pearlbeak-parrotfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/coral-pearlbeak-parrotfish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261015-133650/fish/epic/coral-crowned-turtle_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 진주부리 앵무고기, epic fish, warm pastel coral reef. Subject: A parrotfish with a clear fused pearly beak, robust elongated oval body, turquoise and apricot mosaic scales with soft nacre iridescence, small realistic eye, flowing but anatomically normal fins. No armor, crown or jewels. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Soft sophisticated fantasy illustration, delicate colored contours, rich smooth gradients, dimensional gentle shading, subtle translucency and material detail. Do not reuse the ray silhouette or upswept wings; no thick cartoon outlines. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-5fb71eee-d4f9-496d-a330-8a1b4c955512.png",
+          "sha256": "f7ad0b1c10296ec4a770c464798b0554f0f6bc7253a25619c17351dc59b2185c",
+          "created_at": "2026-10-28T12:26:48.289Z"
+        }
+      },
+      "sprite_references": [
+        "fish/epic/coral-pearlbeak-parrotfish_v1_thumbnail.png",
+        "guides/coral-pearlbeak-parrotfish-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 진주부리 앵무고기. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "coral-flower-scale-mahi",
+      "name": "꽃비늘 만새기",
+      "region": "coral",
+      "kind": "fish",
+      "rarity": "mythic",
+      "concept": "A majestic mahi-mahi fish, long streamlined body, distinctive high blunt forehead at RIGHT, one continuous long dorsal fin, deeply forked crescent tail at LEFT. Luminous mint-to-apricot scales form subtle flower patterns, fins have delicate coral-pink edges, soft near-body pearl light. Anatomically unmistakable mahi-mahi, no ray wings, ribbons, crown, giant eyes or added limbs.",
+      "movement_type": "swim",
+      "swim_y_min": 0.18,
+      "swim_y_max": 0.7,
+      "frames": 8,
+      "thumbnail_path": "fish/mythic/coral-flower-scale-mahi_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/coral-flower-scale-mahi_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261015-133650/fish/epic/coral-crowned-turtle_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 꽃비늘 만새기, mythic fish, warm pastel coral reef. Subject: A majestic mahi-mahi fish, long streamlined body, distinctive high blunt forehead at RIGHT, one continuous long dorsal fin, deeply forked crescent tail at LEFT. Luminous mint-to-apricot scales form subtle flower patterns, fins have delicate coral-pink edges, soft near-body pearl light. Anatomically unmistakable mahi-mahi, no ray wings, ribbons, crown, giant eyes or added limbs. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Soft sophisticated fantasy illustration, delicate colored contours, rich smooth gradients, dimensional gentle shading, subtle translucency and material detail. Do not reuse the ray silhouette or upswept wings; no thick cartoon outlines. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-beed422a-bbad-4f40-b87b-a07d9a09426e.png",
+          "sha256": "2e883f3fb619a7e839f050fa4cfbaea0a38dfa833662afc5bc5683d955457c24",
+          "created_at": "2026-10-28T12:26:48.974Z"
+        }
+      },
+      "sprite_references": [
+        "fish/mythic/coral-flower-scale-mahi_v1_thumbnail.png",
+        "guides/coral-flower-scale-mahi-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 꽃비늘 만새기. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 4:2, 4 columns by TWO rows, 8 EQUAL SQUARE CELLS, row-major order. Wide 2:1 landscape canvas, exactly four columns, two rows, EIGHT poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 are four continuous basic swimming phases. Frames 4-7: dorsal fin gently gathers, opens to reveal flower-pattern shimmer while tail continues propulsion, relaxes, returns to neutral. Keep skull and long body fixed; do not add flowers, particles or new appendages. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "coral-faded-collecting-tin",
+      "name": "빛바랜 산호채집 통",
+      "region": "coral",
+      "kind": "trash",
+      "rarity": "common",
+      "concept": "A small battered faded metal coral-collecting tin, dull seafoam enamel with warm rust patches, dented rim, simple wire handle, a trace of pink coral dust inside. Clearly discarded modest junk, no treasure, face or glow.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96,
+      "frames": 1,
+      "thumbnail_path": "trash/normal/coral-faded-collecting-tin_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-192806/fish/rare/coral-hat-octopus_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 빛바랜 산호채집 통, common trash, warm pastel coral reef. Subject: A small battered faded metal coral-collecting tin, dull seafoam enamel with warm rust patches, dented rim, simple wire handle, a trace of pink coral dust inside. Clearly discarded modest junk, no treasure, face or glow. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-5e76da9b-f6f3-4ba5-af0c-ab99cfc8c965.png",
+          "sha256": "c2e113e98b68c0b6991bc3be89a1bcc34328eacc545dd378bcb2567a71af6ef6",
+          "created_at": "2026-10-28T12:29:54.311Z"
+        }
+      }
+    },
+    {
+      "id": "coral-torn-diving-glove",
+      "name": "구멍 난 잠수장갑",
+      "region": "coral",
+      "kind": "trash",
+      "rarity": "common",
+      "concept": "One worn dusty peach cloth diving glove lying naturally, frayed cuff and visible holes, one tiny cream shell attached; recognizable five-finger glove, modest discarded fabric, no hand inside and no face.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96,
+      "frames": 1,
+      "thumbnail_path": "trash/normal/coral-torn-diving-glove_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-192806/fish/rare/coral-hat-octopus_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 구멍 난 잠수장갑, common trash, warm pastel coral reef. Subject: One worn dusty peach cloth diving glove lying naturally, frayed cuff and visible holes, one tiny cream shell attached; recognizable five-finger glove, modest discarded fabric, no hand inside and no face. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-e73a081e-771e-43a8-b28c-47a90dcdbb2d.png",
+          "sha256": "5338b46c32c04cb2c74087f960937afcd438744189e408fb1238d0f520777aa9",
+          "created_at": "2026-10-28T12:29:54.893Z"
+        }
+      }
+    },
+    {
+      "id": "coral-pearl-shell-garden",
+      "name": "진주빛 조개 정원",
+      "region": "coral",
+      "kind": "decoration",
+      "rarity": "epic",
+      "concept": "One compact aquarium ornament: open pearly clamshell forming a low garden with small peach and lavender branching corals and a few creamy pearls. Gentle mint nacre highlights, sculptural coherent base; sophisticated soft fantasy painting, no fish, faces, scenery or broad glow.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.8,
+      "swim_y_max": 0.95,
+      "frames": 1,
+      "thumbnail_path": "decorations/epic/coral-pearl-shell-garden_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261015-133650/fish/epic/coral-crowned-turtle_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 진주빛 조개 정원, epic decoration, warm pastel coral reef. Subject: One compact aquarium ornament: open pearly clamshell forming a low garden with small peach and lavender branching corals and a few creamy pearls. Gentle mint nacre highlights, sculptural coherent base; sophisticated soft fantasy painting, no fish, faces, scenery or broad glow. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Soft sophisticated fantasy illustration, delicate colored contours, rich smooth gradients, dimensional gentle shading, subtle translucency and material detail. Do not reuse the ray silhouette or upswept wings; no thick cartoon outlines. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-50d10b6f-9380-4af0-b131-1b4fa656aa0e.png",
+          "sha256": "659716f31a1af9bcb150d549350bc63d49795976f76dbfd636b553c83adbe4a2",
+          "created_at": "2026-10-28T12:26:49.967Z"
+        }
+      }
+    },
+    {
+      "id": "starruins-bronze-button-goby",
+      "name": "청동단추 망둑어",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "A small sandy cream goby with muted turquoise markings, a single weathered bronze button perched on its forehead like a tiny found trinket, long low body and broad small pectoral fins; charming ancient sunken-city inhabitant, no heavy armor.",
+      "movement_type": "swim",
+      "swim_y_min": 0.68,
+      "swim_y_max": 0.9,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/starruins-bronze-button-goby_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/starruins-bronze-button-goby_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 청동단추 망둑어, common fish, ancient sunken Atlantean kingdom. Subject: A small sandy cream goby with muted turquoise markings, a single weathered bronze button perched on its forehead like a tiny found trinket, long low body and broad small pectoral fins; charming ancient sunken-city inhabitant, no heavy armor. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-64452f71-7a2e-4035-ab4e-f7ae2bc1be30.png",
+          "sha256": "c85230264bc41d2934385eabe401df4326537d67c0b71d3bce9acddb11791f7d",
+          "created_at": "2026-10-28T12:29:55.480Z"
+        }
+      },
+      "sprite_references": [
+        "fish/normal/starruins-bronze-button-goby_v1_thumbnail.png",
+        "guides/starruins-bronze-button-goby-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 청동단추 망둑어. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "starruins-mosaic-tail-damselfish",
+      "name": "모자이크 꼬리자리돔",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "A small oval cream and teal damselfish with a fan-shaped tail bearing a few turquoise, ivory and muted gold mosaic tile patches; mosaic only on tail, clean readable body and small natural fish eye, ancient Mediterranean underwater-city palette.",
+      "movement_type": "swim",
+      "swim_y_min": 0.25,
+      "swim_y_max": 0.75,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/starruins-mosaic-tail-damselfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/starruins-mosaic-tail-damselfish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 모자이크 꼬리자리돔, common fish, ancient sunken Atlantean kingdom. Subject: A small oval cream and teal damselfish with a fan-shaped tail bearing a few turquoise, ivory and muted gold mosaic tile patches; mosaic only on tail, clean readable body and small natural fish eye, ancient Mediterranean underwater-city palette. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending",
+      "generated": {
+        "thumbnail": {
+          "tool": "built-in image_gen",
+          "original_file": "C:\\Users\\ojr55\\.codex\\generated_images\\01a181a9-2249-7170-942b-f215322b45bd\\exec-3ebd5d0e-88d2-48ff-bb48-50067eb9864c.png",
+          "sha256": "1db4fa0d9b3bb6f0101e20d8f598397f8c585d097838623564f119fc4dc3562c",
+          "created_at": "2026-10-28T12:29:56.305Z"
+        }
+      },
+      "sprite_references": [
+        "fish/normal/starruins-mosaic-tail-damselfish_v1_thumbnail.png",
+        "guides/starruins-mosaic-tail-damselfish-layout.png"
+      ],
+      "sprite_reference_roles": [
+        "Approved same-character identity: exact anatomy, painting, colors and markings",
+        "Layout guide only: fixed head/body position, same scale, cell centers and safe transparent margins; copied static poses must be replaced with real motion"
+      ],
+      "sprite_prompt": "Use case: stylized-concept. Generate ONE production animation SPRITE SHEET for 모자이크 꼬리자리돔. Input 1 is the EXACT approved character identity; preserve its anatomy, proportions, face, palette, markings, materials and painting style. Input 2 is the EXACT spatial layout guide; preserve canvas aspect ratio 2:2, 2 columns by TWO rows, 4 EQUAL SQUARE CELLS, row-major order. Square canvas, exactly two columns, two rows, FOUR poses. Each cell contains exactly ONE complete SAME character. Use the guide character scale and placement: small centered subject within central 65% of each cell; at least 12% truly transparent margin on EVERY cell edge in EVERY pose. Do not enlarge subjects to fill cells, add gutters, frames, numbers or labels. Keep right eye, head and body center at EXACT identical local pixel coordinates and identical body size across all cells; NO camera movement, recentering, rescaling, mirroring, whole-body bobbing or changes in perspective. All poses face SCREEN RIGHT, head/mouth at RIGHT, tail/body trails LEFT, moving forward right. Real motion: a small continuous tail propulsion cycle and restrained dorsal/pectoral fin response to water; never one front fin waving like a human arm. Frames 0-3 form a seamless four-phase loop; last phase flows naturally back into first. Do not simply duplicate the same pose or change only eyes or glow. Keep eyes open and unchanged; do not sacrifice motion for blinking. All protrusions and any close light stay INSIDE their cell with ample clear margins. Actual alpha-transparent background everywhere outside each subject, no floor/shadow, water backdrop, fog, checkerboard, border, text or disconnected sparkles. Clean antialiased natural colored silhouette, no matte fringe or rough cutout. Sharp detailed game illustration, not a sketch."
+    },
+    {
+      "id": "starruins-scroll-pipefish",
+      "name": "두루마리 실고기",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "A slender long pipefish, narrow tubular snout pointing RIGHT, parchment-cream segmented body with fine teal lines, tail trailing LEFT whose very tip curls like the end of a parchment scroll; natural fish anatomy, no actual paper wrapped around body, no text.",
+      "movement_type": "swim",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.78,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/starruins-scroll-pipefish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/starruins-scroll-pipefish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 두루마리 실고기, common fish, ancient sunken Atlantean kingdom. Subject: A slender long pipefish, narrow tubular snout pointing RIGHT, parchment-cream segmented body with fine teal lines, tail trailing LEFT whose very tip curls like the end of a parchment scroll; natural fish anatomy, no actual paper wrapped around body, no text. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-column-hermit-crab",
+      "name": "기둥집 소라게",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "common",
+      "concept": "A small warm terracotta hermit crab in RIGHT-facing side-three-quarter profile carrying a broken hollow ivory classical column drum as its shell, faded turquoise fluting and weathered bronze trim. Crab head and claws clearly project to RIGHT, legs under the body, column shell trails LEFT; no front view.",
+      "movement_type": "crawl",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96,
+      "frames": 4,
+      "thumbnail_path": "fish/normal/starruins-column-hermit-crab_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/starruins-column-hermit-crab_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 기둥집 소라게, common fish, ancient sunken Atlantean kingdom. Subject: A small warm terracotta hermit crab in RIGHT-facing side-three-quarter profile carrying a broken hollow ivory classical column drum as its shell, faded turquoise fluting and weathered bronze trim. Crab head and claws clearly project to RIGHT, legs under the body, column shell trails LEFT; no front view. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-glyphback-sturgeon",
+      "name": "문양등 철갑상어",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "rare",
+      "concept": "An elongated teal sturgeon with distinct pointed snout and small barbels, cream belly, a row of muted bronze bony scutes along the back embossed with abstract old-kingdom wave glyph motifs, asymmetrical tail. Thin warm colored contours and approachable painted shading, no readable lettering or heavy suit of armor.",
+      "movement_type": "swim",
+      "swim_y_min": 0.35,
+      "swim_y_max": 0.8,
+      "frames": 4,
+      "thumbnail_path": "fish/rare/starruins-glyphback-sturgeon_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/starruins-glyphback-sturgeon_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 문양등 철갑상어, rare fish, ancient sunken Atlantean kingdom. Subject: An elongated teal sturgeon with distinct pointed snout and small barbels, cream belly, a row of muted bronze bony scutes along the back embossed with abstract old-kingdom wave glyph motifs, asymmetrical tail. Thin warm colored contours and approachable painted shading, no readable lettering or heavy suit of armor. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-pearl-mark-cuttlefish",
+      "name": "진주문 갑오징어",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "rare",
+      "concept": "A cuttlefish with broad oval ivory mantle trailing LEFT, distinct head and short arms pointing RIGHT, soft teal continuous side fin, three round nacre medallion-like natural markings and subtle antique-gold edging. Warm cartoon painterly rendering, no crown or armor; clearly cuttlefish anatomy, not a ray or jellyfish.",
+      "movement_type": "pulse",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.75,
+      "frames": 4,
+      "thumbnail_path": "fish/rare/starruins-pearl-mark-cuttlefish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/starruins-pearl-mark-cuttlefish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 진주문 갑오징어, rare fish, ancient sunken Atlantean kingdom. Subject: A cuttlefish with broad oval ivory mantle trailing LEFT, distinct head and short arms pointing RIGHT, soft teal continuous side fin, three round nacre medallion-like natural markings and subtle antique-gold edging. Warm cartoon painterly rendering, no crown or armor; clearly cuttlefish anatomy, not a ray or jellyfish. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-glass-orrery-jellyfish",
+      "name": "유리천구 해파리",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "epic",
+      "concept": "A translucent pale teal jellyfish in unmistakable RIGHT-facing side-three-quarter motion, bell leading RIGHT and short fine trailing tentacles extending LEFT/down. Inside bell, three delicate antique-gold curved translucent anatomical bands resemble an armillary sphere, a small warm pearl center. Organic bell and tentacles, restrained glow confined to body, not a metal machine, ray or floating globe.",
+      "movement_type": "pulse",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.65,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/starruins-glass-orrery-jellyfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/starruins-glass-orrery-jellyfish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261015-213344/fish/epic/atlantean-guard-shark_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 유리천구 해파리, epic fish, ancient sunken Atlantean kingdom. Subject: A translucent pale teal jellyfish in unmistakable RIGHT-facing side-three-quarter motion, bell leading RIGHT and short fine trailing tentacles extending LEFT/down. Inside bell, three delicate antique-gold curved translucent anatomical bands resemble an armillary sphere, a small warm pearl center. Organic bell and tentacles, restrained glow confined to body, not a metal machine, ray or floating globe. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Soft sophisticated fantasy illustration, delicate colored contours, rich smooth gradients, dimensional gentle shading, subtle translucency and material detail. Do not reuse the ray silhouette or upswept wings; no thick cartoon outlines. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-lapisback-sperm-whale",
+      "name": "청금등 향유고래",
+      "region": "starruins",
+      "kind": "fish",
+      "rarity": "mythic",
+      "concept": "A majestic sperm whale with a huge square blunt head at RIGHT, small low-set eye, long dark lapis-teal body trailing LEFT into broad horizontal whale flukes, small pectoral flippers. Weathered gold and ivory ancient wave engravings follow its blue back as subtle natural luminous markings, softly glowing close to skin like forgotten kingdom memories. Preserve unmistakable sperm whale anatomy and dignified expression; no ray wings, ribbon tail, horn, castle, jewelry pile, extra limbs or giant cartoon eyes.",
+      "movement_type": "swim",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.7,
+      "frames": 8,
+      "thumbnail_path": "fish/mythic/starruins-lapisback-sperm-whale_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/starruins-lapisback-sperm-whale_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261015-213344/fish/epic/atlantean-guard-shark_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 청금등 향유고래, mythic fish, ancient sunken Atlantean kingdom. Subject: A majestic sperm whale with a huge square blunt head at RIGHT, small low-set eye, long dark lapis-teal body trailing LEFT into broad horizontal whale flukes, small pectoral flippers. Weathered gold and ivory ancient wave engravings follow its blue back as subtle natural luminous markings, softly glowing close to skin like forgotten kingdom memories. Preserve unmistakable sperm whale anatomy and dignified expression; no ray wings, ribbon tail, horn, castle, jewelry pile, extra limbs or giant cartoon eyes. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Soft sophisticated fantasy illustration, delicate colored contours, rich smooth gradients, dimensional gentle shading, subtle translucency and material detail. Do not reuse the ray silhouette or upswept wings; no thick cartoon outlines. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point RIGHT, body and tail trail LEFT. Show forward movement to RIGHT, never front-facing, backward or mirrored. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-chipped-bronze-comb",
+      "name": "이 빠진 청동 빗",
+      "region": "starruins",
+      "kind": "trash",
+      "rarity": "common",
+      "concept": "One small discarded ancient bronze comb with several teeth missing, muted verdigris patina and one worn simple shell ornament at the handle; humble broken object, ivory and dull teal palette, no jewels, face, inscription or glow.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96,
+      "frames": 1,
+      "thumbnail_path": "trash/normal/starruins-chipped-bronze-comb_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 이 빠진 청동 빗, common trash, ancient sunken Atlantean kingdom. Subject: One small discarded ancient bronze comb with several teeth missing, muted verdigris patina and one worn simple shell ornament at the handle; humble broken object, ivory and dull teal palette, no jewels, face, inscription or glow. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-broken-observation-ring",
+      "name": "끊어진 천문 관측고리",
+      "region": "starruins",
+      "kind": "trash",
+      "rarity": "rare",
+      "concept": "One broken ancient brass astronomical observation ring, a clearly missing section, bent dull bronze arc with a few faded engraved tick marks and sparse verdigris, small broken mounting tab. Reads as salvaged damaged junk, no intact globe, floating magic, gems or readable text.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96,
+      "frames": 1,
+      "thumbnail_path": "trash/rare/starruins-broken-observation-ring_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 끊어진 천문 관측고리, rare trash, ancient sunken Atlantean kingdom. Subject: One broken ancient brass astronomical observation ring, a clearly missing section, bent dull bronze arc with a few faded engraved tick marks and sparse verdigris, small broken mounting tab. Reads as salvaged damaged junk, no intact globe, floating magic, gems or readable text. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-wave-altar-lamp",
+      "name": "바다문양 제단등",
+      "region": "starruins",
+      "kind": "decoration",
+      "rarity": "common",
+      "concept": "A small intact ivory ceramic altar oil lamp with teal wave ornament, modest antique bronze base and a tiny sheltered turquoise luminous wick. Compact usable aquarium ornament, restrained warm cartoon shading, no broad halo, face, text or surrounding scenery.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.8,
+      "swim_y_max": 0.95,
+      "frames": 1,
+      "thumbnail_path": "decorations/normal/starruins-wave-altar-lamp_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 바다문양 제단등, common decoration, ancient sunken Atlantean kingdom. Subject: A small intact ivory ceramic altar oil lamp with teal wave ornament, modest antique bronze base and a tiny sheltered turquoise luminous wick. Compact usable aquarium ornament, restrained warm cartoon shading, no broad halo, face, text or surrounding scenery. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-shell-door-archive",
+      "name": "조개문 서고",
+      "region": "starruins",
+      "kind": "decoration",
+      "rarity": "rare",
+      "concept": "One compact sunken-kingdom bookcase ornament with an ivory scallop-shell arch doorway, faded turquoise inset tiles, restrained antique gold trim, three parchment scrolls stored in niches. Coherent small base, elegant warm cartoon painterly shading, no people, fish, readable writing or scene backdrop.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.8,
+      "swim_y_max": 0.95,
+      "frames": 1,
+      "thumbnail_path": "decorations/rare/starruins-shell-door-archive_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 조개문 서고, rare decoration, ancient sunken Atlantean kingdom. Subject: One compact sunken-kingdom bookcase ornament with an ivory scallop-shell arch doorway, faded turquoise inset tiles, restrained antique gold trim, three parchment scrolls stored in niches. Coherent small base, elegant warm cartoon painterly shading, no people, fish, readable writing or scene backdrop. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-lapis-emblem-stone",
+      "name": "청금빛 문장석",
+      "region": "starruins",
+      "kind": "decoration",
+      "rarity": "rare",
+      "concept": "An upright weathered ivory stone heraldic plaque, lapis-teal circular inset with an abstract triple-wave kingdom crest and restrained bronze edging, a little attached sand at its low coherent base. Clear sculptural silhouette, no readable letters, face, loose particles or magical halo.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.8,
+      "swim_y_max": 0.95,
+      "frames": 1,
+      "thumbnail_path": "decorations/rare/starruins-lapis-emblem-stone_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 청금빛 문장석, rare decoration, ancient sunken Atlantean kingdom. Subject: An upright weathered ivory stone heraldic plaque, lapis-teal circular inset with an abstract triple-wave kingdom crest and restrained bronze edging, a little attached sand at its low coherent base. Clear sculptural silhouette, no readable letters, face, loose particles or magical halo. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Warm polished cartoon illustration, thin clean warm-brown colored contours, soft dimensional cel shading, friendly but NATURAL small eyes, restrained highlights, believable anatomy. No oversized sparkling eyes, chubby inflated proportions or plastic toy gloss. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    },
+    {
+      "id": "starruins-sleeping-kingdom-orrery",
+      "name": "잠든 왕국의 천구의",
+      "region": "starruins",
+      "kind": "decoration",
+      "rarity": "epic",
+      "concept": "A compact ancient armillary-sphere aquarium ornament: overlapping delicate weathered gold celestial rings around a polished teal pearl, mounted on an ivory pedestal with turquoise wave inlay. Fine soft fantasy gradients and controlled material reflections, graceful readable circular silhouette, no stars scattered outside, no text, face, scenery or large halo.",
+      "movement_type": "fixed",
+      "swim_y_min": 0.8,
+      "swim_y_max": 0.95,
+      "frames": 1,
+      "thumbnail_path": "decorations/epic/starruins-sleeping-kingdom-orrery_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "right",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261015-213344/fish/epic/atlantean-guard-shark_thumbnail.png"
+      ],
+      "reference_roles": [
+        "grade-specific painting style only; not subject or silhouette",
+        "regional palette and materials only; not subject or silhouette"
+      ],
+      "thumbnail_prompt": "Use case: stylized-concept. Asset: ONE individual production collectible game thumbnail, 잠든 왕국의 천구의, epic decoration, ancient sunken Atlantean kingdom. Subject: A compact ancient armillary-sphere aquarium ornament: overlapping delicate weathered gold celestial rings around a polished teal pearl, mounted on an ivory pedestal with turquoise wave inlay. Fine soft fantasy gradients and controlled material reflections, graceful readable circular silhouette, no stars scattered outside, no text, face, scenery or large halo. Style references are ONLY for painting and palette, never copy their animal, anatomy, pose or accessories. Soft sophisticated fantasy illustration, delicate colored contours, rich smooth gradients, dimensional gentle shading, subtle translucency and material detail. Do not reuse the ray silhouette or upswept wings; no thick cartoon outlines. Three-quarter view showing the complete coherent object, never a scene or a collection of variants. Objects have no added face. One complete isolated subject centered, comfortably occupies 75-80% of square image with at least 10% empty margin ALL SIDES; show all fins, tail, arms and protrusions. Genuine alpha-transparent background. No water background, floor, cast shadow, landscape, text, labels, logo, frame, checkerboard, fog or detached particles. Clean antialiased silhouette, no white/black matte fringes or stray pixels, preserve thin translucent structures; all light stays close to the subject.",
+      "review_status": "pending"
+    }
+  ]
+}

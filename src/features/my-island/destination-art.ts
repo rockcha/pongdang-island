@@ -12,6 +12,8 @@ export const destinationArt = {
   '/expeditions': 'trap-rack',
   '/farm': 'garden',
   '/exchange': 'market',
+  '/flea-market': 'flea-market',
+  '/item-collection': 'item-archive',
   '/merchant-orders': 'merchant-desk',
   '/hall-of-fame': 'podium',
   '/showcase': 'gallery',

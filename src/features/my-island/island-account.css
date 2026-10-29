@@ -616,3 +616,23 @@
     opacity: 0;
   }
 }
+.island-places-dialog[data-slot='dialog-content'] {
+ display:flex;flex-direction:column;gap:14px;width:640px;max-width:calc(100vw - 24px);max-height:85dvh;padding:24px 20px;background:#fffcf6;color:#654b35;border-radius:22px;
+}
+.island-places-heading {padding-right:28px;}
+.island-places-heading [data-slot='dialog-title'] {font-size:19px;}
+.island-places-heading [data-slot='dialog-description'] {margin-top:6px;font-size:12px;color:#94775c;}
+.island-places-search {display:flex;align-items:center;gap:9px;border:1px solid #e5d4bd;border-radius:12px;padding:0 13px;min-height:44px;color:#94775c;background:#fff8ec;}
+.island-places-search:focus-within {outline:2px solid #bb9162;outline-offset:2px;}
+.island-places-search input {width:100%;min-width:0;background:transparent;outline:none;font:inherit;font-size:13px;color:#654b35;}
+.island-places-categories {display:flex;flex-wrap:wrap;gap:5px;flex-shrink:0;}
+.island-places-categories button {min-height:36px;padding:6px 12px;font-size:12px;border-radius:10px;cursor:pointer;color:#8b6c51;}
+.island-places-categories button[aria-pressed='true'] {background:#efdec3;color:#80512f;font-weight:600;}
+.island-places-categories button:focus-visible {outline:2px solid #bb9162;outline-offset:1px;}
+.island-places-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;overflow-y:auto;overscroll-behavior:contain;min-height:0;padding:3px 3px 12px;}
+.island-places-grid a {position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;border:1px solid #eadbc5;border-radius:15px;background:#fff9ee;padding:12px 6px 13px;text-align:center;font-size:11px;line-height:1.5;color:#76573d;}
+.island-places-grid a:hover,.island-places-grid a:focus-visible {background:#f6ead7;border-color:#bf9870;outline:2px solid #bf9870;outline-offset:0;}
+.island-places-grid a svg:first-child {width:100%;height:82px;overflow:visible;}
+.island-place-arrow {position:absolute;right:7px;top:7px;opacity:.55;}
+.island-places-empty {grid-column:1/-1;padding:32px 0;text-align:center;font-size:13px;color:#94775c;}
+@media(max-width:480px){.island-places-dialog[data-slot='dialog-content']{padding:20px 14px;gap:12px;}.island-places-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;}.island-places-grid a svg:first-child{height:68px;}.island-places-categories button{padding:6px 10px;}.island-browse-dock{width:min(360px,calc(100vw - 24px));gap:3px;padding:6px;}.island-browse-dock button{min-width:0;flex:1;padding:8px 5px;}}

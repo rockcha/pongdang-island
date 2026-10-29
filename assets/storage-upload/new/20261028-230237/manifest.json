@@ -1,0 +1,80 @@
+{
+  "tool": "built-in image_gen",
+  "createdAt": "2026-10-28T23:02:37+09:00",
+  "items": [
+    {
+      "id": "halloween-pongi-wizard-broom",
+      "name": "물살 가르는 꼬마 마법사 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "sell_price": 1240,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/halloween-pongi-wizard-broom_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/halloween-pongi-wizard-broom_v1_sprite.png",
+      "movement_type": "swim",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.65",
+      "speed": "0.041",
+      "size": 128,
+      "native_region_id": null,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "Epic painting style only"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "Pongi otter identity only"
+        }
+      ],
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Create a premium epic Halloween aquarium collectible ICON. SQUARE canvas equal width and height. ONE SMALL COMPLETE subject centered in the CENTRAL 65% of the canvas, with at least 17% FULLY TRANSPARENT empty border on ALL sides. Do not zoom in to fill the canvas. Every whisker, hat tip, propeller, broom tip must fit entirely inside generous clear margins. Image 1 is PAINTING STYLE ONLY: soft fantasy illustration, refined colored contours, smooth rich dimensional shading and beautiful materials; do not copy stingray shape, purple stars, wings, checkerboard or any UI. Image 2 is PONGI OTTER IDENTITY ONLY: warm caramel baby otter, cream muzzle and belly, rounded ears, brown little nose, short whiskers, round paws, broad tapered brown tail and pink starfish. Preserve this familiar cute otter face, not the fishing rod or hook or thick outlines. Face SCREEN RIGHT in clear side or side-three-quarter profile. Nose/head point RIGHT, body/tail trail LEFT, forward travel RIGHT. Soft premium painting, no thick dark cartoon outlines. TRUE alpha transparency, smooth clean antialiased silhouette, no white/black fringe, no background, glow outside silhouette, floor, shadows, haze, detached particles, bubbles, text, labels or watermark. Pongi rides a SHORT wooden MAGIC BROOM horizontally toward RIGHT. Tuft of golden broom bristles trails LEFT, handle extends RIGHT. Pongi straddles broom, two hind paws tucked around it, torso leaning forward with excited determined friendly expression. One forepaw grips the handle and the other steadies the brim of a floppy aubergine wizard hat, tip folded back LEFT. Short deep teal cloak streams left behind shoulders. Pink starfish pinned to hat band, simple warm orange tie around broom bristles. Entire otter, complete broad tail, hat and broom as one single compact readable silhouette. No witch companions, no magical sparkles or air bubble trails. Creature is suspended underwater, not standing on the ground.",
+        "sprite": "A SQUARE transparent PNG ANIMATION ATLAS, STRICT 2x2 equal square grid, four SMALL separate complete characters, one in each quadrant. Attached artwork is exact Pongi character identity, outfit, prop and premium painting reference. Each whole character with ALL props occupies ONLY HALF (50%) of its cell's longest dimension. Huge fully transparent gutters, at least 20% clear cell margin each side. Centers at whole-canvas positions 25/25,75/25,25/75,75/75 percent. DO NOT zoom to fill the canvas. Outer canvas and center cross MUST have generous empty transparent space. No dividers or numbers. Every head and snout faces SCREEN RIGHT, travels right with tail/cloth trailing left. Four sequential subtle poses form a smooth looping movement. Head, eyes, nose, rigid torso or cabin remain at identical coordinates and scale relative to EACH cell; same facial expression with eyes open, no body bobbing, zooming, warping or changing orientation. Same caramel otter Pongi in floppy purple wizard hat, deep teal cloak, pink starfish pinned on hat, straddling short wooden broom. Broom handle and golden bristles remain complete. One paw on broom and other on hat brim, rigid face and hat base. Animate cloak cloth tips, soft hat tip and golden broom bristles with four slight flowing waves; tail and hind paws subtly adjust. Broom shaft stable. Entire object fully inside EACH cell: no cut hat, whiskers, cloak, broom tip, propeller or wheels. Premium soft fantasy shading and fine colored contours, all light contained INSIDE silhouette. TRUE alpha=0 background everywhere else. NO glow backdrop, haze, dust, specks, detached colors, white/black fringe, checkerboard, ground, cast shadow, text, watermark, extra characters. The drawings are SMALL and widely spaced rather than filling each quadrant."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-3c1fdff0-e25b-40f7-8bc8-eb944c1c29cd.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-ed542539-9297-4e19-8b13-41d61cb6de4f.png"
+      }
+    },
+    {
+      "id": "halloween-pongi-pumpkin-coach",
+      "name": "호박 마차 운전사 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "sell_price": 1260,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/halloween-pongi-pumpkin-coach_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/halloween-pongi-pumpkin-coach_v1_sprite.png",
+      "movement_type": "swim",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.74",
+      "speed": "0.029",
+      "size": 144,
+      "native_region_id": null,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "Epic painting style only"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "Pongi otter identity only"
+        }
+      ],
+      "prompts": {
+        "thumbnail": "Use case: stylized-concept. Create a premium epic Halloween aquarium collectible ICON. SQUARE canvas equal width and height. ONE SMALL COMPLETE subject centered in the CENTRAL 65% of the canvas, with at least 17% FULLY TRANSPARENT empty border on ALL sides. Do not zoom in to fill the canvas. Every whisker, hat tip, propeller, broom tip must fit entirely inside generous clear margins. Image 1 is PAINTING STYLE ONLY: soft fantasy illustration, refined colored contours, smooth rich dimensional shading and beautiful materials; do not copy stingray shape, purple stars, wings, checkerboard or any UI. Image 2 is PONGI OTTER IDENTITY ONLY: warm caramel baby otter, cream muzzle and belly, rounded ears, brown little nose, short whiskers, round paws, broad tapered brown tail and pink starfish. Preserve this familiar cute otter face, not the fishing rod or hook or thick outlines. Face SCREEN RIGHT in clear side or side-three-quarter profile. Nose/head point RIGHT, body/tail trail LEFT, forward travel RIGHT. Soft premium painting, no thick dark cartoon outlines. TRUE alpha transparency, smooth clean antialiased silhouette, no white/black fringe, no background, glow outside silhouette, floor, shadows, haze, detached particles, bubbles, text, labels or watermark. Pongi drives a SMALL round orange PUMPKIN COACH that floats underwater, travelling RIGHT. An open top cockpit shows the SAME caramel baby otter head and cream cheeks clearly, head facing RIGHT; round paws hold a little simple steering bar. Little plum chauffeur cap with pink starfish, short deep teal scarf streams LEFT. Coach is one compact ribbed orange pumpkin body with two warm ivory arched windows, curled green stem roof rim, TWO small bronze wheels visible on near side, tiny leaf-shaped green water propeller at the REAR LEFT. All leaf tips and wheel rims entirely visible. The coach is cozy and simple, no horse, no rails, no ropes, no giant castle or extra characters. Warm highlights INSIDE windows only, no external glow. Side three-quarter view with front rounded nose on RIGHT and rear leaf propulsion on LEFT, clearly visible cute otter driver.",
+        "sprite": "A SQUARE transparent PNG ANIMATION ATLAS, STRICT 2x2 equal square grid, four SMALL separate complete characters, one in each quadrant. Attached artwork is exact Pongi character identity, outfit, prop and premium painting reference. Each whole character with ALL props occupies ONLY HALF (50%) of its cell's longest dimension. Huge fully transparent gutters, at least 20% clear cell margin each side. Centers at whole-canvas positions 25/25,75/25,25/75,75/75 percent. DO NOT zoom to fill the canvas. Outer canvas and center cross MUST have generous empty transparent space. No dividers or numbers. Every head and snout faces SCREEN RIGHT, travels right with tail/cloth trailing left. Four sequential subtle poses form a smooth looping movement. Head, eyes, nose, rigid torso or cabin remain at identical coordinates and scale relative to EACH cell; same facial expression with eyes open, no body bobbing, zooming, warping or changing orientation. Same caramel otter Pongi driving round orange pumpkin coach with purple cap, pink starfish, teal scarf, green curled trim, warm arched windows and two small bronze wheels. Leaf propulsion on rear LEFT rotates in four small phases, scarf tips ripple, wheel spokes turn modestly, driver's paws on steering wheel. Pumpkin cabin, window frames and otter face are rigid and remain at identical size/location in every cell. Entire object fully inside EACH cell: no cut hat, whiskers, cloak, broom tip, propeller or wheels. Premium soft fantasy shading and fine colored contours, all light contained INSIDE silhouette. TRUE alpha=0 background everywhere else. NO glow backdrop, haze, dust, specks, detached colors, white/black fringe, checkerboard, ground, cast shadow, text, watermark, extra characters. The drawings are SMALL and widely spaced rather than filling each quadrant."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-58fd075b-52e9-43f0-9699-8b921cb877db.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-91e32357-d769-4b90-b803-4ad503d3b6c6.png"
+      }
+    }
+  ]
+}

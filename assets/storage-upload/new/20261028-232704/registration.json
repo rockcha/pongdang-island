@@ -1,0 +1,113 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261028-232704/fish/epic/nyamnyam-pongi-donut-float_v1_sprite.png",
+        "storage_path":  "fish/epic/nyamnyam-pongi-donut-float_v1_sprite.png",
+        "patch":  [
+                      422,
+                      231,
+                      40,
+                      38
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -20,
+                           "dy":  0,
+                           "rmse":  11.509790385809584
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -32,
+                           "rmse":  14.658662068087034
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -20,
+                           "dy":  -32,
+                           "rmse":  18.605616250045468
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261028-232704/fish/epic/nyamnyam-pongi-little-baker_v1_sprite.png",
+        "storage_path":  "fish/epic/nyamnyam-pongi-little-baker_v1_sprite.png",
+        "patch":  [
+                      376,
+                      272,
+                      40,
+                      36
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -49,
+                           "dy":  0,
+                           "rmse":  14.508054002945432
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -52,
+                           "rmse":  17.160872230579823
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -44,
+                           "dy":  -52,
+                           "rmse":  17.55327774302593
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261028-232704/fish/epic/nyamnyam-pongi-popcorn-courier_v1_sprite.png",
+        "storage_path":  "fish/epic/nyamnyam-pongi-popcorn-courier_v1_sprite.png",
+        "patch":  [
+                      436,
+                      272,
+                      42,
+                      38
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -24,
+                           "dy":  5,
+                           "rmse":  12.850311066487633
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -45,
+                           "rmse":  20.174309089848585
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -19,
+                           "dy":  -45,
+                           "rmse":  17.936701890962976
+                       }
+                   ]
+    }
+]

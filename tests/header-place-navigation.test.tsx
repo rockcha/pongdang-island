@@ -2,8 +2,9 @@ import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/r
 import {MemoryRouter,useLocation} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {HeaderPlaceNavigation,headerPlaces} from '@/components/header-place-navigation'
-const mock=vi.hoisted(()=>({relic:null as {name:string;thumbnail_path:string}|null,newContent:{board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null,fuel:null as {ready:number;total:number}|null,bait:null as {ready:number;total:number}|null}))
+const mock=vi.hoisted(()=>({fleaReady:0,relic:null as {name:string;thumbnail_path:string}|null,newContent:{board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null,fuel:null as {ready:number;total:number}|null,bait:null as {ready:number;total:number}|null}))
 vi.mock('@/components/menu-activity',async original=>({...await original<typeof import('@/components/menu-activity')>(),useMenuActivity:()=>({
+ '/flea-market':{kind:'flea',running:0,ready:mock.fleaReady},
  ...(mock.fuel?{'/production':{...mock.fuel,running:1,unit:'곳'}}:{}),...(mock.bait?{'/bait-production':{...mock.bait,running:1,unit:'곳'}}:{}),...(mock.harbor?{'/port':{...mock.harbor,running:1,unit:'척'}}:{}),...(mock.status?{'/expeditions':{single:'유인',running:mock.status==='sailing'?1:0,ready:mock.status==='returned'?1:0,remaining:120000}}:{})
 })}))
 vi.mock('@/features/savings/use-savings-status',()=>({useSavingsStatus:()=>mock.savings}))
@@ -13,17 +14,27 @@ vi.mock('@/features/port/use-harbor-status',()=>({useHarborStatus:()=>mock.harbo
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:mock.operator,loading:false})}))
 vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus:()=>mock.status}))
 vi.mock('@/features/production/use-production-menu-status',()=>({useProductionMenuStatus:(kind:string)=>kind==='fuel'?mock.fuel:mock.bait}))
-beforeEach(()=>{mock.relic=null;mock.newContent={board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null;mock.fuel=null;mock.bait=null})
+beforeEach(()=>{mock.fleaReady=0;mock.relic=null;mock.newContent={board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null;mock.fuel=null;mock.bait=null})
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
+it('keeps the market dot and flea NEW for sellable requests even when all posts have been read',async()=>{
+ mock.fleaReady=2
+ const view=render(<MemoryRouter><View/></MemoryRouter>)
+ expect(screen.getByRole('button',{name:'장터'}).querySelector('[data-category-activity]')).toBeTruthy()
+ const menu=await open('장터')
+ expect(within(menu).getByRole('menuitem',{name:/벼룩시장.*2건 판매 가능.*판매 가능한 구매글 있음/}).textContent).toContain('NEW')
+ await close(menu)
+ mock.fleaReady=0;view.rerender(<MemoryRouter><View/></MemoryRouter>)
+ expect(screen.getByRole('button',{name:'장터'}).querySelector('[data-category-activity]')).toBeNull()
+})
 async function open(name:string){fireEvent.click(screen.getByRole('button',{name,exact:true}));return screen.findByRole('menu',{name:name+' 메뉴'})}
 async function close(menu:HTMLElement){fireEvent.keyDown(menu,{key:'Escape'});await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())}
 it('shows seven representative icons with visible labels and an active category',()=>{
  render(<MemoryRouter initialEntries={['/region/nyamnyam']}><View/></MemoryRouter>)
  const nav=screen.getByRole('navigation',{name:'장소 바로가기'}),buttons=within(nav).getAllByRole('button')
  expect(buttons.map(b=>b.getAttribute('aria-label'))).toEqual(groups)
- for(const button of buttons){expect(button.querySelector('img')?.getAttribute('src')).toMatch(/^\/navigation-icons\/orange-v1\/[a-z]+\.png$/);expect(button.textContent).toBe(button.getAttribute('aria-label'))}
+ for(const button of buttons){const icon=button.querySelector('img');expect(icon?.getAttribute('src')).toMatch(/^\/navigation-icons\/orange-v1\/[a-z]+\.png$/);expect(icon?.getAttribute('alt')).toBe('');expect(button.textContent).toBe(button.getAttribute('aria-label'))}
  expect(screen.getByRole('button',{name:'낚시'}).getAttribute('aria-current')).toBe('location')
 })
 it.each([

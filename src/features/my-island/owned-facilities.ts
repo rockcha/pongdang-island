@@ -30,7 +30,7 @@ export function ownedFacilities(): Facility[] {
   add('warehouse', 'warehouse', '창고', '/warehouse')
   add('bait', 'personal-workshop', '나만의 미끼 공방', '/my-bait-production')
   add('shipyard', 'hub', '조선소', '/shipyard')
-  add('books', 'hub', '도감', '/collection')
+  add('books', 'hub', '개체 도감', '/collection')
   add('stash', 'hub', '보관함', '/storage')
   add('lighthouse', 'hub', '등대', '/friends')
   for (const base of [

@@ -1,0 +1,76 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261028-230237/fish/epic/halloween-pongi-wizard-broom_v1_sprite.png",
+        "storage_path":  "fish/epic/halloween-pongi-wizard-broom_v1_sprite.png",
+        "patch":  [
+                      400,
+                      334,
+                      45,
+                      38
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -17,
+                           "dy":  2,
+                           "rmse":  13.338444533156876
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -70,
+                           "rmse":  9.7031583544370772
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -13,
+                           "dy":  -68,
+                           "rmse":  17.075661191538238
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261028-230237/fish/epic/halloween-pongi-pumpkin-coach_v1_sprite.png",
+        "storage_path":  "fish/epic/halloween-pongi-pumpkin-coach_v1_sprite.png",
+        "patch":  [
+                      375,
+                      238,
+                      42,
+                      36
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.1919927171730276
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.8544285132728229
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.6323140365624322
+                       }
+                   ]
+    }
+]

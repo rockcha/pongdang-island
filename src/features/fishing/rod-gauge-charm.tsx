@@ -2,6 +2,7 @@ import type {ComponentProps,ReactNode} from 'react'
 import {memo} from 'react'
 
 const charms:Record<string,ReactNode>={
+ firefly:<image href="/region-icons/firefly-v1.png" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  mechsanctum:<image href="/region-icons/mechsanctum-v1.png" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  plunder:<image href="/region-icons/plunder-v1.png" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  swift:<><path d="m3 16 7-5-1-7 6 6 7-2-6 6-1 7-4-5-8 2Z" fill="#e8c981" stroke="#26364f" strokeWidth="1.2"/><path d="m7 17 7-6" stroke="#fff2d7" strokeWidth="1.5" strokeLinecap="round"/></>,

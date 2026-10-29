@@ -1,0 +1,383 @@
+{
+  "verifiedAt": "2026-10-28T20:30:33.817Z",
+  "scope": "Real Phaser tank and real CollectiblePreview with synthetic local specimens only; no player writes.",
+  "all": {
+    "count": 37,
+    "textures": 37,
+    "clock": 14.471974304808718,
+    "renderer": "WebGL"
+  },
+  "animated": {
+    "stats": {
+      "count": 6,
+      "textures": 6,
+      "clock": 30.64996094758576,
+      "renderer": "WebGL"
+    },
+    "errors": [],
+    "frames": [
+      {
+        "id": "firefly-qa-firefly-acorn-lantern-hermit",
+        "frame": 1,
+        "texture": "collectible:fish/rare/firefly-acorn-lantern-hermit_v1_sprite.png",
+        "origin": [
+          0.4298245614035088,
+          0.5015948963317385
+        ],
+        "size": [
+          106.35373913043478,
+          106.35373913043478
+        ]
+      },
+      {
+        "id": "firefly-qa-firefly-first-firefly-spirit",
+        "frame": 1,
+        "texture": "collectible:fish/mythic/firefly-first-firefly-spirit_swim8_sprite.png",
+        "origin": [
+          0.48198198198198194,
+          0.5112612612612613
+        ],
+        "size": [
+          225.13260000000005,
+          225.13260000000005
+        ]
+      },
+      {
+        "id": "firefly-qa-firefly-flower-dream-queen",
+        "frame": 1,
+        "texture": "collectible:fish/mythic/firefly-flower-dream-queen_swim8_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          236.15307692307695,
+          236.15307692307695
+        ]
+      },
+      {
+        "id": "firefly-qa-firefly-millennium-lantern-queen",
+        "frame": 1,
+        "texture": "collectible:fish/mythic/firefly-millennium-lantern-queen_swim8_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          225.13260000000005,
+          225.13260000000005
+        ]
+      },
+      {
+        "id": "firefly-qa-firefly-village-elder-turtle",
+        "frame": 1,
+        "texture": "collectible:fish/mythic/firefly-village-elder-turtle_swim8_sprite.png",
+        "origin": [
+          0.5045045045045045,
+          0.5022522522522522
+        ],
+        "size": [
+          198.06387096774196,
+          198.06387096774196
+        ]
+      },
+      {
+        "id": "firefly-qa-firefly-waterlily-jellyfish",
+        "frame": 1,
+        "texture": "collectible:fish/rare/firefly-waterlily-jellyfish_v1_sprite.png",
+        "origin": [
+          0.4569377990430622,
+          0.5
+        ],
+        "size": [
+          81.53786666666667,
+          81.53786666666667
+        ]
+      }
+    ],
+    "history": {
+      "firefly-qa-firefly-acorn-lantern-hermit": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "firefly-qa-firefly-acorn-puffer": [
+        0,
+        1,
+        3
+      ],
+      "firefly-qa-firefly-acorn-warden-fairy": [
+        1,
+        2,
+        3
+      ],
+      "firefly-qa-firefly-bud-goldfish": [
+        1,
+        2,
+        3
+      ],
+      "firefly-qa-firefly-clover-luck-fairy": [
+        0,
+        1,
+        3
+      ],
+      "firefly-qa-firefly-clover-platy": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-clover-postfish": [
+        0,
+        3
+      ],
+      "firefly-qa-firefly-clover-ray": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-daisy-medaka": [
+        0,
+        1,
+        3
+      ],
+      "firefly-qa-firefly-dandelion-guppy": [
+        0,
+        3
+      ],
+      "firefly-qa-firefly-evening-lullaby-fairy": [
+        0,
+        1,
+        3
+      ],
+      "firefly-qa-firefly-firefly-lanternfish": [
+        0,
+        1
+      ],
+      "firefly-qa-firefly-first-firefly-spirit": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "firefly-qa-firefly-flower-cloak-seahorse": [
+        1,
+        2,
+        3
+      ],
+      "firefly-qa-firefly-flower-dream-queen": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "firefly-qa-firefly-flower-letter-batfish": [
+        0,
+        1
+      ],
+      "firefly-qa-firefly-flower-post-fairy": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-grass-seed-anchovy": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-honey-guppy": [
+        0,
+        1,
+        3
+      ],
+      "firefly-qa-firefly-honey-teahouse-fairy": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-lantern-keeper-fairy": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-leaf-medaka": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-leaf-wing-guppy": [
+        0,
+        3
+      ],
+      "firefly-qa-firefly-millennium-lantern-queen": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "firefly-qa-firefly-moss-goby": [
+        1,
+        2
+      ],
+      "firefly-qa-firefly-mushroom-child-fairy": [
+        1,
+        2
+      ],
+      "firefly-qa-firefly-mushroom-sculpin": [
+        2,
+        3
+      ],
+      "firefly-qa-firefly-petal-bitterling": [
+        0,
+        2,
+        3
+      ],
+      "firefly-qa-firefly-pinecone-carp": [
+        1,
+        2
+      ],
+      "firefly-qa-firefly-sprout-minnow": [
+        0,
+        3
+      ],
+      "firefly-qa-firefly-village-elder-turtle": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "firefly-qa-firefly-waterlily-dancer-fairy": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-waterlily-fry": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-waterlily-jellyfish": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "firefly-qa-firefly-willow-loach": [
+        0,
+        1,
+        2
+      ],
+      "firefly-qa-firefly-willow-ribbon-pipefish": [
+        1,
+        2,
+        3
+      ],
+      "firefly-qa-firefly-woodgrain-turtle": [
+        0,
+        1
+      ]
+    }
+  },
+  "reduced": [
+    {
+      "id": "firefly-qa-firefly-acorn-lantern-hermit",
+      "frame": 0,
+      "texture": "collectible:fish/rare/firefly-acorn-lantern-hermit_v1_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        106.35373913043478,
+        106.35373913043478
+      ]
+    },
+    {
+      "id": "firefly-qa-firefly-first-firefly-spirit",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/firefly-first-firefly-spirit_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        225.13260000000005,
+        225.13260000000005
+      ]
+    },
+    {
+      "id": "firefly-qa-firefly-flower-dream-queen",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/firefly-flower-dream-queen_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        236.15307692307695,
+        236.15307692307695
+      ]
+    },
+    {
+      "id": "firefly-qa-firefly-millennium-lantern-queen",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/firefly-millennium-lantern-queen_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        225.13260000000005,
+        225.13260000000005
+      ]
+    },
+    {
+      "id": "firefly-qa-firefly-village-elder-turtle",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/firefly-village-elder-turtle_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        198.06387096774196,
+        198.06387096774196
+      ]
+    },
+    {
+      "id": "firefly-qa-firefly-waterlily-jellyfish",
+      "frame": 0,
+      "texture": "collectible:fish/rare/firefly-waterlily-jellyfish_v1_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        81.53786666666667,
+        81.53786666666667
+      ]
+    }
+  ],
+  "catalogReducedHashes": [
+    "7d7f274816b8418a55f67bd7c640226ba979838ce140cb5f80ae23fb8a37a2cc",
+    "12593657c389d67f0308a22b2653033f8207ef4cde48adb51f9dbb5190bfcdff",
+    "e5e98c364e39e5567fd2d38778418764dee912a8b4e736f0c93dd12754e2e5ed",
+    "298ca782d5f605660840137a0759839769793c9c77f900e98c02e41c14f398ea"
+  ]
+}

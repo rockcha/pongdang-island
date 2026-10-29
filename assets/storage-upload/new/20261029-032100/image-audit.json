@@ -1,0 +1,3564 @@
+{
+  "scope": "Local generated files only. Bounds are not proof of visual quality or remote upload.",
+  "assets": [
+    {
+      "id": "region-scenery",
+      "file": "public/regions/firefly/scenery-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "columns": 1,
+      "cellWidth": 1024,
+      "cellHeight": 1536,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1024,
+          "height": 1536,
+          "margin": 0,
+          "opaque": 1572864,
+          "edgeAlpha": 255
+        }
+      ]
+    },
+    {
+      "id": "region-map",
+      "file": "public/regions/firefly/map-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 14,
+          "top": 17,
+          "width": 1226,
+          "height": 1212,
+          "margin": 14,
+          "opaque": 1384906,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "region-icon",
+      "file": "public/region-icons/firefly-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 79,
+          "top": 31,
+          "width": 1102,
+          "height": 1187,
+          "margin": 31,
+          "opaque": 886814,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "fishing-water",
+      "file": "public/fishing/close-water/firefly-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "columns": 1,
+      "cellWidth": 1024,
+      "cellHeight": 1536,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1024,
+          "height": 1536,
+          "margin": 0,
+          "opaque": 1572864,
+          "edgeAlpha": 255
+        }
+      ]
+    },
+    {
+      "id": "fishing-platform",
+      "file": "public/fishing/platforms/firefly-v1.png",
+      "width": 1983,
+      "height": 793,
+      "columns": 1,
+      "cellWidth": 1983,
+      "cellHeight": 793,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 0,
+          "top": 154,
+          "width": 1983,
+          "height": 639,
+          "margin": 0,
+          "opaque": 1052690,
+          "edgeAlpha": 255
+        }
+      ]
+    },
+    {
+      "id": "rod-frame",
+      "file": "assets/storage-upload/new/20261029-032100/equipment/rods/firefly/reel-frame.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 27,
+          "top": 30,
+          "width": 1200,
+          "height": 1195,
+          "margin": 27,
+          "opaque": 756392,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "rod-rotor",
+      "file": "assets/storage-upload/new/20261029-032100/equipment/rods/firefly/reel-rotor.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 140,
+          "top": 108,
+          "width": 1043,
+          "height": 985,
+          "margin": 71,
+          "opaque": 691667,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "rod-float",
+      "file": "assets/storage-upload/new/20261029-032100/equipment/rods/firefly/float.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 421,
+          "top": 56,
+          "width": 412,
+          "height": 1146,
+          "margin": 52,
+          "opaque": 188172,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-puffer-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-acorn-puffer_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 40,
+          "top": 155,
+          "width": 1184,
+          "height": 947,
+          "margin": 30,
+          "opaque": 620274,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-lantern-keeper-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-lantern-keeper-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 123,
+          "top": 79,
+          "width": 1086,
+          "height": 1100,
+          "margin": 45,
+          "opaque": 592437,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-leaf-medaka-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-leaf-medaka_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 75,
+          "top": 331,
+          "width": 1108,
+          "height": 567,
+          "margin": 71,
+          "opaque": 349812,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-honey-guppy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-honey-guppy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 40,
+          "top": 281,
+          "width": 1175,
+          "height": 694,
+          "margin": 39,
+          "opaque": 502544,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-petal-bitterling-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-petal-bitterling_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 98,
+          "top": 267,
+          "width": 1072,
+          "height": 717,
+          "margin": 84,
+          "opaque": 423082,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-sprout-minnow-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-sprout-minnow_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 78,
+          "top": 388,
+          "width": 1098,
+          "height": 519,
+          "margin": 78,
+          "opaque": 310164,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-platy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-clover-platy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 122,
+          "top": 311,
+          "width": 1011,
+          "height": 636,
+          "margin": 121,
+          "opaque": 398173,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-willow-loach-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-willow-loach_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 26,
+          "top": 308,
+          "width": 1206,
+          "height": 583,
+          "margin": 22,
+          "opaque": 297755,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-moss-goby-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-moss-goby_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 62,
+          "top": 307,
+          "width": 1131,
+          "height": 664,
+          "margin": 61,
+          "opaque": 456843,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-bud-goldfish-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-bud-goldfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 101,
+          "top": 221,
+          "width": 1054,
+          "height": 776,
+          "margin": 99,
+          "opaque": 538062,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-daisy-medaka-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-daisy-medaka_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 59,
+          "top": 307,
+          "width": 1136,
+          "height": 615,
+          "margin": 59,
+          "opaque": 437399,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-dandelion-guppy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-dandelion-guppy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 100,
+          "top": 246,
+          "width": 1049,
+          "height": 744,
+          "margin": 100,
+          "opaque": 494102,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-grass-seed-anchovy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-grass-seed-anchovy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 54,
+          "top": 410,
+          "width": 1155,
+          "height": 434,
+          "margin": 45,
+          "opaque": 267233,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-pinecone-carp-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-pinecone-carp_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 67,
+          "top": 219,
+          "width": 1136,
+          "height": 824,
+          "margin": 51,
+          "opaque": 561146,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-waterlily-fry-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-waterlily-fry_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 169,
+          "top": 345,
+          "width": 931,
+          "height": 586,
+          "margin": 154,
+          "opaque": 310127,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-mushroom-sculpin-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-mushroom-sculpin_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 36,
+          "top": 288,
+          "width": 1180,
+          "height": 703,
+          "margin": 36,
+          "opaque": 509243,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-firefly-lanternfish-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-firefly-lanternfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 50,
+          "top": 251,
+          "width": 1132,
+          "height": 705,
+          "margin": 50,
+          "opaque": 387427,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-cloak-seahorse-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-flower-cloak-seahorse_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 179,
+          "top": 62,
+          "width": 962,
+          "height": 1131,
+          "margin": 61,
+          "opaque": 475606,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-waterlily-jellyfish-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-waterlily-jellyfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 93,
+          "top": 161,
+          "width": 1132,
+          "height": 910,
+          "margin": 29,
+          "opaque": 565951,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-leaf-wing-guppy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-leaf-wing-guppy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 55,
+          "top": 208,
+          "width": 1129,
+          "height": 764,
+          "margin": 55,
+          "opaque": 445655,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-postfish-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-clover-postfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 62,
+          "top": 260,
+          "width": 1143,
+          "height": 724,
+          "margin": 49,
+          "opaque": 507550,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-willow-ribbon-pipefish-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-willow-ribbon-pipefish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 28,
+          "top": 291,
+          "width": 1198,
+          "height": 698,
+          "margin": 28,
+          "opaque": 253925,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-lantern-hermit-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-acorn-lantern-hermit_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 145,
+          "top": 143,
+          "width": 1078,
+          "height": 931,
+          "margin": 31,
+          "opaque": 563397,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-letter-batfish-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-flower-letter-batfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 217,
+          "top": 112,
+          "width": 895,
+          "height": 1036,
+          "margin": 106,
+          "opaque": 451460,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-ray-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-clover-ray_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 30,
+          "top": 220,
+          "width": 1194,
+          "height": 745,
+          "margin": 30,
+          "opaque": 423623,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-woodgrain-turtle-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-woodgrain-turtle_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 88,
+          "top": 240,
+          "width": 1097,
+          "height": 773,
+          "margin": 69,
+          "opaque": 496173,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-warden-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-acorn-warden-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 84,
+          "top": 81,
+          "width": 1136,
+          "height": 1098,
+          "margin": 34,
+          "opaque": 610234,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-waterlily-dancer-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-waterlily-dancer-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 142,
+          "top": 85,
+          "width": 1092,
+          "height": 1098,
+          "margin": 20,
+          "opaque": 622928,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-luck-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-clover-luck-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 218,
+          "top": 73,
+          "width": 1016,
+          "height": 1096,
+          "margin": 20,
+          "opaque": 583646,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-post-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-flower-post-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 50,
+          "top": 122,
+          "width": 1190,
+          "height": 1045,
+          "margin": 14,
+          "opaque": 607092,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-mushroom-child-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-mushroom-child-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 263,
+          "top": 99,
+          "width": 958,
+          "height": 1073,
+          "margin": 33,
+          "opaque": 575896,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-honey-teahouse-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-honey-teahouse-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 133,
+          "top": 54,
+          "width": 1066,
+          "height": 1153,
+          "margin": 47,
+          "opaque": 632770,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-evening-lullaby-fairy-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-evening-lullaby-fairy_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 81,
+          "top": 79,
+          "width": 1155,
+          "height": 1089,
+          "margin": 18,
+          "opaque": 701875,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-broken-acorn-cup-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-broken-acorn-cup_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 141,
+          "top": 230,
+          "width": 1034,
+          "height": 842,
+          "margin": 79,
+          "opaque": 575772,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-torn-leaf-umbrella-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-torn-leaf-umbrella_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 67,
+          "top": 167,
+          "width": 1121,
+          "height": 975,
+          "margin": 66,
+          "opaque": 415746,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-spent-firefly-lantern-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-spent-firefly-lantern_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 233,
+          "top": 66,
+          "width": 835,
+          "height": 1075,
+          "margin": 66,
+          "opaque": 465954,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-tangled-grass-thread-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-tangled-grass-thread_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 143,
+          "top": 180,
+          "width": 1000,
+          "height": 930,
+          "margin": 111,
+          "opaque": 566097,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-wet-flower-letter-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-wet-flower-letter_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 60,
+          "top": 202,
+          "width": 1142,
+          "height": 906,
+          "margin": 52,
+          "opaque": 625358,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-single-petal-shoe-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-single-petal-shoe_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 138,
+          "top": 216,
+          "width": 1030,
+          "height": 828,
+          "margin": 86,
+          "opaque": 436154,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-cracked-honey-pot-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-cracked-honey-pot_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 253,
+          "top": 163,
+          "width": 788,
+          "height": 938,
+          "margin": 153,
+          "opaque": 556718,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-faded-fairy-invitation-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-faded-fairy-invitation_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 107,
+          "top": 197,
+          "width": 1041,
+          "height": 906,
+          "margin": 106,
+          "opaque": 574936,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-cracked-dew-perfume-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-cracked-dew-perfume_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 278,
+          "top": 51,
+          "width": 684,
+          "height": 1122,
+          "margin": 51,
+          "opaque": 463262,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-broken-flower-lamp-staff-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-broken-flower-lamp-staff_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 347,
+          "top": 118,
+          "width": 649,
+          "height": 1039,
+          "margin": 97,
+          "opaque": 251792,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-untied-flower-mask-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-untied-flower-mask_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 65,
+          "top": 238,
+          "width": 1138,
+          "height": 817,
+          "margin": 51,
+          "opaque": 437606,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-torn-leaf-map-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-torn-leaf-map_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 126,
+          "top": 96,
+          "width": 1071,
+          "height": 1047,
+          "margin": 57,
+          "opaque": 693772,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-teacups-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-acorn-teacups_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 43,
+          "top": 275,
+          "width": 1175,
+          "height": 696,
+          "margin": 36,
+          "opaque": 561734,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-mushroom-stool-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-mushroom-stool_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 154,
+          "top": 258,
+          "width": 969,
+          "height": 836,
+          "margin": 131,
+          "opaque": 543983,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-pebble-flowerpot-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-pebble-flowerpot_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 217,
+          "top": 143,
+          "width": 843,
+          "height": 984,
+          "margin": 127,
+          "opaque": 555283,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-grass-thread-basket-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-grass-thread-basket_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 166,
+          "top": 119,
+          "width": 957,
+          "height": 993,
+          "margin": 119,
+          "opaque": 608231,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-signpost-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-acorn-signpost_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 157,
+          "top": 64,
+          "width": 952,
+          "height": 1130,
+          "margin": 60,
+          "opaque": 416870,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-moss-stump-table-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-moss-stump-table_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 101,
+          "top": 266,
+          "width": 1083,
+          "height": 816,
+          "margin": 70,
+          "opaque": 625626,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-leafroof-acorn-house-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-leafroof-acorn-house_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 172,
+          "top": 94,
+          "width": 978,
+          "height": 1050,
+          "margin": 94,
+          "opaque": 710212,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-firefly-flower-lamppost-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-firefly-flower-lamppost_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 337,
+          "top": 48,
+          "width": 740,
+          "height": 1164,
+          "margin": 42,
+          "opaque": 348494,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-moss-arch-bridge-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-moss-arch-bridge_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 38,
+          "top": 255,
+          "width": 1186,
+          "height": 817,
+          "margin": 30,
+          "opaque": 522036,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-honey-acorn-teahouse-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-honey-acorn-teahouse_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 148,
+          "top": 54,
+          "width": 983,
+          "height": 1131,
+          "margin": 54,
+          "opaque": 737111,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-lily-bell-tower-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-lily-bell-tower_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 267,
+          "top": 40,
+          "width": 778,
+          "height": 1141,
+          "margin": 40,
+          "opaque": 528423,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-leafboat-dock-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-leafboat-dock_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 170,
+          "top": 137,
+          "width": 1015,
+          "height": 960,
+          "margin": 69,
+          "opaque": 459008,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-fairy-village-mailbox-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-fairy-village-mailbox_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 257,
+          "top": 73,
+          "width": 888,
+          "height": 1117,
+          "margin": 64,
+          "opaque": 570395,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-waterlily-pavilion-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-waterlily-pavilion_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 92,
+          "top": 116,
+          "width": 1075,
+          "height": 1028,
+          "margin": 87,
+          "opaque": 691960,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-millennium-lantern-queen-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-millennium-lantern-queen_v1_thumbnail.png",
+      "width": 1368,
+      "height": 1150,
+      "columns": 1,
+      "cellWidth": 1368,
+      "cellHeight": 1150,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 31,
+          "top": 26,
+          "width": 1330,
+          "height": 1094,
+          "margin": 7,
+          "opaque": 751260,
+          "edgeAlpha": 3
+        }
+      ]
+    },
+    {
+      "id": "firefly-village-elder-turtle-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-village-elder-turtle_v1_thumbnail.png",
+      "width": 1368,
+      "height": 1150,
+      "columns": 1,
+      "cellWidth": 1368,
+      "cellHeight": 1150,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 40,
+          "top": 39,
+          "width": 1298,
+          "height": 1042,
+          "margin": 30,
+          "opaque": 709959,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-dream-queen-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-flower-dream-queen_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 47,
+          "top": 81,
+          "width": 1183,
+          "height": 1093,
+          "margin": 24,
+          "opaque": 694395,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-first-firefly-spirit-thumbnail",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-first-firefly-spirit_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 1,
+      "cellWidth": 1254,
+      "cellHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 78,
+          "top": 140,
+          "width": 1148,
+          "height": 879,
+          "margin": 28,
+          "opaque": 444612,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-leaf-medaka-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-leaf-medaka_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 44,
+          "top": 247,
+          "width": 563,
+          "height": 270,
+          "margin": 20,
+          "opaque": 88402,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 35,
+          "top": 248,
+          "width": 556,
+          "height": 279,
+          "margin": 35,
+          "opaque": 85416,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 45,
+          "top": 176,
+          "width": 561,
+          "height": 263,
+          "margin": 21,
+          "opaque": 87701,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 43,
+          "top": 169,
+          "width": 550,
+          "height": 267,
+          "margin": 34,
+          "opaque": 82542,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-honey-guppy-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-honey-guppy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 23,
+          "top": 192,
+          "width": 597,
+          "height": 359,
+          "margin": 7,
+          "opaque": 132275,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 36,
+          "top": 146,
+          "width": 581,
+          "height": 402,
+          "margin": 10,
+          "opaque": 130268,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 21,
+          "top": 116,
+          "width": 599,
+          "height": 368,
+          "margin": 7,
+          "opaque": 135761,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 25,
+          "top": 140,
+          "width": 591,
+          "height": 363,
+          "margin": 11,
+          "opaque": 123235,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-petal-bitterling-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-petal-bitterling_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 47,
+          "top": 164,
+          "width": 565,
+          "height": 379,
+          "margin": 15,
+          "opaque": 121902,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 57,
+          "top": 156,
+          "width": 531,
+          "height": 381,
+          "margin": 39,
+          "opaque": 111653,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 45,
+          "top": 106,
+          "width": 565,
+          "height": 374,
+          "margin": 17,
+          "opaque": 121157,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 32,
+          "top": 106,
+          "width": 560,
+          "height": 377,
+          "margin": 32,
+          "opaque": 118732,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-sprout-minnow-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-sprout-minnow_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 41,
+          "top": 264,
+          "width": 561,
+          "height": 270,
+          "margin": 25,
+          "opaque": 85189,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 23,
+          "top": 259,
+          "width": 564,
+          "height": 277,
+          "margin": 23,
+          "opaque": 84721,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 47,
+          "top": 147,
+          "width": 553,
+          "height": 267,
+          "margin": 27,
+          "opaque": 83118,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 24,
+          "top": 145,
+          "width": 564,
+          "height": 273,
+          "margin": 24,
+          "opaque": 85654,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-platy-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-clover-platy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 44,
+          "top": 212,
+          "width": 564,
+          "height": 354,
+          "margin": 19,
+          "opaque": 123812,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 53,
+          "top": 211,
+          "width": 553,
+          "height": 369,
+          "margin": 21,
+          "opaque": 117023,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 43,
+          "top": 135,
+          "width": 565,
+          "height": 344,
+          "margin": 19,
+          "opaque": 123671,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 42,
+          "top": 129,
+          "width": 567,
+          "height": 364,
+          "margin": 18,
+          "opaque": 126606,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-willow-loach-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-willow-loach_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 31,
+          "top": 258,
+          "width": 586,
+          "height": 253,
+          "margin": 10,
+          "opaque": 66132,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 40,
+          "top": 196,
+          "width": 568,
+          "height": 320,
+          "margin": 19,
+          "opaque": 71487,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 27,
+          "top": 181,
+          "width": 590,
+          "height": 235,
+          "margin": 10,
+          "opaque": 65759,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 32,
+          "top": 212,
+          "width": 576,
+          "height": 231,
+          "margin": 19,
+          "opaque": 66112,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-bud-goldfish-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-bud-goldfish_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 49,
+          "top": 166,
+          "width": 565,
+          "height": 417,
+          "margin": 13,
+          "opaque": 153891,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 12,
+          "top": 163,
+          "width": 553,
+          "height": 419,
+          "margin": 12,
+          "opaque": 146292,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 40,
+          "top": 83,
+          "width": 574,
+          "height": 419,
+          "margin": 13,
+          "opaque": 155713,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 16,
+          "top": 83,
+          "width": 555,
+          "height": 420,
+          "margin": 16,
+          "opaque": 148287,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-daisy-medaka-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-daisy-medaka_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 48,
+          "top": 218,
+          "width": 572,
+          "height": 318,
+          "margin": 7,
+          "opaque": 115470,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 36,
+          "top": 218,
+          "width": 544,
+          "height": 324,
+          "margin": 36,
+          "opaque": 101527,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 46,
+          "top": 110,
+          "width": 574,
+          "height": 318,
+          "margin": 7,
+          "opaque": 116801,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 26,
+          "top": 134,
+          "width": 555,
+          "height": 329,
+          "margin": 26,
+          "opaque": 109790,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-dandelion-guppy-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-dandelion-guppy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 41,
+          "top": 130,
+          "width": 579,
+          "height": 419,
+          "margin": 7,
+          "opaque": 151942,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 48,
+          "top": 139,
+          "width": 560,
+          "height": 419,
+          "margin": 19,
+          "opaque": 137942,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 36,
+          "top": 71,
+          "width": 585,
+          "height": 430,
+          "margin": 6,
+          "opaque": 155998,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 33,
+          "top": 86,
+          "width": 578,
+          "height": 415,
+          "margin": 16,
+          "opaque": 145913,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-grass-seed-anchovy-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-grass-seed-anchovy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 23,
+          "top": 264,
+          "width": 593,
+          "height": 227,
+          "margin": 11,
+          "opaque": 69945,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 19,
+          "top": 267,
+          "width": 584,
+          "height": 231,
+          "margin": 19,
+          "opaque": 69529,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 28,
+          "top": 198,
+          "width": 589,
+          "height": 224,
+          "margin": 10,
+          "opaque": 69426,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 20,
+          "top": 200,
+          "width": 583,
+          "height": 222,
+          "margin": 20,
+          "opaque": 68712,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-cloak-seahorse-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-flower-cloak-seahorse_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 65,
+          "top": 38,
+          "width": 529,
+          "height": 572,
+          "margin": 17,
+          "opaque": 134398,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 59,
+          "top": 38,
+          "width": 560,
+          "height": 554,
+          "margin": 8,
+          "opaque": 135638,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 59,
+          "top": 35,
+          "width": 540,
+          "height": 559,
+          "margin": 28,
+          "opaque": 130576,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 85,
+          "top": 35,
+          "width": 536,
+          "height": 560,
+          "margin": 6,
+          "opaque": 134806,
+          "edgeAlpha": 2
+        }
+      ]
+    },
+    {
+      "id": "firefly-leaf-wing-guppy-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-leaf-wing-guppy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 51,
+          "top": 184,
+          "width": 565,
+          "height": 368,
+          "margin": 11,
+          "opaque": 113604,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 39,
+          "top": 145,
+          "width": 577,
+          "height": 398,
+          "margin": 11,
+          "opaque": 99218,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 48,
+          "top": 111,
+          "width": 568,
+          "height": 337,
+          "margin": 11,
+          "opaque": 112478,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 67,
+          "top": 143,
+          "width": 547,
+          "height": 333,
+          "margin": 13,
+          "opaque": 108098,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-willow-ribbon-pipefish-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-willow-ribbon-pipefish_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 35,
+          "top": 215,
+          "width": 580,
+          "height": 340,
+          "margin": 12,
+          "opaque": 61489,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 18,
+          "top": 268,
+          "width": 585,
+          "height": 293,
+          "margin": 18,
+          "opaque": 59892,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 31,
+          "top": 116,
+          "width": 586,
+          "height": 312,
+          "margin": 10,
+          "opaque": 60596,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 33,
+          "top": 115,
+          "width": 573,
+          "height": 345,
+          "margin": 21,
+          "opaque": 63116,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-puffer-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-acorn-puffer_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 131,
+          "top": 202,
+          "width": 416,
+          "height": 329,
+          "margin": 80,
+          "opaque": 75470,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 1,
+          "left": 126,
+          "top": 203,
+          "width": 391,
+          "height": 329,
+          "margin": 95,
+          "opaque": 73772,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 132,
+          "top": 129,
+          "width": 414,
+          "height": 327,
+          "margin": 81,
+          "opaque": 75253,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 107,
+          "top": 129,
+          "width": 409,
+          "height": 328,
+          "margin": 107,
+          "opaque": 74830,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-moss-goby-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-moss-goby_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 130,
+          "top": 245,
+          "width": 443,
+          "height": 252,
+          "margin": 54,
+          "opaque": 67781,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 66,
+          "top": 245,
+          "width": 459,
+          "height": 258,
+          "margin": 66,
+          "opaque": 69281,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 130,
+          "top": 168,
+          "width": 443,
+          "height": 251,
+          "margin": 54,
+          "opaque": 67120,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 86,
+          "top": 168,
+          "width": 444,
+          "height": 256,
+          "margin": 86,
+          "opaque": 65844,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-pinecone-carp-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-pinecone-carp_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 125,
+          "top": 210,
+          "width": 434,
+          "height": 313,
+          "margin": 68,
+          "opaque": 80539,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 89,
+          "top": 210,
+          "width": 447,
+          "height": 314,
+          "margin": 89,
+          "opaque": 78430,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 113,
+          "top": 161,
+          "width": 456,
+          "height": 307,
+          "margin": 58,
+          "opaque": 79578,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 99,
+          "top": 159,
+          "width": 443,
+          "height": 312,
+          "margin": 85,
+          "opaque": 82549,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-waterlily-fry-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-waterlily-fry_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 164,
+          "top": 249,
+          "width": 362,
+          "height": 223,
+          "margin": 101,
+          "opaque": 45903,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 116,
+          "top": 246,
+          "width": 382,
+          "height": 226,
+          "margin": 116,
+          "opaque": 48462,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 160,
+          "top": 175,
+          "width": 368,
+          "height": 223,
+          "margin": 99,
+          "opaque": 47959,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 127,
+          "top": 176,
+          "width": 380,
+          "height": 226,
+          "margin": 120,
+          "opaque": 48654,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-mushroom-sculpin-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-mushroom-sculpin_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 119,
+          "top": 237,
+          "width": 432,
+          "height": 255,
+          "margin": 76,
+          "opaque": 66589,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 101,
+          "top": 237,
+          "width": 426,
+          "height": 258,
+          "margin": 100,
+          "opaque": 66705,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 117,
+          "top": 180,
+          "width": 435,
+          "height": 256,
+          "margin": 75,
+          "opaque": 67695,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 96,
+          "top": 180,
+          "width": 435,
+          "height": 255,
+          "margin": 96,
+          "opaque": 67260,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-firefly-lanternfish-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-firefly-lanternfish_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 119,
+          "top": 277,
+          "width": 454,
+          "height": 271,
+          "margin": 54,
+          "opaque": 59698,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 59,
+          "top": 259,
+          "width": 455,
+          "height": 289,
+          "margin": 59,
+          "opaque": 60970,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 121,
+          "top": 133,
+          "width": 452,
+          "height": 268,
+          "margin": 54,
+          "opaque": 58657,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 82,
+          "top": 133,
+          "width": 439,
+          "height": 266,
+          "margin": 82,
+          "opaque": 56748,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-postfish-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-clover-postfish_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 85,
+          "top": 228,
+          "width": 503,
+          "height": 321,
+          "margin": 39,
+          "opaque": 97038,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 61,
+          "top": 228,
+          "width": 492,
+          "height": 322,
+          "margin": 61,
+          "opaque": 96762,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 78,
+          "top": 100,
+          "width": 520,
+          "height": 319,
+          "margin": 29,
+          "opaque": 97175,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 50,
+          "top": 100,
+          "width": 505,
+          "height": 318,
+          "margin": 50,
+          "opaque": 98699,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-lantern-hermit-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-acorn-lantern-hermit_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 161,
+          "top": 173,
+          "width": 414,
+          "height": 364,
+          "margin": 52,
+          "opaque": 85595,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 119,
+          "top": 173,
+          "width": 412,
+          "height": 356,
+          "margin": 96,
+          "opaque": 84100,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 170,
+          "top": 124,
+          "width": 412,
+          "height": 342,
+          "margin": 45,
+          "opaque": 81114,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 118,
+          "top": 118,
+          "width": 413,
+          "height": 354,
+          "margin": 96,
+          "opaque": 84167,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-letter-batfish-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-flower-letter-batfish_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 178,
+          "top": 173,
+          "width": 360,
+          "height": 400,
+          "margin": 54,
+          "opaque": 70338,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 164,
+          "top": 168,
+          "width": 371,
+          "height": 402,
+          "margin": 57,
+          "opaque": 71082,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 190,
+          "top": 96,
+          "width": 353,
+          "height": 416,
+          "margin": 84,
+          "opaque": 66458,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 181,
+          "top": 111,
+          "width": 360,
+          "height": 388,
+          "margin": 86,
+          "opaque": 69217,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-ray-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-clover-ray_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 95,
+          "top": 220,
+          "width": 513,
+          "height": 299,
+          "margin": 19,
+          "opaque": 74113,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 77,
+          "top": 281,
+          "width": 493,
+          "height": 242,
+          "margin": 57,
+          "opaque": 60786,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 90,
+          "top": 113,
+          "width": 518,
+          "height": 320,
+          "margin": 19,
+          "opaque": 75534,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 66,
+          "top": 144,
+          "width": 506,
+          "height": 289,
+          "margin": 55,
+          "opaque": 69645,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-woodgrain-turtle-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-woodgrain-turtle_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 110,
+          "top": 198,
+          "width": 455,
+          "height": 300,
+          "margin": 62,
+          "opaque": 79801,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 91,
+          "top": 198,
+          "width": 436,
+          "height": 325,
+          "margin": 91,
+          "opaque": 81340,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 131,
+          "top": 159,
+          "width": 439,
+          "height": 293,
+          "margin": 57,
+          "opaque": 74808,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 66,
+          "top": 158,
+          "width": 458,
+          "height": 307,
+          "margin": 66,
+          "opaque": 81154,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-lantern-keeper-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-lantern-keeper-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 167,
+          "top": 132,
+          "width": 401,
+          "height": 424,
+          "margin": 59,
+          "opaque": 85678,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 116,
+          "top": 173,
+          "width": 408,
+          "height": 384,
+          "margin": 70,
+          "opaque": 79971,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 158,
+          "top": 125,
+          "width": 409,
+          "height": 371,
+          "margin": 60,
+          "opaque": 77387,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 121,
+          "top": 86,
+          "width": 402,
+          "height": 417,
+          "margin": 86,
+          "opaque": 85332,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-acorn-warden-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-acorn-warden-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 128,
+          "top": 105,
+          "width": 458,
+          "height": 467,
+          "margin": 41,
+          "opaque": 105084,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 88,
+          "top": 161,
+          "width": 460,
+          "height": 413,
+          "margin": 53,
+          "opaque": 101796,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 132,
+          "top": 105,
+          "width": 467,
+          "height": 422,
+          "margin": 28,
+          "opaque": 102771,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 93,
+          "top": 66,
+          "width": 453,
+          "height": 453,
+          "margin": 66,
+          "opaque": 102936,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-waterlily-dancer-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-waterlily-dancer-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 144,
+          "top": 113,
+          "width": 435,
+          "height": 469,
+          "margin": 45,
+          "opaque": 97514,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 111,
+          "top": 189,
+          "width": 417,
+          "height": 392,
+          "margin": 46,
+          "opaque": 93108,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 132,
+          "top": 149,
+          "width": 450,
+          "height": 373,
+          "margin": 45,
+          "opaque": 100474,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 109,
+          "top": 87,
+          "width": 423,
+          "height": 434,
+          "margin": 87,
+          "opaque": 97423,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-clover-luck-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-clover-luck-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 159,
+          "top": 143,
+          "width": 381,
+          "height": 423,
+          "margin": 61,
+          "opaque": 91484,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 123,
+          "top": 143,
+          "width": 408,
+          "height": 424,
+          "margin": 60,
+          "opaque": 95749,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 149,
+          "top": 107,
+          "width": 400,
+          "height": 416,
+          "margin": 78,
+          "opaque": 91216,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 150,
+          "top": 107,
+          "width": 398,
+          "height": 420,
+          "margin": 79,
+          "opaque": 95462,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-post-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-flower-post-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 134,
+          "top": 159,
+          "width": 463,
+          "height": 415,
+          "margin": 30,
+          "opaque": 95110,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 72,
+          "top": 195,
+          "width": 466,
+          "height": 387,
+          "margin": 45,
+          "opaque": 93426,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 127,
+          "top": 147,
+          "width": 485,
+          "height": 370,
+          "margin": 15,
+          "opaque": 92103,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 74,
+          "top": 101,
+          "width": 463,
+          "height": 412,
+          "margin": 74,
+          "opaque": 93898,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-mushroom-child-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-mushroom-child-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 141,
+          "top": 141,
+          "width": 376,
+          "height": 423,
+          "margin": 63,
+          "opaque": 93618,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 125,
+          "top": 148,
+          "width": 418,
+          "height": 417,
+          "margin": 62,
+          "opaque": 90659,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 139,
+          "top": 126,
+          "width": 378,
+          "height": 411,
+          "margin": 90,
+          "opaque": 83827,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 155,
+          "top": 108,
+          "width": 392,
+          "height": 432,
+          "margin": 80,
+          "opaque": 99817,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-honey-teahouse-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-honey-teahouse-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 122,
+          "top": 87,
+          "width": 465,
+          "height": 492,
+          "margin": 40,
+          "opaque": 119150,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 79,
+          "top": 150,
+          "width": 464,
+          "height": 427,
+          "margin": 50,
+          "opaque": 107250,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 123,
+          "top": 133,
+          "width": 474,
+          "height": 421,
+          "margin": 30,
+          "opaque": 107602,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 110,
+          "top": 71,
+          "width": 455,
+          "height": 492,
+          "margin": 62,
+          "opaque": 115476,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-evening-lullaby-fairy-v1-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-evening-lullaby-fairy_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 167,
+          "top": 145,
+          "width": 409,
+          "height": 399,
+          "margin": 51,
+          "opaque": 87130,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 116,
+          "top": 208,
+          "width": 414,
+          "height": 332,
+          "margin": 87,
+          "opaque": 86426,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 167,
+          "top": 146,
+          "width": 412,
+          "height": 320,
+          "margin": 48,
+          "opaque": 82865,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 123,
+          "top": 90,
+          "width": 421,
+          "height": 386,
+          "margin": 83,
+          "opaque": 88410,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-waterlily-jellyfish-v3-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-waterlily-jellyfish_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 57,
+          "top": 117,
+          "width": 540,
+          "height": 427,
+          "margin": 30,
+          "opaque": 129411,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 64,
+          "top": 116,
+          "width": 507,
+          "height": 452,
+          "margin": 56,
+          "opaque": 126049,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 63,
+          "top": 77,
+          "width": 534,
+          "height": 428,
+          "margin": 30,
+          "opaque": 128134,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 50,
+          "top": 77,
+          "width": 521,
+          "height": 429,
+          "margin": 50,
+          "opaque": 125619,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "rod-thumbnail-clean",
+      "file": "assets/storage-upload/new/20261029-032100/equipment/rods/firefly/thumbnail.png",
+      "width": 1536,
+      "height": 1024,
+      "columns": 1,
+      "cellWidth": 1536,
+      "cellHeight": 1024,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 65,
+          "top": 29,
+          "width": 1412,
+          "height": 955,
+          "margin": 29,
+          "opaque": 130175,
+          "edgeAlpha": 0
+        }
+      ]
+    },
+    {
+      "id": "firefly-millennium-lantern-queen-swim8-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-millennium-lantern-queen_swim8_v1_sprite.png",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "cellWidth": 443,
+      "cellHeight": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 111,
+          "top": 143,
+          "width": 233,
+          "height": 201,
+          "margin": 99,
+          "opaque": 26398,
+          "edgeAlpha": 2
+        },
+        {
+          "frame": 1,
+          "left": 104,
+          "top": 141,
+          "width": 241,
+          "height": 198,
+          "margin": 98,
+          "opaque": 26204,
+          "edgeAlpha": 2
+        },
+        {
+          "frame": 2,
+          "left": 105,
+          "top": 159,
+          "width": 240,
+          "height": 180,
+          "margin": 98,
+          "opaque": 25790,
+          "edgeAlpha": 4
+        },
+        {
+          "frame": 3,
+          "left": 106,
+          "top": 150,
+          "width": 238,
+          "height": 193,
+          "margin": 99,
+          "opaque": 26381,
+          "edgeAlpha": 3
+        },
+        {
+          "frame": 4,
+          "left": 109,
+          "top": 115,
+          "width": 243,
+          "height": 200,
+          "margin": 91,
+          "opaque": 29538,
+          "edgeAlpha": 3
+        },
+        {
+          "frame": 5,
+          "left": 93,
+          "top": 86,
+          "width": 300,
+          "height": 232,
+          "margin": 50,
+          "opaque": 37271,
+          "edgeAlpha": 3
+        },
+        {
+          "frame": 6,
+          "left": 104,
+          "top": 114,
+          "width": 252,
+          "height": 206,
+          "margin": 87,
+          "opaque": 29998,
+          "edgeAlpha": 4
+        },
+        {
+          "frame": 7,
+          "left": 108,
+          "top": 115,
+          "width": 236,
+          "height": 200,
+          "margin": 99,
+          "opaque": 26301,
+          "edgeAlpha": 4
+        }
+      ]
+    },
+    {
+      "id": "firefly-village-elder-turtle-swim8-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-village-elder-turtle_swim8_v1_sprite.png",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "cellWidth": 443,
+      "cellHeight": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 73,
+          "top": 150,
+          "width": 290,
+          "height": 225,
+          "margin": 68,
+          "opaque": 34683,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 71,
+          "top": 151,
+          "width": 297,
+          "height": 230,
+          "margin": 62,
+          "opaque": 36476,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 60,
+          "top": 152,
+          "width": 321,
+          "height": 233,
+          "margin": 58,
+          "opaque": 38845,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 77,
+          "top": 152,
+          "width": 294,
+          "height": 229,
+          "margin": 62,
+          "opaque": 36231,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 4,
+          "left": 74,
+          "top": 140,
+          "width": 291,
+          "height": 233,
+          "margin": 70,
+          "opaque": 36583,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 5,
+          "left": 56,
+          "top": 140,
+          "width": 341,
+          "height": 226,
+          "margin": 46,
+          "opaque": 39914,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 6,
+          "left": 74,
+          "top": 140,
+          "width": 308,
+          "height": 248,
+          "margin": 55,
+          "opaque": 37456,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 7,
+          "left": 74,
+          "top": 141,
+          "width": 293,
+          "height": 233,
+          "margin": 69,
+          "opaque": 36634,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-first-firefly-spirit-swim8-v2-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-first-firefly-spirit_swim8_v1_sprite.png",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "cellWidth": 443,
+      "cellHeight": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 116,
+          "top": 148,
+          "width": 246,
+          "height": 187,
+          "margin": 81,
+          "opaque": 20943,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 143,
+          "top": 123,
+          "width": 231,
+          "height": 218,
+          "margin": 69,
+          "opaque": 23992,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 95,
+          "top": 151,
+          "width": 297,
+          "height": 193,
+          "margin": 51,
+          "opaque": 26306,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 98,
+          "top": 167,
+          "width": 300,
+          "height": 176,
+          "margin": 45,
+          "opaque": 22846,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 4,
+          "left": 96,
+          "top": 112,
+          "width": 283,
+          "height": 203,
+          "margin": 64,
+          "opaque": 26032,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 5,
+          "left": 152,
+          "top": 89,
+          "width": 223,
+          "height": 227,
+          "margin": 68,
+          "opaque": 23982,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 6,
+          "left": 106,
+          "top": 129,
+          "width": 289,
+          "height": 185,
+          "margin": 48,
+          "opaque": 24687,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 7,
+          "left": 121,
+          "top": 122,
+          "width": 255,
+          "height": 190,
+          "margin": 67,
+          "opaque": 21744,
+          "edgeAlpha": 1
+        }
+      ]
+    },
+    {
+      "id": "firefly-flower-dream-queen-swim8-v3-sprite",
+      "file": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-flower-dream-queen_swim8_v1_sprite.png",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "cellWidth": 443,
+      "cellHeight": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 87,
+          "top": 112,
+          "width": 273,
+          "height": 269,
+          "margin": 62,
+          "opaque": 41050,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 86,
+          "top": 113,
+          "width": 274,
+          "height": 269,
+          "margin": 61,
+          "opaque": 41649,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 86,
+          "top": 112,
+          "width": 275,
+          "height": 269,
+          "margin": 62,
+          "opaque": 41474,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 85,
+          "top": 112,
+          "width": 276,
+          "height": 270,
+          "margin": 61,
+          "opaque": 41630,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 4,
+          "left": 85,
+          "top": 110,
+          "width": 275,
+          "height": 272,
+          "margin": 61,
+          "opaque": 41779,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 5,
+          "left": 84,
+          "top": 110,
+          "width": 286,
+          "height": 272,
+          "margin": 61,
+          "opaque": 42492,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 6,
+          "left": 86,
+          "top": 110,
+          "width": 275,
+          "height": 272,
+          "margin": 61,
+          "opaque": 41738,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 7,
+          "left": 85,
+          "top": 110,
+          "width": 276,
+          "height": 272,
+          "margin": 61,
+          "opaque": 41708,
+          "edgeAlpha": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "checkedAt": "2026-10-28T20:32:01.452935+00:00",
+  "releasedAt": "2026-10-28T20:31:46.670Z",
+  "remoteMigration": {
+    "version": "20261028203146",
+    "name": "firefly_fairy_shallows_release"
+  },
+  "localMigrations": [
+    "20261028184202_firefly_fairy_shallows_catalog.sql",
+    "20261028184751_firefly_remote_facing_metadata.sql"
+  ],
+  "scope": "Only the two scoped firefly migrations applied together; existing baseline and history were not replayed or repaired.",
+  "speciesMatched": 63,
+  "habitatsMatched": 63,
+  "rightFacingFish": 37,
+  "regionMatched": true,
+  "blueprintMatched": true,
+  "rodMatched": true,
+  "pieces": 8,
+  "prices": [
+    {
+      "kind": "fish",
+      "rarity": "rare",
+      "count": 10,
+      "average": 260
+    },
+    {
+      "kind": "fish",
+      "rarity": "common",
+      "count": 15,
+      "average": 55
+    },
+    {
+      "kind": "decoration",
+      "rarity": "common",
+      "count": 6,
+      "average": 40
+    },
+    {
+      "kind": "fish",
+      "rarity": "epic",
+      "count": 8,
+      "average": 1200
+    },
+    {
+      "kind": "trash",
+      "rarity": "common",
+      "count": 7,
+      "average": 15
+    },
+    {
+      "kind": "trash",
+      "rarity": "rare",
+      "count": 5,
+      "average": 55
+    },
+    {
+      "kind": "decoration",
+      "rarity": "rare",
+      "count": 8,
+      "average": 180
+    },
+    {
+      "kind": "fish",
+      "rarity": "mythic",
+      "count": 4,
+      "average": 3400
+    }
+  ],
+  "unchangedFunctionHashes": {
+    "public.region_map": "50543aa6378c98a2d060facb9189d279",
+    "public.travel_region": "135f65cd49111e8eb4cd3caa689ea8e7",
+    "app_private.region_map": "13c8e3ceda70b49b0944b4a8a8cb0058",
+    "public.fishing_rod_state": "b27345f52d96dd426f11fcc62daba786",
+    "app_private.travel_region": "7f3826c7a43b34793174d96c3b178e70",
+    "app_private.fishing_rod_state": "6550b53b2d7db29c7e19735d585402bf",
+    "app_private.rod_habitat_weight": "69cec244d6a7bca1619ac4f52b15e9cd",
+    "app_private.fishing_discovery_candidates": "08fc629effcd178201dfaba17ccb15b0"
+  },
+  "limitations": [
+    "Full remote schema and migration-history equivalence not verified; pre-existing drift preserved.",
+    "Synthetic browser fixtures verified rendering; real-player catches were not performed."
+  ]
+}

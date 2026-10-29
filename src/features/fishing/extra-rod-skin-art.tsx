@@ -6,6 +6,7 @@ function CloudferryFloat(){
 }
 
 const materials:Record<string,{width:number;colors:string[];band:string;dash:string}>={
+ firefly:{width:5.2,colors:['#66492e','#caa46a','#6d8446'],band:'#d6c77c',dash:'1 2 1 21'},
  mechsanctum:{width:5.2,colors:['#425653','#d6b77a','#806846'],band:'#7bd5c5',dash:'1 2 1 21'},
  plunder:{width:5.4,colors:['#241f23','#785144','#34272a'],band:'#d6ab63',dash:'1.5 2 1.5 20'},
  nyamnyam:{width:5,colors:['#455a39','#e2c28a','#566e49'],band:'#efac82',dash:'1.5 2 1.5 20'},
@@ -81,6 +82,7 @@ export function ExtraFloat({id}:{id:string}){
  return <g data-skin-float={id}><ellipse rx="6.5" ry="9" fill="#6baaa7" stroke="#dce9d3"/><path d="M-6-2Q-3-5 0-2T6-2M-6 3Q-3 0 0 3T6 3" fill="none" stroke="#fff0d4" strokeWidth="1.4"/><path d="M0-15v6" stroke="#f6e4b9" strokeWidth="2"/></g>
 }
 export function ExtraGrip({id}:{id:string}){
+ if(id==='firefly')return <g data-skin-grip={id}><path d="M0-13V10M0-5Q-10-12-7-3Q-3 0 0-5M0 2Q9-5 8 2Q5 7 0 2" fill="#88a65b" stroke="#d6c77c" strokeWidth="1.3"/><ellipse cy="11" rx="4" ry="5" fill="#a87442" stroke="#e4c58a"/></g>
  if(id==='mechsanctum')return <g data-skin-grip={id}><path d="M-5-16H5M-5-10H5M-5-4H5" stroke="#d6b77a" strokeWidth="2"/><circle cy="6" r="4" fill="#7bd5c5" stroke="#806846"/></g>
  if(id==='plunder')return <g data-skin-grip={id}><path d="M-5-14H5M-5-8H5M-5-2H5" stroke="#ad4347" strokeWidth="3"/><circle cy="7" r="5" fill="#d6ab63"/><path d="M-2 6H2M0 4V10" stroke="#34272a" strokeWidth="1.5"/></g>
  if(id==='nyamnyam'||id==='swift')return <g data-skin-grip={id}><path d="M-5-14H5M-5-8H5M-5-2H5" stroke={id==='swift'?'#f4e4c3':'#ed9975'} strokeWidth="2"/><ellipse cy="6" rx="4" ry="6" fill={id==='swift'?'#d99935':'#fff0d5'} stroke="#d9b66f"/></g>

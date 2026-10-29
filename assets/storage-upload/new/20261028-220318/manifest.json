@@ -1,0 +1,82 @@
+{
+  "tool": "built-in image_gen",
+  "createdAt": "2026-10-28T22:03:18+09:00",
+  "items": [
+    {
+      "id": "halloween-pongi-candy-devil",
+      "name": "사탕 배달부 꼬마 악마 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "sell_price": 1240,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/halloween-pongi-candy-devil_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/halloween-pongi-candy-devil_v1_sprite.png",
+      "movement_type": "swim",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.68",
+      "speed": "0.034",
+      "size": 120,
+      "native_region_id": null,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "Epic painting style only"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "Pongi character identity only"
+        }
+      ],
+      "prompts": {
+        "initial": "Use case: stylized-concept. Asset type: single epic-tier Halloween aquarium collectible thumbnail. Image 1 is STYLE ONLY: match its soft fantasy illustration finish, refined colored contour lines, luminous but restrained materials, and smooth dimensional shading. Do NOT copy the stingray anatomy, purple star pattern, wings, checkerboard or UI. Image 2 is CHARACTER IDENTITY ONLY: Pongi, a warm caramel-brown baby OTTER with rounded ears, cream cheek-muzzle and belly, small brown nose, short whiskers, round little paws and a broad tapered otter tail. Preserve this recognizable otter identity and pink starfish accessory, NOT the fishing rod, hook or the thick cartoon outlines. Beautiful clean cute high-quality fantasy game illustration, simple readable silhouette, delicate warm contours, soft rich shading without plastic shine or thick black outlines. Face SCREEN RIGHT in a clear side or side-three-quarter profile. Head, mouth and snout point RIGHT; body and tail trail LEFT. Forward swimming toward right. One character only. Entire body, tail, outfit and props centered with at least 12% genuinely transparent margin on all sides. True alpha transparent PNG, crisp smooth antialiased edges, no white or black matte fringe, no detached specks. NO background, checkerboard, floor, cast shadow, text, labels, numbers, borders or watermark. No dense particles, fog or halo. Pongi wears a little soft deep-red devil headband with TWO tiny rounded horns, a short aubergine BAT-SHAPED FABRIC CAPE attached to shoulders, and a small pumpkin-shaped orange candy delivery pouch. Pink starfish remains beside one ear. Otter is swimming horizontally in a right-facing side-three-quarter pose: both forepaws hug the pumpkin pouch against chest, two little hind feet extend slightly backward to paddle, broad brown otter tail trails left. Three small wrapped pastel candies peek securely from the open top of the pouch, nothing floats outside. Tiny folded cape tips stream left in current. Cheerful determined delivery expression, cheek blush restrained. Cute cozy Halloween, no scary teeth or weapons. Clear separation between the otter paws, pumpkin pouch, cape and tail.",
+        "thumbnail": "Create a NEW square collectible ICON composition using the attached artwork only as character identity and rendering reference. This is NOT a tight crop. CAMERA ZOOMED FAR OUT. The complete character must occupy the CENTRAL 60% of a square canvas, surrounded by a WIDE 20% FULLY TRANSPARENT border on left, right, top and bottom. Center the BODY at the center of canvas, never align the face against the right edge. There must be abundant transparent empty space after the snout and whiskers on the RIGHT and after tail on the LEFT. Full character is small within canvas. Square width=height. A single complete character, keep its lovely exact face, outfit, colors, pink starfish and right-facing swimming posture. Caramel baby otter Pongi wearing red devil horns, small purple bat-shaped cape, both paws hug orange pumpkin candy bag, candies remain inside bag, feet paddle behind, otter tail trails left. Preserve softly shaded premium fantasy illustration, delicate colored lines, not bold cartoon lineart. NO exterior orange glow or any other background glow or fog. No background, floor, text, bubbles, detached particles or shadow. Actual alpha transparency everywhere outside the complete character. Entire whiskers, tail, costume must fit inside the central 60% without clipping. No panels or other characters.",
+        "sprite": "A square transparent PNG SPRITE ATLAS with a STRICT 2x2 grid of four TINY complete identical Pongi otter characters in widely separated quadrants. Each character occupies ONLY HALF (50%) of its own cell width. Huge transparent gutters: 25% of EACH CELL left and right. Character centers exactly at canvas positions (25%,25%), (75%,25%), (25%,75%), (75%,75%). The middle vertical 20% of the whole canvas is EMPTY TRANSPARENT SPACE. Outer left/right 12% of whole canvas is EMPTY TRANSPARENT SPACE. Do not crop or zoom in to fill the canvas. All FOUR heads, whiskers, tails and costumes must be fully present far from the cell boundaries. NO text or divider lines. Attached image is exact character identity, palette and style reference. Same warm brown baby otter wearing two red devil horns, pink starfish, purple bat-shaped cape, hugging pumpkin candy bag with both paws, candies inside. Face SCREEN RIGHT in all FOUR cells. Four subtle gradual SWIMMING poses: feet alternate gently backward, tail bends slightly, trailing cape/sheet cloth ripples in four phases. Keep head and torso at identical position and size relative to EACH cell, face and eyes unchanged, no body bobbing. Soft premium fantasy illustration with refined colored contours and smooth light/shading inside silhouette. Genuine alpha transparency, absolutely NO exterior glow or stray colored pixels, no dust, no speckles or shadow. Draw smooth continuous clean edges with no white matte rim. FOUR SMALL SEPARATE COMPLETE ANIMALS surrounded by abundant empty space; not a large zoomed subject. This atlas prioritizes transparent spacing over subject size."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-818712d5-3873-42af-a46f-cdf1baa5d7ea.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-a46c572f-96a9-4dc5-a2cd-415d6357df84.png"
+      }
+    },
+    {
+      "id": "halloween-pongi-ghost-blanket",
+      "name": "유령 이불 속 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "sell_price": 1220,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/halloween-pongi-ghost-blanket_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/halloween-pongi-ghost-blanket_v1_sprite.png",
+      "movement_type": "swim",
+      "swim_y_min": "0.12",
+      "swim_y_max": "0.55",
+      "speed": "0.027",
+      "size": 120,
+      "native_region_id": null,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "Epic painting style only"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "Pongi character identity only"
+        }
+      ],
+      "prompts": {
+        "initial": "Use case: stylized-concept. Asset type: single epic-tier Halloween aquarium collectible thumbnail. Image 1 is STYLE ONLY: match its soft fantasy illustration finish, refined colored contour lines, luminous but restrained materials, and smooth dimensional shading. Do NOT copy the stingray anatomy, purple star pattern, wings, checkerboard or UI. Image 2 is CHARACTER IDENTITY ONLY: Pongi, a warm caramel-brown baby OTTER with rounded ears, cream cheek-muzzle and belly, small brown nose, short whiskers, round little paws and a broad tapered otter tail. Preserve this recognizable otter identity and pink starfish accessory, NOT the fishing rod, hook or the thick cartoon outlines. Beautiful clean cute high-quality fantasy game illustration, simple readable silhouette, delicate warm contours, soft rich shading without plastic shine or thick black outlines. Face SCREEN RIGHT in a clear side or side-three-quarter profile. Head, mouth and snout point RIGHT; body and tail trail LEFT. Forward swimming toward right. One character only. Entire body, tail, outfit and props centered with at least 12% genuinely transparent margin on all sides. True alpha transparent PNG, crisp smooth antialiased edges, no white or black matte fringe, no detached specks. NO background, checkerboard, floor, cast shadow, text, labels, numbers, borders or watermark. No dense particles, fog or halo. Pongi is pretending to be a ghost under ONE soft pearl-white bedsheet draped over its head and upper body. Cozy cute pretend ghost, NOT a dead ghost. A roomy oval opening at the FRONT RIGHT clearly reveals the original caramel otter's cream muzzle, brown nose, whiskers and happy face pointing RIGHT. Rounded otter ears form two little bumps under the sheet top; pink starfish is pinned beside the right cheek opening. BOTH small brown forepaws hold the front hem near the chest opening. Two tiny hind feet and broad caramel otter tail emerge clearly underneath and trail to the LEFT as it swims forward RIGHT. Bedsheet has delicate pale-blue/lavender shaded folds and two short trailing hem folds, no glow fog, no stars, no extra ghost companion. A few tasteful stitches on hem, warm bright friendly expression. Side three-quarter profile, body leaning forward in a swimming pose rather than sitting upright, fully opaque solid white fabric, natural stable anatomy.",
+        "thumbnail": "Create a NEW square collectible ICON composition using the attached artwork only as character identity and rendering reference. This is NOT a tight crop. CAMERA ZOOMED FAR OUT. The complete character must occupy the CENTRAL 60% of a square canvas, surrounded by a WIDE 20% FULLY TRANSPARENT border on left, right, top and bottom. Center the BODY at the center of canvas, never align the face against the right edge. There must be abundant transparent empty space after the snout and whiskers on the RIGHT and after tail on the LEFT. Full character is small within canvas. Square width=height. A single complete character, keep its lovely exact face, outfit, colors, pink starfish and right-facing swimming posture. Caramel baby otter Pongi swimming under an ivory white ghost bedsheet, right-facing happy otter face visible through front opening, brown paws grip hem, ears make two cloth bumps, broad brown tail left, pink starfish pinned on sheet. Preserve softly shaded premium fantasy illustration, delicate colored lines, not bold cartoon lineart. NO exterior orange glow or any other background glow or fog. No background, floor, text, bubbles, detached particles or shadow. Actual alpha transparency everywhere outside the complete character. Entire whiskers, tail, costume must fit inside the central 60% without clipping. No panels or other characters.",
+        "sprite": "A square transparent PNG SPRITE ATLAS with a STRICT 2x2 grid of four TINY complete identical Pongi otter characters in widely separated quadrants. Each character occupies ONLY HALF (50%) of its own cell width. Huge transparent gutters: 25% of EACH CELL left and right. Character centers exactly at canvas positions (25%,25%), (75%,25%), (25%,75%), (75%,75%). The middle vertical 20% of the whole canvas is EMPTY TRANSPARENT SPACE. Outer left/right 12% of whole canvas is EMPTY TRANSPARENT SPACE. Do not crop or zoom in to fill the canvas. All FOUR heads, whiskers, tails and costumes must be fully present far from the cell boundaries. NO text or divider lines. Attached image is exact character identity, palette and style reference. Same warm brown baby otter under one ivory ghost bedsheet with pink starfish, smiling otter face open at front, both paws holding hem. Face SCREEN RIGHT in all FOUR cells. Four subtle gradual SWIMMING poses: feet alternate gently backward, tail bends slightly, trailing cape/sheet cloth ripples in four phases. Keep head and torso at identical position and size relative to EACH cell, face and eyes unchanged, no body bobbing. Soft premium fantasy illustration with refined colored contours and smooth light/shading inside silhouette. Genuine alpha transparency, absolutely NO exterior glow or stray colored pixels, no dust, no speckles or shadow. Draw smooth continuous clean edges with no white matte rim. FOUR SMALL SEPARATE COMPLETE ANIMALS surrounded by abundant empty space; not a large zoomed subject. This atlas prioritizes transparent spacing over subject size."
+      },
+      "sources": {
+        "thumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-4d6bb3b4-5ee2-40b5-bcf7-5c3e9fc166bc.png",
+        "sprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a18280-bf72-7690-85c8-b51634aa7638\\exec-6344941a-b2f9-405a-83be-c0f1934d69e8.png"
+      }
+    }
+  ]
+}

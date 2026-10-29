@@ -1,5 +1,39 @@
 # 원격 DB 조회 요약
 
+## 2026-10-29 유물 중복 보유
+
+17:13 KST, 프로젝트 `ewafafphiovbpjwogwzn`에 `20261029080222_relic_duplicate_inventory.sql`만 적용했다. 변경 대상 4개 함수의 사전 정의 해시가 로컬 기대 상태와 일치함을 확인하고, 기존 보유 행·장착 외래 키·발견 기록을 유지한 채 기본값 1의 양수 수량을 추가했다. 중복 낚시는 수량을 늘리고 판매는 여분 1개씩 차감하며 마지막 장착본은 보호한다. 기존 원격·로컬 이력 차이는 repair하지 않았다.
+
+적용 뒤 대상 4개 함수의 정의 해시·수량 제약·RLS·직접 수정 차단·익명 호출 차단을 재조회했다. 데이터가 없는 합성 식별자로 인증 조회의 보유 수 0을 확인하고 롤백했다. 획득·판매·재시도·발견 기록·장착 효과 및 계정 분리는 로컬 회귀로 검증했다. 세공 기능과 프런트엔드 운영 배포, 전체 원격 구조·이력 동등성은 확인 범위가 아니다.
+
+## 2026-10-29 누락된 섬 시설과 PNG 전환
+
+프로젝트 `ewafafphiovbpjwogwzn`에서 만선 승부장·오늘의 낚시 기록 RPC의 존재와 시설 카탈로그 누락을 조회했다. 벼룩시장·아이템 도감도 원격 시설 및 기본 템플릿에 없었고, 기본 템플릿의 조개 적금 좌표는 로컬 기대 상태와 달랐다. 전체 카탈로그나 기본 배치를 덮어쓰지 않고 `20261029063442_island_voyage_and_fishing_records.sql`로 해당 네 시설만 무료 등록하고 기본 템플릿에는 없는 배치만 추가했다. 기존 플레이어 섬과 지갑은 변경하지 않았다.
+
+적용 후 네 시설의 이름·가격·크기와 기본 템플릿의 단일 배치, 원격 조개 적금 좌표 보존을 재조회했다. 로컬에서는 기존 섬 보존과 재실행 시 중복 방지를 검증했다. 주요 네 시설의 PNG와 복원한 페이지는 현재 소스에 연결하고 브라우저의 기본·확대 화면에서 검수했다. PNG는 앱 정적 파일이며 DB 개체 카탈로그나 Storage에 등록하지 않았다. 기존 원격·로컬 이력 및 템플릿 차이는 유지했고, 전체 원격 구조 동등성이나 운영 프런트엔드 배포를 확인한 기록은 아니다.
+
+## 2026-10-29 벼룩시장 판매 가능 구매글
+
+15:09 KST, 프로젝트 `ewafafphiovbpjwogwzn`에서 기존 벼룩시장 조회·물품 payload·메뉴 요약 정의와 관련 인덱스를 확인했다. 변경 전 함수 해시가 로컬 기대 상태와 일치한 범위에서 `20261029060410_flea_sellable_opportunities.sql`만 적용했다. 구매글과 요청자 본인의 판매 가능한 보관 물품·연료를 비교하는 조회를 추가하고 같은 판정으로 메뉴에 판매 가능 건수를 반환한다. 전시·판매·거래 보관 중인 개체와 본인 글·마감 글은 제외하며, 페이지를 나누기 전에 필터링한다. 기존 거래 명령·잔액·플레이어 데이터는 변경하지 않았다.
+
+적용 뒤 새 조회와 메뉴 요약의 정의 해시가 로컬 재생 결과와 일치함을 확인했고, 익명 호출 차단·인증 호출 허용·내부 보조 함수의 직접 호출 차단을 재조회했다. 원격에서는 데이터가 없는 합성 식별자로 조회·메뉴 0건과 인증 누락 거절을 검사하고 트랜잭션을 롤백했다. 재고·거래 보관·본인 제외·페이지 계산은 로컬 합성 계정 회귀로 검증했다. 기존 원격 migration 이력 차이는 유지했다. 전체 원격 구조·이력 동등성과 운영 프런트엔드 배포·실제 유저 계정의 시각 검수는 확인 범위가 아니다.
+
+## 2026-10-28 냠냠바다 특급 퐁이 3종
+
+프로젝트 `ewafafphiovbpjwogwzn`에서 신규 ID 부재·지역·특급 가격대를 확인하고 `20261028144007_nyamnyam_three_pongi_collectibles.sql`만 적용했다. 원격에만 존재하는 기존 방향 컬럼은 별도 `20261028144617_nyamnyam_pongi_remote_facing_metadata.sql`로 해당 세 종의 오른쪽 값만 보완하며 로컬 기대 구조와의 차이는 유지했다. 카탈로그 정의 전체·판매가·냠냠 토착/서식지·이동·방향 및 할로윈 종료 후 획득 가능함과 공개 이미지 6장의 해시 일치를 재확인했다. 부분 근거는 `supabase/inspection/remote/nyamnyam-pongi/verification.json`과 생성 배치의 `storage-verification.json`에 있다. 다른 개체 변경·기존 이력 차이는 유지했으며 전체 원격 구조·이력 동등성이나 실제 플레이어의 낚시·프론트엔드 운영 배포 검증은 아니다.
+
+## 2026-10-28 할로윈 마법사·호박 마차 퐁이
+
+프로젝트 `ewafafphiovbpjwogwzn`에서 신규 ID 부재·기존 이벤트 기간을 확인한 뒤 `20261028141353_halloween_pongi_wizard_and_coach.sql`만 적용했다. 두 종의 카탈로그 정의 전체·가격·각 15개 해역과 현재 획득 가능·종료 시각 획득 불가를 재조회했으며 공개 이미지 4장의 로컬 해시 일치를 확인했다. 부분 근거는 `supabase/inspection/remote/halloween-pongi-extra/verification.json`과 생성 배치의 `storage-verification.json`에 보존한다. 기존 이력 차이는 repair하지 않았고 전체 원격 구조·이력 동등성이나 실제 플레이어 낚시·프론트엔드 운영 배포를 확인한 것은 아니다.
+
+## 2026-10-28 할로윈 특급 퐁이 2종
+
+프로젝트 `ewafafphiovbpjwogwzn`에서 신규 종 ID 부재와 기존 할로윈 기간을 확인한 뒤 `20261028131811_halloween_pongi_devil_and_ghost.sql`만 적용했다. 원격 기록 버전은 `20261028135253`이며 기존 이력 차이는 repair하지 않았다. 두 종의 카탈로그 정의 전체·판매가·각 15개 해역 연결과 현재 획득 가능·종료 시각 획득 불가를 재조회했다. 공개 이미지 4장의 해시 일치와 부분 조회 근거는 생성 배치의 `storage-verification.json`, `supabase/inspection/remote/halloween-pongi/verification.json`에 보존한다. 전체 원격 구조·이력 동등성, 실제 플레이어의 낚시 결과와 프론트엔드 운영 배포는 확인 범위가 아니다.
+
+## 2026-10-28 일반 공통 개체 4종
+
+프로젝트 `ewafafphiovbpjwogwzn`에서 신규 ID·이름의 부재와 해역 목록·일반 공통 개체 가격대를 읽고, `20261028125215_four_cute_common_collectibles.sql`만 적용했다. 신규 종 정의·판매가·이동 설정과 각 15개 해역 연결을 재조회했으며 공개 이미지 6장의 로컬/Storage SHA-256 일치를 확인했다. 로컬 CLI 버전은 `20261028125215`, 원격 기록 버전은 `20261028125600`이다. 기존 이력 차이는 repair하지 않았다. 부분 조회 근거는 `supabase/inspection/remote/cute-common/verification.json`, 이미지 근거는 해당 생성 배치의 `storage-verification.json`에 보존한다. 전체 원격 구조·이력 동등성, 실제 플레이어의 낚시 결과와 프론트엔드 운영 배포는 확인 범위가 아니다.
+
 ## 2026-10-28 장터 화면 배포 전 DB 반영
 
 프로젝트 `ewafafphiovbpjwogwzn`에서 납품 보상·새 글 요약의 변경 전 정의와 벼룩시장 조회 도우미 부재를 확인한 뒤 `single_merchant_bonus_and_flea_badges`를 적용했다. 적용 후 대상 함수들의 로컬 일치, 인증 사용자 실행 권한·비인증 사용자 차단과 등급별 1종 추가 보상을 다시 조회했다. 기존 주문·지급 영수증을 재작성하지 않는다. 로컬 CLI 버전은 `20261028085702`, MCP가 기록한 원격 버전은 `20261028092116`이며 같은 변경을 다시 적용하거나 이력을 자동 repair하지 않는다. 부분 확인 근거는 `supabase/inspection/remote/market-release/verification.json`에 보존하며 전체 스키마·이력 동등성 확인은 아니다.
@@ -585,3 +619,9 @@ Storage가 직접 DELETE를 차단해 최초 적용 시도는 롤백됐다. 비�
 - 프로젝트 `ewafafphiovbpjwogwzn`, 2026-10-26 21:08 KST. 기존 `app_private.menu_status()` 정의와 어선·개인 생산 작업 컬럼을 읽기 전용으로 확인한 뒤 `20261026120522_detailed_menu_activity.sql`만 CLI SQL로 적용했다. 원격 migration history 등록·repair는 하지 않았다.
 - 기존 요약·인증 조건을 유지하고 호출자 소유의 미판매 어선 수와 개인 생산 미수령 작업 완료시각만 추가했다. 적용 뒤 함수 정의, 공개 invoker·내부 definer, anon 실행 불가·authenticated 실행 가능을 재확인했다. 전체 원격 구조 비교와 실제 단말 UI는 확인 범위가 아니다.
 - 로컬 migration 재생, 카탈로그·권한·문서 검증 통과. 계정별 집계·비인증 차단·공용 캐시·기한 전환은 테스트로 검증한다. 프런트엔드 변경은 로컬이며 별도 커밋·배포가 필요하다.
+
+## 2026-10-28 future direct-fishing wait +1 second
+
+- Project: ewafafphiovbpjwogwzn; checked at 2026-10-28 11:56:26 UTC. Applied only local migration 20261028115413_increase_future_fishing_wait_one_second.sql via MCP; remote history version is 20261028115619. No history repair or unrelated pending migration was applied.
+- Requeried prepare_discovery_cast definition MD5: e1e696e2e30bcf62a857c0a3b355237f, matching the local expected definition. All 29 bait profiles have base bounds 13/25 seconds, including non-null night bounds. Rod/relic reductions remain unchanged.
+- This migration does not update prepared casts. Local PostgreSQL regression tests verify active-cast preservation, retries, and exactly +1 second for future casts with the same RNG seed in both confirmation/reward modes. All 14 targeted tests and db:verify passed. Full remote schema/history parity and individual live-cast timings were outside this check.

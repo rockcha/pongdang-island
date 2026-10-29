@@ -7,8 +7,9 @@ export function CollectionPage({animationPreview=false,items=false}:{animationPr
  const {session}=useAuth()
  const [params]=useSearchParams(),region=params.get('region')??'all'
  const initialRegion=regionIcons[region]?region:'all'
+ const initialTab=items&&params.get('tab')==='relic'?'relic':undefined
  return <section className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
   {animationPreview&&<p className="shrink-0 border-b px-4 py-3 text-xs text-muted-foreground">테스트용 도감 · 포획 기록과 관계없이 컬러 애니메이션을 확인해요.</p>}
-  <CollectionBook key={`${session?.user.id}:${animationPreview}:${initialRegion}:${items}`} mode={items?'items':'creatures'} previewAll={animationPreview} initialRegion={initialRegion}/>
+  <CollectionBook key={`${session?.user.id}:${animationPreview}:${initialRegion}:${items}:${initialTab}`} mode={items?'items':'creatures'} initialTab={initialTab} previewAll={animationPreview} initialRegion={initialRegion}/>
  </section>
 }

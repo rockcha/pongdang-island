@@ -5,10 +5,14 @@ import type {ExchangeAsset,ExchangeInventory} from '@/features/exchange/api'
 export type FleaItem={id:string;asset:ExchangeAsset;quantity:number;remaining:number;unit_price:number}
 export type FleaPost={id:string;owner_id:string;owner_name:string;owner_avatar_path?:string|null;side:'sell'|'buy';title:string;status:'active'|'completed'|'cancelled';escrow_gold:number;created_at:string;items:FleaItem[]}
 export type FleaFeed={items:FleaPost[];total:number}
-export type FleaFilter={side:'sell'|'buy';query:string;kind:string;mine:boolean;offset:number}
+export type FleaFilter={side:'sell'|'buy';query:string;kind:string;mine:boolean;offset:number;sellable?:boolean}
 export type FleaDraft={p_side:'sell'|'buy';p_title:string;p_items:{kind:'fuel'|'collectible';id:string;quantity:number;unit_price:number}[];p_operation_id:string}
 export type FleaTrade={p_post_id:string;p_items:{id:string;quantity:number}[];p_operation_id:string}
 export async function readFlea(filter:FleaFilter,signal:AbortSignal):Promise<FleaFeed>{
+ if(filter.sellable){
+  const {data,error}=await createClient().rpc('flea_sellable_state',{p_query:filter.query,p_offset:filter.offset}).abortSignal(signal)
+  if(error)throw error;return fuelDisplay(data)
+ }
  const {data,error}=await createClient().rpc('flea_state',{p_side:filter.side,p_query:filter.query,p_kind:filter.kind,p_mine:filter.mine,p_offset:filter.offset}).abortSignal(signal)
  if(error)throw error;return fuelDisplay(data)
 }
@@ -16,7 +20,7 @@ export async function readFleaInventory(signal:AbortSignal):Promise<ExchangeInve
  const {data,error}=await createClient().rpc('exchange_inventory',{}).abortSignal(signal)
  if(error)throw error;return fuelDisplay(data)
 }
-const effects={invalidate:['flea','new-content','flea-inventory','wallet','gifts','gift','inbox','exchange-inventory','storage','merchant','hall']}
+const effects={invalidate:['flea','new-content','flea-inventory','wallet','gifts','gift','inbox','exchange-inventory','storage','merchant','hall','menu-status']}
 export function postFlea(args:FleaDraft):Promise<FleaPost>{return accountCommand(async()=>{const {data,error}=await createClient().rpc('flea_post',args);if(error)throw error;return fuelDisplay(data)},effects)}
 export function tradeFlea(args:FleaTrade):Promise<FleaPost>{return accountCommand(async()=>{const {data,error}=await createClient().rpc('flea_trade',args);if(error)throw error;return fuelDisplay(data)},effects)}
 export function cancelFlea(args:{p_post_id:string;p_operation_id:string}):Promise<FleaPost>{return accountCommand(async()=>{const {data,error}=await createClient().rpc('flea_cancel',args);if(error)throw error;return fuelDisplay(data)},effects)}

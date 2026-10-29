@@ -4,7 +4,7 @@ import {useAuth} from '@/components/auth-provider'
 import {Button} from '@/components/ui/button'
 import {currentPushDevice,disablePush,enablePush,needsHomeScreen,pushCategories,defaultPushCategories,pushConfiguration,queuePushTest,savePushCategories,supportsPush,type PushCategory} from './push-device'
 
-const labels:Record<PushCategory,string>={'production':'연료 생산 완료','bait-production':'미끼 생산 완료',expedition:'통발 수확 준비',harbor:'어선 귀항','bait-production-expiring':'미끼 만료 5분 전','production-expiring':'연료 만료 5분 전'}
+const labels:Record<PushCategory,string>={'production':'연료 생산 완료','bait-production':'미끼 생산 완료',expedition:'통발 수확 준비',harbor:'어선 귀항','bait-production-expiring':'미끼 만료 5분 전','production-expiring':'연료 만료 5분 전','voyage-bets':'만선 승부장 · 출항 1시간 전'}
 export function PushSettings(){
  const {session}=useAuth()
  return <DeviceSettings key={session?.user.id??'guest'} userId={session?.user.id}/>

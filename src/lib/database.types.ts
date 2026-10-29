@@ -36,6 +36,10 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      today_fishing_records:{Args:Record<string,never>;Returns:import('@/features/fishing-records/api').TodayFishingRecords}
+      voyage_race_state:{Args:Record<string,never>;Returns:import('@/features/voyage-bets/api').VoyageState}
+      voyage_race_test_sample:{Args:Record<string,never>;Returns:import('@/features/voyage-bets/voyage-test-api').VoyageTestSample}
+      voyage_race_place:{Args:import('@/features/voyage-bets/api').VoyageBetRequest;Returns:import('@/features/voyage-bets/api').VoyageState}
       my_island_state:{Args:Record<string,never>;Returns:import('@/features/my-island/api').IslandSnapshot}
       save_my_island:{Args:{p_document:import('@/features/my-island/api').IslandDocument;p_revision:number;p_operation_id:string};Returns:import('@/features/my-island/api').IslandSaveResult}
       trade_island:{Args:{p_action:string;p_item_id:string;p_quantity:number;p_expected_price:number;p_operation_id:string};Returns:import('@/features/my-island/api').IslandTradeResult}
@@ -129,6 +133,7 @@ export type Database = {
       auction_bid:{Args:{p_id:string;p_amount:number;p_operation_id:string};Returns:import('@/features/auctions/api').Auction}
       auction_cancel:{Args:{p_id:string};Returns:import('@/features/auctions/api').Auction}
       flea_state:{Args:{p_side?:string;p_query?:string;p_kind?:string;p_mine?:boolean;p_offset?:number};Returns:import('@/features/flea-market/api').FleaFeed}
+      flea_sellable_state:{Args:{p_query?:string;p_offset?:number};Returns:import('@/features/flea-market/api').FleaFeed}
       flea_post:{Args:import('@/features/flea-market/api').FleaDraft;Returns:import('@/features/flea-market/api').FleaPost}
       flea_trade:{Args:import('@/features/flea-market/api').FleaTrade;Returns:import('@/features/flea-market/api').FleaPost}
       flea_cancel:{Args:{p_post_id:string;p_operation_id:string};Returns:import('@/features/flea-market/api').FleaPost}

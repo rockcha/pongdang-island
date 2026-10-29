@@ -29,7 +29,7 @@ import { HalloweenIcon } from '@/components/collection-filter-icons'
 import { limitedCollectionEvents } from './limited-events'
 import {IslandSelect} from '@/components/island-select'
 import {useAccountResource} from '@/lib/account-query'
-import {readRelics,type RelicState} from '@/features/relics/api'
+import {readRelics,relicQuantity,type RelicState} from '@/features/relics/api'
 
 const {collection:BookOpenText}=appArt
 
@@ -67,10 +67,10 @@ export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false,d
  </Dialog>
 }
 
-export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='all',rememberFiltersFor,mode='creatures' }: CollectionDialogProps & {previewAll?:boolean;initialRegion?:string;rememberFiltersFor?:string;mode?:'creatures'|'items'}) {
+export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='all',rememberFiltersFor,mode='creatures',initialTab }: CollectionDialogProps & {previewAll?:boolean;initialRegion?:string;rememberFiltersFor?:string;mode?:'creatures'|'items';initialTab?:'map'|'relic'}) {
  const [state, setState] = useState<CollectionState | null>(null)
  const [error, setError] = useState('')
- const [filters,setFilters]=useCollectionFilters(rememberFiltersFor,initialRegion)
+ const [filters,setFilters]=useCollectionFilters(rememberFiltersFor,initialRegion,initialTab)
  const {rarity,habitat}=filters
  const tab=mode==='items'?(filters.tab==='relic'?'relic':'map'):(filters.tab==='map'||filters.tab==='relic'?'all':filters.tab)
  const isMapBook=mode==='items'&&tab==='map'
@@ -143,6 +143,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
        <h3 title={s.name} className="mt-2 h-5 w-full truncate px-1 text-xs font-medium leading-5">{entryName(s)}</h3>
        {mapRegionName(s)&&<span className="w-full truncate px-1 text-[10px] text-muted-foreground">{mapRegionName(s)}</span>}
        {s.kind==='map'||s.kind==='relic'?<span className="mt-0.5 text-[11px] text-muted-foreground">{s.kind==='map'?(s.discovered?'획득 완료':'미획득'):(s.discovered?'발견 완료':'미발견')}</span>:<span aria-label={`가치 ${s.sell_price.toLocaleString('ko-KR')} 골드`} className="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] tabular-nums text-primary"><GoldIcon className="size-3.5"/>{s.sell_price.toLocaleString('ko-KR')}</span>}
+       {s.kind==='relic'&&relics.data&&<span className="mt-0.5 text-[10px] tabular-nums text-primary">보유 {relicQuantity(relics.data.relics.find(r=>r.id===(s.relicId??s.id.replace(/^relic-/,''))))}개</span>}
        {s.kind==='relic'&&<span className="mt-1 h-10 w-full px-2 text-[10px] leading-5 text-muted-foreground line-clamp-2"><RelicEffectText description={s.description}/></span>}
       </button>
       {onAddTemporary&&s.kind!=='map'&&s.kind!=='relic'&&<TooltipProvider><Tooltip><TooltipTrigger render={<Button type="button" size="icon" variant="secondary" aria-label={s.name+' 임시 넣기'} className="absolute left-0.5 top-0.5 z-10 size-9 rounded-lg border border-border bg-background/95 shadow-sm" onClick={()=>onAddTemporary(s)}/> }><Plus className="size-4"/></TooltipTrigger><TooltipContent>어항에 임시 넣기</TooltipContent></Tooltip></TooltipProvider>}

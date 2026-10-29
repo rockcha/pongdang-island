@@ -15,8 +15,8 @@ const useFilterStore = create<{
   set: (owner, filters) => set((state) => ({ owners: { ...state.owners, [owner]: filters } })),
 }))
 
-export function useCollectionFilters(owner?: string, initialRegion = 'all') {
-  const initial = useMemo(() => readCollectionFilters(owner, initialRegion), [owner, initialRegion])
+export function useCollectionFilters(owner?: string, initialRegion = 'all', initialTab?:CollectionFilters['tab']) {
+  const initial = useMemo(() => ({...readCollectionFilters(owner, initialRegion),...(initialTab?{tab:initialTab}:{})}), [owner, initialRegion, initialTab])
   const [local, setLocal] = useState(initial)
   const stored = useFilterStore((state) => (owner ? state.owners[owner] : undefined))
   const filters = owner ? (stored ?? initial) : local

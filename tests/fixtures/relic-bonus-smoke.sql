@@ -111,6 +111,13 @@ begin
    reset role;
    update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result='{}' where user_id=u and finished_at is null;
    continue;
+  elsif r.effect_kind in ('direct_relic_chance_percent','direct_map_chance_percent') then
+   if app_private.relic_bonus(r.effect_kind)<>r.effect_value then raise exception 'DISCOVERY_BONUS_WRONG %',r.id;end if;
+   set local role authenticated;
+   perform public.equip_relic(null,gen_random_uuid(),500);
+   reset role;
+   if app_private.relic_bonus(r.effect_kind)<>0 then raise exception 'DISCOVERY_BONUS_NOT_REMOVED %',r.id;end if;
+   continue;
   elsif r.effect_kind='trap_seconds_per_bait' then
    set local role authenticated;
    perform public.expedition_action('depart',gen_random_uuid(),'dinghy','pongdang','{"bait":2}');

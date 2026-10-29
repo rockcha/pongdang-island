@@ -1,0 +1,238 @@
+{
+  "results": [
+    {
+      "id": "rice-grain-amphipod",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-214526\\sources\\rice-grain-amphipod-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            230,
+            357,
+            944,
+            563
+          ],
+          "margin": 80,
+          "occupancy": 0.7527910685805422,
+          "opaque": 280454,
+          "transparent": 1279804,
+          "soft": 291840
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "rice-grain-amphipod",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-214526\\sources\\rice-grain-amphipod-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            54,
+            197,
+            569,
+            330
+          ],
+          "margin": 4,
+          "occupancy": 0.9074960127591707,
+          "opaque": 102938,
+          "transparent": 280530,
+          "soft": 112163
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            37,
+            196,
+            567,
+            335
+          ],
+          "margin": 23,
+          "occupancy": 0.9043062200956937,
+          "opaque": 102595,
+          "transparent": 281136,
+          "soft": 111621
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            53,
+            155,
+            570,
+            332
+          ],
+          "margin": 4,
+          "occupancy": 0.9090909090909091,
+          "opaque": 103860,
+          "transparent": 276091,
+          "soft": 116642
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            36,
+            155,
+            569,
+            332
+          ],
+          "margin": 22,
+          "occupancy": 0.9074960127591707,
+          "opaque": 104847,
+          "transparent": 275750,
+          "soft": 117003
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hat-limpet",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-214526\\sources\\hat-limpet-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            165,
+            340,
+            938,
+            605
+          ],
+          "margin": 151,
+          "occupancy": 0.748006379585327,
+          "opaque": 380448,
+          "transparent": 1186078,
+          "soft": 385627
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hat-limpet",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-214526\\sources\\hat-limpet-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            55,
+            174,
+            542,
+            347
+          ],
+          "margin": 30,
+          "occupancy": 0.8644338118022329,
+          "opaque": 123804,
+          "transparent": 265703,
+          "soft": 126815
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            32,
+            174,
+            542,
+            347
+          ],
+          "margin": 32,
+          "occupancy": 0.8644338118022329,
+          "opaque": 123652,
+          "transparent": 265720,
+          "soft": 126815
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            54,
+            119,
+            546,
+            345
+          ],
+          "margin": 27,
+          "occupancy": 0.8708133971291866,
+          "opaque": 122939,
+          "transparent": 266208,
+          "soft": 126340
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            29,
+            118,
+            545,
+            349
+          ],
+          "margin": 29,
+          "occupancy": 0.8692185007974481,
+          "opaque": 125069,
+          "transparent": 264497,
+          "soft": 128053
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shell-bead-curtain",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-214526\\sources\\shell-bead-curtain-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            164,
+            170,
+            976,
+            978
+          ],
+          "margin": 106,
+          "occupancy": 0.7799043062200957,
+          "opaque": 421207,
+          "transparent": 1119075,
+          "soft": 451636
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "missing-tooth-comb",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-214526\\sources\\missing-tooth-comb-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            160,
+            145,
+            984,
+            964
+          ],
+          "margin": 110,
+          "occupancy": 0.784688995215311,
+          "opaque": 296697,
+          "transparent": 1264752,
+          "soft": 306393
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

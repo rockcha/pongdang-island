@@ -1,5 +1,7 @@
 export const destinationArt = {
   '/profile': 'home',
+  '/voyage-bets': 'voyage-prediction',
+  '/fishing-records': 'fishing-log',
   '/island-news': 'newsstand',
   '/development-fund': 'fund',
   '/production-shop': 'fuel-stall',
@@ -10,6 +12,8 @@ export const destinationArt = {
   '/expeditions': 'trap-rack',
   '/farm': 'garden',
   '/exchange': 'market',
+  '/flea-market': 'flea-market',
+  '/item-collection': 'item-archive',
   '/merchant-orders': 'merchant-desk',
   '/hall-of-fame': 'podium',
   '/showcase': 'gallery',

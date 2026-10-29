@@ -5,15 +5,15 @@ export const placeGroups = [
     label: '내 섬',
     sections: [
       { label: '나의 공간', paths: ['/my-island', '/aquarium', '/profile'] },
-      { label: '쉬어가기', paths: ['/music-room', '/arcade'] },
+      { label: '쉬어가기', paths: ['/music-room', '/arcade', '/voyage-bets'] },
       { label: '골드 관리', paths: ['/savings'] },
     ],
   },
   {
     id: 'sea',
-    label: '바다',
+    label: '낚시',
     sections: [
-      { label: '낚시', paths: ['/harbor', '/fishing'] },
+      { label: '낚시', paths: ['/harbor', '/fishing', '/fishing-records'] },
       { label: '자동 낚시', paths: ['/expeditions', '/port'] },
     ],
   },

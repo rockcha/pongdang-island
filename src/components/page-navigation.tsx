@@ -39,7 +39,7 @@ export function pageNavigation(pathname:string,noticeCategory?:string){
  if(path==='/notifications')Icon=Mail
  if(path==='/download')Icon=Download
  if(/^\/(region|sailing)\//.test(path))Icon=FishingRod
- const fallback=action?.to??(path.startsWith('/friends/')?'/friends':/^\/(region|sailing)\//.test(path)?'/harbor':path.startsWith('/square/')?'/square':path==='/aquarium'?'/island-news':'/aquarium')
+ const fallback=action?.to??(path==='/fishing-records'?'/fishing':path.startsWith('/friends/')?'/friends':/^\/(region|sailing)\//.test(path)?'/harbor':path.startsWith('/square/')?'/square':path==='/aquarium'?'/island-news':'/aquarium')
  return {label,Icon,action,fallback}
 }
 

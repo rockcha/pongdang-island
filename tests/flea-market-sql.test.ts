@@ -26,6 +26,49 @@ beforeEach(async()=>{
  }
 })
 afterEach(async()=>{await db.exec('rollback')})
+it('shares caller-only sellable matches between the filter and menu summary',async()=>{
+ const wanted=await post('buy')
+ const sellable=(who:string,q='')=>user(who,'select public.flea_sellable_state($1,0) value',[q])
+ expect((await sellable(taker)).items.map((p:any)=>p.id)).toEqual([wanted.id])
+ expect((await sellable(maker)).total).toBe(0)
+ expect((await user(taker,'select public.menu_status() value')).flea.sellable).toBe(1)
+ expect((await sellable(taker,'없는 물건')).total).toBe(0)
+ await db.query("update public.player_wallets set inventory='{}' where user_id=$1",[taker])
+ await db.query('update public.player_collectibles set sold_at=now() where user_id=$1',[taker])
+ expect((await sellable(taker)).total).toBe(0)
+ expect((await user(taker,'select public.menu_status() value')).flea.sellable).toBe(0)
+ // Another player's inventory cannot make an empty account eligible.
+ expect((await sellable(other)).total).toBe(1)
+ await cancel(wanted.id)
+ expect((await sellable(other)).total).toBe(0)
+})
+it('filters eligible posts before counting and paging, without counting reserved collectibles',async()=>{
+ await db.query("update public.player_wallets set inventory='{}' where user_id=$1",[taker])
+ const wanted=await post('buy',[items[1]])
+ const reserved=await user(taker,'select public.flea_post($1,$2,$3,$4) value',['sell','맡긴 해삼',JSON.stringify([items[1]]),crypto.randomUUID()])
+ expect((await user(taker,'select public.flea_sellable_state() value')).total).toBe(0)
+ await cancel(reserved.id,crypto.randomUUID(),taker)
+ expect((await user(taker,'select public.flea_sellable_state() value')).total).toBe(0)
+ await claimAll(taker)
+ expect((await user(taker,'select public.flea_sellable_state() value')).total).toBe(1)
+ for(let i=0;i<21;i++){
+  const created=(await db.query("insert into app_private.flea_posts(owner_id,side,title,escrow_gold) values($1,'buy','추가 구매글',30) returning id",[maker])).rows[0].id
+  await db.query('insert into app_private.flea_lines(post_id,kind,item_id,asset,quantity,remaining,unit_price) select $1,kind,item_id,asset,1,1,unit_price from app_private.flea_lines where post_id=$2',[created,wanted.id])
+ }
+ const first=await user(taker,'select public.flea_sellable_state($1,0) value',['추가'])
+ const second=await user(taker,'select public.flea_sellable_state($1,20) value',['추가'])
+ expect(first.total).toBe(21);expect(first.items).toHaveLength(20);expect(second.items).toHaveLength(1)
+ expect(new Set([...first.items,...second.items].map((p:any)=>p.id)).size).toBe(21)
+ expect((await user(taker,'select public.menu_status() value')).flea.sellable).toBe(22)
+})
+it('protects sellable lookups from anonymous access, arbitrary identities and invalid pagination',async()=>{
+ for(const fn of ['public.flea_sellable_state(text,integer)','app_private.flea_sellable_state(text,integer)','app_private.flea_sellable_posts()']){
+  expect((await db.query('select has_function_privilege($1,$2,$3) allowed',['anon',fn,'execute'])).rows[0].allowed).toBe(false)
+ }
+ await expect(user(taker,'select * from app_private.flea_sellable_posts()')).rejects.toThrow('permission denied')
+ await expect(user(taker,'select public.flea_sellable_state($1,$2) value',['',-1])).rejects.toThrow('INVALID_FLEA')
+ await expect(user('','select public.flea_sellable_state() value')).rejects.toThrow('AUTH_REQUIRED')
+})
 it('announces only another player active sell or buy post and exposes no private rows',async()=>{
  const latest=async(who:string)=>(await user(who,'select public.new_content_state() value')).flea
  expect(await latest(taker)).toBeNull()

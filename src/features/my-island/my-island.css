@@ -92,6 +92,14 @@
   outline: none;
   cursor: pointer;
 }
+.island-building-art {
+  filter: saturate(1.17) contrast(1.06) drop-shadow(0 2px 1px #3b55451c);
+}
+.island-object:hover .island-building-art,
+.island-object:focus-visible .island-building-art {
+  filter: saturate(1.2) contrast(1.06) drop-shadow(0 0 3px #fff6cf);
+}
+.island-facility-caption { font-family: inherit; }
 .is-editing .island-object {
   cursor: move;
 }

@@ -3,6 +3,11 @@ import {afterEach,expect,it} from 'vitest'
 import {summarizeMenuActivity,MenuActivityLine,activityRemaining} from '@/components/menu-activity'
 import type {MenuStatus} from '@/lib/menu-status'
 afterEach(cleanup)
+it('shows sellable request counts rather than production collection wording',()=>{
+ render(<MenuActivityLine activity={{kind:'flea',running:0,ready:2}}/>)
+ expect(screen.getByText('2건 판매 가능')).toBeTruthy()
+ expect(screen.queryByText(/수령/)).toBeNull()
+})
 const now=Date.parse('2026-10-26T12:00:00Z'),past=new Date(now-60000).toISOString(),future=new Date(now+120000).toISOString()
 it('separates running, claimable and expired production and uses owned boats instead of dock slots',()=>{
  const summary={serverNow:new Date(now).toISOString(),production:{total:4,sites:[{completesAt:future,expiresAt:future},{completesAt:past,expiresAt:future},{completesAt:past,expiresAt:past}]},baitProduction:{total:0,sites:[]},harbor:{total:5,dockSlots:2,returnsAt:[past,future]},expedition:{returnsAt:future},personalBait:{completesAt:past},savings:{account:null}} satisfies MenuStatus

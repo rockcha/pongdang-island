@@ -9,12 +9,12 @@ import {sendPlayerFriendRequest} from '@/features/friends/api'
 import {socialErrorMessage} from '@/features/social/types'
 import {toast} from 'sonner'
 
-type Props={userId:string;nickname:string;avatarPath?:string|null;mine?:boolean;avatarClassName?:string}
+type Props={userId:string;nickname:string;avatarPath?:string|null;mine?:boolean;avatarClassName?:string;textOnly?:boolean}
 export function PlayerVisitMenu(props:Props){
  const {session}=useAuth()
  return <VisitMenu key={`${session?.user.id}:${props.userId}`} {...props}/>
 }
-function VisitMenu({userId,nickname,avatarPath,mine=false,avatarClassName='size-8'}:Props){
+function VisitMenu({userId,nickname,avatarPath,mine=false,avatarClassName='size-8',textOnly=false}:Props){
  const {session}=useAuth(),social=useSocial()
  const relationship=(social.requests??[]).find(r=>(r.sender_id===userId&&r.recipient_id===session?.user.id||r.recipient_id===userId&&r.sender_id===session?.user.id)&&r.status==='accepted')
   ??(social.requests??[]).find(r=>(r.sender_id===userId&&r.recipient_id===session?.user.id||r.recipient_id===userId&&r.sender_id===session?.user.id)&&r.status==='pending')
@@ -32,9 +32,9 @@ function VisitMenu({userId,nickname,avatarPath,mine=false,avatarClassName='size-
   finally{locked.current=false;if(alive.current)setBusy(false)}
  }
  return <Menu.Root>
-  <Menu.Trigger aria-label={`${nickname} 방문 메뉴`} title="방문하기" className="pointer-events-auto relative z-10 inline-flex size-11 shrink-0 items-center justify-center rounded-full outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-ring">
-   <PlayerAvatar nickname={nickname} path={avatarPath} className={avatarClassName}/>
-   <ChevronDown aria-hidden="true" className="absolute bottom-0.5 right-0 size-3 rounded-full bg-background text-primary"/>
+  <Menu.Trigger aria-label={`${nickname} 방문 메뉴`} title="방문하기" className={`pointer-events-auto relative z-10 inline-flex shrink-0 items-center justify-center outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-ring ${textOnly?'min-h-9 max-w-32 gap-0.5 rounded-md px-1 text-[11px] text-muted-foreground':'size-11 rounded-full'}`}>
+   {textOnly?<span className="truncate">{nickname}</span>:<PlayerAvatar nickname={nickname} path={avatarPath} className={avatarClassName}/>}
+   <ChevronDown aria-hidden="true" className={textOnly?'size-3 shrink-0 text-primary':'absolute bottom-0.5 right-0 size-3 rounded-full bg-background text-primary'}/>
   </Menu.Trigger>
   <Menu.Portal><Menu.Positioner align="start" sideOffset={6} collisionPadding={12} className="z-[80]"><Menu.Popup aria-label={`${nickname} 방문`} className="w-44 rounded-xl border border-border/60 bg-popover p-1 text-popover-foreground shadow-lg outline-none">
    {links.map(({label,to,icon:Icon})=><Menu.LinkItem key={to} render={<Link to={to} state={{aquariumVisit:true}}/>} className="flex min-h-11 items-center gap-2.5 rounded-lg px-3 text-xs outline-none transition-colors data-highlighted:bg-secondary/60"><Icon aria-hidden="true" className="size-4 text-primary"/>{label}</Menu.LinkItem>)}

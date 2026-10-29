@@ -25,6 +25,79 @@
 }
 
 .relic-slot { --relic-light: 212 170 81; }
+.relic-equipment-panel {
+ padding: .75rem 1rem;
+ border: 1px solid var(--border);
+ border-radius: 1.25rem;
+ background: radial-gradient(ellipse at 12% 70%, rgb(var(--relic-light) / .10), transparent 68%), var(--card);
+}
+.relic-equipped-medallion {
+ border: 1px solid rgb(var(--relic-light) / .22);
+ border-radius: 50%;
+ background: radial-gradient(circle, rgb(var(--relic-light) / .12), transparent 72%);
+}
+.relic-inventory-card {
+ display: flex;
+ align-items: center;
+ gap: .75rem;
+ padding: .875rem .75rem;
+ border: 1px solid var(--border);
+ border-radius: 1rem;
+ background: var(--card);
+}
+.relic-inventory-card[data-equipped='true'] {
+ border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+ background: color-mix(in srgb, var(--primary) 3%, var(--card));
+}
+.relic-inventory-thumbnail {
+ padding: .25rem;
+ border-radius: .875rem;
+ background: var(--secondary);
+}
+.relic-quantity-badge {
+ position: absolute;
+ right: -.125rem;
+ bottom: -.125rem;
+ padding: .0625rem .375rem;
+ border: 1px solid var(--border);
+ border-radius: .4rem;
+ background: var(--background);
+ color: var(--primary);
+ font-size: .625rem;
+ font-weight: 600;
+ font-variant-numeric: tabular-nums;
+}
+.relic-inventory-filter {
+ min-height: 2rem;
+ padding: .375rem .75rem;
+ border: 1px solid var(--border);
+ border-radius: 999px;
+ color: var(--muted-foreground);
+ font-size: .6875rem;
+ cursor: pointer;
+}
+.relic-inventory-filter[aria-pressed='true'] {
+ border-color: transparent;
+ background: var(--secondary);
+ color: var(--primary);
+ font-weight: 600;
+}
+.relic-crafting-entry {
+ display: flex;
+ align-items: center;
+ gap: .75rem;
+ padding: .75rem;
+ border: 1px solid var(--border);
+ border-radius: 1rem;
+ background: var(--card);
+ cursor: pointer;
+}
+.relic-crafting-entry:enabled:hover { background: var(--secondary); }
+.relic-crafting-entry:disabled { cursor: not-allowed; opacity: .65; }
+.relic-crafting-entry:focus-visible,.relic-inventory-filter:focus-visible {
+ outline: 2px solid var(--primary);
+ outline-offset: 2px;
+}
 .relic-slot[data-relic-rarity='rare'] { --relic-light: 107 169 207; }
 .relic-slot[data-relic-rarity='epic'] { --relic-light: 174 123 215; }
 .relic-slot[data-relic-rarity='mythic'] { --relic-light: 225 165 58; }

@@ -1,0 +1,27 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "checkedAt": "2026-10-28T14:17:17.428Z",
+  "scope": "Four public images match losslessly compressed local bytes",
+  "files": [
+    {
+      "path": "fish/epic/halloween-pongi-wizard-broom_v1_thumbnail.png",
+      "bytes": 991156,
+      "sha256": "3377e79e22d15569e905297fd177e8c9e31a76059760cb5664a4aa3f7deb4451"
+    },
+    {
+      "path": "fish/epic/halloween-pongi-wizard-broom_v1_sprite.png",
+      "bytes": 988377,
+      "sha256": "8690c6bc2a8ec6c1a5367d11d3f6a328a5fa2df0c2e503711d28173ffcfbe2de"
+    },
+    {
+      "path": "fish/epic/halloween-pongi-pumpkin-coach_v1_thumbnail.png",
+      "bytes": 1159866,
+      "sha256": "77873dd4ec8196a272ca906e9c1c1ce5f61d34fcfc0075b21dee15cc32fb1770"
+    },
+    {
+      "path": "fish/epic/halloween-pongi-pumpkin-coach_v1_sprite.png",
+      "bytes": 1019770,
+      "sha256": "f88302208fbb36393871ab9d5095823110890c221156571972c075678760a2f9"
+    }
+  ]
+}

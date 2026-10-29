@@ -1,0 +1,280 @@
+{
+  "results": [
+    {
+      "id": "nyamnyam-pongi-donut-float",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-232704\\sources\\nyamnyam-pongi-donut-float-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            79,
+            198,
+            1115,
+            899
+          ],
+          "margin": 60,
+          "occupancy": 0.8891547049441786,
+          "opaque": 583632,
+          "transparent": 974206,
+          "soft": 597623
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "nyamnyam-pongi-donut-float",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-232704\\sources\\nyamnyam-pongi-donut-float-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            129,
+            545,
+            418
+          ],
+          "margin": 33,
+          "occupancy": 0.8692185007974481,
+          "opaque": 139908,
+          "transparent": 238823,
+          "soft": 153843
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            27,
+            128,
+            548,
+            448
+          ],
+          "margin": 27,
+          "occupancy": 0.8740031897926634,
+          "opaque": 141057,
+          "transparent": 236181,
+          "soft": 156545
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            50,
+            97,
+            545,
+            432
+          ],
+          "margin": 32,
+          "occupancy": 0.8692185007974481,
+          "opaque": 137299,
+          "transparent": 237780,
+          "soft": 154977
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            18,
+            97,
+            557,
+            428
+          ],
+          "margin": 18,
+          "occupancy": 0.8883572567783095,
+          "opaque": 138893,
+          "transparent": 237024,
+          "soft": 155707
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "nyamnyam-pongi-little-baker",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-232704\\sources\\nyamnyam-pongi-little-baker-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            157,
+            106,
+            962,
+            1046
+          ],
+          "margin": 102,
+          "occupancy": 0.8341307814992025,
+          "opaque": 567272,
+          "transparent": 988719,
+          "soft": 583038
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "nyamnyam-pongi-little-baker",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-232704\\sources\\nyamnyam-pongi-little-baker-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            110,
+            116,
+            443,
+            484
+          ],
+          "margin": 27,
+          "occupancy": 0.7719298245614035,
+          "opaque": 123850,
+          "transparent": 258034,
+          "soft": 134601
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            70,
+            116,
+            439,
+            483
+          ],
+          "margin": 28,
+          "occupancy": 0.7703349282296651,
+          "opaque": 125228,
+          "transparent": 259371,
+          "soft": 133417
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            111,
+            63,
+            445,
+            484
+          ],
+          "margin": 63,
+          "occupancy": 0.7719298245614035,
+          "opaque": 123883,
+          "transparent": 251826,
+          "soft": 140753
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            79,
+            63,
+            439,
+            485
+          ],
+          "margin": 63,
+          "occupancy": 0.773524720893142,
+          "opaque": 124705,
+          "transparent": 252124,
+          "soft": 140511
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "nyamnyam-pongi-popcorn-courier",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-232704\\sources\\nyamnyam-pongi-popcorn-courier-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            62,
+            225,
+            1148,
+            797
+          ],
+          "margin": 44,
+          "occupancy": 0.9154704944178629,
+          "opaque": 465020,
+          "transparent": 1093104,
+          "soft": 478715
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "nyamnyam-pongi-popcorn-courier",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-232704\\sources\\nyamnyam-pongi-popcorn-courier-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            41,
+            164,
+            573,
+            396
+          ],
+          "margin": 13,
+          "occupancy": 0.9138755980861244,
+          "opaque": 116711,
+          "transparent": 259798,
+          "soft": 132918
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            28,
+            169,
+            561,
+            406
+          ],
+          "margin": 28,
+          "occupancy": 0.8947368421052632,
+          "opaque": 112818,
+          "transparent": 258070,
+          "soft": 134690
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            51,
+            118,
+            563,
+            389
+          ],
+          "margin": 13,
+          "occupancy": 0.89792663476874,
+          "opaque": 111577,
+          "transparent": 257970,
+          "soft": 134695
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            27,
+            120,
+            568,
+            382
+          ],
+          "margin": 27,
+          "occupancy": 0.9059011164274322,
+          "opaque": 116153,
+          "transparent": 257018,
+          "soft": 135687
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

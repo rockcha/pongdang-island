@@ -4,6 +4,10 @@ import type {RuntimeCaching} from 'workbox-build'
 // the key; a published artwork revision must never serve another revision.
 // Legacy, unversioned Storage images retain the existing seven-day lifetime.
 export const imageRuntimeCaching:RuntimeCaching[]=[{
+ urlPattern:({url,sameOrigin})=>sameOrigin&&/^\/game-art\/island\/[a-f0-9]{24}-(256|384)\.png$/.test(url.pathname)&&!url.search,
+ handler:'CacheFirst',
+ options:{cacheName:'game-art-island-v1',cacheableResponse:{statuses:[200],headers:{'Content-Type':'image/png'}},expiration:{maxEntries:96,maxAgeSeconds:180*24*60*60,purgeOnQuotaError:true}},
+},{
  urlPattern:/^https:\/\/ewafafphiovbpjwogwzn\.supabase\.co\/storage\/v1\/object\/public\/collectibles\/[^?]+_sprite\.(png|webp|jpe?g|avif|svg)(\?[^#]*)?$/i,
  handler:'CacheFirst',
  options:{cacheName:'game-art-sprites-v1',fetchOptions:{mode:'cors',credentials:'omit'},cacheableResponse:{statuses:[200]},expiration:{maxEntries:64,maxAgeSeconds:7*24*60*60,purgeOnQuotaError:true}},

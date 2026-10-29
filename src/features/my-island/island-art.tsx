@@ -1,4 +1,5 @@
 import {gardenKinds} from './garden-decoration-catalog'
+import {facilityPng,FacilityPngArt} from './facility-png-art'
 import {GardenDecoration} from './garden-decoration'
 import {WaterwayDecoration} from './waterway-decoration'
 import {
@@ -9,7 +10,8 @@ import {
 import { artGeometry,buildingRotationTransform,usesDirectionalFenceArt } from './island-art-sizing'
 import { HarborBuilding } from './harbor-building'
 import { DestinationBuilding, ShipyardBuilding } from './destination-building'
-import { BookPile, StorageChest, Lighthouse } from './landmark-art'
+import { StorageChest, Lighthouse } from './landmark-art'
+import { CreatureArchive } from './collection-market-art'
 import { ActivityLandmark } from './activity-landmarks'
 import type { Facility } from './island-model'
 import { supportsSavedRotation } from './island-model'
@@ -20,9 +22,10 @@ export function Building({ f, rotation = 0,label,connections }: { f: Facility; r
   if(gardenKinds.has(f.kind))return <GardenDecoration f={f} rotation={rotation} label={label} connections={connections}/>
   if(['bridge','stepping-stones','reeds'].includes(f.kind))return <WaterwayDecoration f={f} rotation={rotation}/>
   const { w, h, sx, sy, x, y } = artGeometry(f)
+  const png=facilityPng(f)
   return (
-    <g data-art-direction="0" transform={`translate(${x} ${y}) scale(${sx} ${sy})`}>
-      <NativeBuilding f={{ ...f, w, h }} />
+    <g className={f.category === 'building' ? 'island-building-art' : undefined} data-art-direction="0" transform={`translate(${x} ${y}) scale(${sx} ${sy})`}>
+      {png?<FacilityPngArt src={png} kind={f.kind}/>:<NativeBuilding f={{ ...f, w, h }} />}
     </g>
   )
 }
@@ -73,7 +76,7 @@ function NativeBuilding({ f }: { f: Facility }) {
     ].includes(f.kind)
   )
     return <ActivityLandmark facility={f} />
-  if (f.kind === 'books') return <BookPile />
+  if (f.kind === 'books') return <CreatureArchive />
   if (f.kind === 'stash') return <StorageChest />
   if (f.kind === 'lighthouse') return <Lighthouse />
   if (f.kind === 'destination') return <DestinationBuilding facility={f} />

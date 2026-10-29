@@ -1,0 +1,76 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261028-220318/fish/epic/halloween-pongi-candy-devil_v1_sprite.png",
+        "storage_path":  "fish/epic/halloween-pongi-candy-devil_v1_sprite.png",
+        "patch":  [
+                      415,
+                      310,
+                      45,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  2,
+                           "dy":  0,
+                           "rmse":  14.418737808837498
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -90,
+                           "rmse":  18.279802801895606
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  -89,
+                           "rmse":  15.186028980298838
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261028-220318/fish/epic/halloween-pongi-ghost-blanket_v1_sprite.png",
+        "storage_path":  "fish/epic/halloween-pongi-ghost-blanket_v1_sprite.png",
+        "patch":  [
+                      440,
+                      390,
+                      45,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -25,
+                           "dy":  0,
+                           "rmse":  15.910763053743869
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -112,
+                           "rmse":  15.567785725046205
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -23,
+                           "dy":  -112,
+                           "rmse":  9.68909549073449
+                       }
+                   ]
+    }
+]

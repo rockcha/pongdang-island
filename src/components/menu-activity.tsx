@@ -1,12 +1,13 @@
-﻿import {useEffect,useState} from 'react'
+import {useEffect,useState} from 'react'
 import {useAccountResource,useServerDeadlines} from '@/lib/account-query'
 import {readMenuStatus,type MenuStatus} from '@/lib/menu-status'
-export type MenuActivity={total?:number;running:number;ready:number;expired?:number;remaining?:number;single?:'유인'|'제작';unit?:string;kind?:'merchant'}
+export type MenuActivity={total?:number;running:number;ready:number;expired?:number;remaining?:number;single?:'유인'|'제작';unit?:string;kind?:'merchant'|'flea'}
 export function summarizeMenuActivity(summary:MenuStatus|undefined,now:number):Record<string,MenuActivity>{
  if(!summary)return {}
  const production=(data:MenuStatus['production']):MenuActivity=>({total:data.total,unit:'곳',running:data.sites.filter(s=>s.completesAt&&Date.parse(s.completesAt)>now).length,ready:data.sites.filter(s=>s.completesAt&&s.expiresAt&&Date.parse(s.completesAt)<=now&&Date.parse(s.expiresAt)>now).length,expired:data.sites.filter(s=>s.expiresAt&&Date.parse(s.expiresAt)<=now).length})
  const single=(date:string|null|undefined,label:'유인'|'제작'):MenuActivity=>({single:label,running:date&&Date.parse(date)>now?1:0,ready:date&&Date.parse(date)<=now?1:0,remaining:date?Math.max(0,Date.parse(date)-now):undefined})
  return {
+ ...(summary.flea?{'/flea-market':{kind:'flea' as const,running:0,ready:summary.flea.sellable}}:{}),
  ...(summary.merchant?{'/merchant-orders':{kind:'merchant' as const,running:0,ready:Date.parse(summary.merchant.resetsAt)>now?summary.merchant.ready:0}}:{}),
  '/production':production(summary.production),'/bait-production':production(summary.baitProduction),
  '/port':{total:summary.harbor.total,unit:'척',running:summary.harbor.returnsAt.filter(t=>Date.parse(t)>now).length,ready:summary.harbor.returnsAt.filter(t=>Date.parse(t)<=now).length},
@@ -25,6 +26,7 @@ export function useMenuActivity(){
  return summarizeMenuActivity(data,now)
 }
 export function MenuActivityLine({activity}:{activity:MenuActivity}){
+ if(activity.kind==='flea')return <span className="mt-0.5 block text-[10px] font-normal leading-4 text-muted-foreground">{activity.ready>0?`${activity.ready}건 판매 가능`:'이웃의 거래 글 보기'}</span>
  if(activity.kind==='merchant')return <span className="mt-0.5 block text-[10px] font-normal leading-4 text-muted-foreground">{activity.ready>0?`${activity.ready}건 바로 납품 가능`:'진행 중인 의뢰 보기'}</span>
  const {total,running,ready,expired=0,single,unit}=activity
  const parts:string[]=[]

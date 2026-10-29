@@ -1,0 +1,188 @@
+{
+  "results": [
+    {
+      "id": "halloween-pongi-wizard-broom",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-230237\\sources\\halloween-pongi-wizard-broom-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            47,
+            256,
+            1174,
+            755
+          ],
+          "margin": 33,
+          "occupancy": 0.9362041467304625,
+          "opaque": 453750,
+          "transparent": 1087715,
+          "soft": 484358
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "halloween-pongi-wizard-broom",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-230237\\sources\\halloween-pongi-wizard-broom-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            73,
+            229,
+            497,
+            335
+          ],
+          "margin": 57,
+          "occupancy": 0.7926634768740032,
+          "opaque": 86426,
+          "transparent": 285659,
+          "soft": 107156
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            55,
+            232,
+            505,
+            327
+          ],
+          "margin": 55,
+          "occupancy": 0.8054226475279107,
+          "opaque": 89542,
+          "transparent": 281136,
+          "soft": 111641
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            67,
+            160,
+            509,
+            330
+          ],
+          "margin": 51,
+          "occupancy": 0.8118022328548644,
+          "opaque": 90703,
+          "transparent": 277357,
+          "soft": 115550
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            52,
+            164,
+            506,
+            329
+          ],
+          "margin": 52,
+          "occupancy": 0.8070175438596491,
+          "opaque": 90559,
+          "transparent": 272484,
+          "soft": 120472
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "halloween-pongi-pumpkin-coach",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-230237\\sources\\halloween-pongi-pumpkin-coach-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            98,
+            216,
+            1048,
+            895
+          ],
+          "margin": 98,
+          "occupancy": 0.835725677830941,
+          "opaque": 542170,
+          "transparent": 1012570,
+          "soft": 559675
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "halloween-pongi-pumpkin-coach",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-230237\\sources\\halloween-pongi-pumpkin-coach-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            81,
+            159,
+            453,
+            369
+          ],
+          "margin": 81,
+          "occupancy": 0.722488038277512,
+          "opaque": 91614,
+          "transparent": 294116,
+          "soft": 98560
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            103,
+            159,
+            431,
+            369
+          ],
+          "margin": 93,
+          "occupancy": 0.6874003189792663,
+          "opaque": 94257,
+          "transparent": 292029,
+          "soft": 100573
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            129,
+            159,
+            405,
+            369
+          ],
+          "margin": 93,
+          "occupancy": 0.645933014354067,
+          "opaque": 95443,
+          "transparent": 290835,
+          "soft": 101807
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            84,
+            159,
+            450,
+            369
+          ],
+          "margin": 84,
+          "occupancy": 0.7177033492822966,
+          "opaque": 94166,
+          "transparent": 291599,
+          "soft": 101045
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

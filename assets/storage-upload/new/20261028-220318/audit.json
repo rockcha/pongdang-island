@@ -1,0 +1,188 @@
+{
+  "results": [
+    {
+      "id": "halloween-pongi-candy-devil",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-220318\\sources\\halloween-pongi-candy-devil-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            119,
+            337,
+            1031,
+            627
+          ],
+          "margin": 104,
+          "occupancy": 0.8221690590111643,
+          "opaque": 344569,
+          "transparent": 1217748,
+          "soft": 353917
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "halloween-pongi-candy-devil",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-220318\\sources\\halloween-pongi-candy-devil-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            87,
+            229,
+            460,
+            292
+          ],
+          "margin": 80,
+          "occupancy": 0.733652312599681,
+          "opaque": 72200,
+          "transparent": 309461,
+          "soft": 83284
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            131,
+            230,
+            416,
+            288
+          ],
+          "margin": 80,
+          "occupancy": 0.6634768740031898,
+          "opaque": 68069,
+          "transparent": 312387,
+          "soft": 80428
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            98,
+            141,
+            448,
+            286
+          ],
+          "margin": 81,
+          "occupancy": 0.7145135566188198,
+          "opaque": 71849,
+          "transparent": 306932,
+          "soft": 85983
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            132,
+            141,
+            415,
+            298
+          ],
+          "margin": 80,
+          "occupancy": 0.6618819776714514,
+          "opaque": 68787,
+          "transparent": 309725,
+          "soft": 83189
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "halloween-pongi-ghost-blanket",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-220318\\sources\\halloween-pongi-ghost-blanket-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            183,
+            385,
+            909,
+            510
+          ],
+          "margin": 162,
+          "occupancy": 0.7248803827751196,
+          "opaque": 273622,
+          "transparent": 1291066,
+          "soft": 280763
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "halloween-pongi-ghost-blanket",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261028-220318\\sources\\halloween-pongi-ghost-blanket-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            117,
+            307,
+            436,
+            255
+          ],
+          "margin": 65,
+          "occupancy": 0.6953748006379585,
+          "opaque": 66628,
+          "transparent": 317455,
+          "soft": 75253
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            91,
+            307,
+            438,
+            266
+          ],
+          "margin": 54,
+          "occupancy": 0.6985645933014354,
+          "opaque": 65343,
+          "transparent": 315777,
+          "soft": 76952
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            101,
+            193,
+            453,
+            270
+          ],
+          "margin": 73,
+          "occupancy": 0.722488038277512,
+          "opaque": 71751,
+          "transparent": 306968,
+          "soft": 85846
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            90,
+            194,
+            440,
+            262
+          ],
+          "margin": 90,
+          "occupancy": 0.7017543859649122,
+          "opaque": 68124,
+          "transparent": 307704,
+          "soft": 85186
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

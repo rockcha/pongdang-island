@@ -127,17 +127,17 @@ export function resourceChanged<T>(
 
 export const resourceEvents: Record<string, string[]> = {
   'board-changed':['new-content'],
-  'exchange-changed':['new-content'],
+  'exchange-changed':['new-content','flea','menu-status','flea-inventory'],
   'showcase-changed':['new-content'],
-  'flea-changed':['flea','new-content'],
-  'wallet-changed': ['wallet','flea-inventory'],
+  'flea-changed':['flea','new-content','menu-status'],
+  'wallet-changed': ['wallet','flea-inventory','flea','menu-status'],
   'attendance-changed': ['wallet'],
   'experience-changed': ['experience'],
   'personal-bait-changed': ['menu-status'],
-  'production-changed': ['production', 'wallet', 'menu-status','flea-inventory'],
-  'bait-production-changed': ['bait-production', 'wallet', 'menu-status','flea-inventory'],
-  'harbor-changed': ['harbor', 'wallet', 'menu-status','flea-inventory'],
-  'expedition-changed': ['expedition', 'wallet', 'menu-status','flea-inventory'],
+  'production-changed': ['production', 'wallet', 'menu-status','flea-inventory','flea'],
+  'bait-production-changed': ['bait-production', 'wallet', 'menu-status','flea-inventory','flea'],
+  'harbor-changed': ['harbor', 'wallet', 'menu-status','flea-inventory','flea'],
+  'expedition-changed': ['expedition', 'wallet', 'menu-status','flea-inventory','flea'],
   'savings-changed': ['savings', 'wallet', 'menu-status'],
   'relic-loadout-changed': [
     'relics',
@@ -150,6 +150,7 @@ export const resourceEvents: Record<string, string[]> = {
   ],
   'collectibles-changed': [
     'today-fishing-records',
+    'flea',
     'flea-inventory',
     'merchant',
     'menu-status',
@@ -160,8 +161,8 @@ export const resourceEvents: Record<string, string[]> = {
     'exchange-inventory',
     'titles',
   ],
-  'aquarium-changed': ['aquarium', 'storage', 'collection', 'merchant', 'menu-status','flea-inventory'],
-  'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox', 'merchant', 'menu-status','flea-inventory'],
+  'aquarium-changed': ['aquarium', 'storage', 'collection', 'merchant', 'menu-status','flea-inventory','flea'],
+  'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox', 'merchant', 'menu-status','flea-inventory','flea'],
   'friends-changed': ['friend-aquarium', 'aquarium-likes', 'friend-expedition'],
 }
 let subscribers = 0

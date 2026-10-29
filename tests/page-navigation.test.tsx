@@ -3,7 +3,7 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {MemoryRouter,useLocation} from 'react-router'
 vi.mock('@/components/header-place-navigation',async original=>{
  const actual=await original<typeof import('@/components/header-place-navigation')>()
- return {...actual,HeaderPlaceNavigation:()=> <nav aria-label="카테고리 메뉴">내 섬 · 바다 · 생활 · 장터 · 광장</nav>}
+ return {...actual,HeaderPlaceNavigation:()=> <nav aria-label="카테고리 메뉴">내 섬 · 낚시 · 생활 · 장터 · 광장</nav>}
 })
 import {PageNavigation,pageNavigation} from '@/components/page-navigation'
 afterEach(()=>{cleanup();localStorage.removeItem('pongdang:page-navigation-style');window.history.replaceState(null,'')})

@@ -13,6 +13,8 @@ it('separates small thumbnails, remote originals, sprite sheets and backgrounds 
   ['https://pongdang.test/game-art/thumbnails/0123456789abcdef01234567-320.webp','game-art-small-v1'],
   ['https://pongdang.test/game-art/background-previews/0123456789abcdef01234567-960.webp','game-art-background-previews-v1'],
   ['https://pongdang.test/game-art/rod-shop/reel/0123456789abcdef01234567-320.webp','game-art-rod-shop-v1'],
+  ['https://pongdang.test/game-art/island/0123456789abcdef01234567-384.png','game-art-island-v1'],
+  ['https://pongdang.test/game-art/island/0123456789abcdef01234567-256.png','game-art-island-v1'],
   ['https://pongdang.test/aquarium/swim/fish_swim8_v1_sprite.png','aquarium-action-art-v1'],
  ]){const routes=matches(url);expect(routes).toHaveLength(1);expect(routes[0].options?.cacheName).toBe(cache)}
 })
@@ -24,6 +26,9 @@ it('excludes signed URLs, accounts, RPCs, avatars, audio, other projects and unv
   'https://pongdang.test/game-art/thumbnails/mutable.webp','https://pongdang.test/aquarium/swim/fish_sprite.png',
   'https://another.test/game-art/background-previews/0123456789abcdef01234567-960.webp',
   'https://pongdang.test/game-art/background-previews/mutable.webp',
+  'https://pongdang.test/game-art/island/mutable.png',
+  'https://pongdang.test/game-art/island/0123456789abcdef01234567-384.png?v=1',
+  'https://another.test/game-art/island/0123456789abcdef01234567-384.png',
  ])expect(matches(url)).toHaveLength(0)
 })
 it('preserves revision query strings, rejects failed responses and limits each cache independently',()=>{
@@ -34,5 +39,5 @@ it('preserves revision query strings, rejects failed responses and limits each c
  }
  expect(imageRuntimeCaching.find(r=>r.options?.cacheName==='game-art-small-v1')?.options?.expiration?.maxEntries).toBe(1024)
  expect(imageRuntimeCaching.find(r=>r.options?.cacheName==='game-art-sprites-v1')?.options?.expiration?.maxEntries).toBe(64)
- for(const r of imageRuntimeCaching.slice(0,3)){expect(r.options?.fetchOptions?.mode).toBe('cors');expect(r.options?.expiration?.maxAgeSeconds).toBe(604800)}
+ for(const r of imageRuntimeCaching.filter(r=>r.options?.fetchOptions)){expect(r.options?.fetchOptions?.mode).toBe('cors');expect(r.options?.expiration?.maxAgeSeconds).toBe(604800)}
 })

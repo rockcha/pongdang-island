@@ -6,7 +6,7 @@ import {appQueryClient} from '@/lib/account-cache'
 import {CollectionBook,CollectionDialog} from '@/features/collection/collection-dialog'
 const {load}=vi.hoisted(()=>({load:vi.fn()}))
 const relicApi=vi.hoisted(()=>({read:vi.fn()}))
-vi.mock('@/features/relics/api',()=>({readRelics:relicApi.read}))
+vi.mock('@/features/relics/api',async original=>({...await original<typeof import('@/features/relics/api')>(),readRelics:relicApi.read}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name,className}:{name:string;className?:string})=><span role="img" aria-label={name} className={className}/>}))
@@ -122,7 +122,7 @@ it('distinguishes undiscovered, currently owned and previously discovered specie
 it('uses acquired maps and actual relic ownership rather than relic discovery history',async()=>{
  const relic=(id:string)=>({...base,id:'relic-'+id,relicId:id,name:id,kind:'relic',rarity:'rare',sell_price:0,discovered:true,habitats:[]})
  const acquired={...map,id:'acquired-map',name:'획득한 지도',discovered:true}
- relicApi.read.mockResolvedValue({relics:[{id:'kept',owned:true},{id:'sold',owned:false}]})
+ relicApi.read.mockResolvedValue({relics:[{id:'kept',owned:true,quantity:3},{id:'sold',owned:false,quantity:0}]})
  load.mockResolvedValue({items:[],catalog:[acquired,map,relic('kept'),relic('sold')]})
  render(<CollectionBook mode="items"/>);await screen.findByRole('article',{name:'획득한 지도'})
  expect(screen.queryByRole('combobox',{name:'지도 해역'})).toBeNull()
@@ -130,6 +130,8 @@ it('uses acquired maps and actual relic ownership rather than relic discovery hi
  fireEvent.click(screen.getByRole('button',{name:'유물'}))
  await selectStatus('발견')
  await waitFor(()=>expect(cards()).toEqual(['kept','sold']))
+ expect(await within(screen.getByRole('article',{name:'kept'})).findByText('보유 3개')).toBeTruthy()
+ expect(await within(screen.getByRole('article',{name:'sold'})).findByText('보유 0개')).toBeTruthy()
  expect(screen.queryByRole('combobox',{name:'도감 상태'})).toBeNull()
  await selectStatus('미발견');expect(cards()).toEqual([])
  await selectStatus('전체');expect(cards()).toEqual(['kept','sold'])
@@ -158,6 +160,16 @@ it('shows map pieces and relics in their own categories without placement or sal
  expect(add).not.toHaveBeenCalled()
 })
 
+it('starts on the requested relic tab and still allows switching to maps',async()=>{
+ const relic={...base,id:'relic-test',relicId:'test',kind:'relic',name:'작은 유물',rarity:'rare',sell_price:0,discovered:true,habitats:[]}
+ load.mockResolvedValue({items:[],catalog:[map,relic]})
+ render(<CollectionBook mode="items" initialTab="relic"/>)
+ expect(await screen.findByRole('article',{name:'작은 유물'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'유물'}).getAttribute('aria-pressed')).toBe('true')
+ fireEvent.click(screen.getByRole('button',{name:'지도 조각'}))
+ expect(screen.getByRole('article',{name:'지도 조각'})).toBeTruthy()
+ expect(screen.queryByRole('article',{name:'작은 유물'})).toBeNull()
+})
 it('leaves the relic category empty when no relics have been registered',async()=>{
  load.mockResolvedValue({items:[],catalog:[shared,map]})
  render(<CollectionBook mode="items"/>)

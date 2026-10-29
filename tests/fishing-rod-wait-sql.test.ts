@@ -41,8 +41,8 @@ it('subtracts the equipped owned rod bonus once and preserves existing casts and
     await db.query("select public.prepare_fishing('pongdang','bait',$1,$2)",[op,confirm])
     const cast=await saved(op),wait=Number(cast.wait_seconds)
     expect(baseWait-wait,rod.id).toBeCloseTo(rod.wait_reduction_seconds,8)
-    expect(wait).toBeGreaterThanOrEqual(12-rod.wait_reduction_seconds)
-    expect(wait).toBeLessThanOrEqual(24-rod.wait_reduction_seconds)
+    expect(wait).toBeGreaterThanOrEqual(13-rod.wait_reduction_seconds)
+    expect(wait).toBeLessThanOrEqual(25-rod.wait_reduction_seconds)
     const lifetime=(Date.parse(cast.expires_at)-Date.parse(cast.created_at))/1000
     expect(lifetime).toBeCloseTo(confirm?86400:wait+180,2)
     await db.query("select public.equip_fishing_rod('basic')")

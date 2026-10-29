@@ -3,7 +3,9 @@ import {accountCommand} from '@/lib/account-command'
 import {createClient} from '@/lib/client'
 import type {Rarity} from '@/lib/game/rarity'
 
-export type Relic={id:string;name:string;description:string;rarity:Rarity;thumbnail_path:string;owned:boolean;discovered?:boolean;sell_price:number;effect_kind:string;effect_value:number}
+export type Relic={id:string;name:string;description:string;rarity:Rarity;thumbnail_path:string;owned:boolean;quantity?:number;discovered?:boolean;sell_price:number;effect_kind:string;effect_value:number}
+// Older cached responses contain only ownership. Never count a missing copy twice.
+export function relicQuantity(relic?:Pick<Relic,'owned'|'quantity'>){return relic?.quantity??(relic?.owned?1:0)}
 export type RelicState={equippedId:string|null;changeFee:number;equipFee:number;unequipFee:number;relics:Relic[];replayed?:boolean}
 export async function loadRelics(fresh = false) {
   return readAccountResource('relics', readRelics, { fresh })

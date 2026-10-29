@@ -11,9 +11,9 @@ export const placeGroups = [
   },
   {
     id: 'sea',
-    label: '바다',
+    label: '낚시',
     sections: [
-      { label: '낚시', paths: ['/harbor', '/fishing'] },
+      { label: '낚시', paths: ['/harbor', '/fishing', '/fishing-records'] },
       { label: '자동 낚시', paths: ['/expeditions', '/port'] },
     ],
   },

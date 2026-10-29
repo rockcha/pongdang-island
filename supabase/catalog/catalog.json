@@ -5550,6 +5550,78 @@
       "travel_direction": "both"
     },
     {
+      "id": "halloween-pongi-candy-devil",
+      "kind": "fish",
+      "name": "사탕 배달부 꼬마 악마 퐁이",
+      "description": "작은 악마 뿔과 박쥐 망토를 두른 퐁이. 호박 가방 속 사탕을 두 팔로 꼭 안고, 친구들에게 달콤한 할로윈을 배달하러 물살을 헤쳐 나가요.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.68",
+      "speed": "0.034",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/halloween-pongi-candy-devil_v1_thumbnail.png",
+      "sell_price": 1240,
+      "sprite_sheet_path": "fish/epic/halloween-pongi-candy-devil_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-pongi-ghost-blanket",
+      "kind": "fish",
+      "name": "유령 이불 속 퐁이",
+      "description": "하얀 이불을 뒤집어쓰고 유령인 척하는 퐁이. 분홍 불가사리와 동그란 얼굴이 빼꼼 보이고, 이불 끝은 물살을 따라 부드럽게 나부껴요.",
+      "swim_y_min": "0.12",
+      "swim_y_max": "0.55",
+      "speed": "0.027",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/halloween-pongi-ghost-blanket_v1_thumbnail.png",
+      "sell_price": 1220,
+      "sprite_sheet_path": "fish/epic/halloween-pongi-ghost-blanket_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-pongi-pumpkin-coach",
+      "kind": "fish",
+      "name": "호박 마차 운전사 퐁이",
+      "description": "동그란 호박 마차의 운전석에 앉은 퐁이. 잎사귀 추진기를 돌리고 따뜻한 창문 불빛을 밝히며 친구들을 할로윈 잔치로 데려가요.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.74",
+      "speed": "0.029",
+      "size": 144,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/halloween-pongi-pumpkin-coach_v1_thumbnail.png",
+      "sell_price": 1260,
+      "sprite_sheet_path": "fish/epic/halloween-pongi-pumpkin-coach_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-pongi-wizard-broom",
+      "kind": "fish",
+      "name": "물살 가르는 꼬마 마법사 퐁이",
+      "description": "끝이 접힌 마법사 모자와 청록 망토를 두른 퐁이. 빗자루를 꼭 붙잡고 모자가 날아가지 않게 누르며 할로윈의 물살을 씩씩하게 헤쳐 나가요.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.65",
+      "speed": "0.041",
+      "size": 128,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/halloween-pongi-wizard-broom_v1_thumbnail.png",
+      "sell_price": 1240,
+      "sprite_sheet_path": "fish/epic/halloween-pongi-wizard-broom_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "halloween-pumpkin-hood-puffer",
       "kind": "fish",
       "name": "호박후드 복어",
@@ -6014,6 +6086,24 @@
       "sprite_sheet_path": "fish/rare/halloween-zombie-puffer_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "hat-limpet",
+      "kind": "fish",
+      "name": "모자 삿갓조개",
+      "description": "기울어진 모자 같은 껍데기를 쓴 삿갓조개. 작은 촉수를 내밀고 바닥을 천천히 기어가요.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/hat-limpet_v1_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/hat-limpet_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -7782,6 +7872,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "missing-tooth-comb",
+      "kind": "trash",
+      "name": "빗살 빠진 머리빗",
+      "description": "빗살이 부러진 분홍 머리빗. 짧은 해초 한 가닥이 빗살 사이에 걸려 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.86",
+      "speed": "0.001",
+      "size": 62,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/missing-tooth-comb_v1_thumbnail.png",
+      "sell_price": 3,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "mist-bell-windchime",
       "kind": "decoration",
       "name": "안개종 풍경",
@@ -9308,6 +9416,60 @@
       "sprite_sheet_path": "fish/rare/nyamnyam-peach-phoenix-clam_v1_sprite.png",
       "native_region_id": "nyamnyam",
       "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-pongi-donut-float",
+      "kind": "fish",
+      "name": "도넛 튜브 퐁이",
+      "description": "딸기 초콜릿 도넛 튜브를 끼고 우유병을 품에 안은 퐁이. 작은 발과 넓은 꼬리로 물을 저으며 냠냠 한상바다의 달콤한 물결을 즐겨요.",
+      "swim_y_min": "0.12",
+      "swim_y_max": "0.56",
+      "speed": "0.027",
+      "size": 112,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-pongi-donut-float_v1_thumbnail.png",
+      "sell_price": 1110,
+      "sprite_sheet_path": "fish/epic/nyamnyam-pongi-donut-float_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-pongi-little-baker",
+      "kind": "fish",
+      "name": "꼬마 제빵사 퐁이",
+      "description": "폭신한 제빵 모자와 연둣빛 앞치마를 입은 퐁이. 갓 구운 빵 바구니와 바게트를 꼭 안고 냠냠 한상바다의 바닥을 바삐 걸어 다녀요.",
+      "swim_y_min": "0.90",
+      "swim_y_max": "0.96",
+      "speed": "0.017",
+      "size": 112,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-pongi-little-baker_v1_thumbnail.png",
+      "sell_price": 1120,
+      "sprite_sheet_path": "fish/epic/nyamnyam-pongi-little-baker_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-pongi-popcorn-courier",
+      "kind": "fish",
+      "name": "팝콘 배달부 퐁이",
+      "description": "빨간 줄무늬 팝콘 통을 꼭 안고 배달하는 퐁이. 머리 위 팝콘 한 알이 떨어지지 않도록 조심하며 냠냠 한상바다를 헤엄쳐요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.68",
+      "speed": "0.032",
+      "size": 112,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-pongi-popcorn-courier_v1_thumbnail.png",
+      "sell_price": 1100,
+      "sprite_sheet_path": "fish/epic/nyamnyam-pongi-popcorn-courier_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -11436,6 +11598,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "rice-grain-amphipod",
+      "kind": "fish",
+      "name": "쌀알 옆새우",
+      "description": "쌀알처럼 뽀얀 몸을 가진 작은 옆새우. 짧은 다리를 부지런히 움직이며 바닥을 톡톡 걸어 다녀요.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.96",
+      "speed": "0.018",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/rice-grain-amphipod_v1_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/rice-grain-amphipod_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "ringtail-pipe-seahorse",
       "kind": "fish",
       "name": "고리꼬리 관해마",
@@ -13197,6 +13377,24 @@
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shell-bead-curtain",
+      "kind": "decoration",
+      "name": "조개구슬 실커튼",
+      "description": "분홍빛과 민트빛 조개구슬을 세 줄로 엮은 작은 실커튼. 어항 바닥에 세우면 포근한 작은 문이 돼요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 92,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shell-bead-curtain_v1_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -20220,6 +20418,246 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-pongi-candy-devil",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-pongi-ghost-blanket",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-pongi-pumpkin-coach",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-pongi-wizard-broom",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "halloween-pumpkin-hood-puffer",
       "region_id": "bluegrove"
     },
@@ -21569,6 +22007,66 @@
     },
     {
       "species_id": "halloween-zombie-puffer",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "hat-limpet",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "hat-limpet",
       "region_id": "whitenight"
     },
     {
@@ -22504,6 +23002,66 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "missing-tooth-comb",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "missing-tooth-comb",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "mist-bell-windchime",
       "region_id": "mistmoon"
     },
@@ -23125,6 +23683,18 @@
     },
     {
       "species_id": "nyamnyam-peach-phoenix-clam",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-pongi-donut-float",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-pongi-little-baker",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-pongi-popcorn-courier",
       "region_id": "nyamnyam"
     },
     {
@@ -24601,6 +25171,66 @@
     },
     {
       "species_id": "ribbon-eel",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "rice-grain-amphipod",
       "region_id": "whitenight"
     },
     {
@@ -27661,6 +28291,66 @@
     },
     {
       "species_id": "shared-yurion-bottled-sea",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shell-bead-curtain",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shell-bead-curtain",
       "region_id": "whitenight"
     },
     {
@@ -33336,8 +34026,8 @@
       "rare_bp": 1200,
       "epic_bp": 130,
       "mythic_bp": 20,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33359,8 +34049,8 @@
       "rare_bp": 7500,
       "epic_bp": 0,
       "mythic_bp": 80,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "decoration"
@@ -33381,8 +34071,8 @@
       "rare_bp": 500,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33404,8 +34094,8 @@
       "rare_bp": 0,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33425,8 +34115,8 @@
       "rare_bp": 0,
       "epic_bp": 400,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "decoration"
@@ -33447,8 +34137,8 @@
       "rare_bp": 9930,
       "epic_bp": 0,
       "mythic_bp": 70,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33468,8 +34158,8 @@
       "rare_bp": 8600,
       "epic_bp": 1300,
       "mythic_bp": 100,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33491,8 +34181,8 @@
       "rare_bp": 0,
       "epic_bp": 9970,
       "mythic_bp": 30,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33514,8 +34204,8 @@
       "rare_bp": 0,
       "epic_bp": 450,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33535,8 +34225,8 @@
       "rare_bp": 1500,
       "epic_bp": 150,
       "mythic_bp": 30,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33558,8 +34248,8 @@
       "rare_bp": 1600,
       "epic_bp": 600,
       "mythic_bp": 80,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33581,8 +34271,8 @@
       "rare_bp": 7500,
       "epic_bp": 400,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33602,8 +34292,8 @@
       "rare_bp": 1000,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33625,8 +34315,8 @@
       "rare_bp": 100,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "trash"
       ],
@@ -33646,8 +34336,8 @@
       "rare_bp": 5000,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33667,8 +34357,8 @@
       "rare_bp": 1800,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash"
@@ -33689,8 +34379,8 @@
       "rare_bp": 9450,
       "epic_bp": 550,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33710,8 +34400,8 @@
       "rare_bp": 1200,
       "epic_bp": 100,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "decoration"
       ],
@@ -33731,8 +34421,8 @@
       "rare_bp": 6000,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33752,8 +34442,8 @@
       "rare_bp": 4500,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33763,8 +34453,8 @@
       "native_multiplier": 1,
       "night_common_bp": 4500,
       "night_rare_bp": 5500,
-      "night_wait_min_seconds": 12,
-      "night_wait_max_seconds": 24
+      "night_wait_min_seconds": 13,
+      "night_wait_max_seconds": 25
     },
     {
       "id": "bait_pearl_bubble",
@@ -33775,8 +34465,8 @@
       "rare_bp": 3500,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "decoration",
         "trash"
@@ -33797,8 +34487,8 @@
       "rare_bp": 1500,
       "epic_bp": 180,
       "mythic_bp": 20,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33818,8 +34508,8 @@
       "rare_bp": 1200,
       "epic_bp": 130,
       "mythic_bp": 20,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33841,8 +34531,8 @@
       "rare_bp": 1400,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33862,8 +34552,8 @@
       "rare_bp": 0,
       "epic_bp": 0,
       "mythic_bp": 80,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33885,8 +34575,8 @@
       "rare_bp": 3000,
       "epic_bp": 200,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33908,8 +34598,8 @@
       "rare_bp": 9870,
       "epic_bp": 100,
       "mythic_bp": 30,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish",
         "trash",
@@ -33931,8 +34621,8 @@
       "rare_bp": 0,
       "epic_bp": 0,
       "mythic_bp": 50,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -33952,8 +34642,8 @@
       "rare_bp": 0,
       "epic_bp": 0,
       "mythic_bp": 0,
-      "wait_min_seconds": 12,
-      "wait_max_seconds": 24,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
       "target_kinds": [
         "fish"
       ],
@@ -34609,7 +35299,7 @@
     {
       "id": "books~owned:hub",
       "family": "facility",
-      "name": "도감",
+      "name": "개체 도감",
       "price": 0,
       "width": 1,
       "height": 1,
@@ -35245,6 +35935,32 @@
       "text_label": false
     },
     {
+      "id": "portal~owned:page:/fishing-records",
+      "family": "facility",
+      "name": "오늘의 낚시 기록",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/flea-market",
+      "family": "facility",
+      "name": "벼룩시장",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
       "id": "portal~owned:page:/hall-of-fame",
       "family": "facility",
       "name": "명예의 전당",
@@ -35261,6 +35977,19 @@
       "id": "portal~owned:page:/island-news",
       "family": "facility",
       "name": "퐁당섬 소식",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/item-collection",
+      "family": "facility",
+      "name": "아이템 도감",
       "price": 0,
       "width": 1,
       "height": 1,
@@ -35378,6 +36107,19 @@
       "id": "portal~owned:page:/square/suggestions",
       "family": "facility",
       "name": "건의함",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/voyage-bets",
+      "family": "facility",
+      "name": "만선 승부장",
       "price": 0,
       "width": 1,
       "height": 1,
@@ -35765,8 +36507,8 @@
             },
             {
               "id": "shell-safe~owned:hub",
-              "x": 31,
-              "y": 13
+              "x": 14,
+              "y": 7
             },
             {
               "id": "arcade-cabinet~owned:hub",
@@ -35899,7 +36641,7 @@
               "id": "island-name-sign~zone-sea",
               "x": 19,
               "y": 22,
-              "label": "바다"
+              "label": "낚시"
             },
             {
               "id": "island-name-sign~zone-production",
@@ -35930,6 +36672,26 @@
               "x": 28,
               "y": 26,
               "label": "소식"
+            },
+            {
+              "id": "portal~owned:page:/flea-market",
+              "x": 25,
+              "y": 16
+            },
+            {
+              "id": "portal~owned:page:/item-collection",
+              "x": 31,
+              "y": 23
+            },
+            {
+              "id": "portal~owned:page:/fishing-records",
+              "x": 20,
+              "y": 25
+            },
+            {
+              "id": "portal~owned:page:/voyage-bets",
+              "x": 12,
+              "y": 13
             }
           ],
           "land": [],

@@ -1,0 +1,76 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261028-214526/fish/normal/rice-grain-amphipod_v1_sprite.png",
+        "storage_path":  "fish/normal/rice-grain-amphipod_v1_sprite.png",
+        "patch":  [
+                      450,
+                      345,
+                      45,
+                      45
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -22,
+                           "dy":  0,
+                           "rmse":  11.684034691264259
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -44,
+                           "rmse":  12.970907618375996
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -19,
+                           "dy":  -40,
+                           "rmse":  8.82471277467746
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261028-214526/fish/normal/hat-limpet_v1_sprite.png",
+        "storage_path":  "fish/normal/hat-limpet_v1_sprite.png",
+        "patch":  [
+                      265,
+                      215,
+                      55,
+                      55
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -24,
+                           "dy":  0,
+                           "rmse":  4.5122179472321706
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -55,
+                           "rmse":  4.77905170301132
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -24,
+                           "dy":  -55,
+                           "rmse":  4.9032890764580692
+                       }
+                   ]
+    }
+]

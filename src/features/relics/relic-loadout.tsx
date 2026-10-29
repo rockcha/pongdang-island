@@ -16,6 +16,7 @@ import {playRelicEquipSound,playRelicUnequipSound} from '@/features/gold/purchas
 
 import {RelicCatalogTabs} from './relic-catalog-tabs'
 import {RelicGold} from './relic-gold'
+import {RelicCraftingGuide} from './relic-crafting-guide'
 import './relics.css'
 
 type Purchase={id:string|null;name:string;operation:string;fee:number;action?:'sell'}
@@ -105,7 +106,8 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    {!state&&!error&&<p role="status" className="py-6 text-center text-sm">유물을 불러오는 중…</p>}
    {state&&<>
     <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>list.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus()} onUnequip={()=>select(null,'유물 해제')}/>
-    <RelicCatalogTabs state={state} disabled={saving||!!pending} listRef={list} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
+    <RelicCraftingGuide/>
+    <RelicCatalogTabs state={state} disabled={saving||!!pending} listRef={list} onOpenCatalog={()=>{setOpen(false);navigate('/item-collection?tab=relic')}} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
    </>}
  </>
  return <>
@@ -119,6 +121,6 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
     <div ref={scene} className="flex min-h-0 flex-col gap-4">{content}</div>
    </DialogContent></Dialog>
   </>}
-  <ConfirmDialog open={!!purchase} onOpenChange={value=>{if(!value&&!saving){setPurchase(null);setError('')}}} title={purchase?.action==='sell'?`${purchase.name} 판매할까요?`:purchase?.id?`${purchase.name} 장착할까요?`:'유물을 해제할까요?'} description={<span className="block space-y-2"><span className="flex items-center justify-center gap-1">{purchase?.fee===0?'무료':<><RelicGold amount={purchase?.fee??0}/>{purchase?.action==='sell'?'를 받아요':''}</>}</span><span className="block">{purchase?.action==='sell'?'도감 기록은 남으며, 판매한 유물은 낚시에서 다시 만날 수 있어요.':purchase?.fee===0?'비용 없이 유물을 장착해요.':purchase?.id?'기존 유물의 해제 비용만 지불해요. 새 유물 장착은 무료예요.':'유물 해제 비용이에요.'}</span></span>} busy={saving} error={error} confirmLabel={pending?'결과 다시 확인':purchase?.action==='sell'?'판매하기':'확인'} onConfirm={()=>void confirm()}/>
+  <ConfirmDialog open={!!purchase} onOpenChange={value=>{if(!value&&!saving){setPurchase(null);setError('')}}} title={purchase?.action==='sell'?`${purchase.name} 판매할까요?`:purchase?.id?`${purchase.name} 장착할까요?`:'유물을 해제할까요?'} description={<span className="block space-y-2"><span className="flex items-center justify-center gap-1">{purchase?.fee===0?'무료':<><RelicGold amount={purchase?.fee??0}/>{purchase?.action==='sell'?'를 받아요':''}</>}</span><span className="block">{purchase?.action==='sell'?'유물 1개를 판매해요. 장착 중인 1개와 도감 발견 기록은 유지돼요.':purchase?.fee===0?'비용 없이 유물을 장착해요.':purchase?.id?'기존 유물의 해제 비용만 지불해요. 새 유물 장착은 무료예요.':'유물 해제 비용이에요.'}</span></span>} busy={saving} error={error} confirmLabel={pending?'결과 다시 확인':purchase?.action==='sell'?'판매하기':'확인'} onConfirm={()=>void confirm()}/>
  </>
 }

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "80da5b9a1c1c68ca64793756a6d49cf785f5f4f410911010038863b6f567af82",
+  "migrationHash": "a0ea60baf715de8e1c346e98c322754eb95f789f2c02f69fdae8205125d5ef58",
   "structure": {
     "enums": [
       {
@@ -3891,6 +3891,16 @@
         "table": "player_fishing_relics",
         "schema": "app_private",
         "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "integer",
+        "table": "player_fishing_relics",
+        "schema": "app_private",
+        "default": "1",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -15981,7 +15991,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_won boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;v_first boolean:=false;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and p.confirm_bite and p.fight_started_at is null then raise exception 'CAST_NOT_STARTED';end if;\n if p_won and clock_timestamp()<(case when p.fight_started_at is null\n  then p.created_at+make_interval(secs=>p.wait_seconds::double precision+3)\n  else p.fight_started_at+interval '3 seconds' end) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.map_piece_number is not null then\n   insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number)\n    values(v_uid,p.map_region_id,p.map_piece_number) on conflict do nothing;\n   v_first:=found;\n   if not exists(select 1 from public.fishing_map_blueprints b cross join lateral generate_series(1,b.piece_count) n(piece_number)\n    where b.region_id=p.map_region_id and not exists(select 1 from app_private.player_fishing_map_pieces f\n     where f.user_id=v_uid and f.region_id=b.region_id and f.piece_number=n.piece_number)) then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   -- Capture real collected count after success, not the random piece number.\n   p.snapshot:=p.snapshot||jsonb_build_object(\n    'name',app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'name',\n    'pieceFoundCount',(app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'pieceFoundCount')::integer);\n  elsif p.relic_id is not null then\n   insert into app_private.player_fishing_relics(user_id,relic_id) values(v_uid,p.relic_id) on conflict do nothing;\n   insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(v_uid,p.relic_id) on conflict do nothing;\n   v_first:=found;\n  else\n   if p.map_region_id is not null then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n   insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n   v_first:=coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence\n    where evidence.collectible_id=v_item and evidence.user_id=v_uid),false);\n  end if;\n end if;\n -- Experience/title triggers read this immutable reward snapshot.\n update app_private.prepared_fishing_casts set snapshot=p.snapshot where user_id=v_uid and operation_id=p_operation_id;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end,\n 'firstDiscovery',v_first),'replayed',false,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at\n  then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;v_first boolean:=false;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and p.confirm_bite and p.fight_started_at is null then raise exception 'CAST_NOT_STARTED';end if;\n if p_won and clock_timestamp()<(case when p.fight_started_at is null\n  then p.created_at+make_interval(secs=>p.wait_seconds::double precision+3)\n  else p.fight_started_at+interval '3 seconds' end) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.map_piece_number is not null then\n   insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number)\n    values(v_uid,p.map_region_id,p.map_piece_number) on conflict do nothing;\n   v_first:=found;\n   if not exists(select 1 from public.fishing_map_blueprints b cross join lateral generate_series(1,b.piece_count) n(piece_number)\n    where b.region_id=p.map_region_id and not exists(select 1 from app_private.player_fishing_map_pieces f\n     where f.user_id=v_uid and f.region_id=b.region_id and f.piece_number=n.piece_number)) then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   -- Capture real collected count after success, not the random piece number.\n   p.snapshot:=p.snapshot||jsonb_build_object(\n    'name',app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'name',\n    'pieceFoundCount',(app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'pieceFoundCount')::integer);\n  elsif p.relic_id is not null then\n   -- Follow the same wallet -> ownership lock order as equipment and sales.\n   perform app_private.get_gold_wallet();\n   perform 1 from public.player_wallets where user_id=v_uid for update;\n   insert into app_private.player_fishing_relics as owned(user_id,relic_id) values(v_uid,p.relic_id)\n    on conflict(user_id,relic_id) do update set quantity=owned.quantity+1;\n   insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(v_uid,p.relic_id) on conflict do nothing;\n   v_first:=found;\n  else\n   if p.map_region_id is not null then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n   insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n   v_first:=coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence\n    where evidence.collectible_id=v_item and evidence.user_id=v_uid),false);\n  end if;\n end if;\n -- Experience/title triggers read this immutable reward snapshot.\n update app_private.prepared_fishing_casts set snapshot=p.snapshot where user_id=v_uid and operation_id=p_operation_id;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end,\n 'firstDiscovery',v_first),'replayed',false,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at\n  then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -16021,7 +16031,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_rarity game_rarity",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_discovery_candidates(p_rarity game_rarity)\n RETURNS TABLE(category text, reward_id text, region_id text, piece_number integer)\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select 'map'::text,'map-piece-'||b.region_id||'-'||n.piece_number,b.region_id,n.piece_number\n from public.fishing_map_blueprints b join public.regions r on r.id=b.region_id\n cross join lateral generate_series(1,b.piece_count) n(piece_number)\n where b.enabled and r.requires_map_fragment and b.rarity=p_rarity\n and not exists(select 1 from public.player_map_fragments f where f.user_id=auth.uid() and f.region_id=b.region_id)\n and not exists(select 1 from app_private.player_fishing_map_pieces f where f.user_id=auth.uid()\n  and f.region_id=b.region_id and f.piece_number=n.piece_number)\n union all\n select 'relic',r.id,null::text,null::integer from public.fishing_relics r\n where r.enabled and r.rarity=p_rarity and not exists(select 1 from app_private.player_fishing_relics f\n  where f.user_id=auth.uid() and f.relic_id=r.id)\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_discovery_candidates(p_rarity game_rarity)\n RETURNS TABLE(category text, reward_id text, region_id text, piece_number integer)\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select 'map'::text,'map-piece-'||b.region_id||'-'||n.piece_number,b.region_id,n.piece_number\n from public.fishing_map_blueprints b join public.regions r on r.id=b.region_id\n cross join lateral generate_series(1,b.piece_count) n(piece_number)\n where b.enabled and r.requires_map_fragment and b.rarity=p_rarity\n and not exists(select 1 from public.player_map_fragments f where f.user_id=auth.uid() and f.region_id=b.region_id)\n and not exists(select 1 from app_private.player_fishing_map_pieces f where f.user_id=auth.uid()\n  and f.region_id=b.region_id and f.piece_number=n.piece_number)\n union all\n select 'relic',r.id,null::text,null::integer from public.fishing_relics r\n where r.enabled and r.rarity=p_rarity\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -16163,6 +16173,26 @@
         "arguments": "p_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.flea_post_payload(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('id',p.id,'owner_id',p.owner_id,'owner_name',u.nickname,'owner_avatar_path',u.avatar_path,\n 'side',p.side,'title',p.title,'status',p.status,'escrow_gold',p.escrow_gold,'created_at',p.created_at,\n 'items',coalesce((select jsonb_agg(jsonb_build_object('id',l.id,'asset',app_private.trade_priced_asset(l.asset),'quantity',l.quantity,\n 'remaining',l.remaining,'unit_price',l.unit_price) order by l.kind,l.item_id) from app_private.flea_lines l where l.post_id=p.id),'[]'::jsonb))\n from app_private.flea_posts p join public.player_profiles u on u.id=p.owner_id where p.id=p_id\n$function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "flea_sellable_posts",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_sellable_posts()\n RETURNS TABLE(post_id uuid)\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare caller uuid:=auth.uid(); fuel integer;\nbegin\n if caller is null then raise exception 'AUTH_REQUIRED' using errcode='42501';end if;\n select coalesce((inventory->>'fuel')::integer,0) into fuel from public.player_wallets where user_id=caller;\n return query\n select p.id from app_private.flea_posts p\n where p.side='buy' and p.status='active' and p.owner_id<>caller\n and exists(\n  select 1 from app_private.flea_lines l where l.post_id=p.id and l.remaining>0\n  and ((l.kind='fuel' and l.item_id='fuel' and coalesce(fuel,0)>0)\n   or (l.kind='collectible' and exists(\n    select 1 from public.player_collectibles c where c.user_id=caller and c.species_id=l.item_id\n    and c.sold_at is null and c.tank_id is null and c.escrow_gift_id is null\n   )))\n );\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_sellable_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_query text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_sellable_state(p_query text DEFAULT ''::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare caller uuid:=auth.uid(); ids uuid[]; total bigint;\nbegin\n if caller is null then raise exception 'AUTH_REQUIRED' using errcode='42501';end if;\n if p_query is null or char_length(p_query)>80 or p_offset is null or p_offset<0 or p_offset>100000 then raise exception 'INVALID_FLEA';end if;\n with matched as materialized (\n  select p.id,p.created_at from app_private.flea_sellable_posts() eligible\n  join app_private.flea_posts p on p.id=eligible.post_id\n  where btrim(p_query)='' or position(lower(btrim(p_query)) in lower(p.title))>0\n   or exists(select 1 from app_private.flea_lines l where l.post_id=p.id\n    and position(replace(lower(btrim(p_query)),'연료','기름') in lower(l.asset->>'name'))>0)\n ) select (select count(*) from matched),(select array_agg(id order by created_at desc,id)\n   from(select * from matched order by created_at desc,id limit 20 offset p_offset) page)\n into total,ids;\n return jsonb_build_object('items',coalesce((select jsonb_agg(app_private.flea_post_payload(id) order by ord)\n  from unnest(ids) with ordinality q(id,ord)),'[]'::jsonb),'total',total);\nend $function$\n",
+        "securityDefiner": true
       },
       {
         "name": "flea_state",
@@ -16581,7 +16611,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.menu_status()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare caller uuid:=auth.uid(); sampled_at timestamptz:=now();\nbegin\n if caller is null then raise exception 'AUTH_REQUIRED' using errcode='42501';end if;\n return jsonb_build_object(\n  'serverNow',sampled_at,\n  'production',(select jsonb_build_object('total',count(*),'sites',coalesce(jsonb_agg(jsonb_build_object('completesAt',completes_at,'expiresAt',expires_at)) filter(where started_at is not null),'[]'::jsonb)) from app_private.production_sites where user_id=caller),\n  'baitProduction',(select jsonb_build_object('total',count(*),'sites',coalesce(jsonb_agg(jsonb_build_object('completesAt',completes_at,'expiresAt',expires_at)) filter(where started_at is not null),'[]'::jsonb)) from app_private.bait_production_sites where user_id=caller),\n  'harbor',jsonb_build_object('total',(select count(*) from public.harbor_boats where user_id=caller and sold_at is null),\n   'dockSlots',coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=caller),2),\n   'returnsAt',coalesce((select jsonb_agg(returns_at) from public.harbor_voyages where user_id=caller and claimed_at is null),'[]'::jsonb)),\n  'expedition',jsonb_build_object('returnsAt',(select returns_at from public.fishing_expeditions where user_id=caller and claimed_at is null)),\n  'personalBait',jsonb_build_object('completesAt',(select completes_at from app_private.personal_bait_jobs where user_id=caller and claimed_at is null order by started_at desc limit 1)),\n  'savings',jsonb_build_object('account',(select app_private.savings_payload(a,sampled_at) from public.shell_savings a where a.user_id=caller and a.closed_at is null)),\n  'merchant',app_private.merchant_summary()\n );\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.menu_status()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare caller uuid:=auth.uid(); sampled_at timestamptz:=now();\nbegin\n if caller is null then raise exception 'AUTH_REQUIRED' using errcode='42501';end if;\n return jsonb_build_object(\n  'serverNow',sampled_at,\n  'production',(select jsonb_build_object('total',count(*),'sites',coalesce(jsonb_agg(jsonb_build_object('completesAt',completes_at,'expiresAt',expires_at)) filter(where started_at is not null),'[]'::jsonb)) from app_private.production_sites where user_id=caller),\n  'baitProduction',(select jsonb_build_object('total',count(*),'sites',coalesce(jsonb_agg(jsonb_build_object('completesAt',completes_at,'expiresAt',expires_at)) filter(where started_at is not null),'[]'::jsonb)) from app_private.bait_production_sites where user_id=caller),\n  'harbor',jsonb_build_object('total',(select count(*) from public.harbor_boats where user_id=caller and sold_at is null),\n   'dockSlots',coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=caller),2),\n   'returnsAt',coalesce((select jsonb_agg(returns_at) from public.harbor_voyages where user_id=caller and claimed_at is null),'[]'::jsonb)),\n  'expedition',jsonb_build_object('returnsAt',(select returns_at from public.fishing_expeditions where user_id=caller and claimed_at is null)),\n  'personalBait',jsonb_build_object('completesAt',(select completes_at from app_private.personal_bait_jobs where user_id=caller and claimed_at is null order by started_at desc limit 1)),\n  'savings',jsonb_build_object('account',(select app_private.savings_payload(a,sampled_at) from public.shell_savings a where a.user_id=caller and a.closed_at is null)),\n  'merchant',app_private.merchant_summary(),\n  'flea',jsonb_build_object('sellable',(select count(*) from app_private.flea_sellable_posts()))\n );\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17011,7 +17041,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_discovery_cast(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;v_reduction integer;\n v_roll double precision;v_category text;v_reward record;v_map text;v_piece integer;v_relic text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Keep the exhausted discovery bait refusal before every random draw. Moving\n -- it after the category roll would permit unlimited free map/relic rerolls.\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s\n  where app_private.collectible_available_at(s.id,statement_timestamp()) and s.kind in ('fish','trash','decoration')\n  and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then\n  raise exception 'ALL_COLLECTIBLES_DISCOVERED';\n end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n -- Grade-specific disjoint category ranges; absent categories return to the ordinary\n -- pool without increasing the other discovery category's chance.\n v_category:='ordinary';\n if p_discovery then\n  v_roll:=random();\n  v_category:=app_private.fishing_reward_category(v_roll,v_rarity);\n end if;\n if v_category<>'ordinary' then\n  select * into v_reward from app_private.fishing_discovery_candidates(v_rarity)\n  where category=v_category order by random() limit 1;\n  if found then\n   if v_category='map' then\n    v_map:=v_reward.region_id;v_piece:=v_reward.piece_number;\n    v_snapshot:=app_private.fishing_map_piece_payload(v_map,v_piece,v_uid);\n   else\n    v_relic:=v_reward.reward_id;v_snapshot:=app_private.fishing_relic_payload(v_relic);\n   end if;\n  end if;\n end if;\n if v_snapshot is null then\n  v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n end if;\n select r.wait_reduction_seconds into v_reduction from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=v_uid;\n v_wait:=greatest(1,12+12*random()-coalesce(v_reduction,0)-app_private.relic_bonus('fishing_wait_seconds'));\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,\n  map_piece_number,relic_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,v_map,v_piece,v_relic,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile||jsonb_build_object('discovery_version',1),p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_discovery_cast(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;v_reduction integer;\n v_roll double precision;v_category text;v_reward record;v_map text;v_piece integer;v_relic text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Keep the exhausted discovery bait refusal before every random draw. Moving\n -- it after the category roll would permit unlimited free map/relic rerolls.\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s\n  where app_private.collectible_available_at(s.id,statement_timestamp()) and s.kind in ('fish','trash','decoration')\n  and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then\n  raise exception 'ALL_COLLECTIBLES_DISCOVERED';\n end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n -- Grade-specific disjoint category ranges; absent categories return to the ordinary\n -- pool without increasing the other discovery category's chance.\n v_category:='ordinary';\n if p_discovery then\n  v_roll:=random();\n  v_category:=app_private.fishing_reward_category(v_roll,v_rarity);\n end if;\n if v_category<>'ordinary' then\n  select * into v_reward from app_private.fishing_discovery_candidates(v_rarity)\n  where category=v_category order by random() limit 1;\n  if found then\n   if v_category='map' then\n    v_map:=v_reward.region_id;v_piece:=v_reward.piece_number;\n    v_snapshot:=app_private.fishing_map_piece_payload(v_map,v_piece,v_uid);\n   else\n    v_relic:=v_reward.reward_id;v_snapshot:=app_private.fishing_relic_payload(v_relic);\n   end if;\n  end if;\n end if;\n if v_snapshot is null then\n  v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n end if;\n select r.wait_reduction_seconds into v_reduction from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=v_uid;\n v_wait:=greatest(1,13+12*random()-coalesce(v_reduction,0)-app_private.relic_bonus('fishing_wait_seconds'));\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,\n  map_piece_number,relic_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,v_map,v_piece,v_relic,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile||jsonb_build_object('discovery_version',1),p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17321,7 +17351,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();begin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('equippedId',(select relic_id from app_private.player_relic_loadouts where user_id=u),'changeFee',500,'equipFee',0,'unequipFee',500,\n 'relics',coalesce((select jsonb_agg(to_jsonb(r)||jsonb_build_object('discovered',exists(select 1 from app_private.player_fishing_relic_discoveries d where d.user_id=u and d.relic_id=r.id),'owned',exists(select 1 from app_private.player_fishing_relics d where d.user_id=u and d.relic_id=r.id)) order by r.effect_kind,r.effect_value,r.id) from public.fishing_relics r where r.enabled),'[]'::jsonb));\nend$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();begin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('equippedId',(select relic_id from app_private.player_relic_loadouts where user_id=u),'changeFee',500,'equipFee',0,'unequipFee',500,\n 'relics',coalesce((select jsonb_agg(to_jsonb(r)||jsonb_build_object('discovered',exists(select 1 from app_private.player_fishing_relic_discoveries d where d.user_id=u and d.relic_id=r.id),'owned',exists(select 1 from app_private.player_fishing_relics d where d.user_id=u and d.relic_id=r.id),\n 'quantity',coalesce((select d.quantity from app_private.player_fishing_relics d where d.user_id=u and d.relic_id=r.id),0)) order by r.effect_kind,r.effect_value,r.id) from public.fishing_relics r where r.enabled),'[]'::jsonb));\nend$function$\n",
         "securityDefiner": true
       },
       {
@@ -17481,7 +17511,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_relic_id text, p_operation_id uuid, p_expected_price integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.sell_relic(p_relic_id text, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); w public.player_wallets; previous public.gold_transactions; price integer; item text;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_relic_id is null or p_expected_price is null then raise exception 'INVALID_OPERATION';end if;\n item:='relic-sale:'||p_relic_id;\n perform app_private.get_gold_wallet();select * into strict w from public.player_wallets where user_id=u for update;\n select * into previous from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>'sell' or previous.item_id<>item or previous.delta<>p_expected_price then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('replayed',true);\n end if;\n if exists(select 1 from app_private.player_relic_loadouts where user_id=u and relic_id=p_relic_id) then raise exception 'RELIC_EQUIPPED';end if;\n if not exists(select 1 from app_private.player_fishing_relics where user_id=u and relic_id=p_relic_id) then raise exception 'RELIC_NOT_OWNED';end if;\n select sell_price into price from public.fishing_relics where id=p_relic_id and enabled;\n if price is null or price<=0 then raise exception 'RELIC_NOT_SELLABLE';end if;\n if price<>p_expected_price then raise exception 'RELIC_PRICE_CHANGED';end if;\n if w.gold::bigint+price>1000000000 then raise exception 'GOLD_LIMIT';end if;\n -- Preserve legacy ownership first; acquisition from now on also records history.\n insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(u,p_relic_id) on conflict do nothing;\n delete from app_private.player_fishing_relics where user_id=u and relic_id=p_relic_id;\n update public.player_wallets set gold=gold+price,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell',item,price);\n return app_private.relic_state()||jsonb_build_object('replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sell_relic(p_relic_id text, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); w public.player_wallets; previous public.gold_transactions; price integer; item text; owned_quantity integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_relic_id is null or p_expected_price is null then raise exception 'INVALID_OPERATION';end if;\n item:='relic-sale:'||p_relic_id;\n perform app_private.get_gold_wallet();select * into strict w from public.player_wallets where user_id=u for update;\n select * into previous from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>'sell' or previous.item_id<>item or previous.delta<>p_expected_price then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('replayed',true);\n end if;\n select quantity into owned_quantity from app_private.player_fishing_relics where user_id=u and relic_id=p_relic_id for update;\n if not found then raise exception 'RELIC_NOT_OWNED';end if;\n if owned_quantity=1 and exists(select 1 from app_private.player_relic_loadouts where user_id=u and relic_id=p_relic_id) then raise exception 'RELIC_EQUIPPED';end if;\n select sell_price into price from public.fishing_relics where id=p_relic_id and enabled;\n if price is null or price<=0 then raise exception 'RELIC_NOT_SELLABLE';end if;\n if price<>p_expected_price then raise exception 'RELIC_PRICE_CHANGED';end if;\n if w.gold::bigint+price>1000000000 then raise exception 'GOLD_LIMIT';end if;\n -- Preserve legacy ownership first; acquisition from now on also records history.\n insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(u,p_relic_id) on conflict do nothing;\n if owned_quantity=1 then\n  delete from app_private.player_fishing_relics where user_id=u and relic_id=p_relic_id;\n else\n  update app_private.player_fishing_relics set quantity=quantity-1 where user_id=u and relic_id=p_relic_id;\n end if;\n update public.player_wallets set gold=gold+price,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell',item,price);\n return app_private.relic_state()||jsonb_build_object('replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -19002,6 +19032,16 @@
         "schema": "public",
         "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.flea_post(p_side text, p_title text, p_items jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.flea_post(p_side,p_title,p_items,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "flea_sellable_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_query text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.flea_sellable_state(p_query text DEFAULT ''::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.flea_sellable_state(p_query,p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -22949,6 +22989,18 @@
         "table": "player_fishing_relics",
         "schema": "app_private",
         "definition": "PRIMARY KEY (user_id, relic_id)"
+      },
+      {
+        "name": "player_fishing_relics_quantity_not_null",
+        "table": "player_fishing_relics",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "player_fishing_relics_quantity_positive",
+        "table": "player_fishing_relics",
+        "schema": "app_private",
+        "definition": "CHECK ((quantity > 0))"
       },
       {
         "name": "player_fishing_relics_relic_id_fkey",
@@ -31288,6 +31340,13 @@
       {
         "role": "authenticated",
         "table": "player_fishing_relics",
+        "column": "quantity",
+        "schema": "app_private",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_fishing_relics",
         "column": "relic_id",
         "schema": "app_private",
         "privilege": "SELECT"
@@ -39405,6 +39464,48 @@
         "arguments": "p_id uuid"
       },
       {
+        "name": "flea_sellable_posts",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "flea_sellable_posts",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "flea_sellable_posts",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "flea_sellable_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_query text, p_offset integer"
+      },
+      {
+        "name": "flea_sellable_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_query text, p_offset integer"
+      },
+      {
+        "name": "flea_sellable_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_query text, p_offset integer"
+      },
+      {
         "name": "flea_state",
         "role": "anon",
         "schema": "app_private",
@@ -45367,6 +45468,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_side text, p_title text, p_items jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "flea_sellable_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_query text, p_offset integer"
+      },
+      {
+        "name": "flea_sellable_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_query text, p_offset integer"
+      },
+      {
+        "name": "flea_sellable_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_query text, p_offset integer"
       },
       {
         "name": "flea_state",

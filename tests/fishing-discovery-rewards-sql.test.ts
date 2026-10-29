@@ -174,7 +174,7 @@ it('finds maps through trash-only and decoration-only baits without inventory, a
  expect(state.catalog.filter(s=>s.kind==='map'&&s.mapRegionId==='discovery-test'&&s.discovered)).toHaveLength(4)
 })
 
-it('does not grant on failure or expiry and records relics once with grade XP',async()=>{
+it('does not grant on failure or expiry and awards duplicate copies once per cast with grade XP',async()=>{
  await category('relic')
  const failed=await prepare()
  expect((await finish(failed.operation_id,false)).attempt.species).toBeNull()
@@ -191,7 +191,10 @@ it('does not grant on failure or expiry and records relics once with grade XP',a
  expect((await db.query("select xp from app_private.experience_events where user_id=$1 and source='manual' and source_id=$2",[uid,id])).rows).toEqual([{xp:30}])
  expect((await db.query('select * from app_private.player_fishing_relics where user_id=$1',[uid])).rows).toHaveLength(1)
  const next=await prepare()
- expect(next.species.kind).toBe('trash')
+ expect(next.species.kind).toBe('relic')
+ expect((await finish(next.operation_id)).attempt.firstDiscovery).toBe(false)
+ await finish(next.operation_id)
+ expect((await db.query('select quantity from app_private.player_fishing_relics where user_id=$1',[uid])).rows).toEqual([{quantity:2}])
  const state=(await db.query('select public.collection_state() s')).rows[0].s
  expect(state.catalog.find(s=>s.id==='relic-test-relic').discovered).toBe(true)
 })

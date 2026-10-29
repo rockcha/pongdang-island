@@ -137,7 +137,7 @@ export const facilities: Facility[] = [
   },
   {
     id: 'books',
-    name: '도감',
+    name: '개체 도감',
     kind: 'books',
     w: 1,
     h: 1,
@@ -364,6 +364,9 @@ export function facilityFor(id: string) {
   return f
 }
 const compactDestinations = new Set([
+  '/voyage-bets',
+  '/fishing-records',
+  '/item-collection',
   '/square/begging',
   '/island-news',
   '/hall-of-fame',

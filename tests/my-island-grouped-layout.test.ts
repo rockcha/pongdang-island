@@ -9,14 +9,14 @@ it('groups header destinations into seven readable neighborhoods with community 
     facilities = ownedFacilities()
   expect(placeGroups.map((g) => g.label)).toEqual([
     '내 섬',
-    '바다',
+    '낚시',
     '생산',
     '장터',
     '수집',
-    '광장',
     '소식',
+    '광장',
   ])
-  expect(state.layout.some((p) => p.label === '교류' || p.label === '낚시')).toBe(false)
+  expect(state.layout.some((p) => p.label === '교류')).toBe(false)
   for (const group of placeGroups) {
     expect(
       state.layout.some(

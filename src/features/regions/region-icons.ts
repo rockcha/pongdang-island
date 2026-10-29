@@ -1,5 +1,5 @@
 export const regionIcons:Record<string,{name:string;src:string}>={
- firefly:{name:'반딧불 요정여울',src:'/region-icons/firefly-v1.png'},
+ firefly:{name:'반딧불 요정여울',src:'/region-icons/firefly-fairy-v1.png'},
  mechsanctum:{name:'기계신의 성소',src:'/region-icons/mechsanctum-v1.png'},
  plunder:{name:'약탈자의 항로',src:'/region-icons/plunder-v1.png'},
  nyamnyam:{name:'냠냠 한상바다',src:'/region-icons/nyamnyam-v2.png'},

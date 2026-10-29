@@ -328,6 +328,7 @@
 .voyage-report-steps li {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   min-width: 0;
   color: var(--muted-foreground);

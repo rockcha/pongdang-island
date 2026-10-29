@@ -1,0 +1,11 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "migration": "20261029094944",
+  "sqlHash": "7b21c4725c9a4aa10b08f3687debf5fff9a2ac8f81f0e2b916acb28a960df61b",
+  "captured_at": "2026-10-29 09:59:01.518465+00",
+  "applied": true,
+  "table_name": "app_private.crafted_relics",
+  "anon_allowed": false,
+  "authenticated_allowed": true,
+  "scope": "Five pre-existing functions matched before apply. Only this migration was deployed. Full remote schema and history equivalence remain unverified."
+}

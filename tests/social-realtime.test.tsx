@@ -6,6 +6,7 @@ import { loadFriendRequests, syncProfile } from '@/features/friends/api'
 import { loadNotifications } from '@/features/notifications/api'
 import type { Session } from '@supabase/supabase-js'
 import type {AppNotification} from '@/features/social/types'
+import {foregroundNoticeEvent} from '@/features/notifications/foreground-notice'
 
 const mocks = vi.hoisted(() => ({
   channels: [] as { handlers: { options: Record<string, string>; callback: (payload: unknown) => void }[]; status?: (value: string) => void }[],
@@ -63,17 +64,20 @@ describe('realtime social lifecycle', () => {
       for(const callback of callbacks)expect(callback).toHaveBeenCalledTimes(2)
     }finally{events.forEach((event,i)=>window.removeEventListener(event,callbacks[i]))}
   })
-  it('keeps voyage returns in the inbox and announces trap returns only once',async()=>{
-    const boat={id:'boat-return',recipient_id:'user-a',category:'general',kind:'system',title:'어선이 돌아왔어요!',body:'어획물을 받아주세요.',harbor_voyage_id:'voyage',read_at:null} as AppNotification
+  it('routes fresh voyage and trap returns to Pongi cards only once',async()=>{
+    const boat={id:'boat-return',recipient_id:'user-a',category:'general',kind:'system',title:'어선이 돌아왔어요!',body:'어획물을 받아주세요.',harbor_voyage_id:'voyage',read_at:null,created_at:new Date().toISOString()} as AppNotification
     const trap={...boat,id:'trap-return',harbor_voyage_id:null,expedition_id:'trap',title:'통발 수확을 준비했어요!'} as AppNotification
     vi.mocked(loadNotifications).mockResolvedValue({notifications:[boat,trap],unread:{friend:0,general:2}})
-    render(<SocialProvider><Probe/></SocialProvider>)
-    await waitFor(()=>expect(mocks.toast).toHaveBeenCalledTimes(1))
-    expect(mocks.toast.mock.calls.some(call=>call[0]===boat.title)).toBe(false)
-    expect(mocks.toast.mock.calls.find(call=>call[0]===trap.title)?.[1].action.label).toBe('통발 보기')
-    const insert=socialChannel().handlers.find(h=>h.options.table==='notifications'&&h.options.event==='INSERT')!
-    act(()=>{insert.callback({new:boat});insert.callback({new:trap})})
-    expect(mocks.toast).toHaveBeenCalledTimes(1)
+    const announce=vi.fn();window.addEventListener(foregroundNoticeEvent,announce)
+    try{
+      render(<SocialProvider><Probe/></SocialProvider>)
+      await waitFor(()=>expect(announce).toHaveBeenCalledTimes(2))
+      expect(announce.mock.calls.map(([event])=>(event as CustomEvent).detail.url)).toEqual(['/port','/expeditions'])
+      const insert=socialChannel().handlers.find(h=>h.options.table==='notifications'&&h.options.event==='INSERT')!
+      act(()=>{insert.callback({new:boat});insert.callback({new:trap})})
+      expect(announce).toHaveBeenCalledTimes(2)
+      expect(mocks.toast).not.toHaveBeenCalled()
+    }finally{window.removeEventListener(foregroundNoticeEvent,announce)}
   })
   it('loads stored counts without replaying historical toasts and subscribes with owner filters', async () => {
     render(<SocialProvider><Probe /></SocialProvider>)

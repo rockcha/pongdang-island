@@ -2,8 +2,8 @@ import {placeGroups} from '@/lib/place-groups'
 import {NavigationCategoryIcon} from './navigation-category-icon'
 import {useMenuActivity,MenuActivityLine} from './menu-activity'
 import {RelicIcon} from '@/components/collection-filter-icons'
+import {RelicArtwork} from '@/features/relics/relic-artwork'
 import {useEquippedRelic} from '@/features/relics/use-equipped-relic'
-import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import { useSavingsStatus } from '@/features/savings/use-savings-status'
 import { Fragment } from 'react'
 import { useOperator } from '@/features/notices/use-operator'
@@ -100,7 +100,6 @@ export function HeaderPlaceNavigation() {
   const savings = useSavingsStatus(),
     { operator } = useOperator()
   const current = /^\/(region|sailing)\//.test(pathname) ? '/fishing' : pathname
-  const fleaReady=(activity['/flea-market']?.ready??0)>0
   const merchantReady=(activity['/merchant-orders']?.ready??0)>0
   const hasNewContent=(to:string)=>
     (to==='/board'&&newContent.board)||
@@ -108,7 +107,7 @@ export function HeaderPlaceNavigation() {
     (to==='/square/suggestions'&&newContent.suggestions)||
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)||
-    (to==='/flea-market'&&(newContent.flea||fleaReady))
+    (to==='/flea-market'&&newContent.flea)
     ||(to==='/merchant-orders'&&merchantReady)
 
   return (
@@ -162,10 +161,10 @@ export function HeaderPlaceNavigation() {
                           <ItemOutline aria-hidden="true" className="size-5 text-primary/80" strokeWidth={1.7}/>
                         </span>
                         <span className="min-w-0 flex-1"><span className="block truncate">{label}</span>{activity[to]&&<MenuActivityLine activity={activity[to]}/>}</span>
-                        {to==='/relics'&&equippedRelic&&<span className="flex max-w-20 shrink-0 items-center gap-1" title={`장착 중: ${equippedRelic.name}`}><CollectibleThumbnail path={equippedRelic.thumbnail_path} name={`장착 중: ${equippedRelic.name}`} className="size-6 shrink-0"/><span className="min-w-0 truncate text-[10px]">{equippedRelic.name}</span></span>}
+                        {to==='/relics'&&equippedRelic&&<span className="flex max-w-20 shrink-0 items-center gap-1" title={`장착 중: ${equippedRelic.name}`}><RelicArtwork relic={equippedRelic} name={`장착 중: ${equippedRelic.name}`} className="size-6"/><span className="min-w-0 truncate text-[10px]">{equippedRelic.name}</span></span>}
                         {hasNewContent(to) && (
                           <span
-                            aria-label={to==='/merchant-orders'?'납품 가능한 의뢰 있음':to==='/flea-market'&&fleaReady?'판매 가능한 구매글 있음':'새 글 있음'}
+                            aria-label={to==='/merchant-orders'?'납품 가능한 의뢰 있음':'새 글 있음'}
                             className="text-[9px] font-bold tracking-wider text-rose-600 dark:text-rose-400"
                           >
                             NEW

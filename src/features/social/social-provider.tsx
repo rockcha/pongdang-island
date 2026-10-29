@@ -10,6 +10,7 @@ import { accountOptions, appQueryClient, accountQueryKey } from '@/lib/account-c
 import { loadFriendRequests, loadProfile, syncProfile } from '@/features/friends/api'
 import { loadNotifications } from '@/features/notifications/api'
 import {useReturnNotifications} from '@/features/notifications/use-return-notifications'
+import {announceCompletion} from '@/features/notifications/foreground-notice'
 import { socialErrorMessage } from './types'
 import type { AppNotification, FriendRequest, Profile, UnreadCounts } from './types'
 
@@ -61,8 +62,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
     function announce(notification:AppNotification){
       if(seen.has(notification.id))return
       seen.add(notification.id)
-      // Voyage returns stay in the inbox and unread bell badge, without a toast.
-      if(notification.harbor_voyage_id)return
+      if(announceCompletion(notification))return
       toast.info(notification.title, { id: notification.id, icon:<NotificationIcon notification={notification} className="size-7"/>, description: `${notification.category === 'notice'?'공지':notification.category === 'friend' ? '친구' : notification.category==='gift'?'선물':'소식'} · ${notification.body}`,action:notification.achievement_id?undefined:notification.harbor_voyage_id?{label:'항구 보기',onClick:()=>{window.location.assign('/port')}}:(notification.expedition_id||notification.expedition_boost_id)?{label:'통발 보기',onClick:()=>{window.location.assign('/expeditions')}}:notification.notice_id?{label:'공지 보기',onClick:()=>{window.location.assign(`/square/notices/${notification.notice_id}`)}}:notification.gift_id?{label:'선물 보기',onClick:()=>{window.location.assign(`/notifications?gift=${notification.gift_id}`)}}:undefined })
     }
     const client = createClient()

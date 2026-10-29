@@ -3,10 +3,17 @@ import {accountCommand} from '@/lib/account-command'
 import {createClient} from '@/lib/client'
 import type {Rarity} from '@/lib/game/rarity'
 
-export type Relic={id:string;name:string;description:string;rarity:Rarity;thumbnail_path:string;owned:boolean;quantity?:number;discovered?:boolean;sell_price:number;effect_kind:string;effect_value:number}
+export type Relic={id:string;name:string;description:string;rarity:Rarity;thumbnail_path:string;owned:boolean;quantity?:number;discovered?:boolean;sell_price:number;effect_kind:string;effect_value:number;crafted?:boolean;attached?:{id:string;name:string;thumbnail_path:string};effects?:{kind:string;value:number}[]}
 // Older cached responses contain only ownership. Never count a missing copy twice.
 export function relicQuantity(relic?:Pick<Relic,'owned'|'quantity'>){return relic?.quantity??(relic?.owned?1:0)}
-export type RelicState={equippedId:string|null;changeFee:number;equipFee:number;unequipFee:number;relics:Relic[];replayed?:boolean}
+export type RelicState={equippedId:string|null;changeFee:number;equipFee:number;unequipFee:number;relics:Relic[];replayed?:boolean;canCraft?:boolean;craft?:{success:boolean;cost:number;chance:number;consumedId:string|null;craftedId:string|null}}
+export function craftRelic(base:string,attached:string,operation:string){
+ return accountCommand(async()=>{
+  const {data,error}=await createClient().rpc('craft_relic',{p_base_id:base,p_attached_id:attached,p_operation_id:operation})
+  if(error)throw error
+  return data
+ },{resource:'relics',invalidate:['collection'],event:'relic-loadout-changed'})
+}
 export async function loadRelics(fresh = false) {
   return readAccountResource('relics', readRelics, { fresh })
 }

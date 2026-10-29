@@ -18,12 +18,17 @@ beforeEach(()=>{mock.fleaReady=0;mock.relic=null;mock.newContent={board:false,ex
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
-it('keeps the market dot and flea NEW for sellable requests even when all posts have been read',async()=>{
+it('keeps sellable request counts and the market dot without NEW after all posts have been read',async()=>{
  mock.fleaReady=2
  const view=render(<MemoryRouter><View/></MemoryRouter>)
  expect(screen.getByRole('button',{name:'장터'}).querySelector('[data-category-activity]')).toBeTruthy()
  const menu=await open('장터')
- expect(within(menu).getByRole('menuitem',{name:/벼룩시장.*2건 판매 가능.*판매 가능한 구매글 있음/}).textContent).toContain('NEW')
+ const flea=within(menu).getByRole('menuitem',{name:/벼룩시장.*2건 판매 가능/})
+ expect(flea.textContent).not.toContain('NEW')
+ mock.newContent.flea=true;view.rerender(<MemoryRouter><View/></MemoryRouter>)
+ expect(within(flea).getByLabelText('새 글 있음').textContent).toBe('NEW')
+ mock.newContent.flea=false;view.rerender(<MemoryRouter><View/></MemoryRouter>)
+ expect(flea.textContent).not.toContain('NEW')
  await close(menu)
  mock.fleaReady=0;view.rerender(<MemoryRouter><View/></MemoryRouter>)
  expect(screen.getByRole('button',{name:'장터'}).querySelector('[data-category-activity]')).toBeNull()

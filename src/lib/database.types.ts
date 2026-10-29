@@ -202,6 +202,8 @@ export type Database = {
       buy_fishing_bait_bulk:{Args:{p_bait_id:string;p_quantity:number;p_operation_id:string;p_expected_price:number};Returns:import('@/features/gold/wallet').Wallet&{delta:number;replayed:boolean;quantity?:number;testClaimed:boolean;testEnabled:boolean}}
       equip_relic:{Args:{p_relic_id:string|null;p_operation_id:string;p_expected_fee?:number};Returns:import('@/features/relics/api').RelicState}
       sell_relic:{Args:{p_relic_id:string;p_operation_id:string;p_expected_price:number};Returns:import('@/features/relics/api').RelicState}
+      craft_relic:{Args:{p_base_id:string;p_attached_id:string;p_operation_id:string};Returns:import('@/features/relics/api').RelicState}
+      web_push_active_notifications:{Args:Record<string,never>;Returns:import('../../supabase/functions/_shared/push-presentation').PushPayload[]}
       aquarium_state: { Args: Record<string, never>; Returns: import('@/features/aquarium/api').AquariumState }
       expand_aquarium_tank:{Args:{p_tank_id:string;p_target_capacity:number;p_operation_id:string};Returns:import('@/features/aquarium/api').AquariumState}
       expand_aquarium_capacity:{Args:{p_target_capacity:number;p_operation_id:string};Returns:import('@/features/aquarium/api').AquariumState}

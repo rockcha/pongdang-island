@@ -1,4 +1,5 @@
 import webpush from 'npm:web-push@3.6.7'
+import {groupPushDeliveries,type PushDelivery} from '../_shared/push-presentation.ts'
 
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, apikey, x-client-info, content-type, x-push-worker-key','Access-Control-Allow-Methods':'POST, OPTIONS'}
 const json=(body:unknown,status=200)=>Response.json(body,{status,headers:cors})
@@ -27,19 +28,22 @@ Deno.serve(async(req:Request)=>{
   if(body.action==='config')return json({configured,publicKey:configured?publicKey:null})
   if(!secret||req.headers.get('x-push-worker-key')!==secret)return json({error:'AUTH_REQUIRED'},401)
   if(!configured)return json({error:'PUSH_NOT_CONFIGURED'},503)
-  const deliveries=await rpc('claim_web_push',{p_limit:20}) as {id:number;leaseToken:string;payload:unknown;subscription:{endpoint:string;keys:{p256dh:string;auth:string}}}[]
+  const deliveries=await rpc('claim_web_push',{p_limit:20}) as PushDelivery[]
+  const groups=groupPushDeliveries(deliveries)
   let cursor=0,sent=0,failed=0
-  await Promise.all(Array.from({length:Math.min(4,deliveries.length)},async()=>{
-   while(cursor<deliveries.length){
-    const delivery=deliveries[cursor++];let status=400
+  await Promise.all(Array.from({length:Math.min(4,groups.length)},async()=>{
+   while(cursor<groups.length){
+    const delivery=groups[cursor++];let status=400
     if(endpointAllowed(delivery.subscription.endpoint)){
      try{
       const result=await webpush.sendNotification(delivery.subscription,JSON.stringify(delivery.payload),{vapidDetails:{subject:subject!,publicKey:publicKey!,privateKey:privateKey!},TTL:300,urgency:'normal',timeout:10000})
       status=result.statusCode
      }catch(error){status=Number((error as {statusCode?:number}).statusCode)||0}
     }
-    await rpc('finish_web_push',{p_id:delivery.id,p_lease_token:delivery.leaseToken,p_status:status})
-    if(status>=200&&status<300)sent++;else failed++
+    for(const member of delivery.deliveries){
+     await rpc('finish_web_push',{p_id:member.id,p_lease_token:member.leaseToken,p_status:status})
+     if(status>=200&&status<300)sent++;else failed++
+    }
    }
   }))
   return json({claimed:deliveries.length,sent,failed})

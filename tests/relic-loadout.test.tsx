@@ -124,7 +124,7 @@ it('keeps the inventory focused on owned relics and links to the shared item col
  load.mockResolvedValue(state);render(<RelicPage/>)
  await screen.findByRole('article',{name:a.name})
  expect(screen.getByRole('heading',{name:'장착 유물'}).querySelector('img')).toBeNull()
- expect(screen.queryByRole('tab')).toBeNull()
+ expect(screen.getByRole('tab',{name:'보유 유물'}).getAttribute('aria-selected')).toBe('true')
  await screen.findByRole('article',{name:a.name});expect(screen.queryByRole('article',{name:b.name})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'유물 도감'}))
  expect(navigate).toHaveBeenCalledWith('/item-collection?tab=relic')
@@ -144,8 +144,8 @@ it('filters duplicate relics without changing the total or triggering a transact
 
 it('blocks crafting behind a disabled coming-soon entry without opening a dialog or making a transaction',async()=>{
  load.mockResolvedValue(state);render(<RelicPage/>)
- const entry=await screen.findByRole('button',{name:'유물 세공 준비 중'})
- expect((entry as HTMLButtonElement).disabled).toBe(true)
+ const entry=await screen.findByRole('tab',{name:'세공 준비 중'})
+ expect(entry.getAttribute('aria-disabled')).toBe('true')
  fireEvent.click(entry)
  expect(screen.queryByRole('dialog')).toBeNull()
  expect(equip).not.toHaveBeenCalled();expect(sell).not.toHaveBeenCalled()

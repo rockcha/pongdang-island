@@ -207,9 +207,9 @@ export function VoyageBetsView({
                           {plan.progress ? (
                             <>
                               <strong
-                                aria-label={'달성률 ' + number(plan.progress.achievement) + '%'}
+                                aria-label={'수익률 ' + number(plan.progress.achievement) + '%'}
                               >
-                                <span className="voyage-score-label">달성률</span>
+                                <span className="voyage-score-label">수익률</span>
                                 {number(plan.progress.achievement)}%
                               </strong>
                               <small>{number(plan.progress.sales)}골드</small>
@@ -378,8 +378,8 @@ export function VoyageBetsView({
               더해져요.
             </p>
             <p>
-              달성률은 미끼·조업 횟수 차이를 보정한 기준 실적 대비 판매액이에요. 100%가 기준이며,
-              달성률이 높은 회사부터 순위를 정해요. 중간 순위는 바뀔 수 있어요.
+              수익률은 미끼·조업 횟수 차이를 보정한 기준 실적 대비 판매액이에요. 100%가 기준이며,
+              수익률이 높은 회사부터 순위를 정해요. 중간 순위는 바뀔 수 있어요.
             </p>
             <p>
               반올림 전 수치로 비교해 1·2위 보상 순위에 정확한 동률이 있으면 전원 원금을 반환해요.
@@ -760,7 +760,7 @@ function PlanDetails({ plan, round }: { plan: VoyagePlan; round: VoyageRound }) 
           <span>
             {stage === 3 ? '최종' : '현재'} {progress.rank}위{progress.tied ? ' · 공동 순위' : ''}
           </span>
-          <strong aria-label={'달성률 ' + number(progress.achievement) + '%'}>
+          <strong aria-label={'수익률 ' + number(progress.achievement) + '%'}>
             {number(progress.achievement)}%
           </strong>
           <small>

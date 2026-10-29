@@ -79,8 +79,9 @@ export async function disconnectPushForLogout(){
  if(reg)for(const notice of await reg.getNotifications().catch(()=>[]))notice.close()
  if(sub){await device('delete',sub).catch(()=>{});await sub.unsubscribe().catch(()=>false)}
 }
-export async function queuePushTest(){
+export async function queuePushTest(delaySeconds:0|30=30){
  const sub=await (await registration()).pushManager.getSubscription()
  if(!sub)throw Error('이 기기의 알림을 먼저 켜 주세요.')
- await device('test',sub)
+ const request={...sub.toJSON(),endpoint:sub.endpoint,delaySeconds}
+ await device('test',request)
 }

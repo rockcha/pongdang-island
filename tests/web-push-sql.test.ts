@@ -9,6 +9,39 @@ async function asUser(id,sql,args=[]){await db.exec('set role authenticated');tr
 async function device(id,action,sub=subscription,categories=['production','bait-production','expedition','harbor']){return (await asUser(id,'select public.web_push_device($1,$2,$3) result',[action,sub,categories])).rows[0].result}
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [owner,other]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,id.slice(-4)])}},60000)
 afterAll(async()=>{await db?.close()})
+it('schedules the 30-second test on the server and rejects arbitrary delays',async()=>{
+ await db.exec('begin')
+ try{
+  await device(other,'save',{...subscription,endpoint:'https://fcm.googleapis.com/fcm/send/delayed-test'})
+  const request={...subscription,endpoint:'https://fcm.googleapis.com/fcm/send/delayed-test',delaySeconds:30}
+  expect(await device(other,'test',request)).toEqual({queued:true})
+  const q=(await db.query("select available_at,expires_at from app_private.push_deliveries where category='test' order by id desc limit 1")).rows[0]
+  expect(new Date(q.available_at).getTime()-Date.now()).toBeGreaterThan(25000)
+  expect(new Date(q.expires_at).getTime()).toBeGreaterThan(new Date(q.available_at).getTime())
+  expect((await db.query('select public.claim_web_push() items')).rows[0].items).toEqual([])
+  await db.exec("update app_private.push_deliveries set available_at=now()-interval '1 second' where category='test'")
+  const claimed=(await db.query('select public.claim_web_push() items')).rows[0].items
+  expect(claimed[0].payload.title).toBe('💌 퐁이가 소식을 가져왔어요')
+  expect(claimed[0].payload.category).toBe('test')
+ }finally{await db.exec('rollback')}
+ await expect(device(other,'test',{...subscription,delaySeconds:1000})).rejects.toThrow('INVALID_PUSH_DEVICE')
+})
+it('returns only the caller’s active notification identities and actual quantities for cleanup',async()=>{
+ await db.exec('begin')
+ try{
+  await device(owner,'save')
+  const site=(await db.query("insert into app_private.production_sites(user_id,facility_id,started_at,completes_at,expires_at,run_output) select $1,id,now()-interval '1 hour',now()-interval '1 minute',now()+interval '1 hour',17 from public.production_facilities limit 1 returning id",[owner])).rows[0].id
+  await db.query('select app_private.notify_due_production_sites()')
+  const result=(await asUser(owner,'select public.web_push_active_notifications() items')).rows[0].items
+  expect(result).toHaveLength(1)
+  expect(result[0]).toMatchObject({category:'production',quantity:17,title:'🔥 따끈한 연료가 준비됐어요'})
+  expect(result[0].body).toContain('17개')
+  expect(result[0]).not.toHaveProperty('endpoint')
+  expect((await asUser(other,'select public.web_push_active_notifications() items')).rows[0].items).toEqual([])
+  await db.query('update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where id=$1',[site])
+  expect((await asUser(owner,'select public.web_push_active_notifications() items')).rows[0].items).toEqual([])
+ }finally{await db.exec('rollback')}
+})
 it('keeps subscriptions private and prevents cross-account endpoint transfer and SSRF',async()=>{
  expect(await device(owner,'save')).toMatchObject({registered:true})
  expect(await device(other,'state')).toEqual({registered:false,categories:[]})

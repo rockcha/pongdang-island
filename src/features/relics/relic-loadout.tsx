@@ -17,6 +17,8 @@ import {playRelicEquipSound,playRelicUnequipSound} from '@/features/gold/purchas
 import {RelicCatalogTabs} from './relic-catalog-tabs'
 import {RelicGold} from './relic-gold'
 import {RelicCraftingGuide} from './relic-crafting-guide'
+import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs'
+import {Gem,Hammer} from 'lucide-react'
 import './relics.css'
 
 type Purchase={id:string|null;name:string;operation:string;fee:number;action?:'sell'}
@@ -34,6 +36,7 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
  const [open,setOpen]=useState(page),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
  const [state,setState,query]=useAccountState<RelicState>('relics',readRelics,{enabled:open})
  const [notice,setNotice]=useState('')
+ const [tab,setTab]=useState('inventory'),[craftBusy,setCraftBusy]=useState(false),[craftLocked,setCraftLocked]=useState(false)
  const [equipEffect,setEquipEffect]=useState<RelicTransition|null>(null)
  const scene=useRef<HTMLDivElement>(null)
  useEffect(()=>{
@@ -105,9 +108,16 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    {pending&&<Button disabled={saving} onClick={()=>{setError('');setPurchase(pending)}}>{pending.action==='sell'?'판매':'장착'} 결과 다시 확인</Button>}
    {!state&&!error&&<p role="status" className="py-6 text-center text-sm">유물을 불러오는 중…</p>}
    {state&&<>
-    <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>list.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus()} onUnequip={()=>select(null,'유물 해제')}/>
-    <RelicCraftingGuide/>
-    <RelicCatalogTabs state={state} disabled={saving||!!pending} listRef={list} onOpenCatalog={()=>{setOpen(false);navigate('/item-collection?tab=relic')}} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
+    <Tabs value={tab} onValueChange={value=>{if(!craftBusy)setTab(String(value))}} className="flex min-h-0 flex-1 flex-col">
+     <TabsList aria-label="유물 메뉴" className="relic-page-tabs shrink-0"><TabsTrigger value="inventory" disabled={craftBusy}><Gem size={14}/>보유 유물</TabsTrigger><TabsTrigger value="craft" disabled={!state.canCraft||saving||!!pending||craftBusy}><Hammer size={14}/>{state.canCraft?'세공':'세공 준비 중'}{craftLocked&&!craftBusy&&<span className="relic-tab-notice">결과 확인</span>}</TabsTrigger></TabsList>
+     <TabsContent value="inventory" keepMounted className="mt-4 flex min-h-0 flex-1 flex-col gap-4 [&[hidden]]:hidden">
+      <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending||craftLocked} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>list.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus()} onUnequip={()=>select(null,'유물 해제')}/>
+      <RelicCatalogTabs state={state} disabled={saving||!!pending||craftLocked} listRef={list} onOpenCatalog={()=>{setOpen(false);navigate('/item-collection?tab=relic')}} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
+     </TabsContent>
+     <TabsContent value="craft" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col [&[hidden]]:hidden">
+      {state.canCraft&&<RelicCraftingGuide state={state} disabled={saving||!!pending} storageKey={storageKey+':craft'} onState={setState} onBusyChange={setCraftBusy} onLockChange={setCraftLocked} onOpenInventory={()=>setTab('inventory')}/>}
+     </TabsContent>
+    </Tabs>
    </>}
  </>
  return <>
@@ -116,7 +126,7 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    <div ref={scene} className="flex min-h-0 flex-1 flex-col gap-4 px-5 pb-4 pt-5">{content}</div>
   </section>:<>
    <Button type="button" size="sm" variant="outline" onClick={()=>{setError('');setOpen(true)}}><RelicIcon className="size-5"/>유물 장착</Button>
-   <Dialog open={open} onOpenChange={value=>{if(!saving)setOpen(value)}}><DialogContent className="flex max-h-[85dvh] flex-col overflow-hidden sm:max-w-lg">
+   <Dialog open={open} onOpenChange={value=>{if(!saving&&!craftBusy)setOpen(value)}}><DialogContent showCloseButton={!craftBusy} className="flex max-h-[85dvh] flex-col overflow-hidden sm:max-w-lg">
     <DialogHeader><DialogTitle>유물 장착</DialogTitle><DialogDescription>장착은 무료이며 한 번에 하나만 장착할 수 있어요. 해제와 교체에는 해제 비용만 들어요.</DialogDescription></DialogHeader>
     <div ref={scene} className="flex min-h-0 flex-col gap-4">{content}</div>
    </DialogContent></Dialog>

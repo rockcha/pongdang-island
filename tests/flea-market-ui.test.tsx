@@ -19,6 +19,27 @@ beforeEach(()=>{
 })
 afterEach(cleanup)
 const setup=()=>render(<MemoryRouter><FleaMarketPage/></MemoryRouter>)
+it.each(['sell','buy'])('shows only active %s listings, including the own-listings filter',async(side)=>{
+ api.feed.mockResolvedValue({items:[{...post,side},{...post,id:'closed',side,title:'마감된 글',status:'cancelled'},{...post,id:'done',side,title:'완료된 글',status:'completed'}],total:3})
+ setup();await screen.findByRole('article')
+ if(side==='buy')fireEvent.click(screen.getByRole('tab',{name:'사요'}))
+ fireEvent.click(screen.getByRole('checkbox',{name:'내 글'}))
+ await waitFor(()=>expect(api.feed.mock.calls.at(-1)[0]).toMatchObject({mine:true}))
+ expect(await screen.findAllByRole('article')).toHaveLength(1)
+ expect(screen.queryByText('마감된 글')).toBeNull()
+ expect(screen.queryByText('완료된 글')).toBeNull()
+})
+it('removes a completed listing immediately after the confirmed trade',async()=>{
+ api.trade.mockResolvedValue({...post,status:'completed',items:post.items.map(item=>({...item,remaining:0}))})
+ setup();fireEvent.click(await screen.findByRole('button',{name:post.title+' 상세 보기'}))
+ const dialog=screen.getByRole('dialog')
+ for(const name of ['연료','복어'])fireEvent.click(within(dialog).getByRole('button',{name:name+' 최대 수량 선택'}))
+ fireEvent.click(within(dialog).getByRole('button',{name:'선택한 수량 구매하기'}))
+ await within(dialog).findByText('거래를 완료했어요. 남은 수량을 확인해 주세요.')
+ fireEvent.click(within(dialog).getByRole('button',{name:'계속 둘러보기'}))
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+ expect(screen.queryByRole('article')).toBeNull()
+})
 it('uses the same owner-first item, quantity and reference price layout before and after opening',async()=>{
  setup();const open=await screen.findByRole('button',{name:post.title+' 상세 보기'})
  const card=screen.getByRole('article')
@@ -26,14 +47,15 @@ it('uses the same owner-first item, quantity and reference price layout before a
  expect(within(card).getByText('복어')).toBeTruthy()
  expect(within(card).getByText(post.title)).toBeTruthy()
  expect(within(card).queryByText(/^총 .*골드$/)).toBeNull()
- expect(within(card).getAllByText('수량 10개')).toHaveLength(2)
- expect(within(card).getByLabelText('상점 판매가 개당 30골드')).toBeTruthy()
+ expect(within(card).getAllByText('× 10')).toHaveLength(2)
+ expect(within(card).queryByLabelText('상점 판매가 개당 30골드')).toBeNull()
+ expect(within(card).getByLabelText('개당 10골드 이익')).toBeTruthy()
  fireEvent.click(open)
  const dialog=screen.getByRole('dialog')
  expect(within(dialog).getByRole('button',{name:'이웃퐁 방문 메뉴'})).toBeTruthy()
- expect(within(dialog).getAllByText('수량 10개')).toHaveLength(2)
+ expect(within(dialog).getAllByText('× 10')).toHaveLength(2)
  expect(within(dialog).queryByText(/^총 .*골드$/)).toBeNull()
- expect(within(dialog).getByLabelText('상점 판매가 개당 30골드')).toBeTruthy()
+ expect(within(dialog).queryByLabelText('상점 판매가 개당 30골드')).toBeNull()
 })
 it('switches to sellable buy requests and keeps eligibility separate from mine and ordinary feeds',async()=>{
  setup();await screen.findByRole('article')
@@ -50,6 +72,23 @@ it('switches to sellable buy requests and keeps eligibility separate from mine a
  fireEvent.click(screen.getByRole('tab',{name:'팔아요'}))
  await waitFor(()=>expect(api.feed.mock.calls.at(-1)[0]).toMatchObject({side:'sell',sellable:false}))
  expect(screen.queryByRole('checkbox',{name:'내가 판매 가능한 글만'})).toBeNull()
+})
+it.each([
+ ['buy',750,600,'개당 150골드 이익'],
+ ['buy',500,600,'개당 100골드 손해'],
+ ['sell',500,600,'개당 100골드 이익'],
+ ['sell',750,600,'개당 150골드 손해'],
+ ['buy',600,600,'개당 0골드 차이 없음'],
+] as const)('compares each %s unit price %s against shop price %s in cards and dialogs',async(side,price,shop,label)=>{
+ const item={...post.items[1],unit_price:price,asset:{...fish,sell_price:shop}}
+ api.feed.mockResolvedValue({items:[{...post,side,items:[item]}],total:1})
+ setup();const card=await screen.findByRole('article')
+ expect(within(card).getByLabelText(label)).toBeTruthy()
+ expect(within(card).queryByText('상점 판매가')).toBeNull()
+ fireEvent.click(within(card).getByRole('button',{name:post.title+' 상세 보기'}))
+ const dialog=screen.getByRole('dialog')
+ expect(within(dialog).getByLabelText(label)).toBeTruthy()
+ expect(within(dialog).queryByText('상점 판매가')).toBeNull()
 })
 it('explains empty sale stock without showing a quantity input or a disabled trade action',async()=>{
  api.stock.mockResolvedValue({gold:5000,assets:[]})
@@ -157,7 +196,7 @@ it('selects multiple quantities and preserves exactly one payload after uncertai
  api.trade.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce({...post,items:post.items.map((item,i)=>({...item,remaining:i===0?7:8}))})
  setup();fireEvent.click(await screen.findByRole('button',{name:/남는 물건 정리해요/}))
  const dialog=screen.getByRole('dialog')
- expect(within(dialog).getByLabelText('상점 판매가 개당 30골드')).toBeTruthy()
+ expect(within(dialog).getByLabelText('개당 10골드 이익')).toBeTruthy()
  fireEvent.change(within(dialog).getByLabelText('연료 거래 수량'),{target:{value:3}})
  fireEvent.change(within(dialog).getByLabelText('복어 거래 수량'),{target:{value:2}})
  fireEvent.click(within(dialog).getByRole('button',{name:'선택한 수량 구매하기'}))

@@ -1,0 +1,24 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "migration": "20261029104016",
+  "capturedAt": "2026-10-29T10:57:13.601Z",
+  "functions": [
+    {
+      "name": "claim_web_push",
+      "hash": "d23f099f3e01d5f930876817433ae335"
+    },
+    {
+      "name": "push_notification_payload",
+      "hash": "12424c3bf1c6d977a4950985827eaa40"
+    },
+    {
+      "name": "web_push_active_notifications",
+      "hash": "fc4ed8000b0477b7b33080276ec37bd7"
+    },
+    {
+      "name": "web_push_device",
+      "hash": "0a3af4a650d797f5ce8537ad9862bd89"
+    }
+  ],
+  "scope": "Only this migration deployed. Full remote structure/history and actual phone delivery remain unverified."
+}

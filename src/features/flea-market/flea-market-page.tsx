@@ -25,8 +25,18 @@ function Amount({value}:{value:number}){return <span className="inline-flex item
 function ListingOwner({post,owner,expanded=false}:{post:FleaPost;owner:string;expanded?:boolean}){
  return <div className="flex min-w-0 items-center gap-2"><PlayerVisitMenu userId={post.owner_id} nickname={post.owner_name} avatarPath={post.owner_avatar_path} mine={post.owner_id===owner} avatarClassName="size-8"/><div className="min-w-0 max-w-[34%] shrink-0"><p className="truncate text-xs font-medium">{post.owner_name}{post.owner_id===owner&&<span className="ml-1 text-[10px] font-normal text-muted-foreground">내 글</span>}</p><p className="mt-0.5 text-[10px] text-muted-foreground"><BoardTime value={post.created_at}/>{post.status!=='active'&&` · ${post.status==='completed'?'거래 완료':'마감'}`}</p></div><p title={post.title} className={`min-w-0 flex-1 border-l border-border/60 pl-3 text-xs leading-5 ${expanded?'break-words':'truncate'}`}>{post.title}</p></div>
 }
-function ListingItem({item}:{item:FleaPost['items'][number]}){
- return <div className="flex items-start gap-3"><Picture asset={item.asset} large/><div className="min-w-0 flex-1"><p className="break-words text-sm font-semibold leading-5">{item.asset.name}</p><div className="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1"><span className="text-xs tabular-nums text-muted-foreground">수량 {number(item.remaining)}개</span><p className="flex items-center gap-1.5"><span className="text-[10px] text-muted-foreground">개당</span><span className="text-base font-semibold text-primary"><Amount value={item.unit_price}/></span></p></div>{item.asset.sell_price!=null&&<div className="mt-2 border-t border-border/40 pt-1"><ShopSalePrice asset={item.asset}/></div>}</div></div>
+function ListingItem({item,side}:{item:FleaPost['items'][number];side:FleaPost['side']}){
+ const shop=item.asset.sell_price
+ const comparable=item.asset.kind==='collectible'&&!item.asset.items?.length&&shop!=null&&Number.isFinite(shop)&&shop>=0
+ const difference=comparable?(side==='buy'?item.unit_price-shop:shop-item.unit_price):null
+ return <div className={`flex items-start gap-3 ${item.remaining<=0?'opacity-40 grayscale':''}`}><Picture asset={item.asset} large/><div className="min-w-0 flex-1">
+  <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm font-semibold leading-5"><span className="min-w-0 break-words">{item.asset.name}</span><span aria-label={`수량 ${number(item.remaining)}개`} className="shrink-0 whitespace-nowrap text-base font-bold tabular-nums text-primary">× {number(item.remaining)}</span></p>
+  <div className="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1"><p className="flex items-center gap-1.5"><span className="text-[10px] text-muted-foreground">개당</span><span className="text-sm font-semibold text-primary"><Amount value={item.unit_price}/></span></p>
+   {difference!=null&&<p title={side==='buy'?'상점에 판매하는 것과 비교한 개당 차익':'구매 후 상점에 되팔 때의 개당 차익'} aria-label={`개당 ${number(Math.abs(difference))}골드 ${difference>0?'이익':difference<0?'손해':'차이 없음'}`} className={`inline-flex items-center gap-1 whitespace-nowrap text-[11px] leading-5 ${difference>0?'text-emerald-700 dark:text-emerald-400':difference<0?'text-destructive':'text-muted-foreground'}`}>
+    <span>개당</span><Amount value={Math.abs(difference)}/><span>{difference>0?'이익':difference<0?'손해':'차이 없음'}</span>
+   </p>}
+  </div>
+ </div></div>
 }
 
 export function FleaMarketPage(){const {session}=useAuth();return <Market key={session?.user.id??'guest'} owner={session?.user.id??''}/>}
@@ -40,7 +50,8 @@ function Market({owner}:{owner:string}){
  const filter={side,query,kind:'all',mine,offset,sellable}
  const [data,setFeed,feedQuery]=useAccountState(['flea',side,query,'all',mine,comparison?0:offset,comparison,sort,sellable],signal=>comparison?readFleaComparison(filter,comparison,sort,signal):readFlea(filter,signal))
  const feed={...feedQuery,data}
- const candidates=Array.from(new Map<string,ExchangeAsset>([...(feed.data?.items??[]).flatMap(post=>post.items).filter(item=>item.remaining>0&&item.asset.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())).map(item=>[fleaAssetKey(item.asset),item.asset] as const),...(comparisonAsset?[[fleaAssetKey(comparisonAsset),comparisonAsset] as const]:[])]).values())
+ const activePosts=feed.data?.items.filter(post=>post.status==='active')??[]
+ const candidates=Array.from(new Map<string,ExchangeAsset>([...activePosts.flatMap(post=>post.items).filter(item=>item.remaining>0&&item.asset.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())).map(item=>[fleaAssetKey(item.asset),item.asset] as const),...(comparisonAsset?[[fleaAssetKey(comparisonAsset),comparisonAsset] as const]:[])]).values())
  const selectedPost=feed.data?.items.find(p=>p.id===selected?.id)??selected
  return <section className="flex min-h-0 min-w-0 w-full flex-1 flex-col">
   <div className="shrink-0 border-b border-border/60 bg-background">
@@ -54,11 +65,11 @@ function Market({owner}:{owner:string}){
   </div>
   <div className="min-h-0 flex-1 space-y-2 overflow-y-auto overscroll-contain p-3" aria-busy={feed.isFetching}>
    {feed.error&&<div role="alert" className="rounded-xl border p-4 text-sm"><p>{fleaError(feed.error)}</p><Button variant="ghost" onClick={()=>void feed.refetch()}>다시 불러오기</Button></div>}
-   {!feed.data&&feed.isPending?<p role="status" className="py-16 text-center text-sm text-muted-foreground">이웃의 가게를 둘러보는 중…</p>:feed.data?.items.length===0?<div className="py-16 text-center"><ShoppingBasket className="mx-auto mb-3 size-8 text-primary/50"/><p className="text-sm">{sellable?'지금 판매할 수 있는 구매글이 없어요.':query?'검색한 물품이 없어요.':mine?'등록한 글이 없어요.':'아직 열린 가게가 없어요.'}</p><p className="mt-2 text-xs text-muted-foreground">{side==='sell'?'남는 물건을 이웃과 나눠보세요.':'필요한 물건을 구해보세요.'}</p></div>:(comparison?feed.data?.items.slice(offset,offset+20):feed.data?.items)?.map(post=><article key={post.id} className="relative block w-full rounded-xl border border-border/60 bg-card px-3 py-3 text-left transition-colors hover:border-primary/40 focus-within:ring-2 focus-within:ring-ring">
+   {!feed.data&&feed.isPending?<p role="status" className="py-16 text-center text-sm text-muted-foreground">이웃의 가게를 둘러보는 중…</p>:feed.data&&activePosts.length===0?<div className="py-16 text-center"><ShoppingBasket className="mx-auto mb-3 size-8 text-primary/50"/><p className="text-sm">{sellable?'지금 판매할 수 있는 구매글이 없어요.':query?'검색한 물품이 없어요.':mine?'등록한 글이 없어요.':'아직 열린 가게가 없어요.'}</p><p className="mt-2 text-xs text-muted-foreground">{side==='sell'?'남는 물건을 이웃과 나눠보세요.':'필요한 물건을 구해보세요.'}</p></div>:(comparison?activePosts.slice(offset,offset+20):activePosts).map(post=><article key={post.id} className="relative block w-full rounded-xl border border-border/60 bg-card px-3 py-3 text-left transition-colors hover:border-primary/40 focus-within:ring-2 focus-within:ring-ring">
     <button type="button" aria-label={`${post.title} 상세 보기`} onClick={()=>{setSelected(post);setSelectedOpen(true)}} className="absolute inset-0 rounded-xl outline-none"/>
     <div className="pointer-events-none">
      <ListingOwner post={post} owner={owner}/>
-     <ul className="mt-3 space-y-4">{[...post.items].sort((a,b)=>Number(b.asset.name.includes(query))-Number(a.asset.name.includes(query))).slice(0,2).map(item=><li key={item.id}><ListingItem item={item}/></li>)}</ul>
+     <ul className="mt-3 space-y-4">{[...post.items].sort((a,b)=>Number(b.asset.name.includes(query))-Number(a.asset.name.includes(query))).slice(0,2).map(item=><li key={item.id}><ListingItem item={item} side={post.side}/></li>)}</ul>
      {post.items.length>2&&<p className="mt-2 text-[11px] text-muted-foreground">외 {post.items.length-2}종</p>}
     </div>
    </article>)}
@@ -66,7 +77,7 @@ function Market({owner}:{owner:string}){
   </div>
   <div className="flex shrink-0 items-center justify-between gap-3 border-t border-border/60 bg-background px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"><p className="text-[11px] text-muted-foreground">필요한 만큼, 이웃과 거래해요.</p><Button className="min-h-11 gap-1.5 rounded-xl" onClick={()=>{setCompose(true);setComposeOpen(true)}}><Plus className="size-4"/>글쓰기</Button></div>
   {compose&&<Composer side={side} open={composeOpen} onClose={()=>setComposeOpen(false)} onExited={()=>setCompose(false)}/>}
-  {selectedPost&&<TradeDialog key={selectedPost.id} post={selectedPost} owner={owner} open={selectedOpen} onClose={()=>setSelectedOpen(false)} onExited={()=>setSelected(null)} onUpdate={result=>{setSelected(result);setFeed(current=>current?{...current,items:current.items.map(item=>item.id===result.id?result:item)}:current)}}/>}
+  {selectedPost&&<TradeDialog key={selectedPost.id} post={selectedPost} owner={owner} open={selectedOpen} onClose={()=>setSelectedOpen(false)} onExited={()=>setSelected(null)} onUpdate={result=>{setSelected(result);setFeed(current=>current?{...current,items:current.items.flatMap(item=>item.id===result.id?(result.status==='active'?[result]:[]):[item]),total:Math.max(0,current.total-(result.status!=='active'&&current.items.some(item=>item.id===result.id)?1:0))}:current)}}/>}
  </section>
 }
 
@@ -133,13 +144,12 @@ function TradeDialog({post,owner,open,onClose,onExited,onUpdate}:{post:FleaPost;
   </DialogHeader>
   <div className="min-h-0 flex-1 divide-y divide-border/60 overflow-y-auto overscroll-contain px-4">
    {post.items.map(item=><section key={item.id} className="py-4">
-    <ListingItem item={item}/>
+    <ListingItem item={item} side={post.side}/>
     {!mine&&post.status==='active'&&(!stockReady?<p className="mt-3 text-xs text-muted-foreground">{stock.error?'보유 물품을 확인해주세요.':'보유 물품을 확인하는 중…'}</p>:available(item)>0?<div className="mt-4 flex flex-wrap items-center justify-between gap-2">
      <span className="text-xs text-muted-foreground">{buying?'구매 수량':`판매 가능 ${number(available(item))}개`}</span>
      <div className="flex items-center gap-1"><div className="flex items-center rounded-lg border border-border/70 bg-secondary/20"><Button variant="ghost" size="icon" aria-label={`${item.asset.name} 수량 줄이기`} disabled={frozen||!(quantities[item.id]>0)} onClick={()=>setQuantities(q=>({...q,[item.id]:Math.max(0,(q[item.id]??0)-1)}))}>−</Button><input aria-label={`${item.asset.name} 거래 수량`} type="number" inputMode="numeric" min={0} max={available(item)} value={quantities[item.id]??0} disabled={frozen} onChange={e=>setQuantities(q=>({...q,[item.id]:quantityWithin(e.target.value,available(item))}))} className="h-11 w-12 bg-transparent text-center text-sm tabular-nums outline-none [appearance:textfield] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"/><Button variant="ghost" size="icon" aria-label={`${item.asset.name} 수량 늘리기`} disabled={frozen||(quantities[item.id]??0)>=available(item)} onClick={()=>setQuantities(q=>({...q,[item.id]:(q[item.id]??0)+1}))}>+</Button></div><Button variant="ghost" aria-label={`${item.asset.name} 최대 수량 선택`} className="min-h-11 px-2 text-xs text-primary" disabled={frozen} onClick={()=>setQuantities(q=>({...q,[item.id]:available(item)}))}>최대</Button></div>
     </div>:<p className="mt-3 rounded-lg bg-secondary/40 px-3 py-2.5 text-xs text-muted-foreground">{buying?'남은 물품이 없어요.':'판매할 수 있는 물품이 없어요.'}</p>)}
    </section>)}
-   {!buying&&<details className="py-3 text-xs text-muted-foreground"><summary className="cursor-pointer py-1">구매대금 정보</summary><p className="mt-2 flex items-center justify-between"><span>맡겨둔 구매대금</span><Amount value={post.escrow_gold}/></p></details>}
    {stock.error&&!buying&&!mine&&<div role="alert" className="py-3 text-xs text-destructive">보유 물품을 확인하지 못했어요.<Button variant="ghost" onClick={()=>void stock.refetch()}>다시 확인</Button></div>}
   </div>
   <div className="shrink-0 space-y-3 border-t bg-secondary/20 px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]">

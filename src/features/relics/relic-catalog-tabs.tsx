@@ -3,7 +3,7 @@ import {Menu} from '@base-ui/react/menu'
 import {BookOpen,Ellipsis} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {RarityBadge} from '@/components/rarity-badge'
-import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
+import {RelicArtwork} from './relic-artwork'
 import {RelicEffectText} from './relic-equipment-slot'
 import {RelicGold} from './relic-gold'
 import type {Relic,RelicState} from './api'
@@ -33,7 +33,7 @@ export function RelicCatalogTabs({state,disabled,listRef,onEquip,onSell,onShare,
    {items.map(r=>{
     const equipped=state.equippedId===r.id
     return <article key={r.id} aria-label={r.name} data-equipped={equipped} className="relic-inventory-card">
-     <div className="relic-inventory-thumbnail relative shrink-0"><CollectibleThumbnail path={r.thumbnail_path} name={r.name} className="size-14"/><span aria-label={`보유 ${relicQuantity(r)}개`} className="relic-quantity-badge">×{relicQuantity(r)}</span></div>
+     <div className="relic-inventory-thumbnail relative shrink-0"><RelicArtwork relic={r} className="size-14"/><span aria-label={`보유 ${relicQuantity(r)}개`} className="relic-quantity-badge" style={r.crafted?{left:-2,right:'auto'}:undefined}>×{relicQuantity(r)}</span></div>
      <div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-x-2 gap-y-0.5"><h3 className="text-[13px] font-semibold leading-5">{r.name}</h3><RarityBadge rarity={r.rarity}/></div><p className="mt-1 text-[11px] leading-[1.65] text-muted-foreground"><RelicEffectText description={r.description}/></p><p className="mt-1.5 text-[10px] tabular-nums text-muted-foreground">{equipped?`장착 1개 · 여분 ${Math.max(0,relicQuantity(r)-1)}개`:`사용 가능 ${relicQuantity(r)}개`}</p></div>
      <div className="flex shrink-0 flex-col items-end gap-1"><Button size="sm" variant={equipped?'ghost':'outline'} className={`h-8 rounded-lg px-2.5 text-[11px] ${equipped?'text-primary disabled:opacity-100':'text-muted-foreground'}`} disabled={disabled||equipped} onClick={()=>onEquip(r)}>{equipped?'장착 중':state.equippedId?'교체':'장착'}</Button>
       {r.owned&&r.sell_price>0&&<RelicMenu relic={r} equipped={equipped} disabled={disabled} onSell={()=>onSell(r)} onShare={onShare?()=>onShare(r):undefined}/>}

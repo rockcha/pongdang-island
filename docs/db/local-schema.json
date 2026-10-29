@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "a0ea60baf715de8e1c346e98c322754eb95f789f2c02f69fdae8205125d5ef58",
+  "migrationHash": "a0e6a41bda5d33b287ea07cd5ab8dd4e44bce9dd6b91a1bf028d159b0143a9c3",
   "structure": {
     "enums": [
       {
@@ -127,6 +127,12 @@
       {
         "rls": true,
         "name": "collectible_event_windows",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "crafted_relics",
         "schema": "app_private",
         "force_rls": false
       },
@@ -445,6 +451,18 @@
       {
         "rls": true,
         "name": "region_settings",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "relic_craft_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "relic_test_grants",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1751,6 +1769,56 @@
         "table": "collectible_event_windows",
         "schema": "app_private",
         "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "default": "('crafted-'::text || (gen_random_uuid())::text)",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "base_id",
+        "type": "text",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "attached_id",
+        "type": "text",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -4112,7 +4180,17 @@
         "schema": "app_private",
         "default": null,
         "identity": "",
-        "nullable": false,
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "crafted_id",
+        "type": "text",
+        "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -5011,6 +5089,96 @@
         "table": "region_settings",
         "schema": "app_private",
         "default": "true",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "base_id",
+        "type": "text",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "attached_id",
+        "type": "text",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "grant_key",
+        "type": "text",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -11366,6 +11534,30 @@
         "definition": "CREATE UNIQUE INDEX collectible_event_windows_species_prefix_key ON app_private.collectible_event_windows USING btree (species_prefix)"
       },
       {
+        "name": "crafted_relics_attached_idx",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "CREATE INDEX crafted_relics_attached_idx ON app_private.crafted_relics USING btree (attached_id)"
+      },
+      {
+        "name": "crafted_relics_base_idx",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "CREATE INDEX crafted_relics_base_idx ON app_private.crafted_relics USING btree (base_id)"
+      },
+      {
+        "name": "crafted_relics_pkey",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX crafted_relics_pkey ON app_private.crafted_relics USING btree (id)"
+      },
+      {
+        "name": "crafted_relics_user_id_id_key",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX crafted_relics_user_id_id_key ON app_private.crafted_relics USING btree (user_id, id)"
+      },
+      {
         "name": "exchange_bundle_gifts_gift_id_key",
         "table": "exchange_bundle_gifts",
         "schema": "app_private",
@@ -11828,6 +12020,12 @@
         "definition": "CREATE UNIQUE INDEX player_relic_loadouts_pkey ON app_private.player_relic_loadouts USING btree (user_id)"
       },
       {
+        "name": "relic_loadout_crafted_idx",
+        "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "definition": "CREATE INDEX relic_loadout_crafted_idx ON app_private.player_relic_loadouts USING btree (user_id, crafted_id) WHERE (crafted_id IS NOT NULL)"
+      },
+      {
         "name": "relic_loadouts_relic_owner",
         "table": "player_relic_loadouts",
         "schema": "app_private",
@@ -12000,6 +12198,30 @@
         "table": "region_settings",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX region_settings_pkey ON app_private.region_settings USING btree (id)"
+      },
+      {
+        "name": "relic_craft_attached_idx",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "CREATE INDEX relic_craft_attached_idx ON app_private.relic_craft_operations USING btree (attached_id)"
+      },
+      {
+        "name": "relic_craft_base_idx",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "CREATE INDEX relic_craft_base_idx ON app_private.relic_craft_operations USING btree (base_id)"
+      },
+      {
+        "name": "relic_craft_operations_pkey",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX relic_craft_operations_pkey ON app_private.relic_craft_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "relic_test_grants_pkey",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX relic_test_grants_pkey ON app_private.relic_test_grants USING btree (user_id, grant_key)"
       },
       {
         "name": "savings_operations_account",
@@ -14981,7 +15203,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.auto_claim_due_production()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare owner_id uuid; n integer:=0; stamp timestamptz:=clock_timestamp();\nbegin\n for owner_id in\n  select w.user_id from public.player_wallets w\n  join app_private.player_relic_loadouts l on l.user_id=w.user_id\n  join public.fishing_relics r on r.id=l.relic_id and r.enabled and r.effect_kind='production_auto_claim' and r.effect_value=1\n  where exists(select 1 from app_private.production_sites s where s.user_id=w.user_id and s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp\n   and coalesce((w.inventory->>'fuel')::bigint,0)+s.run_output<=1000000000)\n   or exists(select 1 from app_private.bait_production_sites s where s.user_id=w.user_id and s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp\n   and coalesce((w.inventory->>s.run_bait_id)::bigint,0)+s.run_output<=1000000000)\n  order by w.user_id limit 200 for update of w skip locked\n loop\n  n:=n+app_private.auto_claim_production(owner_id);\n end loop;\n return n;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.auto_claim_due_production()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare owner_id uuid; n integer:=0; stamp timestamptz:=clock_timestamp();\nbegin\n for owner_id in\n  select w.user_id from public.player_wallets w\n  join lateral app_private.equipped_relic_effects(w.user_id) r on r.effect_kind='production_auto_claim' and r.effect_value=1\n  where exists(select 1 from app_private.production_sites s where s.user_id=w.user_id and s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp\n   and coalesce((w.inventory->>'fuel')::bigint,0)+s.run_output<=1000000000)\n   or exists(select 1 from app_private.bait_production_sites s where s.user_id=w.user_id and s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp\n   and coalesce((w.inventory->>s.run_bait_id)::bigint,0)+s.run_output<=1000000000)\n  order by w.user_id limit 200 for update of w skip locked\n loop\n  n:=n+app_private.auto_claim_production(owner_id);\n end loop;\n return n;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14991,7 +15213,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.auto_claim_production(p_user uuid)\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare w public.player_wallets; run record; equipped text; items jsonb;\n stamp timestamptz; claim_time timestamptz; count_claimed integer:=0; next_count bigint;\n fuel_count bigint:=0; bait_count bigint:=0; summary text;\nbegin\n if p_user is null or not exists (\n  select 1 from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n  where l.user_id=p_user and r.enabled and r.effect_kind='production_auto_claim' and r.effect_value=1\n ) then return 0; end if;\n select * into w from public.player_wallets where user_id=p_user for update skip locked;\n if not found then return 0; end if;\n select l.relic_id into equipped from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n where l.user_id=p_user and r.enabled and r.effect_kind='production_auto_claim' and r.effect_value=1;\n if equipped is null then return 0; end if;\n stamp:=clock_timestamp(); items:=w.inventory;\n for run in\n  select 'fuel'::text kind,s.id,s.started_at,s.completes_at,s.expires_at,s.run_output,'fuel'::text item_id\n  from app_private.production_sites s where s.user_id=p_user and s.started_at is not null\n   and s.completes_at<=stamp and s.expires_at>stamp\n  union all\n  select 'bait',s.id,s.started_at,s.completes_at,s.expires_at,s.run_output,s.run_bait_id\n  from app_private.bait_production_sites s where s.user_id=p_user and s.started_at is not null\n   and s.completes_at<=stamp and s.expires_at>stamp\n  order by completes_at,kind,id limit 500\n loop\n  next_count:=coalesce((items->>run.item_id)::bigint,0)+run.run_output;\n  if next_count>1000000000 then continue; end if;\n  if run.kind='fuel' then\n   perform 1 from app_private.production_sites where id=run.id and user_id=p_user\n    and started_at=run.started_at and expires_at>clock_timestamp() for update skip locked;\n  else\n   perform 1 from app_private.bait_production_sites where id=run.id and user_id=p_user\n    and started_at=run.started_at and expires_at>clock_timestamp() for update skip locked;\n  end if;\n  if not found then continue; end if;\n  claim_time:=clock_timestamp();\n  if claim_time>=run.expires_at then continue; end if;\n  insert into app_private.production_auto_claims(user_id,kind,site_id,started_at,completed_at,claimed_at,item_id,amount,relic_id)\n  values(p_user,run.kind,run.id,run.started_at,run.completes_at,claim_time,run.item_id,run.run_output,equipped)\n  on conflict(kind,site_id,started_at) do nothing;\n  if not found then continue; end if;\n  items:=jsonb_set(items,array[run.item_id],to_jsonb(next_count::integer));\n  if run.kind='fuel' then\n   update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where id=run.id and user_id=p_user;\n   fuel_count:=fuel_count+run.run_output;\n   update public.notifications set read_at=coalesce(read_at,stamp) where recipient_id=p_user\n    and production_site_id=run.id and production_started_at=run.started_at;\n  else\n   update app_private.bait_production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null,run_bait_id=null,notified_started_at=null\n    where id=run.id and user_id=p_user;\n   bait_count:=bait_count+run.run_output;\n   update public.notifications set read_at=coalesce(read_at,stamp) where recipient_id=p_user\n    and bait_production_site_id=run.id and bait_production_started_at=run.started_at;\n  end if;\n  count_claimed:=count_claimed+1;\n end loop;\n if count_claimed>0 then\n  update public.player_wallets set inventory=items,updated_at=clock_timestamp() where user_id=p_user;\n  summary:=concat_ws(' · ',case when fuel_count>0 then '연료 '||fuel_count||'개' end,case when bait_count>0 then '미끼 '||bait_count||'개' end);\n  insert into public.notifications(recipient_id,category,kind,title,body,production_auto_claim)\n  values(p_user,'general','system','수확종이 생산물을 챙겼어요',summary||'를 자동으로 수령했어요. 생산소에서 다음 생산을 시작할 수 있어요.',true);\n end if;\n return count_claimed;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.auto_claim_production(p_user uuid)\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare w public.player_wallets; run record; equipped text; items jsonb;\n stamp timestamptz; claim_time timestamptz; count_claimed integer:=0; next_count bigint;\n fuel_count bigint:=0; bait_count bigint:=0; summary text;\nbegin\n if p_user is null or not exists (\n  select 1 from app_private.equipped_relic_effects(p_user) r where r.effect_kind='production_auto_claim' and r.effect_value=1\n ) then return 0; end if;\n select * into w from public.player_wallets where user_id=p_user for update skip locked;\n if not found then return 0; end if;\n select r.relic_id into equipped from app_private.equipped_relic_effects(p_user) r where r.effect_kind='production_auto_claim' and r.effect_value=1;\n if equipped is null then return 0; end if;\n stamp:=clock_timestamp(); items:=w.inventory;\n for run in\n  select 'fuel'::text kind,s.id,s.started_at,s.completes_at,s.expires_at,s.run_output,'fuel'::text item_id\n  from app_private.production_sites s where s.user_id=p_user and s.started_at is not null\n   and s.completes_at<=stamp and s.expires_at>stamp\n  union all\n  select 'bait',s.id,s.started_at,s.completes_at,s.expires_at,s.run_output,s.run_bait_id\n  from app_private.bait_production_sites s where s.user_id=p_user and s.started_at is not null\n   and s.completes_at<=stamp and s.expires_at>stamp\n  order by completes_at,kind,id limit 500\n loop\n  next_count:=coalesce((items->>run.item_id)::bigint,0)+run.run_output;\n  if next_count>1000000000 then continue; end if;\n  if run.kind='fuel' then\n   perform 1 from app_private.production_sites where id=run.id and user_id=p_user\n    and started_at=run.started_at and expires_at>clock_timestamp() for update skip locked;\n  else\n   perform 1 from app_private.bait_production_sites where id=run.id and user_id=p_user\n    and started_at=run.started_at and expires_at>clock_timestamp() for update skip locked;\n  end if;\n  if not found then continue; end if;\n  claim_time:=clock_timestamp();\n  if claim_time>=run.expires_at then continue; end if;\n  insert into app_private.production_auto_claims(user_id,kind,site_id,started_at,completed_at,claimed_at,item_id,amount,relic_id)\n  values(p_user,run.kind,run.id,run.started_at,run.completes_at,claim_time,run.item_id,run.run_output,equipped)\n  on conflict(kind,site_id,started_at) do nothing;\n  if not found then continue; end if;\n  items:=jsonb_set(items,array[run.item_id],to_jsonb(next_count::integer));\n  if run.kind='fuel' then\n   update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where id=run.id and user_id=p_user;\n   fuel_count:=fuel_count+run.run_output;\n   update public.notifications set read_at=coalesce(read_at,stamp) where recipient_id=p_user\n    and production_site_id=run.id and production_started_at=run.started_at;\n  else\n   update app_private.bait_production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null,run_bait_id=null,notified_started_at=null\n    where id=run.id and user_id=p_user;\n   bait_count:=bait_count+run.run_output;\n   update public.notifications set read_at=coalesce(read_at,stamp) where recipient_id=p_user\n    and bait_production_site_id=run.id and bait_production_started_at=run.started_at;\n  end if;\n  count_claimed:=count_claimed+1;\n end loop;\n if count_claimed>0 then\n  update public.player_wallets set inventory=items,updated_at=clock_timestamp() where user_id=p_user;\n  summary:=concat_ws(' · ',case when fuel_count>0 then '연료 '||fuel_count||'개' end,case when bait_count>0 then '미끼 '||bait_count||'개' end);\n  insert into public.notifications(recipient_id,category,kind,title,body,production_auto_claim)\n  values(p_user,'general','system','수확종이 생산물을 챙겼어요',summary||'를 자동으로 수령했어요. 생산소에서 다음 생산을 시작할 수 있어요.',true);\n end if;\n return count_claimed;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15381,7 +15603,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_limit integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_web_push(p_limit integer DEFAULT 20)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n update app_private.push_deliveries q set status='skipped',finished_at=clock_timestamp()\n from app_private.push_subscriptions s where s.id=q.subscription_id and q.status in ('pending','sending') and (q.locked_until is null or q.locked_until<clock_timestamp())\n and (q.expires_at<=clock_timestamp() or q.attempts>=5 or (q.category<>'test' and not(q.category=any(s.categories))) or not app_private.push_delivery_current(q,s.user_id));\n with due as (\n  select q.id from app_private.push_deliveries q where q.status in ('pending','sending') and q.attempts<5\n   and q.available_at<=clock_timestamp() and q.expires_at>clock_timestamp() and (q.locked_until is null or q.locked_until<clock_timestamp())\n  order by q.available_at,q.id limit greatest(1,least(coalesce(p_limit,20),20)) for update skip locked\n ), claimed as (\n  update app_private.push_deliveries q set status='sending',attempts=q.attempts+1,lease_token=gen_random_uuid(),locked_until=clock_timestamp()+interval '3 minutes'\n  from due where q.id=due.id returning q.*\n ) select coalesce(jsonb_agg(jsonb_build_object('id',q.id,'leaseToken',q.lease_token,'payload',q.payload,'subscription',jsonb_build_object('endpoint',s.endpoint,'keys',jsonb_build_object('p256dh',s.p256dh,'auth',s.auth)))),'[]'::jsonb)\n into result from claimed q join app_private.push_subscriptions s on s.id=q.subscription_id;\n -- Finished payloads are short-lived; never retain a growing delivery history.\n delete from app_private.push_deliveries where finished_at<clock_timestamp()-interval '7 days';\n return result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_web_push(p_limit integer DEFAULT 20)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n update app_private.push_deliveries q set status='skipped',finished_at=clock_timestamp()\n from app_private.push_subscriptions s where s.id=q.subscription_id and q.status in ('pending','sending') and (q.locked_until is null or q.locked_until<clock_timestamp())\n and (q.expires_at<=clock_timestamp() or q.attempts>=5 or (q.category<>'test' and not(q.category=any(s.categories))) or not app_private.push_delivery_current(q,s.user_id));\n with due as (\n  select q.id from app_private.push_deliveries q where q.status in ('pending','sending') and q.attempts<5\n   and q.available_at<=clock_timestamp() and q.expires_at>clock_timestamp() and (q.locked_until is null or q.locked_until<clock_timestamp())\n  order by q.available_at,q.id limit greatest(1,least(coalesce(p_limit,20),20)) for update skip locked\n ), claimed as (\n  update app_private.push_deliveries q set status='sending',attempts=q.attempts+1,lease_token=gen_random_uuid(),locked_until=clock_timestamp()+interval '3 minutes'\n  from due where q.id=due.id returning q.*\n ) select coalesce(jsonb_agg(jsonb_build_object('id',q.id,'leaseToken',q.lease_token,'payload',app_private.push_notification_payload(q,s.user_id),'subscription',jsonb_build_object('endpoint',s.endpoint,'keys',jsonb_build_object('p256dh',s.p256dh,'auth',s.auth)))),'[]'::jsonb)\n into result from claimed q join app_private.push_subscriptions s on s.id=q.subscription_id;\n -- Finished payloads are short-lived; never retain a growing delivery history.\n delete from app_private.push_deliveries where finished_at<clock_timestamp()-interval '7 days';\n return result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15483,6 +15705,16 @@
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.consume_bait_cycle()\n RETURNS game_rarity\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.game_rarity;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n insert into app_private.bait_cycles(user_id,next_rarity) values(auth.uid(),'rare')\n on conflict(user_id) do update set next_rarity=case when bait_cycles.next_rarity='common' then 'rare'::public.game_rarity else 'common'::public.game_rarity end\n returning case when next_rarity='rare' then 'common'::public.game_rarity else 'rare'::public.game_rarity end into r;\n return r;\nend $function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "craft_relic",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.craft_relic(p_base_id text, p_attached_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();a public.fishing_relics;b public.fishing_relics;w public.player_wallets;\n previous app_private.relic_craft_operations;cost integer;chance integer;success boolean;\n consumed text;crafted text;item text;result jsonb;equipped text;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if not app_private.notice_is_operator() then raise exception 'OPERATOR_REQUIRED';end if;\n if p_operation_id is null or p_base_id is null or p_attached_id is null then raise exception 'INVALID_OPERATION';end if;\n perform app_private.get_gold_wallet();select * into strict w from public.player_wallets where user_id=u for update;\n select * into previous from app_private.relic_craft_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.base_id<>p_base_id or previous.attached_id<>p_attached_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('craft',previous.result,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into a from public.fishing_relics where id=p_base_id and enabled;\n select * into b from public.fishing_relics where id=p_attached_id and enabled;\n if a.id is null or b.id is null then raise exception 'RELIC_ORIGINAL_REQUIRED';end if;\n if a.effect_kind=b.effect_kind then raise exception 'RELIC_SAME_EFFECT';end if;\n if a.rarity not in('rare','epic','mythic') or b.rarity not in('rare','epic','mythic') then raise exception 'RELIC_ORIGINAL_REQUIRED';end if;\n perform 1 from app_private.player_fishing_relics where user_id=u and relic_id in(a.id,b.id) order by relic_id for update;\n select relic_id into equipped from app_private.player_relic_loadouts where user_id=u;\n if equipped in(a.id,b.id) then raise exception 'RELIC_EQUIPPED';end if;\n if exists(select 1 from (values(a.id),(b.id)) materials(id) where\n  coalesce((select quantity from app_private.player_fishing_relics where user_id=u and relic_id=materials.id),0)\n  <=case when equipped=materials.id then 1 else 0 end) then raise exception 'RELIC_MATERIAL_UNAVAILABLE';end if;\n cost:=5000;\n chance:=35;\n if w.gold<cost then raise exception 'INSUFFICIENT_GOLD';end if;\n success:=random()*100<chance;\n if success then\n  insert into app_private.crafted_relics(user_id,base_id,attached_id) values(u,a.id,b.id) returning id into crafted;\n else\n  consumed:=case when a.rarity<b.rarity then a.id when b.rarity<a.rarity then b.id when random()<0.5 then a.id else b.id end;\n end if;\n -- Equipped originals are rejected even when spare copies exist.\n delete from app_private.player_fishing_relics where user_id=u and relic_id in(a.id,b.id) and quantity=1 and (success or relic_id=consumed);\n update app_private.player_fishing_relics set quantity=quantity-1 where user_id=u and relic_id in(a.id,b.id) and (success or relic_id=consumed);\n insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(u,a.id),(u,b.id) on conflict do nothing;\n update public.player_wallets set gold=gold-cost,updated_at=clock_timestamp() where user_id=u;\n item:='relic-craft:'||a.id||':'||b.id;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy',item,-cost);\n result:=jsonb_build_object('success',success,'cost',cost,'chance',chance,'consumedId',consumed,'craftedId',crafted);\n insert into app_private.relic_craft_operations(user_id,operation_id,base_id,attached_id,result) values(u,p_operation_id,a.id,b.id,result);\n return app_private.relic_state()||jsonb_build_object('craft',result,'replayed',false);\nend$function$\n",
+        "securityDefiner": true
       },
       {
         "name": "default_collectible_movement",
@@ -15701,7 +15933,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_relic_id text, p_operation_id uuid, p_expected_fee integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.equip_relic(p_relic_id text, p_operation_id uuid, p_expected_fee integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;prev public.gold_transactions;current_id text;fee integer;item text;fuel_limit integer:=4;bait_limit integer:=4;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n perform app_private.get_gold_wallet();select * into strict w from public.player_wallets where user_id=u for update;\n item:='relic-loadout:'||coalesce(p_relic_id,'unequip');\n select * into prev from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.action<>'buy' or prev.item_id is distinct from item or (p_expected_fee is not null and prev.delta<>-p_expected_fee) then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('replayed',true);\n end if;\n select relic_id into current_id from app_private.player_relic_loadouts where user_id=u;\n if current_id is not distinct from p_relic_id then raise exception 'RELIC_ALREADY_EQUIPPED';end if;\n if p_relic_id is not null and not exists(select 1 from app_private.player_fishing_relics d join public.fishing_relics r on r.id=d.relic_id where d.user_id=u and d.relic_id=p_relic_id and r.enabled) then raise exception 'RELIC_NOT_OWNED';end if;\n -- Production starts share this wallet lock, so a concurrent start cannot\n -- exceed the capacity of the equipment committed by this transaction.\n if p_relic_id is not null then\n  select 4+case when effect_kind='fuel_active_slots' then effect_value::integer else 0 end,\n         4+case when effect_kind='bait_active_slots' then effect_value::integer else 0 end\n   into fuel_limit,bait_limit from public.fishing_relics where id=p_relic_id and enabled;\n  if not found then raise exception 'RELIC_NOT_OWNED';end if;\n end if;\n if app_private.production_active_count()>fuel_limit then raise exception 'RELIC_FUEL_PRODUCTION_ACTIVE:%',fuel_limit;end if;\n if app_private.bait_production_active_count()>bait_limit then raise exception 'RELIC_BAIT_PRODUCTION_ACTIVE:%',bait_limit;end if;\n -- Only removing the existing relic costs gold; the new equip itself is free.\n fee:=case when current_id is not null then 500 else 0 end;\n if p_expected_fee is not null and p_expected_fee<>fee then raise exception 'RELIC_LOADOUT_CHANGED';end if;\n if w.gold<fee then raise exception 'INSUFFICIENT_GOLD';end if;\n if p_relic_id is null then delete from app_private.player_relic_loadouts where user_id=u;\n else insert into app_private.player_relic_loadouts(user_id,relic_id) values(u,p_relic_id) on conflict(user_id) do update set relic_id=excluded.relic_id;end if;\n update public.player_wallets set gold=gold-fee,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy',item,-fee);\n return app_private.relic_state()||jsonb_build_object('replayed',false);\nend$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.equip_relic(p_relic_id text, p_operation_id uuid, p_expected_fee integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;prev public.gold_transactions;current_id text;fee integer;item text;\n fuel_limit integer:=4;bait_limit integer:=4;candidate jsonb;is_crafted boolean;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n perform app_private.get_gold_wallet();select * into strict w from public.player_wallets where user_id=u for update;\n item:='relic-loadout:'||coalesce(p_relic_id,'unequip');\n select * into prev from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.action<>'buy' or prev.item_id is distinct from item or (p_expected_fee is not null and prev.delta<>-p_expected_fee) then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('replayed',true);\n end if;\n select coalesce(crafted_id,relic_id) into current_id from app_private.player_relic_loadouts where user_id=u;\n if current_id is not distinct from p_relic_id then raise exception 'RELIC_ALREADY_EQUIPPED';end if;\n if p_relic_id is not null then\n  select r into candidate from jsonb_array_elements(app_private.relic_state()->'relics') r where r->>'id'=p_relic_id and (r->>'owned')::boolean;\n  if candidate is null then raise exception 'RELIC_NOT_OWNED';end if;\n  is_crafted:=coalesce((candidate->>'crafted')::boolean,false);\n  if is_crafted and not app_private.notice_is_operator() then raise exception 'OPERATOR_REQUIRED';end if;\n  if is_crafted then\n   select 4+coalesce(sum((e->>'value')::integer) filter(where e->>'kind'='fuel_active_slots'),0),\n          4+coalesce(sum((e->>'value')::integer) filter(where e->>'kind'='bait_active_slots'),0)\n   into fuel_limit,bait_limit from jsonb_array_elements(candidate->'effects') e;\n  else\n   fuel_limit:=4+case when candidate->>'effect_kind'='fuel_active_slots' then (candidate->>'effect_value')::integer else 0 end;\n   bait_limit:=4+case when candidate->>'effect_kind'='bait_active_slots' then (candidate->>'effect_value')::integer else 0 end;\n  end if;\n end if;\n if app_private.production_active_count()>fuel_limit then raise exception 'RELIC_FUEL_PRODUCTION_ACTIVE:%',fuel_limit;end if;\n if app_private.bait_production_active_count()>bait_limit then raise exception 'RELIC_BAIT_PRODUCTION_ACTIVE:%',bait_limit;end if;\n fee:=case when current_id is not null then 500 else 0 end;\n if p_expected_fee is not null and p_expected_fee<>fee then raise exception 'RELIC_LOADOUT_CHANGED';end if;\n if w.gold<fee then raise exception 'INSUFFICIENT_GOLD';end if;\n if p_relic_id is null then delete from app_private.player_relic_loadouts where user_id=u;\n else\n  insert into app_private.player_relic_loadouts(user_id,relic_id,crafted_id)\n   values(u,case when not is_crafted then p_relic_id end,case when is_crafted then p_relic_id end)\n   on conflict(user_id) do update set relic_id=excluded.relic_id,crafted_id=excluded.crafted_id;\n end if;\n update public.player_wallets set gold=gold-fee,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy',item,-fee);\n return app_private.relic_state()||jsonb_build_object('replayed',false);\nend$function$\n",
         "securityDefiner": true
       },
       {
@@ -15712,6 +15944,16 @@
         "schema": "app_private",
         "arguments": "p_title text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.equip_title(p_title text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.sync_player_titles(u);\n if p_title is not null and not exists(select 1 from public.player_titles where user_id=u and title_id=p_title) then raise exception 'TITLE_NOT_EARNED';end if;\n update public.player_profiles set equipped_title=(select name from public.title_catalog where id=p_title) where id=u;\n if not found then raise exception 'PROFILE_NOT_FOUND';end if;\n return app_private.title_state();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "equipped_relic_effects",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.equipped_relic_effects(p_user uuid)\n RETURNS TABLE(relic_id text, effect_kind text, effect_value numeric)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select r.id,r.effect_kind,r.effect_value\n from app_private.player_relic_loadouts l\n join public.fishing_relics r on r.id=l.relic_id\n where l.user_id=p_user and r.enabled\n union all\n select r.id,r.effect_kind,r.effect_value\n from app_private.player_relic_loadouts l\n join app_private.crafted_relics c on c.user_id=l.user_id and c.id=l.crafted_id\n join public.fishing_relics r on r.id in(c.base_id,c.attached_id)\n where l.user_id=p_user and r.enabled\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -16201,7 +16443,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_side text, p_query text, p_kind text, p_mine boolean, p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_state(p_side text DEFAULT 'sell'::text, p_query text DEFAULT ''::text, p_kind text DEFAULT 'all'::text, p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v_ids uuid[];v_total bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_side is null or p_side not in ('sell','buy') or p_kind is null or p_kind not in ('all','fish','decoration','trash','fuel') or p_mine is null\n or p_offset is null or p_offset<0 or p_offset>100000 or p_query is null or char_length(p_query)>80 then raise exception 'INVALID_FLEA';end if;\n with matched as materialized (\n  select p.id,p.created_at from app_private.flea_posts p\n  where p.side=p_side and (case when p_mine then p.owner_id=u else p.status='active' end)\n  and (btrim(p_query)='' or position(lower(btrim(p_query)) in lower(p.title))>0 or exists(\n   select 1 from app_private.flea_lines l where l.post_id=p.id and position(replace(lower(btrim(p_query)),'연료','기름') in lower(l.asset->>'name'))>0))\n  and (p_kind='all' or exists(select 1 from app_private.flea_lines l where l.post_id=p.id and\n   (l.kind=p_kind or l.asset->>'subtype'=p_kind)))\n ) select (select count(*) from matched),(select array_agg(id order by created_at desc,id) from(select * from matched order by created_at desc,id limit 20 offset p_offset) q)\n into v_total,v_ids;\n return jsonb_build_object('items',coalesce((select jsonb_agg(app_private.flea_post_payload(id) order by ord) from unnest(v_ids) with ordinality q(id,ord)),'[]'::jsonb),'total',v_total);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.flea_state(p_side text DEFAULT 'sell'::text, p_query text DEFAULT ''::text, p_kind text DEFAULT 'all'::text, p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v_ids uuid[];v_total bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_side is null or p_side not in ('sell','buy') or p_kind is null or p_kind not in ('all','fish','decoration','trash','fuel') or p_mine is null\n or p_offset is null or p_offset<0 or p_offset>100000 or p_query is null or char_length(p_query)>80 then raise exception 'INVALID_FLEA';end if;\n with matched as materialized (\n  select p.id,p.created_at from app_private.flea_posts p\n  where p.side=p_side and p.status='active' and (not p_mine or p.owner_id=u)\n  and (btrim(p_query)='' or position(lower(btrim(p_query)) in lower(p.title))>0 or exists(\n   select 1 from app_private.flea_lines l where l.post_id=p.id and position(replace(lower(btrim(p_query)),'연료','기름') in lower(l.asset->>'name'))>0))\n  and (p_kind='all' or exists(select 1 from app_private.flea_lines l where l.post_id=p.id and\n   (l.kind=p_kind or l.asset->>'subtype'=p_kind)))\n ) select (select count(*) from matched),(select array_agg(id order by created_at desc,id) from(select * from matched order by created_at desc,id limit 20 offset p_offset) q)\n into v_total,v_ids;\n return jsonb_build_object('items',coalesce((select jsonb_agg(app_private.flea_post_payload(id) order by ord) from unnest(v_ids) with ordinality q(id,ord)),'[]'::jsonb),'total',v_total);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17215,6 +17457,16 @@
         "securityDefiner": false
       },
       {
+        "name": "push_notification_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "q app_private.push_deliveries, u uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.push_notification_payload(q app_private.push_deliveries, u uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare title text:=q.payload->>'title';body text:=q.payload->>'body';quantity integer;name text;expiry timestamptz;\nbegin\n case q.category\n when 'production' then\n  select f.name,s.run_output,s.expires_at into name,quantity,expiry from app_private.production_sites s join public.production_facilities f on f.id=s.facility_id where s.id=q.source_id and s.user_id=u and s.started_at=q.source_started_at;\n  title:='🔥 따끈한 연료가 준비됐어요';body:=coalesce(name,'생산소')||' · 연료 '||coalesce(quantity,0)||'개를 챙겨가세요.';\n when 'bait-production' then\n  select coalesce(b.name,'미끼'),s.run_output,s.expires_at into name,quantity,expiry from app_private.bait_production_sites s left join public.fishing_baits b on b.id=s.run_bait_id where s.id=q.source_id and s.user_id=u and s.started_at=q.source_started_at;\n  title:='🪱 미끼 도시락 완성!';body:=coalesce(name,'미끼')||' '||coalesce(quantity,0)||'개가 준비됐어요. 받고 낚시하러 가요.';\n when 'expedition' then\n  select vessel_snapshot->>'name' into name from public.fishing_expeditions where id=q.source_id and user_id=u;\n  title:='🐟 통발에 손님이 왔어요!';body:=coalesce(name,'통발')||'의 수확이 준비됐어요. 어떤 친구가 왔는지 확인해 보세요.';\n when 'harbor' then\n  select vessel_snapshot->>'name' into name from public.harbor_voyages where id=q.source_id and user_id=u;\n  title:='⛵ 배가 돌아왔어요!';body:=coalesce(name,'어선')||'이 돌아왔어요. 선원들이 가져온 선물을 확인해요.';\n when 'production-expiring' then\n  select expires_at,run_output into expiry,quantity from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at;\n  title:='⏳ 연료가 기다리고 있어요';body:='연료 '||coalesce(quantity,0)||'개 · 보관 종료까지 약 '||greatest(1,ceil(extract(epoch from expiry-now())/60)::integer)||'분 남았어요. 지금 챙겨주세요.';\n when 'bait-production-expiring' then\n  select expires_at,run_output into expiry,quantity from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at;\n  title:='⏳ 미끼가 기다리고 있어요';body:='미끼 '||coalesce(quantity,0)||'개 · 보관 종료까지 약 '||greatest(1,ceil(extract(epoch from expiry-now())/60)::integer)||'분 남았어요. 지금 챙겨주세요.';\n when 'test' then\n  title:='💌 퐁이가 소식을 가져왔어요';body:='테스트 알림이 도착했어요! 생산·수확·귀항 소식도 이렇게 알려드릴게요.';\n else null;\n end case;\n return q.payload||jsonb_build_object('category',q.category,'title',title,'body',body,'quantity',quantity,'expiresAt',coalesce(expiry,q.expires_at));\nend$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "quest_period",
         "config": [
           "search_path=\"\""
@@ -17331,7 +17583,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_effect text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_bonus(p_effect text)\n RETURNS numeric\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select coalesce((select r.effect_value from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n where l.user_id=(select auth.uid()) and r.enabled and r.effect_kind=p_effect),0)\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_bonus(p_effect text)\n RETURNS numeric\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select coalesce(sum(effect_value),0) from app_private.equipped_relic_effects(auth.uid()) where effect_kind=p_effect\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -17351,7 +17603,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();begin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('equippedId',(select relic_id from app_private.player_relic_loadouts where user_id=u),'changeFee',500,'equipFee',0,'unequipFee',500,\n 'relics',coalesce((select jsonb_agg(to_jsonb(r)||jsonb_build_object('discovered',exists(select 1 from app_private.player_fishing_relic_discoveries d where d.user_id=u and d.relic_id=r.id),'owned',exists(select 1 from app_private.player_fishing_relics d where d.user_id=u and d.relic_id=r.id),\n 'quantity',coalesce((select d.quantity from app_private.player_fishing_relics d where d.user_id=u and d.relic_id=r.id),0)) order by r.effect_kind,r.effect_value,r.id) from public.fishing_relics r where r.enabled),'[]'::jsonb));\nend$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); originals jsonb; composites jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select coalesce(jsonb_agg(to_jsonb(r)||jsonb_build_object(\n  'discovered',exists(select 1 from app_private.player_fishing_relic_discoveries d where d.user_id=u and d.relic_id=r.id),\n  'owned',coalesce(d.quantity,0)>0,'quantity',coalesce(d.quantity,0)) order by r.effect_kind,r.effect_value,r.id),'[]'::jsonb)\n into originals from public.fishing_relics r left join app_private.player_fishing_relics d on d.user_id=u and d.relic_id=r.id where r.enabled;\n select coalesce(jsonb_agg(jsonb_build_object('id',c.id,'name',a.name||' · '||b.name,\n  'description',a.description||' / '||b.description,'rarity',greatest(a.rarity,b.rarity),'thumbnail_path',a.thumbnail_path,\n  'attached',jsonb_build_object('id',b.id,'name',b.name,'thumbnail_path',b.thumbnail_path),\n  'crafted',true,'owned',true,'discovered',true,'quantity',1,'sell_price',0,\n  'effect_kind',a.effect_kind,'effect_value',a.effect_value,\n  'effects',jsonb_build_array(jsonb_build_object('kind',a.effect_kind,'value',a.effect_value),jsonb_build_object('kind',b.effect_kind,'value',b.effect_value))) order by c.created_at,c.id),'[]'::jsonb)\n into composites from app_private.crafted_relics c join public.fishing_relics a on a.id=c.base_id join public.fishing_relics b on b.id=c.attached_id\n where c.user_id=u and a.enabled and b.enabled;\n return jsonb_build_object('equippedId',(select coalesce(crafted_id,relic_id) from app_private.player_relic_loadouts where user_id=u),\n  'changeFee',500,'equipFee',0,'unequipFee',500,'canCraft',app_private.notice_is_operator(),'relics',originals||composites);\nend$function$\n",
         "securityDefiner": true
       },
       {
@@ -18185,13 +18437,23 @@
         "securityDefiner": true
       },
       {
+        "name": "web_push_active_notifications",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_active_notifications()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select coalesce(jsonb_agg(payload),'[]'::jsonb) into result from (\n  select distinct on(q.payload->>'tag') app_private.push_notification_payload(q,u) payload\n  from app_private.push_deliveries q join app_private.push_subscriptions s on s.id=q.subscription_id\n  where s.user_id=u and q.category<>'test' and q.status in('pending','sending','sent')\n   and q.expires_at>now() and app_private.push_delivery_current(q,u)\n  order by q.payload->>'tag',q.id desc limit 500\n ) active;\n return result;\nend$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "web_push_device",
         "config": [
           "search_path=\"\""
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_subscription jsonb, p_categories text[]",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_device(p_action text, p_subscription jsonb, p_categories text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();e text:=p_subscription->>'endpoint';s app_private.push_subscriptions;n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','save','delete','test') or e is null or length(e)>2048 then raise exception 'INVALID_PUSH_DEVICE';end if;\n select * into s from app_private.push_subscriptions where endpoint=e and user_id=u for update;\n if p_action='state' then return jsonb_build_object('registered',s.id is not null,'categories',coalesce(s.categories,array[]::text[]));end if;\n if p_action='delete' then delete from app_private.push_subscriptions where id=s.id;return jsonb_build_object('registered',false);end if;\n if p_action='test' then\n  if s.id is null then raise exception 'PUSH_NOT_REGISTERED';end if;\n  if s.last_test_at>clock_timestamp()-interval '1 minute' then raise exception 'PUSH_TEST_RATE_LIMIT';end if;\n  update app_private.push_subscriptions set last_test_at=clock_timestamp() where id=s.id;\n  insert into app_private.push_deliveries(subscription_id,category,payload,expires_at)\n  values(s.id,'test',jsonb_build_object('userId',u,'title','퐁당! 알림이 도착했어요','body','이 기기에서 생산 완료·통발·귀항 소식을 받을 수 있어요.','url','/settings','tag','push-test:'||gen_random_uuid()),clock_timestamp()+interval '5 minutes');\n  return jsonb_build_object('queued',true);\n end if;\n if e !~ '^https://(fcm\\.googleapis\\.com|([a-z0-9-]+\\.)*push\\.services\\.mozilla\\.com|([a-z0-9-]+\\.)*push\\.apple\\.com|([a-z0-9-]+\\.)*notify\\.windows\\.com)/[^[:space:]#]+$'\n or coalesce(p_subscription#>>'{keys,p256dh}','') !~ '^[A-Za-z0-9_-]{87}=?$'\n or coalesce(p_subscription#>>'{keys,auth}','') !~ '^[A-Za-z0-9_-]{22}={0,2}$'\n or p_categories is null or not(p_categories<@array['production','bait-production','expedition','harbor','production-expiring','bait-production-expiring','voyage-bets']::text[])\n or cardinality(p_categories)>7 then raise exception 'INVALID_PUSH_DEVICE';end if;\n perform 1 from auth.users where id=u for update;\n if exists(select 1 from app_private.push_subscriptions where endpoint=e and user_id<>u) then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n select count(*) into n from app_private.push_subscriptions where user_id=u;\n if s.id is null and n>=10 then raise exception 'PUSH_DEVICE_LIMIT';end if;\n insert into app_private.push_subscriptions(user_id,endpoint,p256dh,auth,categories)\n values(u,e,p_subscription#>>'{keys,p256dh}',p_subscription#>>'{keys,auth}',p_categories)\n on conflict(endpoint) do update set p256dh=excluded.p256dh,auth=excluded.auth,categories=excluded.categories,updated_at=clock_timestamp()\n where app_private.push_subscriptions.user_id=u;\n get diagnostics n=row_count;\n if n=0 then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n return jsonb_build_object('registered',true,'categories',p_categories);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_device(p_action text, p_subscription jsonb, p_categories text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();e text:=p_subscription->>'endpoint';s app_private.push_subscriptions;n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','save','delete','test') or e is null or length(e)>2048 then raise exception 'INVALID_PUSH_DEVICE';end if;\n select * into s from app_private.push_subscriptions where endpoint=e and user_id=u for update;\n if p_action='state' then return jsonb_build_object('registered',s.id is not null,'categories',coalesce(s.categories,array[]::text[]));end if;\n if p_action='delete' then delete from app_private.push_subscriptions where id=s.id;return jsonb_build_object('registered',false);end if;\n if p_action='test' then\n  if coalesce(p_subscription->>'delaySeconds','0') not in('0','30') then raise exception 'INVALID_PUSH_DEVICE';end if;\n  if s.id is null then raise exception 'PUSH_NOT_REGISTERED';end if;\n  if s.last_test_at>clock_timestamp()-interval '1 minute' then raise exception 'PUSH_TEST_RATE_LIMIT';end if;\n  update app_private.push_subscriptions set last_test_at=clock_timestamp() where id=s.id;\n  insert into app_private.push_deliveries(subscription_id,category,payload,expires_at,available_at)\n  values(s.id,'test',jsonb_build_object('userId',u,'title','퐁당! 알림이 도착했어요','body','이 기기에서 생산 완료·통발·귀항 소식을 받을 수 있어요.','url','/settings','tag','push-test:'||gen_random_uuid()),clock_timestamp()+interval '5 minutes',clock_timestamp()+case when p_subscription->>'delaySeconds'='30' then interval '30 seconds' else interval '0 seconds' end);\n  return jsonb_build_object('queued',true);\n end if;\n if e !~ '^https://(fcm\\.googleapis\\.com|([a-z0-9-]+\\.)*push\\.services\\.mozilla\\.com|([a-z0-9-]+\\.)*push\\.apple\\.com|([a-z0-9-]+\\.)*notify\\.windows\\.com)/[^[:space:]#]+$'\n or coalesce(p_subscription#>>'{keys,p256dh}','') !~ '^[A-Za-z0-9_-]{87}=?$'\n or coalesce(p_subscription#>>'{keys,auth}','') !~ '^[A-Za-z0-9_-]{22}={0,2}$'\n or p_categories is null or not(p_categories<@array['production','bait-production','expedition','harbor','production-expiring','bait-production-expiring','voyage-bets']::text[])\n or cardinality(p_categories)>7 then raise exception 'INVALID_PUSH_DEVICE';end if;\n perform 1 from auth.users where id=u for update;\n if exists(select 1 from app_private.push_subscriptions where endpoint=e and user_id<>u) then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n select count(*) into n from app_private.push_subscriptions where user_id=u;\n if s.id is null and n>=10 then raise exception 'PUSH_DEVICE_LIMIT';end if;\n insert into app_private.push_subscriptions(user_id,endpoint,p256dh,auth,categories)\n values(u,e,p_subscription#>>'{keys,p256dh}',p_subscription#>>'{keys,auth}',p_categories)\n on conflict(endpoint) do update set p256dh=excluded.p256dh,auth=excluded.auth,categories=excluded.categories,updated_at=clock_timestamp()\n where app_private.push_subscriptions.user_id=u;\n get diagnostics n=row_count;\n if n=0 then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n return jsonb_build_object('registered',true,'categories',p_categories);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18652,6 +18914,16 @@
         "schema": "public",
         "arguments": "p_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.confirm_bug_report(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.confirm_bug_report(p_id)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "craft_relic",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.craft_relic(p_base_id text, p_attached_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.craft_relic(p_base_id,p_attached_id,p_operation_id)$function$\n",
         "securityDefiner": false
       },
       {
@@ -20095,6 +20367,16 @@
         "securityDefiner": false
       },
       {
+        "name": "web_push_active_notifications",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.web_push_active_notifications()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.web_push_active_notifications()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "web_push_device",
         "config": [
           "search_path=\"\""
@@ -20871,6 +21153,72 @@
         "table": "collectible_event_windows",
         "schema": "app_private",
         "definition": "NOT NULL starts_at"
+      },
+      {
+        "name": "crafted_relics_attached_id_fkey",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (attached_id) REFERENCES fishing_relics(id)"
+      },
+      {
+        "name": "crafted_relics_attached_id_not_null",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "NOT NULL attached_id"
+      },
+      {
+        "name": "crafted_relics_base_id_fkey",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (base_id) REFERENCES fishing_relics(id)"
+      },
+      {
+        "name": "crafted_relics_base_id_not_null",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "NOT NULL base_id"
+      },
+      {
+        "name": "crafted_relics_check",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "CHECK ((base_id <> attached_id))"
+      },
+      {
+        "name": "crafted_relics_created_at_not_null",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "crafted_relics_id_not_null",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "crafted_relics_pkey",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "crafted_relics_user_id_fkey",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "crafted_relics_user_id_id_key",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "UNIQUE (user_id, id)"
+      },
+      {
+        "name": "crafted_relics_user_id_not_null",
+        "table": "crafted_relics",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "exchange_bundle_gifts_gift_id_fkey",
@@ -23261,12 +23609,6 @@
         "definition": "PRIMARY KEY (user_id)"
       },
       {
-        "name": "player_relic_loadouts_relic_id_not_null",
-        "table": "player_relic_loadouts",
-        "schema": "app_private",
-        "definition": "NOT NULL relic_id"
-      },
-      {
         "name": "player_relic_loadouts_user_id_fkey",
         "table": "player_relic_loadouts",
         "schema": "app_private",
@@ -23283,6 +23625,18 @@
         "table": "player_relic_loadouts",
         "schema": "app_private",
         "definition": "FOREIGN KEY (user_id, relic_id) REFERENCES app_private.player_fishing_relics(user_id, relic_id)"
+      },
+      {
+        "name": "relic_loadout_crafted_fk",
+        "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id, crafted_id) REFERENCES app_private.crafted_relics(user_id, id)"
+      },
+      {
+        "name": "relic_loadout_one_item",
+        "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "definition": "CHECK (((relic_id IS NULL) <> (crafted_id IS NULL)))"
       },
       {
         "name": "pongi_whack_runs_check",
@@ -24021,6 +24375,96 @@
         "table": "region_settings",
         "schema": "app_private",
         "definition": "NOT NULL test_lock_controls"
+      },
+      {
+        "name": "relic_craft_operations_attached_id_fkey",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (attached_id) REFERENCES fishing_relics(id)"
+      },
+      {
+        "name": "relic_craft_operations_attached_id_not_null",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL attached_id"
+      },
+      {
+        "name": "relic_craft_operations_base_id_fkey",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (base_id) REFERENCES fishing_relics(id)"
+      },
+      {
+        "name": "relic_craft_operations_base_id_not_null",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL base_id"
+      },
+      {
+        "name": "relic_craft_operations_created_at_not_null",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "relic_craft_operations_operation_id_not_null",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "relic_craft_operations_pkey",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "relic_craft_operations_result_not_null",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL result"
+      },
+      {
+        "name": "relic_craft_operations_user_id_fkey",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "relic_craft_operations_user_id_not_null",
+        "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "relic_test_grants_created_at_not_null",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "relic_test_grants_grant_key_not_null",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "definition": "NOT NULL grant_key"
+      },
+      {
+        "name": "relic_test_grants_pkey",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, grant_key)"
+      },
+      {
+        "name": "relic_test_grants_user_id_fkey",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "relic_test_grants_user_id_not_null",
+        "table": "relic_test_grants",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "savings_operations_account_id_fkey",
@@ -38015,6 +38459,27 @@
         "arguments": ""
       },
       {
+        "name": "craft_relic",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid"
+      },
+      {
+        "name": "craft_relic",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid"
+      },
+      {
+        "name": "craft_relic",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid"
+      },
+      {
         "name": "default_collectible_movement",
         "role": "anon",
         "schema": "app_private",
@@ -38496,6 +38961,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_title text"
+      },
+      {
+        "name": "equipped_relic_effects",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "equipped_relic_effects",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "equipped_relic_effects",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
       },
       {
         "name": "everyday_title_metrics",
@@ -41648,6 +42134,27 @@
         "arguments": "q app_private.push_deliveries, u uuid"
       },
       {
+        "name": "push_notification_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "q app_private.push_deliveries, u uuid"
+      },
+      {
+        "name": "push_notification_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "q app_private.push_deliveries, u uuid"
+      },
+      {
+        "name": "push_notification_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "q app_private.push_deliveries, u uuid"
+      },
+      {
         "name": "quest_period",
         "role": "anon",
         "schema": "app_private",
@@ -43685,6 +44192,27 @@
         "arguments": ""
       },
       {
+        "name": "web_push_active_notifications",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_active_notifications",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_active_notifications",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "web_push_device",
         "role": "anon",
         "schema": "app_private",
@@ -44670,6 +45198,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_id uuid"
+      },
+      {
+        "name": "craft_relic",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid"
+      },
+      {
+        "name": "craft_relic",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid"
+      },
+      {
+        "name": "craft_relic",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_base_id text, p_attached_id text, p_operation_id uuid"
       },
       {
         "name": "delete_exchange_listing_comment",
@@ -47690,6 +48239,27 @@
       },
       {
         "name": "voyage_race_test_sample",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_active_notifications",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_active_notifications",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_active_notifications",
         "role": "service_role",
         "schema": "public",
         "execute": false,

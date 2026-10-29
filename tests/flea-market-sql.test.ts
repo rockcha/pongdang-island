@@ -26,6 +26,21 @@ beforeEach(async()=>{
  }
 })
 afterEach(async()=>{await db.exec('rollback')})
+it.each(['sell','buy'])('hides completed and cancelled %s posts from both public and owner feeds without deleting history',async(side)=>{
+ const one=[{...items[0],quantity:1}]
+ const cancelled=await post(side,one)
+ await cancel(cancelled.id)
+ const completed=await post(side,one)
+ await trade(completed.id,[{id:completed.items[0].id,quantity:1}])
+ const active=await post(side,one)
+ for(const [who,mine] of [[maker,true],[maker,false],[taker,false]] as const){
+  const feed=await user(who,"select public.flea_state($1,'','all',$2,0) value",[side,mine])
+  expect(feed.total).toBe(1)
+  expect(feed.items.map(p=>p.id)).toEqual([active.id])
+  expect((await user(who,"select public.flea_state($1,'','all',$2,20) value",[side,mine])).items).toEqual([])
+ }
+ expect((await db.query('select count(*) n from app_private.flea_posts where id=any($1::uuid[])',[[cancelled.id,completed.id]])).rows[0].n).toBe(2)
+})
 it('shares caller-only sellable matches between the filter and menu summary',async()=>{
  const wanted=await post('buy')
  const sellable=(who:string,q='')=>user(who,'select public.flea_sellable_state($1,0) value',[q])

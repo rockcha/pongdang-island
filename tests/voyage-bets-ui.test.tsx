@@ -151,7 +151,7 @@ it('shows a provisional leaderboard and exposes only completed region detail', a
   render(view(data, Date.parse(departsAt) + 3600000))
   expect(screen.getByRole('list', { name: '현재 회사 순위' })).toBeTruthy()
   expect(screen.queryByRole('article')).toBeNull()
-  expect(screen.getByLabelText('달성률 112%')).toBeTruthy()
+  expect(screen.getByLabelText('수익률 112%')).toBeTruthy()
   expect(
     within(screen.getByRole('button', { name: '통통해운 어획 상세' })).getByText(
       '내 선택 · 300골드 참여',

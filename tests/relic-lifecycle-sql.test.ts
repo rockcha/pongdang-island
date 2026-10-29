@@ -79,7 +79,7 @@ it('blocks equipped, unowned, stale-price and unaffordable wallet-limit sales at
  await rejected(()=>user("insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(auth.uid(),'shell-hourglass')"),'permission denied')
 })
 
-it('runs acquisition, paid equip, paid unequip and permanent duplicate exclusion for all catalog real relics',async()=>{
+it('runs acquisition, paid equip, paid unequip and duplicate acquisition for all catalog real relics',async()=>{
  const relics=(await db.query('select id,rarity from public.fishing_relics order by id')).rows
  expect(relics).toHaveLength(catalog.fishing_relics.length)
  for(const [index,relic] of relics.entries()){
@@ -102,9 +102,11 @@ it('runs acquisition, paid equip, paid unequip and permanent duplicate exclusion
   expect((await equip(null,unequipOp)).equippedId).toBeNull()
   await equip(null,unequipOp);expect(await gold()).toBe(balance-500)
   expect((await db.query('select count(*)::int n from app_private.player_fishing_relics where user_id=$1',[uid])).rows[0].n).toBe(index+1)
-  expect((await db.query("select count(*)::int n from app_private.fishing_discovery_candidates($1) where category='relic'",[relic.rarity])).rows[0].n).toBe(0)
-  // Unequipping never restores the relic to the reward pool.
-  const next=await prepare();expect(next.species.kind).not.toBe('relic');await finish(next.operation_id,false)
+  expect((await db.query("select count(*)::int n from app_private.fishing_discovery_candidates($1) where category='relic'",[relic.rarity])).rows[0].n).toBe(1)
+  const next=await prepare();expect(next.species.kind).toBe('relic')
+  expect((await finish(next.operation_id)).attempt.firstDiscovery).toBe(false)
+  await finish(next.operation_id)
+  expect((await user('select public.relic_state() s')).relics.find(r=>r.id===relic.id)).toMatchObject({owned:true,quantity:2})
  }
  expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1',[uid])).rows[0].n).toBe(0)
  expect((await db.query("select count(*)::int n from public.gold_transactions where user_id=$1 and item_id like 'relic-loadout:%'",[uid])).rows[0].n).toBe(relics.length*2)
@@ -149,5 +151,37 @@ it('preserves equipped state and discovery if an unaffordable removal fails',asy
  await rejected(()=>equip(null),'INSUFFICIENT_GOLD')
  const state=await user('select public.relic_state() s')
  expect(state.equippedId).toBe('shell-hourglass');expect(state.relics[0].owned).toBe(true);expect(await gold()).toBe(499)
- expect((await db.query("select count(*)::int n from app_private.fishing_discovery_candidates('rare') where category='relic' and reward_id='shell-hourglass'")).rows[0].n).toBe(0)
+ expect((await db.query("select count(*)::int n from app_private.fishing_discovery_candidates('rare') where category='relic' and reward_id='shell-hourglass'")).rows[0].n).toBe(1)
+})
+
+it('sells one spare copy while equipped, replays without consuming more and protects the final equipped copy',async()=>{
+ await enableOnly('shell-hourglass','rare')
+ for(let i=0;i<3;i++){const p=await prepare();await finish(p.operation_id);await finish(p.operation_id)}
+ await equip('shell-hourglass')
+ const balance=await gold(),op=crypto.randomUUID()
+ expect((await db.query("select app_private.relic_bonus('personal_bait_hours')::integer n")).rows[0].n).toBe(2)
+ expect((await db.query('select app_private.relic_title_metrics($1) s',[uid])).rows[0].s.relic_discoveries).toBe(1)
+ const sale=()=>user('select public.sell_relic($1,$2,$3) s',['shell-hourglass',op,200])
+ let s=await sale()
+ expect(s.equippedId).toBe('shell-hourglass');expect(s.relics[0].quantity).toBe(2)
+ s=await sale();expect(s.replayed).toBe(true);expect(s.relics[0].quantity).toBe(2)
+ expect(await gold()).toBe(balance+200)
+ await user("select public.sell_relic('shell-hourglass',$1,200) s",[crypto.randomUUID()])
+ await rejected(()=>user("select public.sell_relic('shell-hourglass',$1,200) s",[crypto.randomUUID()]),'RELIC_EQUIPPED')
+ expect((await user('select public.relic_state() s')).relics[0]).toMatchObject({quantity:1,owned:true,discovered:true})
+ await equip(null)
+ await user("select public.sell_relic('shell-hourglass',$1,200) s",[crypto.randomUUID()])
+ expect((await user('select public.relic_state() s')).relics[0]).toMatchObject({quantity:0,owned:false,discovered:true})
+ await rejected(()=>user("update app_private.player_fishing_relics set quantity=100 where user_id=auth.uid()"),'permission denied')
+})
+
+it('keeps quantities private to their owner and rejects zero-copy ownership rows',async()=>{
+ await db.query("insert into app_private.player_fishing_relics(user_id,relic_id,quantity) values($1,'shell-hourglass',3)",[uid])
+ await rejected(()=>db.query("update app_private.player_fishing_relics set quantity=0 where user_id=$1",[uid]),'player_fishing_relics_quantity_positive')
+ const other=crypto.randomUUID()
+ await db.query('insert into auth.users(id) values($1)',[other])
+ await db.query("select set_config('request.jwt.claim.sub',$1,true)",[other])
+ expect((await user('select public.relic_state() s')).relics.find(r=>r.id==='shell-hourglass')).toMatchObject({quantity:0,owned:false})
+ await rejected(()=>user("select public.sell_relic('shell-hourglass',$1,200) s",[crypto.randomUUID()]),'RELIC_NOT_OWNED')
+ expect((await db.query('select quantity from app_private.player_fishing_relics where user_id=$1',[uid])).rows[0].quantity).toBe(3)
 })

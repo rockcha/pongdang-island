@@ -16,19 +16,19 @@ vi.mock('@/features/production/use-production-menu-status',()=>({useProductionMe
 beforeEach(()=>{mock.relic=null;mock.newContent={board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null;mock.fuel=null;mock.bait=null})
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
-const groups=['내 섬','바다','생산','장터','수집','소식','광장']
+const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
 async function open(name:string){fireEvent.click(screen.getByRole('button',{name,exact:true}));return screen.findByRole('menu',{name:name+' 메뉴'})}
 async function close(menu:HTMLElement){fireEvent.keyDown(menu,{key:'Escape'});await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())}
 it('shows seven representative icons with visible labels and an active category',()=>{
  render(<MemoryRouter initialEntries={['/region/nyamnyam']}><View/></MemoryRouter>)
  const nav=screen.getByRole('navigation',{name:'장소 바로가기'}),buttons=within(nav).getAllByRole('button')
  expect(buttons.map(b=>b.getAttribute('aria-label'))).toEqual(groups)
- for(const button of buttons){expect(button.querySelector('svg')).toBeTruthy();expect(button.textContent).toBe(button.getAttribute('aria-label'))}
- expect(screen.getByRole('button',{name:'바다'}).getAttribute('aria-current')).toBe('location')
+ for(const button of buttons){expect(button.querySelector('img')?.getAttribute('src')).toMatch(/^\/navigation-icons\/orange-v1\/[a-z]+\.png$/);expect(button.textContent).toBe(button.getAttribute('aria-label'))}
+ expect(screen.getByRole('button',{name:'낚시'}).getAttribute('aria-current')).toBe('location')
 })
 it.each([
  ['내 섬',['/my-island','/aquarium','/profile','/music-room','/arcade','/voyage-bets','/savings']],
- ['바다',['/harbor','/fishing','/fishing-records','/expeditions','/port']],
+ ['낚시',['/harbor','/fishing','/fishing-records','/expeditions','/port']],
  ['소식',['/island-news','/square/notices','/square/suggestions','/square/bugs']],
  ['생산',['/bait-production','/my-bait-production','/production','/farm']],
  ['장터',['/shop','/item-shop','/decoration-shop','/shipyard','/bait-production-shop','/production-shop','/flea-market','/exchange','/merchant-orders']],
@@ -43,11 +43,11 @@ it('keeps every normal-player destination reachable in exactly one category',asy
  render(<MemoryRouter><View/></MemoryRouter>);const paths:string[]=[]
  for(const group of groups){const menu=await open(group);paths.push(...within(menu).getAllByRole('menuitem').map(i=>i.getAttribute('href')!));await close(menu)}
  expect(new Set(paths).size).toBe(paths.length)
- expect(paths.sort()).toEqual([...headerPlaces.filter(p=>p.to!=='/collection-animation').map(p=>p.to),'/fishing-records'].sort())
+ expect(paths.sort()).toEqual([...headerPlaces.filter(p=>p.to!=='/collection-animation').map(p=>p.to)].sort())
 })
 it('navigates from each new category using the existing dropdown links',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
- for(const [group,path] of [['수집','/relics'],['바다','/port'],['장터','/shop'],['장터','/item-shop'],['장터','/decoration-shop'],['장터','/shipyard'],['장터','/bait-production-shop'],['장터','/production-shop'],['장터','/flea-market'],['내 섬','/savings'],['소식','/square/notices'],['내 섬','/profile']]){
+ for(const [group,path] of [['수집','/relics'],['낚시','/port'],['장터','/shop'],['장터','/item-shop'],['장터','/decoration-shop'],['장터','/shipyard'],['장터','/bait-production-shop'],['장터','/production-shop'],['장터','/flea-market'],['내 섬','/savings'],['소식','/square/notices'],['내 섬','/profile']]){
   const menu=await open(group),item=within(menu).getAllByRole('menuitem').find(i=>i.getAttribute('href')===path)!
   fireEvent.click(item)
   await waitFor(()=>expect(screen.getByTestId('path').textContent).toBe(path))
@@ -78,7 +78,7 @@ it('shows the operator test page immediately after voyage bets only to operators
 it('routes production, harbor, savings and community activity dots to their new categories',()=>{
  mock.newContent.bugs=true;mock.newContent.exchange=true;mock.harbor={ready:1,total:2};mock.fuel={ready:1,total:3}
  const view=render(<MemoryRouter><View/></MemoryRouter>)
- for(const label of ['소식','장터','바다','생산'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeTruthy()
+ for(const label of ['소식','장터','낚시','생산'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeTruthy()
  for(const label of ['내 섬','광장','수집'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeNull()
  mock.newContent.bugs=false;mock.newContent.exchange=false;mock.harbor=null;mock.fuel=null;view.rerender(<MemoryRouter><View/></MemoryRouter>)
  expect(document.querySelectorAll('[data-category-activity]')).toHaveLength(0)
@@ -87,10 +87,10 @@ it('routes production, harbor, savings and community activity dots to their new 
 })
 it('keeps returned traps and ready boat counts inside the voyage menu',async()=>{
  mock.status='returned';mock.harbor={ready:1,total:2}
- render(<MemoryRouter><View/></MemoryRouter>);const menu=await open('바다')
+ render(<MemoryRouter><View/></MemoryRouter>);const menu=await open('낚시')
  expect(within(menu).getByRole('menuitem',{name:/어선 파견.*총 2척.*수령 1/})).toBeTruthy()
  expect(within(menu).queryByRole('menuitem',{name:/조선소.*수령 가능/})).toBeNull()
- await close(menu);const fishing=await open('바다');expect(within(fishing).getByRole('menuitem',{name:/통발.*수령 가능/})).toBeTruthy()
+ await close(menu);const fishing=await open('낚시');expect(within(fishing).getByRole('menuitem',{name:/통발.*수령 가능/})).toBeTruthy()
 })
 
 it('shows flea NEW and the brown market category dot until its feed is visited',async()=>{

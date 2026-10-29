@@ -14,6 +14,7 @@ export function CollectionPage({
   const [params] = useSearchParams(),
     region = params.get('region') ?? 'all'
   const initialRegion = regionIcons[region] ? region : 'all'
+  const initialTab = items && params.get('tab') === 'relic' ? 'relic' : undefined
   return (
     <section className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
       {animationPreview && (
@@ -22,11 +23,12 @@ export function CollectionPage({
         </p>
       )}
       <CollectionBook
-        key={`${session?.user.id}:${animationPreview}:${initialRegion}:${items}`}
+        key={`${session?.user.id}:${animationPreview}:${initialRegion}:${items}:${initialTab}`}
         mode={items ? 'items' : 'creatures'}
+        initialTab={initialTab}
         previewAll={animationPreview}
         initialRegion={initialRegion}
-        rememberFiltersFor={animationPreview ? undefined : session?.user.id}
+        rememberFiltersFor={animationPreview || initialTab ? undefined : session?.user.id}
       />
     </section>
   )

@@ -11,6 +11,8 @@ export const islandZoneSigns: Record<string, { x: number; y: number }> = {
   news: { x: 28, y: 26 },
 }
 const positions: Record<string, [number, number]> = {
+  '/voyage-bets': [12, 13],
+  '/fishing-records': [20, 25],
   '/aquarium': [8, 7],
   '/profile': [12, 7],
   '/notifications': [8, 11],

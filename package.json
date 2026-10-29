@@ -25,7 +25,8 @@
     "arcade:engine:check": "node scripts/build-brick-replay.mjs --check",
     "images:thumbnails": "node scripts/build-collectible-thumbnails.mjs",
     "images:background-previews": "node scripts/build-background-previews.mjs",
-    "images:rod-shop": "node scripts/build-rod-shop-art.mjs"
+    "images:rod-shop": "node scripts/build-rod-shop-art.mjs",
+    "images:island": "node scripts/build-island-art.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

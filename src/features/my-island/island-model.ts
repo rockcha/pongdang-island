@@ -364,6 +364,8 @@ export function facilityFor(id: string) {
   return f
 }
 const compactDestinations = new Set([
+  '/voyage-bets',
+  '/fishing-records',
   '/square/begging',
   '/island-news',
   '/hall-of-fame',

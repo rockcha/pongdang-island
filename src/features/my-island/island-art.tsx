@@ -1,3 +1,4 @@
+import {facilityPng,FacilityPngArt} from './facility-png-art'
 import {gardenKinds} from './garden-decoration-catalog'
 import {GardenDecoration} from './garden-decoration'
 import {WaterwayDecoration} from './waterway-decoration'
@@ -20,9 +21,10 @@ export function Building({ f, rotation = 0,label,connections }: { f: Facility; r
   if(gardenKinds.has(f.kind))return <GardenDecoration f={f} rotation={rotation} label={label} connections={connections}/>
   if(['bridge','stepping-stones','reeds'].includes(f.kind))return <WaterwayDecoration f={f} rotation={rotation}/>
   const { w, h, sx, sy, x, y } = artGeometry(f)
+  const png=facilityPng(f)
   return (
     <g data-art-direction="0" transform={`translate(${x} ${y}) scale(${sx} ${sy})`}>
-      <NativeBuilding f={{ ...f, w, h }} />
+      {png?<FacilityPngArt src={png} kind={f.kind}/>:<NativeBuilding f={{ ...f, w, h }} />}
     </g>
   )
 }

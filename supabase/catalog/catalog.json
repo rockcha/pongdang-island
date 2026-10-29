@@ -35245,6 +35245,32 @@
       "text_label": false
     },
     {
+      "id": "portal~owned:page:/fishing-records",
+      "family": "facility",
+      "name": "오늘의 낚시 기록",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/flea-market",
+      "family": "facility",
+      "name": "벼룩시장",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
       "id": "portal~owned:page:/hall-of-fame",
       "family": "facility",
       "name": "명예의 전당",
@@ -35261,6 +35287,19 @@
       "id": "portal~owned:page:/island-news",
       "family": "facility",
       "name": "퐁당섬 소식",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/item-collection",
+      "family": "facility",
+      "name": "아이템 도감",
       "price": 0,
       "width": 1,
       "height": 1,
@@ -35378,6 +35417,19 @@
       "id": "portal~owned:page:/square/suggestions",
       "family": "facility",
       "name": "건의함",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/voyage-bets",
+      "family": "facility",
+      "name": "만선 승부장",
       "price": 0,
       "width": 1,
       "height": 1,
@@ -35899,7 +35951,7 @@
               "id": "island-name-sign~zone-sea",
               "x": 19,
               "y": 22,
-              "label": "바다"
+              "label": "낚시"
             },
             {
               "id": "island-name-sign~zone-production",
@@ -35930,6 +35982,26 @@
               "x": 28,
               "y": 26,
               "label": "소식"
+            },
+            {
+              "id": "portal~owned:page:/fishing-records",
+              "x": 20,
+              "y": 25
+            },
+            {
+              "id": "portal~owned:page:/flea-market",
+              "x": 25,
+              "y": 16
+            },
+            {
+              "id": "portal~owned:page:/item-collection",
+              "x": 31,
+              "y": 23
+            },
+            {
+              "id": "portal~owned:page:/voyage-bets",
+              "x": 12,
+              "y": 13
             }
           ],
           "land": [],

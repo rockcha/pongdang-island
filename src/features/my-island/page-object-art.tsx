@@ -120,6 +120,8 @@ function Bottle({ x, y, color = c.teal }: { x: number; y: number; color?: string
 }
 
 export function PageObjectArt({ art }: { art: DestinationArt | undefined }) {
+  if(art==='voyage-prediction')return <g><Platform/><rect x="7" y="3" width="82" height="66" rx="5" fill={c.cream} stroke={c.ink} strokeWidth="3"/><path d="M18 53h60M38 45h29l-6 10H44Z" fill={c.teal} stroke={c.ink} strokeWidth="2"/><path d="M51 43V12l-21 27h21m4-25 18 25H55Z" fill={c.coral} stroke={c.ink} strokeWidth="2"/><circle cx="20" cy="18" r="7" fill={c.gold}/><path d="M23 70v13m50-13v13" stroke={c.wood} strokeWidth="8"/></g>
+  if(art==='fishing-log')return <g><Platform/><path d="M14 69V12q18-7 34 2 18-9 35-2v57q-18-6-35 2-17-8-34-2Z" fill={c.paper} stroke={c.ink} strokeWidth="3"/><path d="M48 15v55M21 29h18m-18 10h18m-18 10h13" stroke={c.wood} strokeWidth="3"/><Fish x={57} y={34}/><path d="M72 53h-15" stroke={c.teal} strokeWidth="3"/></g>
   if (art === 'home')
     return (
       <g>

@@ -1,4 +1,6 @@
 export const destinationArt = {
+  '/voyage-bets': 'voyage-prediction',
+  '/fishing-records': 'fishing-log',
   '/profile': 'home',
   '/island-news': 'newsstand',
   '/development-fund': 'fund',

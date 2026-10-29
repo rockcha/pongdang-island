@@ -1,0 +1,151 @@
+{
+  "generator": "built-in image_gen",
+  "outputDirectory": "public/game-art/island",
+  "assets": [
+    {
+      "id": "aquarium",
+      "prompt": "Use case: stylized-concept. Create ONE standalone building sprite for a cozy Korean seaside island building game. Style: exceptionally clean polished 2D cartoon mobile game art, rounded chunky shapes, precise warm dark-brown outlines, flat cel colors with only one soft shadow and small cream highlights, not watercolor, not photoreal, not detailed noisy texture. Match a cohesive set of charming miniature seaside facilities. Camera: elevated three-quarter isometric-like view, looking at the front and RIGHT side, roof visible, vertical walls remain vertical, front door on visible front facade. Compact roughly square footprint, whole building including its base visible, centered with even 8 percent transparent padding. No surrounding landscape, no grass tile, no oversized ground platform, no floating shadow, no people, no readable text or labels, no sky, no picture frame. GENUINELY TRANSPARENT BACKGROUND. Ground-contact baseline near bottom, clean alpha edges. Distinct readable silhouette at 80px, with few bold purposeful details, not a complicated realistic structure. Subject: A cream seaside AQUARIUM pavilion with a rounded teal roof, large curved blue glass viewing window showing two simple cute orange fish silhouettes, a seashell emblem above the door, little coral trim. Soft teal and warm cream with apricot accents. A recognizable visitor attraction.",
+      "source": "aquarium.png",
+      "output": {
+        "url": "/game-art/island/7c9583ebbc07b5193737991c-384.png",
+        "bytes": 50517,
+        "width": 384,
+        "height": 384
+      }
+    },
+    {
+      "id": "shop",
+      "prompt": "Use case: stylized-concept. Create ONE standalone building sprite for a cozy Korean seaside island building game. Style: exceptionally clean polished 2D cartoon mobile game art, rounded chunky shapes, precise warm dark-brown outlines, flat cel colors with only one soft shadow and small cream highlights, not watercolor, not photoreal, not detailed noisy texture. Match a cohesive set of charming miniature seaside facilities. Camera: elevated three-quarter isometric-like view, looking at the front and RIGHT side, roof visible, vertical walls remain vertical, front door on visible front facade. Compact roughly square footprint, whole building including its base visible, centered with even 8 percent transparent padding. No surrounding landscape, no grass tile, no oversized ground platform, no floating shadow, no people, no readable text or labels, no sky, no picture frame. GENUINELY TRANSPARENT BACKGROUND. Ground-contact baseline near bottom, clean alpha edges. Distinct readable silhouette at 80px, with few bold purposeful details, not a complicated realistic structure. Subject: A friendly FISHING SHOP with cream wood walls, terracotta orange roof, orange-and-cream striped small awning, and a single large fishing-hook pictogram hanging above its doorway. Two chunky fishing rods lean along its right wall, a small tackle crate beside the door. Warm orange and cream with muted teal accents.",
+      "source": "shop.png",
+      "output": {
+        "url": "/game-art/island/085966a2887fac974b565d3c-384.png",
+        "bytes": 58948,
+        "width": 384,
+        "height": 384
+      }
+    },
+    {
+      "id": "fuel",
+      "prompt": "Use case: stylized-concept. Create ONE standalone building sprite for a cozy Korean seaside island building game. Style: exceptionally clean polished 2D cartoon mobile game art, rounded chunky shapes, precise warm dark-brown outlines, flat cel colors with only one soft shadow and small cream highlights, not watercolor, not photoreal, not detailed noisy texture. Match a cohesive set of charming miniature seaside facilities. Camera: elevated three-quarter isometric-like view, looking at the front and RIGHT side, roof visible, vertical walls remain vertical, front door on visible front facade. Compact roughly square footprint, whole building including its base visible, centered with even 8 percent transparent padding. No surrounding landscape, no grass tile, no oversized ground platform, no floating shadow, no people, no readable text or labels, no sky, no picture frame. GENUINELY TRANSPARENT BACKGROUND. Ground-contact baseline near bottom, clean alpha edges. Distinct readable silhouette at 80px, with few bold purposeful details, not a complicated realistic structure. Subject: A compact FUEL PROCESSING WORKSHOP with warm cream walls, amber-orange roof, one large rounded copper distillation tank and thick curved condenser pipe attached to the right side, and one small amber fuel can beside the front door. Distinctive industrial-but-cute silhouette. No smoke or fire. Warm amber, cream and muted slate details.",
+      "source": "fuel.png",
+      "output": {
+        "url": "/game-art/island/7c275246f5feca3de0fa2732-384.png",
+        "bytes": 51964,
+        "width": 384,
+        "height": 384
+      }
+    },
+    {
+      "id": "bait",
+      "prompt": "Use case: stylized-concept. Create ONE standalone building sprite for a cozy Korean seaside island building game. Style: exceptionally clean polished 2D cartoon mobile game art, rounded chunky shapes, precise warm dark-brown outlines, flat cel colors with only one soft shadow and small cream highlights, not watercolor, not photoreal, not detailed noisy texture. Match a cohesive set of charming miniature seaside facilities. Camera: elevated three-quarter isometric-like view, looking at the front and RIGHT side, roof visible, vertical walls remain vertical, front door on visible front facade. Compact roughly square footprint, whole building including its base visible, centered with even 8 percent transparent padding. No surrounding landscape, no grass tile, no oversized ground platform, no floating shadow, no people, no readable text or labels, no sky, no picture frame. GENUINELY TRANSPARENT BACKGROUND. Ground-contact baseline near bottom, clean alpha edges. Distinct readable silhouette at 80px, with few bold purposeful details, not a complicated realistic structure. Subject: A compact BAIT MAKING WORKSHOP with cream walls, sage-green rounded roof, an orange worm-shaped pictogram over the doorway, a chunky mixing vat with wooden stirring paddle on the right side and two simple cream bait jars on a little front shelf. Warm sage green, cream and orange accents. Playful clear production facility, not a food restaurant.",
+      "source": "bait.png",
+      "output": {
+        "url": "/game-art/island/4edbc06beffd95188e03f684-384.png",
+        "bytes": 59456,
+        "width": 384,
+        "height": 384
+      }
+    },
+    {
+      "id": "warehouse",
+      "source": "warehouse.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Create ONE isolated object sprite for the SAME cozy seaside island game set as the supplied fishing shop image, which is STYLE REFERENCE ONLY. Match its polished clean 2D cartoon illustration, precise warm dark-brown outline, rounded chunky forms, warm cream and honey wood, terracotta or muted teal/sage accents, simple cel shading and restrained highlights. No noisy texture, not photorealistic, no excessive detail. Elevated three-quarter/isometric-like view looking at the FRONT and RIGHT side, verticals upright, whole object centered with comfortable transparent margins and ground contact near the bottom. Strong readable silhouette at small game size. GENUINELY TRANSPARENT BACKGROUND, clean alpha, no scenery, no grass tile, no ground shadow, no text or letters, no characters, no UI, no frame. Subject: A seaside storage WAREHOUSE with cream stone walls, honey-orange roof, wide plank double doors, a brass padlock, one closed crate and a coil of rope. Distinct from a shop.",
+      "output": {
+        "url": "/game-art/island/03a7e0a2e450ce2e5d1862c8-384.png",
+        "bytes": 66455,
+        "width": 378,
+        "height": 384
+      }
+    },
+    {
+      "id": "lighthouse",
+      "source": "lighthouse.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Create ONE isolated object sprite for the SAME cozy seaside island game set as the supplied fishing shop image, which is STYLE REFERENCE ONLY. Match its polished clean 2D cartoon illustration, precise warm dark-brown outline, rounded chunky forms, warm cream and honey wood, terracotta or muted teal/sage accents, simple cel shading and restrained highlights. No noisy texture, not photorealistic, no excessive detail. Elevated three-quarter/isometric-like view looking at the FRONT and RIGHT side, verticals upright, whole object centered with comfortable transparent margins and ground contact near the bottom. Strong readable silhouette at small game size. GENUINELY TRANSPARENT BACKGROUND, clean alpha, no scenery, no grass tile, no ground shadow, no text or letters, no characters, no UI, no frame. Subject: A tall compact LIGHTHOUSE with cream and coral-orange stripes, muted teal lantern roof, glass lantern room, small door and honey-colored railing.",
+      "output": {
+        "url": "/game-art/island/29b8916878c32645a5aa209d-384.png",
+        "bytes": 33223,
+        "width": 218,
+        "height": 384
+      }
+    },
+    {
+      "id": "shipyard",
+      "source": "shipyard.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Create ONE isolated object sprite for the SAME cozy seaside island game set as the supplied fishing shop image, which is STYLE REFERENCE ONLY. Match its polished clean 2D cartoon illustration, precise warm dark-brown outline, rounded chunky forms, warm cream and honey wood, terracotta or muted teal/sage accents, simple cel shading and restrained highlights. No noisy texture, not photorealistic, no excessive detail. Elevated three-quarter/isometric-like view looking at the FRONT and RIGHT side, verticals upright, whole object centered with comfortable transparent margins and ground contact near the bottom. Strong readable silhouette at small game size. GENUINELY TRANSPARENT BACKGROUND, clean alpha, no scenery, no grass tile, no ground shadow, no text or letters, no characters, no UI, no frame. Subject: A SHIPYARD workshop with cream walls, teal roof, open door showing an unfinished honey-wood boat and one short wooden gantry.",
+      "output": {
+        "url": "/game-art/island/afb04966c98eb79d23294f81-384.png",
+        "bytes": 71752,
+        "width": 384,
+        "height": 378
+      }
+    },
+    {
+      "id": "workshop",
+      "source": "workshop.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Create ONE isolated object sprite for the SAME cozy seaside island game set as the supplied fishing shop image, which is STYLE REFERENCE ONLY. Match its polished clean 2D cartoon illustration, precise warm dark-brown outline, rounded chunky forms, warm cream and honey wood, terracotta or muted teal/sage accents, simple cel shading and restrained highlights. No noisy texture, not photorealistic, no excessive detail. Elevated three-quarter/isometric-like view looking at the FRONT and RIGHT side, verticals upright, whole object centered with comfortable transparent margins and ground contact near the bottom. Strong readable silhouette at small game size. GENUINELY TRANSPARENT BACKGROUND, clean alpha, no scenery, no grass tile, no ground shadow, no text or letters, no characters, no UI, no frame. Subject: A personal BAIT WORKSHOP with cream walls, lavender roof, a mixing vessel and wooden paddle, a few orange bait jars. Distinct from the green bait factory.",
+      "output": {
+        "url": "/game-art/island/14d42659867b6245ef2db349-384.png",
+        "bytes": 66142,
+        "width": 384,
+        "height": 372
+      }
+    },
+    {
+      "id": "tree",
+      "source": "tree.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Create ONE isolated object sprite for the SAME cozy seaside island game set as the supplied fishing shop image, which is STYLE REFERENCE ONLY. Match its polished clean 2D cartoon illustration, precise warm dark-brown outline, rounded chunky forms, warm cream and honey wood, terracotta or muted teal/sage accents, simple cel shading and restrained highlights. No noisy texture, not photorealistic, no excessive detail. Elevated three-quarter/isometric-like view looking at the FRONT and RIGHT side, verticals upright, whole object centered with comfortable transparent margins and ground contact near the bottom. Strong readable silhouette at small game size. GENUINELY TRANSPARENT BACKGROUND, clean alpha, no scenery, no grass tile, no ground shadow, no text or letters, no characters, no UI, no frame. Subject: One broadleaf TREE with three rounded sage-green canopy masses and a honey-colored trunk. No fruit, no base.",
+      "output": {
+        "url": "/game-art/island/c2543e2b613ef16be820d715-256.png",
+        "bytes": 26745,
+        "width": 244,
+        "height": 256
+      }
+    },
+    {
+      "id": "pine",
+      "source": "pine.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Create ONE isolated object sprite for the SAME cozy seaside island game set as the supplied fishing shop image, which is STYLE REFERENCE ONLY. Match its polished clean 2D cartoon illustration, precise warm dark-brown outline, rounded chunky forms, warm cream and honey wood, terracotta or muted teal/sage accents, simple cel shading and restrained highlights. No noisy texture, not photorealistic, no excessive detail. Elevated three-quarter/isometric-like view looking at the FRONT and RIGHT side, verticals upright, whole object centered with comfortable transparent margins and ground contact near the bottom. Strong readable silhouette at small game size. GENUINELY TRANSPARENT BACKGROUND, clean alpha, no scenery, no grass tile, no ground shadow, no text or letters, no characters, no UI, no frame. Subject: One PINE TREE with three rounded tiers of sage-green foliage and a honey-colored trunk. No snow, no base.",
+      "output": {
+        "url": "/game-art/island/2951611dd8c850650a222145-256.png",
+        "bytes": 19637,
+        "width": 175,
+        "height": 256
+      }
+    },
+    {
+      "id": "flowers",
+      "source": "flowers.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Create ONE isolated object sprite for the SAME cozy seaside island game set as the supplied fishing shop image, which is STYLE REFERENCE ONLY. Match its polished clean 2D cartoon illustration, precise warm dark-brown outline, rounded chunky forms, warm cream and honey wood, terracotta or muted teal/sage accents, simple cel shading and restrained highlights. No noisy texture, not photorealistic, no excessive detail. Elevated three-quarter/isometric-like view looking at the FRONT and RIGHT side, verticals upright, whole object centered with comfortable transparent margins and ground contact near the bottom. Strong readable silhouette at small game size. GENUINELY TRANSPARENT BACKGROUND, clean alpha, no scenery, no grass tile, no ground shadow, no text or letters, no characters, no UI, no frame. Subject: A low honey-wood FLOWER PLANTER with a few large apricot, butter-yellow and dusty-pink flowers and sage leaves.",
+      "output": {
+        "url": "/game-art/island/b8f22238fff896aedca35a4d-256.png",
+        "bytes": 25788,
+        "width": 256,
+        "height": 202
+      }
+    },
+    {
+      "id": "bench",
+      "source": "bench.png",
+      "reference": "shop.png",
+      "prompt": "Use case: stylized-concept. Asset type: isolated cozy island decoration sprite. Input image is STYLE REFERENCE ONLY. Draw ONE simple small wooden park BENCH, honey-colored planks, two slats on back, three planks for seat, muted sage green metal legs and armrests. Match the reference warm brown outlines and clean rounded cartoon game art. Elevated three-quarter front/right view, full object centered with 10% transparent padding. Completely transparent background. NO glow, NO aura, NO shadow, NO haze, NO vignette, NO ground, NO scene, NO extra objects, NO text. Outside the bench silhouette all pixels must be fully transparent. Hard clean alpha edge.",
+      "output": {
+        "url": "/game-art/island/7ae2b1c836ee5ba4b3a73181-256.png",
+        "bytes": 27452,
+        "width": 256,
+        "height": 246
+      }
+    }
+  ],
+  "outputSizes": {
+    "buildings": 384,
+    "decorations": 256
+  },
+  "displayMirror": true
+}

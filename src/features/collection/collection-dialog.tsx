@@ -38,7 +38,7 @@ import { HalloweenIcon } from '@/components/collection-filter-icons'
 import { limitedCollectionEvents } from './limited-events'
 import { IslandSelect } from '@/components/island-select'
 import { useAccountResource } from '@/lib/account-query'
-import { readRelics, type RelicState } from '@/features/relics/api'
+import { readRelics, relicQuantity, type RelicState } from '@/features/relics/api'
 
 const { collection: BookOpenText } = appArt
 
@@ -207,11 +207,13 @@ export function CollectionBook({
   initialRegion = 'all',
   rememberFiltersFor,
   mode = 'creatures',
+  initialTab,
 }: CollectionDialogProps & {
   previewAll?: boolean
   initialRegion?: string
   rememberFiltersFor?: string
   mode?: 'creatures' | 'items'
+  initialTab?: 'map' | 'relic'
 }) {
   const [state, setState] = useState<CollectionState | null>(null)
   const [error, setError] = useState('')
@@ -222,6 +224,7 @@ export function CollectionBook({
         : rememberFiltersFor
       : undefined,
     initialRegion,
+    initialTab,
   )
   const { rarity, habitat, search = '', limited = 'all', effect = 'all' } = filters
   const tab =
@@ -720,6 +723,11 @@ export function CollectionBook({
                       >
                         <GoldIcon className="size-3.5" />
                         {s.sell_price.toLocaleString('ko-KR')}
+                      </span>
+                    )}
+                    {s.kind === 'relic' && relics.data && (
+                      <span className="mt-0.5 text-[10px] tabular-nums text-primary">
+                        보유 {relicQuantity(relics.data.relics.find(r => r.id === (s.relicId ?? s.id.replace(/^relic-/, ''))))}개
                       </span>
                     )}
                     {s.kind === 'relic' && (

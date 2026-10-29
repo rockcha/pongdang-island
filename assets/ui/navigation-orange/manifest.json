@@ -1,0 +1,43 @@
+{
+  "generator": "built-in image_gen",
+  "sharedPrompt": "Use case: stylized-concept. Asset type: single small mobile-game navigation PNG icon for a cozy Korean seaside island game. Create ONE isolated icon centered on a genuinely transparent background. Style: beautiful tiny hand-painted 2D storybook game UI asset, warm tangerine orange and apricot peach, buttery cream highlights, thin cinnamon-brown outer contour, softly shaded watercolor-gouache fills, crisp clear chunky silhouette, same visual weight as a cute orange notification bell or illustrated calendar. Mostly front view with subtle three-quarter depth. Designed to remain instantly readable at 28 pixels: very few large shapes, no busy tiny detail. Object fills 82 percent of square canvas; balanced padding, no clipping. No text, no letters, no border, no button tile, no backdrop, no ground plane, no checkerboard, no cast shadow outside object, no 3D plastic gloss. ",
+  "subjects": {
+    "home": "Cozy cream seaside cottage, terracotta orange roof and starfish.",
+    "sea": "Curling peach-orange ocean wave with ivory foam and a small orange fish.",
+    "production": "Cream workshop factory with orange sawtooth roof, short chimney and golden cog.",
+    "market": "Cozy shop stall with orange and ivory striped awning.",
+    "collection": "Open collector album, cream pages, orange leather cover, starfish and ribbon.",
+    "news": "Folded cream newspaper, orange header and picture block, brown placeholder lines.",
+    "community": "Two overlapping apricot and cream speech bubbles with a cream heart.",
+    "fishing": "Orange fishing rod, reel, looping line and cream-striped orange bobber.",
+    "hook": "Single thick orange J-shaped fishing hook with a round eye and a pointed barb.",
+    "island": "Small rounded sandy island with one palm tree and orange ripples.",
+    "still": "Round orange distillation vessel with one curved condenser pipe and a small cream collecting flask."
+  },
+  "sourceSize": 1280,
+  "outputSize": 128,
+  "outputDirectory": "public/navigation-icons/orange-v1",
+  "variants": {
+    "fishing": {
+      "generator": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Create ONE transparent-background navigation icon for FISHING in a cozy Korean seaside mobile game. The supplied cottage image is STYLE REFERENCE ONLY: match its warm tangerine orange, apricot peach, cream highlights, cinnamon-brown contour and softly hand-painted gouache watercolor texture. Do not include the house. Subject: a chunky curved orange fishing rod with a cream-and-orange reel, a looping brown fishing line and a large orange and cream fishing float (bobber) hanging beside it. Compact balanced diagonal composition, rod curves from lower left to upper right and line with float fills the other half so it forms a readable square silhouette. Very simple bold shapes legible at 28px. Not thin delicate realistic tackle. No text, no water background, no landscape, no tile or border, no drop shadow outside the object. Centered with 8 percent transparent padding, no clipping, genuinely transparent background. Beautiful charming game UI icon matching the reference palette and illustrated finish.",
+      "styleReference": "assets/ui/navigation-orange/home.png",
+      "category": "sea"
+    },
+    "hook": {
+      "generator": "built-in image_gen",
+      "prompt": "Create ONE single fishing hook icon for a cozy game's tiny navigation menu. Only ONE large simple J-shaped FISHING HOOK with one small round eye at its top and one clearly pointed barb. No fishing rod, no reel, no float, no fishing line, no fish, no rope, no extra objects. Thick bold chunky curved shaft, very clear open J silhouette readable at 28 pixels. Warm tangerine-orange enamel body, cinnamon-brown crisp outline, one simple cream highlight, subtle hand-painted storybook shading. Front view. The single hook centered and fills about 85 percent of the square canvas. Truly transparent background. No words, no symbols, no tile, no border, no surrounding shadow. Clean polished warm orange mobile game UI asset. The priority is a recognizable fishing hook silhouette with minimal details.",
+      "category": "sea"
+    },
+    "island": {
+      "generator": "built-in image_gen",
+      "prompt": "Create ONE cozy tropical ISLAND icon for a tiny mobile-game navigation menu on a genuinely transparent background. A small rounded sandy island with ONE curving palm tree and a simple peach-orange ripple around its base. No house or other building. Compact clear island silhouette, thick cinnamon-brown outer contour, warm tangerine-orange and apricot sand and palm fronds, buttery cream highlights, subtle hand-painted storybook gouache shading. Match a cozy orange illustrated fishing-hook game UI icon style. Very few large shapes, bold and immediately readable at 28 pixels, not a detailed landscape. Front three-quarter view with balanced composition filling 85 percent of a square. One isolated object, no text, no letters, no tile, no border, no background scene, no cast shadow outside object. Preserve real alpha transparency.",
+      "category": "home"
+    },
+    "still": {
+      "generator": "built-in image_gen",
+      "prompt": "Create ONE orange DISTILLATION STILL icon for the production category in a cozy seaside mobile game's tiny navigation menu. A compact round-bellied tangerine-orange copper distillation vessel with a short domed lid and ONE thick curved condenser pipe leading into a small cream-and-orange collecting flask beside it. Instantly recognizable simple alchemy distillery silhouette representing processing fuel and fishing bait. No building, no factory, no chimney, no flame, no text, no labels, no extra ingredients or surrounding props. Very few chunky large shapes, thick cinnamon-brown clean outer contour, warm orange and apricot body, buttery cream highlights, subtle hand-painted storybook shading matching cozy illustrated orange fishing-hook and tropical-island UI icons. Front three-quarter view; balanced square composition with all parts clearly separated and readable at 28 pixels. Centered with 8 percent padding, no clipping. Genuinely transparent background. No backdrop, no tile, no border, no ground shadow, no glow.",
+      "category": "production"
+    }
+  }
+}

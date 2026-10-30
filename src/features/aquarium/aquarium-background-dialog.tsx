@@ -30,7 +30,7 @@ function Preview({path,name}:{path:string;name:string}){
   {status==='failed'?<div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-2 text-center text-muted-foreground"><Image aria-hidden="true" className="size-6"/><p className="text-xs">이미지를 불러오지 못했어요.</p><Button variant="outline" size="sm" onClick={()=>{setStatus('loading');setAttempt(value=>value+1)}}>다시 시도</Button></div>:<img key={attempt} src={preview?.url??themePanoramaUrl(path)??backgroundUrl(path)} alt={name} loading="lazy" decoding="async" width={preview?.width} height={preview?.height} ref={image=>{if(image?.complete&&image.naturalWidth>0)loaded(image)}} className={'absolute inset-0 size-full object-contain transition-opacity duration-150 motion-reduce:transition-none '+(status==='ready'?'opacity-100':'opacity-0')} onLoad={event=>loaded(event.currentTarget)} onError={()=>setStatus('failed')}/>}
  </div>
 }
-export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,error,onAct}:{previewItems?:OwnedCollectible[];state:AquariumState;selectedId:string;gold:number;busy:boolean;loading:boolean;error:boolean;onAct:(id:string,owned:boolean)=>Promise<void>}){
+export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,error,onAct,triggerLabel='배경 바꾸기'}:{previewItems?:OwnedCollectible[];state:AquariumState;selectedId:string;gold:number;busy:boolean;loading:boolean;error:boolean;onAct:(id:string,owned:boolean)=>Promise<void>;triggerLabel?:string}){
  const [open,setOpen]=useState(false)
  const [tier,setTier]=useState<ThemeTier|'all'>('all')
  const [tab,setTab]=useState('owned')
@@ -61,7 +61,7 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
   })}</ul>
  }
  return <Dialog open={open} onOpenChange={value=>{if(!busy&&!locked.current){setOpen(value);if(value)setTier('all');else setPurchaseId(null)}}}>
-  <AquariumToolButton label="배경 바꾸기" visibleLabel="배경 바꾸기" icon={<Image className="size-7 text-primary"/>}/>
+  <AquariumToolButton label={triggerLabel} visibleLabel={triggerLabel} icon={<Image className="size-7 text-primary"/>}/>
   <DialogContent className="aquarium-work-panel notification-sheet inset-x-0 bottom-0 top-auto left-0 flex h-[92dvh] max-h-[92dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-4 overflow-hidden rounded-t-2xl rounded-b-none pb-[max(1rem,env(safe-area-inset-bottom))] sm:left-1/2 sm:max-w-md sm:-translate-x-1/2">
    <DialogHeader><DialogTitle className="flex items-center gap-2"><Image aria-hidden="true" className="size-8 text-primary"/>배경 꾸미기</DialogTitle><DialogDescription>배경을 골라 지금 어항에 적용해보세요.</DialogDescription></DialogHeader>
    {actionError&&<p role="alert" className="text-sm text-destructive">{actionError}</p>}

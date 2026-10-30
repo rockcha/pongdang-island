@@ -3,11 +3,13 @@ import {hasOpenOverlay,useOverlayBack} from '@/components/overlay-back'
 import {usePwaUpdateBlock} from '@/features/pwa/update-blockers'
 
 type Orientation=ScreenOrientation&{lock?:(mode:'landscape')=>Promise<void>}
-export function useAquariumWideMode(){
+export function useAquariumWideMode(onExit?:()=>void){
  const [active,setActive]=useState(false)
  const wanted=useRef(false),ownsFullscreen=useRef(false)
- function exit(){wanted.current=false;setActive(false)}
- useOverlayBack(active,exit,true,false)
+ const exitCallback=useRef(onExit)
+ exitCallback.current=onExit
+ function exit(){if(!wanted.current)return;wanted.current=false;setActive(false);exitCallback.current?.()}
+ useOverlayBack(active,exit,!onExit,false)
  usePwaUpdateBlock(active)
  function enter(){
   if(wanted.current)return

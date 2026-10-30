@@ -13,9 +13,9 @@ vi.mock('@/features/aquarium/aquarium-background-dialog',()=>({AquariumBackgroun
 vi.mock('@/features/aquarium/collectible-storage-dialog',()=>({CollectibleStorageDialog:()=>null}))
 vi.mock('@/components/confirm-dialog',()=>({ConfirmDialog:()=>null}))
 vi.mock('@/features/collection/collection-dialog',()=>({CollectionDialog:({onAddTemporary}:{onAddTemporary?:(species:Species)=>void})=><button disabled={!onAddTemporary} onClick={()=>onAddTemporary?.(species)}>도감 넣기</button>}))
-vi.mock('@/features/aquarium/aquarium-view',()=>({AquariumView:({items,storageControls,managementControls,onPlace,onArrange}:{items:OwnedCollectible[];storageControls:React.ReactNode;managementControls:React.ReactNode;onPlace:(id:string,x:number,y:number)=>void;onArrange:(id:string,value:object)=>Promise<void>})=>{
+vi.mock('@/features/aquarium/aquarium-view',()=>({AquariumView:({items,storageControls,managementControls,nameControls,operatorControls,onPlace,onArrange}:{items:OwnedCollectible[];storageControls:React.ReactNode;managementControls:React.ReactNode;nameControls:React.ReactNode;operatorControls:React.ReactNode;onPlace:(id:string,x:number,y:number)=>void;onArrange:(id:string,value:object)=>Promise<void>})=>{
  mock.items=items
- return <>{storageControls}{managementControls}<span data-testid="count">{items.length}</span>{items[0]&&<button onClick={()=>{onPlace(items[0].id,.2,.3);void onArrange(items[0].id,{position_x:.2,position_y:.3,rotation:30,scale:1.5})}}>꾸미기</button>}</>
+ return <>{storageControls}{managementControls}{nameControls}{operatorControls}<span data-testid="count">{items.length}</span>{items[0]&&<button onClick={()=>{onPlace(items[0].id,.2,.3);void onArrange(items[0].id,{position_x:.2,position_y:.3,rotation:30,scale:1.5})}}>꾸미기</button>}</>
 }}))
 afterEach(()=>{cleanup();vi.clearAllMocks();mock.operator=true})
 it('does not expose temporary insertion to a normal account',async()=>{
@@ -23,8 +23,7 @@ it('does not expose temporary insertion to a normal account',async()=>{
  mock.load.mockResolvedValue({tanks:[{id:'tank',name:'어항',background_id:'sea'}],inhabitants:[],catalog:[],owned:[],storageCount:0,tankCapacity:50,tankPrice:200})
  render(<MemoryRouter><AquariumPage/></MemoryRouter>)
  await waitFor(()=>expect(mock.load).toHaveBeenCalled())
- expect(screen.getByRole('button',{name:'도감 넣기'}).hasAttribute('disabled')).toBe(true)
- fireEvent.click(screen.getByRole('button',{name:'도감 넣기'}))
+ expect(screen.queryByRole('button',{name:'도감 넣기'})).toBeNull()
  expect(mock.items).toHaveLength(0)
 })
 it('keeps inserted individuals and edits only in memory and removes them after a fresh page mount',async()=>{

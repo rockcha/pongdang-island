@@ -1,5 +1,4 @@
 import {useAccountState} from '@/lib/account-query'
-import { appArt } from '@/components/app-art'
 import { randomId } from '@/lib/random-id'
 import { AquariumView } from '@/features/aquarium/aquarium-view'
 import {AquariumOverview} from '@/features/aquarium/aquarium-overview'
@@ -9,6 +8,7 @@ import { AquariumBackgroundDialog } from '@/features/aquarium/aquarium-backgroun
 import type { DecorationPlacement, OwnedCollectible, Species } from '@/features/collection/api'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
+import {Pencil} from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -30,10 +30,9 @@ import { CollectibleStorageDialog } from '@/features/aquarium/collectible-storag
 import type { AquariumState } from '@/features/aquarium/api'
 import { CollectionDialog } from '@/features/collection/collection-dialog'
 import { useOperator } from '@/features/notices/use-operator'
-import { Link,useNavigate,useParams } from 'react-router'
+import { useNavigate,useParams } from 'react-router'
 import { useReturningTank } from '@/features/friends/visit-return'
 
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import {
   Dialog,
   DialogContent,
@@ -43,7 +42,7 @@ import {
 } from '@/components/ui/dialog'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 
-const { map: MapIcon } = appArt
+
 
 export function AquariumPage() {
   const {tankId:routeTankId}=useParams<{tankId:string}>()
@@ -352,6 +351,8 @@ export function AquariumPage() {
       className="relative flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <AquariumView
+        autoWide={expanded}
+        onWideExit={()=>navigate('/aquarium',{replace:true})}
         overviewContent={!expanded?(state?<AquariumOverview onRename={openRename} state={state} items={[...state.inhabitants,...(operator?testFish:[])]} busy={busy||goldBusy} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{navigationRequest.current++;navigate('/aquarium/'+encodeURIComponent(id))}} onAdd={()=>{setPurchaseError('');setPurchaseOpen(true)}}/>:<div role="status" className="min-h-0 flex-1 space-y-4 overflow-hidden p-4"><p className="text-xs text-muted-foreground">어항을 준비하고 있어요.</p>{[0,1].map(i=><div key={i} className="h-48 animate-pulse rounded-2xl bg-secondary/50 motion-reduce:animate-none"/>)}</div>):undefined}
         tankId={tank?.id}
         loading={!state && !error}
@@ -422,11 +423,9 @@ export function AquariumPage() {
             )}
           </>
         }
-        managementControls={
-          <>
-            <CollectionDialog toolbarLabel="바다 도감" onAddTemporary={operator && tank ? addTemporary : undefined} />
-            {state && tank ? (
-                <AquariumBackgroundDialog
+        backgroundControls={
+            state && tank ? (
+                <AquariumBackgroundDialog triggerLabel="테마"
                   state={state}
                   selectedId={tank.background_id}
                   previewItems={state.inhabitants.filter(i=>i.tank_id===tank.id)}
@@ -436,31 +435,25 @@ export function AquariumPage() {
                   error={!!goldLoadError}
                   onAct={act}
                 />
-            ) : null}
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <Link
-                    to="/harbor"
-                    aria-label="지도로"
-                    className="inline-flex min-h-16 w-full shrink-0 flex-col items-center justify-center gap-1 rounded-lg transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring"
-                  />
-                }
-              >
-                <MapIcon className="size-7" />
-                <span className="text-[10px] text-muted-foreground">지도로</span>
-              </TooltipTrigger>
-              <TooltipContent>지도로</TooltipContent>
-            </Tooltip>
-          </>
+            ) : null
         }
-        selectorControls={
-          state && tank ? (
+        managementControls={
+          !expanded && state && tank ? (
             <AquariumTankPicker
+              triggerLabel="어항 관리"
               tanks={state.tanks}
               selectedId={tank.id}
               backgrounds={state.catalog}
               busy={busy || goldBusy}
+              onRepresentative={async id=>{
+                if(locked.current)throw new Error('다른 작업을 마친 뒤 다시 시도해 주세요.')
+                locked.current=true;setBusy(true)
+                try{
+                  const next=await manageTank(id,'representative','')
+                  if(active.current)setState(next)
+                  toast.success('대표 어항으로 지정했어요.')
+                }finally{locked.current=false;if(active.current)setBusy(false)}
+              }}
               onReorder={async(ids,expectedIds)=>{
                 if(locked.current)throw new Error('다른 작업을 마친 뒤 다시 시도해 주세요.')
                 locked.current=true;setBusy(true)
@@ -485,6 +478,8 @@ export function AquariumPage() {
             />
           ) : undefined
         }
+        selectorControls={tank?<Button variant="ghost" className="min-h-11 min-w-0 gap-2 px-2" disabled={busy||goldBusy} aria-label="어항 이름 바꾸기" onClick={()=>openRename(tank.id)}><span className="truncate text-sm">{tank.name}</span><Pencil aria-hidden="true" className="size-3 shrink-0"/></Button>:undefined}
+        operatorControls={operator?<CollectionDialog toolbarLabel="개체 테스트" onAddTemporary={tank?addTemporary:undefined}/>:undefined}
         nameControls={
           <>
             {tank && (

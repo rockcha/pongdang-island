@@ -8,7 +8,7 @@ import {hasOpenOverlay,subscribeOverlayActivity} from '@/components/overlay-back
 import {AquariumLoading} from './aquarium-loading'
 import {TankLoadingContext,type TankAssetState} from './tank-loading-context'
 
-export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecoration,onBackgroundTap,onSelectionPosition,paused=false,world,viewRequest,preview=false,onWideView,fitView=false,pinchEnabled=true,showControls=true }: { items: OwnedCollectible[];scenery?:ReactNode;onPlace?:(id:string,x:number,y:number)=>void;onNavigate?:(direction:'previous'|'next')=>void;onSelectDecoration?:(id:string,x?:number,y?:number)=>void;onBackgroundTap?:()=>void;onSelectionPosition?:(id:string,x:number,y:number)=>void;paused?:boolean;world?:TankWorldOptions;viewRequest?:{position:number;zoom?:number;y?:number};preview?:boolean;onWideView?:()=>void;fitView?:boolean;pinchEnabled?:boolean;showControls?:boolean }) {
+export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecoration,onBackgroundTap,onSelectionPosition,onDragStateChange,paused=false,world,viewRequest,preview=false,onWideView,fitView=false,pinchEnabled=true,showControls=true }: { items: OwnedCollectible[];scenery?:ReactNode;onPlace?:(id:string,x:number,y:number)=>void;onNavigate?:(direction:'previous'|'next')=>void;onSelectDecoration?:(id:string,x?:number,y?:number)=>void;onBackgroundTap?:()=>void;onSelectionPosition?:(id:string,x:number,y:number)=>void;onDragStateChange?:(dragging:boolean)=>void;paused?:boolean;world?:TankWorldOptions;viewRequest?:{position:number;zoom?:number;y?:number};preview?:boolean;onWideView?:()=>void;fitView?:boolean;pinchEnabled?:boolean;showControls?:boolean }) {
   const columns=world?.columns??1
   const overview=world?.overview??false
   const camera=useRef<TankCamera>({zoom:overview?(world?.initialZoom??1/columns):1,view:world?.initialView??0,...(world?.fixedViewport?{y:0}:{})})
@@ -32,6 +32,8 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
   const selection=useRef(onSelectDecoration)
   const position=useRef(onSelectionPosition)
   position.current=onSelectionPosition
+  const dragState=useRef(onDragStateChange)
+  dragState.current=onDragStateChange
   const backgroundTap=useRef(onBackgroundTap)
   useEffect(()=>{backgroundTap.current=onBackgroundTap},[onBackgroundTap])
   useEffect(()=>{selection.current=onSelectDecoration},[onSelectDecoration])
@@ -79,7 +81,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
           const bounds=parent.getBoundingClientRect(),viewport=zoomViewport.current?.getBoundingClientRect()
           const scaleX=parent.clientWidth?bounds.width/parent.clientWidth:1,scaleY=parent.clientHeight?bounds.height/parent.clientHeight:1
           position.current?.(id,bounds.left-(viewport?.left??bounds.left)+x*scaleX,bounds.top-(viewport?.top??bounds.top)+y*scaleY)
-        },columns>1?{...latestWorld.current,columns:3,preserveArrangement,onVerticalViewChange:value=>{camera.current.y=value;latestWorld.current?.onVerticalViewChange?.(value)},onZoomChange:value=>{camera.current.zoom=value;setZoom(value);latestWorld.current?.onZoomChange?.(value)},onViewChange:view=>{camera.current.view=view;latestWorld.current?.onViewChange?.(view)},canPan:()=>latestWorld.current?.canPan?.()??true}:undefined,value=>{if(active)setRendererReady(value)})
+        },columns>1?{...latestWorld.current,columns:3,preserveArrangement,onVerticalViewChange:value=>{camera.current.y=value;latestWorld.current?.onVerticalViewChange?.(value)},onZoomChange:value=>{camera.current.zoom=value;setZoom(value);latestWorld.current?.onZoomChange?.(value)},onViewChange:view=>{camera.current.view=view;latestWorld.current?.onViewChange?.(view)},canPan:()=>latestWorld.current?.canPan?.()??true}:undefined,value=>{if(active)setRendererReady(value)},value=>{if(active)dragState.current?.(value)})
         visibility()
       } catch { setError('어항 화면을 시작하지 못했어요. 새로고침해주세요.') }
     }).catch(() => { if (active) setError('어항 화면을 불러오지 못했어요. 새로고침해주세요.') })

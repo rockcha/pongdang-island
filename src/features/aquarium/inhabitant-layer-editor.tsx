@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { maxDisplayLayer } from './inhabitant-depth'
 
-export function InhabitantLayerEditor({ value, automatic, busy, onChange }: {
+export function InhabitantLayerEditor({ value, automatic, busy, onChange, compact=false }: {
+  compact?: boolean
   value: number | null; automatic: number; busy: boolean; onChange: (value: number | null) => Promise<void>
 }) {
   const depth = value ?? automatic
@@ -30,10 +31,12 @@ export function InhabitantLayerEditor({ value, automatic, busy, onChange }: {
     void save(Number(draft))
   }
   return <div className="w-full space-y-1">
-    <div className="mx-auto flex w-fit max-w-full items-center justify-center gap-1 rounded-xl bg-background/75 px-1" role="group" aria-label="개체 앞뒤 순서">
+    <div className="flex max-w-full items-center gap-1" role="group" aria-label="개체 앞뒤 순서">
+      {compact&&<span className="mr-auto w-9 shrink-0 text-[11px] text-muted-foreground">겹침</span>}
       <Button variant="ghost" className="min-h-11 shrink-0 gap-1 px-2 text-xs" aria-label="개체 뒤로" disabled={busy || saving || depth === 0} onClick={() => void save(Math.max(0, depth - 1))}><ArrowDown className="size-4"/>뒤로</Button>
       <Button variant="ghost" className="min-h-11 shrink-0 gap-1 px-2 text-xs" aria-label="개체 앞으로" disabled={busy || saving || depth === maxDisplayLayer} onClick={() => void save(Math.min(maxDisplayLayer, depth + 1))}><ArrowUp className="size-4"/>앞으로</Button>
-      <Button variant="ghost" className="min-h-11 px-2 text-[11px]" aria-expanded={advanced} onClick={()=>setAdvanced(value=>!value)}>직접 입력</Button>
+      {compact&&<Button variant="ghost" size="icon" className="size-11 shrink-0" aria-label="개체 앞뒤 순서 자동" title="자동 순서로 되돌리기" disabled={busy||saving||value===null} onClick={()=>void save(null)}><RotateCcw className="size-3.5"/></Button>}
+      {!compact&&<Button variant="ghost" className="min-h-11 px-2 text-[11px]" aria-expanded={advanced} onClick={()=>setAdvanced(value=>!value)}>직접 입력</Button>}
     </div>
     {advanced&&<div className="flex items-center justify-center gap-2">
       <Input type="text" inputMode="numeric" pattern="[0-9]*" className="h-11 w-14 px-1 text-center text-xs tabular-nums" aria-label="개체 표시 우선순위" value={draft} disabled={busy || saving} onFocus={event => event.target.select()} onChange={event => setDraft(event.target.value)} onBlur={commit} onKeyDown={event => {if (event.key === 'Enter') {event.preventDefault(); commit()}}}/>

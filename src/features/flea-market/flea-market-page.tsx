@@ -41,7 +41,7 @@ function ListingItem({item,side}:{item:FleaPost['items'][number];side:FleaPost['
 
 export function FleaMarketPage(){const {session}=useAuth();return <Market key={session?.user.id??'guest'} owner={session?.user.id??''}/>}
 function Market({owner}:{owner:string}){
- const [side,setSide]=useState<'sell'|'buy'>('sell'),[search,setSearch]=useState(''),[query,setQuery]=useState(''),[mine,setMine]=useState(false),[offset,setOffset]=useState(0)
+ const [side,setSide]=useState<'sell'|'buy'>('buy'),[search,setSearch]=useState(''),[query,setQuery]=useState(''),[mine,setMine]=useState(false),[offset,setOffset]=useState(0)
  const [comparisonAsset,setComparisonAsset]=useState<ExchangeAsset|null>(null),[sort,setSort]=useState<'latest'|'low'|'high'>('latest')
  const [sellable,setSellable]=useState(false)
  const comparison=comparisonAsset?fleaAssetKey(comparisonAsset):''

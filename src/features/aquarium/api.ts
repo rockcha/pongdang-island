@@ -3,7 +3,7 @@ import {accountCommand} from '@/lib/account-command'
 import type { DecorationPlacement, OwnedCollectible } from '@/features/collection/api'
 import { createClient } from '@/lib/client'
 import type {ThemeTier} from './theme-tiers'
-export type AquariumTank = { id: string; name: string; background_id: string; is_default: boolean; created_at: string; capacity?:number; nextCapacityExpansion?:{capacity:number;price:number}|null }
+export type AquariumTank = { id: string; name: string; background_id: string; is_default: boolean; is_representative?:boolean; created_at: string; capacity?:number; nextCapacityExpansion?:{capacity:number;price:number}|null }
 export type AquariumState = { inhabitants:OwnedCollectible[]; storageCount:number; tankCapacity:number; nextCapacityExpansion?:{capacity:number;price:number}|null; tanks: AquariumTank[]; tankPrice: number; background: string; owned: string[]; catalog: { id: string; name: string; price: number; image_path: string; tier?:ThemeTier }[] }
 export type CollectibleStorage={items:OwnedCollectible[];total:number;pageSize:number}
 export async function loadCollectibleStorage(
@@ -93,7 +93,7 @@ export function tankOrderError(cause:unknown){
  if(message.includes('INVALID_TANK_ORDER'))return '어항 목록이 달라졌어요. 창을 닫았다가 다시 열어 주세요.'
  return '순서를 저장하지 못했어요. 같은 순서로 다시 저장해 주세요.'
 }
-export async function manageTank(tankId: string, action: 'rename' | 'equip', value: string) {
+export async function manageTank(tankId: string, action: 'rename' | 'equip' | 'representative', value: string) {
   return accountCommand(
     async () => {
       const { data, error } = await createClient().rpc('manage_aquarium_tank', {

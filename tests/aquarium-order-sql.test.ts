@@ -14,6 +14,19 @@ beforeAll(async()=>{
  for(let i=0;i<4;i++)await asUser(owner,'select public.buy_aquarium_tank($1)',[crypto.randomUUID()])
 },60000)
 afterAll(async()=>{await db?.close()})
+it('sets a representative without reordering and preserves it through later reorders',async()=>{
+ const before=await state(),ids=before.tanks.map(t=>t.id),target=ids[3]
+ const saved=(await asUser(owner,"select public.manage_aquarium_tank($1,'representative','') s",[target])).rows[0].s
+ expect(saved.tanks.map(t=>t.id)).toEqual(ids)
+ expect(saved.tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
+ const reversed=[...ids].reverse(),after=await reorder(reversed,ids)
+ expect(after.tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
+ const visit=(await asUser(friend,'select public.friend_aquarium($1) s',[owner])).rows[0].s
+ expect(visit.tanks.map(t=>t.id)).toEqual(reversed)
+ expect(visit.tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
+ await expect(asUser(friend,"select public.manage_aquarium_tank($1,'representative','')",[target])).rejects.toThrow('TANK_NOT_FOUND')
+ expect((await state()).tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
+})
 it('moves the fifth tank to the front for both owner and friend, preserving tank contents and metadata',async()=>{
  const before=await state(),ids=before.tanks.map(t=>t.id),next=[ids[4],...ids.slice(0,4)]
  const first=before.tanks[0]

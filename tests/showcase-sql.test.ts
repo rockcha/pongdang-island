@@ -97,10 +97,12 @@ it('keeps one reaction per player with replacement, cancellation and retry safet
 it('saves sad and angry reactions, replaces them and cancels without losing other players reactions',async()=>{
  const {operation}=await catchFish('mythic'),id=await publish(operation)
  await asUser(owner,'select public.react_fishing_showcase($1,$2)',[id,'celebrate'])
- for(const reaction of ['sad','sad','angry']){
+ for(const reaction of ['sad','sad','dislike','dislike','angry']){
   const row=(await asUser(other,'select public.react_fishing_showcase($1,$2) p',[id,reaction])).rows[0].p
   expect(row.my_reaction).toBe(reaction)
   expect(row.reactions).toEqual({celebrate:1,[reaction]:1})
+  const people=(await asUser(owner,'select public.showcase_reaction_people($1,$2) r',[id,reaction])).rows[0].r
+  expect(people.total).toBe(1);expect(people.items[0].reaction).toBe(reaction)
  }
  const row=(await asUser(other,'select public.react_fishing_showcase($1,null) p',[id])).rows[0].p
  expect(row.my_reaction).toBeNull();expect(row.reactions).toEqual({celebrate:1})

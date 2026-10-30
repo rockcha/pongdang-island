@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "4cff0d97bd231c8008531edad785c46d24ca488a5bc0132ede2fff336097bbbf",
+  "migrationHash": "5c4cf8103b51ad026bf5cf17789aa0973cb6e6f37b522eed89a2eb9070882dbc",
   "structure": {
     "enums": [
       {
@@ -6774,6 +6774,16 @@
         "generated": ""
       },
       {
+        "name": "is_representative",
+        "type": "boolean",
+        "table": "aquarium_tanks",
+        "schema": "public",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "user_id",
         "type": "uuid",
         "table": "attendance_claims",
@@ -12930,6 +12940,12 @@
         "definition": "CREATE UNIQUE INDEX aquarium_tanks_one_default ON public.aquarium_tanks USING btree (user_id) WHERE is_default"
       },
       {
+        "name": "aquarium_tanks_one_representative",
+        "table": "aquarium_tanks",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX aquarium_tanks_one_representative ON public.aquarium_tanks USING btree (user_id) WHERE is_representative"
+      },
+      {
         "name": "aquarium_tanks_owner_idx",
         "table": "aquarium_tanks",
         "schema": "public",
@@ -15527,7 +15543,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n insert into public.player_aquariums(user_id) values(v_uid) on conflict do nothing;\n insert into public.aquarium_tanks(user_id,background_id,is_default)\n select v_uid,background_id,true from public.player_aquariums where user_id=v_uid\n on conflict(user_id) where is_default do nothing;\n return jsonb_build_object(\n 'background',(select background_id from public.aquarium_tanks where user_id=v_uid order by display_order,created_at,id limit 1),\n 'tanks',coalesce((select jsonb_agg(to_jsonb(t)||jsonb_build_object('capacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50)+t.capacity_bonus,'nextCapacityExpansion',jsonb_build_object('capacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50)+t.capacity_bonus+20,'price',1000)) order by t.display_order,t.created_at,t.id) from public.aquarium_tanks t where user_id=v_uid),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n   from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is not null and s.kind in ('fish','trash','decoration')),'[]'::jsonb),\n 'storageCount',(select count(*) from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null and s.kind in ('fish','trash','decoration')),\n 'tankCapacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50),\n 'nextCapacityExpansion',null,'tankPrice',350,\n 'owned',coalesce((select jsonb_agg(background_id) from public.owned_aquarium_backgrounds where user_id=v_uid),'[]'::jsonb),\n 'catalog',(select jsonb_agg(to_jsonb(b) order by b.price) from public.aquarium_backgrounds b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n insert into public.player_aquariums(user_id) values(v_uid) on conflict do nothing;\n insert into public.aquarium_tanks(user_id,background_id,is_default,is_representative)\n select v_uid,background_id,true,not exists(select 1 from public.aquarium_tanks where user_id=v_uid and is_representative) from public.player_aquariums where user_id=v_uid\n on conflict(user_id) where is_default do nothing;\n return jsonb_build_object(\n 'background',(select background_id from public.aquarium_tanks where user_id=v_uid order by is_representative desc,display_order,created_at,id limit 1),\n 'tanks',coalesce((select jsonb_agg(to_jsonb(t)||jsonb_build_object('capacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50)+t.capacity_bonus,'nextCapacityExpansion',jsonb_build_object('capacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50)+t.capacity_bonus+20,'price',1000)) order by t.display_order,t.created_at,t.id) from public.aquarium_tanks t where user_id=v_uid),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n   from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is not null and s.kind in ('fish','trash','decoration')),'[]'::jsonb),\n 'storageCount',(select count(*) from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null and s.kind in ('fish','trash','decoration')),\n 'tankCapacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50),\n 'nextCapacityExpansion',null,'tankPrice',350,\n 'owned',coalesce((select jsonb_agg(background_id) from public.owned_aquarium_backgrounds where user_id=v_uid),'[]'::jsonb),\n 'catalog',(select jsonb_agg(to_jsonb(b) order by b.price) from public.aquarium_backgrounds b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -16937,7 +16953,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_owner uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_aquarium(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_owner is null or not exists(select 1 from public.player_profiles where id=p_owner) then raise exception 'TANK_NOT_FOUND';end if;\n return jsonb_build_object(\n 'isFriend',exists(select 1 from public.friend_requests where status='accepted' and ((sender_id=auth.uid() and recipient_id=p_owner) or (recipient_id=auth.uid() and sender_id=p_owner))),\n 'owner',(select jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path) from public.player_profiles where id=p_owner),\n 'tanks',coalesce((select jsonb_agg(jsonb_build_object('id',id,'name',name,'background_id',background_id,'is_default',is_default,'created_at',created_at,'display_order',display_order) order by display_order,created_at,id) from public.aquarium_tanks where user_id=p_owner),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n join public.aquarium_tanks t on t.id=c.tank_id and t.user_id=p_owner\n where c.user_id=p_owner and c.sold_at is null and c.escrow_gift_id is null and s.kind in('fish','trash','decoration')),'[]'::jsonb),\n 'backgrounds',(select coalesce(jsonb_agg(jsonb_build_object('id',id,'name',name,'image_path',image_path)),'[]'::jsonb) from public.aquarium_backgrounds));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_aquarium(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_owner is null or not exists(select 1 from public.player_profiles where id=p_owner) then raise exception 'TANK_NOT_FOUND';end if;\n return jsonb_build_object(\n 'isFriend',exists(select 1 from public.friend_requests where status='accepted' and ((sender_id=auth.uid() and recipient_id=p_owner) or (recipient_id=auth.uid() and sender_id=p_owner))),\n 'owner',(select jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path) from public.player_profiles where id=p_owner),\n 'tanks',coalesce((select jsonb_agg(jsonb_build_object('id',id,'name',name,'background_id',background_id,'is_default',is_default,'is_representative',is_representative,'created_at',created_at,'display_order',display_order) order by display_order,created_at,id) from public.aquarium_tanks where user_id=p_owner),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n join public.aquarium_tanks t on t.id=c.tank_id and t.user_id=p_owner\n where c.user_id=p_owner and c.sold_at is null and c.escrow_gift_id is null and s.kind in('fish','trash','decoration')),'[]'::jsonb),\n 'backgrounds',(select coalesce(jsonb_agg(jsonb_build_object('id',id,'name',name,'image_path',image_path)),'[]'::jsonb) from public.aquarium_backgrounds));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17247,7 +17263,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_tank_id uuid, p_action text, p_value text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.manage_aquarium_tank(p_tank_id uuid, p_action text, p_value text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_tank public.aquarium_tanks; v_name text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n select * into v_tank from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n if not found then raise exception 'TANK_NOT_FOUND'; end if;\n if p_action='rename' then\n  v_name:=btrim(p_value);\n  if v_name is null or char_length(v_name) not between 1 and 20 or v_name ~ '[[:cntrl:]]' then raise exception 'INVALID_TANK_NAME'; end if;\n  update public.aquarium_tanks set name=v_name where id=p_tank_id;\n elsif p_action='equip' then\n  if p_value is null or not exists(select 1 from public.aquarium_backgrounds where id=p_value) then raise exception 'INVALID_ITEM'; end if;\n  if p_value<>'default' and not exists(select 1 from public.owned_aquarium_backgrounds where user_id=v_uid and background_id=p_value) then raise exception 'BACKGROUND_NOT_OWNED'; end if;\n  update public.aquarium_tanks set background_id=p_value where id=p_tank_id;\n  if v_tank.is_default then update public.player_aquariums set background_id=p_value where user_id=v_uid; end if;\n else raise exception 'INVALID_TRADE';\n end if;\n return app_private.aquarium_state();\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.manage_aquarium_tank(p_tank_id uuid, p_action text, p_value text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_tank public.aquarium_tanks; v_name text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_action='representative' then\n  perform app_private.get_gold_wallet();\n  perform 1 from public.player_wallets where user_id=v_uid for update;\n end if;\n select * into v_tank from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n if not found then raise exception 'TANK_NOT_FOUND'; end if;\n if p_action='representative' then\n  update public.aquarium_tanks set is_representative=false where user_id=v_uid and is_representative and id<>p_tank_id;\n  update public.aquarium_tanks set is_representative=true where id=p_tank_id;\n elsif p_action='rename' then\n  v_name:=btrim(p_value);\n  if v_name is null or char_length(v_name) not between 1 and 20 or v_name ~ '[[:cntrl:]]' then raise exception 'INVALID_TANK_NAME'; end if;\n  update public.aquarium_tanks set name=v_name where id=p_tank_id;\n elsif p_action='equip' then\n  if p_value is null or not exists(select 1 from public.aquarium_backgrounds where id=p_value) then raise exception 'INVALID_ITEM'; end if;\n  if p_value<>'default' and not exists(select 1 from public.owned_aquarium_backgrounds where user_id=v_uid and background_id=p_value) then raise exception 'BACKGROUND_NOT_OWNED'; end if;\n  update public.aquarium_tanks set background_id=p_value where id=p_tank_id;\n  if v_tank.is_default then update public.player_aquariums set background_id=p_value where user_id=v_uid; end if;\n else raise exception 'INVALID_TRADE';\n end if;\n return app_private.aquarium_state();\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17997,7 +18013,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_post_id uuid, p_reaction text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.react_fishing_showcase(p_post_id uuid, p_reaction text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare p public.fishing_showcase_posts;u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_reaction is not null and p_reaction not in ('celebrate','love','wow','luck','sad','angry') then raise exception 'INVALID_SHOWCASE_REACTION';end if;\n select * into p from public.fishing_showcase_posts where id=p_post_id for share;\n if not found then raise exception 'SHOWCASE_NOT_FOUND';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase-react:'||p_post_id::text||':'||u::text,0));\n if p_reaction is null then delete from public.fishing_showcase_reactions where post_id=p_post_id and user_id=u;\n else insert into public.fishing_showcase_reactions(post_id,user_id,reaction) values(p_post_id,u,p_reaction)\n on conflict(post_id,user_id) do update set reaction=excluded.reaction;end if;\n return app_private.showcase_post_json(p);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.react_fishing_showcase(p_post_id uuid, p_reaction text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare p public.fishing_showcase_posts;u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_reaction is not null and p_reaction not in ('celebrate','love','wow','luck','dislike','sad','angry') then raise exception 'INVALID_SHOWCASE_REACTION';end if;\n select * into p from public.fishing_showcase_posts where id=p_post_id for share;\n if not found then raise exception 'SHOWCASE_NOT_FOUND';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase-react:'||p_post_id::text||':'||u::text,0));\n if p_reaction is null then delete from public.fishing_showcase_reactions where post_id=p_post_id and user_id=u;\n else insert into public.fishing_showcase_reactions(post_id,user_id,reaction) values(p_post_id,u,p_reaction)\n on conflict(post_id,user_id) do update set reaction=excluded.reaction;end if;\n return app_private.showcase_post_json(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18457,7 +18473,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_post_id uuid, p_reaction text, p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.showcase_reaction_people(p_post_id uuid, p_reaction text DEFAULT NULL::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_post_id is null or p_offset is null or p_offset<0 or p_offset>100000 or\n (p_reaction is not null and p_reaction not in ('celebrate','love','wow','luck','sad','angry')) then\n  raise exception 'INVALID_SHOWCASE';\n end if;\n if not exists(select 1 from public.fishing_showcase_posts where id=p_post_id) then raise exception 'SHOWCASE_NOT_FOUND';end if;\n with reactions as materialized (\n  select r.user_id,r.reaction,p.nickname,p.avatar_path\n  from public.fishing_showcase_reactions r join public.player_profiles p on p.id=r.user_id where r.post_id=p_post_id\n ), filtered as (select * from reactions where p_reaction is null or reaction=p_reaction),\n people as (select * from filtered order by user_id limit 50 offset p_offset)\n select jsonb_build_object(\n  'counts',coalesce((select jsonb_object_agg(reaction,n) from (select reaction,count(*)::integer n from reactions group by reaction) c),'{}'::jsonb),\n  'total',(select count(*)::integer from filtered),\n  'items',coalesce((select jsonb_agg(to_jsonb(people) order by user_id) from people),'[]'::jsonb)\n ) into result;\n return result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.showcase_reaction_people(p_post_id uuid, p_reaction text DEFAULT NULL::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_post_id is null or p_offset is null or p_offset<0 or p_offset>100000 or\n (p_reaction is not null and p_reaction not in ('celebrate','love','wow','luck','dislike','sad','angry')) then\n  raise exception 'INVALID_SHOWCASE';\n end if;\n if not exists(select 1 from public.fishing_showcase_posts where id=p_post_id) then raise exception 'SHOWCASE_NOT_FOUND';end if;\n with reactions as materialized (\n  select r.user_id,r.reaction,p.nickname,p.avatar_path\n  from public.fishing_showcase_reactions r join public.player_profiles p on p.id=r.user_id where r.post_id=p_post_id\n ), filtered as (select * from reactions where p_reaction is null or reaction=p_reaction),\n people as (select * from filtered order by user_id limit 50 offset p_offset)\n select jsonb_build_object(\n  'counts',coalesce((select jsonb_object_agg(reaction,n) from (select reaction,count(*)::integer n from reactions group by reaction) c),'{}'::jsonb),\n  'total',(select count(*)::integer from filtered),\n  'items',coalesce((select jsonb_agg(to_jsonb(people) order by user_id) from people),'[]'::jsonb)\n ) into result;\n return result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -26385,6 +26401,12 @@
         "definition": "NOT NULL is_default"
       },
       {
+        "name": "aquarium_tanks_is_representative_not_null",
+        "table": "aquarium_tanks",
+        "schema": "public",
+        "definition": "NOT NULL is_representative"
+      },
+      {
         "name": "aquarium_tanks_name_check",
         "table": "aquarium_tanks",
         "schema": "public",
@@ -28740,7 +28762,7 @@
         "name": "fishing_showcase_reactions_reaction_check",
         "table": "fishing_showcase_reactions",
         "schema": "public",
-        "definition": "CHECK ((reaction = ANY (ARRAY['celebrate'::text, 'love'::text, 'wow'::text, 'luck'::text, 'sad'::text, 'angry'::text])))"
+        "definition": "CHECK ((reaction = ANY (ARRAY['celebrate'::text, 'love'::text, 'wow'::text, 'luck'::text, 'dislike'::text, 'sad'::text, 'angry'::text])))"
       },
       {
         "name": "fishing_showcase_reactions_reaction_not_null",
@@ -33375,6 +33397,13 @@
         "role": "authenticated",
         "table": "aquarium_tanks",
         "column": "is_default",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_tanks",
+        "column": "is_representative",
         "schema": "public",
         "privilege": "SELECT"
       },

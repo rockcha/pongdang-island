@@ -5,6 +5,7 @@ import { RaritySelect } from '@/components/rarity-select'
 import { RegionConceptSelect, matchesRegionConcept } from '@/components/region-concept-select'
 import { Label } from '@/components/ui/label'
 import { useRef, useState } from 'react'
+import type {ReactNode} from 'react'
 import { Minus, Plus,SlidersHorizontal } from 'lucide-react'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { Button } from '@/components/ui/button'
@@ -35,6 +36,9 @@ export function AquariumInventoryDialog({
   onSell,
   onGiftSent,
   onStore,
+  triggerLabel='목록',
+  capacityControls,
+  capacity,
 }: {
   items: OwnedCollectible[]
   name: string
@@ -42,6 +46,9 @@ export function AquariumInventoryDialog({
   onSell: (ids: string[]) => Promise<void>
   onGiftSent?: (ids: string[]) => void
   onStore?: (ids: string[]) => Promise<void>
+  triggerLabel?:string
+  capacityControls?:ReactNode
+  capacity?:number
 }) {
   const [open, setOpen] = useState(false),
     [category, setCategory] = useState<CollectibleKind | 'all'>('all'),
@@ -122,7 +129,7 @@ export function AquariumInventoryDialog({
         <AquariumToolButton
           prominent
           count={items.length}
-          label="목록"
+          label={triggerLabel}
           icon={<ListFilter className="size-8" />}
         />
         <DialogContent className="aquarium-work-panel aquarium-item-panel bottom-0 top-auto left-0 flex h-[88dvh] max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl">
@@ -131,11 +138,12 @@ export function AquariumInventoryDialog({
               <ListFilter aria-hidden="true" className="size-5 shrink-0 text-primary" />
               <span className="aquarium-panel-name min-w-0 truncate">{name}</span>{' '}
               <span className="ml-1 text-sm font-normal text-muted-foreground">
-                {items.length}개
+                {capacity===undefined?`${items.length}개`:`${items.length} / ${capacity}`}
               </span>
             </DialogTitle>
             <AquariumSearchToggle open={searchOpen} onChange={setSearchOpen} active={!!query}/>
           </DialogHeader>
+          {capacityControls&&<div className="flex shrink-0 justify-end border-b border-border/40 pb-1">{capacityControls}</div>}
           <div
             className="aquarium-panel-categories segmented-control grid shrink-0 grid-cols-4 gap-1"
             role="group"

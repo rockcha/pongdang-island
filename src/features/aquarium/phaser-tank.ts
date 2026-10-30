@@ -28,7 +28,7 @@ import type {TankWorldOptions} from './tank-world'
 
 export type TankRenderer = { setZoom:(zoom:number,view?:number,y?:number)=>void; cancelGesture:()=>void; setItems: (items: OwnedCollectible[]) => void; setView: (view: number) => void; selectItem: (id: string) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
 
-export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void,onSelectionPosition?:(id:string,x:number,y:number)=>void,world?:TankWorldOptions,onReadyChange?:(ready:boolean)=>void): TankRenderer {
+export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void,onSelectionPosition?:(id:string,x:number,y:number)=>void,world?:TankWorldOptions,onReadyChange?:(ready:boolean)=>void,onDragStateChange?:(dragging:boolean)=>void): TankRenderer {
   let items = initial, ready = false, disposed = false, clock = 0, visible = true
   let viewport=tankResolution(parent.clientWidth,parent.clientHeight,window.devicePixelRatio)
   const columns=world?.columns??1
@@ -136,7 +136,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(columns>1&&Math.abs(dx)>=8)return
         if(Math.hypot(dx,dy)<15){onBackgroundTap?.();this.tap(pointer)}
       })
-      this.input.on('gameout',()=>{swipe=null;decorationPress=null;dragPointer=null})
+      this.input.on('gameout',()=>{swipe=null;decorationPress=null;dragPointer=null;onDragStateChange?.(false)})
       this.input.on('dragstart',(pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
         const id=sprite.getData('collectibleId') as string
         const item=entries.get(id)?.motion.item
@@ -145,6 +145,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(decorationPress?.id===id)decorationPress.dragged=true
         if(item.placement_locked!==false){selectedId=null;onBackgroundTap?.()}
         dragging.add(id);sprite.setDepth(900)
+        onDragStateChange?.(true)
         const point=this.pointerPosition(pointer)
         dragPointer={pointer,sprite,offsetX:sprite.x-point.x,offsetY:sprite.y-point.y}
         this.input.setDefaultCursor('grabbing')
@@ -160,6 +161,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       })
       this.input.on('dragend',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
         dragPointer=null
+        onDragStateChange?.(false)
         const id=sprite.getData('collectibleId') as string,entry=entries.get(id)
         dragging.delete(id);sprite.setDepth(entry?inhabitantDepth(entry.motion.item):0);this.input.setDefaultCursor('pointer')
         if(!entry||!draggable(entry.motion.item))return
@@ -325,7 +327,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   return {
     selectItem(id) { if(ready)scene.selectItem(id) },
     setItems(next) { items = next; if (ready) scene.sync() },
-    cancelGesture(){swipe=null;decorationPress=null;dragPointer=null;for(const id of dragging){const entry=entries.get(id);if(entry)entry.sprite.setDepth(inhabitantDepth(entry.motion.item))}dragging.clear();if(ready)for(const pointer of scene.input.manager.pointers){scene.input.setDragState(pointer,0);pointer.reset()}},
+    cancelGesture(){swipe=null;decorationPress=null;dragPointer=null;onDragStateChange?.(false);for(const id of dragging){const entry=entries.get(id);if(entry)entry.sprite.setDepth(inhabitantDepth(entry.motion.item))}dragging.clear();if(ready)for(const pointer of scene.input.manager.pointers){scene.input.setDragState(pointer,0);pointer.reset()}},
     setZoom(next,nextView,nextY){if(disposed)return;zoom=Math.max(world?.minZoom??1/columns,Math.min(world?.maxZoom??1,next));view=targetView=clampView(nextView??view);verticalView=clampVertical(nextY??verticalView);world?.onVerticalViewChange?.(verticalView);if(ready){scene.configureCamera();scene.draw(0)}world?.onZoomChange?.(zoom);world?.onViewChange?.(view)},
     setView(next) { targetView=clampView(next);if(reduced){view=targetView;if(ready)scene.configureCamera();world?.onViewChange?.(view)} },
     resize(width, height) { if (!disposed) {const next=tankResolution(width,height,window.devicePixelRatio);if(next.width===viewport.width&&next.height===viewport.height&&next.pixelWidth===viewport.pixelWidth&&next.pixelHeight===viewport.pixelHeight)return;viewport=next;game.scale.setZoom(1/viewport.ratio);game.scale.resize(viewport.pixelWidth,viewport.pixelHeight);game.canvas.style.width=`${viewport.width}px`;game.canvas.style.height=`${viewport.height}px`;game.scale.updateBounds();if (ready){scene.configureCamera();if(columns>1)scene.sync();scene.draw(0)} } },

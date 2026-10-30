@@ -1,10 +1,10 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { AquariumView } from '../src/features/aquarium/aquarium-view'
 import type { OwnedCollectible } from '../src/features/collection/api'
 vi.mock('../src/features/friends/friend-aquarium-picker', () => ({ FriendAquariumPicker: () => <button>친구 어항</button> }))
 
-const mock = vi.hoisted(() => ({ items: [] as unknown[],world:undefined as undefined|{columns:number;preserveArrangement?:boolean},place:undefined as undefined|((id:string,x:number,y:number)=>void),select:undefined as undefined|((id:string)=>void),position:undefined as undefined|((id:string,x:number,y:number)=>void) }))
+const mock = vi.hoisted(() => ({ drag:undefined as undefined|((value:boolean)=>void),items: [] as unknown[],world:undefined as undefined|{columns:number;preserveArrangement?:boolean},place:undefined as undefined|((id:string,x:number,y:number)=>void),select:undefined as undefined|((id:string)=>void),position:undefined as undefined|((id:string,x:number,y:number)=>void) }))
 vi.mock('../src/features/aquarium/tank-inhabitants', () => ({
   TankInhabitants: ({
     items,
@@ -12,15 +12,18 @@ vi.mock('../src/features/aquarium/tank-inhabitants', () => ({
     onPlace,
     onBackgroundTap,
     onSelectionPosition,
+    onDragStateChange,
     world,
   }: {
     items: OwnedCollectible[]
+    onDragStateChange?: (value:boolean)=>void
     onPlace?: (id:string,x:number,y:number)=>void
     onSelectDecoration: (id: string) => void
     onBackgroundTap: () => void
     onSelectionPosition?: (id:string,x:number,y:number)=>void
     world?: {columns:number;preserveArrangement?:boolean}
   }) => {
+    mock.drag=onDragStateChange
     mock.items = items
     mock.place=onPlace
     mock.select=onSelectDecoration
@@ -65,28 +68,18 @@ const decoration: OwnedCollectible = {
   },
 }
 afterEach(cleanup)
-function enterDecorate(){const button=screen.queryByRole('button',{name:'꾸미기 모드 시작'});if(button)fireEvent.click(button)}
-function selectCustomize(){enterDecorate();fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}));fireEvent.click(screen.getByRole('button',{name:'꾸미기',exact:true}))}
+function enterDecorate(){const button=screen.queryByRole('button',{name:'편집 모드 시작'});if(button)fireEvent.click(button)}
+function selectCustomize(){enterDecorate();fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))}
 function selectMore(){enterDecorate();fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}));fireEvent.click(screen.getByRole('button',{name:'개체 추가 메뉴'}))}
-it('starts with a compact top bar and reveals one tool panel at a time',()=>{
- render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={()=>{}} onArrange={async()=>{}} onSell={async()=>{}} onLayerChange={async()=>{}}/>)
- enterDecorate();fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
- const toolbar=screen.getByRole('region',{name:'살구 불가사리 선택 도구'})
- expect(toolbar.className).toContain('top-16')
- expect(toolbar.style.top).toBe('56px')
- expect(screen.queryByRole('button',{name:'시계 방향 15도 회전'})).toBeNull()
- expect(screen.queryByRole('button',{name:'정보 보기'})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'꾸미기',exact:true}))
+it('shows adjustment and layer controls together without item details',()=>{
+ render(<AquariumView name="Tank" items={[decoration]} busy={false} onPlace={()=>{}} onArrange={async()=>{}} onSell={async()=>{}} onLayerChange={async()=>{}}/>)
+ selectCustomize()
  expect(screen.getByRole('button',{name:'시계 방향 15도 회전'})).toBeTruthy()
- expect(screen.queryByRole('textbox',{name:'개체 표시 우선순위'})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'겹침 순서'}))
  expect(screen.getByRole('button',{name:'개체 앞으로'})).toBeTruthy()
- expect(screen.queryByRole('textbox',{name:'개체 표시 우선순위'})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'직접 입력'}))
- expect(screen.getByRole('textbox',{name:'개체 표시 우선순위'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'정보 보기'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'개체 추가 메뉴'}))
- expect(screen.getByRole('button',{name:'정보 보기'})).toBeTruthy()
- expect(screen.queryByRole('button',{name:'시계 방향 15도 회전'})).toBeNull()
+ expect(screen.queryByRole('button',{name:'정보 보기'})).toBeNull()
+ expect(screen.getByRole('button',{name:'보관함'})).toBeTruthy()
 })
 it('enables three panes for registered local themes and keeps the original decoration payload',()=>{
  const arrange=vi.fn(async()=>{})
@@ -144,7 +137,7 @@ it('resizes a paused swimming fish between half and double size and rolls back f
  await waitFor(()=>expect(screen.getByRole('button',{name:'물고기 크기 키우기'}).hasAttribute('disabled')).toBe(false))
  arrange.mockRejectedValueOnce(new Error('offline'))
  fireEvent.click(screen.getByRole('button',{name:'물고기 크기 키우기'}))
- await waitFor(()=>expect(screen.getByLabelText('현재 크기').textContent).toBe('0.6×'))
+ await waitFor(()=>expect(screen.getByLabelText('현재 크기').textContent).toBe('60%'))
 })
 it('shows trash transform controls and saves the position lock from its toolbar',async()=>{
  const trash={...decoration,id:'bottle',species:{...decoration.species,kind:'trash' as const,movement_type:'swim' as const,speed:.03}},arrange=vi.fn(async()=>{})
@@ -180,7 +173,7 @@ it('removes header arrows and keeps keyboard navigation at both ends', () => {
   expect(navigate).toHaveBeenCalledWith('next')
   expect(screen.queryByRole('button', { name: '어항 추가' })).toBeNull()
   expect(screen.getByRole('button', { name: '친구 어항' })).toBeTruthy()
-  expect(screen.getByRole('button', { name: '어항 관리' })).toBeTruthy()
+  expect(screen.queryByRole('button', { name: '어항 관리' })).toBeNull()
   fireEvent.keyDown(screen.getByTestId('aquarium-glass'), { key: 'ArrowRight' })
   expect(navigate).toHaveBeenCalledWith('next')
   rerender(
@@ -286,25 +279,44 @@ it('allows placement only while decorating and resets the mode on tank change',(
  expect(mock.items[0]).toMatchObject({placement_locked:true,interaction_locked:false})
  mock.place?.(decoration.id,.6,.4);mock.select?.(decoration.id);expect(place).not.toHaveBeenCalled()
  expect(screen.queryByRole('region',{name:'살구 불가사리 선택 도구'})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'꾸미기 모드 시작'}))
+ fireEvent.click(screen.getByRole('button',{name:'편집 모드 시작'}))
  expect(mock.items[0]).toMatchObject({placement_locked:false,interaction_locked:false})
  fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}));mock.place?.(decoration.id,.6,.4)
  expect(place).toHaveBeenCalledWith(decoration.id,.6,.4)
- fireEvent.click(screen.getByRole('button',{name:'꾸미기 모드 완료'}));mock.place?.(decoration.id,.2,.2)
+ fireEvent.click(screen.getByRole('button',{name:'편집 모드 완료'}));mock.place?.(decoration.id,.2,.2)
  expect(place).toHaveBeenCalledTimes(1);expect(mock.items[0]).toMatchObject({placement_locked:true})
- fireEvent.click(screen.getByRole('button',{name:'꾸미기 모드 시작'}))
+ fireEvent.click(screen.getByRole('button',{name:'편집 모드 시작'}))
  view.rerender(<AquariumView tankId="two" name="두 번째 어항" items={[decoration]} busy={false} onPlace={place} onArrange={async()=>{}} onSell={async()=>{}}/>)
- expect(screen.getByRole('button',{name:'꾸미기 모드 시작'})).toBeTruthy();expect(mock.items[0]).toMatchObject({placement_locked:true})
+ expect(screen.getByRole('button',{name:'편집 모드 시작'})).toBeTruthy();expect(mock.items[0]).toMatchObject({placement_locked:true})
 })
 it('moves portrait screen actions into the top menu and keeps a single edit shortcut',async()=>{
  const expand=vi.fn()
  render(<AquariumView name="어항" items={[decoration]} tankCapacity={50} background={{name:'맑은 물빛',image_path:'default.png'}} busy={false} onArrange={async()=>{}} onPlace={()=>{}} onSell={async()=>{}} capacityControls={<button onClick={expand}>수용량 확장</button>}/>)
  expect(screen.getByText('1 / 50')).toBeTruthy()
- expect(screen.getAllByRole('button',{name:'꾸미기 모드 시작'})).toHaveLength(1)
+ expect(screen.getAllByRole('button',{name:'편집 모드 시작'})).toHaveLength(1)
  expect(screen.queryByRole('menuitem',{name:'가로로 보기'})).toBeNull()
  expect(screen.queryByRole('button',{name:'수용량 확장'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'어항 더보기'}))
  expect(await screen.findByRole('menuitem',{name:'가로로 보기'})).toBeTruthy()
  expect(screen.getByRole('menuitem',{name:'화면 확대'})).toBeTruthy()
  fireEvent.click(screen.getByRole('menuitem',{name:'수용량 확장'}));expect(expand).toHaveBeenCalledOnce()
+})
+
+it('places wide selection controls opposite the item and hides them while dragging',async()=>{
+ vi.stubGlobal('matchMedia',()=>({matches:false}))
+ const arrange=vi.fn(async()=>{})
+ render(<AquariumView name="Tank" items={[decoration]} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'어항 더보기'}))
+ fireEvent.click(await screen.findByRole('menuitem',{name:'가로로 보기'}))
+ fireEvent.click(screen.getByRole('button',{name:'편집 모드 시작'}))
+ act(()=>mock.select?.(decoration.id))
+ const toolbar=document.querySelector<HTMLElement>('.aquarium-wide-selection')!
+ act(()=>mock.position?.(decoration.id,-100,100))
+ expect(toolbar.dataset.wideSide).toBe('right')
+ act(()=>mock.position?.(decoration.id,10000,100))
+ expect(toolbar.dataset.wideSide).toBe('left')
+ act(()=>mock.drag?.(true));expect(toolbar.hidden).toBe(true)
+ act(()=>mock.drag?.(false));expect(toolbar.hidden).toBe(false)
+ expect(arrange).not.toHaveBeenCalled()
+ cleanup();vi.unstubAllGlobals()
 })

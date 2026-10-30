@@ -18,7 +18,14 @@ beforeEach(()=>{
  for(const fn of [api.post,api.trade,api.cancel])fn.mockResolvedValue(post)
 })
 afterEach(cleanup)
-const setup=()=>render(<MemoryRouter><FleaMarketPage/></MemoryRouter>)
+// Sale scenarios choose their tab explicitly; the actual entry defaults to buy.
+const setup=()=>{const view=render(<MemoryRouter><FleaMarketPage/></MemoryRouter>);fireEvent.click(screen.getByRole('tab',{name:'팔아요'}));return view}
+it('opens on buy requests by default',async()=>{
+ render(<MemoryRouter><FleaMarketPage/></MemoryRouter>)
+ expect(screen.getByRole('tab',{name:'사요'}).getAttribute('aria-selected')).toBe('true')
+ await waitFor(()=>expect(api.feed.mock.calls[0][0]).toMatchObject({side:'buy'}))
+ expect(screen.getByRole('checkbox',{name:'내가 판매 가능한 글만'})).toBeTruthy()
+})
 it.each(['sell','buy'])('shows only active %s listings, including the own-listings filter',async(side)=>{
  api.feed.mockResolvedValue({items:[{...post,side},{...post,id:'closed',side,title:'마감된 글',status:'cancelled'},{...post,id:'done',side,title:'완료된 글',status:'completed'}],total:3})
  setup();await screen.findByRole('article')

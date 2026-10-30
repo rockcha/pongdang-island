@@ -102,6 +102,7 @@ it('sends explicit emoji cancellation rather than toggling blindly on retries',(
  render(<ShowcaseCard post={{id:'post',author_id:owner,author_name:'낚시꾼',avatar_path:null,operation_id:'op',first_discovery:true,render_version:1,caption:'자랑',species:practiceSpecies('mythic'),rarity:'mythic',region_name:'퐁당섬',caught_at:new Date().toISOString(),created_at:new Date().toISOString(),my_reaction:'celebrate',reactions:{celebrate:1}}} onReact={onReact}/> )
  fireEvent.click(screen.getByRole('button',{name:'축하해요'}));expect(onReact).toHaveBeenLastCalledWith(null)
  fireEvent.click(screen.getByRole('button',{name:'행운 나눠요'}));expect(onReact).toHaveBeenLastCalledWith('luck')
+ fireEvent.click(screen.getByRole('button',{name:'별로예요'}));expect(onReact).toHaveBeenLastCalledWith('dislike')
  fireEvent.click(screen.getByRole('button',{name:'슬퍼요'}));expect(onReact).toHaveBeenLastCalledWith('sad')
  fireEvent.click(screen.getByRole('button',{name:'화나요'}));expect(onReact).toHaveBeenLastCalledWith('angry')
 })

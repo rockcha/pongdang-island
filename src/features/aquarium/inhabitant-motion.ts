@@ -152,7 +152,7 @@ export class InhabitantMotion {
       }
       x = geometry.margin+(this.item.position_x ?? (.2 + seed * .6))*geometry.w
       y = geometry.margin+(this.item.position_y ?? (s.id==='siren-scylla-tentacle'?.32:s.kind==='fish'?(Number(s.swim_y_min??.2)+Number(s.swim_y_max??.8))/2:.86))*geometry.h
-      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&(s.idle_animated||s.id==='pleated-skirt-sea-squirt'||s.id==='scrap-thimble-barnacle'||s.id==='muk-inkstone-clam'||s.id==='muk-inkstone-home-octopus')?Math.floor(time*1.2)%4:0}
+      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&(s.idle_animated||s.id==='pharaoh-coin-clam'||s.id==='pleated-skirt-sea-squirt'||s.id==='scrap-thimble-barnacle'||s.id==='muk-inkstone-clam'||s.id==='muk-inkstone-home-octopus')?Math.floor(time*1.2)%4:0}
       return this.pose
     }
     const settings=movementSettings(s)

@@ -1,0 +1,362 @@
+[
+  {
+    "id": "pharaoh-gold-medaka-sprite",
+    "species_id": "pharaoh-gold-medaka",
+    "path": "fish/normal/pharaoh-gold-medaka_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-gold-medaka_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Slender medaka with tiny gold-dust scales and translucent cream fins. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-gold-medaka_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-gold-medaka.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-brick-hermit-sprite",
+    "species_id": "pharaoh-brick-hermit",
+    "path": "fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Real hermit crab carrying a tiny stepped sandstone brick shell. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-brick-hermit_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-brick-hermit.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-papyrus-billfish-sprite",
+    "species_id": "pharaoh-papyrus-billfish",
+    "path": "fish/normal/pharaoh-papyrus-billfish_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-billfish_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Slender little billfish with papyrus-leaf dorsal sail and long pointed snout. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-billfish_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-papyrus-billfish.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-papyrus-seahorse-sprite",
+    "species_id": "pharaoh-papyrus-seahorse",
+    "path": "fish/normal/pharaoh-papyrus-seahorse_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-seahorse_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Natural small seahorse with papyrus ivory leaf crown and parchment fins, curled gold-banded tail, amber eye. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-seahorse_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-papyrus-seahorse.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-scorpion-crab-sprite",
+    "species_id": "pharaoh-scorpion-crab",
+    "path": "fish/normal/pharaoh-scorpion-crab_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-scorpion-crab_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Sandy crab with real crab legs and two claws, a short segmented scorpion tail curled over back. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-scorpion-crab_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-scorpion-crab.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-glyph-starfish-sprite",
+    "species_id": "pharaoh-glyph-starfish",
+    "path": "fish/normal/pharaoh-glyph-starfish_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-glyph-starfish_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Five-armed ochre starfish with simple small carved Egyptian symbol markings. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural starfish crawling cycle: five arms softly flex at tips in connected poses, stable central disc, no added legs or human arms. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-glyph-starfish_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-glyph-starfish.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-coin-clam-sprite",
+    "species_id": "pharaoh-coin-clam",
+    "path": "fish/normal/pharaoh-coin-clam_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-coin-clam_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Small cream clam partly open, round gold coin-shaped inner shell, no human face. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. A gentle clam shell opening cycle: closed a little, half open, slightly wider, return half open; lower shell and gold coin position stay anchored. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-coin-clam_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-coin-clam.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-nile-puffer-sprite",
+    "species_id": "pharaoh-nile-puffer",
+    "path": "fish/normal/pharaoh-nile-puffer_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-nile-puffer_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Natural sandy golden Nile pufferfish, small eyes, cream belly and ochre spots. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-nile-puffer_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-nile-puffer.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-sand-ray-sprite",
+    "species_id": "pharaoh-sand-ray",
+    "path": "fish/normal/pharaoh-sand-ray_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sand-ray_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Compact natural stingray with sandy spotted diamond body and short thin tail, no giant wing ribbons. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sand-ray_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-sand-ray.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-oasis-carp-sprite",
+    "species_id": "pharaoh-oasis-carp",
+    "path": "fish/normal/pharaoh-oasis-carp_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oasis-carp_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Elegant cream carp with honey-gold scale patches and flowing pale sand fins. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oasis-carp_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-oasis-carp.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-sarcophagus-crab-sprite",
+    "species_id": "pharaoh-sarcophagus-crab",
+    "path": "fish/normal/pharaoh-sarcophagus-crab_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sarcophagus-crab_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Small real crab with a tiny carved sandstone sarcophagus covering its back, two broad claws. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sarcophagus-crab_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-sarcophagus-crab.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-tomb-shrimp-sprite",
+    "species_id": "pharaoh-tomb-shrimp",
+    "path": "fish/normal/pharaoh-tomb-shrimp_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-tomb-shrimp_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Little tan shrimp with curled tail, small worn linen head wrap and tiny pick tucked alongside shell. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-tomb-shrimp_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-tomb-shrimp.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-oil-bottle-eel-sprite",
+    "species_id": "pharaoh-oil-bottle-eel",
+    "path": "fish/normal/pharaoh-oil-bottle-eel_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oil-bottle-eel_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Tiny cream eel peeking from a small translucent amber perfume bottle, tail curled beside bottle. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oil-bottle-eel_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-oil-bottle-eel.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-royal-cobra-sprite",
+    "species_id": "pharaoh-royal-cobra",
+    "path": "fish/rare/pharaoh-royal-cobra_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-royal-cobra_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Aquatic ivory-gold cobra, expanded hood with elegant golden royal bands, coiled serpentine body. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-royal-cobra_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-royal-cobra.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-glyph-cuttlefish-sprite",
+    "species_id": "pharaoh-glyph-cuttlefish",
+    "path": "fish/rare/pharaoh-glyph-cuttlefish_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-glyph-cuttlefish_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Golden cuttlefish, flat oval mantle, short curled arms and small Egyptian pictogram markings. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-glyph-cuttlefish_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-glyph-cuttlefish.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-mummy-eel-sprite",
+    "species_id": "pharaoh-mummy-eel",
+    "path": "fish/rare/pharaoh-mummy-eel_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-mummy-eel_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Long cream eel wrapped loosely in aged linen, emerging from miniature open stone sarcophagus. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-mummy-eel_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-mummy-eel.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-gold-catfish-sprite",
+    "species_id": "pharaoh-gold-catfish",
+    "path": "fish/rare/pharaoh-gold-catfish_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-gold-catfish_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Natural catfish with broad head, long whiskers and subtle gold scales on sandy body. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-gold-catfish_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-gold-catfish.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-pyramid-conch-sprite",
+    "species_id": "pharaoh-pyramid-conch",
+    "path": "fish/rare/pharaoh-pyramid-conch_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-pyramid-conch_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Living conch with stepped pyramid-shaped sandy shell, small amber animal foot emerging. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-pyramid-conch_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-pyramid-conch.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-sun-disc-jelly-sprite",
+    "species_id": "pharaoh-sun-disc-jelly",
+    "path": "fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Translucent warm amber jellyfish, flat sun-disc bell with gold radial segments and short cream tentacles. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Bell/spirit body gently contracts and expands with trailing attached tentacles/ribbons. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-sun-disc-jelly_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-sun-disc-jelly.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-gold-nile-crocodile-sprite",
+    "species_id": "pharaoh-gold-nile-crocodile",
+    "path": "fish/epic/pharaoh-gold-nile-crocodile_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-gold-nile-crocodile_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Majestic long Nile crocodile in sculpted antique-gold Egyptian armor, strong natural reptile anatomy. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-gold-nile-crocodile_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-gold-nile-crocodile.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-moon-bastet-sprite",
+    "species_id": "pharaoh-moon-bastet",
+    "path": "fish/epic/pharaoh-moon-bastet_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-moon-bastet_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Regal slender dark umber Egyptian cat goddess in feline form, ivory crescent collar and gold bangles, graceful paws. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-moon-bastet_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-moon-bastet.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-sand-spirit-sprite",
+    "species_id": "pharaoh-sand-spirit",
+    "path": "fish/epic/pharaoh-sand-spirit_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-spirit_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Elegant spirit formed of coherent swirling pale sandstone ribbons, expressive amber mask, tapering sand body, no detached dust. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Bell/spirit body gently contracts and expands with trailing attached tentacles/ribbons. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-spirit_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-sand-spirit.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-sleepless-sphinx-sprite",
+    "species_id": "pharaoh-sleepless-sphinx",
+    "path": "fish/epic/pharaoh-sleepless-sphinx_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sleepless-sphinx_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Magnificent sandstone sphinx with lion body, pharaoh face, striped gold nemes and awake amber eyes, walking. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sleepless-sphinx_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-sleepless-sphinx.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-cursed-gold-octopus-sprite",
+    "species_id": "pharaoh-cursed-gold-octopus",
+    "path": "fish/epic/pharaoh-cursed-gold-octopus_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-cursed-gold-octopus_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Powerful eight-armed octopus with deep ochre skin, antique gold engraved mantle, luminous amber curse seals on arms. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural octopus propulsion cycle: eight attached arms curl gradually and softly unfurl while mantle remains stable. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-cursed-gold-octopus_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-cursed-gold-octopus.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-sand-whale-sprite",
+    "species_id": "pharaoh-sand-whale",
+    "path": "fish/epic/pharaoh-sand-whale_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-whale_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Massive streamlined warm sandstone whale with dune-like dorsal ridges, gold seams and broad cream flukes. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-whale_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-sand-whale.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-tomb-serpent-shark-sprite",
+    "species_id": "pharaoh-tomb-serpent-shark",
+    "path": "fish/epic/pharaoh-tomb-serpent-shark_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-tomb-serpent-shark_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Long sand-colored shark with serpentine tapering tail, strong shark head and fins, engraved gold royal crest. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 4 full-body poses, 2 columns x 2 rows of equal SQUARE cells, square canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames read left-to-right top-to-bottom as one continuous loop. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-tomb-serpent-shark_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-tomb-serpent-shark.png"
+    ],
+    "frames": 4
+  },
+  {
+    "id": "pharaoh-solar-scarab-sprite",
+    "species_id": "pharaoh-solar-scarab",
+    "path": "fish/mythic/pharaoh-solar-scarab_swim8_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-solar-scarab_swim8_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Divine colossal golden scarab with six articulated legs, elegant carved wing cases partly open, pushing one glowing warm amber sun sphere closely ahead to right. Sandstone ivory and sculpted antique gold, majestic insect anatomy. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 8 full-body poses, 4 columns x 2 rows of equal SQUARE cells, wide 2:1 canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames 1-4 basic locomotion. Frames 5-8: front legs brace, gently roll attached sun sphere forward, return sphere and legs, settle neutral. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-solar-scarab_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-solar-scarab.png"
+    ],
+    "frames": 8
+  },
+  {
+    "id": "pharaoh-gatekeeper-anubis-sprite",
+    "species_id": "pharaoh-gatekeeper-anubis",
+    "path": "fish/mythic/pharaoh-gatekeeper-anubis_swim8_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gatekeeper-anubis_swim8_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Tall majestic jackal-headed Egyptian guardian deity in warm umber, ornate sandstone ivory and antique gold pharaoh armor, long ears, ankle-length segmented gold kilt, holds a slim gold was scepter; noble right-facing three-quarter pose. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 8 full-body poses, 4 columns x 2 rows of equal SQUARE cells, wide 2:1 canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames 1-4 basic locomotion. Frames 5-8: raise scepter slightly, present it with deliberate wrist and arm articulation, lower it, recover neutral. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gatekeeper-anubis_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-gatekeeper-anubis.png"
+    ],
+    "frames": 8
+  },
+  {
+    "id": "pharaoh-obelisk-colossus-sprite",
+    "species_id": "pharaoh-obelisk-colossus",
+    "path": "fish/mythic/pharaoh-obelisk-colossus_swim8_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-obelisk-colossus_swim8_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Monumental sandstone and gold pharaoh colossus, distinct pharaoh-mask head with tall obelisk crown, two obelisks behind shoulders, long athletic legs, broad gold collar, one powerful hand forward, warm amber eyes. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 8 full-body poses, 4 columns x 2 rows of equal SQUARE cells, wide 2:1 canvas. All face SCREEN RIGHT, never mirrored. Natural walking: articulated legs move in small alternating steps; stable head and rigid shell/torso, constant feet baseline. Frames 1-4 basic locomotion. Frames 5-8: slowly extend the forward palm, spread fingers a little, retract fingers and hand, settle into neutral stance; shoulder stone structures remain stable. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-obelisk-colossus_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-obelisk-colossus.png"
+    ],
+    "frames": 8
+  },
+  {
+    "id": "pharaoh-gold-wing-horus-sprite",
+    "species_id": "pharaoh-gold-wing-horus",
+    "path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v1_sprite.png",
+    "target": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gold-wing-horus_swim8_v1_sprite.png",
+    "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Regal falcon-headed Egyptian god with an elegant humanoid armored torso, two large layered gold falcon wings, sandstone ivory robes and gold solar crown, dignified right-facing hovering pose, finely feathered wings. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 8 full-body poses, 4 columns x 2 rows of equal SQUARE cells, wide 2:1 canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames 1-4 basic locomotion. Frames 5-8: slightly gather feathered wings, extend them majestically in one coordinated sweep, retract wings, settle neutral. Entire figure including longest tips stays within central 60 percent of EACH cell, at least 15 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries.",
+    "references": [
+      "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gold-wing-horus_v1_thumbnail.png",
+      "artifacts/previews/pharaoh/guides/pharaoh-gold-wing-horus.png"
+    ],
+    "frames": 8
+  }
+]

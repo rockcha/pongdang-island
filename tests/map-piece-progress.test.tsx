@@ -26,3 +26,10 @@ it('keeps legacy maps out of the piece display',()=>{
  const view=render(<MapPieceProgress region={{...region,mapPieceCount:null}}/>)
  expect(view.container.childElementCount).toBe(0)
 })
+it('shows mixed map grades without changing the four discovered quadrants',()=>{
+ const view=render(<MapPieceProgress region={{...region,id:'pharaoh',name:'파라오의 황금해',mapPieceRarities:['rare','rare','epic','epic']}}/>)
+ expect(screen.getByText('희귀 2조각')).toBeTruthy()
+ expect(screen.getByText('특급 2조각')).toBeTruthy()
+ expect(view.container.querySelectorAll('[data-map-piece]')).toHaveLength(4)
+ expect(view.container.querySelectorAll('[data-found="true"]')).toHaveLength(2)
+})

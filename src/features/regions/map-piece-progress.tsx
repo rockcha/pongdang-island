@@ -1,9 +1,11 @@
 import type {Region} from './api'
 import {LockKeyhole} from 'lucide-react'
+import {rarities} from '@/lib/game/rarity'
 
 export function MapPieceProgress({region}:{region:Region}){
  if(!region.mapPieceCount)return null
- return <div className="py-2"><MapPieceArtwork region={region}/></div>
+ const grades=region.mapPieceRarities
+ return <div className="py-2"><MapPieceArtwork region={region}/>{grades&&new Set(grades).size>1&&<div className="mt-2 flex justify-center gap-3 text-[10px] text-muted-foreground">{([...new Set(grades)]).map(grade=><span key={grade} className="flex items-center gap-1"><span aria-hidden="true" className="size-1.5 rounded-full" style={{backgroundColor:rarities[grade].effectColor}}/>{rarities[grade].label} {grades.filter(g=>g===grade).length}조각</span>)}</div>}</div>
 }
 
 export function MapPieceArtwork({region,compact=false}:{region:Region;compact?:boolean}){

@@ -86,7 +86,7 @@ export function SavingsPlanPanel({
           ))}
         </div>
       </fieldset>
-      {relicBonusPercent>0&&<p className="rounded-xl bg-secondary/50 px-3 py-2 text-xs leading-5 text-primary">유물 효과 · 만기 이자 +{relicBonusPercent}%<span className="block text-[10px] text-muted-foreground">모든 기간에 적용 · 가입 시 확정</span></p>}
+      {relicBonusPercent>0&&<p className="rounded-xl bg-secondary/50 px-3 py-2 text-xs leading-5 text-primary">유물 효과 · 조개 적금 이자 +{relicBonusPercent}%<span className="block text-[10px] text-muted-foreground">모든 기간에 적용 · 가입 시 확정</span></p>}
       <div className="space-y-2.5">
         <div className="flex items-center justify-between gap-2">
           <label htmlFor="savings-amount" className="text-xs font-medium">
@@ -228,7 +228,7 @@ export function SavingsAccountPanel({
             </span>
             <Shell aria-hidden="true" className="size-8 text-primary/45" strokeWidth={1.3} />
           </div>
-          {(account.relicBonusPercent??0)>0&&<p className="mt-2 text-[11px] text-primary">만기 이자 +{account.relicBonusPercent}% · 가입 시 확정</p>}
+          {(account.relicBonusPercent??0)>0&&<p className="mt-2 text-[11px] text-primary">조개 적금 이자 +{account.relicBonusPercent}% · 가입 시 확정</p>}
           <h2 id="savings-balance-title" className="mt-4 text-xs text-muted-foreground">
             모은 골드
           </h2>

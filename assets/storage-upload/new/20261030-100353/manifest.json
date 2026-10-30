@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-30T01:04:24.125Z",
+  "purpose": "Separate complete region overview from sea-level fishing scenery; preserve all original assets",
+  "references": [
+    "public/regions/pharaoh/scenery-v1.png",
+    "public/regions/mechsanctum/scenery-v1.png"
+  ],
+  "assets": [
+    {
+      "role": "region-overview",
+      "path": "regions/pharaoh/overview-v2.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a186fe-00ed-7211-945e-cce1d36cbcfe\\exec-d15ca13e-edcb-4ca2-b356-45653087112e.png",
+      "prompt": "Create a polished fantasy mobile game REGION OVERVIEW illustration, square 1:1 composition. Reference 1 establishes the Pharaoh Golden Sea warm sand and gold material palette; reference 2 establishes rich painterly fantasy landscape craft and overview depth, but DO NOT copy machinery or any blue/turquoise. This is a completely separate establishing panorama, NOT the water-heavy fishing view. Show the ENTIRE ancient Egyptian golden kingdom at a glance from a pulled-back elevated three-quarter viewpoint: a majestic central pyramid with a shining gold cap, two smaller pyramids fully in frame, elegant paired obelisks, sandstone colonnaded temples, winding sand terraces and tiny palms on a beautiful sweeping shore. Golden sea and reflective canals weave between the sand banks, with water occupying at most the bottom quarter. All major structures fit fully inside the CENTRAL 75 percent of the square with generous breathing room on all four edges; no pyramid tops or obelisks cropped. Layered golden dunes and soft amber sky behind. A strong readable silhouette even at thumbnail size, refined warm fantasy painting, beautifully carved gold details, natural atmospheric perspective, golden late-afternoon light. Sandstone cream, honey gold, ochre, amber, absolutely no blue or cyan. Not a map sheet or aerial diagram. No characters, no fish, no text, no frames, no UI, no logo. Opaque complete environment image.",
+      "tool": "built-in image_gen",
+      "target": "public/regions/pharaoh/overview-v2.png",
+      "original": "assets/storage-upload/new/20261030-100353/sources/overview-v2.png",
+      "sha256": "220314a15d5c597229a22519d52dad6aad9d6c817c3d037e4910b4b4b2fd02d8",
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/pharaoh/overview-v2.png",
+      "uploaded": true,
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "role": "fishing-scenery",
+      "path": "fishing/scenery/pharaoh-v1.png",
+      "source": "public/regions/pharaoh/scenery-v1.png",
+      "tool": "unchanged copy of existing fishing landscape",
+      "target": "public/fishing/scenery/pharaoh-v1.png",
+      "original": "assets/storage-upload/new/20261030-100353/sources/pharaoh-v1.png",
+      "sha256": "2dd66b5dfa951e45ec18a1e767c196d3af9ee0438f63756c0f4d02caa4303dd1",
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fishing/scenery/pharaoh-v1.png",
+      "uploaded": true,
+      "width": 1024,
+      "height": 1536
+    }
+  ],
+  "project": "ewafafphiovbpjwogwzn",
+  "uploaded_at": "2026-10-30T01:06:18.202Z",
+  "frontend_deployed": false,
+  "catalog_registered": true,
+  "registered_project": "ewafafphiovbpjwogwzn",
+  "registered_at": "2026-10-30T01:09:11.583Z"
+}

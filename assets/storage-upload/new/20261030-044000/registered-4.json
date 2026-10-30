@@ -1,0 +1,964 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-gold-medaka_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-gold-medaka_v1_sprite.png",
+        "patch":  [
+                      509,
+                      320,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -14,
+                           "dy":  0,
+                           "rmse":  12.526830708655154
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -13,
+                           "rmse":  18.036407166369759
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -12,
+                           "rmse":  15.46376730210183
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+        "patch":  [
+                      396,
+                      306,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -38,
+                           "dy":  0,
+                           "rmse":  23.996039618140571
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  14.83615752976268
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -39,
+                           "dy":  -2,
+                           "rmse":  18.251570746397249
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-billfish_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-papyrus-billfish_v1_sprite.png",
+        "patch":  [
+                      429,
+                      346,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -13,
+                           "dy":  2,
+                           "rmse":  9.82901338549457
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -43,
+                           "rmse":  13.498469457162557
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -10,
+                           "dy":  -42,
+                           "rmse":  20.155234334395129
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-seahorse_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-papyrus-seahorse_v1_sprite.png",
+        "patch":  [
+                      384,
+                      229,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -24,
+                           "dy":  0,
+                           "rmse":  15.20636284830729
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -45,
+                           "rmse":  13.92935244381921
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -24,
+                           "dy":  -45,
+                           "rmse":  10.816749332202464
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-scorpion-crab_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-scorpion-crab_v1_sprite.png",
+        "patch":  [
+                      404,
+                      327,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -4,
+                           "dy":  0,
+                           "rmse":  18.582516443027082
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -25,
+                           "rmse":  23.131540844011706
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -2,
+                           "dy":  -25,
+                           "rmse":  18.340331747137
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-glyph-starfish_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-glyph-starfish_v1_sprite.png",
+        "patch":  [
+                      347,
+                      362,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -5,
+                           "dy":  9,
+                           "rmse":  12.249388583156183
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  48,
+                           "dy":  -46,
+                           "rmse":  31.356619768492028
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -14,
+                           "dy":  -45,
+                           "rmse":  8.97033679126711
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-coin-clam_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-coin-clam_v1_sprite.png",
+        "patch":  [
+                      422,
+                      453,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -48,
+                           "dy":  3,
+                           "rmse":  8.32240330038234
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  8,
+                           "dy":  -51,
+                           "rmse":  14.334982927690918
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -46,
+                           "dy":  -44,
+                           "rmse":  17.670363197659242
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-nile-puffer_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-nile-puffer_v1_sprite.png",
+        "patch":  [
+                      474,
+                      331,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -33,
+                           "dy":  2,
+                           "rmse":  13.272882938065992
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -66,
+                           "rmse":  13.065078682952336
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -35,
+                           "dy":  -66,
+                           "rmse":  13.196230365819195
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sand-ray_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-sand-ray_v1_sprite.png",
+        "patch":  [
+                      493,
+                      358,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -37,
+                           "dy":  0,
+                           "rmse":  10.762269569240111
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -76,
+                           "rmse":  7.5027543151864959
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -36,
+                           "dy":  -74,
+                           "rmse":  21.472594488081473
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oasis-carp_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-oasis-carp_v1_sprite.png",
+        "patch":  [
+                      437,
+                      314,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -37,
+                           "dy":  0,
+                           "rmse":  8.490879890936748
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -45,
+                           "rmse":  19.393968986719848
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -33,
+                           "dy":  -42,
+                           "rmse":  20.510680547678707
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sarcophagus-crab_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-sarcophagus-crab_v1_sprite.png",
+        "patch":  [
+                      407,
+                      378,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -31,
+                           "dy":  -1,
+                           "rmse":  18.798408583953488
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -4,
+                           "dy":  -76,
+                           "rmse":  20.912549121133026
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -20,
+                           "dy":  -75,
+                           "rmse":  19.618152329575949
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-tomb-shrimp_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-tomb-shrimp_v1_sprite.png",
+        "patch":  [
+                      413,
+                      340,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.526111211914515
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -53,
+                           "rmse":  13.074484646070397
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -53,
+                           "rmse":  11.825609553943258
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oil-bottle-eel_v1_sprite.png",
+        "storage_path":  "fish/normal/pharaoh-oil-bottle-eel_v1_sprite.png",
+        "patch":  [
+                      456,
+                      216,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  0,
+                           "rmse":  13.0724301394984
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -57,
+                           "rmse":  16.0898818367526
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -9,
+                           "dy":  -58,
+                           "rmse":  15.963154890233533
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-royal-cobra_v1_sprite.png",
+        "storage_path":  "fish/rare/pharaoh-royal-cobra_v1_sprite.png",
+        "patch":  [
+                      451,
+                      218,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.37763737007505
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  11.059381418296951
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  16.419664183558275
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-glyph-cuttlefish_v1_sprite.png",
+        "storage_path":  "fish/rare/pharaoh-glyph-cuttlefish_v1_sprite.png",
+        "patch":  [
+                      390,
+                      315,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -22,
+                           "dy":  0,
+                           "rmse":  19.60414022724758
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -74,
+                           "rmse":  23.837171472338177
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -22,
+                           "dy":  -74,
+                           "rmse":  18.504355082649958
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-mummy-eel_v1_sprite.png",
+        "storage_path":  "fish/rare/pharaoh-mummy-eel_v1_sprite.png",
+        "patch":  [
+                      371,
+                      356,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  0,
+                           "rmse":  19.949057021149091
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -76,
+                           "rmse":  37.930640267129426
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -72,
+                           "rmse":  33.126572939420456
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-gold-catfish_v1_sprite.png",
+        "storage_path":  "fish/rare/pharaoh-gold-catfish_v1_sprite.png",
+        "patch":  [
+                      392,
+                      329,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -27,
+                           "dy":  2,
+                           "rmse":  32.320962672840885
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -15,
+                           "rmse":  38.192179330112481
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -25,
+                           "dy":  -16,
+                           "rmse":  43.2517854215148
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-pyramid-conch_v1_sprite.png",
+        "storage_path":  "fish/rare/pharaoh-pyramid-conch_v1_sprite.png",
+        "patch":  [
+                      487,
+                      391,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -42,
+                           "dy":  -1,
+                           "rmse":  23.479417749408515
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -60,
+                           "rmse":  10.97461383194555
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -36,
+                           "dy":  -60,
+                           "rmse":  11.852049374693191
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+        "storage_path":  "fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+        "patch":  [
+                      493,
+                      328,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -54,
+                           "dy":  23,
+                           "rmse":  15.439966385438508
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  14,
+                           "dy":  -33,
+                           "rmse":  26.016364843486908
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -27,
+                           "dy":  -31,
+                           "rmse":  21.412275385630615
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-gold-nile-crocodile_v1_sprite.png",
+        "storage_path":  "fish/epic/pharaoh-gold-nile-crocodile_v1_sprite.png",
+        "patch":  [
+                      475,
+                      270,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  9,
+                           "dy":  0,
+                           "rmse":  14.8901625964514
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -37,
+                           "rmse":  16.422306438510109
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  8,
+                           "dy":  -37,
+                           "rmse":  15.373248741222662
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-moon-bastet_v1_sprite.png",
+        "storage_path":  "fish/epic/pharaoh-moon-bastet_v1_sprite.png",
+        "patch":  [
+                      437,
+                      295,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  15.042776471348038
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.7390540379299164
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  15.079952210722883
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-spirit_v1_sprite.png",
+        "storage_path":  "fish/epic/pharaoh-sand-spirit_v1_sprite.png",
+        "patch":  [
+                      517,
+                      331,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -7,
+                           "dy":  6,
+                           "rmse":  26.566966688131043
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  29,
+                           "dy":  -48,
+                           "rmse":  35.629579595453556
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  4,
+                           "dy":  -30,
+                           "rmse":  19.834907454258722
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sleepless-sphinx_v1_sprite.png",
+        "storage_path":  "fish/epic/pharaoh-sleepless-sphinx_v1_sprite.png",
+        "patch":  [
+                      445,
+                      257,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  7.8741390713971056
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -27,
+                           "rmse":  10.570600896154632
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -27,
+                           "rmse":  8.44317417104756
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-cursed-gold-octopus_v1_sprite.png",
+        "storage_path":  "fish/epic/pharaoh-cursed-gold-octopus_v1_sprite.png",
+        "patch":  [
+                      439,
+                      322,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -34,
+                           "dy":  -4,
+                           "rmse":  30.82377932539789
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -62,
+                           "rmse":  17.01287796138342
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -36,
+                           "dy":  -49,
+                           "rmse":  20.198907588495846
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-whale_v1_sprite.png",
+        "storage_path":  "fish/epic/pharaoh-sand-whale_v1_sprite.png",
+        "patch":  [
+                      481,
+                      305,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -15,
+                           "dy":  1,
+                           "rmse":  23.944451901421843
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -66,
+                           "rmse":  24.234136841029681
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -66,
+                           "rmse":  19.273477686934456
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-tomb-serpent-shark_v1_sprite.png",
+        "storage_path":  "fish/epic/pharaoh-tomb-serpent-shark_v1_sprite.png",
+        "patch":  [
+                      499,
+                      327,
+                      31,
+                      31
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.7346397008916856
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -27,
+                           "rmse":  11.207841115903582
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -27,
+                           "rmse":  20.357395553434831
+                       }
+                   ]
+    }
+]

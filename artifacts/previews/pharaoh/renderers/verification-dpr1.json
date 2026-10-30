@@ -1,0 +1,335 @@
+{
+  "verifiedAt": "2026-10-30T01:51:25.833Z",
+  "scope": "Real Phaser tank and real CollectiblePreview with local image interception and synthetic specimens only; no player writes or production runtime verification.",
+  "dpr": 1,
+  "loopSeconds": 18.5,
+  "horusAssetLoaded": true,
+  "all": {
+    "count": 30,
+    "textures": 30,
+    "clock": 0.716279333044847,
+    "renderer": "WebGL"
+  },
+  "animated": {
+    "stats": {
+      "count": 6,
+      "textures": 6,
+      "clock": 22.932685985072162,
+      "renderer": "WebGL"
+    },
+    "errors": [],
+    "frames": [
+      {
+        "id": "pharaoh-qa-pharaoh-brick-hermit",
+        "frame": 1,
+        "texture": "collectible:fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          116.69179500000001,
+          116.69179500000001
+        ]
+      },
+      {
+        "id": "pharaoh-qa-pharaoh-gatekeeper-anubis",
+        "frame": 5,
+        "texture": "collectible:fish/mythic/pharaoh-gatekeeper-anubis_swim8_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          392.201271,
+          392.201271
+        ]
+      },
+      {
+        "id": "pharaoh-qa-pharaoh-gold-wing-horus",
+        "frame": 5,
+        "texture": "collectible:fish/mythic/pharaoh-gold-wing-horus_swim8_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          375.01316600000007,
+          375.01316600000007
+        ]
+      },
+      {
+        "id": "pharaoh-qa-pharaoh-obelisk-colossus",
+        "frame": 5,
+        "texture": "collectible:fish/mythic/pharaoh-obelisk-colossus_swim8_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          430.1,
+          430.1
+        ]
+      },
+      {
+        "id": "pharaoh-qa-pharaoh-solar-scarab",
+        "frame": 5,
+        "texture": "collectible:fish/mythic/pharaoh-solar-scarab_swim8_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          366.25801300000006,
+          366.25801300000006
+        ]
+      },
+      {
+        "id": "pharaoh-qa-pharaoh-sun-disc-jelly",
+        "frame": 3,
+        "texture": "collectible:fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+        "origin": [
+          0.5,
+          0.5
+        ],
+        "size": [
+          98.95073760000004,
+          98.95073760000004
+        ]
+      }
+    ],
+    "history": {
+      "pharaoh-qa-pharaoh-brick-hermit": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-coin-clam": [
+        0
+      ],
+      "pharaoh-qa-pharaoh-cursed-gold-octopus": [
+        0
+      ],
+      "pharaoh-qa-pharaoh-gatekeeper-anubis": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pharaoh-qa-pharaoh-glyph-cuttlefish": [
+        0,
+        1
+      ],
+      "pharaoh-qa-pharaoh-glyph-starfish": [
+        0,
+        3
+      ],
+      "pharaoh-qa-pharaoh-gold-catfish": [
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-gold-medaka": [
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-gold-nile-crocodile": [
+        0,
+        3
+      ],
+      "pharaoh-qa-pharaoh-gold-wing-horus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pharaoh-qa-pharaoh-moon-bastet": [
+        0,
+        3
+      ],
+      "pharaoh-qa-pharaoh-mummy-eel": [
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-nile-puffer": [
+        0,
+        1
+      ],
+      "pharaoh-qa-pharaoh-oasis-carp": [
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-obelisk-colossus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pharaoh-qa-pharaoh-oil-bottle-eel": [
+        1,
+        2
+      ],
+      "pharaoh-qa-pharaoh-papyrus-billfish": [
+        0,
+        3
+      ],
+      "pharaoh-qa-pharaoh-papyrus-seahorse": [
+        0,
+        3
+      ],
+      "pharaoh-qa-pharaoh-pyramid-conch": [
+        0,
+        1
+      ],
+      "pharaoh-qa-pharaoh-royal-cobra": [
+        0,
+        3
+      ],
+      "pharaoh-qa-pharaoh-sand-ray": [
+        0,
+        1
+      ],
+      "pharaoh-qa-pharaoh-sand-spirit": [
+        0
+      ],
+      "pharaoh-qa-pharaoh-sand-whale": [
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-sarcophagus-crab": [
+        0
+      ],
+      "pharaoh-qa-pharaoh-scorpion-crab": [
+        0,
+        3
+      ],
+      "pharaoh-qa-pharaoh-sleepless-sphinx": [
+        0,
+        1
+      ],
+      "pharaoh-qa-pharaoh-solar-scarab": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pharaoh-qa-pharaoh-sun-disc-jelly": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-tomb-serpent-shark": [
+        1,
+        2,
+        3
+      ],
+      "pharaoh-qa-pharaoh-tomb-shrimp": [
+        0,
+        1
+      ]
+    }
+  },
+  "reduced": [
+    {
+      "id": "pharaoh-qa-pharaoh-brick-hermit",
+      "frame": 0,
+      "texture": "collectible:fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        116.69179500000001,
+        116.69179500000001
+      ]
+    },
+    {
+      "id": "pharaoh-qa-pharaoh-gatekeeper-anubis",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/pharaoh-gatekeeper-anubis_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        392.201271,
+        392.201271
+      ]
+    },
+    {
+      "id": "pharaoh-qa-pharaoh-gold-wing-horus",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/pharaoh-gold-wing-horus_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        375.01316600000007,
+        375.01316600000007
+      ]
+    },
+    {
+      "id": "pharaoh-qa-pharaoh-obelisk-colossus",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/pharaoh-obelisk-colossus_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        430.1,
+        430.1
+      ]
+    },
+    {
+      "id": "pharaoh-qa-pharaoh-solar-scarab",
+      "frame": 0,
+      "texture": "collectible:fish/mythic/pharaoh-solar-scarab_swim8_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        366.25801300000006,
+        366.25801300000006
+      ]
+    },
+    {
+      "id": "pharaoh-qa-pharaoh-sun-disc-jelly",
+      "frame": 0,
+      "texture": "collectible:fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+      "origin": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        98.95073760000004,
+        98.95073760000004
+      ]
+    }
+  ],
+  "catalogReducedHashes": [
+    "99e83091327c49873c7c7645f997ce67a8b84a87acbc5f77d5bdabc12e1ecf48",
+    "f74d3c66dca971b053f0f5edf4a50271d76e0b46b4e5ebb266a081aefe356a66",
+    "aa2b2c2abdcb6e36c19524308f3d01ecad0306f6df992cb3f420c5787bfb8654",
+    "6c2084b8b43981e3fc15e283831c483334363ba2fae99139b7f5688b608204a5"
+  ]
+}

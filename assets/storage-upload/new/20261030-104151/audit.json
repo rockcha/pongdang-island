@@ -1,0 +1,152 @@
+{
+  "results": [
+    {
+      "id": "pharaoh-solar-scarab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-104151\\fish\\mythic\\pharaoh-solar-scarab_v3_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            111,
+            130,
+            1094,
+            1044
+          ],
+          "margin": 49,
+          "occupancy": 0.8724082934609251,
+          "opaque": 699767,
+          "transparent": 848887,
+          "soft": 723149
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261030-104151\\fish\\mythic\\pharaoh-solar-scarab_swim8_v3_sprite.png",
+      "width": 2288,
+      "height": 1144,
+      "cell": 572,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            162,
+            230,
+            242,
+            196
+          ],
+          "margin": 146,
+          "occupancy": 0.4230769230769231,
+          "opaque": 27547,
+          "transparent": 292974,
+          "soft": 34133
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            153,
+            230,
+            251,
+            196
+          ],
+          "margin": 146,
+          "occupancy": 0.4388111888111888,
+          "opaque": 27993,
+          "transparent": 291112,
+          "soft": 36040
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            147,
+            230,
+            257,
+            196
+          ],
+          "margin": 146,
+          "occupancy": 0.4493006993006993,
+          "opaque": 27869,
+          "transparent": 291258,
+          "soft": 35831
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            161,
+            228,
+            243,
+            198
+          ],
+          "margin": 146,
+          "occupancy": 0.42482517482517484,
+          "opaque": 27608,
+          "transparent": 290545,
+          "soft": 36597
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            229,
+            230,
+            175,
+            196
+          ],
+          "margin": 146,
+          "occupancy": 0.34265734265734266,
+          "opaque": 23780,
+          "transparent": 299658,
+          "soft": 27474
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            148,
+            207,
+            255,
+            220
+          ],
+          "margin": 145,
+          "occupancy": 0.4458041958041958,
+          "opaque": 31001,
+          "transparent": 287412,
+          "soft": 39745
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            196,
+            230,
+            208,
+            196
+          ],
+          "margin": 146,
+          "occupancy": 0.36363636363636365,
+          "opaque": 25685,
+          "transparent": 294518,
+          "soft": 32598
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            162,
+            230,
+            242,
+            196
+          ],
+          "margin": 146,
+          "occupancy": 0.4230769230769231,
+          "opaque": 27407,
+          "transparent": 293038,
+          "soft": 34119
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

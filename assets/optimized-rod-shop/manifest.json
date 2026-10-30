@@ -1,9 +1,9 @@
 {
   "profile": "rod-shop-q90-320-v1",
   "summary": {
-    "count": 21,
-    "sourceBytes": 77712210,
-    "displayBytes": 1292898
+    "count": 22,
+    "sourceBytes": 81310479,
+    "displayBytes": 1343516
   },
   "items": [
     {
@@ -418,6 +418,38 @@
       "reel": {
         "url": "/game-art/rod-shop/reel/0d996c327097cfa7d66fec4a-320.webp",
         "bytes": 32468,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "pharaoh",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261030-044000/equipment/rods/pharaoh/thumbnail.png",
+          "sourceHash": "e9dd25b40b477e3c26fab83eb304699753f608f4b4b1e2039179211297358f8d",
+          "sourceBytes": 656165
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261030-044000/equipment/rods/pharaoh/reel-frame.png",
+          "sourceHash": "7634e65b5c98a8d941e2d3e9b8b199317d3fb96bddd46abbcaa7be7629c89e9a",
+          "sourceBytes": 1372414
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261030-044000/equipment/rods/pharaoh/reel-rotor.png",
+          "sourceHash": "18ee5b156dcdbc704ec5ef020d9aa61eaa3c1d013e1275a9d2caa73d31e9a44b",
+          "sourceBytes": 1569690
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/eaabc1f37860caecb090e655-320.webp",
+        "bytes": 22446,
+        "width": 320,
+        "height": 269
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/a9ae36884c1bef7ddd17e165-320.webp",
+        "bytes": 28172,
         "width": 320,
         "height": 320
       }

@@ -1,0 +1,185 @@
+[
+  {
+    "file": "assets/storage-upload/new/20261030-094918/fish/mythic/pharaoh-gold-wing-horus_swim8_v2_sprite.png",
+    "storage_path": "face",
+    "patch": [
+      414,
+      301,
+      20,
+      28
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 18.548873666228747
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -1,
+        "rmse": 20.094508844813443
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": -1,
+        "rmse": 19.28313474812344
+      },
+      {
+        "frame": 4,
+        "dx": -1,
+        "dy": 1,
+        "rmse": 24.962686439678606
+      },
+      {
+        "frame": 5,
+        "dx": 2,
+        "dy": 0,
+        "rmse": 31.01779443204451
+      },
+      {
+        "frame": 6,
+        "dx": -1,
+        "dy": 1,
+        "rmse": 24.623159829721285
+      },
+      {
+        "frame": 7,
+        "dx": 63,
+        "dy": -73,
+        "rmse": 22.05755458535044
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261030-094918/fish/mythic/pharaoh-gold-wing-horus_swim8_v2_sprite.png",
+    "storage_path": "crown",
+    "patch": [
+      400,
+      272,
+      20,
+      24
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": -1,
+        "rmse": 16.277682972799383
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 17.042159052924756
+      },
+      {
+        "frame": 3,
+        "dx": -2,
+        "dy": -1,
+        "rmse": 15.838449465824661
+      },
+      {
+        "frame": 4,
+        "dx": -3,
+        "dy": 1,
+        "rmse": 15.286462178212654
+      },
+      {
+        "frame": 5,
+        "dx": -2,
+        "dy": -3,
+        "rmse": 29.07573125732435
+      },
+      {
+        "frame": 6,
+        "dx": -4,
+        "dy": -1,
+        "rmse": 19.79957444361237
+      },
+      {
+        "frame": 7,
+        "dx": 61,
+        "dy": -73,
+        "rmse": 17.23113568622327
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261030-094918/fish/mythic/pharaoh-gold-wing-horus_swim8_v2_sprite.png",
+    "storage_path": "chest",
+    "patch": [
+      399,
+      335,
+      24,
+      28
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 16.241632461055136
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 19.574217736604442
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 18.885593053965767
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 17.204014793065017
+      },
+      {
+        "frame": 5,
+        "dx": 0,
+        "dy": 3,
+        "rmse": 25.137931995293485
+      },
+      {
+        "frame": 6,
+        "dx": -1,
+        "dy": 1,
+        "rmse": 20.127950094333997
+      },
+      {
+        "frame": 7,
+        "dx": 64,
+        "dy": -73,
+        "rmse": 18.0593639146012
+      }
+    ]
+  }
+]

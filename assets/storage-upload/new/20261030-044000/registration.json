@@ -1,0 +1,2780 @@
+[
+  {
+    "id": "pharaoh-gold-medaka",
+    "storage_path": "fish/normal/pharaoh-gold-medaka_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 671,
+    "padding": 22,
+    "scale": 1.105176,
+    "patch": [
+      531,
+      342,
+      31,
+      31
+    ],
+    "originalPatch": [
+      509,
+      320,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -14,
+        "dy": 0,
+        "rmse": 12.526830708655154
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -13,
+        "rmse": 18.03640716636976
+      },
+      {
+        "frame": 3,
+        "dx": -11,
+        "dy": -12,
+        "rmse": 15.46376730210183
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          81,
+          226,
+          494,
+          211,
+          58034
+        ],
+        [
+          52,
+          227,
+          510,
+          210,
+          55322
+        ],
+        [
+          81,
+          219,
+          493,
+          202,
+          53463
+        ],
+        [
+          68,
+          217,
+          495,
+          208,
+          55877
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-brick-hermit",
+    "storage_path": "fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 721,
+    "padding": 47,
+    "scale": 1.92879,
+    "patch": [
+      443,
+      353,
+      31,
+      31
+    ],
+    "originalPatch": [
+      396,
+      306,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -38,
+        "dy": 0,
+        "rmse": 23.99603961814057
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -2,
+        "rmse": 14.83615752976268
+      },
+      {
+        "frame": 3,
+        "dx": -39,
+        "dy": -2,
+        "rmse": 18.25157074639725
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          191,
+          239,
+          313,
+          218,
+          37558
+        ],
+        [
+          153,
+          239,
+          311,
+          218,
+          38001
+        ],
+        [
+          191,
+          237,
+          314,
+          215,
+          37086
+        ],
+        [
+          153,
+          237,
+          312,
+          220,
+          37974
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-papyrus-billfish",
+    "storage_path": "fish/normal/pharaoh-papyrus-billfish_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 729,
+    "padding": 51,
+    "scale": 1.081908,
+    "patch": [
+      480,
+      397,
+      31,
+      31
+    ],
+    "originalPatch": [
+      429,
+      346,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -13,
+        "dy": 2,
+        "rmse": 9.82901338549457
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -43,
+        "rmse": 13.498469457162557
+      },
+      {
+        "frame": 3,
+        "dx": -10,
+        "dy": -42,
+        "rmse": 20.15523433439513
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          43,
+          173,
+          566,
+          351,
+          80823
+        ],
+        [
+          46,
+          172,
+          551,
+          336,
+          79854
+        ],
+        [
+          58,
+          127,
+          552,
+          332,
+          79398
+        ],
+        [
+          34,
+          131,
+          565,
+          344,
+          79501
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-papyrus-seahorse",
+    "storage_path": "fish/normal/pharaoh-papyrus-seahorse_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 733,
+    "padding": 53,
+    "scale": 1.272149,
+    "patch": [
+      437,
+      282,
+      31,
+      31
+    ],
+    "originalPatch": [
+      384,
+      229,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -24,
+        "dy": 0,
+        "rmse": 15.20636284830729
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -45,
+        "rmse": 13.92935244381921
+      },
+      {
+        "frame": 3,
+        "dx": -24,
+        "dy": -45,
+        "rmse": 10.816749332202464
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          181,
+          89,
+          337,
+          483,
+          88648
+        ],
+        [
+          158,
+          89,
+          336,
+          484,
+          84685
+        ],
+        [
+          182,
+          44,
+          336,
+          481,
+          88705
+        ],
+        [
+          160,
+          44,
+          334,
+          481,
+          85238
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-scorpion-crab",
+    "storage_path": "fish/normal/pharaoh-scorpion-crab_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 693,
+    "padding": 33,
+    "scale": 1.070074,
+    "patch": [
+      437,
+      360,
+      31,
+      31
+    ],
+    "originalPatch": [
+      404,
+      327,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -4,
+        "dy": 0,
+        "rmse": 18.58251644302708
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -25,
+        "rmse": 23.131540844011706
+      },
+      {
+        "frame": 3,
+        "dx": -2,
+        "dy": -25,
+        "rmse": 18.340331747137
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          60,
+          117,
+          544,
+          414,
+          110083
+        ],
+        [
+          82,
+          118,
+          523,
+          413,
+          108005
+        ],
+        [
+          91,
+          92,
+          516,
+          419,
+          109224
+        ],
+        [
+          85,
+          92,
+          519,
+          419,
+          109501
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-glyph-starfish",
+    "storage_path": "fish/normal/pharaoh-glyph-starfish_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 739,
+    "padding": 56,
+    "scale": 1.290561,
+    "patch": [
+      403,
+      418,
+      31,
+      31
+    ],
+    "originalPatch": [
+      347,
+      362,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -5,
+        "dy": 9,
+        "rmse": 12.249388583156183
+      },
+      {
+        "frame": 2,
+        "dx": 48,
+        "dy": -46,
+        "rmse": 31.356619768492028
+      },
+      {
+        "frame": 3,
+        "dx": -14,
+        "dy": -45,
+        "rmse": 8.97033679126711
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          122,
+          131,
+          474,
+          450,
+          113559
+        ],
+        [
+          107,
+          135,
+          470,
+          466,
+          108601
+        ],
+        [
+          130,
+          87,
+          481,
+          438,
+          111711
+        ],
+        [
+          101,
+          88,
+          481,
+          455,
+          115919
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-coin-clam",
+    "storage_path": "fish/normal/pharaoh-coin-clam_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 745,
+    "padding": 59,
+    "scale": 1.366376,
+    "patch": [
+      481,
+      512,
+      31,
+      31
+    ],
+    "originalPatch": [
+      422,
+      453,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -48,
+        "dy": 3,
+        "rmse": 8.32240330038234
+      },
+      {
+        "frame": 2,
+        "dx": 8,
+        "dy": -51,
+        "rmse": 14.334982927690918
+      },
+      {
+        "frame": 3,
+        "dx": -46,
+        "dy": -44,
+        "rmse": 17.670363197659242
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          126,
+          212,
+          449,
+          344,
+          112685
+        ],
+        [
+          85,
+          166,
+          441,
+          392,
+          123351
+        ],
+        [
+          129,
+          65,
+          458,
+          439,
+          141660
+        ],
+        [
+          88,
+          134,
+          439,
+          373,
+          118795
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-nile-puffer",
+    "storage_path": "fish/normal/pharaoh-nile-puffer_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 775,
+    "padding": 74,
+    "scale": 1.3125,
+    "patch": [
+      548,
+      405,
+      31,
+      31
+    ],
+    "originalPatch": [
+      474,
+      331,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -33,
+        "dy": 2,
+        "rmse": 13.272882938065992
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -66,
+        "rmse": 13.065078682952336
+      },
+      {
+        "frame": 3,
+        "dx": -35,
+        "dy": -66,
+        "rmse": 13.196230365819195
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          87,
+          190,
+          492,
+          320,
+          102596
+        ],
+        [
+          100,
+          190,
+          444,
+          321,
+          95945
+        ],
+        [
+          151,
+          124,
+          429,
+          317,
+          93520
+        ],
+        [
+          48,
+          125,
+          496,
+          318,
+          101717
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-sand-ray",
+    "storage_path": "fish/normal/pharaoh-sand-ray_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 795,
+    "padding": 84,
+    "scale": 1.229834,
+    "patch": [
+      577,
+      442,
+      31,
+      31
+    ],
+    "originalPatch": [
+      493,
+      358,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -37,
+        "dy": 0,
+        "rmse": 10.762269569240111
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -76,
+        "rmse": 7.502754315186496
+      },
+      {
+        "frame": 3,
+        "dx": -36,
+        "dy": -74,
+        "rmse": 21.472594488081473
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          65,
+          237,
+          543,
+          273,
+          62901
+        ],
+        [
+          61,
+          218,
+          507,
+          289,
+          62216
+        ],
+        [
+          66,
+          209,
+          542,
+          223,
+          55929
+        ],
+        [
+          49,
+          172,
+          522,
+          260,
+          58070
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-oasis-carp",
+    "storage_path": "fish/normal/pharaoh-oasis-carp_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 733,
+    "padding": 53,
+    "scale": 1.719888,
+    "patch": [
+      490,
+      367,
+      31,
+      31
+    ],
+    "originalPatch": [
+      437,
+      314,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -37,
+        "dy": 0,
+        "rmse": 8.490879890936748
+      },
+      {
+        "frame": 2,
+        "dx": 2,
+        "dy": -45,
+        "rmse": 19.393968986719848
+      },
+      {
+        "frame": 3,
+        "dx": -33,
+        "dy": -42,
+        "rmse": 20.510680547678707
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          179,
+          231,
+          342,
+          203,
+          40342
+        ],
+        [
+          132,
+          232,
+          352,
+          205,
+          40498
+        ],
+        [
+          166,
+          187,
+          358,
+          208,
+          41233
+        ],
+        [
+          141,
+          193,
+          349,
+          202,
+          39210
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-sarcophagus-crab",
+    "storage_path": "fish/normal/pharaoh-sarcophagus-crab_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 795,
+    "padding": 84,
+    "scale": 2.140385,
+    "patch": [
+      491,
+      462,
+      31,
+      31
+    ],
+    "originalPatch": [
+      407,
+      378,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -31,
+        "dy": -1,
+        "rmse": 18.79840858395349
+      },
+      {
+        "frame": 2,
+        "dx": -4,
+        "dy": -76,
+        "rmse": 20.912549121133026
+      },
+      {
+        "frame": 3,
+        "dx": -20,
+        "dy": -75,
+        "rmse": 19.61815232957595
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          203,
+          287,
+          290,
+          213,
+          37474
+        ],
+        [
+          177,
+          286,
+          312,
+          215,
+          38398
+        ],
+        [
+          203,
+          213,
+          285,
+          209,
+          36704
+        ],
+        [
+          188,
+          213,
+          303,
+          209,
+          36987
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-tomb-shrimp",
+    "storage_path": "fish/normal/pharaoh-tomb-shrimp_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 749,
+    "padding": 61,
+    "scale": 1.167273,
+    "patch": [
+      474,
+      401,
+      31,
+      31
+    ],
+    "originalPatch": [
+      413,
+      340,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.526111211914515
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -53,
+        "rmse": 13.074484646070397
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -53,
+        "rmse": 11.825609553943258
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          69,
+          186,
+          519,
+          347,
+          98622
+        ],
+        [
+          49,
+          186,
+          539,
+          358,
+          102456
+        ],
+        [
+          88,
+          132,
+          501,
+          340,
+          94292
+        ],
+        [
+          58,
+          133,
+          530,
+          351,
+          99809
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-oil-bottle-eel",
+    "storage_path": "fish/normal/pharaoh-oil-bottle-eel_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 759,
+    "padding": 66,
+    "scale": 1.216718,
+    "patch": [
+      522,
+      282,
+      31,
+      31
+    ],
+    "originalPatch": [
+      456,
+      216,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -9,
+        "dy": 0,
+        "rmse": 13.0724301394984
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -57,
+        "rmse": 16.0898818367526
+      },
+      {
+        "frame": 3,
+        "dx": -9,
+        "dy": -58,
+        "rmse": 15.963154890233533
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          101,
+          144,
+          471,
+          453,
+          125787
+        ],
+        [
+          38,
+          144,
+          524,
+          450,
+          132399
+        ],
+        [
+          80,
+          86,
+          492,
+          448,
+          126241
+        ],
+        [
+          84,
+          84,
+          479,
+          450,
+          126243
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-royal-cobra",
+    "storage_path": "fish/rare/pharaoh-royal-cobra_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 695,
+    "padding": 34,
+    "scale": 1.069231,
+    "patch": [
+      485,
+      252,
+      31,
+      31
+    ],
+    "originalPatch": [
+      451,
+      218,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.37763737007505
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 11.059381418296951
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 16.419664183558275
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          78,
+          131,
+          510,
+          432,
+          116816
+        ],
+        [
+          42,
+          131,
+          546,
+          432,
+          109730
+        ],
+        [
+          59,
+          104,
+          528,
+          432,
+          110338
+        ],
+        [
+          77,
+          104,
+          511,
+          432,
+          118019
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-glyph-cuttlefish",
+    "storage_path": "fish/rare/pharaoh-glyph-cuttlefish_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 791,
+    "padding": 82,
+    "scale": 1.556066,
+    "patch": [
+      472,
+      397,
+      31,
+      31
+    ],
+    "originalPatch": [
+      390,
+      315,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -22,
+        "dy": 0,
+        "rmse": 19.60414022724758
+      },
+      {
+        "frame": 2,
+        "dx": 4,
+        "dy": -74,
+        "rmse": 23.837171472338177
+      },
+      {
+        "frame": 3,
+        "dx": -22,
+        "dy": -74,
+        "rmse": 18.50435508264996
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          166,
+          265,
+          385,
+          223,
+          53158
+        ],
+        [
+          116,
+          265,
+          419,
+          221,
+          57258
+        ],
+        [
+          168,
+          191,
+          386,
+          218,
+          52892
+        ],
+        [
+          114,
+          191,
+          427,
+          221,
+          56110
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-mummy-eel",
+    "storage_path": "fish/rare/pharaoh-mummy-eel_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 795,
+    "padding": 84,
+    "scale": 1.163415,
+    "patch": [
+      455,
+      440,
+      31,
+      31
+    ],
+    "originalPatch": [
+      371,
+      356,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -9,
+        "dy": 0,
+        "rmse": 19.94905702114909
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -76,
+        "rmse": 37.93064026712943
+      },
+      {
+        "frame": 3,
+        "dx": -11,
+        "dy": -72,
+        "rmse": 33.126572939420456
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          42,
+          167,
+          560,
+          416,
+          134922
+        ],
+        [
+          25,
+          168,
+          562,
+          415,
+          136814
+        ],
+        [
+          116,
+          96,
+          486,
+          415,
+          131369
+        ],
+        [
+          17,
+          96,
+          574,
+          415,
+          135837
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-gold-catfish",
+    "storage_path": "fish/rare/pharaoh-gold-catfish_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 697,
+    "padding": 35,
+    "scale": 1.64,
+    "patch": [
+      427,
+      364,
+      31,
+      31
+    ],
+    "originalPatch": [
+      392,
+      329,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -27,
+        "dy": 2,
+        "rmse": 32.320962672840885
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -15,
+        "rmse": 38.19217933011248
+      },
+      {
+        "frame": 3,
+        "dx": -25,
+        "dy": -16,
+        "rmse": 43.2517854215148
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          187,
+          254,
+          335,
+          173,
+          28234
+        ],
+        [
+          149,
+          254,
+          349,
+          174,
+          30440
+        ],
+        [
+          176,
+          239,
+          351,
+          170,
+          28400
+        ],
+        [
+          141,
+          238,
+          357,
+          171,
+          30807
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-pyramid-conch",
+    "storage_path": "fish/rare/pharaoh-pyramid-conch_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 763,
+    "padding": 68,
+    "scale": 1.180331,
+    "patch": [
+      555,
+      459,
+      31,
+      31
+    ],
+    "originalPatch": [
+      487,
+      391,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -42,
+        "dy": -1,
+        "rmse": 23.479417749408515
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -60,
+        "rmse": 10.97461383194555
+      },
+      {
+        "frame": 3,
+        "dx": -36,
+        "dy": -60,
+        "rmse": 11.852049374693191
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          64,
+          160,
+          537,
+          394,
+          126189
+        ],
+        [
+          21,
+          160,
+          536,
+          394,
+          125985
+        ],
+        [
+          62,
+          101,
+          539,
+          385,
+          123666
+        ],
+        [
+          22,
+          101,
+          543,
+          393,
+          126148
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-sun-disc-jelly",
+    "storage_path": "fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 751,
+    "padding": 62,
+    "scale": 1.153272,
+    "patch": [
+      555,
+      390,
+      31,
+      31
+    ],
+    "originalPatch": [
+      493,
+      328,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -54,
+        "dy": 23,
+        "rmse": 15.439966385438508
+      },
+      {
+        "frame": 2,
+        "dx": 14,
+        "dy": -33,
+        "rmse": 26.016364843486908
+      },
+      {
+        "frame": 3,
+        "dx": -27,
+        "dy": -31,
+        "rmse": 21.412275385630615
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          80,
+          143,
+          528,
+          393,
+          129834
+        ],
+        [
+          107,
+          191,
+          440,
+          338,
+          96701
+        ],
+        [
+          65,
+          122,
+          547,
+          383,
+          128282
+        ],
+        [
+          74,
+          127,
+          498,
+          362,
+          111971
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-gold-nile-crocodile",
+    "storage_path": "fish/epic/pharaoh-gold-nile-crocodile_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 717,
+    "padding": 45,
+    "scale": 1.013939,
+    "patch": [
+      520,
+      315,
+      31,
+      31
+    ],
+    "originalPatch": [
+      475,
+      270,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 9,
+        "dy": 0,
+        "rmse": 14.8901625964514
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -37,
+        "rmse": 16.42230643851011
+      },
+      {
+        "frame": 3,
+        "dx": 8,
+        "dy": -37,
+        "rmse": 15.373248741222662
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          24,
+          200,
+          579,
+          290,
+          79023
+        ],
+        [
+          16,
+          214,
+          594,
+          281,
+          72336
+        ],
+        [
+          39,
+          178,
+          564,
+          269,
+          77759
+        ],
+        [
+          22,
+          156,
+          588,
+          305,
+          73093
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-moon-bastet",
+    "storage_path": "fish/epic/pharaoh-moon-bastet_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.12525,
+    "patch": [
+      445,
+      303,
+      31,
+      31
+    ],
+    "originalPatch": [
+      437,
+      295,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.042776471348038
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.739054037929916
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.079952210722883
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          78,
+          136,
+          480,
+          378,
+          59789
+        ],
+        [
+          78,
+          136,
+          474,
+          376,
+          59634
+        ],
+        [
+          78,
+          135,
+          474,
+          377,
+          57490
+        ],
+        [
+          78,
+          136,
+          480,
+          378,
+          59749
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-sand-spirit",
+    "storage_path": "fish/epic/pharaoh-sand-spirit_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 739,
+    "padding": 56,
+    "scale": 1.212422,
+    "patch": [
+      573,
+      387,
+      31,
+      31
+    ],
+    "originalPatch": [
+      517,
+      331,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -7,
+        "dy": 6,
+        "rmse": 26.566966688131043
+      },
+      {
+        "frame": 2,
+        "dx": 29,
+        "dy": -48,
+        "rmse": 35.629579595453556
+      },
+      {
+        "frame": 3,
+        "dx": 4,
+        "dy": -30,
+        "rmse": 19.834907454258722
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          90,
+          187,
+          482,
+          312,
+          62620
+        ],
+        [
+          112,
+          183,
+          450,
+          325,
+          61956
+        ],
+        [
+          89,
+          118,
+          512,
+          349,
+          73764
+        ],
+        [
+          118,
+          149,
+          458,
+          309,
+          60177
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-sleepless-sphinx",
+    "storage_path": "fish/epic/pharaoh-sleepless-sphinx_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 697,
+    "padding": 35,
+    "scale": 1.038085,
+    "patch": [
+      480,
+      292,
+      31,
+      31
+    ],
+    "originalPatch": [
+      445,
+      257,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.874139071397106
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -27,
+        "rmse": 10.570600896154632
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -27,
+        "rmse": 8.44317417104756
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          48,
+          129,
+          553,
+          399,
+          101228
+        ],
+        [
+          42,
+          129,
+          563,
+          399,
+          101056
+        ],
+        [
+          48,
+          102,
+          543,
+          398,
+          99326
+        ],
+        [
+          46,
+          102,
+          564,
+          398,
+          103488
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-cursed-gold-octopus",
+    "storage_path": "fish/epic/pharaoh-cursed-gold-octopus_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 767,
+    "padding": 70,
+    "scale": 1.160865,
+    "patch": [
+      509,
+      392,
+      31,
+      31
+    ],
+    "originalPatch": [
+      439,
+      322,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -34,
+        "dy": -4,
+        "rmse": 30.82377932539789
+      },
+      {
+        "frame": 2,
+        "dx": 2,
+        "dy": -62,
+        "rmse": 17.01287796138342
+      },
+      {
+        "frame": 3,
+        "dx": -36,
+        "dy": -49,
+        "rmse": 20.198907588495846
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          81,
+          136,
+          517,
+          413,
+          115386
+        ],
+        [
+          38,
+          113,
+          548,
+          459,
+          121228
+        ],
+        [
+          58,
+          62,
+          555,
+          447,
+          123152
+        ],
+        [
+          45,
+          64,
+          539,
+          450,
+          122296
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-sand-whale",
+    "storage_path": "fish/epic/pharaoh-sand-whale_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 775,
+    "padding": 74,
+    "scale": 1.17509,
+    "patch": [
+      555,
+      379,
+      31,
+      31
+    ],
+    "originalPatch": [
+      481,
+      305,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -15,
+        "dy": 1,
+        "rmse": 23.944451901421843
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -66,
+        "rmse": 24.23413684102968
+      },
+      {
+        "frame": 3,
+        "dx": -11,
+        "dy": -66,
+        "rmse": 19.273477686934456
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          58,
+          190,
+          537,
+          288,
+          68949
+        ],
+        [
+          24,
+          219,
+          554,
+          257,
+          67962
+        ],
+        [
+          49,
+          184,
+          546,
+          230,
+          63083
+        ],
+        [
+          34,
+          126,
+          548,
+          289,
+          71180
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-tomb-serpent-shark",
+    "storage_path": "fish/epic/pharaoh-tomb-serpent-shark_v1_sprite.png",
+    "sourceCell": 627,
+    "cell": 697,
+    "padding": 35,
+    "scale": 1.0455,
+    "patch": [
+      534,
+      362,
+      31,
+      31
+    ],
+    "originalPatch": [
+      499,
+      327,
+      31,
+      31
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.734639700891686
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -27,
+        "rmse": 11.207841115903582
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": -27,
+        "rmse": 20.35739555343483
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          51,
+          190,
+          543,
+          310,
+          65180
+        ],
+        [
+          34,
+          190,
+          560,
+          262,
+          55893
+        ],
+        [
+          81,
+          162,
+          513,
+          282,
+          62850
+        ],
+        [
+          61,
+          162,
+          533,
+          300,
+          62898
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-solar-scarab",
+    "storage_path": "fish/mythic/pharaoh-solar-scarab_swim8_v1_sprite.png",
+    "sourceCell": 444,
+    "cell": 536,
+    "padding": 19,
+    "scale": 1.6195684813278008,
+    "patch": [
+      241,
+      288,
+      22,
+      22
+    ],
+    "originalPatch": [
+      195,
+      242,
+      22,
+      22
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 1,
+        "dy": 2,
+        "rmse": 24.013261310159436
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 19.002980851697977
+      },
+      {
+        "frame": 3,
+        "dx": 2,
+        "dy": 1,
+        "rmse": 24.07767378714148
+      },
+      {
+        "frame": 4,
+        "dx": 6,
+        "dy": -11,
+        "rmse": 29.76050234791073
+      },
+      {
+        "frame": 5,
+        "dx": 1,
+        "dy": -10,
+        "rmse": 52.73122444292376
+      },
+      {
+        "frame": 6,
+        "dx": 5,
+        "dy": -10,
+        "rmse": 40.409766378315034
+      },
+      {
+        "frame": 7,
+        "dx": 2,
+        "dy": -11,
+        "rmse": 20.717218080620768
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "finalRefinement": {
+      "cell": 536,
+      "padding": 27,
+      "measuredResidual": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 24.013261310159436
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 19.002980851697977
+        },
+        {
+          "frame": 3,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 24.07767378714148
+        },
+        {
+          "frame": 4,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 29.76050234791073
+        },
+        {
+          "frame": 5,
+          "dx": -19,
+          "dy": -5,
+          "rmse": 51.4483205508207
+        },
+        {
+          "frame": 6,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 40.409766378315034
+        },
+        {
+          "frame": 7,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 20.717218080620768
+        }
+      ],
+      "rgbaPreserved": true
+    },
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          103,
+          167,
+          241,
+          155,
+          20470
+        ],
+        [
+          102,
+          167,
+          242,
+          156,
+          20454
+        ],
+        [
+          104,
+          167,
+          241,
+          155,
+          20447
+        ],
+        [
+          103,
+          167,
+          241,
+          156,
+          20408
+        ],
+        [
+          105,
+          156,
+          255,
+          154,
+          20921
+        ],
+        [
+          101,
+          156,
+          278,
+          151,
+          22521
+        ],
+        [
+          104,
+          156,
+          249,
+          153,
+          21209
+        ],
+        [
+          103,
+          157,
+          241,
+          153,
+          20187
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-gatekeeper-anubis",
+    "storage_path": "fish/mythic/pharaoh-gatekeeper-anubis_swim8_v1_sprite.png",
+    "sourceCell": 444,
+    "cell": 556,
+    "padding": 56,
+    "scale": 1.511456,
+    "patch": [
+      313,
+      258,
+      22,
+      22
+    ],
+    "originalPatch": [
+      257,
+      202,
+      22,
+      22
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -13,
+        "dy": -1,
+        "rmse": 15.577176814172715
+      },
+      {
+        "frame": 2,
+        "dx": -38,
+        "dy": 7,
+        "rmse": 16.50449749310775
+      },
+      {
+        "frame": 3,
+        "dx": -20,
+        "dy": 1,
+        "rmse": 21.27480170295366
+      },
+      {
+        "frame": 4,
+        "dx": -10,
+        "dy": -4,
+        "rmse": 18.85885070729391
+      },
+      {
+        "frame": 5,
+        "dx": -18,
+        "dy": -4,
+        "rmse": 17.90273198425313
+      },
+      {
+        "frame": 6,
+        "dx": -39,
+        "dy": -4,
+        "rmse": 18.724983311074006
+      },
+      {
+        "frame": 7,
+        "dx": -48,
+        "dy": -4,
+        "rmse": 20.359273071502333
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          116,
+          118,
+          250,
+          266,
+          25955
+        ],
+        [
+          110,
+          119,
+          233,
+          265,
+          24422
+        ],
+        [
+          81,
+          126,
+          243,
+          258,
+          24604
+        ],
+        [
+          106,
+          119,
+          233,
+          264,
+          24213
+        ],
+        [
+          111,
+          78,
+          278,
+          299,
+          25396
+        ],
+        [
+          101,
+          67,
+          300,
+          309,
+          25921
+        ],
+        [
+          78,
+          115,
+          263,
+          262,
+          25197
+        ],
+        [
+          72,
+          115,
+          245,
+          262,
+          25005
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-obelisk-colossus",
+    "storage_path": "fish/mythic/pharaoh-obelisk-colossus_swim8_v1_sprite.png",
+    "sourceCell": 444,
+    "cell": 490,
+    "padding": 23,
+    "scale": 1.424221,
+    "patch": [
+      228,
+      233,
+      22,
+      22
+    ],
+    "originalPatch": [
+      205,
+      210,
+      22,
+      22
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -2,
+        "dy": -1,
+        "rmse": 18.456663769489868
+      },
+      {
+        "frame": 2,
+        "dx": -9,
+        "dy": 1,
+        "rmse": 27.351016891516117
+      },
+      {
+        "frame": 3,
+        "dx": 12,
+        "dy": 0,
+        "rmse": 19.944943751487493
+      },
+      {
+        "frame": 4,
+        "dx": -5,
+        "dy": -8,
+        "rmse": 18.149337109106767
+      },
+      {
+        "frame": 5,
+        "dx": -7,
+        "dy": -8,
+        "rmse": 45.94974326642098
+      },
+      {
+        "frame": 6,
+        "dx": -7,
+        "dy": -8,
+        "rmse": 16.332124211198003
+      },
+      {
+        "frame": 7,
+        "dx": 15,
+        "dy": -8,
+        "rmse": 21.23648467261001
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          115,
+          114,
+          238,
+          284,
+          31988
+        ],
+        [
+          116,
+          116,
+          233,
+          281,
+          29617
+        ],
+        [
+          108,
+          114,
+          237,
+          284,
+          32422
+        ],
+        [
+          127,
+          114,
+          226,
+          284,
+          29441
+        ],
+        [
+          109,
+          104,
+          243,
+          289,
+          33062
+        ],
+        [
+          91,
+          104,
+          259,
+          289,
+          33782
+        ],
+        [
+          116,
+          105,
+          232,
+          288,
+          32997
+        ],
+        [
+          125,
+          104,
+          239,
+          289,
+          33091
+        ]
+      ]
+    }
+  },
+  {
+    "id": "pharaoh-gold-wing-horus",
+    "storage_path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v1_sprite.png",
+    "sourceCell": 444,
+    "cell": 624,
+    "padding": 73,
+    "scale": 1.6535016406779661,
+    "patch": [
+      383,
+      312,
+      22,
+      22
+    ],
+    "originalPatch": [
+      293,
+      222,
+      22,
+      22
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -16,
+        "dy": 1,
+        "rmse": 32.07878406512276
+      },
+      {
+        "frame": 2,
+        "dx": -9,
+        "dy": 1,
+        "rmse": 23.32173290745033
+      },
+      {
+        "frame": 3,
+        "dx": -28,
+        "dy": 1,
+        "rmse": 32.95622707813815
+      },
+      {
+        "frame": 4,
+        "dx": -16,
+        "dy": -23,
+        "rmse": 31.93687069325076
+      },
+      {
+        "frame": 5,
+        "dx": 7,
+        "dy": -33,
+        "rmse": 25.21160447095742
+      },
+      {
+        "frame": 6,
+        "dx": -8,
+        "dy": -20,
+        "rmse": 27.41857446707344
+      },
+      {
+        "frame": 7,
+        "dx": -65,
+        "dy": 45,
+        "rmse": 47.732748952691225
+      }
+    ],
+    "method": "Measured rigid patch; inverse integer translation encoded in PNG; identical padding and scale for all frames",
+    "rgbaPreserved": true,
+    "finalRefinement": {
+      "cell": 624,
+      "padding": 17,
+      "measuredResidual": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 32.07878406512276
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 23.32173290745033
+        },
+        {
+          "frame": 3,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 32.95622707813815
+        },
+        {
+          "frame": 4,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 31.93687069325076
+        },
+        {
+          "frame": 5,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 25.21160447095742
+        },
+        {
+          "frame": 6,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 27.41857446707344
+        },
+        {
+          "frame": 7,
+          "dx": -9,
+          "dy": 7,
+          "rmse": 47.187042029394796
+        }
+      ],
+      "rgbaPreserved": true
+    },
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          94,
+          118,
+          277,
+          239,
+          32428
+        ],
+        [
+          78,
+          143,
+          278,
+          215,
+          31488
+        ],
+        [
+          85,
+          140,
+          278,
+          221,
+          31006
+        ],
+        [
+          63,
+          148,
+          278,
+          215,
+          27377
+        ],
+        [
+          78,
+          126,
+          276,
+          206,
+          27029
+        ],
+        [
+          73,
+          51,
+          317,
+          290,
+          42971
+        ],
+        [
+          78,
+          127,
+          281,
+          212,
+          29824
+        ],
+        [
+          78,
+          105,
+          281,
+          234,
+          32275
+        ]
+      ]
+    }
+  }
+]

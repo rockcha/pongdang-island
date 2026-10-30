@@ -9,7 +9,9 @@ import { optimizePng } from './optimize-png-lossless.mjs'
 loadEnvFile('.env.storage.local')
 const project = 'https://ewafafphiovbpjwogwzn.supabase.co'
 if (process.env.SUPABASE_URL !== project) throw Error('Unexpected Storage project')
-const manifestPath = 'assets/storage-upload/new/20261025-014955/manifest.json'
+const args=process.argv.slice(2)
+if(args.length&&!(args.length===2&&args[0]==='--manifest'&&args[1]))throw Error('Usage: node scripts/upload-aquarium-panoramas.mjs [--manifest path]')
+const manifestPath = args[1] ?? 'assets/storage-upload/new/20261025-014955/manifest.json'
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
 const root = resolve(dirname(manifestPath))
 const client = createClient(project, process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false, autoRefreshToken: false } })
@@ -28,7 +30,7 @@ async function saveManifest() {
 }
 let verified = 0
 for (const file of manifest.files) {
-  if (file.status !== 'generated' || !/^[a-z0-9-]+-panorama-v2\.png$/.test(file.storage_path)) throw Error('Unexpected panorama entry')
+  if (file.status !== 'generated' || !/^[a-z0-9-]+-panorama-v[1-9]\d*\.png$/.test(file.storage_path)) throw Error('Unexpected panorama entry')
   const local = resolve(root, file.local_path)
   if (relative(root, local).startsWith('..')) throw Error('Path outside batch')
   const original = readFileSync(local)

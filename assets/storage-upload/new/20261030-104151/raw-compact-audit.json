@@ -1,0 +1,76 @@
+[
+  {
+    "id": "pharaoh-solar-scarab",
+    "source": "sources/pharaoh-solar-scarab-compact-sheet.png",
+    "width": 1774,
+    "height": 887,
+    "cell": 444,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 98,
+        "top": 166,
+        "right": 339,
+        "bottom": 361,
+        "minMargin": 0.18468468468468469
+      },
+      {
+        "frame": 1,
+        "left": 89,
+        "top": 166,
+        "right": 339,
+        "bottom": 361,
+        "minMargin": 0.18510158013544017
+      },
+      {
+        "frame": 2,
+        "left": 83,
+        "top": 166,
+        "right": 339,
+        "bottom": 361,
+        "minMargin": 0.18468468468468469
+      },
+      {
+        "frame": 3,
+        "left": 96,
+        "top": 164,
+        "right": 338,
+        "bottom": 361,
+        "minMargin": 0.18510158013544017
+      },
+      {
+        "frame": 4,
+        "left": 165,
+        "top": 166,
+        "right": 339,
+        "bottom": 361,
+        "minMargin": 0.18284424379232506
+      },
+      {
+        "frame": 5,
+        "left": 84,
+        "top": 142,
+        "right": 338,
+        "bottom": 361,
+        "minMargin": 0.18284424379232506
+      },
+      {
+        "frame": 6,
+        "left": 132,
+        "top": 166,
+        "right": 339,
+        "bottom": 361,
+        "minMargin": 0.18284424379232506
+      },
+      {
+        "frame": 7,
+        "left": 97,
+        "top": 166,
+        "right": 338,
+        "bottom": 361,
+        "minMargin": 0.18284424379232506
+      }
+    ],
+    "passed": true
+  }
+]

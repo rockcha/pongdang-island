@@ -11,7 +11,7 @@ try{
   await page.route('**/src/features/savings/api.ts*',r=>r.request().url().includes('preview-real')?r.continue():r.fulfill({contentType:'application/javascript',body:`export * from '/src/features/savings/api.ts?preview-real';export const readSavings=async()=>({account:null,history:[],gold:50000,relicBonusPercent:${percent},serverNow:new Date().toISOString()});`}))
   await page.goto('http://127.0.0.1:5173/artifacts/previews/savings-economic-relics.html')
   await page.evaluate(dark=>document.documentElement.classList.toggle('dark',dark),dark)
-  await page.getByText(`유물 효과 · 만기 이자 +${percent}%`,{exact:false}).waitFor()
+  await page.getByText(`유물 효과 · 조개 적금 이자 +${percent}%`,{exact:false}).waitFor()
   for(const [days,base] of [[3,60],[5,125],[7,210]]){
    await page.getByRole('button',{name:new RegExp(days+'일.*보너스')}).click()
    const total=days*100+base+Math.floor(base*percent/100)

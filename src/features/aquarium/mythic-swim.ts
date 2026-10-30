@@ -9,12 +9,15 @@ import dreamabyssMythicSheets from './dreamabyss-mythic-action-layouts.json'
 import plunderMythicSheets from './plunder-mythic-action-layouts.json'
 import mechsanctumMythicSheets from './mechsanctum-mythic-action-layouts.json'
 import fireflyMythicSheets from './firefly-mythic-action-layouts.json'
+import pharaohMythicSheets from './pharaoh-mythic-action-layouts.json'
+import {pharaohMythicFrame} from './pharaoh-mythic-motion'
 import {halloweenMythicFrame} from './halloween-spirits'
 import {sharedDecorationColumns,sharedDecorationAsset} from './shared-decoration-animation'
 export function mythicSheetColumns(path:string){return sharedDecorationColumns(path)??(mythicDetailedPaths.includes(path)?4:2)}
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
+ ...pharaohMythicSheets,
  ...fireflyMythicSheets,
  ...starruinsBluegoldSheets,
  ...mechsanctumMythicSheets,
@@ -38,13 +41,24 @@ const sheets:MythicSheet[]=[
  {id:'seila-white-sail-guardian',aliases:['seila-white-sail-guardian'],scale:1.2,cell:443.5,shifts:[[0,0],[8.5,-1],[-2,0],[-0.5,0],[3,-6.5],[11.5,-6.5],[-4,-6.5],[-2.5,-9.5]]},
 ]
 export const mythicDetailedPaths=sheets.map(s=>`fish/mythic/${s.id}_swim8_sprite.png`)
-const sheetFor=(path:string)=>sheets.find(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)
+// Preserve the earlier registration's precedence while avoiding per-frame
+// scans and allocation of the combined regional sheet lists.
+const canonicalSheets=new Map<string,MythicSheet>()
+const assetSheets=new Map<string,MythicSheet>()
+for(const sheet of sheets){
+ const canonical=`fish/mythic/${sheet.id}_swim8_sprite.png`
+ if(!canonicalSheets.has(canonical))canonicalSheets.set(canonical,sheet)
+ for(const key of [canonical,...sheet.aliases.map(alias=>`fish/mythic/${alias}_sprite.png`)])if(!assetSheets.has(key))assetSheets.set(key,sheet)
+}
+const sheetFor=(path:string)=>canonicalSheets.get(path)
+const plunderPaths=new Set(plunderMythicSheets.map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
+const reversibleActionPaths=new Set([...pharaohMythicSheets,...fireflyMythicSheets,...starruinsBluegoldSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
 export function mythicSwimAsset(path:string,rarity:string){
  if(rarity!=='mythic')return null
  const decoration=sharedDecorationAsset(path)
  if(decoration)return decoration
  const canonical=path.replace('_compat_sprite.png','_sprite.png')
- const sheet=sheets.find(s=>canonical===`fish/mythic/${s.id}_swim8_sprite.png`||s.aliases.some(alias=>canonical===`fish/mythic/${alias}_sprite.png`))
+ const sheet=assetSheets.get(canonical)
  return sheet?{path:`fish/mythic/${sheet.id}_swim8_sprite.png`,url:`/aquarium/swim/${sheet.id}${sheet.assetVersion?`_swim8_v${sheet.assetVersion}_sprite.png`:sheet.id==='extinction-defying-megalodon'||sharedMythicSheets.some(s=>s.id===sheet.id)?'_swim8_v2_sprite.png':'_swim8_sprite.png'}`}:null
 }
 export function mythicSwimFrame(path:string,time:number,seed:number,reduced=false){
@@ -54,13 +68,15 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  const halloweenFrame=halloweenMythicFrame(path,time,seed)
  if(halloweenFrame!==null)return halloweenFrame
  const phase=((time+seed/1000000)%6+6)%6
- if(plunderMythicSheets.some((s:MythicSheet)=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
+ const pharaohFrame=pharaohMythicFrame(path,phase)
+ if(pharaohFrame!==null)return pharaohFrame
+ if(plunderPaths.has(path)){
   // Gentle reversible propulsion, then prepare, unfurl, return and neutral recovery.
   // The last basic pose and first action pose share the same anchored head/body.
   const cycle=[0,1,2,3,2,1,0,1,2,3,2,1,0,4,5,5,6,7,0,1,2,3,2,1]
   return cycle[Math.min(cycle.length-1,Math.floor(phase*4))]
  }
- if([...fireflyMythicSheets,...starruinsBluegoldSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
+ if(reversibleActionPaths.has(path)){
   // Reversible propulsion for four seconds, then anticipation, action, return,
   // recovery. The recovery drawing matches the next cycle's neutral pose.
   return phase<4?[0,1,2,3,2,1][Math.floor(phase*3)%6]:4+Math.min(3,Math.floor((phase-4)*2))

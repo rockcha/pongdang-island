@@ -1,0 +1,1831 @@
+{
+  "scope": "Generated source before alignment; not production delivery",
+  "assets": [
+    {
+      "id": "pharaoh-gold-medaka",
+      "storage_path": "fish/normal/pharaoh-gold-medaka_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-gold-medaka-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 81,
+          "top": 226,
+          "width": 494,
+          "height": 211,
+          "margin": 52,
+          "opaque": 58034,
+          "transparent": 327772,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 52,
+          "top": 227,
+          "width": 510,
+          "height": 210,
+          "margin": 52,
+          "opaque": 55322,
+          "transparent": 328501,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 81,
+          "top": 219,
+          "width": 493,
+          "height": 202,
+          "margin": 53,
+          "opaque": 53463,
+          "transparent": 331786,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 68,
+          "top": 217,
+          "width": 495,
+          "height": 208,
+          "margin": 64,
+          "opaque": 55877,
+          "transparent": 326302,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-brick-hermit",
+      "storage_path": "fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-brick-hermit-safe-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 191,
+          "top": 239,
+          "width": 313,
+          "height": 218,
+          "margin": 123,
+          "opaque": 37558,
+          "transparent": 350110,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 153,
+          "top": 239,
+          "width": 311,
+          "height": 218,
+          "margin": 153,
+          "opaque": 38001,
+          "transparent": 350687,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 191,
+          "top": 237,
+          "width": 314,
+          "height": 215,
+          "margin": 122,
+          "opaque": 37086,
+          "transparent": 349621,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 153,
+          "top": 237,
+          "width": 312,
+          "height": 220,
+          "margin": 153,
+          "opaque": 37974,
+          "transparent": 349201,
+          "edgeAlpha": 0
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-papyrus-billfish",
+      "storage_path": "fish/normal/pharaoh-papyrus-billfish_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-papyrus-billfish-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 43,
+          "top": 173,
+          "width": 566,
+          "height": 351,
+          "margin": 18,
+          "opaque": 80823,
+          "transparent": 305432,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 46,
+          "top": 172,
+          "width": 551,
+          "height": 336,
+          "margin": 30,
+          "opaque": 79854,
+          "transparent": 305947,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 58,
+          "top": 127,
+          "width": 552,
+          "height": 332,
+          "margin": 17,
+          "opaque": 79398,
+          "transparent": 305768,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 34,
+          "top": 131,
+          "width": 565,
+          "height": 344,
+          "margin": 28,
+          "opaque": 79501,
+          "transparent": 305644,
+          "edgeAlpha": 0
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-papyrus-seahorse",
+      "storage_path": "fish/normal/pharaoh-papyrus-seahorse_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-papyrus-seahorse-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 181,
+          "top": 89,
+          "width": 337,
+          "height": 483,
+          "margin": 55,
+          "opaque": 88648,
+          "transparent": 285212,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 158,
+          "top": 89,
+          "width": 336,
+          "height": 484,
+          "margin": 54,
+          "opaque": 84685,
+          "transparent": 291337,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 182,
+          "top": 44,
+          "width": 336,
+          "height": 481,
+          "margin": 44,
+          "opaque": 88705,
+          "transparent": 277970,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 160,
+          "top": 44,
+          "width": 334,
+          "height": 481,
+          "margin": 44,
+          "opaque": 85238,
+          "transparent": 283160,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-scorpion-crab",
+      "storage_path": "fish/normal/pharaoh-scorpion-crab_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-scorpion-crab-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 60,
+          "top": 117,
+          "width": 544,
+          "height": 414,
+          "margin": 23,
+          "opaque": 110083,
+          "transparent": 259970,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 82,
+          "top": 118,
+          "width": 523,
+          "height": 413,
+          "margin": 22,
+          "opaque": 108005,
+          "transparent": 263995,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 91,
+          "top": 92,
+          "width": 516,
+          "height": 419,
+          "margin": 20,
+          "opaque": 109224,
+          "transparent": 256778,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 85,
+          "top": 92,
+          "width": 519,
+          "height": 419,
+          "margin": 23,
+          "opaque": 109501,
+          "transparent": 250859,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-glyph-starfish",
+      "storage_path": "fish/normal/pharaoh-glyph-starfish_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-glyph-starfish-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 122,
+          "top": 131,
+          "width": 474,
+          "height": 450,
+          "margin": 31,
+          "opaque": 113559,
+          "transparent": 274739,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 1,
+          "left": 107,
+          "top": 135,
+          "width": 470,
+          "height": 466,
+          "margin": 26,
+          "opaque": 108601,
+          "transparent": 278637,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 130,
+          "top": 87,
+          "width": 481,
+          "height": 438,
+          "margin": 16,
+          "opaque": 111711,
+          "transparent": 275202,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 101,
+          "top": 88,
+          "width": 481,
+          "height": 455,
+          "margin": 45,
+          "opaque": 115919,
+          "transparent": 270643,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-coin-clam",
+      "storage_path": "fish/normal/pharaoh-coin-clam_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-coin-clam-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 126,
+          "top": 212,
+          "width": 449,
+          "height": 344,
+          "margin": 52,
+          "opaque": 112685,
+          "transparent": 275657,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 85,
+          "top": 166,
+          "width": 441,
+          "height": 392,
+          "margin": 69,
+          "opaque": 123351,
+          "transparent": 264319,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 129,
+          "top": 65,
+          "width": 458,
+          "height": 439,
+          "margin": 40,
+          "opaque": 141660,
+          "transparent": 242217,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 88,
+          "top": 134,
+          "width": 439,
+          "height": 373,
+          "margin": 88,
+          "opaque": 118795,
+          "transparent": 265671,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-nile-puffer",
+      "storage_path": "fish/normal/pharaoh-nile-puffer_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-nile-puffer-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 87,
+          "top": 190,
+          "width": 492,
+          "height": 320,
+          "margin": 48,
+          "opaque": 102596,
+          "transparent": 285203,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 100,
+          "top": 190,
+          "width": 444,
+          "height": 321,
+          "margin": 83,
+          "opaque": 95945,
+          "transparent": 291668,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 151,
+          "top": 124,
+          "width": 429,
+          "height": 317,
+          "margin": 47,
+          "opaque": 93520,
+          "transparent": 294586,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 48,
+          "top": 125,
+          "width": 496,
+          "height": 318,
+          "margin": 48,
+          "opaque": 101717,
+          "transparent": 286306,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-sand-ray",
+      "storage_path": "fish/normal/pharaoh-sand-ray_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-sand-ray-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 65,
+          "top": 237,
+          "width": 543,
+          "height": 273,
+          "margin": 19,
+          "opaque": 62901,
+          "transparent": 324164,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 61,
+          "top": 218,
+          "width": 507,
+          "height": 289,
+          "margin": 59,
+          "opaque": 62216,
+          "transparent": 325796,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 66,
+          "top": 209,
+          "width": 542,
+          "height": 223,
+          "margin": 19,
+          "opaque": 55929,
+          "transparent": 330300,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 49,
+          "top": 172,
+          "width": 522,
+          "height": 260,
+          "margin": 49,
+          "opaque": 58070,
+          "transparent": 330430,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-oasis-carp",
+      "storage_path": "fish/normal/pharaoh-oasis-carp_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-oasis-carp-safe-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 179,
+          "top": 231,
+          "width": 342,
+          "height": 203,
+          "margin": 106,
+          "opaque": 40342,
+          "transparent": 347534,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 1,
+          "left": 132,
+          "top": 232,
+          "width": 352,
+          "height": 205,
+          "margin": 132,
+          "opaque": 40498,
+          "transparent": 347357,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 166,
+          "top": 187,
+          "width": 358,
+          "height": 208,
+          "margin": 103,
+          "opaque": 41233,
+          "transparent": 346389,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 3,
+          "left": 141,
+          "top": 193,
+          "width": 349,
+          "height": 202,
+          "margin": 137,
+          "opaque": 39210,
+          "transparent": 346761,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-sarcophagus-crab",
+      "storage_path": "fish/normal/pharaoh-sarcophagus-crab_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-sarcophagus-crab-safe-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 203,
+          "top": 287,
+          "width": 290,
+          "height": 213,
+          "margin": 127,
+          "opaque": 37474,
+          "transparent": 350471,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 1,
+          "left": 177,
+          "top": 286,
+          "width": 312,
+          "height": 215,
+          "margin": 126,
+          "opaque": 38398,
+          "transparent": 347177,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 203,
+          "top": 213,
+          "width": 285,
+          "height": 209,
+          "margin": 139,
+          "opaque": 36704,
+          "transparent": 347306,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 188,
+          "top": 213,
+          "width": 303,
+          "height": 209,
+          "margin": 136,
+          "opaque": 36987,
+          "transparent": 347655,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-tomb-shrimp",
+      "storage_path": "fish/normal/pharaoh-tomb-shrimp_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-tomb-shrimp-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 69,
+          "top": 186,
+          "width": 519,
+          "height": 347,
+          "margin": 39,
+          "opaque": 98622,
+          "transparent": 279984,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 49,
+          "top": 186,
+          "width": 539,
+          "height": 358,
+          "margin": 39,
+          "opaque": 102456,
+          "transparent": 275049,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 88,
+          "top": 132,
+          "width": 501,
+          "height": 340,
+          "margin": 38,
+          "opaque": 94292,
+          "transparent": 283910,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 58,
+          "top": 133,
+          "width": 530,
+          "height": 351,
+          "margin": 39,
+          "opaque": 99809,
+          "transparent": 276343,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-oil-bottle-eel",
+      "storage_path": "fish/normal/pharaoh-oil-bottle-eel_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-oil-bottle-eel-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 101,
+          "top": 144,
+          "width": 471,
+          "height": 453,
+          "margin": 30,
+          "opaque": 125787,
+          "transparent": 260729,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 38,
+          "top": 144,
+          "width": 524,
+          "height": 450,
+          "margin": 33,
+          "opaque": 132399,
+          "transparent": 248605,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 80,
+          "top": 86,
+          "width": 492,
+          "height": 448,
+          "margin": 55,
+          "opaque": 126241,
+          "transparent": 258144,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 84,
+          "top": 84,
+          "width": 479,
+          "height": 450,
+          "margin": 64,
+          "opaque": 126243,
+          "transparent": 256120,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-royal-cobra",
+      "storage_path": "fish/rare/pharaoh-royal-cobra_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-royal-cobra-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 78,
+          "top": 131,
+          "width": 510,
+          "height": 432,
+          "margin": 39,
+          "opaque": 116816,
+          "transparent": 264773,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 42,
+          "top": 131,
+          "width": 546,
+          "height": 432,
+          "margin": 39,
+          "opaque": 109730,
+          "transparent": 270556,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 59,
+          "top": 104,
+          "width": 528,
+          "height": 432,
+          "margin": 40,
+          "opaque": 110338,
+          "transparent": 268835,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 77,
+          "top": 104,
+          "width": 511,
+          "height": 432,
+          "margin": 39,
+          "opaque": 118019,
+          "transparent": 259146,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-glyph-cuttlefish",
+      "storage_path": "fish/rare/pharaoh-glyph-cuttlefish_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-glyph-cuttlefish-safe-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 166,
+          "top": 265,
+          "width": 385,
+          "height": 223,
+          "margin": 76,
+          "opaque": 53158,
+          "transparent": 329463,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 116,
+          "top": 265,
+          "width": 419,
+          "height": 221,
+          "margin": 92,
+          "opaque": 57258,
+          "transparent": 322306,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 168,
+          "top": 191,
+          "width": 386,
+          "height": 218,
+          "margin": 73,
+          "opaque": 52892,
+          "transparent": 320657,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 114,
+          "top": 191,
+          "width": 427,
+          "height": 221,
+          "margin": 86,
+          "opaque": 56110,
+          "transparent": 315072,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-mummy-eel",
+      "storage_path": "fish/rare/pharaoh-mummy-eel_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-mummy-eel-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 42,
+          "top": 167,
+          "width": 560,
+          "height": 416,
+          "margin": 25,
+          "opaque": 134922,
+          "transparent": 250427,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 25,
+          "top": 168,
+          "width": 562,
+          "height": 415,
+          "margin": 25,
+          "opaque": 136814,
+          "transparent": 247831,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 116,
+          "top": 96,
+          "width": 486,
+          "height": 415,
+          "margin": 25,
+          "opaque": 131369,
+          "transparent": 247659,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 17,
+          "top": 96,
+          "width": 574,
+          "height": 415,
+          "margin": 17,
+          "opaque": 135837,
+          "transparent": 244502,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-gold-catfish",
+      "storage_path": "fish/rare/pharaoh-gold-catfish_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-gold-catfish-safe-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 187,
+          "top": 254,
+          "width": 335,
+          "height": 173,
+          "margin": 105,
+          "opaque": 28234,
+          "transparent": 359129,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 149,
+          "top": 254,
+          "width": 349,
+          "height": 174,
+          "margin": 129,
+          "opaque": 30440,
+          "transparent": 356309,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 2,
+          "left": 176,
+          "top": 239,
+          "width": 351,
+          "height": 170,
+          "margin": 100,
+          "opaque": 28400,
+          "transparent": 358344,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 141,
+          "top": 238,
+          "width": 357,
+          "height": 171,
+          "margin": 129,
+          "opaque": 30807,
+          "transparent": 354374,
+          "edgeAlpha": 0
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-pyramid-conch",
+      "storage_path": "fish/rare/pharaoh-pyramid-conch_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-pyramid-conch-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 64,
+          "top": 160,
+          "width": 537,
+          "height": 394,
+          "margin": 26,
+          "opaque": 126189,
+          "transparent": 259898,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 21,
+          "top": 160,
+          "width": 536,
+          "height": 394,
+          "margin": 21,
+          "opaque": 125985,
+          "transparent": 260596,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 62,
+          "top": 101,
+          "width": 539,
+          "height": 385,
+          "margin": 26,
+          "opaque": 123666,
+          "transparent": 259089,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 22,
+          "top": 101,
+          "width": 543,
+          "height": 393,
+          "margin": 22,
+          "opaque": 126148,
+          "transparent": 257282,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-sun-disc-jelly",
+      "storage_path": "fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-sun-disc-jelly-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 80,
+          "top": 143,
+          "width": 528,
+          "height": 393,
+          "margin": 19,
+          "opaque": 129834,
+          "transparent": 256268,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 107,
+          "top": 191,
+          "width": 440,
+          "height": 338,
+          "margin": 80,
+          "opaque": 96701,
+          "transparent": 289798,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 65,
+          "top": 122,
+          "width": 547,
+          "height": 383,
+          "margin": 15,
+          "opaque": 128282,
+          "transparent": 255494,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 74,
+          "top": 127,
+          "width": 498,
+          "height": 362,
+          "margin": 55,
+          "opaque": 111971,
+          "transparent": 271189,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-gold-nile-crocodile",
+      "storage_path": "fish/epic/pharaoh-gold-nile-crocodile_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-gold-nile-crocodile-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 24,
+          "top": 200,
+          "width": 579,
+          "height": 290,
+          "margin": 24,
+          "opaque": 79023,
+          "transparent": 298955,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 16,
+          "top": 214,
+          "width": 594,
+          "height": 281,
+          "margin": 16,
+          "opaque": 72336,
+          "transparent": 305830,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 39,
+          "top": 178,
+          "width": 564,
+          "height": 269,
+          "margin": 24,
+          "opaque": 77759,
+          "transparent": 299020,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 22,
+          "top": 156,
+          "width": 588,
+          "height": 305,
+          "margin": 17,
+          "opaque": 73093,
+          "transparent": 303729,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-moon-bastet",
+      "storage_path": "fish/epic/pharaoh-moon-bastet_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-moon-bastet-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 78,
+          "top": 136,
+          "width": 480,
+          "height": 378,
+          "margin": 69,
+          "opaque": 59789,
+          "transparent": 314623,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 78,
+          "top": 136,
+          "width": 474,
+          "height": 376,
+          "margin": 75,
+          "opaque": 59634,
+          "transparent": 312522,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 78,
+          "top": 135,
+          "width": 474,
+          "height": 377,
+          "margin": 75,
+          "opaque": 57490,
+          "transparent": 316863,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 78,
+          "top": 136,
+          "width": 480,
+          "height": 378,
+          "margin": 69,
+          "opaque": 59749,
+          "transparent": 310397,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-sand-spirit",
+      "storage_path": "fish/epic/pharaoh-sand-spirit_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-sand-spirit-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 90,
+          "top": 187,
+          "width": 482,
+          "height": 312,
+          "margin": 55,
+          "opaque": 62620,
+          "transparent": 307840,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 112,
+          "top": 183,
+          "width": 450,
+          "height": 325,
+          "margin": 65,
+          "opaque": 61956,
+          "transparent": 309868,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 89,
+          "top": 118,
+          "width": 512,
+          "height": 349,
+          "margin": 26,
+          "opaque": 73764,
+          "transparent": 288189,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 118,
+          "top": 149,
+          "width": 458,
+          "height": 309,
+          "margin": 51,
+          "opaque": 60177,
+          "transparent": 303248,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-sleepless-sphinx",
+      "storage_path": "fish/epic/pharaoh-sleepless-sphinx_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-sleepless-sphinx-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 48,
+          "top": 129,
+          "width": 553,
+          "height": 399,
+          "margin": 26,
+          "opaque": 101228,
+          "transparent": 265757,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 42,
+          "top": 129,
+          "width": 563,
+          "height": 399,
+          "margin": 22,
+          "opaque": 101056,
+          "transparent": 260799,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 48,
+          "top": 102,
+          "width": 543,
+          "height": 398,
+          "margin": 36,
+          "opaque": 99326,
+          "transparent": 261100,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 46,
+          "top": 102,
+          "width": 564,
+          "height": 398,
+          "margin": 17,
+          "opaque": 103488,
+          "transparent": 250674,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-cursed-gold-octopus",
+      "storage_path": "fish/epic/pharaoh-cursed-gold-octopus_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-cursed-gold-octopus-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 81,
+          "top": 136,
+          "width": 517,
+          "height": 413,
+          "margin": 29,
+          "opaque": 115386,
+          "transparent": 236634,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 38,
+          "top": 113,
+          "width": 548,
+          "height": 459,
+          "margin": 38,
+          "opaque": 121228,
+          "transparent": 237553,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 58,
+          "top": 62,
+          "width": 555,
+          "height": 447,
+          "margin": 14,
+          "opaque": 123152,
+          "transparent": 226208,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 45,
+          "top": 64,
+          "width": 539,
+          "height": 450,
+          "margin": 43,
+          "opaque": 122296,
+          "transparent": 228273,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-sand-whale",
+      "storage_path": "fish/epic/pharaoh-sand-whale_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-sand-whale-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 58,
+          "top": 190,
+          "width": 537,
+          "height": 288,
+          "margin": 32,
+          "opaque": 68949,
+          "transparent": 313511,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 24,
+          "top": 219,
+          "width": 554,
+          "height": 257,
+          "margin": 24,
+          "opaque": 67962,
+          "transparent": 312949,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 49,
+          "top": 184,
+          "width": 546,
+          "height": 230,
+          "margin": 32,
+          "opaque": 63083,
+          "transparent": 318248,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 34,
+          "top": 126,
+          "width": 548,
+          "height": 289,
+          "margin": 34,
+          "opaque": 71180,
+          "transparent": 308655,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-tomb-serpent-shark",
+      "storage_path": "fish/epic/pharaoh-tomb-serpent-shark_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-tomb-serpent-shark-sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 51,
+          "top": 190,
+          "width": 543,
+          "height": 310,
+          "margin": 33,
+          "opaque": 65180,
+          "transparent": 299014,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 34,
+          "top": 190,
+          "width": 560,
+          "height": 262,
+          "margin": 33,
+          "opaque": 55893,
+          "transparent": 308886,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 81,
+          "top": 162,
+          "width": 513,
+          "height": 282,
+          "margin": 33,
+          "opaque": 62850,
+          "transparent": 291126,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 61,
+          "top": 162,
+          "width": 533,
+          "height": 300,
+          "margin": 33,
+          "opaque": 62898,
+          "transparent": 290775,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "storage_path": "fish/mythic/pharaoh-solar-scarab_swim8_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-solar-scarab-safe-sprite.png",
+      "width": 1774,
+      "height": 887,
+      "cell": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 103,
+          "top": 167,
+          "width": 241,
+          "height": 155,
+          "margin": 99,
+          "opaque": 20470,
+          "transparent": 166589,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 102,
+          "top": 167,
+          "width": 242,
+          "height": 156,
+          "margin": 99,
+          "opaque": 20454,
+          "transparent": 163390,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 104,
+          "top": 167,
+          "width": 241,
+          "height": 155,
+          "margin": 98,
+          "opaque": 20447,
+          "transparent": 162321,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 103,
+          "top": 167,
+          "width": 241,
+          "height": 156,
+          "margin": 99,
+          "opaque": 20408,
+          "transparent": 163826,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 4,
+          "left": 105,
+          "top": 156,
+          "width": 255,
+          "height": 154,
+          "margin": 83,
+          "opaque": 20921,
+          "transparent": 166342,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 5,
+          "left": 101,
+          "top": 156,
+          "width": 278,
+          "height": 151,
+          "margin": 64,
+          "opaque": 22521,
+          "transparent": 162143,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 6,
+          "left": 104,
+          "top": 156,
+          "width": 249,
+          "height": 153,
+          "margin": 90,
+          "opaque": 21209,
+          "transparent": 163221,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 7,
+          "left": 103,
+          "top": 157,
+          "width": 241,
+          "height": 153,
+          "margin": 99,
+          "opaque": 20187,
+          "transparent": 165177,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "storage_path": "fish/mythic/pharaoh-gatekeeper-anubis_swim8_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-gatekeeper-anubis-safe-sprite.png",
+      "width": 1774,
+      "height": 887,
+      "cell": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 116,
+          "top": 118,
+          "width": 250,
+          "height": 266,
+          "margin": 59,
+          "opaque": 25955,
+          "transparent": 157130,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 110,
+          "top": 119,
+          "width": 233,
+          "height": 265,
+          "margin": 59,
+          "opaque": 24422,
+          "transparent": 158495,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 81,
+          "top": 126,
+          "width": 243,
+          "height": 258,
+          "margin": 59,
+          "opaque": 24604,
+          "transparent": 159758,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 106,
+          "top": 119,
+          "width": 233,
+          "height": 264,
+          "margin": 60,
+          "opaque": 24213,
+          "transparent": 157516,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 4,
+          "left": 111,
+          "top": 78,
+          "width": 278,
+          "height": 299,
+          "margin": 54,
+          "opaque": 25396,
+          "transparent": 157270,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 5,
+          "left": 101,
+          "top": 67,
+          "width": 300,
+          "height": 309,
+          "margin": 42,
+          "opaque": 25921,
+          "transparent": 155704,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 6,
+          "left": 78,
+          "top": 115,
+          "width": 263,
+          "height": 262,
+          "margin": 66,
+          "opaque": 25197,
+          "transparent": 157313,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 7,
+          "left": 72,
+          "top": 115,
+          "width": 245,
+          "height": 262,
+          "margin": 66,
+          "opaque": 25005,
+          "transparent": 158455,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "storage_path": "fish/mythic/pharaoh-obelisk-colossus_swim8_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-obelisk-colossus-safe-sprite.png",
+      "width": 1774,
+      "height": 887,
+      "cell": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 115,
+          "top": 114,
+          "width": 238,
+          "height": 284,
+          "margin": 45,
+          "opaque": 31988,
+          "transparent": 154476,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 116,
+          "top": 116,
+          "width": 233,
+          "height": 281,
+          "margin": 46,
+          "opaque": 29617,
+          "transparent": 157257,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 108,
+          "top": 114,
+          "width": 237,
+          "height": 284,
+          "margin": 45,
+          "opaque": 32422,
+          "transparent": 153460,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 127,
+          "top": 114,
+          "width": 226,
+          "height": 284,
+          "margin": 45,
+          "opaque": 29441,
+          "transparent": 156725,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 4,
+          "left": 109,
+          "top": 104,
+          "width": 243,
+          "height": 289,
+          "margin": 50,
+          "opaque": 33062,
+          "transparent": 152356,
+          "edgeAlpha": 0
+        },
+        {
+          "frame": 5,
+          "left": 91,
+          "top": 104,
+          "width": 259,
+          "height": 289,
+          "margin": 50,
+          "opaque": 33782,
+          "transparent": 152619,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 6,
+          "left": 116,
+          "top": 105,
+          "width": 232,
+          "height": 288,
+          "margin": 50,
+          "opaque": 32997,
+          "transparent": 153627,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 7,
+          "left": 125,
+          "top": 104,
+          "width": 239,
+          "height": 289,
+          "margin": 50,
+          "opaque": 33091,
+          "transparent": 152282,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "storage_path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v1_sprite.png",
+      "original": "assets/generated/pharaoh-20261030/pharaoh-gold-wing-horus-safe-sprite.png",
+      "width": 1774,
+      "height": 887,
+      "cell": 443,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 94,
+          "top": 118,
+          "width": 277,
+          "height": 239,
+          "margin": 72,
+          "opaque": 32428,
+          "transparent": 153243,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 1,
+          "left": 78,
+          "top": 143,
+          "width": 278,
+          "height": 215,
+          "margin": 78,
+          "opaque": 31488,
+          "transparent": 151847,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 2,
+          "left": 85,
+          "top": 140,
+          "width": 278,
+          "height": 221,
+          "margin": 80,
+          "opaque": 31006,
+          "transparent": 152356,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 3,
+          "left": 63,
+          "top": 148,
+          "width": 278,
+          "height": 215,
+          "margin": 63,
+          "opaque": 27377,
+          "transparent": 156774,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 4,
+          "left": 78,
+          "top": 126,
+          "width": 276,
+          "height": 206,
+          "margin": 78,
+          "opaque": 27029,
+          "transparent": 157438,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 5,
+          "left": 73,
+          "top": 51,
+          "width": 317,
+          "height": 290,
+          "margin": 51,
+          "opaque": 42971,
+          "transparent": 136722,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 6,
+          "left": 78,
+          "top": 127,
+          "width": 281,
+          "height": 212,
+          "margin": 78,
+          "opaque": 29824,
+          "transparent": 152201,
+          "edgeAlpha": 1
+        },
+        {
+          "frame": 7,
+          "left": 78,
+          "top": 105,
+          "width": 281,
+          "height": 234,
+          "margin": 78,
+          "opaque": 32275,
+          "transparent": 151217,
+          "edgeAlpha": 1
+        }
+      ],
+      "valid": true
+    }
+  ]
+}

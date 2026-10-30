@@ -1,0 +1,427 @@
+{
+  "created_at": "2026-10-30T01:17:23.902Z",
+  "status": "registered-frontend-local",
+  "assets": [
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "role": "thumbnail",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+      "source": "sources/pharaoh-obelisk-colossus-thumbnail.png",
+      "prompt": "Create a refined fantasy game creature thumbnail on a completely transparent square background. Use reference 1 for this Egyptian character's identity, and reference 2 ONLY for soft painterly shading, subtle coloured edges and fantasy material quality, NEVER copy its ray anatomy, eyes or purple colours. Unified warm SANDSTONE body + restrained polished GOLD ornaments. No blue or cyan. Majestic, sophisticated, readable at small game size. Full character facing RIGHT, three-quarter side view, entire silhouette and accessories within central 68% of square, at least 12% transparent margins on every side. Very clean alpha edges. No fog, broad aura, background, floor, text, border or isolated spark particles. Restrained gold etched patterns along stone edges; stronger light will be separate animation effects. A towering broad-shouldered obelisk colossus, same impressive muscular sandstone architecture as reference, gold-tipped obelisk shoulders, angular pharaonic face, thin golden inlays following carved cracks on the sandstone body. Stable dignified stance. Extend the NEAR arm toward the viewer's left and turn the hand PALM UP, fingers gently open to hold a hovering atom later. Palm located around normalized x .29 y .48 and EMPTY now. No atom or floating sphere in the thumbnail. Clear stable crown, face and chest for animation anchor. Other arm lowered. Calm ancient power.",
+      "tool": "built-in image_gen",
+      "references": [
+        "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-obelisk-colossus_v1_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "guide": "assets/storage-upload/new/20261030-101406/guides/pharaoh-obelisk-colossus.png",
+      "sha256": "0868067bc303f37e9ce46f955a34468f17a816518f86cf82a4254109ad5dc016",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png"
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "role": "thumbnail",
+      "version": 3,
+      "path": "fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+      "source": "sources/pharaoh-gold-wing-horus-thumbnail.png",
+      "prompt": "Create a refined fantasy game creature thumbnail on a completely transparent square background. Use reference 1 for this Egyptian character's identity, and reference 2 ONLY for soft painterly shading, subtle coloured edges and fantasy material quality, NEVER copy its ray anatomy, eyes or purple colours. Unified warm SANDSTONE body + restrained polished GOLD ornaments. No blue or cyan. Majestic, sophisticated, readable at small game size. Full character facing RIGHT, three-quarter side view, entire silhouette and accessories within central 68% of square, at least 12% transparent margins on every side. Very clean alpha edges. No fog, broad aura, background, floor, text, border or isolated spark particles. Restrained gold etched patterns along stone edges; stronger light will be separate animation effects. A majestic RIGHT-facing falcon-headed Horus with warm ivory-sandstone feathers and gold armour, same Egyptian identity as reference. BOTH WINGS clearly visible: near wing extends to viewer's left, far wing extends up behind the head on the right, both as broad articulated golden feather wings. Crown at normalized x .60 y .30, torso around x .57 y .53. Keep generous SPACE ABOVE HEAD for a separate golden hieroglyph halo later. Long sand-colour waist cloth trails left. Do not crop feathers or wing tips.",
+      "tool": "built-in image_gen",
+      "references": [
+        "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gold-wing-horus_v1_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "guide": "assets/storage-upload/new/20261030-101406/guides/pharaoh-gold-wing-horus.png",
+      "sha256": "f0976358c0ba16e8e6f0a991b371c1e75ad37c17f58d9c1fbabbc1131dd6219d",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png"
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "role": "thumbnail",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+      "source": "sources/pharaoh-gatekeeper-anubis-thumbnail.png",
+      "prompt": "Create a refined fantasy game creature thumbnail on a completely transparent square background. Use reference 1 for this Egyptian character's identity, and reference 2 ONLY for soft painterly shading, subtle coloured edges and fantasy material quality, NEVER copy its ray anatomy, eyes or purple colours. Unified warm SANDSTONE body + restrained polished GOLD ornaments. No blue or cyan. Majestic, sophisticated, readable at small game size. Full character facing RIGHT, three-quarter side view, entire silhouette and accessories within central 68% of square, at least 12% transparent margins on every side. Very clean alpha edges. No fog, broad aura, background, floor, text, border or isolated spark particles. Restrained gold etched patterns along stone edges; stronger light will be separate animation effects. Redesign the jackal-headed Anubis into a poised UNDERWATER FLOATING stance, not standing. Sand-brown jackal head and sandstone cream body with gold headdress and armour. Face RIGHT. Torso upright at x .53 y .49, knees gently bent, bare feet trailing diagonally BACK toward LEFT, as if weightless, no ground contact. One forward hand at right holds an elegant long GOLDEN STAFF tilted gently forward; staff top around x .75 y .25. Other hand at left holds a clearly readable SOUL BALANCE SCALE: two small suspended gold pans on a horizontal beam. Scale at x .30 y .56. Long ivory waistcloth and short cape flow left with water. Both staff and two-pan scale must be present, no weapon blade.",
+      "tool": "built-in image_gen",
+      "references": [
+        "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gatekeeper-anubis_v1_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "guide": "assets/storage-upload/new/20261030-101406/guides/pharaoh-gatekeeper-anubis.png",
+      "sha256": "4277aaee9b04ee58c66346b539118346b85608a89725c9224045fbc436c19190",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "role": "thumbnail",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png",
+      "source": "sources/pharaoh-solar-scarab-thumbnail.png",
+      "prompt": "Create a refined fantasy game creature thumbnail on a completely transparent square background. Use reference 1 for this Egyptian character's identity, and reference 2 ONLY for soft painterly shading, subtle coloured edges and fantasy material quality, NEVER copy its ray anatomy, eyes or purple colours. Unified warm SANDSTONE body + restrained polished GOLD ornaments. No blue or cyan. Majestic, sophisticated, readable at small game size. Full character facing RIGHT, three-quarter side view, entire silhouette and accessories within central 68% of square, at least 12% transparent margins on every side. Very clean alpha edges. No fog, broad aura, background, floor, text, border or isolated spark particles. Restrained gold etched patterns along stone edges; stronger light will be separate animation effects. A RIGHT-facing Egyptian scarab beetle, wide solid SANDSTONE cream carapace with restrained gold sun-line inlays, SIX articulated insect legs, noble natural small eye, no humanoid limbs. Wings CLOSED against the shell, no wide aura. Pushing a very LARGE SUN BALL with two front legs, beetle on left, sun on right. Sun diameter about 40% of square width, about 1.4 times original sun relative to beetle. Beetle shell at normalized x .36 y .50, sun center x .69 y .61. Sun warm amber orange with subtle carved Egyptian symbols and swirling interior. Entire insect and sun fit inside central 74%. Sandshell remains mostly matte cream, gold fittings only. Gold transformation will occur in special animation.",
+      "tool": "built-in image_gen",
+      "references": [
+        "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-solar-scarab_v1_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "guide": "assets/storage-upload/new/20261030-101406/guides/pharaoh-solar-scarab.png",
+      "sha256": "fc742fcb9969a544ae4342de9800e179599dbb15f66b198015cb1d57dd1b0c9c",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png"
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "source": "sources/pharaoh-obelisk-colossus-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 60% of EVERY cell with >=12% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same sandstone colossus with gold ornaments, PALM UP on viewer-left and EMPTY palm held at a constant position. Keep head, chest, shoulders and palm center absolutely registered. Basic frames1-4: subtly flex the open fingers and slowly move the lower free hand and waist plate while the torso stays steady. Action frame5: cup open fingers slightly in preparation; frame6: open fingers confidently and brighten the narrow engraved chest and arm lines; frame7: relax fingers, light fading; frame8: original neutral pose. Do not lift torso or tilt the head. Do not draw an atom; separate smooth three-ring atom is added over the palm later.",
+      "version": 2,
+      "role": "sprite-source",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-obelisk-colossus.png"
+      ],
+      "status": "rejected-insufficient-original-margins"
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "source": "sources/pharaoh-gold-wing-horus-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 60% of EVERY cell with >=12% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same falcon Horus with TWO visibly articulated gold feather wings and sand cloth. Keep crown, face, chest and shoulders on EXACTLY the same pixel anchors in every frame. Both wings flap TOGETHER through a small majestic beat, never one wing static: frame1 both in neutral raised glide, frame2 both lowered 10 degrees, frame3 both lowered 20 degrees, frame4 both midway back up. Feather tips trail the wing root. Action frame5 both begin rising, frame6 both open broadly in a majestic spread (still within central60%), frame7 both return halfway, frame8 both original neutral glide. Waistcloth waves gently but doesn't shift body. Head must NOT hop or turn in recovery. No halo symbols baked into image; reserve clear space above crown.",
+      "version": 3,
+      "role": "sprite-source",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-gold-wing-horus.png"
+      ],
+      "status": "rejected-insufficient-original-margins"
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "source": "sources/pharaoh-gatekeeper-anubis-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 60% of EVERY cell with >=12% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same FLOATING jackal Anubis with GOLD STAFF in forward right hand and TWO-PAN SOUL SCALE in left hand, bent legs trailing left, no standing poses. Head, chest and shoulders remain stationary. Frames1-4: ivory cape/waistcloth curl gently in connected water-flow poses, ankles flex slightly, scale pans oscillate by a few degrees. Frame5: forearm starts raising staff slightly while upper arm stays stable. Frame6: staff tilted upward modestly, both scale pans level and narrow gold inlays brighter. Frame7: forearm lowers halfway and cloth follows. Frame8: staff and scale recover exactly to neutral. Keep staff's top almost constant for a separately rendered small symbol arc. No glowing external symbols baked in.",
+      "version": 2,
+      "role": "sprite-source",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-gatekeeper-anubis.png"
+      ],
+      "status": "rejected-insufficient-original-margins"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "source": "sources/pharaoh-solar-scarab-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 60% of EVERY cell with >=12% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same six-legged scarab pushing LARGE SUN BALL on the RIGHT, maintain large sun diameter as in thumbnail. Rigid back shell and head stay fixed. Frames1-4: TWO front legs ALTERNATELY push the sun, other four legs cycle through a natural connected crawling gait; sun remains centered at same coordinates, internal etched sun pattern and swirl visibly rotate by quarter-turn steps. Do not rotate head or shell. Frame5: a slow push, gold begins spreading along shell engravings. Frame6: beetle shell transforms from sandstone into polished metallic GOLD, gold etched motifs brighten, strong front leg push. Frame7: gold begins receding toward original sandstone while sun rotates forward. Frame8: original cream sandstone shell, limbs and sun return to neutral compatible with frame1. No full-image opacity change, no broad aura, no extra sun or particles.",
+      "version": 2,
+      "role": "sprite-source",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-solar-scarab.png"
+      ],
+      "status": "rejected-insufficient-original-margins"
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "version": 2,
+      "source": "sources/pharaoh-obelisk-colossus-rejected-halo.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 40% of EVERY cell with >=25% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same sandstone colossus with gold ornaments, PALM UP on viewer-left and EMPTY palm held at a constant position. Keep head, chest, shoulders and palm center absolutely registered. Basic frames1-4: subtly flex the open fingers and slowly move the lower free hand and waist plate while the torso stays steady. Action frame5: cup open fingers slightly in preparation; frame6: open fingers confidently and brighten the narrow engraved chest and arm lines; frame7: relax fingers, light fading; frame8: original neutral pose. Do not lift torso or tilt the head. Do not draw an atom; separate smooth three-ring atom is added over the palm later. CRITICAL: The previous attempt was rejected because the figures were MUCH TOO BIG and some touched cell borders. Follow the TINY figures in reference 2 EXACTLY. Every full pose must stay inside the CENTRAL 40 percent of its own square cell. At least 25 percent clear empty transparent gutter on ALL FOUR sides, no coloured mist, NO GLOW OUTSIDE THE BODY. Do not enlarge the characters. The output is a full SHEET of 8 small characters, not 8 near-full-cell portraits. Hold rigid chest and head at identical coordinates, all poses same size.",
+      "role": "sprite-source-rejected",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-obelisk-colossus-compact.png"
+      ],
+      "status": "rejected-diffuse-halo"
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "version": 2,
+      "source": "sources/pharaoh-obelisk-colossus-compact-sheet.png",
+      "prompt": "REFERENCE 1 IS THE EXACT LAYOUT TO FOLLOW: eight TINY figures widely separated in a transparent 4-column by 2-row sheet. COPY ITS PLACEMENT AND SCALE, not its repeated still poses. Reference 2 is the character identity. Draw exactly 8 distinct connected poses of this SAME gold-trimmed SANDSTONE obelisk colossus, facing RIGHT, open upturned palm on viewer left. Each figure must fit inside the CENTER 40% WIDTH AND 40% HEIGHT of its square cell; HUGE 30% transparent gutters at TOP, BOTTOM, LEFT and RIGHT of every cell. Do not put the feet low in a cell: foot baseline at 70% cell height, crown at30%, chest and rigid face SAME coordinates in ALL cells and rows. No resizing, translation, tilting or recentering between poses. Four basic poses: slow finger flexion and waist-plate/free-hand small motion. Four action poses: palm fingers gently cup, open confidently, relax, return neutral. Fixed shoulder and upturned palm center. Keep same unlit gold and matte sandstone material in every pose. Do not draw any atom, floating object, symbol, light, glow, aura, gradient haze, particles, scenery, floor or background. NO GLOW AT ALL. Clean transparent alpha. Output a full 2:1 SPRITE SHEET, NOT eight large portraits. All eight figures must be as TINY as layout reference.",
+      "role": "sprite-source-current",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-obelisk-colossus-compact.png"
+      ]
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "version": 3,
+      "source": "sources/pharaoh-gold-wing-horus-compact-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 40% of EVERY cell with >=25% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same falcon Horus with TWO visibly articulated gold feather wings and sand cloth. Keep crown, face, chest and shoulders on EXACTLY the same pixel anchors in every frame. Both wings flap TOGETHER through a small majestic beat, never one wing static: frame1 both in neutral raised glide, frame2 both lowered 10 degrees, frame3 both lowered 20 degrees, frame4 both midway back up. Feather tips trail the wing root. Action frame5 both begin rising, frame6 both open broadly in a majestic spread (still within central40%), frame7 both return halfway, frame8 both original neutral glide. Waistcloth waves gently but doesn't shift body. Head must NOT hop or turn in recovery. No halo symbols baked into image; reserve clear space above crown. CRITICAL: The previous attempt was rejected because the figures were MUCH TOO BIG and some touched cell borders. Follow the TINY figures in reference 2 EXACTLY. Every full pose must stay inside the CENTRAL 40 percent of its own square cell. At least 25 percent clear empty transparent gutter on ALL FOUR sides, no coloured mist, NO GLOW OUTSIDE THE BODY. Do not enlarge the characters. The output is a full SHEET of 8 small characters, not 8 near-full-cell portraits. Hold rigid chest and head at identical coordinates, all poses same size.",
+      "role": "sprite-source-current",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-gold-wing-horus-compact.png"
+      ]
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "version": 2,
+      "source": "sources/pharaoh-gatekeeper-anubis-compact-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 40% of EVERY cell with >=25% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same FLOATING jackal Anubis with GOLD STAFF in forward right hand and TWO-PAN SOUL SCALE in left hand, bent legs trailing left, no standing poses. Head, chest and shoulders remain stationary. Frames1-4: ivory cape/waistcloth curl gently in connected water-flow poses, ankles flex slightly, scale pans oscillate by a few degrees. Frame5: forearm starts raising staff slightly while upper arm stays stable. Frame6: staff tilted upward modestly, both scale pans level and narrow gold inlays brighter. Frame7: forearm lowers halfway and cloth follows. Frame8: staff and scale recover exactly to neutral. Keep staff's top almost constant for a separately rendered small symbol arc. No glowing external symbols baked in. CRITICAL: The previous attempt was rejected because the figures were MUCH TOO BIG and some touched cell borders. Follow the TINY figures in reference 2 EXACTLY. Every full pose must stay inside the CENTRAL 40 percent of its own square cell. At least 25 percent clear empty transparent gutter on ALL FOUR sides, no coloured mist, NO GLOW OUTSIDE THE BODY. Do not enlarge the characters. The output is a full SHEET of 8 small characters, not 8 near-full-cell portraits. Hold rigid chest and head at identical coordinates, all poses same size.",
+      "role": "sprite-source-current",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-gatekeeper-anubis-compact.png"
+      ]
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "version": 2,
+      "source": "sources/pharaoh-solar-scarab-compact-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 40% of EVERY cell with >=25% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same six-legged scarab pushing LARGE SUN BALL on the RIGHT, maintain large sun diameter as in thumbnail. Rigid back shell and head stay fixed. Frames1-4: TWO front legs ALTERNATELY push the sun, other four legs cycle through a natural connected crawling gait; sun remains centered at same coordinates, internal etched sun pattern and swirl visibly rotate by quarter-turn steps. Do not rotate head or shell. Frame5: a slow push, gold begins spreading along shell engravings. Frame6: beetle shell transforms from sandstone into polished metallic GOLD, gold etched motifs brighten, strong front leg push. Frame7: gold begins receding toward original sandstone while sun rotates forward. Frame8: original cream sandstone shell, limbs and sun return to neutral compatible with frame1. No full-image opacity change, no broad aura, no extra sun or particles. CRITICAL: The previous attempt was rejected because the figures were MUCH TOO BIG and some touched cell borders. Follow the TINY figures in reference 2 EXACTLY. Every full pose must stay inside the CENTRAL 40 percent of its own square cell. At least 25 percent clear empty transparent gutter on ALL FOUR sides, no coloured mist, NO GLOW OUTSIDE THE BODY. Do not enlarge the characters. The output is a full SHEET of 8 small characters, not 8 near-full-cell portraits. Hold rigid chest and head at identical coordinates, all poses same size.",
+      "role": "sprite-source-current",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png",
+        "assets/storage-upload/new/20261030-101406/guides/pharaoh-solar-scarab-compact.png"
+      ]
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "role": "swim8",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-obelisk-colossus_swim8_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-obelisk-colossus_swim8_v2_sprite.png",
+      "sha256": "bde02dd3eae40139fbf211f521346c373267f7afaefb7d2ec97c2a8a83f84b1d",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-obelisk-colossus_swim8_v2_sprite.png"
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "role": "compat",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-obelisk-colossus_compat_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-obelisk-colossus_compat_v2_sprite.png",
+      "sha256": "3addd4c6e9e2f22d86eb0b21fee9ec0e0b883ab3ac48fac6252048fe334789f1",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-obelisk-colossus_compat_v2_sprite.png"
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "role": "swim8",
+      "version": 3,
+      "path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v3_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gold-wing-horus_swim8_v3_sprite.png",
+      "sha256": "d9ba1a383e5a9739fda9b43ed5d7a5a2b5511fb6f24d2f0805923b9a86df3c3b",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-gold-wing-horus_swim8_v3_sprite.png"
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "role": "compat",
+      "version": 3,
+      "path": "fish/mythic/pharaoh-gold-wing-horus_compat_v3_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gold-wing-horus_compat_v3_sprite.png",
+      "sha256": "efcf0bc4b39531bfae1ef7a76f72039736e20d7849ea091c488811e71ed88cc8",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-gold-wing-horus_compat_v3_sprite.png"
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "role": "swim8",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-gatekeeper-anubis_swim8_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gatekeeper-anubis_swim8_v2_sprite.png",
+      "sha256": "ed2d25a39c523f19b00749b1610b90376225f6d08b98b43e5e433471e298d04f",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-gatekeeper-anubis_swim8_v2_sprite.png"
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "role": "compat",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-gatekeeper-anubis_compat_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-gatekeeper-anubis_compat_v2_sprite.png",
+      "sha256": "27ae842bded353e6dfd60814fd61bdc432e00f697646a6980b7817872d66e01a",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-gatekeeper-anubis_compat_v2_sprite.png"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "role": "swim8",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-solar-scarab_swim8_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-solar-scarab_swim8_v2_sprite.png",
+      "sha256": "ab698e6b787150a1d69c7b898f99973b59e574eafc5dd985093a1ff33915cfa7",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-solar-scarab_swim8_v2_sprite.png"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "role": "compat",
+      "version": 2,
+      "path": "fish/mythic/pharaoh-solar-scarab_compat_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-solar-scarab_compat_v2_sprite.png",
+      "sha256": "b0226bb66fc87ec61a0ba615c1a8f3d84a5687fe71ea4da4c3e4a4b739803354",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-solar-scarab_compat_v2_sprite.png"
+    }
+  ],
+  "items": [
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "kind": "fish",
+      "name": "황금해의 문지기 아누비스",
+      "description": "금빛 지팡이를 든 아누비스가 잠든 왕릉의 문을 지켜요.",
+      "swim_y_min": 0.26,
+      "swim_y_max": 0.76,
+      "speed": 0.012,
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+      "sell_price": 3500,
+      "sprite_sheet_path": "fish/mythic/pharaoh-gatekeeper-anubis_swim8_v2_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 8,
+      "columns": 4,
+      "compat_sprite_sheet_path": "fish/mythic/pharaoh-gatekeeper-anubis_compat_v2_sprite.png"
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "kind": "fish",
+      "name": "황금 날개의 호루스",
+      "description": "황금 날개를 펼친 호루스가 눈부신 황금해를 굽어봐요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v3_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 8,
+      "columns": 4,
+      "compat_sprite_sheet_path": "fish/mythic/pharaoh-gold-wing-horus_compat_v3_sprite.png"
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "kind": "fish",
+      "name": "오벨리스크 거신",
+      "description": "모래 속에서 깨어난 거신이에요. 어깨 위 오벨리스크에 태양의 힘이 깃들었어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+      "sell_price": 3500,
+      "sprite_sheet_path": "fish/mythic/pharaoh-obelisk-colossus_swim8_v2_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 8,
+      "columns": 4,
+      "compat_sprite_sheet_path": "fish/mythic/pharaoh-obelisk-colossus_compat_v2_sprite.png"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "kind": "fish",
+      "name": "태양을 굴리는 스카라베",
+      "description": "뜨거운 태양을 굴리며 황금해의 새벽을 여는 신성한 스카라베예요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/pharaoh-solar-scarab_swim8_v2_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 8,
+      "columns": 4,
+      "compat_sprite_sheet_path": "fish/mythic/pharaoh-solar-scarab_compat_v2_sprite.png"
+    }
+  ],
+  "entries": [
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pharaoh-obelisk-colossus_swim8_v2_sprite.png",
+      "source": "sources/pharaoh-obelisk-colossus-compact-sheet.png",
+      "prompt": "REFERENCE 1 IS THE EXACT LAYOUT TO FOLLOW: eight TINY figures widely separated in a transparent 4-column by 2-row sheet. COPY ITS PLACEMENT AND SCALE, not its repeated still poses. Reference 2 is the character identity. Draw exactly 8 distinct connected poses of this SAME gold-trimmed SANDSTONE obelisk colossus, facing RIGHT, open upturned palm on viewer left. Each figure must fit inside the CENTER 40% WIDTH AND 40% HEIGHT of its square cell; HUGE 30% transparent gutters at TOP, BOTTOM, LEFT and RIGHT of every cell. Do not put the feet low in a cell: foot baseline at 70% cell height, crown at30%, chest and rigid face SAME coordinates in ALL cells and rows. No resizing, translation, tilting or recentering between poses. Four basic poses: slow finger flexion and waist-plate/free-hand small motion. Four action poses: palm fingers gently cup, open confidently, relax, return neutral. Fixed shoulder and upturned palm center. Keep same unlit gold and matte sandstone material in every pose. Do not draw any atom, floating object, symbol, light, glow, aura, gradient haze, particles, scenery, floor or background. NO GLOW AT ALL. Clean transparent alpha. Output a full 2:1 SPRITE SHEET, NOT eight large portraits. All eight figures must be as TINY as layout reference.",
+      "referenceRoles": {
+        "identity": "fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+        "layout": "guides/pharaoh-obelisk-colossus-compact.png",
+        "style": "assets/references/collectible-style/epic-mythic-starlight.png; retained through approved identity"
+      },
+      "shared_scale": 2.3
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v3_sprite.png",
+      "source": "sources/pharaoh-gold-wing-horus-compact-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 40% of EVERY cell with >=25% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same falcon Horus with TWO visibly articulated gold feather wings and sand cloth. Keep crown, face, chest and shoulders on EXACTLY the same pixel anchors in every frame. Both wings flap TOGETHER through a small majestic beat, never one wing static: frame1 both in neutral raised glide, frame2 both lowered 10 degrees, frame3 both lowered 20 degrees, frame4 both midway back up. Feather tips trail the wing root. Action frame5 both begin rising, frame6 both open broadly in a majestic spread (still within central40%), frame7 both return halfway, frame8 both original neutral glide. Waistcloth waves gently but doesn't shift body. Head must NOT hop or turn in recovery. No halo symbols baked into image; reserve clear space above crown. CRITICAL: The previous attempt was rejected because the figures were MUCH TOO BIG and some touched cell borders. Follow the TINY figures in reference 2 EXACTLY. Every full pose must stay inside the CENTRAL 40 percent of its own square cell. At least 25 percent clear empty transparent gutter on ALL FOUR sides, no coloured mist, NO GLOW OUTSIDE THE BODY. Do not enlarge the characters. The output is a full SHEET of 8 small characters, not 8 near-full-cell portraits. Hold rigid chest and head at identical coordinates, all poses same size.",
+      "referenceRoles": {
+        "identity": "fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+        "layout": "guides/pharaoh-gold-wing-horus-compact.png",
+        "style": "assets/references/collectible-style/epic-mythic-starlight.png; retained through approved identity"
+      },
+      "shared_scale": 2.005418
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pharaoh-gatekeeper-anubis_swim8_v2_sprite.png",
+      "source": "sources/pharaoh-gatekeeper-anubis-compact-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 40% of EVERY cell with >=25% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same FLOATING jackal Anubis with GOLD STAFF in forward right hand and TWO-PAN SOUL SCALE in left hand, bent legs trailing left, no standing poses. Head, chest and shoulders remain stationary. Frames1-4: ivory cape/waistcloth curl gently in connected water-flow poses, ankles flex slightly, scale pans oscillate by a few degrees. Frame5: forearm starts raising staff slightly while upper arm stays stable. Frame6: staff tilted upward modestly, both scale pans level and narrow gold inlays brighter. Frame7: forearm lowers halfway and cloth follows. Frame8: staff and scale recover exactly to neutral. Keep staff's top almost constant for a separately rendered small symbol arc. No glowing external symbols baked in. CRITICAL: The previous attempt was rejected because the figures were MUCH TOO BIG and some touched cell borders. Follow the TINY figures in reference 2 EXACTLY. Every full pose must stay inside the CENTRAL 40 percent of its own square cell. At least 25 percent clear empty transparent gutter on ALL FOUR sides, no coloured mist, NO GLOW OUTSIDE THE BODY. Do not enlarge the characters. The output is a full SHEET of 8 small characters, not 8 near-full-cell portraits. Hold rigid chest and head at identical coordinates, all poses same size.",
+      "referenceRoles": {
+        "identity": "fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+        "layout": "guides/pharaoh-gatekeeper-anubis-compact.png",
+        "style": "assets/references/collectible-style/epic-mythic-starlight.png; retained through approved identity"
+      },
+      "shared_scale": 2.097333
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pharaoh-solar-scarab_swim8_v2_sprite.png",
+      "source": "sources/pharaoh-solar-scarab-compact-sheet.png",
+      "prompt": "Create the final transparent PNG animation sprite sheet for the SAME approved character in reference 1. Reference 2 is ONLY a placement guide: 4 columns x 2 rows, exactly EIGHT equal SQUARE cells, row-major. Output aspect ratio 2:1. Keep the character at the guide's SMALL SCALE: entire moving silhouette inside the central 40% of EVERY cell with >=25% clear transparent padding on ALL sides, including wings, cloth, staff, sun and glow. Do NOT enlarge to fill cells. Source must be clean transparent, no grid lines, labels, text, background, fog or particles between cells. Keep identical character anatomy, scale, head/chest position and rigid torso in all 8 cells, always facing RIGHT. Animate ONLY moving appendages and specified small localized gold patterns. No whole-body translation/zoom/opacity, no recentering based on wings or accessories. Four connected basic poses in row 1, then anticipation/peak/return/neutral recovery in row 2; frame 8 must recover into frame 1 seamlessly. Actual distinct moving-part poses, not eight copied stills. Golden hieroglyphs and orbiting rings will be drawn in separate runtime layers: DO NOT bake floating symbols, orbit rings or external spheres into the sheet. Same six-legged scarab pushing LARGE SUN BALL on the RIGHT, maintain large sun diameter as in thumbnail. Rigid back shell and head stay fixed. Frames1-4: TWO front legs ALTERNATELY push the sun, other four legs cycle through a natural connected crawling gait; sun remains centered at same coordinates, internal etched sun pattern and swirl visibly rotate by quarter-turn steps. Do not rotate head or shell. Frame5: a slow push, gold begins spreading along shell engravings. Frame6: beetle shell transforms from sandstone into polished metallic GOLD, gold etched motifs brighten, strong front leg push. Frame7: gold begins receding toward original sandstone while sun rotates forward. Frame8: original cream sandstone shell, limbs and sun return to neutral compatible with frame1. No full-image opacity change, no broad aura, no extra sun or particles. CRITICAL: The previous attempt was rejected because the figures were MUCH TOO BIG and some touched cell borders. Follow the TINY figures in reference 2 EXACTLY. Every full pose must stay inside the CENTRAL 40 percent of its own square cell. At least 25 percent clear empty transparent gutter on ALL FOUR sides, no coloured mist, NO GLOW OUTSIDE THE BODY. Do not enlarge the characters. The output is a full SHEET of 8 small characters, not 8 near-full-cell portraits. Hold rigid chest and head at identical coordinates, all poses same size.",
+      "referenceRoles": {
+        "identity": "fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png",
+        "layout": "guides/pharaoh-solar-scarab-compact.png",
+        "style": "assets/references/collectible-style/epic-mythic-starlight.png; retained through approved identity"
+      },
+      "shared_scale": 2.07144
+    }
+  ],
+  "uploaded_project": "ewafafphiovbpjwogwzn",
+  "catalog_registered": true,
+  "registered_at": "2026-10-30T01:39:05.601Z",
+  "frontend_deployed": false
+}

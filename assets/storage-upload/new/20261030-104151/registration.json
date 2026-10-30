@@ -1,0 +1,315 @@
+[
+  {
+    "id": "pharaoh-solar-scarab",
+    "storage_path": "fish/mythic/pharaoh-solar-scarab_swim8_v3_sprite.png",
+    "source": "sources/pharaoh-solar-scarab-compact-sheet.png",
+    "rawAudit": {
+      "id": "pharaoh-solar-scarab",
+      "source": "sources/pharaoh-solar-scarab-compact-sheet.png",
+      "width": 1774,
+      "height": 887,
+      "cell": 444,
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 98,
+          "top": 166,
+          "right": 339,
+          "bottom": 361,
+          "minMargin": 0.18468468468468469
+        },
+        {
+          "frame": 1,
+          "left": 89,
+          "top": 166,
+          "right": 339,
+          "bottom": 361,
+          "minMargin": 0.18510158013544017
+        },
+        {
+          "frame": 2,
+          "left": 83,
+          "top": 166,
+          "right": 339,
+          "bottom": 361,
+          "minMargin": 0.18468468468468469
+        },
+        {
+          "frame": 3,
+          "left": 96,
+          "top": 164,
+          "right": 338,
+          "bottom": 361,
+          "minMargin": 0.18510158013544017
+        },
+        {
+          "frame": 4,
+          "left": 165,
+          "top": 166,
+          "right": 339,
+          "bottom": 361,
+          "minMargin": 0.18284424379232506
+        },
+        {
+          "frame": 5,
+          "left": 84,
+          "top": 142,
+          "right": 338,
+          "bottom": 361,
+          "minMargin": 0.18284424379232506
+        },
+        {
+          "frame": 6,
+          "left": 132,
+          "top": 166,
+          "right": 339,
+          "bottom": 361,
+          "minMargin": 0.18284424379232506
+        },
+        {
+          "frame": 7,
+          "left": 97,
+          "top": 166,
+          "right": 338,
+          "bottom": 361,
+          "minMargin": 0.18284424379232506
+        }
+      ],
+      "passed": true
+    },
+    "normalized_source": "sources/pharaoh-solar-scarab-normalized.png",
+    "cell": 572,
+    "sourceCell": 444,
+    "padding": 64,
+    "scale": 1.958599,
+    "probes": [
+      {
+        "file": "assets/storage-upload/new/20261030-104151/sources/pharaoh-solar-scarab-normalized.png",
+        "storage_path": "pharaoh-solar-scarab",
+        "patch": [
+          278,
+          247,
+          16,
+          18
+        ],
+        "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 14.6879580306832
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 8.406346808612328
+          },
+          {
+            "frame": 3,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 13.287943574701258
+          },
+          {
+            "frame": 4,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 20.243483176348658
+          },
+          {
+            "frame": 5,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 18.046814123273947
+          },
+          {
+            "frame": 6,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 19.143101455441677
+          },
+          {
+            "frame": 7,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 17.04141197853694
+          }
+        ]
+      },
+      {
+        "file": "assets/storage-upload/new/20261030-104151/sources/pharaoh-solar-scarab-normalized.png",
+        "storage_path": "pharaoh-solar-scarab",
+        "patch": [
+          266,
+          207,
+          18,
+          18
+        ],
+        "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 16.542243902606845
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 11.284822649125783
+          },
+          {
+            "frame": 3,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 13.290817632235171
+          },
+          {
+            "frame": 4,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 19.298100079196054
+          },
+          {
+            "frame": 5,
+            "dx": 0,
+            "dy": -1,
+            "rmse": 26.618837314954234
+          },
+          {
+            "frame": 6,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 23.251941376534084
+          },
+          {
+            "frame": 7,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 22.340639352235797
+          }
+        ]
+      },
+      {
+        "file": "assets/storage-upload/new/20261030-104151/sources/pharaoh-solar-scarab-normalized.png",
+        "storage_path": "pharaoh-solar-scarab",
+        "patch": [
+          245,
+          254,
+          18,
+          18
+        ],
+        "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 13.890694327098588
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 9.923317097736131
+          },
+          {
+            "frame": 3,
+            "dx": -1,
+            "dy": 0,
+            "rmse": 16.267085035603507
+          },
+          {
+            "frame": 4,
+            "dx": 0,
+            "dy": -1,
+            "rmse": 17.282377022723338
+          },
+          {
+            "frame": 5,
+            "dx": 0,
+            "dy": -1,
+            "rmse": 15.08425411554122
+          },
+          {
+            "frame": 6,
+            "dx": 0,
+            "dy": -1,
+            "rmse": 10.325265667822359
+          },
+          {
+            "frame": 7,
+            "dx": -1,
+            "dy": -1,
+            "rmse": 13.152946437965905
+          }
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": 0
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "frame": 5,
+        "dx": 0,
+        "dy": -1
+      },
+      {
+        "frame": 6,
+        "dx": 0,
+        "dy": 0
+      },
+      {
+        "frame": 7,
+        "dx": -1,
+        "dy": 0
+      }
+    ],
+    "nontransparentRgbaPreserved": true,
+    "method": "Three rigid anchors, median translation encoded in PNG; common padding, constant scale, zero runtime shifts"
+  }
+]

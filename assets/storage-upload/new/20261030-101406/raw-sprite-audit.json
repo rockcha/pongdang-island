@@ -1,0 +1,298 @@
+[
+  {
+    "id": "pharaoh-obelisk-colossus",
+    "source": "sources/pharaoh-obelisk-colossus-sheet.png",
+    "width": 1774,
+    "height": 887,
+    "cellWidth": 443.5,
+    "cellHeight": 443.5,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 77,
+        "top": 28,
+        "right": 439,
+        "bottom": 431,
+        "minMargin": 0.009009009009009009
+      },
+      {
+        "frame": 1,
+        "left": 79,
+        "top": 28,
+        "right": 435,
+        "bottom": 431,
+        "minMargin": 0.01580135440180587
+      },
+      {
+        "frame": 2,
+        "left": 70,
+        "top": 28,
+        "right": 437,
+        "bottom": 431,
+        "minMargin": 0.013513513513513514
+      },
+      {
+        "frame": 3,
+        "left": 78,
+        "top": 28,
+        "right": 424,
+        "bottom": 431,
+        "minMargin": 0.02708803611738149
+      },
+      {
+        "frame": 4,
+        "left": 99,
+        "top": 15,
+        "right": 439,
+        "bottom": 419,
+        "minMargin": 0.009029345372460496
+      },
+      {
+        "frame": 5,
+        "left": 66,
+        "top": 14,
+        "right": 441,
+        "bottom": 419,
+        "minMargin": 0.002257336343115124
+      },
+      {
+        "frame": 6,
+        "left": 73,
+        "top": 15,
+        "right": 433,
+        "bottom": 419,
+        "minMargin": 0.022573363431151242
+      },
+      {
+        "frame": 7,
+        "left": 69,
+        "top": 15,
+        "right": 423,
+        "bottom": 419,
+        "minMargin": 0.033860045146726865
+      }
+    ]
+  },
+  {
+    "id": "pharaoh-gold-wing-horus",
+    "source": "sources/pharaoh-gold-wing-horus-sheet.png",
+    "width": 1774,
+    "height": 887,
+    "cellWidth": 443.5,
+    "cellHeight": 443.5,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 57,
+        "top": 75,
+        "right": 409,
+        "bottom": 394,
+        "minMargin": 0.07657657657657657
+      },
+      {
+        "frame": 1,
+        "left": 48,
+        "top": 95,
+        "right": 418,
+        "bottom": 394,
+        "minMargin": 0.05417607223476298
+      },
+      {
+        "frame": 2,
+        "left": 33,
+        "top": 133,
+        "right": 412,
+        "bottom": 395,
+        "minMargin": 0.06981981981981981
+      },
+      {
+        "frame": 3,
+        "left": 46,
+        "top": 97,
+        "right": 412,
+        "bottom": 394,
+        "minMargin": 0.06772009029345373
+      },
+      {
+        "frame": 4,
+        "left": 53,
+        "top": 48,
+        "right": 424,
+        "bottom": 363,
+        "minMargin": 0.04288939051918736
+      },
+      {
+        "frame": 5,
+        "left": 40,
+        "top": 20,
+        "right": 425,
+        "bottom": 364,
+        "minMargin": 0.03837471783295711
+      },
+      {
+        "frame": 6,
+        "left": 39,
+        "top": 70,
+        "right": 417,
+        "bottom": 362,
+        "minMargin": 0.05869074492099323
+      },
+      {
+        "frame": 7,
+        "left": 47,
+        "top": 46,
+        "right": 409,
+        "bottom": 364,
+        "minMargin": 0.0744920993227991
+      }
+    ]
+  },
+  {
+    "id": "pharaoh-gatekeeper-anubis",
+    "source": "sources/pharaoh-gatekeeper-anubis-sheet.png",
+    "width": 1774,
+    "height": 887,
+    "cellWidth": 443.5,
+    "cellHeight": 443.5,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 53,
+        "top": 73,
+        "right": 400,
+        "bottom": 425,
+        "minMargin": 0.04054054054054054
+      },
+      {
+        "frame": 1,
+        "left": 34,
+        "top": 70,
+        "right": 393,
+        "bottom": 424,
+        "minMargin": 0.04288939051918736
+      },
+      {
+        "frame": 2,
+        "left": 59,
+        "top": 73,
+        "right": 393,
+        "bottom": 424,
+        "minMargin": 0.04279279279279279
+      },
+      {
+        "frame": 3,
+        "left": 44,
+        "top": 70,
+        "right": 393,
+        "bottom": 425,
+        "minMargin": 0.040632054176072234
+      },
+      {
+        "frame": 4,
+        "left": 58,
+        "top": 44,
+        "right": 401,
+        "bottom": 392,
+        "minMargin": 0.09480812641083522
+      },
+      {
+        "frame": 5,
+        "left": 40,
+        "top": 44,
+        "right": 412,
+        "bottom": 396,
+        "minMargin": 0.06772009029345373
+      },
+      {
+        "frame": 6,
+        "left": 61,
+        "top": 45,
+        "right": 401,
+        "bottom": 397,
+        "minMargin": 0.09480812641083522
+      },
+      {
+        "frame": 7,
+        "left": 54,
+        "top": 44,
+        "right": 400,
+        "bottom": 397,
+        "minMargin": 0.09480812641083522
+      }
+    ]
+  },
+  {
+    "id": "pharaoh-solar-scarab",
+    "source": "sources/pharaoh-solar-scarab-sheet.png",
+    "width": 1774,
+    "height": 887,
+    "cellWidth": 443.5,
+    "cellHeight": 443.5,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 28,
+        "top": 114,
+        "right": 421,
+        "bottom": 373,
+        "minMargin": 0.04954954954954955
+      },
+      {
+        "frame": 1,
+        "left": 32,
+        "top": 114,
+        "right": 425,
+        "bottom": 374,
+        "minMargin": 0.03837471783295711
+      },
+      {
+        "frame": 2,
+        "left": 23,
+        "top": 114,
+        "right": 421,
+        "bottom": 374,
+        "minMargin": 0.04954954954954955
+      },
+      {
+        "frame": 3,
+        "left": 20,
+        "top": 114,
+        "right": 421,
+        "bottom": 374,
+        "minMargin": 0.045146726862302484
+      },
+      {
+        "frame": 4,
+        "left": 31,
+        "top": 77,
+        "right": 421,
+        "bottom": 337,
+        "minMargin": 0.04966139954853273
+      },
+      {
+        "frame": 5,
+        "left": 29,
+        "top": 77,
+        "right": 421,
+        "bottom": 338,
+        "minMargin": 0.04740406320541761
+      },
+      {
+        "frame": 6,
+        "left": 28,
+        "top": 78,
+        "right": 421,
+        "bottom": 338,
+        "minMargin": 0.04966139954853273
+      },
+      {
+        "frame": 7,
+        "left": 28,
+        "top": 78,
+        "right": 421,
+        "bottom": 337,
+        "minMargin": 0.04740406320541761
+      }
+    ]
+  }
+]

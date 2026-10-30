@@ -1,0 +1,59 @@
+{
+  "status": "registered-frontend-local",
+  "tool": "technical integer-pixel alignment; no image regeneration",
+  "source_batch": "assets/storage-upload/new/20261030-044000",
+  "items": [
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "name": "황금 날개의 호루스",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "thumbnail_path": "fish/mythic/pharaoh-gold-wing-horus_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v2_sprite.png"
+    }
+  ],
+  "entries": [
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v2_sprite.png",
+      "source": "sources/horus-v1-aligned.source",
+      "prompt": "Production game animation sheet for EXACT same individual as reference thumbnail: Regal falcon-headed Egyptian god with an elegant humanoid armored torso, two large layered gold falcon wings, sandstone ivory robes and gold solar crown, dignified right-facing hovering pose, finely feathered wings. Reference 1 is identity, reference 2 is placement guide only. Preserve anatomy, colors, camera, exact head/rigid torso anchor and body scale in all cells. EXACTLY 8 full-body poses, 4 columns x 2 rows of equal SQUARE cells, wide 2:1 canvas. All face SCREEN RIGHT, never mirrored. Natural forward swimming: tail, fins or wings sweep gently through four physical poses; stable head and rigid body, no large bobbing. Frames 1-4 basic locomotion. Frames 5-8: slightly gather feathered wings, extend them majestically in one coordinated sweep, retract wings, settle neutral. Entire figure including longest tips stays within central 40 percent of EACH cell, at least 25 percent completely transparent margin on all four sides of EVERY cell. Head/torso anchor identical in each cell, no per-frame recenter/scale, neutral final frame connects to first. Draw real physical changes, not identical copies or light-only animation. Warm sand + gold + amber only, absolutely no blue/cyan/green/purple. Clean true alpha transparency, no scenery, ground, cell borders, lettering, numbers, particles, checkerboard, diffuse glow or shadows. Never overlap cell boundaries. CRITICAL: Previous sheet was rejected because the characters were MUCH TOO BIG and touched the cell edges. Follow the SMALL figures in layout reference exactly; leave very wide empty transparent gutters. Do NOT enlarge to fill cells. Keep all tips at least 20 percent of cell width away from all cell borders. The image is the whole multi-pose SHEET, not one enlarged character.",
+      "referenceRoles": {
+        "source": "existing same-character eight poses, no repaint",
+        "anchors": "independent face, crown and chest translations"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "id": "pharaoh-gold-wing-horus-swim8-v2",
+      "path": "fish/mythic/pharaoh-gold-wing-horus_swim8_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-094918/fish/mythic/pharaoh-gold-wing-horus_swim8_v2_sprite.png",
+      "sha256": "c24459fe1405d4ad4005833947885a327fb32b2324b95a259a1787db4e926484",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn"
+    },
+    {
+      "id": "pharaoh-gold-wing-horus-compat-v2",
+      "path": "fish/mythic/pharaoh-gold-wing-horus_compat_v2_sprite.png",
+      "target": "assets/storage-upload/new/20261030-094918/fish/mythic/pharaoh-gold-wing-horus_compat_v2_sprite.png",
+      "sha256": "db1eebecbdf976a6e4ab942e134257564f101d139fef82a6a8850dc4cd0b7725",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn"
+    }
+  ],
+  "source_sha256": "cf1ea8dcdc7b3843b1371cb41f82749e6ccf730b92d60a8e3309b2ba1a1c7fd1",
+  "nontransparent_rgba_preserved": true,
+  "shared_cell": 624,
+  "shared_scale": 1.6535016406779661,
+  "uploaded": true,
+  "catalog_registered": true,
+  "registered_project": "ewafafphiovbpjwogwzn",
+  "registered_at": "2026-10-30T00:55:24.503Z",
+  "frontend_deployed": false
+}

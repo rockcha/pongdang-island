@@ -6,6 +6,7 @@ function CloudferryFloat(){
 }
 
 const materials:Record<string,{width:number;colors:string[];band:string;dash:string}>={
+ pharaoh:{width:5.2,colors:['#8b612e','#f7e5ba','#bc883c'],band:'#e6b955',dash:'1 2 1 21'},
  firefly:{width:5.2,colors:['#66492e','#caa46a','#6d8446'],band:'#d6c77c',dash:'1 2 1 21'},
  mechsanctum:{width:5.2,colors:['#425653','#d6b77a','#806846'],band:'#7bd5c5',dash:'1 2 1 21'},
  plunder:{width:5.4,colors:['#241f23','#785144','#34272a'],band:'#d6ab63',dash:'1.5 2 1.5 20'},

@@ -5,11 +5,11 @@
     640
   ],
   "summary": {
-    "count": 793,
-    "sourceBytes": 911352157,
-    "smallBytes": 21489708,
-    "largeBytes": 58121950,
-    "smallReductionPercent": 97.64
+    "count": 857,
+    "sourceBytes": 1016018079,
+    "smallBytes": 23079826,
+    "largeBytes": 62484264,
+    "smallReductionPercent": 97.73
   },
   "items": [
     {
@@ -188,6 +188,46 @@
       "large": {
         "url": "/game-art/thumbnails/d39ef073b0fe81c62edbc154-640.webp",
         "bytes": 70652,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/pharaoh-sand-obelisk_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/epic/pharaoh-sand-obelisk_v1_thumbnail.png",
+      "sourceHash": "98d7fe5d51053662307f4374e9816b36ab6d9b55eb881c88185463b61bae3b55",
+      "sourceBytes": 1034898,
+      "sourceWidth": 1297,
+      "sourceHeight": 1297,
+      "small": {
+        "url": "/game-art/thumbnails/e05bc0520c2cfeb918bfd0fb-320.webp",
+        "bytes": 16304,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/910065552ec469008baf891a-640.webp",
+        "bytes": 48300,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/pharaoh-sunken-pyramid_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/epic/pharaoh-sunken-pyramid_v1_thumbnail.png",
+      "sourceHash": "3925f6a352d2ec6657491a80a0be9a782c384e26f9df2c4434f862b6326f4a23",
+      "sourceBytes": 1747469,
+      "sourceWidth": 1368,
+      "sourceHeight": 1368,
+      "small": {
+        "url": "/game-art/thumbnails/61d7503565e82bea27af1f6d-320.webp",
+        "bytes": 19460,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/004a583cceebb09094aafb62-640.webp",
+        "bytes": 57722,
         "width": 640,
         "height": 640
       }
@@ -1368,6 +1408,126 @@
       "large": {
         "url": "/game-art/thumbnails/abf18b1e8302ff6fe0b3540c-640.webp",
         "bytes": 53462,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/pharaoh-baby-croc-stone_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/normal/pharaoh-baby-croc-stone_v1_thumbnail.png",
+      "sourceHash": "446b2fa3256126a5bd08ef5f6e5ea61c296e16fe6a8f77373fe098c391e9c484",
+      "sourceBytes": 1707326,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5356213016135ce75cdd972b-320.webp",
+        "bytes": 25556,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/482fedb1cbac799e5bae25b2-640.webp",
+        "bytes": 69188,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/pharaoh-lotus-water-jar_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/normal/pharaoh-lotus-water-jar_v1_thumbnail.png",
+      "sourceHash": "3c0edfcd4d5dafc2bd14b2bce25aae7ea8ed66864aae526dc1666f846ce38d76",
+      "sourceBytes": 1466869,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/dcba4f25f6da610fb88ab24a-320.webp",
+        "bytes": 21776,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e3dfe0b3e58d98ccf98ec715-640.webp",
+        "bytes": 57072,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/pharaoh-papyrus-column_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/normal/pharaoh-papyrus-column_v1_thumbnail.png",
+      "sourceHash": "aa56feba2743f6bf6fc39a11dd738d1fb2a152ba3b997663cab943ac8382e9b7",
+      "sourceBytes": 1172502,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9c9e8d86cfe7c1ada0d2f80c-320.webp",
+        "bytes": 18184,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f9092f2e086a2a58f38ad7ef-640.webp",
+        "bytes": 47448,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/pharaoh-reed-boat-model_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/normal/pharaoh-reed-boat-model_v1_thumbnail.png",
+      "sourceHash": "c0ddbef183ea4bcb4bff2de8a44ea9a9baee1d8218cd98c81fc35920c351c3f8",
+      "sourceBytes": 1568987,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d5bd59b12369c3a9db250630-320.webp",
+        "bytes": 30126,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2baa7ed451e362310d4c34af-640.webp",
+        "bytes": 82170,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/pharaoh-sand-egg-box_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/normal/pharaoh-sand-egg-box_v1_thumbnail.png",
+      "sourceHash": "5f30e8820fea01f94fc05e2e4048b4eab971727bfa1d64865fb660937da0f510",
+      "sourceBytes": 1705261,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/39cca492fc86946c8bd86684-320.webp",
+        "bytes": 25372,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/dfe64abfd1c21f374ab242d7-640.webp",
+        "bytes": 69384,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/pharaoh-three-pot-shelf_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/normal/pharaoh-three-pot-shelf_v1_thumbnail.png",
+      "sourceHash": "d38928f8d84e6c96fba75157c6bf3dc7f628d911b1a3469b797b7eb3cedf1e96",
+      "sourceBytes": 1615703,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9f3f3e7e68ef6e19b4f7c984-320.webp",
+        "bytes": 23876,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3bf50754596bd3c47d0bf7b5-640.webp",
+        "bytes": 64300,
         "width": 640,
         "height": 640
       }
@@ -2708,6 +2868,146 @@
       "large": {
         "url": "/game-art/thumbnails/f2927770373f5ca33ee22c77-640.webp",
         "bytes": 47246,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/pharaoh-crescent-incense_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/rare/pharaoh-crescent-incense_v1_thumbnail.png",
+      "sourceHash": "9fc024c9358b4d1b1e5082c4ab1f1dd5a92a1f5e30fac908f0bcd97be94da792",
+      "sourceBytes": 1272417,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b703f0f97003220d9f7e7698-320.webp",
+        "bytes": 24858,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/71bb6747de9c4d0982b5aeec-640.webp",
+        "bytes": 66588,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/pharaoh-four-pillar-altar_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/rare/pharaoh-four-pillar-altar_v1_thumbnail.png",
+      "sourceHash": "40e08cd5205120f4c8b4fe44de6e944d14da67e79ef1d255037aa507a15aef8e",
+      "sourceBytes": 2062992,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f40cac63fe81e4d803099784-320.webp",
+        "bytes": 34954,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/011cfcd3c69733e441741c86-640.webp",
+        "bytes": 98964,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/pharaoh-horus-eye-tablet_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/rare/pharaoh-horus-eye-tablet_v1_thumbnail.png",
+      "sourceHash": "b0250e3831720796f97def3aa26dcedca47960e94eec0d4091129ec20ecf651a",
+      "sourceBytes": 1425053,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/565b3eeabf8dd6f3da9ca44d-320.webp",
+        "bytes": 21252,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b00776c589f3b9a3a2e4be15-640.webp",
+        "bytes": 58786,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/pharaoh-little-sphinx_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/rare/pharaoh-little-sphinx_v1_thumbnail.png",
+      "sourceHash": "9de725475c2c885e4c16aa8a4d2e32ac4c5b72c5f06d89128ad65743cc98d019",
+      "sourceBytes": 1872758,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7f08bd08cb86615f8c28801f-320.webp",
+        "bytes": 25992,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/eab7473c8d85fb4a4e254702-640.webp",
+        "bytes": 68192,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/pharaoh-royal-lotus-lamp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/rare/pharaoh-royal-lotus-lamp_v1_thumbnail.png",
+      "sourceHash": "0be3fb37958d2f4b349ed68a6f86b9de2281fb23e2523a352987c7d8ae2e32f6",
+      "sourceBytes": 1230482,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e18a2196ac106f748cb175e3-320.webp",
+        "bytes": 24774,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b2a2d8306920df01c65f8e69-640.webp",
+        "bytes": 69092,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/pharaoh-sleeping-cat-guardian_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/rare/pharaoh-sleeping-cat-guardian_v1_thumbnail.png",
+      "sourceHash": "0b4b7c47cb3c18fa120003bfe926597a2e38deafe32fd7ba1f24b6590ce51750",
+      "sourceBytes": 1651010,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7f3dd03612aa09845659ddda-320.webp",
+        "bytes": 23414,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/62ffbf9ce3ae24cf22edde73-640.webp",
+        "bytes": 64238,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/pharaoh-sun-holding-hands_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/decorations/rare/pharaoh-sun-holding-hands_v1_thumbnail.png",
+      "sourceHash": "770d7d62e17de3ba54dae93e74fad777170281620716b3bf14256e8fa3a1c892",
+      "sourceBytes": 1579354,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8d58c0deaae7164712c1c42b-320.webp",
+        "bytes": 23260,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b38a331c6f803e802e24ce77-640.webp",
+        "bytes": 63678,
         "width": 640,
         "height": 640
       }
@@ -4773,6 +5073,146 @@
       }
     },
     {
+      "key": "fish/epic/pharaoh-cursed-gold-octopus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-cursed-gold-octopus_v1_thumbnail.png",
+      "sourceHash": "db41352143236220286a8a83168e1de1f39c797a2e81b46d27d2c12c736e29f4",
+      "sourceBytes": 2169367,
+      "sourceWidth": 1368,
+      "sourceHeight": 1368,
+      "small": {
+        "url": "/game-art/thumbnails/6fefed10f8c8607f65d960f8-320.webp",
+        "bytes": 36422,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/053bef25f86798425395a1fb-640.webp",
+        "bytes": 100472,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/pharaoh-gold-nile-crocodile_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-gold-nile-crocodile_v1_thumbnail.png",
+      "sourceHash": "f5e2ceb324ef142cd6e642e2259a5e4be4e367147e6536d4daba843675dc5805",
+      "sourceBytes": 2998253,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/3805f96a29a5187cb768baae-320.webp",
+        "bytes": 25646,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/618af6a34f0c82123473bd5f-640.webp",
+        "bytes": 74796,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/pharaoh-moon-bastet_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-moon-bastet_v1_thumbnail.png",
+      "sourceHash": "06dbf2f1111ef9893e54c88bd02e5042bd9a081ba2d07b8608d939ff05f6717a",
+      "sourceBytes": 1160841,
+      "sourceWidth": 1368,
+      "sourceHeight": 1368,
+      "small": {
+        "url": "/game-art/thumbnails/4af684c5e42a2ac429cc680c-320.webp",
+        "bytes": 23644,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e520b59ebe9524942d2d5451-640.webp",
+        "bytes": 60292,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/pharaoh-sand-spirit_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-spirit_v1_thumbnail.png",
+      "sourceHash": "45e0b483f6cd6a5fbd3215411d6c0de39f5194c7625a9a67cd756eddedf81418",
+      "sourceBytes": 2846839,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/68b5f02c3d99e384c606ab16-320.webp",
+        "bytes": 20336,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2281ada5fb4e25ca30a61ab3-640.webp",
+        "bytes": 55782,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/pharaoh-sand-whale_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sand-whale_v1_thumbnail.png",
+      "sourceHash": "2773a5ed276671ea58c1df434410151a12934e4a168c824450d09e7c62f2fcbe",
+      "sourceBytes": 2825743,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/85800b3225569e27d11d5f61-320.webp",
+        "bytes": 20574,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/efa20d7a127e498df6b9178b-640.webp",
+        "bytes": 54588,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/pharaoh-sleepless-sphinx_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-sleepless-sphinx_v1_thumbnail.png",
+      "sourceHash": "051dad041842d0fb93c6c22ed292238878e37d2196e840dae4e8c4d58729c6df",
+      "sourceBytes": 3226632,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/f6652bdb8d7a8e896f5a903c-320.webp",
+        "bytes": 25228,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/81574cabd134cbaa8e17ec59-640.webp",
+        "bytes": 66220,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/pharaoh-tomb-serpent-shark_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/epic/pharaoh-tomb-serpent-shark_v1_thumbnail.png",
+      "sourceHash": "ad40072021076be5e7ee899d92b2ccc16c0c9287ab5b74676e55f9db14ae884d",
+      "sourceBytes": 2721169,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/cf2f5982e87533ce833c6ed7-320.webp",
+        "bytes": 21578,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/574fa6faace0a4fd5a817d0c-640.webp",
+        "bytes": 55942,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/epic/plunder-anchor-whisker-sealion_v2_thumbnail.png",
       "source": "assets/storage-upload/new/20261027-090400/fish/epic/plunder-anchor-whisker-sealion_v2_thumbnail.png",
       "sourceHash": "c540bb58fec7bfa2dc5cef508a0ba33734dec679026790ebe81a2ff0224b91dc",
@@ -6090,6 +6530,186 @@
         "bytes": 72630,
         "width": 512,
         "height": 512
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-gatekeeper-anubis_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gatekeeper-anubis_v1_thumbnail.png",
+      "sourceHash": "a05d59143a4ae9047c4c3dd9c5a669696e1ac61df3931558ebf2fbd96fb88452",
+      "sourceBytes": 1401863,
+      "sourceWidth": 1368,
+      "sourceHeight": 1368,
+      "small": {
+        "url": "/game-art/thumbnails/dbbdb14880142f1ff4c17a0c-320.webp",
+        "bytes": 28754,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/aa9c502be1e175a56168fc11-640.webp",
+        "bytes": 81140,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-101406/sources/pharaoh-gatekeeper-anubis-thumbnail.png",
+      "sourceHash": "a11104d2e8438a9a03e9bcc905b6a2a13531ca8db58542b08287fecf6e520141",
+      "sourceBytes": 1305225,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d0e8b25df846fd02a0388b83-320.webp",
+        "bytes": 39456,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d36ad68ff7649e12ddf374b4-640.webp",
+        "bytes": 115164,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-gold-wing-horus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-gold-wing-horus_v1_thumbnail.png",
+      "sourceHash": "08f92a6feca6ca73d444d95219c7236e7080d867de51cc18993101bfdeb6a5dc",
+      "sourceBytes": 2218363,
+      "sourceWidth": 1368,
+      "sourceHeight": 1368,
+      "small": {
+        "url": "/game-art/thumbnails/c1e8b58e336e178539000c46-320.webp",
+        "bytes": 36538,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/63f9cd4ea74a235ea9c7d5db-640.webp",
+        "bytes": 100028,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-101406/sources/pharaoh-gold-wing-horus-thumbnail.png",
+      "sourceHash": "58924bf6e594d7ee72bda70ffd15a97733d2c8b1544c2c78c96d2120cc58eef4",
+      "sourceBytes": 1592121,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/216cb082c6b577251447a1ba-320.webp",
+        "bytes": 38998,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/88ea35af835982152fe65b12-640.webp",
+        "bytes": 109328,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-obelisk-colossus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-obelisk-colossus_v1_thumbnail.png",
+      "sourceHash": "80f013d7880e47b6e5ed778dee3a741f7e6f5463d8e4ae64bc90d4629ed1a4df",
+      "sourceBytes": 1838886,
+      "sourceWidth": 1374,
+      "sourceHeight": 1374,
+      "small": {
+        "url": "/game-art/thumbnails/278cff43ea0eaf80714d0792-320.webp",
+        "bytes": 31042,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1cab82b79b8f2a1c0cb056f1-640.webp",
+        "bytes": 87164,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-101406/sources/pharaoh-obelisk-colossus-thumbnail.png",
+      "sourceHash": "11582959780dfd901ad9c73d6223ef065faccb1d3c19d860fa29aeb8634fb529",
+      "sourceBytes": 1338906,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/157aeb637f5f2a9093f81a3a-320.webp",
+        "bytes": 33138,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7e0307dff52f3c0a75a204e2-640.webp",
+        "bytes": 95288,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-solar-scarab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/mythic/pharaoh-solar-scarab_v1_thumbnail.png",
+      "sourceHash": "4a9e5e0c36c8a68471c992837877fed428089397b1eea2aa21ae08834621c376",
+      "sourceBytes": 3204529,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/0ca1c8a176b2c04f637a5ad9-320.webp",
+        "bytes": 25792,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/882381c4990ac2ee80dd1a4f-640.webp",
+        "bytes": 74880,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-101406/sources/pharaoh-solar-scarab-thumbnail.png",
+      "sourceHash": "383e838cb1fcfafc031f5f099591a5a4aab7456e82eb7ff6cbbb0192e6c25f4c",
+      "sourceBytes": 1265763,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2cecdb87729ef69479d8d6b3-320.webp",
+        "bytes": 29760,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/554742fb9fc63aae19252349-640.webp",
+        "bytes": 88950,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-104151/sources/golden-mask-thumbnail.png",
+      "sourceHash": "bc66d61a57da46912b7481046e8675763aded7098983aa6dcc2a0c07d31bdee5",
+      "sourceBytes": 1776161,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/06a022a3505bb1bf53691e6e-320.webp",
+        "bytes": 37010,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a8434850aa91c55a005b0f44-640.webp",
+        "bytes": 111836,
+        "width": 640,
+        "height": 640
       }
     },
     {
@@ -8788,6 +9408,266 @@
       "large": {
         "url": "/game-art/thumbnails/f5f3d94d70876b25f97cc389-640.webp",
         "bytes": 63496,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-brick-hermit_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-brick-hermit_v1_thumbnail.png",
+      "sourceHash": "125150d6694050ea56ebb398b9c842bbb1accb20cff46fa6d23a74874ced6d0f",
+      "sourceBytes": 1561365,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/15241ea560a3ede2f1c2a67b-320.webp",
+        "bytes": 26746,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9a8d213b5d836c48f3c87a91-640.webp",
+        "bytes": 73788,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-coin-clam_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-coin-clam_v1_thumbnail.png",
+      "sourceHash": "a9334fd14fda16cdaf7a17f5b257e6615d2894426a25169b8ff948400732ae10",
+      "sourceBytes": 1062482,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e916959159112b7cde745fb1-320.webp",
+        "bytes": 17152,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3fd90e6826c9f0df514c3abb-640.webp",
+        "bytes": 43448,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-glyph-starfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-glyph-starfish_v1_thumbnail.png",
+      "sourceHash": "d4fd2e8986afa63512319f01fce6564e37221d5f67a5833a280bd7237a610c5c",
+      "sourceBytes": 1359080,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/cea2d3c81e3ea33ecd4a9cd6-320.webp",
+        "bytes": 23276,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a4a015711fac464a3ca17e84-640.webp",
+        "bytes": 61862,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-gold-medaka_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-gold-medaka_v1_thumbnail.png",
+      "sourceHash": "55d5d0dc5d5159019dec8db42f19f9e5c46b1fc51d80a1e47a582bd06ade7943",
+      "sourceBytes": 2243680,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/ad6897495eef9d160d753e19-320.webp",
+        "bytes": 17328,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/44789fa20a4282626231ee8f-640.webp",
+        "bytes": 43474,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-nile-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-nile-puffer_v1_thumbnail.png",
+      "sourceHash": "ea151cfc6a6f0889b564ec6133c6965f2df0644b88359c060ac5b5a7ebba569c",
+      "sourceBytes": 1127915,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8538706f681a5757d0eaa002-320.webp",
+        "bytes": 20324,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0fcd6338e1c6996801ceed62-640.webp",
+        "bytes": 50642,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-oasis-carp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oasis-carp_v1_thumbnail.png",
+      "sourceHash": "c70f6fcb0bba6df37c6ff67defa8eae311004fda3075be878808b7919f1a16bb",
+      "sourceBytes": 2523291,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/b8a081fe94a41596ff734e86-320.webp",
+        "bytes": 20194,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cb8c3bd0a0cfae8fc2488b75-640.webp",
+        "bytes": 50724,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-oil-bottle-eel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-oil-bottle-eel_v1_thumbnail.png",
+      "sourceHash": "ce6aaf628ec122cdb4901831791a16caac886c23d870ced895ea2b18eaa8d39f",
+      "sourceBytes": 1241164,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9bd27a75101c1cd8e9d660a4-320.webp",
+        "bytes": 23972,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4bad61146cfdcf9a94713f9c-640.webp",
+        "bytes": 64936,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-papyrus-billfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-billfish_v1_thumbnail.png",
+      "sourceHash": "c719f12bfffb3d3a0b0474c23700902ff2d0da33a48d8ec34ceaae5a697b9f64",
+      "sourceBytes": 1036064,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/da4ba752a75e5e8308a03ec5-320.webp",
+        "bytes": 22416,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/be6ed2c557df8662631adf40-640.webp",
+        "bytes": 60714,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-papyrus-seahorse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-papyrus-seahorse_v1_thumbnail.png",
+      "sourceHash": "470804087bbbc7d46d4d00edb9150aa1496f023af9ac48bdcf7f2c8618573861",
+      "sourceBytes": 1077125,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b882131fd6f7b571c8ae4209-320.webp",
+        "bytes": 21896,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5fd5df87803210739952ca62-640.webp",
+        "bytes": 57070,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-sand-ray_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sand-ray_v1_thumbnail.png",
+      "sourceHash": "b4db31cc723f00266d8724ad6bb9c948a54d65a5b31b5bde3246cd02f4f78c0a",
+      "sourceBytes": 872926,
+      "sourceWidth": 1485,
+      "sourceHeight": 1485,
+      "small": {
+        "url": "/game-art/thumbnails/52fd10166f8dbae65f546924-320.webp",
+        "bytes": 14326,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5b070d6d4aed56a2e7988a7a-640.webp",
+        "bytes": 34662,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-sarcophagus-crab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-sarcophagus-crab_v1_thumbnail.png",
+      "sourceHash": "439181543dee4c44a2d3c4346684493bf10fe7da81f2102ba58056c2f485618d",
+      "sourceBytes": 1497532,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2789790303f9efb6139e1c6e-320.webp",
+        "bytes": 27044,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6d6fc99ec418d35f55b18125-640.webp",
+        "bytes": 72376,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-scorpion-crab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-scorpion-crab_v1_thumbnail.png",
+      "sourceHash": "7f41f34b2e16860107159be316e2f5f885cfccae0eecc92e0a9a0b89137aaa20",
+      "sourceBytes": 1441614,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/67f4249d21fd279313bb5738-320.webp",
+        "bytes": 28996,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/458156c5f84e0a121367eb36-640.webp",
+        "bytes": 76218,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/pharaoh-tomb-shrimp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/normal/pharaoh-tomb-shrimp_v1_thumbnail.png",
+      "sourceHash": "5ec4f8e29d624dee325fdeef7c28be5cb43ff873c23f51a7e3a6db45994c59ac",
+      "sourceBytes": 1338403,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/26ce752850ef6b3a87ccd6ff-320.webp",
+        "bytes": 29190,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/c8dd54927f7f835f81660bb1-640.webp",
+        "bytes": 77402,
         "width": 640,
         "height": 640
       }
@@ -12093,6 +12973,126 @@
       }
     },
     {
+      "key": "fish/rare/pharaoh-glyph-cuttlefish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-glyph-cuttlefish_v1_thumbnail.png",
+      "sourceHash": "353d69e11a6332e1eb0d41361833cb2ec4ece747c47e8f2ed70b46872d997f07",
+      "sourceBytes": 2344802,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/57dcd697b4eecc083150fcdc-320.webp",
+        "bytes": 18646,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/c7683d50b4b217447e3db8ac-640.webp",
+        "bytes": 49344,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/pharaoh-gold-catfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-gold-catfish_v1_thumbnail.png",
+      "sourceHash": "879b1026009a825aa1d95ba4f49e01aa4e03337079686350dde0721d251a3b8a",
+      "sourceBytes": 2171466,
+      "sourceWidth": 1536,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/d44cad565f497a030bd4ea87-320.webp",
+        "bytes": 19716,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/77db8dcf188402ff996a4962-640.webp",
+        "bytes": 50778,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/pharaoh-mummy-eel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-mummy-eel_v1_thumbnail.png",
+      "sourceHash": "36cd5bfd8cca288c3afcb2d78edb2dbca1101bc49fe9e6f24340a4d18e4843fc",
+      "sourceBytes": 1793868,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/899321eb8d3c9985f6d90126-320.webp",
+        "bytes": 29646,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cff30153b0aeaf3afd2ba726-640.webp",
+        "bytes": 82144,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/pharaoh-pyramid-conch_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-pyramid-conch_v1_thumbnail.png",
+      "sourceHash": "7ad8a03e08eb1dfdc18a79692cbdf6d9bdc04a7ee03f8e40cbc5d2fa445e4184",
+      "sourceBytes": 1348775,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e86d4a5ac6b7939896cbde0a-320.webp",
+        "bytes": 21186,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9c559e5b6fcdd313ffa2f5de-640.webp",
+        "bytes": 54566,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/pharaoh-royal-cobra_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-royal-cobra_v1_thumbnail.png",
+      "sourceHash": "94d3d553642141e79dfff4cd28c9ee3b1712de26367a7e37b9a3536b8df900e0",
+      "sourceBytes": 1436817,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d3f7dbc73fe2f961a0daf16d-320.webp",
+        "bytes": 27110,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1067f431ee3c27b22d631266-640.webp",
+        "bytes": 70968,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/pharaoh-sun-disc-jelly_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/fish/rare/pharaoh-sun-disc-jelly_v1_thumbnail.png",
+      "sourceHash": "e95138aaad699d3032de300762bcb6f03c7e2955ec96ac4a0608eb6667c4211c",
+      "sourceBytes": 1370469,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/05b03e8460dd874060f43b6f-320.webp",
+        "bytes": 24044,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3478e612ec8d40a958e9d9f5-640.webp",
+        "bytes": 63638,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/rare/pinwheel-gill-nudibranch_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/fish/rare/pinwheel-gill-nudibranch_thumbnail.png",
       "sourceHash": "731838995b25e5ac5874c03fb7984ac2a69d6d5da9b32e6adc6077f7bc090f82",
@@ -14453,6 +15453,186 @@
       }
     },
     {
+      "key": "trash/normal/pharaoh-broken-reed-rod_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-broken-reed-rod_v1_thumbnail.png",
+      "sourceHash": "a804f248e3fffe1be3e9942291e719d87a557dbe9f3718c06bc3ebd40acf563b",
+      "sourceBytes": 1031132,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/08c031a697f3aeb87efdc72c-320.webp",
+        "bytes": 30512,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/65f5e73ab90e75e9e27406e9-640.webp",
+        "bytes": 87758,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-chipped-pottery_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-chipped-pottery_v1_thumbnail.png",
+      "sourceHash": "cf6a40713f090613c4ac2b86b60776305a42fa8216e3bf56c4a5db3dd6793ea2",
+      "sourceBytes": 1212577,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4de003c958a5bc79849c08cd-320.webp",
+        "bytes": 17384,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1d9645bb6749802ac5f513ed-640.webp",
+        "bytes": 46592,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-dull-bronze-mirror_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-dull-bronze-mirror_v1_thumbnail.png",
+      "sourceHash": "4ca13ff2d0f4c363a2074b8a27f650842e301b5a593d1c394b0137e114d3cf24",
+      "sourceBytes": 1416392,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/df0c5534a33b16e8c7693c74-320.webp",
+        "bytes": 21932,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ad606dcaebc78cd5ff085889-640.webp",
+        "bytes": 65922,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-frayed-linen-fan_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-frayed-linen-fan_v1_thumbnail.png",
+      "sourceHash": "9ead72ba15b73a054e80b379a58ff231b08f87081fe91cfd1942982a7b7455c2",
+      "sourceBytes": 1742874,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8c87bae6047c96e089d3abfc-320.webp",
+        "bytes": 30452,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bdadf08f3fb87e3f7863f337-640.webp",
+        "bytes": 88808,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-handleless-jug_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-handleless-jug_v1_thumbnail.png",
+      "sourceHash": "4adf175b09f25f0edf1dc5c4029d022efee54cd94b14bc47a54f7843d03b01ec",
+      "sourceBytes": 1473595,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3b75d90e28bd1be70fea04cd-320.webp",
+        "bytes": 22454,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/72adbe3f998930d111594e75-640.webp",
+        "bytes": 59326,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-torn-grain-sack_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-torn-grain-sack_v1_thumbnail.png",
+      "sourceHash": "362bdfc5d72d096397de2200b0670312172b430ec5306d8c737538573f585423",
+      "sourceBytes": 1677258,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9180f409ce05c46593437fd1-320.webp",
+        "bytes": 24128,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/94ee92c3b4c847f36fc73d2b-640.webp",
+        "bytes": 66182,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-torn-papyrus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-torn-papyrus_v1_thumbnail.png",
+      "sourceHash": "51ab9b407115aac175112e2953b3c05559a8725c16a8773dd2743611708be2cc",
+      "sourceBytes": 1569785,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/43bb90b492db727d8e548850-320.webp",
+        "bytes": 25096,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/eabd5da50716a6cd787f587e-640.webp",
+        "bytes": 68808,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-wheel-less-cart_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-wheel-less-cart_v1_thumbnail.png",
+      "sourceHash": "a7a7eac88817453e76c6e878407e93e2f67939ee8f1e601e0783d7a99d14a00f",
+      "sourceBytes": 1304860,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/06056ad7362d0a9ea3ebb480-320.webp",
+        "bytes": 24028,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/09889aeb3a4c4d545d38248f-640.webp",
+        "bytes": 66086,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/pharaoh-worn-scribe-brush_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/normal/pharaoh-worn-scribe-brush_v1_thumbnail.png",
+      "sourceHash": "00221b6dfe491af35bab1089483b0cda98bf6cbb85dd315f8721f045c9091c22",
+      "sourceBytes": 868518,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/67134dfcac0eb5c59b137cfa-320.webp",
+        "bytes": 18910,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/783a2b58cbf0e0fb45fbd034-640.webp",
+        "bytes": 50190,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "trash/normal/pirate-gold-coin-sack_thumbnail.png",
       "source": "assets/storage-upload/new/20261022-191931/trash/normal/pirate-gold-coin-sack_thumbnail.png",
       "sourceHash": "5a6b13843f5b833764ae6049e8cbdf173ad22e5f94f404a4dd5618c33086fd6e",
@@ -15608,6 +16788,106 @@
       "large": {
         "url": "/game-art/thumbnails/97e01b80fb4b680765df5e08-640.webp",
         "bytes": 66654,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/pharaoh-gnomon-less-sundial_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/rare/pharaoh-gnomon-less-sundial_v1_thumbnail.png",
+      "sourceHash": "6b2ba1035b97083f7c6621f2c6a1d5177ece9db073929d9ae4c13f7ace0cdf98",
+      "sourceBytes": 1856663,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/582e177dd322d211d3d957e0-320.webp",
+        "bytes": 27614,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7474c00e21ae42e5265b36c4-640.webp",
+        "bytes": 77414,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/pharaoh-half-gold-mask_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/rare/pharaoh-half-gold-mask_v1_thumbnail.png",
+      "sourceHash": "2f56db786a4619db1eb3400aeffb9912fec59e11cccf44b11e5cd7bf385a06d9",
+      "sourceBytes": 1427688,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0a84e4546a6e702c960ca4aa-320.webp",
+        "bytes": 21968,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b1c47a503948b06c611e7e23-640.webp",
+        "bytes": 61290,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/pharaoh-open-perfume-bottle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/rare/pharaoh-open-perfume-bottle_v1_thumbnail.png",
+      "sourceHash": "0a6a35e1c6f5291fe353ccc9dded0a4bed50a693553effe302ccfeb3a6add1c9",
+      "sourceBytes": 1318886,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/90e2087c84726c6babe24971-320.webp",
+        "bytes": 21844,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/67036ac4b7c8e41014a1cd97-640.webp",
+        "bytes": 60134,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/pharaoh-peeled-ritual-oar_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/rare/pharaoh-peeled-ritual-oar_v1_thumbnail.png",
+      "sourceHash": "c9a245a7d132512b15dfd14a4b4161331a30f9aa57fe4644c03b53c32d43bc14",
+      "sourceBytes": 938598,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ed449aff72c18a69a1fb9900-320.webp",
+        "bytes": 17642,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/80220fd572e507b3942e4f56-640.webp",
+        "bytes": 51496,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/pharaoh-rusty-tomb-pick_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261030-044000/trash/rare/pharaoh-rusty-tomb-pick_v1_thumbnail.png",
+      "sourceHash": "16e9714880f71154e059fe53c37fa9f97ecaff28769da0ba0aacc0e2ec741bdd",
+      "sourceBytes": 974516,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/281ae401f942833f900adcf9-320.webp",
+        "bytes": 19872,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/48f7995c28da92474fee7cad-640.webp",
+        "bytes": 56562,
         "width": 640,
         "height": 640
       }

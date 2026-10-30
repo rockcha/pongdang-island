@@ -1,0 +1,734 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-obelisk-colossus-normalized.png",
+        "storage_path":  "pharaoh-obelisk-colossus",
+        "patch":  [
+                      264,
+                      169,
+                      15,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  19.626688374550714
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  18.162817265900209
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  13.169649014776885
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  17.788508495170657
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  18.220630595847798
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  22.807477600181013
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  18.745574190302573
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-obelisk-colossus-normalized.png",
+        "storage_path":  "pharaoh-obelisk-colossus",
+        "patch":  [
+                      267,
+                      206,
+                      15,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  18.714521990511361
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.343351786825705
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  16.488127041399618
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  14.460290453514411
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  18.150757559947738
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  13.395583849413457
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  18.65051384457454
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-obelisk-colossus-normalized.png",
+        "storage_path":  "pharaoh-obelisk-colossus",
+        "patch":  [
+                      275,
+                      236,
+                      16,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  14.477712756739811
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.3852721502007252
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  15.050839769852637
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  17.748826252271819
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  14.041110275821417
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  13.882943171788579
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  14.468116286818022
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-gold-wing-horus-normalized.png",
+        "storage_path":  "pharaoh-gold-wing-horus",
+        "patch":  [
+                      294,
+                      201,
+                      18,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  3,
+                           "rmse":  18.680426476216578
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -12,
+                           "dy":  4,
+                           "rmse":  17.266095550400372
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  1,
+                           "rmse":  13.19169562009878
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  1,
+                           "rmse":  12.11748048619569
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -2,
+                           "dy":  -1,
+                           "rmse":  15.6178316890235
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -8,
+                           "dy":  1,
+                           "rmse":  18.529256146249729
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  1,
+                           "rmse":  14.61662865825541
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-gold-wing-horus-normalized.png",
+        "storage_path":  "pharaoh-gold-wing-horus",
+        "patch":  [
+                      275,
+                      175,
+                      16,
+                      16
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  3,
+                           "rmse":  16.695593943997835
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -16,
+                           "dy":  6,
+                           "rmse":  24.675030756964475
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  1,
+                           "rmse":  13.200378782444085
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  1,
+                           "rmse":  16.82069303821083
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -4,
+                           "dy":  -2,
+                           "rmse":  18.171406109599772
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -10,
+                           "dy":  1,
+                           "rmse":  19.989461509219588
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  1,
+                           "rmse":  14.946332564975835
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-gold-wing-horus-normalized.png",
+        "storage_path":  "pharaoh-gold-wing-horus",
+        "patch":  [
+                      279,
+                      231,
+                      16,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  2,
+                           "rmse":  21.50629752731356
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -11,
+                           "dy":  5,
+                           "rmse":  27.089358304200072
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  1,
+                           "rmse":  22.877390585466692
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  1,
+                           "dy":  2,
+                           "rmse":  24.297062008033443
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -3,
+                           "dy":  1,
+                           "rmse":  18.693247443930122
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -8,
+                           "dy":  1,
+                           "rmse":  20.765890836230028
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  2,
+                           "rmse":  20.043702252827444
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-gatekeeper-anubis-normalized.png",
+        "storage_path":  "pharaoh-gatekeeper-anubis",
+        "patch":  [
+                      259,
+                      190,
+                      18,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  18.85993026755321
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -5,
+                           "dy":  0,
+                           "rmse":  18.744089977667869
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -17,
+                           "dy":  0,
+                           "rmse":  15.791971493020231
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -29,
+                           "rmse":  14.292401032462225
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -8,
+                           "dy":  -30,
+                           "rmse":  22.995717651402625
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -4,
+                           "dy":  -29,
+                           "rmse":  18.911276097512925
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -4,
+                           "dy":  -29,
+                           "rmse":  18.528847287896294
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-gatekeeper-anubis-normalized.png",
+        "storage_path":  "pharaoh-gatekeeper-anubis",
+        "patch":  [
+                      264,
+                      221,
+                      18,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  17.077438007174521
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -5,
+                           "dy":  0,
+                           "rmse":  19.781795784115367
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -17,
+                           "dy":  0,
+                           "rmse":  17.779904386694547
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  -30,
+                           "rmse":  21.966198781056519
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -8,
+                           "dy":  -34,
+                           "rmse":  21.00578623988056
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -4,
+                           "dy":  -30,
+                           "rmse":  18.144673231190104
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -5,
+                           "dy":  -30,
+                           "rmse":  20.467453839368165
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-gatekeeper-anubis-normalized.png",
+        "storage_path":  "pharaoh-gatekeeper-anubis",
+        "patch":  [
+                      251,
+                      210,
+                      18,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  15.824997805862582
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -5,
+                           "dy":  0,
+                           "rmse":  17.610366265356323
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -17,
+                           "dy":  0,
+                           "rmse":  15.039531242695032
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  -30,
+                           "rmse":  15.665115171403412
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -7,
+                           "dy":  -31,
+                           "rmse":  21.900976639816268
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -4,
+                           "dy":  -30,
+                           "rmse":  15.333333333333334
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -4,
+                           "dy":  -29,
+                           "rmse":  14.8387162517517
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-solar-scarab-normalized.png",
+        "storage_path":  "pharaoh-solar-scarab",
+        "patch":  [
+                      226,
+                      219,
+                      18,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  23.828525156020696
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.626717316403438
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  14.303263030977698
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -36,
+                           "rmse":  24.905376483357522
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  -37,
+                           "rmse":  37.304769578880034
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -36,
+                           "rmse":  24.464969287171037
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  -36,
+                           "rmse":  21.986580503166522
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-solar-scarab-normalized.png",
+        "storage_path":  "pharaoh-solar-scarab",
+        "patch":  [
+                      205,
+                      197,
+                      18,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.914784809150582
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.4319168770939754
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  11.348335658686795
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -36,
+                           "rmse":  16.980994277917496
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  -37,
+                           "rmse":  31.319700048230203
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -36,
+                           "rmse":  14.141153496876491
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  -36,
+                           "rmse":  19.306015182378321
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261030-101406/sources/pharaoh-solar-scarab-normalized.png",
+        "storage_path":  "pharaoh-solar-scarab",
+        "patch":  [
+                      174,
+                      202,
+                      20,
+                      20
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  13.733245822322068
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.2007241183459154
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  11.309423558452915
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -37,
+                           "rmse":  19.188245764274651
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  -37,
+                           "rmse":  28.25277663797139
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -1,
+                           "dy":  -36,
+                           "rmse":  16.645156187005153
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  -37,
+                           "rmse":  16.822452198154217
+                       }
+                   ]
+    }
+]

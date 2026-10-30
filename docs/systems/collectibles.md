@@ -28,6 +28,8 @@
 | player_discoveries | 사용자·종류별 첫 발견 |
 | fishing_attempts | 낚시 결과와 획득 개체 연결 |
 
+낚시로 모으는 지도는 조각별 등급을 지정할 수 있습니다. 지정이 없는 기존 지도는 지역의 기본 등급을 유지합니다. 추첨 후보·획득 결과·도감은 같은 조각 등급을 사용하며, 등급이 달라도 모든 번호를 모아야 해역이 열립니다. 이미 수집한 번호는 다시 추첨하지 않고 수령 재시도에서도 중복 지급하지 않습니다.
+
 클라이언트 타입은 `src/features/collection/api.ts`의 Species·OwnedCollectible·CatalogEntry입니다. 분류는 fish/trash/decoration/map, 등급은 common/rare/epic/mythic입니다. 물고기 외 분류도 여러 등급을 사용하므로 분류만으로 등급을 제한하지 않습니다.
 
 새 획득·수령 개체는 보관함(tank_id=NULL)에 모으며 지도·판매·미수령 예약 개체는 어항 배정 대상에서 제외합니다. 보관함은 페이지당 50개를 조회하고 실제 어항 정원은 50개입니다. 배정·회수는 move_collectibles, 조회는 collectible_storage와 aquarium_state를 사용합니다. [26 보관함](../../supabase/sql/26-collectible-storage/README.md)을 확인합니다.

@@ -1,0 +1,62 @@
+{
+  "tool": "built-in image_gen",
+  "status": "concept_preview_only",
+  "created_at": "2026-10-30T04:22:39+09:00",
+  "uploaded": false,
+  "catalog_registered": false,
+  "style_reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "files": [
+    {
+      "id": "pharaoh-papyrus-seahorse",
+      "name": "파피루스 해마",
+      "rarity": "epic",
+      "local_path": "fish/epic/pharaoh-papyrus-seahorse_v1_thumbnail.png",
+      "storage_path": null,
+      "generated_source": "C:/Users/user/.codex/generated_images/01a186fe-00ed-7211-945e-cce1d36cbcfe/exec-26836b93-94dc-4b7b-b3f1-553024a5aaa1.png",
+      "planned_movement": {
+        "movement_type": "swim",
+        "swim_y_min": 0.3,
+        "swim_y_max": 0.72,
+        "travel_direction": "right",
+        "flip_with_direction": true
+      },
+      "prompt": "Use case: style-transfer / stylized-concept. Output ONE square full-body collectible thumbnail on a genuinely transparent background.\nThe supplied image is STYLE REFERENCE ONLY: use its refined colored edges, polished soft dimensional shading and delicate material highlights. Do NOT copy its ray anatomy, wing silhouette, purple star patterns, long ribbon tail, big shiny eyes, pose or checkerboard. This is an entirely different Egyptian-themed creature.\nAn isolated game collectible for Pongdang Island. Clear silhouette at small icon size, elegant fantasy illustration, no thick black outlines or photorealism. Subject fills about 78 percent of frame with safe clear margins; nothing cropped. Entire body and every appendage visible. Clean alpha edges, no ground plane, pedestal, scenery, text, labels, border, decorative frame, floating debris, detached sparks or watermark. Transparency is actual alpha, not painted checkerboard.\nSubject: 파피루스 해마 — Papyrus Seahorse, EPIC collectible concept.\nA graceful recognizable seahorse with upright slender body, a long tubular snout facing RIGHT in profile, a naturally curled gripping tail, small gills and delicate dorsal fin. Natural small animal eye with one subtle catchlight, not a human face or a chibi toy.\nTheme integration: pale warm parchment-ivory segmented body with a few fine lapis-blue and muted gold etched bands. A small mint-green papyrus umbrella frond forms its crown, visually subordinate to the seahorse head. Its thin translucent side/dorsal fins resemble papyrus leaves and the curled edges of a parchment scroll, softly flowing in water. Keep the coiled tail clearly seahorse-shaped, not a long ribbon. Restrained green, ivory, antique gold and tiny turquoise accents. Beautiful soft textures, sophisticated but readable, few details rather than dense gold jewelry. One relaxed midwater swimming pose. Render only this single seahorse.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ee7e7816de8452478e46aba3c1f1fc2587b6cce2b05c274e9c469e47676b9fba",
+      "alpha": true,
+      "visible_bounds": {
+        "left": 329,
+        "top": 27,
+        "right": 1115,
+        "bottom": 1187
+      }
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "name": "오벨리스크 거신",
+      "rarity": "mythic",
+      "local_path": "fish/mythic/pharaoh-obelisk-colossus_v1_thumbnail.png",
+      "storage_path": null,
+      "generated_source": "C:/Users/user/.codex/generated_images/01a186fe-00ed-7211-945e-cce1d36cbcfe/exec-386b21b4-f458-421f-b32b-e2251524c768.png",
+      "planned_movement": {
+        "movement_type": "crawl",
+        "swim_y_min": 0.85,
+        "swim_y_max": 0.97,
+        "travel_direction": "right",
+        "flip_with_direction": true
+      },
+      "prompt": "Use case: style-transfer / stylized-concept. Output ONE square full-body collectible thumbnail on a genuinely transparent background.\nThe supplied image is STYLE REFERENCE ONLY: use its refined colored edges, polished soft dimensional shading and delicate material highlights. Do NOT copy its ray anatomy, wing silhouette, purple star patterns, long ribbon tail, big shiny eyes, pose or checkerboard. This is an entirely different Egyptian-themed creature.\nAn isolated game collectible for Pongdang Island. Clear silhouette at small icon size, elegant fantasy illustration, no thick black outlines or photorealism. Subject fills about 78 percent of frame with safe clear margins; nothing cropped. Entire body and every appendage visible. Clean alpha edges, no ground plane, pedestal, scenery, text, labels, border, decorative frame, floating debris, detached sparks or watermark. Transparency is actual alpha, not painted checkerboard.\nSubject: 오벨리스크 거신 — Obelisk Colossus, MYTHIC collectible concept.\nA monumental ancient Egyptian sandstone golem whose CORE BODY IS A TALL TAPERED OBELISK with a small gold pyramidion tip, not a human in armor and not a fish. Broad heavy segmented stone shoulders, thick separate block-like arms and hands, two weighty carved stone legs and flat feet. The full guardian stands in a stable walking-ready three-quarter pose facing RIGHT, its obelisk core and both feet completely visible.\nIts refined sandstone surfaces show restrained weathering, a few chiseled Egyptian-inspired geometric carvings and lapis-blue inlays. A narrow pair of ancient cyan-lit eye slits is carved into the upper obelisk; a small gold ankh-like seal is inset into the chest. Gold edging only on selected corners and the pyramidion, mostly warm ivory-sand stone with deep blue details. Subtle inner turquoise light at a few segmented joints, confined close to the body; no fog or scattered stones. Majestic mythical guardian with a distinct massive architectural silhouette, solemn not scary, beautifully painted dimensional stone, elegant soft color edges. No throne, no base, no platform, no halo, no weapon. Render only this single complete colossus.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c3db88a7bd94d4768f5881c69526503f7cd5553d2cceef65a115138280b6699d",
+      "alpha": true,
+      "visible_bounds": {
+        "left": 120,
+        "top": 15,
+        "right": 1170,
+        "bottom": 1238
+      }
+    }
+  ]
+}

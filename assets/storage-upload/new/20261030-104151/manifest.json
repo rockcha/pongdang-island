@@ -1,0 +1,122 @@
+{
+  "created_at": "2026-10-30T01:43:54.953Z",
+  "purpose": "Replace the scarab slot in-place, retaining species ID, price, ownership and release time",
+  "assets": [
+    {
+      "id": "pharaoh-solar-scarab",
+      "role": "thumbnail",
+      "version": 3,
+      "path": "fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+      "target": "assets/storage-upload/new/20261030-104151/fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+      "source": "sources/golden-mask-thumbnail.png",
+      "prompt": "Create a majestic mythic fantasy game collectible: THE LAST LEGACY OF THE MILLENNIAL DYNASTY, A GIANT FLOATING GOLDEN PHARAOH FUNERARY MASK. A beautifully sculpted ancient Egyptian golden mask ONLY, no human body, arms or legs, no beetle or sun ball. Broad striped gold nemes headdress, ceremonial royal cobra on brow, sculpted serene gold face, long tapered ceremonial beard, warm gold with sandstone-ivory engraved insets and subtle aged patina. Viewed three-quarter toward SCREEN RIGHT, almost frontal so BOTH eye sockets remain clearly visible. Two narrow streams of luminous BLUE SOUL ESSENCE flow out from its EYES, curling gently toward viewer-left and slightly upward in elegant translucent ribbons, subtle tiny soul shapes within the blue ribbons. Keep the gold face and blue eye spirits as the clear focal point. Minimal attached cool glow, NO large aura, NO fog/cloud backdrop, NO scattered particles. Suspended weightlessly in empty space, no floor or pedestal. Reference 1 is ONLY gold/sandstone material and Egyptian fantasy family styling, do NOT copy the colossus anatomy. Reference 2 is ONLY soft painterly gradients, refined fantasy lighting and clean coloured edges, do NOT copy ray shape or purple. Sophisticated detailed fantasy illustration, regal and mysterious rather than cartoon toy. Entire mask including headdress and soul streams fits within central 76 percent of square with generous transparent margins. Fully transparent background, no UI, no words, no borders, no checkerboard.",
+      "tool": "built-in image_gen",
+      "references": [
+        "assets/storage-upload/new/20261030-101406/fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "catalog": {
+        "name": "천년왕조의 마지막 유산, 황금가면",
+        "description": "거대한 파라오의 황금가면이 공중에 떠 있어요. 눈에서 흘러나오는 푸른 영혼이 천년왕조의 마지막 기억을 품고 있어요.",
+        "movement_type": "swim",
+        "swim_y_min": "0.28",
+        "swim_y_max": "0.72",
+        "speed": "0.008"
+      },
+      "sha256": "675ab0919276495828750f5ab7cd97bc2e2aa1337e6ad4fe786381c6db6834f5",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "version": 3,
+      "source": "sources/golden-mask-rejected-margin.png",
+      "prompt": "Create the final 8-pose transparent animation sprite sheet. REFERENCE 1 is ONLY the EXACT TINY CHARACTER PLACEMENT GUIDE: 4 columns x 2 rows, eight equal SQUARE cells, wide 2:1 whole sheet. Reference 2 is the approved GOLDEN PHARAOH MASK identity to preserve exactly. All eight FULL masks including longest BLUE SOUL RIBBONS must fit inside the CENTRAL 40 PERCENT of their cell with >=25 percent entirely transparent gutters on ALL FOUR sides. COPY THE SMALL SCALE OF THE GUIDE. Do not enlarge figures to fill cells. Keep the gold cobra crown, rigid face/nose/beard and headdress at IDENTICAL pixel coordinates and identical scale in all eight cells, facing SCREEN RIGHT in a three-quarter almost-frontal view with both eyes visible. No per-frame body bob/rotation/zoom/opacity, no recentering to follow ribbons. Animate actual BLUE SOUL RIBBONS flowing FROM BOTH EYES and two small gold temple pendants, while the mask itself stays completely rigid and anchored. Frames1-4: successive connected S-shaped waves move along the two blue eye-spirit ribbons toward LEFT, small soul forms travel within the streams, tiny pendant sway. Frame5: streams gather into tighter curls near eyes, preparing; frame6: two longer coherent BLUE SOUL ribbons unfurl elegantly toward left/up, eye cores brighten narrowly, subtle gold engraved brow symbols illuminate; frame7: curls relax halfway and narrow; frame8: same rigid face and original blue ribbon shapes as frame1 for seamless recovery. Royal gold and sandstone-ivory mask unchanged across all frames, no beetle, sun, body, arms or legs. True clean transparent background, no grid, text, numbers, frames, ground, opaque panels, particles or broad fog/aura. Clear silhouette edges, every crown tip and soul curl safely inside each cell. No ghostly backdrop, only two defined blue soul ribbons attached to the eyes. The mask must NOT jump between the two rows.",
+      "role": "sprite-source",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-104151/fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+        "assets/storage-upload/new/20261030-104151/guides/pharaoh-solar-scarab-compact.png"
+      ],
+      "status": "rejected-insufficient-original-margins"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "version": 3,
+      "source": "sources/pharaoh-solar-scarab-compact-sheet.png",
+      "prompt": "Create the final 8-pose transparent animation sprite sheet. REFERENCE 1 is ONLY the EXACT TINY CHARACTER PLACEMENT GUIDE: 4 columns x 2 rows, eight equal SQUARE cells, wide 2:1 whole sheet. Reference 2 is the approved GOLDEN PHARAOH MASK identity to preserve exactly. All eight FULL masks including longest BLUE SOUL RIBBONS must fit inside the CENTRAL 30 PERCENT of their cell with >=30 percent entirely transparent gutters on ALL FOUR sides. COPY THE SMALL SCALE OF THE GUIDE. Do not enlarge figures to fill cells. Keep the gold cobra crown, rigid face/nose/beard and headdress at IDENTICAL pixel coordinates and identical scale in all eight cells, facing SCREEN RIGHT in a three-quarter almost-frontal view with both eyes visible. No per-frame body bob/rotation/zoom/opacity, no recentering to follow ribbons. Animate actual BLUE SOUL RIBBONS flowing FROM BOTH EYES and two small gold temple pendants, while the mask itself stays completely rigid and anchored. Frames1-4: successive connected S-shaped waves move along the two blue eye-spirit ribbons toward LEFT, small soul forms travel within the streams, tiny pendant sway. Frame5: streams gather into tighter curls near eyes, preparing; frame6: two longer coherent BLUE SOUL ribbons unfurl elegantly toward left/up, eye cores brighten narrowly, subtle gold engraved brow symbols illuminate; frame7: curls relax halfway and narrow; frame8: same rigid face and original blue ribbon shapes as frame1 for seamless recovery. Royal gold and sandstone-ivory mask unchanged across all frames, no beetle, sun, body, arms or legs. True clean transparent background, no grid, text, numbers, frames, ground, opaque panels, particles or broad fog/aura. Clear silhouette edges, every crown tip and soul curl safely inside each cell. No ghostly backdrop, only two defined blue soul ribbons attached to the eyes. The mask must NOT jump between the two rows. CRITICAL CORRECTION: Earlier sheet rejected because masks and blue ribbons were MUCH TOO BIG and too close to the cell bottom. Follow the TINY masks in layout reference 1 precisely. Center the whole mask at 50% height of each cell with its beard tip no lower than 70% cell height. Entire silhouette including all soul curls must stay inside the central 40 percent in width AND height. Make the masks small within the sheet, not portraits. Keep every soul curl at least25 percent from every cell edge. Fixed rigid face/nose/brow/crown coordinates in ALL eight cells, no body shape or size changes.",
+      "role": "sprite-source-current",
+      "frames": 8,
+      "references": [
+        "assets/storage-upload/new/20261030-104151/fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+        "assets/storage-upload/new/20261030-104151/guides/pharaoh-solar-scarab-compact.png"
+      ]
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "role": "swim8",
+      "version": 3,
+      "path": "fish/mythic/pharaoh-solar-scarab_swim8_v3_sprite.png",
+      "target": "assets/storage-upload/new/20261030-104151/fish/mythic/pharaoh-solar-scarab_swim8_v3_sprite.png",
+      "sha256": "ed5a01469a1cce34c3fd9c1bb3900ff3376e788114dc0acccd36a340eddcac6c",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-solar-scarab_swim8_v3_sprite.png"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "role": "compat",
+      "version": 3,
+      "path": "fish/mythic/pharaoh-solar-scarab_compat_v3_sprite.png",
+      "target": "assets/storage-upload/new/20261030-104151/fish/mythic/pharaoh-solar-scarab_compat_v3_sprite.png",
+      "sha256": "b7e6433c44071e8161a2a86bffde18280e146e8c95cad498c6757ca9fcbf4d63",
+      "uploaded": true,
+      "public_storage_url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/fish/mythic/pharaoh-solar-scarab_compat_v3_sprite.png"
+    }
+  ],
+  "items": [
+    {
+      "id": "pharaoh-solar-scarab",
+      "kind": "fish",
+      "name": "천년왕조의 마지막 유산, 황금가면",
+      "description": "거대한 파라오의 황금가면이 공중에 떠 있어요. 눈에서 흘러나오는 푸른 영혼이 천년왕조의 마지막 기억을 품고 있어요.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.72",
+      "speed": "0.008",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/pharaoh-solar-scarab_swim8_v3_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 8,
+      "columns": 4,
+      "compat_sprite_sheet_path": "fish/mythic/pharaoh-solar-scarab_compat_v3_sprite.png"
+    }
+  ],
+  "entries": [
+    {
+      "id": "pharaoh-solar-scarab",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pharaoh-solar-scarab_swim8_v3_sprite.png",
+      "source": "sources/pharaoh-solar-scarab-compact-sheet.png",
+      "prompt": "Create the final 8-pose transparent animation sprite sheet. REFERENCE 1 is ONLY the EXACT TINY CHARACTER PLACEMENT GUIDE: 4 columns x 2 rows, eight equal SQUARE cells, wide 2:1 whole sheet. Reference 2 is the approved GOLDEN PHARAOH MASK identity to preserve exactly. All eight FULL masks including longest BLUE SOUL RIBBONS must fit inside the CENTRAL 30 PERCENT of their cell with >=30 percent entirely transparent gutters on ALL FOUR sides. COPY THE SMALL SCALE OF THE GUIDE. Do not enlarge figures to fill cells. Keep the gold cobra crown, rigid face/nose/beard and headdress at IDENTICAL pixel coordinates and identical scale in all eight cells, facing SCREEN RIGHT in a three-quarter almost-frontal view with both eyes visible. No per-frame body bob/rotation/zoom/opacity, no recentering to follow ribbons. Animate actual BLUE SOUL RIBBONS flowing FROM BOTH EYES and two small gold temple pendants, while the mask itself stays completely rigid and anchored. Frames1-4: successive connected S-shaped waves move along the two blue eye-spirit ribbons toward LEFT, small soul forms travel within the streams, tiny pendant sway. Frame5: streams gather into tighter curls near eyes, preparing; frame6: two longer coherent BLUE SOUL ribbons unfurl elegantly toward left/up, eye cores brighten narrowly, subtle gold engraved brow symbols illuminate; frame7: curls relax halfway and narrow; frame8: same rigid face and original blue ribbon shapes as frame1 for seamless recovery. Royal gold and sandstone-ivory mask unchanged across all frames, no beetle, sun, body, arms or legs. True clean transparent background, no grid, text, numbers, frames, ground, opaque panels, particles or broad fog/aura. Clear silhouette edges, every crown tip and soul curl safely inside each cell. No ghostly backdrop, only two defined blue soul ribbons attached to the eyes. The mask must NOT jump between the two rows. CRITICAL CORRECTION: Earlier sheet rejected because masks and blue ribbons were MUCH TOO BIG and too close to the cell bottom. Follow the TINY masks in layout reference 1 precisely. Center the whole mask at 50% height of each cell with its beard tip no lower than 70% cell height. Entire silhouette including all soul curls must stay inside the central 40 percent in width AND height. Make the masks small within the sheet, not portraits. Keep every soul curl at least25 percent from every cell edge. Fixed rigid face/nose/brow/crown coordinates in ALL eight cells, no body shape or size changes.",
+      "referenceRoles": {
+        "identity": "fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+        "layout": "guides/pharaoh-solar-scarab-compact.png",
+        "style": "assets/references/collectible-style/epic-mythic-starlight.png; retained through approved identity"
+      },
+      "shared_scale": 1.958599
+    }
+  ],
+  "uploaded_project": "ewafafphiovbpjwogwzn",
+  "catalog_registered": true,
+  "registered_at": "2026-10-30T01:52:17.961Z",
+  "frontend_deployed": false,
+  "status": "registered-frontend-local"
+}

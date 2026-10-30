@@ -24,7 +24,7 @@ it('previews the selected total and confirms the immediate first installment',as
 it('adds the relic percentage to interest rather than principal across all terms',async()=>{
  mock.load.mockResolvedValue({...base,relicBonusPercent:10})
  render(<SavingsPage/>)
- await screen.findByText('유물 효과 · 만기 이자 +10%')
+ await screen.findByText('유물 효과 · 조개 적금 이자 +10%')
  expect(screen.getByText('366')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:/5일.*25/}))
  expect(screen.getByText('637')).toBeTruthy()

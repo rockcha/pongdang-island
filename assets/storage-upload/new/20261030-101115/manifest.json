@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-10-30T01:11:42.796Z",
+  "tool": "built-in image_gen",
+  "references": [
+    "public/region-icons/pharaoh-v1.png"
+  ],
+  "prompt": "Redesign the supplied game region icon into ONE SINGLE GOLDEN PYRAMID ONLY on a fully transparent background. A centered, beautifully simple Egyptian pyramid, slightly three-quarter view with just two clean triangular faces, entirely polished warm honey gold with one lighter face and one darker amber face. Match the original's softly painted fantasy game material quality, but simplify drastically for excellent legibility at 24 to 36 pixels. Only 2 or 3 subtle horizontal stone courses, very restrained bevels, one small crisp highlight on the gold tip. Pyramid fills roughly 78% of the square width with comfortable clear transparent margins, fully visible including base and tip. No pedestal, no land, no sand mound, no palm tree, no water, no obelisk, no other pyramid, no shadow blob, no particles, no aura, no text, no border, no background. A compact elegant warm gold pyramid, one object and nothing else. Square transparent PNG.",
+  "assets": [
+    {
+      "role": "region-icon",
+      "source": "assets/storage-upload/new/20261030-101115/sources/pharaoh-pyramid-original.png",
+      "target": "public/region-icons/pharaoh-v2.png",
+      "path": "region-icons/pharaoh-v2.png",
+      "transparent_background": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e4a5dcd28bba49c383b1a2e4b51875a5ee58acc4047b3547c2fe8b3a03eb5bb8"
+    }
+  ],
+  "frontend_deployed": false
+}

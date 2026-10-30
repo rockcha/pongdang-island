@@ -1,0 +1,58 @@
+{
+  "created_at": "2026-10-30T02:03:07.354Z",
+  "status": "registered",
+  "references": [
+    "assets/storage-upload/new/20261030-033333/aquarium-backgrounds/fairy-moonlit-lake-panorama-v1.png",
+    "public/regions/pharaoh/overview-v2.png"
+  ],
+  "reference_roles": [
+    "aquarium composition and painterly material",
+    "Egyptian gold/sandstone architectural family"
+  ],
+  "files": [
+    {
+      "theme_id": "pharaoh-sleeping-pyramid-court",
+      "name": "잠든 피라미드의 뜰",
+      "price": 2500,
+      "tier": "special",
+      "local_path": "aquarium-backgrounds/pharaoh-sleeping-pyramid-court-panorama-v1.png",
+      "storage_path": "pharaoh-sleeping-pyramid-court-panorama-v1.png",
+      "generated_source": "assets/storage-upload/new/20261030-105924/sources/pharaoh-sleeping-pyramid-court-panorama-v1.png",
+      "tool_source": "C:\\Users\\user\\.codex\\generated_images\\01a186fe-00ed-7211-945e-cce1d36cbcfe\\exec-75f10744-aa6f-4f80-822d-0177ac0fb8a4.png",
+      "status": "generated",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE final full-bleed premium AQUARIUM BACKGROUND PANORAMA for a refined cozy fantasy mobile game. Wide landscape approximately 27:16, high resolution. A SINGLE CONTINUOUS underwater environment spanning three adjacent portrait views, never a triptych or panels. Reference 1 is ONLY the elegant painterly aquarium rendering, overhead ripples, depth and OPEN SWIMMING SPACE. Reference 2 is ONLY the Egyptian sandstone/gold architectural family, not its crowded layout. Calm luxurious fantasy illustration with fine soft-edged material detail, light caustics and atmospheric depth. Keep the CENTER 45 percent and middle swimming height exceptionally spacious, low contrast and uncluttered: fish and mythic creatures are overlaid later. Place large architecture mostly toward far left/right and distant background, with low floor details at edges. No fish, animals, live people, ghosts or other creatures. No UI, frames, borders, text, logos, writing, signs or watermarks. Opaque environment, no heavy fog, no particles or blinding bloom. Dominant SANDSTONE, warm CREAM, antique GOLD and AMBER; avoid turquoise/cyan/bright blue. Render one finished seamless view, not a concept sheet. A serene ancient Egyptian courtyard submerged in clear honey-tinted water. Bright warm daylight filters from the rippling water surface overhead. A majestic but DISTANT pyramid with a restrained gold tip sits in the rear LEFT third, visible entire above low ruined terraces, not looming in the middle. A pair of slender obelisks and weathered open colonnades frame the far RIGHT edge. Ivory sandstone steps with a few small lotus-shaped stone ornaments frame the lower corners. The foreground floor is broad fine pale sand with delicate warm caustics. The center is a tranquil spacious clearing with soft depth, warm pale amber water, readable silhouettes. Grand but exquisitely minimal; not a crowded city, not a landscape above the water.",
+      "width": 1629,
+      "height": 965,
+      "sha256": "bac532a5ea6564f96c28e35773722598c1eadf4d80578740da0eb838ce709e57",
+      "generated_sha256": "f8446e07915df80f6dd856cfd0a4c6c1c81d47c91c81797b2d72bfa7af098a69",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-10-30T02:03:09.886Z"
+    },
+    {
+      "theme_id": "pharaoh-sunken-sun-tomb",
+      "name": "태양이 잠긴 왕릉",
+      "price": 3000,
+      "tier": "special",
+      "local_path": "aquarium-backgrounds/pharaoh-sunken-sun-tomb-panorama-v1.png",
+      "storage_path": "pharaoh-sunken-sun-tomb-panorama-v1.png",
+      "generated_source": "assets/storage-upload/new/20261030-105924/sources/pharaoh-sunken-sun-tomb-panorama-v1.png",
+      "tool_source": "C:\\Users\\user\\.codex\\generated_images\\01a186fe-00ed-7211-945e-cce1d36cbcfe\\exec-5c3900a9-07a4-4a51-9701-49ed64f9b9a7.png",
+      "status": "generated",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE final full-bleed premium AQUARIUM BACKGROUND PANORAMA for a refined cozy fantasy mobile game. Wide landscape approximately 27:16, high resolution. A SINGLE CONTINUOUS underwater environment spanning three adjacent portrait views, never a triptych or panels. Reference 1 is ONLY the elegant painterly aquarium rendering, overhead ripples, depth and OPEN SWIMMING SPACE. Reference 2 is ONLY the Egyptian sandstone/gold architectural family, not its crowded layout. Calm luxurious fantasy illustration with fine soft-edged material detail, light caustics and atmospheric depth. Keep the CENTER 45 percent and middle swimming height exceptionally spacious, low contrast and uncluttered: fish and mythic creatures are overlaid later. Place large architecture mostly toward far left/right and distant background, with low floor details at edges. No fish, animals, live people, ghosts or other creatures. No UI, frames, borders, text, logos, writing, signs or watermarks. Opaque environment, no heavy fog, no particles or blinding bloom. Dominant SANDSTONE, warm CREAM, antique GOLD and AMBER; avoid turquoise/cyan/bright blue. Render one finished seamless view, not a concept sheet. A mysterious submerged royal tomb, quiet grandeur in deep warm brown sandstone and antique gold. Broken obelisk columns and carved royal door jambs frame the extreme left and right. A monumental ROUND SUN DISC ALTAR is half-buried on a distant low platform in the rear RIGHT third; its incised sun rays emit only thin subdued gold light. Gold veins in weathered carved stone and a few small inset sun emblems form tasteful accents along outer walls. The central swimming space is broad clean translucent amber water with layered shadow depth; foreground pale sand remains open. A narrow warm shaft of light descends from the rippling surface and touches a low floor mosaic at center-bottom. Dramatic golden details against muted sepia shadows, luxurious and solemn but still bright enough to clearly see aquarium creatures. No coffin, bones, giant mask, skull, smoke, horror or central blocking building.",
+      "width": 1629,
+      "height": 965,
+      "sha256": "1a25d024b1a96cb05beae10b7c7a98b42b3e2af40e6c62a2bd146f473efeff75",
+      "generated_sha256": "fa22a41ce7013132de05a8e7627219d5fab0e4831da53db56a0b9ee8572e7c59",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-10-30T02:03:11.989Z"
+    }
+  ],
+  "catalog_registered": true,
+  "registered_project": "ewafafphiovbpjwogwzn",
+  "registered_at": "2026-10-30T02:09:32.281Z",
+  "frontend_deployed": false
+}

@@ -83,6 +83,15 @@
       "requires_map_fragment": true
     },
     {
+      "id": "pharaoh",
+      "name": "파라오의 황금해",
+      "description": "황금빛 물결 너머로 모래 왕국의 피라미드와 오벨리스크가 솟아 있어요. 잠든 왕릉의 수호자들과 오래된 보물을 만나 보세요.",
+      "rarity": "epic",
+      "sort_order": 17,
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/pharaoh/overview-v2.png",
+      "requires_map_fragment": true
+    },
+    {
       "id": "plunder",
       "name": "약탈자의 항로",
       "description": "검은 돛과 붉은 깃발이 스치는 해적들의 항로. 난파선과 황동 등불 사이에 숨은 보물과 바다 친구들을 찾아보세요.",
@@ -274,6 +283,27 @@
       "tier": "simple"
     },
     {
+      "id": "fairy-dew-grove",
+      "name": "이슬 머금은 요정숲",
+      "price": 1500,
+      "image_path": "fairy-dew-grove-panorama-v1.png",
+      "tier": "special"
+    },
+    {
+      "id": "fairy-moonlit-lake",
+      "name": "달빛 잠든 요정 호수",
+      "price": 1800,
+      "image_path": "fairy-moonlit-lake-panorama-v1.png",
+      "tier": "special"
+    },
+    {
+      "id": "fairy-petal-palace",
+      "name": "꽃잎 속 요정 궁전",
+      "price": 1650,
+      "image_path": "fairy-petal-palace-panorama-v1.png",
+      "tier": "special"
+    },
+    {
       "id": "firefly-reed-marsh",
       "name": "반딧불 갈대습지",
       "price": 550,
@@ -309,10 +339,31 @@
       "tier": "mood"
     },
     {
+      "id": "halloween-ghost-glasshouse",
+      "name": "달빛에 잠든 유령 온실",
+      "price": 1650,
+      "image_path": "halloween-ghost-glasshouse-panorama-v1.png",
+      "tier": "special"
+    },
+    {
       "id": "halloween-pumpkin-garden",
       "name": "유령들이 밝힌 호박 정원",
       "price": 1000,
       "image_path": "halloween-pumpkin-garden.png",
+      "tier": "special"
+    },
+    {
+      "id": "halloween-pumpkin-teahouse",
+      "name": "호박등 아래 작은 찻집",
+      "price": 1500,
+      "image_path": "halloween-pumpkin-teahouse-panorama-v1.png",
+      "tier": "special"
+    },
+    {
+      "id": "halloween-witch-lavender-room",
+      "name": "마녀가 비운 보랏빛 방",
+      "price": 1800,
+      "image_path": "halloween-witch-lavender-room-panorama-v1.png",
       "tier": "special"
     },
     {
@@ -405,6 +456,20 @@
       "price": 600,
       "image_path": "pearl.png",
       "tier": "mood"
+    },
+    {
+      "id": "pharaoh-sleeping-pyramid-court",
+      "name": "잠든 피라미드의 뜰",
+      "price": 2500,
+      "image_path": "pharaoh-sleeping-pyramid-court-panorama-v1.png",
+      "tier": "special"
+    },
+    {
+      "id": "pharaoh-sunken-sun-tomb",
+      "name": "태양이 잠긴 왕릉",
+      "price": 3000,
+      "image_path": "pharaoh-sunken-sun-tomb-panorama-v1.png",
+      "tier": "special"
     },
     {
       "id": "pink-coral-shallows",
@@ -10065,6 +10130,1068 @@
       "native_region_id": null,
       "movement_type": "crawl",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-baby-croc-stone",
+      "kind": "decoration",
+      "name": "꼬마 악어 돌조각",
+      "description": "황금해의 왕국을 닮은 꼬마 악어 돌조각. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/pharaoh-baby-croc-stone_v1_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-brick-hermit",
+      "kind": "fish",
+      "name": "모래벽돌 소라게",
+      "description": "황금해에 사는 모래벽돌 소라게. 금빛 모래바닥을 천천히 걸어 다녀요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-brick-hermit_v1_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/pharaoh-brick-hermit_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-broken-reed-rod",
+      "kind": "trash",
+      "name": "부러진 갈대 낚싯대",
+      "description": "황금해의 모래 속에 남은 부러진 갈대 낚싯대. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-broken-reed-rod_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-chipped-pottery",
+      "kind": "trash",
+      "name": "이 빠진 토기 조각",
+      "description": "황금해의 모래 속에 남은 이 빠진 토기 조각. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-chipped-pottery_v1_thumbnail.png",
+      "sell_price": 12,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-coin-clam",
+      "kind": "fish",
+      "name": "황금주화 조개",
+      "description": "황금해에 사는 황금주화 조개. 따뜻한 모래 위에서 조용히 쉬어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-coin-clam_v1_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/pharaoh-coin-clam_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-crescent-incense",
+      "kind": "decoration",
+      "name": "초승달 향로",
+      "description": "황금해의 왕국을 닮은 초승달 향로. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/pharaoh-crescent-incense_v1_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-cursed-gold-octopus",
+      "kind": "fish",
+      "name": "저주받은 황금 문어",
+      "description": "황금해에 사는 저주받은 황금 문어. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pharaoh-cursed-gold-octopus_v1_thumbnail.png",
+      "sell_price": 1250,
+      "sprite_sheet_path": "fish/epic/pharaoh-cursed-gold-octopus_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-dull-bronze-mirror",
+      "kind": "trash",
+      "name": "빛을 잃은 청동 거울",
+      "description": "황금해의 모래 속에 남은 빛을 잃은 청동 거울. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-dull-bronze-mirror_v1_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-four-pillar-altar",
+      "kind": "decoration",
+      "name": "네 기둥의 작은 봉헌대",
+      "description": "황금해의 왕국을 닮은 네 기둥의 작은 봉헌대. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/pharaoh-four-pillar-altar_v1_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-frayed-linen-fan",
+      "kind": "trash",
+      "name": "날 풀린 아마포 부채",
+      "description": "황금해의 모래 속에 남은 날 풀린 아마포 부채. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-frayed-linen-fan_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-gatekeeper-anubis",
+      "kind": "fish",
+      "name": "황금해의 문지기 아누비스",
+      "description": "금빛 지팡이를 든 아누비스가 잠든 왕릉의 문을 지켜요.",
+      "swim_y_min": "0.26",
+      "swim_y_max": "0.76",
+      "speed": "0.012",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png",
+      "sell_price": 3500,
+      "sprite_sheet_path": "fish/mythic/pharaoh-gatekeeper-anubis_compat_v2_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-glyph-cuttlefish",
+      "kind": "fish",
+      "name": "상형문자 갑오징어",
+      "description": "황금해에 사는 상형문자 갑오징어. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pharaoh-glyph-cuttlefish_v1_thumbnail.png",
+      "sell_price": 260,
+      "sprite_sheet_path": "fish/rare/pharaoh-glyph-cuttlefish_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-glyph-starfish",
+      "kind": "fish",
+      "name": "상형문자 불가사리",
+      "description": "황금해에 사는 상형문자 불가사리. 금빛 모래바닥을 천천히 걸어 다녀요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-glyph-starfish_v1_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": "fish/normal/pharaoh-glyph-starfish_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-gnomon-less-sundial",
+      "kind": "trash",
+      "name": "바늘 없는 해시계",
+      "description": "황금해의 모래 속에 남은 바늘 없는 해시계. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pharaoh-gnomon-less-sundial_v1_thumbnail.png",
+      "sell_price": 85,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-gold-catfish",
+      "kind": "fish",
+      "name": "황금비늘 메기",
+      "description": "황금해에 사는 황금비늘 메기. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pharaoh-gold-catfish_v1_thumbnail.png",
+      "sell_price": 270,
+      "sprite_sheet_path": "fish/rare/pharaoh-gold-catfish_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-gold-medaka",
+      "kind": "fish",
+      "name": "사금비늘 송사리",
+      "description": "황금해에 사는 사금비늘 송사리. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-gold-medaka_v1_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": "fish/normal/pharaoh-gold-medaka_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-gold-nile-crocodile",
+      "kind": "fish",
+      "name": "황금갑옷의 나일악어",
+      "description": "황금해에 사는 황금갑옷의 나일악어. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pharaoh-gold-nile-crocodile_v1_thumbnail.png",
+      "sell_price": 1150,
+      "sprite_sheet_path": "fish/epic/pharaoh-gold-nile-crocodile_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "kind": "fish",
+      "name": "황금 날개의 호루스",
+      "description": "황금 날개를 펼친 호루스가 눈부신 황금해를 굽어봐요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/pharaoh-gold-wing-horus_compat_v3_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-half-gold-mask",
+      "kind": "trash",
+      "name": "반쪽짜리 황금 가면",
+      "description": "황금해의 모래 속에 남은 반쪽짜리 황금 가면. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pharaoh-half-gold-mask_v1_thumbnail.png",
+      "sell_price": 100,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-handleless-jug",
+      "kind": "trash",
+      "name": "손잡이 빠진 물동이",
+      "description": "황금해의 모래 속에 남은 손잡이 빠진 물동이. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-handleless-jug_v1_thumbnail.png",
+      "sell_price": 16,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-horus-eye-tablet",
+      "kind": "decoration",
+      "name": "호루스의 눈 석판",
+      "description": "황금해의 왕국을 닮은 호루스의 눈 석판. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/pharaoh-horus-eye-tablet_v1_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-little-sphinx",
+      "kind": "decoration",
+      "name": "꼬마 스핑크스 석상",
+      "description": "황금해의 왕국을 닮은 꼬마 스핑크스 석상. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/pharaoh-little-sphinx_v1_thumbnail.png",
+      "sell_price": 200,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-lotus-water-jar",
+      "kind": "decoration",
+      "name": "연꽃무늬 물항아리",
+      "description": "황금해의 왕국을 닮은 연꽃무늬 물항아리. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/pharaoh-lotus-water-jar_v1_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-moon-bastet",
+      "kind": "fish",
+      "name": "달그림자 바스테트",
+      "description": "황금해에 사는 달그림자 바스테트. 금빛 모래바닥을 천천히 걸어 다녀요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pharaoh-moon-bastet_v1_thumbnail.png",
+      "sell_price": 1200,
+      "sprite_sheet_path": "fish/epic/pharaoh-moon-bastet_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-mummy-eel",
+      "kind": "fish",
+      "name": "석관에서 깨어난 미라장어",
+      "description": "오랜 잠에서 깨어나 석관 밖으로 고개를 내민 미라장어예요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pharaoh-mummy-eel_v1_thumbnail.png",
+      "sell_price": 300,
+      "sprite_sheet_path": "fish/rare/pharaoh-mummy-eel_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-nile-puffer",
+      "kind": "fish",
+      "name": "나일강 복어",
+      "description": "황금해에 사는 나일강 복어. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-nile-puffer_v1_thumbnail.png",
+      "sell_price": 55,
+      "sprite_sheet_path": "fish/normal/pharaoh-nile-puffer_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-oasis-carp",
+      "kind": "fish",
+      "name": "오아시스 잉어",
+      "description": "황금해에 사는 오아시스 잉어. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-oasis-carp_v1_thumbnail.png",
+      "sell_price": 65,
+      "sprite_sheet_path": "fish/normal/pharaoh-oasis-carp_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "kind": "fish",
+      "name": "오벨리스크 거신",
+      "description": "모래 속에서 깨어난 거신이에요. 어깨 위 오벨리스크에 태양의 힘이 깃들었어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+      "sell_price": 3500,
+      "sprite_sheet_path": "fish/mythic/pharaoh-obelisk-colossus_compat_v2_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-oil-bottle-eel",
+      "kind": "fish",
+      "name": "향유병 속 꼬마장어",
+      "description": "황금해에 사는 향유병 속 꼬마장어. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-oil-bottle-eel_v1_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/pharaoh-oil-bottle-eel_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-open-perfume-bottle",
+      "kind": "trash",
+      "name": "마개 잃은 향유병",
+      "description": "황금해의 모래 속에 남은 마개 잃은 향유병. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pharaoh-open-perfume-bottle_v1_thumbnail.png",
+      "sell_price": 85,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-papyrus-billfish",
+      "kind": "fish",
+      "name": "파피루스 잎새치",
+      "description": "황금해에 사는 파피루스 잎새치. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-papyrus-billfish_v1_thumbnail.png",
+      "sell_price": 55,
+      "sprite_sheet_path": "fish/normal/pharaoh-papyrus-billfish_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-papyrus-column",
+      "kind": "decoration",
+      "name": "파피루스 꽃기둥",
+      "description": "황금해의 왕국을 닮은 파피루스 꽃기둥. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/pharaoh-papyrus-column_v1_thumbnail.png",
+      "sell_price": 42,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-papyrus-seahorse",
+      "kind": "fish",
+      "name": "파피루스 해마",
+      "description": "파피루스 잎을 닮은 지느러미와 말린 꼬리를 살랑이는 작은 해마예요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-papyrus-seahorse_v1_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/pharaoh-papyrus-seahorse_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-peeled-ritual-oar",
+      "kind": "trash",
+      "name": "금박이 뜯긴 의식용 노",
+      "description": "황금해의 모래 속에 남은 금박이 뜯긴 의식용 노. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pharaoh-peeled-ritual-oar_v1_thumbnail.png",
+      "sell_price": 90,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-pyramid-conch",
+      "kind": "fish",
+      "name": "피라미드 소라",
+      "description": "황금해에 사는 피라미드 소라. 금빛 모래바닥을 천천히 걸어 다녀요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pharaoh-pyramid-conch_v1_thumbnail.png",
+      "sell_price": 280,
+      "sprite_sheet_path": "fish/rare/pharaoh-pyramid-conch_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-reed-boat-model",
+      "kind": "decoration",
+      "name": "갈대배 모형",
+      "description": "황금해의 왕국을 닮은 갈대배 모형. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/pharaoh-reed-boat-model_v1_thumbnail.png",
+      "sell_price": 38,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-royal-cobra",
+      "kind": "fish",
+      "name": "왕가의 코브라",
+      "description": "황금해에 사는 왕가의 코브라. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pharaoh-royal-cobra_v1_thumbnail.png",
+      "sell_price": 290,
+      "sprite_sheet_path": "fish/rare/pharaoh-royal-cobra_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-royal-lotus-lamp",
+      "kind": "decoration",
+      "name": "왕가의 연꽃 등잔",
+      "description": "황금해의 왕국을 닮은 왕가의 연꽃 등잔. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/pharaoh-royal-lotus-lamp_v1_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-rusty-tomb-pick",
+      "kind": "trash",
+      "name": "녹슨 도굴꾼의 곡괭이",
+      "description": "황금해의 모래 속에 남은 녹슨 도굴꾼의 곡괭이. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pharaoh-rusty-tomb-pick_v1_thumbnail.png",
+      "sell_price": 90,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-sand-egg-box",
+      "kind": "decoration",
+      "name": "모래빛 새알 보관함",
+      "description": "황금해의 왕국을 닮은 모래빛 새알 보관함. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/pharaoh-sand-egg-box_v1_thumbnail.png",
+      "sell_price": 38,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-sand-obelisk",
+      "kind": "decoration",
+      "name": "모래빛 오벨리스크",
+      "description": "황금해의 왕국을 닮은 모래빛 오벨리스크. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/pharaoh-sand-obelisk_v1_thumbnail.png",
+      "sell_price": 750,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-sand-ray",
+      "kind": "fish",
+      "name": "모래지느러미 가오리",
+      "description": "황금해에 사는 모래지느러미 가오리. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-sand-ray_v1_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/pharaoh-sand-ray_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-sand-spirit",
+      "kind": "fish",
+      "name": "사막의 모래정령",
+      "description": "황금해에 사는 사막의 모래정령. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.008",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pharaoh-sand-spirit_v1_thumbnail.png",
+      "sell_price": 1100,
+      "sprite_sheet_path": "fish/epic/pharaoh-sand-spirit_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-sand-whale",
+      "kind": "fish",
+      "name": "사막을 삼키는 모래고래",
+      "description": "황금해에 사는 사막을 삼키는 모래고래. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pharaoh-sand-whale_v1_thumbnail.png",
+      "sell_price": 1300,
+      "sprite_sheet_path": "fish/epic/pharaoh-sand-whale_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-sarcophagus-crab",
+      "kind": "fish",
+      "name": "석관 집게게",
+      "description": "황금해에 사는 석관 집게게. 금빛 모래바닥을 천천히 걸어 다녀요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-sarcophagus-crab_v1_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/pharaoh-sarcophagus-crab_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-scorpion-crab",
+      "kind": "fish",
+      "name": "사막전갈 게",
+      "description": "황금해에 사는 사막전갈 게. 금빛 모래바닥을 천천히 걸어 다녀요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-scorpion-crab_v1_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/pharaoh-scorpion-crab_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-sleeping-cat-guardian",
+      "kind": "decoration",
+      "name": "잠든 고양이 수호상",
+      "description": "황금해의 왕국을 닮은 잠든 고양이 수호상. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/pharaoh-sleeping-cat-guardian_v1_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-sleepless-sphinx",
+      "kind": "fish",
+      "name": "잠들지 않는 스핑크스",
+      "description": "황금해에 사는 잠들지 않는 스핑크스. 금빛 모래바닥을 천천히 걸어 다녀요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pharaoh-sleepless-sphinx_v1_thumbnail.png",
+      "sell_price": 1250,
+      "sprite_sheet_path": "fish/epic/pharaoh-sleepless-sphinx_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-solar-scarab",
+      "kind": "fish",
+      "name": "천년왕조의 마지막 유산, 황금가면",
+      "description": "거대한 파라오의 황금가면이 공중에 떠 있어요. 눈에서 흘러나오는 푸른 영혼이 천년왕조의 마지막 기억을 품고 있어요.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.72",
+      "speed": "0.008",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/pharaoh-solar-scarab_compat_v3_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-sun-disc-jelly",
+      "kind": "fish",
+      "name": "태양원반 해파리",
+      "description": "황금해에 사는 태양원반 해파리. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.008",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pharaoh-sun-disc-jelly_v1_thumbnail.png",
+      "sell_price": 280,
+      "sprite_sheet_path": "fish/rare/pharaoh-sun-disc-jelly_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-sun-holding-hands",
+      "kind": "decoration",
+      "name": "태양을 받드는 두 손",
+      "description": "황금해의 왕국을 닮은 태양을 받드는 두 손. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/pharaoh-sun-holding-hands_v1_thumbnail.png",
+      "sell_price": 200,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-sunken-pyramid",
+      "kind": "decoration",
+      "name": "가라앉은 거대 피라미드",
+      "description": "황금해의 왕국을 닮은 가라앉은 거대 피라미드. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/pharaoh-sunken-pyramid_v1_thumbnail.png",
+      "sell_price": 850,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-three-pot-shelf",
+      "kind": "decoration",
+      "name": "세 칸짜리 토기 선반",
+      "description": "황금해의 왕국을 닮은 세 칸짜리 토기 선반. 따뜻한 모래빛과 금빛 장식이 어우러져요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/pharaoh-three-pot-shelf_v1_thumbnail.png",
+      "sell_price": 42,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-tomb-serpent-shark",
+      "kind": "fish",
+      "name": "왕릉을 지키는 모래뱀상어",
+      "description": "황금해에 사는 왕릉을 지키는 모래뱀상어. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pharaoh-tomb-serpent-shark_v1_thumbnail.png",
+      "sell_price": 1150,
+      "sprite_sheet_path": "fish/epic/pharaoh-tomb-serpent-shark_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-tomb-shrimp",
+      "kind": "fish",
+      "name": "도굴꾼 새우",
+      "description": "황금해에 사는 도굴꾼 새우. 햇살이 스며든 금빛 물결을 따라 움직여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.02",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pharaoh-tomb-shrimp_v1_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/pharaoh-tomb-shrimp_v1_sprite.png",
+      "native_region_id": "pharaoh",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right"
+    },
+    {
+      "id": "pharaoh-torn-grain-sack",
+      "kind": "trash",
+      "name": "구멍 난 곡물 자루",
+      "description": "황금해의 모래 속에 남은 구멍 난 곡물 자루. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-torn-grain-sack_v1_thumbnail.png",
+      "sell_price": 14,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-torn-papyrus",
+      "kind": "trash",
+      "name": "찢어진 파피루스",
+      "description": "황금해의 모래 속에 남은 찢어진 파피루스. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-torn-papyrus_v1_thumbnail.png",
+      "sell_price": 14,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-wheel-less-cart",
+      "kind": "trash",
+      "name": "바퀴 빠진 나무 수레",
+      "description": "황금해의 모래 속에 남은 바퀴 빠진 나무 수레. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-wheel-less-cart_v1_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pharaoh-worn-scribe-brush",
+      "kind": "trash",
+      "name": "반쯤 닳은 서기관 붓",
+      "description": "황금해의 모래 속에 남은 반쯤 닳은 서기관 붓. 오래된 왕국의 흔적이 배어 있어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pharaoh-worn-scribe-brush_v1_thumbnail.png",
+      "sell_price": 13,
+      "sprite_sheet_path": null,
+      "native_region_id": "pharaoh",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -24294,6 +25421,242 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "pharaoh-baby-croc-stone",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-brick-hermit",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-broken-reed-rod",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-chipped-pottery",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-coin-clam",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-crescent-incense",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-cursed-gold-octopus",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-dull-bronze-mirror",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-four-pillar-altar",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-frayed-linen-fan",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-gatekeeper-anubis",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-glyph-cuttlefish",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-glyph-starfish",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-gnomon-less-sundial",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-gold-catfish",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-gold-medaka",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-gold-nile-crocodile",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-gold-wing-horus",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-half-gold-mask",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-handleless-jug",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-horus-eye-tablet",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-little-sphinx",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-lotus-water-jar",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-moon-bastet",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-mummy-eel",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-nile-puffer",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-oasis-carp",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-obelisk-colossus",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-oil-bottle-eel",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-open-perfume-bottle",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-papyrus-billfish",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-papyrus-column",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-papyrus-seahorse",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-peeled-ritual-oar",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-pyramid-conch",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-reed-boat-model",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-royal-cobra",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-royal-lotus-lamp",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-rusty-tomb-pick",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sand-egg-box",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sand-obelisk",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sand-ray",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sand-spirit",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sand-whale",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sarcophagus-crab",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-scorpion-crab",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sleeping-cat-guardian",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sleepless-sphinx",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-solar-scarab",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sun-disc-jelly",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sun-holding-hands",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-sunken-pyramid",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-three-pot-shelf",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-tomb-serpent-shark",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-tomb-shrimp",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-torn-grain-sack",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-torn-papyrus",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-wheel-less-cart",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pharaoh-worn-scribe-brush",
+      "region_id": "pharaoh"
+    },
+    {
       "species_id": "pink-scallop",
       "region_id": "bluegrove"
     },
@@ -30262,6 +31625,15 @@
       "wait_reduction_seconds": 1
     },
     {
+      "id": "pharaoh",
+      "name": "황금 태양 낚싯대",
+      "price": 1800,
+      "region_id": "pharaoh",
+      "failure_reduction_bp": 200,
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
+    },
+    {
       "id": "plunder",
       "name": "검은 돛 해적 낚싯대",
       "price": 1500,
@@ -34831,28 +36203,45 @@
       "piece_count": 8,
       "thumbnail_path": "/regions/firefly/map-v1.png",
       "enabled": true,
-      "rarity": "rare"
+      "rarity": "rare",
+      "piece_rarities": null
     },
     {
       "region_id": "mechsanctum",
       "piece_count": 6,
       "thumbnail_path": "/regions/mechsanctum/map-v1.png",
       "enabled": true,
-      "rarity": "rare"
+      "rarity": "rare",
+      "piece_rarities": null
     },
     {
       "region_id": "nyamnyam",
       "piece_count": 4,
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/regions/nyamnyam/map-v2.png",
       "enabled": true,
-      "rarity": "rare"
+      "rarity": "rare",
+      "piece_rarities": null
+    },
+    {
+      "region_id": "pharaoh",
+      "piece_count": 4,
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/pharaoh/map-v1.png",
+      "enabled": true,
+      "rarity": "rare",
+      "piece_rarities": [
+        "rare",
+        "rare",
+        "epic",
+        "epic"
+      ]
     },
     {
       "region_id": "plunder",
       "piece_count": 4,
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/regions/plunder/map-v1.png",
       "enabled": true,
-      "rarity": "rare"
+      "rarity": "rare",
+      "piece_rarities": null
     }
   ],
   "fishing_relics": [
@@ -34870,7 +36259,7 @@
     {
       "id": "coin-cradling-clam",
       "name": "동전을 품은 조개",
-      "description": "만기 이자 +2%",
+      "description": "조개 적금 이자 +2%",
       "rarity": "rare",
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/coin-cradling-clam_v1_thumbnail.png",
       "enabled": true,
@@ -35079,7 +36468,7 @@
     {
       "id": "sea-king-golden-vault",
       "name": "해왕의 황금 금고",
-      "description": "만기 이자 +10%",
+      "description": "조개 적금 이자 +10%",
       "rarity": "mythic",
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/sea-king-golden-vault_v1_thumbnail.png",
       "enabled": true,
@@ -35123,7 +36512,7 @@
     {
       "id": "sea-merchant-pearl-vault",
       "name": "바다상인의 진주 금고",
-      "description": "만기 이자 +5%",
+      "description": "조개 적금 이자 +5%",
       "rarity": "epic",
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/sea-merchant-pearl-vault_v1_thumbnail.png",
       "enabled": true,

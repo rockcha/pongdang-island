@@ -1,6 +1,7 @@
 export type FishingRod={id:string;name:string;description:string;effect:string;price:number;color:string;accent:string;region?:string;failureReductionBp:number;nativeBonusBp:number;waitReductionSeconds?:number}
 export const fishingRods:FishingRod[]=[
  {id:'basic',name:'입문용 낚싯대',description:'소박한 대나무 대와 작은 릴, 빨간 찌를 갖춘 첫 낚시 장비예요.',effect:'추가 효과 없음',price:0,color:'#c69857',accent:'#e7d6b6',failureReductionBp:0,nativeBonusBp:0,waitReductionSeconds:0},
+ {id:'pharaoh',name:'황금 태양 낚싯대',description:'황금 스카라베 릴과 오벨리스크 찌에 태양의 빛을 담은 낚싯대예요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:1800,color:'#bd8b3e',accent:'#f6df9e',region:'pharaoh',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'firefly',name:'반딧불 꽃등 낚싯대',description:'잎사귀 나뭇가지 대와 도토리 손잡이, 꿀빛 꽃등 찌를 엮은 요정여울의 낚싯대예요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:1800,color:'#98693e',accent:'#d7db8a',region:'firefly',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'mechsanctum',name:'성소의 태엽 낚싯대',description:'황동 톱니 릴과 청록 동력 찌를 갖춘 정교한 성소의 낚싯대예요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:1800,color:'#806846',accent:'#7bd5c5',region:'mechsanctum',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'plunder',name:'검은 돛 해적 낚싯대',description:'검은 돛 깃발과 붉은 가죽, 황동 나침반 릴로 해적선장의 항로를 담았어요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:1500,color:'#34272a',accent:'#d6ab63',region:'plunder',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},

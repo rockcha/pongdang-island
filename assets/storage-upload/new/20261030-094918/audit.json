@@ -1,0 +1,152 @@
+{
+  "results": [
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261030-094918\\fish\\mythic\\pharaoh-gold-wing-horus_v1_thumbnail.png",
+      "width": 1368,
+      "height": 1368,
+      "cell": 1368,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            21,
+            125,
+            1328,
+            1104
+          ],
+          "margin": 19,
+          "occupancy": 0.9707602339181286,
+          "opaque": 688866,
+          "transparent": 1146490,
+          "soft": 723943
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pharaoh-gold-wing-horus",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261030-094918\\fish\\mythic\\pharaoh-gold-wing-horus_swim8_v2_sprite.png",
+      "width": 2496,
+      "height": 1248,
+      "cell": 624,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            185,
+            208,
+            277,
+            240
+          ],
+          "margin": 162,
+          "occupancy": 0.4439102564102564,
+          "opaque": 32587,
+          "transparent": 346345,
+          "soft": 42882
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            185,
+            234,
+            278,
+            215
+          ],
+          "margin": 161,
+          "occupancy": 0.44551282051282054,
+          "opaque": 31688,
+          "transparent": 344647,
+          "soft": 44519
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            183,
+            231,
+            279,
+            221
+          ],
+          "margin": 162,
+          "occupancy": 0.44711538461538464,
+          "opaque": 31141,
+          "transparent": 345101,
+          "soft": 44135
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            183,
+            239,
+            278,
+            215
+          ],
+          "margin": 163,
+          "occupancy": 0.44551282051282054,
+          "opaque": 27509,
+          "transparent": 349852,
+          "soft": 39342
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            185,
+            239,
+            277,
+            206
+          ],
+          "margin": 162,
+          "occupancy": 0.4439102564102564,
+          "opaque": 27157,
+          "transparent": 350573,
+          "soft": 38641
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            157,
+            175,
+            318,
+            291
+          ],
+          "margin": 149,
+          "occupancy": 0.5096153846153846,
+          "opaque": 43212,
+          "transparent": 329680,
+          "soft": 59414
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            178,
+            237,
+            281,
+            213
+          ],
+          "margin": 165,
+          "occupancy": 0.45032051282051283,
+          "opaque": 30004,
+          "transparent": 345222,
+          "soft": 44048
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            180,
+            217,
+            281,
+            235
+          ],
+          "margin": 163,
+          "occupancy": 0.45032051282051283,
+          "opaque": 32458,
+          "transparent": 344326,
+          "soft": 44898
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

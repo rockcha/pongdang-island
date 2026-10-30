@@ -29,10 +29,17 @@ beforeEach(async()=>{
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
 
-it('blocks nonoperators, anonymous calls, direct table access, same effects and composite inputs',async()=>{
+it('allows nonoperators to craft and replay without another fee',async()=>{
  await db.query('delete from app_private.notice_operators where user_id=$1',[uid])
- await reject('select public.craft_relic($1,$2,$3) s',['shell-hourglass','fish-calling-bell',crypto.randomUUID()],'OPERATOR_REQUIRED')
- await db.query('insert into app_private.notice_operators values($1)',[uid])
+ expect((await call('select public.relic_state() s')).canCraft).toBe(true)
+ await roll(0.1)
+ const operation=crypto.randomUUID(),result=await craft('shell-hourglass','fish-calling-bell',operation)
+ expect(result.craft).toMatchObject({success:true,chance:35,cost:5000})
+ expect((await craft('shell-hourglass','fish-calling-bell',operation)).replayed).toBe(true)
+ expect((await db.query('select gold from public.player_wallets where user_id=$1',[uid])).rows[0].gold).toBe(95000)
+})
+it('blocks anonymous calls, direct table access, same effects and composite inputs for nonoperators',async()=>{
+ await db.query('delete from app_private.notice_operators where user_id=$1',[uid])
  await reject('select public.craft_relic($1,$2,$3) s',['shell-hourglass','eternal-water-clock',crypto.randomUUID()],'RELIC_SAME_EFFECT')
  await reject('select public.craft_relic($1,$2,$3) s',['shell-hourglass','shell-hourglass',crypto.randomUUID()],'RELIC_SAME_EFFECT')
  await reject('select public.craft_relic($1,$2,$3) s',['crafted-fake','shell-hourglass',crypto.randomUUID()],'RELIC_ORIGINAL_REQUIRED')

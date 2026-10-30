@@ -79,7 +79,7 @@ export function RelicCraftingGuide({state,disabled=false,storageKey,onState,onBu
    const error=cause as {code?:string;message?:string}
    const confirmed=error.code==='P0001'||/^\d{2}[A-Z0-9]{3}$/.test(error.code??'')
    if(confirmed)remember(null)
-   setMessage(error.message?.includes('RELIC_EQUIPPED')?'장착 중인 1개만 남아 있어 사용할 수 없어요.':error.message?.includes('INSUFFICIENT_GOLD')?'골드가 부족해요.':error.message?.includes('RELIC_SAME_EFFECT')?'같은 계열은 결합할 수 없어요.':confirmed?'재료와 운영자 권한을 다시 확인해 주세요.':'결과를 확인하지 못했어요. 재료를 바꾸지 말고 이전 결과를 다시 확인해 주세요.')
+   setMessage(error.message?.includes('RELIC_EQUIPPED')?'장착 중인 1개만 남아 있어 사용할 수 없어요.':error.message?.includes('INSUFFICIENT_GOLD')?'골드가 부족해요.':error.message?.includes('RELIC_SAME_EFFECT')?'같은 계열은 결합할 수 없어요.':confirmed?'재료와 보유 골드를 다시 확인해 주세요.':'결과를 확인하지 못했어요. 재료를 바꾸지 말고 이전 결과를 다시 확인해 주세요.')
   }finally{lock.current=false;if(alive.current)setBusy(false)}
  }
  const stage=busy?'forging':outcome?.success?'success':outcome?'failure':'select'

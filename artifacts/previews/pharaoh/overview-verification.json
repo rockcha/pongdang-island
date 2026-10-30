@@ -1,0 +1,90 @@
+{
+  "verified_at": "2026-10-30T01:08:57.093Z",
+  "errors": [],
+  "results": [
+    {
+      "view": "news",
+      "width": 390,
+      "scene": {
+        "src": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/pharaoh/overview-v2.png",
+        "fit": "contain",
+        "width": 1254,
+        "height": 1254,
+        "box": {
+          "width": 390,
+          "height": 783
+        }
+      },
+      "screenshot": "artifacts/previews/pharaoh/news-390.png"
+    },
+    {
+      "view": "harbor",
+      "width": 390,
+      "scene": {
+        "src": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/pharaoh/overview-v2.png",
+        "fit": "contain",
+        "width": 1254,
+        "height": 1254,
+        "box": {
+          "width": 390,
+          "height": 623
+        }
+      },
+      "screenshot": "artifacts/previews/pharaoh/harbor-390.png"
+    },
+    {
+      "view": "fishing",
+      "width": 390,
+      "scene": {
+        "view": "fishing",
+        "images": [
+          "/fishing/scenery/pharaoh-v1.png",
+          "/fishing/platforms/pharaoh-v1.png"
+        ]
+      },
+      "screenshot": "artifacts/previews/pharaoh/fishing-390.png"
+    },
+    {
+      "view": "news",
+      "width": 560,
+      "scene": {
+        "src": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/pharaoh/overview-v2.png",
+        "fit": "contain",
+        "width": 1254,
+        "height": 1254,
+        "box": {
+          "width": 560,
+          "height": 783
+        }
+      },
+      "screenshot": "artifacts/previews/pharaoh/news-560.png"
+    },
+    {
+      "view": "harbor",
+      "width": 560,
+      "scene": {
+        "src": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/pharaoh/overview-v2.png",
+        "fit": "contain",
+        "width": 1254,
+        "height": 1254,
+        "box": {
+          "width": 448,
+          "height": 623
+        }
+      },
+      "screenshot": "artifacts/previews/pharaoh/harbor-560.png"
+    },
+    {
+      "view": "fishing",
+      "width": 560,
+      "scene": {
+        "view": "fishing",
+        "images": [
+          "/fishing/scenery/pharaoh-v1.png",
+          "/fishing/platforms/pharaoh-v1.png"
+        ]
+      },
+      "screenshot": "artifacts/previews/pharaoh/fishing-560.png"
+    }
+  ]
+}

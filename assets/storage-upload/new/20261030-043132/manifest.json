@@ -1,0 +1,30 @@
+{
+  "tool": "built-in image_gen",
+  "status": "concept_preview_only",
+  "created_at": "2026-10-30T04:31:32+09:00",
+  "uploaded": false,
+  "catalog_registered": false,
+  "files": [
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "name": "오벨리스크 거신",
+      "rarity": "mythic",
+      "local_path": "fish/mythic/pharaoh-obelisk-colossus_v3_thumbnail.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/20261030-042719/fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+          "role": "redesign target, sandstone and gold palette"
+        },
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "rendering style only"
+        }
+      ],
+      "prompt": "Use case: stylized-concept / precise-object-edit. Image 1 is the previous obelisk colossus to substantially REDESIGN, not merely recolor or pose. Image 2 is STYLE ONLY for smooth refined fantasy illustration shading and softly colored edges, never ray anatomy, purple or checkerboard. Create one MYTHIC OBELISK COLOSSUS collectible thumbnail: ancient Egyptian desert god formed of warm sandstone and antique gold. Dramatically different silhouette and camera: low-angle three-quarter full-body view, facing to viewer's right, regal long-legged athletic monumental proportions, shoulders turned, one leg advancing, one huge hand extended forward palm down as if commanding sand, other arm relaxed back; elegant powerful stance rather than two symmetrical hanging fists. One distinct small sculpted pharaoh-mask head wearing a tall tapered obelisk crown with gold pyramidion; powerful broad chest of interlocking tapering sandstone plates bearing a luminous golden sun seal; narrow waist, elongated armored shins, huge but refined forearms. Remove the previous enormous flat central obelisk slab face/body and circular wheel halo: instead two tall broken obelisk fins rise diagonally BEHIND the shoulders forming a clean architectural crown silhouette, attached/floating closely as part of the character, plus a restrained broad layered gold nemes collar. Sculpted gold Egyptian solar motifs integrated into stone, carved warm ochre shadow recesses, amber slit eyes. Divine machine-god grandeur but ancient stone monument craftsmanship rather than a science fiction robot. Beautiful finely painted warm sandstone grain, weathered ivory bevels, brushed antique gold surfaces, soft warm highlights, deep umber separations. SAND + GOLD + AMBER ONLY, absolutely no blue, cyan, turquoise, green, purple or cool gems, no electric joints. No cute squat toy proportions, no round gears, no excessive filigree. Distinct powerful readable silhouette at thumbnail size. Full body, both feet, crown and shoulder obelisks completely inside frame with generous 8-10% clear margin; fit entire subject at 80% canvas height. Isolated genuinely transparent background, no floor, platform, scenery, cast ground shadow, sand clouds, loose rocks, detached particles, text, labels, border or watermark. Clean alpha edges, no glowing matte fringe. Single polished game character illustration.",
+      "width": 1254,
+      "height": 1254,
+      "has_alpha": true,
+      "sha256": "9b97b077793ffae243105c18219e995f69f15c7336d46ffff3926c76af12a3d8"
+    }
+  ]
+}

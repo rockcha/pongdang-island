@@ -7,7 +7,7 @@ import { PlaceBanner } from '@/components/place-banner'
 vi.mock('@/features/gold/gold-provider', () => ({ GoldIcon: () => <span>골드</span> }))
 const access=vi.hoisted(()=>({operator:false,loading:false}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>access}))
-vi.mock('@/features/arcade/tide-defense-game',()=>({default:()=> <p>디펜스 연습 화면</p>}))
+vi.mock('@/features/arcade/tower-defense-game',()=>({default:()=> <p>디펜스 연습 화면</p>}))
 afterEach(()=>{cleanup();access.operator=false;access.loading=false})
 it('filters two-column cards by category and reward timing without descriptions',()=>{
  setup()
@@ -62,20 +62,18 @@ it('handles an unknown game with a route back to the lobby', () => {
  expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/arcade')
 })
 
-it('hides defense from nonoperators and blocks direct access',()=>{
+it('lists the free defense practice for all players and opens it directly',async()=>{
  setup()
- expect(screen.queryByRole('link',{name:/바닷길 방어전/})).toBeNull()
+ expect(screen.getByRole('link',{name:/퐁이의 타워디펜스/})).toBeTruthy()
  cleanup();setup('/arcade/tower-defense')
- expect(screen.getByText('일반 도감')).toBeTruthy()
- expect(screen.queryByText('디펜스 연습 화면')).toBeNull()
+ expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })
-it('does not mount defense while permission is pending',()=>{
+it('opens public defense practice while operator permission is pending',async()=>{
  access.loading=true;setup('/arcade/tower-defense')
- expect(screen.getByText('운영자 권한 확인 중…').getAttribute('role')).toBe('status')
- expect(screen.queryByText('디펜스 연습 화면')).toBeNull()
+ expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })
 it('lists and opens defense for a verified operator',async()=>{
  access.operator=true;setup()
- fireEvent.click(screen.getByRole('link',{name:/바닷길 방어전/}))
+ fireEvent.click(screen.getByRole('link',{name:/퐁이의 타워디펜스/}))
  expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })

@@ -71,7 +71,7 @@ it.each([1,2])('reserves one equipped copy and allows only the spare when quanti
  expect(apply.mock.calls[0][0].equippedId).toBe('a')
  expect(apply.mock.calls[0][0].relics.find((r:Relic)=>r.id==='a').quantity).toBe(1)
 })
-it('shows the operator entry, excludes same effects and equipped-only originals, and previews the attachment',async()=>{
+it('shows the crafting entry, excludes same effects and equipped-only originals, and previews the attachment',async()=>{
  render(<RelicCraftingGuide state={{...state,equippedId:'c',relics:state.relics.map(r=>r.id==='c'?{...r,quantity:1}:r)}} storageKey="craft:me" onState={vi.fn()}/>)
  await choose()
  expect(screen.getByRole('button',{name:'기본 유물 선택: 모래시계'})).toBeTruthy()

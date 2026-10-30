@@ -1,0 +1,41 @@
+{
+  "tool": "built-in image_gen",
+  "status": "concept_preview_only",
+  "created_at": "2026-10-30T04:27:19+09:00",
+  "uploaded": false,
+  "catalog_registered": false,
+  "palette": "sandstone, papyrus ivory, antique gold, amber; no blue",
+  "files": [
+    {
+      "id": "pharaoh-papyrus-seahorse",
+      "name": "파피루스 해마",
+      "rarity": "epic",
+      "local_path": "fish/epic/pharaoh-papyrus-seahorse_v2_thumbnail.png",
+      "references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261030-042239/fish/epic/pharaoh-papyrus-seahorse_v1_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target image 1: the papyrus seahorse thumbnail. Image 2 is STYLE ONLY for soft refined fantasy shading and colored edges, never copy ray anatomy, purple palette or checkerboard. Preserve the upright right-facing seahorse anatomy, coiled tail, elegant papyrus leaf crown, parchment fins and gold trim. Remove ALL blue, cyan, turquoise and green from the creature including eye, inlays and leaves. Use a cohesive warm sand + gold palette: creamy papyrus ivory body, pale sandy parchment leaves with delicate veins, antique gold inlays instead of lapis blue, amber-brown eye with small natural highlight. Beautiful finely painted epic collectible, rich gentle shading, restrained warm highlights, no thick outlines. Full body centered with 8 percent clear margin on all sides, no cropped fins or crown. Genuine transparent background, crisp clean alpha silhouette with no fringe or stray pixels. No environment, ground, text, border, particle cloud or detached props.",
+      "width": 1254,
+      "height": 1254,
+      "has_alpha": true,
+      "sha256": "01ce28560b2ec6d094c8195752c5c24065589a31c4e3bddac0c70b0613cb18fc"
+    },
+    {
+      "id": "pharaoh-obelisk-colossus",
+      "name": "오벨리스크 거신",
+      "rarity": "mythic",
+      "local_path": "fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png",
+      "references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261030-042239/fish/mythic/pharaoh-obelisk-colossus_v1_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "prompt": "Use case: precise-object-edit / stylized-concept. Image 1 is edit target: obelisk colossus concept; image 2 is user's existing machine god reference for DIVINE GRANDEUR, intricate layered construction, commanding silhouette, ornate craftsmanship and high rarity visual presence only. Image 3 is rendering STYLE ONLY: soft colored edges and refined fantasy illustration shading; never copy ray anatomy/purple/checkerboard. Redesign the target into a much more magnificent MYTHIC EGYPTIAN OBELISK COLOSSUS of SANDSTONE AND GOLD, retaining unmistakable tall pointed obelisk head-and-torso, two huge arms and two strong legs, in a regal three-quarter pose oriented toward the right. Avoid the squat toy robot look: powerful elegant proportions, monumental shoulders, tapered imposing obelisk torso, carved ancient Egyptian motifs. Floating segmented sandstone shoulder armor with broad sculpted gold solar fans, sculpted heavy gold bracers, engraved stone hands, massive stable feet. One large architecturally integrated golden sun-disc halo behind upper body, not a gear mechanism copied from reference. Beautiful weathered pale sandstone, fine sand grain, warm ochre crevices, luminous engraved gold channels, subtle warm amber eyes and central solar seal. Tight amber light stays close to carving. SAND + GOLD ONLY; absolutely no blue, cyan, turquoise, green, purple, cool gems or electric cyan joints. Antique gold ornaments and deeper brown shadow recesses provide contrast. Make it feel like an ancient god awoken from a desert monument, grand and majestic, clean readable thumbnail silhouette, restrained ornament rather than visual clutter. Painterly refined game collectible illustration, smooth volumetric shading with finely controlled highlights, no heavy black outlines, no photoreal background. Entire body and halo fully visible, centered at 82 percent of square canvas, generous 8 percent transparent margin on every side. Truly transparent background, no ground/base/platform, no sand cloud, no loose rocks/particles, no text or watermark, no colored matte fringe.",
+      "width": 1254,
+      "height": 1254,
+      "has_alpha": true,
+      "sha256": "01f6c0c933b8a1858cf1544fea80284b53437793e068759ebfcc648e09d72a2d"
+    }
+  ]
+}

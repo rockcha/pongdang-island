@@ -2,7 +2,7 @@ import {MapPieceArtwork} from '@/features/regions/map-piece-progress'
 import {HarborMythicShowcase,regionalMythics} from '@/features/regions/harbor-mythic-showcase'
 import {appArt} from '@/components/app-art'
 import { NativeSpeciesStrip } from '@/features/regions/native-species-strip'
-import { LandscapeImage } from '@/components/landscape-image'
+import {RegionLandscape} from '@/features/regions/region-landscape'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '@/components/auth-provider'
@@ -11,7 +11,7 @@ import { rarities } from '@/lib/game/rarity'
 import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
 import { loadHarborCatalog } from '@/features/regions/harbor-catalog'
 import type { CatalogEntry } from '@/features/collection/api'
-import { loadRegionMap, regionImageUrl } from '@/features/regions/api'
+import { loadRegionMap } from '@/features/regions/api'
 import type { Region, RegionMap } from '@/features/regions/api'
 import { DestinationStrip } from '@/features/regions/destination-strip'
 import { regionIcons } from '@/features/regions/region-icons'
@@ -19,7 +19,7 @@ import {rememberRegion,rememberedRegionIndex} from '@/features/regions/remembere
 import {JourneyProgress} from '@/features/regions/journey-progress'
 
 function Landscape({region}:{region:Region}){
- return <LandscapeImage src={regionImageUrl(region.image_path)} alt={region.name} className={`absolute inset-0 size-full object-cover ${region.unlocked?'':'grayscale brightness-[0.35]'}`}/>
+ return <RegionLandscape region={region} locked={!region.unlocked}/>
 }
 export function HarborPage(){
  const {session}=useAuth()

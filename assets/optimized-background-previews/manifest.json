@@ -1,10 +1,10 @@
 {
   "profile": "webp-q90-inside-960-v1",
   "summary": {
-    "count": 64,
-    "sourceBytes": 168224610,
-    "previewBytes": 12399552,
-    "reductionPercent": 92.63
+    "count": 72,
+    "sourceBytes": 190308830,
+    "previewBytes": 13970242,
+    "reductionPercent": 92.66
   },
   "items": [
     {
@@ -260,6 +260,48 @@
       }
     },
     {
+      "key": "fairy-dew-grove-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-033333/aquarium-backgrounds/fairy-dew-grove-panorama-v1.png",
+      "sourceHash": "84eca68114cbd6318666140f61a856352204c8cfdafaab595c32465ab9b1dcbc",
+      "sourceBytes": 3021158,
+      "sourceWidth": 1630,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/a0117bf87b67cae0ede47cd1-960.webp",
+        "bytes": 218230,
+        "width": 960,
+        "height": 568
+      }
+    },
+    {
+      "key": "fairy-moonlit-lake-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-033333/aquarium-backgrounds/fairy-moonlit-lake-panorama-v1.png",
+      "sourceHash": "0c859cd1b53343444267891d6c23c6b98e415b6ced11252a662890609da01c4d",
+      "sourceBytes": 2860401,
+      "sourceWidth": 1629,
+      "sourceHeight": 966,
+      "preview": {
+        "url": "/game-art/background-previews/3cb36a95f7c4c7fb4b55dbb5-960.webp",
+        "bytes": 205184,
+        "width": 960,
+        "height": 569
+      }
+    },
+    {
+      "key": "fairy-petal-palace-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-033333/aquarium-backgrounds/fairy-petal-palace-panorama-v1.png",
+      "sourceHash": "b0b152a26579cf2c5acd8d1b3d7ce93593824177bc2f2719c9dcb89ee3083803",
+      "sourceBytes": 2760090,
+      "sourceWidth": 1628,
+      "sourceHeight": 966,
+      "preview": {
+        "url": "/game-art/background-previews/a10ea75e0de078bdd658e0b5-960.webp",
+        "bytes": 195614,
+        "width": 960,
+        "height": 570
+      }
+    },
+    {
       "key": "firefly-reed-marsh.png",
       "source": "assets/storage-upload/new/20261025-014955/aquarium-backgrounds/firefly-reed-marsh-panorama-v2.png",
       "sourceHash": "0e71d823a6439b77e7d885773a0d752560e56fa6609462a3d950ebc980ab443c",
@@ -330,6 +372,20 @@
       }
     },
     {
+      "key": "halloween-ghost-glasshouse-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-034926/aquarium-backgrounds/halloween-ghost-glasshouse-panorama-v1.png",
+      "sourceHash": "21c55b177f1f728bb54ce1762e68612cdbd5bf5c844eb387f968d83e324b5693",
+      "sourceBytes": 2873352,
+      "sourceWidth": 1629,
+      "sourceHeight": 966,
+      "preview": {
+        "url": "/game-art/background-previews/178edac0097621841e31dc40-960.webp",
+        "bytes": 206068,
+        "width": 960,
+        "height": 569
+      }
+    },
+    {
       "key": "halloween-pumpkin-garden.png",
       "source": "assets/storage-upload/new/20261025-014955/aquarium-backgrounds/halloween-pumpkin-garden-panorama-v2.png",
       "sourceHash": "12f8f5a34977b707d6c9151ee5a124a520f27af36776404a599d1a542c1fb56d",
@@ -341,6 +397,34 @@
         "bytes": 309830,
         "width": 960,
         "height": 569
+      }
+    },
+    {
+      "key": "halloween-pumpkin-teahouse-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-034926/aquarium-backgrounds/halloween-pumpkin-teahouse-panorama-v1.png",
+      "sourceHash": "f3197e4c9945337c83c6e30273701ed8e941559402b5a5cbe7f40a6b37be3866",
+      "sourceBytes": 2503729,
+      "sourceWidth": 1629,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/2f46194dba9a36c5ea6a963d-960.webp",
+        "bytes": 175280,
+        "width": 960,
+        "height": 569
+      }
+    },
+    {
+      "key": "halloween-witch-lavender-room-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-034926/aquarium-backgrounds/halloween-witch-lavender-room-panorama-v1.png",
+      "sourceHash": "8101b0a1bb9849a2adeb7c54770a268bccf0d79c2d34c69f15569144f5354ba8",
+      "sourceBytes": 2550349,
+      "sourceWidth": 1628,
+      "sourceHeight": 966,
+      "preview": {
+        "url": "/game-art/background-previews/9bdb4dd9af0f68c4c58ba6c2-960.webp",
+        "bytes": 164590,
+        "width": 960,
+        "height": 570
       }
     },
     {
@@ -521,6 +605,34 @@
       "preview": {
         "url": "/game-art/background-previews/ade187a8827825f9fb839f00-960.webp",
         "bytes": 165258,
+        "width": 960,
+        "height": 569
+      }
+    },
+    {
+      "key": "pharaoh-sleeping-pyramid-court-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-105924/aquarium-backgrounds/pharaoh-sleeping-pyramid-court-panorama-v1.png",
+      "sourceHash": "bac532a5ea6564f96c28e35773722598c1eadf4d80578740da0eb838ce709e57",
+      "sourceBytes": 2730326,
+      "sourceWidth": 1629,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/0a131abcae1f55eda17919e8-960.webp",
+        "bytes": 197838,
+        "width": 960,
+        "height": 569
+      }
+    },
+    {
+      "key": "pharaoh-sunken-sun-tomb-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261030-105924/aquarium-backgrounds/pharaoh-sunken-sun-tomb-panorama-v1.png",
+      "sourceHash": "1a25d024b1a96cb05beae10b7c7a98b42b3e2af40e6c62a2bd146f473efeff75",
+      "sourceBytes": 2784815,
+      "sourceWidth": 1629,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/edb2a344e566c1742444f466-960.webp",
+        "bytes": 207886,
         "width": 960,
         "height": 569
       }

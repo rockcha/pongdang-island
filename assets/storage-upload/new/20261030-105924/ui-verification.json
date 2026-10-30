@@ -1,0 +1,28 @@
+{
+  "verified_at": "2026-10-30T02:07:32.845Z",
+  "scope": "Local actual shop confirmation and actual Phaser aquarium; synthetic specimens, no real purchases",
+  "shop": {
+    "cards": 2,
+    "prices": [
+      2500,
+      3000
+    ],
+    "uncropped": true
+  },
+  "tanks": [
+    {
+      "id": "pharaoh-sleeping-pyramid-court",
+      "world": 1170,
+      "viewport": 390,
+      "image": "/assets/storage-upload/new/20261030-105924/aquarium-backgrounds/pharaoh-sleeping-pyramid-court-panorama-v1.png"
+    },
+    {
+      "id": "pharaoh-sunken-sun-tomb",
+      "world": 1170,
+      "viewport": 390,
+      "image": "/assets/storage-upload/new/20261030-105924/aquarium-backgrounds/pharaoh-sunken-sun-tomb-panorama-v1.png"
+    }
+  ],
+  "errors": [],
+  "frontend_deployed": false
+}

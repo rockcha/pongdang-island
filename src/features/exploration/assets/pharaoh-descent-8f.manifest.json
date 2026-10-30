@@ -1,0 +1,10 @@
+{
+  "generator": "built-in image_gen",
+  "file": "pharaoh-descent-8f.png",
+  "columns": 4,
+  "rows": 2,
+  "frameWidth": 384,
+  "frameHeight": 512,
+  "durationMs": 4000,
+  "prompt": "Use case: stylized-concept. Asset type: PNG animation sprite sheet for a mobile text RPG descending into an ancient Egyptian tomb. Create ONE sprite sheet, exact 4 columns by 2 rows, eight equally sized portrait frames, edge-to-edge with absolutely no gutters or borders, no text, labels or UI. Each cell shows the SAME first-person view looking DOWN a steep flight of sandstone stairs into a deep dark turquoise Egyptian basement. Warm flickering wall torches, carved gold hieroglyph wall reliefs, dusty stone steps, elegant clean hand-painted cartoon fantasy game illustration. Eight successive animation frames read left to right then second row: camera smoothly travels forward and DOWN the stairs, stair edges move towards viewer and down out of foreground, walls pass slowly, torch flame flickers. Keep architecture and palette consistent, no characters, no feet, no monsters. Strong depth perspective, clearly descending not ascending; upper rear vanishing point dark, foreground stair treads visible from above. Loopable repeating flight of stairs, eighth frame nearly reconnects to first one step cycle later. Sheet overall landscape 3:2 ratio if possible, each cell portrait 3:4. High quality crisp shapes with atmospheric dark teal shadows and restrained amber-gold lighting."
+}

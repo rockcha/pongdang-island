@@ -6,6 +6,7 @@ import {useOperator} from '@/features/notices/use-operator'
 import {pharaohArt} from '@/features/regions/pharaoh-art'
 import {ExplorationGame} from './exploration-game'
 import './exploration.css'
+import './exploration-hud.css'
 
 export function ExplorationPage(){
  const {operator,loading}=useOperator()
@@ -19,14 +20,11 @@ export function ExplorationPage(){
   if(!operator||loading)return
   setPlaying(true)
   const request=++fullscreenRequest.current
-  // A real user gesture is needed for native fullscreen and orientation locking.
+  // Native fullscreen is optional; keep the device's current orientation.
   if(window.matchMedia('(pointer: coarse)').matches&&!document.fullscreenElement){
    void document.documentElement.requestFullscreen?.().then(async()=>{
     if(request!==fullscreenRequest.current){if(document.fullscreenElement)await document.exitFullscreen();return}
-    const orientation=screen.orientation as ScreenOrientation&{lock?:(value:string)=>Promise<void>}
-    await orientation?.lock?.('landscape')
-    if(request!==fullscreenRequest.current)orientation?.unlock?.()
-   }).catch(()=>{/* The fixed viewport and rotation hint remain usable. */})
+   }).catch(()=>{/* The portrait viewport also works without native fullscreen. */})
   }
  }
  return <section className="exploration-lobby" aria-label="탐험">

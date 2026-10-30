@@ -1,0 +1,62 @@
+{
+  "generator": "built-in image_gen",
+  "doorLayout": {
+    "columns": 4,
+    "rows": 4,
+    "frames": 4,
+    "usedRows": [
+      4,
+      4,
+      2
+    ]
+  },
+  "doorSkinWeights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "backgroundWeights": [
+    1,
+    1,
+    1
+  ],
+  "assets": [
+    {
+      "file": "doors-a.png",
+      "prompt": "Use case: stylized-concept. Production PNG sprite atlas for an Egyptian dungeon mobile RPG. EXACT 4 columns x 4 rows equal square cells, square overall image. Transparent background, no checkerboard, no labels, no text, no gutters. Each ROW is one distinct front-facing Egyptian arched DOUBLE door skin, with FOUR opening frames left to right: fully closed, 30% open, 65% open, fully open revealing a dark doorway. Keep SAME doorframe position, identical scale and anchors across ALL cells, door occupies centered 65% width and 88% height with generous transparent padding; all details contained in cell. Frame and outer pillars stay absolutely stationary; only door leaves rotate inward. Dark opaque black doorway interior is intentional, outside arch truly transparent. Clean polished hand-painted cartoon fantasy, warm gold details, crisp silhouettes, restrained highlights. No characters, landscape, particles or UI. Row1: sandstone and amber-gold sun medallion. Row2: turquoise stone and gold scarab. Row3: dark red stone with bronze ankh. Row4: deep lapis blue with gold stars.",
+      "cleanupPrompt": "Edit this exact 4x4 transparent PNG sprite atlas. Preserve all door skins and the closed-to-open animation arrangement. CRITICAL cleanup: shrink and center EACH complete door within its own cell so there is at least 10% transparent margin on ALL FOUR sides of EACH of the 16 cells. No door crown or pedestal may touch any cell boundary. All doorframes within a row identical size and baseline. Remove all stray red/yellow pixels and all matte outlines; edges clean with true alpha transparency. Maintain 4 equal columns and4 equal rows square overall. No grid lines, no text. Keep dark opaque doorway interior, all outside-frame background transparent."
+    },
+    {
+      "file": "doors-b.png",
+      "prompt": "Use case: stylized-concept. Production PNG sprite atlas for an Egyptian dungeon mobile RPG. EXACT 4 columns x 4 rows equal square cells, square overall image. Transparent background, no checkerboard, no labels, no text, no gutters. Each ROW is one distinct front-facing Egyptian arched DOUBLE door skin, with FOUR opening frames left to right: fully closed, 30% open, 65% open, fully open revealing a dark doorway. Keep SAME doorframe position, identical scale and anchors across ALL cells, door occupies centered 65% width and 88% height with generous transparent padding; all details contained in cell. Frame and outer pillars stay absolutely stationary; only door leaves rotate inward. Dark opaque black doorway interior is intentional, outside arch truly transparent. Clean polished hand-painted cartoon fantasy, warm gold details, crisp silhouettes, restrained highlights. No characters, landscape, particles or UI. Row1: jade green stone with gold cobra relief. Row2: violet stone with silver crescent. Row3: ivory limestone with gold lotus relief. Row4: charcoal basalt with bronze eye of Horus.",
+      "cleanupPrompt": "Edit this exact 4x4 transparent PNG sprite atlas. Preserve all door skins and the closed-to-open animation arrangement. CRITICAL cleanup: shrink and center EACH complete door within its own cell so there is at least 10% transparent margin on ALL FOUR sides of EACH of the 16 cells. No door crown or pedestal may touch any cell boundary. All doorframes within a row identical size and baseline. Remove all stray red/yellow pixels and all matte outlines; edges clean with true alpha transparency. Maintain 4 equal columns and4 equal rows square overall. No grid lines, no text. Keep dark opaque doorway interior, all outside-frame background transparent."
+    },
+    {
+      "file": "doors-c.png",
+      "prompt": "Use case: stylized-concept. Production PNG sprite atlas for an Egyptian dungeon mobile RPG. EXACT 4 columns x 4 rows equal square cells, square overall image. Transparent background, no checkerboard, no labels, no text, no gutters. Each ROW is one distinct front-facing Egyptian arched DOUBLE door skin, with FOUR opening frames left to right: fully closed, 30% open, 65% open, fully open revealing a dark doorway. Keep SAME doorframe position, identical scale and anchors across ALL cells, door occupies centered 65% width and 88% height with generous transparent padding; all details contained in cell. Frame and outer pillars stay absolutely stationary; only door leaves rotate inward. Dark opaque black doorway interior is intentional, outside arch truly transparent. Clean polished hand-painted cartoon fantasy, warm gold details, crisp silhouettes, restrained highlights. No characters, landscape, particles or UI. Row1: weathered copper with orange sun rays. Row2: dark teal obsidian with pale cyan crystal relief. Row3: sandy beige stone with geometric bronze bands. Row4: muted olive stone with gold reeds. First two rows are priority.",
+      "cleanupPrompt": "Edit this exact 4x4 transparent PNG sprite atlas. Preserve all door skins and the closed-to-open animation arrangement. CRITICAL cleanup: shrink and center EACH complete door within its own cell so there is at least 10% transparent margin on ALL FOUR sides of EACH of the 16 cells. No door crown or pedestal may touch any cell boundary. All doorframes within a row identical size and baseline. Remove all stray red/yellow pixels and all matte outlines; edges clean with true alpha transparency. Maintain 4 equal columns and4 equal rows square overall. No grid lines, no text. Keep dark opaque doorway interior, all outside-frame background transparent."
+    },
+    {
+      "file": "tomb-sandstone.png",
+      "prompt": "Use case: stylized-concept. PNG background for a portrait Egyptian underground RPG room selection screen. ONE full scene, portrait 2:3 composition. sandstone burial hall with warm amber torches and subtle golden carved hieroglyph reliefs. Front-facing symmetrical wall across the back and large empty stone floor foreground. Three subdued empty wall bays across the middle to place separate door sprites later, but DO NOT draw doors, open passages, arch frames, characters or interface. Middle wall and foreground clean uncluttered low-contrast; decorative columns at far outer edges only. Scene extends to every edge, no borders. Beautiful clean hand-painted cartoon fantasy game background matching Egyptian torchlit gold and dark teal palette. Dark atmospheric but readable stone texture. No text, no labels, no watermark.",
+      "cleanupPrompt": null
+    },
+    {
+      "file": "tomb-lapis.png",
+      "prompt": "Use case: stylized-concept. PNG background for a portrait Egyptian underground RPG room selection screen. ONE full scene, portrait 2:3 composition. deep blue lapis ritual chamber with cool turquoise braziers and restrained gold star ceiling. Front-facing symmetrical wall across the back and large empty stone floor foreground. Three subdued empty wall bays across the middle to place separate door sprites later, but DO NOT draw doors, open passages, arch frames, characters or interface. Middle wall and foreground clean uncluttered low-contrast; decorative columns at far outer edges only. Scene extends to every edge, no borders. Beautiful clean hand-painted cartoon fantasy game background matching Egyptian torchlit gold and dark teal palette. Dark atmospheric but readable stone texture. No text, no labels, no watermark.",
+      "cleanupPrompt": null
+    },
+    {
+      "file": "tomb-overgrown.png",
+      "prompt": "Use case: stylized-concept. PNG background for a portrait Egyptian underground RPG room selection screen. ONE full scene, portrait 2:3 composition. aged greenish stone crypt with roots and faint jade light, amber oil lamps and small sand drifts. Front-facing symmetrical wall across the back and large empty stone floor foreground. Three subdued empty wall bays across the middle to place separate door sprites later, but DO NOT draw doors, open passages, arch frames, characters or interface. Middle wall and foreground clean uncluttered low-contrast; decorative columns at far outer edges only. Scene extends to every edge, no borders. Beautiful clean hand-painted cartoon fantasy game background matching Egyptian torchlit gold and dark teal palette. Dark atmospheric but readable stone texture. No text, no labels, no watermark.",
+      "cleanupPrompt": null
+    }
+  ]
+}

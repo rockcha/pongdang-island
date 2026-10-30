@@ -1,0 +1,14 @@
+import {useEffect,useState} from 'react'
+import {Coins,Shield,Sparkles,Swords} from 'lucide-react'
+import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
+import {buyMerchantItem,merchantGoods,purchaseBlock,type PracticeState} from './practice-state'
+
+export function MerchantRoom({state,onChange,onDescend,onTalk}:{state:PracticeState;onChange:React.Dispatch<React.SetStateAction<PracticeState>>;onDescend:()=>void;onTalk:(text:string)=>void}){
+ const [shop,setShop]=useState(false),[notice,setNotice]=useState('')
+ useEffect(()=>{onTalk('모래길의 상인: “어서 오게, 여행자. 아래로 내려가기 전에 필요한 물건을 보고 가겠나?”')},[])
+ return <section className="exploration-merchant" aria-label="상인 방">
+  <div className="exploration-merchant-art" aria-hidden="true"><svg viewBox="0 0 200 220"><ellipse cx="100" cy="202" rx="72" ry="10" fill="#050b0d"/><path d="M43 194 60 106Q100 75 140 106L157 194Z" fill="#8c6944"/><path d="m67 190 10-84h46l10 84" fill="#343a3b"/><path d="M67 76Q62 20 100 24T133 76L120 106H80Z" fill="#b59969"/><ellipse cx="100" cy="73" rx="23" ry="29" fill="#b27d56"/><path d="M68 70Q70 19 103 27q31 2 32 44l-21-11-14-20-15 20Z" fill="#c2ad80"/><path d="M80 83q20 26 40 0l-6 25H88Z" fill="#433a2b"/><path d="M88 70h5m14 0h5" stroke="#251f19" strokeWidth="3"/><path d="M37 158h126l-7 45H44Z" fill="#685039" stroke="#b49b68"/><path d="M61 161v37m34-37v37m34-37v37" stroke="#a18855" strokeOpacity=".4"/><circle cx="76" cy="160" r="8" fill="#d1ad4d"/><path d="m111 151 8-19 8 19-8 12Z" fill="#8eb7b9"/><path d="M36 107v44m128-44v44" stroke="#b9a26e" strokeWidth="3"/><circle cx="36" cy="107" r="8" fill="#e4bf72"/><circle cx="164" cy="107" r="8" fill="#e4bf72"/></svg></div>
+  <><h2>모래길의 상인</h2><p>“목숨보다 귀한 건 없지.<br/>든든히 준비하고 가게.”</p><div className="exploration-merchant-choices"><button onClick={()=>setShop(true)}>구매한다</button><button onClick={onDescend}>구매하지 않고 지나간다</button></div></>
+  <Dialog open={shop} onOpenChange={setShop}><DialogContent className="exploration-room-preview exploration-shop"><DialogHeader><DialogTitle>모래길 상점</DialogTitle><DialogDescription>탐험용 골드로 구매해요. 구입한 물품은 보관함에서 장착할 수 있어요.</DialogDescription></DialogHeader><div className="exploration-shop-gold"><Coins size={16}/> 보유 골드 {state.gold.toLocaleString()}</div><div className="exploration-shop-items">{merchantGoods.map(item=>{const blocked=purchaseBlock(state,item.id),Icon=item.kind==='weapon'?Swords:item.kind==='armor'?Shield:Sparkles;return <article key={item.id}><Icon size={23}/><div><h3>{item.name}</h3><p>{item.description}</p><span>{item.price.toLocaleString()} 골드</span></div><button disabled={!!blocked} onClick={()=>{onChange(previous=>buyMerchantItem(previous,item.id));setNotice(`${item.name} 구매 완료 · 보관함에 넣었어요.`)}}>{blocked??'구매'}</button></article>})}</div>{notice&&<p role="status">{notice}</p>}<button className="exploration-room-return" onClick={()=>setShop(false)}>상인에게 돌아가기</button></DialogContent></Dialog>
+ </section>
+}

@@ -68,6 +68,9 @@ export async function readCatalog(db) {
     result.island_shop_items=(await db.query('select * from public.island_shop_items order by id')).rows
     result.island_starters=(await db.query('select * from public.island_starters order by id')).rows
   }
+  for(const table of ['farm_crops','farm_animal_types','farm_building_types']){
+    if((await db.query('select to_regclass($1) is not null present',['public.'+table])).rows[0].present)result[table]=(await db.query('select * from public.'+table+' order by id')).rows
+  }
   const retained=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).retained_species_prices
   if(retained){
     const ids=new Set(retained.map(p=>p.id))

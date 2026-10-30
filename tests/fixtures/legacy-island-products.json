@@ -1,0 +1,688 @@
+[
+  {
+    "id": "beach-chair",
+    "name": "비치체어",
+    "price": 120,
+    "width": 1,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "beach-parasol",
+    "name": "해변 파라솔",
+    "price": 220,
+    "width": 2,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "bench",
+    "name": "나무 벤치",
+    "price": 120,
+    "width": 2,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "bread-display",
+    "name": "빵 진열대",
+    "price": 280,
+    "width": 2,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "butterfly-flowerbed",
+    "name": "나비 화단",
+    "price": 140,
+    "width": 2,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "coral-planter",
+    "name": "산호 화분",
+    "price": 160,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "droplet-lamp",
+    "name": "물방울 가로등",
+    "price": 180,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "farm-office",
+    "name": "텃밭 관리소",
+    "price": 5000,
+    "width": 2,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "farm-plot",
+    "name": "밭",
+    "price": 10,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "fish-fountain",
+    "name": "물고기 분수",
+    "price": 900,
+    "width": 2,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "fishing-pongi-statue",
+    "name": "낚시하는 퐁이 동상",
+    "price": 800,
+    "width": 2,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-brick",
+    "name": "벽돌길",
+    "price": 20,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-dirt",
+    "name": "흙길",
+    "price": 10,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-grass",
+    "name": "잔디 타일",
+    "price": 10,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-gravel",
+    "name": "자갈길",
+    "price": 10,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-moonstone",
+    "name": "푸른 달빛 돌길",
+    "price": 30,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-sand",
+    "name": "모래 바닥",
+    "price": 10,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-shell-mosaic",
+    "name": "조개 모자이크",
+    "price": 40,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-star-mosaic",
+    "name": "별무늬 모자이크",
+    "price": 40,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-stone",
+    "name": "돌 포장길",
+    "price": 20,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-teal-glass",
+    "name": "청록 유리 타일",
+    "price": 30,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "floor-wood",
+    "name": "나무 데크",
+    "price": 20,
+    "width": 1,
+    "family": "floor",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "flower-arch",
+    "name": "꽃 아치",
+    "price": 250,
+    "width": 2,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "flower-bicycle",
+    "name": "꽃바구니 자전거",
+    "price": 180,
+    "width": 2,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "flowers",
+    "name": "봄꽃 화단",
+    "price": 50,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "hydrangea-blue",
+    "name": "푸른 수국 화단",
+    "price": 90,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "hydrangea-lilac",
+    "name": "보랏빛 수국 화단",
+    "price": 90,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "hydrangea-pink",
+    "name": "분홍 수국 화단",
+    "price": 90,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "island-name-sign",
+    "name": "이름 간판",
+    "price": 120,
+    "width": 2,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": true
+  },
+  {
+    "id": "lamp",
+    "name": "별빛 가로등",
+    "price": 150,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "land-piece",
+    "name": "땅 조각",
+    "price": 50,
+    "width": 1,
+    "family": "land",
+    "height": 1,
+    "terrain": "any",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "mailbox-planter",
+    "name": "우편함 화단",
+    "price": 160,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "pastel-surfboard",
+    "name": "파스텔 서핑보드",
+    "price": 140,
+    "width": 1,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "picnic-table",
+    "name": "피크닉 테이블",
+    "price": 300,
+    "width": 2,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "pine",
+    "name": "솔솔 소나무",
+    "price": 300,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "pond",
+    "name": "작은 연못",
+    "price": 250,
+    "width": 2,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "reeds",
+    "name": "물가 갈대",
+    "price": 60,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "any",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "rubber-duck",
+    "name": "고무오리",
+    "price": 100,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "any",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "shell-fountain",
+    "name": "조개 분수대",
+    "price": 1200,
+    "width": 2,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "sleeping-cat",
+    "name": "잠자는 고양이",
+    "price": 450,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "stepping-stones",
+    "name": "물길 징검돌",
+    "price": 80,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "water",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "stone-wall",
+    "name": "낮은 돌담",
+    "price": 60,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "tree",
+    "name": "동글 나무",
+    "price": 300,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "water-lily",
+    "name": "호수 수련",
+    "price": 60,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "water",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "wood-arrow-sign",
+    "name": "나무 화살표 표지판",
+    "price": 80,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      180
+    ],
+    "text_label": true
+  },
+  {
+    "id": "wood-bridge-1",
+    "name": "짧은 나무다리",
+    "price": 100,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "water",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "wood-bridge-2",
+    "name": "나무다리",
+    "price": 200,
+    "width": 1,
+    "family": "decoration",
+    "height": 2,
+    "terrain": "water",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "wood-bridge-3",
+    "name": "긴 나무다리",
+    "price": 300,
+    "width": 1,
+    "family": "decoration",
+    "height": 3,
+    "terrain": "water",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "wood-fence",
+    "name": "나무 울타리",
+    "price": 40,
+    "width": 1,
+    "family": "decoration",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  }
+]

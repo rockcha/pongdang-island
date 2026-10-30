@@ -32,8 +32,6 @@ const {
 } = appArt
 
 export const headerPlaces = [
-  { to: '/my-island', label: '나의 퐁당섬', icon: appArt.island },
-  { to: '/profile', label: '내 정보', icon: appArt.profile },
   { to: '/voyage-bets', label: '만선 승부장', icon: appArt.shipyard },
   { to: '/fishing-records', label: '오늘의 낚시 기록', icon: NotebookPen },
   { to: '/square/notices', label: '공지', icon: appArt.notices },
@@ -174,11 +172,7 @@ export function HeaderPlaceNavigation() {
                             운영자
                           </span>
                         )}
-                        {to === '/farm' && (
-                          <span className="shrink-0 text-[10px] text-muted-foreground">
-                            준비 중
-                          </span>
-                        )}
+                        {to === '/farm' && !operator && <span className="shrink-0 text-[10px] text-muted-foreground">준비 중</span>}
                         {to === '/savings' && savings && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             {savings}

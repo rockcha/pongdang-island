@@ -24,6 +24,7 @@ export function materializeIsland(
     layout,
     owned: snapshot.items.map((i) => i.id),
     coins: 0,
+    farmPlotLimit: snapshot.farm?.plotLimit,
     landStock: Math.max(
       0,
       (snapshot.stocks['land-piece'] ?? 0) -

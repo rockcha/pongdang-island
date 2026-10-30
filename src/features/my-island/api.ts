@@ -28,6 +28,7 @@ export type IslandProduct = {
   text_label: boolean
 }
 export type IslandSnapshot = {
+  farm?: import('../farm/model').FarmProgression
   revision: number
   document: IslandDocument
   items: { id: string; type: string; sellPrice: number }[]
@@ -137,6 +138,21 @@ export function tradeIsland(
 export function islandError(error: unknown) {
   const message = String((error as { message?: string })?.message ?? '')
   const errors: Record<string, string> = {
+    FARM_PREPARING: '농장은 아직 준비 중이에요.',
+    FARM_PLOT_LIMIT: '밭 한도에 도달했어요. 텃밭 관리소를 강화해 주세요.',
+    FARM_OFFICE_MAX_LEVEL: '최고 레벨의 텃밭 관리소예요.',
+    FARM_OFFICE_NOT_SELLABLE: '텃밭 관리소는 판매할 수 없어요.',
+    FARM_OFFICE_UNAVAILABLE: '텃밭 관리소 상태를 다시 확인해 주세요.',
+    FARM_BARN_REQUIRED: '외양간을 먼저 지어 주세요.',
+    FARM_ANIMAL_LIMIT: '가축 한도에 도달했어요. 외양간을 강화해 주세요.',
+    FARM_CROP_ACTIVE: '작물을 먼저 수확해 주세요.',
+    FARM_NOT_READY: '아직 준비 중이에요.',
+    FARM_STORAGE_FULL: '농장 창고가 가득 찼어요. 판매하거나 창고를 강화해 주세요.',
+    FARM_FEED_REQUIRED: '먹이로 쓸 밀이나 옥수수가 부족해요.',
+    FARM_ANIMAL_ACTIVE: '이미 먹이를 먹고 생산 중이에요.',
+    FARM_CROP_MISSING: '이미 수확한 밭이에요. 다시 확인해 주세요.',
+    FARM_ANIMAL_MISSING: '먼저 먹이를 주세요.',
+    FARM_INVENTORY_REQUIRED: '보관 중인 수량이 부족해요.',
     INSUFFICIENT_GOLD: '골드가 부족해요.',
     ISLAND_PRICE_CHANGED: '가격이 변경됐어요. 상품을 다시 확인해 주세요.',
     ISLAND_REVISION_CHANGED: '다른 화면에서 섬 배치가 바뀌었어요. 최신 배치를 불러와 주세요.',

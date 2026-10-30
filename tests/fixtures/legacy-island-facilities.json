@@ -1,0 +1,551 @@
+[
+  {
+    "id": "aquarium-1~owned:hub",
+    "name": "아쿠아리움",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "arcade-cabinet~owned:hub",
+    "name": "미니게임",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "bait~owned:hub",
+    "name": "미끼 생산소",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "bait~owned:personal-workshop",
+    "name": "나만의 미끼 공방",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "books~owned:hub",
+    "name": "도감",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "community-board~owned:hub",
+    "name": "자유게시판",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "dock~owned:hub",
+    "name": "항구",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 3,
+    "terrain": "shore",
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "text_label": false
+  },
+  {
+    "id": "fuel~owned:hub",
+    "name": "연료 생산소",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "gramophone~owned:hub",
+    "name": "음악 감상",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "lighthouse~owned:hub",
+    "name": "등대",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "mail~owned:mail",
+    "name": "우편함",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "map-table~owned:hub",
+    "name": "지도",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "notice-board~owned:hub",
+    "name": "공지",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/bait-production-shop",
+    "name": "미끼 생산소 상점",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/decoration-shop",
+    "name": "어항 장식물 상점",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/development-fund",
+    "name": "퐁당섬 발전기금",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/exchange",
+    "name": "거래소",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/expeditions",
+    "name": "통발",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/farm",
+    "name": "농장",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/fishing",
+    "name": "낚시",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/fishing-records",
+    "name": "오늘의 낚시 기록",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/flea-market",
+    "name": "벼룩시장",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/hall-of-fame",
+    "name": "명예의 전당",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/island-news",
+    "name": "퐁당섬 소식",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/item-collection",
+    "name": "아이템 도감",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/item-shop",
+    "name": "아이템 상점",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/merchant-orders",
+    "name": "바다 상인의 의뢰",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/production-shop",
+    "name": "연료 생산소 상점",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/profile",
+    "name": "내 정보",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/showcase",
+    "name": "자랑하기",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/square/begging",
+    "name": "사연함",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/square/bugs",
+    "name": "버그 제보",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/square/sponsorship",
+    "name": "후원소",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/square/suggestions",
+    "name": "건의함",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "portal~owned:page:/voyage-bets",
+    "name": "만선 승부장",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "relic-case~owned:hub",
+    "name": "유물",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "shell-safe~owned:hub",
+    "name": "조개 적금",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "shipyard~owned:hub",
+    "name": "조선소",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "shop~owned:hub",
+    "name": "낚시 상점",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "stash~owned:hub",
+    "name": "보관함",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "title-flag~owned:hub",
+    "name": "칭호",
+    "price": 0,
+    "width": 1,
+    "family": "facility",
+    "height": 1,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  },
+  {
+    "id": "warehouse~owned:warehouse",
+    "name": "창고",
+    "price": 0,
+    "width": 2,
+    "family": "facility",
+    "height": 2,
+    "terrain": "land",
+    "rotations": [
+      0
+    ],
+    "text_label": false
+  }
+]

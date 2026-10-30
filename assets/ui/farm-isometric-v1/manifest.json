@@ -1,0 +1,444 @@
+{
+  "tool": "image_gen.imagegen",
+  "style": "User-requested bright isometric 3D cartoon farming game; upright four-direction assets",
+  "prompts": "prompts.json",
+  "assets": {
+    "farm-office": [
+      "/game-art/farm-isometric-v1/farm-office-0-v1.png",
+      "/game-art/farm-isometric-v1/farm-office-1-v1.png",
+      "/game-art/farm-isometric-v1/farm-office-2-v1.png",
+      "/game-art/farm-isometric-v1/farm-office-3-v1.png"
+    ],
+    "farm-store": [
+      "/game-art/farm-isometric-v1/farm-store-0-v1.png",
+      "/game-art/farm-isometric-v1/farm-store-1-v1.png",
+      "/game-art/farm-isometric-v1/farm-store-2-v1.png",
+      "/game-art/farm-isometric-v1/farm-store-3-v1.png"
+    ],
+    "farm-barn": [
+      "/game-art/farm-isometric-v1/farm-barn-0-v1.png",
+      "/game-art/farm-isometric-v1/farm-barn-1-v1.png",
+      "/game-art/farm-isometric-v1/farm-barn-2-v1.png",
+      "/game-art/farm-isometric-v1/farm-barn-3-v1.png"
+    ],
+    "farm-chicken": [
+      "/game-art/farm-isometric-v1/farm-chicken-0-v1.png",
+      "/game-art/farm-isometric-v1/farm-chicken-1-v1.png",
+      "/game-art/farm-isometric-v1/farm-chicken-2-v1.png",
+      "/game-art/farm-isometric-v1/farm-chicken-3-v1.png"
+    ],
+    "farm-cow": [
+      "/game-art/farm-isometric-v1/farm-cow-0-v1.png",
+      "/game-art/farm-isometric-v1/farm-cow-1-v1.png",
+      "/game-art/farm-isometric-v1/farm-cow-2-v1.png",
+      "/game-art/farm-isometric-v1/farm-cow-3-v1.png"
+    ],
+    "farm-sheep": [
+      "/game-art/farm-isometric-v1/farm-sheep-0-v1.png",
+      "/game-art/farm-isometric-v1/farm-sheep-1-v1.png",
+      "/game-art/farm-isometric-v1/farm-sheep-2-v1.png",
+      "/game-art/farm-isometric-v1/farm-sheep-3-v1.png"
+    ],
+    "carrot": [
+      "/game-art/farm-isometric-v1/carrot-0-v1.png",
+      "/game-art/farm-isometric-v1/carrot-1-v1.png",
+      "/game-art/farm-isometric-v1/carrot-2-v1.png"
+    ],
+    "wheat": [
+      "/game-art/farm-isometric-v1/wheat-0-v1.png",
+      "/game-art/farm-isometric-v1/wheat-1-v1.png",
+      "/game-art/farm-isometric-v1/wheat-2-v1.png"
+    ],
+    "potato": [
+      "/game-art/farm-isometric-v1/potato-0-v1.png",
+      "/game-art/farm-isometric-v1/potato-1-v1.png",
+      "/game-art/farm-isometric-v1/potato-2-v1.png"
+    ],
+    "corn": [
+      "/game-art/farm-isometric-v1/corn-0-v1.png",
+      "/game-art/farm-isometric-v1/corn-1-v1.png",
+      "/game-art/farm-isometric-v1/corn-2-v1.png"
+    ],
+    "strawberry": [
+      "/game-art/farm-isometric-v1/strawberry-0-v1.png",
+      "/game-art/farm-isometric-v1/strawberry-1-v1.png",
+      "/game-art/farm-isometric-v1/strawberry-2-v1.png"
+    ]
+  },
+  "files": [
+    {
+      "id": "farm-office",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/farm-office-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "0435c777f808b363b27ad9408849187bfaf1a09b3162990c68e83d151dbdc19b"
+    },
+    {
+      "id": "farm-office",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/farm-office-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "f60b1d9cd8aefc17fe0f28c8fbf73b29141630a90a6d91f724fe3d9c1d77bf9f"
+    },
+    {
+      "id": "farm-office",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/farm-office-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "9e28157e7b2768e915ed53b07d979b74106b1fc44b69f9d4077e3e9c9315c31a"
+    },
+    {
+      "id": "farm-office",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v1/farm-office-3-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "e7d5416821108d912f243c8dabf7b441fab8b91a6bdbf1c124d266a708d1b407"
+    },
+    {
+      "id": "farm-store",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/farm-store-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "ada1ec00f67514f298a1cf8de3f689bdc44e0ef8298ef86dc22bcfd02c3b1b37"
+    },
+    {
+      "id": "farm-store",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/farm-store-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "f02ccbde56cc895f719353c37e24afe7a85bdb4037fe45043e1d0f691e3345be"
+    },
+    {
+      "id": "farm-store",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/farm-store-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "f6489bdda5ec982ac41fdcb7fe35333692c98dd9ae0a6df042f2e4748ba14dfb"
+    },
+    {
+      "id": "farm-store",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v1/farm-store-3-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "856d3a6156e4b200ae58115cc988a3f7ac3bc5ad62dde04a22639a905f1fd3bc"
+    },
+    {
+      "id": "farm-barn",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/farm-barn-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "bbd9d25e6a1a60248a365db4b83375d4772f7698ebcf827f3f125a70ed861b0d"
+    },
+    {
+      "id": "farm-barn",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/farm-barn-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "c491eaf8879e15e17f1d60cc968ac726773a1d94919d2b2700789e8eb38210e4"
+    },
+    {
+      "id": "farm-barn",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/farm-barn-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "dd94df0c44d4e17f5f269289282de6c3ce7eaf0b4fa04105903285d7273862a3"
+    },
+    {
+      "id": "farm-barn",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v1/farm-barn-3-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "3b96dcdf24f85c75770fdbffbb7c72a3a66966414626355452b07bb949a34727"
+    },
+    {
+      "id": "farm-chicken",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/farm-chicken-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "9a78c130fe7e78a0d9dfb8b3fe3df1797c6eb7bc242af3f4b74ee210c04ee557"
+    },
+    {
+      "id": "farm-chicken",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/farm-chicken-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "519245d8c394a9f64230f374950a69277a7d81d3fc09e929352c20ad856e6472"
+    },
+    {
+      "id": "farm-chicken",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/farm-chicken-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "8b803b7ec89e40d80b7a6d1c99b5991747bab56573485e9098817b32af4f09ed"
+    },
+    {
+      "id": "farm-chicken",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v1/farm-chicken-3-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "cb489bc54bf702e12ea6e132cf614819ba05807356716b44175c16133e7da353"
+    },
+    {
+      "id": "farm-cow",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/farm-cow-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "f5f9786689ea00650b1a5fff3af52044969990a2086546dac5c54e5e75386bdf"
+    },
+    {
+      "id": "farm-cow",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/farm-cow-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "d1678e7d45d0a86fb0633b68e826c755e6f136f14c5d2fdce2dc15f0a40f18cc"
+    },
+    {
+      "id": "farm-cow",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/farm-cow-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "eec97399d4bef1e98b603d03e2c4901fbc8eaa416fd1306ca48917b859a80c26"
+    },
+    {
+      "id": "farm-cow",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v1/farm-cow-3-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "fbf404bac8f35ab85f2c4ee224d3486d19886c4e6e0990e97c4767a0e5be24d1"
+    },
+    {
+      "id": "farm-sheep",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/farm-sheep-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "83d97b1b8a9d6d4eb3fb84264d45565d3606e38c0482b2f143b2076f24ccad12"
+    },
+    {
+      "id": "farm-sheep",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/farm-sheep-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "5abd67b51c88ad94c2b3277ab5237613e4ca783cdcbef5239897abaf72c4fc78"
+    },
+    {
+      "id": "farm-sheep",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/farm-sheep-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "28d8bbb1e32cf21364070028d7a5216408a43e386ee60406bf9291483253643e"
+    },
+    {
+      "id": "farm-sheep",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v1/farm-sheep-3-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "0ecdecf403ce49fe17bebaf71217beb70b255b0bb7f6d121ed5ab63f9e171b8c"
+    },
+    {
+      "id": "carrot",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/carrot-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "589848eab1864ecd8f534b494b3b5c67e492f4e4002b7cf89679c00782ecdf03"
+    },
+    {
+      "id": "carrot",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/carrot-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "9b817daa7a66c69772124c84f9325ae73a8494544ac6be83a547aa296f200345"
+    },
+    {
+      "id": "carrot",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/carrot-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "ffd5dc164945850cf27a2356335513b2540beb240f0366a5d2b49187b82d43e4"
+    },
+    {
+      "id": "wheat",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/wheat-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "4af5cb27fd587c97d0170d0a45ef83456d98de26ce9c04074e1e3fdc81850217"
+    },
+    {
+      "id": "wheat",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/wheat-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "70c909b437d08563147fecc8a922911ddc8c8e9aa862223db238ac5566170f00"
+    },
+    {
+      "id": "wheat",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/wheat-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "98670a9f5b981f48086bcaeb7fa52e3ace2b37f0056be1c98c21271c66b6acc1"
+    },
+    {
+      "id": "potato",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/potato-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "0358738d6fbab0cb8468b7de58c4f4caadba21cbaf4b4babc42bc2b622063cd0"
+    },
+    {
+      "id": "potato",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/potato-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "358e89d40f836d8b6943e4c0b1d21412114dbc43a5de7dae790fca571a22c14f"
+    },
+    {
+      "id": "potato",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/potato-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "8abd4c73e7799e1c5bfb4f8c33c0fdcb6b1401cdab8b269abac8074fe011c568"
+    },
+    {
+      "id": "corn",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/corn-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "d4f5d9bab75489afbcf30f5aa97b88e61d67eac30ed5e46e5d4664ef9d98557e"
+    },
+    {
+      "id": "corn",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/corn-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "fa2a23a32955def12dbbb474ef9f4c0e99e011f8b7d06f14c56a2bb5ebbaaed8"
+    },
+    {
+      "id": "corn",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/corn-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "fc61ca770168f0d5cdb508b4fe8a18ff0d79f8bbea99468b5f2385244ab6ad5b"
+    },
+    {
+      "id": "strawberry",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v1/strawberry-0-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "1a797ca201457a155ae44f537e6d74f807545ea7bd915e6014fe0b2c44ca1a79"
+    },
+    {
+      "id": "strawberry",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v1/strawberry-1-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "43de905e302decd66055805c9b6cf2c314ef509deebb98d4b282713d9873c4ee"
+    },
+    {
+      "id": "strawberry",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v1/strawberry-2-v1.png",
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "025dbc3160b63ecb81ff476855771f2874914842ea18b86c5583b2cc8fa29a65"
+    }
+  ],
+  "originals": [
+    {
+      "kind": "buildings",
+      "path": "farm/buildings-atlas-v1.png",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "19cb6fe92c4e14edc589724902c0160b3309ae19d5697dc139234907eae1d834"
+    },
+    {
+      "kind": "animals",
+      "path": "farm/animals-atlas-v1.png",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "814af0c8fcc1fd205d5b04df49b95b5b7e44a171978e9be9d77eef319b3806cb"
+    },
+    {
+      "kind": "crops",
+      "path": "farm/crops-atlas-v1.png",
+      "width": 971,
+      "height": 1619,
+      "sha256": "506d9addf4eda1ca145e940aebfcb76733989be743dbe6d7aa56a4c43a44f1cd"
+    }
+  ]
+}

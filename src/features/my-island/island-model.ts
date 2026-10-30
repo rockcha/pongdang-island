@@ -44,6 +44,14 @@ export type Facility = {
 }
 export const facilities: Facility[] = [
   ...gardenDecorations,
+  {id:'farm-office',name:'텃밭 관리소',kind:'farm-office',w:2,h:2,color:'#83a077',price:5000,category:'decoration',rotatable:true,placementTerrain:'land'},
+  {id:'farm-store',name:'농장 창고',kind:'farm-store',w:2,h:2,color:'#70998b',price:2500,category:'decoration',rotatable:true,placementTerrain:'land'},
+  {id:'farm-barn',name:'외양간',kind:'farm-barn',w:3,h:2,color:'#b96a50',price:3000,category:'decoration',rotatable:true,placementTerrain:'land'},
+  {id:'farm-chicken',name:'닭',kind:'farm-chicken',w:1,h:1,color:'#f6efe0',price:300,category:'decoration',rotatable:true,placementTerrain:'land'},
+  {id:'farm-cow',name:'젖소',kind:'farm-cow',w:2,h:1,color:'#f6efe0',price:800,category:'decoration',rotatable:true,placementTerrain:'land'},
+  {id:'farm-sheep',name:'양',kind:'farm-sheep',w:1,h:1,color:'#f6efe0',price:600,category:'decoration',rotatable:true,placementTerrain:'land'},
+  {id:'farm-white-fence',name:'흰 울타리',kind:'farm-white-fence',w:1,h:1,color:'#fff8e8',price:40,category:'decoration',rotatable:true,placementTerrain:'land'},
+  {id:'farm-plot',name:'밭',kind:'farm-plot',w:1,h:1,color:'#966540',price:10,category:'decoration',rotatable:false,placementTerrain:'land'},
   ...[1,2,3].map(length=>({id:'wood-bridge-'+length,name:length===1?'짧은 나무다리':length===2?'나무다리':'긴 나무다리',kind:'bridge',w:1,h:length,color:'#bd996d',price:length*100,category:'decoration' as const,rotatable:true,placementTerrain:'water' as const})),
   {id:'stepping-stones',name:'물길 징검돌',kind:'stepping-stones',w:1,h:1,color:'#b8b9a6',price:80,category:'decoration',rotatable:false,placementTerrain:'water'},
   {id:'reeds',name:'물가 갈대',kind:'reeds',w:1,h:1,color:'#97af78',price:60,category:'decoration',rotatable:false,placementTerrain:'any'},
@@ -409,6 +417,7 @@ export function canPlace(
   item: Placement,
   land: Cell[] = [],
   removedLand: Cell[] = [],
+  plotLimit = Infinity,
 ) {
   const f = facilityFor(item.id)
   if (
@@ -423,6 +432,7 @@ export function canPlace(
   )
     return false
   const { w, h } = footprint(item)
+  if(f.kind==='farm-plot' && layout.filter(p=>p.id!==item.id && facilityFor(p.id)?.kind==='farm-plot').length>=plotLimit)return false
   if (item.x + w > 40 || item.y + h > 36) return false
   if (f.kind === 'dock') {
     const r = item.rotation ?? 0
@@ -463,6 +473,7 @@ export function canPlace(
   })
 }
 export type IslandState = {
+  farmPlotLimit?:number
   signLabels?:Record<string,string>
   layout: Placement[]
   owned: string[]

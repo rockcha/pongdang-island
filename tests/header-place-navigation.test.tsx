@@ -43,10 +43,10 @@ it('shows seven representative icons with visible labels and an active category'
  expect(screen.getByRole('button',{name:'낚시'}).getAttribute('aria-current')).toBe('location')
 })
 it.each([
- ['내 섬',['/my-island','/aquarium','/profile','/music-room','/arcade','/voyage-bets','/savings']],
+ ['내 섬',['/aquarium','/farm','/music-room','/arcade','/voyage-bets','/savings']],
  ['낚시',['/harbor','/fishing','/fishing-records','/expeditions','/port']],
  ['소식',['/island-news','/square/notices','/square/suggestions','/square/bugs']],
- ['생산',['/bait-production','/my-bait-production','/production','/farm']],
+ ['생산',['/bait-production','/my-bait-production','/production']],
  ['장터',['/shop','/item-shop','/decoration-shop','/shipyard','/bait-production-shop','/production-shop','/flea-market','/exchange','/merchant-orders']],
  ['수집',['/storage','/warehouse','/collection','/item-collection','/titles','/relics']],
  ['광장',['/friends','/board','/showcase','/hall-of-fame','/development-fund','/square/sponsorship','/square/begging']],
@@ -63,7 +63,7 @@ it('keeps every normal-player destination reachable in exactly one category',asy
 })
 it('navigates from each new category using the existing dropdown links',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
- for(const [group,path] of [['수집','/relics'],['낚시','/port'],['장터','/shop'],['장터','/item-shop'],['장터','/decoration-shop'],['장터','/shipyard'],['장터','/bait-production-shop'],['장터','/production-shop'],['장터','/flea-market'],['내 섬','/savings'],['소식','/square/notices'],['내 섬','/profile']]){
+ for(const [group,path] of [['수집','/relics'],['낚시','/port'],['장터','/shop'],['장터','/item-shop'],['장터','/decoration-shop'],['장터','/shipyard'],['장터','/bait-production-shop'],['장터','/production-shop'],['장터','/flea-market'],['내 섬','/savings'],['소식','/square/notices'],['내 섬','/farm']]){
   const menu=await open(group),item=within(menu).getAllByRole('menuitem').find(i=>i.getAttribute('href')===path)!
   fireEvent.click(item)
   await waitFor(()=>expect(screen.getByTestId('path').textContent).toBe(path))

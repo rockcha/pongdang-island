@@ -39,6 +39,7 @@ export type Database = {
       my_island_state:{Args:Record<string,never>;Returns:import('@/features/my-island/api').IslandSnapshot}
       save_my_island:{Args:{p_document:import('@/features/my-island/api').IslandDocument;p_revision:number;p_operation_id:string};Returns:import('@/features/my-island/api').IslandSaveResult}
       trade_island:{Args:{p_action:string;p_item_id:string;p_quantity:number;p_expected_price:number;p_operation_id:string};Returns:import('@/features/my-island/api').IslandTradeResult}
+      farm_action:{Args:{p_action:string;p_item_id:string;p_kind:string;p_quantity:number;p_expected_price:number;p_operation_id:string};Returns:import('@/features/farm/api').FarmActionResult}
       development_fund_state:{Args:{p_offset?:number};Returns:import('@/features/development-fund/api').FundState}
       development_fund_cheers:{Args:{p_offset?:number};Returns:import('@/features/development-fund/api').FundCheers}
       development_fund_cheer:{Args:{p_id:string;p_body?:string|null;p_delete?:boolean};Returns:{ok:boolean}}

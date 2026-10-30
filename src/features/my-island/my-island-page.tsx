@@ -1,3 +1,5 @@
+import {FarmOffice} from './farm-office'
+import {farmCategories, farmCategory, farmCamera, type FarmCategory} from './farm-model'
 import {
   storedDecorationIds,
   supportsLinePlacement,
@@ -14,6 +16,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { PointerEvent as ReactPointerEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router'
 import {
+  Flower2, House, Sprout, Layers3,
   Archive,
   Eraser,
   FlipHorizontal,
@@ -90,6 +93,7 @@ import { IslandPlacesDialog } from './island-places-dialog'
 import { buildingViewBox } from './island-art-sizing'
 import './my-island.css'
 import './island-account.css'
+import './farm.css'
 import {
   ownedFacilities,
   localIslandState,
@@ -126,9 +130,11 @@ function LandThumbnail() {
 const Terrain = memo(function Terrain({
   land,
   removedLand,
+  farm=false,
 }: {
   land: Cell[]
   removedLand: Cell[]
+  farm?: boolean
 }) {
   const cells: Cell[] = []
   for (let y = 0; y < 36; y++)
@@ -148,8 +154,8 @@ const Terrain = memo(function Terrain({
           />
         </pattern>
         <pattern id="island-ground" width="48" height="48" patternUnits="userSpaceOnUse">
-          <rect width="48" height="48" fill="#efddbc" />
-          <path d="M9 29h3m21-9h2" stroke="#ceb18a" opacity=".32" fill="none" />
+          <rect width="48" height="48" fill={farm ? '#cbd9a8' : '#efddbc'} />
+          <path d={farm ? 'M8 29l2-3 2 3m19-9 2-3 2 3' : 'M9 29h3m21-9h2'} stroke={farm ? '#a2b77e' : '#ceb18a'} opacity=".32" fill="none" />
         </pattern>
         <pattern id="island-grid" width="32" height="32" patternUnits="userSpaceOnUse">
           <path d="M32 0H0V32" fill="none" stroke="#ffffe9" strokeOpacity=".4" strokeWidth="1" />
@@ -160,9 +166,9 @@ const Terrain = memo(function Terrain({
       <path d={outline} fill="none" stroke="#c7eadd" strokeWidth="15" strokeLinejoin="round" />
       <path d={outline} fill="url(#island-ground)" fillRule="evenodd" />
       <path d={outline} fill="none" stroke="#fff0cd" strokeWidth="6" strokeLinejoin="round" />
-      <text x="640" y="1100" textAnchor="middle" fill="#e5f2dc" fontSize="14" letterSpacing="7">
+      {!farm && <text x="640" y="1100" textAnchor="middle" fill="#e5f2dc" fontSize="14" letterSpacing="7">
         PONGDANG ISLAND
-      </text>
+      </text>}
     </g>
   )
 })
@@ -193,10 +199,10 @@ type Gesture = {
 }
 const pageBuildings = ownedFacilities()
 const cleanupDecoration = facilityFor('bench')!
-export function MyIslandPage() {
+export function MyIslandPage({farm=false}: {farm?:boolean}) {
   const { session } = useAuth()
   if (!session) return <IslandPreviewPage />
-  return <AccountIsland key={session.user.id} userId={session.user.id} />
+  return <AccountIsland key={session.user.id} userId={session.user.id} farm={farm} />
 }
 type IslandAccount = IslandPersistence & {
   gold: number
@@ -204,7 +210,7 @@ type IslandAccount = IslandPersistence & {
   walletError: string
   trade: typeof tradeIsland
 }
-function AccountIsland({ userId }: { userId: string }) {
+function AccountIsland({ userId, farm=false }: { userId: string; farm?:boolean }) {
   const query = useAccountResource('island', readIsland),
     gold = useGold()
   const refetchIsland = query.refetch
@@ -227,7 +233,7 @@ function AccountIsland({ userId }: { userId: string }) {
     return (
       <section className="island-account-loading">
         <span className="island-account-orb" />
-        <h1>{query.error ? '섬을 불러오지 못했어요' : '나의 섬으로 가는 중…'}</h1>
+        <h1>{query.error ? '섬을 불러오지 못했어요' : farm ? '농장으로 가는 중…' : '나의 섬으로 가는 중…'}</h1>
         {query.error && (
           <>
             <p>{islandError(query.error)}</p>
@@ -238,8 +244,9 @@ function AccountIsland({ userId }: { userId: string }) {
     )
   return (
     <IslandEditor
+      farm={farm}
       storageKey={`pongdang:island:v2:${userId}`}
-      managed={pageBuildings.filter(f=>query.data.catalog.some(item=>item.family==='facility'&&item.id===f.id))}
+      managed={farm ? [] : pageBuildings.filter(f=>query.data.catalog.some(item=>item.family==='facility'&&item.id===f.id))}
       account={{
         snapshot: query.data,
         gold: gold.wallet.gold,
@@ -265,10 +272,12 @@ export function IslandPreviewPage() {
 }
 export function IslandEditor({
   storageKey,
+  farm=false,
   managed,
   account,
 }: {
   storageKey: string
+  farm?:boolean
   managed?: Facility[]
   account?: IslandAccount
 }) {
@@ -285,9 +294,10 @@ export function IslandEditor({
   )
   const { local, setLocal } = draftController
   const [history, setHistory] = useState<IslandState[]>([]),
-    [editing, setEditing] = useState(!account),
+    [editing, setEditing] = useState(farm || !account),
     [more, setMore] = useState(false),
     [placesOpen, setPlacesOpen] = useState(false),
+    [officeOpen, setOfficeOpen] = useState(false),
     [offer, setOffer] = useState<IslandOffer | null>(null),
     [selling, setSelling] = useState<string | null>(null),
     [tradeOpen, setTradeOpen] = useState(false),
@@ -304,7 +314,7 @@ export function IslandEditor({
     [rotation, setRotation] = useState(0),
     [panel, setPanel] = useState<'shop' | 'storage' | null>(null),
     [cleanupOpen, setCleanupOpen] = useState(false),
-    [category, setCategory] = useState<'all' | 'building' | 'decoration' | 'floor' | 'land'>('all'),
+    [category, setCategory] = useState<'all' | 'building' | 'decoration' | 'floor' | 'land' | FarmCategory>(farm ? 'plot' : 'all'),
     [search, setSearch] = useState(''),
     [purchaseQuantityInput, setPurchaseQuantityInput] = useState('1'),
     [selected, setSelected] = useState<string | null>(null),
@@ -328,16 +338,17 @@ export function IslandEditor({
     [size, setSize] = useState(
       account ? { w: window.innerWidth, h: window.innerHeight } : { w: 1000, h: 750 },
     ),
-    [camera, setCamera] = useState<Camera>(() => (account ? accountCamera() : defaultCamera()))
+    [camera, setCamera] = useState<Camera>(() => (farm ? farmCamera(local, window.innerWidth, window.innerHeight) : account ? accountCamera() : defaultCamera()))
+  const initialFarmTerrain = useRef(local)
   const wasLandscape = useRef(window.innerWidth > window.innerHeight)
   useEffect(() => {
-    if (!accountEnabled) return
+    if (!accountEnabled || farm) return
     const landscape = size.w > size.h
     if (landscape !== wasLandscape.current) {
       wasLandscape.current = landscape
       setCamera(accountCamera())
     }
-  }, [size.w, size.h, accountEnabled])
+  }, [size.w, size.h, accountEnabled, farm])
   const tradePending = useRef<IslandTradeArgs | null>(null),
     tradeInFlight = useRef(false),
     tradeActive = useRef(true),
@@ -357,8 +368,9 @@ export function IslandEditor({
     () => ({
       ...(live ? visibleIslandState(local, managed ?? []) : local),
       ...(accountGold !== undefined ? { coins: accountGold } : {}),
+      ...(farm ? {farmPlotLimit:account?.snapshot.farm?.plotLimit??4} : {}),
     }),
-    [local, managed, live, accountGold],
+    [local, managed, live, accountGold, farm, account?.snapshot.farm?.plotLimit],
   )
   const root = useRef<HTMLElement>(null),
     svg = useRef<SVGSVGElement>(null),
@@ -462,7 +474,7 @@ export function IslandEditor({
     setMessage('새 기본 배치로 되돌렸어요. 광장의 도감·유물·지도와 쉼터의 음악·게임을 둘러보세요.')
   }
   useEffect(() => {
-    if (params.get('reset') !== 'starter') {
+    if (farm || params.get('reset') !== 'starter') {
       resetHandled.current = false
       return
     }
@@ -472,16 +484,18 @@ export function IslandEditor({
     const next = new URLSearchParams(params)
     next.delete('reset')
     setParams(next, { replace: true })
-  }, [params, setParams, live, local])
+  }, [params, setParams, live, local, farm])
   useEffect(() => {
     const el = root.current
     if (!el) return
-    const observer = new ResizeObserver(([entry]) =>
-      setSize({ w: entry.contentRect.width, h: entry.contentRect.height }),
-    )
+    const observer = new ResizeObserver(([entry]) => {
+      const {width:w,height:h}=entry.contentRect
+      setSize({w,h})
+      if(farm) setCamera(farmCamera(initialFarmTerrain.current,w,h))
+    })
     observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [farm])
   useEffect(() => {
     const el = svg.current
     if (!el) return
@@ -575,6 +589,17 @@ export function IslandEditor({
     const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse())
     return { x: Math.floor(p.x / 32), y: Math.floor(p.y / 32) }
   }
+  function placeOffice(id:string){
+    finishBatch()
+    setPanel(null)
+    setEditing(true)
+    setSelected(id)
+    setSelectedLand(null)
+    setTool('edit')
+    setRotation(0)
+    setPending(!state.layout.some(p=>p.id===id))
+    setMessage('빈 땅에 텃밭 관리소를 놓아주세요. · 2 × 2칸')
+  }
   function place(input: Placement) {
     const p = {
       ...input,
@@ -592,7 +617,11 @@ export function IslandEditor({
           : (state.layout.find((p) => p.id === input.id)?.rotation ?? 0)),
     }
     if (!state.owned.includes(p.id)) return
-    if (canPlace(state.layout, p, state.land, state.removedLand)) {
+    if(farm && resolve(p.id)?.kind==='farm-plot' && !state.layout.some(old=>old.id===p.id) && state.layout.filter(old=>resolve(old.id)?.kind==='farm-plot').length>=(state.farmPlotLimit??4)){
+      setMessage('밭 한도에 도달했어요. 텃밭 관리소를 강화해 주세요.')
+      return
+    }
+    if (canPlace(state.layout, p, state.land, state.removedLand, state.farmPlotLimit)) {
       change({ ...state, layout: [...state.layout.filter((i) => i.id !== p.id), p] })
       setPending(false)
       setMessage('배치했어요. 다른 시설도 자유롭게 옮겨보세요.')
@@ -638,6 +667,7 @@ export function IslandEditor({
     if (!batchType) return
     const result = applyDecorationPlacement(state, batchType, from, to, rotation)
     if (!result) {
+      if(farm && batchType==='farm-plot' && state.layout.filter(p=>resolve(p.id)?.kind==='farm-plot').length>=(state.farmPlotLimit??4)){setMessage('밭 한도에 도달했어요. 텃밭 관리소를 강화해 주세요.');setBatchPreview(null);return}
       setMessage(
         batchStock.length ? '놓을 수 있는 빈 칸을 골라주세요.' : '보유한 장식물을 모두 배치했어요.',
       )
@@ -659,6 +689,28 @@ export function IslandEditor({
   function zoom(delta: number) {
     setCamera((c) => ({ ...c, zoom: Math.min(4, Math.max(0.7, c.zoom + delta)) }))
   }
+  function toggleLandPlacement() {
+    setCleanupOpen(false)
+    setSelectedLand(null)
+    setEditing(true)
+    finishBatch()
+    if (tool === 'land') {
+      setTool('edit')
+      setMessage('땅 배치를 마쳤어요.')
+      return
+    }
+    setCategory('land')
+    setSearch('')
+    if (state.landStock === 0) {
+      setTool('edit')
+      setPanel('shop')
+      setMessage('상점에서 땅을 구매한 뒤 배치해주세요.')
+      return
+    }
+    setTool('land')
+    setPanel(null)
+    setMessage(`빈 바다를 눌러 보관한 땅을 배치하세요. · 남은 땅 ${state.landStock}칸`)
+  }
   const cleanupRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!cleanupOpen) return
@@ -669,6 +721,7 @@ export function IslandEditor({
     return () => document.removeEventListener('pointerdown', outside)
   }, [cleanupOpen])
   function startRemoval(mode: 'land-remove' | 'decoration-remove' | 'tile-remove') {
+    setEditing(true)
     setCleanupOpen(false)
     gesture.current = null
     pointers.current.clear()
@@ -948,6 +1001,7 @@ export function IslandEditor({
       setSelected(g.id)
       setRotation(state.layout.find((p) => p.id === g.id)?.rotation ?? 0)
       setPending(false)
+      if(farm && resolve(g.id)?.kind==='farm-office')setOfficeOpen(true)
     } else if (!g.moved && !g.id && pending && selected) place({ ...point(e), id: selected })
     else if (!g.moved && !g.id) {
       setSelected(null)
@@ -989,7 +1043,7 @@ export function IslandEditor({
     const p = state.layout.find((p) => p.id === selected)
     if (
       p &&
-      canPlace(state.layout, { ...p, rotation: nextRotation }, state.land, state.removedLand)
+      canPlace(state.layout, { ...p, rotation: nextRotation }, state.land, state.removedLand, state.farmPlotLimit)
     ) {
       change({
         ...state,
@@ -1274,16 +1328,86 @@ export function IslandEditor({
           : tradeOffer && tradeOffer.kind === 'item'
             ? (resolve(tradeOffer.type)?.name ?? '구조물')
             : ''
-  const filtered = catalog.filter(
-    (f) => (category === 'all' || f.category === category) && f.name.includes(search.trim()),
+  const filtered = catalog.filter(f=>!farm || f.kind!=='farm-office').filter(
+    (f) => (category === 'all' || (farm ? farmCategory(f) === category : f.category === category)) && f.name.includes(search.trim()),
   )
   const unplaced = state.owned.filter((id) => !state.layout.some((p) => p.id === id))
   const stored = unplaced
+  const cleanupControl = (
+<div className="island-cleanup" ref={cleanupRef}>
+            <button
+              className={cleanupOpen || (farm && (landRemoving || decorationRemoving || tileRemoving)) ? 'active' : ''}
+              aria-label={farm ? "제거 모드" : "정리"}
+              aria-pressed={farm ? landRemoving || decorationRemoving || tileRemoving : undefined}
+              aria-expanded={cleanupOpen}
+              aria-controls="island-cleanup-options"
+              onClick={() => {
+                setPanel(null)
+                setCleanupOpen((v) => !v)
+              }}
+            >
+              <Eraser size={20} />
+              <span>{farm ? '제거' : '정리'}</span>
+            </button>
+            {cleanupOpen && (
+              <section
+                id="island-cleanup-options"
+                aria-label="회수할 대상"
+                className="island-cleanup-popover"
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') {
+                    e.stopPropagation()
+                    setCleanupOpen(false)
+                    cleanupRef.current?.querySelector('button')?.focus()
+                  }
+                }}
+              >
+                <header>
+                  <strong>무엇을 정리할까요?</strong>
+                  <button
+                    type="button"
+                    aria-label="정리 메뉴 닫기"
+                    onClick={() => setCleanupOpen(false)}
+                  >
+                    <X size={15} />
+                  </button>
+                </header>
+                <div className="island-cleanup-options">
+                  <button onClick={() => startRemoval('land-remove')}>
+                    <span className="island-cleanup-art">
+                      <LandThumbnail />
+                    </span>
+                    <span>땅 회수</span>
+                  </button>
+                  <button onClick={() => startRemoval('decoration-remove')}>
+                    <span className="island-cleanup-art">
+                      <svg
+                        viewBox={farm ? '-5 -5 42 42' : '-5 -13 74 50'}
+                        data-cleanup-decoration={farm ? 'farm-plot' : 'bench'}
+                        aria-hidden="true"
+                      >
+                        <Building f={farm ? facilityFor('farm-plot')! : cleanupDecoration} />
+                      </svg>
+                    </span>
+                    <span>{farm ? '장식물·밭 회수' : '장식물 회수'}</span>
+                  </button>
+                  <button onClick={() => startRemoval('tile-remove')}>
+                    <span className="island-cleanup-art">
+                      <FloorSwatch type="brick" />
+                    </span>
+                    <span>타일 회수</span>
+                  </button>
+                </div>
+                <p>회수한 항목은 보관함에 들어가요.</p>
+              </section>
+            )}
+          </div>
+  )
   return (
     <section
       ref={root}
-      className={`island-studio ${account ? 'is-account' : ''} ${!editing ? 'is-browsing' : ''} ${selectionMode ? `has-${selectionMode}-selection` : ''} ${(tool === 'land' || landRemoving || decorationRemoving || tileRemoving) && !panel ? 'is-land-placing' : ''} ${dragging ? 'is-dragging' : ''}`}
-      aria-label="나의 퐁당섬 꾸미기"
+      className={`island-studio ${farm ? 'is-farm' : ''} ${account ? 'is-account' : ''} ${!editing ? 'is-browsing' : ''} ${selectionMode ? `has-${selectionMode}-selection` : ''} ${(tool === 'land' || landRemoving || decorationRemoving || tileRemoving) && !panel ? 'is-land-placing' : ''} ${dragging ? 'is-dragging' : ''}`}
+      aria-label={farm ? "내 농장" : "나의 퐁당섬 꾸미기"}
     >
       <svg
         ref={svg}
@@ -1297,7 +1421,7 @@ export function IslandEditor({
         onPointerUp={up}
         onPointerCancel={cancel}
       >
-        <Terrain land={state.land} removedLand={state.removedLand} />
+        <Terrain land={state.land} removedLand={state.removedLand} farm={farm} />
         <FloorPatterns />
         <g pointerEvents="none" data-island-floor>
           {state.paving.map((p) => (
@@ -1362,6 +1486,7 @@ export function IslandEditor({
                     setSelected(p.id)
                     setRotation(p.rotation ?? 0)
                     setPending(false)
+                    if(farm && f.kind==='farm-office')setOfficeOpen(true)
                   }
                   if (
                     editing &&
@@ -1392,7 +1517,7 @@ export function IslandEditor({
                     strokeDasharray="6 4"
                   />
                 )}
-                <Building
+                <Building level={account?.snapshot.farm?.officeLevel??1}
                   f={f}
                   rotation={p.rotation}
                   label={p.label}
@@ -1598,12 +1723,12 @@ export function IslandEditor({
                   height={bounds.h * 32}
                   rx="6"
                   fill={
-                    canPlace(state.layout, ghost, state.land, state.removedLand)
+                    canPlace(state.layout, ghost, state.land, state.removedLand, state.farmPlotLimit)
                       ? '#91ce87'
                       : '#ec8f7b'
                   }
                 />
-                <Building f={f} rotation={ghost.rotation} />
+                <Building level={account?.snapshot.farm?.officeLevel??1} f={f} rotation={ghost.rotation} />
               </g>
             )
           })()}
@@ -1692,6 +1817,7 @@ export function IslandEditor({
           </div>
         </section>
       )}
+      {farm && account && <FarmOffice snapshot={account.snapshot} gold={account.gold} walletLoading={account.walletLoading} walletError={account.walletError} storageKey={storageKey} usedPlots={state.layout.filter(p=>resolve(p.id)?.kind==='farm-plot').length} open={officeOpen} onOpenChange={setOfficeOpen} trade={account.trade} beforePurchase={draftController.flush} reload={account.reload} onPlace={placeOffice}/>}
       <header className="island-topbar">
         <div className="island-title-card">
           <Link
@@ -1708,8 +1834,8 @@ export function IslandEditor({
             <ArrowLeft size={19} />
           </Link>
           <div>
-            <span>MY PONGDANG ISLAND</span>
-            <h1>나의 퐁당섬</h1>
+            {!farm && <span>MY PONGDANG ISLAND</span>}
+            <h1>{farm ? '내 농장' : '나의 퐁당섬'}</h1>
           </div>
           <span className="island-save">
             <Check size={12} />
@@ -1746,9 +1872,14 @@ export function IslandEditor({
           </button>
           {more && (
             <div className="island-more-menu" aria-label="섬 보기 설정">
+              {farm && <>
+                <button onClick={()=>{finishBatch();setTool('edit');setSearch('');setCategory('land');setPanel('shop');setMore(false);setEditing(true)}}><Plus size={16}/>땅 확장</button>
+                <button onClick={()=>{finishBatch();setTool('edit');setSearch('');setCategory('floor');setPanel('shop');setMore(false);setEditing(true)}}><House size={16}/>바닥 타일</button>
+                <button disabled={!history.length} onClick={()=>{undo();setMore(false)}}><Undo2 size={16}/>되돌리기</button>
+              </>}
               <button
                 onClick={() => {
-                  setCamera({ x: 640, y: 575, zoom: 0.95 })
+                  setCamera(farm ? farmCamera(state, size.w, size.h) : { x: 640, y: 575, zoom: 0.95 })
                   setMore(false)
                 }}
               >
@@ -1771,7 +1902,7 @@ export function IslandEditor({
                 <Maximize size={16} />
                 전체 화면
               </button>
-                <button
+                {!farm && <button
                   onClick={() => {
                     setMore(false)
                     resetStarter()
@@ -1779,13 +1910,13 @@ export function IslandEditor({
                 >
                   <RotateCcw size={16} />
                   추천 기본 배치
-                </button>
+                </button>}
             </div>
           )}
-          {editing && (
+          {editing && (!farm || draftController.dirty) && (
             <div className="island-edit-bar">
               <span>
-                <Pencil size={14} />섬 꾸미기
+                <Pencil size={14} />{farm ? '농장 꾸미기' : '섬 꾸미기'}
               </span>
               <button disabled={draftController.saving} onClick={() => void finishEditing()}>
                 <Check size={15} />
@@ -1899,11 +2030,11 @@ export function IslandEditor({
           <header className="island-selected-header">
             <div className="island-selected-art" aria-hidden="true">
               <svg viewBox={buildingViewBox(current, rotation)}>
-                <Building f={current} rotation={rotation} label={signText} />
+                <Building level={account?.snapshot.farm?.officeLevel??1} f={current} rotation={rotation} label={signText} />
               </svg>
             </div>
             <div className="island-selected-heading">
-              <span>{current.category === 'decoration' ? '섬 꾸미기' : '나의 시설'}</span>
+              <span>{current.category === 'decoration' ? farm ? '농장 꾸미기' : '섬 꾸미기' : '나의 시설'}</span>
               <h2 id="island-selected-title">{current.name}</h2>
               <p>
                 {!editing ? (
@@ -1929,6 +2060,8 @@ export function IslandEditor({
                   ) : (
                     '빈 땅을 눌러 배치하세요'
                   )
+                ) : current.kind==='farm-office' ? (
+                  `Lv.${account?.snapshot.farm?.officeLevel??1} · 밭 한도 ${state.farmPlotLimit??4}칸`
                 ) : (
                   `${current.w} × ${current.h}칸 · ${current.placementTerrain === 'water' ? '바다 전용' : current.placementTerrain === 'any' ? '육지·바다' : current.kind === 'dock' ? '해안 전용' : current.category === 'decoration' ? '장식물' : '건물'}`
                 )}
@@ -1981,6 +2114,7 @@ export function IslandEditor({
               </form>
             )}
           <div className="island-selected-actions">
+            {farm && current.kind==='farm-office' && <button className="island-small-button" onClick={()=>setOfficeOpen(true)}>관리소 강화</button>}
             {editing && canFlipSign(selected) && (
               <button
                 className="island-small-button island-rotate-button"
@@ -2149,7 +2283,7 @@ export function IslandEditor({
           </div>
         </section>
       )}
-      {account && !editing && (
+      {account && !farm && !editing && (
         <nav className="island-browse-dock" aria-label="나의 섬 메뉴">
           <button onClick={()=>setPlacesOpen(true)}><MapPin size={19}/><span>장소 찾기</span></button>
           <button
@@ -2188,33 +2322,13 @@ export function IslandEditor({
         </nav>
       )}
       <IslandPlacesDialog open={placesOpen} onOpenChange={setPlacesOpen} facilities={pageBuildings}/>
-      {editing && (
+      {editing && !farm && (
         <nav className="island-dock" aria-label="섬 꾸미기 도구">
           <button
             className={`island-land-stock ${tool === 'land' ? 'active' : ''}`}
             aria-label={`땅 추가 ${state.landStock}칸${tool === 'land' ? ' 배치 완료' : ''}`}
             aria-pressed={tool === 'land'}
-            onClick={() => {
-              setCleanupOpen(false)
-              setSelectedLand(null)
-              if (tool === 'land') {
-                setTool('edit')
-                setMessage('시설을 눌러 이동·보관하거나 페이지로 들어가세요.')
-                return
-              }
-              if (state.landStock === 0) {
-                setPanel('shop')
-                setCategory('land')
-                setSearch('')
-                setMessage('상점에서 땅을 구매한 뒤 배치해주세요.')
-                return
-              }
-              setTool('land')
-              setPanel(null)
-              setSelected(null)
-              setPending(false)
-              setMessage(`빈 바다를 눌러 보관한 땅을 배치하세요. · 남은 땅 ${state.landStock}칸`)
-            }}
+            onClick={toggleLandPlacement}
           >
             <span className="island-land-stock-art island-dock-icon" aria-hidden="true">
               <LandThumbnail />
@@ -2222,73 +2336,7 @@ export function IslandEditor({
             </span>
             <span>땅 추가</span>
           </button>
-          <div className="island-cleanup" ref={cleanupRef}>
-            <button
-              className={cleanupOpen ? 'active' : ''}
-              aria-label="정리"
-              aria-expanded={cleanupOpen}
-              aria-controls="island-cleanup-options"
-              onClick={() => {
-                setPanel(null)
-                setCleanupOpen((v) => !v)
-              }}
-            >
-              <Eraser size={20} />
-              <span>정리</span>
-            </button>
-            {cleanupOpen && (
-              <section
-                id="island-cleanup-options"
-                aria-label="회수할 대상"
-                className="island-cleanup-popover"
-                onKeyDown={(e) => {
-                  if (e.key === 'Escape') {
-                    e.stopPropagation()
-                    setCleanupOpen(false)
-                    cleanupRef.current?.querySelector('button')?.focus()
-                  }
-                }}
-              >
-                <header>
-                  <strong>무엇을 정리할까요?</strong>
-                  <button
-                    type="button"
-                    aria-label="정리 메뉴 닫기"
-                    onClick={() => setCleanupOpen(false)}
-                  >
-                    <X size={15} />
-                  </button>
-                </header>
-                <div className="island-cleanup-options">
-                  <button onClick={() => startRemoval('land-remove')}>
-                    <span className="island-cleanup-art">
-                      <LandThumbnail />
-                    </span>
-                    <span>땅 회수</span>
-                  </button>
-                  <button onClick={() => startRemoval('decoration-remove')}>
-                    <span className="island-cleanup-art">
-                      <svg
-                        viewBox="-5 -13 74 50"
-                        data-cleanup-decoration="bench"
-                        aria-hidden="true"
-                      >
-                        <Building f={cleanupDecoration} />
-                      </svg>
-                    </span>
-                    <span>장식물 회수</span>
-                  </button>
-                  <button onClick={() => startRemoval('tile-remove')}>
-                    <span className="island-cleanup-art">
-                      <FloorSwatch type="brick" />
-                    </span>
-                    <span>타일 회수</span>
-                  </button>
-                </div>
-                <p>회수한 항목은 보관함에 들어가요.</p>
-              </section>
-            )}
-          </div>
+          {cleanupControl}
           <button
             className={panel === 'storage' ? 'active' : ''}
             aria-label={`보관함 ${unplaced.length + state.landStock}개`}
@@ -2332,15 +2380,37 @@ export function IslandEditor({
           </button>
         </nav>
       )}
+      {farm && !pending && !selected && (
+        <nav className="farm-category-bar" aria-label="농장 카테고리">
+          {farmCategories.map((c,i)=>{
+            const Icon=[Flower2,House,Layers3,Sprout,Plus][i]
+            return <button key={c.id}
+              className={(panel && category===c.id)||(c.id==='land' && tool==='land')?'active':''}
+              aria-label={c.id==='land'?`땅 추가 ${state.landStock}칸${tool==='land'?' 배치 완료':''}`:undefined}
+              aria-pressed={c.id==='land'?tool==='land':undefined}
+              onClick={()=>{
+              if(c.id==='land'){toggleLandPlacement();return}
+              setCategory(c.id)
+              setSearch('')
+              setPanel('shop')
+              setEditing(true)
+              setTool('edit')
+              setCleanupOpen(false)
+            }}>{c.id==='land'?<span className="island-land-stock-art island-dock-icon" aria-hidden="true"><LandThumbnail/><span className="island-dock-count">{state.landStock}</span></span>:<Icon size={22}/>}<span>{c.label}</span></button>
+          })}
+          {cleanupControl}
+        </nav>
+      )}
       {panel && (
         <aside
           className={`island-drawer ${panel === 'shop' ? 'island-shop' : 'island-storage'}`}
-          aria-label={panel === 'shop' ? '상점' : '시설 보관함'}
+          aria-label={panel === 'shop' ? '상점' : farm ? '농장 보관함' : '시설 보관함'}
         >
           <div className="island-drawer-controls">
             <div className="island-drawer-head">
               <div>
-                <h2>{panel === 'shop' ? '상점' : '나의 보관함'}</h2>
+                <h2>{farm ? panel==='shop' ? farmCategories.find(c=>c.id===category)?.label ?? '농장 상점' : '보관함' : panel === 'shop' ? '상점' : '나의 보관함'}</h2>
+                {farm && <button className="farm-inventory-toggle" onClick={()=>setPanel(panel==='shop'?'storage':'shop')}>{panel==='shop'?'보관함':'상점'}</button>}
               </div>
               <button
                 className="island-icon-button"
@@ -2353,7 +2423,7 @@ export function IslandEditor({
             <p className="island-drawer-note">
               {panel === 'shop'
                 ? account
-                  ? '골드로 구매하고, 나만의 섬을 꾸며보세요.'
+                  ? farm ? category==='plot' ? '밭 한 칸 · 10골드. 회수한 밭은 무료로 다시 놓을 수 있어요.' : '내 농장에 놓을 물건을 골라주세요.' : '골드로 구매하고, 나만의 섬을 꾸며보세요.'
                   : '체험 코인으로 구매해요.'
                 : '꺼내서 배치할 항목을 골라주세요.'}
             </p>
@@ -2362,9 +2432,9 @@ export function IslandEditor({
               role="group"
               aria-label={panel === 'storage' ? '보관함 분류' : '상품 분류'}
             >
-              {(['all', 'building', 'decoration', 'floor', 'land'] as const)
+              {(farm ? farmCategories.map(c=>c.id) : ['all', 'building', 'decoration', 'floor', 'land'] as const)
                 .filter((c) =>
-                  panel === 'storage'
+                  farm ? true : panel === 'storage'
                     ? ['building', 'decoration', 'floor', 'land'].includes(c)
                     : !(live && c === 'building'),
                 )
@@ -2374,7 +2444,7 @@ export function IslandEditor({
                     className={category === c ? 'active' : ''}
                     onClick={() => setCategory(c)}
                   >
-                    {c === 'all'
+                    {farm ? farmCategories.find(item=>item.id===c)?.label : c === 'all'
                       ? '전체'
                       : c === 'building'
                         ? '건물'
@@ -2389,8 +2459,8 @@ export function IslandEditor({
             <input
               className="island-search"
               type="search"
-              aria-label="건물·장식 검색"
-              placeholder={panel === 'shop' ? '상품 검색' : '건물이나 장식 이름 검색'}
+              aria-label={farm ? '농장 물품 검색' : '건물·장식 검색'}
+              placeholder={panel === 'shop' ? '상품 검색' : farm ? '보관 물품 이름 검색' : '건물이나 장식 이름 검색'}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -2449,6 +2519,23 @@ export function IslandEditor({
             tabIndex={0}
           >
             <div className="island-products">
+              {farm && category==='building' && (panel==='shop' || stored.some(id=>resolve(id)?.kind==='farm-office')) && (
+                <article className="island-product">
+                  <div className="island-product-art">
+                    <svg viewBox="-5 -5 74 74" aria-hidden="true"><Building f={facilityFor('farm-office')!} level={Math.max(1,account?.snapshot.farm?.officeLevel??0)}/></svg>
+                    {panel==='storage' && <span className="island-count">1</span>}
+                  </div>
+                  <h3>텃밭 관리소</h3>
+                  <small>{account?.snapshot.farm?.officeLevel ? `Lv.${account.snapshot.farm.officeLevel} · 밭 ${account.snapshot.farm.plotLimit}칸` : '미건설 · 2 × 2칸'}</small>
+                  <button onClick={()=>{
+                    const office=stored.find(id=>resolve(id)?.kind==='farm-office')
+                    if(panel==='storage' && office)placeOffice(office)
+                    else {setPanel(null);setOfficeOpen(true)}
+                  }}>
+                    {panel==='storage'?'꺼내서 배치':(account?.snapshot.farm?.officeLevel??0)>=5?'관리하기':(account?.snapshot.farm?.officeLevel??0)>0?'강화하기':'건설하기'}
+                  </button>
+                </article>
+              )}
               {(panel === 'shop' || category === 'land') &&
                 (category === 'all' || category === 'land') &&
                 (panel === 'shop' || state.landStock > 0) &&
@@ -2666,7 +2753,7 @@ export function IslandEditor({
                                 ? '바다에 놓고 회전해서 땅과 땅을 이어보세요.'
                                 : f.placementTerrain === 'any'
                                   ? '육지나 바다를 눌러 배치하세요. 드래그하면 지도를 이동해요.'
-                                  : '빈 땅을 눌러 배치하세요. 드래그하면 지도를 이동해요.',
+                                  : f.kind==='farm-plot' ? '빈 땅을 누르거나 드래그해서 밭을 놓으세요.' : '빈 땅을 눌러 배치하세요. 드래그하면 지도를 이동해요.',
                           )
                         }
                       }}
@@ -2701,6 +2788,7 @@ export function IslandEditor({
               })}
             </div>
             {panel === 'storage' &&
+              !(farm && category==='building' && stored.some(id=>resolve(id)?.kind==='farm-office')) &&
               (category === 'land'
                 ? state.landStock === 0 || !'땅 조각'.includes(search.trim())
                 : category === 'floor'

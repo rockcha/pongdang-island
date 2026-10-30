@@ -4,7 +4,7 @@ export const placeGroups = [
     id: 'home',
     label: '내 섬',
     sections: [
-      { label: '나의 공간', paths: ['/my-island', '/aquarium', '/profile'] },
+      { label: '나의 공간', paths: ['/aquarium', '/farm'] },
       { label: '쉬어가기', paths: ['/music-room', '/arcade', '/voyage-bets'] },
       { label: '골드 관리', paths: ['/savings'] },
     ],
@@ -22,7 +22,7 @@ export const placeGroups = [
     label: '생산',
     sections: [
       { label: '미끼 만들기', paths: ['/bait-production', '/my-bait-production'] },
-      { label: '연료·재배', paths: ['/production', '/farm'] },
+      { label: '연료 생산', paths: ['/production'] },
     ],
   },
   {

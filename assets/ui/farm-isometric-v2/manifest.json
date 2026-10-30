@@ -1,0 +1,284 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "buildings-atlas-v2.png",
+  "prompts": "prompts.json",
+  "files": [
+    {
+      "id": "farm-office",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v2/farm-office-0-v2.png",
+      "sourceCrop": {
+        "left": 34,
+        "top": 49,
+        "width": 328,
+        "height": 330
+      },
+      "packed": {
+        "left": 18,
+        "top": 18,
+        "width": 221,
+        "height": 222
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "cfdb287e6cc6c56c891465cc6572def627dd00ce974d21abd57f179594960e0e",
+      "alpha": true
+    },
+    {
+      "id": "farm-office",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v2/farm-office-1-v2.png",
+      "sourceCrop": {
+        "left": 403,
+        "top": 53,
+        "width": 316,
+        "height": 330
+      },
+      "packed": {
+        "left": 22,
+        "top": 18,
+        "width": 213,
+        "height": 222
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "c7ac945fb07d63f9219d283e246599f64f31e3c7db644c3ab68e0408729c723e",
+      "alpha": true
+    },
+    {
+      "id": "farm-office",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v2/farm-office-2-v2.png",
+      "sourceCrop": {
+        "left": 753,
+        "top": 53,
+        "width": 312,
+        "height": 331
+      },
+      "packed": {
+        "left": 23,
+        "top": 17,
+        "width": 210,
+        "height": 223
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "9b3e45b84ee8676e880215a1fd92e0d42447de91d3c1fefdc99476049e62a2e7",
+      "alpha": true
+    },
+    {
+      "id": "farm-office",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v2/farm-office-3-v2.png",
+      "sourceCrop": {
+        "left": 1090,
+        "top": 48,
+        "width": 325,
+        "height": 333
+      },
+      "packed": {
+        "left": 19,
+        "top": 16,
+        "width": 219,
+        "height": 224
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "a9f3edd3437ec1574611ba584893193c1b28235d24289de9fa96eaea75e79475",
+      "alpha": true
+    },
+    {
+      "id": "farm-store",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v2/farm-store-0-v2.png",
+      "sourceCrop": {
+        "left": 34,
+        "top": 382,
+        "width": 315,
+        "height": 308
+      },
+      "packed": {
+        "left": 16,
+        "top": 21,
+        "width": 224,
+        "height": 219
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "b68f6dab16b2b4484d6713a101c4692631d7b41bb9b628134cab6858d294896d",
+      "alpha": true
+    },
+    {
+      "id": "farm-store",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v2/farm-store-1-v2.png",
+      "sourceCrop": {
+        "left": 399,
+        "top": 389,
+        "width": 312,
+        "height": 307
+      },
+      "packed": {
+        "left": 17,
+        "top": 22,
+        "width": 222,
+        "height": 218
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "7847a883c3a252c548bad60b26b0676f1415588cccb39c9789dfa5ccd3ca600d",
+      "alpha": true
+    },
+    {
+      "id": "farm-store",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v2/farm-store-2-v2.png",
+      "sourceCrop": {
+        "left": 761,
+        "top": 388,
+        "width": 304,
+        "height": 308
+      },
+      "packed": {
+        "left": 20,
+        "top": 21,
+        "width": 216,
+        "height": 219
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "c1be7413486a353a95639f2973bbecc9f60a19fd83adb3795134cff5e61deffe",
+      "alpha": true
+    },
+    {
+      "id": "farm-store",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v2/farm-store-3-v2.png",
+      "sourceCrop": {
+        "left": 1098,
+        "top": 382,
+        "width": 314,
+        "height": 307
+      },
+      "packed": {
+        "left": 17,
+        "top": 22,
+        "width": 223,
+        "height": 218
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "99e064a2a8a46112fa74f824ebc7c98a8e98bcc2fb907c9a27fe602beaa54195",
+      "alpha": true
+    },
+    {
+      "id": "farm-barn",
+      "frame": 0,
+      "path": "game-art/farm-isometric-v2/farm-barn-0-v2.png",
+      "source": "barn-directions-v2.png",
+      "sourceCrop": {
+        "left": 18,
+        "top": 146,
+        "width": 520,
+        "height": 446
+      },
+      "packed": {
+        "left": 16,
+        "top": 48,
+        "width": 224,
+        "height": 192
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "c028f7cbf467937f8940068c766681dbbc6ef1577501ddb926f84b44f967e9b7",
+      "alpha": true
+    },
+    {
+      "id": "farm-barn",
+      "frame": 1,
+      "path": "game-art/farm-isometric-v2/farm-barn-1-v2.png",
+      "source": "barn-directions-v2.png",
+      "sourceCrop": {
+        "left": 557,
+        "top": 150,
+        "width": 490,
+        "height": 439
+      },
+      "packed": {
+        "left": 23,
+        "top": 51,
+        "width": 211,
+        "height": 189
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "3d54e581cb75c296f32e68e99e2ac7f41a975084ad4fb13db2ad04bfd25da8a4",
+      "alpha": true
+    },
+    {
+      "id": "farm-barn",
+      "frame": 2,
+      "path": "game-art/farm-isometric-v2/farm-barn-2-v2.png",
+      "source": "barn-directions-v2.png",
+      "sourceCrop": {
+        "left": 1068,
+        "top": 151,
+        "width": 501,
+        "height": 447
+      },
+      "packed": {
+        "left": 20,
+        "top": 47,
+        "width": 216,
+        "height": 193
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "60d856d8e0657c626eb676ecc17347e889ee7ff92890fc22ed5838c478b87628",
+      "alpha": true
+    },
+    {
+      "id": "farm-barn",
+      "frame": 3,
+      "path": "game-art/farm-isometric-v2/farm-barn-3-v2.png",
+      "source": "barn-directions-v2.png",
+      "sourceCrop": {
+        "left": 1588,
+        "top": 147,
+        "width": 506,
+        "height": 448
+      },
+      "packed": {
+        "left": 19,
+        "top": 47,
+        "width": 218,
+        "height": 193
+      },
+      "width": 256,
+      "height": 256,
+      "sha256": "9508a48cd48cf4178ffb098906206d7d548ad762b5a7364d5a9c07712ed209c2",
+      "alpha": true
+    }
+  ],
+  "groundTile": {
+    "width": 64,
+    "height": 36
+  },
+  "registration": "src/features/farm/sprite-registration.ts",
+  "originals": [
+    {
+      "path": "buildings-atlas-v2.png",
+      "width": 1448,
+      "height": 1086,
+      "alpha": true,
+      "sha256": "ac7df27a3dc05ab4fd2115e888632f72d1b8a709685ae290cd1bd1e6efa67dc1"
+    },
+    {
+      "path": "barn-directions-v2.png",
+      "width": 2109,
+      "height": 746,
+      "alpha": true,
+      "sha256": "8b883d3edd5852d75400ce7c7253b159663b9e5d59af19e750c8b5200d340e00"
+    }
+  ]
+}

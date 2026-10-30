@@ -1,3 +1,5 @@
+import {FarmOfficeArt} from './farm-office-art'
+import {WhiteFence} from '../farm/art'
 import {gardenKinds} from './garden-decoration-catalog'
 import {facilityPng,FacilityPngArt} from './facility-png-art'
 import {GardenDecoration} from './garden-decoration'
@@ -15,10 +17,13 @@ import { CreatureArchive } from './collection-market-art'
 import { ActivityLandmark } from './activity-landmarks'
 import type { Facility } from './island-model'
 import { supportsSavedRotation } from './island-model'
-export function Building({ f, rotation = 0,label,connections }: { f: Facility; rotation?: number;label?:string;connections?:{north:boolean;east:boolean;south:boolean;west:boolean} }) {
+export function Building({ f, rotation = 0,label,connections,level=1 }: { f: Facility; level?:number;rotation?: number;label?:string;connections?:{north:boolean;east:boolean;south:boolean;west:boolean} }) {
   rotation=supportsSavedRotation(f.id)?rotation:0
   if(f.kind==='arrow-sign')return <GardenDecoration f={f} rotation={rotation===180||rotation===270?180:0} label={label}/>
   if(rotation&&!usesDirectionalFenceArt(f))return <g data-art-direction={rotation} data-art-rotation={rotation} transform={buildingRotationTransform(f,rotation)}><Building f={f} label={label} connections={connections}/></g>
+  if(f.kind==='farm-plot')return <g data-farm-plot="true"><rect x="1" y="2" width="30" height="29" rx="3" fill="#78503a"/><rect x="2" y="2" width="28" height="26" rx="3" fill="#b17d50" stroke="#d1a270" strokeWidth="1"/>{[7,13,19,25].map(y=><g key={y}><path d={`M5 ${y}H27`} stroke="#825435" strokeWidth="2.5" strokeLinecap="round"/><path d={`M5 ${y-1}H27`} stroke="#d2a06b" strokeWidth="1" strokeLinecap="round"/></g>)}</g>
+  if(f.kind==='farm-office')return <FarmOfficeArt level={level}/>
+  if(f.kind==='farm-white-fence')return <WhiteFence p={{id:f.id,x:0,y:0,rotation}}/>
   const png=facilityPng(f)
   if(png&&!usesDirectionalFenceArt(f))return <g className={f.category==='building'?'island-building-art':undefined} data-art-direction="0" data-garden={gardenKinds.has(f.kind)?f.kind:undefined} data-waterway={['bridge','stepping-stones','reeds'].includes(f.kind)?f.kind:undefined}><FacilityPngArt src={png} f={f}/>{f.kind==='name-sign'&&<text x={f.w*16} y={18} textAnchor="middle" fill="#705b3e" fontSize="8" fontFamily="inherit">{label||'나의 퐁당섬'}</text>}</g>
   if(gardenKinds.has(f.kind))return <GardenDecoration f={f} rotation={rotation} label={label} connections={connections}/>

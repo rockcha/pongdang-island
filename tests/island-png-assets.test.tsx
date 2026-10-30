@@ -11,7 +11,13 @@ import {facilityPng} from '../src/features/my-island/facility-png-art'
 it('publishes immutable PNG URLs that match the actual bytes',()=>{
  const manifest=JSON.parse(readFileSync('assets/ui/island-front-v2/manifest.json','utf8'))
  expect(Object.keys(sprites).sort()).toEqual(manifest.assets.map(a=>a.id).sort())
- for(const f of [...facilities,...ownedFacilities()])expect(facilityPng(f),f.name).toBeTruthy()
+ for(const f of [...facilities,...ownedFacilities()]){
+  if(f.kind==='farm-plot'||f.kind==='farm-office'||f.kind==='farm-white-fence'){
+   const markup=renderToStaticMarkup(<svg><Building f={f}/></svg>)
+   expect(markup).toContain(f.kind==='farm-plot'?'data-farm-plot':f.kind==='farm-office'?'data-farm-office-level':'data-white-fence')
+   expect(markup).not.toContain('<image')
+  }else expect(facilityPng(f),f.name).toBeTruthy()
+ }
  for(const tile of floorTiles)expect((sprites as Record<string,string>)['floor-'+tile.id],tile.name).toBeTruthy()
  for(const url of Object.values(sprites)){
   const bytes=readFileSync('public'+url)
@@ -19,6 +25,16 @@ it('publishes immutable PNG URLs that match the actual bytes',()=>{
   expect(url).toContain(createHash('sha256').update(bytes).digest('hex').slice(0,24))
   expect(bytes.subarray(1,4).toString()).toBe('PNG')
  }
+})
+it('changes office details across five levels while retaining the same two-by-two footprint',()=>{
+ const office=facilities.find(f=>f.kind==='farm-office')!
+ expect([office.w,office.h]).toEqual([2,2])
+ const variants=[1,2,3,4,5].map(level=>{
+  const art=renderToStaticMarkup(<svg><Building f={office} level={level}/></svg>)
+  expect(art).toContain(`data-farm-office-level="${level}"`)
+  return art
+ })
+ expect(new Set(variants).size).toBe(5)
 })
 it('uses front artwork without mirroring while preserving the outer saved rotation',()=>{
  for(const kind of ['tree','pine','flowers','bench']){

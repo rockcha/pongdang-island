@@ -1,11 +1,12 @@
 import type { Facility } from './island-model'
 import sprites from './island-png-manifest.json'
+import farmSprites from './farm-isometric-assets.json'
 import {destinationArtwork} from './destination-art'
 import {buildingViewBox} from './island-art-sizing'
 
 export function facilityPng(f:Facility) {
  const art=sprites as Record<string,string>
- return art[f.id.split('~')[0]]??(f.kind==='destination'?art[destinationArtwork(f.to??'')??'destination']:art[f.kind])
+ return art[f.id.split('~')[0]]??(farmSprites as Record<string,string[]>)[f.id.split('~')[0]]?.[0]??(f.kind==='destination'?art[destinationArtwork(f.to??'')??'destination']:art[f.kind])
 }
 export function FacilityPngArt({src,f}:{src:string;f:Facility}) {
  const bridge=f.kind==='bridge'

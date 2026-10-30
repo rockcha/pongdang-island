@@ -35,6 +35,14 @@ it('keeps sellable request counts without a market dot when no actual NEW remain
 })
 async function open(name:string){fireEvent.click(screen.getByRole('button',{name,exact:true}));return screen.findByRole('menu',{name:name+' 메뉴'})}
 async function close(menu:HTMLElement){fireEvent.keyDown(menu,{key:'Escape'});await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())}
+it('shows sea exploration immediately below the farm only to operators',async()=>{
+ const view=render(<MemoryRouter><View/></MemoryRouter>);let menu=await open('내 섬')
+ expect(within(menu).queryByRole('menuitem',{name:/바닷속 탐험/})).toBeNull()
+ mock.operator=true;view.rerender(<MemoryRouter><View/></MemoryRouter>);menu=screen.getByRole('menu')
+ const items=within(menu).getAllByRole('menuitem'),at=items.findIndex(i=>i.getAttribute('href')==='/farm')
+ expect(items[at+1].getAttribute('href')).toBe('/sea-exploration')
+ expect(items[at+1].textContent).toContain('운영자')
+})
 it('shows seven representative icons with visible labels and an active category',()=>{
  render(<MemoryRouter initialEntries={['/region/nyamnyam']}><View/></MemoryRouter>)
  const nav=screen.getByRole('navigation',{name:'장소 바로가기'}),buttons=within(nav).getAllByRole('button')

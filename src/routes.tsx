@@ -64,6 +64,7 @@ const ProfilePage=lazy(()=>import('@/features/profile/profile-page').then(module
 const AquariumPage=lazy(()=>import('@/pages/aquarium-page').then(module=>({default:module.AquariumPage})))
 const HarborPage=lazy(()=>import('@/pages/harbor-page').then(module=>({default:module.HarborPage})))
 const FarmPage=lazy(()=>import('@/pages/farm-page').then(module=>({default:module.FarmPage})))
+const SeaExplorationPage=lazy(()=>import('@/features/sea-exploration/sea-exploration-page').then(module=>({default:module.SeaExplorationPage})))
 const MusicRoomPage=lazy(()=>import('@/pages/music-room-page').then(module=>({default:module.MusicRoomPage})))
 
 export function AppRoutes() {
@@ -109,6 +110,7 @@ export function AppRoutes() {
             <Route path="fishing" element={<FishingShortcutPage />} />
             <Route path="fishing-records" element={<FishingRecordsPage />} />
             <Route path="farm" element={<FarmPage />} />
+            <Route path="sea-exploration" element={<OperatorGuard><SeaExplorationPage /></OperatorGuard>} />
             <Route path="music-room" element={<MusicRoomPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />
             <Route path="region/:regionId" element={<RegionPage />} />

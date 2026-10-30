@@ -26,7 +26,7 @@ export default function App() {
       <PresenceReporter/>
       <MusicProvider key={musicKey} storageKey={musicKey} userId={session?.user.id}><SocialProvider><ForegroundPush/><GoldProvider><ExperienceProvider><RodProvider><AppRoutes /></RodProvider></ExperienceProvider></GoldProvider><PwaStatus /></SocialProvider></MusicProvider>
       <Toaster position="top-center" duration={3000} />
-      <PortraitOrientation allowLandscape={/^\/my-island\/?$/.test(pathname)} />
+      <PortraitOrientation allowLandscape={/^\/(?:my-island|sea-exploration)\/?$/.test(pathname)} />
     </>
   )
 }

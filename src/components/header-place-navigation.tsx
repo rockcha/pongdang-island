@@ -85,9 +85,11 @@ export const menuIcons:Record<string,typeof House>={
 }
 
 menuIcons['/voyage-bets-test']=FlaskConical
+menuIcons['/sea-exploration']=Fish
 menuIcons['/fishing-records']=NotebookPen
 const groups=placeGroups
 const voyageTestPlace={to:'/voyage-bets-test',label:'만선 승부장 테스트',icon:FlaskConical}
+const seaExplorationPlace={to:'/sea-exploration',label:'바닷속 탐험',icon:Fish}
 // A record page belongs in the fishing menu without creating an island facility.
 const fishingRecordsPlace={to:'/fishing-records',label:'오늘의 낚시 기록',icon:NotebookPen}
 export function HeaderPlaceNavigation() {
@@ -112,8 +114,9 @@ export function HeaderPlaceNavigation() {
       {groups.map((group) => {
         const items = group.sections.flatMap(section=>section.paths)
           .flatMap(path=>operator&&path==='/voyage-bets'?[path,'/voyage-bets-test']:[path])
+          .flatMap(path=>operator&&path==='/farm'?[path,'/sea-exploration']:[path])
           .filter((path) => path !== '/collection-animation' || operator)
-          .map((path) => path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
+          .map((path) => path==='/sea-exploration'?seaExplorationPlace:path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
@@ -167,7 +170,7 @@ export function HeaderPlaceNavigation() {
                             NEW
                           </span>
                         )}
-                        {(to === '/collection-animation'||to==='/voyage-bets-test') && (
+                        {(to === '/collection-animation'||to==='/voyage-bets-test'||to==='/sea-exploration') && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             운영자
                           </span>

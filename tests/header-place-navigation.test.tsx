@@ -43,7 +43,7 @@ it('shows seven representative icons with visible labels and an active category'
  expect(screen.getByRole('button',{name:'낚시'}).getAttribute('aria-current')).toBe('location')
 })
 it.each([
- ['내 섬',['/aquarium','/farm','/music-room','/arcade','/voyage-bets','/savings']],
+ ['내 섬',['/aquarium','/farm','/music-room','/arcade','/voyage-bets','/exploration','/savings']],
  ['낚시',['/harbor','/fishing','/fishing-records','/expeditions','/port']],
  ['소식',['/island-news','/square/notices','/square/suggestions','/square/bugs']],
  ['생산',['/bait-production','/my-bait-production','/production']],

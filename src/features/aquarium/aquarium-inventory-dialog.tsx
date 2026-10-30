@@ -39,6 +39,9 @@ export function AquariumInventoryDialog({
   triggerLabel='목록',
   capacityControls,
   capacity,
+  open:controlledOpen,
+  onOpenChange,
+  hideTrigger=false,
 }: {
   items: OwnedCollectible[]
   name: string
@@ -49,10 +52,15 @@ export function AquariumInventoryDialog({
   triggerLabel?:string
   capacityControls?:ReactNode
   capacity?:number
+  open?:boolean
+  onOpenChange?:(open:boolean)=>void
+  hideTrigger?:boolean
 }) {
-  const [open, setOpen] = useState(false),
+  const [internalOpen, setInternalOpen] = useState(false),
     [category, setCategory] = useState<CollectibleKind | 'all'>('all'),
     [rarity, setRarity] = useState<Rarity | 'all'>('all')
+  const open=controlledOpen??internalOpen
+  const setOpen=(value:boolean)=>{setInternalOpen(value);onOpenChange?.(value)}
   const [query, setQuery] = useState('')
   const [concept, setConcept] = useState('all')
   const [searchOpen,setSearchOpen]=useState(false)
@@ -126,12 +134,12 @@ export function AquariumInventoryDialog({
           }
         }}
       >
-        <AquariumToolButton
+        {!hideTrigger&&<AquariumToolButton
           prominent
           count={items.length}
           label={triggerLabel}
           icon={<ListFilter className="size-8" />}
-        />
+        />}
         <DialogContent className="aquarium-work-panel aquarium-item-panel bottom-0 top-auto left-0 flex h-[88dvh] max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl">
           <DialogHeader className="shrink-0 pr-7">
             <DialogTitle className="flex items-center gap-2">
@@ -264,15 +272,15 @@ export function AquariumInventoryDialog({
             <Button
               variant="secondary"
               aria-label={movable.length + '개 보관함으로'}
-              className="h-16 min-w-0 gap-2 rounded-none border-r"
+              className="h-16 min-w-0 gap-1 rounded-none border-r px-2"
               disabled={busy || selling || !onStore || !movable.length}
               onClick={() => {
                 setStoreError('')
                 setStoreIds([...movable])
               }}
             >
-              <Archive className="size-9" />
-              <span className="aquarium-action-label hidden text-xs">보관함</span>
+              <Archive className="size-5" />
+              <span className="aquarium-action-label text-xs">보관함으로</span>
             </Button>
             {selected.length === 1 ? (
               <SendGiftDialog
@@ -287,12 +295,12 @@ export function AquariumInventoryDialog({
             ) : (
               <Button
                 variant="secondary"
-                className="h-16 min-w-0 rounded-none border-r"
+                className="h-16 min-w-0 gap-1 rounded-none border-r px-2"
                 aria-label="선물할 종류 하나를 선택해주세요"
                 disabled
               >
-                <Gift className="size-9" />
-                <span className="aquarium-action-label hidden text-xs">선물</span>
+                <Gift className="size-5" />
+                <span className="aquarium-action-label text-xs">선물하기</span>
               </Button>
             )}
             <Button

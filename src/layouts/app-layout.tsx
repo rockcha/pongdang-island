@@ -24,7 +24,7 @@ export function AppLayout() {
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
   const tankScreen=aquarium||friendAquarium
   const home=pathname==='/island-news'||/^\/development-fund\/?$/.test(pathname)
-  const profile=/^\/voyage-bets(?:-test)?\/?$/.test(pathname)||pathname==='/my-bait-production'||pathname==='/bait-production'||pathname==='/bait-production-shop'||pathname==='/production-shop'||pathname==='/production'||pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||/^\/relics\/?$/.test(pathname)||/^\/(?:collection|item-collection|collection-animation)\/?$/.test(pathname)
+  const profile=pathname==='/exploration'||/^\/voyage-bets(?:-test)?\/?$/.test(pathname)||pathname==='/my-bait-production'||pathname==='/bait-production'||pathname==='/bait-production-shop'||pathname==='/production-shop'||pathname==='/production'||pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||/^\/relics\/?$/.test(pathname)||/^\/(?:collection|item-collection|collection-animation)\/?$/.test(pathname)
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
   const showcase=pathname==='/showcase'||pathname.startsWith('/showcase/')

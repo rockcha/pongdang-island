@@ -408,7 +408,7 @@ export function CollectibleStorageDialog({
           {!pageMode && <Button
             variant="secondary"
             aria-label={selection.size + '개 어항에 넣기'}
-            className="h-16 min-w-0 rounded-none border-r"
+            className="h-16 min-w-0 gap-1 rounded-none border-r px-2"
             disabled={disabled || loading || !selection.size || selection.size > free || !targetId}
             onClick={() => {
               setError('')

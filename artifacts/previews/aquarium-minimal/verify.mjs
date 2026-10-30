@@ -14,6 +14,28 @@ const server=http.createServer((req,res)=>{
 await new Promise(r=>server.listen(5194,'127.0.0.1',r))
 const browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true})
 try{
+ const portrait=await browser.newPage({viewport:{width:390,height:844}})
+ const portraitErrors=[];portrait.on('pageerror',error=>portraitErrors.push(error.message))
+ await portrait.route('**/rest/v1/rpc/**',async route=>{const items=await portrait.evaluate(()=>window.__storageItems??[]);await route.fulfill({json:{items,total:items.length,pageSize:50,orders:[]}})})
+ await portrait.route('**/storage/v1/object/public/aquarium-backgrounds/*',async route=>{
+  const filename=decodeURIComponent(new URL(route.request().url()).pathname.split('/').at(-1));const file=path.resolve('assets/storage-upload/new/20261025-014955/aquarium-backgrounds',filename)
+  if(fs.existsSync(file))await route.fulfill({path:file,contentType:'image/png'});else await route.abort()
+ })
+ await portrait.goto('http://127.0.0.1:5194/artifacts/previews/aquarium-minimal/index.html')
+ await portrait.locator('[data-tank-ready="true"]').first().waitFor({timeout:30000})
+ await portrait.screenshot({path:'artifacts/previews/aquarium-minimal/overview-actions.png'})
+ await portrait.getByRole('button',{name:'나의 작은 바다 목록 열기'}).click()
+ await portrait.getByRole('dialog').waitFor()
+ await portrait.waitForTimeout(500)
+ await portrait.screenshot({path:'artifacts/previews/aquarium-minimal/portrait-inventory.png'})
+ if(await portrait.getByRole('region',{name:'가로 어항',exact:true}).count())throw Error('Opening inventory entered wide mode')
+ await portrait.keyboard.press('Escape')
+ await portrait.getByRole('button',{name:'산호 정원 보관함 열기'}).click()
+ await portrait.getByRole('dialog').waitFor()
+ await portrait.waitForTimeout(500)
+ await portrait.screenshot({path:'artifacts/previews/aquarium-minimal/portrait-storage.png'})
+ if(portraitErrors.length)throw Error(portraitErrors.join('\n'))
+ await portrait.close()
  for(const [width,height] of [[1440,810],[844,390],[568,320]]){
   const page=await browser.newPage({viewport:{width,height},reducedMotion:'reduce'})
   const errors=[];page.on('pageerror',e=>errors.push(e.message))
@@ -34,7 +56,7 @@ try{
   if(Math.abs(bounds.width-width)>1||Math.abs(bounds.height-height)>1)throw Error('Tank does not fill the screen: '+JSON.stringify(bounds))
   await page.screenshot({path:`artifacts/previews/aquarium-minimal/wide-${width}.png`})
   if(width<=1024){
-   if(await page.getByRole('button',{name:/^목록 /}).isVisible())throw Error('Inventory visible outside editing')
+   if(await page.locator('.aquarium-wide-inventory,.aquarium-wide-storage').count())throw Error('Wide inventory and storage should be removed')
    await page.getByRole('button',{name:'어항 메뉴',exact:true}).click()
    await page.getByRole('menuitem',{name:'이름 바꾸기',exact:true}).click()
   }else await page.getByRole('button',{name:'어항 이름 바꾸기',exact:true}).click()
@@ -47,9 +69,6 @@ try{
   await page.getByRole('button',{name:'화면 채움',exact:true}).click()
   await page.keyboard.press('Escape')
   await page.getByRole('button',{name:'편집 모드 시작',exact:true}).click()
-  await page.getByRole('button',{name:/^목록 /}).click()
-  await page.getByRole('dialog').waitFor()
-  await page.keyboard.press('Escape')
   if(width<=1024&&await page.getByRole('button',{name:'가로 화면 종료',exact:true}).isVisible())throw Error('Exit visible while editing')
   await page.getByRole('button',{name:'살구 불가사리 선택',exact:true}).evaluate(button=>button.click())
   await page.mouse.move(5,height/2)
@@ -66,4 +85,4 @@ try{
   console.log(JSON.stringify({width,height,bounds,errors,positionsPreserved:true}))
   await page.close()
  }
-}finally{await browser.close();server.close()}
+}finally{await browser.close();server.closeAllConnections();server.close()}

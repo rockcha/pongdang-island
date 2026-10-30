@@ -11,7 +11,7 @@ import { appArt } from '@/components/app-art'
 import { useNewContent } from './use-new-content'
 
 import { Link, useLocation } from 'react-router'
-import { Check, House, FishingRod, Factory, BookOpen, NotebookPen, NotebookTabs, Clapperboard, Container, Fuel, PackagePlus, Store as StoreOutline } from 'lucide-react'
+import { Compass, Check, House, FishingRod, Factory, BookOpen, NotebookPen, NotebookTabs, Clapperboard, Container, Fuel, PackagePlus, Store as StoreOutline } from 'lucide-react'
 
 import {UserRound,AudioLines,Fish,Shapes,Package,Warehouse as WarehouseOutline,Medal,Gem,Map as MapOutline,ShoppingBasket,ShoppingBag,Flame,Sprout,FlaskConical,Anchor,Ship as ShipOutline,Handshake as TradeIcon,ClipboardList,Landmark,Gamepad2 as GameIcon,TowerControl as LighthouseOutline,MessageSquare,Images,Trophy,Newspaper,Megaphone,Heart,Gift,Mail,Lightbulb,Bug} from 'lucide-react'
 
@@ -32,6 +32,7 @@ const {
 } = appArt
 
 export const headerPlaces = [
+  {to:'/exploration',label:'탐험',icon:Compass},
   { to: '/voyage-bets', label: '만선 승부장', icon: appArt.shipyard },
   { to: '/fishing-records', label: '오늘의 낚시 기록', icon: NotebookPen },
   { to: '/square/notices', label: '공지', icon: appArt.notices },
@@ -76,6 +77,7 @@ export const headerPlaces = [
 ]
 
 export const menuIcons:Record<string,typeof House>={
+ '/exploration':Compass,
  '/my-island':House,
  '/profile':UserRound,'/aquarium':Fish,'/music-room':AudioLines,'/decoration-shop':Shapes,
  '/harbor':MapOutline,'/fishing':FishingRod,'/expeditions':Container,'/shop':StoreOutline,'/item-shop':ShoppingBag,

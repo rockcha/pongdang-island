@@ -10,7 +10,6 @@ import { AquariumBackdrop } from './aquarium-backdrop'
 import {AquariumAmbience} from './aquarium-ambience'
 import { TankInhabitants } from './tank-inhabitants'
 import { TankBubbles } from './tank-bubbles'
-import { AquariumInventoryDialog } from './aquarium-inventory-dialog'
 import { canArrangeSpecies } from './movement-settings'
 import { DecorationEditor } from './decoration-editor'
 import { FishSizeEditor } from './fish-size-editor'
@@ -227,7 +226,7 @@ export function AquariumView(props: Props) {
             {decorating&&props.operatorControls&&<ActionMenu.Item onClick={()=>requestAnimationFrame(()=>operatorAction.current?.querySelector<HTMLButtonElement>('button')?.click())} className="flex min-h-11 cursor-pointer items-center rounded-lg px-3 outline-none data-highlighted:bg-secondary">개체 테스트</ActionMenu.Item>}
           </ActionMenu.Popup></ActionMenu.Positioner></ActionMenu.Portal></ActionMenu.Root>
         </div>
-        <div role="group" aria-label="가로 어항 도구" className="aquarium-wide-toolbar"><TooltipProvider>{props.operatorControls&&<div ref={operatorAction} className="aquarium-wide-operator">{props.operatorControls}</div>}<div className="aquarium-wide-inventory"><AquariumInventoryDialog capacity={props.tankCapacity} capacityControls={props.capacityControls} items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/></div>{props.storageControls&&<div className="aquarium-wide-storage">{props.storageControls}</div>}{props.backgroundControls&&<div className="aquarium-wide-theme">{props.backgroundControls}</div>}</TooltipProvider>{arrangeButton}<button type="button" aria-label="가로 화면 종료" onClick={wide.exit} className="aquarium-wide-exit"><Minimize2 aria-hidden="true" className="size-4"/><span>나가기</span></button></div>
+        <div role="group" aria-label="가로 어항 도구" className="aquarium-wide-toolbar"><TooltipProvider>{props.operatorControls&&<div ref={operatorAction} className="aquarium-wide-operator">{props.operatorControls}</div>}{props.backgroundControls&&<div className="aquarium-wide-theme">{props.backgroundControls}</div>}</TooltipProvider>{arrangeButton}<button type="button" aria-label="가로 화면 종료" onClick={wide.exit} className="aquarium-wide-exit"><Minimize2 aria-hidden="true" className="size-4"/><span>나가기</span></button></div>
       </div>}
       {props.overviewContent??<div ref={fitted.ref} data-testid="aquarium-viewport" className={`relative flex min-h-0 flex-1 flex-col items-center overflow-hidden ${wide.active?'justify-center':'justify-start'}`}>
       {!wide.active&&<div className="absolute inset-x-0 top-0 z-20 grid h-14 w-full shrink-0 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center border-b border-white/15 bg-blue-100/75 px-3 py-0.5 backdrop-blur-sm">

@@ -55,6 +55,7 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
     <header ref={setSceneHeader} data-fishing-region-overlay className="pointer-events-none absolute left-4 right-16 top-3 z-20 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
      <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5"><h1 className="flex min-w-0 items-center gap-1.5 text-lg font-normal tracking-tight sm:text-xl">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7 shrink-0 object-contain drop-shadow-sm"/>}{region.name}</h1><div ref={setOddsTarget} className="pointer-events-auto flex shrink-0 items-center"/></div>
      {region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white/90">{region.description}</p>}
+     {region.id==='pharaoh'&&<Link to="/exploration" className="pointer-events-auto mt-1 inline-flex min-h-11 items-center rounded-lg border border-white/25 bg-black/20 px-3 text-xs text-amber-100 hover:bg-black/35">지하 탐험</Link>}
     </header>
    </>}/>
    </FishingTools>

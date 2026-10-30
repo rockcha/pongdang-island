@@ -27,7 +27,8 @@ import {
   setCollectibleDisplayLayer,
 } from '@/features/aquarium/api'
 import { CollectibleStorageDialog } from '@/features/aquarium/collectible-storage-dialog'
-import type { AquariumState } from '@/features/aquarium/api'
+import {AquariumInventoryDialog} from '@/features/aquarium/aquarium-inventory-dialog'
+import type { AquariumTank,AquariumState } from '@/features/aquarium/api'
 import { CollectionDialog } from '@/features/collection/collection-dialog'
 import { useOperator } from '@/features/notices/use-operator'
 import { useNavigate,useParams } from 'react-router'
@@ -59,6 +60,9 @@ export function AquariumPage() {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const [renameOpen, setRenameOpen] = useState(false)
+  const [panel,setPanel]=useState<{kind:'inventory'|'storage';tankId:string}|null>(null)
+  const panelTank=state?.tanks.find(item=>item.id===panel?.tankId)
+  useEffect(()=>{if(expanded)setPanel(null)},[expanded])
   const [renameId,setRenameId]=useState<string|null>(null)
   const renameTank=state?.tanks.find(item=>item.id===renameId)
   const [renameError, setRenameError] = useState('')
@@ -345,6 +349,15 @@ export function AquariumPage() {
       if (active.current) setBusy(false)
     }
   }
+  function capacityFor(target:AquariumTank,iconOnly=false){return <AquariumCapacityExpansion iconOnly={iconOnly} menu tank={target} count={(state?.inhabitants??[]).filter(item=>item.tank_id===target.id).length} gold={wallet.gold} busy={busy||goldBusy||goldLoading||!!goldLoadError} onExpand={async(capacity,operation)=>{
+          if(locked.current)throw new Error('BUSY')
+          locked.current=true;setBusy(true)
+          try{
+            const data=await expandAquariumCapacity(target.id,capacity,operation)
+            if(active.current)setState(data)
+            await Promise.allSettled([refreshGold()])
+          }finally{locked.current=false;if(active.current)setBusy(false)}
+        }}/>}
   return (
     <section
       aria-label="아쿠아리움"
@@ -354,7 +367,7 @@ export function AquariumPage() {
         onRename={tank?()=>openRename(tank.id):undefined}
         autoWide={expanded}
         onWideExit={()=>navigate('/aquarium',{replace:true})}
-        overviewContent={!expanded?(state?<AquariumOverview onRename={openRename} state={state} items={[...state.inhabitants,...(operator?testFish:[])]} busy={busy||goldBusy} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{navigationRequest.current++;navigate('/aquarium/'+encodeURIComponent(id))}} onAdd={()=>{setPurchaseError('');setPurchaseOpen(true)}}/>:<div role="status" className="min-h-0 flex-1 space-y-4 overflow-hidden p-4"><p className="text-xs text-muted-foreground">어항을 준비하고 있어요.</p>{[0,1].map(i=><div key={i} className="h-48 animate-pulse rounded-2xl bg-secondary/50 motion-reduce:animate-none"/>)}</div>):undefined}
+        overviewContent={!expanded?(state?<AquariumOverview renderCapacity={target=>capacityFor(target,true)} onInventory={id=>setPanel({kind:'inventory',tankId:id})} onStorage={id=>setPanel({kind:'storage',tankId:id})} onRename={openRename} state={state} items={[...state.inhabitants,...(operator?testFish:[])]} busy={busy||goldBusy} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{navigationRequest.current++;navigate('/aquarium/'+encodeURIComponent(id))}} onAdd={()=>{setPurchaseError('');setPurchaseOpen(true)}}/>:<div role="status" className="min-h-0 flex-1 space-y-4 overflow-hidden p-4"><p className="text-xs text-muted-foreground">어항을 준비하고 있어요.</p>{[0,1].map(i=><div key={i} className="h-48 animate-pulse rounded-2xl bg-secondary/50 motion-reduce:animate-none"/>)}</div>):undefined}
         tankId={tank?.id}
         loading={!state && !error}
         items={inhabitants}
@@ -369,15 +382,6 @@ export function AquariumPage() {
         tanks={state?.tanks}
         inhabitants={state?.inhabitants}
         tankCapacity={tank?.capacity??state?.tankCapacity}
-        capacityControls={state&&tank?<AquariumCapacityExpansion menu tank={tank} count={state.inhabitants.filter(item=>item.tank_id===tank.id).length} gold={wallet.gold} busy={busy||goldBusy||goldLoading||!!goldLoadError} onExpand={async(capacity,operation)=>{
-          if(locked.current)throw new Error('BUSY')
-          locked.current=true;setBusy(true)
-          try{
-            const data=await expandAquariumCapacity(tank.id,capacity,operation)
-            if(active.current)setState(data)
-            await Promise.allSettled([refreshGold()])
-          }finally{locked.current=false;if(active.current)setBusy(false)}
-        }}/>:undefined}
         onStore={(ids) => move(ids, null)}
         purchase={
           state
@@ -409,20 +413,6 @@ export function AquariumPage() {
         }}
         navigation={
           state ? { index: tankIndex, count: state.tanks.length, onChange: changeTank } : undefined
-        }
-        storageControls={
-          <>
-            {state && tank && (
-              <CollectibleStorageDialog
-                state={state}
-                currentTankId={tank.id}
-                busy={busy || goldBusy}
-                onAssign={move}
-                onSell={sell}
-                onGiftSent={() => void reload()}
-              />
-            )}
-          </>
         }
         backgroundControls={
             state && tank ? (
@@ -587,6 +577,8 @@ export function AquariumPage() {
           </>
         }
       />
+      {!expanded&&panelTank&&panel?.kind==='inventory'&&<AquariumInventoryDialog key={panelTank.id} hideTrigger open onOpenChange={open=>{if(!open)setPanel(null)}} name={panelTank.name} items={[...(state?.inhabitants??[]),...(operator?testFish:[])].filter(item=>item.tank_id===panelTank.id)} capacity={panelTank.capacity??state?.tankCapacity} busy={busy||goldBusy} onSell={sell} onStore={ids=>move(ids,null)} onGiftSent={ids=>{setState(current=>current?{...current,inhabitants:current.inhabitants.filter(item=>!ids.includes(item.id))}:current);void reload()}}/>}
+      {!expanded&&state&&panelTank&&panel?.kind==='storage'&&<CollectibleStorageDialog key={panelTank.id} hideTrigger open onOpenChange={open=>{if(!open)setPanel(null)}} state={state} currentTankId={panelTank.id} busy={busy||goldBusy} onAssign={move} onSell={sell} onGiftSent={()=>void reload()}/>}
       <ConfirmDialog
         illustration="aquarium"
         open={purchaseOpen}

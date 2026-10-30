@@ -7,6 +7,7 @@ import { AuthGuard } from '@/components/auth-guard'
 import {FirstFishingGate} from '@/features/onboarding/first-fishing-gate'
 const FirstFishingPage=lazy(()=>import('@/features/onboarding/first-fishing-page').then(module=>({default:module.FirstFishingPage})))
 
+const ExplorationPage=lazy(()=>import('@/features/exploration/exploration-page').then(module=>({default:module.ExplorationPage})))
 const MerchantPage=lazy(()=>import('@/features/merchant/merchant-page').then(module=>({default:module.MerchantPage})))
 const HallPage=lazy(()=>import('@/features/hall-of-fame/hall-page').then(module=>({default:module.HallPage})))
 const ShowcasePage=lazy(()=>import('@/features/showcase/showcase-page').then(module=>({default:module.ShowcasePage})))
@@ -108,6 +109,7 @@ export function AppRoutes() {
             <Route path="harbor" element={<HarborPage />} />
             <Route path="fishing" element={<FishingShortcutPage />} />
             <Route path="fishing-records" element={<FishingRecordsPage />} />
+            <Route path="exploration" element={<ExplorationPage />} />
             <Route path="farm" element={<FarmPage />} />
             <Route path="music-room" element={<MusicRoomPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />

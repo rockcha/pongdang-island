@@ -83,3 +83,23 @@
 }
 
 @media (max-width: 700px) { .aquarium-wide-operator button > span { display: none; } }
+
+.aquarium-wide-mobile-heading,.aquarium-wide-short-label { display: none; }
+@media (max-width: 1024px), (pointer: coarse) {
+ .aquarium-wide-desktop-heading { display: none; }
+ .aquarium-wide-mobile-heading { display: flex; min-width: 0; max-width: min(45vw,15rem); }
+ .aquarium-wide-name-menu { display: flex; align-items: center; gap: .5rem; min-width: 0; min-height: 44px; padding: 0 .75rem; border-radius: .875rem; background: color-mix(in srgb,var(--background) 88%,transparent); color: var(--primary); font-size: .6875rem; cursor: pointer; }
+ .aquarium-wide-name-menu:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+ .aquarium-wide-toolbar { padding: 0; gap: .25rem; border: 0; background: transparent; box-shadow: none; }
+ .aquarium-wide-topbar[data-editing='false'] :is(.aquarium-wide-inventory,.aquarium-wide-storage,.aquarium-wide-theme) { display: none; }
+ .aquarium-wide-operator { display: none; }
+ .aquarium-wide-topbar[data-editing='true'] .aquarium-wide-exit { display: none; }
+ .aquarium-wide-toolbar :is(.aquarium-wide-inventory,.aquarium-wide-storage,.aquarium-wide-theme) button { min-width: 44px; width: 44px; min-height: 44px; height: 44px; padding: 0; border-radius: .875rem; background: color-mix(in srgb,var(--background) 88%,transparent); }
+ .aquarium-wide-toolbar :is(.aquarium-wide-inventory,.aquarium-wide-storage,.aquarium-wide-theme) button > span { display: none; }
+ .aquarium-wide-toolbar .aquarium-wide-edit { width: auto; min-width: 64px; min-height: 44px; margin: 0; padding: 0 .625rem; background: color-mix(in srgb,var(--background) 92%,transparent); }
+ .aquarium-wide-toolbar .aquarium-wide-edit[aria-pressed='true'] { background: var(--primary); color: var(--primary-foreground); }
+ .aquarium-wide-toolbar .aquarium-wide-long-label { display: none; }
+ .aquarium-wide-toolbar .aquarium-wide-short-label { display: inline; }
+ .aquarium-wide-toolbar .aquarium-wide-exit { min-width: 44px; width: 44px; padding: 0; background: color-mix(in srgb,var(--background) 88%,transparent); }
+ .aquarium-wide-exit > span { display: none; }
+}

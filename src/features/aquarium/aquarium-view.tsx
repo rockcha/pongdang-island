@@ -31,6 +31,7 @@ import {wideTankFrame} from './wide-tank-frame'
 import {hasOpenOverlay} from '@/components/overlay-back'
 
 type Props = {
+  onRename?:()=>void
   autoWide?:boolean
   onWideExit?:()=>void
   overviewContent?:ReactNode
@@ -72,9 +73,11 @@ export function AquariumView(props: Props) {
   const [wideCamera,setWideCamera]=useState(false)
   const [wideFill,setWideFill]=useState(true)
   const wideCameraTrigger=useRef<HTMLButtonElement>(null)
+  const mobileHeadingTrigger=useRef<HTMLButtonElement>(null)
+  const operatorAction=useRef<HTMLDivElement>(null)
   useEffect(()=>{
     if(!wide.active||!wideCamera)return
-    const close=(event:KeyboardEvent)=>{if(event.key!=='Escape'||hasOpenOverlay())return;event.preventDefault();event.stopPropagation();wideCameraTrigger.current?.focus();setWideCamera(false)}
+    const close=(event:KeyboardEvent)=>{if(event.key!=='Escape'||hasOpenOverlay())return;event.preventDefault();event.stopPropagation();(wideCameraTrigger.current?.getClientRects().length?wideCameraTrigger.current:mobileHeadingTrigger.current)?.focus();setWideCamera(false)}
     window.addEventListener('keydown',close,true)
     return()=>window.removeEventListener('keydown',close,true)
   },[wide.active,wideCamera])
@@ -211,13 +214,20 @@ export function AquariumView(props: Props) {
     setDecorating(false)
     props.navigation.onChange(direction)
   }
-  const arrangeButton=props.onArrange&&<Button variant={decorating?'default':'secondary'} disabled={busy} aria-label={decorating?'편집 모드 완료':'편집 모드 시작'} aria-pressed={decorating} onClick={()=>{setEditing(null);setWideCamera(false);setDecorating(value=>!value)}} className={`${wide.active?'aquarium-wide-edit':'absolute bottom-3 right-3 z-40'} min-h-11 shrink-0 gap-1.5 rounded-full border border-white/50 px-3 text-xs shadow-sm backdrop-blur-sm`}>{decorating?<Check className="size-4"/>:<SlidersHorizontal className="size-4"/>}{decorating?'편집 완료':'편집 모드'}</Button>
+  const arrangeButton=props.onArrange&&<Button variant={decorating?'default':'secondary'} disabled={busy} aria-label={decorating?'편집 모드 완료':'편집 모드 시작'} aria-pressed={decorating} onClick={()=>{setEditing(null);setWideCamera(false);setDecorating(value=>!value)}} className={`${wide.active?'aquarium-wide-edit':'absolute bottom-3 right-3 z-40'} min-h-11 shrink-0 gap-1.5 rounded-full border border-white/50 px-3 text-xs shadow-sm backdrop-blur-sm`}>{decorating?<Check className="size-4"/>:<SlidersHorizontal className="size-4"/>}<span className="aquarium-wide-long-label">{decorating?'편집 완료':'편집 모드'}</span><span className="aquarium-wide-short-label">{decorating?'완료':'편집'}</span></Button>
   const content=(
     <>
       <AquariumAmbience/>
-      {wide.active&&<div className="aquarium-wide-topbar">
-        <div className="aquarium-wide-heading"><div className="aquarium-wide-title">{props.selectorControls??<span className="px-2 text-sm font-medium">{name}</span>}<span aria-label="현재 어항" className="shrink-0 pr-3 text-[10px] tabular-nums text-muted-foreground">{(props.navigation?.index??0)+1} / {props.navigation?.count??1}</span></div><button ref={wideCameraTrigger} type="button" aria-label="어항 보기 설정" aria-expanded={wideCamera} aria-controls="wide-aquarium-camera" className="aquarium-wide-view-toggle" onClick={()=>setWideCamera(value=>!value)}><ZoomIn className="size-4"/></button></div>
-        <div role="group" aria-label="가로 어항 도구" className="aquarium-wide-toolbar"><TooltipProvider>{props.operatorControls&&<div className="aquarium-wide-operator">{props.operatorControls}</div>}<div className="aquarium-wide-inventory"><AquariumInventoryDialog capacity={props.tankCapacity} capacityControls={props.capacityControls} items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/></div>{props.storageControls&&<div className="aquarium-wide-storage">{props.storageControls}</div>}{props.backgroundControls&&<div className="aquarium-wide-theme">{props.backgroundControls}</div>}</TooltipProvider>{arrangeButton}<button type="button" aria-label="가로 화면 종료" onClick={wide.exit} className="aquarium-wide-exit"><Minimize2 aria-hidden="true" className="size-4"/><span>나가기</span></button></div>
+      {wide.active&&<div className="aquarium-wide-topbar" data-editing={decorating}>
+        <div className="aquarium-wide-heading aquarium-wide-desktop-heading"><div className="aquarium-wide-title">{props.selectorControls??<span className="px-2 text-sm font-medium">{name}</span>}<span aria-label="현재 어항" className="shrink-0 pr-3 text-[10px] tabular-nums text-muted-foreground">{(props.navigation?.index??0)+1} / {props.navigation?.count??1}</span></div><button ref={wideCameraTrigger} type="button" aria-label="어항 보기 설정" aria-expanded={wideCamera} aria-controls="wide-aquarium-camera" className="aquarium-wide-view-toggle" onClick={()=>setWideCamera(value=>!value)}><ZoomIn className="size-4"/></button></div>
+        <div className="aquarium-wide-mobile-heading">
+          <ActionMenu.Root><ActionMenu.Trigger render={<button ref={mobileHeadingTrigger} type="button" aria-label="어항 메뉴" className="aquarium-wide-name-menu"/>}><span className="truncate">{name}</span><Ellipsis aria-hidden="true" className="size-3.5 shrink-0"/></ActionMenu.Trigger><ActionMenu.Portal><ActionMenu.Positioner align="start" sideOffset={6} collisionPadding={8} className="z-50"><ActionMenu.Popup className="min-w-40 rounded-xl border bg-popover p-1.5 text-xs shadow-lg outline-none">
+            {props.onRename&&<ActionMenu.Item onClick={props.onRename} className="flex min-h-11 cursor-pointer items-center rounded-lg px-3 outline-none data-highlighted:bg-secondary">이름 바꾸기</ActionMenu.Item>}
+            <ActionMenu.Item onClick={()=>setWideCamera(value=>!value)} className="flex min-h-11 cursor-pointer items-center rounded-lg px-3 outline-none data-highlighted:bg-secondary">보기 설정</ActionMenu.Item>
+            {decorating&&props.operatorControls&&<ActionMenu.Item onClick={()=>requestAnimationFrame(()=>operatorAction.current?.querySelector<HTMLButtonElement>('button')?.click())} className="flex min-h-11 cursor-pointer items-center rounded-lg px-3 outline-none data-highlighted:bg-secondary">개체 테스트</ActionMenu.Item>}
+          </ActionMenu.Popup></ActionMenu.Positioner></ActionMenu.Portal></ActionMenu.Root>
+        </div>
+        <div role="group" aria-label="가로 어항 도구" className="aquarium-wide-toolbar"><TooltipProvider>{props.operatorControls&&<div ref={operatorAction} className="aquarium-wide-operator">{props.operatorControls}</div>}<div className="aquarium-wide-inventory"><AquariumInventoryDialog capacity={props.tankCapacity} capacityControls={props.capacityControls} items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/></div>{props.storageControls&&<div className="aquarium-wide-storage">{props.storageControls}</div>}{props.backgroundControls&&<div className="aquarium-wide-theme">{props.backgroundControls}</div>}</TooltipProvider>{arrangeButton}<button type="button" aria-label="가로 화면 종료" onClick={wide.exit} className="aquarium-wide-exit"><Minimize2 aria-hidden="true" className="size-4"/><span>나가기</span></button></div>
       </div>}
       {props.overviewContent??<div ref={fitted.ref} data-testid="aquarium-viewport" className={`relative flex min-h-0 flex-1 flex-col items-center overflow-hidden ${wide.active?'justify-center':'justify-start'}`}>
       {!wide.active&&<div className="absolute inset-x-0 top-0 z-20 grid h-14 w-full shrink-0 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center border-b border-white/15 bg-blue-100/75 px-3 py-0.5 backdrop-blur-sm">

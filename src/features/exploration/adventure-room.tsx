@@ -5,7 +5,7 @@ import {acceptChoiceRoom,choiceRoomBlock,type ChoiceRoomId} from './choice-room-
 import {PurchaseReceipt,usePurchaseReceipt} from './purchase-receipt'
 import {nextRoomLabel} from './run-state'
 ﻿import {useEffect,useEffectEvent,useRef,useState} from 'react'
-import {ArrowDown,Coins,Scale,Timer,Flame,Droplets,Gem,Orbit} from 'lucide-react'
+import {ArrowDown,Coins,Scale,Timer,Flame,Droplets,Orbit} from 'lucide-react'
 import {CurseRoomEffect} from './curse-room-effect'
 import {ThiefPotionEffect} from './thief-potion-effect'
 import {ChoiceLog} from './choice-log'
@@ -77,9 +77,9 @@ export function AdventureRoom({visit,state,onChange,onTalk,onDescend,onEncounter
  const contractLabels:Record<string,string>={'soul-lantern':'등불을 켠다 · 최대 마나 −10','deep-well':'물을 마신다 · 체력 전부 회복 / 마나 0','forbidden-trade':'피를 바친다 · 체력 −50','cursed-gem-eye':'보석을 뽑는다 · 골드 +500 또는 마나 −20 (각 50%)','broken-teleport':`골드 200을 넣는다 · 지하 ${state.market.floor+3}층으로`}
  if(room.kind==='story')return <NameStoryRoom visit={visit} state={state} onChange={onChange} onTalk={onTalk} onDescend={onDescend} onLoot={onLoot} onEncounter={onEncounter}/>
  const forced=room.kind==='curse'||room.kind==='thief'
- const ContractIcon=room.id==='soul-lantern'?Flame:room.id==='deep-well'?Droplets:room.id==='cursed-gem-eye'?Gem:Orbit
+ const ContractIcon=room.id==='soul-lantern'?Flame:room.id==='deep-well'?Droplets:Orbit
  return <section className={`exploration-adventure-room is-${room.kind}`} aria-label={`탐험 방 · ${room.title}`}>
- {room.kind==='choice'&&room.id!=='forbidden-trade'&&room.id!=='broken-teleport'&&<div className="exploration-contract-art" data-contract={room.id} aria-hidden="true"><div><ContractIcon size={60} strokeWidth={1}/></div></div>}
+ {room.kind==='choice'&&room.id!=='forbidden-trade'&&room.id!=='broken-teleport'&&room.id!=='cursed-gem-eye'&&<div className="exploration-contract-art" data-contract={room.id} aria-hidden="true"><div><ContractIcon size={60} strokeWidth={1}/></div></div>}
  {recovery&&<RecoveryEffect amount={recovery}/>}
  {receipt&&<PurchaseReceipt key={receipt.key} item={receipt}/>}
  {room.kind==='curse'&&<CurseRoomEffect lost={visit.hpLost>0||visit.mpLost>0}/>}

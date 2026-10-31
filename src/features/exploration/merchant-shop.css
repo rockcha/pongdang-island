@@ -26,8 +26,15 @@
 .merchant-gear-delta td small{display:block;font-size:10px;margin-top:3px}.merchant-gear-delta [data-change=up]{color:#a4d5b6}.merchant-gear-delta [data-change=down],.merchant-purchase-summary [data-insufficient=true]{color:#e7937c}.merchant-gear-delta [data-change=same]{color:#8d806b}
 .merchant-effect-comparison{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:12px 0}.merchant-effect-comparison>div{min-width:0}.merchant-effect-comparison>div>small{font-size:10px;color:#9c8969}.merchant-effect-comparison .equipment-effect{font-size:10px;line-height:1.7;margin-top:5px}
 .merchant-purchase-summary{display:grid;gap:7px;padding:12px;border:1px solid #b9934e44;border-radius:8px;background:#c8a2540c;font-size:11px;color:#a99473}.merchant-purchase-summary>span{display:flex;justify-content:space-between;gap:12px}.merchant-purchase-summary b{color:#e6c890;font-weight:500}
-.exploration-minimal-shop.exploration-modal .exploration-shop-items article .merchant-compare-button{display:block;width:auto;margin:7px 0;padding:4px 8px;min-height:30px;font-size:10px;color:#d7b977;background:transparent}
-.merchant-after-price{display:block;margin-top:5px;line-height:1.6}
+.exploration-minimal-shop .merchant-current-equipment{display:flex;align-items:center;gap:14px}
+.merchant-current-equipment>img{width:60px;height:68px;object-fit:contain;flex-shrink:0}
+.merchant-current-equipment>div{min-width:0;display:grid;gap:5px}
+.merchant-current-equipment>div>small{color:#ae9670;font-size:10px}
+.merchant-current-equipment>div>strong{color:#ebd0a0;font-size:13px}
+.merchant-gold-balance{display:flex;align-items:center;gap:10px;padding:9px 13px;border:1px solid #c9a04d55;border-radius:9px;background:linear-gradient(120deg,#c99b3820,#c99b3806);color:#efc96f}
+.merchant-gold-balance>span{display:grid;gap:2px}.merchant-gold-balance small{font-size:10px;color:#b9a477;font-weight:400}.merchant-gold-balance strong{font-size:20px;line-height:1.2;font-variant-numeric:tabular-nums;color:#f3d48b}
+.exploration-minimal-shop .merchant-item-price{display:inline-flex;align-items:center;gap:5px;margin-top:8px;color:#e8c26d;font-size:12px;font-variant-numeric:tabular-nums}
+.merchant-item-price b{font-weight:600}.exploration-minimal-shop .merchant-item-price small{font-size:10px;color:inherit;opacity:.65}.exploration-minimal-shop .merchant-item-price[data-unaffordable=true]{color:#d58d7e}
 .merchant-equip-choice{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:12px;margin:10px auto;max-width:420px;border:1px solid #b9934e55;border-radius:10px;background:#15110c;color:#e0c38c;font-size:11px}
 .merchant-equip-choice>span{width:100%;text-align:center}.merchant-equip-choice>button{padding:8px 13px;min-height:40px;border:1px solid #ac87494d;border-radius:6px}.merchant-equip-choice>button:disabled{opacity:.4}
 .merchant-confirmation span{display:flex;align-items:center;justify-content:center;gap:6px}.merchant-confirmation img{width:23px;height:23px;object-fit:contain}

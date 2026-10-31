@@ -40,14 +40,18 @@ it.each([false,true])('automatically presents the guardian before doors, with fr
  if(friendly){fireEvent.click(screen.getByRole('button',{name:'그가 지키던 문에 대해 묻는다'}));fireEvent.click(screen.getByRole('button',{name:'유품을 남겨두고 떠난다'}));expect(screen.getByRole('group',{name:'지하 34층의 세 문'})).toBeTruthy();expect(screen.queryByRole('button',{name:'수문장과 싸운다'})).toBeNull()}
  else expect(screen.getByRole('button',{name:'수문장과 싸운다'})).toBeTruthy()
 })
-it('compares equipment deltas, price, remaining gold and capacity, then buys without auto-equipping',()=>{
- const initial=newPractice(()=>0);let latest=initial;const equipped=vi.fn()
+it('shows equipped gear images and compact prices, then buys without auto-equipping',()=>{
+ const base=newPractice(()=>0),initial={...base,market:{...base.market,shopkeeperId:'karim' as const}};let latest=initial;const equipped=vi.fn()
  function Shop(){const [state,setState]=useState(initial);latest=state;return <MerchantRoom state={state} onChange={setState} onDescend={()=>{}} onTalk={()=>{}} onEquipChange={equipped}/>}
- render(<Shop/>);fireEvent.click(screen.getByRole('button',{name:'구매한다'}));fireEvent.click(screen.getAllByRole('button',{name:/능력치 비교/})[0]);capture('comparison')
- const panel=screen.getByRole('region',{name:'장비 능력치 비교'});expect(panel.textContent).toContain('+3');expect(panel.textContent).toContain('-1%p')
- expect(screen.getByLabelText('구매 정보').textContent).toContain('1/3 → 2/3')
- fireEvent.click(screen.getByRole('button',{name:'취소'}));expect(latest).toBe(initial)
- fireEvent.click(screen.getAllByRole('button',{name:/능력치 비교/})[0]);fireEvent.click(screen.getByRole('button',{name:/보관함에 구매 ·/}))
+ render(<Shop/>);fireEvent.click(screen.getByRole('button',{name:'구매한다'}));capture('comparison')
+ const current=document.querySelector('.merchant-current-equipment')!
+ expect(within(current as HTMLElement).getByRole('img',{name:initial.weapons[0].name}).getAttribute('src')).toBe(initial.weapons[0].image)
+ expect(within(current as HTMLElement).getByLabelText('공격력 10')).toBeTruthy()
+ expect(screen.queryByRole('button',{name:/능력치 비교/})).toBeNull();expect(screen.queryByText(/구매 후/)).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'방어구',exact:true}))
+ expect(within(document.querySelector('.merchant-current-equipment') as HTMLElement).getByRole('img',{name:initial.armor[0].name}).getAttribute('src')).toBe(initial.armor[0].image)
+ fireEvent.click(screen.getByRole('button',{name:'무기',exact:true}))
+ fireEvent.click(within(screen.getByRole('region',{name:'무기'})).getAllByRole('button',{name:'구매',exact:true})[0])
  expect(latest.weapons).toHaveLength(2);expect(latest.weaponId).toBe(initial.weaponId);expect(latest.gold).toBeLessThan(initial.gold)
  fireEvent.click(screen.getByRole('button',{name:'장착하기'}));expect(latest.weaponId).not.toBe(initial.weaponId);expect(equipped).toHaveBeenCalledOnce()
 })

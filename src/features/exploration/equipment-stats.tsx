@@ -11,13 +11,13 @@ export function StatIcon({kind}:{kind:StatKind}){
  </svg>
 }
 const hints={attack:'표시된 고정 공격력 또는 공격 범위 · 치명타와 적 방어력은 이후 적용',critical:'일반 공격의 치명타 확률 · 직접 피해 2배',evasion:'물리 기본 공격 회피율 · 마법에는 적용되지 않아요',defense:'물리 피해를 이 수치만큼 감소시켜요',resistance:'마법 피해를 이 수치만큼 감소시켜요',health:'장착 시 증가하는 최대 체력',escape:'도망 성공률에 더하는 값'}
-export function StatValue({kind,label,value}:{kind:StatKind;label:string;value:string|number}){
- return <span className="equipment-stat" data-stat={kind} title={hints[kind]}><StatIcon kind={kind}/><span>{label}</span><b>{value}</b></span>
+export function StatValue({kind,label,value,compact=false}:{kind:StatKind;label:string;value:string|number;compact?:boolean}){
+ return <span className="equipment-stat" data-stat={kind} title={hints[kind]} aria-label={compact?`${label} ${value}`:undefined}><StatIcon kind={kind}/>{!compact&&<span>{label}</span>}<b>{value}</b></span>
 }
-export function GearAttributes({gear}:{gear:Gear}){
- return <div className="equipment-attributes">{gear.attack!==undefined?<><StatValue kind="attack" label="공격력" value={formatBasicAttack(gear.attack,gear.attackVariance)}/><StatValue kind="critical" label="치명타" value={`${gear.critical??0}%`}/></>:<><StatValue kind="defense" label="방어력" value={gear.reduction??0}/><StatValue kind="resistance" label="마법 저항력" value={gear.magicReduction??0}/><StatValue kind="evasion" label="회피율" value={`${gear.evasion??0}%`}/><StatValue kind="health" label="최대 체력" value={`+${gear.maxHpBonus??0}`}/></>}{!!gear.escapeBonus&&<StatValue kind="escape" label="도망" value={`+${gear.escapeBonus}%p`}/>}</div>
+export function GearAttributes({gear,compact=false}:{gear:Gear;compact?:boolean}){
+ return <div className="equipment-attributes">{gear.attack!==undefined?<><StatValue compact={compact} kind="attack" label="공격력" value={formatBasicAttack(gear.attack,gear.attackVariance)}/><StatValue compact={compact} kind="critical" label="치명타" value={`${gear.critical??0}%`}/></>:<><StatValue compact={compact} kind="defense" label="방어력" value={gear.reduction??0}/><StatValue compact={compact} kind="resistance" label="마법 저항력" value={gear.magicReduction??0}/><StatValue compact={compact} kind="evasion" label="회피율" value={`${gear.evasion??0}%`}/><StatValue compact={compact} kind="health" label="최대 체력" value={`+${gear.maxHpBonus??0}`}/></>}{!!gear.escapeBonus&&<StatValue compact={compact} kind="escape" label="도망" value={`+${gear.escapeBonus}%p`}/>}</div>
 }
-export function WeaponEffect({gear,showEmpty=false}:{gear:Gear;showEmpty?:boolean}){
+export function WeaponEffect({gear,showEmpty=false,compact=false}:{gear:Gear;showEmpty?:boolean;compact?:boolean}){
  if(!showEmpty&&!hasWeaponEffect(gear))return null
- return <div className="equipment-effect" data-ailment={gear.proc?.kind} data-bonus={gear.lifesteal?'lifesteal':gear.cleanseChance?'cleanse':undefined}>{gear.proc?<AilmentIcon kind={gear.proc.kind}/>:gear.lifesteal?<Heart size={17}/>:gear.cleanseChance?<Sparkles size={17}/>:null}<span>{weaponEffectText(gear)}</span></div>
+ return <div className="equipment-effect" data-ailment={gear.proc?.kind} data-bonus={gear.lifesteal?'lifesteal':gear.cleanseChance?'cleanse':undefined}>{gear.proc?<AilmentIcon kind={gear.proc.kind}/>:gear.lifesteal?<Heart size={17}/>:gear.cleanseChance?<Sparkles size={17}/>:null}<span>{compact&&gear.lifesteal?`피흡 ${gear.lifesteal}%`:weaponEffectText(gear)}</span></div>
 }

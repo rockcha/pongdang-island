@@ -36,6 +36,8 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      exploration_feedback: { Args: { p_offset?: number }; Returns: import('@/features/exploration/feedback-api').ExplorationComments }
+      exploration_feedback_action: { Args: { p_action: 'add'|'edit'|'delete'; p_id: string; p_body?: string|null }; Returns: string }
       my_island_state:{Args:Record<string,never>;Returns:import('@/features/my-island/api').IslandSnapshot}
       save_my_island:{Args:{p_document:import('@/features/my-island/api').IslandDocument;p_revision:number;p_operation_id:string};Returns:import('@/features/my-island/api').IslandSaveResult}
       trade_island:{Args:{p_action:string;p_item_id:string;p_quantity:number;p_expected_price:number;p_operation_id:string};Returns:import('@/features/my-island/api').IslandTradeResult}

@@ -1,0 +1,138 @@
+{
+  "generator": "built-in image_gen",
+  "createdAt": "2026-10-31",
+  "purpose": "Exploration shopkeepers and room backgrounds, not aquarium collectibles.",
+  "reused": [
+    "public/exploration/npcs/kasim-return-merchant-masked.png",
+    "src/features/exploration/assets/merchant-alcove.png",
+    "public/exploration/backgrounds/shaman-sanctum.png"
+  ],
+  "images": [
+    {
+      "id": "hasan-smith",
+      "kind": "portrait",
+      "prompt": "Use case: stylized-concept. Asset: one transparent full-body Egyptian fantasy RPG shopkeeper portrait. Polished hand-painted semi-realistic 2D illustration matching the reference's rich fabric, bronze and turquoise rendering. Entire character, accessories and feet fully visible, centered square with generous clear margins. Subject: Hasan, a broad-shouldered middle-aged Egyptian blacksmith, dark bronze skin, short black beard, welcoming serious expression. Rolled sleeves, bronze-brown leather apron over charcoal linen, practical belt tools, gloves tucked at belt, small anvil hammer held downward. No backpack or face mask.",
+      "reference": "public/exploration/npcs/kasim-return-merchant-masked.png",
+      "source": "assets/exploration/shopkeepers/originals/hasan-smith.png",
+      "output": "public/exploration/shopkeepers/hasan-smith.png"
+    },
+    {
+      "id": "zahir-collector",
+      "kind": "portrait",
+      "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Zahir, a mysterious treasure spirit, NOT a human. A floating ornate antique gold Egyptian mask with emerald inset eyes, supported by an elegant ivory-and-gold layered merchant mantle, NO human head, skin, hands or feet. Two ornate gold gauntlets emerge from sleeves to gently hold a small closed treasure chest. The lower mantle tapers neatly above the ground. Regal, courteous, refined collector; strong solid silhouette without fog.",
+      "reference": "public/exploration/npcs/kasim-return-merchant-masked.png",
+      "source": "assets/exploration/shopkeepers/originals/zahir-collector.png",
+      "output": "public/exploration/shopkeepers/zahir-collector.png"
+    },
+    {
+      "id": "sahira-shaman",
+      "kind": "portrait",
+      "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Sahira, a lapis crystal oracle spirit, NOT a human. A solid faceted deep blue lapis crystal face framed by small gold Egyptian headdress and teal robes, subtly luminous cyan eye slits, articulated faceted crystal hands, one hand holds a short lapis-tipped staff. Elegant clear crystal-and-cloth body, robes taper into one substantial floating lapis crystal at the bottom, no human skin or feet. Calm and wise, no wings or smoky body.",
+      "reference": "public/exploration/npcs/kasim-return-merchant-masked.png",
+      "source": "assets/exploration/shopkeepers/originals/sahira-shaman.png",
+      "output": "public/exploration/shopkeepers/sahira-shaman.png"
+    },
+    {
+      "id": "nefera-archivist",
+      "kind": "portrait",
+      "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Nefera, a NON-HUMANOID celestial archive spirit. A single dark lapis orb with one subtle gold eye at center enclosed by two elegant antique gold astronomical rings. Beneath it floats ONE substantial engraved dark stone tablet with decorative constellation strokes, and two smaller stone page slabs flanking close to the orb. Three compact midnight-blue fabric ribbons tie the objects into a coherent vertical silhouette. No human body, face, arms or legs. Serene ancient archivist, solid objects with no haze or particles.",
+      "reference": "public/exploration/npcs/kasim-return-merchant-masked.png",
+      "source": "assets/exploration/shopkeepers/originals/nefera-archivist.png",
+      "output": "public/exploration/shopkeepers/nefera-archivist.png"
+    },
+    {
+      "id": "nadim-apprentice",
+      "kind": "portrait",
+      "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Nadim, a young adult Egyptian male apprentice sand mage, tan skin, friendly curious face, clean-shaven, simple sand beige hood, muted orange traveling cloak and blue sash, scrolls on belt, closed small spellbook in one hand, short simple wooden wand in the other. Modest beginner, human anatomy, whole feet visible.",
+      "reference": "public/exploration/npcs/kasim-return-merchant-masked.png",
+      "source": "assets/exploration/shopkeepers/originals/nadim-apprentice.png",
+      "output": "public/exploration/shopkeepers/nadim-apprentice.png"
+    },
+    {
+      "id": "hasan-forge",
+      "kind": "background",
+      "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Underground bronze forge, orange furnace and anvil on left, bronze weapons and armor workbench on right, amber firelight, charcoal and copper palette, no smoke clouds.",
+      "reference": "public/exploration/backgrounds/shaman-sanctum.png",
+      "source": "assets/exploration/shopkeepers/originals/hasan-forge.png",
+      "output": "public/exploration/shopkeepers/hasan-forge.png"
+    },
+    {
+      "id": "zahir-vault",
+      "kind": "background",
+      "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Elegant hidden golden treasure showroom, gold-edged pedestals and closed jeweled chests along edges, carved sandstone pillars, polished gold inlays and emerald accents, honey-gold light.",
+      "reference": "public/exploration/backgrounds/shaman-sanctum.png",
+      "source": "assets/exploration/shopkeepers/originals/zahir-vault.png",
+      "output": "public/exploration/shopkeepers/zahir-vault.png"
+    },
+    {
+      "id": "nadim-camp",
+      "kind": "background",
+      "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Simple apprentice's sandstone room, small contained orange brazier on left, wooden crates and scrolls on right, plain sandstone wall, humble woven rug by edge, warm orange and beige palette.",
+      "reference": "public/exploration/backgrounds/shaman-sanctum.png",
+      "source": "assets/exploration/shopkeepers/originals/nadim-camp.png",
+      "output": "public/exploration/shopkeepers/nadim-camp.png"
+    },
+    {
+      "id": "nefera-observatory",
+      "kind": "background",
+      "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Ancient celestial archive with midnight navy ceiling and fine gold constellation inlays, lapis pillars and ancient stone tablets on edge stands, small gold lamps, quiet indigo and gold palette. No cosmic fog.",
+      "reference": "public/exploration/backgrounds/shaman-sanctum.png",
+      "source": "assets/exploration/shopkeepers/originals/nefera-observatory.png",
+      "output": "public/exploration/shopkeepers/nefera-observatory.png"
+    },
+    {
+      "id": "karim-open-hall",
+      "reference": "src/features/exploration/assets/merchant-alcove.png",
+      "theme": "Karim's mid-tier equipment market: teal and terracotta awnings, weapon and armor racks, bronze shields, crates and warm brass lanterns along the far left and right edges.",
+      "prompt": "Use case: precise-object-edit. Edit the input background into an OPEN, DEEP WALK-THROUGH Egyptian fantasy shop hall. Preserve its polished hand-painted game art style, stone material and themed palette. Karim's mid-tier equipment market: teal and terracotta awnings, weapon and armor racks, bronze shields, crates and warm brass lanterns along the far left and right edges. Crucial composition for a separate full-body character overlay: elevated camera tilted down, very high distant vanishing point near the TOP 10% of the image. A single continuous FLAT STONE FLOOR covers the entire central 70% of image width from y=15% through the bottom edge. Floor paving recedes deep into a long open corridor through the center. Remove the large central rear wall, sealed door, wall mural, plinth, dais and steps completely. Nothing blocks the central passage. All architecture, columns, furniture and thematic decorations hug the OUTER EDGES and uppermost border; center is empty uninterrupted walkable floor, even behind where a character's head and feet will be. Quiet balanced lighting, clean readable floor, no people, no character, no text, no UI. Landscape 3:2 background.",
+      "kind": "background",
+      "source": "assets/exploration/shopkeepers/originals/karim-open-hall.png",
+      "output": "public/exploration/shopkeepers/karim-open-hall.png"
+    },
+    {
+      "id": "hasan-open-forge",
+      "reference": "public/exploration/shopkeepers/hasan-forge.png",
+      "theme": "Hasan's simple weapons forge: glowing forge and anvil, iron tools and modest weapon racks only along the far side edges; warm amber firelight.",
+      "prompt": "Use case: precise-object-edit. Edit the input background into an OPEN, DEEP WALK-THROUGH Egyptian fantasy shop hall. Preserve its polished hand-painted game art style, stone material and themed palette. Hasan's simple weapons forge: glowing forge and anvil, iron tools and modest weapon racks only along the far side edges; warm amber firelight. Crucial composition for a separate full-body character overlay: elevated camera tilted down, very high distant vanishing point near the TOP 10% of the image. A single continuous FLAT STONE FLOOR covers the entire central 70% of image width from y=15% through the bottom edge. Floor paving recedes deep into a long open corridor through the center. Remove the large central rear wall, sealed door, wall mural, plinth, dais and steps completely. Nothing blocks the central passage. All architecture, columns, furniture and thematic decorations hug the OUTER EDGES and uppermost border; center is empty uninterrupted walkable floor, even behind where a character's head and feet will be. Quiet balanced lighting, clean readable floor, no people, no character, no text, no UI. Landscape 3:2 background.",
+      "kind": "background",
+      "source": "assets/exploration/shopkeepers/originals/hasan-open-forge.png",
+      "output": "public/exploration/shopkeepers/hasan-open-forge.png"
+    },
+    {
+      "id": "zahir-open-vault",
+      "reference": "public/exploration/shopkeepers/zahir-vault.png",
+      "theme": "Zahir's royal treasure gallery: ornate gold chests and turquoise textiles lining the distant side edges, refined warm gold illumination.",
+      "prompt": "Use case: precise-object-edit. Edit the input background into an OPEN, DEEP WALK-THROUGH Egyptian fantasy shop hall. Preserve its polished hand-painted game art style, stone material and themed palette. Zahir's royal treasure gallery: ornate gold chests and turquoise textiles lining the distant side edges, refined warm gold illumination. Crucial composition for a separate full-body character overlay: elevated camera tilted down, very high distant vanishing point near the TOP 10% of the image. A single continuous FLAT STONE FLOOR covers the entire central 70% of image width from y=15% through the bottom edge. Floor paving recedes deep into a long open corridor through the center. Remove the large central rear wall, sealed door, wall mural, plinth, dais and steps completely. Nothing blocks the central passage. All architecture, columns, furniture and thematic decorations hug the OUTER EDGES and uppermost border; center is empty uninterrupted walkable floor, even behind where a character's head and feet will be. Quiet balanced lighting, clean readable floor, no people, no character, no text, no UI. Landscape 3:2 background.",
+      "kind": "background",
+      "source": "assets/exploration/shopkeepers/originals/zahir-open-vault.png",
+      "output": "public/exploration/shopkeepers/zahir-open-vault.png"
+    },
+    {
+      "id": "nadim-open-camp",
+      "reference": "public/exploration/shopkeepers/nadim-camp.png",
+      "theme": "Nadim's apprentice magic camp: modest scroll crates, little pots and a cloth canopy along the far side edges; welcoming warm lantern light.",
+      "prompt": "Use case: precise-object-edit. Edit the input background into an OPEN, DEEP WALK-THROUGH Egyptian fantasy shop hall. Preserve its polished hand-painted game art style, stone material and themed palette. Nadim's apprentice magic camp: modest scroll crates, little pots and a cloth canopy along the far side edges; welcoming warm lantern light. Crucial composition for a separate full-body character overlay: elevated camera tilted down, very high distant vanishing point near the TOP 10% of the image. A single continuous FLAT STONE FLOOR covers the entire central 70% of image width from y=15% through the bottom edge. Floor paving recedes deep into a long open corridor through the center. Remove the large central rear wall, sealed door, wall mural, plinth, dais and steps completely. Nothing blocks the central passage. All architecture, columns, furniture and thematic decorations hug the OUTER EDGES and uppermost border; center is empty uninterrupted walkable floor, even behind where a character's head and feet will be. Quiet balanced lighting, clean readable floor, no people, no character, no text, no UI. Landscape 3:2 background.",
+      "kind": "background",
+      "source": "assets/exploration/shopkeepers/originals/nadim-open-camp.png",
+      "output": "public/exploration/shopkeepers/nadim-open-camp.png"
+    },
+    {
+      "id": "sahira-open-sanctum",
+      "reference": "public/exploration/backgrounds/shaman-sanctum.png",
+      "theme": "Sahira's lapis crystal sanctuary: blue crystals, teal cloth, scrolls and a few violet candles along far side edges, restrained blue and warm amber light.",
+      "prompt": "Use case: precise-object-edit. Edit the input background into an OPEN, DEEP WALK-THROUGH Egyptian fantasy shop hall. Preserve its polished hand-painted game art style, stone material and themed palette. Sahira's lapis crystal sanctuary: blue crystals, teal cloth, scrolls and a few violet candles along far side edges, restrained blue and warm amber light. Crucial composition for a separate full-body character overlay: elevated camera tilted down, very high distant vanishing point near the TOP 10% of the image. A single continuous FLAT STONE FLOOR covers the entire central 70% of image width from y=15% through the bottom edge. Floor paving recedes deep into a long open corridor through the center. Remove the large central rear wall, sealed door, wall mural, plinth, dais and steps completely. Nothing blocks the central passage. All architecture, columns, furniture and thematic decorations hug the OUTER EDGES and uppermost border; center is empty uninterrupted walkable floor, even behind where a character's head and feet will be. Quiet balanced lighting, clean readable floor, no people, no character, no text, no UI. Landscape 3:2 background.",
+      "kind": "background",
+      "source": "assets/exploration/shopkeepers/originals/sahira-open-sanctum.png",
+      "output": "public/exploration/shopkeepers/sahira-open-sanctum.png"
+    },
+    {
+      "id": "nefera-open-observatory",
+      "reference": "public/exploration/shopkeepers/nefera-observatory.png",
+      "theme": "Nefera's celestial archive: deep indigo star-pattern ceiling visible only at top edge, astronomical rings and tablet racks on distant side edges, refined gold and blue light.",
+      "prompt": "Use case: precise-object-edit. Edit the input background into an OPEN, DEEP WALK-THROUGH Egyptian fantasy shop hall. Preserve its polished hand-painted game art style, stone material and themed palette. Nefera's celestial archive: deep indigo star-pattern ceiling visible only at top edge, astronomical rings and tablet racks on distant side edges, refined gold and blue light. Crucial composition for a separate full-body character overlay: elevated camera tilted down, very high distant vanishing point near the TOP 10% of the image. A single continuous FLAT STONE FLOOR covers the entire central 70% of image width from y=15% through the bottom edge. Floor paving recedes deep into a long open corridor through the center. Remove the large central rear wall, sealed door, wall mural, plinth, dais and steps completely. Nothing blocks the central passage. All architecture, columns, furniture and thematic decorations hug the OUTER EDGES and uppermost border; center is empty uninterrupted walkable floor, even behind where a character's head and feet will be. Quiet balanced lighting, clean readable floor, no people, no character, no text, no UI. Landscape 3:2 background.",
+      "kind": "background",
+      "source": "assets/exploration/shopkeepers/originals/nefera-open-observatory.png",
+      "output": "public/exploration/shopkeepers/nefera-open-observatory.png"
+    }
+  ]
+}

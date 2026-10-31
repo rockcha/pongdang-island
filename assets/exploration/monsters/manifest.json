@@ -1,0 +1,92 @@
+{
+  "generator": "built-in image_gen",
+  "createdAt": "2026-10-31",
+  "purpose": "Exploration combat thumbnails, not aquarium collectibles. Match existing sand-scorpion illustration; clean, non-gory fantasy guardians.",
+  "references": [
+    "src/features/exploration/assets/sand-scorpion.png"
+  ],
+  "images": [
+    {
+      "id": "bandage-mummy",
+      "prompt": "Use case: precise-object-edit. Edit the reference mummy's pose only, preserving its exact character identity, ivory linen bandages, turquoise eyes, ornate gold-and-turquoise collar, wrist cuffs, belt, Egyptian palette and polished painted rendering. Replace the crouched boxing pose with a classic upright mummy stance: torso vertical, BOTH legs straight, both feet flat and close but not touching, head upright, BOTH arms stretched straight FORWARD at shoulder height, parallel to one another, elbows straight, both hands open and loosely extended. Front three-quarter view so both forward outstretched forearms and open hands are clearly visible. NOT arms extended sideways in a T pose, NOT raised fists, NOT bent knees or a fighting crouch. Full body from head to feet and both hands completely visible, centered square with 10% transparent clearance on ALL sides. Clean transparent alpha background, no floor, cast shadow, scenery, text, frame, gore, scary decay or detached pixels. Make the anatomy natural and clean, slightly stiff mummy stance, dignified and approachable.",
+      "references": [
+        "public/exploration/monsters/bandage-mummy.png"
+      ],
+      "source": "assets/exploration/monsters/originals/bandage-mummy-upright.png",
+      "output": "public/exploration/monsters/bandage-mummy-upright.png",
+      "previous": [
+        {
+          "source": "assets/exploration/monsters/originals/bandage-mummy.png",
+          "output": "public/exploration/monsters/bandage-mummy.png",
+          "prompt": "Use case: stylized-concept. Create one production game monster full-body transparent cutout thumbnail, centered square composition with 8% clear margin. Match the reference sand scorpion's polished hand-painted fantasy RPG item/monster illustration, crisp detailed material rendering, warm Egyptian gold accents, clear silhouette and controlled shading. Subject: bandage mummy, small sturdy ancient Egyptian guardian completely wrapped in clean aged ivory linen bandages, turquoise and antique gold collar, two subtle teal eyes inside shadowed face, wrapped fists raised in calm battle-ready stance, a few short loose linen strips. Cool and approachable, not childish, NOT scary or gory, no exposed flesh, bones, blood or decay. Whole figure including feet visible. No scenery, ground, text, UI, frame, watermark, particles, fog, glow halo or detached pixels. Actual transparent background, smooth clean alpha edges. Reference is STYLE ONLY, do not copy scorpion anatomy."
+        }
+      ]
+    },
+    {
+      "id": "lapis-cobra",
+      "prompt": "Use case: stylized-concept. Create one production game monster full-body transparent cutout thumbnail, centered square composition with 8% clear margin. Match the reference sand scorpion's polished hand-painted fantasy RPG item/monster illustration, crisp detailed material rendering, warm Egyptian gold accents, clear silhouette and controlled shading. Subject: A regal lapis lazuli cobra, coiled body and upright flared hood, deep blue stone-like scales with fine gold inlays and Egyptian collar motifs, amber eyes, closed mouth, elegant ready-to-strike pose, complete coil and tail visible. No venom, gore or fangs close-up. Whole figure visible. No scenery, ground, text, UI, frame, watermark, particles, fog, glow halo or detached pixels. Actual transparent background, smooth clean alpha edges. Reference is STYLE ONLY, do not copy scorpion anatomy.",
+      "source": "assets/exploration/monsters/originals/lapis-cobra.png",
+      "output": "public/exploration/monsters/lapis-cobra.png"
+    },
+    {
+      "id": "sand-wraith",
+      "prompt": "Use case: stylized-concept. Create one production game monster full-body transparent cutout thumbnail, centered square composition with 8% clear margin. Match the reference sand scorpion's polished hand-painted fantasy RPG item/monster illustration, crisp detailed material rendering, warm Egyptian gold accents, clear silhouette and controlled shading. Subject: A sand wraith, floating humanoid guardian composed of compact warm sandstone-colored sand and layered ochre linen cloth, hooded head with subtle teal eyes, flowing tattered but neat short cloth strips, two sandy claw hands. Fully opaque readable silhouette, no fog or particle cloud, entire tapering body visible. Mysterious but not scary. Whole figure visible. No scenery, ground, text, UI, frame, watermark, particles, fog, glow halo or detached pixels. Actual transparent background, smooth clean alpha edges. Reference is STYLE ONLY, do not copy scorpion anatomy.",
+      "source": "assets/exploration/monsters/originals/sand-wraith.png",
+      "output": "public/exploration/monsters/sand-wraith.png"
+    },
+    {
+      "id": "tomb-lantern-jellyfish",
+      "prompt": "Use case: stylized-concept. Create one production game monster full-body transparent cutout thumbnail, centered square composition with 8% clear margin. Match the reference sand scorpion's polished hand-painted fantasy RPG item/monster illustration, crisp detailed material rendering, warm Egyptian gold accents, clear silhouette and controlled shading. Subject: An ancient Egyptian tomb lantern jellyfish, translucent turquoise domed bell containing an ornate antique gold lantern structure and softly glowing blue inner flame, a small number of long elegant curling teal tentacles with golden tips. Whole bell and every tentacle visible, clean crisp silhouette, glow contained within bell, no outer haze. Magical and beautiful. Whole figure visible. No scenery, ground, text, UI, frame, watermark, particles, fog, glow halo or detached pixels. Actual transparent background, smooth clean alpha edges. Reference is STYLE ONLY, do not copy scorpion anatomy.",
+      "source": "assets/exploration/monsters/originals/tomb-lantern-jellyfish.png",
+      "output": "public/exploration/monsters/tomb-lantern-jellyfish.png"
+    },
+    {
+      "id": "obsidian-anubis",
+      "prompt": "Use case: stylized-concept. Create one production game monster full-body transparent cutout thumbnail, centered square composition with 8% clear margin. Match the reference sand scorpion's polished hand-painted fantasy RPG item/monster illustration, crisp detailed material rendering, warm Egyptian gold accents, clear silhouette and controlled shading. Subject: An obsidian Anubis soldier guardian, full-body anthropomorphic jackal-headed animated black obsidian statue, athletic compact proportions, long ears, restrained turquoise eyes, Egyptian antique gold collar cuffs and waist armor, dark blue linen kilt, holding an elegant spear upright. Polished carved stone, noble calm face, no teeth exposed, whole body feet ears spear visible, cool and dignified not scary. Whole figure visible. No scenery, ground, text, UI, frame, watermark, particles, fog, glow halo or detached pixels. Actual transparent background, smooth clean alpha edges. Reference is STYLE ONLY, do not copy scorpion anatomy.",
+      "source": "assets/exploration/monsters/originals/obsidian-anubis.png",
+      "output": "public/exploration/monsters/obsidian-anubis.png"
+    },
+    {
+      "id": "jar-wisp",
+      "prompt": "Use case: stylized-concept. Asset: single full-body transparent RPG monster cutout thumbnail for an Egyptian underwater tomb game. Match the reference's polished hand-painted semi-realistic fantasy illustration, crisp material detail, antique gold accents, controlled shading and readable silhouette. Not frightening, no gore, no blood, no exposed bones, no horror. One character only. Whole silhouette centered in a square canvas with 10 percent clear margin on EVERY side; no cropped extremities. Transparent alpha background with clean smooth edges. No scenery, ground, cast shadow, UI, text, border, detached particles, fog or outer glow. Reference is STYLE ONLY; do not copy scorpion anatomy. Subject: A small warm amber flame spirit inhabiting a cracked ancient Egyptian ceramic jar. A complete squat sandstone pottery jar with two small handles, turquoise-and-gold collar bands, simple engraved motifs, a cracked open top containing one gently curling golden-orange flame with two small teal eyes. The jar is the spirit's body, no legs, arms or humanoid torso. Slightly floating, compact silhouette, elegant magical fantasy rather than a cute emoji. Contain all flame inside the silhouette; no detached sparks.",
+      "references": [
+        "src/features/exploration/assets/sand-scorpion.png"
+      ],
+      "source": "assets/exploration/monsters/originals/jar-wisp.png",
+      "output": "public/exploration/monsters/jar-wisp.png"
+    },
+    {
+      "id": "talisman-lizard",
+      "prompt": "Use case: stylized-concept. Asset: single full-body transparent RPG monster cutout thumbnail for an Egyptian underwater tomb game. Match the reference's polished hand-painted semi-realistic fantasy illustration, crisp material detail, antique gold accents, controlled shading and readable silhouette. Not frightening, no gore, no blood, no exposed bones, no horror. One character only. Whole silhouette centered in a square canvas with 10 percent clear margin on EVERY side; no cropped extremities. Transparent alpha background with clean smooth edges. No scenery, ground, cast shadow, UI, text, border, detached particles, fog or outer glow. Reference is STYLE ONLY; do not copy scorpion anatomy. Subject: A small sandy olive Egyptian lizard standing low on four feet, compact head, alert amber eyes, long curled tail fully visible, a few small turquoise bead ornaments and one rectangular parchment talisman hanging from a neat antique gold neck cord. The talisman bears decorative abstract blue rune strokes, no legible text. Natural reptilian body and four grounded legs, gently raised head facing front three-quarter, no anthropomorphic clothes or weapons. Cool and approachable, not a cobra or dragon.",
+      "references": [
+        "src/features/exploration/assets/sand-scorpion.png"
+      ],
+      "source": "assets/exploration/monsters/originals/talisman-lizard.png",
+      "output": "public/exploration/monsters/talisman-lizard.png"
+    },
+    {
+      "id": "saw-claw-crab",
+      "prompt": "Use case: precise-object-edit. Correct only the anatomy of this crab monster reference. Keep EXACTLY TWO large raised sawtoothed claws: retain the existing UPPER LEFT and UPPER RIGHT claws, their shape, pose, gold/bronze/turquoise materials and crisp painted rendering. REMOVE the TWO EXTRA LARGE CLAWS at the bottom front left and bottom front right. Replace those lower extra pincer arms with slender ordinary jointed pointed walking legs, consistent with the other side walking legs. Final anatomy: ONE crab body, EXACTLY TWO large claws TOTAL, EIGHT slim walking legs TOTAL, NO SCORPION TAIL, NO OTHER PINCERS anywhere. Keep the low broad armored crab carapace and teal eyes. Zoom out slightly so the entire corrected crab and all claws and legs have at least 10% transparent margin on every side of the square. Preserve the clean fantasy illustration style. No blood, horror, scenery, floor, shadow, text, fog or detached particles. Transparent alpha background with clean smooth edges.",
+      "references": [
+        "assets/exploration/monsters/originals/saw-claw-crab.png"
+      ],
+      "source": "assets/exploration/monsters/originals/saw-claw-crab-v2.png",
+      "output": "public/exploration/monsters/saw-claw-crab.png",
+      "drafts": [
+        {
+          "source": "assets/exploration/monsters/originals/saw-claw-crab.png",
+          "prompt": "Use case: stylized-concept. A single full-body transparent RPG monster cutout, Egyptian underwater tomb encounter. Subject: saw-claw crab with a squat sturdy sandstone-colored carapace, two large symmetrical claws whose INSIDE gripping edges have clean sawtooth ridges, dark bronze claw tips, restrained turquoise-and-antique-gold shell inlays, two small teal eyes. Natural crab anatomy, broad low body, grounded walking legs, both claws open and raised toward the viewer, front three-quarter view. Match reference polished hand-painted semi-realistic fantasy rendering, crisp gold/stone materials, detailed yet clean silhouette. Ordinary low-level monster, cool but approachable, NOT horror or gore. No blood, severed parts, bones, fog, glow halos or detached particles. Complete claws, legs and entire body visible with 10% clear margin on ALL sides in square composition. Transparent alpha background, smooth clean edges, no scenery, floor, shadow, text, UI, border or watermark. Reference image is STYLE ONLY, do not copy scorpion tail/anatomy."
+        }
+      ]
+    },
+    {
+      "id": "tomb-hook-guard",
+      "prompt": "Use case: stylized-concept. A single full-body transparent RPG monster cutout for an Egyptian underwater tomb. Subject: tomb hook guard, an animated ancient bronze-and-sandstone guardian soldier, medium-level enemy. Humanoid solid carved stone body wearing antique bronze segmented Egyptian armor, simple angular helmet hiding the face except two subtle teal eyes, turquoise accents on the collar and waist. Holds one large elegant curved bronze hook blade attached to a short visible metal chain in one hand, the other hand gathers the chain. Broad stable silhouette, upright battle-ready stance, both feet on the same plane. Clearly a hook-and-chain soldier, NOT a sand spirit, NOT an Anubis jackal and NOT a mummy. Match reference polished hand-painted semi-realistic fantasy illustration, crisp detailed stone and bronze materials. Cool and dignified, not terrifying. No blood, gore, skulls, exposed skeleton, victims, detached particles, fog or glow halo. Full body including feet, blade and entire chain visible with 10% clear margin on all sides in square composition. Clean transparent alpha background. No scenery, floor, shadows, text, frame, UI or watermark. Reference image is STYLE ONLY.",
+      "references": [
+        "src/features/exploration/assets/sand-scorpion.png"
+      ],
+      "source": "assets/exploration/monsters/originals/tomb-hook-guard.png",
+      "output": "public/exploration/monsters/tomb-hook-guard.png"
+    }
+  ]
+}

@@ -46,14 +46,14 @@ it('shows owned equipment and compares each replacement before charging a full-b
  fireEvent.click(screen.getByRole('button',{name:'내 장비',exact:true}));expect(screen.getByRole('region',{name:'내 장비'}).textContent).toContain('청동 단검')
  fireEvent.click(screen.getByRole('button',{name:'무기',exact:true}));fireEvent.click(within(screen.getByRole('region',{name:'무기'})).getAllByRole('button',{name:'구매',exact:true})[0])
  const comparison=screen.getByRole('region',{name:'구매 장비 비교'});expect(within(comparison).getAllByRole('radio')).toHaveLength(3);expect(comparison.textContent).toContain('공격력');expect(comparison.textContent).toContain('치명타');capture('replacement')
- fireEvent.click(screen.getByRole('button',{name:'교체하지 않기'}));expect(latest).toBe(initial)
+ fireEvent.click(screen.getByRole('button',{name:'취소'}));expect(latest).toBe(initial)
  fireEvent.click(within(screen.getByRole('region',{name:'무기'})).getAllByRole('button',{name:'구매',exact:true})[0]);fireEvent.click(screen.getAllByRole('radio')[0]);fireEvent.click(screen.getByRole('button',{name:/교체하고 구매/}))
  expect(latest.gold).toBeLessThan(initial.gold);expect(latest.weapons).toHaveLength(3);expect(latest.weapons.some(item=>item.id===initial.weaponId)).toBe(false);expect(latest.weapons.some(item=>item.id===latest.weaponId)).toBe(true)
 })
 it('allows leaving full-bag loot without replacing equipment',()=>{
  const state=grantPracticeSupplies(newPractice()),loot=drawRoomLoot(state,'starter',()=>0),claim=vi.fn(),decline=vi.fn()
  render(<LootDialog loot={loot} state={state} onClaim={claim} onDecline={decline}/>);expect(screen.getAllByRole('radio')).toHaveLength(3);capture('loot')
- fireEvent.click(screen.getByRole('button',{name:'교체하지 않기'}));expect(decline).toHaveBeenCalledOnce();expect(claim).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'두고 가기'}));expect(decline).toHaveBeenCalledOnce();expect(claim).not.toHaveBeenCalled()
 })
 it('rejects invalid or unaffordable replacements without changing gold or gear',()=>{
  const state=grantPracticeSupplies(newPractice(()=>0)),id=state.market.weaponIds[0]

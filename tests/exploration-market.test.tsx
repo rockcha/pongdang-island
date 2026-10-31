@@ -28,11 +28,12 @@ it.each(merchantTierBands)('uses the requested probabilities through floor $thro
  }
 })
 it('rolls merchant appearance once per floor at exactly twenty percent, in at most one door',()=>{
- for(const floor of [1,10,11,50,51,70,100]){
+ expect(drawFloorMarket(1,()=>0).doors).not.toContain('merchant-hasan')
+ for(const floor of [2,10,11,50,51,70,100]){
   expect(drawFloorMarket(floor,rolls(.199999,0)).doors.filter(type=>type==='merchant-hasan')).toHaveLength(1)
   expect(drawFloorMarket(floor,rolls(.2)).doors).not.toContain('merchant-hasan')
  }
- const placements=[0,.34,.99].map(position=>drawFloorMarket(1,rolls(0,position)).doors.indexOf('merchant-hasan'))
+ const placements=[0,.34,.99].map(position=>drawFloorMarket(2,rolls(0,position)).doors.indexOf('merchant-hasan'))
  expect(placements).toEqual([0,1,2])
 })
 it('rolls each of the six equipment slots independently and always includes both potions',()=>{

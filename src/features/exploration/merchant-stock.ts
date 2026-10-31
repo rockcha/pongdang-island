@@ -34,6 +34,6 @@ export function drawTieredOffers(items:{id:string;tier:WeaponTier}[],floor:numbe
 // Generate once on arriving at a floor. Opening or closing a shop never rerolls it.
 export function drawFloorMarket(floor:number,random=Math.random):FloorMarket{
  const doors:RoomTypeId[]=['monster','monster','sphinx']
- if(random()*100<merchantAppearanceChance)doors[Math.min(2,Math.floor(random()*3))]='merchant-hasan'
+ if(floor>1&&random()*100<merchantAppearanceChance)doors[Math.min(2,Math.floor(random()*3))]='merchant-hasan'
  return {floor,doors,weaponIds:drawTieredOffers(explorationWeapons,floor,random),armorIds:drawTieredOffers(explorationArmor,floor,random)}
 }

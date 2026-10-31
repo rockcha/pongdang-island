@@ -38,7 +38,8 @@ it('requires a restored name or earlier record to open the gate peacefully, with
 })
 it('places the three chapters at fixed floors and protects them from teleport skips',()=>{
  for(const [floor,id] of [[6,'erased-name'],[22,'erased-name-record'],[34,'nameless-guardian']] as const){
-  expect(drawPracticeFloor(floor,()=>.99).doors).toContain(id)
+  if(floor===34)expect(drawPracticeFloor(floor,()=>.99).doors).not.toContain(id)
+  else expect(drawPracticeFloor(floor,()=>.99).doors).toContain(id)
   for(const source of [floor-2,floor-1,floor])expect(canUseTeleport(source)).toBe(false)
  }
 })

@@ -72,7 +72,8 @@ export function canUseTeleport(floor:number){return floor>=7&&floor+3<=practiceF
 export function drawPracticeFloor(floor:number,random=Math.random):FloorMarket{
  const level=Math.max(1,Math.min(practiceFinalFloor,Math.floor(floor)))
  const fixed=fixedPracticeRooms
- const extras:RoomTypeId[]=fixed[level]?[fixed[level]!]:[]
+ // The guardian meets arrivals before door selection; keep its floor reserved for teleport protection.
+ const extras:RoomTypeId[]=fixed[level]&&fixed[level]!=='nameless-guardian'?[fixed[level]!]:[]
  if(level>1&&!extras.some(id=>roomFamily(id)==='merchant')&&random()<practiceMerchantChance)extras.push(merchantRoom(level,random))
  while(extras.length<2)extras.push(eventRoom(level,extras,random))
  const doors:RoomTypeId[]=['monster',...extras]

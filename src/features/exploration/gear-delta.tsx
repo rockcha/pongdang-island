@@ -1,0 +1,9 @@
+import {formatBasicAttack} from './attack-roll'
+import {WeaponEffect} from './equipment-stats'
+import type {Gear} from './practice-state'
+
+export function GearDelta({current,candidate,currentLabel='현재 장착'}:{current:Gear;candidate:Gear;currentLabel?:string}){
+ const fields=candidate.attack!==undefined?[{label:'공격력',before:current.attack??0,after:candidate.attack,oldText:formatBasicAttack(current.attack??0,current.attackVariance),newText:formatBasicAttack(candidate.attack,candidate.attackVariance),suffix:''},{label:'치명타',before:current.critical??0,after:candidate.critical??0,suffix:'%'}]:[{label:'방어력',before:current.reduction??0,after:candidate.reduction??0,suffix:''},{label:'마법 저항력',before:current.magicReduction??0,after:candidate.magicReduction??0,suffix:''},{label:'회피율',before:current.evasion??0,after:candidate.evasion??0,suffix:'%'},{label:'최대 체력 보너스',before:current.maxHpBonus??0,after:candidate.maxHpBonus??0,suffix:''}]
+ if(current.escapeBonus||candidate.escapeBonus)fields.push({label:'도망 보너스',before:current.escapeBonus??0,after:candidate.escapeBonus??0,suffix:'%'})
+ return <section className="merchant-gear-delta" aria-label="장비 능력치 비교"><table><thead><tr><th>능력치</th><th>{currentLabel} · {current.name}</th><th>선택 · {candidate.name}</th></tr></thead><tbody>{fields.map(field=>{const delta=field.after-field.before;return <tr key={field.label}><th>{field.label}</th><td>{'oldText' in field?field.oldText:field.before+field.suffix}</td><td>{'newText' in field?field.newText:field.after+field.suffix}<small data-change={delta>0?'up':delta<0?'down':'same'}>{delta===0?'동일':`${delta>0?'+':''}${delta}${field.suffix==='%'?'%p':''}`}</small></td></tr>})}</tbody></table><div className="merchant-effect-comparison"><div><small>현재 효과</small><WeaponEffect gear={current} showEmpty/></div><div><small>선택 효과</small><WeaponEffect gear={candidate} showEmpty/></div></div></section>
+}

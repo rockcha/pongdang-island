@@ -43,8 +43,9 @@ it('offers test and real practice as distinct starts, with selects and supplies 
 it('plays fifty actual UI floors and requires the final boss before completion',async()=>{
  // Controlled safe route tests navigation, without relying on removed room-revealing door clues.
  vi.spyOn(campaign,'drawPracticeFloor').mockImplementation(floor=>({floor,doors:['monster','rest-oasis',floor===50?'boss-pharaoh':'warning-wall'],monsterIds:['sand-scorpion','random','random'],weaponIds:[],armorIds:[]}))
- setup();const leave=vi.fn();render(<StrictMode><ExplorationGame mode="practice" nickname="탐험퐁이" onLeave={leave}/></StrictMode>);await advance(100)
+ setup();const fresh=practice.newPractice(()=>0,'practice');vi.spyOn(practice,'newPractice').mockImplementation(()=>({...fresh,nameStory:{choice:'restored'}}));const leave=vi.fn();render(<StrictMode><ExplorationGame mode="practice" nickname="탐험퐁이" onLeave={leave}/></StrictMode>);await advance(100)
  for(let floor=1;floor<=practiceFinalFloor;floor++){
+  if(floor===34){fireEvent.click(screen.getByRole('button',{name:'그가 지키던 문에 대해 묻는다'}));fireEvent.click(screen.getByRole('button',{name:'유품을 남겨두고 떠난다'}));await advance(100)}
   if(screen.queryByRole('button',{name:'문으로 돌아간다'})){fireEvent.click(screen.getByRole('button',{name:'문으로 돌아간다'}));await advance(6000)}
   expect(screen.getByRole('group',{name:`지하 ${floor}층의 세 문`})).toBeTruthy()
   const safe=document.querySelectorAll<HTMLButtonElement>('.exploration-choice')[1]
@@ -66,7 +67,7 @@ it('renders the final boss and completes only after victory and claiming its rew
  fireEvent.click(screen.getByRole('button',{name:'마법 · 태양 심판 설명'}));expect(screen.getByRole('dialog').textContent).toContain('마법 저항력을 10 감소');capture('practice-solar-detail');fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'});await advance(1)
  fireEvent.click(screen.getByRole('button',{name:'마법 · 황금 사슬 설명'}));expect(screen.getByRole('dialog').textContent).toContain('피해 4, 3턴');capture('practice-chain-detail');fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'});await advance(1)
  fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}));await advance(1100);await advance(1900);await advance(1300);await advance(2800)
- fireEvent.click(screen.getByRole('button',{name:'보관함에 넣기'}));fireEvent.click(screen.getByRole('button',{name:'탐험을 마친다'}))
+ fireEvent.click(screen.getByRole('button',{name:/보관함에 넣기|교체해서 보관/}));fireEvent.click(screen.getByRole('button',{name:'탐험을 마친다'}))
  expect(screen.getByRole('heading',{name:'50층 탐험 완료'})).toBeTruthy();capture('practice-complete')
 })
 function capture(id:string){

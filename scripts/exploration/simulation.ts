@@ -1,6 +1,8 @@
+import {canAppeaseNameGuardian,progressNameStory} from '../../src/features/exploration/name-story'
+import {drawRoomLoot} from '../../src/features/exploration/room-loot'
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
-﻿import {advanceExploration,needsFinalBoss,enterBossOasis} from '../../src/features/exploration/run-state'
+﻿import {advanceExploration,needsFinalBoss,enterBossOasis,needsNameGuardian,meetNameGuardian,finishNameGuardian} from '../../src/features/exploration/run-state'
 import {newPractice,playerMaxHp,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {createRoomVisit,enterRoomVisit,restFully,sphinxPenalty,getAdventureRoom} from '../../src/features/exploration/adventure-rooms'
 import {receiveRoomLoot,refreshRoomLoot,sellRoomGear,type RoomLoot} from '../../src/features/exploration/room-loot'
@@ -116,6 +118,7 @@ export function simulateCampaign(seed:number,strategy:Strategy,quizAccuracy=.8,t
  for(let floor=1;floor<=practiceFinalFloor;floor++){
   result.reached=floor
   if(state.forcedMerchant){const profile=getShopkeeper(state.forcedMerchant.id);state=beginForcedMerchant(state,worldSeed(seed,floor));state=shop(state,profile.roomId,worldSeed(seed,floor));state=finishForcedMerchant(state)}
+  if(needsNameGuardian(state)){state=meetNameGuardian(state);const random=worldSeed(seed,floor);result.rooms['nameless-guardian']=(result.rooms['nameless-guardian']??0)+1;if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');state=claim(state,drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0)break;const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis);state=finishNameGuardian(state)}
   state=optimize(state)
   while(state.hp/playerMaxHp(state)<.6&&state.potions.health)state=usePotion(state,'health')
   if(floor===practiceFinalFloor&&checkFinalBoss){

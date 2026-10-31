@@ -6,7 +6,7 @@ import {getFloorMonster,type MonsterId} from '../../src/features/exploration/mon
 import {explorationWeapons} from '../../src/features/exploration/weapon-catalog'
 import {explorationArmor} from '../../src/features/exploration/armor-catalog'
 import {drawPracticeFloor,practiceFinalFloor,practiceFinalBossId} from '../../src/features/exploration/campaign'
-import {advanceExploration,needsFinalBoss,enterBossOasis} from '../../src/features/exploration/run-state'
+import {advanceExploration,needsFinalBoss,enterBossOasis,needsNameGuardian,meetNameGuardian,finishNameGuardian} from '../../src/features/exploration/run-state'
 import {createRoomVisit,enterRoomVisit,getAdventureRoom,restFully,sphinxPenalty} from '../../src/features/exploration/adventure-rooms'
 import {drawRoomLoot,receiveRoomLoot,refreshRoomLoot,sellRoomGear,type RoomLoot} from '../../src/features/exploration/room-loot'
 import {getShopkeeper,shopkeeperForRoom} from '../../src/features/exploration/shopkeepers'
@@ -180,6 +180,7 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
   recover()
   const f=totals.floors[floor]??={n:0,hp:0,gold:0,hpPots:0,mpPots:0,deaths:0,tiers:{}}
   f.n++;f.hp+=state.hp/playerMaxHp(state);f.gold+=state.gold;f.hpPots+=state.potions.health;f.mpPots+=state.potions.mana;inc(f.tiers,tier(state.weaponId))
+  if(needsNameGuardian(state)){state=meetNameGuardian(state);const random=rng(seed,floor,34000);inc(totals.rooms,'nameless-guardian');if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');claim(drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0){f.deaths++;break};const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis);state=finishNameGuardian(state)}
   const index=blindDoorIndex(seed,floor),type=state.market.doors[index],random=rng(seed,floor,index*7919+9947)
   if(state.market.doors.length!==3)throw Error('Invalid doors')
   for(const room of state.market.doors)inc(totals.offered,room)

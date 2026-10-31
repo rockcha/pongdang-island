@@ -47,7 +47,7 @@ it.each([false,true])('shows exactly one storage button with full bag = %s',full
  const state=full?grantPracticeSupplies(newPractice()):newPractice(),loot=drawRoomLoot(state,'starter',()=>0),claim=vi.fn()
  render(<LootDialog loot={loot} state={state} onClaim={claim}/>);const dialog=screen.getByRole('dialog',{name:'아이템 발견'})
  expect(within(dialog).getAllByRole('button')).toHaveLength(1)
- const button=within(dialog).getByRole('button',{name:'보관함에 넣기'})
+ const button=within(dialog).getByRole('button',{name:/보관함에 넣기|교체해서 보관/})
  if(full){expect(button).toHaveProperty('disabled',true);fireEvent.click(within(dialog).getByRole('radio',{name:new RegExp(state.weapons[0].name)}))}
  fireEvent.click(button);expect(claim).toHaveBeenCalledWith(full?state.weapons[0].id:undefined)
  fireEvent.keyDown(dialog,{key:'Escape'});expect(screen.getByRole('dialog')).toBeTruthy()

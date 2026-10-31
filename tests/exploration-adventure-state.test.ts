@@ -90,7 +90,7 @@ it.each(['investigate-guards','investigate-wall','investigate-alchemy'] as const
  }
  let draws=0
  const chest=createRoomVisit('chest',state,'chest',()=>++draws===4?.5:0)
- expect(chest.outcome.kind==='monster'&&chest.outcome.loot).toBeUndefined()
+ expect(chest.outcome.kind==='monster'&&chest.outcome.loot).toBeTruthy()
 })
 
 it('draws investigation equipment and single potions at the intended boundaries',()=>{

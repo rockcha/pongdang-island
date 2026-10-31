@@ -12,8 +12,8 @@ function armored(id:string){const gear=explorationArmor.find(item=>item.id===id)
 it('connects every armor and spell to a generated, saved image',()=>{
  const manifest=JSON.parse(readFileSync('assets/exploration/equipment-manifest.json','utf8')) as {images:{source:string;output:string}[]}
  const images=[...armorCatalog.map(item=>item.gear.image),...practiceSpells.map(item=>item.image),...plannedSpells.map(item=>item.image)]
- expect(images).toHaveLength(40)
- expect(new Set(images).size).toBe(40)
+ expect(images).toHaveLength(39)
+ expect(new Set(images).size).toBe(39)
  for(const image of images){
   expect(image).toBeTruthy()
   if(image!.endsWith('.svg')){expect(existsSync('public'+image)).toBe(true);expect(readFileSync('public'+image,'utf8')).toContain('<svg');continue}

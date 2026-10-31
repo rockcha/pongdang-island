@@ -12,7 +12,7 @@ it('guarantees actual equipment-shop access after a missed interval, before the 
  expect(advanceExploration(at11)).toBe(at11)
  const active=beginForcedMerchant(at11,()=>0)
  expect(active.equipmentMerchantVisits).toEqual([11]);expect(active.forcedMerchant?.phase).toBe('active')
- expect(active.market.doors).toEqual(at11.market.doors);expect(active.market.weaponIds).toHaveLength(3)
+ expect(active.market.doors).toEqual(at11.market.doors);expect(active.market.weaponIds).toHaveLength(5)
  expect(beginForcedMerchant(active)).toBe(active)
  const finished=finishForcedMerchant(active)
  expect(finished.market.floor).toBe(11);expect(finished.forcedMerchant).toBeUndefined()

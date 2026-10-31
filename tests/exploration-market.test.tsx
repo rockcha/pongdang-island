@@ -19,12 +19,12 @@ it.each(merchantTierBands)('uses the requested probabilities through floor $thro
  expect(merchantTierChances(band.through)).toEqual(band)
  expect(band.starter+band.advanced+band.ultimate).toBe(100)
  for(const roll of [0,.099999,.1,.199999,.2,.299999,.3,.349999,.35,.449999,.45,.499999,.5,.599999,.6,.999999]){
-  const market=drawFloorMarket(start,rolls(.99,roll,0,roll,0,roll,0,roll,0,roll,0,roll,0))
+  const market=drawFloorMarket(start,rolls(...(start>1?[.99]:[]),...Array.from({length:10},()=>[roll,0]).flat()))
   const expected=roll*100<band.ultimate?'ultimate':roll*100<band.ultimate+band.advanced?'advanced':'starter'
-  expect(market.weaponIds.map(id=>explorationWeapons.find(item=>item.id===id)!.tier)).toEqual(Array(3).fill(expected))
-  expect(market.armorIds.map(id=>explorationArmor.find(item=>item.id===id)!.tier)).toEqual(Array(3).fill(expected))
-  expect(new Set(market.weaponIds).size).toBe(3)
-  expect(new Set(market.armorIds).size).toBe(3)
+  expect(market.weaponIds.map(id=>explorationWeapons.find(item=>item.id===id)!.tier)).toEqual(Array(5).fill(expected))
+  expect(market.armorIds.map(id=>explorationArmor.find(item=>item.id===id)!.tier)).toEqual(Array(5).fill(expected))
+  expect(new Set(market.weaponIds).size).toBe(5)
+  expect(new Set(market.armorIds).size).toBe(5)
  }
 })
 it('rolls merchant appearance once per floor at exactly twenty percent, in at most one door',()=>{
@@ -36,12 +36,12 @@ it('rolls merchant appearance once per floor at exactly twenty percent, in at mo
  const placements=[0,.34,.99].map(position=>drawFloorMarket(2,rolls(0,position)).doors.indexOf('merchant-hasan'))
  expect(placements).toEqual([0,1,2])
 })
-it('rolls each of the six equipment slots independently and always includes both potions',()=>{
- const state=newPractice(),market=drawFloorMarket(51,rolls(.99,0,0,.1,0,.6,0,.09,0,.11,0,.99,0))
+it('rolls each of the ten equipment slots independently and always includes both potions',()=>{
+ const state=newPractice(),market=drawFloorMarket(51,rolls(.99,...[0,.1,.6,.09,.11,0,.1,.6,.09,.11].flatMap(value=>[value,0])))
  const stocked={...state,market}
- expect(market.weaponIds.map(id=>explorationWeapons.find(item=>item.id===id)!.tier)).toEqual(['ultimate','advanced','starter'])
- expect(market.armorIds.map(id=>explorationArmor.find(item=>item.id===id)!.tier)).toEqual(['ultimate','advanced','starter'])
- expect(floorMerchantGoods(stocked).map(item=>item.kind)).toEqual(['weapon','weapon','weapon','armor','armor','armor','potion','potion'])
+ expect(market.weaponIds.map(id=>explorationWeapons.find(item=>item.id===id)!.tier)).toEqual(['ultimate','advanced','starter','ultimate','advanced'])
+ expect(market.armorIds.map(id=>explorationArmor.find(item=>item.id===id)!.tier)).toEqual(['ultimate','advanced','starter','ultimate','advanced'])
+ expect(floorMerchantGoods(stocked).map(item=>item.kind)).toEqual([...Array(5).fill('weapon'),...Array(5).fill('armor'),'potion','potion'])
  const selected=market.weaponIds[0],weapon=explorationWeapons.find(item=>item.id===selected)!
  const bought=buyMerchantItem({...stocked,gold:10000},selected)
  expect(bought.weapons).toContain(weapon)
@@ -73,7 +73,7 @@ it('removes purchased gear without rerolling the remaining offers',async()=>{
  render(<Harness/>)
  fireEvent.click(screen.getByRole('button',{name:'구매한다'}))
  const names=within(screen.getByRole('dialog')).getAllByRole('heading',{level:4}).map(item=>item.textContent)
- expect(names).toHaveLength(3)
+ expect(names).toHaveLength(5)
  const weapon=screen.getByRole('region',{name:'무기'})
  fireEvent.click(within(weapon).getAllByRole('button',{name:'구매',exact:true})[0])
  expect(purchaseSound).toHaveBeenCalledTimes(1)

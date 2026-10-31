@@ -3,6 +3,7 @@ import {explorationArmor} from './armor-catalog'
 import type {RoomTypeId} from './room-preview'
 
 export const merchantAppearanceChance=20
+export const equipmentOfferLimit=5
 export const merchantTierBands=[
  {through:10,starter:100,advanced:0,ultimate:0},
  {through:20,starter:90,advanced:10,ultimate:0},
@@ -20,9 +21,9 @@ export function merchantTierChances(floor:number){
  return merchantTierBands.find(band=>level<=band.through)!
 }
 export type FloorMarket={shopkeeperId?:import('./shopkeepers').ShopkeeperId;floor:number;doors:RoomTypeId[];monsterIds?:(import('./monster-catalog').MonsterId|'random')[];weaponIds:string[];armorIds:string[]}
-export function drawTieredOffers(items:{id:string;tier:WeaponTier}[],floor:number,random:()=>number){
+export function drawTieredOffers(items:{id:string;tier:WeaponTier}[],floor:number,random:()=>number,count=3){
  const chances=merchantTierChances(floor),selected:string[]=[]
- for(let slot=0;slot<3;slot++){
+ for(let slot=0;slot<count;slot++){
   const roll=random()*100
   const tier:WeaponTier=roll<chances.ultimate?'ultimate':roll<chances.ultimate+chances.advanced?'advanced':'starter'
   const pool=items.filter(item=>item.tier===tier&&!selected.includes(item.id))
@@ -35,5 +36,5 @@ export function drawTieredOffers(items:{id:string;tier:WeaponTier}[],floor:numbe
 export function drawFloorMarket(floor:number,random=Math.random):FloorMarket{
  const doors:RoomTypeId[]=['monster','monster','sphinx']
  if(floor>1&&random()*100<merchantAppearanceChance)doors[Math.min(2,Math.floor(random()*3))]='merchant-hasan'
- return {floor,doors,weaponIds:drawTieredOffers(explorationWeapons,floor,random),armorIds:drawTieredOffers(explorationArmor,floor,random)}
+ return {floor,doors,weaponIds:drawTieredOffers(explorationWeapons,floor,random,equipmentOfferLimit),armorIds:drawTieredOffers(explorationArmor,floor,random,equipmentOfferLimit)}
 }

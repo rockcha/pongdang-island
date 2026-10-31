@@ -47,6 +47,7 @@ export function ScorpionRoom({logEvent,state,busy,feedback,latestLog,speaker,onA
  },[won])
  if(combat.status==='lost')return <section className="exploration-combat is-defeat" aria-label={`${monster.name} 전투`}><div className="combat-defeat-space" aria-hidden="true"/><div className="exploration-combat-controls combat-defeat-controls"><ChoiceLog speaker="탐험" className="exploration-enemy-intent" text="사망하였습니다."/><button className="combat-return-main" onClick={onReturnToMain}>메인 화면으로</button></div></section>
  const player=feedback?.phase==='player'?feedback.events.find(event=>event.kind==='player'):undefined
+ const manaRestored=feedback&&(feedback.phase==='player'||feedback.phase==='reply')?feedback.events.filter(event=>(event.phase??'player')===feedback.phase).reduce((total,event)=>total+(event.manaRestored??0),0):0
  const selfSpell=!!player?.spellId&&spellVisuals[player.spellId]?.target==='self'
  const reply=feedback?.phase==='reply'?feedback.events.find(event=>event.kind==='monster'||event.kind==='defense'):undefined
  const healing=feedback?.phase==='player'?feedback.events.find(event=>event.phase!=='reply'&&event.healing!==undefined&&!event.source):undefined
@@ -70,7 +71,7 @@ export function ScorpionRoom({logEvent,state,busy,feedback,latestLog,speaker,onA
    {revival&&<span className="combat-heal-number is-revival" role="status">등불 부활 +{revival.healing}</span>}
    {healing?.healing!==undefined&&<span key={`heal-${feedback?.id}`} className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">+{healing.healing} 회복</span>}
    {cleansing&&!healing&&<span className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">정화!</span>}
-   {player?.manaRestored!==undefined&&<span className="combat-heal-number is-mana">+{player.manaRestored} 마나</span>}
+   {manaRestored>0&&<span className="combat-heal-number is-mana">+{manaRestored} 마나</span>}
    {player&&!player.damage&&player.healing===undefined&&player.effect!=='potion'&&(!player.spellId||selfSpell)&&<span key={`ward-${feedback?.id}`} className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true"><Shield size={22}/>{player.effect==='miss'?'빗나감':'방어'}</span>}
   </div>}
    {(!won||victoryStep<1)&&<div className="exploration-monster-magic-list">{monster.magic.length?monster.magic.map(move=><button key={move.id} disabled={won} className="exploration-monster-move is-magic" aria-label={`마법 · ${move.name} 설명`} onClick={()=>setMoveDetail(move.id)} data-active={feedback?.phase==='counter'&&feedback.events.some(event=>event.moveId===move.id)}><small>마법</small><img src={move.image} alt=""/><strong>{move.name}</strong><span>{chance}</span></button>):<button disabled={won} className="exploration-monster-move is-magic" aria-label="마법 · 마법 없음 설명" onClick={()=>setMoveDetail('no-magic')}><small>마법</small><img src="/exploration/monster-skills/no-magic.svg" alt=""/><strong>마법 없음</strong><span>—</span></button>}</div>}

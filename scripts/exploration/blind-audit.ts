@@ -1,6 +1,6 @@
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
-import {newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
+import {spellManaCost,newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {resolveCombatTurn,startMonsterCombat,type CombatAction} from '../../src/features/exploration/combat-state'
 import {getFloorMonster,type MonsterId} from '../../src/features/exploration/monster-catalog'
 import {explorationWeapons} from '../../src/features/exploration/weapon-catalog'
@@ -50,7 +50,7 @@ export function prepareLoadout(state:PracticeState){
 export function auditAction(state:PracticeState,policy:AuditPolicy):CombatAction{
  const combat=state.combat!,monster=getFloorMonster(combat.monsterId,state.market.floor,true),stats=playerAttackStats(state)
  const basic=Math.max(1,stats.attack-monster.defense),criticalExpected=basic*(1+stats.critical/100)
- const affordable=policy.spells?state.spells.filter(spell=>(policy.combat==='tactical'||state.equippedSpells.includes(spell.id))&&state.mp>=spell.mana):[]
+ const affordable=policy.spells?state.spells.filter(spell=>(policy.combat==='tactical'||state.equippedSpells.includes(spell.id))&&state.mp>=spellManaCost(state,spell)):[]
  if(basic>=combat.enemyHp)return {type:'attack'}
  const lethal=affordable.find(spell=>Math.max(0,(spellMechanics[spell.id]?.damage??0)-monster.magicResistance)>=combat.enemyHp)
  if(lethal&&policy.combat!=='basic')return {type:'magic',id:lethal.id}

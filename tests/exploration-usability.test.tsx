@@ -37,7 +37,7 @@ it('lets an ordinary player open the feedback tab, submit and keep drafts across
 })
 it('keeps the codex header inside a separate scrolling dialog',()=>{
  render(<ExplorationPage/>);fireEvent.click(screen.getByRole('button',{name:'도감'}));capture('codex')
- expect(screen.getByRole('dialog',{name:'도감'})).toBeTruthy();expect(screen.getByRole('tabpanel',{name:'무기 47'})).toBeTruthy()
+ expect(screen.getByRole('dialog',{name:'도감'})).toBeTruthy();expect(screen.getByRole('tabpanel',{name:'무기 48'})).toBeTruthy()
 })
 it('shows owned equipment and buys a fourth item without replacing equipped gear',()=>{
  const initial=grantPracticeSupplies(newPractice(()=>0));let latest=initial

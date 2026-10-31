@@ -20,5 +20,5 @@ export function GearAttributes({gear,compact=false}:{gear:Gear;compact?:boolean}
 }
 export function WeaponEffect({gear,showEmpty=false,compact=false}:{gear:Gear;showEmpty?:boolean;compact?:boolean}){
  if(!showEmpty&&!hasWeaponEffect(gear))return null
- return <div className="equipment-effect" data-ailment={gear.proc?.kind} data-bonus={gear.lifesteal?'lifesteal':gear.cleanseChance?'cleanse':undefined}>{gear.proc?<AilmentIcon kind={gear.proc.kind}/>:gear.lifesteal?<Heart size={17}/>:gear.cleanseChance?<Sparkles size={17}/>:null}<span>{compact&&gear.lifesteal?`피흡 ${gear.lifesteal}%`:weaponEffectText(gear)}</span></div>
+ return <div className="equipment-effect" data-ailment={gear.proc?.kind} data-bonus={gear.lifesteal?'lifesteal':gear.cleanseChance?'cleanse':undefined}>{gear.proc?<AilmentIcon kind={gear.proc.kind}/>:gear.lifesteal?<Heart size={17}/>:gear.cleanseChance||gear.spellManaDiscount||gear.victoryManaRestore||gear.openingShield||gear.potionBonus?<Sparkles size={17}/>:null}<span>{compact&&gear.lifesteal?`피흡 ${gear.lifesteal}%`:weaponEffectText(gear)}</span></div>
 }

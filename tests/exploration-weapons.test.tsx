@@ -43,12 +43,12 @@ it('sells all ten weapons with exact catalog stats and prevents duplicates while
 })
 it('shows artwork and filters tier and weapon effect independently',()=>{
  render(<ExplorationCodex ownedIds={['tomb-bronze-sword']}/>);fireEvent.click(screen.getByRole('button',{name:'도감'}))
- expect(screen.getAllByRole('img')).toHaveLength(47)
+ expect(screen.getAllByRole('img')).toHaveLength(48)
  fireEvent.click(screen.getByRole('button',{name:'기본형'}))
  expect(screen.getAllByRole('img')).toHaveLength(26)
  fireEvent.click(screen.getByRole('button',{name:'상태이상',exact:true}))
  expect(screen.getAllByRole('img')).toHaveLength(15)
- fireEvent.click(screen.getByRole('button',{name:'중급 16'}))
+ fireEvent.click(screen.getByRole('button',{name:'중급 17'}))
  expect(screen.getAllByRole('img')).toHaveLength(5)
  fireEvent.click(screen.getByRole('button',{name:'기본형'}))
  expect(screen.getAllByRole('img')).toHaveLength(8)
@@ -62,9 +62,9 @@ it('shows artwork and filters tier and weapon effect independently',()=>{
  fireEvent.click(screen.getByRole('button',{name:'일반 22'}))
  expect(screen.getAllByRole('img')).toHaveLength(15)
  expect(screen.getByRole('heading',{name:'작은 곡괭이'})).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'모든 단계 47'}))
- fireEvent.click(screen.getByRole('button',{name:'피흡·정화'}))
- expect(screen.getAllByRole('img')).toHaveLength(6)
+ fireEvent.click(screen.getByRole('button',{name:'모든 단계 48'}))
+ fireEvent.click(screen.getByRole('button',{name:'보조 효과'}))
+ expect(screen.getAllByRole('img')).toHaveLength(7)
  expect(screen.getByRole('heading',{name:'새벽의 정화봉'})).toBeTruthy()
 })
 it('registers ten ordinary starter tools without procs and sells them when stocked',()=>{
@@ -78,11 +78,11 @@ it('registers ten ordinary starter tools without procs and sells them when stock
  }
 })
 it('keeps advanced and ultimate plain weapons balanced and requires a floor offering to buy them',()=>{
- expect(explorationWeapons).toHaveLength(47)
- expect(new Set(explorationWeapons.map(weapon=>weapon.id)).size).toBe(47)
+ expect(explorationWeapons).toHaveLength(48)
+ expect(new Set(explorationWeapons.map(weapon=>weapon.id)).size).toBe(48)
  for(const tier of ['advanced','ultimate'] as const){
   const weapons=explorationWeapons.filter(weapon=>weapon.tier===tier)
-  expect(weapons).toHaveLength(tier==='advanced'?16:9)
+  expect(weapons).toHaveLength(tier==='advanced'?17:9)
   const plain=weapons.filter(weapon=>!hasWeaponEffect(weapon)&&!weapon.maxHpBonus&&!weapon.maxManaBonus)
   expect(plain).toHaveLength(tier==='advanced'?6:3)
   const damage=plain.map(weapon=>weapon.attack*(1+weapon.critical/100))
@@ -97,7 +97,7 @@ it('keeps advanced and ultimate plain weapons balanced and requires a floor offe
 })
 it('keeps clear damage steps between tiers and scales status effects without extending freeze locks',()=>{
  // Capacity weapons trade direct damage for resources; compare direct-damage builds separately.
- const tiers=(['starter','advanced','ultimate'] as const).map(tier=>explorationWeapons.filter(weapon=>weapon.tier===tier&&!weapon.lifesteal&&!weapon.cleanseChance&&!weapon.maxHpBonus&&!weapon.maxManaBonus))
+ const tiers=(['starter','advanced','ultimate'] as const).map(tier=>explorationWeapons.filter(weapon=>weapon.tier===tier&&!weapon.lifesteal&&!weapon.cleanseChance&&!weapon.maxHpBonus&&!weapon.maxManaBonus&&!weapon.spellManaDiscount))
  const expected=(weapon:typeof explorationWeapons[number])=>weapon.attack*(1+weapon.critical/100)
  // Premium ordinary weapons bridge the normal tier gap while retaining the ordinary label.
  const ordinary=tiers[0].filter(weapon=>weapon.price<=380),premium=tiers[0].filter(weapon=>weapon.price>380)

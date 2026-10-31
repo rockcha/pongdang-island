@@ -290,6 +290,15 @@
       "prompt": "Single Egyptian fantasy RPG inventory weapon: Heartstone warhammer. Broad heavy sandstone and bronze hammer head with a large polished warm crimson heartstone inset, sturdy short dark leather-wrapped handle, subtle Egyptian geometric engravings and muted gold accents. Full weapon diagonal lower left to upper right, isolated, no background scenery, no ground, no text or UI, no blood. Clean semi-realistic hand-painted game equipment illustration; sturdy unmistakable hammer silhouette readable at 48px; clean alpha edges and generous transparent margins.",
       "generatedAt": "2026-11-01",
       "generator": "built-in image_gen"
+    },
+    {
+      "id": "inscription-mage-staff",
+      "kind": "weapon",
+      "source": "assets/exploration/weapons/originals/inscription-mage-staff.png",
+      "output": "public/exploration/weapons/inscription-mage-staff.png",
+      "prompt": "Use case: stylized-concept. One isolated Egyptian fantasy RPG inventory weapon: a carved dark ebony spellcaster staff, pale sandstone tablet-shaped head inscribed with tiny abstract golden hieroglyph grooves, small turquoise crystal suspended inside a bronze frame, slender practical middle-tier construction, full staff diagonal. Clean semi-realistic hand-painted 2D game equipment matching warm antique gold Egyptian dungeon loot, crisp readable silhouette at 48px, restrained ornament, soft warm upper-left lighting. Entire item centered with generous 12 percent transparent margins, no cropped tips or hems. Transparent background, clean alpha edges, no backdrop, no floor, no cast shadow, no pedestal, no letters or labels, no UI, no border, no detached particles.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
     }
   ]
 }

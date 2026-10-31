@@ -2,7 +2,7 @@ import {practiceFinalFloor,practiceFinalBossId} from './campaign'
 import {drawRoomLoot,type RoomLoot} from './room-loot'
 import {plannedSpells} from './spell-catalog'
 import {spellMechanics} from './spell-mechanics'
-import {playerMaxHp,playerAttackStats,usePotion,merchantPotions,incomingDamage,basicAttackEvasion,type PracticeState} from './practice-state'
+import {playerManaMax,equippedGearBonus,spellManaCost,playerMaxHp,playerAttackStats,usePotion,merchantPotions,incomingDamage,basicAttackEvasion,type PracticeState} from './practice-state'
 import {applyEnemyAilment,healingAfterReduction} from './status-effects'
 import {ailmentDescription} from './ailments'
 import {getFloorMonster,sandScorpion,type MonsterId} from './monster-catalog'
@@ -32,7 +32,7 @@ export function startMonsterCombat(state:PracticeState,monsterId:MonsterId,optio
  if(monsterId==='nameless-royal-warden'&&(canAppeaseNameGuardian(state)||state.nameStory?.gateOpened||state.nameStory?.rewardClaimed))return state
  const monster=getFloorMonster(monsterId,state.market.floor,state.mode==='practice')
  const storyWarden=monsterId==='nameless-royal-warden'
- return {...state,...(storyWarden?{nameStory:{...state.nameStory,met:true}}:{}),combat:{monsterId,enemyHp:monster.maxHp,turn:0,status:'active',...(options.ambush?{ambush:true}:{}),...(options.loot||monster.tier==='boss'||(monster.id==='ancient-giant'||monster.id==='treasure-scarab')?{loot:options.loot??drawRoomLoot(state,storyWarden?'advanced':monster.id===practiceFinalBossId||state.mode==='practice'&&monster.tier==='boss'&&state.market.floor>=30?'ultimate':'advanced',options.random??Math.random),lootClaimed:false,...(options.lootSource?{lootSource:options.lootSource}:{})}:{})}}
+ return {...state,...(storyWarden?{nameStory:{...state.nameStory,met:true}}:{}),combat:{...(equippedGearBonus(state,'openingShield')?{shield:{remaining:equippedGearBonus(state,'openingShield')}}:{}),monsterId,enemyHp:monster.maxHp,turn:0,status:'active',...(options.ambush?{ambush:true}:{}),...(options.loot||monster.tier==='boss'||(monster.id==='ancient-giant'||monster.id==='treasure-scarab')?{loot:options.loot??drawRoomLoot(state,storyWarden?'advanced':monster.id===practiceFinalBossId||state.mode==='practice'&&monster.tier==='boss'&&state.market.floor>=30?'ultimate':'advanced',options.random??Math.random),lootClaimed:false,...(options.lootSource?{lootSource:options.lootSource}:{})}:{})}}
 }
 export function resolveCombatTurn(state:PracticeState,action:CombatAction,random=Math.random):CombatResult{
  const unchanged={state,playerState:state,lines:[],events:[]}
@@ -47,10 +47,10 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
  let phase:'player'|'reply'='player',revivedOnBleed=false,revivedOnCounter=false
  const record=(event:CombatEvent)=>{events.push({...event,phase});lines.push(event.text)}
  const clearBleed=()=>{next.playerEffects=next.playerEffects?.filter(effect=>effect.kind!=='bleed')}
- const victory=()=>{next.combat.status='won';clearBleed();if(next.mode==='practice'&&next.market.floor===practiceFinalFloor&&monster.id===practiceFinalBossId)next.finalBossDefeated=true;if(monster.id==='nameless-royal-warden')next.nameStory={...next.nameStory,met:true,guardianDefeated:true,gateOpened:true};if(monster.tier==='boss'&&monster.id!==practiceFinalBossId)next.bossRestPending=true;next.gold+=monster.gold;record({kind:'reward',gold:monster.gold,text:monsterDefeatText(monster.name)+(monster.gold>0?` 골드 +${monster.gold}.`: '')})}
+ const victory=()=>{next.combat.status='won';delete next.combat.shield;clearBleed();const manaRestored=Math.min(playerManaMax(next)-next.mp,equippedGearBonus(next,'victoryManaRestore'));if(manaRestored>0){next.mp+=manaRestored;record({kind:'status',source:'잔향',manaRestored,text:`잔향의 사제복 · 승리로 마나 ${manaRestored} 회복!`})}if(next.mode==='practice'&&next.market.floor===practiceFinalFloor&&monster.id===practiceFinalBossId)next.finalBossDefeated=true;if(monster.id==='nameless-royal-warden')next.nameStory={...next.nameStory,met:true,guardianDefeated:true,gateOpened:true};if(monster.tier==='boss'&&monster.id!==practiceFinalBossId)next.bossRestPending=true;next.gold+=monster.gold;record({kind:'reward',gold:monster.gold,text:monsterDefeatText(monster.name)+(monster.gold>0?` 골드 +${monster.gold}.`: '')})}
  if(action.type==='flee'){
   const chance=escapeChance(state);next.escapeBoost=0
-  if(random()*100<chance){clearBleed();const playerState={...next,combat:{...next.combat}};next.combat.status='escaped';record({kind:'system',text:'도망 성공! 보상 없이 아래층으로 향합니다.'});return {state:next,playerState,lines,events}}
+  if(random()*100<chance){clearBleed();const playerState={...next,combat:{...next.combat}};next.combat.status='escaped';delete next.combat.shield;record({kind:'system',text:'도망 성공! 보상 없이 아래층으로 향합니다.'});return {state:next,playerState,lines,events}}
   record({kind:'system',text:`도망 실패! (${chance}%) ${monster.name}의 추격이 이어집니다.`})
  }else if(action.type==='potion'){
   const restored=usePotion(state,action.kind,true)
@@ -86,10 +86,10 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   }
  }else{
   const spell=state.spells.find(spell=>spell.id===action.id)
-  if(!spell||!state.equippedSpells.includes(action.id)||state.mp<spell.mana||!(action.id in combatMagic))return unchanged
+  if(!spell||!state.equippedSpells.includes(action.id)||state.mp<spellManaCost(state,spell)||!(action.id in combatMagic))return unchanged
   const power=spellMechanics[action.id]
   if(!power)return unchanged
-  next.mp-=spell.mana
+  const manaCost=spellManaCost(state,spell);next.mp-=manaCost
   const spellDamage=power.damage?Math.max(1,power.damage-monster.magicResistance):0
   if(spellDamage)next.combat.enemyHp=Math.max(0,next.combat.enemyHp-spellDamage)
   if(power.guard)next.combat.ward={amount:power.guard,turns:power.guardTurns??1};stunned=stunned||power.stun===true
@@ -99,7 +99,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   if(power.shield)next.combat.shield={remaining:Math.max(next.combat.shield?.remaining??0,power.shield.remaining),turns:power.shield.turns}
   if(power.attackBuff)next.combat.attackBuff={...power.attackBuff}
   const description=power.healing?`체력 ${spellHealing} 회복`:spellDamage?`피해 ${spellDamage}${stunned?' · 이번 반격 봉쇄':''}`:combatMagic[action.id as keyof typeof combatMagic]
-  record({kind:'player',spellId:spell.id,damage:spellDamage||undefined,rawDamage:power.damage||undefined,defenseBlocked:power.damage?Math.max(0,power.damage-spellDamage):undefined,healing:power.healing?spellHealing:undefined,text:`${spell.name} 시전! ${description} · 마나 ${spell.mana} 소모.`})
+  record({kind:'player',spellId:spell.id,damage:spellDamage||undefined,rawDamage:power.damage||undefined,defenseBlocked:power.damage?Math.max(0,power.damage-spellDamage):undefined,healing:power.healing?spellHealing:undefined,text:`${spell.name} 시전! ${description} · 마나 ${manaCost} 소모.`})
   const effect=power.ailment
   if(next.combat.enemyHp>0&&effect&&!(effect.kind==='freeze'&&state.combat.freezeGuard)&&(effect.chance>=100||random()*100<effect.chance)){
    const ailment={kind:effect.kind,amount:effect.amount,turns:effect.turns}
@@ -128,7 +128,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
  const playerState={...next,combat:{...next.combat,effects:next.combat.effects.map(effect=>({...effect}))}}
  const magicResistanceDown=next.combat.magicResistanceDown??0
  delete next.combat.magicResistanceDown
- if(next.combat.enemyHp===0){victory();playerState.playerEffects=next.playerEffects;return {state:next,playerState,lines,events}}
+ if(next.combat.enemyHp===0){victory();playerState.playerEffects=next.playerEffects;playerState.mp=next.mp;playerState.combat.shield=undefined;return {state:next,playerState,lines,events}}
  if(revivedOnBleed)return {state:next,playerState,lines,events}
  phase='reply'
  guard=next.combat.ward?.amount??0
@@ -175,7 +175,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   if(next.combat.enemyHp===0)victory()
  }
  if(next.combat.ward&&!frozen&&!stunned){const ward=next.combat.ward;next.combat.ward=ward.turns>1?{...ward,turns:ward.turns-1}:undefined}
- if(next.combat.shield){const shield=next.combat.shield;next.combat.shield=shield.remaining>0&&shield.turns>1?{...shield,turns:shield.turns-1}:undefined}
+ if(next.combat.shield){const shield=next.combat.shield;next.combat.shield=shield.remaining>0?(shield.turns===undefined?shield:shield.turns>1?{...shield,turns:shield.turns-1}:undefined):undefined}
  next.combat.effects=next.combat.effects.map(effect=>({...effect,turns:effect.turns-1})).filter(effect=>effect.turns>0)
  return {state:next,playerState,lines,events}
 }

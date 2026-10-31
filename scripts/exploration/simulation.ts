@@ -3,7 +3,7 @@ import {drawRoomLoot} from '../../src/features/exploration/room-loot'
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
 ﻿import {advanceExploration,needsFinalBoss,enterBossOasis,needsNameGuardian,meetNameGuardian,finishNameGuardian} from '../../src/features/exploration/run-state'
-import {newPractice,playerMaxHp,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
+import {spellManaCost,newPractice,playerMaxHp,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {createRoomVisit,enterRoomVisit,restFully,sphinxPenalty,getAdventureRoom} from '../../src/features/exploration/adventure-rooms'
 import {receiveRoomLoot,refreshRoomLoot,sellRoomGear,type RoomLoot} from '../../src/features/exploration/room-loot'
 import {getShopkeeper,shopkeeperForRoom} from '../../src/features/exploration/shopkeepers'
@@ -71,7 +71,7 @@ function chooseAction(state:PracticeState,strategy:Strategy):CombatAction{
  const combat=state.combat!,monster=getFloorMonster(combat.monsterId,state.market.floor,true),weapon=state.weapons.find(item=>item.id===state.weaponId)!
  const basic=Math.max(1,(weapon.attack??1)-monster.defense),lethal=basic>=combat.enemyHp
  if(lethal)return {type:'attack'}
- const spells=state.spells.filter(item=>state.equippedSpells.includes(item.id)&&state.mp>=item.mana)
+ const spells=state.spells.filter(item=>state.equippedSpells.includes(item.id)&&state.mp>=spellManaCost(state,item))
  const lethalSpell=spells.find(item=>(spellMechanics[item.id]?.damage??0)-monster.magicResistance>=combat.enemyHp)
  if(lethalSpell&&strategy!=='fighter')return {type:'magic',id:lethalSpell.id}
  if(state.hp<playerMaxHp(state)*.4&&state.potions.health)return {type:'potion',kind:'health'}

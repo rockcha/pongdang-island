@@ -9,7 +9,7 @@ import {practiceSpellLearningPrices} from './spell-catalog'
 import {drawFloorMarket,type FloorMarket} from './merchant-stock'
 import {healingAfterReduction} from './status-effects'
 import type {ShamanStock} from './shaman-stock'
-export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;maxManaBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
+export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;maxManaBonus?:number;spellManaDiscount?:number;victoryManaRestore?:number;openingShield?:number;potionBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
 export type Spell={id:string;name:string;description:string;message:string;mana:number;image?:string;learnPrice?:number}
 export const starterWeapon:Gear={id:'dull-dagger',name:'무딘 단검',description:'손에 익은 오래된 단검.',attack:10,critical:5,image:'/exploration/weapons/dull-dagger.png'}
 export const practiceSpells:Spell[]=[
@@ -18,9 +18,9 @@ export const practiceSpells:Spell[]=[
  {id:'light',mana:5,name:'길잡이 빛',description:'빛으로 어두운 길의 흔적을 살핍니다.',message:'푸른 빛이 세 문 앞의 발자국을 밝힙니다.'},
  {id:'sand',mana:7,name:'모래의 속삭임',description:'모래에 남은 오래된 이야기를 듣습니다.',message:'모래알 사이로 알아들을 수 없는 속삭임이 들립니다.'},
 ].map(spell=>({...spell,image:`/exploration/magic/${spell.id}.png`,learnPrice:practiceSpellLearningPrices[spell.id as keyof typeof practiceSpellLearningPrices]}))
-export type CombatState={ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns:number};attackBuff?:{attack:number;critical:number;turns:number}}
+export type CombatState={ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns?:number};attackBuff?:{attack:number;critical:number;turns:number}}
 export const playerMaxMp=40
-export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp+equippedResourceBonus(state,'maxManaBonus'))}
+export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp+equippedGearBonus(state,'maxManaBonus'))}
 export function playerAttackStats(state:PracticeState){
  const weapon=state.weapons.find(item=>item.id===state.weaponId),combat=state.combat?.status==='active'?state.combat:undefined
  const weaken=combat?.playerWeaken??0
@@ -87,15 +87,17 @@ export function toggleSpell(state:PracticeState,id:string):PracticeState{
  return state.equippedSpells.length<2?{...state,equippedSpells:[...state.equippedSpells,id]}:state
 }
 
+export function spellManaCost(state:PracticeState,spell:Pick<Spell,'mana'>){return Math.max(1,spell.mana-equippedGearBonus(state,'spellManaDiscount'))}
+export function potionRecoveryAmount(state:PracticeState,kind:PotionKind){const amount=merchantPotions.find(item=>item.kind===kind)!.amount+equippedGearBonus(state,'potionBonus');return kind==='health'?healingAfterReduction(amount,state.playerEffects??[]):amount}
 export function castSpell(state:PracticeState,id:string):PracticeState{
  const spell=state.spells.find(value=>value.id===id)
- if(!spell||!state.equippedSpells.includes(id)||state.mp<spell.mana)return state
+ if(!spell||!state.equippedSpells.includes(id)||state.mp<spellManaCost(state,spell))return state
  const power=spellMechanics[id]
- return {...state,mp:state.mp-spell.mana,...(power?.healing?{hp:Math.min(playerMaxHp(state),state.hp+healingAfterReduction(power.healing,state.playerEffects??[]))}:{}),...(power?.cleanse?{playerEffects:[]}:{} )}
+ return {...state,mp:state.mp-spellManaCost(state,spell),...(power?.healing?{hp:Math.min(playerMaxHp(state),state.hp+healingAfterReduction(power.healing,state.playerEffects??[]))}:{}),...(power?.cleanse?{playerEffects:[]}:{} )}
 }
 
-function equippedResourceBonus(state:PracticeState,key:'maxHpBonus'|'maxManaBonus'){return Math.max(0,state.weapons.find(gear=>gear.id===state.weaponId)?.[key]??0)+Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.[key]??0)}
-export function playerMaxHp(state:PracticeState){return Math.max(1,100+equippedResourceBonus(state,'maxHpBonus')-(state.maxHpSacrifice??0))}
+export function equippedGearBonus(state:PracticeState,key:'maxHpBonus'|'maxManaBonus'|'spellManaDiscount'|'victoryManaRestore'|'openingShield'|'potionBonus'){return Math.max(0,state.weapons.find(gear=>gear.id===state.weaponId)?.[key]??0)+Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.[key]??0)}
+export function playerMaxHp(state:PracticeState){return Math.max(1,100+equippedGearBonus(state,'maxHpBonus')-(state.maxHpSacrifice??0))}
 export function clampGearResources(state:PracticeState):PracticeState{return {...state,hp:Math.min(state.hp,playerMaxHp(state)),mp:Math.min(state.mp,playerManaMax(state))}}
 export type IncomingAttack='physical'|'magic'
 // Evasion belongs only to physical basic attacks. Spells always use magic defense.
@@ -116,6 +118,6 @@ export function potionBlock(state:PracticeState,kind:PotionKind,duringCombat=fal
 }
 export function usePotion(state:PracticeState,kind:PotionKind,duringCombat=false):PracticeState{
  if(potionBlock(state,kind,duringCombat))return state
- const amount=merchantPotions.find(item=>item.kind===kind)!.amount
- return {...state,potions:{...state.potions,[kind]:state.potions[kind]-1},...(kind==='health'?{hp:Math.min(playerMaxHp(state),state.hp+healingAfterReduction(amount,state.playerEffects??[]))}:{mp:Math.min(playerManaMax(state),state.mp+amount)})}
+ const amount=potionRecoveryAmount(state,kind)
+ return {...state,potions:{...state.potions,[kind]:state.potions[kind]-1},...(kind==='health'?{hp:Math.min(playerMaxHp(state),state.hp+amount)}:{mp:Math.min(playerManaMax(state),state.mp+amount)})}
 }

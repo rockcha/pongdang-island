@@ -4,7 +4,7 @@ import {plannedSpells,practiceSpellLearningPrices} from '@/features/exploration/
 import {merchantGoods,practiceSpells,newPractice,buyMerchantItem} from '@/features/exploration/practice-state'
 
 it('sets positive gold prices for every weapon while requiring a floor offering to buy it',()=>{
- const bands={starter:[220,560],advanced:[700,900],ultimate:[2200,2800]}
+ const bands={starter:[220,560],advanced:[700,950],ultimate:[2200,2800]}
  for(const weapon of explorationWeapons){
   expect(Number.isInteger(weapon.price)).toBe(true)
   expect(weapon.price%10).toBe(0)
@@ -20,7 +20,7 @@ it('sets positive gold prices for every weapon while requiring a floor offering 
 it('prices equivalent plain weapons equally and adds a modest premium for special effects',()=>{
  for(const tier of ['advanced','ultimate'] as const){
   const weapons=explorationWeapons.filter(weapon=>weapon.tier===tier)
-  const plain=weapons.filter(weapon=>!weapon.proc&&!weapon.lifesteal&&!weapon.cleanseChance&&!weapon.maxHpBonus&&!weapon.maxManaBonus)
+  const plain=weapons.filter(weapon=>!weapon.proc&&!weapon.lifesteal&&!weapon.cleanseChance&&!weapon.maxHpBonus&&!weapon.maxManaBonus&&!weapon.spellManaDiscount)
   expect(new Set(plain.map(weapon=>weapon.price)).size).toBe(1)
   for(const weapon of weapons.filter(item=>!plain.includes(item)))expect(weapon.price).toBeGreaterThan(plain[0].price)
  }

@@ -37,8 +37,8 @@ it('animates actual HP and MP gains once, retains the result facts, and clears t
  expect(screen.queryByRole('status',{name:'회복 완료'})).toBeNull()
  expect(document.querySelector('dl[aria-label="방 효과"]')?.textContent).toContain('+40')
 })
-it('uses the reduced mana maximum and avoids a false positive gain when already full',()=>{
- restRoom({...newPractice(()=>0),hp:100,mp:30,maxManaSacrifice:10,soulLantern:'ready'})
+it('uses the reduced health maximum and avoids a false positive gain when already full',()=>{
+ restRoom({...newPractice(()=>0),hp:90,mp:40,maxHpSacrifice:10,soulLantern:'ready'})
  fireEvent.click(screen.getByRole('button',{name:/쉬었다 간다/}))
  const feedback=screen.getByRole('status',{name:'회복 완료'})
  expect(feedback.textContent).toContain('가득 찼습니다');expect(feedback.textContent).not.toContain('+0')

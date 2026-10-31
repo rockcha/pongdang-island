@@ -1,26 +1,27 @@
 import {expect,it} from 'vitest'
 import {acceptChoiceRoom,choiceRoomBlock,forbiddenSpells} from '@/features/exploration/choice-room-state'
 import {fixedPracticeRooms,canUseTeleport,drawPracticeFloor} from '@/features/exploration/campaign'
-import {newPractice,playerManaMax,usePotion} from '@/features/exploration/practice-state'
+import {newPractice,playerManaMax,playerMaxHp,usePotion} from '@/features/exploration/practice-state'
 import {restFully} from '@/features/exploration/adventure-rooms'
 import {resolveCombatTurn,startMonsterCombat} from '@/features/exploration/combat-state'
 import {advanceExploration} from '@/features/exploration/run-state'
-it('sacrifices maximum mana once and respects the new cap through rest and potions',()=>{
+it('sacrifices maximum health once, leaves mana alone and respects the cap through rest and potions',()=>{
  const fresh=newPractice(()=>0),state=acceptChoiceRoom(fresh,'soul-lantern')
- expect(state.mp).toBe(30);expect(playerManaMax(state)).toBe(30);expect(state.soulLantern).toBe('ready')
+ expect(state.hp).toBe(90);expect(playerMaxHp(state)).toBe(90);expect(state.mp).toBe(40);expect(playerManaMax(state)).toBe(40);expect(state.soulLantern).toBe('ready')
  expect(acceptChoiceRoom(state,'soul-lantern')).toBe(state)
- expect(restFully({...state,mp:0}).mp).toBe(30)
- expect(usePotion({...state,mp:25,potions:{health:0,mana:1}},'mana').mp).toBe(30)
+ expect(restFully({...state,hp:1}).hp).toBe(90)
+ expect(usePotion({...state,hp:85,potions:{health:1,mana:0}},'health').hp).toBe(90)
+ expect(acceptChoiceRoom({...fresh,hp:45},'soul-lantern').hp).toBe(45)
  expect(fresh.mp).toBe(40)
 })
-it('revives from a lethal hit exactly once at 20 hp and keeps the mana sacrifice',()=>{
+it('revives from a lethal hit exactly once at 20 hp and keeps the health sacrifice',()=>{
  let state=startMonsterCombat({...acceptChoiceRoom(newPractice(()=>0),'soul-lantern'),hp:1,mp:0,potions:{health:0,mana:2}},'ancient-giant')
  let result=resolveCombatTurn(state,{type:'potion',kind:'mana'},()=>0)
  expect(result.state.hp).toBe(20);expect(result.state.soulLantern).toBe('spent');expect(result.state.combat?.status).toBe('active')
  expect(result.events.some(event=>event.healing===20&&event.kind==='system')).toBe(true)
  state={...result.state,hp:1,mp:0}
  result=resolveCombatTurn(state,{type:'potion',kind:'mana'},()=>0)
- expect(result.state.combat?.status).toBe('lost');expect(playerManaMax(result.state)).toBe(30)
+ expect(result.state.combat?.status).toBe('lost');expect(playerMaxHp(result.state)).toBe(90);expect(playerManaMax(result.state)).toBe(40)
 })
 it('also consumes the lantern for lethal bleeding',()=>{
  const state=startMonsterCombat({...acceptChoiceRoom(newPractice(()=>0),'soul-lantern'),hp:1,playerEffects:[{kind:'bleed',amount:3,turns:2}]},'sand-scorpion')

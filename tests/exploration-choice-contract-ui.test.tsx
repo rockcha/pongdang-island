@@ -11,8 +11,10 @@ function show(id:AdventureRoomId){
  function Harness(){const [state,onChange]=useState(initial);return <><output aria-label="resources">{state.hp}/{state.mp}/{state.gold}</output><AdventureRoom visit={visit} state={state} onChange={onChange} onTalk={()=>{}} onDescend={descend} onEncounter={()=>{}} onLoot={()=>{}} onGold={gold}/></>}
  render(<Harness/>);return {descend,gold}
 }
-it('accepts a lantern once and leaves only the descent action',()=>{
- show('soul-lantern');fireEvent.click(screen.getByRole('button',{name:'등불을 켠다 · 최대 마나 −10'}))
+it('accepts a lantern once, displays the health cost without an icon overlay and leaves only descent',()=>{
+ show('soul-lantern');expect(document.querySelector('.exploration-contract-art')).toBeNull()
+ expect(screen.getByLabelText('방 효과').textContent).toContain('최대 체력')
+ fireEvent.click(screen.getByRole('button',{name:'등불을 켠다 · 최대 체력 −10'}))
  expect(screen.queryByRole('button',{name:/등불을 켠다/})).toBeNull()
  expect(screen.getByRole('button',{name:'아래층으로 내려간다.'})).toBeTruthy()
 })

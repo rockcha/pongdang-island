@@ -1,6 +1,6 @@
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
-import {newPractice,practiceSpells,playerManaMax} from '@/features/exploration/practice-state'
+import {newPractice,practiceSpells,playerManaMax,playerMaxHp} from '@/features/exploration/practice-state'
 import {resolveCombatTurn,startMonsterCombat} from '@/features/exploration/combat-state'
 import {acceptChoiceRoom} from '@/features/exploration/choice-room-state'
 import {createRoomVisit,restFully} from '@/features/exploration/adventure-rooms'
@@ -30,10 +30,10 @@ it('spends five mana and keeps water protection for exactly two counters',()=>{
  const without={...first.state,combat:{...first.state.combat!,ward:undefined}}
  expect(resolveCombatTurn(without,{type:'attack'},roll).state.hp).toBe(second.state.hp-8)
 })
-it('recharges a spent lantern, never stacks charges and keeps at least ten maximum mana',()=>{
+it('recharges a spent lantern, never stacks charges and keeps twenty maximum health',()=>{
  let state=acceptChoiceRoom(newPractice(),'soul-lantern');expect(acceptChoiceRoom(state,'soul-lantern')).toBe(state)
- state=acceptChoiceRoom({...state,soulLantern:'spent'},'soul-lantern');expect(playerManaMax(state)).toBe(20);expect(state.soulLantern).toBe('ready')
- state=acceptChoiceRoom({...state,soulLantern:'spent'},'soul-lantern');expect(playerManaMax(state)).toBe(10)
+ for(let sacrifice=20;sacrifice<=80;sacrifice+=10){state=acceptChoiceRoom({...state,soulLantern:'spent'},'soul-lantern');expect(playerMaxHp(state)).toBe(100-sacrifice);expect(state.soulLantern).toBe('ready')}
+ expect(playerManaMax(state)).toBe(40)
  const spent={...state,soulLantern:'spent' as const};expect(acceptChoiceRoom(spent,'soul-lantern')).toBe(spent)
 })
 it('ends the turn on a bleeding revival and also revives against the final boss',()=>{

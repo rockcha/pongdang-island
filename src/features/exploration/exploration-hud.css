@@ -1190,6 +1190,7 @@ html [data-slot=modal-viewport]:has(>.exploration-weapon-codex)>.exploration-wea
 /* Keep the camera on each room's subject instead of the empty foreground floor. */
 .exploration-game .exploration-scene.is-close-scene.has-dungeon-art::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:inherit;background-size:cover;background-position:var(--scene-focus,50%) var(--scene-focus-y,0%);transform:scale(var(--scene-zoom,1.5));transform-origin:var(--scene-focus,50%) var(--scene-focus-y,0%)}
 .exploration-scene[data-scene=rest-oasis]{--scene-focus:30%;--scene-zoom:2.2}
+.exploration-scene[data-scene=soul-lantern]{--scene-focus:50%;--scene-focus-y:20%;--scene-zoom:1}
 .exploration-scene[data-scene=rest-camp]{--scene-focus:0%;--scene-focus-y:15%;--scene-zoom:2.2}
 .exploration-scene[data-scene=rest-garden]{--scene-focus:45%;--scene-zoom:2.5}
 .exploration-scene[data-scene=curse]{--scene-focus:50%;--scene-zoom:2.6}

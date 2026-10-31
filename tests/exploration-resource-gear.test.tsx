@@ -21,12 +21,12 @@ it('increases capacity without restoring mana and never restores it by re-equipp
  expect(equipGear(removed,'weapon',staff.id).mp).toBe(40)
  expect(equipGear({...wielded,mp:12},'weapon',base.weaponId).mp).toBe(12)
 })
-it('stacks weapon and armor mana capacity with the permanent lantern sacrifice',()=>{
- const equipped=equipGear(equipGear({...owned(),maxManaSacrifice:10,mp:30},'weapon',staff.id),'armor',robe.id)
- expect(playerManaMax(equipped)).toBe(55);expect(equipped.mp).toBe(30)
- const filled=usePotion(usePotion(equipped,'mana'),'mana');expect(filled.mp).toBe(55)
+it('keeps mana equipment independent of the permanent lantern health sacrifice',()=>{
+ const equipped=equipGear(equipGear({...owned(),maxHpSacrifice:10,mp:30},'weapon',staff.id),'armor',robe.id)
+ expect(playerManaMax(equipped)).toBe(65);expect(playerMaxHp(equipped)).toBe(100);expect(equipped.mp).toBe(30)
+ const filled=usePotion(usePotion(usePotion(equipped,'mana'),'mana'),'mana');expect(filled.mp).toBe(65)
  const base=owned(),withoutWeapon=equipGear(filled,'weapon',base.weaponId),withoutBoth=equipGear(withoutWeapon,'armor',base.armorId)
- expect(withoutWeapon.mp).toBe(45);expect(withoutBoth.mp).toBe(30)
+ expect(withoutWeapon.mp).toBe(55);expect(withoutBoth.mp).toBe(40)
 })
 it('adds hammer health to armor health and clamps only the excess when switching',()=>{
  const base=owned(),hammered=equipGear({...base,hp:77},'weapon',hammer.id)

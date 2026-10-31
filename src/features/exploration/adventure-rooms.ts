@@ -10,7 +10,7 @@ export const adventureRooms=[
  {id:'erased-name-record',kind:'story',name:'이야기 · 왕이 지운 기록',title:'왕이 지운 기록',background:bg('investigate-wall'),intro:['봉인된 기록에 왕이 지운 이름의 진실이 남아 있다.'],progress:['문지기 𓋴𓈖𓅱의 이름을 기억했다.']},
  {id:'nameless-guardian',kind:'story',name:'이야기 · 이름 없는 왕실 수문장',title:'이름 없는 왕실 수문장',background:bg('investigate-guards'),intro:['흑청동 중갑의 왕실 수문장이 거대한 대검을 짚고 오래된 문을 지키고 있다. 가슴의 이름은 깊게 깎여 있다.'],progress:['가슴 명패에 금빛 이름이 되살아났다. 왕실 수문장이 자신을 기억해 냈다.']},
 
- {id:'soul-lantern',kind:'choice',name:'계약 · 영혼의 등불',title:'영혼의 등불',background:bg('rest-camp'),intro:['최대 마나 10을 영구히 바치면, 이번 탐험에서 사망할 때 한 번 체력 20으로 부활한다. 등불을 켤까?'],progress:['영혼의 불꽃이 켜졌다. 최대 마나 −10 · 사망 시 한 번 체력 20으로 부활.']},
+ {id:'soul-lantern',kind:'choice',name:'계약 · 영혼의 등불',title:'영혼의 등불',background:bg('soul-lantern'),intro:['최대 체력 10을 영구히 바치면, 이번 탐험에서 사망할 때 한 번 체력 20으로 부활한다. 등불을 켤까?'],progress:['영혼의 불꽃이 켜졌다. 최대 체력 −10 · 사망 시 한 번 체력 20으로 부활.']},
  {id:'deep-well',kind:'choice',name:'선택 · 깊은 샘',title:'깊은 샘',background:bg('rest-oasis'),intro:['깊은 샘이 생기를 품고 있다. 물을 마시면 체력은 전부 회복되지만, 마나를 모두 잃는다.'],progress:['차가운 물이 상처를 아물게 한다. 체력을 전부 회복하고 마나는 0이 되었다.']},
  {id:'forbidden-trade',kind:'choice',name:'계약 · 금단의 거래',title:'금단의 거래',background:bg('curse'),intro:['“살아 있는 피에는 잊힌 주문을 깨우는 힘이 있지.” 체력 50을 바치면 아직 얻지 못한 중급 마법 하나를 무작위로 받는다.'],progress:['피를 대가로 잊힌 주문이 기억 속에 새겨졌다. 체력 −50 · 중급 마법 획득.']},
  {id:'cursed-gem-eye',kind:'choice',name:'선택 · 저주받은 보석눈',title:'저주받은 보석눈',background:bg('chest'),intro:['석상의 보석눈을 뽑으면 50% 확률로 골드 500을 얻거나, 50% 확률로 현재 마나 20을 잃는다.'],progress:['석상의 보석눈을 뽑았다. 봉인된 힘이 깨어난다.']},

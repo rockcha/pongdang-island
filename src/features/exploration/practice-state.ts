@@ -18,7 +18,8 @@ export const practiceSpells:Spell[]=[
  {id:'light',mana:5,name:'길잡이 빛',description:'빛으로 어두운 길의 흔적을 살핍니다.',message:'푸른 빛이 세 문 앞의 발자국을 밝힙니다.'},
  {id:'sand',mana:7,name:'모래의 속삭임',description:'모래에 남은 오래된 이야기를 듣습니다.',message:'모래알 사이로 알아들을 수 없는 속삭임이 들립니다.'},
 ].map(spell=>({...spell,image:`/exploration/magic/${spell.id}.png`,learnPrice:practiceSpellLearningPrices[spell.id as keyof typeof practiceSpellLearningPrices]}))
-export type CombatState={ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns?:number};attackBuff?:{attack:number;critical:number;turns:number}}
+export type MonsterPatternState={healsUsed?:number;shellHits?:number;fleeReady?:boolean;charging?:boolean;mirrorGuard?:'physical'|'magic';stealsUsed?:number;stolenGold?:number}
+export type CombatState={pattern?:MonsterPatternState;enemyFled?:boolean;ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns?:number};attackBuff?:{attack:number;critical:number;turns:number}}
 export const playerMaxMp=40
 export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp+equippedGearBonus(state,'maxManaBonus'))}
 export function playerAttackStats(state:PracticeState){

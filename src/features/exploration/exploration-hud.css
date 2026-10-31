@@ -1384,3 +1384,9 @@ body:has(.exploration-game) .pongi-confirm [data-slot=confirm-actions]>button:la
 .exploration-game .exploration-combat-stats[data-attack-variance=true] :is(dt,dd){line-height:1.1}
 @media(max-height:540px),(max-width:360px){.exploration-game .exploration-combat-actions .combat-attack-stats{font-size:9px;gap:1px}.combat-attack-stats .exploration-stat-icon{width:9px;height:9px}}
 .exploration-room-mana-loss{color:#9acfee!important;text-shadow:0 0 20px #417da8}
+
+.exploration-monster-pattern{margin:8px auto;padding:8px 12px;max-width:520px;border:1px solid #b89a5044;border-radius:7px;background:#100d0ad9;color:#d8bd80;text-align:center;font-size:11px;line-height:1.65;position:relative;z-index:2}
+.exploration-monster-pattern[data-urgent=true]{border-color:#dc8e6177;color:#ffc08d;background:#31170ee6}
+.enemy-flee-art{display:flex;justify-content:center;align-items:center;min-height:320px;overflow:hidden}.enemy-flee-art img{width:220px;height:260px;object-fit:contain;animation:exploration-enemy-scurry 1.2s ease-in forwards}
+@keyframes exploration-enemy-scurry{to{transform:translateX(180px) rotate(8deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.enemy-flee-art img{animation:none;opacity:.45}}

@@ -21,7 +21,7 @@ const attack=(state:PracticeState,...values:number[])=>resolveCombatTurn(state,{
 function captureLayout(id:string){
  if(!process.env.MONSTER_LAYOUT_QA)return
  const root=process.cwd().replaceAll('\\','/')
- const css=readFileSync('dist/assets/'+readdirSync('dist/assets').find(name=>/^index-.*\.css$/.test(name)),'utf8')+readFileSync('src/features/exploration/exploration.css','utf8')+readFileSync('src/features/exploration/exploration-hud.css','utf8')
+ const css=readdirSync('dist/assets').filter(name=>/^(index|exploration-page)-.*\.css$/.test(name)).sort((a,b)=>Number(a.startsWith('exploration'))-Number(b.startsWith('exploration'))).map(name=>readFileSync('dist/assets/'+name,'utf8')).join('\n')
  const html=document.body.innerHTML.replaceAll('data-starting-style=""','').replace(/(?:http:\/\/localhost:\d+)?\/src\/features\/exploration\/assets\//g,`file:///${root}/src/features/exploration/assets/`).replace(/([="(;])\/exploration\//g,`$1file:///${root}/public/exploration/`)
  writeFileSync(`artifacts/monster-${id}.html`,`<!doctype html><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${css}*,*::before,*::after{animation:none!important;transition:none!important}body{margin:0}</style>${html}`)
 }
@@ -69,15 +69,15 @@ it('opens the treasure scarab spell as separate flavor and effect facts',()=>{
  captureLayout('treasure-scarab-detail')
 })
 it('starts all monsters with their configured health and has real artwork for every move',()=>{
- expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,25,70,115,100,220,120])
+ expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,25,70,115,100,220,120,42,38,28,75,68,75])
  for(const monster of explorationMonsters){
   expect(fight(monster.id).combat).toMatchObject({monsterId:monster.id,enemyHp:monster.maxHp})
   if(regularMonsters.includes(monster)){const index=regularMonsters.indexOf(monster);expect(drawMonster(()=>(index+.5)/regularMonsters.length).id).toBe(monster.id)}
-  expect(monster.critical).toBeGreaterThan(0);expect(monster.defense).toBeGreaterThan(0)
+  expect(monster.critical).toBeGreaterThanOrEqual(0);expect(monster.defense).toBeGreaterThan(0)
   for(const move of [monster.basic,...monster.magic])expect(existsSync('public'+move!.image)).toBe(true)
  }
  const manifest=JSON.parse(readFileSync('assets/exploration/monsters/manifest.json','utf8'))
- expect(manifest.images).toHaveLength(9)
+ expect(manifest.images).toHaveLength(15)
  for(const image of manifest.images){expect(existsSync(image.source)).toBe(true);expect(existsSync(image.output)).toBe(true)}
 })
 it('applies enemy armor to physical hits and resistance only to damaging spells',()=>{
@@ -98,7 +98,7 @@ it('gives normal monsters named physical attacks with crits and no magic',()=>{
  }
 })
 it('selects each intermediate action equally without magic crits or evasion',()=>{
- for(const monster of explorationMonsters.filter(monster=>monster.magic.length)){
+ for(const monster of explorationMonsters.filter(monster=>monster.magic.length&&!monster.pattern)){
   const state=fight(monster.id),original=structuredClone(state)
   const magic=attack(state,.99,0)
   expect(magic.events.find(event=>event.kind==='monster')).toMatchObject({damage:monster.magic[0].damage,critical:false,attackType:'magic',moveId:monster.magic[0].id})
@@ -337,7 +337,7 @@ it.each(regularMonsters)('enters $name and opens the left/right move description
  fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'})
  await act(async()=>{await vi.advanceTimersByTimeAsync(100)})
  fireEvent.click(magic)
- if(monster.magic.length){expect(within(screen.getByRole('dialog')).getByText('마법 피해')).toBeTruthy();expect(within(screen.getByRole('dialog')).getByText(`${monster.magic[0].damage}`,{exact:true})).toBeTruthy()}else expect(screen.getByRole('dialog').textContent).toContain('마법을 사용하지 않고')
+ if(monster.magic.length&&monster.magic[0].damage>0){expect(within(screen.getByRole('dialog')).getByText('마법 피해')).toBeTruthy();expect(within(screen.getByRole('dialog')).getByText(`${monster.magic[0].damage}`,{exact:true})).toBeTruthy()}else if(monster.magic.length)expect(screen.getByRole('dialog').textContent).toContain(monster.magic[0].description);else expect(screen.getByRole('dialog').textContent).toContain('마법을 사용하지 않고')
  captureLayout(monster.id+'-detail')
  if(monster.magic.length>1){
   fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'})

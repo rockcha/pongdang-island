@@ -87,6 +87,54 @@
       ],
       "source": "assets/exploration/monsters/originals/tomb-hook-guard.png",
       "output": "public/exploration/monsters/tomb-hook-guard.png"
+    },
+    {
+      "id": "dewdrop-snail",
+      "source": "assets/exploration/monsters/originals/dewdrop-snail.png",
+      "output": "public/exploration/monsters/dewdrop-snail.png",
+      "prompt": "Use case: stylized-concept. Single Egyptian fantasy dungeon RPG monster sprite: a charming desert snail carrying a cracked turquoise ceramic water jar instead of a shell, two luminous dewdrops visible in the jar, sandy beige body, small gentle eyestalks, modest Egyptian bronze trim. Entire character centered facing mostly forward with slight three-quarter perspective. Polished semi-realistic hand-painted game illustration, clean appealing silhouette readable at 96px, stylish and approachable rather than scary, no gore or horror. Match warm gold Egyptian tomb monster inventory artwork. Full body and all limbs with generous 12 percent transparent margin. Transparent alpha background, crisp clean edges, no scene, no pedestal, no floor, no ground shadow, no text, no UI, no border, no floating icon or detached particles.",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-01"
+    },
+    {
+      "id": "cracked-shield-scarab",
+      "source": "assets/exploration/monsters/originals/cracked-shield-scarab.png",
+      "output": "public/exploration/monsters/cracked-shield-scarab.png",
+      "prompt": "Use case: stylized-concept. Single Egyptian fantasy dungeon RPG monster sprite: a sturdy little Egyptian scarab beetle with a broad weathered bronze shield carapace showing two large obvious cracks, sandy blue and warm bronze palette, six readable small legs and compact mandibles. Entire character centered facing mostly forward with slight three-quarter perspective. Polished semi-realistic hand-painted game illustration, clean appealing silhouette readable at 96px, stylish and approachable rather than scary, no gore or horror. Match warm gold Egyptian tomb monster inventory artwork. Full body and all limbs with generous 12 percent transparent margin. Transparent alpha background, crisp clean edges, no scene, no pedestal, no floor, no ground shadow, no text, no UI, no border, no floating icon or detached particles.",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-01"
+    },
+    {
+      "id": "cowardly-tomb-rat",
+      "source": "assets/exploration/monsters/originals/cowardly-tomb-rat.png",
+      "output": "public/exploration/monsters/cowardly-tomb-rat.png",
+      "prompt": "Use case: stylized-concept. Single Egyptian fantasy dungeon RPG monster sprite: a nervous upright small sandy tomb rat with big ears, brown explorer scarf and a tiny stolen coin pouch, alert side glance, crouched ready-to-run posture, cute mischievous expression. Entire character centered facing mostly forward with slight three-quarter perspective. Polished semi-realistic hand-painted game illustration, clean appealing silhouette readable at 96px, stylish and approachable rather than scary, no gore or horror. Match warm gold Egyptian tomb monster inventory artwork. Full body and all limbs with generous 12 percent transparent margin. Transparent alpha background, crisp clean edges, no scene, no pedestal, no floor, no ground shadow, no text, no UI, no border, no floating icon or detached particles.",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-01"
+    },
+    {
+      "id": "hourglass-sentinel",
+      "source": "assets/exploration/monsters/originals/hourglass-sentinel.png",
+      "output": "public/exploration/monsters/hourglass-sentinel.png",
+      "prompt": "Use case: stylized-concept. Single Egyptian fantasy dungeon RPG monster sprite: a formidable Egyptian sandstone automaton with a large glowing golden sand hourglass integrated into its torso, broad angular shoulders, lapis bands, two stone arms and short sturdy legs, grounded compact guardian silhouette. Entire character centered facing mostly forward with slight three-quarter perspective. Polished semi-realistic hand-painted game illustration, clean appealing silhouette readable at 96px, stylish and approachable rather than scary, no gore or horror. Match warm gold Egyptian tomb monster inventory artwork. Full body and all limbs with generous 12 percent transparent margin. Transparent alpha background, crisp clean edges, no scene, no pedestal, no floor, no ground shadow, no text, no UI, no border, no floating icon or detached particles.",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-01"
+    },
+    {
+      "id": "mirror-mask-mage",
+      "source": "assets/exploration/monsters/originals/mirror-mask-mage.png",
+      "output": "public/exploration/monsters/mirror-mask-mage.png",
+      "prompt": "Use case: stylized-concept. Single Egyptian fantasy dungeon RPG monster sprite: a mysterious floating Egyptian sorcerer with an ornate polished oval mirror mask, flowing midnight-blue and ivory robes, two gloved hands holding small bronze mirror shards close to the body, restrained cyan reflections, faceless but not frightening. Entire character centered facing mostly forward with slight three-quarter perspective. Polished semi-realistic hand-painted game illustration, clean appealing silhouette readable at 96px, stylish and approachable rather than scary, no gore or horror. Match warm gold Egyptian tomb monster inventory artwork. Full body and all limbs with generous 12 percent transparent margin. Transparent alpha background, crisp clean edges, no scene, no pedestal, no floor, no ground shadow, no text, no UI, no border, no floating icon or detached particles.",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-01"
+    },
+    {
+      "id": "gold-pouch-toad",
+      "source": "assets/exploration/monsters/originals/gold-pouch-toad.png",
+      "output": "public/exploration/monsters/gold-pouch-toad.png",
+      "prompt": "Use case: stylized-concept. Single Egyptian fantasy dungeon RPG monster sprite: a large squat sandy desert toad with a swollen golden coin-pouch throat, bronze Egyptian jewelry and a small tied money sack at its waist, smug greedy expression, warm ochre skin and subtle lapis accents. Entire character centered facing mostly forward with slight three-quarter perspective. Polished semi-realistic hand-painted game illustration, clean appealing silhouette readable at 96px, stylish and approachable rather than scary, no gore or horror. Match warm gold Egyptian tomb monster inventory artwork. Full body and all limbs with generous 12 percent transparent margin. Transparent alpha background, crisp clean edges, no scene, no pedestal, no floor, no ground shadow, no text, no UI, no border, no floating icon or detached particles.",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-01"
     }
   ]
 }

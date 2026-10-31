@@ -18,8 +18,9 @@ it('has six distinct merchants, scenes and nine personality lines each',()=>{
 it.each(shopkeepers)('$name offers only their tier and retains stock independently on the floor',profile=>{
  const entered=enterShopkeeper({...newPractice(),gold:10000},profile,()=>0)
  if(profile.kind==='equipment'){
-  expect(entered.market.weaponIds).toHaveLength(3)
-  expect(entered.market.armorIds).toHaveLength(profile.sellsArmor?3:0)
+  expect(entered.market.weaponIds).toHaveLength(5)
+  expect(new Set(entered.market.weaponIds).size).toBe(5)
+  expect(entered.market.armorIds).toHaveLength(profile.sellsArmor?5:0)
   expect(entered.market.weaponIds.every(id=>explorationWeapons.find(x=>x.id===id)?.tier===profile.tier)).toBe(true)
   expect(entered.market.armorIds.every(id=>explorationArmor.find(x=>x.id===id)?.tier===profile.tier)).toBe(true)
  }else{

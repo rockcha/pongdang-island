@@ -268,6 +268,42 @@
       "prompt": "Use case: stylized-concept. Asset: one transparent inventory illustration for an Egyptian underground fantasy RPG. Premium hand-painted semi-realistic 2D game item art matching bronze weapons and Egyptian armor inventory assets. Single object, centered in square, fully visible with 12 percent empty margin, three-quarter view, warm upper-left lighting, strong silhouette readable at 32 pixels. Transparent alpha background, clean antialiased edge. No scene, floor, pedestal, text, labels, border, detached particles, or cropped edges. Subject: a small squat rounded clear glass potion bottle filled with translucent sapphire blue mana liquid, short neck, cork stopper, a simple bronze collar and a small droplet-shaped bronze charm attached at the neck. A simple everyday consumable, restrained details, blue liquid clearly visible, no ornate legendary decorations. Upright bottle. Match the practical silhouette of a small round red health potion.",
       "source": "assets/exploration/potions/originals/mana-potion.png",
       "output": "public/exploration/potions/mana-potion.png"
+    },
+    {
+      "id": "starwell-priest-robe",
+      "kind": "armor",
+      "source": "assets/exploration/armor/originals/starwell-priest-robe.png",
+      "output": "public/exploration/armor/starwell-priest-robe.png",
+      "prompt": "Single Egyptian fantasy RPG inventory armor: Starwell priest robe, an empty wearable robe with no person or mannequin. Midnight-blue cloth with ivory inner lining, delicate silver star embroidery and restrained antique-gold lapis collar, fluid draped sleeves, small cyan gem at waist. Three-quarter front view full garment isolated, no floor, no stand, no text or UI, no staff. Clean semi-realistic hand-painted game equipment illustration, distinct silhouette readable at 48px; crisp clean alpha edges and generous transparent margins.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
+    },
+    {
+      "id": "echo-priest-robe",
+      "kind": "armor",
+      "source": "assets/exploration/armor/originals/echo-priest-robe.png",
+      "output": "public/exploration/armor/echo-priest-robe.png",
+      "prompt": "Use case: stylized-concept. One isolated Egyptian fantasy RPG inventory armor: an empty Egyptian priest robe, soft muted violet-blue and ivory cloth with concentric pale silver echo-wave embroidery, modest bronze collar and small lapis clasps, long draped sleeves, no human or mannequin. Clean semi-realistic hand-painted 2D game equipment matching warm antique gold Egyptian dungeon loot, crisp readable silhouette at 48px, restrained ornament, soft warm upper-left lighting. Entire item centered with generous 12 percent transparent margins, no cropped tips or hems. Transparent background, clean alpha edges, no backdrop, no floor, no cast shadow, no pedestal, no letters or labels, no UI, no border, no detached particles.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
+    },
+    {
+      "id": "dawn-guardian-garb",
+      "kind": "armor",
+      "source": "assets/exploration/armor/originals/dawn-guardian-garb.png",
+      "output": "public/exploration/armor/dawn-guardian-garb.png",
+      "prompt": "Use case: stylized-concept. One isolated Egyptian fantasy RPG inventory armor: an empty Egyptian guardian tunic of bronze scale shoulder plates over warm cream linen, sunrise-shaped muted gold chest medallion, pale amber accents, sturdy modest middle-tier protective garment, no human or mannequin. Clean semi-realistic hand-painted 2D game equipment matching warm antique gold Egyptian dungeon loot, crisp readable silhouette at 48px, restrained ornament, soft warm upper-left lighting. Entire item centered with generous 12 percent transparent margins, no cropped tips or hems. Transparent background, clean alpha edges, no backdrop, no floor, no cast shadow, no pedestal, no letters or labels, no UI, no border, no detached particles.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
+    },
+    {
+      "id": "alchemist-overcoat",
+      "kind": "armor",
+      "source": "assets/exploration/armor/originals/alchemist-overcoat.png",
+      "output": "public/exploration/armor/alchemist-overcoat.png",
+      "prompt": "Use case: stylized-concept. One isolated Egyptian fantasy RPG inventory armor: an empty Egyptian alchemist overcoat, earthy olive green and dark brown fabric, brass fasteners, practical belt with two small clearly distinct red and blue potion vials and leather utility pockets, modest middle-tier gear, no human or mannequin. Clean semi-realistic hand-painted 2D game equipment matching warm antique gold Egyptian dungeon loot, crisp readable silhouette at 48px, restrained ornament, soft warm upper-left lighting. Entire item centered with generous 12 percent transparent margins, no cropped tips or hems. Transparent background, clean alpha edges, no backdrop, no floor, no cast shadow, no pedestal, no letters or labels, no UI, no border, no detached particles.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
     }
   ]
 }

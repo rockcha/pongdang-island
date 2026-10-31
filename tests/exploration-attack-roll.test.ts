@@ -34,14 +34,15 @@ it('rolls all monster basic attacks before critical damage and player armor',()=
  for(const monster of explorationMonsters)for(const variance of [0,.5,.999])for(const critical of [false,true]){
   const initial=startMonsterCombat({...newPractice(()=>0),mp:15,potions:{health:0,mana:1}},monster.id)
   const result=resolveCombatTurn(initial,{type:'potion',kind:'mana'},rolls(...(monster.magic.length?[.999]:[]),.999,critical?0:.999,variance))
-  const expected=rollBasicAttack(monster.attack,()=>variance,monsterAttackVariance)*(critical?2:1)-1
-  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({damage:expected,critical,attackType:'physical',moveId:monster.basic.id})
+  const actualCritical=critical&&monster.critical>0
+  const expected=rollBasicAttack(monster.attack,()=>variance,monsterAttackVariance)*(actualCritical?2:1)-1
+  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({damage:expected,critical:actualCritical,attackType:'physical',moveId:monster.basic.id})
   expect(result.events.find(event=>event.kind==='monster')).toMatchObject({rawDamage:expected+1,defenseBlocked:1})
   expect(result.state.hp).toBe(100-expected)
  }
 })
 it('leaves monster magic and player magic fixed and avoids basic variance draws',()=>{
- for(const monster of explorationMonsters.filter(monster=>monster.magic.length)){
+ for(const monster of explorationMonsters.filter(monster=>monster.magic.length&&monster.magic[0].damage>0&&monster.pattern!=='hourglass')){
   const initial=startMonsterCombat({...newPractice(()=>0),mp:15,potions:{health:0,mana:1}},monster.id)
   const random=vi.fn(rolls(0))
   const result=resolveCombatTurn(initial,{type:'potion',kind:'mana'},random)

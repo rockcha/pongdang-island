@@ -1190,6 +1190,7 @@ html [data-slot=modal-viewport]:has(>.exploration-weapon-codex)>.exploration-wea
 /* Keep the camera on each room's subject instead of the empty foreground floor. */
 .exploration-game .exploration-scene.is-close-scene.has-dungeon-art::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:inherit;background-size:cover;background-position:var(--scene-focus,50%) var(--scene-focus-y,0%);transform:scale(var(--scene-zoom,1.5));transform-origin:var(--scene-focus,50%) var(--scene-focus-y,0%)}
 .exploration-scene[data-scene=rest-oasis]{--scene-focus:30%;--scene-zoom:2.2}
+.exploration-scene[data-scene=soul-lantern]{--scene-focus:50%;--scene-focus-y:20%;--scene-zoom:1}
 .exploration-scene[data-scene=rest-camp]{--scene-focus:0%;--scene-focus-y:15%;--scene-zoom:2.2}
 .exploration-scene[data-scene=rest-garden]{--scene-focus:45%;--scene-zoom:2.5}
 .exploration-scene[data-scene=curse]{--scene-focus:50%;--scene-zoom:2.6}
@@ -1382,3 +1383,10 @@ body:has(.exploration-game) .pongi-confirm [data-slot=confirm-actions]>button:la
 .exploration-game .exploration-player-status .exploration-combat-stats[data-attack-variance=true]>div{flex-direction:column;gap:2px;padding-block:3px}
 .exploration-game .exploration-combat-stats[data-attack-variance=true] :is(dt,dd){line-height:1.1}
 @media(max-height:540px),(max-width:360px){.exploration-game .exploration-combat-actions .combat-attack-stats{font-size:9px;gap:1px}.combat-attack-stats .exploration-stat-icon{width:9px;height:9px}}
+.exploration-room-mana-loss{color:#9acfee!important;text-shadow:0 0 20px #417da8}
+
+.exploration-monster-pattern{margin:8px auto;padding:8px 12px;max-width:520px;border:1px solid #b89a5044;border-radius:7px;background:#100d0ad9;color:#d8bd80;text-align:center;font-size:11px;line-height:1.65;position:relative;z-index:2}
+.exploration-monster-pattern[data-urgent=true]{border-color:#dc8e6177;color:#ffc08d;background:#31170ee6}
+.enemy-flee-art{display:flex;justify-content:center;align-items:center;min-height:320px;overflow:hidden}.enemy-flee-art img{width:220px;height:260px;object-fit:contain;animation:exploration-enemy-scurry 1.2s ease-in forwards}
+@keyframes exploration-enemy-scurry{to{transform:translateX(180px) rotate(8deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.enemy-flee-art img{animation:none;opacity:.45}}

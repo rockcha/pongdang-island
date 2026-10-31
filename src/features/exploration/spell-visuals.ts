@@ -1,8 +1,18 @@
-export type SpellShape='fire'|'drop'|'stone'|'thorns'|'rune'|'lance'|'snow'|'shards'|'chain'|'crown'|'storm'|'sun'|'shield'|'leaf'
-type Visual={color:string;accent:string;shape:SpellShape;size:number;count:number;target:'enemy'|'self'}
+import type extraGlyphs from './spell-glyphs.json'
+export type SpellShape=keyof typeof extraGlyphs|'fire'|'drop'|'stone'|'thorns'|'rune'|'lance'|'snow'|'shards'|'chain'|'crown'|'storm'|'sun'|'shield'|'leaf'
+type Visual={color:string;accent:string;shape:SpellShape;size:number;count:number;target:'enemy'|'self';aura?:'shield'|'leaf'}
 const enemy=(color:string,accent:string,shape:SpellShape,size:number,count=1):Visual=>({color,accent,shape,size,count,target:'enemy'})
 const self=(color:string,accent:string,shape:SpellShape,size:number):Visual=>({color,accent,shape,size,count:1,target:'self'})
 export const spellVisuals:Record<string,Visual>={
+ 'silver-crescent':{"shape":"crescent","color":"#b9d5f2","accent":"#f3f7ff","size":62,"count":1,"target":"enemy","aura":"shield"},
+ 'sand-swallow-feather':{"shape":"feather","color":"#e5c18b","accent":"#fff3d2","size":66,"count":1,"target":"self"},
+ 'little-lotus':{"shape":"lotus","color":"#a4dfbf","accent":"#fff1e8","size":70,"count":1,"target":"self"},
+ 'blood-moon-drain':{"shape":"bloodmoon","color":"#dd7c98","accent":"#ffe2c9","size":72,"count":2,"target":"enemy","aura":"leaf"},
+ 'crystal-petals':{"shape":"petals","color":"#b9a6ee","accent":"#eaffff","size":82,"count":1,"target":"self"},
+ 'dune-slumber':{"shape":"dunes","color":"#d0c19d","accent":"#caf2f5","size":66,"count":3,"target":"enemy"},
+ 'eclipse-serpent':{"shape":"serpent","color":"#aa7ac9","accent":"#ffd88b","size":106,"count":1,"target":"enemy"},
+ 'phoenix-breath':{"shape":"phoenix","color":"#ffae71","accent":"#fff6b8","size":112,"count":1,"target":"self"},
+ 'stellar-tomb-seal':{"shape":"obelisk","color":"#7eafd9","accent":"#f8e5ab","size":110,"count":3,"target":"enemy","aura":"shield"},
  ember:enemy('#ff9f4b','#fff0a0','fire',48),
  tide:self('#7bcbdc','#e2fcff','drop',65),
  light:self('#d5e9a0','#fff7c0','sun',60),

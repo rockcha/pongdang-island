@@ -37,29 +37,31 @@ it('lets an ordinary player open the feedback tab, submit and keep drafts across
 })
 it('keeps the codex header inside a separate scrolling dialog',()=>{
  render(<ExplorationPage/>);fireEvent.click(screen.getByRole('button',{name:'도감'}));capture('codex')
- expect(screen.getByRole('dialog',{name:'도감'})).toBeTruthy();expect(screen.getByRole('tabpanel',{name:'무기 45'})).toBeTruthy()
+ expect(screen.getByRole('dialog',{name:'도감'})).toBeTruthy();expect(screen.getByRole('tabpanel',{name:'무기 48'})).toBeTruthy()
 })
-it('shows owned equipment and compares each replacement before charging a full-bag purchase',()=>{
+it('shows owned equipment and buys a fourth item without replacing equipped gear',()=>{
  const initial=grantPracticeSupplies(newPractice(()=>0));let latest=initial
  function Shop(){const [state,setState]=useState(initial);latest=state;return <MerchantRoom state={state} onChange={setState} onDescend={()=>{}} onTalk={()=>{}}/>}
  render(<Shop/>);fireEvent.click(screen.getByRole('button',{name:'구매한다'}));capture('shop')
  fireEvent.click(screen.getByRole('button',{name:'내 장비',exact:true}));expect(screen.getByRole('region',{name:'내 장비'}).textContent).toContain('청동 단검')
  fireEvent.click(screen.getByRole('button',{name:'무기',exact:true}));fireEvent.click(within(screen.getByRole('region',{name:'무기'})).getAllByRole('button',{name:'구매',exact:true})[0])
- const comparison=screen.getByRole('region',{name:'구매 장비 비교'});expect(within(comparison).getAllByRole('radio')).toHaveLength(3);expect(comparison.textContent).toContain('공격력');expect(comparison.textContent).toContain('치명타');capture('replacement')
- fireEvent.click(screen.getByRole('button',{name:'교체하지 않기'}));expect(latest).toBe(initial)
- fireEvent.click(within(screen.getByRole('region',{name:'무기'})).getAllByRole('button',{name:'구매',exact:true})[0]);fireEvent.click(screen.getAllByRole('radio')[0]);fireEvent.click(screen.getByRole('button',{name:/교체하고 구매/}))
- expect(latest.gold).toBeLessThan(initial.gold);expect(latest.weapons).toHaveLength(3);expect(latest.weapons.some(item=>item.id===initial.weaponId)).toBe(false);expect(latest.weapons.some(item=>item.id===latest.weaponId)).toBe(true)
+ expect(screen.queryByRole('region',{name:'구매 장비 비교'})).toBeNull()
+ expect(latest.gold).toBeLessThan(initial.gold);expect(latest.weapons).toHaveLength(4);expect(latest.weaponId).toBe(initial.weaponId)
+ for(const gear of initial.weapons)expect(latest.weapons).toContainEqual(gear)
 })
-it('allows leaving full-bag loot without replacing equipment',()=>{
- const state=grantPracticeSupplies(newPractice()),loot=drawRoomLoot(state,'starter',()=>0),claim=vi.fn(),decline=vi.fn()
- render(<LootDialog loot={loot} state={state} onClaim={claim} onDecline={decline}/>);expect(screen.getAllByRole('radio')).toHaveLength(3);capture('loot')
- fireEvent.click(screen.getByRole('button',{name:'교체하지 않기'}));expect(decline).toHaveBeenCalledOnce();expect(claim).not.toHaveBeenCalled()
+
+it('offers only storage for discovered loot regardless of inventory size',()=>{
+ const state=grantPracticeSupplies(newPractice()),loot=drawRoomLoot(state,'starter',()=>0),claim=vi.fn()
+ render(<LootDialog loot={loot} onClaim={claim}/>);expect(screen.queryByRole('radio')).toBeNull();capture('loot')
+ fireEvent.click(screen.getByRole('button',{name:'보관함에 넣기'}));expect(claim).toHaveBeenCalledOnce()
 })
-it('rejects invalid or unaffordable replacements without changing gold or gear',()=>{
+
+it('rejects unlisted and unaffordable purchases without changing gold or gear',()=>{
  const state=grantPracticeSupplies(newPractice(()=>0)),id=state.market.weaponIds[0]
- expect(buyMerchantItem(state,id,1,'missing')).toBe(state)
- const poor={...state,gold:0};expect(buyMerchantItem(poor,id,1,state.weaponId)).toBe(poor)
+ expect(buyMerchantItem(state,'missing')).toBe(state)
+ const poor={...state,gold:0};expect(buyMerchantItem(poor,id)).toBe(poor)
 })
+
 it('never puts either type of merchant on floor one and preserves the fixed floor-three shop',()=>{
  for(let seed=0;seed<500;seed++){expect(drawPracticeFloor(1,seededRandom(seed)).doors.some(id=>id.startsWith('merchant-')||id.startsWith('magic-'))).toBe(false);expect(drawPracticeFloor(3,seededRandom(seed)).doors).toContain('merchant-hasan')}
 })

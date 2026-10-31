@@ -4,6 +4,15 @@ import type {WeaponTier} from './weapon-catalog'
 // should reference these IDs and prices rather than duplicating price tables.
 export type PlannedSpell={id:string;name:string;tier:WeaponTier;kind:'damage'|'damage-status'|'debuff'|'buff'|'healing'|'cleanse';mana:number;learnPrice:number;description:string;available:true;image?:string}
 export const plannedSpells:PlannedSpell[]=[
+ {"id":"silver-crescent","name":"은빛 초승달","tier":"starter","kind":"damage","mana":6,"learnPrice":340,"description":"피해 18 · 보호막 4 · 2턴","available":true,"image":"/exploration/magic/silver-crescent.svg"},
+ {"id":"sand-swallow-feather","name":"모래제비의 깃","tier":"starter","kind":"buff","mana":5,"learnPrice":320,"description":"공격력 +4 · 치명타 확률 +5%p · 다음 행동 2턴","available":true,"image":"/exploration/magic/sand-swallow-feather.svg"},
+ {"id":"little-lotus","name":"작은 연꽃","tier":"starter","kind":"healing","mana":6,"learnPrice":380,"description":"내 상태이상 1개 해제 후 체력 12 회복","available":true,"image":"/exploration/magic/little-lotus.svg"},
+ {"id":"blood-moon-drain","name":"붉은 달의 흡수","tier":"advanced","kind":"damage","mana":9,"learnPrice":850,"description":"피해 32 · 체력 10 회복","available":true,"image":"/exploration/magic/blood-moon-drain.svg"},
+ {"id":"crystal-petals","name":"수정 꽃잎","tier":"advanced","kind":"buff","mana":7,"learnPrice":800,"description":"보호막 18 · 3턴 · 물리·마법 공격 피해 흡수","available":true,"image":"/exploration/magic/crystal-petals.svg"},
+ {"id":"dune-slumber","name":"모래 잠재우기","tier":"advanced","kind":"damage-status","mana":9,"learnPrice":850,"description":"피해 20 · 확정 빙결: 행동 1회 봉쇄 · 연속 빙결 불가","available":true,"image":"/exploration/magic/dune-slumber.svg"},
+ {"id":"eclipse-serpent","name":"일식의 뱀","tier":"ultimate","kind":"damage-status","mana":18,"learnPrice":2800,"description":"피해 90 · 확정 화상: 받는 치유량 80% 감소 · 3턴","available":true,"image":"/exploration/magic/eclipse-serpent.svg"},
+ {"id":"phoenix-breath","name":"불사조의 숨결","tier":"ultimate","kind":"healing","mana":18,"learnPrice":2800,"description":"내 상태이상 전부 해제 후 체력 65 회복","available":true,"image":"/exploration/magic/phoenix-breath.svg"},
+ {"id":"stellar-tomb-seal","name":"별무덤의 봉인","tier":"ultimate","kind":"damage-status","mana":19,"learnPrice":3000,"description":"피해 65 · 확정 약화: 공격 피해 6 감소 · 3턴 · 보호막 12 · 2턴","available":true,"image":"/exploration/magic/stellar-tomb-seal.svg"},
  {id:'sandstone-bolt',name:'사암탄',tier:'starter',kind:'damage',mana:5,learnPrice:260,description:'피해 26',available:true,image:'/exploration/magic/sandstone-bolt.svg'},
  {id:'ember-brand',name:'잿불 낙인',tier:'starter',kind:'damage-status',mana:6,learnPrice:300,description:'피해 18 · 50% 확률로 화상: 받는 치유량 40% 감소 · 2턴',available:true,image:'/exploration/magic/ember-brand.svg'},
  {id:'crimson-shards',name:'핏빛 파편',tier:'advanced',kind:'damage-status',mana:7,learnPrice:650,description:'피해 34 · 70% 확률로 출혈: 턴당 피해 3 · 3턴',available:true,image:'/exploration/magic/crimson-shards.svg'},

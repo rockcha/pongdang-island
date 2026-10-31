@@ -132,6 +132,15 @@
       "prompt": "Use case: stylized-concept. Asset type: one transparent full-body final boss sprite for an Egyptian fantasy dungeon RPG. The supplied Anubis image is STYLE reference only: match its polished painted 2D materials, warm gold highlights and clean readable silhouette, but create a completely different character. Subject: fictional Golden King Raseph, a majestic human-shaped pharaoh, front facing, upright and dignified, wearing an ornate gold and lapis striped nemes headdress with a turquoise sun jewel, smooth gold royal mask with calm glowing turquoise eye slits, richly layered royal golden armor over deep navy cloth, broad turquoise-and-gold collar, long regal navy and gold waist panels. Holds a tall slender sun-disk scepter in one hand, the other hand slightly open commanding thin gold chain loops that stay near the hand. Full figure and both feet visible with comfortable transparent padding; centered square composition, entire scepter fits. Regal and formidable but clean and approachable fantasy art rather than horror. No dog/jackal head, no mummy wrappings, no exposed skeleton, gore, decay or frightening expression. No throne, room, scenery, ground plane, cast floor shadow, floating text, UI, watermark, detached sparks, giant halo or background. Genuine transparent alpha with clean edges. Readable at 200 pixels tall.",
       "source": "assets/exploration/rooms/originals/golden-pharaoh.png",
       "output": "public/exploration/rooms/golden-pharaoh.png"
+    },
+    {
+      "id": "soul-lantern",
+      "kind": "background",
+      "source": "assets/exploration/rooms/originals/soul-lantern.png",
+      "output": "public/exploration/rooms/soul-lantern.webp",
+      "prompt": "Use case: stylized-concept. Create a portrait 3:4 background painting for an Egyptian fantasy dungeon RPG soul-lantern sanctuary. A single magnificent ancient bronze and muted-gold Egyptian lantern sits on a low intricately carved sandstone pedestal very close to camera, large clearly visible central focal object filling the middle upper half. Its translucent turquoise soul flame illuminates delicate winged ankh carvings and drifting wisps trapped INSIDE the lantern glass, soft warm candles along the sides. Close intimate shrine with rich engraved stone walls, modest lapis ornament, reassuring mystical atmosphere, clean polished semi-realistic hand-painted fantasy art, detailed material readability and beautiful controlled lighting. Eye-level close framing, only a little ground visible; foreground lower quarter is quiet dark stone and shadow to support existing dialogue UI. No people, no characters, no skulls, no gore, no UI, no icon symbols overlaid, no readable writing, no border, no watermark. Lantern is a real physical object integrated into the scene, not a floating inventory icon.",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-01"
     }
   ]
 }

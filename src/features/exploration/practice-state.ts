@@ -9,7 +9,7 @@ import {practiceSpellLearningPrices} from './spell-catalog'
 import {drawFloorMarket,type FloorMarket} from './merchant-stock'
 import {healingAfterReduction} from './status-effects'
 import type {ShamanStock} from './shaman-stock'
-export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
+export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;maxManaBonus?:number;spellManaDiscount?:number;victoryManaRestore?:number;openingShield?:number;potionBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
 export type Spell={id:string;name:string;description:string;message:string;mana:number;image?:string;learnPrice?:number}
 export const starterWeapon:Gear={id:'dull-dagger',name:'무딘 단검',description:'손에 익은 오래된 단검.',attack:10,critical:5,image:'/exploration/weapons/dull-dagger.png'}
 export const practiceSpells:Spell[]=[
@@ -18,9 +18,10 @@ export const practiceSpells:Spell[]=[
  {id:'light',mana:5,name:'길잡이 빛',description:'빛으로 어두운 길의 흔적을 살핍니다.',message:'푸른 빛이 세 문 앞의 발자국을 밝힙니다.'},
  {id:'sand',mana:7,name:'모래의 속삭임',description:'모래에 남은 오래된 이야기를 듣습니다.',message:'모래알 사이로 알아들을 수 없는 속삭임이 들립니다.'},
 ].map(spell=>({...spell,image:`/exploration/magic/${spell.id}.png`,learnPrice:practiceSpellLearningPrices[spell.id as keyof typeof practiceSpellLearningPrices]}))
-export type CombatState={enemyAttackBonus?:number;ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns:number};attackBuff?:{attack:number;critical:number;turns:number}}
+export type MonsterPatternState={healsUsed?:number;shellHits?:number;fleeReady?:boolean;charging?:boolean;mirrorGuard?:'physical'|'magic';stealsUsed?:number;stolenGold?:number}
+export type CombatState={pattern?:MonsterPatternState;enemyFled?:boolean;ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns?:number};attackBuff?:{attack:number;critical:number;turns:number}}
 export const playerMaxMp=40
-export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp-(state.maxManaSacrifice??0))}
+export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp+equippedGearBonus(state,'maxManaBonus'))}
 export function playerAttackStats(state:PracticeState){
  const weapon=state.weapons.find(item=>item.id===state.weaponId),combat=state.combat?.status==='active'?state.combat:undefined
  const weaken=combat?.playerWeaken??0
@@ -31,7 +32,7 @@ export const merchantPotions=[
  {id:'health-potion',kind:'health' as const,name:'체력 포션',amount:30,price:100,description:'체력 30 회복',image:'/exploration/potions/health-potion.png'},
  {id:'mana-potion',kind:'mana' as const,name:'마나 포션',amount:15,price:100,description:'마나 15 회복',image:'/exploration/potions/mana-potion.png'},
 ]
-export type PracticeState={bossRestPending?:boolean;equipmentMerchantVisits?:number[];supplyChecks?:number[];forcedMerchant?:{floor:number;id:import('./shopkeepers').ShopkeeperId;phase:'pending'|'active'};nameStory?:{choice?:'restored'|'left';recordRead?:boolean;nameLearned?:boolean;met?:boolean;gateOpened?:boolean;guardianDefeated?:boolean;rewardClaimed?:boolean};maxManaSacrifice?:number;soulLantern?:'ready'|'spent';cursedEyeBattles?:number;pendingFloorAdvance?:number;mode?:ExplorationMode;completed?:boolean;finalBossDefeated?:boolean;acquiredIds?:string[];roomVisitKey?:string;gold:number;hp:number;mp:number;weapons:Gear[];armor:Gear[];spells:Spell[];weaponId:string;armorId:string;equippedSpells:string[];door:number|null;supplies:boolean;combat:CombatState|null;escapeBoost:number;market:FloorMarket;shamanStock?:ShamanStock|null;merchantStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,import('./shop-state').EquipmentStock>>;shamanStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,ShamanStock>>;potions:Record<PotionKind,number>;playerEffects?:import('./ailments').EnemyAilment[]}
+export type PracticeState={guardianCheckpoint?:boolean;bossRestPending?:boolean;equipmentMerchantVisits?:number[];supplyChecks?:number[];forcedMerchant?:{floor:number;id:import('./shopkeepers').ShopkeeperId;phase:'pending'|'active'};nameStory?:{choice?:'restored'|'left';recordRead?:boolean;nameLearned?:boolean;met?:boolean;gateOpened?:boolean;guardianDefeated?:boolean;rewardClaimed?:boolean};maxHpSacrifice?:number;soulLantern?:'ready'|'spent';pendingFloorAdvance?:number;mode?:ExplorationMode;completed?:boolean;finalBossDefeated?:boolean;acquiredIds?:string[];roomVisitKey?:string;gold:number;hp:number;mp:number;weapons:Gear[];armor:Gear[];spells:Spell[];weaponId:string;armorId:string;equippedSpells:string[];door:number|null;supplies:boolean;combat:CombatState|null;escapeBoost:number;market:FloorMarket;shamanStock?:ShamanStock|null;merchantStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,import('./shop-state').EquipmentStock>>;shamanStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,ShamanStock>>;potions:Record<PotionKind,number>;playerEffects?:import('./ailments').EnemyAilment[]}
 export function newPractice(random=Math.random,mode:ExplorationMode='test'):PracticeState{return {acquiredIds:[starterWeapon.id,starterArmor.id],...(mode==='practice'?{mode}:{}),gold:mode==='practice'?100:100000,hp:100,mp:playerMaxMp,weapons:[starterWeapon],armor:[starterArmor],spells:[],weaponId:starterWeapon.id,armorId:starterArmor.id,equippedSpells:[],door:null,supplies:false,combat:null,escapeBoost:0,market:mode==='practice'?drawPracticeFloor(1,random):drawFloorMarket(1,random),potions:{health:0,mana:0}}}
 
 export const merchantGoods=[
@@ -47,7 +48,7 @@ export function floorMerchantGoods(state:PracticeState){
  const acquired=acquiredItemIds(state)
  return ids.flatMap(id=>merchantGoods.filter(item=>item.id===id&&(item.kind==='potion'||!acquired.has(item.id))))
 }
-export function purchaseBlock(state:PracticeState,id:string,quantity=1,replaceId?:string):string|null{
+export function purchaseBlock(state:PracticeState,id:string,quantity=1):string|null{
  if(!Number.isSafeInteger(quantity)||quantity<1)return '수량 확인'
  if(state.combat?.status==='active')return '전투 중에는 구매할 수 없어요.'
  const item=floorMerchantGoods(state).find(item=>item.id===id)
@@ -56,38 +57,30 @@ export function purchaseBlock(state:PracticeState,id:string,quantity=1,replaceId
  if(quantity!==1)return '장비는 1개씩 구매해요.'
  const owned=item.kind==='weapon'?state.weapons:item.kind==='armor'?state.armor:state.spells
  if(owned.some(value=>value.id===id))return '보유 중'
- if(replaceId&&!owned.some(value=>value.id===replaceId))return '교체할 장비를 확인해주세요.'
- if(item.kind!=='magic'&&owned.length>=3&&!replaceId)return '보관 칸 부족'
  if(state.gold<item.price)return '골드 부족'
  return null
 }
-export function buyMerchantItem(state:PracticeState,id:string,quantity=1,replaceId?:string):PracticeState{
- if(purchaseBlock(state,id,quantity,replaceId))return state
+export function buyMerchantItem(state:PracticeState,id:string,quantity=1):PracticeState{
+ if(purchaseBlock(state,id,quantity))return state
  const item=merchantGoods.find(item=>item.id===id)!
  const next={...state,gold:state.gold-item.price*quantity,...(item.kind!=='potion'?{acquiredIds:recordAcquired(state,item.id)}:{})}
  if(item.kind==='potion')return {...next,potions:{...state.potions,[item.potionKind]:state.potions[item.potionKind]+quantity}}
- if(item.kind==='weapon')return {...next,weapons:[...state.weapons.filter(gear=>gear.id!==replaceId),item.gear],weaponId:replaceId===state.weaponId?item.id:state.weaponId}
- if(item.kind==='armor'){const equipped={...next,armor:[...state.armor.filter(gear=>gear.id!==replaceId),item.gear],armorId:replaceId===state.armorId?item.id:state.armorId};return {...equipped,hp:Math.min(equipped.hp,playerMaxHp(equipped))}}
+ if(item.kind==='weapon')return clampGearResources({...next,weapons:[...state.weapons,item.gear]})
+ if(item.kind==='armor'){const equipped={...next,armor:[...state.armor,item.gear]};return clampGearResources(equipped)}
  return {...next,spells:[...state.spells,practiceSpells.find(spell=>spell.id===item.id)!]}
-}
-export function discardGear(state:PracticeState,kind:'weapon'|'armor',id:string):PracticeState{
- const items=kind==='weapon'?state.weapons:state.armor
- if(items.length<=1||(kind==='weapon'?state.weaponId:state.armorId)===id||!items.some(item=>item.id===id))return state
- const acquiredIds=recordAcquired(state,id)
- return kind==='weapon'?{...state,acquiredIds,weapons:items.filter(item=>item.id!==id)}:{...state,acquiredIds,armor:items.filter(item=>item.id!==id)}
 }
 export function grantPracticeSupplies(state:PracticeState):PracticeState{
  if(state.mode==='practice'||state.supplies)return state
  const supplies={...state,supplies:true,weapons:[starterWeapon,{id:'bronze-blade',name:'청동 단검',description:'연습용 · 날이 선 청동 단검.',attack:15,critical:3},{id:'sand-staff',escapeBonus:5,name:'모래 지팡이',description:'연습용 · 모래의 힘이 깃든 지팡이.',attack:9,critical:12}],armor:practiceArmor,spells:practiceSpells}
- const merge=<T extends {id:string}>(owned:T[],added:T[],limit:number)=>[...owned,...added.filter(item=>!owned.some(value=>value.id===item.id))].slice(0,limit)
- const next={...supplies,weapons:merge(state.weapons,supplies.weapons,3),armor:merge(state.armor,supplies.armor,3),spells:merge(state.spells,practiceSpells,practiceSpells.length)}
+ const merge=<T extends {id:string}>(owned:T[],added:T[])=>[...owned,...added.filter(item=>!owned.some(value=>value.id===item.id))]
+ const next={...supplies,weapons:merge(state.weapons,supplies.weapons),armor:merge(state.armor,supplies.armor),spells:merge(state.spells,practiceSpells)}
  return {...next,acquiredIds:recordAcquired(next,...acquiredItemIds(state))}
 }
 export function equipGear(state:PracticeState,kind:'weapon'|'armor',id:string,allowCombat=false):PracticeState{
  if(state.combat?.status==='active'&&!allowCombat)return state
  if(!(kind==='weapon'?state.weapons:state.armor).some(item=>item.id===id))return state
  const next={...state,[kind==='weapon'?'weaponId':'armorId']:id}
- return kind==='armor'?{...next,hp:Math.min(state.hp,playerMaxHp(next))}:next
+ return clampGearResources(next)
 }
 export function toggleSpell(state:PracticeState,id:string):PracticeState{
  if(!state.spells.some(spell=>spell.id===id))return state
@@ -95,14 +88,34 @@ export function toggleSpell(state:PracticeState,id:string):PracticeState{
  return state.equippedSpells.length<2?{...state,equippedSpells:[...state.equippedSpells,id]}:state
 }
 
+export function spellManaCost(state:PracticeState,spell:Pick<Spell,'mana'>){return Math.max(1,spell.mana-equippedGearBonus(state,'spellManaDiscount'))}
+export function potionRecoveryAmount(state:PracticeState,kind:PotionKind){const amount=merchantPotions.find(item=>item.kind===kind)!.amount+equippedGearBonus(state,'potionBonus');return kind==='health'?healingAfterReduction(amount,state.playerEffects??[]):amount}
+export function cleanseSpellState<T extends PracticeState>(state:T,count?:number):T{
+ const next={...state,playerEffects:[...(state.playerEffects??[])],...(state.combat?{combat:{...state.combat}}:{})} as T
+ if(count===undefined){next.playerEffects=[];if(next.combat){delete next.combat.playerBlind;delete next.combat.playerWeaken;delete next.combat.magicResistanceDown}return next}
+ let remaining=count
+ while(remaining-->0){
+  if(next.playerEffects!.length){next.playerEffects=next.playerEffects!.slice(1);continue}
+  if(!next.combat)break
+  const key=(['playerBlind','playerWeaken','magicResistanceDown'] as const).find(key=>!!next.combat?.[key])
+  if(!key)break
+  delete next.combat[key]
+ }
+ return next
+}
 export function castSpell(state:PracticeState,id:string):PracticeState{
  const spell=state.spells.find(value=>value.id===id)
- if(!spell||!state.equippedSpells.includes(id)||state.mp<spell.mana)return state
+ if(!spell||!state.equippedSpells.includes(id)||state.mp<spellManaCost(state,spell))return state
  const power=spellMechanics[id]
- return {...state,mp:state.mp-spell.mana,...(power?.healing?{hp:Math.min(playerMaxHp(state),state.hp+healingAfterReduction(power.healing,state.playerEffects??[]))}:{}),...(power?.cleanse?{playerEffects:[]}:{} )}
+ let next={...state,mp:state.mp-spellManaCost(state,spell)}
+ if(power?.cleanse||power?.cleanseCount)next=cleanseSpellState(next,power.cleanse?undefined:power.cleanseCount)
+ if(power?.healing)next={...next,hp:Math.min(playerMaxHp(next),next.hp+healingAfterReduction(power.healing,next.playerEffects??[]))}
+ return next
 }
 
-export function playerMaxHp(state:PracticeState){return 100+Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.maxHpBonus??0)}
+export function equippedGearBonus(state:PracticeState,key:'maxHpBonus'|'maxManaBonus'|'spellManaDiscount'|'victoryManaRestore'|'openingShield'|'potionBonus'){return Math.max(0,state.weapons.find(gear=>gear.id===state.weaponId)?.[key]??0)+Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.[key]??0)}
+export function playerMaxHp(state:PracticeState){return Math.max(1,100+equippedGearBonus(state,'maxHpBonus')-(state.maxHpSacrifice??0))}
+export function clampGearResources(state:PracticeState):PracticeState{return {...state,hp:Math.min(state.hp,playerMaxHp(state)),mp:Math.min(state.mp,playerManaMax(state))}}
 export type IncomingAttack='physical'|'magic'
 // Evasion belongs only to physical basic attacks. Spells always use magic defense.
 export function incomingDamage(state:PracticeState,amount:number,type:IncomingAttack,guard=0,magicResistanceDown=state.combat?.magicResistanceDown??0){
@@ -122,6 +135,6 @@ export function potionBlock(state:PracticeState,kind:PotionKind,duringCombat=fal
 }
 export function usePotion(state:PracticeState,kind:PotionKind,duringCombat=false):PracticeState{
  if(potionBlock(state,kind,duringCombat))return state
- const amount=merchantPotions.find(item=>item.kind===kind)!.amount
- return {...state,potions:{...state.potions,[kind]:state.potions[kind]-1},...(kind==='health'?{hp:Math.min(playerMaxHp(state),state.hp+healingAfterReduction(amount,state.playerEffects??[]))}:{mp:Math.min(playerManaMax(state),state.mp+amount)})}
+ const amount=potionRecoveryAmount(state,kind)
+ return {...state,potions:{...state.potions,[kind]:state.potions[kind]-1},...(kind==='health'?{hp:Math.min(playerMaxHp(state),state.hp+amount)}:{mp:Math.min(playerManaMax(state),state.mp+amount)})}
 }

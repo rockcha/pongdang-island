@@ -1,6 +1,15 @@
 ﻿import type {EnemyAilment} from './ailments'
-export type SpellMechanics={damage?:number;healing?:number;guard?:number;guardTurns?:number;stun?:boolean;cleanse?:boolean;shield?:{remaining:number;turns:number};attackBuff?:{attack:number;critical:number;turns:number};ailment?:EnemyAilment&{chance:number}}
+export type SpellMechanics={damage?:number;healing?:number;guard?:number;guardTurns?:number;stun?:boolean;cleanse?:boolean;cleanseCount?:number;shield?:{remaining:number;turns:number};attackBuff?:{attack:number;critical:number;turns:number};ailment?:EnemyAilment&{chance:number}}
 export const spellMechanics:Record<string,SpellMechanics>={
+ 'silver-crescent':{"damage":18,"shield":{"remaining":4,"turns":2}},
+ 'sand-swallow-feather':{"attackBuff":{"attack":4,"critical":5,"turns":2}},
+ 'little-lotus':{"healing":12,"cleanseCount":1},
+ 'blood-moon-drain':{"damage":32,"healing":10},
+ 'crystal-petals':{"shield":{"remaining":18,"turns":3}},
+ 'dune-slumber':{"damage":20,"ailment":{"kind":"freeze","amount":1,"turns":1,"chance":100}},
+ 'eclipse-serpent':{"damage":90,"ailment":{"kind":"burn","amount":80,"turns":3,"chance":100}},
+ 'phoenix-breath':{"healing":65,"cleanse":true},
+ 'stellar-tomb-seal':{"damage":65,"ailment":{"kind":"weaken","amount":6,"turns":3,"chance":100},"shield":{"remaining":12,"turns":2}},
  'sandstone-bolt':{damage:26},
  'ember-brand':{damage:18,ailment:{kind:'burn',amount:40,turns:2,chance:50}},
  'crimson-shards':{damage:34,ailment:{kind:'bleed',amount:3,turns:3,chance:70}},

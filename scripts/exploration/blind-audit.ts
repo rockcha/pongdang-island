@@ -1,12 +1,12 @@
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
-import {newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,discardGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
+import {spellManaCost,newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {resolveCombatTurn,startMonsterCombat,type CombatAction} from '../../src/features/exploration/combat-state'
 import {getFloorMonster,type MonsterId} from '../../src/features/exploration/monster-catalog'
 import {explorationWeapons} from '../../src/features/exploration/weapon-catalog'
 import {explorationArmor} from '../../src/features/exploration/armor-catalog'
 import {drawPracticeFloor,practiceFinalFloor,practiceFinalBossId} from '../../src/features/exploration/campaign'
-import {advanceExploration,needsFinalBoss,enterBossOasis} from '../../src/features/exploration/run-state'
+import {advanceExploration,needsFinalBoss,enterBossOasis,needsNameGuardian,meetNameGuardian,finishNameGuardian} from '../../src/features/exploration/run-state'
 import {createRoomVisit,enterRoomVisit,getAdventureRoom,restFully,sphinxPenalty} from '../../src/features/exploration/adventure-rooms'
 import {drawRoomLoot,receiveRoomLoot,refreshRoomLoot,sellRoomGear,type RoomLoot} from '../../src/features/exploration/room-loot'
 import {getShopkeeper,shopkeeperForRoom} from '../../src/features/exploration/shopkeepers'
@@ -50,7 +50,7 @@ export function prepareLoadout(state:PracticeState){
 export function auditAction(state:PracticeState,policy:AuditPolicy):CombatAction{
  const combat=state.combat!,monster=getFloorMonster(combat.monsterId,state.market.floor,true),stats=playerAttackStats(state)
  const basic=Math.max(1,stats.attack-monster.defense),criticalExpected=basic*(1+stats.critical/100)
- const affordable=policy.spells?state.spells.filter(spell=>(policy.combat==='tactical'||state.equippedSpells.includes(spell.id))&&state.mp>=spell.mana):[]
+ const affordable=policy.spells?state.spells.filter(spell=>(policy.combat==='tactical'||state.equippedSpells.includes(spell.id))&&state.mp>=spellManaCost(state,spell)):[]
  if(basic>=combat.enemyHp)return {type:'attack'}
  const lethal=affordable.find(spell=>Math.max(0,(spellMechanics[spell.id]?.damage??0)-monster.magicResistance)>=combat.enemyHp)
  if(lethal&&policy.combat!=='basic')return {type:'magic',id:lethal.id}
@@ -92,9 +92,8 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
   for(const kind of ['health','mana'] as const){const delta=after.potions[kind]-before.potions[kind];if(delta>0)inc(m,kind+'Gained:'+source,delta);if(delta<0)inc(m,kind+'Lost:'+source,-delta)}
  }
  const claim=(planned:RoomLoot,random:()=>number)=>{
-  const before=state,loot=refreshRoomLoot(state,planned,random),bag=loot.kind==='weapon'?state.weapons:state.armor,score=loot.kind==='weapon'?weaponValue:armorValue
-  const replace=loot.kind!=='potion'&&bag.length>=3?[...bag].sort((a,b)=>score(a)-score(b))[0].id:undefined
-  state=receiveRoomLoot(state,loot,replace)
+  const before=state,loot=refreshRoomLoot(state,planned,random)
+  state=receiveRoomLoot(state,loot)
   if(state===before)throw Error('Loot could not be claimed')
   if(state.combat?.loot){if(state.combat.monsterId==='nameless-royal-warden'&&state.combat.status==='won'){state=progressNameStory(state,'claim');inc(m,'storyRewards')}state={...state,combat:{...state.combat!,lootClaimed:true}}}
   countDelta(before,state,'loot');inc(m,'loot:'+loot.kind);if(loot.kind!=='potion')inc(m,'lootTier:'+tier(loot.id))
@@ -155,7 +154,6 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
    for(const item of offers){
     const key=item.kind==='weapon'?'weapons':'armor',score=item.kind==='weapon'?weaponValue:armorValue
     if(state.gold<item.price||score(item.gear!)<=Math.max(...state[key].map(score)))continue
-    if(state[key].length>=3){const worst=[...state[key]].filter(gear=>gear.id!==(key==='weapons'?state.weaponId:state.armorId)).sort((a,b)=>score(a)-score(b))[0];if(worst)state=discardGear(state,key==='weapons'?'weapon':'armor',worst.id)}
     const before=state;state=buyMerchantItem(state,item.id)
     if(state!==before){inc(m,'spent:'+item.kind,item.price);inc(totals.purchases,item.id);if(!m.firstUpgradeFloor)m.firstUpgradeFloor=state.market.floor;state=prepareLoadout(state)}
    }
@@ -180,6 +178,7 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
   recover()
   const f=totals.floors[floor]??={n:0,hp:0,gold:0,hpPots:0,mpPots:0,deaths:0,tiers:{}}
   f.n++;f.hp+=state.hp/playerMaxHp(state);f.gold+=state.gold;f.hpPots+=state.potions.health;f.mpPots+=state.potions.mana;inc(f.tiers,tier(state.weaponId))
+  if(needsNameGuardian(state)){state=meetNameGuardian(state);const random=rng(seed,floor,34000);inc(totals.rooms,'nameless-guardian');if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');claim(drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0){f.deaths++;break};const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis);state=finishNameGuardian(state)}
   const index=blindDoorIndex(seed,floor),type=state.market.doors[index],random=rng(seed,floor,index*7919+9947)
   if(state.market.doors.length!==3)throw Error('Invalid doors')
   for(const room of state.market.doors)inc(totals.offered,room)
@@ -210,7 +209,7 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
      if(id==='broken-teleport')accept=policy.teleport&&state.hp<playerMaxHp(state)*.65
     }
     inc(totals.decisions,id+':'+(accept?'accept':'skip'))
-    if(accept){const before=state;state=acceptChoiceRoom(state,id,random);if(state!==before){inc(m,'contract:'+id);if(id==='cursed-gem-eye')inc(m,'goldEarned:gem',500);if(id==='broken-teleport')inc(m,'spent:teleport',200);if(id==='forbidden-trade')inc(m,'tradeHp',50);if(id==='deep-well')inc(m,'wellHealing',state.hp-before.hp)}}
+    if(accept){const before=state;state=acceptChoiceRoom(state,id,random);if(state!==before){inc(m,'contract:'+id);if(id==='cursed-gem-eye'){inc(m,'goldEarned:gem',state.gold-before.gold);inc(m,'gemManaLost',before.mp-state.mp)}if(id==='broken-teleport')inc(m,'spent:teleport',200);if(id==='forbidden-trade')inc(m,'tradeHp',50);if(id==='deep-well')inc(m,'wellHealing',state.hp-before.hp)}}
    }else if(room.kind==='story'){
     if(room.id==='erased-name'&&policy.story)state=progressNameStory(state,'restore')
     else if(room.id==='erased-name-record'&&policy.story)state=progressNameStory(state,'read-record')

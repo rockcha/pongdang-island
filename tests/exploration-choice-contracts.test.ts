@@ -1,26 +1,27 @@
 import {expect,it} from 'vitest'
 import {acceptChoiceRoom,choiceRoomBlock,forbiddenSpells} from '@/features/exploration/choice-room-state'
 import {fixedPracticeRooms,canUseTeleport,drawPracticeFloor} from '@/features/exploration/campaign'
-import {newPractice,playerManaMax,usePotion} from '@/features/exploration/practice-state'
+import {newPractice,playerManaMax,playerMaxHp,usePotion} from '@/features/exploration/practice-state'
 import {restFully} from '@/features/exploration/adventure-rooms'
 import {resolveCombatTurn,startMonsterCombat} from '@/features/exploration/combat-state'
 import {advanceExploration} from '@/features/exploration/run-state'
-it('sacrifices maximum mana once and respects the new cap through rest and potions',()=>{
+it('sacrifices maximum health once, leaves mana alone and respects the cap through rest and potions',()=>{
  const fresh=newPractice(()=>0),state=acceptChoiceRoom(fresh,'soul-lantern')
- expect(state.mp).toBe(30);expect(playerManaMax(state)).toBe(30);expect(state.soulLantern).toBe('ready')
+ expect(state.hp).toBe(90);expect(playerMaxHp(state)).toBe(90);expect(state.mp).toBe(40);expect(playerManaMax(state)).toBe(40);expect(state.soulLantern).toBe('ready')
  expect(acceptChoiceRoom(state,'soul-lantern')).toBe(state)
- expect(restFully({...state,mp:0}).mp).toBe(30)
- expect(usePotion({...state,mp:25,potions:{health:0,mana:1}},'mana').mp).toBe(30)
+ expect(restFully({...state,hp:1}).hp).toBe(90)
+ expect(usePotion({...state,hp:85,potions:{health:1,mana:0}},'health').hp).toBe(90)
+ expect(acceptChoiceRoom({...fresh,hp:45},'soul-lantern').hp).toBe(45)
  expect(fresh.mp).toBe(40)
 })
-it('revives from a lethal hit exactly once at 20 hp and keeps the mana sacrifice',()=>{
+it('revives from a lethal hit exactly once at 20 hp and keeps the health sacrifice',()=>{
  let state=startMonsterCombat({...acceptChoiceRoom(newPractice(()=>0),'soul-lantern'),hp:1,mp:0,potions:{health:0,mana:2}},'ancient-giant')
  let result=resolveCombatTurn(state,{type:'potion',kind:'mana'},()=>0)
  expect(result.state.hp).toBe(20);expect(result.state.soulLantern).toBe('spent');expect(result.state.combat?.status).toBe('active')
  expect(result.events.some(event=>event.healing===20&&event.kind==='system')).toBe(true)
  state={...result.state,hp:1,mp:0}
  result=resolveCombatTurn(state,{type:'potion',kind:'mana'},()=>0)
- expect(result.state.combat?.status).toBe('lost');expect(playerManaMax(result.state)).toBe(30)
+ expect(result.state.combat?.status).toBe('lost');expect(playerMaxHp(result.state)).toBe(90);expect(playerManaMax(result.state)).toBe(40)
 })
 it('also consumes the lantern for lethal bleeding',()=>{
  const state=startMonsterCombat({...acceptChoiceRoom(newPractice(()=>0),'soul-lantern'),hp:1,playerEffects:[{kind:'bleed',amount:3,turns:2}]},'sand-scorpion')
@@ -41,17 +42,15 @@ it('exchanges exactly 50 hp for an unowned advanced spell without charging block
  const full={...fresh,acquiredIds:forbiddenSpells(fresh).map(spell=>spell.id)}
  expect(choiceRoomBlock(full,'forbidden-trade')).toBeTruthy();expect(acceptChoiceRoom(full,'forbidden-trade')).toBe(full)
 })
-it('grants 500 gold and buffs exactly two encounters, including an escape',()=>{
- const initial=newPractice(()=>0),state=acceptChoiceRoom(initial,'cursed-gem-eye')
- expect(state.gold).toBe(initial.gold+500);expect(state.cursedEyeBattles).toBe(2)
- const first=startMonsterCombat(state,'sand-scorpion')
- expect(first.combat?.enemyAttackBonus).toBe(3);expect(first.cursedEyeBattles).toBe(1)
- expect(startMonsterCombat(first,'sand-scorpion')).toBe(first)
- const escaped=resolveCombatTurn(first,{type:'flee'},()=>0).state
- const second=startMonsterCombat(escaped,'sand-scorpion')
- expect(second.combat?.enemyAttackBonus).toBe(3);expect(second.cursedEyeBattles).toBe(0)
- const third=startMonsterCombat({...second,combat:null},'sand-scorpion')
- expect(third.combat?.enemyAttackBonus).toBeUndefined()
+it('rolls either gold or a current-mana loss with an exact fifty-percent boundary',()=>{
+ const initial=newPractice(()=>0)
+ for(const roll of [0,.25,.499999]){const random=()=>roll,state=acceptChoiceRoom(initial,'cursed-gem-eye',random);expect(state.gold).toBe(initial.gold+500);expect(state.mp).toBe(initial.mp);expect(startMonsterCombat(state,'sand-scorpion').combat?.monsterId).toBe('sand-scorpion')}
+ for(const roll of [.5,.75,.99999]){const state=acceptChoiceRoom(initial,'cursed-gem-eye',()=>roll);expect(state.gold).toBe(initial.gold);expect(state.mp).toBe(20);expect(playerManaMax(state)).toBe(40)}
+ expect(initial.mp).toBe(40);expect(initial.gold).toBe(100000)
+})
+it.each([0,3,19,20])('clamps the gem mana loss at zero for current mana %s',mp=>{
+ const state={...newPractice(),mp},result=acceptChoiceRoom(state,'cursed-gem-eye',()=>.5)
+ expect(result.mp).toBe(Math.max(0,mp-20));expect(result.gold).toBe(state.gold);expect(choiceRoomBlock(result,'cursed-gem-eye')).toBeNull()
 })
 it('teleports three floors, charges once, and never skips a fixed room',()=>{
  for(let floor=1;floor<=50;floor++){

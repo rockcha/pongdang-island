@@ -1,7 +1,9 @@
+import {canAppeaseNameGuardian,progressNameStory} from '../../src/features/exploration/name-story'
+import {drawRoomLoot} from '../../src/features/exploration/room-loot'
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
-﻿import {advanceExploration,needsFinalBoss,enterBossOasis} from '../../src/features/exploration/run-state'
-import {newPractice,playerMaxHp,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
+﻿import {advanceExploration,needsFinalBoss,enterBossOasis,needsNameGuardian,meetNameGuardian,finishNameGuardian} from '../../src/features/exploration/run-state'
+import {spellManaCost,newPractice,playerMaxHp,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {createRoomVisit,enterRoomVisit,restFully,sphinxPenalty,getAdventureRoom} from '../../src/features/exploration/adventure-rooms'
 import {receiveRoomLoot,refreshRoomLoot,sellRoomGear,type RoomLoot} from '../../src/features/exploration/room-loot'
 import {getShopkeeper,shopkeeperForRoom} from '../../src/features/exploration/shopkeepers'
@@ -30,10 +32,7 @@ function optimize(state:PracticeState){
 }
 function claim(state:PracticeState,planned:RoomLoot,random:()=>number){
  const loot=refreshRoomLoot(state,planned,random)
- const inventory=loot.kind==='weapon'?state.weapons:state.armor
- const score=loot.kind==='weapon'?weaponValue:armorValue
- const replace=loot.kind!=='potion'&&inventory.length>=3?[...inventory].sort((a,b)=>score(a)-score(b))[0].id:undefined
- const next=receiveRoomLoot(state,loot,replace)
+ const next=receiveRoomLoot(state,loot)
  if(next===state)throw Error('Simulation could not claim loot')
  return optimize(next.combat?.loot?{...next,combat:{...next.combat,lootClaimed:true}}:next)
 }
@@ -49,7 +48,6 @@ function shop(state:PracticeState,type:RoomTypeId,random:()=>number){
    const key=item.kind==='weapon'?'weapons':'armor',score=item.kind==='weapon'?weaponValue:armorValue
    const reserve=next.hp<playerMaxHp(next)*.45&&!next.potions.health?100:0
    if(score(item.gear!)<=Math.max(...next[key].map(score))||next.gold<item.price+reserve)continue
-   if(next[key].length>=3)continue
    next=optimize(buyMerchantItem(next,item.id))
   }
   for(const kind of ['health','mana'] as const){const target=kind==='health'?2:next.spells.length?1:0;while(next.gold>=100&&next.potions[kind]<target)next=buyMerchantItem(next,kind==='health'?'health-potion':'mana-potion')}
@@ -73,7 +71,7 @@ function chooseAction(state:PracticeState,strategy:Strategy):CombatAction{
  const combat=state.combat!,monster=getFloorMonster(combat.monsterId,state.market.floor,true),weapon=state.weapons.find(item=>item.id===state.weaponId)!
  const basic=Math.max(1,(weapon.attack??1)-monster.defense),lethal=basic>=combat.enemyHp
  if(lethal)return {type:'attack'}
- const spells=state.spells.filter(item=>state.equippedSpells.includes(item.id)&&state.mp>=item.mana)
+ const spells=state.spells.filter(item=>state.equippedSpells.includes(item.id)&&state.mp>=spellManaCost(state,item))
  const lethalSpell=spells.find(item=>(spellMechanics[item.id]?.damage??0)-monster.magicResistance>=combat.enemyHp)
  if(lethalSpell&&strategy!=='fighter')return {type:'magic',id:lethalSpell.id}
  if(state.hp<playerMaxHp(state)*.4&&state.potions.health)return {type:'potion',kind:'health'}
@@ -116,6 +114,7 @@ export function simulateCampaign(seed:number,strategy:Strategy,quizAccuracy=.8,t
  for(let floor=1;floor<=practiceFinalFloor;floor++){
   result.reached=floor
   if(state.forcedMerchant){const profile=getShopkeeper(state.forcedMerchant.id);state=beginForcedMerchant(state,worldSeed(seed,floor));state=shop(state,profile.roomId,worldSeed(seed,floor));state=finishForcedMerchant(state)}
+  if(needsNameGuardian(state)){state=meetNameGuardian(state);const random=worldSeed(seed,floor);result.rooms['nameless-guardian']=(result.rooms['nameless-guardian']??0)+1;if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');state=claim(state,drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0)break;const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis);state=finishNameGuardian(state)}
   state=optimize(state)
   while(state.hp/playerMaxHp(state)<.6&&state.potions.health)state=usePotion(state,'health')
   if(floor===practiceFinalFloor&&checkFinalBoss){

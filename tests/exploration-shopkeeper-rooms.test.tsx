@@ -18,7 +18,7 @@ it.each(shopkeepers)('selects $name and opens their tier-specific shop',async pr
  expect(screen.getByRole('img',{name:profile.name}).getAttribute('src')).toBe(profile.portrait)
  if(process.env.SHOP_LAYOUT_QA)capture(profile.id)
  fireEvent.click(screen.getByRole('button',{name:profile.kind==='magic'?'마법을 살펴본다':'구매한다'}))
- const dialog=screen.getByRole('dialog');expect(within(dialog).getAllByRole('heading',{level:4})).toHaveLength(3)
+ const dialog=screen.getByRole('dialog');expect(within(dialog).getAllByRole('heading',{level:4})).toHaveLength(profile.kind==='magic'?3:5)
  expect(within(dialog).getByRole('heading',{name:new RegExp(profile.shopName)})).toBeTruthy()
  if(process.env.SHOP_LAYOUT_QA){
   capture(profile.id+'-shop')

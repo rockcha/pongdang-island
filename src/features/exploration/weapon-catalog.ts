@@ -32,6 +32,9 @@ const starterToolWeapons:CatalogWeapon[]=[
  {id:'fishing-hook-weapon',name:'낚시용 갈고리',tier:'starter',attack:12,critical:12,price:250,role:'낚시 갈고리 · 급소 공략',description:'손잡이를 감은 커다란 낚시 갈고리. 묵직한 타격보다 휘어진 촉으로 빈틈을 거는 치명타가 강점이다.',image:art('fishing-hook-weapon')},
 ]
 const advancedWeapons:CatalogWeapon[]=[
+ {id:'inscription-mage-staff',name:'비문술사의 지팡이',tier:'advanced',attack:15,critical:3,spellManaDiscount:1,price:950,role:'주술 지팡이 · 마나 절약',description:'고대 비문이 마력의 낭비를 줄인다. 마법 마나 소모가 1 감소하며, 최소 1을 소모한다.',image:art('inscription-mage-staff')},
+ {id:'lapis-moon-staff',name:'청금석 달지팡이',tier:'advanced',attack:16,critical:4,maxManaBonus:10,price:850,role:'달지팡이 · 최대 마나',description:'푸른 달구슬에 마력을 담는 지팡이. 장착하면 최대 마나가 10 증가하며, 현재 마나는 회복되지 않는다.',image:art('lapis-moon-staff')},
+ {id:'heartstone-warhammer',name:'심장석 전투망치',tier:'advanced',attack:17,critical:3,maxHpBonus:25,price:850,role:'전투망치 · 최대 체력',description:'붉은 심장석을 박은 묵직한 망치. 장착하면 최대 체력이 25 증가하며, 현재 체력은 회복되지 않는다.',image:art('heartstone-warhammer')},
  {id:'red-fang-sword',name:'붉은 송곳니 갈고리',tier:'advanced',attack:19,attackVariance:3,critical:10,price:800,role:'가시 갈고리 · 출혈',description:'안쪽으로 휜 붉은 갈고리의 가시가 상처를 남긴다. 걸어 당기는 각도에 따라 위력이 달라지고 출혈로 압박한다.',image:art('red-fang-sword'),proc:{kind:'bleed',chance:30,amount:3,turns:3}},
  {id:'glacier-guardian-spear',name:'빙하의 수호삼지창',tier:'advanced',attack:19,critical:8,price:850,role:'얼음 삼지창 · 빙결',description:'세 갈래 얼음 촉으로 틈을 좁히는 수호자의 창. 일정한 찌르기와 빙결로 적의 행동을 끊는 데 특화됐다.',image:art('glacier-guardian-spear'),proc:{kind:'freeze',chance:22,amount:1,turns:1}},
  {id:'sunfire-scimitar',name:'태양불꽃 향로추',tier:'advanced',attack:20,attackVariance:3,critical:10,price:780,role:'향로 사슬추 · 치유 억제',description:'불씨가 든 청동 향로를 사슬 끝에 매달았다. 휘두른 궤적에 따라 피해가 달라지며 화상으로 적이 받는 치유를 크게 줄인다.',image:art('sunfire-scimitar'),proc:{kind:'burn',chance:45,amount:70,turns:3}},
@@ -64,9 +67,13 @@ const sustainWeapons:CatalogWeapon[]=[
 ]
 export const explorationWeapons:CatalogWeapon[]=[...starterWeapons,...starterToolWeapons,...advancedWeapons,...ultimateWeapons,...sustainWeapons].map(weapon=>({...weapon,merchantAvailable:true}))
 
-export function hasWeaponEffect(gear:Gear){return !!(gear.proc||gear.lifesteal||gear.cleanseChance)}
+export function hasWeaponEffect(gear:Gear){return !!(gear.proc||gear.lifesteal||gear.cleanseChance||gear.spellManaDiscount||gear.victoryManaRestore||gear.openingShield||gear.potionBonus)}
 
 export function weaponEffectText(gear:Gear){
+ if(gear.spellManaDiscount)return `마법 마나 소모 −${gear.spellManaDiscount} · 최소 1`
+ if(gear.victoryManaRestore)return `전투 승리 시 마나 ${gear.victoryManaRestore} 회복`
+ if(gear.openingShield)return `전투 시작 시 보호막 ${gear.openingShield}`
+ if(gear.potionBonus)return `체력·마나 포션 회복량 +${gear.potionBonus}`
  if(gear.lifesteal)return `피흡 ${gear.lifesteal}% · 일반 공격으로 실제 입힌 피해에 비례해 체력 회복 (치명타 포함)`
  if(gear.cleanseChance)return `일반 공격 적중 시 ${gear.cleanseChance}% 확률로 내 상태이상 1개 해제`
  const p=gear.proc

@@ -44,7 +44,7 @@ it.each(['chest','investigate-guards','investigate-wall','investigate-alchemy'] 
 })
 it('keeps bosses and the sleeping giant out of ordinary monster draws',()=>{
  for(let index=0;index<100;index++)expect(['obsidian-anubis','ancient-giant']).not.toContain(drawMonster(()=>(index+.5)/100).id)
- expect(regularMonsters).toHaveLength(9)
+ expect(regularMonsters).toHaveLength(15)
 })
 it('guarantees special drops, refuses boss escape and grants exactly one ambush',()=>{
  const state=grantPracticeSupplies(newPractice())
@@ -55,10 +55,10 @@ it('guarantees special drops, refuses boss escape and grants exactly one ambush'
  expect(first.events.some(event=>event.kind==='monster')).toBe(false);expect(first.state.hp).toBe(state.hp)
  const second=resolveCombatTurn(first.state,{type:'attack'},()=>.5);expect(second.events[0].critical).toBe(false);expect(second.events.some(event=>event.kind==='monster')).toBe(true)
 })
-it('handles full bags, replacements, duplicate rejection and equipped sale protection',()=>{
+it('keeps every collected item, rejects duplicates and protects equipped sales',()=>{
  const state=grantPracticeSupplies(newPractice()),loot=drawRoomLoot(state,'starter',()=>0)
- expect(loot.kind).toBe('weapon');expect(receiveRoomLoot(state,loot)).toBe(state)
- const next=receiveRoomLoot(state,loot,state.weaponId);expect(next.weapons).toHaveLength(3);expect(next.weaponId).toBe(loot.id)
+ expect(loot.kind).toBe('weapon')
+ const next=receiveRoomLoot(state,loot);expect(next.weapons).toHaveLength(4);expect(next.weaponId).toBe(state.weaponId)
  const duplicate=receiveRoomLoot(next,loot);expect(duplicate).toBe(next)
  expect(gearSaleBlock(state,'weapon',state.weaponId)).toBeTruthy();expect(sellRoomGear(state,'weapon',state.weaponId)).toBe(state)
  const gear=state.weapons[1],sold=sellRoomGear(state,'weapon',gear.id);expect(sold.weapons).toHaveLength(2);expect(sold.gold).toBe(state.gold+gearSalePrice(gear))

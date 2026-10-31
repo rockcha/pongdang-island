@@ -13,6 +13,9 @@ html [data-slot=modal-viewport]>.exploration-modal{position:relative!important;i
 html [data-slot=modal-viewport]>.exploration-modal.exploration-codex{height:min(760px,calc(100dvh - 32px));width:min(800px,100%);max-width:100%!important;padding:18px;gap:10px}
 .exploration-codex>[data-slot=dialog-header],.exploration-codex>.exploration-codex-tabs{flex-shrink:0}
 .exploration-codex .weapon-codex-art{height:132px}
+.exploration-codex .weapon-codex-copy .equipment-attributes{display:flex;flex-wrap:wrap;gap:8px 14px}
+.exploration-codex .weapon-codex-copy footer>b{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;color:#e8c26d}
+.exploration-codex .weapon-codex-copy footer>svg{color:#e8c26d;width:16px;height:16px;flex-shrink:0}
 .exploration-codex .weapon-codex-note{font-size:10px;line-height:1.6}
 .exploration-modal.exploration-minimal-shop{overflow:hidden!important}
 .exploration-minimal-shop>.exploration-shop-items,.merchant-owned,.merchant-replacement{min-height:0;overflow-y:auto;overscroll-behavior:contain;flex:1 1 auto}

@@ -30,7 +30,7 @@ it('combines weapons, twenty-one spells and nineteen armor entries in one codex'
  expect(screen.queryByRole('group',{name:'무기 단계'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'고급 5'}))
  expect(within(panel).getAllByRole('heading')).toHaveLength(5)
- expect(within(panel).getAllByText('마법 저항력')).toHaveLength(5)
+ expect(within(panel).getAllByLabelText(/^마법 저항력 /)).toHaveLength(5)
  expect(within(panel).getByRole('img',{name:'불멸자의 왕포'}).getAttribute('src')).toBe('/exploration/armor/immortal-royal-robe.png')
 })
 it('supports keyboard tabs and preserves weapon filters when returning from another category',()=>{

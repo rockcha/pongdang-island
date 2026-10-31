@@ -397,7 +397,7 @@
 .exploration-enemy-art { flex:1; min-height:0; width:100%; display:flex; justify-content:center; align-items:center; }
 .exploration-enemy-art img { display:block; width:100%; height:100%; max-width:300px; object-fit:contain; filter:saturate(.7) brightness(.85) drop-shadow(0 12px 8px #0009); }
 .exploration-enemy-art img.has-turn { animation:scorpion-hit .25s ease-out; }
-.exploration-enemy-art.is-defeated { animation:combat-monster-vanish .9s ease-out both; pointer-events:none; }
+.exploration-enemy-art.is-defeated { animation:combat-monster-vanish .75s ease-out both; pointer-events:none; }
 @keyframes scorpion-hit { 0%,100% {transform:translateX(0)} 25% {transform:translateX(-4px)} 75% {transform:translateX(4px)} }
 .exploration-combat-controls { width:min(100%,400px); flex-shrink:0; position:relative; text-align:center; }
 .exploration-enemy-intent { font-size:10px; color:#d2bc98; background:#081415a0; padding:5px; border-radius:4px; }
@@ -873,7 +873,7 @@ html [data-slot=modal-viewport]:has(>.exploration-weapon-codex)>.exploration-wea
 }
 .exploration-game .is-victory .exploration-enemy-status { animation:combat-status-vanish .9s ease-out both; pointer-events:none; }
 .is-victory .exploration-monster-move { animation:combat-skills-vanish .9s ease-out both; }
-.combat-victory-gold { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:10px; color:#f2d475; font-size:clamp(24px,5vw,34px); font-weight:500; font-variant-numeric:tabular-nums; text-shadow:0 2px 9px #0009; pointer-events:none; animation:combat-victory-gold 1.6s ease-out both; }
+.combat-victory-gold { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:10px; color:#f2d475; font-size:clamp(24px,5vw,34px); font-weight:500; font-variant-numeric:tabular-nums; text-shadow:0 2px 9px #0009; pointer-events:none; animation:combat-victory-gold 1.333s ease-out both; }
 .exploration-game .is-victory .exploration-combat-controls { border:0; background:none; box-shadow:none; }
 .combat-victory-next { min-height:54px; }
 .combat-victory-next button { display:block; width:100%; min-height:48px; border:1px solid #b99a6060; border-radius:4px; background:#112021d9; color:#e0c18b; font-size:13px; cursor:pointer; }

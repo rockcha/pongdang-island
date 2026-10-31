@@ -230,7 +230,7 @@ export function createRoomVisit(id:AdventureRoomId,state:PracticeState,key=`${st
  }
  if(room.kind==='chest'||room.kind==='investigate'){
   if(random()<.5)visit.outcome=room.kind==='chest'?{kind:'gold',gold:state.mode==='practice'?campaignChestGold(state.market.floor,random):160+state.market.floor*8+Math.floor(random()*101)}:{kind:'loot',loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}
-  else visit.outcome={kind:'monster',monsterId:state.mode==='practice'?(room.kind==='chest'?drawFloorMonster(state.market.floor,random):drawInvestigationMonster(state.market.floor,random)):drawMonster(random).id,...(room.kind==='investigate'?{loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}:{})}
+  else visit.outcome={kind:'monster',monsterId:state.mode==='practice'?(room.kind==='chest'?drawFloorMonster(state.market.floor,random):drawInvestigationMonster(state.market.floor,random)):drawMonster(random).id,...(['investigate','chest'].includes(room.kind)?{loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}:{})}
  }
  return visit
 }

@@ -1,6 +1,6 @@
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
-﻿import {advanceExploration,needsFinalBoss} from '../../src/features/exploration/run-state'
+﻿import {advanceExploration,needsFinalBoss,enterBossOasis} from '../../src/features/exploration/run-state'
 import {newPractice,playerMaxHp,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {createRoomVisit,enterRoomVisit,restFully,sphinxPenalty,getAdventureRoom} from '../../src/features/exploration/adventure-rooms'
 import {receiveRoomLoot,refreshRoomLoot,sellRoomGear,type RoomLoot} from '../../src/features/exploration/room-loot'
@@ -150,6 +150,7 @@ export function simulateCampaign(seed:number,strategy:Strategy,quizAccuracy=.8,t
    if(state.hp<=0)break
   }
   result.completedFloors=floor
+  const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis)
   const next=advanceExploration(state,seededRandom(seed+(floor+1)*104729))
   if(next===state)throw Error('Simulation failed to resolve a room before descent')
   state=next

@@ -1,5 +1,6 @@
 import {practiceFinalFloor,practiceFinalBossRoom} from '@/features/exploration/campaign'
 import {finalBossBalance} from '@/features/exploration/campaign-balance'
+import {combatTimings} from '@/features/exploration/combat-timing'
 ﻿import {StrictMode} from 'react'
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
@@ -19,6 +20,16 @@ vi.mock('@/features/exploration/exploration-audio',()=>({createExplorationAudio:
 afterEach(()=>{cleanup();vi.useRealTimers();vi.unstubAllGlobals();vi.restoreAllMocks()})
 async function advance(ms:number){await act(async()=>{await vi.advanceTimersByTimeAsync(ms)})}
 function setup(){vi.stubGlobal('matchMedia',()=>({matches:true}));vi.spyOn(Math,'random').mockReturnValue(0);vi.useFakeTimers()}
+it('announces death only when the lethal counterattack and HP loss are shown',async()=>{
+ setup();vi.mocked(Math.random).mockReturnValue(.99)
+ const fresh=practice.newPractice(()=>0),initial={...fresh,hp:1,combat:{monsterId:'ancient-giant' as const,enemyHp:115,turn:0,status:'active' as const}}
+ vi.spyOn(practice,'newPractice').mockImplementation(()=>initial)
+ render(<ExplorationGame nickname="탐험퐁이" onLeave={()=>{}}/>);await advance(100)
+ fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}));await advance(combatTimings.player)
+ expect(screen.queryByText('사망하였습니다.')).toBeNull();expect(screen.getByRole('progressbar',{name:'탐험가 체력'})).toHaveProperty('value',1)
+ await advance(combatTimings.reply-combatTimings.player-1);expect(screen.queryByText('사망하였습니다.')).toBeNull()
+ await advance(1);expect(screen.getByText('사망하였습니다.')).toBeTruthy();expect(screen.getByRole('button',{name:'메인 화면으로'})).toBeTruthy()
+})
 it('offers test and real practice as distinct starts, with selects and supplies only in test mode',async()=>{
  setup();render(<ExplorationPage/>);capture('mode-lobby')
  expect(screen.getByRole('button',{name:'실전연습'})).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'테스트'}));await advance(100)

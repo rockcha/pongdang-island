@@ -3,7 +3,8 @@ import {finishForcedMerchant} from './merchant-pity'
 import {beginForcedMerchant} from './shop-state'
 import {formatBasicAttack} from './attack-roll'
 import {drawFloorMonster,practiceFinalFloor,practiceFinalBossId,practiceFinalBossRoom,type ExplorationMode} from './campaign'
-import {advanceExploration,canLeaveRoom,needsFinalBoss} from './run-state'
+import {advanceExploration,canLeaveRoom,needsFinalBoss,enterBossOasis} from './run-state'
+import {combatTimings} from './combat-timing'
 import {HealthMeter} from './health-meter'
 import {AdventureRoom} from './adventure-room'
 import {createRoomVisit,enterRoomVisit,getAdventureRoom,type RoomVisit} from './adventure-rooms'
@@ -83,6 +84,7 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
  const visitSequence=useRef(0),pendingLootRef=useRef<RoomLoot|null>(null)
  const [encounterAmbush,setEncounterAmbush]=useState(false)
  const [encounterLoot,setEncounterLoot]=useState<RoomLoot|undefined>(undefined)
+ const [encounterLootSource,setEncounterLootSource]=useState<'chest'|undefined>()
  const lastWonder=useRef<string|null>(null)
  const isPractice=mode==='practice'
  const floor=state.market.floor
@@ -150,6 +152,8 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
  function descend(){
   if(liveState.current.forcedMerchant?.phase==='active'){const next=finishForcedMerchant(liveState.current);liveState.current=next;setState(next);setMerchant(false);tell(`지하 ${next.market.floor}층의 문을 선택해주세요.`);return}
   if(pendingLootRef.current)return
+  const oasis=enterBossOasis(liveState.current)
+  if(oasis!==liveState.current){const visit=createRoomVisit('rest-oasis',oasis,`${floor}:boss-rest:${++visitSequence.current}`);const next=enterRoomVisit(oasis,visit);liveState.current=next;setState(next);setFeedback(null);setPendingTurn(null);turnLock.current=false;setCombatBusy(false);setRoomVisit(visit);setMerchant(false);setShaman(false);tell('보스가 지키던 길 너머에서 맑은 오아시스를 발견했다.');return}
   if(needsFinalBoss(liveState.current)&&canLeaveRoom(liveState.current)){turnLock.current=false;setCombatBusy(false);setPendingTurn(null);setFeedback(null);setMerchant(false);setShaman(false);beginEncounter(practiceFinalBossId,false,practiceFinalBossRoom);return}
   const next=advanceExploration(liveState.current);if(next===liveState.current)return
   if(next.completed){turnLock.current=false;setCombatBusy(false);setPendingTurn(null);setFeedback(null);liveState.current=next;setState(next);return}
@@ -163,7 +167,7 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
   tell(`지하 ${next.market.floor}층으로 내려가는 중...`)
  }
  function beginEncounter(id:MonsterId,ambush=false,bossRoom?:'boss-anubis'|'boss-pharaoh'){
-  const monster=getMonster(id),lines=encounterWonderLines.filter(line=>line!==lastWonder.current),wonder=lines[Math.floor(Math.random()*lines.length)];lastWonder.current=wonder;setEncounterLoot(!bossRoom&&roomVisit?.outcome.kind==='monster'?roomVisit.outcome.loot:undefined);setEncounterBackground(bossRoom?getAdventureRoom(bossRoom)!.background:roomVisit?getAdventureRoom(roomVisit.id)!.background:null);setRoomVisit(null);setEncounterAmbush(ambush);setEncounterMonster(id);setEncounterLine(id==='sand-scorpion'?scorpionArrivalLines[Math.floor(Math.random()*scorpionArrivalLines.length)]:monster.arrival);setEncounter('wonder');tell(ambush?'잠든 틈을 노려 조심스럽게 다가간다…':wonder,true)
+  setEncounterLootSource(roomVisit?.id==='chest'&&roomVisit.outcome.kind==='monster'?'chest':undefined);const monster=getMonster(id),lines=encounterWonderLines.filter(line=>line!==lastWonder.current),wonder=lines[Math.floor(Math.random()*lines.length)];lastWonder.current=wonder;setEncounterLoot(!bossRoom&&roomVisit?.outcome.kind==='monster'?roomVisit.outcome.loot:undefined);setEncounterBackground(bossRoom?getAdventureRoom(bossRoom)!.background:roomVisit?getAdventureRoom(roomVisit.id)!.background:null);setRoomVisit(null);setEncounterAmbush(ambush);setEncounterMonster(id);setEncounterLine(id==='sand-scorpion'?scorpionArrivalLines[Math.floor(Math.random()*scorpionArrivalLines.length)]:monster.arrival);setEncounter('wonder');tell(ambush?'잠든 틈을 노려 조심스럽게 다가간다…':wonder,true)
  }
  function openLoot(loot:RoomLoot){if(pendingLootRef.current)return;const reward=refreshRoomLoot(liveState.current,loot);pendingLootRef.current=reward;setPendingLoot(reward);if(liveState.current.combat?.status==='won')tell(lootDiscoveryText(reward))}
  function finishLoot(replaceId?:string,decline=false){
@@ -197,10 +201,10 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const timer=setTimeout(()=>{
    if(encounter==='wonder'){audio.current?.play('arrival');setEncounter('reveal');tell(encounterLine)}
-   else {const next=startMonsterCombat(liveState.current,encounterMonster,{ambush:encounterAmbush,loot:encounterLoot});liveState.current=next;setState(next);setEncounter(null)}
+   else {const next=startMonsterCombat(liveState.current,encounterMonster,{ambush:encounterAmbush,loot:encounterLoot,lootSource:encounterLootSource});liveState.current=next;setState(next);setEncounter(null)}
   },reduced?100:encounter==='wonder'?2200:3200)
   return()=>clearTimeout(timer)
- },[encounter,encounterLine,encounterMonster,encounterAmbush,encounterLoot])
+ },[encounter,encounterLine,encounterMonster,encounterAmbush,encounterLoot,encounterLootSource])
  useEffect(()=>{
   if(!pendingTurn)return
   const player=setTimeout(()=>{
@@ -209,16 +213,16 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
    const playerState=escaped?pendingTurn.result.state:pendingTurn.result.playerState
    liveState.current=playerState;setState(playerState)
    setFeedback({id:pendingTurn.id,phase:'player',events:pendingTurn.result.events,action:pendingTurn.action})
-   const events=pendingTurn.result.events.filter(event=>event.kind==='player'||event.kind==='system'||(event.kind==='status'&&!event.damage&&!event.source)||(event.effect==='bleed'&&event.target==='player'&&event.damage!==undefined))
+   const events=pendingTurn.result.events.filter(event=>event.phase!=='reply'&&(event.kind==='player'||event.kind==='system'||(event.kind==='status'&&!event.damage&&!event.source)||(event.effect==='bleed'&&event.target==='player'&&event.damage!==undefined)))
    setMessage({text:events.map(event=>event.text).join('\n'),spoken:false,events})
    if(escaped)setHistory(previous=>[...previous,{text:pendingTurn.result.lines.join('\n'),spoken:false,events:pendingTurn.result.events}])
-  },1100)
+  },combatTimings.player)
   const counter=setTimeout(()=>{
    if(!pendingTurn.result.events.some(event=>event.kind==='monster'||event.kind==='defense'))return
    setFeedback({id:pendingTurn.id,phase:'counter',events:pendingTurn.result.events,action:pendingTurn.action})
    const stopped=pendingTurn.result.events.some(event=>event.kind==='defense'&&(event.effect==='freeze'||event.effect==='stun'))
    setMessage({text:stopped?`${currentMonster.name}의 움직임이 멈췄다…`:`${currentMonster.name} · ${[currentMonster.basic,...currentMonster.magic].find(move=>move.id===pendingTurn.result.events.find(event=>event.moveId)?.moveId)?.name??currentMonster.basic.name} 준비…`,spoken:false})
-  },3000)
+  },combatTimings.counter)
   const reply=setTimeout(()=>{
    const response=pendingTurn.result.events.find(event=>event.kind==='monster'||event.kind==='defense')
    if(response)audio.current?.play(response.attackType==='magic'?'enemy-magic':response.kind==='monster'?'hit':'defense')
@@ -226,8 +230,8 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
    setFeedback({id:pendingTurn.id,phase:'reply',events:pendingTurn.result.events,action:pendingTurn.action})
    const line={text:pendingTurn.result.lines.join('\n'),spoken:false,events:pendingTurn.result.events}
    setMessage(line);setHistory(previous=>[...previous,line])
-  },4300)
-  const done=setTimeout(()=>{turnLock.current=false;setCombatBusy(false);setPendingTurn(null)},6200)
+  },combatTimings.reply)
+  const done=setTimeout(()=>{turnLock.current=false;setCombatBusy(false);setPendingTurn(null)},combatTimings.done)
   return()=>{clearTimeout(player);clearTimeout(counter);clearTimeout(reply);clearTimeout(done)}
  },[pendingTurn,currentMonster])
  function combatAction(action:CombatAction){

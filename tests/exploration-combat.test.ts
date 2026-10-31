@@ -47,7 +47,7 @@ it('resolves attack, protection, healing and stun magic with mana costs',()=>{
  const base=startScorpionCombat(grantPracticeSupplies({...newPractice(),hp:80}))
  const cast=(id:string)=>resolveCombatTurn(toggleSpell(base,id),{type:'magic',id},()=>.9).state
  expect(cast('ember')).toMatchObject({mp:34,hp:74,combat:{enemyHp:19,turn:1}})
- expect(cast('tide')).toMatchObject({mp:32,hp:80,combat:{enemyHp:38}})
+ expect(cast('tide')).toMatchObject({mp:35,hp:80,combat:{enemyHp:38}})
  expect(cast('light')).toMatchObject({mp:35,hp:92})
  expect(cast('sand')).toMatchObject({mp:33,hp:80,combat:{enemyHp:27}})
 })

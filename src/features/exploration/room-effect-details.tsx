@@ -12,7 +12,7 @@ export function RoomEffectDetails({id,state,recovery,done=false}:{id:string;stat
  const hp=Math.max(0,playerMaxHp(state)-state.hp),mp=Math.max(0,playerManaMax(state)-state.mp)
  const gain=(amount:number)=>amount>0?`+${amount}`:'가득 참'
  if(id.startsWith('rest-'))items=[{label:'체력 회복',value:gain(recovery?.hp??hp),icon:<Heart/>,tone:'health',note:done?'회복 완료':'최대 체력까지'},{label:'마나 회복',value:gain(recovery?.mp??mp),icon:<Droplets/>,tone:'mana',note:done?'회복 완료':'최대 마나까지'}]
- if(id==='soul-lantern')items=[{label:'최대 마나',value:'−10',icon:<Droplets/>,tone:'danger',note:'이번 탐험 동안 유지'},{label:'사망 시 부활',value:'체력 20 · 1회',icon:<Flame/>,tone:'gold',note:'부활 후 등불 소진'}]
+ if(id==='soul-lantern')items=[{label:'최대 마나',value:'−10',icon:<Droplets/>,tone:'danger',note:'최소 10 유지 · 재점화마다 지불'},{label:'사망 시 부활',value:'체력 20 · 1회',icon:<Flame/>,tone:'gold',note:'막보스 포함 · 소진 후 다시 계약 가능'}]
  if(id==='deep-well')items=[{label:'체력 회복',value:gain(recovery?.hp??hp),icon:<Heart/>,tone:'health',note:'최대 체력까지'},{label:done?'남은 마나':'마나 소모',value:done?'0':'전부',icon:<Droplets/>,tone:'danger',note:done?'회복의 대가':'마나가 0이 됩니다'}]
  if(id==='forbidden-trade')items=[{label:'체력 소모',value:'−50',icon:<Heart/>,tone:'danger',note:'체력 51 이상 필요'},{label:'마법 획득',value:'중급 1개',icon:<Sparkles/>,tone:'gold',note:'미획득 마법 중 무작위'}]
  if(id==='cursed-gem-eye')items=[{label:'골드 획득',value:'+500',icon:<Coins/>,tone:'gold'},{label:'적 기본 공격력',value:'+3 · 2전투',icon:<Swords/>,tone:'danger',note:'도망친 전투도 포함'}]

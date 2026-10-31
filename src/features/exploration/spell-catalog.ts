@@ -12,7 +12,6 @@ export const plannedSpells:PlannedSpell[]=[
  {id:'compressed-water-bolt',name:'압축 물탄',tier:'starter',kind:'damage',mana:4,learnPrice:220,description:'피해 22',available:true},
  {id:'sand-thorns',name:'모래 가시',tier:'starter',kind:'damage-status',mana:5,learnPrice:280,description:'피해 16 · 25% 확률로 실명: 빗나갈 확률 +15%p · 2턴',available:true},
  {id:'tomb-curse',name:'왕릉의 저주',tier:'advanced',kind:'debuff',mana:8,learnPrice:650,description:'확정 약화: 공격 피해 6 감소 · 3턴',available:true},
- {id:'bronze-ward',name:'청동 수호진',tier:'advanced',kind:'buff',mana:8,learnPrice:700,description:'공격 피해 25 흡수 보호막 · 최대 3턴',available:true},
  {id:'solar-lance',name:'태양의 창',tier:'advanced',kind:'damage',mana:8,learnPrice:750,description:'피해 50',available:true},
  {id:'frost-wave',name:'서리 파동',tier:'advanced',kind:'damage-status',mana:10,learnPrice:850,description:'피해 34 · 35% 확률로 빙결: 행동 1회 봉쇄',available:true},
  {id:'oasis-breath',name:'오아시스의 숨결',tier:'advanced',kind:'healing',mana:10,learnPrice:900,description:'체력 40 회복',available:true},

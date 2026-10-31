@@ -10,7 +10,6 @@ export const spellVisuals:Record<string,Visual>={
  'compressed-water-bolt':enemy('#5ccef1','#e1fbff','drop',58),
  'sand-thorns':enemy('#cba56b','#ffe1a0','thorns',48,3),
  'tomb-curse':enemy('#b893de','#e8cba5','rune',70),
- 'bronze-ward':self('#cb9e64','#fbe4ad','shield',70),
  'solar-lance':enemy('#ffd36a','#fffbd5','lance',86),
  'frost-wave':enemy('#86d8ee','#efffff','snow',58,3),
  'oasis-breath':self('#8ed9b6','#d8fff1','leaf',76),

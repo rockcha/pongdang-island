@@ -6,7 +6,7 @@ import {getFloorMonster,type MonsterId} from '../../src/features/exploration/mon
 import {explorationWeapons} from '../../src/features/exploration/weapon-catalog'
 import {explorationArmor} from '../../src/features/exploration/armor-catalog'
 import {drawPracticeFloor,practiceFinalFloor,practiceFinalBossId} from '../../src/features/exploration/campaign'
-import {advanceExploration,needsFinalBoss} from '../../src/features/exploration/run-state'
+import {advanceExploration,needsFinalBoss,enterBossOasis} from '../../src/features/exploration/run-state'
 import {createRoomVisit,enterRoomVisit,getAdventureRoom,restFully,sphinxPenalty} from '../../src/features/exploration/adventure-rooms'
 import {drawRoomLoot,receiveRoomLoot,refreshRoomLoot,sellRoomGear,type RoomLoot} from '../../src/features/exploration/room-loot'
 import {getShopkeeper,shopkeeperForRoom} from '../../src/features/exploration/shopkeepers'
@@ -222,6 +222,7 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
   }
   if(state.hp<=0){f.deaths++;break}
   if(needsFinalBoss(state)){recover();fight(practiceFinalBossId,random);if(state.hp<=0){f.deaths++;break}}
+  const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis)
   const next=advanceExploration(state,rng(seed,state.market.floor+(state.pendingFloorAdvance??1),31))
   if(next===state)throw Error('Unresolved room '+type)
   state=next

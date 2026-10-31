@@ -36,7 +36,8 @@ export function WeaponAttackEffect({weaponId,phase,critical=false,missed=false,p
  const style={'--weapon-color':visual.color,'--weapon-accent':visual.accent,'--weapon-angle':`${visual.angle}deg`,'--weapon-reach':visual.reach,'--weapon-weight':visual.weight} as CSSProperties
  return <div className="weapon-attack-effect" data-weapon={weaponId} data-motion={visual.motion} data-tier={visual.tier} data-phase={phase} data-critical={critical||undefined} data-missed={missed||undefined} style={style} aria-hidden="true">
   <div className={ranged?'weapon-projectile':'weapon-swing'}><Strike visual={visual}/></div>
-  {hit&&<div className="weapon-hit-burst"><span/>{Array.from({length:critical?10:6},(_,i)=><i key={i} style={{'--spark-angle':`${i*(critical?36:60)+visual.angle}deg`} as CSSProperties}/>)}</div>}
+  {hit&&<div className="weapon-hit-burst"><span/>{Array.from({length:visual.tier==='ultimate'?16:critical?10:6},(_,i)=><i key={i} style={{'--spark-angle':`${i*(visual.tier==='ultimate'?22.5:critical?36:60)+visual.angle}deg`} as CSSProperties}/>)}</div>}
+  {hit&&visual.tier==='ultimate'&&<div className="weapon-grand-seal"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/><path d="m50 5 39 67H11Zm0 90L11 28h78Z"/><circle cx="50" cy="50" r="25"/></svg></div>}
   {hit&&proc&&<div className="weapon-proc" data-proc={proc}><ProcMark kind={proc}/></div>}
   {hit&&lifesteal&&<div className="weapon-life-return">{Array.from({length:3},(_,i)=><i key={i} style={{'--orb-lane':`${(i-1)*25}px`,'--orb-delay':`${i*.08}s`} as CSSProperties}/>)}</div>}
   {hit&&cleanse&&<div className="weapon-self-cleanse"><ProcMark kind="cleanse"/></div>}

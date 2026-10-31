@@ -144,7 +144,7 @@ it('applies the tomb seal damage and drains only available mana at the enemy rep
  expect(attack(frozen,.99).state.mp).toBe(40)
  const guarded={...fight('obsidian-anubis'),armor:[{id:'ward',name:'수호',description:'',magicReduction:12}],armorId:'ward',spells:practiceSpells,equippedSpells:['tide']}
  const blocked=resolveCombatTurn(guarded,{type:'magic',id:'tide'},rolls(0))
- expect(blocked.state.hp).toBe(100);expect(blocked.state.mp).toBe(28)
+ expect(blocked.state.hp).toBe(100);expect(blocked.state.mp).toBe(31)
 })
 it('shows mana loss only when Anubis actually casts the seal in the reply phase',async()=>{
  vi.useFakeTimers();vi.stubGlobal('matchMedia',()=>({matches:true}))
@@ -266,11 +266,11 @@ it.each(explorationMonsters)('fades $name, removes both skills, briefly shows go
  const initial=fight(monster.id);initial.combat!.enemyHp=1
  const result=attack(initial),snapshot=structuredClone(result.state),descend=vi.fn()
  const props={state:result.state,busy:false,feedback:{id:1,phase:'reply' as const,events:result.events,action:'attack' as const},latestLog:'처치',speaker:'탐험',onAction:vi.fn(),onDescend:descend,onReturnToMain:vi.fn()}
- const view=render(<ScorpionRoom {...props}/>)
+ const view=render(<ScorpionRoom {...props}/>),nextLabel=result.state.bossRestPending?'오아시스로 향한다':'아래층으로 내려간다.'
  expect(screen.getByLabelText('탐험 로그').textContent).toMatch(new RegExp(monster.name+'[을를] 처치했습니다\\.'))
  expect(screen.getByRole('img',{name:monster.name}).parentElement?.className).toContain('is-defeated')
  expect(document.querySelectorAll('.exploration-monster-move')).toHaveLength(1+Math.max(1,monster.magic.length))
- expect(screen.queryByRole('button',{name:'아래층으로 내려간다.'})).toBeNull()
+ expect(screen.queryByRole('button',{name:nextLabel})).toBeNull()
  await act(async()=>{await vi.advanceTimersByTimeAsync(900)})
  expect(screen.queryByRole('img',{name:monster.name})).toBeNull()
  expect(document.querySelectorAll('.exploration-monster-move')).toHaveLength(0)
@@ -283,10 +283,10 @@ it.each(explorationMonsters)('fades $name, removes both skills, briefly shows go
  await act(async()=>{await vi.advanceTimersByTimeAsync(1600)})
  expect(document.querySelector('.combat-victory-gold')).toBeNull()
  expect(screen.queryByText('전투 승리')).toBeNull()
- expect(screen.getByRole('button',{name:'아래층으로 내려간다.'})).toHaveProperty('disabled',true)
+ expect(screen.getByRole('button',{name:nextLabel})).toHaveProperty('disabled',true)
  view.rerender(<ScorpionRoom {...props}/>)
  captureLayout(monster.id+'-victory-done')
- fireEvent.click(screen.getByRole('button',{name:'아래층으로 내려간다.'}))
+ fireEvent.click(screen.getByRole('button',{name:nextLabel}))
  expect(descend).toHaveBeenCalledOnce()
  expect(result.state).toEqual(snapshot)
  await act(async()=>{await vi.advanceTimersByTimeAsync(10000)})

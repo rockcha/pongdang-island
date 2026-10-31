@@ -19,11 +19,11 @@ it('removes purchased and sold gear from current offers, future offers and drops
  expect(next.market.weaponIds).not.toContain(id)
  for(let index=0;index<100;index++)expect(drawRoomLoot(sold,'starter',()=>(index+.5)/100).id).not.toBe(id)
 })
-it('remembers loot and replaced gear and refreshes stale rewards without gold conversion',()=>{
+it('remembers all collected gear and refreshes stale rewards without gold conversion',()=>{
  let state=newPractice();const first=drawRoomLoot(state,'starter',()=>0);state=receiveRoomLoot(state,first)
  state=receiveRoomLoot(state,drawRoomLoot(state,'starter',()=>0));const third=drawRoomLoot(state,'starter',()=>0)
- state=receiveRoomLoot(state,third,first.id)
- expect(state.weapons.some(item=>item.id===first.id)).toBe(false);expect(acquiredItemIds(state).has(first.id)).toBe(true)
+ state=receiveRoomLoot(state,third)
+ expect(state.weapons.some(item=>item.id===first.id)).toBe(true);expect(acquiredItemIds(state).has(first.id)).toBe(true)
  expect(drawRoomLoot(state,'starter',()=>0).id).not.toBe(first.id)
  expect(receiveRoomLoot(state,first)).toBe(state);expect(refreshRoomLoot(state,first,()=>0).id).not.toBe(first.id)
 })
@@ -45,10 +45,9 @@ it('keeps actual practice grants in acquisition history',()=>{
 })
 it.each([false,true])('shows exactly one storage button with full bag = %s',full=>{
  const state=full?grantPracticeSupplies(newPractice()):newPractice(),loot=drawRoomLoot(state,'starter',()=>0),claim=vi.fn()
- render(<LootDialog loot={loot} state={state} onClaim={claim}/>);const dialog=screen.getByRole('dialog',{name:'아이템 발견'})
+ render(<LootDialog loot={loot} onClaim={claim}/>);const dialog=screen.getByRole('dialog',{name:'아이템 발견'})
  expect(within(dialog).getAllByRole('button')).toHaveLength(1)
- const button=within(dialog).getByRole('button',{name:/보관함에 넣기|교체해서 보관/})
- if(full){expect(button).toHaveProperty('disabled',true);fireEvent.click(within(dialog).getByRole('radio',{name:new RegExp(state.weapons[0].name)}))}
- fireEvent.click(button);expect(claim).toHaveBeenCalledWith(full?state.weapons[0].id:undefined)
+ const button=within(dialog).getByRole('button',{name:'보관함에 넣기'})
+ fireEvent.click(button);expect(claim).toHaveBeenCalledWith()
  fireEvent.keyDown(dialog,{key:'Escape'});expect(screen.getByRole('dialog')).toBeTruthy()
 })

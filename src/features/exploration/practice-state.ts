@@ -47,7 +47,7 @@ export function floorMerchantGoods(state:PracticeState){
  const acquired=acquiredItemIds(state)
  return ids.flatMap(id=>merchantGoods.filter(item=>item.id===id&&(item.kind==='potion'||!acquired.has(item.id))))
 }
-export function purchaseBlock(state:PracticeState,id:string,quantity=1,replaceId?:string):string|null{
+export function purchaseBlock(state:PracticeState,id:string,quantity=1):string|null{
  if(!Number.isSafeInteger(quantity)||quantity<1)return '수량 확인'
  if(state.combat?.status==='active')return '전투 중에는 구매할 수 없어요.'
  const item=floorMerchantGoods(state).find(item=>item.id===id)
@@ -56,31 +56,23 @@ export function purchaseBlock(state:PracticeState,id:string,quantity=1,replaceId
  if(quantity!==1)return '장비는 1개씩 구매해요.'
  const owned=item.kind==='weapon'?state.weapons:item.kind==='armor'?state.armor:state.spells
  if(owned.some(value=>value.id===id))return '보유 중'
- if(replaceId&&!owned.some(value=>value.id===replaceId))return '교체할 장비를 확인해주세요.'
- if(item.kind!=='magic'&&owned.length>=3&&!replaceId)return '보관 칸 부족'
  if(state.gold<item.price)return '골드 부족'
  return null
 }
-export function buyMerchantItem(state:PracticeState,id:string,quantity=1,replaceId?:string):PracticeState{
- if(purchaseBlock(state,id,quantity,replaceId))return state
+export function buyMerchantItem(state:PracticeState,id:string,quantity=1):PracticeState{
+ if(purchaseBlock(state,id,quantity))return state
  const item=merchantGoods.find(item=>item.id===id)!
  const next={...state,gold:state.gold-item.price*quantity,...(item.kind!=='potion'?{acquiredIds:recordAcquired(state,item.id)}:{})}
  if(item.kind==='potion')return {...next,potions:{...state.potions,[item.potionKind]:state.potions[item.potionKind]+quantity}}
- if(item.kind==='weapon')return clampGearResources({...next,weapons:[...state.weapons.filter(gear=>gear.id!==replaceId),item.gear],weaponId:replaceId===state.weaponId?item.id:state.weaponId})
- if(item.kind==='armor'){const equipped={...next,armor:[...state.armor.filter(gear=>gear.id!==replaceId),item.gear],armorId:replaceId===state.armorId?item.id:state.armorId};return clampGearResources(equipped)}
+ if(item.kind==='weapon')return clampGearResources({...next,weapons:[...state.weapons,item.gear]})
+ if(item.kind==='armor'){const equipped={...next,armor:[...state.armor,item.gear]};return clampGearResources(equipped)}
  return {...next,spells:[...state.spells,practiceSpells.find(spell=>spell.id===item.id)!]}
-}
-export function discardGear(state:PracticeState,kind:'weapon'|'armor',id:string):PracticeState{
- const items=kind==='weapon'?state.weapons:state.armor
- if(items.length<=1||(kind==='weapon'?state.weaponId:state.armorId)===id||!items.some(item=>item.id===id))return state
- const acquiredIds=recordAcquired(state,id)
- return kind==='weapon'?{...state,acquiredIds,weapons:items.filter(item=>item.id!==id)}:{...state,acquiredIds,armor:items.filter(item=>item.id!==id)}
 }
 export function grantPracticeSupplies(state:PracticeState):PracticeState{
  if(state.mode==='practice'||state.supplies)return state
  const supplies={...state,supplies:true,weapons:[starterWeapon,{id:'bronze-blade',name:'청동 단검',description:'연습용 · 날이 선 청동 단검.',attack:15,critical:3},{id:'sand-staff',escapeBonus:5,name:'모래 지팡이',description:'연습용 · 모래의 힘이 깃든 지팡이.',attack:9,critical:12}],armor:practiceArmor,spells:practiceSpells}
- const merge=<T extends {id:string}>(owned:T[],added:T[],limit:number)=>[...owned,...added.filter(item=>!owned.some(value=>value.id===item.id))].slice(0,limit)
- const next={...supplies,weapons:merge(state.weapons,supplies.weapons,3),armor:merge(state.armor,supplies.armor,3),spells:merge(state.spells,practiceSpells,practiceSpells.length)}
+ const merge=<T extends {id:string}>(owned:T[],added:T[])=>[...owned,...added.filter(item=>!owned.some(value=>value.id===item.id))]
+ const next={...supplies,weapons:merge(state.weapons,supplies.weapons),armor:merge(state.armor,supplies.armor),spells:merge(state.spells,practiceSpells)}
  return {...next,acquiredIds:recordAcquired(next,...acquiredItemIds(state))}
 }
 export function equipGear(state:PracticeState,kind:'weapon'|'armor',id:string,allowCombat=false):PracticeState{

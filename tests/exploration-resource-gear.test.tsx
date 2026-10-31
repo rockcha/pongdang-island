@@ -36,18 +36,20 @@ it('adds hammer health to armor health and clamps only the excess when switching
  const removed=equipGear(filled,'weapon',base.weaponId);expect(removed.hp).toBe(110)
  expect(equipGear(removed,'weapon',hammer.id).hp).toBe(110)
 })
-it.each(['weapon','armor'] as const)('clamps resources when a shop purchase replaces equipped %s',kind=>{
+it.each(['weapon','armor'] as const)('preserves equipped %s and resource capacity when buying another item',kind=>{
  const base=owned(),candidate=kind==='weapon'?explorationWeapons.find(x=>x.id==='desert-steel-longsword')!:explorationArmor.find(x=>x.id==='tomb-guardian-armor')!
  const equipped=equipGear(base,kind,kind==='weapon'?staff.id:robe.id)
- const full={...equipped,mp:playerManaMax(equipped),armor:[...equipped.armor,explorationArmor[0]],market:{...equipped.market,weaponIds:[candidate.id],armorIds:[candidate.id]}}
- const bought=buyMerchantItem(full,candidate.id,1,kind==='weapon'?staff.id:robe.id)
- expect(bought.gold).toBeLessThan(full.gold);expect(bought.mp).toBe(40)
+ const full={...equipped,mp:playerManaMax(equipped),market:{...equipped.market,weaponIds:[candidate.id],armorIds:[candidate.id]}}
+ const bought=buyMerchantItem(full,candidate.id)
+ expect(bought.gold).toBeLessThan(full.gold);expect(bought.mp).toBe(full.mp);expect(bought.weaponId).toBe(full.weaponId);expect(bought.armorId).toBe(full.armorId)
 })
-it('clamps health and mana when loot replaces equipped weapons',()=>{
+it('keeps health and mana capacity when collecting additional weapons',()=>{
  const base=owned(),candidate=explorationWeapons.find(x=>x.id==='desert-steel-longsword')!
  const loot:RoomLoot={kind:'weapon',id:candidate.id,name:candidate.name,gear:candidate,image:candidate.image,price:candidate.price}
- expect(receiveRoomLoot({...equipGear(base,'weapon',staff.id),mp:50},loot,staff.id).mp).toBe(40)
- expect(receiveRoomLoot({...equipGear(base,'weapon',hammer.id),hp:125},loot,hammer.id).hp).toBe(100)
+ const mage=receiveRoomLoot({...equipGear(base,'weapon',staff.id),mp:50},loot)
+ expect(mage.mp).toBe(50);expect(mage.weaponId).toBe(staff.id);expect(mage.weapons).toHaveLength(4)
+ const warrior=receiveRoomLoot({...equipGear(base,'weapon',hammer.id),hp:125},loot)
+ expect(warrior.hp).toBe(125);expect(warrior.weaponId).toBe(hammer.id)
 })
 it('offers the new items through the middle-tier merchant and displays capacity bonuses',()=>{
  const state=owned(),shop=enterShopkeeper(newPractice(()=>0),getShopkeeper('karim'),()=>0)

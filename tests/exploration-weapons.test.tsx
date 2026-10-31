@@ -28,7 +28,7 @@ it('ships matching original artwork, prompts and transparent runtime images for 
  }
 })
 
-it('sells all ten weapons with exact catalog stats and prevents duplicate or over-capacity purchases',()=>{
+it('sells all ten weapons with exact catalog stats and prevents duplicates while keeping every purchased weapon',()=>{
  expect(starterWeapons).toHaveLength(10)
  for(const weapon of starterWeapons){
   const initial=stocked(weapon.id),bought=buyMerchantItem(initial,weapon.id)
@@ -39,7 +39,7 @@ it('sells all ten weapons with exact catalog stats and prevents duplicate or ove
  const stock=newPractice(()=>0)
  const full=explorationWeapons.slice(0,2).reduce((state,weapon)=>buyMerchantItem(state,weapon.id),stock)
  expect(full.weapons).toHaveLength(3)
- expect(buyMerchantItem({...full,gold:9999},explorationWeapons[2].id).weapons).toHaveLength(3)
+ expect(buyMerchantItem({...full,gold:9999},explorationWeapons[2].id).weapons).toHaveLength(4)
 })
 it('shows artwork and filters tier and weapon effect independently',()=>{
  render(<ExplorationCodex ownedIds={['tomb-bronze-sword']}/>);fireEvent.click(screen.getByRole('button',{name:'도감'}))

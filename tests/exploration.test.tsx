@@ -275,12 +275,12 @@ it('opens the merchant shop, buys gear with practice gold and descends with inve
  expect(screen.getByRole('heading',{name:itemName})).toBeTruthy()
 })
 
-it('prevents duplicate, unaffordable and over-capacity purchases',()=>{
+it('prevents duplicate and unaffordable purchases while allowing unlimited storage',()=>{
  const initial=newPractice(()=>0),id=initial.market.weaponIds[0],bought=buyMerchantItem(initial,id)
  expect(bought.gold).toBe(initial.gold-330)
  expect(buyMerchantItem(bought,id)).toBe(bought)
  const poor={...initial,gold:0};expect(buyMerchantItem(poor,initial.market.armorIds[0])).toBe(poor)
- const full=grantPracticeSupplies(initial);expect(buyMerchantItem(full,id)).toBe(full)
+ const full=grantPracticeSupplies(initial);expect(buyMerchantItem(full,id).weapons).toHaveLength(4)
  expect(grantPracticeSupplies(bought).weapons.some(item=>item.id===id)).toBe(true)
 })
 

@@ -32,10 +32,7 @@ function optimize(state:PracticeState){
 }
 function claim(state:PracticeState,planned:RoomLoot,random:()=>number){
  const loot=refreshRoomLoot(state,planned,random)
- const inventory=loot.kind==='weapon'?state.weapons:state.armor
- const score=loot.kind==='weapon'?weaponValue:armorValue
- const replace=loot.kind!=='potion'&&inventory.length>=3?[...inventory].sort((a,b)=>score(a)-score(b))[0].id:undefined
- const next=receiveRoomLoot(state,loot,replace)
+ const next=receiveRoomLoot(state,loot)
  if(next===state)throw Error('Simulation could not claim loot')
  return optimize(next.combat?.loot?{...next,combat:{...next.combat,lootClaimed:true}}:next)
 }
@@ -51,7 +48,6 @@ function shop(state:PracticeState,type:RoomTypeId,random:()=>number){
    const key=item.kind==='weapon'?'weapons':'armor',score=item.kind==='weapon'?weaponValue:armorValue
    const reserve=next.hp<playerMaxHp(next)*.45&&!next.potions.health?100:0
    if(score(item.gear!)<=Math.max(...next[key].map(score))||next.gold<item.price+reserve)continue
-   if(next[key].length>=3)continue
    next=optimize(buyMerchantItem(next,item.id))
   }
   for(const kind of ['health','mana'] as const){const target=kind==='health'?2:next.spells.length?1:0;while(next.gold>=100&&next.potions[kind]<target)next=buyMerchantItem(next,kind==='health'?'health-potion':'mana-potion')}

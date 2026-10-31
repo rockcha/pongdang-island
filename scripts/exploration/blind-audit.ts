@@ -1,6 +1,6 @@
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
-import {newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,discardGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
+import {newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {resolveCombatTurn,startMonsterCombat,type CombatAction} from '../../src/features/exploration/combat-state'
 import {getFloorMonster,type MonsterId} from '../../src/features/exploration/monster-catalog'
 import {explorationWeapons} from '../../src/features/exploration/weapon-catalog'
@@ -92,9 +92,8 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
   for(const kind of ['health','mana'] as const){const delta=after.potions[kind]-before.potions[kind];if(delta>0)inc(m,kind+'Gained:'+source,delta);if(delta<0)inc(m,kind+'Lost:'+source,-delta)}
  }
  const claim=(planned:RoomLoot,random:()=>number)=>{
-  const before=state,loot=refreshRoomLoot(state,planned,random),bag=loot.kind==='weapon'?state.weapons:state.armor,score=loot.kind==='weapon'?weaponValue:armorValue
-  const replace=loot.kind!=='potion'&&bag.length>=3?[...bag].sort((a,b)=>score(a)-score(b))[0].id:undefined
-  state=receiveRoomLoot(state,loot,replace)
+  const before=state,loot=refreshRoomLoot(state,planned,random)
+  state=receiveRoomLoot(state,loot)
   if(state===before)throw Error('Loot could not be claimed')
   if(state.combat?.loot){if(state.combat.monsterId==='nameless-royal-warden'&&state.combat.status==='won'){state=progressNameStory(state,'claim');inc(m,'storyRewards')}state={...state,combat:{...state.combat!,lootClaimed:true}}}
   countDelta(before,state,'loot');inc(m,'loot:'+loot.kind);if(loot.kind!=='potion')inc(m,'lootTier:'+tier(loot.id))
@@ -155,7 +154,6 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
    for(const item of offers){
     const key=item.kind==='weapon'?'weapons':'armor',score=item.kind==='weapon'?weaponValue:armorValue
     if(state.gold<item.price||score(item.gear!)<=Math.max(...state[key].map(score)))continue
-    if(state[key].length>=3){const worst=[...state[key]].filter(gear=>gear.id!==(key==='weapons'?state.weaponId:state.armorId)).sort((a,b)=>score(a)-score(b))[0];if(worst)state=discardGear(state,key==='weapons'?'weapon':'armor',worst.id)}
     const before=state;state=buyMerchantItem(state,item.id)
     if(state!==before){inc(m,'spent:'+item.kind,item.price);inc(totals.purchases,item.id);if(!m.firstUpgradeFloor)m.firstUpgradeFloor=state.market.floor;state=prepareLoadout(state)}
    }

@@ -100,7 +100,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   const spellHealing=power.healing?Math.min(playerMaxHp(next)-next.hp,healingAfterReduction(power.healing,next.playerEffects??[])):0
   next.hp+=spellHealing
   if(power.shield)next.combat.shield={remaining:Math.max(next.combat.shield?.remaining??0,power.shield.remaining),turns:power.shield.turns}
-  if(power.attackBuff)next.combat.attackBuff={...power.attackBuff}
+  if(power.attackBuff){next.combat.attackBuff={...power.attackBuff};next.combat.attackBuffName=spell.name}
   const description=[spellDamage?`피해 ${spellDamage}${stunned?' · 이번 반격 봉쇄':''}`:null,power.healing?`체력 ${spellHealing} 회복`:null,power.shield?`보호막 ${power.shield.remaining}`:null,power.cleanse?'상태이상 전부 정화':power.cleanseCount?`상태이상 ${power.cleanseCount}개 정화`:null].filter(Boolean).join(' · ')||combatMagic[action.id as keyof typeof combatMagic]
   record({kind:'player',spellId:spell.id,damage:spellDamage||undefined,rawDamage:power.damage||undefined,defenseBlocked:power.damage?Math.max(0,power.damage-spellDamage):undefined,healing:power.healing?spellHealing:undefined,text:`${spell.name} 시전! ${description} · 마나 ${manaCost} 소모.`})
   const effect=power.ailment
@@ -128,6 +128,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   if(next.hp===0){revivedOnBleed=revive();if(!revivedOnBleed){next.combat.status='lost';clearBleed();record({kind:'system',text:'사망하였습니다.'});const playerState={...next,combat:{...next.combat,pattern:{...next.combat.pattern},effects:next.combat.effects.map(effect=>({...effect}))}};return {state:next,playerState,lines,events}}}
  }
  if(next.combat.attackBuff&&!(action.type==='magic'&&spellMechanics[action.id]?.attackBuff)){const buff=next.combat.attackBuff;next.combat.attackBuff=buff.turns>1?{...buff,turns:buff.turns-1}:undefined}
+ if(!next.combat.attackBuff)delete next.combat.attackBuffName
  const playerState={...next,combat:{...next.combat,pattern:{...next.combat.pattern},effects:next.combat.effects.map(effect=>({...effect}))}}
  const magicResistanceDown=next.combat.magicResistanceDown??0
  delete next.combat.magicResistanceDown

@@ -19,7 +19,7 @@ it.each(ids)('casts %s exactly once at its displayed mana cost and has a distinc
  if(power.damage)expect(result.playerState.combat?.enemyHp).toBe(1000-(power.damage-3))
  if(power.shield)expect(result.playerState.combat?.shield).toEqual(power.shield)
  if(power.healing)expect(result.playerState.hp).toBe(30+power.healing)
- if(power.attackBuff)expect(result.playerState.combat?.attackBuff).toEqual(power.attackBuff)
+ if(power.attackBuff){expect(result.playerState.combat?.attackBuff).toEqual(power.attackBuff);expect(result.playerState.combat?.attackBuffName).toBe(spell.name)}
  expect(resolveCombatTurn({...state,mp:spell.mana-1},{type:'magic',id}).state.mp).toBe(spell.mana-1)
  expect(readFileSync('public'+spell.image,'utf8')).toContain('<svg')
  const view=render(<SpellCastEffect spellId={id}/>);expect(view.container.querySelector('[data-spell]')?.getAttribute('data-spell')).toBe(id)

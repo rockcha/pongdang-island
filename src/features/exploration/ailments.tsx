@@ -43,7 +43,7 @@ export function PlayerAilments({state}:{state:PracticeState}){
   const {shield,attackBuff,ward}=state.combat
   if(ward)badges.push({id:'ward',kind:'shield',name:'물결의 보호',count:ward.turns+'회',detail:'받는 피해 '+ward.amount+' 감소',rule:'다음 반격을 받을 때마다 횟수를 소모합니다. 출혈에는 적용되지 않아요.'})
   if(shield)badges.push({id:'shield',kind:'shield',name:'보호막',count:shield.turns===undefined?'소진까지':shield.turns+'턴',detail:'공격 피해 '+shield.remaining+' 흡수',rule:shield.turns===undefined?'물리·마법 공격을 남은 흡수량만큼 막습니다. 소진되거나 전투가 끝나면 사라지며, 출혈에는 적용되지 않아요.':'남은 흡수량이나 지속시간이 소진되면 해제됩니다. 출혈에는 적용되지 않아요.'})
-  if(attackBuff)badges.push({id:'might',kind:'might',name:'태양왕의 위엄',count:attackBuff.turns+'턴',detail:'공격력 +'+attackBuff.attack+' · 치명타 +'+attackBuff.critical+'%p',rule:'남은 행동 동안 기본 공격이 강화됩니다. 중첩 없이 지속시간을 갱신합니다.'})
+  if(attackBuff)badges.push({id:'might',kind:'might',name:state.combat.attackBuffName??'태양왕의 위엄',count:attackBuff.turns+'턴',detail:'공격력 +'+attackBuff.attack+' · 치명타 +'+attackBuff.critical+'%p',rule:'남은 행동 동안 기본 공격이 강화됩니다. 중첩 없이 지속시간을 갱신합니다.'})
   if(state.combat.magicResistanceDown)badges.push({id:'magic-break',kind:'magic-break',name:'마저 감소',count:'1턴',detail:`마법 저항력 ${state.combat.magicResistanceDown} 감소 · 1턴 남음`,rule:'다음 턴의 적 행동이 끝나면 해제됩니다. 저항력은 음수가 될 수 있으며, 다시 맞으면 중첩 없이 1턴으로 갱신합니다.'})
   if(state.combat.playerWeaken)badges.push({id:'combat-weaken',kind:'weaken',name:'약화',count:'1회',detail:`다음 기본 공격력 ${state.combat.playerWeaken} 감소`,rule:'다음 기본 공격을 시도하면 해제됩니다. 마법 사용으로는 소모되지 않으며, 중첩되지 않아요.'})
   if(state.combat.playerBlind)badges.push({id:'combat-blind',kind:'blind',name:'실명',count:'1회',detail:`다음 기본 공격 1회의 명중률 ${state.combat.playerBlind}% 감소`,rule:'기본 공격을 시도하면 해제됩니다. 마법 사용으로는 소모되지 않아요.'})

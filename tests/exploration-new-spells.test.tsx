@@ -38,8 +38,8 @@ it('respects chance failures and the existing freeze lock rule',()=>{
 })
 it('gives every learned spell a distinct visual and uses self effects for protective spells',()=>{
  const spells=[...practiceSpells,...plannedSpells]
- expect(spells).toHaveLength(21)
- expect(new Set(spells.map(s=>JSON.stringify(spellVisuals[s.id]))).size).toBe(21)
+ expect(spells).toHaveLength(20)
+ expect(new Set(spells.map(s=>JSON.stringify(spellVisuals[s.id]))).size).toBe(20)
  for(const spell of spells){
   const visual=spellVisuals[spell.id],p=spellMechanics[spell.id],enemy=!!(p.damage||p.ailment||p.stun)
   expect(visual.target).toBe(enemy?'enemy':'self')

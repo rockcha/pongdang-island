@@ -115,7 +115,7 @@ it('runs a no-escape Anubis boss encounter and requires the guaranteed loot to b
  expect(screen.getByText('중간보스')).toBeTruthy();expect(screen.queryByRole('button',{name:/^도망/})).toBeNull();capture('boss-anubis')
  fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}));await advance(4300);await advance(2800)
  const loot=screen.getByRole('dialog',{name:'아이템 발견'});capture('boss-loot')
- fireEvent.click(within(loot).getAllByRole('radio')[0]);fireEvent.click(within(loot).getByRole('button',{name:'보관함에 넣기'}));expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'아래층으로 내려간다.'})).toHaveProperty('disabled',false)
+ fireEvent.click(within(loot).getAllByRole('radio')[0]);fireEvent.click(within(loot).getByRole('button',{name:'보관함에 넣기'}));expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'오아시스로 향한다'})).toHaveProperty('disabled',false);fireEvent.click(screen.getByRole('button',{name:'오아시스로 향한다'}));expect(screen.getByRole('button',{name:'쉬었다 간다 · 체력·마나 전부 회복'})).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'쉬었다 간다 · 체력·마나 전부 회복'}));expect(hp()).toBe(100)
 })
 it('fights the hostile story warden in his room and requires the advanced relic before descending',async()=>{
  await show('nameless-guardian',.99,true)
@@ -135,8 +135,8 @@ it('fights the hostile story warden in his room and requires the advanced relic 
  fireEvent.click(within(loot).getAllByRole('radio')[0])
  fireEvent.click(within(loot).getByRole('button',{name:'보관함에 넣기'}))
  expect(screen.queryByRole('dialog')).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'아래층으로 내려간다.'}));await advance(100)
- expect(screen.getByRole('group',{name:'지하 2층의 세 문'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'오아시스로 향한다'}));await advance(100)
+ expect(screen.getByRole('button',{name:'쉬었다 간다 · 체력·마나 전부 회복'})).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'그냥 지나간다'}));await advance(100);expect(screen.getByRole('group',{name:'지하 2층의 세 문'})).toBeTruthy()
 })
 it('awakens the sealed scarab once before starting its item-drop encounter',async()=>{
  await show('sealed-scarab')

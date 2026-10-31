@@ -1,4 +1,5 @@
 import type {CSSProperties} from 'react'
+import {plannedSpells} from './spell-catalog'
 import {spellVisuals,type SpellShape} from './spell-visuals'
 import './spell-cast-effect.css'
 function Sigil({shape}:{shape:SpellShape}){
@@ -7,10 +8,11 @@ function Sigil({shape}:{shape:SpellShape}){
 export function SpellCastEffect({spellId}:{spellId:string}){
  const visual=spellVisuals[spellId]
  if(!visual)return null
+ const tier=plannedSpells.find(spell=>spell.id===spellId)?.tier??'starter'
  const style={'--spell-color':visual.color,'--spell-accent':visual.accent,'--spell-size':visual.size+'px'} as CSSProperties
- return <div className="spell-cast-effect" data-spell={spellId} data-shape={visual.shape} data-target={visual.target} style={style} aria-hidden="true">
+ return <div className="spell-cast-effect" data-tier={tier} data-spell={spellId} data-shape={visual.shape} data-target={visual.target} style={style} aria-hidden="true">
   <div className="spell-cast-source"><Sigil shape={visual.shape}/></div>
-  {visual.target==='enemy'&&Array.from({length:visual.count},(_,i)=><div className="spell-missile" key={i} style={{'--lane':`${(i-(visual.count-1)/2)*42}px`,'--missile-delay':`${.28+i*.045}s`} as CSSProperties}><Sigil shape={visual.shape}/></div>)}
-  <div className="spell-impact"><div className="spell-impact-sigil"><Sigil shape={visual.shape}/></div><span/>{Array.from({length:8},(_,i)=><i key={i} style={{'--ray':`${i*45}deg`} as CSSProperties}/>)}</div>
+  {visual.target==='enemy'&&Array.from({length:visual.count},(_,i)=><div className="spell-missile" key={i} style={{'--lane':`${(i-(visual.count-1)/2)*42}px`,'--missile-delay':`${(.28+i*.045)/1.2}s`} as CSSProperties}><Sigil shape={visual.shape}/></div>)}
+  <div className="spell-impact">{tier==='ultimate'&&<div className="spell-grand-ring"/>}<div className="spell-impact-sigil"><Sigil shape={visual.shape}/></div><span/>{Array.from({length:tier==='ultimate'?16:8},(_,i)=><i key={i} style={{'--ray':`${i*(tier==='ultimate'?22.5:45)}deg`} as CSSProperties}/>)}</div>
  </div>
 }

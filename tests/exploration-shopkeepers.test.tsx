@@ -50,10 +50,10 @@ it.each(plannedSpells)('learns, equips and casts $name with its actual effect',s
  if(spell.id==='tomb-curse')expect(result.playerState.combat?.effects).toContainEqual({kind:'weaken',amount:6,turns:3})
  if(spell.id==='sun-god-glare'||spell.id==='black-sandstorm')expect(result.playerState.combat?.effects?.some(x=>x.kind==='blind')).toBe(true)
 })
-it('absorbs attacks with shield without mutating the player animation snapshot',()=>{
- const state=ready('bronze-ward'),result=resolveCombatTurn(state,{type:'magic',id:'bronze-ward'},()=>.5)
- expect(result.playerState.combat?.shield).toEqual({remaining:25,turns:3});expect(result.state.hp).toBe(100)
- expect(result.state.combat?.shield!.remaining).toBeLessThan(25);expect(result.events.some(x=>x.effect==='shield')).toBe(true)
+it('protects two counters without mutating the player animation snapshot',()=>{
+ const result=resolveCombatTurn(ready('tide'),{type:'magic',id:'tide'},()=>.5)
+ expect(result.playerState.combat?.ward).toEqual({amount:8,turns:2})
+ expect(result.state.combat?.ward).toEqual({amount:8,turns:1})
 })
 it('applies might for four following actions, then removes it',()=>{
  let state=resolveCombatTurn(ready('sun-kings-majesty'),{type:'magic',id:'sun-kings-majesty'},()=>.5).state

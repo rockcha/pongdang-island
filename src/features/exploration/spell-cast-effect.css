@@ -1,19 +1,25 @@
 .spell-cast-effect{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:visible;color:var(--spell-color);isolation:isolate}
+.spell-cast-effect[data-tier=ultimate] .spell-impact{width:245px;height:245px;filter:drop-shadow(0 0 16px var(--spell-color))}
+.spell-cast-effect[data-tier=ultimate] .spell-missile{filter:drop-shadow(0 0 12px var(--spell-color))}
+.spell-cast-effect[data-tier=ultimate] .spell-impact>i{width:5px;height:25px}
+.spell-grand-ring{position:absolute;inset:2%;border:3px double var(--spell-accent);border-radius:50%;box-shadow:0 0 30px var(--spell-color),inset 0 0 28px var(--spell-color);animation:spell-royal-ring .65s ease-out .85s both}
+@keyframes spell-royal-ring{from{opacity:0;scale:.25;rotate:-40deg}30%{opacity:.9}to{opacity:0;scale:1.15;rotate:25deg}}
+@media(prefers-reduced-motion:reduce){.spell-grand-ring{animation:none;opacity:.3}.spell-cast-effect[data-tier=ultimate] .spell-impact{filter:none}}
 .spell-cast-effect svg{display:block;width:100%;height:100%;filter:drop-shadow(0 0 7px var(--spell-color))}
 .exploration-enemy-art .combat-heal-number.is-player-spell{top:86%;font-size:19px}
-.spell-cast-source{position:absolute;left:50%;top:93%;width:65px;height:65px;transform:translate(-50%,-50%) rotateX(55deg);opacity:0;animation:spell-source .7s ease-out both}
-.spell-missile{position:absolute;left:50%;top:42%;width:var(--spell-size);height:var(--spell-size);transform:translate(-50%,-50%);opacity:0;animation:spell-flight .8s cubic-bezier(.36,.05,.5,1) var(--missile-delay) both;will-change:top,left,opacity}
+.spell-cast-source{position:absolute;left:50%;top:93%;width:65px;height:65px;transform:translate(-50%,-50%) rotateX(55deg);opacity:0;animation:spell-source 0.583s ease-out both}
+.spell-missile{position:absolute;left:50%;top:42%;width:var(--spell-size);height:var(--spell-size);transform:translate(-50%,-50%);opacity:0;animation:spell-flight 0.667s cubic-bezier(.36,.05,.5,1) var(--missile-delay) both;will-change:top,left,opacity}
 .spell-missile::after{content:'';position:absolute;left:36%;top:65%;width:28%;height:115%;background:linear-gradient(var(--spell-color),transparent);border-radius:50%;filter:blur(4px);z-index:-1}
-.spell-impact{position:absolute;left:50%;top:42%;width:170px;height:170px;transform:translate(-50%,-50%);opacity:0;animation:spell-impact-show .9s ease-out 1.02s both}
-.spell-impact>span{position:absolute;inset:30%;border:2px solid var(--spell-accent);border-radius:50%;box-shadow:0 0 20px var(--spell-color),inset 0 0 18px var(--spell-color);animation:spell-impact-ring .75s ease-out 1.02s both}
-.spell-impact-sigil{position:absolute;inset:15%;opacity:.8;animation:spell-sigil-burst .75s ease-out 1.02s both}
-.spell-impact>i{position:absolute;left:50%;top:50%;width:4px;height:15px;border-radius:50%;background:var(--spell-accent);box-shadow:0 0 8px var(--spell-color);opacity:0;animation:spell-ray .7s ease-out 1.02s both}
+.spell-impact{position:absolute;left:50%;top:42%;width:170px;height:170px;transform:translate(-50%,-50%);opacity:0;animation:spell-impact-show 0.75s ease-out 0.85s both}
+.spell-impact>span{position:absolute;inset:30%;border:2px solid var(--spell-accent);border-radius:50%;box-shadow:0 0 20px var(--spell-color),inset 0 0 18px var(--spell-color);animation:spell-impact-ring 0.625s ease-out 0.85s both}
+.spell-impact-sigil{position:absolute;inset:15%;opacity:.8;animation:spell-sigil-burst 0.625s ease-out 0.85s both}
+.spell-impact>i{position:absolute;left:50%;top:50%;width:4px;height:15px;border-radius:50%;background:var(--spell-accent);box-shadow:0 0 8px var(--spell-color);opacity:0;animation:spell-ray 0.583s ease-out 0.85s both}
 .spell-cast-effect[data-shape=lance] .spell-missile{height:calc(var(--spell-size)*1.4);width:calc(var(--spell-size)*.7)}
-.spell-cast-effect[data-shape=storm] .spell-missile>svg{animation:spell-spin .8s linear infinite}
+.spell-cast-effect[data-shape=storm] .spell-missile>svg{animation:spell-spin 0.667s linear infinite}
 .spell-cast-effect[data-shape=chain] .spell-impact-sigil{inset:0}
 .spell-cast-effect[data-shape=crown] .spell-impact>i,.spell-cast-effect[data-shape=snow] .spell-impact>i{width:6px;height:23px;clip-path:polygon(50% 0,100% 45%,50% 100%,0 45%)}
-.spell-cast-effect[data-target=self] .spell-impact{top:90%;width:145px;height:145px;animation-delay:.9s}
-.spell-cast-effect[data-target=self] .spell-impact>span,.spell-cast-effect[data-target=self] .spell-impact-sigil,.spell-cast-effect[data-target=self] .spell-impact>i{animation-delay:.9s}
+.spell-cast-effect[data-target=self] .spell-impact{top:90%;width:145px;height:145px;animation-delay:0.75s}
+.spell-cast-effect[data-target=self] .spell-impact>span,.spell-cast-effect[data-target=self] .spell-impact-sigil,.spell-cast-effect[data-target=self] .spell-impact>i{animation-delay:0.75s}
 @keyframes spell-flight{0%{top:95%;left:calc(50% + var(--lane));opacity:0;scale:.5}15%{opacity:1}85%{opacity:1;scale:1}100%{top:42%;left:50%;opacity:0;scale:.65}}
 @keyframes spell-source{0%{opacity:0;scale:.3}35%{opacity:.8}100%{opacity:0;scale:1.4}}
 @keyframes spell-impact-show{0%{opacity:0}10%,45%{opacity:1}100%{opacity:0}}
@@ -22,4 +28,4 @@
 @keyframes spell-ray{0%{opacity:0;transform:rotate(var(--ray)) translateY(0)}15%{opacity:1}100%{opacity:0;transform:rotate(var(--ray)) translateY(-85px)}}
 @keyframes spell-spin{to{rotate:360deg}}
 @media(max-height:540px){.spell-missile{width:calc(var(--spell-size)*.7);height:calc(var(--spell-size)*.7)}.spell-impact{width:120px;height:120px}.spell-cast-source{width:45px;height:45px}}
-@media(prefers-reduced-motion:reduce){.spell-missile,.spell-cast-source,.spell-impact>i{display:none}.spell-impact,.spell-cast-effect[data-target=self] .spell-impact{animation:spell-reduced-flash .7s linear 1.02s both}.spell-impact-sigil{animation:none;opacity:.6}.spell-impact>span{animation:none;opacity:.5}@keyframes spell-reduced-flash{0%,100%{opacity:0}25%,75%{opacity:.7}}}
+@media(prefers-reduced-motion:reduce){.spell-missile,.spell-cast-source,.spell-impact>i{display:none}.spell-impact,.spell-cast-effect[data-target=self] .spell-impact{animation:spell-reduced-flash 0.583s linear 0.85s both}.spell-impact-sigil{animation:none;opacity:.6}.spell-impact>span{animation:none;opacity:.5}@keyframes spell-reduced-flash{0%,100%{opacity:0}25%,75%{opacity:.7}}}

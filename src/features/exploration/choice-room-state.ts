@@ -6,7 +6,7 @@ export type ChoiceRoomId='soul-lantern'|'deep-well'|'forbidden-trade'|'cursed-ge
 export const forbiddenSpells=(state:PracticeState)=>plannedSpells.filter(spell=>spell.tier==='advanced'&&spell.available&&!acquiredItemIds(state).has(spell.id))
 export function choiceRoomBlock(state:PracticeState,id:ChoiceRoomId):string|null{
  if(state.hp<=0||state.combat?.status==='active')return '지금은 거래할 수 없어요.'
- if(id==='soul-lantern')return state.soulLantern?'이미 등불의 계약을 맺었어요.':playerManaMax(state)<10?'최대 마나 부족':null
+ if(id==='soul-lantern')return state.soulLantern==='ready'?'이미 불이 켜져 있어요.':playerManaMax(state)<20?'최대 마나 10을 남겨야 해요.':null
  if(id==='forbidden-trade')return state.hp<=50?'체력 51 이상 필요':!forbiddenSpells(state).length?'받을 중급 마법이 없어요.':null
  if(id==='cursed-gem-eye'&&(state.cursedEyeBattles??0)>0)return '기존 저주가 끝나야 해요.'
  if(id==='broken-teleport')return state.pendingFloorAdvance?'이미 이동을 준비했어요.':!canUseTeleport(state.market.floor)?'고정 방이 있는 구간은 이동할 수 없어요.':state.gold<200?'골드 200 필요':null

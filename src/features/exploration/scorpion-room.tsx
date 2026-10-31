@@ -4,6 +4,7 @@ import {SpellCastEffect} from './spell-cast-effect'
 import {MonsterMoveDetails} from './monster-move-details'
 import {practiceFinalBossId} from './campaign'
 import {nextRoomLabel} from './run-state'
+import {combatTime} from './combat-timing'
 import {HealthMeter} from './health-meter'
 import type {RoomLoot} from './room-loot'
 import {CombatMagicDialog} from './combat-magic-dialog'
@@ -39,16 +40,17 @@ export function ScorpionRoom({logEvent,state,busy,feedback,latestLog,speaker,onA
  const [victoryStep,setVictoryStep]=useState(0)
  useEffect(()=>{
   if(!won){setVictoryStep(0);return}
-  const creature=setTimeout(()=>setVictoryStep(1),900)
- const skills=setTimeout(()=>{setVictoryStep(2);if(monster.gold>0)playReward()},1200)
-  const complete=setTimeout(()=>{setVictoryStep(3);revealLoot()},2800)
+  const creature=setTimeout(()=>setVictoryStep(1),combatTime(900))
+ const skills=setTimeout(()=>{setVictoryStep(2);if(monster.gold>0)playReward()},combatTime(1200))
+  const complete=setTimeout(()=>{setVictoryStep(3);if(combat.lootSource!=='chest')revealLoot()},combatTime(2800))
   return()=>{clearTimeout(creature);clearTimeout(skills);clearTimeout(complete)}
  },[won])
  if(combat.status==='lost')return <section className="exploration-combat is-defeat" aria-label={`${monster.name} 전투`}><div className="combat-defeat-space" aria-hidden="true"/><div className="exploration-combat-controls combat-defeat-controls"><ChoiceLog speaker="탐험" className="exploration-enemy-intent" text="사망하였습니다."/><button className="combat-return-main" onClick={onReturnToMain}>메인 화면으로</button></div></section>
  const player=feedback?.phase==='player'?feedback.events.find(event=>event.kind==='player'):undefined
  const selfSpell=!!player?.spellId&&spellVisuals[player.spellId]?.target==='self'
  const reply=feedback?.phase==='reply'?feedback.events.find(event=>event.kind==='monster'||event.kind==='defense'):undefined
- const healing=feedback?.phase==='player'?feedback.events.find(event=>event.healing!==undefined&&!event.source):undefined
+ const healing=feedback?.phase==='player'?feedback.events.find(event=>event.phase!=='reply'&&event.healing!==undefined&&!event.source):undefined
+ const revival=feedback?.phase==='reply'?feedback.events.find(event=>event.phase==='reply'&&event.kind==='system'&&event.healing):undefined
  const enemyHealing=feedback?.phase==='reply'?feedback.events.find(event=>event.effect==='enemy-heal'):undefined
  const chance=monster.magic.length===2?'33%':monster.magic.length===1?'50%':'100%'
  const cleansing=feedback?.phase==='player'&&feedback.events.some(event=>event.effect==='cleanse')
@@ -65,6 +67,7 @@ export function ScorpionRoom({logEvent,state,busy,feedback,latestLog,speaker,onA
   {(!won||victoryStep<1)&&<div className={`exploration-enemy-art ${won?'is-defeated':''}`}><img key={`${feedback?.id}-${feedback?.phase}`} className={player?.damage?'has-turn':''} src={monster.image} alt={monster.name} draggable={false}/>
    {player?.damage&&<div key={`attack-${feedback?.id}`} className={`combat-enemy-hit ${feedback?.action==='magic'?'is-magic':''}`} aria-hidden="true"><span className={player.critical?'is-critical':''}>{player.critical&&<small>치명타!</small>}−{player.rawDamage??player.damage}{!!player.defenseBlocked&&<small className="combat-defense-breakdown"><Shield size={13}/>{player.defenseBlocked}</small>}</span></div>}
    {enemyHealing&&<span key={`enemy-heal-${feedback?.id}`} className="combat-heal-number" aria-hidden="true">+{enemyHealing.healing} 회복</span>}
+   {revival&&<span className="combat-heal-number is-revival" role="status">등불 부활 +{revival.healing}</span>}
    {healing?.healing!==undefined&&<span key={`heal-${feedback?.id}`} className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">+{healing.healing} 회복</span>}
    {cleansing&&!healing&&<span className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">정화!</span>}
    {player?.manaRestored!==undefined&&<span className="combat-heal-number is-mana">+{player.manaRestored} 마나</span>}
@@ -81,7 +84,7 @@ export function ScorpionRoom({logEvent,state,busy,feedback,latestLog,speaker,onA
     <CombatMagicDialog state={state} open={magic&&active} onOpenChange={setMagic} busy={busy} onCast={id=>onAction({type:'magic',id})}/>
     <PotionChoiceDialog state={state} open={potions&&active} onOpenChange={setPotions} busy={busy} onUse={kind=>{if(busy)return false;onAction({type:'potion',kind});return true}}/>
     <div className="exploration-combat-actions" data-no-escape={monster.tier==='boss'}><button className="combat-action-attack" disabled={busy} aria-label="공격" aria-describedby={attackDescription} title={`공격력 ${attackStats.attack} · ${attackStats.variance?'피해 범위 '+attackDisplay:'고정 공격력'} · 치명타 ${attackStats.critical}% · 적 방어력 적용 전`} onClick={()=>onAction({type:'attack'})}><CombatIcon kind="attack"/><span>공격</span><span className="combat-attack-stats" id={attackDescription} data-weakened={attackStats.weaken>0}><span><StatIcon kind="attack"/><span className="sr-only">공격력 </span>{attackDisplay}</span><span className="combat-attack-critical"><StatIcon kind="critical"/><span className="sr-only">치명타율 </span>{attackStats.critical}%</span>{attackStats.weaken>0&&<span className="combat-attack-curse">약화 −{attackStats.weaken}</span>}</span></button><button className="combat-action-magic" disabled={busy} aria-expanded={magic} onClick={()=>setMagic(value=>!value)}><CombatIcon kind="magic"/><span>마법</span></button><button className="combat-action-potion" disabled={busy} onClick={()=>setPotions(true)}><CombatIcon kind="potion"/><span>포션 마시기</span></button>{monster.tier!=='boss'&&<button className="combat-action-flee" disabled={busy} title="기본 35% + 현재 주무기·주보호구의 도망 효과 + 임시 효과" onClick={()=>onAction({type:'flee'})}><CombatIcon kind="flee"/><span>도망 <small>{escapeChance(state)}%</small></span></button>}</div>
-   </>:won?<div className="combat-victory-next">{victoryStep===3&&<button disabled={busy||!!onLootReady&&!!combat.loot&&!combat.lootClaimed} onClick={onDescend}>{nextRoomLabel(state)}</button>}</div>:null}
+   </>:won?<div className="combat-victory-next">{victoryStep===3&&combat.lootSource==='chest'&&!combat.lootClaimed&&<button disabled={busy} onClick={()=>revealLoot()}>상자 열기</button>}{victoryStep===3&&<button disabled={busy||!!onLootReady&&!!combat.loot&&!combat.lootClaimed} onClick={onDescend}>{nextRoomLabel(state)}</button>}</div>:null}
   </div>
  </section>
 }

@@ -6,12 +6,13 @@ import type {PracticeState} from './practice-state'
 export type AilmentKind='bleed'|'freeze'|'burn'|'weaken'|'blind'
 export type EnemyAilment={kind:AilmentKind;amount:number;turns:number}
 const definitions={
- bleed:{name:'출혈',rule:'적 행동 종료 시 지속 피해',example:2},
- freeze:{name:'빙결',rule:'남은 횟수만큼 행동 불가',example:1},
- burn:{name:'화상',rule:'받는 치유량 감소',example:40},
- weaken:{name:'약화',rule:'공격 피해 감소',example:2},
- blind:{name:'실명',rule:'공격이 빗나갈 확률 증가',example:20},
+ bleed:{name:'출혈',rule:'대상의 행동 종료마다 지속 피해를 줍니다. 방어력으로 줄일 수 없으며 전투가 끝나면 해제됩니다.'},
+ freeze:{name:'빙결',rule:'남은 횟수만큼 행동 불가'},
+ burn:{name:'화상',rule:'받는 치유량 감소'},
+ weaken:{name:'약화',rule:'공격 피해 감소'},
+ blind:{name:'실명',rule:'공격이 빗나갈 확률 증가'},
 } as const
+const effectRules:Record<AilmentKind,string>={bleed:'지속 피해량과 남은 횟수는 걸린 효과의 아이콘에서 확인할 수 있어요.',freeze:'대상의 행동을 막습니다. 같은 상대를 연속으로 얼리는 데에는 제한이 있어요.',burn:'지속 피해를 주는 효과가 아니라, 포션과 치유 효과로 회복하는 양을 줄여요.',weaken:'공격으로 주는 피해를 줄입니다. 감소량과 적용 횟수는 걸린 효과에 따라 달라요.',blind:'기본 공격이 빗나갈 확률을 높입니다. 마법의 명중에는 영향을 주지 않아요.'}
 export function ailmentDescription(effect:EnemyAilment){
  const {kind,amount,turns}=effect
  const detail=kind==='bleed'?`턴당 피해 ${amount}`:kind==='freeze'?'행동 불가':kind==='burn'?`치유량 ${amount}% 감소`:kind==='weaken'?`공격 피해 ${amount} 감소`:`빗나갈 확률 +${amount}%p`
@@ -39,7 +40,8 @@ export function PlayerAilments({state}:{state:PracticeState}){
  const effects=state.playerEffects??[]
  const badges:Array<{id:string;kind:AilmentKind|'magic-break'|'shield'|'might';name:string;count:string;detail:string;rule:string}>=effects.map(effect=>({id:effect.kind,kind:effect.kind,name:definitions[effect.kind].name,count:`${effect.turns}${effect.kind==='freeze'?'회':'턴'}`,detail:ailmentDescription(effect),rule:effect.kind==='bleed'?'플레이어 행동이 끝날 때 체력이 감소합니다. 방어력으로 줄일 수 없으며, 정화로 해제할 수 있어요.':definitions[effect.kind].rule}))
  if(state.combat?.status==='active'){
-  const {shield,attackBuff}=state.combat
+  const {shield,attackBuff,ward}=state.combat
+  if(ward)badges.push({id:'ward',kind:'shield',name:'물결의 보호',count:ward.turns+'회',detail:'받는 피해 '+ward.amount+' 감소',rule:'다음 반격을 받을 때마다 횟수를 소모합니다. 출혈에는 적용되지 않아요.'})
   if(shield)badges.push({id:'shield',kind:'shield',name:'보호막',count:shield.turns+'턴',detail:'공격 피해 '+shield.remaining+' 흡수',rule:'남은 흡수량이나 지속시간이 소진되면 해제됩니다. 출혈에는 적용되지 않아요.'})
   if(attackBuff)badges.push({id:'might',kind:'might',name:'태양왕의 위엄',count:attackBuff.turns+'턴',detail:'공격력 +'+attackBuff.attack+' · 치명타 +'+attackBuff.critical+'%p',rule:'남은 행동 동안 기본 공격이 강화됩니다. 중첩 없이 지속시간을 갱신합니다.'})
   if(state.combat.magicResistanceDown)badges.push({id:'magic-break',kind:'magic-break',name:'마저 감소',count:'1턴',detail:`마법 저항력 ${state.combat.magicResistanceDown} 감소 · 1턴 남음`,rule:'다음 턴의 적 행동이 끝나면 해제됩니다. 저항력은 음수가 될 수 있으며, 다시 맞으면 중첩 없이 1턴으로 갱신합니다.'})
@@ -53,5 +55,5 @@ export function PlayerAilments({state}:{state:PracticeState}){
 
 export function AilmentGuide(){
  const [open,setOpen]=useState(false)
- return <><button className="ailment-guide-button" aria-label="상태이상 안내" title="상태이상 안내" onClick={()=>setOpen(true)}><Info size={14}/></button><Dialog open={open} onOpenChange={setOpen}><DialogContent className="exploration-modal exploration-ailment-guide"><DialogHeader><DialogTitle>상태이상</DialogTitle><DialogDescription>몬스터 체력바 아래에 효과와 남은 턴을 표시해요. 아이콘을 누르면 자세히 볼 수 있어요.</DialogDescription></DialogHeader><div className="ailment-guide-list">{(Object.keys(definitions) as AilmentKind[]).map(kind=><article key={kind} data-ailment={kind}><AilmentIcon kind={kind}/><div><h3>{definitions[kind].name}</h3><p>{definitions[kind].rule}</p><small>{ailmentDescription({kind,amount:definitions[kind].example,turns:kind==='freeze'?1:2})}</small></div></article>)}</div><p className="ailment-guide-note">위 수치는 표시 예시예요. 실제 효과량과 지속시간은 무기·마법마다 달라요.</p></DialogContent></Dialog></>
+ return <><button className="ailment-guide-button" aria-label="상태이상 안내" title="상태이상 안내" onClick={()=>setOpen(true)}><Info size={14}/></button><Dialog open={open} onOpenChange={setOpen}><DialogContent className="exploration-modal exploration-ailment-guide"><DialogHeader><DialogTitle>상태이상</DialogTitle><DialogDescription>몬스터 체력바 아래에 효과와 남은 턴을 표시해요. 아이콘을 누르면 자세히 볼 수 있어요.</DialogDescription></DialogHeader><div className="ailment-guide-list">{(Object.keys(definitions) as AilmentKind[]).map(kind=><article key={kind} data-ailment={kind}><AilmentIcon kind={kind}/><div><h3>{definitions[kind].name}</h3><p>{definitions[kind].rule}</p><small>{effectRules[kind]}</small></div></article>)}</div><p className="ailment-guide-note">효과량과 지속시간은 무기·마법마다 달라요. 현재 걸린 효과의 아이콘을 누르면 실제 수치를 확인할 수 있어요.</p></DialogContent></Dialog></>
 }

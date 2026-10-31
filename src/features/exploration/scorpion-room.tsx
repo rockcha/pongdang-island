@@ -25,7 +25,7 @@ export function ScorpionRoom({logEvent,state,busy,feedback,latestLog,speaker,onA
  const [moveDetail,setMoveDetail]=useState<string|null>(null)
  const combat=state.combat!
  const attackDescription=useId(),attackStats=playerAttackStats(state),attackDisplay=formatBasicAttack(attackStats.attack,attackStats.variance)
- const baseMonster=getFloorMonster(combat.monsterId,state.market.floor,state.mode==='practice'),monster={...baseMonster,attack:baseMonster.attack+(combat.enemyAttackBonus??0)}
+ const monster=getFloorMonster(combat.monsterId,state.market.floor,state.mode==='practice')
  const selectedMove=moveDetail==='basic'?monster.basic:monster.magic.find(move=>move.id===moveDetail)
  const active=combat.status==='active'
  const won=combat.status==='won'

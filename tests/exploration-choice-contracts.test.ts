@@ -41,17 +41,15 @@ it('exchanges exactly 50 hp for an unowned advanced spell without charging block
  const full={...fresh,acquiredIds:forbiddenSpells(fresh).map(spell=>spell.id)}
  expect(choiceRoomBlock(full,'forbidden-trade')).toBeTruthy();expect(acceptChoiceRoom(full,'forbidden-trade')).toBe(full)
 })
-it('grants 500 gold and buffs exactly two encounters, including an escape',()=>{
- const initial=newPractice(()=>0),state=acceptChoiceRoom(initial,'cursed-gem-eye')
- expect(state.gold).toBe(initial.gold+500);expect(state.cursedEyeBattles).toBe(2)
- const first=startMonsterCombat(state,'sand-scorpion')
- expect(first.combat?.enemyAttackBonus).toBe(3);expect(first.cursedEyeBattles).toBe(1)
- expect(startMonsterCombat(first,'sand-scorpion')).toBe(first)
- const escaped=resolveCombatTurn(first,{type:'flee'},()=>0).state
- const second=startMonsterCombat(escaped,'sand-scorpion')
- expect(second.combat?.enemyAttackBonus).toBe(3);expect(second.cursedEyeBattles).toBe(0)
- const third=startMonsterCombat({...second,combat:null},'sand-scorpion')
- expect(third.combat?.enemyAttackBonus).toBeUndefined()
+it('rolls either gold or a current-mana loss with an exact fifty-percent boundary',()=>{
+ const initial=newPractice(()=>0)
+ for(const roll of [0,.25,.499999]){const random=()=>roll,state=acceptChoiceRoom(initial,'cursed-gem-eye',random);expect(state.gold).toBe(initial.gold+500);expect(state.mp).toBe(initial.mp);expect(startMonsterCombat(state,'sand-scorpion').combat?.monsterId).toBe('sand-scorpion')}
+ for(const roll of [.5,.75,.99999]){const state=acceptChoiceRoom(initial,'cursed-gem-eye',()=>roll);expect(state.gold).toBe(initial.gold);expect(state.mp).toBe(20);expect(playerManaMax(state)).toBe(40)}
+ expect(initial.mp).toBe(40);expect(initial.gold).toBe(100000)
+})
+it.each([0,3,19,20])('clamps the gem mana loss at zero for current mana %s',mp=>{
+ const state={...newPractice(),mp},result=acceptChoiceRoom(state,'cursed-gem-eye',()=>.5)
+ expect(result.mp).toBe(Math.max(0,mp-20));expect(result.gold).toBe(state.gold);expect(choiceRoomBlock(result,'cursed-gem-eye')).toBeNull()
 })
 it('teleports three floors, charges once, and never skips a fixed room',()=>{
  for(let floor=1;floor<=50;floor++){

@@ -1382,3 +1382,4 @@ body:has(.exploration-game) .pongi-confirm [data-slot=confirm-actions]>button:la
 .exploration-game .exploration-player-status .exploration-combat-stats[data-attack-variance=true]>div{flex-direction:column;gap:2px;padding-block:3px}
 .exploration-game .exploration-combat-stats[data-attack-variance=true] :is(dt,dd){line-height:1.1}
 @media(max-height:540px),(max-width:360px){.exploration-game .exploration-combat-actions .combat-attack-stats{font-size:9px;gap:1px}.combat-attack-stats .exploration-stat-icon{width:9px;height:9px}}
+.exploration-room-mana-loss{color:#9acfee!important;text-shadow:0 0 20px #417da8}

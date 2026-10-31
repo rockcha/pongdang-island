@@ -211,7 +211,7 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
      if(id==='broken-teleport')accept=policy.teleport&&state.hp<playerMaxHp(state)*.65
     }
     inc(totals.decisions,id+':'+(accept?'accept':'skip'))
-    if(accept){const before=state;state=acceptChoiceRoom(state,id,random);if(state!==before){inc(m,'contract:'+id);if(id==='cursed-gem-eye')inc(m,'goldEarned:gem',500);if(id==='broken-teleport')inc(m,'spent:teleport',200);if(id==='forbidden-trade')inc(m,'tradeHp',50);if(id==='deep-well')inc(m,'wellHealing',state.hp-before.hp)}}
+    if(accept){const before=state;state=acceptChoiceRoom(state,id,random);if(state!==before){inc(m,'contract:'+id);if(id==='cursed-gem-eye'){inc(m,'goldEarned:gem',state.gold-before.gold);inc(m,'gemManaLost',before.mp-state.mp)}if(id==='broken-teleport')inc(m,'spent:teleport',200);if(id==='forbidden-trade')inc(m,'tradeHp',50);if(id==='deep-well')inc(m,'wellHealing',state.hp-before.hp)}}
    }else if(room.kind==='story'){
     if(room.id==='erased-name'&&policy.story)state=progressNameStory(state,'restore')
     else if(room.id==='erased-name-record'&&policy.story)state=progressNameStory(state,'read-record')

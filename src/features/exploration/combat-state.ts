@@ -31,14 +31,13 @@ export function startMonsterCombat(state:PracticeState,monsterId:MonsterId,optio
  if(state.hp<=0||state.combat?.status==='active')return state
  if(monsterId==='nameless-royal-warden'&&(canAppeaseNameGuardian(state)||state.nameStory?.gateOpened||state.nameStory?.rewardClaimed))return state
  const monster=getFloorMonster(monsterId,state.market.floor,state.mode==='practice')
- const cursed=(state.cursedEyeBattles??0)>0
  const storyWarden=monsterId==='nameless-royal-warden'
- return {...state,...(storyWarden?{nameStory:{...state.nameStory,met:true}}:{}),...(cursed?{cursedEyeBattles:state.cursedEyeBattles!-1}:{}),combat:{...(cursed?{enemyAttackBonus:3}:{}),monsterId,enemyHp:monster.maxHp,turn:0,status:'active',...(options.ambush?{ambush:true}:{}),...(options.loot||monster.tier==='boss'||(monster.id==='ancient-giant'||monster.id==='treasure-scarab')?{loot:options.loot??drawRoomLoot(state,storyWarden?'advanced':monster.id===practiceFinalBossId||state.mode==='practice'&&monster.tier==='boss'&&state.market.floor>=30?'ultimate':'advanced',options.random??Math.random),lootClaimed:false,...(options.lootSource?{lootSource:options.lootSource}:{})}:{})}}
+ return {...state,...(storyWarden?{nameStory:{...state.nameStory,met:true}}:{}),combat:{monsterId,enemyHp:monster.maxHp,turn:0,status:'active',...(options.ambush?{ambush:true}:{}),...(options.loot||monster.tier==='boss'||(monster.id==='ancient-giant'||monster.id==='treasure-scarab')?{loot:options.loot??drawRoomLoot(state,storyWarden?'advanced':monster.id===practiceFinalBossId||state.mode==='practice'&&monster.tier==='boss'&&state.market.floor>=30?'ultimate':'advanced',options.random??Math.random),lootClaimed:false,...(options.lootSource?{lootSource:options.lootSource}:{})}:{})}}
 }
 export function resolveCombatTurn(state:PracticeState,action:CombatAction,random=Math.random):CombatResult{
  const unchanged={state,playerState:state,lines:[],events:[]}
  if(!state.combat||state.combat.status!=='active'||state.hp<=0)return unchanged
- const baseMonster=getFloorMonster(state.combat.monsterId,state.market.floor,state.mode==='practice'),monster={...baseMonster,attack:baseMonster.attack+(state.combat.enemyAttackBonus??0)}
+ const monster=getFloorMonster(state.combat.monsterId,state.market.floor,state.mode==='practice')
  const weapon=state.weapons.find(item=>item.id===state.weaponId)
  if(action.type==='flee'&&monster.tier==='boss')return unchanged
  let next={...state,playerEffects:state.playerEffects?.map(effect=>({...effect})),combat:{...state.combat,effects:state.combat.effects?.map(effect=>({...effect}))??[],turn:state.combat.turn+1}},guard=0,stunned=!!state.combat.ambush

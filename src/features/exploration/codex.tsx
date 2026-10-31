@@ -7,6 +7,7 @@ import {practiceSpells} from './practice-state'
 import {armorCatalog} from './armor-catalog'
 import {combatMagic} from './combat-state'
 import {GearAttributes,WeaponEffect} from './equipment-stats'
+import './exploration-usability.css'
 
 export type CodexCategory='weapon'|'spell'|'armor'
 function CodexImage({src,name,kind}:{src?:string;name:string;kind:CodexCategory}){

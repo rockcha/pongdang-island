@@ -1,0 +1,36 @@
+.exploration-lobby{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+.exploration-lobby-tabs{display:flex;gap:5px;padding:5px;margin-top:22px;border:1px solid #b89b6538;border-radius:12px;background:#b89b650a}
+.exploration-lobby-tabs button{display:flex;align-items:center;justify-content:center;flex:1;gap:7px;min-height:44px;border-radius:8px;font-size:13px;color:#9c805e;cursor:pointer}
+.exploration-lobby-tabs button[aria-selected=true]{background:#fffaf1;color:#715033;box-shadow:0 2px 8px #71503312}
+.exploration-lobby-tabs button:focus-visible{outline:2px solid #b38e52;outline-offset:2px}
+.exploration-lobby [role=tabpanel][hidden]{display:none}
+.exploration-lobby [role=tabpanel]>.exploration-feedback{border:0;margin-top:0;padding-top:22px}
+.exploration-feedback textarea{min-height:110px;font-size:14px;touch-action:manipulation}
+.feedback-compose-footer>button{min-height:44px;min-width:100px;font-size:12px}
+/* Center the portal frame, and keep each dialog inside the visible viewport. */
+html [data-slot=modal-viewport]:has(>.exploration-modal){position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;height:100dvh;padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));pointer-events:none}
+html [data-slot=modal-viewport]>.exploration-modal{position:relative!important;inset:auto!important;margin:0;--tw-translate-x:0px!important;--tw-translate-y:0px!important;translate:0 0!important;transform:none!important;animation:none;min-height:0;min-width:0;max-height:100%!important;pointer-events:auto}
+html [data-slot=modal-viewport]>.exploration-modal.exploration-codex{height:min(760px,calc(100dvh - 32px));width:min(800px,100%);max-width:100%!important;padding:18px;gap:10px}
+.exploration-codex>[data-slot=dialog-header],.exploration-codex>.exploration-codex-tabs{flex-shrink:0}
+.exploration-codex .weapon-codex-art{height:132px}
+.exploration-codex .weapon-codex-note{font-size:10px;line-height:1.6}
+.exploration-modal.exploration-minimal-shop{overflow:hidden!important}
+.exploration-minimal-shop>.exploration-shop-items,.merchant-owned,.merchant-replacement{min-height:0;overflow-y:auto;overscroll-behavior:contain;flex:1 1 auto}
+.exploration-minimal-shop>.merchant-tabs,.exploration-minimal-shop>[data-slot=dialog-header],.exploration-minimal-shop>.exploration-shop-gold,.merchant-current-equipment,.exploration-minimal-shop>.exploration-room-return{flex-shrink:0}
+.merchant-current-equipment{display:grid;gap:5px;padding:10px 12px;border:1px solid #bd995a40;border-radius:8px;background:#c6a05d0b}
+.merchant-current-equipment>small{color:#ae9670;font-size:10px}.merchant-current-equipment>strong{color:#ebd0a0;font-size:13px}
+.merchant-owned>h3,.merchant-replacement>h3{font-size:13px;color:#ebd0a0;margin:10px 0}
+.merchant-replacement>p{font-size:11px;line-height:1.7;color:#aa997a;margin:10px 0}
+.merchant-replacement>.exploration-choice-confirm,.merchant-replacement>.exploration-modal-return{width:100%;min-height:44px;margin-top:10px}
+.exploration-gear-comparison{display:grid;gap:8px}
+.exploration-gear-comparison>button,.exploration-gear-comparison>article{display:flex;align-items:center;gap:10px;padding:12px!important;min-width:0;border:1px solid #a0835144;border-radius:8px;background:#0e0c09;color:#e6cfaa;text-align:left}
+.exploration-gear-comparison>button[aria-checked=true]{border-color:#e3be77;background:#b8924520;box-shadow:inset 3px 0 #d9b36d}
+.exploration-gear-comparison>button:focus-visible{outline:2px solid #e3be77;outline-offset:2px}
+.exploration-gear-comparison>button>img,.exploration-gear-comparison>article>img{width:38px;height:48px;object-fit:contain;flex-shrink:0}
+.comparison-gear-copy{display:block;min-width:0;flex:1}.comparison-gear-copy>strong{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12px;margin-bottom:7px}
+.comparison-gear-copy>strong>small{font-size:10px;color:#d1b274}
+.comparison-gear-copy .equipment-attributes{font-size:11px;gap:6px 12px}.comparison-gear-copy .equipment-effect{font-size:10px;margin-top:5px}
+.exploration-loot-dialog .exploration-gear-comparison{max-height:32dvh;overflow-y:auto;min-height:100px}
+.exploration-loot-dialog .exploration-found-item>img{max-height:120px}
+@media(max-width:540px){.exploration-codex .weapon-codex-grid{grid-template-columns:minmax(0,1fr)}.exploration-codex .weapon-codex-art{height:112px}.exploration-codex [data-slot=dialog-description]{font-size:10px;line-height:1.5}.exploration-codex .weapon-codex-tiers button{font-size:10px;min-height:34px;gap:3px}.merchant-tabs{gap:2px}.merchant-tabs button{font-size:12px}}
+@media(max-height:500px){html [data-slot=modal-viewport]>.exploration-modal.exploration-codex{padding:12px;gap:6px}.exploration-codex [data-slot=dialog-description],.exploration-codex .weapon-codex-note{display:none}.exploration-codex .weapon-codex-tiers button,.exploration-codex .weapon-codex-filters button,.exploration-codex .exploration-codex-tabs button{min-height:30px}.exploration-minimal-shop .merchant-current-equipment{padding:6px 10px}}

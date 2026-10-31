@@ -1,6 +1,6 @@
 import {practiceFinalFloor,type ExplorationMode} from './campaign'
-import {useEffect,useRef,useState} from 'react'
-import {ArrowDown,Compass,LockKeyhole,Shield,Swords} from 'lucide-react'
+import {useEffect,useId,useRef,useState} from 'react'
+import {ArrowDown,Compass,LockKeyhole,MessageCircle,Shield,Swords} from 'lucide-react'
 import {useAuth,getNickname} from '@/components/auth-provider'
 import {useSocial} from '@/features/social/social-provider'
 import {useOperator} from '@/features/notices/use-operator'
@@ -10,11 +10,13 @@ import {ExplorationCodex} from './codex'
 import {ExplorationFeedback} from './exploration-feedback'
 import './exploration.css'
 import './exploration-hud.css'
+import './exploration-usability.css'
 
 export function ExplorationPage(){
  const {operator,loading}=useOperator()
  const {session,recovery}=useAuth(),{profile}=useSocial()
  const [playing,setPlaying]=useState(false),[mode,setMode]=useState<ExplorationMode>('practice')
+ const [tab,setTab]=useState<'play'|'feedback'>('play'),tabId=useId()
  const fullscreenRequest=useRef(0)
  useEffect(()=>{if(!playing)fullscreenRequest.current++},[playing])
  useEffect(()=>()=>{fullscreenRequest.current++},[])
@@ -33,6 +35,8 @@ export function ExplorationPage(){
  }
  return <section className="exploration-lobby" aria-label="탐험">
   <header className="exploration-intro"><span className="exploration-eyebrow"><Compass size={14}/> EXPLORE THE UNKNOWN</span><h1>탐험</h1><p>바다 아래, 아직 쓰이지 않은 이야기.</p></header>
+  <div className="exploration-lobby-tabs" role="tablist" aria-label="탐험 메뉴">{(['play','feedback'] as const).map((value,index)=><button key={value} role="tab" id={`${tabId}-${value}`} aria-controls={`${tabId}-${value}-panel`} aria-selected={tab===value} tabIndex={tab===value?0:-1} onClick={()=>setTab(value)} onKeyDown={event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?1:1-index;setTab(next?'feedback':'play');event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role=tab]')[next]?.focus()}}>{value==='play'?<Compass size={16}/>:<MessageCircle size={16}/>} {value==='play'?'플레이하기':'피드백하기'}</button>)}</div>
+  <div role="tabpanel" id={`${tabId}-play-panel`} aria-labelledby={`${tabId}-play`} hidden={tab!=='play'}>
   <div className="exploration-map-heading"><h2>탐험할 지도</h2><span>01</span></div>
   <article className="exploration-map">
    <img src={pharaohArt.scenery} alt="파라오의 황금해"/>
@@ -46,7 +50,8 @@ export function ExplorationPage(){
    {operator&&!loading&&<button aria-label="테스트" className="exploration-enter is-test" onClick={()=>enter('test')}><Swords size={18}/><span><strong>운영자 테스트</strong><small>100,000 골드 · 방 직접 선택</small></span></button>}
   </div>
   <p className="exploration-lobby-note">{!session?<><LockKeyhole size={12}/> 로그인 후 탐험할 수 있어요.</>:'탐험용 골드와 물품은 이번 연습에서만 사용되며, 진행은 저장되지 않아요.'}</p>
-  <ExplorationFeedback key={`feedback:${session?.user.id??'guest'}`} owner={session?.user.id}/>
+  </div>
+  <div role="tabpanel" id={`${tabId}-feedback-panel`} aria-labelledby={`${tabId}-feedback`} hidden={tab!=='feedback'}><ExplorationFeedback key={`feedback:${session?.user.id??'guest'}`} owner={session?.user.id}/></div>
   {session&&!recovery&&playing&&(mode==='practice'||operator&&!loading)&&<ExplorationGame mode={mode} key={`game:${session.user.id}`} nickname={getNickname(session)||'탐험가'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>}
  </section>
 }

@@ -73,7 +73,7 @@ export function drawPracticeFloor(floor:number,random=Math.random):FloorMarket{
  const level=Math.max(1,Math.min(practiceFinalFloor,Math.floor(floor)))
  const fixed=fixedPracticeRooms
  const extras:RoomTypeId[]=fixed[level]?[fixed[level]!]:[]
- if(!extras.some(id=>roomFamily(id)==='merchant')&&random()<practiceMerchantChance)extras.push(merchantRoom(level,random))
+ if(level>1&&!extras.some(id=>roomFamily(id)==='merchant')&&random()<practiceMerchantChance)extras.push(merchantRoom(level,random))
  while(extras.length<2)extras.push(eventRoom(level,extras,random))
  const doors:RoomTypeId[]=['monster',...extras]
  for(let index=doors.length-1;index>0;index--){const other=Math.floor(random()*(index+1));[doors[index],doors[other]]=[doors[other],doors[index]]}

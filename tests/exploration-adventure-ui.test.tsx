@@ -71,7 +71,7 @@ it('opens a chest once for gold or starts an ordinary monster encounter',async()
 it.each(['investigate-guards','investigate-wall','investigate-alchemy'] as const)('finds an item in %s and handles a full bag',async id=>{
  await show(id);capture(id);fireEvent.click(screen.getByRole('button',{name:'조사한다'}))
  const dialog=screen.getByRole('dialog',{name:'아이템 발견'});expect(dialog.textContent).toContain('가득');capture(id+'-loot')
- expect(within(dialog).getAllByRole('button')).toHaveLength(1);fireEvent.change(within(dialog).getByRole('combobox',{name:'교체할 장비'}),{target:{value:(within(dialog).getByRole('combobox') as HTMLSelectElement).options[1].value}});fireEvent.click(within(dialog).getByRole('button',{name:'보관함에 넣기'}));expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'아래층으로 내려간다.'})).toHaveProperty('disabled',false)
+ expect(within(dialog).getAllByRole('button')).toHaveLength(2);fireEvent.click(within(dialog).getAllByRole('radio')[0]);fireEvent.click(within(dialog).getByRole('button',{name:'보관함에 넣기'}));expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'아래층으로 내려간다.'})).toHaveProperty('disabled',false)
 })
 it('can ignore an investigation without gaining an item',async()=>{
  await show('investigate-wall');fireEvent.click(screen.getByRole('button',{name:'무시하고 지하로 내려간다'}));await advance(100)
@@ -115,7 +115,7 @@ it('runs a no-escape Anubis boss encounter and requires the guaranteed loot to b
  expect(screen.getByText('중간보스')).toBeTruthy();expect(screen.queryByRole('button',{name:/^도망/})).toBeNull();capture('boss-anubis')
  fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}));await advance(4300);await advance(2800)
  const loot=screen.getByRole('dialog',{name:'아이템 발견'});capture('boss-loot')
- fireEvent.change(within(loot).getByRole('combobox',{name:'교체할 장비'}),{target:{value:(within(loot).getByRole('combobox') as HTMLSelectElement).options[1].value}});fireEvent.click(within(loot).getByRole('button',{name:'보관함에 넣기'}));expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'아래층으로 내려간다.'})).toHaveProperty('disabled',false)
+ fireEvent.click(within(loot).getAllByRole('radio')[0]);fireEvent.click(within(loot).getByRole('button',{name:'보관함에 넣기'}));expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'아래층으로 내려간다.'})).toHaveProperty('disabled',false)
 })
 it('fights the hostile story warden in his room and requires the advanced relic before descending',async()=>{
  await show('nameless-guardian',.99,true)
@@ -132,8 +132,7 @@ it('fights the hostile story warden in his room and requires the advanced relic 
  expect(screen.getByLabelText('탐험용 골드').textContent).toBe('100,000')
  expect(document.querySelector('.combat-victory-gold')).toBeNull()
  capture('hostile-royal-warden-loot')
- const replacement=within(loot).getByRole('combobox',{name:'교체할 장비'}) as HTMLSelectElement
- fireEvent.change(replacement,{target:{value:replacement.options[1].value}})
+ fireEvent.click(within(loot).getAllByRole('radio')[0])
  fireEvent.click(within(loot).getByRole('button',{name:'보관함에 넣기'}))
  expect(screen.queryByRole('dialog')).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'아래층으로 내려간다.'}));await advance(100)

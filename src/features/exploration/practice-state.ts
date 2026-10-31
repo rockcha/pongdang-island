@@ -9,7 +9,7 @@ import {practiceSpellLearningPrices} from './spell-catalog'
 import {drawFloorMarket,type FloorMarket} from './merchant-stock'
 import {healingAfterReduction} from './status-effects'
 import type {ShamanStock} from './shaman-stock'
-export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
+export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;maxManaBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
 export type Spell={id:string;name:string;description:string;message:string;mana:number;image?:string;learnPrice?:number}
 export const starterWeapon:Gear={id:'dull-dagger',name:'무딘 단검',description:'손에 익은 오래된 단검.',attack:10,critical:5,image:'/exploration/weapons/dull-dagger.png'}
 export const practiceSpells:Spell[]=[
@@ -20,7 +20,7 @@ export const practiceSpells:Spell[]=[
 ].map(spell=>({...spell,image:`/exploration/magic/${spell.id}.png`,learnPrice:practiceSpellLearningPrices[spell.id as keyof typeof practiceSpellLearningPrices]}))
 export type CombatState={ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns:number};attackBuff?:{attack:number;critical:number;turns:number}}
 export const playerMaxMp=40
-export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp-(state.maxManaSacrifice??0))}
+export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp+equippedResourceBonus(state,'maxManaBonus')-(state.maxManaSacrifice??0))}
 export function playerAttackStats(state:PracticeState){
  const weapon=state.weapons.find(item=>item.id===state.weaponId),combat=state.combat?.status==='active'?state.combat:undefined
  const weaken=combat?.playerWeaken??0
@@ -66,8 +66,8 @@ export function buyMerchantItem(state:PracticeState,id:string,quantity=1,replace
  const item=merchantGoods.find(item=>item.id===id)!
  const next={...state,gold:state.gold-item.price*quantity,...(item.kind!=='potion'?{acquiredIds:recordAcquired(state,item.id)}:{})}
  if(item.kind==='potion')return {...next,potions:{...state.potions,[item.potionKind]:state.potions[item.potionKind]+quantity}}
- if(item.kind==='weapon')return {...next,weapons:[...state.weapons.filter(gear=>gear.id!==replaceId),item.gear],weaponId:replaceId===state.weaponId?item.id:state.weaponId}
- if(item.kind==='armor'){const equipped={...next,armor:[...state.armor.filter(gear=>gear.id!==replaceId),item.gear],armorId:replaceId===state.armorId?item.id:state.armorId};return {...equipped,hp:Math.min(equipped.hp,playerMaxHp(equipped))}}
+ if(item.kind==='weapon')return clampGearResources({...next,weapons:[...state.weapons.filter(gear=>gear.id!==replaceId),item.gear],weaponId:replaceId===state.weaponId?item.id:state.weaponId})
+ if(item.kind==='armor'){const equipped={...next,armor:[...state.armor.filter(gear=>gear.id!==replaceId),item.gear],armorId:replaceId===state.armorId?item.id:state.armorId};return clampGearResources(equipped)}
  return {...next,spells:[...state.spells,practiceSpells.find(spell=>spell.id===item.id)!]}
 }
 export function discardGear(state:PracticeState,kind:'weapon'|'armor',id:string):PracticeState{
@@ -87,7 +87,7 @@ export function equipGear(state:PracticeState,kind:'weapon'|'armor',id:string,al
  if(state.combat?.status==='active'&&!allowCombat)return state
  if(!(kind==='weapon'?state.weapons:state.armor).some(item=>item.id===id))return state
  const next={...state,[kind==='weapon'?'weaponId':'armorId']:id}
- return kind==='armor'?{...next,hp:Math.min(state.hp,playerMaxHp(next))}:next
+ return clampGearResources(next)
 }
 export function toggleSpell(state:PracticeState,id:string):PracticeState{
  if(!state.spells.some(spell=>spell.id===id))return state
@@ -102,7 +102,9 @@ export function castSpell(state:PracticeState,id:string):PracticeState{
  return {...state,mp:state.mp-spell.mana,...(power?.healing?{hp:Math.min(playerMaxHp(state),state.hp+healingAfterReduction(power.healing,state.playerEffects??[]))}:{}),...(power?.cleanse?{playerEffects:[]}:{} )}
 }
 
-export function playerMaxHp(state:PracticeState){return 100+Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.maxHpBonus??0)}
+function equippedResourceBonus(state:PracticeState,key:'maxHpBonus'|'maxManaBonus'){return Math.max(0,state.weapons.find(gear=>gear.id===state.weaponId)?.[key]??0)+Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.[key]??0)}
+export function playerMaxHp(state:PracticeState){return 100+equippedResourceBonus(state,'maxHpBonus')}
+export function clampGearResources(state:PracticeState):PracticeState{return {...state,hp:Math.min(state.hp,playerMaxHp(state)),mp:Math.min(state.mp,playerManaMax(state))}}
 export type IncomingAttack='physical'|'magic'
 // Evasion belongs only to physical basic attacks. Spells always use magic defense.
 export function incomingDamage(state:PracticeState,amount:number,type:IncomingAttack,guard=0,magicResistanceDown=state.combat?.magicResistanceDown??0){

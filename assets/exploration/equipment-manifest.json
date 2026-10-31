@@ -268,6 +268,15 @@
       "prompt": "Use case: stylized-concept. Asset: one transparent inventory illustration for an Egyptian underground fantasy RPG. Premium hand-painted semi-realistic 2D game item art matching bronze weapons and Egyptian armor inventory assets. Single object, centered in square, fully visible with 12 percent empty margin, three-quarter view, warm upper-left lighting, strong silhouette readable at 32 pixels. Transparent alpha background, clean antialiased edge. No scene, floor, pedestal, text, labels, border, detached particles, or cropped edges. Subject: a small squat rounded clear glass potion bottle filled with translucent sapphire blue mana liquid, short neck, cork stopper, a simple bronze collar and a small droplet-shaped bronze charm attached at the neck. A simple everyday consumable, restrained details, blue liquid clearly visible, no ornate legendary decorations. Upright bottle. Match the practical silhouette of a small round red health potion.",
       "source": "assets/exploration/potions/originals/mana-potion.png",
       "output": "public/exploration/potions/mana-potion.png"
+    },
+    {
+      "id": "starwell-priest-robe",
+      "kind": "armor",
+      "source": "assets/exploration/armor/originals/starwell-priest-robe.png",
+      "output": "public/exploration/armor/starwell-priest-robe.png",
+      "prompt": "Single Egyptian fantasy RPG inventory armor: Starwell priest robe, an empty wearable robe with no person or mannequin. Midnight-blue cloth with ivory inner lining, delicate silver star embroidery and restrained antique-gold lapis collar, fluid draped sleeves, small cyan gem at waist. Three-quarter front view full garment isolated, no floor, no stand, no text or UI, no staff. Clean semi-realistic hand-painted game equipment illustration, distinct silhouette readable at 48px; crisp clean alpha edges and generous transparent margins.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
     }
   ]
 }

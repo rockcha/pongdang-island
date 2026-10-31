@@ -20,7 +20,7 @@ it('sets positive gold prices for every weapon while requiring a floor offering 
 it('prices equivalent plain weapons equally and adds a modest premium for special effects',()=>{
  for(const tier of ['advanced','ultimate'] as const){
   const weapons=explorationWeapons.filter(weapon=>weapon.tier===tier)
-  const plain=weapons.filter(weapon=>!weapon.proc&&!weapon.lifesteal&&!weapon.cleanseChance)
+  const plain=weapons.filter(weapon=>!weapon.proc&&!weapon.lifesteal&&!weapon.cleanseChance&&!weapon.maxHpBonus&&!weapon.maxManaBonus)
   expect(new Set(plain.map(weapon=>weapon.price)).size).toBe(1)
   for(const weapon of weapons.filter(item=>!plain.includes(item)))expect(weapon.price).toBeGreaterThan(plain[0].price)
  }

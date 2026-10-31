@@ -17,7 +17,8 @@ export const explorationArmor:Armor[]=[
  {"id":"sun-king-warplate","name":"태양왕의 전쟁갑주","tier":"ultimate","reduction":9,"magicReduction":3,"maxHpBonus":30,"evasion":0,"price":2400,"description":"태양왕의 권위를 새긴 두꺼운 전쟁갑주.","image":"/exploration/armor/sun-king-warplate.png","role":"물리 방어형"},
  {"id":"starlight-priest-vestment","name":"별빛 사제의 성의","tier":"ultimate","reduction":3,"magicReduction":9,"maxHpBonus":30,"evasion":10,"price":2400,"description":"별빛의 결계가 마법의 위협을 감싸는 성의.","image":"/exploration/armor/starlight-priest-vestment.png","role":"마법 방어형"},
  {"id":"immortal-royal-robe","name":"불멸자의 왕포","tier":"ultimate","reduction":4,"magicReduction":4,"maxHpBonus":65,"evasion":0,"price":2500,"description":"불멸을 꿈꾼 왕의 생명력이 깃든 왕포.","image":"/exploration/armor/immortal-royal-robe.png","role":"체력형"},
- {"id":"nightwind-shadow-garb","name":"밤바람의 무영복","tier":"ultimate","reduction":4,"magicReduction":4,"maxHpBonus":25,"evasion":30,"price":2600,"description":"밤바람처럼 몸을 감춰 기본 공격을 흘려보내는 무영복.","image":"/exploration/armor/nightwind-shadow-garb.png","role":"회피형"}
+ {"id":"nightwind-shadow-garb","name":"밤바람의 무영복","tier":"ultimate","reduction":4,"magicReduction":4,"maxHpBonus":25,"evasion":30,"price":2600,"description":"밤바람처럼 몸을 감춰 기본 공격을 흘려보내는 무영복.","image":"/exploration/armor/nightwind-shadow-garb.png","role":"회피형"},
+ {id:'starwell-priest-robe',name:'별샘 사제복',tier:'advanced',reduction:1,magicReduction:4,maxHpBonus:10,maxManaBonus:15,evasion:0,price:850,role:'최대 마나형',description:'별빛을 수놓은 예복이 마력을 담아 둔다. 최대 마나가 15 증가하며, 장착만으로 체력이나 마나가 회복되지는 않는다.',image:'/exploration/armor/starwell-priest-robe.png'},
 ]
 export const starterArmor:Gear={id:'old-diving-suit',name:'낡은 잠수복',description:'닳았지만 몸을 가볍게 감싸는 잠수복.',reduction:1,magicReduction:0,maxHpBonus:0,evasion:5,image:'/exploration/armor/old-diving-suit.png'}
 export const practiceArmor:Gear[]=[starterArmor,

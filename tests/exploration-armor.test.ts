@@ -12,8 +12,8 @@ function armored(id:string){const gear=explorationArmor.find(item=>item.id===id)
 it('connects every armor and spell to a generated, saved image',()=>{
  const manifest=JSON.parse(readFileSync('assets/exploration/equipment-manifest.json','utf8')) as {images:{source:string;output:string}[]}
  const images=[...armorCatalog.map(item=>item.gear.image),...practiceSpells.map(item=>item.image),...plannedSpells.map(item=>item.image)]
- expect(images).toHaveLength(39)
- expect(new Set(images).size).toBe(39)
+ expect(images).toHaveLength(40)
+ expect(new Set(images).size).toBe(40)
  for(const image of images){
   expect(image).toBeTruthy()
   if(image!.endsWith('.svg')){expect(existsSync('public'+image)).toBe(true);expect(readFileSync('public'+image,'utf8')).toContain('<svg');continue}
@@ -24,8 +24,8 @@ it('connects every armor and spell to a generated, saved image',()=>{
  }
 })
 it('registers five distinct builds per tier and sells entry armor at its catalog price',()=>{
- expect(armorCatalog).toHaveLength(19)
- for(const tier of ['starter','advanced','ultimate'])expect(new Set(explorationArmor.filter(item=>item.tier===tier).map(item=>item.role)).size).toBe(5)
+ expect(armorCatalog).toHaveLength(20)
+ for(const tier of ['starter','advanced','ultimate'])expect(new Set(explorationArmor.filter(item=>item.tier===tier).map(item=>item.role)).size).toBe(tier==='advanced'?6:5)
  const gear=explorationArmor[0],bought=buyMerchantItem(newPractice(()=>0),gear.id)
  expect(bought.armor).toContain(gear);expect(bought.gold).toBe(100000-gear.price)
  expect(buyMerchantItem(bought,gear.id)).toBe(bought)

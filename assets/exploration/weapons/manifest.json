@@ -272,6 +272,24 @@
       "source": "assets/exploration/weapons/originals/falcon-beak-dagger.png",
       "output": "public/exploration/weapons/falcon-beak-dagger.png",
       "prompt": "Use case: stylized-concept. Asset: one transparent inventory weapon illustration for an Egyptian underground fantasy RPG. Hand-painted premium 2D item art with semi-realistic weathered metal and leather, clean readable silhouette, restrained ordinary-tier craftsmanship, no magical glow. Square composition, complete weapon diagonally from bottom-left handle to top-right tip, centered, about 82 percent of square with safe margins. Soft warm key light upper left, subtle bright blade edges. Transparent alpha background. One weapon only. No scene, floor, pedestal, border, text, UI, detached particles, thick black outline, or cropped parts. Clean antialiased alpha edges. Subject: a falcon-beak dagger with a long narrow gently hooked dark steel blade and keen silver edge, small bronze guard with restrained falcon-beak silhouette, teal leather grip and compact bronze bird-head pommel. Agile practical precision weapon, distinct hooked silhouette, modest ordinary equipment with surprising craftsmanship; no jewels or royal ornament."
+    },
+    {
+      "id": "lapis-moon-staff",
+      "kind": "weapon",
+      "source": "assets/exploration/weapons/originals/lapis-moon-staff.png",
+      "output": "public/exploration/weapons/lapis-moon-staff.png",
+      "prompt": "Single Egyptian fantasy RPG inventory item: lapis lazuli moon staff. Dark polished slender shaft wrapped in muted gold, crescent-shaped golden staff head cradling a deep blue lapis orb, small restrained cyan glint. Whole object diagonal lower left to upper right, isolated, no pedestal, no ground, no letters, no UI. Clean semi-realistic hand-painted game equipment illustration matching warm gold Egyptian treasure weapons; clear silhouette readable at 48px; clean alpha edges, generous transparent margins.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
+    },
+    {
+      "id": "heartstone-warhammer",
+      "kind": "weapon",
+      "source": "assets/exploration/weapons/originals/heartstone-warhammer.png",
+      "output": "public/exploration/weapons/heartstone-warhammer.png",
+      "prompt": "Single Egyptian fantasy RPG inventory weapon: Heartstone warhammer. Broad heavy sandstone and bronze hammer head with a large polished warm crimson heartstone inset, sturdy short dark leather-wrapped handle, subtle Egyptian geometric engravings and muted gold accents. Full weapon diagonal lower left to upper right, isolated, no background scenery, no ground, no text or UI, no blood. Clean semi-realistic hand-painted game equipment illustration; sturdy unmistakable hammer silhouette readable at 48px; clean alpha edges and generous transparent margins.",
+      "generatedAt": "2026-11-01",
+      "generator": "built-in image_gen"
     }
   ]
 }

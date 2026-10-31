@@ -259,7 +259,7 @@ it('opens the merchant shop, buys gear with practice gold and descends with inve
  fireEvent.click(await screen.findByRole('button',{name:'구매한다'},{timeout:1800}))
  const item=within(screen.getByRole('region',{name:'무기'})).getAllByRole('heading',{level:4})[0].closest('article')!
  const itemName=within(item).getByRole('heading',{level:4}).textContent!
- const price=Number(within(item).getByText(/골드$/).textContent!.replace(/[^0-9]/g,''))
+ const price=Number(within(item).getByLabelText(/^가격 [\d,]+ 골드$/).textContent!.replace(/[^0-9]/g,''))
  fireEvent.click(within(item).getByRole('button',{name:'구매',exact:true}))
  await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
  expect(screen.getByLabelText('탐험용 골드').textContent).toContain((100000-price).toLocaleString())

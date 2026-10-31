@@ -1,7 +1,7 @@
 import {acquiredItemIds,recordAcquired} from './acquisition-history'
 import {explorationWeapons,type WeaponTier} from './weapon-catalog'
 import {explorationArmor} from './armor-catalog'
-import {merchantGoods,merchantPotions,playerMaxHp,type Gear,type PotionKind,type PracticeState} from './practice-state'
+import {merchantGoods,merchantPotions,clampGearResources,type Gear,type PotionKind,type PracticeState} from './practice-state'
 export type RoomLoot={kind:'weapon'|'armor';id:string;name:string;image?:string;gear:Gear;price:number}|{kind:'potion';id:string;name:string;image?:string;potionKind:PotionKind;price:number}
 const pick=<T,>(items:readonly T[],random:()=>number)=>items[Math.min(items.length-1,Math.floor(random()*items.length))]
 export function drawRoomLoot(state:PracticeState,tier:WeaponTier='starter',random=Math.random):RoomLoot{
@@ -17,8 +17,8 @@ export function receiveRoomLoot(state:PracticeState,loot:RoomLoot,replaceId?:str
  if(inventory.length>=3&&(!replaceId||!inventory.some(item=>item.id===replaceId)))return state
  const next={...state,acquiredIds:recordAcquired(state,loot.id),[key]:[...inventory.filter(item=>item.id!==replaceId),loot.gear]}
  if(loot.kind==='weapon'&&replaceId===state.weaponId)next.weaponId=loot.id
- if(loot.kind==='armor'&&replaceId===state.armorId){next.armorId=loot.id;next.hp=Math.min(next.hp,playerMaxHp(next))}
- return next
+ if(loot.kind==='armor'&&replaceId===state.armorId)next.armorId=loot.id
+ return clampGearResources(next)
 }
 export function gearSalePrice(gear:Gear){
  const price=merchantGoods.find(item=>item.gear?.id===gear.id)?.price??(gear.attack!==undefined?100:80)

@@ -47,7 +47,7 @@ export function floorMerchantGoods(state:PracticeState){
  const acquired=acquiredItemIds(state)
  return ids.flatMap(id=>merchantGoods.filter(item=>item.id===id&&(item.kind==='potion'||!acquired.has(item.id))))
 }
-export function purchaseBlock(state:PracticeState,id:string,quantity=1):string|null{
+export function purchaseBlock(state:PracticeState,id:string,quantity=1,replaceId?:string):string|null{
  if(!Number.isSafeInteger(quantity)||quantity<1)return '수량 확인'
  if(state.combat?.status==='active')return '전투 중에는 구매할 수 없어요.'
  const item=floorMerchantGoods(state).find(item=>item.id===id)
@@ -56,17 +56,18 @@ export function purchaseBlock(state:PracticeState,id:string,quantity=1):string|n
  if(quantity!==1)return '장비는 1개씩 구매해요.'
  const owned=item.kind==='weapon'?state.weapons:item.kind==='armor'?state.armor:state.spells
  if(owned.some(value=>value.id===id))return '보유 중'
- if(item.kind!=='magic'&&owned.length>=3)return '보관 칸 부족'
+ if(replaceId&&!owned.some(value=>value.id===replaceId))return '교체할 장비를 확인해주세요.'
+ if(item.kind!=='magic'&&owned.length>=3&&!replaceId)return '보관 칸 부족'
  if(state.gold<item.price)return '골드 부족'
  return null
 }
-export function buyMerchantItem(state:PracticeState,id:string,quantity=1):PracticeState{
- if(purchaseBlock(state,id,quantity))return state
+export function buyMerchantItem(state:PracticeState,id:string,quantity=1,replaceId?:string):PracticeState{
+ if(purchaseBlock(state,id,quantity,replaceId))return state
  const item=merchantGoods.find(item=>item.id===id)!
  const next={...state,gold:state.gold-item.price*quantity,...(item.kind!=='potion'?{acquiredIds:recordAcquired(state,item.id)}:{})}
  if(item.kind==='potion')return {...next,potions:{...state.potions,[item.potionKind]:state.potions[item.potionKind]+quantity}}
- if(item.kind==='weapon')return {...next,weapons:[...state.weapons,item.gear]}
- if(item.kind==='armor')return {...next,armor:[...state.armor,item.gear]}
+ if(item.kind==='weapon')return {...next,weapons:[...state.weapons.filter(gear=>gear.id!==replaceId),item.gear],weaponId:replaceId===state.weaponId?item.id:state.weaponId}
+ if(item.kind==='armor'){const equipped={...next,armor:[...state.armor.filter(gear=>gear.id!==replaceId),item.gear],armorId:replaceId===state.armorId?item.id:state.armorId};return {...equipped,hp:Math.min(equipped.hp,playerMaxHp(equipped))}}
  return {...next,spells:[...state.spells,practiceSpells.find(spell=>spell.id===item.id)!]}
 }
 export function discardGear(state:PracticeState,kind:'weapon'|'armor',id:string):PracticeState{

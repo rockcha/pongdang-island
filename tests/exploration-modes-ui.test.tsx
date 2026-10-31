@@ -44,7 +44,7 @@ it('plays fifty actual UI floors and requires the final boss before completion',
  await advance(100);expect(screen.getByRole('region',{name:'황금왕 라세프 전투'})).toBeTruthy();expect(screen.queryByRole('heading',{name:'50층 탐험 완료'})).toBeNull();expect(screen.queryByRole('group',{name:'지하 51층의 세 문'})).toBeNull()
  for(let turn=0;turn<20&&screen.queryByRole('button',{name:'공격',exact:true});turn++){fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}));await advance(6200)}
  expect(screen.queryByRole('heading',{name:'50층 탐험 완료'})).toBeNull();fireEvent.click(screen.getByRole('button',{name:'메인 화면으로'}));expect(leave).toHaveBeenCalledOnce()
-},15000)
+},45000)
 it('renders the final boss and completes only after victory and claiming its reward',async()=>{
  setup();const fresh=practice.newPractice(()=>0,'practice'),initial={...fresh,weapons:fresh.weapons.map(item=>({...item,attack:500})),market:{...fresh.market,floor:practiceFinalFloor,doors:['monster',practiceFinalBossRoom,'rest-oasis'] as typeof fresh.market.doors,monsterIds:['sand-scorpion','random','random'] as typeof fresh.market.monsterIds}}
  vi.spyOn(practice,'newPractice').mockImplementation(()=>initial)

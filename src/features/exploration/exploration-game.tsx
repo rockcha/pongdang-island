@@ -166,15 +166,15 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
   const monster=getMonster(id),lines=encounterWonderLines.filter(line=>line!==lastWonder.current),wonder=lines[Math.floor(Math.random()*lines.length)];lastWonder.current=wonder;setEncounterLoot(!bossRoom&&roomVisit?.outcome.kind==='monster'?roomVisit.outcome.loot:undefined);setEncounterBackground(bossRoom?getAdventureRoom(bossRoom)!.background:roomVisit?getAdventureRoom(roomVisit.id)!.background:null);setRoomVisit(null);setEncounterAmbush(ambush);setEncounterMonster(id);setEncounterLine(id==='sand-scorpion'?scorpionArrivalLines[Math.floor(Math.random()*scorpionArrivalLines.length)]:monster.arrival);setEncounter('wonder');tell(ambush?'잠든 틈을 노려 조심스럽게 다가간다…':wonder,true)
  }
  function openLoot(loot:RoomLoot){if(pendingLootRef.current)return;const reward=refreshRoomLoot(liveState.current,loot);pendingLootRef.current=reward;setPendingLoot(reward);if(liveState.current.combat?.status==='won')tell(lootDiscoveryText(reward))}
- function finishLoot(replaceId?:string){
+ function finishLoot(replaceId?:string,decline=false){
   const loot=pendingLootRef.current;if(!loot)return
-  const previous=liveState.current,next=receiveRoomLoot(previous,loot,replaceId)
-  if(next===previous)return
+  const previous=liveState.current,next=decline?previous:receiveRoomLoot(previous,loot,replaceId)
+  if(!decline&&next===previous)return
   const collected=next.combat?.status==='won'&&next.combat.monsterId==='nameless-royal-warden'?progressNameStory(next,'claim'):next
   const completed=collected.combat?.status==='won'?{...collected,combat:{...collected.combat,lootClaimed:true}}:collected
   pendingLootRef.current=null;setPendingLoot(null);liveState.current=completed;setState(completed)
-  tell(lootAcquiredText(loot))
-  audio.current?.unlock();audio.current?.play('loot')
+  tell(decline?'장비를 교체하지 않고 발견한 물품을 두고 간다.':lootAcquiredText(loot))
+  if(!decline){audio.current?.unlock();audio.current?.play('loot')}
  }
  function enterRoom(){
   if(state.door===null||entryLock.current||descending||state.forcedMerchant)return
@@ -280,7 +280,7 @@ export function ExplorationGame({nickname,avatarPath,onLeave,mode='test'}:{mode?
 <button className="exploration-potion-loadout" aria-label="포션 보관함" disabled={descending||!!opening||!!encounter||!!state.combat||combatBusy} onClick={()=>setPotionsOpen(true)}><div>{merchantPotions.map(potion=><span key={potion.kind}><img src={potion.image} alt=""/><b>×{state.potions[potion.kind]}</b></span>)}</div><span><small>회복 물품</small><strong>포션</strong></span></button></div></section>
   <PotionChoiceDialog state={state} open={potionsOpen} onOpenChange={setPotionsOpen} busy={combatBusy} onUse={drinkPotion}/>
   <PracticeInventory onEquipChange={()=>{audio.current?.unlock();audio.current?.play('equip')}} onUsePotion={drinkPotion} initialTab={bagTab} open={bag} onOpenChange={setBag} state={state} onChange={setState}/>
-  <LootDialog state={state} loot={pendingLoot} onClaim={replaceId=>finishLoot(replaceId)}/>
+  <LootDialog state={state} loot={pendingLoot} onClaim={replaceId=>finishLoot(replaceId)} onDecline={()=>finishLoot(undefined,true)}/>
   <Dialog open={showHistory} onOpenChange={setShowHistory}><DialogContent className="exploration-modal exploration-history"><DialogHeader><DialogTitle>탐험 기록</DialogTitle><DialogDescription>이번 탐험에서 지나온 순간들이에요.</DialogDescription></DialogHeader><ol>{history.map((line,index)=><li key={index}><span>{String(index+1).padStart(2,'0')}</span><StoryContent line={line} nickname={nickname} avatarPath={avatarPath}/></li>)}</ol></DialogContent></Dialog>
   <ConfirmDialog compact open={leave} onOpenChange={setLeave} title="저장하지 않고 나가시겠습니까?" description="현재 탐험과 연습 물품이 사라져요. 다시 입장하면 지하실 입구부터 시작해요." confirmLabel="저장하지 않고 나가기" cancelLabel="계속 탐험" onConfirm={onLeave}/>
  </section>,document.body)

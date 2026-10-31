@@ -1,0 +1,50 @@
+[
+  {
+    "id": "zahir-collector",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Zahir, a mysterious treasure spirit, NOT a human. A floating ornate antique gold Egyptian mask with emerald inset eyes, supported by an elegant ivory-and-gold layered merchant mantle, NO human head, skin, hands or feet. Two ornate gold gauntlets emerge from sleeves to gently hold a small closed treasure chest. The lower mantle tapers neatly above the ground. Regal, courteous, refined collector; strong solid silhouette without fog.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "sahira-shaman",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Sahira, a lapis crystal oracle spirit, NOT a human. A solid faceted deep blue lapis crystal face framed by small gold Egyptian headdress and teal robes, subtly luminous cyan eye slits, articulated faceted crystal hands, one hand holds a short lapis-tipped staff. Elegant clear crystal-and-cloth body, robes taper into one substantial floating lapis crystal at the bottom, no human skin or feet. Calm and wise, no wings or smoky body.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "nefera-archivist",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Nefera, a NON-HUMANOID celestial archive spirit. A single dark lapis orb with one subtle gold eye at center enclosed by two elegant antique gold astronomical rings. Beneath it floats ONE substantial engraved dark stone tablet with decorative constellation strokes, and two smaller stone page slabs flanking close to the orb. Three compact midnight-blue fabric ribbons tie the objects into a coherent vertical silhouette. No human body, face, arms or legs. Serene ancient archivist, solid objects with no haze or particles.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "nadim-apprentice",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper illustration. Match reference polished hand-painted semi-realistic 2D style, rich materials and clean readable silhouette. Entire subject and all accessories visible, centered square with generous 12% transparent margin. No scenery, floor, shadows, UI, readable text, watermark, detached particles, fog or outer glow. Not frightening or gory. Reference is STYLE ONLY. Subject: Nadim, a young adult Egyptian male apprentice sand mage, tan skin, friendly curious face, clean-shaven, simple sand beige hood, muted orange traveling cloak and blue sash, scrolls on belt, closed small spellbook in one hand, short simple wooden wand in the other. Modest beginner, human anatomy, whole feet visible.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "hasan-forge",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Underground bronze forge, orange furnace and anvil on left, bronze weapons and armor workbench on right, amber firelight, charcoal and copper palette, no smoke clouds.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  },
+  {
+    "id": "zahir-vault",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Elegant hidden golden treasure showroom, gold-edged pedestals and closed jeweled chests along edges, carved sandstone pillars, polished gold inlays and emerald accents, honey-gold light.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  },
+  {
+    "id": "nadim-camp",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Simple apprentice's sandstone room, small contained orange brazier on left, wooden crates and scrolls on right, plain sandstone wall, humble woven rug by edge, warm orange and beige palette.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  },
+  {
+    "id": "nefera-observatory",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. Wide 3:2 empty Egyptian underground fantasy RPG merchant room. Match reference detailed painted sandstone architecture. NO PEOPLE or creatures, no UI, text or watermark. All furniture at LEFT and RIGHT EDGES; central 50% and center floor clear for an NPC. Scene: Ancient celestial archive with midnight navy ceiling and fine gold constellation inlays, lapis pillars and ancient stone tablets on edge stands, small gold lamps, quiet indigo and gold palette. No cosmic fog.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  }
+]

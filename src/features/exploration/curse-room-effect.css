@@ -1,0 +1,13 @@
+.exploration-curse-effect{position:fixed;inset:0;z-index:44;pointer-events:none;overflow:hidden;isolation:isolate;animation:curse-absorption-fade 1.4s ease-out both}
+.exploration-curse-effect *{pointer-events:none}
+.curse-absorption-aura{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 47%,#6c31821c 8%,transparent 38%,#1b082f70 76%,#050207bd);animation:curse-aura-breathe 1.4s ease-out both}
+.curse-absorption-seal{position:absolute;left:50%;top:47%;translate:-50% -50%;width:min(48vmin,260px);height:min(48vmin,260px);color:#b580dc;filter:drop-shadow(0 0 12px #9f58ce66);animation:curse-seal-withdraw 1.4s ease-out both}
+.curse-absorption-wisps{position:absolute;left:50%;top:47%;width:1px;height:1px}
+.curse-absorption-wisps i{position:absolute;width:4px;height:18px;border-radius:50%;background:linear-gradient(#bf8be0,#4f226f77,transparent);box-shadow:0 0 9px #a365c85c;animation:curse-wisp-withdraw .9s var(--curse-delay) ease-in both}
+body:has(.exploration-curse-effect) .exploration-hp .exploration-health-meter{animation:curse-health-glow 1.4s ease-out both}
+@keyframes curse-absorption-fade{0%,100%{opacity:0}18%,65%{opacity:1}}
+@keyframes curse-aura-breathe{from{scale:1.07}55%{scale:1}to{scale:1.04}}
+@keyframes curse-seal-withdraw{0%{opacity:0;scale:1.1;rotate:-8deg}30%,55%{opacity:.7}100%{opacity:0;scale:.82;rotate:6deg}}
+@keyframes curse-wisp-withdraw{0%{opacity:0;transform:translate(var(--curse-x),var(--curse-y)) scale(1.3)}24%{opacity:.75}100%{opacity:0;transform:translate(0,-12px) scale(.25)}}
+@keyframes curse-health-glow{0%,100%{box-shadow:none}30%,60%{box-shadow:0 0 12px #a465c999}}
+@media(prefers-reduced-motion:reduce){.exploration-curse-effect *{animation:none!important}.curse-absorption-seal,.curse-absorption-wisps{display:none}body:has(.exploration-curse-effect) .exploration-hp .exploration-health-meter{animation:none}}

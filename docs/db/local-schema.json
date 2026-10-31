@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "5c4cf8103b51ad026bf5cf17789aa0973cb6e6f37b522eed89a2eb9070882dbc",
+  "migrationHash": "512061c66832359099d2f31098725512ab664e68222c4d6bc4642c18c0b85255",
   "structure": {
     "enums": [
       {
@@ -163,6 +163,12 @@
       {
         "rls": true,
         "name": "experience_events",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "exploration_feedback",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2061,6 +2067,66 @@
         "default": "now()",
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -11986,6 +12052,24 @@
         "definition": "CREATE UNIQUE INDEX experience_events_pkey ON app_private.experience_events USING btree (user_id, source, source_id)"
       },
       {
+        "name": "exploration_feedback_author_time_idx",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "CREATE INDEX exploration_feedback_author_time_idx ON app_private.exploration_feedback USING btree (user_id, created_at DESC)"
+      },
+      {
+        "name": "exploration_feedback_pkey",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX exploration_feedback_pkey ON app_private.exploration_feedback USING btree (id)"
+      },
+      {
+        "name": "exploration_feedback_visible_idx",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "CREATE INDEX exploration_feedback_visible_idx ON app_private.exploration_feedback USING btree (created_at DESC, id DESC) WHERE (deleted_at IS NULL)"
+      },
+      {
         "name": "farm_animal_jobs_pkey",
         "table": "farm_animal_jobs",
         "schema": "app_private",
@@ -16647,6 +16731,26 @@
         "securityDefiner": true
       },
       {
+        "name": "exploration_feedback",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_feedback(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();op boolean;result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_FEEDBACK_PAGE';end if;\n op:=app_private.notice_is_operator();\n with page as (\n  select c.*,p.nickname,p.avatar_path\n  from app_private.exploration_feedback c join public.player_profiles p on p.id=c.user_id\n  where c.deleted_at is null order by c.created_at desc,c.id desc offset p_offset limit 21\n ) select jsonb_build_object(\n  'items',coalesce((select jsonb_agg(jsonb_build_object('id',r.id,'authorId',r.user_id,'nickname',r.nickname,'avatarPath',r.avatar_path,'body',r.body,'createdAt',r.created_at,'updatedAt',r.updated_at,'canEdit',r.user_id=u,'canDelete',r.user_id=u or op) order by r.created_at desc,r.id desc) from(select * from page order by created_at desc,id desc limit 20)r),'[]'::jsonb),\n  'hasMore',(select count(*)>20 from page)\n ) into result;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "exploration_feedback_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_id uuid, p_body text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_feedback_action(p_action text, p_id uuid, p_body text DEFAULT NULL::text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r app_private.exploration_feedback;clean text:=btrim(p_body,E' \\t\\n\\r');\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_id is null or p_action is null or p_action not in ('add','edit','delete') then raise exception 'INVALID_FEEDBACK_ACTION';end if;\n if not exists(select 1 from public.player_profiles where id=u) then raise exception 'FEEDBACK_PROFILE_REQUIRED';end if;\n -- Serialize only this author's feedback requests; retries retain their original comment UUID.\n perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtext('exploration_feedback'),pg_catalog.hashtext(u::text));\n select * into r from app_private.exploration_feedback where id=p_id for update;\n if p_action='delete' then\n  if not found then return p_id;end if;\n  if r.user_id<>u and not app_private.notice_is_operator() then raise exception 'FEEDBACK_FORBIDDEN';end if;\n  update app_private.exploration_feedback set deleted_at=coalesce(deleted_at,clock_timestamp()) where id=p_id;\n  return p_id;\n end if;\n if clean is null or char_length(clean) not between 1 and 500 then raise exception 'INVALID_FEEDBACK_BODY';end if;\n if p_action='edit' then\n  if not found or r.deleted_at is not null then raise exception 'FEEDBACK_NOT_FOUND';end if;\n  if r.user_id<>u then raise exception 'FEEDBACK_FORBIDDEN';end if;\n  if r.body<>clean then update app_private.exploration_feedback set body=clean,updated_at=clock_timestamp() where id=p_id;end if;\n  return p_id;\n end if;\n if found then\n  if r.user_id<>u or r.body<>clean then raise exception 'OPERATION_CONFLICT';end if;\n  return p_id;\n end if;\n if exists(select 1 from app_private.exploration_feedback where user_id=u and created_at>clock_timestamp()-interval '30 seconds')\n  or (select count(*) from app_private.exploration_feedback where user_id=u and created_at>clock_timestamp()-interval '1 day')>=30\n then raise exception 'FEEDBACK_RATE_LIMIT';end if;\n insert into app_private.exploration_feedback(id,user_id,body) values(p_id,u,clean);\n return p_id;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "farm_action",
         "config": [
           "search_path=\"\""
@@ -19667,6 +19771,26 @@
         "securityDefiner": false
       },
       {
+        "name": "exploration_feedback",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.exploration_feedback(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.exploration_feedback(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "exploration_feedback_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_id uuid, p_body text",
+        "definition": "CREATE OR REPLACE FUNCTION public.exploration_feedback_action(p_action text, p_id uuid, p_body text DEFAULT NULL::text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.exploration_feedback_action(p_action,p_id,p_body)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "farm_action",
         "config": [
           "search_path=\"\""
@@ -21941,6 +22065,54 @@
         "table": "experience_events",
         "schema": "app_private",
         "definition": "NOT NULL xp"
+      },
+      {
+        "name": "exploration_feedback_body_check",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "CHECK (((char_length(btrim(body, ' \t\n\r'::text)) >= 1) AND (char_length(btrim(body, ' \t\n\r'::text)) <= 500)))"
+      },
+      {
+        "name": "exploration_feedback_body_not_null",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "NOT NULL body"
+      },
+      {
+        "name": "exploration_feedback_created_at_not_null",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "exploration_feedback_id_not_null",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "exploration_feedback_pkey",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "exploration_feedback_updated_at_not_null",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "exploration_feedback_user_id_fkey",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exploration_feedback_user_id_not_null",
+        "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "farm_animal_jobs_animal_id_fkey",
@@ -40526,6 +40698,48 @@
         "arguments": ""
       },
       {
+        "name": "exploration_feedback",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "exploration_feedback",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "exploration_feedback",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "exploration_feedback_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_id uuid, p_body text"
+      },
+      {
+        "name": "exploration_feedback_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_id uuid, p_body text"
+      },
+      {
+        "name": "exploration_feedback_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_id uuid, p_body text"
+      },
+      {
         "name": "farm_action",
         "role": "anon",
         "schema": "app_private",
@@ -46866,6 +47080,48 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "exploration_feedback",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "exploration_feedback",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "exploration_feedback",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "exploration_feedback_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_id uuid, p_body text"
+      },
+      {
+        "name": "exploration_feedback_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_id uuid, p_body text"
+      },
+      {
+        "name": "exploration_feedback_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_id uuid, p_body text"
       },
       {
         "name": "farm_action",

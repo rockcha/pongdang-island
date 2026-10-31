@@ -4,3 +4,15 @@
 @media(max-height:500px) and (orientation:landscape){.exploration-inventory{gap:8px;padding:14px}.exploration-inventory-items article{padding:10px;gap:5px}.exploration-empty-slot{min-height:100px}}
 @media(max-width:640px) and (orientation:landscape){.exploration-inventory-items{gap:6px}.exploration-inventory-items h3{font-size:11px}}
 @media(orientation:portrait){.exploration-inventory-items{grid-template-columns:1fr}.exploration-inventory-footer{align-items:start;flex-direction:column}}
+
+.exploration-merchant h2 small,.exploration-shaman h2 small{display:block;font-size:11px;font-weight:400;line-height:1.6;color:#b7aa8c}.ailment-badge[data-ailment="shield"],.ailment-badge[data-ailment="might"]{color:#e8ce86;border-color:#a28a49}
+
+.exploration-mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.exploration-mode-buttons .exploration-enter{min-height:74px;padding:12px;gap:9px}
+.exploration-mode-buttons .exploration-enter.is-test{background:#43524d}
+.exploration-mode-buttons .exploration-enter span{display:grid;gap:6px;text-align:left}
+.exploration-mode-buttons .exploration-enter strong{font-size:14px;font-weight:500}
+.exploration-mode-buttons .exploration-enter small{font-size:10px;line-height:1.5;opacity:.8}
+@media(max-width:360px){.exploration-mode-buttons{grid-template-columns:1fr}}
+.exploration-mode-buttons .exploration-enter small{word-break:keep-all}
+.exploration-mode-buttons.is-practice-only{grid-template-columns:1fr}

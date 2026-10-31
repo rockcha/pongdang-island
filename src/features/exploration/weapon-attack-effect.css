@@ -1,0 +1,40 @@
+.weapon-attack-effect{position:absolute;inset:0;z-index:5;pointer-events:none;color:var(--weapon-color);isolation:isolate;overflow:hidden;clip-path:inset(0 15% 0 15%)}
+.weapon-attack-effect svg{display:block;width:100%;height:100%;filter:drop-shadow(0 0 4px var(--weapon-color))}
+.weapon-swing{position:absolute;left:50%;top:43%;width:clamp(140px,42vw,260px);aspect-ratio:1;opacity:0;transform:translate(-50%,-50%) rotate(var(--weapon-angle)) scale(var(--weapon-reach));animation:weapon-sweep .5s cubic-bezier(.2,.7,.25,1) .7s both}
+.weapon-attack-effect[data-motion=thrust] .weapon-swing{animation-name:weapon-thrust}
+.weapon-attack-effect[data-motion=smash] .weapon-swing{animation-name:weapon-smash}
+.weapon-attack-effect[data-motion=flail] .weapon-swing{animation-name:weapon-flail}
+.weapon-attack-effect[data-motion=fan] .weapon-swing{animation-name:weapon-fan}
+.weapon-attack-effect[data-motion=staff] .weapon-swing,.weapon-attack-effect[data-motion=twin] .weapon-swing{animation-duration:.58s;animation-delay:.62s}
+.weapon-projectile{position:absolute;left:50%;top:43%;width:clamp(58px,19vw,100px);aspect-ratio:1;opacity:0;animation:weapon-flight .52s cubic-bezier(.32,.07,.6,1) .58s both}
+.weapon-attack-effect[data-motion=ring] .weapon-projectile{width:clamp(78px,23vw,125px);animation-duration:.72s;animation-delay:.38s}
+.weapon-rotating-disc{transform-origin:90px 90px;animation:weapon-disc-spin .35s linear infinite}
+.weapon-projectile::after{content:'';position:absolute;left:46%;top:72%;width:8%;height:80%;background:linear-gradient(var(--weapon-color),transparent);filter:blur(3px);z-index:-1}
+.weapon-hit-burst{position:absolute;left:50%;top:43%;width:110px;height:110px;transform:translate(-50%,-50%);color:var(--weapon-accent)}
+.weapon-hit-burst>span{position:absolute;inset:35%;border:2px solid currentColor;border-radius:50%;box-shadow:0 0 10px var(--weapon-color);animation:weapon-contact-ring .55s ease-out both}
+.weapon-hit-burst>i{position:absolute;left:50%;top:50%;width:2px;height:calc(15px * var(--weapon-weight));background:currentColor;box-shadow:0 0 5px var(--weapon-color);animation:weapon-spark .5s ease-out both;opacity:0}
+.weapon-attack-effect[data-motion=smash] .weapon-hit-burst>span,.weapon-attack-effect[data-motion=flail] .weapon-hit-burst>span{inset:30% 18%;border-width:3px}
+.weapon-attack-effect[data-critical=true] .weapon-hit-burst{color:#ff9b83;filter:drop-shadow(0 0 7px #ff6a5366);scale:1.25}
+.weapon-attack-effect[data-missed=true] .weapon-swing{left:35%;filter:grayscale(.65);animation-name:weapon-whiff}
+.weapon-attack-effect[data-missed=true] .weapon-projectile{left:30%;filter:grayscale(.65)}
+.weapon-proc{position:absolute;left:50%;top:43%;width:clamp(95px,32vw,160px);aspect-ratio:1;transform:translate(-50%,-50%);animation:weapon-proc-reveal .85s ease-out both}
+.weapon-proc[data-proc=bleed]{color:#d9757b}.weapon-proc[data-proc=freeze]{color:#9cdef2}.weapon-proc[data-proc=burn]{color:#f3ad63}.weapon-proc[data-proc=blind]{color:#d9c58e}.weapon-proc[data-proc=weaken]{color:#b6a2cc}
+.weapon-life-return{position:absolute;inset:0}
+.weapon-life-return>i{position:absolute;left:50%;top:43%;width:8px;height:8px;border-radius:50%;background:var(--weapon-accent);box-shadow:0 0 10px var(--weapon-color),0 0 3px var(--weapon-accent);opacity:0;animation:weapon-life-drain .9s ease-in-out var(--orb-delay) both}
+.weapon-self-cleanse{position:absolute;left:50%;top:88%;width:85px;height:85px;transform:translate(-50%,-50%);color:#c0eee5;animation:weapon-proc-reveal .9s ease-out both}
+.exploration-enemy-art .combat-heal-number.is-player-weapon{top:86%;font-size:19px}
+.exploration-monster-stage .combat-enemy-hit{z-index:7}
+@keyframes weapon-sweep{0%{opacity:0;translate:-24px 12px;rotate:-30deg;scale:.7}30%{opacity:.4}70%{opacity:1;translate:0 0;rotate:0deg;scale:1}100%{opacity:0;translate:18px -6px;rotate:15deg;scale:1.08}}
+@keyframes weapon-thrust{0%{opacity:0;translate:0 100px;scale:.6}35%{opacity:.7}75%{opacity:1;translate:0 0;scale:1}100%{opacity:0;translate:0 -12px;scale:1.05}}
+@keyframes weapon-smash{0%{opacity:0;translate:0 -75px;scale:.65}40%{opacity:.5}75%{opacity:1;translate:0 0;scale:1}100%{opacity:0;translate:0 10px;scale:1.07}}
+@keyframes weapon-flail{0%{opacity:0;rotate:-75deg;scale:.65}35%{opacity:.5}75%{opacity:1;rotate:0deg;scale:1}100%{opacity:0;rotate:20deg;scale:1.1}}
+@keyframes weapon-fan{0%{opacity:0;scale:.25;rotate:-25deg}60%{opacity:.8;scale:1;rotate:0deg}100%{opacity:0;scale:1.15;rotate:12deg}}
+@keyframes weapon-whiff{0%{opacity:0;translate:0 35px;scale:.7}55%{opacity:.5;translate:-20px 0}100%{opacity:0;translate:-50px -20px;scale:1}}
+@keyframes weapon-flight{0%{top:97%;opacity:0;transform:translate(-50%,-50%) scale(.6)}20%{opacity:1}90%{opacity:1}100%{top:43%;opacity:0;transform:translate(-50%,-50%) scale(var(--weapon-reach))}}
+@keyframes weapon-disc-spin{to{rotate:360deg}}
+@keyframes weapon-contact-ring{0%{opacity:.9;scale:.25}100%{opacity:0;scale:calc(2.4 * var(--weapon-weight))}}
+@keyframes weapon-spark{0%{opacity:0;transform:rotate(var(--spark-angle)) translateY(-5px)}20%{opacity:1}100%{opacity:0;transform:rotate(var(--spark-angle)) translateY(calc(-45px * var(--weapon-weight)))}}
+@keyframes weapon-proc-reveal{0%{opacity:0;scale:.6}25%{opacity:.85;scale:.95}100%{opacity:0;scale:1.18}}
+@keyframes weapon-life-drain{0%{opacity:0;top:43%;translate:0 0;scale:1}20%{opacity:1;translate:var(--orb-lane) -10px}85%{opacity:.8}100%{opacity:0;top:91%;translate:0 0;scale:.25}}
+@media(max-height:540px){.weapon-swing{width:150px}.weapon-projectile{width:55px}.weapon-attack-effect[data-motion=ring] .weapon-projectile{width:75px}.weapon-hit-burst{width:80px;height:80px}.weapon-proc{width:95px}.weapon-self-cleanse{width:55px;height:55px}}
+@media(prefers-reduced-motion:reduce){.weapon-swing,.weapon-projectile,.weapon-hit-burst>i,.weapon-life-return{display:none}.weapon-hit-burst>span{animation:weapon-static-flash .45s linear both}.weapon-proc,.weapon-self-cleanse{animation:weapon-static-flash .7s linear both}.weapon-rotating-disc{animation:none}@keyframes weapon-static-flash{0%,100%{opacity:0}20%,70%{opacity:.65}}}

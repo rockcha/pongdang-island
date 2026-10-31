@@ -1,14 +1,57 @@
-import {useEffect,useState} from 'react'
-import {Coins,Shield,Sparkles,Swords} from 'lucide-react'
+import './merchant-shop.css'
+import {PurchaseReceipt,usePurchaseReceipt} from './purchase-receipt'
+import {useState} from 'react'
+import {ExplorationCodex} from './codex'
+import {useExplorationTrade} from './trade-feedback'
+import {ChoiceLog} from './choice-log'
+import {getShopkeeper,shopTierLabels} from './shopkeepers'
+import {useNpcConversation,type ConversationMemory} from './use-npc-conversation'
+import {GearAttributes,WeaponEffect} from './equipment-stats'
+import {Coins,Droplets,Heart,Shield,Sparkles,Swords} from 'lucide-react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
-import {buyMerchantItem,merchantGoods,purchaseBlock,type PracticeState} from './practice-state'
+import {buyMerchantItem,floorMerchantGoods,purchaseBlock,type PracticeState} from './practice-state'
 
-export function MerchantRoom({state,onChange,onDescend,onTalk}:{state:PracticeState;onChange:React.Dispatch<React.SetStateAction<PracticeState>>;onDescend:()=>void;onTalk:(text:string)=>void}){
- const [shop,setShop]=useState(false),[notice,setNotice]=useState('')
- useEffect(()=>{onTalk('모래길의 상인: “어서 오게, 여행자. 아래로 내려가기 전에 필요한 물건을 보고 가겠나?”')},[])
+function PotionQuantity({state,item,onBuy}:{state:PracticeState;item:Extract<ReturnType<typeof floorMerchantGoods>[number],{kind:'potion'}>;onBuy:(quantity:number)=>boolean}){
+ const [quantity,setQuantity]=useState('1')
+ const count=Number(quantity),max=Math.max(0,Math.floor(state.gold/item.price)),blocked=purchaseBlock(state,item.id,count)
+ return <div className="merchant-potion-controls"><div className="merchant-quantity">
+ <button aria-label={item.name+' 수량 감소'} disabled={count<=1} onClick={()=>setQuantity(String(Math.max(1,count-1)))}>−</button>
+ <input aria-label={item.name+' 구매 수량'} type="number" inputMode="numeric" min="1" max={Math.max(1,max)} step="1" value={quantity} onChange={event=>setQuantity(event.target.value)}/>
+ <button aria-label={item.name+' 수량 증가'} disabled={count>=max} onClick={()=>setQuantity(String(Math.min(max,Math.max(1,count+1))))}>+</button>
+ <button disabled={max<1} onClick={()=>setQuantity(String(max))}>최대</button></div>
+ <button className="merchant-batch-buy" aria-label={item.name+' '+(Number.isSafeInteger(count)?count:0)+'개 구매'} disabled={!!blocked} onClick={()=>{if(onBuy(count))setQuantity('1')}}>{blocked??'구매'} · {Number.isSafeInteger(count)&&count>0?(count*item.price).toLocaleString():'—'} 골드</button></div>
+}
+
+export function MerchantRoom({returnToDoors=false,state,onChange,onDescend,onTalk,latestLog,conversationMemory}:{returnToDoors?:boolean;conversationMemory?:ConversationMemory;state:PracticeState;latestLog?:string;onChange:React.Dispatch<React.SetStateAction<PracticeState>>;onDescend:()=>void;onTalk:(text:string)=>void}){
+ const profile=getShopkeeper(state.market.shopkeeperId)
+ const [shop,setShop]=useState(false),[purchased,setPurchased]=useState(false),[tab,setTab]=useState('weapon')
+
+ const {receipt,showReceipt}=usePurchaseReceipt()
+ const trade=useExplorationTrade(state,onChange)
+ const {reply,departing,say,depart}=useNpcConversation(profile.greetings,onTalk,onDescend,conversationMemory)
+ function purchase(item:ReturnType<typeof floorMerchantGoods>[number],quantity=1){
+  if(departing||!trade(previous=>buyMerchantItem(previous,item.id,quantity)))return false
+  showReceipt({name:item.kind==='potion'?item.name+' ×'+quantity:item.name,kind:item.kind==='armor'?'armor':item.kind==='potion'?'potion':'weapon',image:item.kind==='potion'?item.image:item.gear&&'image' in item.gear?item.gear.image:undefined})
+  setPurchased(true);if(item.kind!=='potion')setShop(false);say(profile.purchases);return true
+ }
+ const goods=floorMerchantGoods(state)
  return <section className="exploration-merchant" aria-label="상인 방">
-  <div className="exploration-merchant-art" aria-hidden="true"><svg viewBox="0 0 200 220"><ellipse cx="100" cy="202" rx="72" ry="10" fill="#050b0d"/><path d="M43 194 60 106Q100 75 140 106L157 194Z" fill="#8c6944"/><path d="m67 190 10-84h46l10 84" fill="#343a3b"/><path d="M67 76Q62 20 100 24T133 76L120 106H80Z" fill="#b59969"/><ellipse cx="100" cy="73" rx="23" ry="29" fill="#b27d56"/><path d="M68 70Q70 19 103 27q31 2 32 44l-21-11-14-20-15 20Z" fill="#c2ad80"/><path d="M80 83q20 26 40 0l-6 25H88Z" fill="#433a2b"/><path d="M88 70h5m14 0h5" stroke="#251f19" strokeWidth="3"/><path d="M37 158h126l-7 45H44Z" fill="#685039" stroke="#b49b68"/><path d="M61 161v37m34-37v37m34-37v37" stroke="#a18855" strokeOpacity=".4"/><circle cx="76" cy="160" r="8" fill="#d1ad4d"/><path d="m111 151 8-19 8 19-8 12Z" fill="#8eb7b9"/><path d="M36 107v44m128-44v44" stroke="#b9a26e" strokeWidth="3"/><circle cx="36" cy="107" r="8" fill="#e4bf72"/><circle cx="164" cy="107" r="8" fill="#e4bf72"/></svg></div>
-  <><h2>모래길의 상인</h2><p>“목숨보다 귀한 건 없지.<br/>든든히 준비하고 가게.”</p><div className="exploration-merchant-choices"><button onClick={()=>setShop(true)}>구매한다</button><button onClick={onDescend}>구매하지 않고 지나간다</button></div></>
-  <Dialog open={shop} onOpenChange={setShop}><DialogContent className="exploration-room-preview exploration-shop"><DialogHeader><DialogTitle>모래길 상점</DialogTitle><DialogDescription>탐험용 골드로 구매해요. 구입한 물품은 보관함에서 장착할 수 있어요.</DialogDescription></DialogHeader><div className="exploration-shop-gold"><Coins size={16}/> 보유 골드 {state.gold.toLocaleString()}</div><div className="exploration-shop-items">{merchantGoods.map(item=>{const blocked=purchaseBlock(state,item.id),Icon=item.kind==='weapon'?Swords:item.kind==='armor'?Shield:Sparkles;return <article key={item.id}><Icon size={23}/><div><h3>{item.name}</h3><p>{item.description}</p><span>{item.price.toLocaleString()} 골드</span></div><button disabled={!!blocked} onClick={()=>{onChange(previous=>buyMerchantItem(previous,item.id));setNotice(`${item.name} 구매 완료 · 보관함에 넣었어요.`)}}>{blocked??'구매'}</button></article>})}</div>{notice&&<p role="status">{notice}</p>}<button className="exploration-room-return" onClick={()=>setShop(false)}>상인에게 돌아가기</button></DialogContent></Dialog>
+  {receipt&&!shop&&receipt.kind!=='potion'&&<PurchaseReceipt key={receipt.key} item={receipt}/>}
+  {returnToDoors&&<p className="exploration-supply-note">보급 상인 · 거래 후 지하 {state.market.floor}층 탐험을 계속합니다</p>}
+  <div className="exploration-merchant-art"><img src={profile.portrait} alt={profile.name} draggable={false}/></div>
+  <><div className="exploration-npc-dialogue"><h2>{profile.name}<small>{profile.title}</small></h2><ChoiceLog speaker={profile.name} className="exploration-npc-quote" text={latestLog??reply}/></div><div className="exploration-merchant-choices"><button disabled={departing} onClick={()=>setShop(true)}>{purchased?'더 구매할래요':'구매한다'}</button><button disabled={departing} onClick={()=>depart(profile.farewells)}>{returnToDoors?'문으로 돌아간다':purchased?'이제 됐어요':'구매하지 않고 지나간다'}</button></div></>
+  <Dialog open={shop} onOpenChange={setShop}>
+ <DialogContent className="exploration-modal exploration-room-preview exploration-shop exploration-minimal-shop">
+  <DialogHeader><DialogTitle>{profile.shopName} · 지하 {state.market.floor}층</DialogTitle><DialogDescription>한 번 획득한 장비는 다시 진열되지 않아요. 포션은 항상 판매해요.</DialogDescription></DialogHeader>
+  <div className="exploration-shop-gold"><Coins size={16}/> 보유 골드 {state.gold.toLocaleString()}<ExplorationCodex ownedIds={[...state.weapons,...state.armor,...state.spells].map(item=>item.id)}/></div>
+  <div className="merchant-tabs" role="group" aria-label="물품 종류">{([{kind:'weapon',label:'무기'},{kind:'armor',label:'방어구'},{kind:'potion',label:'포션'}] as const).filter(value=>value.kind!=='armor'||profile.sellsArmor).map(value=><button key={value.kind} aria-pressed={tab===value.kind} onClick={()=>setTab(value.kind)}>{value.label}</button>)}</div>
+  <div className="exploration-shop-items">{([{kind:'weapon',label:'무기',note:'3개 진열'},{kind:'armor',label:'방어구',note:'3개 진열'},{kind:'potion',label:'소모품',note:'상시 판매'}] as const).filter(section=>section.kind===tab&&(section.kind!=='armor'||profile.sellsArmor)).map(section=><section className="exploration-shop-section" key={section.kind} aria-label={section.label}><h3>{section.label}<small>{section.kind==='potion'?section.note:`${goods.filter(item=>item.kind===section.kind).length}개 진열`}</small></h3>{!goods.some(item=>item.kind===section.kind)&&<p className="exploration-shop-empty">새롭게 구매할 장비가 없어요.</p>}{goods.filter(item=>item.kind===section.kind).map(item=>{
+   const blocked=purchaseBlock(state,item.id),Icon=item.kind==='weapon'?Swords:item.kind==='armor'?Shield:item.kind==='potion'?(item.potionKind==='health'?Heart:Droplets):Sparkles
+   return <article key={item.id}>{item.kind==='potion'?<img className="exploration-shop-weapon exploration-potion-art" src={item.image} alt={item.name}/>:item.gear&&'image' in item.gear&&item.gear.image?<img className="exploration-shop-weapon" src={item.gear.image} alt={item.name}/>:<Icon size={23}/>}<div>{'tier' in item&&<small className="exploration-shop-tier" data-tier={item.tier}>{shopTierLabels[item.tier]}</small>}<h4>{item.name}</h4>{item.gear?<><GearAttributes gear={item.gear}/><WeaponEffect gear={item.gear}/></>:<p>{item.description}</p>}<span>{item.price.toLocaleString()} 골드</span>{item.kind==='potion'&&<small> · 보유 {state.potions[item.potionKind]}개</small>}</div>{item.kind==='potion'?<PotionQuantity item={item} state={state} onBuy={quantity=>purchase(item,quantity)}/>:<button disabled={!!blocked} onClick={()=>purchase(item)}>{blocked??'구매'}</button>}</article>
+  })}</section>)}</div>
+  <div className="merchant-confirmation">{receipt?.kind==='potion'&&<span key={receipt.key} role="status" aria-label="구매 알림" aria-live="polite">{receipt.image&&<img src={receipt.image} alt=""/>}{receipt.name} · 구매 완료</span>}</div>
+  {<button className="exploration-room-return" onClick={()=>setShop(false)}>{profile.name}에게 돌아가기</button>}
+ </DialogContent>
+</Dialog>
  </section>
 }

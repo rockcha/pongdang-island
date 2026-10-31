@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "path": "public/exploration/rooms/ancient-giant-sleeping.png",
+      "reference": "public/exploration/rooms/ancient-giant.png",
+      "prompt": "Same sandstone Egyptian golem with gold and turquoise armor, seated asleep, arms on bent knees, bowed head and closed unlit eyes. Clean fantasy game illustration, full body, transparent background."
+    },
+    {
+      "path": "public/exploration/monsters/treasure-scarab.png",
+      "prompt": "Egyptian treasure scarab monster, bronze chitin, gold and lapis turquoise armor, six legs, treasure coffer on back, turquoise eyes. Clean fantasy RPG illustration, full body, transparent background, no gore or text."
+    }
+  ]
+}

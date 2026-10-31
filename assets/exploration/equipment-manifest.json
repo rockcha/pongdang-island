@@ -1,0 +1,273 @@
+{
+  "generator": "built-in image_gen",
+  "createdAt": "2026-10-31",
+  "purpose": "Exploration equipment and spell artwork; not aquarium collectibles.",
+  "images": [
+    {
+      "id": "desert-traveler-coat",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: desert traveler's coat, practical sand-beige linen short coat with brown leather shoulder straps, subtle Egyptian bronze clasp, modest entry-tier adventurer equipment. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/desert-traveler-coat.png",
+      "output": "public/exploration/armor/desert-traveler-coat.png"
+    },
+    {
+      "id": "bronze-scale-armor",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: bronze overlapping scale cuirass, leather side ties, sturdy modest construction. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/bronze-scale-armor.png",
+      "output": "public/exploration/armor/bronze-scale-armor.png"
+    },
+    {
+      "id": "apprentice-priest-robe",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: ivory apprentice priest robe, restrained turquoise and bronze trim, simple Egyptian collar. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/apprentice-priest-robe.png",
+      "output": "public/exploration/armor/apprentice-priest-robe.png"
+    },
+    {
+      "id": "padded-explorer-outfit",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: thick quilted ochre explorer jacket, padded fabric and brown belt, practical and worn. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/padded-explorer-outfit.png",
+      "output": "public/exploration/armor/padded-explorer-outfit.png"
+    },
+    {
+      "id": "sandstep-cloak",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: light tan hooded short cloak, layered flowing linen, narrow leather ties. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/sandstep-cloak.png",
+      "output": "public/exploration/armor/sandstep-cloak.png"
+    },
+    {
+      "id": "tomb-guardian-armor",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: tomb guardian bronze and dark teal lamellar cuirass, winged scarab clasp, substantial crafted armor. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/tomb-guardian-armor.png",
+      "output": "public/exploration/armor/tomb-guardian-armor.png"
+    },
+    {
+      "id": "sandstone-plate-armor",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: heavy sandstone-colored segmented plate cuirass, squared bronze plates and rugged reinforced shoulders. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/sandstone-plate-armor.png",
+      "output": "public/exploration/armor/sandstone-plate-armor.png"
+    },
+    {
+      "id": "oasis-ritual-robe",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: flowing turquoise ritual robe, silver wave embroidery and lapis collar, elegant oasis mage garment. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/oasis-ritual-robe.png",
+      "output": "public/exploration/armor/oasis-ritual-robe.png"
+    },
+    {
+      "id": "caravan-life-coat",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: rich burgundy caravan coat, thick woven fabric, emerald life amulet clasp, fine leather trim. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/caravan-life-coat.png",
+      "output": "public/exploration/armor/caravan-life-coat.png"
+    },
+    {
+      "id": "mirage-tracker-armor",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: sleek pale blue and sand-colored leather light cuirass with layered scarf, agile desert tracker equipment. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/mirage-tracker-armor.png",
+      "output": "public/exploration/armor/mirage-tracker-armor.png"
+    },
+    {
+      "id": "golden-scales-aegis",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: legendary symmetrical golden cuirass, balanced-scale motif, lapis inlays, regal winged shoulders. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/golden-scales-aegis.png",
+      "output": "public/exploration/armor/golden-scales-aegis.png"
+    },
+    {
+      "id": "sun-king-warplate",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: massive legendary pharaoh gold war cuirass, broad armored shoulders, central sun disk and red gems. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/sun-king-warplate.png",
+      "output": "public/exploration/armor/sun-king-warplate.png"
+    },
+    {
+      "id": "starlight-priest-vestment",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: legendary midnight blue and ivory priest vestment, exquisite silver star embroidery, glowing sapphire collar. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/starlight-priest-vestment.png",
+      "output": "public/exploration/armor/starlight-priest-vestment.png"
+    },
+    {
+      "id": "immortal-royal-robe",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: legendary deep emerald royal robe, ornate Egyptian gold collar, large green life gemstone, rich layered cloth. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/immortal-royal-robe.png",
+      "output": "public/exploration/armor/immortal-royal-robe.png"
+    },
+    {
+      "id": "nightwind-shadow-garb",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: legendary charcoal and violet hooded light armor, black leather, elegant silver feather trims, agile assassin silhouette. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/nightwind-shadow-garb.png",
+      "output": "public/exploration/armor/nightwind-shadow-garb.png"
+    },
+    {
+      "id": "old-diving-suit",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: worn brown leather diving vest, patched cloth and simple straps, humble beginner armor. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/old-diving-suit.png",
+      "output": "public/exploration/armor/old-diving-suit.png"
+    },
+    {
+      "id": "linen-wrap",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: layered undyed linen protective tunic, cloth sash and reinforced fabric. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/linen-wrap.png",
+      "output": "public/exploration/armor/linen-wrap.png"
+    },
+    {
+      "id": "gold-guard",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: sturdy gold-colored bronze breastplate, simple angular reinforced shoulders. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/gold-guard.png",
+      "output": "public/exploration/armor/gold-guard.png"
+    },
+    {
+      "id": "merchant-armor",
+      "kind": "armor",
+      "prompt": "Use case: stylized-concept. Asset: single transparent RPG armor inventory illustration. Subject: light olive desert wind cloak, bronze clasp and folded layered cloth. Empty garment only, no person, no mannequin or body. Premium hand-painted semi-realistic 2D Egyptian dungeon fantasy game item art matching bronze weapon inventory illustrations. Entire garment centered in square with 12 percent clear margin, front three-quarter view, warm upper-left lighting, readable silhouette. Transparent alpha background, clean edges, no scene, no text, no border, no particles, no cast shadow.",
+      "source": "assets/exploration/armor/originals/merchant-armor.png",
+      "output": "public/exploration/armor/merchant-armor.png"
+    },
+    {
+      "id": "ember",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: small compact orange flame with bright golden core. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/ember.png",
+      "output": "public/exploration/magic/ember.png"
+    },
+    {
+      "id": "tide",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: curving translucent blue water shield shaped as a protective crest. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/tide.png",
+      "output": "public/exploration/magic/tide.png"
+    },
+    {
+      "id": "light",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: gentle warm white guiding light orb inside a small radiant blue compass-like star. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/light.png",
+      "output": "public/exploration/magic/light.png"
+    },
+    {
+      "id": "sand",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: spiraling gold sand ribbon wrapping a small ancient stone rune. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/sand.png",
+      "output": "public/exploration/magic/sand.png"
+    },
+    {
+      "id": "compressed-water-bolt",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: dense cobalt water projectile with sharp pointed droplet silhouette and short spiral wake. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/compressed-water-bolt.png",
+      "output": "public/exploration/magic/compressed-water-bolt.png"
+    },
+    {
+      "id": "sand-thorns",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: cluster of three jagged sandstone thorns bursting upward with a curved sand ribbon. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/sand-thorns.png",
+      "output": "public/exploration/magic/sand-thorns.png"
+    },
+    {
+      "id": "tomb-curse",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: dark violet cracked pharaoh funerary mask with a close curling curse aura. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/tomb-curse.png",
+      "output": "public/exploration/magic/tomb-curse.png"
+    },
+    {
+      "id": "bronze-ward",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: ornate round bronze magical shield with luminous turquoise protective runes. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/bronze-ward.png",
+      "output": "public/exploration/magic/bronze-ward.png"
+    },
+    {
+      "id": "solar-lance",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: single long luminous golden sun spear pointing diagonally upward. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/solar-lance.png",
+      "output": "public/exploration/magic/solar-lance.png"
+    },
+    {
+      "id": "frost-wave",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: crescent wave of pale blue ice with three distinct crystalline frost tips. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/frost-wave.png",
+      "output": "public/exploration/magic/frost-wave.png"
+    },
+    {
+      "id": "oasis-breath",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: emerald healing lotus surrounded by one looping ribbon of fresh oasis water. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/oasis-breath.png",
+      "output": "public/exploration/magic/oasis-breath.png"
+    },
+    {
+      "id": "purifying-spring",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: clear turquoise fountain droplet above a white lotus, tiny violet curse fragment dissolving. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/purifying-spring.png",
+      "output": "public/exploration/magic/purifying-spring.png"
+    },
+    {
+      "id": "sun-god-glare",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: large blazing golden stylized Egyptian eye of Ra radiating short sharp rays. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/sun-god-glare.png",
+      "output": "public/exploration/magic/sun-god-glare.png"
+    },
+    {
+      "id": "sun-kings-majesty",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: regal golden pharaoh crown suspended above a compact ruby and amber power aura. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/sun-kings-majesty.png",
+      "output": "public/exploration/magic/sun-kings-majesty.png"
+    },
+    {
+      "id": "judgment-of-ra",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: powerful golden sun disk projecting one thick focused ray of fiery light downward. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/judgment-of-ra.png",
+      "output": "public/exploration/magic/judgment-of-ra.png"
+    },
+    {
+      "id": "black-sandstorm",
+      "kind": "magic",
+      "prompt": "Use case: stylized-concept. Asset: single transparent magic spell inventory illustration for an Egyptian dungeon fantasy RPG. Subject: compact swirling black and bronze sand cyclone, central dark eye and readable curved silhouette. Premium hand-painted semi-realistic 2D game illustration, sculptural richly shaded magical effect with strong readable silhouette. Centered compact square composition with 14 percent empty margin, all elements fully inside frame. Controlled glow confined close to subject, clean alpha edges, subtle dimensional lighting. Transparent background. No characters, hands, book, scene, floor, text, border, UI, detached particles, or clipped effects.",
+      "source": "assets/exploration/magic/originals/black-sandstorm.png",
+      "output": "public/exploration/magic/black-sandstorm.png"
+    },
+    {
+      "id": "dull-dagger",
+      "kind": "weapons",
+      "prompt": "Use case: stylized-concept. Asset: one transparent inventory illustration for an Egyptian underground fantasy RPG. Premium hand-painted semi-realistic 2D game item art matching bronze weapons and Egyptian armor inventory assets. Single object, centered in square, fully visible with 12 percent empty margin, three-quarter view, warm upper-left lighting, strong silhouette readable at 32 pixels. Transparent alpha background, clean antialiased edge. No scene, floor, pedestal, text, labels, border, detached particles, or cropped edges. Subject: a humble dull dagger, short broad scratched grey iron blade with visibly blunt rounded tip and nicked edge, plain worn bronze crossguard, frayed dark brown leather wrapped handle. Beginner equipment, practical and modest, no jewels or magical glow. Blade angled from lower left handle to upper right tip.",
+      "source": "assets/exploration/weapons/originals/dull-dagger.png",
+      "output": "public/exploration/weapons/dull-dagger.png"
+    },
+    {
+      "id": "health-potion",
+      "kind": "potions",
+      "prompt": "Use case: stylized-concept. Asset: one transparent inventory illustration for an Egyptian underground fantasy RPG. Premium hand-painted semi-realistic 2D game item art matching bronze weapons and Egyptian armor inventory assets. Single object, centered in square, fully visible with 12 percent empty margin, three-quarter view, warm upper-left lighting, strong silhouette readable at 32 pixels. Transparent alpha background, clean antialiased edge. No scene, floor, pedestal, text, labels, border, detached particles, or cropped edges. Subject: a small squat rounded clear glass potion bottle filled with translucent ruby red healing liquid, short neck, cork stopper, a simple bronze collar and a small heart-shaped bronze charm attached at the neck. A simple everyday consumable, restrained details, red liquid clearly visible, no ornate legendary decorations. Upright bottle.",
+      "source": "assets/exploration/potions/originals/health-potion.png",
+      "output": "public/exploration/potions/health-potion.png"
+    },
+    {
+      "id": "mana-potion",
+      "kind": "potions",
+      "prompt": "Use case: stylized-concept. Asset: one transparent inventory illustration for an Egyptian underground fantasy RPG. Premium hand-painted semi-realistic 2D game item art matching bronze weapons and Egyptian armor inventory assets. Single object, centered in square, fully visible with 12 percent empty margin, three-quarter view, warm upper-left lighting, strong silhouette readable at 32 pixels. Transparent alpha background, clean antialiased edge. No scene, floor, pedestal, text, labels, border, detached particles, or cropped edges. Subject: a small squat rounded clear glass potion bottle filled with translucent sapphire blue mana liquid, short neck, cork stopper, a simple bronze collar and a small droplet-shaped bronze charm attached at the neck. A simple everyday consumable, restrained details, blue liquid clearly visible, no ornate legendary decorations. Upright bottle. Match the practical silhouette of a small round red health potion.",
+      "source": "assets/exploration/potions/originals/mana-potion.png",
+      "output": "public/exploration/potions/mana-potion.png"
+    }
+  ]
+}

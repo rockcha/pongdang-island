@@ -1,0 +1,25 @@
+.exploration-modal.exploration-shop.exploration-minimal-shop{display:flex;flex-direction:column;height:auto!important;min-height:0!important;width:min(560px,calc(100vw - 28px))!important;max-width:560px!important;background:#0c0b09!important;border:1px solid #ac874845!important;padding:20px;gap:12px;border-radius:16px;box-shadow:0 24px 90px #000b}
+.exploration-minimal-shop [data-slot=dialog-title]{font-size:18px}
+.exploration-minimal-shop .exploration-shop-gold{font-size:13px;color:#dfbf7b;display:flex;align-items:center;gap:7px}
+.merchant-tabs{display:flex;border-bottom:1px solid #b18b4930;gap:8px}
+.merchant-tabs button{flex:1;padding:10px;background:transparent;color:#9d927f;border-bottom:2px solid transparent;font-size:13px}
+.merchant-tabs button[aria-pressed=true]{color:#efd49c;border-bottom-color:#d3ad65;background:#b88e4310}
+.exploration-minimal-shop.exploration-modal .exploration-shop-items{max-height:48dvh;overflow:auto;padding-right:3px}
+.exploration-minimal-shop.exploration-modal .exploration-shop-items article{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 0;background:transparent;border:0;border-bottom:1px solid #b18b4925;border-radius:0}
+.exploration-minimal-shop.exploration-modal .exploration-shop-items article>img{width:48px;height:56px;object-fit:contain;grid-row:auto}
+.exploration-minimal-shop.exploration-modal .exploration-shop-items article>div{grid-column:auto;min-width:0}
+.exploration-minimal-shop .exploration-shop-section>h3{display:none}
+.exploration-minimal-shop .exploration-shop-items h4{font-size:14px;margin:0 0 5px;color:#ead3a4}
+.exploration-minimal-shop .exploration-shop-items p,.exploration-minimal-shop .exploration-shop-items small{font-size:11px;color:#a89b84}
+.exploration-minimal-shop.exploration-modal .exploration-shop-items article button{grid-column:auto;width:auto;min-height:34px;border:1px solid #ab864448;background:#b58b4318;color:#efd49c;border-radius:7px;padding:6px 12px;font-size:12px}
+.merchant-potion-controls{display:flex;flex-direction:column;gap:7px;min-width:155px}
+.merchant-quantity{display:flex;gap:3px;align-items:center}
+.merchant-quantity input{width:43px;min-width:0;text-align:center;background:#17140e;color:#f2dbad;border:1px solid #ac874840;border-radius:6px;height:34px;appearance:textfield;-moz-appearance:textfield}
+.merchant-quantity input::-webkit-inner-spin-button{appearance:none}
+.exploration-minimal-shop.exploration-modal .merchant-quantity button{padding:4px 9px;min-width:30px;background:transparent}
+.exploration-minimal-shop.exploration-modal button:focus-visible,.merchant-quantity input:focus-visible{outline:2px solid #e4bd74;outline-offset:2px}
+.merchant-confirmation{min-height:18px;color:#c9b47e;font-size:12px;text-align:center}
+.merchant-confirmation span{display:flex;align-items:center;justify-content:center;gap:6px}.merchant-confirmation img{width:23px;height:23px;object-fit:contain}
+.exploration-minimal-shop .exploration-room-return{margin:0;min-height:40px;background:transparent!important;border-color:#b18b4938!important;font-size:12px}
+@media(max-width:480px){.exploration-modal.exploration-shop.exploration-minimal-shop{padding:16px;gap:10px}.exploration-minimal-shop.exploration-modal .exploration-shop-items article{grid-template-columns:40px minmax(0,1fr);gap:9px}.exploration-minimal-shop.exploration-modal .exploration-shop-items article>img{width:40px;height:48px;grid-row:1}.exploration-minimal-shop.exploration-modal .exploration-shop-items article>div{grid-column:2}.exploration-minimal-shop.exploration-modal .exploration-shop-items article>button{grid-column:2;justify-self:end}.merchant-potion-controls{grid-column:2;align-items:stretch}.merchant-quantity{justify-content:space-between}.merchant-quantity input{flex:1}}
+@media(max-height:540px){.exploration-modal.exploration-shop.exploration-minimal-shop{padding:12px;gap:6px}.exploration-minimal-shop.exploration-modal .exploration-shop-items{max-height:35dvh}.exploration-minimal-shop.exploration-modal .exploration-shop-items article{padding:8px 0}.merchant-confirmation:empty{display:none}}

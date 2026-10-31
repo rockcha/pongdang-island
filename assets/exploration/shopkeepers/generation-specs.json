@@ -1,0 +1,50 @@
+[
+  {
+    "id": "zahir-collector",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper portrait. Match the reference polished hand-painted semi-realistic fantasy rendering and detailed fabric, bronze and turquoise materials. One approachable adult human character, dignified and not scary. Whole figure, accessories and feet visible, centered square with generous transparent margin. Clean smooth alpha edges. No scenery, floor, shadows, UI, readable text, watermark, fog or detached particles. Reference is STYLE ONLY. Subject: Zahir, a refined older Egyptian male treasure collector, warm brown skin, silver beard, slim elegant build, ivory and gold robes with emerald trim, holds one small closed jewel chest at his waist, calm knowing smile. No staff or weapon.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "nadim-apprentice",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper portrait. Match the reference polished hand-painted semi-realistic fantasy rendering and detailed fabric, bronze and turquoise materials. One approachable adult human character, dignified and not scary. Whole figure, accessories and feet visible, centered square with generous transparent margin. Clean smooth alpha edges. No scenery, floor, shadows, UI, readable text, watermark, fog or detached particles. Reference is STYLE ONLY. Subject: Nadim, a young adult Egyptian male apprentice sand mage, tan skin, friendly curious visible face, clean-shaven, sand-beige hood and muted orange short cloak, modest blue sash, scrolls at belt, small closed spellbook in one hand and simple wand in the other.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "sahira-shaman",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper portrait. Match the reference polished hand-painted semi-realistic fantasy rendering and detailed fabric, bronze and turquoise materials. One approachable adult human character, dignified and not scary. Whole figure, accessories and feet visible, centered square with generous transparent margin. Clean smooth alpha edges. No scenery, floor, shadows, UI, readable text, watermark, fog or detached particles. Reference is STYLE ONLY. Subject: Sahira, adult Egyptian female lapis shaman, olive brown skin, visible calm face, dark hair under teal head veil, flowing teal and lapis blue robes, restrained blue crystal jewelry, short staff with one lapis crystal in one hand and other relaxed at waist. No armor.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "nefera-archivist",
+    "kind": "portrait",
+    "prompt": "Use case: stylized-concept. One transparent full-body Egyptian fantasy RPG shopkeeper portrait. Match the reference polished hand-painted semi-realistic fantasy rendering and detailed fabric, bronze and turquoise materials. One approachable adult human character, dignified and not scary. Whole figure, accessories and feet visible, centered square with generous transparent margin. Clean smooth alpha edges. No scenery, floor, shadows, UI, readable text, watermark, fog or detached particles. Reference is STYLE ONLY. Subject: Nefera, adult Egyptian female celestial archivist high mage, deep brown skin, silver-white hair under a midnight blue headpiece, serene face, long navy robes with subtle gold constellation lines, gold collar and cuffs. Holds one ancient dark blue stone tablet with abstract star motifs. No floating particles or staff.",
+    "reference": "public/exploration/npcs/kasim-return-merchant-masked.png"
+  },
+  {
+    "id": "hasan-forge",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. A wide 3:2 background for an Egyptian underground fantasy RPG merchant room. Match the reference detailed painted stone architecture. NO PEOPLE, NO characters, no readable text or UI, no watermark. Place furniture and merchandise along LEFT and RIGHT EDGES. Keep the central 50% of the room and floor clear for an NPC overlay. Scene: Underground bronze smithy: orange glowing furnace and anvil at left edge, bronze weapon racks and armor workbench on right, engraved sandstone pillars, warm amber firelight and charcoal/copper palette. No smoke clouds.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  },
+  {
+    "id": "zahir-vault",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. A wide 3:2 background for an Egyptian underground fantasy RPG merchant room. Match the reference detailed painted stone architecture. NO PEOPLE, NO characters, no readable text or UI, no watermark. Place furniture and merchandise along LEFT and RIGHT EDGES. Keep the central 50% of the room and floor clear for an NPC overlay. Scene: Elegant secret golden treasure showroom: gold edged display pedestals and closed gem chests at edges, carved sandstone pillars, restrained polished gold inlays, emerald accents, luxurious honey gold light. Central floor uncluttered.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  },
+  {
+    "id": "nadim-camp",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. A wide 3:2 background for an Egyptian underground fantasy RPG merchant room. Match the reference detailed painted stone architecture. NO PEOPLE, NO characters, no readable text or UI, no watermark. Place furniture and merchandise along LEFT and RIGHT EDGES. Keep the central 50% of the room and floor clear for an NPC overlay. Scene: Humble apprentice's sandstone chamber: small contained orange brazier at left, wooden crates and rolled scrolls at right, modest woven rug by the edge, warm orange sand beige palette. Simple welcoming room.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  },
+  {
+    "id": "nefera-observatory",
+    "kind": "background",
+    "prompt": "Use case: stylized-concept. A wide 3:2 background for an Egyptian underground fantasy RPG merchant room. Match the reference detailed painted stone architecture. NO PEOPLE, NO characters, no readable text or UI, no watermark. Place furniture and merchandise along LEFT and RIGHT EDGES. Keep the central 50% of the room and floor clear for an NPC overlay. Scene: Ancient subterranean celestial archive: midnight navy ceiling with gold constellation inlays, lapis pillars, ancient stone tablets on edge stands, small gold lamps, quiet indigo and gold palette. No cosmic fog, central wall and floor open.",
+    "reference": "public/exploration/backgrounds/shaman-sanctum.png"
+  }
+]

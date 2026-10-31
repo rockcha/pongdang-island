@@ -1,0 +1,65 @@
+.exploration-status-screen{position:fixed;inset:0;z-index:45;overflow:hidden;pointer-events:none;isolation:isolate}
+.exploration-status-screen *{box-sizing:border-box;pointer-events:none}
+.exploration-status-layer,.exploration-status-burst,.status-fx-texture,.status-fx-art,.status-fx-motes,.exploration-status-cue{position:absolute;inset:0;width:100%;height:100%}
+.exploration-status-layer{opacity:var(--status-strength,1);transition:opacity .4s ease;animation:status-edge-arrive .5s ease-out both}
+.exploration-status-layer[data-phase=leaving]{opacity:0;animation:none}
+.exploration-status-screen [data-fx=bleed]{--fx-rgb:165,38,41;color:#cf5555}
+.exploration-status-screen [data-fx=blind]{--fx-rgb:163,125,75;color:#d2b381}
+.exploration-status-screen [data-fx=weaken]{--fx-rgb:155,132,70;color:#b7a46b}
+.exploration-status-screen [data-fx=magic-break]{--fx-rgb:63,179,174;color:#74d9d0}
+.exploration-status-screen [data-fx=burn]{--fx-rgb:231,126,43;color:#f3a15d}
+.exploration-status-screen [data-fx=freeze]{--fx-rgb:119,185,215;color:#c5e9f5}
+.exploration-status-screen [data-fx=mana-drain]{--fx-rgb:77,159,227;color:#8bc9fc}
+.status-fx-art{opacity:.55;filter:drop-shadow(0 0 5px rgba(var(--fx-rgb),.3))}
+.exploration-status-layer .status-fx-texture{background:radial-gradient(ellipse at center,transparent 56%,rgba(var(--fx-rgb),.04) 76%,rgba(var(--fx-rgb),.24))}
+.exploration-status-layer[data-fx=bleed] .status-fx-texture{background:radial-gradient(ellipse at center,transparent 58%,#7b1f2420 80%,#701a285b)}
+.exploration-status-layer[data-fx=bleed] .status-fx-art{opacity:.2}
+.exploration-status-layer[data-fx=blind] .status-fx-texture{background:radial-gradient(ellipse at center,transparent 43%,#100e0b30 68%,#100e0b8c 90%,#070807ba)}
+.exploration-status-layer[data-fx=blind] .status-fx-motes{opacity:.3;mask-image:radial-gradient(ellipse at center,transparent 58%,#000 92%);animation:status-sand-drift 9s ease-in-out infinite alternate}
+.exploration-status-layer[data-fx=weaken] .status-fx-art{animation:status-rune-drift 7s ease-in-out infinite alternate;opacity:.4}
+.exploration-status-layer[data-fx=magic-break] .status-fx-art{opacity:.42}
+.exploration-status-layer[data-fx=burn] .status-fx-texture{background:radial-gradient(ellipse at 50% 120%,#c35d273d,transparent 60%),linear-gradient(0deg,#aa481e21,transparent 24%)}
+.exploration-status-layer[data-fx=freeze] .status-fx-texture{background:radial-gradient(ellipse at center,transparent 63%,#84b9cb18 83%,#a5d8eb45)}
+.exploration-status-layer[data-fx=freeze] .status-fx-art{opacity:.45}
+.status-fx-motes{overflow:hidden}
+.status-fx-motes i{position:absolute;left:var(--mote-x);width:var(--mote-size);height:var(--mote-size);background:currentColor;border-radius:50%;opacity:0;animation:status-ember-rise 6s var(--mote-delay) linear infinite;box-shadow:0 0 5px currentColor}
+[data-fx=blind] .status-fx-motes i{top:18%;width:2px;height:2px;animation-name:status-sand-grain;animation-duration:8s;box-shadow:none}
+[data-fx=freeze] .status-fx-motes i{top:-5%;border-radius:0;animation-name:status-snow-fall;animation-duration:9s;box-shadow:0 0 3px #d1e9f2}
+[data-fx=burn] .status-fx-motes i{bottom:-2%}
+.exploration-status-burst{animation:status-impact-fade .5s ease-out both}
+.exploration-status-burst .status-fx-texture{background:radial-gradient(ellipse at center,transparent 30%,rgba(var(--fx-rgb),.04) 55%,rgba(var(--fx-rgb),.38))}
+.exploration-status-burst .status-fx-art{opacity:.85}
+.exploration-status-burst[data-fx=bleed] .status-fx-texture{background:linear-gradient(135deg,transparent 40%,#d65c5926 48%,transparent 49%,transparent 53%,#be333126 54%,transparent 56%),radial-gradient(ellipse,transparent 35%,#ab262c46)}
+.exploration-status-burst[data-fx=blind] .status-fx-texture{background:radial-gradient(ellipse at 30% 60%,#ae8d6038,transparent 65%),linear-gradient(100deg,#9e7c5d55,#48372012,#bd9c6d33);animation:status-sand-arrive .5s ease-out both}
+.exploration-status-burst[data-fx=magic-break] .status-fx-art{animation:status-shield-split .5s ease-out both}
+.exploration-status-burst[data-fx=burn] .status-fx-texture{background:linear-gradient(0deg,#d17a435e,transparent 65%);animation:status-heat-rise .5s ease-out both}
+.exploration-status-burst[data-fx=freeze] .status-fx-art{animation:status-frost-arrive .5s ease-out both}
+.exploration-status-toasts{position:absolute;inset:0;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:10px;padding:20px}
+.exploration-status-toast{--status-strength:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:90px;padding:12px 16px;color:#eee0c6;border:1px solid rgba(var(--fx-rgb),.28);border-radius:8px;background:radial-gradient(ellipse,#0b171cdb,#0b171c36);font-size:clamp(14px,2.2vw,19px);text-align:center;text-shadow:0 2px 6px #000;animation:status-label-arrive .5s ease-out both}
+.exploration-status-toast .ailment-icon,.exploration-status-toast>svg{width:32px;height:32px;color:rgb(var(--fx-rgb));filter:drop-shadow(0 0 7px rgba(var(--fx-rgb),.45))}
+.exploration-status-screen .exploration-status-toast{color:#eee0c6;background:radial-gradient(ellipse,#0b171cf5,#0b171cc7)}
+.status-drain-particles{position:absolute;left:50%;top:50%;width:1px;height:1px}
+.status-drain-particles i{position:absolute;display:block;width:5px;height:5px;border-radius:50%;background:#b5e2ff;box-shadow:0 0 7px #6eb8ff,0 0 14px #3581db;animation:status-mana-draw .4s var(--drain-delay) ease-in both}
+body:has(.exploration-status-burst[data-fx=mana-drain]) .exploration-mp progress{animation:status-mana-bar .5s ease-out both}
+@keyframes status-edge-arrive{from{opacity:0}to{opacity:var(--status-strength,1)}}
+@keyframes status-impact-fade{0%{opacity:0}22%{opacity:var(--status-strength,1)}100%{opacity:0}}
+@keyframes status-label-arrive{0%{opacity:0;translate:0 7px;scale:.96}25%,65%{opacity:1;translate:0 0;scale:1}100%{opacity:0;translate:0 -5px}}
+@keyframes status-rune-drift{from{translate:0 -6px;opacity:.28}to{translate:0 9px;opacity:.42}}
+@keyframes status-sand-drift{from{translate:-5px 0}to{translate:7px 3px}}
+@keyframes status-sand-grain{0%{opacity:0;translate:0 0}25%,70%{opacity:.6}100%{opacity:0;translate:17px 62vh}}
+@keyframes status-ember-rise{0%{opacity:0;translate:0 0}20%,65%{opacity:.55}100%{opacity:0;translate:8px -24vh}}
+@keyframes status-snow-fall{0%{opacity:0;translate:0 0;rotate:0deg}20%,75%{opacity:.5}100%{opacity:0;translate:7px 108vh;rotate:130deg}}
+@keyframes status-sand-arrive{from{translate:-4% 0;opacity:0}35%{opacity:1}to{translate:3% 0;opacity:0}}
+@keyframes status-shield-split{from{scale:.98;opacity:0}25%{opacity:.9}to{scale:1.06;opacity:0}}
+@keyframes status-heat-rise{from{translate:0 15%;opacity:0}35%{opacity:1}to{translate:0 0;opacity:0}}
+@keyframes status-frost-arrive{from{scale:1.08;opacity:0}35%{opacity:.85}to{scale:1;opacity:0}}
+@keyframes status-mana-draw{0%{opacity:0;transform:translate(var(--drain-start-x),var(--drain-start-y)) scale(1.2)}25%{opacity:1}100%{opacity:0;transform:translate(var(--drain-x),var(--drain-y)) scale(.4)}}
+@keyframes status-mana-bar{0%,100%{filter:none;box-shadow:none}35%{filter:brightness(1.8);box-shadow:0 0 12px #6bb7ed}}
+@media(prefers-reduced-motion:reduce){
+ .exploration-status-screen *{animation:none!important}
+ .status-fx-motes{display:none}
+ .exploration-status-burst{animation:status-impact-fade .5s ease-out both!important}
+ .exploration-status-toast{animation:status-impact-fade .5s ease-out both!important}
+ .status-drain-particles{display:none}
+ body:has(.exploration-status-burst[data-fx=mana-drain]) .exploration-mp progress{animation:none}
+}

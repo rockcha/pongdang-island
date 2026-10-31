@@ -1,0 +1,13 @@
+{
+  "generator": "built-in image_gen",
+  "createdAt": "2026-10-31",
+  "purpose": "Exploration room backdrop artwork; not aquarium collectibles.",
+  "images": [
+    {
+      "id": "shaman-sanctum",
+      "source": "assets/exploration/backgrounds/originals/shaman-sanctum.png",
+      "output": "public/exploration/backgrounds/shaman-sanctum.png",
+      "prompt": "Use case: stylized-concept. Asset: landscape background illustration for an Egyptian underground fantasy RPG spell merchant room. A secluded desert shaman's arcane alcove deep inside an ancient Egyptian tomb, richly hand-painted semi-realistic 2D game environment. Sandstone walls carved with restrained faded hieroglyphs, a shallow arch and old scroll shelves at the back, a small worktable with rolled papyri and turquoise glass vials along the far left, restrained hanging bronze talismans and linen on the far right, cool turquoise crystal light and dim violet candlelight mixed with warm amber lantern accents. Clear spacious central stone floor and unobstructed central wall behind the character position, symmetrical calm composition with objects confined to background and side edges. Camera at standing eye level, slightly wide angle, full room floor visible in lower third. Match the grounded detailed Egyptian dungeon artwork and the indigo-robed wandering shaman, mysterious intimate magical study rather than an equipment shop. Horizontal landscape composition, no characters, no silhouettes, no UI, no text labels, no large readable lettering, no floating foreground objects, no thick fog or large bright center light. Opaque painted background filling the whole canvas."
+    }
+  ]
+}

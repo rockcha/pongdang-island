@@ -29,3 +29,23 @@
 @keyframes spell-spin{to{rotate:360deg}}
 @media(max-height:540px){.spell-missile{width:calc(var(--spell-size)*.7);height:calc(var(--spell-size)*.7)}.spell-impact{width:120px;height:120px}.spell-cast-source{width:45px;height:45px}}
 @media(prefers-reduced-motion:reduce){.spell-missile,.spell-cast-source,.spell-impact>i{display:none}.spell-impact,.spell-cast-effect[data-target=self] .spell-impact{animation:spell-reduced-flash 0.583s linear 0.85s both}.spell-impact-sigil{animation:none;opacity:.6}.spell-impact>span{animation:none;opacity:.5}@keyframes spell-reduced-flash{0%,100%{opacity:0}25%,75%{opacity:.7}}}
+
+.spell-secondary-aura{position:absolute;left:50%;top:90%;width:110px;height:110px;transform:translate(-50%,-50%);color:var(--spell-accent);opacity:0;animation:spell-secondary-bloom .8s ease-out .78s both}
+.spell-cast-effect[data-shape=crescent] .spell-missile>svg,.spell-cast-effect[data-shape=bloodmoon] .spell-missile>svg{animation:spell-crescent-turn .7s ease-out both}
+.spell-cast-effect[data-shape=feather] .spell-impact-sigil{animation:spell-feather-rise .9s ease-out .75s both}
+.spell-cast-effect[data-shape=lotus] .spell-impact-sigil,.spell-cast-effect[data-shape=petals] .spell-impact-sigil{animation:spell-petal-open .9s ease-out .75s both}
+.spell-cast-effect[data-shape=dunes] .spell-missile>svg{animation:spell-spin .7s linear infinite}
+.spell-cast-effect[data-shape=serpent] .spell-missile{width:calc(var(--spell-size)*1.15);height:calc(var(--spell-size)*1.3)}
+.spell-cast-effect[data-shape=serpent] .spell-missile>svg{animation:spell-serpent-sway .25s ease-in-out infinite alternate}
+.spell-cast-effect[data-shape=phoenix] .spell-impact-sigil{inset:2%;animation:spell-phoenix-spread 1s ease-out .75s both}
+.spell-cast-effect[data-shape=obelisk] .spell-missile{height:calc(var(--spell-size)*1.5);width:calc(var(--spell-size)*.7)}
+.spell-cast-effect[data-shape=obelisk] .spell-impact-sigil{inset:0;animation:spell-obelisk-drop .6s ease-out .85s both}
+.spell-cast-effect:is([data-shape=petals],[data-shape=lotus]) .spell-impact>i{width:8px;height:22px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+@keyframes spell-secondary-bloom{0%{opacity:0;scale:.45}30%{opacity:.8}100%{opacity:0;scale:1.5}}
+@keyframes spell-crescent-turn{from{rotate:-95deg}to{rotate:30deg}}
+@keyframes spell-feather-rise{from{translate:0 30px;opacity:0}35%{opacity:1}to{translate:0 -25px;opacity:0}}
+@keyframes spell-petal-open{from{scale:.3;rotate:-40deg;opacity:0}25%{opacity:1}to{scale:1.4;rotate:30deg;opacity:0}}
+@keyframes spell-serpent-sway{from{rotate:-12deg}to{rotate:12deg}}
+@keyframes spell-phoenix-spread{from{scale:.25;opacity:0}25%{opacity:1}to{scale:1.3;translate:0 -25px;opacity:0}}
+@keyframes spell-obelisk-drop{from{translate:0 -70px;scale:.6;opacity:0}25%,50%{translate:0 0;scale:1;opacity:1}to{translate:0 0;scale:1.15;opacity:0}}
+@media(prefers-reduced-motion:reduce){.spell-secondary-aura,.spell-cast-effect .spell-missile>svg,.spell-cast-effect .spell-impact-sigil{animation:none!important}.spell-secondary-aura{opacity:.45}}

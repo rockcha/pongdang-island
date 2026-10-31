@@ -2,7 +2,7 @@ import {practiceFinalFloor,practiceFinalBossId} from './campaign'
 import {drawRoomLoot,type RoomLoot} from './room-loot'
 import {plannedSpells} from './spell-catalog'
 import {spellMechanics} from './spell-mechanics'
-import {playerManaMax,equippedGearBonus,spellManaCost,playerMaxHp,playerAttackStats,usePotion,merchantPotions,incomingDamage,basicAttackEvasion,type PracticeState} from './practice-state'
+import {cleanseSpellState,playerManaMax,equippedGearBonus,spellManaCost,playerMaxHp,playerAttackStats,usePotion,merchantPotions,incomingDamage,basicAttackEvasion,type PracticeState} from './practice-state'
 import {applyEnemyAilment,healingAfterReduction} from './status-effects'
 import {ailmentDescription} from './ailments'
 import {getFloorMonster,sandScorpion,type MonsterId} from './monster-catalog'
@@ -96,12 +96,12 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   const spellDamage=power.damage?Math.max(1,power.damage-monster.magicResistance):0
   if(spellDamage){next.combat.enemyHp=Math.max(0,next.combat.enemyHp-spellDamage);if(monster.pattern==='mirror')next.combat.pattern!.mirrorGuard='magic'}
   if(power.guard)next.combat.ward={amount:power.guard,turns:power.guardTurns??1};stunned=stunned||power.stun===true
-  if(power.cleanse){next.playerEffects=[];delete next.combat.playerBlind;delete next.combat.playerWeaken;delete next.combat.magicResistanceDown}
+  if(power.cleanse||power.cleanseCount){const cleaned=cleanseSpellState(next,power.cleanse?undefined:power.cleanseCount);next.playerEffects=cleaned.playerEffects;next.combat=cleaned.combat}
   const spellHealing=power.healing?Math.min(playerMaxHp(next)-next.hp,healingAfterReduction(power.healing,next.playerEffects??[])):0
   next.hp+=spellHealing
   if(power.shield)next.combat.shield={remaining:Math.max(next.combat.shield?.remaining??0,power.shield.remaining),turns:power.shield.turns}
   if(power.attackBuff)next.combat.attackBuff={...power.attackBuff}
-  const description=power.healing?`체력 ${spellHealing} 회복`:spellDamage?`피해 ${spellDamage}${stunned?' · 이번 반격 봉쇄':''}`:combatMagic[action.id as keyof typeof combatMagic]
+  const description=[spellDamage?`피해 ${spellDamage}${stunned?' · 이번 반격 봉쇄':''}`:null,power.healing?`체력 ${spellHealing} 회복`:null,power.shield?`보호막 ${power.shield.remaining}`:null,power.cleanse?'상태이상 전부 정화':power.cleanseCount?`상태이상 ${power.cleanseCount}개 정화`:null].filter(Boolean).join(' · ')||combatMagic[action.id as keyof typeof combatMagic]
   record({kind:'player',spellId:spell.id,damage:spellDamage||undefined,rawDamage:power.damage||undefined,defenseBlocked:power.damage?Math.max(0,power.damage-spellDamage):undefined,healing:power.healing?spellHealing:undefined,text:`${spell.name} 시전! ${description} · 마나 ${manaCost} 소모.`})
   const effect=power.ailment
   if(next.combat.enemyHp>0&&effect&&!(effect.kind==='freeze'&&state.combat.freezeGuard)&&(effect.chance>=100||random()*100<effect.chance)){

@@ -26,8 +26,8 @@ it('prices equivalent plain weapons equally and adds a modest premium for specia
  }
 })
 it('sets distinct learning costs and keeps every registered spell usable',()=>{
- expect(plannedSpells).toHaveLength(16)
- expect(new Set(plannedSpells.map(spell=>spell.id)).size).toBe(16)
+ expect(plannedSpells).toHaveLength(25)
+ expect(new Set(plannedSpells.map(spell=>spell.id)).size).toBe(25)
  for(const spell of plannedSpells){
   expect(spell.available).toBe(true)
   expect(practiceSpells.some(item=>item.id===spell.id)).toBe(false)
@@ -37,9 +37,9 @@ it('sets distinct learning costs and keeps every registered spell usable',()=>{
   const comparable=explorationWeapons.filter(weapon=>weapon.tier===spell.tier&&!weapon.proc&&!weapon.lifesteal&&!weapon.cleanseChance&&(spell.tier!=='starter'||starterWeapons.some(item=>item.id===weapon.id)))
   expect(spell.learnPrice).toBeLessThanOrEqual(Math.min(...comparable.map(weapon=>weapon.price))*1.5)
  }
- expect(plannedSpells.filter(spell=>spell.tier==='starter')).toHaveLength(4)
- expect(plannedSpells.filter(spell=>spell.tier==='advanced')).toHaveLength(7)
- expect(plannedSpells.filter(spell=>spell.tier==='ultimate')).toHaveLength(5)
+ expect(plannedSpells.filter(spell=>spell.tier==='starter')).toHaveLength(7)
+ expect(plannedSpells.filter(spell=>spell.tier==='advanced')).toHaveLength(10)
+ expect(plannedSpells.filter(spell=>spell.tier==='ultimate')).toHaveLength(8)
 })
 it('keeps existing spell learning costs and the scroll shop price in one place',()=>{
  for(const spell of practiceSpells)expect(spell.learnPrice).toBe(practiceSpellLearningPrices[spell.id as keyof typeof practiceSpellLearningPrices])

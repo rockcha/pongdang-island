@@ -90,11 +90,27 @@ export function toggleSpell(state:PracticeState,id:string):PracticeState{
 
 export function spellManaCost(state:PracticeState,spell:Pick<Spell,'mana'>){return Math.max(1,spell.mana-equippedGearBonus(state,'spellManaDiscount'))}
 export function potionRecoveryAmount(state:PracticeState,kind:PotionKind){const amount=merchantPotions.find(item=>item.kind===kind)!.amount+equippedGearBonus(state,'potionBonus');return kind==='health'?healingAfterReduction(amount,state.playerEffects??[]):amount}
+export function cleanseSpellState<T extends PracticeState>(state:T,count?:number):T{
+ const next={...state,playerEffects:[...(state.playerEffects??[])],...(state.combat?{combat:{...state.combat}}:{})} as T
+ if(count===undefined){next.playerEffects=[];if(next.combat){delete next.combat.playerBlind;delete next.combat.playerWeaken;delete next.combat.magicResistanceDown}return next}
+ let remaining=count
+ while(remaining-->0){
+  if(next.playerEffects!.length){next.playerEffects=next.playerEffects!.slice(1);continue}
+  if(!next.combat)break
+  const key=(['playerBlind','playerWeaken','magicResistanceDown'] as const).find(key=>!!next.combat?.[key])
+  if(!key)break
+  delete next.combat[key]
+ }
+ return next
+}
 export function castSpell(state:PracticeState,id:string):PracticeState{
  const spell=state.spells.find(value=>value.id===id)
  if(!spell||!state.equippedSpells.includes(id)||state.mp<spellManaCost(state,spell))return state
  const power=spellMechanics[id]
- return {...state,mp:state.mp-spellManaCost(state,spell),...(power?.healing?{hp:Math.min(playerMaxHp(state),state.hp+healingAfterReduction(power.healing,state.playerEffects??[]))}:{}),...(power?.cleanse?{playerEffects:[]}:{} )}
+ let next={...state,mp:state.mp-spellManaCost(state,spell)}
+ if(power?.cleanse||power?.cleanseCount)next=cleanseSpellState(next,power.cleanse?undefined:power.cleanseCount)
+ if(power?.healing)next={...next,hp:Math.min(playerMaxHp(next),next.hp+healingAfterReduction(power.healing,next.playerEffects??[]))}
+ return next
 }
 
 export function equippedGearBonus(state:PracticeState,key:'maxHpBonus'|'maxManaBonus'|'spellManaDiscount'|'victoryManaRestore'|'openingShield'|'potionBonus'){return Math.max(0,state.weapons.find(gear=>gear.id===state.weaponId)?.[key]??0)+Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.[key]??0)}

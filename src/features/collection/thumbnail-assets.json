@@ -427,6 +427,10 @@
     "small": "/game-art/thumbnails/000da7faea8043a1f1d589cf-320.webp",
     "large": "/game-art/thumbnails/ee09c6a945006782e25b28bd-640.webp"
   },
+  "decorations/normal/shell-bead-curtain_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/97c35be02b7e6dc7d21c17a5-320.webp",
+    "large": "/game-art/thumbnails/e81916deaf75a260af4e42f9-640.webp"
+  },
   "decorations/normal/silver-speck-sponge_thumbnail.png": {
     "small": "/game-art/thumbnails/bfd1a06356f5e0c2eb04fd36-320.webp",
     "large": "/game-art/thumbnails/fb3275fee03bb036b29886d8-640.webp"
@@ -975,6 +979,22 @@
     "small": "/game-art/thumbnails/d7a57ed1e4660393a86ae615-320.webp",
     "large": "/game-art/thumbnails/9c87f3f6811658f8dea1b471-640.webp"
   },
+  "fish/epic/halloween-pongi-candy-devil_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/92a81dd62050b9b7ba5b525c-320.webp",
+    "large": "/game-art/thumbnails/e7c4dfb4975aaf150e4136cc-640.webp"
+  },
+  "fish/epic/halloween-pongi-ghost-blanket_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/2fe171e09b1bb1b8f80ac9b9-320.webp",
+    "large": "/game-art/thumbnails/850078410928339126a86476-640.webp"
+  },
+  "fish/epic/halloween-pongi-pumpkin-coach_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/57a1ecb99cdce49735d2fd4d-320.webp",
+    "large": "/game-art/thumbnails/94ff89726885e546ceddf107-640.webp"
+  },
+  "fish/epic/halloween-pongi-wizard-broom_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/edf761da2a4a0149329cd4bb-320.webp",
+    "large": "/game-art/thumbnails/7704c873b2ad8ebbfbcade5b-640.webp"
+  },
   "fish/epic/halloween-scarecrow-sailfish_v1_thumbnail.png": {
     "small": "/game-art/thumbnails/d9335d01ce226f784c39373d-320.webp",
     "large": "/game-art/thumbnails/9f0e02cc2e15f073b6904599-640.webp"
@@ -1134,6 +1154,18 @@
   "fish/epic/nyamnyam-layered-croissant-nautilus_v1_thumbnail.png": {
     "small": "/game-art/thumbnails/f828f7cc051bec17635e5c6a-320.webp",
     "large": "/game-art/thumbnails/ba386f8057b7fb8b03e91a47-640.webp"
+  },
+  "fish/epic/nyamnyam-pongi-donut-float_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/b41f0dfda876c56fd07b6871-320.webp",
+    "large": "/game-art/thumbnails/ee8c34e6a1b927084697e8bc-640.webp"
+  },
+  "fish/epic/nyamnyam-pongi-little-baker_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/06b9fcdaf91acbb2b4a7e2d1-320.webp",
+    "large": "/game-art/thumbnails/0d1952eef74141cedc1dca76-640.webp"
+  },
+  "fish/epic/nyamnyam-pongi-popcorn-courier_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/4a471623fcdb471504016546-320.webp",
+    "large": "/game-art/thumbnails/416c468b6a28170d2f929573-640.webp"
   },
   "fish/epic/nyamnyam-rose-crab-queen_v1_thumbnail.png": {
     "small": "/game-art/thumbnails/5dbd45f2249e1a4619deae4a-320.webp",
@@ -1455,41 +1487,21 @@
     "small": "/game-art/thumbnails/b3ed674e4a1290ea9fdfd166-320.webp",
     "large": "/game-art/thumbnails/617a11acc0a48d0486d56f4b-640.webp"
   },
-  "fish/mythic/pharaoh-gatekeeper-anubis_v1_thumbnail.png": {
-    "small": "/game-art/thumbnails/dbbdb14880142f1ff4c17a0c-320.webp",
-    "large": "/game-art/thumbnails/aa9c502be1e175a56168fc11-640.webp"
-  },
   "fish/mythic/pharaoh-gatekeeper-anubis_v2_thumbnail.png": {
-    "small": "/game-art/thumbnails/d0e8b25df846fd02a0388b83-320.webp",
-    "large": "/game-art/thumbnails/d36ad68ff7649e12ddf374b4-640.webp"
-  },
-  "fish/mythic/pharaoh-gold-wing-horus_v1_thumbnail.png": {
-    "small": "/game-art/thumbnails/c1e8b58e336e178539000c46-320.webp",
-    "large": "/game-art/thumbnails/63f9cd4ea74a235ea9c7d5db-640.webp"
+    "small": "/game-art/thumbnails/3176e84d9886af390bd4af16-320.webp",
+    "large": "/game-art/thumbnails/ebd368a64cc2b5bc09e004a9-640.webp"
   },
   "fish/mythic/pharaoh-gold-wing-horus_v3_thumbnail.png": {
-    "small": "/game-art/thumbnails/216cb082c6b577251447a1ba-320.webp",
-    "large": "/game-art/thumbnails/88ea35af835982152fe65b12-640.webp"
-  },
-  "fish/mythic/pharaoh-obelisk-colossus_v1_thumbnail.png": {
-    "small": "/game-art/thumbnails/278cff43ea0eaf80714d0792-320.webp",
-    "large": "/game-art/thumbnails/1cab82b79b8f2a1c0cb056f1-640.webp"
+    "small": "/game-art/thumbnails/2241973c7cda34b007aee53b-320.webp",
+    "large": "/game-art/thumbnails/5b95e3e504838c595bf94d86-640.webp"
   },
   "fish/mythic/pharaoh-obelisk-colossus_v2_thumbnail.png": {
-    "small": "/game-art/thumbnails/157aeb637f5f2a9093f81a3a-320.webp",
-    "large": "/game-art/thumbnails/7e0307dff52f3c0a75a204e2-640.webp"
-  },
-  "fish/mythic/pharaoh-solar-scarab_v1_thumbnail.png": {
-    "small": "/game-art/thumbnails/0ca1c8a176b2c04f637a5ad9-320.webp",
-    "large": "/game-art/thumbnails/882381c4990ac2ee80dd1a4f-640.webp"
-  },
-  "fish/mythic/pharaoh-solar-scarab_v2_thumbnail.png": {
-    "small": "/game-art/thumbnails/2cecdb87729ef69479d8d6b3-320.webp",
-    "large": "/game-art/thumbnails/554742fb9fc63aae19252349-640.webp"
+    "small": "/game-art/thumbnails/6ca335ad41534cff580c473e-320.webp",
+    "large": "/game-art/thumbnails/ec179bb1f033d60fea4ac293-640.webp"
   },
   "fish/mythic/pharaoh-solar-scarab_v3_thumbnail.png": {
-    "small": "/game-art/thumbnails/06a022a3505bb1bf53691e6e-320.webp",
-    "large": "/game-art/thumbnails/a8434850aa91c55a005b0f44-640.webp"
+    "small": "/game-art/thumbnails/f74a3d87c7f0d98c45d84b59-320.webp",
+    "large": "/game-art/thumbnails/8abf3ee8f8fd970ba89243cb-640.webp"
   },
   "fish/mythic/plios-blackwave-king_thumbnail.png": {
     "small": "/game-art/thumbnails/89352a9c6c59b039e3561a8f-320.webp",
@@ -1895,6 +1907,10 @@
     "small": "/game-art/thumbnails/e0c317392181cb3ca78aa50d-320.webp",
     "large": "/game-art/thumbnails/5d8ea991efbe99047053ed85-640.webp"
   },
+  "fish/normal/hat-limpet_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/6bb36adeb330fec053458ccb-320.webp",
+    "large": "/game-art/thumbnails/5abf63883ea8e9a282c265a8-640.webp"
+  },
   "fish/normal/icefloe-lumpsucker_thumbnail.png": {
     "small": "/game-art/thumbnails/0fed066d23b9c5579d13641e-320.webp",
     "large": "/game-art/thumbnails/7a4d011505cd3cf177365009-640.webp"
@@ -2210,6 +2226,10 @@
   "fish/normal/ribbon-eel_thumbnail.png": {
     "small": "/game-art/thumbnails/369e952052ba67a94694924d-320.webp",
     "large": "/game-art/thumbnails/fd477533b07a5c5a6d4a3cd5-640.webp"
+  },
+  "fish/normal/rice-grain-amphipod_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/c3f3ff1f962006dbe00cb888-320.webp",
+    "large": "/game-art/thumbnails/d996fcfbf65b053eb5eed9ea-640.webp"
   },
   "fish/normal/round-filefish_thumbnail.png": {
     "small": "/game-art/thumbnails/5859641f224d0d1b214e5009-320.webp",
@@ -3370,6 +3390,10 @@
   "trash/normal/mechsanctum-worn-cog_v1_thumbnail.png": {
     "small": "/game-art/thumbnails/7fda2ea491b40b1cb006030f-320.webp",
     "large": "/game-art/thumbnails/379ca10832fb7bbc2e314f1c-640.webp"
+  },
+  "trash/normal/missing-tooth-comb_v1_thumbnail.png": {
+    "small": "/game-art/thumbnails/024e40d20be8d74892d0628e-320.webp",
+    "large": "/game-art/thumbnails/5984088b7b45b0fd9575be1e-640.webp"
   },
   "trash/normal/nyamnyam-broken-chopstick_v1_thumbnail.png": {
     "small": "/game-art/thumbnails/938790038c107d11d2509e03-320.webp",

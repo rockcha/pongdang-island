@@ -17,6 +17,7 @@ const positions: Record<string, [number, number]> = {
   '/music-room': [11, 11],
   '/arcade': [14, 11],
   '/voyage-bets': [12, 13],
+  '/exploration': [14, 14],
   '/bait-production': [18, 7],
   '/my-bait-production': [22, 7],
   '/production': [18, 11],

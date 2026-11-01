@@ -1,4 +1,5 @@
 export const destinationArt = {
+  '/exploration': 'fishing-log',
   '/voyage-bets': 'voyage-prediction',
   '/fishing-records': 'fishing-log',
   '/profile': 'home',

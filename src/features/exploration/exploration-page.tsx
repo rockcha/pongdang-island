@@ -34,7 +34,6 @@ export function ExplorationPage(){
   }
  }
  return <section className="exploration-lobby" aria-label="탐험">
-  <header className="exploration-intro"><span className="exploration-eyebrow"><Compass size={14}/> EXPLORE THE UNKNOWN</span><h1>탐험</h1><p>바다 아래, 아직 쓰이지 않은 이야기.</p></header>
   <div className="exploration-lobby-tabs" role="tablist" aria-label="탐험 메뉴">{(['play','feedback'] as const).map((value,index)=><button key={value} role="tab" id={`${tabId}-${value}`} aria-controls={`${tabId}-${value}-panel`} aria-selected={tab===value} tabIndex={tab===value?0:-1} onClick={()=>setTab(value)} onKeyDown={event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?1:1-index;setTab(next?'feedback':'play');event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role=tab]')[next]?.focus()}}>{value==='play'?<Compass size={16}/>:<MessageCircle size={16}/>} {value==='play'?'플레이하기':'피드백하기'}</button>)}</div>
   <div role="tabpanel" id={`${tabId}-play-panel`} aria-labelledby={`${tabId}-play`} hidden={tab!=='play'}>
   <div className="exploration-map-heading"><h2>탐험할 지도</h2><span>01</span></div>

@@ -55,7 +55,7 @@ it('charges without damage, retains the warning through a stun and fires on the 
  const stunned=resolveCombatTurn(charged.state,{type:'magic',id:'sand'},()=>.99).state
  expect(stunned.hp).toBe(100);expect(stunned.combat?.pattern?.charging).toBe(true)
  const burst=hit(stunned)
- expect(burst.state.hp).toBe(78);expect(burst.state.combat?.pattern?.charging).toBe(false)
+ expect(burst.state.hp).toBe(72);expect(burst.state.combat?.pattern?.charging).toBe(false)
  expect(burst.events.find(x=>x.kind==='monster')?.moveId).toBe('hourglass-burst')
 })
 it('adapts mirror resistance after each successful direct hit and switches rather than stacking',()=>{

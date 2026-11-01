@@ -69,7 +69,7 @@ it('opens the treasure scarab spell as separate flavor and effect facts',()=>{
  captureLayout('treasure-scarab-detail')
 })
 it('starts all monsters with their configured health and has real artwork for every move',()=>{
- expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,25,70,115,100,220,120,42,38,28,75,68,75])
+ expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,25,70,115,100,220,120,38,28,75,68])
  for(const monster of explorationMonsters){
   expect(fight(monster.id).combat).toMatchObject({monsterId:monster.id,enemyHp:monster.maxHp})
   if(regularMonsters.includes(monster)){const index=regularMonsters.indexOf(monster);expect(drawMonster(()=>(index+.5)/regularMonsters.length).id).toBe(monster.id)}

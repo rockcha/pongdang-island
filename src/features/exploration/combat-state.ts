@@ -48,7 +48,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
  let phase:'player'|'reply'='player',revivedOnBleed=false,revivedOnCounter=false
  const record=(event:CombatEvent)=>{events.push({...event,phase});lines.push(event.text)}
  const clearBleed=()=>{next.playerEffects=next.playerEffects?.filter(effect=>effect.kind!=='bleed')}
- const victory=()=>{next.combat.status='won';delete next.combat.shield;clearBleed();const manaRestored=Math.min(playerManaMax(next)-next.mp,equippedGearBonus(next,'victoryManaRestore'));if(manaRestored>0){next.mp+=manaRestored;record({kind:'status',source:'잔향',manaRestored,text:`잔향의 사제복 · 승리로 마나 ${manaRestored} 회복!`})}if(next.mode==='practice'&&next.market.floor===practiceFinalFloor&&monster.id===practiceFinalBossId)next.finalBossDefeated=true;if(monster.id==='nameless-royal-warden')next.nameStory={...next.nameStory,met:true,guardianDefeated:true,gateOpened:true};if(monster.tier==='boss'&&monster.id!==practiceFinalBossId)next.bossRestPending=true;const returnedGold=next.combat.pattern?.stolenGold??0;next.gold+=monster.gold+returnedGold;record({kind:'reward',gold:monster.gold+returnedGold,text:monsterDefeatText(monster.name)+(monster.gold>0?` 골드 +${monster.gold}.`: '')+(returnedGold?` 삼켰던 골드 ${returnedGold}을 돌려받았습니다.`:'')})}
+ const victory=()=>{next.combat.status='won';delete next.combat.shield;clearBleed();const manaRestored=Math.min(playerManaMax(next)-next.mp,equippedGearBonus(next,'victoryManaRestore'));if(manaRestored>0){next.mp+=manaRestored;record({kind:'status',source:'잔향',manaRestored,text:`잔향의 사제복 · 승리로 마나 ${manaRestored} 회복!`})}if(next.mode==='practice'&&next.market.floor===practiceFinalFloor&&monster.id===practiceFinalBossId)next.finalBossDefeated=true;if(monster.id==='nameless-royal-warden')next.nameStory={...next.nameStory,met:true,guardianDefeated:true,gateOpened:true};if(monster.tier==='boss'&&monster.id!==practiceFinalBossId)next.bossRestPending=true;next.gold+=monster.gold;record({kind:'reward',gold:monster.gold,text:monsterDefeatText(monster.name)+(monster.gold>0?` 골드 +${monster.gold}.`: '')})}
  if(action.type==='flee'){
   const chance=escapeChance(state);next.escapeBoost=0
   if(random()*100<chance){clearBleed();const playerState={...next,combat:{...next.combat}};next.combat.status='escaped';delete next.combat.shield;record({kind:'system',text:'도망 성공! 보상 없이 아래층으로 향합니다.'});return {state:next,playerState,lines,events}}
@@ -150,11 +150,6 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   else if(monster.pattern==='coward')magic=undefined
   else if(monster.pattern==='hourglass'&&p.charging){magic=monster.magic[0];p.charging=false}
   else if(monster.pattern==='hourglass'&&magic){p.charging=true;handled=true;record({kind:'status',source:monster.name,moveId:magic.id,text:'모래시계 충전! 다음 행동에 강력한 마법이 폭발합니다.'})}
-  else if(monster.pattern==='healer'&&magic){
-   if((p.healsUsed??0)<2&&next.combat.enemyHp<monster.maxHp){p.healsUsed=(p.healsUsed??0)+1;const healing=Math.min(monster.maxHp-next.combat.enemyHp,healingAfterReduction(5,next.combat.effects));next.combat.enemyHp+=healing;handled=true;record({kind:'status',source:monster.name,moveId:magic.id,effect:'enemy-heal',healing,text:`이슬 한 모금! 체력 ${healing} 회복 · 남은 이슬 ${2-p.healsUsed}/2.`})}else magic=undefined
-  }else if(monster.pattern==='thief'&&magic){
-   if((p.stealsUsed??0)<2&&next.gold>0){const gold=Math.min(30,next.gold);next.gold-=gold;p.stolenGold=(p.stolenGold??0)+gold;p.stealsUsed=(p.stealsUsed??0)+1;handled=true;record({kind:'status',source:monster.name,moveId:magic.id,gold:-gold,text:`금화 꿀꺽! 골드 ${gold}을 삼켰습니다. 처치하면 돌려받을 수 있습니다.`})}else magic=undefined
-  }
   if(!handled){
   const skill=magic??monster.basic,attackType=magic?'magic' as const:'physical' as const
   const metadata={source:monster.name,moveId:skill.id,attackType}

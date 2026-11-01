@@ -3,7 +3,7 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {newPractice,practiceSpells} from '@/features/exploration/practice-state'
 import {resolveCombatTurn,startMonsterCombat} from '@/features/exploration/combat-state'
 import {getCombatMonster,monsterPatternNotice} from '@/features/exploration/monster-patterns'
-import {getMonster,type MonsterId} from '@/features/exploration/monster-catalog'
+import {getMonster,regularMonsters,type MonsterId} from '@/features/exploration/monster-catalog'
 import {floorMonsterPool,drawFloorMonster,drawInvestigationMonster} from '@/features/exploration/campaign'
 import {ScorpionRoom} from '@/features/exploration/scorpion-room'
 import {seededRandom} from '../scripts/exploration/simulation'
@@ -12,13 +12,10 @@ import {existsSync} from 'node:fs'
 afterEach(()=>{cleanup();vi.useRealTimers()})
 function fight(id:MonsterId){return startMonsterCombat({...newPractice(()=>0),spells:practiceSpells,equippedSpells:['ember','sand'],potions:{health:9,mana:9}},id)}
 const hit=(state:ReturnType<typeof fight>,roll=.99)=>resolveCombatTurn(state,{type:'attack'},()=>roll)
-it('uses two healing charges instead of attacking, applies burn, and falls back after exhaustion',()=>{
- const base=fight('dewdrop-snail'),first=hit(base,.1),second=hit(first.state,.1),third=hit(second.state,.1)
- expect(first.state.combat?.enemyHp).toBe(38);expect(first.state.hp).toBe(100);expect(first.state.combat?.pattern?.healsUsed).toBe(1)
- expect(first.playerState.combat?.pattern?.healsUsed).toBeUndefined();expect(base.combat?.pattern?.healsUsed).toBeUndefined()
- expect(second.state.combat?.pattern?.healsUsed).toBe(2);expect(third.state.hp).toBeLessThan(100)
- const burned=hit({...base,combat:{...base.combat!,effects:[{kind:'burn',amount:40,turns:3}]}},.1)
- expect(burned.events.find(x=>x.effect==='enemy-heal')?.healing).toBe(3)
+it('excludes the retired snail and toad from selectable monsters and every floor pool',()=>{
+ const retired=['dewdrop-snail','gold-pouch-toad']
+ expect(regularMonsters.some(monster=>retired.includes(monster.id))).toBe(false)
+ for(let floor=1;floor<=50;floor++)for(const intermediate of [false,true])expect(floorMonsterPool(floor,intermediate).some(item=>retired.includes(item.value))).toBe(false)
 })
 it('breaks shield armor on landed basics after calculating that hit and never breaks it with magic',()=>{
  const base=fight('cracked-shield-scarab'),first=hit(base),second=hit(first.state)
@@ -66,16 +63,7 @@ it('adapts mirror resistance after each successful direct hit and switches rathe
  expect(repeated.events[0].damage).toBe(12)
  expect(getCombatMonster(hit(magic.state).state)).toMatchObject({defense:8,magicResistance:2})
 })
-it('steals only existing gold twice, refunds the exact amount on victory and never refunds a retreat',()=>{
- const base={...fight('gold-pouch-toad'),gold:50},first=hit(base,.1),second=hit(first.state,.1),third=hit(second.state,.1)
- expect(first.state.gold).toBe(20);expect(second.state.gold).toBe(0);expect(second.state.combat?.pattern).toMatchObject({stealsUsed:2,stolenGold:50})
- expect(second.playerState.combat?.pattern?.stolenGold).toBe(30);expect(third.state.hp).toBeLessThan(base.hp)
- const won=hit({...second.state,combat:{...second.state.combat!,enemyHp:1}}).state
- expect(won.gold).toBe(290);expect(hit(won).state).toBe(won)
- expect(resolveCombatTurn(first.state,{type:'flee'},()=>0).state.gold).toBe(20)
- const empty=hit({...base,gold:0},.1);expect(empty.state.hp).toBeLessThan(base.hp);expect(empty.state.gold).toBe(0)
-})
-it.each([['dewdrop-snail',4],['cracked-shield-scarab',7],['cowardly-tomb-rat',9],['hourglass-sentinel',16],['mirror-mask-mage',21],['gold-pouch-toad',26]] as const)('gates %s until floor %s and ships all artwork', (id,start)=>{
+it.each([['cracked-shield-scarab',7],['cowardly-tomb-rat',9],['hourglass-sentinel',16],['mirror-mask-mage',21]] as const)('gates %s until floor %s and ships all artwork', (id,start)=>{
  const monster=getMonster(id),intermediate=monster.tier==='intermediate'
  expect(floorMonsterPool(start-1,intermediate).some(x=>x.value===id)).toBe(false)
  expect(floorMonsterPool(start,intermediate).some(x=>x.value===id)).toBe(true)

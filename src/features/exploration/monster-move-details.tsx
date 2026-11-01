@@ -19,8 +19,6 @@ export function MonsterMoveDetails({monster,kind}:{monster:Monster;kind:string})
  if(skill.effect==='lifesteal')facts.push({label:'생명력 흡수',value:'실제 피해의 50%',icon:<Heart/>,tone:'health',note:'회복량 내림 · 최대 체력 초과 없음'})
  if(skill.bleed)facts.push({label:'출혈',value:`피해 ${skill.bleed.amount}, ${skill.bleed.turns}턴`,icon:<AilmentIcon kind="bleed"/>,tone:'danger',note:`적중 시 ${skill.bleed.chance}% · 행동 종료마다 피해 · 중첩 없음`})
  if(!basic&&skill.damage===0)facts.splice(0,2)
- if(skill.effect==='self-heal')facts.push({label:'자신의 체력 회복',value:'+5 · 최대 2회',icon:<Heart/>,tone:'health',note:'가득 차면 기본 공격 · 화상의 회복 감소 적용'})
- if(skill.effect==='gold-steal')facts.push({label:'골드 삼키기',value:'최대 30 · 2회',icon:<Sparkles/>,note:'처치 시 반환 · 도망치면 잃음'})
  const chance=monsterMoveChance(monster,basic)
  facts.push({label:'사용 확률',value:chance,icon:<Percent/>},{label:basic?'치명타':'마나 소모',value:basic?`${monster.critical}%`:'없음',icon:basic?<StatIcon kind="critical"/>:<Droplets/>,tone:basic?'danger':'mana',note:basic?'발동 시 직접 피해 2배':'회피와 치명타 없음'})
  return <><div className="exploration-move-intro"><img src={skill.image} alt=""/><p>{narratives[skill.id]??skill.description}</p></div><EffectFacts items={facts} label="스킬 효과"/>{basic&&<p className="exploration-effect-footnote">방어력과 회피 적용 · 마나 소모 없음</p>}</>

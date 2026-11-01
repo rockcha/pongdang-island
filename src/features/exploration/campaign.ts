@@ -25,8 +25,8 @@ function weighted<T>(items:readonly {value:T;weight:number}[],random:()=>number)
  return items[items.length-1].value
 }
 export function floorMonsterPool(floor:number,intermediate=false):{value:MonsterId;weight:number}[]{
- const ids:MonsterId[]=intermediate?['sand-wraith','tomb-hook-guard','tomb-lantern-jellyfish','hourglass-sentinel','mirror-mask-mage','gold-pouch-toad']:['jar-wisp','talisman-lizard','sand-scorpion','saw-claw-crab','bandage-mummy','lapis-cobra','dewdrop-snail','cracked-shield-scarab','cowardly-tomb-rat']
- const weights=intermediate?(floor<16?[100,0,0,0,0,0]:floor<21?[45,35,0,20,0,0]:floor<26?[25,25,20,20,10,0]:[20,20,20,15,15,10]):floor<4?[40,35,25,0,0,0,0,0,0]:floor<=5?[30,25,25,0,0,0,20,0,0]:floor===6?[15,10,20,20,20,0,15,0,0]:floor<=8?[12,10,18,18,17,0,15,10,0]:floor<=10?[10,8,15,15,15,5,12,10,10]:floor<=20?[8,8,12,15,17,10,10,10,10]:[5,5,8,15,17,20,8,12,10]
+ const ids:MonsterId[]=intermediate?['sand-wraith','tomb-hook-guard','tomb-lantern-jellyfish','hourglass-sentinel','mirror-mask-mage']:['jar-wisp','talisman-lizard','sand-scorpion','saw-claw-crab','bandage-mummy','lapis-cobra','cracked-shield-scarab','cowardly-tomb-rat']
+ const weights=intermediate?(floor<16?[100,0,0,0,0]:floor<21?[45,35,0,20,0]:floor<26?[25,25,20,20,10]:[20,20,20,20,20]):floor<=5?[40,35,25,0,0,0,0,0]:floor===6?[15,15,25,25,20,0,0,0]:floor<=8?[15,10,20,20,20,0,15,0]:floor<=10?[10,10,20,20,15,5,10,10]:floor<=20?[10,10,10,20,20,10,10,10]:[5,5,10,20,20,20,10,10]
  return ids.map((value,index)=>({value,weight:weights[index]})).filter(item=>item.weight>0)
 }
 export function drawFloorMonster(floor:number,random=Math.random,intermediate=false):MonsterId{return weighted(floorMonsterPool(floor,intermediate),random)}

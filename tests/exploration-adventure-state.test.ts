@@ -44,7 +44,7 @@ it.each(['chest','investigate-guards','investigate-wall','investigate-alchemy'] 
 })
 it('keeps bosses and the sleeping giant out of ordinary monster draws',()=>{
  for(let index=0;index<100;index++)expect(['obsidian-anubis','ancient-giant']).not.toContain(drawMonster(()=>(index+.5)/100).id)
- expect(regularMonsters).toHaveLength(15)
+ expect(regularMonsters).toHaveLength(13)
 })
 it('guarantees special drops, refuses boss escape and grants exactly one ambush',()=>{
  const state=grantPracticeSupplies(newPractice())

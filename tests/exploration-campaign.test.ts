@@ -22,7 +22,7 @@ it('keeps exactly one ordinary-monster door on every floor and never replaces it
 })
 it('gates monsters, merchants and boss opportunities by floor',()=>{
  for(let seed=0;seed<200;seed++){
-  for(let floor=1;floor<=5;floor++)expect(floor<4?['jar-wisp','talisman-lizard','sand-scorpion']:['jar-wisp','talisman-lizard','sand-scorpion','dewdrop-snail']).toContain(drawFloorMonster(floor,seededRandom(seed)))
+  for(let floor=1;floor<=5;floor++)expect(['jar-wisp','talisman-lizard','sand-scorpion']).toContain(drawFloorMonster(floor,seededRandom(seed)))
   expect(drawFloorMonster(11,seededRandom(seed),true)).toBe('sand-wraith')
   expect(['sand-wraith','tomb-hook-guard','hourglass-sentinel']).toContain(drawFloorMonster(16,seededRandom(seed),true))
  }

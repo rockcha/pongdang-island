@@ -7,7 +7,7 @@ import {act,cleanup,fireEvent,render,screen,waitFor,within} from '@testing-libra
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {createMemoryRouter,RouterProvider} from 'react-router'
 import {ExplorationPage} from '@/features/exploration/exploration-page'
-import {doorArrivalLines,scorpionArrivalLines,encounterWonderLines} from '@/features/exploration/exploration-game'
+import {doorArrivalLines,scorpionArrivalLines} from '@/features/exploration/exploration-narration'
 import {roomTypes} from '@/features/exploration/room-preview'
 import {doorSkins,drawFloorArt} from '@/features/exploration/dungeon-art'
 import {buyMerchantItem,castSpell,equipGear,grantPracticeSupplies,newPractice,toggleSpell} from '@/features/exploration/practice-state'
@@ -20,24 +20,27 @@ vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'oper
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({profile:{avatar_path:'avatar.png'}})}))
 vi.mock('@/features/profile/player-avatar',()=>({PlayerAvatar:({nickname}:any)=><img alt={`${nickname}의 아바타`}/>}))
 vi.mock('@/features/exploration/exploration-feedback',()=>({ExplorationFeedback:()=> <section aria-label="탐험 피드백"/>}))
+vi.mock('@/features/exploration/reward-api',()=>({commandExploration:vi.fn(async(request:any)=>({id:request.runId,abandoned:false,finishedAt:null}))}))
+vi.mock('@/features/exploration/verified-exploration-game',()=>({VerifiedExplorationGame:()=> <section aria-label="파라오 지하 탐험"><span aria-label="탐험용 골드">100</span></section>}))
 beforeEach(()=>{access.operator=true;access.loading=false;vi.stubGlobal('matchMedia',()=>({matches:false}))})
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.restoreAllMocks();vi.useRealTimers();Object.defineProperty(document,'fullscreenElement',{configurable:true,value:null});delete document.documentElement.requestFullscreen;delete document.exitFullscreen})
 function show(){const router=createMemoryRouter([{path:'/exploration',element:<ExplorationPage/>},{path:'/elsewhere',element:<p>다른 페이지</p>}],{initialEntries:['/exploration']});render(<StrictMode><RouterProvider router={router}/></StrictMode>);return router}
 async function start(){show();fireEvent.click(screen.getByRole('button',{name:'테스트'}));await waitFor(()=>expect(screen.queryByLabelText('지하 1층으로 내려가는 중')).toBeNull(),{timeout:5000})}
-it('opens practice to regular users while keeping testing operator-only, including during permission loading',()=>{
+it('opens practice to regular users while keeping testing operator-only, including during permission loading',async()=>{
  access.operator=false;show()
  if(process.env.FEEDBACK_UI_QA)writeFileSync('artifacts/exploration-public-lobby.fragment.html',document.querySelector('.exploration-lobby')!.outerHTML)
  expect(screen.queryByRole('button',{name:'테스트'})).toBeNull()
- fireEvent.click(screen.getByRole('tab',{name:'피드백하기'}))
+ expect(screen.queryByRole('button',{name:'연습'})).toBeNull()
+ fireEvent.click(screen.getByRole('tab',{name:'피드백'}))
  expect(screen.getByRole('region',{name:'탐험 피드백'})).toBeTruthy()
- fireEvent.click(screen.getByRole('tab',{name:'플레이하기'}))
- fireEvent.click(screen.getByRole('button',{name:'실전연습'}))
- expect(screen.getByRole('region',{name:'파라오 지하 탐험'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('tab',{name:'게임 플레이'}))
+ fireEvent.click(screen.getByRole('button',{name:'실전 (무료)'}))
+ expect(await screen.findByRole('region',{name:'파라오 지하 탐험'})).toBeTruthy()
  expect(screen.getByLabelText('탐험용 골드').textContent).toBe('100')
  expect(screen.queryByLabelText('1번 문 방 유형')).toBeNull()
  cleanup();access.loading=true;show()
  expect(screen.queryByRole('button',{name:'테스트'})).toBeNull()
- expect(screen.getByRole('button',{name:'실전연습'})).toHaveProperty('disabled',false)
+ expect(screen.getByRole('button',{name:'실전 (무료)'})).toHaveProperty('disabled',false)
 })
 it('starts with the specified gear, health, descent animation and three inspectable locked doors',async()=>{
  show();fireEvent.click(screen.getByRole('button',{name:'테스트'}))
@@ -74,7 +77,7 @@ it('starts with the specified gear, health, descent animation and three inspecta
 })
 it('changes the main weapon and armor and equips up to two simultaneously usable spells',async()=>{
  await start();fireEvent.click(screen.getByRole('button',{name:'주무기 교체'}))
- fireEvent.click(screen.getByRole('button',{name:'연습 물품 받기'}))
+ fireEvent.click(screen.getByRole('button',{name:'테스트 물품 받기'}))
  const weapon=screen.getByRole('heading',{name:'청동 단검'}).closest('article')!
  fireEvent.click(within(weapon).getByRole('button',{name:'주 무기로 선택'}))
  fireEvent.click(screen.getByRole('tab',{name:/보호구/}))
@@ -146,10 +149,10 @@ it('uses dock potions, preserves them on cancel and updates resources and slot c
  expect(screen.getByLabelText('탐험 로그').textContent).toContain('마나 15 회복!')
 })
 it('confirms exit, can continue and discards the run on re-entry',async()=>{
- await start();fireEvent.click(screen.getByRole('button',{name:'탐험 나가기'}))
+ await start();fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 나가기'}))
  expect(screen.getByRole('alertdialog').textContent).toContain('저장하지 않고')
  fireEvent.click(screen.getByRole('button',{name:'계속 탐험'}));expect(screen.getByRole('region',{name:'파라오 지하 탐험'})).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'탐험 나가기'}));fireEvent.click(screen.getByRole('button',{name:'저장하지 않고 나가기'}))
+ fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 나가기'}));fireEvent.click(screen.getByRole('button',{name:'저장하지 않고 나가기'}))
  expect(screen.queryByRole('region',{name:'파라오 지하 탐험'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'테스트'}));expect(screen.getByRole('button',{name:'주무기 교체'}).title).toContain('공격력 10 · 치명타 5%')
 })
@@ -178,7 +181,7 @@ it('releases native fullscreen if its request resolves after leaving the practic
  document.documentElement.requestFullscreen=vi.fn(()=>new Promise<void>(resolve=>{finish=resolve}))
  document.exitFullscreen=vi.fn(async()=>{Object.defineProperty(document,'fullscreenElement',{configurable:true,value:null})})
  show();fireEvent.click(screen.getByRole('button',{name:'테스트'}))
- fireEvent.click(screen.getByRole('button',{name:'탐험 나가기'}));fireEvent.click(screen.getByRole('button',{name:'저장하지 않고 나가기'}))
+ fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 나가기'}));fireEvent.click(screen.getByRole('button',{name:'저장하지 않고 나가기'}))
  await act(async()=>{Object.defineProperty(document,'fullscreenElement',{configurable:true,value:document.documentElement});finish()})
  expect(document.exitFullscreen).toHaveBeenCalledOnce();expect(lock).not.toHaveBeenCalled()
 })
@@ -205,7 +208,7 @@ it('hides the descent floor notice on arrival, opens equipment tabs directly and
  await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
  fireEvent.click(within(screen.getByRole('group',{name:'지하 1층의 세 문'})).getAllByRole('button')[0])
  expect(screen.queryByRole('region',{name:'층 이동 안내'})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}))
+ fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}))
  expect(within(screen.getByRole('dialog')).getByText(/모래 위에는/)).toBeTruthy()
  const recorded=document.querySelector('.exploration-history .exploration-dialogue')!
  expect(doorArrivalLines.some(line=>recorded.textContent?.includes(line))).toBe(true)
@@ -298,11 +301,9 @@ it('enters a selectable monster room, fights the scorpion and keeps rewards on d
  fireEvent.change(screen.getByLabelText('1번 문 방 유형'),{target:{value:'monster:sand-scorpion'}})
  sounds.startMusic.mockClear()
  fireEvent.click(screen.getByRole('button',{name:'몬스터 방 · 입장',exact:true}))
- await screen.findByRole('region',{name:'몬스터 방 등장'})
- expect(encounterWonderLines.some(line=>screen.queryByText(line))).toBe(true)
- expect(sounds.startMusic).not.toHaveBeenCalledWith('combat')
- expect(screen.queryByRole('button',{name:'공격',exact:true})).toBeNull()
  await screen.findByRole('region',{name:'모래 전갈 전투'})
+ expect(screen.queryByRole('region',{name:'몬스터 방 등장'})).toBeNull()
+ expect(screen.getByRole('button',{name:'공격',exact:true})).toBeTruthy()
  expect(sounds.startMusic).toHaveBeenCalledWith('combat')
  expect(scorpionArrivalLines.some(line=>document.querySelector('.exploration-enemy-intent')?.textContent===`탐험: ${line}`)).toBe(true)
  expect(screen.getByRole('progressbar',{name:'모래 전갈 체력'})).toHaveProperty('value',38)
@@ -332,7 +333,7 @@ it('enters a selectable monster room, fights the scorpion and keeps rewards on d
    await act(async()=>{await vi.advanceTimersByTimeAsync(3200)})
    expect(screen.getByRole('progressbar',{name:'탐험가 체력'})).toHaveProperty('value',94)
    expect(sounds.play).toHaveBeenNthCalledWith(2,'hit')
-   fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}))
+   fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}))
    expect(document.querySelector('.combat-log-monster')?.textContent).toContain('6 피해')
    expect(document.querySelector('.combat-log-player')?.textContent).toContain('9 피해')
    fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'})
@@ -379,7 +380,7 @@ it('shows escape without odds or a result box and descends automatically after t
  await act(async()=>{await vi.advanceTimersByTimeAsync(10000)})
  expect(screen.getByRole('group',{name:'지하 2층의 세 문'})).toBeTruthy()
  expect(screen.getByLabelText('탐험용 골드').textContent).toContain('100,000')
- fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}))
+ fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}))
  expect(screen.getByRole('dialog').textContent).toContain('도망 성공! 보상 없이 아래층으로 향합니다.')
  vi.useRealTimers()
 })
@@ -403,7 +404,7 @@ it('uses the critical sound instead of the ordinary sword sound at the hit phase
 
 it('plays the player magic sample at the spell impact phase',async()=>{
  vi.stubGlobal('matchMedia',()=>({matches:true}))
- await start();fireEvent.click(screen.getByRole('button',{name:'주무기 교체'}));fireEvent.click(screen.getByRole('button',{name:'연습 물품 받기'}))
+ await start();fireEvent.click(screen.getByRole('button',{name:'주무기 교체'}));fireEvent.click(screen.getByRole('button',{name:'테스트 물품 받기'}))
  fireEvent.click(screen.getByRole('tab',{name:/마법/}))
  const ember=screen.getByRole('heading',{name:'작은 불꽃'}).closest('article')!
  fireEvent.click(within(ember).getByRole('button',{name:'마법 장착'}))

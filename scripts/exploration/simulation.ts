@@ -1,3 +1,5 @@
+import {recordRoomEntry} from '../../src/features/exploration/room-rules'
+import {refreshPracticeDoors} from '../../src/features/exploration/campaign'
 import {canAppeaseNameGuardian,progressNameStory} from '../../src/features/exploration/name-story'
 import {drawRoomLoot} from '../../src/features/exploration/room-loot'
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
@@ -114,16 +116,18 @@ export function simulateCampaign(seed:number,strategy:Strategy,quizAccuracy=.8,t
  for(let floor=1;floor<=practiceFinalFloor;floor++){
   result.reached=floor
   if(state.forcedMerchant){const profile=getShopkeeper(state.forcedMerchant.id);state=beginForcedMerchant(state,worldSeed(seed,floor));state=shop(state,profile.roomId,worldSeed(seed,floor));state=finishForcedMerchant(state)}
-  if(needsNameGuardian(state)){state=meetNameGuardian(state);const random=worldSeed(seed,floor);result.rooms['nameless-guardian']=(result.rooms['nameless-guardian']??0)+1;if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');state=claim(state,drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0)break;const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis);state=finishNameGuardian(state)}
+  if(needsNameGuardian(state)){state=recordRoomEntry(meetNameGuardian(state),'nameless-guardian');const random=worldSeed(seed,floor);result.rooms['nameless-guardian']=(result.rooms['nameless-guardian']??0)+1;if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');state=claim(state,drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0)break;const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(recordRoomEntry(oasis,'rest-oasis'));state=finishNameGuardian(state)}
   state=optimize(state)
   while(state.hp/playerMaxHp(state)<.6&&state.potions.health)state=usePotion(state,'health')
   if(floor===practiceFinalFloor&&checkFinalBoss){
    const probe=playCombat(state,practiceFinalBossId,strategy,seededRandom(seed^0x413872),worldSeed(seed,floor))
    result.finalBossProbe={won:probe.state.combat?.status==='won',startingHp:state.hp,weaponId:state.weaponId,armorId:state.armorId,spells:[...state.equippedSpells],healthPotions:state.potions.health,manaPotions:state.potions.mana,turns:probe.turns}
   }
-  const index=strategy==='random'?Math.floor(decisions()*3):state.market.doors.map((type,index)=>({index,score:roomScore(state,type,strategy)+decisions()*.01})).sort((a,b)=>b.score-a.score)[0].index
+  state=refreshPracticeDoors(state,worldSeed(seed,floor))
+  const index=strategy==='random'?Math.floor(decisions()*state.market.doors.length):state.market.doors.map((type,index)=>({index,score:roomScore(state,type,strategy)+decisions()*.01})).sort((a,b)=>b.score-a.score)[0].index
   const type=state.market.doors[index],world=seededRandom(seed+floor*193939+index*7919)
   result.rooms[type]=(result.rooms[type]??0)+1;result.trace?.push(floor+'층 '+type+' · HP '+state.hp+' · 골드 '+state.gold)
+  if(type==='monster'||type==='guardian'||type.startsWith('boss-'))state=recordRoomEntry(state,type)
   if(shopkeeperForRoom(type))state=shop(state,type,world)
   else if(type==='monster'||type==='guardian'){
    const planned=state.market.monsterIds?.[index]
@@ -145,11 +149,11 @@ export function simulateCampaign(seed:number,strategy:Strategy,quizAccuracy=.8,t
   if(state.hp<=0)break
   if(needsFinalBoss(state)){
    state=optimize(state);while(state.hp/playerMaxHp(state)<.6&&state.potions.health)state=usePotion(state,'health')
-   fight(practiceFinalBossId,world)
+   state=recordRoomEntry(state,practiceFinalBossRoom);fight(practiceFinalBossId,world)
    if(state.hp<=0)break
   }
   result.completedFloors=floor
-  const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis)
+  const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(recordRoomEntry(oasis,'rest-oasis'))
   const next=advanceExploration(state,seededRandom(seed+(floor+1)*104729))
   if(next===state)throw Error('Simulation failed to resolve a room before descent')
   state=next

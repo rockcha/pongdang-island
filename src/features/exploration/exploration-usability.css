@@ -1,4 +1,5 @@
 .exploration-lobby{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+.exploration-lobby.exploration-arcade-lobby{display:flex;flex:1;flex-direction:column;min-width:0;min-height:0;width:100%;max-width:none;margin:0;padding:0}
 .exploration-lobby-tabs{display:flex;gap:5px;padding:5px;margin-top:22px;border:1px solid #b89b6538;border-radius:12px;background:#b89b650a}
 .exploration-lobby-tabs button{display:flex;align-items:center;justify-content:center;flex:1;gap:7px;min-height:44px;border-radius:8px;font-size:13px;color:#9c805e;cursor:pointer}
 .exploration-lobby-tabs button[aria-selected=true]{background:#fffaf1;color:#715033;box-shadow:0 2px 8px #71503312}
@@ -17,6 +18,14 @@ html [data-slot=modal-viewport]>.exploration-modal.exploration-codex{height:min(
 .exploration-codex .weapon-codex-copy footer>b{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;color:#e8c26d}
 .exploration-codex .weapon-codex-copy footer>svg{color:#e8c26d;width:16px;height:16px;flex-shrink:0}
 .exploration-codex .weapon-codex-note{font-size:10px;line-height:1.6}
+.exploration-game .exploration-scene>.exploration-doors.is-single{grid-template-columns:minmax(0,1fr);width:min(72%,280px);margin-inline:auto;align-self:center;gap:0}
+.exploration-game .exploration-doors.is-single .exploration-choice{width:100%}
+.exploration-game .exploration-doors.is-single .exploration-choice-copy{min-height:0;padding:8px 12px;gap:0}
+.exploration-game .exploration-doors.is-single .exploration-choice-copy>small{display:none}
+.exploration-game .exploration-doors.is-single .exploration-choice-arrow{display:none}
+.exploration-game .exploration-doors.is-single .exploration-door-sprite{max-height:min(250px,36dvh)}
+@media(min-width:620px) and (max-height:540px){.exploration-game .exploration-scene>.exploration-doors.is-single{width:min(38%,220px)}}
+@media(max-height:500px){.exploration-game .exploration-doors.is-single .exploration-door-sprite{max-height:90px}}
 .exploration-modal.exploration-minimal-shop{overflow:hidden!important}
 .exploration-minimal-shop>.exploration-shop-items,.merchant-owned,.merchant-replacement{min-height:0;overflow-y:auto;overscroll-behavior:contain;flex:1 1 auto}
 .exploration-minimal-shop>.merchant-tabs,.exploration-minimal-shop>[data-slot=dialog-header],.exploration-minimal-shop>.exploration-shop-gold,.merchant-current-equipment,.exploration-minimal-shop>.exploration-room-return{flex-shrink:0}

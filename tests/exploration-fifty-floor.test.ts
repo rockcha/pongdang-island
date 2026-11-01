@@ -3,8 +3,9 @@ import {getMonster,getFloorMonster} from '@/features/exploration/monster-catalog
 import {newPractice} from '@/features/exploration/practice-state'
 import {startMonsterCombat,resolveCombatTurn} from '@/features/exploration/combat-state'
 import {practiceFinalFloor,practiceFinalBossId} from '@/features/exploration/campaign'
-it('slightly weakens early enemies and removes fifteen health from the saw-claw crab',()=>{
- expect(getMonster('saw-claw-crab').maxHp).toBe(25)
+it('keeps early enemies approachable and adds two ordinary spellcasters',()=>{
+ expect(getMonster('night-eyed-desert-fox')).toMatchObject({tier:'normal',maxHp:36,magic:[{id:'starlight-orb',damage:7}]})
+ expect(getMonster('sand-wing-bat')).toMatchObject({tier:'normal',maxHp:28,magic:[{id:'sand-gust',damage:6}]})
  expect(getMonster('sand-scorpion').attack).toBe(7);expect(getMonster('bandage-mummy').attack).toBe(9)
  expect(getMonster('jar-wisp').maxHp).toBe(28);expect(getMonster('talisman-lizard').maxHp).toBe(33)
  expect(getMonster('lapis-cobra')).toMatchObject({maxHp:20,attack:11,critical:45})

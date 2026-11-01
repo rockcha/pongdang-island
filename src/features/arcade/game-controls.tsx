@@ -1,4 +1,5 @@
 import { appArt } from '@/components/app-art'
+import type {ComponentType} from 'react'
 
 const { gameplay: Gamepad2, ranking: Trophy } = appArt
 
@@ -7,10 +8,14 @@ export function GameTabs({
   id,
   value,
   onChange,
+  secondaryLabel='랭킹',
+  secondaryIcon=Trophy,
 }: {
   id: string
   value: GameTab
   onChange: (value: GameTab) => void
+  secondaryLabel?:string
+  secondaryIcon?:ComponentType<{className?:string}>
 }) {
   return (
     <div
@@ -21,7 +26,7 @@ export function GameTabs({
       {(
         [
           { value: 'game', label: '게임 플레이', icon: Gamepad2 },
-          { value: 'rank', label: '랭킹', icon: Trophy },
+          { value: 'rank', label: secondaryLabel, icon: secondaryIcon },
         ] as const
       ).map((tab) => (
         <button

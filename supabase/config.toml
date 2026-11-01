@@ -335,3 +335,7 @@ s3_access_key = "env(S3_ACCESS_KEY)"
 s3_secret_key = "env(S3_SECRET_KEY)"
 [functions.web-push]
 verify_jwt = false
+
+[functions.exploration-game]
+# The worker validates the bearer token with Auth /user before using service credentials.
+verify_jwt = false

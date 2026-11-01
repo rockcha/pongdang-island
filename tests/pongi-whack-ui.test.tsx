@@ -1,15 +1,68 @@
 import {act,cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import PongiWhackGame from '@/features/arcade/pongi-whack-game'
-const mocks=vi.hoisted(()=>({command:vi.fn(),account:{data:{serverNow:'',gold:100,run:null},refetch:vi.fn()}}))
+import {whackReworkMessage,whackReworkSchedule} from '@/features/arcade/pongi-whack-maintenance'
+import type {WhackState} from '@/features/arcade/pongi-whack-api'
+const mocks=vi.hoisted(()=>({command:vi.fn(),account:{data:{serverNow:'',gold:100,run:null} as WhackState,dataUpdatedAt:0,refetch:vi.fn()}}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/relics/use-equipped-relic',()=>({useEquippedRelic:()=>null}))
-vi.mock('@/lib/account-query',()=>({useAccountResource:()=>mocks.account}))
+vi.mock('@/lib/account-query',async original=>({...await original<typeof import('@/lib/account-query')>(),useAccountResource:()=>mocks.account}))
 vi.mock('@/features/arcade/pongi-whack-api',async original=>({...await original<typeof import('@/features/arcade/pongi-whack-api')>(),actWhack:mocks.command}))
 let frames:Map<number,FrameRequestCallback>,frameId:number,now:number
-beforeEach(()=>{now=0;frames=new Map();frameId=0;vi.clearAllMocks();vi.spyOn(performance,'now').mockImplementation(()=>now);vi.spyOn(window,'requestAnimationFrame').mockImplementation(cb=>{frames.set(++frameId,cb);return frameId});vi.spyOn(window,'cancelAnimationFrame').mockImplementation(id=>{frames.delete(id)});mocks.account.data={serverNow:new Date().toISOString(),gold:100,run:null}})
-afterEach(()=>{cleanup();vi.restoreAllMocks()})
+beforeEach(()=>{vi.spyOn(Date,'now').mockReturnValue(Date.parse('2026-11-01T12:00:00+09:00'));now=0;frames=new Map();frameId=0;vi.clearAllMocks();vi.spyOn(performance,'now').mockImplementation(()=>now);vi.spyOn(window,'requestAnimationFrame').mockImplementation(cb=>{frames.set(++frameId,cb);return frameId});vi.spyOn(window,'cancelAnimationFrame').mockImplementation(id=>{frames.delete(id)});mocks.account.dataUpdatedAt=Date.now();mocks.account.data={serverNow:new Date(Date.now()).toISOString(),gold:100,run:null}})
+afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks()})
 const advance=async(ms:number)=>{now=ms;await act(async()=>{const current=[...frames.values()];frames.clear();current.forEach(cb=>cb(ms))})}
+it('blocks both new game modes using server time while keeping ranking available',()=>{
+ mocks.account.data={serverNow:'2026-11-02T00:00:00+09:00',gold:100,run:null,maintenance:{...whackReworkSchedule,active:true}}
+ render(<PongiWhackGame/>)
+ expect(screen.getByRole('button',{name:'실전 (골드 10)'})).toHaveProperty('disabled',true)
+ expect(screen.getByRole('button',{name:'연습'})).toHaveProperty('disabled',true)
+ expect(screen.getByText(whackReworkMessage)).toBeTruthy()
+ expect(screen.getByRole('tab',{name:'랭킹'})).toHaveProperty('disabled',false)
+ expect(mocks.command).not.toHaveBeenCalled()
+})
+it('updates an already-open start menu at midnight without polling',async()=>{
+ vi.useFakeTimers({toFake:['Date','setTimeout','clearTimeout']})
+ vi.setSystemTime(new Date('2026-11-01T23:59:59+09:00'))
+ mocks.account.dataUpdatedAt=Date.now()
+ mocks.account.data={serverNow:new Date(Date.now()).toISOString(),gold:100,run:null,maintenance:whackReworkSchedule}
+ render(<PongiWhackGame/>)
+ expect(screen.getByRole('button',{name:'연습'})).toHaveProperty('disabled',false)
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1001)})
+ expect(screen.getByRole('button',{name:'연습'})).toHaveProperty('disabled',true)
+ expect(screen.getByRole('button',{name:'실전 (골드 10)'})).toHaveProperty('disabled',true)
+ expect(mocks.command).not.toHaveBeenCalled()
+ expect(mocks.account.refetch).not.toHaveBeenCalled()
+})
+it('prevents confirming a fee after a previously-open confirmation crosses midnight',async()=>{
+ vi.useFakeTimers({toFake:['Date','setTimeout','clearTimeout']})
+ vi.setSystemTime(new Date('2026-11-01T23:59:59+09:00'))
+ mocks.account.dataUpdatedAt=Date.now()
+ mocks.account.data={serverNow:new Date(Date.now()).toISOString(),gold:100,run:null,maintenance:whackReworkSchedule}
+ render(<PongiWhackGame/>)
+ fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
+ const dialog=screen.getByRole('alertdialog')
+ expect(within(dialog).getByRole('button',{name:'확인'})).toHaveProperty('disabled',false)
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1001)})
+ expect(within(dialog).getByRole('button',{name:'확인'})).toHaveProperty('disabled',true)
+ expect(mocks.command).not.toHaveBeenCalled()
+})
+it('allows an already-paid run to resume during the rework pause',async()=>{
+ const run={id:'already-paid',startedAt:'2026-11-01T23:59:55+09:00',targets:[],finishedAt:null,abandoned:false,score:0,mistakes:0}
+ mocks.account.data={serverNow:'2026-11-02T00:00:01+09:00',gold:90,run,maintenance:{...whackReworkSchedule,active:true}}
+ mocks.command.mockResolvedValue(mocks.account.data)
+ render(<PongiWhackGame/>)
+ fireEvent.click(screen.getByRole('button',{name:'진행 중인 실전 이어하기'}))
+ await waitFor(()=>expect(screen.getByLabelText('퐁이 잡기 구멍 12개')).toBeTruthy())
+ expect(mocks.command).toHaveBeenCalledWith({p_action:'state'})
+ expect(mocks.command).not.toHaveBeenCalledWith(expect.objectContaining({p_action:'start'}))
+})
+it('honors a server release and allows practice again',()=>{
+ mocks.account.data={serverNow:'2026-11-03T12:00:00+09:00',gold:100,run:null,maintenance:{...whackReworkSchedule,releasedAt:'2026-11-03T10:00:00+09:00',active:false}}
+ render(<PongiWhackGame/>)
+ expect(screen.getByRole('button',{name:'연습'})).toHaveProperty('disabled',false)
+ expect(screen.getByRole('button',{name:'실전 (골드 10)'})).toHaveProperty('disabled',false)
+})
 it('plays a complete free round without paid commands and excludes practice from ranking',async()=>{
  vi.spyOn(Math,'random').mockReturnValue(.9)
  render(<PongiWhackGame/>);fireEvent.click(screen.getByRole('button',{name:'연습'}))
@@ -29,7 +82,7 @@ it('plays a complete free round without paid commands and excludes practice from
 })
 it('starts paid play once, retains the operation id after a network failure and submits a verified result',async()=>{
  const start={id:'run-1',startedAt:new Date(Date.now()+3000).toISOString(),targets:[{id:0,hole:0,at:500,until:1500,kind:'pongi'}],finishedAt:null,abandoned:false,score:0,mistakes:0}
- mocks.command.mockRejectedValueOnce(new Error('NETWORK')).mockResolvedValueOnce({serverNow:new Date().toISOString(),gold:90,run:start}).mockResolvedValue({serverNow:new Date().toISOString(),gold:90,run:{...start,score:1,rewardGold:1,finishedAt:new Date().toISOString()}})
+ mocks.command.mockRejectedValueOnce(new Error('NETWORK')).mockResolvedValueOnce({serverNow:new Date(Date.now()).toISOString(),gold:90,run:start}).mockResolvedValue({serverNow:new Date(Date.now()).toISOString(),gold:90,run:{...start,score:1,rewardGold:1,finishedAt:new Date(Date.now()).toISOString()}})
  render(<PongiWhackGame/>);fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
  expect(mocks.command).not.toHaveBeenCalled()
  fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))

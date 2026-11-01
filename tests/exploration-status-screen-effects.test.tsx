@@ -47,7 +47,9 @@ it('pulses only real player bleeding damage, without restarting its announcement
  const random=vi.spyOn(Math,'random')
  const view=render(<StatusScreenEffects state={state} feedback={null}/>);await advance(500)
  const events:CombatEvent[]=[{kind:'status',effect:'bleed',target:'player',damage:3,source:'출혈',text:'출혈'}]
- view.rerender(<StatusScreenEffects state={{...state,hp:97}} feedback={frame('player',events)}/>)
+ view.rerender(<StatusScreenEffects state={state} feedback={frame('player',events)}/>)
+ expect(document.querySelector('.exploration-status-burst')).toBeNull()
+ view.rerender(<StatusScreenEffects state={{...state,hp:97}} feedback={frame('bleed',events)}/>)
  expect(document.querySelector('.exploration-status-burst[data-fx=bleed]')).toBeTruthy();expect(document.querySelector('.exploration-status-toast')).toBeNull()
  await advance(500)
  view.rerender(<StatusScreenEffects state={state} feedback={frame('reply',events)}/>)

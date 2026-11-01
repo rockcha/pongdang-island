@@ -49,7 +49,7 @@ it('can pass a rest room without recovering',async()=>{
 it('applies curse and theft once despite StrictMode and rerenders',async()=>{
  await show('curse');expect(hp()).toBe(36);expect(mp()).toBe(12);capture('curse')
  expect(document.querySelector('.exploration-curse-effect')).toBeTruthy();expect(document.querySelector('.exploration-room-loss')).toBeNull();expect(document.querySelector('.exploration-room-hint')).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'탐험 소리 설정'}));fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'});await advance(1)
+ fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 소리 설정'}));fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'});await advance(1)
  expect(hp()).toBe(36);expect(mp()).toBe(12)
  await advance(1500);expect(document.querySelector('.exploration-curse-effect')).toBeNull();expect(hp()).toBe(36);expect(mp()).toBe(12)
  cleanup();vi.restoreAllMocks();await show('thief',.99)
@@ -65,7 +65,7 @@ it('opens a chest once for gold or starts an ordinary monster encounter',async()
  await show('chest');capture('chest');const before=screen.getByLabelText('탐험용 골드').textContent
  fireEvent.click(screen.getByRole('button',{name:'열어본다'}));expect(screen.getByLabelText('탐험용 골드').textContent).not.toBe(before);expect(screen.queryByRole('button',{name:'열어본다'})).toBeNull();expect(screen.getByRole('status',{name:'골드 획득'}).textContent).toMatch(/골드 \+\d+/);capture('chest-gold')
  const after=screen.getByLabelText('탐험용 골드').textContent;await advance(1700);expect(screen.queryByRole('status',{name:'골드 획득'})).toBeNull();expect(screen.getByLabelText('탐험용 골드').textContent).toBe(after)
- cleanup();vi.restoreAllMocks();await show('chest',.99);fireEvent.click(screen.getByRole('button',{name:'열어본다'}));expect(screen.getByRole('region',{name:'몬스터 방 등장'})).toBeTruthy()
+ cleanup();vi.restoreAllMocks();await show('chest',.99);fireEvent.click(screen.getByRole('button',{name:'열어본다'}));expect(screen.getByRole('region',{name:'거울가면 주술사 전투'})).toBeTruthy()
  await advance(100);await advance(100);expect(screen.getByRole('region',{name:'거울가면 주술사 전투'})).toBeTruthy()
 })
 it.each(['investigate-guards','investigate-wall','investigate-alchemy'] as const)('finds an item in %s without replacing any owned equipment',async id=>{
@@ -112,7 +112,7 @@ it('lets the giant sleep or starts a guaranteed ambush and item-drop fight',asyn
 })
 it('runs a no-escape Anubis boss encounter and requires the guaranteed loot to be resolved',async()=>{
  await show('boss-anubis',0,true);await advance(100);await advance(100)
- expect(screen.getByText('중간보스')).toBeTruthy();expect(screen.queryByRole('button',{name:/^도망/})).toBeNull();capture('boss-anubis')
+ expect(document.querySelector('.exploration-monster-tier')).toBeNull();expect(screen.queryByRole('button',{name:/^도망/})).toBeNull();capture('boss-anubis')
  fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}));await advance(4300);await advance(2800)
  const loot=screen.getByRole('dialog',{name:'아이템 발견'});capture('boss-loot')
  fireEvent.click(within(loot).getByRole('button',{name:'보관함에 넣기'}));expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'오아시스로 향한다'})).toHaveProperty('disabled',false);fireEvent.click(screen.getByRole('button',{name:'오아시스로 향한다'}));expect(screen.getByRole('button',{name:'쉬었다 간다 · 체력·마나 전부 회복'})).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'쉬었다 간다 · 체력·마나 전부 회복'}));expect(hp()).toBe(100)
@@ -154,12 +154,12 @@ function capture(id:string){
  const html=document.body.innerHTML.replaceAll('data-starting-style=""','').replace(/(?:http:\/\/localhost:\d+)?\/src\/features\/exploration\/assets\//g,`file:///${root}/src/features/exploration/assets/`).replace(/([="(;])\/exploration\//g,`$1file:///${root}/public/exploration/`).replaceAll('/branding/',`file:///${root}/public/branding/`)
  writeFileSync(`artifacts/adventure-${id}.html`,`<!doctype html><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${css}*,*::before,*::after{animation:none!important;transition:none!important}body{margin:0}</style>${html}`)
 }
-it.each(['investigate-guards','investigate-wall','investigate-alchemy'] as const)('retains the %s background through monster reveal and combat, then clears it on descent',async id=>{
+it.each(['investigate-guards','investigate-wall','investigate-alchemy'] as const)('starts combat immediately in %s and retains its background until descent',async id=>{
  await show(id,.99)
  const scene=document.querySelector('.exploration-scene') as HTMLElement,original=scene.style.backgroundImage
  expect(original).toContain(`/exploration/rooms/${id}.webp`)
  fireEvent.click(screen.getByRole('button',{name:'조사한다'}))
- expect(screen.getByRole('region',{name:'몬스터 방 등장'})).toBeTruthy();expect(scene.style.backgroundImage).toBe(original)
+ expect(screen.getByRole('region',{name:'거울가면 주술사 전투'})).toBeTruthy();expect(scene.style.backgroundImage).toBe(original)
  await advance(100);expect(scene.style.backgroundImage).toBe(original)
  await advance(100);expect(screen.getByRole('region',{name:'거울가면 주술사 전투'})).toBeTruthy();expect(scene.style.backgroundImage).toBe(original)
  capture(id+'-combat')
@@ -196,7 +196,7 @@ it.each([['health',.6],['mana',.8]] as const)('discovers and stores exactly one 
  expect(within(dialog).queryByRole('combobox')).toBeNull()
  fireEvent.click(within(dialog).getByRole('button',{name:'보관함에 넣기'}))
  expect(document.querySelector(`.exploration-potion-loadout>div>span:nth-child(${kind==='health'?1:2})`)?.textContent).toBe(kind==='health'?'×3':'×2')
- fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}));expect(screen.getByRole('dialog').textContent).toContain('1개를 포션 주머니에 넣었다.')
+ fireEvent.click(screen.getByRole('button',{name:'탐험 메뉴'}));fireEvent.click(screen.getByRole('button',{name:'탐험 기록'}));expect(screen.getByRole('dialog').textContent).toContain('1개를 포션 주머니에 넣었다.')
 })
 
 it('reads a warning inscription with no rewards, damage or encounter and then descends',async()=>{

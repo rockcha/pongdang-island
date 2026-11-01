@@ -1,3 +1,5 @@
+import {recordRoomEntry} from '../../src/features/exploration/room-rules'
+import {refreshPracticeDoors} from '../../src/features/exploration/campaign'
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
 import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity'
 import {spellManaCost,newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
@@ -18,7 +20,7 @@ import {canAppeaseNameGuardian,progressNameStory} from '../../src/features/explo
 import {seededRandom,weaponValue,armorValue,wilsonInterval} from './simulation'
 
 // Room selection deliberately accepts no room types or inventory. All policies use it.
-export function blindDoorIndex(seed:number,floor:number){return Math.floor(seededRandom(seed^Math.imul(floor,797003))()*3)}
+export function blindDoorIndex(seed:number,floor:number,doorCount=3){return Math.floor(seededRandom(seed^Math.imul(floor,797003))()*doorCount)}
 const rng=(seed:number,floor:number,salt:number)=>seededRandom(seed^Math.imul(floor,104729)^salt)
 const inc=(map:Record<string,number>,key:string,n=1)=>{map[key]=(map[key]??0)+n}
 const tier=(id:string)=>explorationWeapons.find(item=>item.id===id)?.tier??explorationArmor.find(item=>item.id===id)?.tier??'starter'
@@ -85,7 +87,7 @@ export function auditAction(state:PracticeState,policy:AuditPolicy):CombatAction
  return {type:'attack'}
 }
 export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals(),tracing=false):AuditRun{
- let state=newPractice(rng(seed,1,1),'practice');state={...state,market:drawPracticeFloor(1,rng(seed,1,31))}
+ let state=newPractice(rng(seed,1,1),'practice');state={...state,market:drawPracticeFloor(1,rng(seed,1,31),state)}
  const out:AuditRun={seed,clear:false,reached:1,visited:0,gold:0,hp:100,metrics:{},...(tracing?{trace:[]}: {})}
  const m=out.metrics,log=(text:string)=>out.trace?.push(text)
  const countDelta=(before:PracticeState,after:PracticeState,source:string)=>{
@@ -178,11 +180,13 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
   recover()
   const f=totals.floors[floor]??={n:0,hp:0,gold:0,hpPots:0,mpPots:0,deaths:0,tiers:{}}
   f.n++;f.hp+=state.hp/playerMaxHp(state);f.gold+=state.gold;f.hpPots+=state.potions.health;f.mpPots+=state.potions.mana;inc(f.tiers,tier(state.weaponId))
-  if(needsNameGuardian(state)){state=meetNameGuardian(state);const random=rng(seed,floor,34000);inc(totals.rooms,'nameless-guardian');if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');claim(drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0){f.deaths++;break};const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis);state=finishNameGuardian(state)}
-  const index=blindDoorIndex(seed,floor),type=state.market.doors[index],random=rng(seed,floor,index*7919+9947)
-  if(state.market.doors.length!==3)throw Error('Invalid doors')
+  if(needsNameGuardian(state)){state=recordRoomEntry(meetNameGuardian(state),'nameless-guardian');const random=rng(seed,floor,34000);inc(totals.rooms,'nameless-guardian');if(canAppeaseNameGuardian(state)){state=progressNameStory(state,'open-gate');state=progressNameStory(state,'claim');claim(drawRoomLoot(state,'advanced',random),random)}else fight('nameless-royal-warden',random);if(state.hp<=0){f.deaths++;break};const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(recordRoomEntry(oasis,'rest-oasis'));state=finishNameGuardian(state)}
+  state=refreshPracticeDoors(state,rng(seed,floor,31001))
+  const index=blindDoorIndex(seed,floor,state.market.doors.length),type=state.market.doors[index],random=rng(seed,floor,index*7919+9947)
+  if(![1,3].includes(state.market.doors.length))throw Error('Invalid doors')
   for(const room of state.market.doors)inc(totals.offered,room)
   inc(totals.rooms,type);log(`${floor}층 ${index+1}번 ${type} HP ${state.hp} 골드 ${state.gold} 무기 ${state.weaponId}`)
+  if(type==='monster'||type==='guardian'||type.startsWith('boss-'))state=recordRoomEntry(state,type)
   if(shopkeeperForRoom(type))visitShop(type,random)
   else if(type==='monster'||type==='guardian'){const planned=state.market.monsterIds?.[index];fight(planned&&planned!=='random'?planned: type==='guardian'?'sand-wraith':'sand-scorpion',random)}
   else if(type==='boss-anubis'||type==='boss-pharaoh')fight(type==='boss-pharaoh'?practiceFinalBossId:'obsidian-anubis',random)
@@ -220,8 +224,8 @@ export function runBlindAudit(seed:number,policy:AuditPolicy,totals=makeTotals()
    }
   }
   if(state.hp<=0){f.deaths++;break}
-  if(needsFinalBoss(state)){recover();fight(practiceFinalBossId,random);if(state.hp<=0){f.deaths++;break}}
-  const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(oasis)
+  if(needsFinalBoss(state)){recover();state=recordRoomEntry(state,'boss-pharaoh');fight(practiceFinalBossId,random);if(state.hp<=0){f.deaths++;break}}
+  const oasis=enterBossOasis(state);if(oasis!==state)state=restFully(recordRoomEntry(oasis,'rest-oasis'))
   const next=advanceExploration(state,rng(seed,state.market.floor+(state.pendingFloorAdvance??1),31))
   if(next===state)throw Error('Unresolved room '+type)
   state=next

@@ -1,0 +1,9 @@
+{
+  "id": "hangang-fishing-scenery",
+  "prompt": "Create a NEW VERTICAL 1024x1536 portrait fishing-game view based on the approved Han River night landscape reference. Preserve its illustrated art direction, deep indigo sky, warm city lights, Korean hanok pavilion on LEFT, Namsan hill in the distance and slender Seoul tower on RIGHT, but recompose to fit a tall mobile screen. The horizon and far bank are at about 42 percent from top; the lower 58 percent is unobstructed calm dark-blue Han River with delicate gold reflections. Tower must be clearly visible within the rightmost quarter of the portrait, not cut off. Small moon and stars above, distant traditional bridge across midground. No fishing platform, people, fish, foreground giantplants, UI, words or frames. Fully opaque storybook-painted landscape, crisp cohesive Korean night scene; no photographic texture.",
+  "reference": "public/regions/hangang/overview-v1.png",
+  "source": "sources/hangang-fishing-scenery.source",
+  "tool": "built-in image_gen",
+  "local": "public/fishing/scenery/hangang-v1.png",
+  "originalSource": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-387cce7e-adba-4ff3-8327-d5a497b85531.png"
+}

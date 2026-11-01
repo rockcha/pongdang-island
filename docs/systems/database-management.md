@@ -94,6 +94,8 @@ npm.cmd run db:verify
 
 점검 해제는 해당 패치 검증 후 DB 소유자가 `update app_private.fishing_maintenance set released_at=clock_timestamp() where id`를 실행하고 관련 요청을 재확인합니다. 예상 점검 시간이 지났다는 이유만으로 자동 해제하지 않습니다. 로컬 `replayMigrations`는 일반 테스트가 실제 운영 일정에 종속되지 않도록 이 런타임 게이트를 해제하며, 점검 전용 테스트는 `keepScheduledMaintenance: true`로 실제 설정을 재생합니다.
 
+퐁이 잡기 개편 중단은 별도의 `app_private.pongi_whack_maintenance`로 관리합니다. 서버 시각으로 신규 실전 시작만 거절하며 참가비·퀘스트 진행을 먼저 변경하지 않습니다. 이미 수락한 operation ID 재확인, 기존 게임의 결과 제출·종료, 기록 조회와 주간 보상 집계는 유지합니다. 화면에서는 같은 일정을 사용해 실전·연습 신규 시작을 막습니다. 재개는 개편 검증 뒤 DB 소유자가 `update app_private.pongi_whack_maintenance set released_at=clock_timestamp() where id`로 명시하고, 상태 조회와 신규 시작을 재확인합니다. 일반 로컬 재생은 운영 일정을 해제하며 전용 테스트는 `keepScheduledMaintenance: true`로 검사합니다.
+
 ```powershell
 npm.cmd run db:verify
 npm.cmd test -- tests/social-sql.test.ts tests/native-collectibles-sql.test.ts tests/regional-fishing-sql.test.ts tests/collectible-movement-sql.test.ts

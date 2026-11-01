@@ -5,6 +5,7 @@ import {shamanSpells,spellOfferLimit,type ShamanStock} from './shaman-stock'
 import type {PracticeState} from './practice-state'
 import {getShopkeeper,type ShopkeeperId,type ShopkeeperProfile} from './shopkeepers'
 import {equipmentOfferLimit} from './merchant-stock'
+import {recordRoomEntry} from './room-rules'
 export function beginForcedMerchant(state:PracticeState,random=Math.random):PracticeState{
  if(state.forcedMerchant?.phase!=='pending')return state
  return enterShopkeeper({...state,forcedMerchant:{...state.forcedMerchant,phase:'active'}},getShopkeeper(state.forcedMerchant.id),random)
@@ -17,6 +18,8 @@ export function drawUniqueOffers<T extends {id:string}>(items:readonly T[],rando
 }
 export function enterShopkeeper(state:PracticeState,profile:ShopkeeperProfile,random=Math.random):PracticeState{
  const floor=state.market.floor,acquired=acquiredItemIds(state)
+ const savedVisit=profile.kind==='equipment'?state.merchantStocks?.[profile.id]:state.shamanStocks?.[profile.id]
+ if(savedVisit?.floor!==floor)state=recordRoomEntry(state,profile.roomId)
  if(profile.kind==='equipment'){
   const saved=state.merchantStocks?.[profile.id]
   const stock:EquipmentStock=saved?.floor===floor?saved:{floor,shopkeeperId:profile.id,weaponIds:drawUniqueOffers(explorationWeapons.filter(item=>item.tier===profile.tier&&!acquired.has(item.id)),random,equipmentOfferLimit),armorIds:profile.sellsArmor?drawUniqueOffers(explorationArmor.filter(item=>item.tier===profile.tier&&!acquired.has(item.id)),random,equipmentOfferLimit):[]}

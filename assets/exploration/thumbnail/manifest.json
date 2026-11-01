@@ -1,0 +1,7 @@
+{
+  "generator": "image_gen.imagegen",
+  "prompt": "Use case: stylized-concept. Create a beautiful premium cozy fantasy RPG game-selection thumbnail, landscape 4:3. Use the reference image ONLY for the identity of the orange-brown otter mascot Pongi: rounded head, big glossy dark eyes, cream muzzle and belly, whiskers, tiny pink blush, little coral starfish by the ear. New pose and new scene, no fishing line or hook. Pongi is a brave tiny tomb explorer holding a glowing amber lantern and a simple small bronze dagger, standing at lower-left third, gazing into a monumental Egyptian royal tomb. A wide staircase descends toward three mysterious ancient doors, sandstone carved walls, lapis-blue shadows and rich golden torchlight; a far-off golden sun emblem suggests the final royal chamber. A few little sparkling gold coins at the side, no pile blocking central path. Strong readable silhouette at small thumbnail size, cinematic depth, painterly polished game illustration with charming character, exciting adventure atmosphere, not scary. Fill entire canvas with coherent scenery. No text, numbers, letters, UI, watermark, frame or logo. Keep mascot, lantern and main tomb door inside central 80 percent for 4:3 cover cropping.",
+  "reference": "public/branding/pongi.png",
+  "original": "assets/exploration/thumbnail/original.png",
+  "public": "public/arcade/exploration/thumbnail.webp"
+}

@@ -364,6 +364,8 @@ export function AquariumPage() {
       className="relative flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <AquariumView
+        onInventory={tank?()=>setPanel({kind:'inventory',tankId:tank.id}):undefined}
+        onStorage={tank?()=>setPanel({kind:'storage',tankId:tank.id}):undefined}
         onRename={tank?()=>openRename(tank.id):undefined}
         autoWide={expanded}
         onWideExit={()=>navigate('/aquarium',{replace:true})}
@@ -577,8 +579,8 @@ export function AquariumPage() {
           </>
         }
       />
-      {!expanded&&panelTank&&panel?.kind==='inventory'&&<AquariumInventoryDialog key={panelTank.id} hideTrigger open onOpenChange={open=>{if(!open)setPanel(null)}} name={panelTank.name} items={[...(state?.inhabitants??[]),...(operator?testFish:[])].filter(item=>item.tank_id===panelTank.id)} capacity={panelTank.capacity??state?.tankCapacity} busy={busy||goldBusy} onSell={sell} onStore={ids=>move(ids,null)} onGiftSent={ids=>{setState(current=>current?{...current,inhabitants:current.inhabitants.filter(item=>!ids.includes(item.id))}:current);void reload()}}/>}
-      {!expanded&&state&&panelTank&&panel?.kind==='storage'&&<CollectibleStorageDialog key={panelTank.id} hideTrigger open onOpenChange={open=>{if(!open)setPanel(null)}} state={state} currentTankId={panelTank.id} busy={busy||goldBusy} onAssign={move} onSell={sell} onGiftSent={()=>void reload()}/>}
+      {panelTank&&panel?.kind==='inventory'&&<AquariumInventoryDialog key={panelTank.id} hideTrigger open onOpenChange={open=>{if(!open)setPanel(null)}} name={panelTank.name} items={[...(state?.inhabitants??[]),...(operator?testFish:[])].filter(item=>item.tank_id===panelTank.id)} capacity={panelTank.capacity??state?.tankCapacity} busy={busy||goldBusy} onSell={sell} onStore={ids=>move(ids,null)} onGiftSent={ids=>{setState(current=>current?{...current,inhabitants:current.inhabitants.filter(item=>!ids.includes(item.id))}:current);void reload()}}/>}
+      {state&&panelTank&&panel?.kind==='storage'&&<CollectibleStorageDialog key={panelTank.id} hideTrigger open onOpenChange={open=>{if(!open)setPanel(null)}} state={state} currentTankId={panelTank.id} busy={busy||goldBusy} onAssign={move} onSell={sell} onGiftSent={()=>void reload()}/>}
       <ConfirmDialog
         illustration="aquarium"
         open={purchaseOpen}

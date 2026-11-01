@@ -1,0 +1,6 @@
+.exploration-game.is-verified .exploration-shop-items{max-height:45dvh;overflow-y:auto;padding:8px;overscroll-behavior:contain}
+.exploration-game.is-verified .exploration-room-panel{max-height:65dvh;overflow:auto;overscroll-behavior:contain}
+.exploration-game.is-verified .exploration-merchant{min-height:0;overflow-y:auto;padding-bottom:16px}
+.exploration-game.is-verified .verified-error{position:absolute;z-index:20;left:12px;right:12px;top:12px;padding:14px;border:1px solid #b79657;border-radius:12px;background:#14242af2;color:#f4e6c9;font-size:13px}
+.exploration-game.is-verified .verified-error button{min-height:44px;padding:8px 12px}
+.verified-room-portrait{max-width:180px;max-height:22dvh;object-fit:contain;align-self:center;filter:drop-shadow(0 5px 10px #0008)}

@@ -52,12 +52,12 @@ export function StatusScreenEffects({state,feedback}:{state:PracticeState;feedba
   if(!alive){previous.current=[];setCue(null);return}
   const added=active.filter(kind=>!previous.current.includes(kind));previous.current=active
   const pulses=new Set<CueKind>(added),labels=new Set<CueKind>(added)
-  if(feedback&&(feedback.phase==='player'||feedback.phase==='reply')){
+  if(feedback&&(feedback.phase==='bleed'||feedback.phase==='reply')){
    const token=`${feedback.id}:${feedback.phase}`
    if(processed.current!==token){
     processed.current=token
     for(const event of feedback.events){
-     if(feedback.phase==='player'&&event.effect==='bleed'&&event.target==='player'&&(event.damage??0)>0)pulses.add('bleed')
+     if(feedback.phase==='bleed'&&event.effect==='bleed'&&event.target==='player'&&(event.damage??0)>0)pulses.add('bleed')
      if(feedback.phase!=='reply'||event.kind!=='status'||event.target==='monster'||!event.source)continue
      if(event.effect==='mana-drain'&&(event.manaLost??0)>0){pulses.add('mana-drain');labels.add('mana-drain')}
      else if(kinds.includes(event.effect as StatusKind)&&event.damage===undefined){pulses.add(event.effect as StatusKind);labels.add(event.effect as StatusKind)}

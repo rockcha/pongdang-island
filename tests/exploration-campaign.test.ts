@@ -11,9 +11,10 @@ it('separates operator testing from the 100-gold fifty-floor practice run',()=>{
  expect(practice.potions).toEqual({health:0,mana:0});expect(practice.mode).toBe('practice')
  expect(grantPracticeSupplies(practice)).toBe(practice)
 })
-it('keeps exactly one ordinary-monster door on every floor and never replaces it with an event',()=>{
+it('keeps three choices on ordinary floors and one required boss door on the final floor',()=>{
  for(let seed=1;seed<=100;seed++)for(let floor=1;floor<=practiceFinalFloor;floor++){
   const market=drawPracticeFloor(floor,seededRandom(seed*100+floor))
+  if(floor===practiceFinalFloor){expect(market.doors).toEqual(['boss-pharaoh']);expect(market.monsterIds).toEqual(['random']);continue}
   expect(market.doors).toHaveLength(3);expect(market.doors.filter(id=>id==='monster')).toHaveLength(1)
   expect(market.doors.filter(id=>id.startsWith('merchant-')||id.startsWith('magic-')).length).toBeLessThanOrEqual(1)
   const monster=market.monsterIds![market.doors.indexOf('monster')]

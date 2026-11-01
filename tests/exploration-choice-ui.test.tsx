@@ -59,7 +59,7 @@ it('allows loadout changes only while choosing an action and disables the lower 
  fireEvent.click(screen.getByRole('button',{name:'주무기 교체'}))
  const inventory=screen.getByRole('dialog',{name:'무기 인벤토리'})
  expect(within(inventory).getByRole('tab',{name:/포션/})).toHaveProperty('disabled',true)
- expect(within(inventory).getByRole('button',{name:'연습 물품 지급 완료'})).toHaveProperty('disabled',true)
+ expect(within(inventory).getByRole('button',{name:'테스트 물품 지급 완료'})).toHaveProperty('disabled',true)
  const weapon=within(inventory).getByRole('heading',{name:'청동 단검'}).closest('article')!
  fireEvent.click(within(weapon).getByRole('button',{name:'주 무기로 선택'}));close()
  expect(screen.getByRole('button',{name:'공격력 15 설명'})).toBeTruthy()

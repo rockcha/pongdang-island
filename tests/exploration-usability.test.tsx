@@ -27,12 +27,12 @@ function capture(name:string){
 }
 it('lets an ordinary player open the feedback tab, submit and keep drafts across tabs',async()=>{
  render(<ExplorationPage/>);expect(screen.queryByRole('textbox')).toBeNull()
- fireEvent.click(screen.getByRole('tab',{name:'피드백하기'}));await screen.findByText('첫 탐험 피드백을 남겨주세요.')
- expect(screen.queryByRole('button',{name:'실전연습'})).toBeNull()
+ fireEvent.click(screen.getByRole('tab',{name:'피드백'}));await screen.findByText('첫 탐험 피드백을 남겨주세요.')
+ expect(screen.queryByRole('button',{name:'실전 (무료)'})).toBeNull()
  const text=screen.getByRole('textbox',{name:'탐험 피드백 내용'});expect(text).toHaveProperty('disabled',false)
  fireEvent.change(text,{target:{value:'일반 사용자도 댓글을 남겨요'}});capture('feedback')
- fireEvent.click(screen.getByRole('tab',{name:'플레이하기'}));expect(screen.getByRole('button',{name:'실전연습'})).toBeTruthy()
- fireEvent.keyDown(screen.getByRole('tab',{name:'플레이하기'}),{key:'ArrowRight'});expect(screen.getByRole('textbox')).toHaveProperty('value','일반 사용자도 댓글을 남겨요')
+ fireEvent.click(screen.getByRole('tab',{name:'게임 플레이'}));expect(screen.getByRole('button',{name:'실전 (무료)'})).toBeTruthy()
+ fireEvent.keyDown(screen.getByRole('tab',{name:'게임 플레이'}),{key:'ArrowRight'});expect(screen.getByRole('textbox')).toHaveProperty('value','일반 사용자도 댓글을 남겨요')
  fireEvent.click(screen.getByRole('button',{name:'댓글 남기기'}));await waitFor(()=>expect(api.writeExplorationFeedback).toHaveBeenCalledWith({action:'add',id:expect.any(String),body:'일반 사용자도 댓글을 남겨요'}))
 })
 it('keeps the codex header inside a separate scrolling dialog',()=>{

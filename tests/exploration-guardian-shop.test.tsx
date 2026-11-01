@@ -27,15 +27,19 @@ it('blocks floor 34 progression until the mandatory guardian is met and resolved
  expect(advanceExploration(finished).market.floor).toBe(35)
 })
 it('requires hostile guardian loot and the oasis before returning to the same floor doors',()=>{
- const state=startMonsterCombat(meetNameGuardian(floor34()),'nameless-royal-warden'),won=resolveCombatTurn({...state,combat:{...state.combat!,enemyHp:1}},{type:'attack'},()=>.99).state
+ const state=startMonsterCombat(meetNameGuardian({...floor34(),hp:60}),'nameless-royal-warden'),won=resolveCombatTurn({...state,combat:{...state.combat!,enemyHp:1}},{type:'attack'},()=>.99).state
  expect(finishNameGuardian(won)).toBe(won)
  const claimed={...won,combat:{...won.combat!,lootClaimed:true}};expect(finishNameGuardian(claimed)).toBe(claimed)
  const done=finishNameGuardian(enterBossOasis(claimed));expect(done.guardianCheckpoint).toBe(false);expect(done.market.floor).toBe(34)
 })
-it.each([false,true])('automatically presents the guardian before doors, with friendly history = %s',async friendly=>{
+it.each([false,true])('opens the single guardian door before ordinary choices, with friendly history = %s',async friendly=>{
  vi.useFakeTimers();vi.stubGlobal('matchMedia',()=>({matches:true}));const initial={...floor34(),...(friendly?{nameStory:{choice:'restored' as const}}:{})}
  vi.spyOn(practice,'newPractice').mockImplementation(()=>initial)
  render(<ExplorationGame mode="practice" nickname="탐험가" onLeave={()=>{}}/>);await advance(100)
+ const gate=screen.getByRole('group',{name:'지하 34층의 하나뿐인 문'})
+ expect(gate.querySelectorAll('button')).toHaveLength(1)
+ expect(screen.queryByRole('region',{name:'탐험 방 · 이름 없는 왕실 수문장'})).toBeNull()
+ fireEvent.click(gate.querySelector('button')!);fireEvent.click(screen.getByRole('button',{name:'선택한 문으로 입장'}));await advance(100)
  expect(screen.queryByRole('group',{name:'지하 34층의 세 문'})).toBeNull();expect(screen.getByRole('region',{name:'탐험 방 · 이름 없는 왕실 수문장'})).toBeTruthy()
  if(friendly){fireEvent.click(screen.getByRole('button',{name:'그가 지키던 문에 대해 묻는다'}));fireEvent.click(screen.getByRole('button',{name:'유품을 남겨두고 떠난다'}));expect(screen.getByRole('group',{name:'지하 34층의 세 문'})).toBeTruthy();expect(screen.queryByRole('button',{name:'수문장과 싸운다'})).toBeNull()}
  else expect(screen.getByRole('button',{name:'수문장과 싸운다'})).toBeTruthy()

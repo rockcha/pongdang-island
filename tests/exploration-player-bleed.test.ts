@@ -1,14 +1,22 @@
 import {expect,it,vi} from 'vitest'
 vi.mock('@/features/exploration/attack-roll',async importOriginal=>({...await importOriginal<typeof import('@/features/exploration/attack-roll')>(),rollBasicAttack:(attack:number)=>Math.max(1,attack)}))
+// Keep probabilistic physical bleeding coverage independent of the live roster.
+vi.mock('@/features/exploration/monster-catalog',async importOriginal=>{
+ const actual=await importOriginal<typeof import('@/features/exploration/monster-catalog')>()
+ return {...actual,getFloorMonster:(...args:Parameters<typeof actual.getFloorMonster>)=>{
+  const monster=actual.getFloorMonster(...args)
+  return args[0]==='sand-scorpion'?{...monster,maxHp:25,defense:3,magicResistance:0,gold:130,basic:{...monster.basic,bleed:{chance:25,amount:2,turns:2}}}:monster
+ }}
+})
 import {resolveCombatTurn,startMonsterCombat} from '@/features/exploration/combat-state'
 import {newPractice,practiceSpells,type PracticeState} from '@/features/exploration/practice-state'
 const rolls=(...values:number[])=>()=>values.shift()??.99
-const crab=()=>startMonsterCombat(newPractice(()=>0),'saw-claw-crab')
-const applyCrabBleed=()=>resolveCombatTurn(crab(),{type:'flee'},rolls(.99,.99,.99,0)).state
+const bleedFight=()=>startMonsterCombat(newPractice(()=>0),'sand-scorpion')
+const applyBleed=()=>resolveCombatTurn(bleedFight(),{type:'flee'},rolls(.99,.99,.99,0)).state
 const stun=(state:PracticeState)=>resolveCombatTurn({...state,spells:practiceSpells,equippedSpells:['sand']},{type:'magic',id:'sand'},()=>.99)
 
-it('applies crab bleeding on exactly 25% of landed basic attacks, not evaded or fully blocked hits',()=>{
- const initial=crab()
+it('applies physical bleeding on exactly 25% of landed basic attacks, not evaded or fully blocked hits',()=>{
+ const initial=bleedFight()
  const result=resolveCombatTurn(initial,{type:'flee'},rolls(.99,.99,.99,.249999))
  expect(result.state.hp).toBe(94)
  expect(result.playerState.hp).toBe(100)
@@ -22,8 +30,10 @@ it('applies crab bleeding on exactly 25% of landed basic attacks, not evaded or 
  expect(initial.playerEffects).toBeUndefined()
 })
 it('ticks two damage on two later player actions and preserves each player-phase snapshot',()=>{
- const initial=applyCrabBleed()
+ const initial=applyBleed()
  const first=stun(initial)
+ expect(first.actionState?.hp).toBe(94)
+ expect(first.actionState?.playerEffects).toEqual([{kind:'bleed',amount:2,turns:2}])
  expect(first.playerState.hp).toBe(92);expect(first.state.hp).toBe(92)
  expect(first.playerState.playerEffects).toEqual([{kind:'bleed',amount:2,turns:1}])
  expect(first.events.find(event=>event.effect==='bleed')).toMatchObject({damage:2,target:'player'})
@@ -41,16 +51,16 @@ it('uses hook guard magic for three damage over three turns, without reducing it
  expect(state.playerEffects).toEqual([])
 })
 it('refreshes equal bleeding, does not stack it and never overwrites a stronger wound',()=>{
- const weak=applyCrabBleed()
+ const weak=applyBleed()
  const refreshed=resolveCombatTurn(weak,{type:'flee'},rolls(.99,.99,.99,0)).state
  expect(refreshed.hp).toBe(86)
  expect(refreshed.playerEffects).toEqual([{kind:'bleed',amount:2,turns:2}])
- const strong={...crab(),playerEffects:[{kind:'bleed' as const,amount:3,turns:3}]}
+ const strong={...bleedFight(),playerEffects:[{kind:'bleed' as const,amount:3,turns:3}]}
  const ignored=resolveCombatTurn(strong,{type:'flee'},rolls(.99,.99,.99,0)).state
  expect(ignored.playerEffects).toEqual([{kind:'bleed',amount:3,turns:2}])
 })
 it('cleanses bleeding before its tick and never ticks on invalid actions or successful escape',()=>{
- const initial=applyCrabBleed()
+ const initial=applyBleed()
  const equipped={...initial,weapons:[{id:'cleanse',name:'정화',description:'',attack:1,cleanseChance:100}],weaponId:'cleanse'}
  const result=resolveCombatTurn(equipped,{type:'attack'},rolls(.99,0,0))
  expect(result.playerState.hp).toBe(94);expect(result.state.playerEffects).toEqual([])
@@ -60,8 +70,9 @@ it('cleanses bleeding before its tick and never ticks on invalid actions or succ
  expect(escaped.hp).toBe(94);expect(escaped.combat?.status).toBe('escaped');expect(escaped.gold).toBe(100000)
 })
 it('ends the run on a lethal bleeding tick with no enemy reply, but a finishing blow ends bleeding first',()=>{
- const initial={...crab(),hp:1,playerEffects:[{kind:'bleed' as const,amount:2,turns:1}]}
+ const initial={...bleedFight(),hp:1,playerEffects:[{kind:'bleed' as const,amount:2,turns:1}]}
  const death=resolveCombatTurn(initial,{type:'attack'},()=>.99)
+ expect(death.actionState?.hp).toBe(1);expect(death.actionState?.combat?.status).toBe('active')
  expect(death.state.hp).toBe(0);expect(death.playerState.combat?.status).toBe('lost')
  expect(death.events.some(event=>event.moveId)).toBe(false)
  expect(death.state.gold).toBe(100000);expect(death.lines.at(-1)).toBe('사망하였습니다.')

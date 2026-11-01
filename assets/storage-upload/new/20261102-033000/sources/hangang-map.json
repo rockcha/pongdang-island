@@ -1,0 +1,10 @@
+{
+  "id": "hangang-map",
+  "path": "public/regions/hangang/map-v1.png",
+  "transparent": false,
+  "reference": "public/regions/pharaoh/map-v1.png",
+  "prompt": "New square fantasy illustrated Korean Han River exploration MAP. Reference is only the polished bird's-eye game-map rendering and route readability; do not copy Egyptian structures, desert or golden palette. A winding deep-indigo Han River flows through a compact beautiful Seoul miniature landscape: low green mountains, hanok palace courtyards, a curved tiled gate, bridges, a slender luminous modern tower on right, traditional pavilion left, and a little twin-islet landmark. Nighttime indigo, jade green, warm gold lanterns, ivory hanji accents. A subtle dotted gold exploration route with exactly SIX unlabelled round waypoints links the districts. A small red-and-blue taegeuk compass ornament near lower center. Entire SQUARE image is filled beautifully edge-to-edge, no external parchment border. No text, numbers, fish, UI, labels, watermark or grid. Attractive crisp painterly game map, enough large shapes to remain readable at mobile size, distinctly Korean architecture.",
+  "tool": "built-in image_gen",
+  "source": "sources/hangang-map.source",
+  "originalSource": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-5c24fa83-5503-4c98-ae94-3f42753cef86.png"
+}

@@ -21,7 +21,9 @@ import sharedWondersLayouts from './shared-wonders-frame-layouts.json'
 import mechsanctumLayouts from './mechsanctum-frame-layouts.json'
 import fireflyLayouts from './firefly-frame-layouts.json'
 import pharaohLayouts from './pharaoh-frame-layouts.json'
+import hangangLayouts from './hangang-frame-layouts.json'
 const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={
+ ...hangangLayouts,
  ...pharaohLayouts,
  // Rigid eye patch [440,275,80,75]; measured RGB RMSE <19 on the current Storage sheet.
  'fish/rare/cloud-humpback_sprite.png':{cell:627,shifts:[[0,0],[-23,-3],[0,-57],[-14,-59]]},

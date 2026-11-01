@@ -2,13 +2,15 @@ import {drawRewardTier,drawFloorMonster,drawInvestigationMonster,campaignChestGo
 ﻿import {drawMonster,type MonsterId} from './monster-catalog'
 import {drawInvestigationLoot,type RoomLoot} from './room-loot'
 import {playerMaxHp,playerManaMax,type PracticeState} from './practice-state'
+import {recordRoomEntry} from './room-rules'
+import {combatBackgroundUrl,resolveCombatBackground} from './combat-backgrounds'
 type RoomKind='story'|'choice'|'lore'|'rest'|'curse'|'thief'|'chest'|'investigate'|'giant'|'boss'|'sphinx'|'scales'
 type RoomDefinition={id:string;kind:RoomKind;name:string;title:string;intro:readonly string[];progress:readonly string[];background:string;monsterId?:MonsterId}
 const bg=(id:string)=>`/exploration/rooms/${id}.webp`
 export const adventureRooms=[
  {id:'erased-name',kind:'story',name:'이야기 · 지워진 이름',title:'지워진 이름',background:bg('warning-wall'),intro:['지워진 이름 아래에 작은 돌조각이 떨어져 있다.'],progress:['아무 일도 일어나지 않았다.']},
  {id:'erased-name-record',kind:'story',name:'이야기 · 왕이 지운 기록',title:'왕이 지운 기록',background:bg('investigate-wall'),intro:['봉인된 기록에 왕이 지운 이름의 진실이 남아 있다.'],progress:['문지기 𓋴𓈖𓅱의 이름을 기억했다.']},
- {id:'nameless-guardian',kind:'story',name:'이야기 · 이름 없는 왕실 수문장',title:'이름 없는 왕실 수문장',background:bg('investigate-guards'),intro:['흑청동 중갑의 왕실 수문장이 거대한 대검을 짚고 오래된 문을 지키고 있다. 가슴의 이름은 깊게 깎여 있다.'],progress:['가슴 명패에 금빛 이름이 되살아났다. 왕실 수문장이 자신을 기억해 냈다.']},
+ {id:'nameless-guardian',kind:'story',name:'이야기 · 이름 없는 왕실 수문장',title:'이름 없는 왕실 수문장',background:combatBackgroundUrl(resolveCombatBackground('nameless-royal-warden')),intro:['흑청동 중갑의 왕실 수문장이 거대한 대검을 짚고 오래된 문을 지키고 있다. 가슴의 이름은 깊게 깎여 있다.'],progress:['가슴 명패에 금빛 이름이 되살아났다. 왕실 수문장이 자신을 기억해 냈다.']},
 
  {id:'soul-lantern',kind:'choice',name:'계약 · 영혼의 등불',title:'영혼의 등불',background:bg('soul-lantern'),intro:['최대 체력 10을 영구히 바치면, 이번 탐험에서 사망할 때 한 번 체력 20으로 부활한다. 등불을 켤까?'],progress:['영혼의 불꽃이 켜졌다. 최대 체력 −10 · 사망 시 한 번 체력 20으로 부활.']},
  {id:'deep-well',kind:'choice',name:'선택 · 깊은 샘',title:'깊은 샘',background:bg('rest-oasis'),intro:['깊은 샘이 생기를 품고 있다. 물을 마시면 체력은 전부 회복되지만, 마나를 모두 잃는다.'],progress:['차가운 물이 상처를 아물게 한다. 체력을 전부 회복하고 마나는 0이 되었다.']},
@@ -28,8 +30,8 @@ export const adventureRooms=[
  {id:'investigate-alchemy',kind:'investigate',name:'조사 · 버려진 연금술 작업대',title:'버려진 연금술 작업대',background:bg('investigate-alchemy'),intro:['먼지 쌓인 작업대에 봉인이 멀쩡한 물건이 남아 있다. 조사해 볼까?','낡은 기록과 약병이 놓여 있다. 쓸 만한 물건이 있을지도 모른다.','연금술사는 오래전에 떠난 듯하다. 남은 짐을 살펴볼까?'],progress:['작업대의 서랍에서 온전한 물건을 찾았다.','먼지를 털어내자 보관된 물건이 선명하게 드러났다.','낡은 기록 아래에서 쓸 만한 물건을 건져냈다.']},
  {id:'sealed-scarab',kind:'giant',monsterId:'treasure-scarab',name:'아이템 드롭 · 봉인된 보물갑충',title:'봉인된 보물갑충',background:'/exploration/rooms/scarab-sealed-treasury.png',intro:['황금 궤짝처럼 웅크린 갑충이 봉인에 묶여 있다. 봉인을 건드리면 깨어날 것 같다.'],progress:['봉인에 금이 간다. 보물갑충의 푸른 눈에 빛이 돌아온다.']},
  {id:'sleeping-giant',kind:'giant',monsterId:'ancient-giant',name:'아이템 드롭 · 잠든 고대거인',title:'잠든 고대거인',background:'/exploration/rooms/giant-slumber-chamber.png',intro:['거대한 돌의 몸이 미동도 없이 잠들어 있다. 가까이 다가가 깨우거나, 조용히 지나갈 수 있다.'],progress:['거인의 눈이 푸르게 빛난다. 무거운 돌주먹이 천천히 들린다.']},
- {id:'boss-anubis',kind:'boss',monsterId:'obsidian-anubis',name:'중간보스 · 흑요석 아누비스',title:'흑요석 아누비스',background:'/exploration/shopkeepers/nefera-open-observatory.png',intro:['살아 있는 자여, 이 문을 넘을 자격을 증명하라.'],progress:['왕릉의 문이 닫혔다. 이 싸움에서 도망칠 수 없다.']},
- {id:'boss-pharaoh',kind:'boss',monsterId:'golden-pharaoh',name:'최종보스 · 황금왕 라세프',title:'황금왕 라세프',background:'/exploration/shopkeepers/zahir-open-vault.png',intro:['황금의 왕이 옥좌에서 일어선다. 왕릉의 마지막 문지기가 그대를 내려다본다.'],progress:['왕의 심판을 넘어야 왕릉을 벗어날 수 있다. 이 싸움에서는 도망칠 수 없다.']},
+ {id:'boss-anubis',kind:'boss',monsterId:'obsidian-anubis',name:'중간보스 · 흑요석 아누비스',title:'흑요석 아누비스',background:combatBackgroundUrl(resolveCombatBackground('obsidian-anubis')),intro:['살아 있는 자여, 이 문을 넘을 자격을 증명하라.'],progress:['왕릉의 문이 닫혔다. 이 싸움에서 도망칠 수 없다.']},
+ {id:'boss-pharaoh',kind:'boss',monsterId:'golden-pharaoh',name:'최종보스 · 황금왕 라세프',title:'황금왕 라세프',background:combatBackgroundUrl(resolveCombatBackground('golden-pharaoh')),intro:['황금의 왕이 옥좌에서 일어선다. 왕릉의 마지막 문지기가 그대를 내려다본다.'],progress:['왕의 심판을 넘어야 왕릉을 벗어날 수 있다. 이 싸움에서는 도망칠 수 없다.']},
  {id:'sphinx',kind:'sphinx',name:'스핑크스 · 영혼의 수수께끼',title:'영혼의 수수께끼',background:bg('sphinx'),intro:['“답하지 못한다면, 네 영혼의 절반을 가져가겠다.” 스핑크스가 고요히 눈을 뜬다.'],progress:['“너의 답을 인정한다. 길을 열어 주겠다.”']},
  {id:'scales',kind:'scales',name:'저울 · 망자의 거래소',title:'망자의 거래소',background:bg('scales'),intro:['저울은 황금 대신, 네가 내려놓을 물건을 기다린다.'],progress:['저울이 천천히 균형을 되찾는다. 장비가 사라진 자리에 금화가 남았다.']},
 ] as const satisfies readonly RoomDefinition[]
@@ -236,7 +238,7 @@ export function createRoomVisit(id:AdventureRoomId,state:PracticeState,key=`${st
 }
 export function enterRoomVisit(state:PracticeState,visit:RoomVisit):PracticeState{
  if(state.roomVisitKey===visit.key)return state
- return {...state,roomVisitKey:visit.key,hp:state.hp-visit.hpLost,mp:state.mp-visit.mpLost,potions:{health:state.potions.health-visit.stolen.health,mana:state.potions.mana-visit.stolen.mana}}
+ return {...recordRoomEntry(state,visit.id),roomVisitKey:visit.key,hp:state.hp-visit.hpLost,mp:state.mp-visit.mpLost,potions:{health:state.potions.health-visit.stolen.health,mana:state.potions.mana-visit.stolen.mana}}
 }
 export function restFully(state:PracticeState):PracticeState{return {...state,hp:playerMaxHp(state),mp:playerManaMax(state)}}
 export function sphinxPenalty(state:PracticeState):PracticeState{return {...state,hp:Math.max(1,state.hp-Math.floor(state.hp*.5))}}

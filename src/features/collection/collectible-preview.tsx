@@ -14,6 +14,7 @@ import { scrapisleFixedFrame } from '@/features/aquarium/scrapisle-animation'
 import { dreamabyssFixedFrame } from '@/features/aquarium/dreamabyss-animation'
 import {hasHalloweenSpirits,halloweenSpirits,halloweenSpiritUrl} from '@/features/aquarium/halloween-spirits'
 import {drawPharaohGoldenCanvas,hasPharaohAwakening} from '@/features/aquarium/pharaoh-golden-effects'
+import {drawHangangMythicCanvas,hasHangangMythicEffect} from '@/features/aquarium/hangang-mythic-effects'
 
 export function CollectiblePreview({species,large=false}:{species:Species;large?:boolean}) {
   if(glassAttachedSpecies.has(species.id))return <CollectibleThumbnail resolution={large?'large':'small'} fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-64":"size-32"}/>
@@ -33,6 +34,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
     const image=new Image()
     const crimson=hasCrimsonEmission(species.id)
     const golden=hasPharaohAwakening(species.id)
+    const hangang=hasHangangMythicEffect(species.id)
     const drawCrimson=crimson?createCrimsonCanvasLight(image,columns):null
     const spirit=hasHalloweenSpirits(species.id)?new Image():null
     let alive=true,frame=0,start=0,loaded=false,onScreen=true,lastFrame=-1
@@ -48,7 +50,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
       if(!start)start=now
       const time=(now-start)/1000,reduced=media.matches
       const index=sharedDecorationFrame(species.id,time,reduced,false)??dreamabyssFixedFrame(species.id,time,reduced,false)??scrapisleFixedFrame(species.id,time,reduced,false)??cloudferryFixedFrame(species.id,time,reduced,false)??whitenightFixedFrame(species.id,time,reduced,false)??mythicSwimFrame(path,time,0,reduced)??premiumSwimFrame(path,time,0,reduced?0:Math.floor(time*3)%4,reduced)
-      if(index!==lastFrame||crimson||golden||spirit?.complete&&spirit.naturalWidth){
+      if(index!==lastFrame||crimson||golden||hangang||spirit?.complete&&spirit.naturalWidth){
         lastFrame=index
         const layout=mythicSwimLayout(path,index)??swimFrameLayout(path,index)
         const cellWidth=image.width/columns,cellHeight=image.height/2,size=viewport*.8*layout.scale
@@ -68,9 +70,10 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
         drawCrimson?.(context!,index,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size,crimsonEmission(time,0,reduced))
         drawSpirits(true)
         if(golden)drawPharaohGoldenCanvas(context!,species.id,time,0,reduced,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size)
+        if(hangang)drawHangangMythicCanvas(context!,species.id,time,0,reduced,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size)
       }
       // Companions orbit continuously; ordinary sheets repaint only on pose changes.
-      if(!media.matches)timer=setTimeout(()=>{if(allowed())frame=requestAnimationFrame(draw)},1000/(spirit||golden?30:15))
+      if(!media.matches)timer=setTimeout(()=>{if(allowed())frame=requestAnimationFrame(draw)},1000/(spirit||golden||hangang?30:15))
     }
     const observer=typeof IntersectionObserver==='undefined'?null:new IntersectionObserver(entries=>{onScreen=entries[0]?.isIntersecting??true;sync()})
     observer?.observe(element)

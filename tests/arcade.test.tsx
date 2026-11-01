@@ -8,6 +8,7 @@ vi.mock('@/features/gold/gold-provider', () => ({ GoldIcon: () => <span>골드</
 const access=vi.hoisted(()=>({operator:false,loading:false}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>access}))
 vi.mock('@/features/arcade/tower-defense-game',()=>({default:()=> <p>디펜스 연습 화면</p>}))
+vi.mock('@/features/exploration/exploration-page',()=>({ExplorationPage:()=> <p>탐험 화면</p>}))
 afterEach(()=>{cleanup();access.operator=false;access.loading=false})
 it('filters two-column cards by category and reward timing without descriptions',()=>{
  setup()
@@ -48,11 +49,11 @@ it('lists hybrid rewards in both reward filters',()=>{
 })
 function Banner(){const {pathname}=useLocation();return <PlaceBanner pathname={pathname}/>}
 function setup(path='/arcade') { render(<MemoryRouter initialEntries={[path]}><Banner/><Routes><Route path="/arcade" element={<ArcadePage />} /><Route path="/arcade/:gameId" element={<ArcadeGamePage />} /><Route path="/collection" element={<p>일반 도감</p>}/></Routes></MemoryRouter>) }
-it('opens a listed game and returns to the lobby without charging admission', () => {
+it('opens a coming-soon game and returns to the lobby without charging admission', () => {
  setup()
- fireEvent.click(screen.getByRole('link', { name: /지하 탐험하기/ }))
+ fireEvent.click(screen.getByRole('link', { name: /퐁이의 타워디펜스/ }))
  expect(screen.getByText('게임을 준비하고 있어요.')).toBeTruthy()
- expect(screen.getByText('참가비 미정')).toBeTruthy()
+ expect(screen.getByText('무료')).toBeTruthy()
  fireEvent.click(screen.getByRole('link',{name:'목록으로'}))
  expect(screen.getByRole('region', { name: '오락실 게임 목록' })).toBeTruthy()
 })
@@ -62,18 +63,27 @@ it('handles an unknown game with a route back to the lobby', () => {
  expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/arcade')
 })
 
-it('lists the free defense practice for all players and opens it directly',async()=>{
+it('lists tower defense but shows its coming-soon screen when opened',async()=>{
  setup()
  expect(screen.getByRole('link',{name:/퐁이의 타워디펜스/})).toBeTruthy()
  cleanup();setup('/arcade/tower-defense')
- expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
+ expect(await screen.findByText('게임을 준비하고 있어요.')).toBeTruthy()
 })
-it('opens public defense practice while operator permission is pending',async()=>{
+it('keeps tower defense coming soon while operator permission is pending',async()=>{
  access.loading=true;setup('/arcade/tower-defense')
- expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
+ expect(await screen.findByText('게임을 준비하고 있어요.')).toBeTruthy()
 })
-it('lists and opens defense for a verified operator',async()=>{
+it('also keeps tower defense coming soon for a verified operator',async()=>{
  access.operator=true;setup()
  fireEvent.click(screen.getByRole('link',{name:/퐁이의 타워디펜스/}))
- expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
+ expect(await screen.findByText('게임을 준비하고 있어요.')).toBeTruthy()
+})
+it('places exploration in brain and instant rewards and opens its existing lobby',async()=>{
+ setup()
+ fireEvent.click(screen.getByRole('button',{name:'뇌지컬'}))
+ fireEvent.click(screen.getByRole('button',{name:'즉시 보상'}))
+ const game=screen.getByRole('link',{name:/파라오의 황금해/})
+ expect(game.querySelector('img')?.getAttribute('src')).toBe('/arcade/exploration/thumbnail.webp')
+ fireEvent.click(game)
+ expect(await screen.findByText('탐험 화면')).toBeTruthy()
 })

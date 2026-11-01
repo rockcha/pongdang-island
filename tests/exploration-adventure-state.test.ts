@@ -44,7 +44,7 @@ it.each(['chest','investigate-guards','investigate-wall','investigate-alchemy'] 
 })
 it('keeps bosses and the sleeping giant out of ordinary monster draws',()=>{
  for(let index=0;index<100;index++)expect(['obsidian-anubis','ancient-giant']).not.toContain(drawMonster(()=>(index+.5)/100).id)
- expect(regularMonsters).toHaveLength(13)
+ expect(regularMonsters).toHaveLength(14)
 })
 it('guarantees special drops, refuses boss escape and grants exactly one ambush',()=>{
  const state=grantPracticeSupplies(newPractice())
@@ -128,7 +128,7 @@ it('draws ten warning inscriptions without applying any gameplay effect',()=>{
  for(let index=0;index<10;index++){
   const visit=createRoomVisit('warning-wall',state,'lore-'+index,()=>(index+.5)/10)
   expect(visit.outcome.kind).toBe('none')
-  expect(enterRoomVisit(state,visit)).toEqual({...state,roomVisitKey:visit.key})
+  expect(enterRoomVisit(state,visit)).toEqual({...state,roomVisitKey:visit.key,recentRooms:['warning-wall']})
   texts.add(visit.progress)
  }
  expect(texts.size).toBe(10)

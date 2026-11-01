@@ -458,12 +458,10 @@
 .combat-enemy-hit { position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
 .combat-enemy-hit i { position:absolute; width:48%; height:3px; border-radius:100%; background:#f1d69d; transform:rotate(-35deg); box-shadow:0 0 8px #ffe4a1; animation:combat-slash .32s ease-out both; }
 .combat-enemy-hit i::after { content:''; position:absolute; inset:9px 0 auto 15px; height:2px; background:#f1d69d99; }
-.combat-enemy-hit>span .combat-defense-breakdown,.combat-reply-number .combat-defense-breakdown{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:5px;font-size:13px;font-weight:400;color:#a8c5d2;text-shadow:0 2px 5px #000}
 .combat-enemy-hit.is-magic i { width:70px; height:70px; border:2px solid #dbad76; background:transparent; border-radius:50%; animation:combat-magic-ring .4s ease-out both; }
 .combat-enemy-hit.is-magic i::after { display:none; }
 .combat-enemy-hit>span { position:absolute; top:12%; left:76%; transform:translate(-50%,-50%); z-index:4; display:flex; flex-direction:column; align-items:center; white-space:nowrap; font-size:36px; font-weight:700; line-height:1.15; color:#fff0cf; -webkit-text-stroke:1px #20150d; paint-order:stroke fill; text-shadow:0 2px 3px #000,0 0 8px #000,0 0 16px #000; animation:combat-hit-number-rise 1s ease-out both; }
 .combat-enemy-hit>span.is-critical { color:#ff766c; font-size:42px; }
-.combat-enemy-hit>span .combat-defense-breakdown{padding:4px 8px;border:1px solid #a8c5d238;border-radius:12px;background:#080d12d9;-webkit-text-stroke:0;font-size:12px;line-height:1.1}
 @keyframes combat-hit-number-rise{0%{opacity:0;translate:0 7px;scale:.85}18%{opacity:1;scale:1.12}30%,72%{opacity:1;scale:1}100%{opacity:0;translate:0 -18px;scale:1}}
 .combat-enemy-hit small { display:block; font-size:13px; text-align:center; }
 .combat-reply-number,.combat-heal-number { position:absolute; left:50%; top:66%; transform:translateX(-50%); z-index:2; pointer-events:none; white-space:nowrap; color:#f69b8a; font-size:23px; font-weight:500; text-shadow:0 2px 6px #000; animation:combat-number-rise .8s ease-out both; }
@@ -1204,14 +1202,15 @@ html [data-slot=modal-viewport]:has(>.exploration-weapon-codex)>.exploration-wea
 .exploration-scene[data-scene=investigate-alchemy]{--scene-focus:65%}
 .exploration-scene[data-scene=thief]{--scene-focus:50%}
 
-.exploration-game .exploration-health-meter{position:relative;display:block;flex:1;min-width:12px;height:6px;overflow:hidden;border-radius:4px;background:#2b302d;isolation:isolate}
-.exploration-game .exploration-health-trail{position:absolute;inset:0 auto 0 0;display:block;height:100%;background:#775c53;pointer-events:none}
-.exploration-game .exploration-health-meter progress{position:relative;display:block;width:100%;height:100%;margin:0;background:transparent;border:0}
+.exploration-game .exploration-health-meter{position:relative;display:block;flex:1;min-width:12px;height:6px;overflow:hidden;border-radius:4px;background:#292526;isolation:isolate}
+.exploration-game .exploration-health-trail{position:absolute;inset:0 auto 0 0;display:block;height:100%;background:#e8cba0;pointer-events:none}
+.exploration-game .exploration-health-fill{position:absolute;inset:0 auto 0 0;display:block;height:100%;background:linear-gradient(90deg,#ca4a48,#e36c60);pointer-events:none}
+.exploration-game .exploration-health-meter progress{position:relative;display:block;width:100%;height:100%;margin:0;background:transparent;border:0;opacity:0}
 .exploration-game .exploration-health-meter progress::-webkit-progress-bar{background:transparent}
-.exploration-game .exploration-health-meter progress::-webkit-progress-value{background:linear-gradient(90deg,#96584d,#d99979);transition:none}
-.exploration-game .exploration-health-meter progress::-moz-progress-bar{background:linear-gradient(90deg,#96584d,#d99979)}
-.exploration-game .exploration-enemy-status .exploration-health-meter{height:6px;background:#302c29}
-@media(prefers-reduced-motion:reduce){.exploration-game .exploration-health-trail{transition:none!important}}
+.exploration-game .exploration-health-meter progress::-webkit-progress-value{background:linear-gradient(90deg,#ca4a48,#e36c60);transition:none}
+.exploration-game .exploration-health-meter progress::-moz-progress-bar{background:linear-gradient(90deg,#ca4a48,#e36c60)}
+.exploration-game .exploration-enemy-status .exploration-health-meter{height:6px}
+@media(prefers-reduced-motion:reduce){.exploration-game :is(.exploration-health-trail,.exploration-health-fill){transition:none!important}}
 
 .exploration-room-character{display:flex;flex:1;align-items:flex-end;justify-content:center;width:100%;min-height:0;padding-bottom:8px}
 .exploration-room-character img{display:block;width:100%;height:100%;min-height:0;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 8px 7px #0008)}

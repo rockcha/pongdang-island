@@ -320,3 +320,19 @@ it('places wide selection controls opposite the item and hides them while draggi
  expect(arrange).not.toHaveBeenCalled()
  cleanup();vi.unstubAllGlobals()
 })
+it('keeps inventory and storage actions available while editing the wide tank',()=>{
+ vi.stubGlobal('matchMedia',()=>({matches:false}))
+ const inventory=vi.fn(),storage=vi.fn()
+ const props={autoWide:true,name:'어항',tankId:'tank',items:[decoration],busy:false,onPlace:()=>{},onArrange:async()=>{},onSell:async()=>{},onInventory:inventory,onStorage:storage}
+ const view=render(<AquariumView {...props}/>)
+ fireEvent.click(screen.getByRole('button',{name:'편집 모드 시작'}))
+ fireEvent.click(screen.getByRole('button',{name:'어항 속 목록'}))
+ fireEvent.click(screen.getByRole('button',{name:'보관함 열기'}))
+ expect(inventory).toHaveBeenCalledOnce();expect(storage).toHaveBeenCalledOnce()
+ expect(screen.getByRole('region',{name:'가로 어항'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'편집 모드 완료'}).getAttribute('aria-pressed')).toBe('true')
+ view.rerender(<AquariumView {...props} busy/>);
+ expect(screen.getByRole('button',{name:'어항 속 목록'})).toHaveProperty('disabled',true)
+ expect(screen.getByRole('button',{name:'보관함 열기'})).toHaveProperty('disabled',true)
+ cleanup();vi.unstubAllGlobals()
+})

@@ -9,6 +9,7 @@ export function GameStartOverlay({
   children,
   onPaid,
   onPractice,
+  practiceLabel='연습',
   paidDisabled,
   practiceDisabled,
   fee = 10,
@@ -24,9 +25,10 @@ export function GameStartOverlay({
   poster: string
   children?: ReactNode
   onPaid: () => void
-  onPractice: () => void
+  onPractice?: () => void
+  practiceLabel?:string
   paidDisabled: boolean
-  practiceDisabled: boolean
+  practiceDisabled?: boolean
   fee?: number
   freeLabel?: string
   compactFreeLabel?: boolean
@@ -39,7 +41,7 @@ export function GameStartOverlay({
     <div
       className={`relative shrink-0 border-border bg-background pb-[env(safe-area-inset-bottom)] ${centerActions ? 'overflow-hidden rounded-lg [&_button]:text-sm' : 'border-t'}`}
     >
-      <div className={extraAction ? 'grid grid-cols-3' : 'grid grid-cols-2'}>
+      <div className={`grid ${extraAction&&onPractice?'grid-cols-3':extraAction||onPractice?'grid-cols-2':'grid-cols-1'}`}>
         <Button
           className={`min-h-14 min-w-0 ${compactFreeLabel && fee === 0 ? 'gap-0' : 'gap-1'} rounded-none border-r border-border px-1 text-xs`}
           aria-label={
@@ -65,14 +67,14 @@ export function GameStartOverlay({
             )}
           </span>
         </Button>
-        <Button
+        {onPractice&&<Button
           variant="secondary"
           className="min-h-14 min-w-0 gap-1 rounded-none px-1 text-xs"
           disabled={practiceDisabled}
           onClick={onPractice}
         >
-          연습
-        </Button>
+          {practiceLabel}
+        </Button>}
         {extraAction}
       </div>
       {extraPanel}

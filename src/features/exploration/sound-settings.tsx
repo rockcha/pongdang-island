@@ -5,8 +5,9 @@ import {audioVolume,audioVolumeChanged,saveAudioVolume,type AudioChannel} from '
 import {readFishingSound,saveFishingSound,fishingSoundChanged} from '@/features/fishing/sound-preference'
 
 const read=()=>({music:audioVolume('music'),effects:readFishingSound()?audioVolume('effects'):0})
-export function ExplorationSoundSettings({onPreview}:{onPreview:()=>void}){
- const [open,setOpen]=useState(false),[values,setValues]=useState(read),[error,setError]=useState(false)
+export function ExplorationSoundSettings({onPreview,open:controlledOpen,onOpenChange,hideTrigger=false}:{onPreview:()=>void;open?:boolean;onOpenChange?:(open:boolean)=>void;hideTrigger?:boolean}){
+ const [localOpen,setLocalOpen]=useState(false),[values,setValues]=useState(read),[error,setError]=useState(false)
+ const open=controlledOpen??localOpen,setOpen=onOpenChange??setLocalOpen
  const previous=useRef({music:60,effects:70})
  useEffect(()=>{
   const sync=()=>setValues(read())
@@ -24,7 +25,7 @@ export function ExplorationSoundSettings({onPreview}:{onPreview:()=>void}){
   else change(channel,previous.current[channel])
  }
  return <>
-  <button className="exploration-settings-button" aria-label="탐험 소리 설정" title="소리 설정" onClick={()=>setOpen(true)}><Settings2 size={17}/></button>
+  {!hideTrigger&&<button className="exploration-settings-button" aria-label="탐험 소리 설정" title="소리 설정" onClick={()=>setOpen(true)}><Settings2 size={17}/></button>}
   <Dialog open={open} onOpenChange={setOpen}><DialogContent className="exploration-modal exploration-sound-settings"><DialogHeader><DialogTitle>소리 설정</DialogTitle><DialogDescription>탐험을 계속하면서 소리를 조절해요.</DialogDescription></DialogHeader>
    {(['music','effects'] as const).map(channel=>{const label=channel==='music'?'배경음악':'효과음';return <div className="exploration-sound-channel" key={channel}>
     <div><label htmlFor={`exploration-volume-${channel}`}>{label}</label><span>{values[channel]}%</span><button aria-label={`${label} ${values[channel]>0?'끄기':'켜기'}`} onClick={()=>toggle(channel)}>{values[channel]>0?<Volume2 size={18}/>:<VolumeX size={18}/>}</button></div>

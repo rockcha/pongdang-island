@@ -18,6 +18,37 @@ afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();vi.unstubAllGlo
 const rolls=(...values:number[])=>()=>values.shift()??.99
 function fight(id:Parameters<typeof getMonster>[0]){return startMonsterCombat(newPractice(()=>0),getMonster(id).id)}
 const attack=(state:PracticeState,...values:number[])=>resolveCombatTurn(state,{type:'attack'},rolls(...values))
+it.each([false,true])('shows the monster and battle controls as soon as the door opens (reduced motion: %s)',async reduced=>{
+ vi.useFakeTimers();vi.stubGlobal('matchMedia',()=>({matches:reduced}))
+ const initial=newPractice(()=>0);vi.spyOn(practice,'newPractice').mockReturnValue(initial)
+ render(<ExplorationGame nickname="탐험가" onLeave={()=>{}}/>)
+ await act(async()=>{await vi.advanceTimersByTimeAsync(reduced?100:4000)})
+ fireEvent.change(screen.getByLabelText('1번 문 방 유형'),{target:{value:'monster:night-eyed-desert-fox'}})
+ fireEvent.click(document.querySelector('.exploration-choice')!)
+ fireEvent.click(screen.getByRole('button',{name:'몬스터 방 · 입장',exact:true}))
+ await act(async()=>{await vi.advanceTimersByTimeAsync(reduced?100:1100)})
+ expect(screen.getByRole('region',{name:'밤눈 사막여우 전투'})).toBeTruthy()
+ expect(screen.getByRole('progressbar',{name:'밤눈 사막여우 체력'})).toHaveProperty('value',36)
+ expect(screen.getByRole('button',{name:'공격',exact:true})).toHaveProperty('disabled',false)
+ expect(document.querySelector('[data-combat-background]')).toBeTruthy()
+ expect(screen.queryByRole('region',{name:'몬스터 방 등장'})).toBeNull()
+})
+it('shows actual floating damage without a separate defense number, including fully blocked hits',()=>{
+ const state=fight('talisman-lizard')
+ const props={state,busy:false,feedback:null,latestLog:'',speaker:'탐험',onAction:()=>{},onDescend:()=>{},onReturnToMain:()=>{}}
+ const view=render(<ScorpionRoom {...props}/>)
+ for(const damage of [8,0]){
+  view.rerender(<ScorpionRoom {...props} feedback={{id:damage,phase:'player',action:'attack',events:[{kind:'player',damage,rawDamage:10,defenseBlocked:10-damage,text:'공격'}]}}/>)
+  expect(document.querySelector('.combat-enemy-hit')?.textContent).toBe(`−${damage}`)
+  expect(document.querySelector('.combat-defense-breakdown')).toBeNull()
+ }
+ view.rerender(<ScorpionRoom {...props} feedback={{id:11,phase:'reply',action:'attack',events:[{kind:'monster',damage:4,rawDamage:6,defenseBlocked:2,text:'피격'}]}}/>)
+ expect(document.querySelector('.combat-reply-number')?.textContent).toBe('−4')
+ expect(document.querySelector('.combat-defense-breakdown')).toBeNull()
+ view.rerender(<ScorpionRoom {...props} feedback={{id:12,phase:'player',action:'attack',events:[{kind:'player',damage:0,effect:'miss',text:'빗나감'}]}}/>)
+ expect(document.querySelector('.combat-enemy-hit')).toBeNull()
+ expect(document.querySelector('.combat-heal-number')?.textContent).toBe('빗나감')
+})
 function captureLayout(id:string){
  if(!process.env.MONSTER_LAYOUT_QA)return
  const root=process.cwd().replaceAll('\\','/')
@@ -43,7 +74,7 @@ it('keeps monster stats above the enemy and player ailments beside the player vi
  captureLayout('status-hud-detail')
 })
 
-it('updates player bleeding damage and its badge during the player phase',async()=>{
+it('shows the attack first, then bleeding health loss and its remaining count after a pause',async()=>{
  vi.useFakeTimers();vi.stubGlobal('matchMedia',()=>({matches:true}))
  const fresh=fight('tomb-hook-guard');fresh.playerEffects=[{kind:'bleed',amount:3,turns:2}]
  vi.spyOn(practice,'newPractice').mockImplementation(()=>fresh)
@@ -52,12 +83,21 @@ it('updates player bleeding damage and its badge during the player phase',async(
  vi.spyOn(Math,'random').mockReturnValue(.99)
  fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}))
  await act(async()=>{await vi.advanceTimersByTimeAsync(1100)})
+ expect(screen.getByRole('progressbar',{name:'탐험가 체력'})).toHaveProperty('value',100)
+ expect(screen.getByRole('button',{name:'출혈 · 턴당 피해 3 · 2턴 남음'})).toBeTruthy()
+ expect(document.querySelector('.combat-result-log p')?.textContent).toContain('입혔습니다.')
+ expect(document.querySelector('.exploration-status-burst[data-fx=bleed]')).toBeNull()
+ await act(async()=>{await vi.advanceTimersByTimeAsync(900)})
  expect(screen.getByRole('progressbar',{name:'탐험가 체력'})).toHaveProperty('value',97)
+ expect(document.querySelector('.combat-result-log p')?.textContent).toBe('출혈로 3 피해를 입었습니다.')
+ expect(document.querySelector('.exploration-status-burst[data-fx=bleed]')).toBeTruthy()
  expect(document.querySelector('.exploration-enemy-intent')?.textContent).toContain('출혈로 체력 3 감소.')
  expect(screen.getByRole('button',{name:'출혈 · 턴당 피해 3 · 1턴 남음'})).toBeTruthy()
  await act(async()=>{await vi.advanceTimersByTimeAsync(5100)})
  fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}))
  await act(async()=>{await vi.advanceTimersByTimeAsync(1100)})
+ expect(screen.getByRole('button',{name:'출혈 · 턴당 피해 3 · 1턴 남음'})).toBeTruthy()
+ await act(async()=>{await vi.advanceTimersByTimeAsync(900)})
  expect(screen.queryByRole('button',{name:/출혈 · 턴당 피해/})).toBeNull()
 })
 it('opens the treasure scarab spell as separate flavor and effect facts',()=>{
@@ -69,7 +109,7 @@ it('opens the treasure scarab spell as separate flavor and effect facts',()=>{
  captureLayout('treasure-scarab-detail')
 })
 it('starts all monsters with their configured health and has real artwork for every move',()=>{
- expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,25,70,115,100,220,120,38,28,75,68])
+ expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,36,28,70,115,100,220,120,38,28,75,68])
  for(const monster of explorationMonsters){
   expect(fight(monster.id).combat).toMatchObject({monsterId:monster.id,enemyHp:monster.maxHp})
   if(regularMonsters.includes(monster)){const index=regularMonsters.indexOf(monster);expect(drawMonster(()=>(index+.5)/regularMonsters.length).id).toBe(monster.id)}
@@ -77,7 +117,7 @@ it('starts all monsters with their configured health and has real artwork for ev
   for(const move of [monster.basic,...monster.magic])expect(existsSync('public'+move!.image)).toBe(true)
  }
  const manifest=JSON.parse(readFileSync('assets/exploration/monsters/manifest.json','utf8'))
- expect(manifest.images).toHaveLength(15)
+ expect(manifest.images).toHaveLength(17)
  for(const image of manifest.images){expect(existsSync(image.source)).toBe(true);expect(existsSync(image.output)).toBe(true)}
 })
 it('applies enemy armor to physical hits and resistance only to damaging spells',()=>{
@@ -333,7 +373,7 @@ it.each(regularMonsters)('enters $name and opens the left/right move description
  const magic=screen.getByRole('button',{name:`마법 · ${monster.magic[0]?.name??'마법 없음'} 설명`})
  expect(basic.querySelector('img')?.getAttribute('src')).toBe(monster.basic.image)
  fireEvent.click(basic)
- expect(within(screen.getByRole('dialog')).getByText('물리 피해')).toBeTruthy();expect(within(screen.getByRole('dialog')).getByText(`${Math.max(1,monster.attack-2)}–${monster.attack+2}`)).toBeTruthy()
+ expect(within(screen.getByRole('dialog')).getByText('공격력')).toBeTruthy();expect(within(screen.getByRole('dialog')).getByText(`${Math.max(1,monster.attack-2)}–${monster.attack+2}`)).toBeTruthy()
  fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'})
  await act(async()=>{await vi.advanceTimersByTimeAsync(100)})
  fireEvent.click(magic)
@@ -346,5 +386,6 @@ it.each(regularMonsters)('enters $name and opens the left/right move description
   expect(screen.getByRole('dialog').textContent).toContain('실제 피해의 50%')
   expect(screen.getByRole('dialog').textContent).toContain('1/3')
  }
- expect(screen.getByRole('region',{name:`${monster.name} 전투`,hidden:true}).textContent).toContain('1턴')
+ expect(document.querySelector('.exploration-enemy-status p')).toBeNull()
+ expect(document.querySelector('.exploration-monster-tier')).toBeNull()
 })

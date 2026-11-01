@@ -1,0 +1,195 @@
+/* Quiet surfaces, readable results, and one primary combat action. */
+/* Animate a stable outer frame once, independently of hit/counter animations. */
+.exploration-game .exploration-monster-entrance{position:relative;grid-column:2;grid-row:1;width:100%;height:100%;min-width:0;min-height:0;animation:exploration-monster-enter 1.4s ease-out .45s both}
+@keyframes exploration-monster-enter{from{opacity:0;transform:translateY(10px);filter:brightness(.65)}to{opacity:1;transform:translateY(0);filter:brightness(1)}}
+@media(prefers-reduced-motion:reduce){.exploration-game .exploration-monster-entrance{animation:none}}
+/* A long single-line log must not widen the scene's intrinsic grid track. */
+.exploration-game .exploration-scene{min-width:0;grid-template-columns:minmax(0,1fr)}
+.exploration-game .exploration-combat{width:100%;max-width:100%;min-width:0}
+.exploration-game .exploration-combat-controls{min-width:0;max-width:100%}
+.exploration-game {
+ --ex-text:#e9e5dd;--ex-muted:#a5a39a;--ex-line:#ffffff12;
+ --combat-surface:#111412ed;--combat-secondary:#ffffff07;
+}
+.exploration-game .exploration-compact-header{background:linear-gradient(180deg,#151714,#0d100e);border-bottom-color:var(--ex-line);box-shadow:none;padding-bottom:5px}
+.exploration-game .exploration-toolbar{min-height:38px;margin-bottom:7px;border-bottom-color:var(--ex-line)}
+.exploration-game :is(.exploration-map-location,.exploration-settings-button){color:#b9b8aa}
+.exploration-game .exploration-avatar-ring{border-color:#ffffff25;background:#ffffff04;box-shadow:none}
+.exploration-game .exploration-player-name{color:var(--ex-text);font-size:12px}
+.exploration-game .exploration-player-name>small{padding:2px 6px;border-radius:4px;background:#ffffff07;color:#a9b5a9;font-size:9px}
+.exploration-game .exploration-resource-row{min-height:23px;gap:2px}
+.exploration-game .exploration-resource-row .exploration-meter>span:last-child{width:62px;color:var(--ex-text);font-size:11px;font-variant-numeric:tabular-nums}
+.exploration-game .exploration-resource-row .exploration-meter b{font-weight:600;font-size:13px}
+.exploration-game .exploration-resource-row .exploration-meter small{font-size:10px;color:#999e97;margin-left:2px}
+.exploration-game .exploration-resource-row progress{height:6px}
+.exploration-game .exploration-player-status .exploration-combat-stats{gap:0;padding-top:3px;border-top:0}
+.exploration-game .exploration-player-status .exploration-combat-stats>div{border:0;border-radius:4px;background:none;min-height:30px;gap:5px}
+.exploration-game .exploration-player-status .exploration-combat-stats>div+div{border-left:1px solid var(--ex-line)}
+.exploration-game .exploration-player-status .exploration-combat-stats dt{color:#a0a69d}
+.exploration-game .exploration-player-status .exploration-combat-stats dd{font-size:12px;color:#dedfd5}
+.exploration-game .exploration-player-status .exploration-combat-stats [data-stat] :is(svg,dd){color:inherit}
+.exploration-game .exploration-player-status[data-low-health=true] .exploration-hp b{color:#f0a096}
+
+.exploration-game .exploration-combat{padding-top:12px;background:linear-gradient(180deg,#08100d38,transparent 35%,#07100b18)}
+.exploration-game .exploration-enemy-status{width:calc(100% - 32px);max-width:520px;gap:7px 12px;padding:10px 12px;border:1px solid var(--ex-line);border-radius:12px;background:#101510df;box-shadow:0 6px 20px #0002}
+.exploration-game .exploration-enemy-status h2{color:#e9e5dc;font-size:16px;gap:5px}
+.exploration-game .exploration-enemy-status .ailment-guide-button{color:#929d90;width:26px;height:26px}
+.exploration-game .exploration-enemy-status p{gap:9px;color:#9ca899;font-size:10px}
+.exploration-game .exploration-monster-tier{padding:2px 6px;background:#ffffff07;border-radius:4px;color:#bac1b5}
+.exploration-game .exploration-enemy-status>div{gap:12px}
+.exploration-game .exploration-enemy-status .exploration-health-meter{height:6px}
+.exploration-game .exploration-enemy-status strong{color:#e4e3d9;font-size:14px;font-variant-numeric:tabular-nums}
+.exploration-game .exploration-enemy-status strong small{font-size:10px;color:#949c90;font-weight:400}
+.exploration-game .exploration-enemy-status[data-low-health=true] strong{color:#f0a096}
+.exploration-game .exploration-enemy-status[data-low-health=true] progress::-webkit-progress-value{background:#dc8879}
+.exploration-game .exploration-enemy-status[data-low-health=true] progress::-moz-progress-bar{background:#dc8879}
+.exploration-game .exploration-monster-stats{padding-top:7px;margin-top:0;border-top:1px solid var(--ex-line)}
+.exploration-game .exploration-monster-stats>div{border-color:var(--ex-line);color:#a3aea1}
+.exploration-game .exploration-monster-stats dd{color:#d3d9cc;font-size:11px}
+.exploration-game .exploration-monster-stage{grid-template-columns:76px minmax(0,1fr) 76px;padding-inline:16px;gap:4px}
+.exploration-game .exploration-monster-move{gap:5px;min-height:96px;padding:10px 5px;border:1px solid #ffffff16;border-radius:10px;background:#111610b8;box-shadow:none;color:#e1dfd2;backdrop-filter:blur(8px)}
+.exploration-game .exploration-monster-move img{width:32px;height:32px}
+.exploration-game .exploration-monster-move strong{font-size:11px;font-weight:400;line-height:1.5;color:#e7e5db}
+.exploration-game .exploration-monster-move :is(small,span){font-size:9px;color:#a4afa0}
+.exploration-game .exploration-monster-move.is-magic{border-color:#a7c5ce28}
+.exploration-game .exploration-monster-move[data-active=true]{border-color:#d6b97999;box-shadow:0 0 0 2px #d6b97912;background:#252c1dd9}
+.exploration-game .exploration-enemy-art>img{width:100%;height:96%;max-width:500px;filter:saturate(.9) brightness(1.04) drop-shadow(0 12px 14px #0007)}
+
+.exploration-game .exploration-combat-controls{padding:10px max(16px,env(safe-area-inset-right)) 14px max(16px,env(safe-area-inset-left));background:linear-gradient(180deg,#101510dc,#0d110ff5 40%);border-top:1px solid #ffffff0b;box-shadow:none}
+.exploration-game .exploration-enemy-intent{padding:4px 8px 10px;margin:0 0 8px;min-height:40px;border:0;background:none;color:#d4d9ce;font-size:12px;line-height:1.7}
+.exploration-game .exploration-enemy-intent::after{display:none}
+.exploration-game .combat-result-log p{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px 14px;font-size:13px}
+.exploration-game .combat-result-log p>span{color:#c2cbbd}
+.exploration-game .combat-result-log strong{font-size:17px;font-weight:500;color:#e7e6d9;font-variant-numeric:tabular-nums}
+.exploration-game .combat-result-log[data-tone=harm] strong{color:#f1a497}
+.exploration-game .combat-result-log[data-tone=recovery] strong{color:#a8d2ad}
+.exploration-game .combat-result-log[data-tone=mana] strong{color:#a5cddd}
+.exploration-game .combat-result-status{padding:2px 6px;border:1px solid #f1a49725;border-radius:5px;background:#f1a4970a;color:#dba99c;font-size:10px}
+.exploration-game .exploration-combat-actions{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.exploration-game .exploration-combat-actions[data-no-escape=true]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.exploration-game .exploration-combat-actions button:is(.combat-action-attack,.combat-action-magic,.combat-action-potion,.combat-action-flee){min-height:72px;gap:7px;padding:10px 4px;border:1px solid #ffffff17;border-radius:11px;background:#ffffff05;color:#d2d8cc;box-shadow:none;filter:none}
+.exploration-game .exploration-combat-actions button::before{display:none}
+.exploration-game .exploration-combat-actions .combat-action-attack{background:#d5bb7e!important;color:#25271d!important;border-color:#e1cb96!important;box-shadow:0 3px 12px #0002!important}
+.exploration-game .exploration-combat-actions button>span{font-size:12px;letter-spacing:0}
+.exploration-game .exploration-combat-actions button small{font-size:10px;color:#a7b0a0;opacity:1;font-variant-numeric:tabular-nums}
+.exploration-game .exploration-combat-actions button .combat-action-icon{width:28px;height:28px}
+.exploration-game .exploration-combat-actions button:hover:not(:disabled){background:#ffffff0c;border-color:#ffffff36;transform:translateY(-1px);filter:none}
+.exploration-game .exploration-combat-actions button:disabled{opacity:.5;transform:none}
+/* Retain exact attack facts for screen readers and the button's description. */
+.exploration-game .exploration-combat-actions .combat-attack-stats{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+.exploration-game .exploration-equipment-dock{padding-top:8px;background:#0d110f;border-top:1px solid var(--ex-line);box-shadow:none}
+.exploration-game .exploration-equipment-dock .exploration-equipped{gap:5px}
+.exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot,.exploration-potion-loadout){flex-direction:column;justify-content:center;gap:5px;min-height:70px;padding:7px 3px;background:#ffffff03;border:1px solid #ffffff0c;border-radius:9px;box-shadow:none;text-align:center}
+.exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot):hover:not(:disabled){background:#ffffff08;border-color:#ffffff26}
+.exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot)>span{width:100%;text-align:center;gap:1px;overflow:visible}
+.exploration-game .exploration-equipment-dock .exploration-equipped-weapon{width:28px;height:28px}
+.exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot) small{display:none}
+.exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot) strong{color:#ced5c7;font-size:10px;font-weight:400;line-height:1.4;white-space:normal;overflow-wrap:anywhere;text-overflow:clip}
+.exploration-game .exploration-equipment-dock .exploration-spell-slot.is-empty{gap:5px;background:none;border:1px dashed #ffffff1b}
+.exploration-game .exploration-equipment-dock .exploration-spell-slot.is-empty>.exploration-empty-spell-sigil{width:28px;height:28px;flex-basis:28px;border:0;border-radius:0;background:none;box-shadow:none;color:#9ba795}
+.exploration-game .exploration-equipment-dock .exploration-spell-slot.is-empty strong{color:#a6b19e}
+.exploration-game .exploration-equipment-dock .exploration-spell-cost{display:none}
+.exploration-game .exploration-potion-loadout:disabled{opacity:.65;filter:none}
+.exploration-game .exploration-potion-loadout b{color:#d4d8cd;font-size:10px}
+.exploration-game .exploration-potion-loadout img{width:20px;height:24px}
+.exploration-game .exploration-potion-loadout strong{color:#bdc6b7}
+
+@media(max-width:600px){
+ .exploration-game .exploration-enemy-art>img{left:-12%;right:-12%;width:124%;max-width:none}
+}
+@media(max-width:600px) and (max-height:650px){
+ .exploration-game .exploration-compact-header{padding-bottom:3px}
+ .exploration-game .exploration-toolbar{min-height:30px;margin-bottom:4px}
+ .exploration-game .exploration-status-main{grid-template-columns:34px minmax(0,1fr);gap:7px}
+ .exploration-game .exploration-status-main .exploration-avatar-ring{width:34px;height:34px}
+ .exploration-game .exploration-status-main .exploration-avatar-ring>img{width:28px;height:28px}
+ .exploration-game .exploration-player-name{font-size:11px;line-height:14px}
+ .exploration-game .exploration-resource-row{min-height:18px}
+ .exploration-game .exploration-player-status{gap:3px}
+ .exploration-game .exploration-player-status .exploration-combat-stats>div{min-height:24px}
+ .exploration-game .exploration-combat{padding-top:7px}
+ .exploration-game .exploration-enemy-status{padding:6px 10px;gap:3px 9px}
+ .exploration-game .exploration-enemy-status h2{font-size:14px;line-height:1.2}
+ .exploration-game .exploration-monster-stats{padding-top:4px}
+ .exploration-game .exploration-enemy-intent{min-height:28px;padding:2px 6px 5px;margin-bottom:5px}
+ .exploration-game .combat-result-log strong{font-size:15px}
+ .exploration-game .exploration-combat-controls{padding:7px 12px 9px}
+ .exploration-game .exploration-combat-actions button:is(.combat-action-attack,.combat-action-magic,.combat-action-potion,.combat-action-flee){min-height:56px;gap:4px;padding:7px 3px}
+ .exploration-game .exploration-combat-actions button .combat-action-icon{width:23px;height:23px}
+ .exploration-game .exploration-equipment-dock{padding-block:6px}
+ .exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot,.exploration-potion-loadout){min-height:54px;gap:3px;padding-block:5px}
+ .exploration-game .exploration-equipment-dock .exploration-equipped-weapon{width:23px;height:23px}
+}
+
+@media(max-width:360px){
+ .exploration-game .exploration-enemy-status{width:calc(100% - 24px)}
+ .exploration-game .exploration-enemy-status h2{font-size:14px}
+ .exploration-game .exploration-monster-stage{grid-template-columns:62px minmax(0,1fr) 62px;padding-inline:10px;gap:2px}
+ .exploration-game .exploration-monster-move{padding:7px 3px;min-height:88px;gap:3px}
+ .exploration-game .exploration-monster-move img{width:28px;height:28px}
+ .exploration-game .exploration-monster-move strong{font-size:10px}
+ .exploration-game .exploration-combat-controls{padding:7px 12px 9px}
+ .exploration-game .exploration-combat-actions{gap:5px}
+ .exploration-game .exploration-combat-actions button:is(.combat-action-attack,.combat-action-magic,.combat-action-potion,.combat-action-flee){min-height:56px;padding:7px 3px}
+ .exploration-game .exploration-combat-actions button .combat-action-icon{width:24px;height:24px}
+ .exploration-game .exploration-combat-actions button>span{font-size:11px}
+ .exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot,.exploration-potion-loadout){min-height:54px;gap:3px}
+ .exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot) strong{font-size:9px}
+}
+@media(max-height:540px){
+ .exploration-game .exploration-toolbar{min-height:30px;margin-bottom:3px}
+ .exploration-game .exploration-combat{padding-top:4px}
+ .exploration-game .exploration-enemy-status{padding:5px 10px;gap:3px 10px}
+ .exploration-game .exploration-enemy-status h2{font-size:14px}
+ .exploration-game .exploration-monster-stats{padding-top:4px}
+ .exploration-game .exploration-combat-controls{padding:7px 10px}
+ .exploration-game .exploration-enemy-intent{min-height:28px;padding-bottom:5px;margin-bottom:4px;font-size:10px}
+ .exploration-game .combat-result-log strong{font-size:14px}
+ .exploration-game .exploration-combat-actions button:is(.combat-action-attack,.combat-action-magic,.combat-action-potion,.combat-action-flee){min-height:54px;padding:6px 3px;gap:3px}
+ .exploration-game .exploration-combat-actions button .combat-action-icon{width:22px;height:22px}
+ .exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot,.exploration-potion-loadout){min-height:48px;padding-block:5px;gap:3px}
+ .exploration-game .exploration-equipment-dock .exploration-equipped-weapon{width:22px;height:22px}
+ .exploration-game .exploration-monster-move{min-height:64px;padding:5px 3px;gap:3px}
+ .exploration-game .exploration-monster-move img{width:25px;height:25px}
+ .exploration-game .exploration-monster-move strong{font-size:10px}
+}
+@media(min-width:620px) and (max-height:540px){
+ .exploration-game .exploration-resource-row{min-height:18px}
+ .exploration-game .exploration-status-main .exploration-avatar-ring{width:34px;height:34px}
+ .exploration-game .exploration-status-main .exploration-avatar-ring>img{width:28px;height:28px}
+ .exploration-game .exploration-player-status .exploration-combat-stats>div{flex-direction:row;min-height:24px}
+ .exploration-game .exploration-equipment-dock{padding-block:5px}
+ .exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot,.exploration-potion-loadout){flex-direction:row;min-height:44px;padding:5px 8px;gap:6px}
+ .exploration-game .exploration-equipment-dock .exploration-spell-slot.is-empty>.exploration-empty-spell-sigil{width:22px;height:22px;flex-basis:22px}
+ .exploration-game .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot)>span{text-align:left;width:auto}
+ .exploration-game .exploration-potion-loadout>div{width:auto}
+ .exploration-game .exploration-potion-loadout img{width:17px;height:20px}
+}
+
+/* One result line stays in the same place throughout the turn. */
+/* A battle owns its floor; story-room scenery underneath remains intact. */
+.exploration-game .exploration-combat:has(.has-combat-background){background-color:#0b100e;background-image:linear-gradient(#08101045,transparent 40%,#08101018 75%,#081010b0),var(--combat-backdrop);background-size:cover;background-position:center;background-repeat:no-repeat}
+.exploration-game .exploration-combat:has(.has-combat-background)>.exploration-enemy-status{background:#0b120e70;border-color:#ffffff18;box-shadow:none;backdrop-filter:blur(3px)}
+.exploration-game .exploration-enemy-status h2{grid-column:1/-1}
+.exploration-game .exploration-monster-stage.has-combat-background{max-width:none;background:none;isolation:isolate}
+.exploration-game .has-combat-background .exploration-enemy-art{container-type:size;--ground-line:12%}
+.exploration-game .has-combat-background .exploration-enemy-art>img{inset:auto;left:50%;bottom:var(--ground-line);margin:0;width:min(124cqw,calc(88cqh * var(--sprite-aspect)));height:auto;max-width:none;aspect-ratio:var(--sprite-aspect);translate:-50% var(--sprite-bottom-gap);filter:saturate(.94) brightness(1.04) drop-shadow(0 3px 3px #0006)}
+.exploration-game .has-combat-background .exploration-enemy-art::before{left:50%;bottom:calc(var(--ground-line) - 7px);width:min(76cqw,54cqh);height:14px;max-width:none;translate:-50% 0;background:#090b09a6;filter:blur(5px)}
+.exploration-game .has-combat-background .exploration-enemy-art[data-airborne=true]>img{bottom:24%;width:min(124cqw,calc(74cqh * var(--sprite-aspect)))}
+.exploration-game .has-combat-background .exploration-enemy-art[data-airborne=true]::before{width:min(58cqw,40cqh);opacity:.55;filter:blur(8px)}
+
+.exploration-game .exploration-combat-controls>.exploration-enemy-intent{height:38px;min-height:38px;max-height:38px;padding:0 6px;margin-bottom:8px;overflow:hidden}
+.exploration-game .combat-result-sentences{display:block;min-width:0;width:100%}
+.exploration-game .exploration-combat-controls>.exploration-enemy-intent p{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;width:100%;margin:0;font-size:12px;line-height:1.7;color:#c6cebe}
+.exploration-game .combat-result-log p strong{font-size:14px;font-weight:600}
+.exploration-game .combat-result-log p[data-tone=harm] strong{color:#f0a095}
+.exploration-game .combat-result-log p[data-tone=damage] strong{color:#e5ca86}
+.exploration-game .combat-result-log p[data-tone=recovery] strong{color:#a8d2ad}
+.exploration-game .combat-result-log p[data-tone=mana] strong{color:#a5cddd}
+.exploration-game .combat-result-log p[data-tone=neutral] strong{color:#c6cebe}
+.combat-result-critical{display:inline-block;margin-right:6px;color:#e5ca86;font-size:9px;vertical-align:middle}
+@media(max-height:650px){
+ .exploration-game .exploration-combat-controls>.exploration-enemy-intent{height:30px;min-height:30px;max-height:30px;margin-bottom:4px}
+ .exploration-game .combat-result-log p strong{font-size:13px}
+}

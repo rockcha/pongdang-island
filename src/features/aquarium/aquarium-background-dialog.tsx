@@ -1,4 +1,5 @@
 import {themePanoramaUrl} from './theme-panorama'
+import './aquarium-background-dialog.css'
 import {backgroundPreviewArt} from './background-preview-art'
 import type {OwnedCollectible} from '@/features/collection/api'
 import {appArt} from '@/components/app-art'
@@ -52,7 +53,7 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
   if(!state.catalog.length&&!error)return <div role="status" aria-label="배경 목록을 불러오는 중"><span className="sr-only">배경 목록을 불러오는 중…</span><div aria-hidden="true" className="grid grid-cols-1 gap-3 overflow-hidden">{Array.from({length:4},(_,i)=><div key={i} className="overflow-hidden rounded-xl border border-border/60 motion-safe:animate-pulse"><div className="aspect-[15/8] bg-secondary/60"/><div className="space-y-2.5 p-3"><div className="h-5 w-2/3 rounded bg-secondary/60"/><div className="h-9 rounded-lg bg-secondary/60"/></div></div>)}</div></div>
   items=items.filter(item=>tier==='all'||(item.tier??'simple')===tier)
   if(!items.length)return <div className="flex flex-col items-center gap-2 py-12 text-center text-muted-foreground"><Image className="mb-1 size-7 opacity-40"/><p className="text-sm">{tier!=='all'?'이 등급에 해당하는 배경이 없어요.':owned?'보유한 배경이 없어요.':'모든 배경을 보유하고 있어요.'}</p></div>
-  return <ul className="grid grid-cols-1 gap-3 pb-1">{items.map(item=>{
+  return <ul className="aquarium-background-cards grid grid-cols-1 gap-3 pb-1">{items.map(item=>{
    const equipped=selectedId===item.id
    return <li key={item.id} className={`overflow-hidden rounded-xl border transition-colors ${equipped?'border-primary/40 bg-primary/5':'border-border/60'}`}>
     <div className="relative"><Preview key={item.image_path} path={item.image_path} name={item.name}/>{equipped&&<span className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-background/90 px-2 py-1 text-[10px] font-medium shadow-sm backdrop-blur"><Check className="size-3"/>현재 배경</span>}</div>

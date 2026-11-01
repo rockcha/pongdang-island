@@ -77,7 +77,8 @@
           "source": "assets/exploration/monsters/originals/saw-claw-crab.png",
           "prompt": "Use case: stylized-concept. A single full-body transparent RPG monster cutout, Egyptian underwater tomb encounter. Subject: saw-claw crab with a squat sturdy sandstone-colored carapace, two large symmetrical claws whose INSIDE gripping edges have clean sawtooth ridges, dark bronze claw tips, restrained turquoise-and-antique-gold shell inlays, two small teal eyes. Natural crab anatomy, broad low body, grounded walking legs, both claws open and raised toward the viewer, front three-quarter view. Match reference polished hand-painted semi-realistic fantasy rendering, crisp gold/stone materials, detailed yet clean silhouette. Ordinary low-level monster, cool but approachable, NOT horror or gore. No blood, severed parts, bones, fog, glow halos or detached particles. Complete claws, legs and entire body visible with 10% clear margin on ALL sides in square composition. Transparent alpha background, smooth clean edges, no scenery, floor, shadow, text, UI, border or watermark. Reference image is STYLE ONLY, do not copy scorpion tail/anatomy."
         }
-      ]
+      ],
+      "retiredAt": "2026-11-02"
     },
     {
       "id": "tomb-hook-guard",
@@ -135,6 +136,30 @@
       "prompt": "Use case: stylized-concept. Single Egyptian fantasy dungeon RPG monster sprite: a large squat sandy desert toad with a swollen golden coin-pouch throat, bronze Egyptian jewelry and a small tied money sack at its waist, smug greedy expression, warm ochre skin and subtle lapis accents. Entire character centered facing mostly forward with slight three-quarter perspective. Polished semi-realistic hand-painted game illustration, clean appealing silhouette readable at 96px, stylish and approachable rather than scary, no gore or horror. Match warm gold Egyptian tomb monster inventory artwork. Full body and all limbs with generous 12 percent transparent margin. Transparent alpha background, crisp clean edges, no scene, no pedestal, no floor, no ground shadow, no text, no UI, no border, no floating icon or detached particles.",
       "generator": "built-in image_gen",
       "generatedAt": "2026-11-01"
+    },
+    {
+      "id": "night-eyed-desert-fox",
+      "source": "assets/exploration/monsters/originals/night-eyed-desert-fox.png",
+      "output": "public/exploration/monsters/night-eyed-desert-fox.png",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-02",
+      "references": [
+        "src/features/exploration/assets/sand-scorpion.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: one full-body transparent fantasy RPG monster cutout, Egyptian tomb exploration battle. Primary subject: NIGHT-EYED DESERT FOX, a small agile fennec fox with natural four-legged anatomy, enormous upright desert ears, fine warm sandy-gold fur, cream chest and muzzle, dark indigo ear tips and paws, sharp luminous but restrained blue eyes, an elegant full fluffy tail curved upward beside the body. A small concentrated blue starlight glow at the TAIL TIP, attached to the fur, suggests its star-orb spell. One front paw lightly lifted ready to scratch; alert three-quarter front view facing toward the viewer. Restrained ancient Egyptian gold-and-turquoise neck collar, no clothes or weapons. Style: match the provided sand scorpion STYLE REFERENCE ONLY: polished detailed hand-painted semi-realistic fantasy RPG rendering, readable rich materials, warm antique gold, crisp controlled silhouette. Do not copy scorpion anatomy. Composition: single character centered square, every ear, paw and entire tail visible, at least 10 percent transparent clearance on EVERY side. Actual transparent alpha background. No scenery, floor, ground shadow, detached orbs, particles, mist, halo, text, UI, frame, watermark, gore, giant cartoon eyes or toy plastic. Glow stays local to the tail tip. Clean smooth alpha edges.",
+      "processing": "Preserve original RGBA; scale to 768x768 contained on transparent canvas, then add 96px transparent padding on all sides. Final PNG: 960x960."
+    },
+    {
+      "id": "sand-wing-bat",
+      "source": "assets/exploration/monsters/originals/sand-wing-bat.png",
+      "output": "public/exploration/monsters/sand-wing-bat.png",
+      "generator": "built-in image_gen",
+      "generatedAt": "2026-11-02",
+      "references": [
+        "src/features/exploration/assets/sand-scorpion.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: one full-body transparent fantasy RPG monster cutout for Egyptian tomb exploration battle. Primary subject: SAND-WING BAT, one compact desert bat hovering front three-quarter facing the viewer, both broad triangular bat wings open in a shallow upward V, natural bat anatomy with exactly two membrane wings supported by elongated fingers, exactly two small hind feet and a short tail; large pointed bat ears, small amber eyes, warm ochre-brown fur and leathery muted sandstone-gold wing membranes, dark bronze leading edges, restrained turquoise-and-gold Egyptian collar. Wing membranes have subtle sand-colored striations suggesting its sand-gust spell, but NO loose sand, particles or surrounding effect. Elegant approachable ordinary enemy, not a demon, not a bird, not a dragon, closed mouth no threatening fangs. Style: match the provided sand scorpion STYLE REFERENCE ONLY: polished detailed hand-painted semi-realistic fantasy RPG rendering, crisp material detail, warm antique gold and controlled shading, clear silhouette. Do not copy scorpion anatomy or armor plates. Composition: single character centered square, complete wing tips, ears and feet inside frame, at least 10 percent transparent clearance on EVERY side. Actual transparent alpha background. No scenery, floor, shadow, fog, glow halo, detached pixels, text, UI, frame, watermark, blood, gore, giant cartoon eyes or plastic sheen. Clean smooth alpha edges.",
+      "processing": "Preserve original RGBA; scale to 768x768 contained on transparent canvas, then add 96px transparent padding on all sides. Final PNG: 960x960."
     }
   ]
 }

@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 .cache/
 tmp/
+artifacts/
 dist
 dist-ssr
 *.local

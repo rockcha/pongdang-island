@@ -3,6 +3,7 @@ import { accountCommand } from '@/lib/account-command'
 import {questProgressChanged} from '@/features/quests/progress-events'
 import type { WhackHit, WhackTarget } from './pongi-whack-model'
 import type { MemoryLeaderboard } from './memory-api'
+import { whackReworkMessage, type WhackMaintenance } from './pongi-whack-maintenance'
 export type WhackRun = {
   durationMs?: number
   rewardGold?: number
@@ -14,7 +15,7 @@ export type WhackRun = {
   score: number
   mistakes: number
 }
-export type WhackState = { serverNow: string; gold: number; run: WhackRun | null }
+export type WhackState = { serverNow: string; gold: number; run: WhackRun | null; maintenance?: WhackMaintenance }
 export type WhackAction = {
   p_action: 'state' | 'start' | 'finish' | 'leave'
   p_operation_id?: string
@@ -55,6 +56,7 @@ export async function readWhackRanking(
 }
 export function whackError(error: unknown) {
   const e = error as { message?: string; code?: string }
+  if (e.message?.includes('PONGI_WHACK_MAINTENANCE')) return whackReworkMessage
   if (e.code === 'PGRST202' || e.code === '42883')
     return '실전 서버를 준비 중이에요. 무료 연습을 먼저 즐겨주세요.'
   if (e.message?.includes('INSUFFICIENT_GOLD')) return '참가비 10골드가 부족해요.'

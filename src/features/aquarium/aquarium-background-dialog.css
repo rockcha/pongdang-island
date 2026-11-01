@@ -1,0 +1,8 @@
+@media(orientation:landscape){
+ .aquarium-background-cards{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+ .aquarium-background-cards>li{min-width:0}
+ .aquarium-background-cards .aquarium-background-preview{flex:none;min-height:0}
+}
+@media(orientation:landscape) and (max-height:420px){
+ html[data-aquarium-wide] [data-slot='modal-viewport']>.aquarium-work-panel:has(.aquarium-background-cards){width:min(560px,calc((100dvh - 230px)*3.3 + 44px),calc(100dvw - 2*var(--modal-edge-x)))}
+}

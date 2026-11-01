@@ -5,10 +5,10 @@
     640
   ],
   "summary": {
-    "count": 857,
-    "sourceBytes": 1016018079,
-    "smallBytes": 23079826,
-    "largeBytes": 62484264,
+    "count": 941,
+    "sourceBytes": 1117318712,
+    "smallBytes": 25418620,
+    "largeBytes": 69252408,
     "smallReductionPercent": 97.73
   },
   "items": [
@@ -88,6 +88,166 @@
       "large": {
         "url": "/game-art/thumbnails/d324f4eeb15c583ff381db91-640.webp",
         "bytes": 77466,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-admiral-yi-statue_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-admiral-yi-statue_v1_thumbnail.png",
+      "sourceHash": "36d12ac517bce04d51ca620d6c2c3c020b2c4d85a4852a4ea1eca4e5eb38cc89",
+      "sourceBytes": 1413882,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/96744142dcdd7ba3ca5f7250-320.webp",
+        "bytes": 31246,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7aaa3b2dfd259dfa60ef8a31-640.webp",
+        "bytes": 99150,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-flooded-gwanghwamun_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-flooded-gwanghwamun_v1_thumbnail.png",
+      "sourceHash": "da61fe39945dbdf5753636342c1a031f0898b6d2013e5caa6d7de711316c286e",
+      "sourceBytes": 2091345,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2285e244d90ade29577031ee-320.webp",
+        "bytes": 44022,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/84710e00d973d7d8570e193f-640.webp",
+        "bytes": 145278,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-sleeping-cheomseongdae_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-sleeping-cheomseongdae_v1_thumbnail.png",
+      "sourceHash": "ce0b5eb7249f675dd9c80857414fdf56c86c6873b55a1cffd6f318667819c9bf",
+      "sourceBytes": 1538777,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/60cbbac8216d74f3d24fdde4-320.webp",
+        "bytes": 29920,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/44284333b7194b9981c9eb09-640.webp",
+        "bytes": 101870,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-submerged-63-building_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-submerged-63-building_v1_thumbnail.png",
+      "sourceHash": "39e0271611dbe587ffabfe8846750763a33c326d74dc37b733f6f339b468844d",
+      "sourceBytes": 893772,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/715c4bab0d52f2d9226a34ef-320.webp",
+        "bytes": 18508,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b748186211d605cb504dfaec-640.webp",
+        "bytes": 59376,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-submerged-sungnyemun_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-submerged-sungnyemun_v1_thumbnail.png",
+      "sourceHash": "299a674c232a67ebda9f69a81c734bb5b16e37b13f9fad20d21ffbf1e9535a0f",
+      "sourceBytes": 2214818,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0cc1d921c665688ada47a30b-320.webp",
+        "bytes": 49074,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f2276edcf67698ba852cd6b4-640.webp",
+        "bytes": 160030,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-sunken-dabotap_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-sunken-dabotap_v1_thumbnail.png",
+      "sourceHash": "dfec024136beb72d6617c55d7bd1f93c1351d273f53963c7331ef650b29d13fa",
+      "sourceBytes": 1256641,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a03ebd704240ad8a6a44d22f-320.webp",
+        "bytes": 28038,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/30094549f15cca49d85b2cfe-640.webp",
+        "bytes": 90554,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-sunken-independence-gate_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-sunken-independence-gate_v1_thumbnail.png",
+      "sourceHash": "504e2cb9505f5b43de5d4fc22d6d2c0af21da07ba16c78c82e5fe2f0c74fbe0b",
+      "sourceBytes": 1828520,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ed510f377febedd7118b526a-320.webp",
+        "bytes": 37790,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/db1809931b4f527a3e50628a-640.webp",
+        "bytes": 117714,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hangang-sunken-lotte-tower_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/epic/hangang-sunken-lotte-tower_v1_thumbnail.png",
+      "sourceHash": "962d999a3eda97a17e609e2f3bce018f86ce811138b266d5d1abb04c25685ad9",
+      "sourceBytes": 864733,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/de807d0afe11aee2976dc384-320.webp",
+        "bytes": 22784,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0c10f5d138c458c1356f2d48-640.webp",
+        "bytes": 71494,
         "width": 640,
         "height": 640
       }
@@ -988,6 +1148,206 @@
       "large": {
         "url": "/game-art/thumbnails/7f19ea73227e9490ca776c5d-640.webp",
         "bytes": 54380,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-bus-stop_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-bus-stop_v1_thumbnail.png",
+      "sourceHash": "66f2a68d74b600427d8c7cca8d455e46d633f47d171c8c48f59b6d085df21341",
+      "sourceBytes": 879645,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ef61e7bf3945a35c3e6c5bde-320.webp",
+        "bytes": 21670,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2b8aff365102157f9799f63c-640.webp",
+        "bytes": 53954,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-convenience-chair_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-convenience-chair_v1_thumbnail.png",
+      "sourceHash": "1b887bd8351b16aea42c0de101b68f83001a4b12566eebee5e429067c4b05a74",
+      "sourceBytes": 694451,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/dd82d85c4226ce508c571fae-320.webp",
+        "bytes": 24690,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8e4fa46a10b4c773a011dc9e-640.webp",
+        "bytes": 60790,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-daegeum_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-daegeum_v1_thumbnail.png",
+      "sourceHash": "b1e730c7c4e0360df55f20642a595649722e4515478ef98ce844fcb35021c90d",
+      "sourceBytes": 564984,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/48fc202bf7f3ee724e6919d6-320.webp",
+        "bytes": 15748,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/19d72a8592c464c0fe12bba6-640.webp",
+        "bytes": 42408,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-dolhareubang_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-dolhareubang_v1_thumbnail.png",
+      "sourceHash": "1589bd36799cb8bd55676a1b780e308fe8c7be09805440f3c1dd1fe3d7b237b7",
+      "sourceBytes": 1081437,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/c0bbd8847e7420fdd73cd2e8-320.webp",
+        "bytes": 18390,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d2565667c7a99ef02b9c6855-640.webp",
+        "bytes": 54174,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-flower-palanquin_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-flower-palanquin_v1_thumbnail.png",
+      "sourceHash": "a2a07510e0eaaa4fec19e6474795bf21874222c13fe8e8f19ce625ef867bedaa",
+      "sourceBytes": 1294717,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/975740d8444412e8013d447d-320.webp",
+        "bytes": 32490,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6e3520a6098aa20b83bf8df3-640.webp",
+        "bytes": 91330,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-gayageum_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-gayageum_v1_thumbnail.png",
+      "sourceHash": "8e838bd7788dbf8bff5e75a5989e304c19d8a0c24a95f489fb6657ab804f4edc",
+      "sourceBytes": 974547,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2cd29f289bc2dfa454c0eb98-320.webp",
+        "bytes": 22752,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7f3672e1f37de4ec9fe5abc9-640.webp",
+        "bytes": 68508,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-hahoe-mask-display_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-hahoe-mask-display_v1_thumbnail.png",
+      "sourceHash": "7ea0105965e2ec4bb85d9d6e09733ab2dce132d6b2476170817817f7a9e0f495",
+      "sourceBytes": 1029080,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ff8b6b3376eb488428533e25-320.webp",
+        "bytes": 19980,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/66723392c417ed43a8d7f742-640.webp",
+        "bytes": 52516,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-jing-gong_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-jing-gong_v1_thumbnail.png",
+      "sourceHash": "cf6284bad265f221d34064e14921aeae987eab8eb8ca764cca31c1775f7cf814",
+      "sourceBytes": 1255316,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4cf17a8df8f3e615edf7ff25-320.webp",
+        "bytes": 29438,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/de14bff0e4d18c4162fe73db-640.webp",
+        "bytes": 75928,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-onggi-jars_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-onggi-jars_v1_thumbnail.png",
+      "sourceHash": "71cc7ea69eb146c89b50632d44ef1e865245f6dd04c1a65dc453143dc7aa10f4",
+      "sourceBytes": 1262369,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/57e4f81193356e314e43b028-320.webp",
+        "bytes": 24000,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0eea0e1b9c6454f6c5367a4c-640.webp",
+        "bytes": 63084,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hangang-samulnori-set_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/normal/hangang-samulnori-set_v1_thumbnail.png",
+      "sourceHash": "e910205099c5c64221861184a7e103d84b6e0a44cbfd26485b947490d74b32e4",
+      "sourceBytes": 1453351,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a7f1da59282cdb61159154ec-320.webp",
+        "bytes": 31226,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9891f65a975ee8cc142b5992-640.webp",
+        "bytes": 85894,
         "width": 640,
         "height": 640
       }
@@ -2428,6 +2788,166 @@
       "large": {
         "url": "/game-art/thumbnails/3cc353f2536f4b5fa4588d16-640.webp",
         "bytes": 103208,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-fireworks-launcher_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-fireworks-launcher_v1_thumbnail.png",
+      "sourceHash": "7995ca372555b001d3b0c7c01371d0bbd3180fb89c7699af6775bf7be7a35695",
+      "sourceBytes": 1177341,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/103158760fae8d9427158bc6-320.webp",
+        "bytes": 26972,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/748988b4662413f4819c2009-640.webp",
+        "bytes": 71226,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-goguryeo-rider_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-goguryeo-rider_v1_thumbnail.png",
+      "sourceHash": "573f8caee76b8740721c0082d289f035f70b1868b7a6636a0f4e535e13b93663",
+      "sourceBytes": 1339963,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/26e5f65bd283c999b047b11b-320.webp",
+        "bytes": 31564,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d832170d80a940e4b2b64bfd-640.webp",
+        "bytes": 93114,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-haeundae-breakwater_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-haeundae-breakwater_v1_thumbnail.png",
+      "sourceHash": "568c86eae6f29d224d1167a73cf45804769c2e9545bf95177972b05afef91b40",
+      "sourceBytes": 1052228,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8f31008ffe481ec6839b7822-320.webp",
+        "bytes": 21970,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/11d3f945d3277936bf7e526c-640.webp",
+        "bytes": 60594,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-jangseung-pair_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-jangseung-pair_v1_thumbnail.png",
+      "sourceHash": "a1b8f6be33bb43cb9da1d44de8138796c3f84da41eb7a2ca061e163516f1ce26",
+      "sourceBytes": 951561,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/daf3fa05806356cc52fe26da-320.webp",
+        "bytes": 22980,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/41a8911a68a70b52df2e7ef4-640.webp",
+        "bytes": 60890,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-mini-turtle-ship_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-mini-turtle-ship_v1_thumbnail.png",
+      "sourceHash": "feb5c10bd410c0a7b8117979a15f8eed35f6fb9c97595526f00d542b2982d153",
+      "sourceBytes": 1534635,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/30779ca7c44ab059e5b4cc32-320.webp",
+        "bytes": 33992,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e2be1a7ebde9578d3d0465c6-640.webp",
+        "bytes": 93620,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-najeon-jewelry-box_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-najeon-jewelry-box_v1_thumbnail.png",
+      "sourceHash": "d421a80de8214649e8e10ea581b22c14b8d48245a774aaefb38b2cfa0d64e6b5",
+      "sourceBytes": 1580812,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/935a0f50e3484d1bd25e72da-320.webp",
+        "bytes": 34008,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/61a3e3dd2b0ec26136d068ee-640.webp",
+        "bytes": 98726,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-pensive-bodhisattva_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-pensive-bodhisattva_v1_thumbnail.png",
+      "sourceHash": "4f19eb72608ddb79662ab40a123527b2b6e7625d89f02504c97e02c58a1628ae",
+      "sourceBytes": 1160953,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d25dca4e3c6f60df61959d72-320.webp",
+        "bytes": 24694,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/553a78b825d348fa70ffafc6-640.webp",
+        "bytes": 70438,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hangang-sipjangsaeng-screen_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/decorations/rare/hangang-sipjangsaeng-screen_v1_thumbnail.png",
+      "sourceHash": "64ebadbddaaebb60bacf1c2155242810ea8a39b21001ceb2f9618f2b15e5e632",
+      "sourceBytes": 1697559,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/43b10587c9a31eed1a4773f9-320.webp",
+        "bytes": 34168,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7b205041522d3e87540e53e4-640.webp",
+        "bytes": 102004,
         "width": 640,
         "height": 640
       }
@@ -4453,6 +4973,166 @@
       }
     },
     {
+      "key": "fish/epic/hangang-celadon-sea-dragon_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-celadon-sea-dragon_v1_thumbnail.png",
+      "sourceHash": "ab8eb2a1b3cb2ffc66ec6ae178f4b953371131ae70a64f1c27d18f38e2691234",
+      "sourceBytes": 1059254,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d9e4b728c144dd2fb6eafd7e-320.webp",
+        "bytes": 32660,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/62af1e18c20c522880e11ba6-640.webp",
+        "bytes": 95500,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hangang-dokdo-guardian_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-dokdo-guardian_v1_thumbnail.png",
+      "sourceHash": "36807af0bde6446169aff5d5a8f5b738aae18259e0a404b984a90ec351957b74",
+      "sourceBytes": 1158185,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/cfc26767f431794875f60662-320.webp",
+        "bytes": 28186,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1bd617605a4127676b9526af-640.webp",
+        "bytes": 85492,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hangang-haetae-guardian_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-haetae-guardian_v1_thumbnail.png",
+      "sourceHash": "c3abbadc9e219ec6f5c5b55736366538c04f31f71934e1fc054ef7b022d27365",
+      "sourceBytes": 1681153,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/808135740bbcea310261cad1-320.webp",
+        "bytes": 41142,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b5a3798380e295d13656657b-640.webp",
+        "bytes": 122734,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hangang-iron-eater-bulgasari_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-iron-eater-bulgasari_v1_thumbnail.png",
+      "sourceHash": "827ea7bf200d334d9ea6f730df2da8efa0cb97aabb28bed935b1505e57a7fe59",
+      "sourceBytes": 1983412,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/500dc52cab4ef0fb676369a7-320.webp",
+        "bytes": 46062,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/975ef8159aaaac52d4b6420c-640.webp",
+        "bytes": 147512,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hangang-mago-creator_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-mago-creator_v1_thumbnail.png",
+      "sourceHash": "975e89281555586e9b35e3d7c59703c6a3627d32f7ee671579cc61cabdff3e76",
+      "sourceBytes": 1967854,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a3deaad9fbb197eb9d3e2c69-320.webp",
+        "bytes": 44910,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4bda2a7fb22c2420789c6f1c-640.webp",
+        "bytes": 138330,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
+      "sourceHash": "4c7be2351c2feb7e5a63e167cce8a06274945400f487fbda7247fc50eb81f980",
+      "sourceBytes": 1640419,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3a7583a0dabff3f7124bd0b9-320.webp",
+        "bytes": 40674,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/91befa622dbd14aa288a1814-640.webp",
+        "bytes": 121550,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hangang-moon-white-tiger_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-moon-white-tiger_v1_thumbnail.png",
+      "sourceHash": "db7b672d456b220988278da36a745a615bb91cfd0daa53b1fc4a9d7b6c395954",
+      "sourceBytes": 1211977,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f167c28cd445488dd1cc0558-320.webp",
+        "bytes": 31552,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/990cb173fe768844da38bff2-640.webp",
+        "bytes": 96978,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hangang-taegeuk-twin-fish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-taegeuk-twin-fish_v1_thumbnail.png",
+      "sourceHash": "c7f2a68c234895c10f7dbb99194d04f1043e4f64b2d47930616875496c558683",
+      "sourceBytes": 1817736,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a04cb1a6a775b021f26cc2be-320.webp",
+        "bytes": 47982,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/db87fd23cf3ac8a66d09d347-640.webp",
+        "bytes": 135706,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/epic/hourglass-sea-cucumber_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/fish/epic/hourglass-sea-cucumber_thumbnail.png",
       "sourceHash": "7181cb0c0fbfab37c60f4875738ca3f7333148e9ceb753bb858d16b124be2f32",
@@ -6268,6 +6948,86 @@
       "large": {
         "url": "/game-art/thumbnails/80bbf61af4ba842c0b44ed05-640.webp",
         "bytes": 100716,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hangang-hunmin-spirit_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/mythic/hangang-hunmin-spirit_v1_thumbnail.png",
+      "sourceHash": "fe3f2813537e351cd21de0a74ee1efba27ef6803ba07d27235cd2725bed9fc30",
+      "sourceBytes": 1590650,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/42dcc0bede320f481f6c974a-320.webp",
+        "bytes": 34976,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/571c05111c4adfe0fc65bd43-640.webp",
+        "bytes": 110058,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hangang-immortal-turtle-ship_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/mythic/hangang-immortal-turtle-ship_v1_thumbnail.png",
+      "sourceHash": "ff01f80a537929386d670bc2aaba82ca18d7f20137744afc01db4013addf8a08",
+      "sourceBytes": 1670666,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e2cf030ad15218f1bbbc29f3-320.webp",
+        "bytes": 44480,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/dead9ae4d2c30c29764e919b-640.webp",
+        "bytes": 137144,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hangang-red-cheer-incarnation_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/mythic/hangang-red-cheer-incarnation_v1_thumbnail.png",
+      "sourceHash": "d59349c59cb11380aeb52024234a9dfdda588c9859bc44d5fed16052c462557b",
+      "sourceBytes": 1781750,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2e344c8d1416bde1c461e3f9-320.webp",
+        "bytes": 49888,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/014aeb68e56d0062c5bccd6f-640.webp",
+        "bytes": 143316,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hangang-ungnyeo-mother_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/mythic/hangang-ungnyeo-mother_v1_thumbnail.png",
+      "sourceHash": "52969e7011a400e913c4e7d3d016825f0960ad65620f64b3e1e280418a8c853f",
+      "sourceBytes": 1675510,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b777456138de176835c2f91b-320.webp",
+        "bytes": 38290,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/83d4f77fc3f681214bee92a7-640.webp",
+        "bytes": 118404,
         "width": 640,
         "height": 640
       }
@@ -8468,6 +9228,266 @@
       "large": {
         "url": "/game-art/thumbnails/77a2df560d3302e342690e0e-640.webp",
         "bytes": 76106,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-bibimbap-octopus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-bibimbap-octopus_v1_thumbnail.png",
+      "sourceHash": "4b6d3aeec8770cc9c6e3197ff72d02e5f7ae01f68793036e50eb60f3e3d9c775",
+      "sourceBytes": 1099877,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e18d89196e29973b73d2c003-320.webp",
+        "bytes": 26656,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/25bf7c8f6f51bb1ab34f6eb5-640.webp",
+        "bytes": 71506,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-dalgona-starfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-dalgona-starfish_v1_thumbnail.png",
+      "sourceHash": "0f04647944aa0b5182b913afca46525002b69248d86c5c9497d484f85e7f8698",
+      "sourceBytes": 951158,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/41e596c24e595faafc3cf5b6-320.webp",
+        "bytes": 20694,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/631414c3bcd066ac1819654b-640.webp",
+        "bytes": 55990,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-hangeun-crab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-hangeun-crab_v1_thumbnail.png",
+      "sourceHash": "9578952acc856419d3977f27b3d4cb7781ae31d2fe152bbe46c711db8c3a1818",
+      "sourceBytes": 993891,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ef26c90d7e22690ee46d4393-320.webp",
+        "bytes": 26042,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8f1495dfae0e7d2ae0642070-640.webp",
+        "bytes": 70646,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-jangseung-goby_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-jangseung-goby_v1_thumbnail.png",
+      "sourceHash": "b8eb55eb11ba017f7e548f2054246c33cbb5e03b90f3cc93af57acba9b0d3c3a",
+      "sourceBytes": 979275,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ea2ac3ffeceb5a04dc1ffccf-320.webp",
+        "bytes": 21622,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/399f655e39c539acfdfe4268-640.webp",
+        "bytes": 59362,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-kite-ray_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-kite-ray_v1_thumbnail.png",
+      "sourceHash": "66ef9f2619d8599d5e52012bd98b4bb5c6e3c0f85ade25db9687c84a3ce65bbd",
+      "sourceBytes": 764168,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fdc456825dd3e1cdd6d00bec-320.webp",
+        "bytes": 19818,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b0ac5400ca785b898c3c2471-640.webp",
+        "bytes": 48896,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-millstone-snail_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-millstone-snail_v1_thumbnail.png",
+      "sourceHash": "07807ec877446d4aff73549c31baf35b089bfdd9978af70fa47e98ac53cd7671",
+      "sourceBytes": 1017261,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5c1243f5676d808447cd62ec-320.webp",
+        "bytes": 20960,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d4f8fa3f0ba9381667480d83-640.webp",
+        "bytes": 58744,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-mugunghwa-shrimp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-mugunghwa-shrimp_v1_thumbnail.png",
+      "sourceHash": "707d8e7a3595f554fd71cc6eb8ef667c93e73078e98d2281fab6c1cd19d8f71a",
+      "sourceBytes": 932168,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/187e7d7366bb6b030cec0587-320.webp",
+        "bytes": 32786,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5652d333c9d9878a0d1ca043-640.webp",
+        "bytes": 87720,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-onggi-conch_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-onggi-conch_v1_thumbnail.png",
+      "sourceHash": "89748733b56885033be26ea9144edfcbed2cb67d7f8ad39a502703d6e74df5aa",
+      "sourceBytes": 984918,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/c067ba21f4426e74381a64db-320.webp",
+        "bytes": 20602,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b838d94aadef1ca8905cfc7b-640.webp",
+        "bytes": 56006,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-puffed-rice-urchin_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-puffed-rice-urchin_v1_thumbnail.png",
+      "sourceHash": "d6f57ce96124200742a5549f16e590f8e5be16ba132a3f515753563078b96e63",
+      "sourceBytes": 1260569,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1a0487fb51b3d38f3a0a515c-320.webp",
+        "bytes": 28802,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7b9a48df35929f066fda8364-640.webp",
+        "bytes": 75882,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-ramen-jellyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-ramen-jellyfish_v1_thumbnail.png",
+      "sourceHash": "f26a4902881bcb4153b0183d192379f232a9b7573d299311b2302b210aef58c1",
+      "sourceBytes": 991729,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/25184d1a3fabc5f0940d773e-320.webp",
+        "bytes": 27072,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a933a896ec8542fcaaf59c3a-640.webp",
+        "bytes": 70726,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-red-devil-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-red-devil-puffer_v1_thumbnail.png",
+      "sourceHash": "eb07935fc4bcab8f1c63dce0c8c6895778a22c5f3deb7a36412e29ca5c052dd2",
+      "sourceBytes": 830767,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6da6eb1dc0160a7935a9bae4-320.webp",
+        "bytes": 19896,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/159118362ad7323d2e1655be-640.webp",
+        "bytes": 48958,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-soju-shell-snail_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-soju-shell-snail_v1_thumbnail.png",
+      "sourceHash": "32e57f584a34a7c530d6223ba0ac6dedbc13d131ebb4df248b23ac022b13ad07",
+      "sourceBytes": 965690,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6caf46cfb6e38fbf10023e6b-320.webp",
+        "bytes": 21658,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6eaf2d1c8398d6ca892d8e91-640.webp",
+        "bytes": 59226,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hangang-taegeuk-minnow_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/normal/hangang-taegeuk-minnow_v1_thumbnail.png",
+      "sourceHash": "e853eb676f0442d1d6ec05f5fb918b42705a659274647f76e84e5a4e1016db24",
+      "sourceBytes": 635041,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e0c317392181cb3ca78aa50d-320.webp",
+        "bytes": 16190,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5d8ea991efbe99047053ed85-640.webp",
+        "bytes": 41350,
         "width": 640,
         "height": 640
       }
@@ -12013,6 +13033,286 @@
       }
     },
     {
+      "key": "fish/rare/hangang-hanbok-koi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-hanbok-koi_v1_thumbnail.png",
+      "sourceHash": "d50cffacaaf8b88940cde3b0a9f7f225f42c84bb862353eafeb49575f97f469d",
+      "sourceBytes": 1172552,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8d5100e41b68ede13366fe41-320.webp",
+        "bytes": 30508,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4eb67489b11f0f117baec237-640.webp",
+        "bytes": 83746,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-incense-seahorse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-incense-seahorse_v1_thumbnail.png",
+      "sourceHash": "d0f617c51e1533c77b30ea6d2510e1d54157876bc3101dd3ee005a96ce85cdba",
+      "sourceBytes": 1084655,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5161dcc29bca4cb937159f6d-320.webp",
+        "bytes": 27726,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e78d222c6ac3a5cf32523c06-640.webp",
+        "bytes": 78380,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-janggu-turtle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-janggu-turtle_v1_thumbnail.png",
+      "sourceHash": "bf68829909b4ed8811d6fa867464fdeaa23c57a2f3aabd5812dd8a153abb95c7",
+      "sourceBytes": 1043346,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2f2eff74a7a434e441bd80bf-320.webp",
+        "bytes": 25034,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8a114de9729617c6d06b71e4-640.webp",
+        "bytes": 66574,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-mugunghwa-butterflyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-mugunghwa-butterflyfish_v1_thumbnail.png",
+      "sourceHash": "41e8b010f392ff3f2d919a485ecf6c712409ac294ac7728c783bb6a751a61c1d",
+      "sourceBytes": 1284394,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/09593687a84bce6620e5e4a1-320.webp",
+        "bytes": 26378,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/c87ca8fda3fa4d23427d9654-640.webp",
+        "bytes": 70682,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-neon-hangul-bream_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-neon-hangul-bream_v1_thumbnail.png",
+      "sourceHash": "112f4ae96cb3d0527c0547f1aecf3877d54e7485cd5f3cc09871fdf71c79bac3",
+      "sourceBytes": 1124270,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/71fb49c154975d7c9b1efbfa-320.webp",
+        "bytes": 25664,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5b572bc8f747bcbeb3850f13-640.webp",
+        "bytes": 70318,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-pine-turtle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-pine-turtle_v1_thumbnail.png",
+      "sourceHash": "72eff9f53800477dee64cf5b1adf00792d87fcbffab79ef6acd9ed49bb26e503",
+      "sourceBytes": 1578741,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f5271b0a918be8088bdc6abf-320.webp",
+        "bytes": 40498,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/52ed465ecdbe5c6200c17d2f-640.webp",
+        "bytes": 122874,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-porcelain-seahorse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-porcelain-seahorse_v1_thumbnail.png",
+      "sourceHash": "138f85cf061fc53d98c0286e5cd67001175956bba339850945dbe287335c898b",
+      "sourceBytes": 1052432,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/de3d611938aa3b97e2493342-320.webp",
+        "bytes": 28260,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3eae61cdff7264cb1e4e415b-640.webp",
+        "bytes": 75802,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-pungmul-seabass_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-pungmul-seabass_v1_thumbnail.png",
+      "sourceHash": "1f9f97325db36eb624f349afddfe9a2bb0b97d44b64f8a9712404a4d70834386",
+      "sourceBytes": 1120292,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fcfc4414893cab979e944cf2-320.webp",
+        "bytes": 30506,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e88b2d712446125aa0cf57ae-640.webp",
+        "bytes": 82788,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-red-devil-squid_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-red-devil-squid_v1_thumbnail.png",
+      "sourceHash": "435881f424c31a4bd8be8adbb96db4d4c4cfcb4e8c31d0b6ee93af56860326a7",
+      "sourceBytes": 960827,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6a2e622c4f7abe82ee97c15a-320.webp",
+        "bytes": 26770,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/21871752dfeb9af34a24d037-640.webp",
+        "bytes": 69652,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-seonbi-koi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-seonbi-koi_v1_thumbnail.png",
+      "sourceHash": "c1776b66b06715bcd04a84c86ab2a5257fb635c4e05588d5c1c2d797fb122cf3",
+      "sourceBytes": 1023793,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a18b40345d3eb37657b0e921-320.webp",
+        "bytes": 25818,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1bd5405b17161ffb75efdd3d-640.webp",
+        "bytes": 68992,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-seven-branched-blade_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-seven-branched-blade_v1_thumbnail.png",
+      "sourceHash": "e9808df8d61a8d16d60d1d1b08110bfb5b0f7032c215c553e960736a113d5f0e",
+      "sourceBytes": 747788,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7d6b61fcb031a88cc0aa82b5-320.webp",
+        "bytes": 21958,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/be2d9bd79d98347ec3867b81-640.webp",
+        "bytes": 60914,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-silla-crown-jellyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-silla-crown-jellyfish_v1_thumbnail.png",
+      "sourceHash": "cda1047d09166f913d5266f0b356db233afd809341eb17ad1bdc0817443aeae7",
+      "sourceBytes": 1304258,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6479d00a9c58e704bd329e29-320.webp",
+        "bytes": 44552,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3e242d76722adff6d9cb7976-640.webp",
+        "bytes": 128038,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-talchum-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-talchum-puffer_v1_thumbnail.png",
+      "sourceHash": "fdbdd3b8dd5c8068f9e79632a44fdacb4eaafa7dae4887861d41570ef0a1e0c4",
+      "sourceBytes": 1212460,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a6155e346ba58b4bb3ed7662-320.webp",
+        "bytes": 30334,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/95a7655424f64594a840ec5e-640.webp",
+        "bytes": 84156,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hangang-tiger-catfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/fish/rare/hangang-tiger-catfish_v1_thumbnail.png",
+      "sourceHash": "573afa7b8d93aec8a49bb739ebb9543964314eb870f81cd64da61a007f614c47",
+      "sourceBytes": 758023,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b5773990c3aff9deccb80d46-320.webp",
+        "bytes": 20910,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/861875f39eafbae1be06ffc0-640.webp",
+        "bytes": 55098,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/rare/icearmor-king-crab_thumbnail.png",
       "source": "assets/storage-upload/new/20261017-153200/fish/rare/icearmor-king-crab_thumbnail.png",
       "sourceHash": "d69811946fca700ed96bdb1d72558eff4be26f95a6ad24cb6ce9cbeff86b3cce",
@@ -15193,6 +16493,226 @@
       }
     },
     {
+      "key": "trash/normal/hangang-broken-backscratcher_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-broken-backscratcher_v1_thumbnail.png",
+      "sourceHash": "a39d262223820c2df71ff9042a73de34b512ed3c44520f96ea5497d2d0168c51",
+      "sourceBytes": 454850,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1cd28e6d5dafe87709a7c1a8-320.webp",
+        "bytes": 12194,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9a247fb6dbb87e2a329df94e-640.webp",
+        "bytes": 32506,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-broken-cheering-stick_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-broken-cheering-stick_v1_thumbnail.png",
+      "sourceHash": "4253655afb0e8ae4c2ef716efb7287aa191dc50a1230493da651263586c5ae55",
+      "sourceBytes": 628265,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/cdb7f857f3af74992f07b01f-320.webp",
+        "bytes": 14368,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ac1ac177dfe254ed69c39b6d-640.webp",
+        "bytes": 37666,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-broken-soju-glass_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-broken-soju-glass_v1_thumbnail.png",
+      "sourceHash": "a5715ea6aecb066f3c6587a56039fbe71e928349446b461b9da0c6153e9255f7",
+      "sourceBytes": 1003616,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/95792b69009312e9e063926e-320.webp",
+        "bytes": 20010,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f7d095c769259f96f8c68524-640.webp",
+        "bytes": 58106,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-dented-ramen-pot_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-dented-ramen-pot_v1_thumbnail.png",
+      "sourceHash": "ac25e81caa2944cb55785c99488e15ed63be96a2c48f7c6a404b6fcc52386012",
+      "sourceBytes": 956396,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/99a8ef711723686b75692be1-320.webp",
+        "bytes": 18986,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/49a360b768abe75bbf7caaf4-640.webp",
+        "bytes": 52406,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-discarded-duck-boat_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-discarded-duck-boat_v1_thumbnail.png",
+      "sourceHash": "f9d2f00ee269232736d3da6cf91e61d021fed2a146d577421014491df8dc2261",
+      "sourceBytes": 1445299,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/de8321294445816378519274-320.webp",
+        "bytes": 30088,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4ce9fc5fc3bf98d93ea37144-640.webp",
+        "bytes": 89254,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-old-100-won_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-old-100-won_v1_thumbnail.png",
+      "sourceHash": "363498171cf248f9d77911ebb7948922b4cd8a7dff93599910a5b6f744e5d3cf",
+      "sourceBytes": 1621235,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/bf82d0dffb4f606c6bd39cd5-320.webp",
+        "bytes": 28690,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b2fc80d58c1144220023fee9-640.webp",
+        "bytes": 95782,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-old-1000-won_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-old-1000-won_v1_thumbnail.png",
+      "sourceHash": "4f92b09b98c93b4485454f7be4c3d412ace56d47d571178c42d1d0e7c87aaeab",
+      "sourceBytes": 1372328,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/81136e25b62fc26fa53673dc-320.webp",
+        "bytes": 26136,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/716ef7ac3a709fa86e98507e-640.webp",
+        "bytes": 81466,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-old-karaoke-microphone_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-old-karaoke-microphone_v1_thumbnail.png",
+      "sourceHash": "75b8aa122758474e4a081b6184299ffb214c2f2443165185d25b53990f837298",
+      "sourceBytes": 822952,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/c208f964a2df9f270157307b-320.webp",
+        "bytes": 18354,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/90168347517bb7089731361a-640.webp",
+        "bytes": 53638,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-wet-exam-book_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-wet-exam-book_v1_thumbnail.png",
+      "sourceHash": "297398aa051ce26fa7c490c4d7fefd503b37de7ff532fa0df5594f2425490ced",
+      "sourceBytes": 1101807,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/877476880b7f33f7f2beb179-320.webp",
+        "bytes": 18488,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5e8f79de37b794d097778322-640.webp",
+        "bytes": 50050,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-wet-taegeukgi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-wet-taegeukgi_v1_thumbnail.png",
+      "sourceHash": "512560315bc923052199e02dd99625d09a21e87c9035e762bf79a15b95e70ccf",
+      "sourceBytes": 768247,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/60d18b5f8a65734c8f938128-320.webp",
+        "bytes": 17882,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/210340ce55f68263f3950936-640.webp",
+        "bytes": 47468,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hangang-wet-transit-card_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/normal/hangang-wet-transit-card_v1_thumbnail.png",
+      "sourceHash": "f0b71f3550e1c48e5f69c2836b249089837fe022f8747893e4c920f8ea785162",
+      "sourceBytes": 1114095,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/21bf6c877c21fa35fbdbb199-320.webp",
+        "bytes": 19656,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f5a27d30db05fff1588afb64-640.webp",
+        "bytes": 55686,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "trash/normal/hazy-glass-marble_thumbnail.png",
       "source": ".cache/thumbnail-sources/9c130df3908f7c22762a3cb0.png",
       "sourceHash": "a9f29250146e7f540d2d63fc21e1cce74bf608e96d681565336ecb9f83f8483e",
@@ -16648,6 +18168,166 @@
       "large": {
         "url": "/game-art/thumbnails/13bac5e7416e4c4ca9a07be2-640.webp",
         "bytes": 56568,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-broken-celadon-censer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-broken-celadon-censer_v1_thumbnail.png",
+      "sourceHash": "59be99f9104790779473f91f66f17823b4841be8ed6b90797019d41ed8b60adb",
+      "sourceBytes": 1192003,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/93f23acc067beb3e5738681c-320.webp",
+        "bytes": 23324,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/905db5a2290a7b6ca65d3004-640.webp",
+        "bytes": 66118,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-hangul-woodblock-fragment_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-hangul-woodblock-fragment_v1_thumbnail.png",
+      "sourceHash": "6263d43f64d1640a334064d2fa333384c4c3dad2428043ed6f15bd15a2e9a760",
+      "sourceBytes": 1273626,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7950f8544a82a99f062d29fe-320.webp",
+        "bytes": 24972,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d622c29c06c29d0a8e1eb3f8-640.webp",
+        "bytes": 81788,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-hanyang-map-fragment_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-hanyang-map-fragment_v1_thumbnail.png",
+      "sourceHash": "68c5c8700249ea17a15b1cb63a6c15c47968f6bcc17489c2c6c77042c8cddbae",
+      "sourceBytes": 1659310,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f36d0ccf04cb9d3718009ad4-320.webp",
+        "bytes": 32122,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8f3e6aa0e4aad2e824f52a70-640.webp",
+        "bytes": 104802,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-last-pager_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-last-pager_v1_thumbnail.png",
+      "sourceHash": "bdec9953bc6ed8472a3f7cc90ce2980b87badf2f09875a0228a0af8102fdfbc4",
+      "sourceBytes": 1195862,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/cc8f0003502612c1456b9d52-320.webp",
+        "bytes": 20538,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a6bfc1e3b24de3aa8fe684fb-640.webp",
+        "bytes": 61690,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-moon-porcelain-shard_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-moon-porcelain-shard_v1_thumbnail.png",
+      "sourceHash": "bc299cdf4b96fefa837980c5f8290977c929dd4b8b0668d878fa018b921ecd39",
+      "sourceBytes": 921125,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/bcfc1c9b904d7f7a45015eda-320.webp",
+        "bytes": 19340,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7d1fea5c39f6ad44b67bc0ce-640.webp",
+        "bytes": 52778,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-olympic-badge_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-olympic-badge_v1_thumbnail.png",
+      "sourceHash": "f2496646a69277a10ab20b40da77c7d645c0b76c8449e7ed636c9634973ce1fc",
+      "sourceBytes": 1229307,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/173ca2fd8e78d847c0e93901-320.webp",
+        "bytes": 22056,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5441ad584dd882b3155d4e78-640.webp",
+        "bytes": 65964,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-rusted-cash-bundle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-rusted-cash-bundle_v1_thumbnail.png",
+      "sourceHash": "de309aac77780f3c38acb9cb5cb8ca6ae2f1de6dc1819ed3d57cce61399dadd0",
+      "sourceBytes": 1412017,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1aa1eaa01050fcf4d7825241-320.webp",
+        "bytes": 30140,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/549c47e885c270a88f73b22e-640.webp",
+        "bytes": 96168,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hangang-rusted-turtle-ship-iron_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-033000/trash/rare/hangang-rusted-turtle-ship-iron_v1_thumbnail.png",
+      "sourceHash": "da481bb9d31611e0966d6cb10d6ce793acffe4756850b2657f5e1b7ba022a93c",
+      "sourceBytes": 927947,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1405e8f2b2f33e1665b53e18-320.webp",
+        "bytes": 20820,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7ca86092450e45dabfc621c8-640.webp",
+        "bytes": 64394,
         "width": 640,
         "height": 640
       }

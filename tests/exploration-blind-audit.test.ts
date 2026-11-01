@@ -6,6 +6,7 @@ it('selects doors using only seed and floor, with no room-type input',()=>{
  for(let seed=1;seed<=6000;seed++)counts[blindDoorIndex(seed,22)]++
  expect(counts.every(n=>n>1800&&n<2200)).toBe(true)
  expect(blindDoorIndex(77,22)).toBe(blindDoorIndex(77,22))
+ for(let seed=1;seed<=100;seed++)expect(blindDoorIndex(seed,50,1)).toBe(0)
 })
 it('runs blind policies against the live campaign and reports reproducible valid outcomes',()=>{
  for(const policy of baselinePolicies){

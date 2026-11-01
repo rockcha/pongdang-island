@@ -45,3 +45,14 @@ it('shares the waiting screen without coupling free practice to real-play availa
  fireEvent.click(screen.getByRole('button',{name:'실전 (무료)'}))
  expect(real).toHaveBeenCalledOnce()
 })
+it('supports real play alone and an operator test action in place of practice',()=>{
+ const props={title:'탐험',description:'50층에 도전해요.',poster:'/test.png',onPaid:()=>{},fee:0,paidDisabled:false}
+ const view=render(<GameStartOverlay {...props}/>)
+ expect(screen.getAllByRole('button')).toHaveLength(1)
+ expect(screen.queryByRole('button',{name:'연습'})).toBeNull()
+ const test=vi.fn()
+ view.rerender(<GameStartOverlay {...props} onPractice={test} practiceLabel="테스트"/>)
+ fireEvent.click(screen.getByRole('button',{name:'테스트'}))
+ expect(test).toHaveBeenCalledOnce()
+ expect(screen.queryByRole('button',{name:'연습'})).toBeNull()
+})

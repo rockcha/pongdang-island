@@ -1,0 +1,4941 @@
+{
+  "results": [
+    {
+      "id": "hangang-taegeuk-minnow",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-taegeuk-minnow_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            55,
+            371,
+            1150,
+            531
+          ],
+          "margin": 49,
+          "occupancy": 0.9170653907496013,
+          "opaque": 304713,
+          "transparent": 1259817,
+          "soft": 311559
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-taegeuk-minnow",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-taegeuk-minnow_v1_sprite.png",
+      "width": 1490,
+      "height": 1490,
+      "cell": 745,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            118,
+            284,
+            543,
+            266
+          ],
+          "margin": 84,
+          "occupancy": 0.7288590604026846,
+          "opaque": 72940,
+          "transparent": 475512,
+          "soft": 79280
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            131,
+            284,
+            530,
+            265
+          ],
+          "margin": 84,
+          "occupancy": 0.7114093959731543,
+          "opaque": 68143,
+          "transparent": 480558,
+          "soft": 74248
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            125,
+            287,
+            539,
+            263
+          ],
+          "margin": 81,
+          "occupancy": 0.723489932885906,
+          "opaque": 72011,
+          "transparent": 475665,
+          "soft": 79121
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            116,
+            290,
+            544,
+            257
+          ],
+          "margin": 85,
+          "occupancy": 0.7302013422818792,
+          "opaque": 70429,
+          "transparent": 476872,
+          "soft": 77968
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-devil-puffer",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-red-devil-puffer_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            99,
+            229,
+            1058,
+            797
+          ],
+          "margin": 97,
+          "occupancy": 0.8437001594896332,
+          "opaque": 545653,
+          "transparent": 1018539,
+          "soft": 553013
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-devil-puffer",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-red-devil-puffer_v1_sprite.png",
+      "width": 1798,
+      "height": 1798,
+      "cell": 899,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            198,
+            309,
+            559,
+            402
+          ],
+          "margin": 142,
+          "occupancy": 0.6218020022246941,
+          "opaque": 143958,
+          "transparent": 658704,
+          "soft": 149184
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            237,
+            309,
+            520,
+            400
+          ],
+          "margin": 142,
+          "occupancy": 0.578420467185762,
+          "opaque": 138404,
+          "transparent": 664272,
+          "soft": 143611
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            264,
+            312,
+            494,
+            399
+          ],
+          "margin": 141,
+          "occupancy": 0.5494994438264739,
+          "opaque": 131916,
+          "transparent": 670141,
+          "soft": 137783
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            199,
+            310,
+            558,
+            400
+          ],
+          "margin": 142,
+          "occupancy": 0.6206896551724138,
+          "opaque": 143101,
+          "transparent": 659165,
+          "soft": 148732
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-soju-shell-snail",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-soju-shell-snail_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            110,
+            269,
+            1087,
+            782
+          ],
+          "margin": 57,
+          "occupancy": 0.8668261562998405,
+          "opaque": 501027,
+          "transparent": 1061384,
+          "soft": 510602
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-soju-shell-snail",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-soju-shell-snail_v1_sprite.png",
+      "width": 1490,
+      "height": 1490,
+      "cell": 745,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            170,
+            236,
+            506,
+            366
+          ],
+          "margin": 69,
+          "occupancy": 0.6791946308724832,
+          "opaque": 110559,
+          "transparent": 433596,
+          "soft": 121180
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            170,
+            235,
+            506,
+            364
+          ],
+          "margin": 69,
+          "occupancy": 0.6791946308724832,
+          "opaque": 108766,
+          "transparent": 429896,
+          "soft": 124866
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            169,
+            235,
+            507,
+            361
+          ],
+          "margin": 69,
+          "occupancy": 0.6805369127516778,
+          "opaque": 108480,
+          "transparent": 435199,
+          "soft": 119701
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            170,
+            235,
+            506,
+            364
+          ],
+          "margin": 69,
+          "occupancy": 0.6791946308724832,
+          "opaque": 108763,
+          "transparent": 433736,
+          "soft": 121125
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mugunghwa-shrimp",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-mugunghwa-shrimp_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            46,
+            123,
+            1174,
+            984
+          ],
+          "margin": 34,
+          "occupancy": 0.9362041467304625,
+          "opaque": 387457,
+          "transparent": 1143129,
+          "soft": 427936
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mugunghwa-shrimp",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-mugunghwa-shrimp_v1_sprite.png",
+      "width": 1418,
+      "height": 1418,
+      "cell": 709,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            115,
+            166,
+            526,
+            442
+          ],
+          "margin": 68,
+          "occupancy": 0.7418899858956276,
+          "opaque": 86247,
+          "transparent": 391347,
+          "soft": 110800
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            105,
+            166,
+            536,
+            446
+          ],
+          "margin": 68,
+          "occupancy": 0.7559943582510579,
+          "opaque": 88871,
+          "transparent": 383956,
+          "soft": 118139
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            61,
+            170,
+            581,
+            439
+          ],
+          "margin": 61,
+          "occupancy": 0.8194640338504936,
+          "opaque": 94345,
+          "transparent": 376654,
+          "soft": 125534
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            109,
+            170,
+            531,
+            439
+          ],
+          "margin": 69,
+          "occupancy": 0.7489421720733427,
+          "opaque": 85214,
+          "transparent": 377846,
+          "soft": 124340
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hangeun-crab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-hangeun-crab_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            64,
+            242,
+            1155,
+            743
+          ],
+          "margin": 35,
+          "occupancy": 0.9210526315789473,
+          "opaque": 465241,
+          "transparent": 1089864,
+          "soft": 481590
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hangeun-crab",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-hangeun-crab_v1_sprite.png",
+      "width": 1458,
+      "height": 1458,
+      "cell": 729,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            107,
+            212,
+            545,
+            356
+          ],
+          "margin": 77,
+          "occupancy": 0.747599451303155,
+          "opaque": 105505,
+          "transparent": 411796,
+          "soft": 119363
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            114,
+            210,
+            536,
+            355
+          ],
+          "margin": 79,
+          "occupancy": 0.7352537722908093,
+          "opaque": 103647,
+          "transparent": 412429,
+          "soft": 118689
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            96,
+            218,
+            563,
+            344
+          ],
+          "margin": 70,
+          "occupancy": 0.7722908093278463,
+          "opaque": 103130,
+          "transparent": 407906,
+          "soft": 123277
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            113,
+            217,
+            546,
+            347
+          ],
+          "margin": 70,
+          "occupancy": 0.7489711934156379,
+          "opaque": 103578,
+          "transparent": 412332,
+          "soft": 118855
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-bibimbap-octopus",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-bibimbap-octopus_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            107,
+            215,
+            1091,
+            850
+          ],
+          "margin": 56,
+          "occupancy": 0.8700159489633174,
+          "opaque": 600253,
+          "transparent": 960501,
+          "soft": 611181
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-bibimbap-octopus",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-bibimbap-octopus_v1_sprite.png",
+      "width": 1426,
+      "height": 1426,
+      "cell": 713,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            87,
+            165,
+            554,
+            437
+          ],
+          "margin": 72,
+          "occupancy": 0.7769985974754559,
+          "opaque": 160779,
+          "transparent": 331036,
+          "soft": 176961
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            56,
+            165,
+            585,
+            442
+          ],
+          "margin": 56,
+          "occupancy": 0.820476858345021,
+          "opaque": 166599,
+          "transparent": 327616,
+          "soft": 180416
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            71,
+            165,
+            570,
+            431
+          ],
+          "margin": 71,
+          "occupancy": 0.7994389901823282,
+          "opaque": 158274,
+          "transparent": 334069,
+          "soft": 173873
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            77,
+            165,
+            563,
+            434
+          ],
+          "margin": 73,
+          "occupancy": 0.7896213183730715,
+          "opaque": 161024,
+          "transparent": 333014,
+          "soft": 174994
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-ramen-jellyfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-ramen-jellyfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            72,
+            160,
+            1143,
+            952
+          ],
+          "margin": 39,
+          "occupancy": 0.9114832535885168,
+          "opaque": 535489,
+          "transparent": 1020585,
+          "soft": 550321
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-ramen-jellyfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-ramen-jellyfish_v1_sprite.png",
+      "width": 1498,
+      "height": 1498,
+      "cell": 749,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            125,
+            179,
+            547,
+            457
+          ],
+          "margin": 77,
+          "occupancy": 0.7303070761014686,
+          "opaque": 129435,
+          "transparent": 418427,
+          "soft": 141986
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            155,
+            171,
+            517,
+            444
+          ],
+          "margin": 77,
+          "occupancy": 0.6902536715620827,
+          "opaque": 122636,
+          "transparent": 425669,
+          "soft": 134795
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            103,
+            183,
+            570,
+            450
+          ],
+          "margin": 76,
+          "occupancy": 0.7610146862483311,
+          "opaque": 128261,
+          "transparent": 416814,
+          "soft": 143601
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            165,
+            171,
+            504,
+            440
+          ],
+          "margin": 80,
+          "occupancy": 0.6728971962616822,
+          "opaque": 119712,
+          "transparent": 429194,
+          "soft": 131254
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-dalgona-starfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-dalgona-starfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            150,
+            111,
+            1019,
+            1049
+          ],
+          "margin": 85,
+          "occupancy": 0.8365231259968102,
+          "opaque": 480788,
+          "transparent": 1082105,
+          "soft": 489227
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-dalgona-starfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-dalgona-starfish_v1_sprite.png",
+      "width": 1458,
+      "height": 1458,
+      "cell": 729,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            183,
+            158,
+            460,
+            470
+          ],
+          "margin": 86,
+          "occupancy": 0.644718792866941,
+          "opaque": 104309,
+          "transparent": 422014,
+          "soft": 108983
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            186,
+            162,
+            461,
+            454
+          ],
+          "margin": 82,
+          "occupancy": 0.6323731138545954,
+          "opaque": 101133,
+          "transparent": 424916,
+          "soft": 106077
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            177,
+            153,
+            467,
+            468
+          ],
+          "margin": 85,
+          "occupancy": 0.6419753086419753,
+          "opaque": 103919,
+          "transparent": 418779,
+          "soft": 112343
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            178,
+            153,
+            472,
+            462
+          ],
+          "margin": 79,
+          "occupancy": 0.6474622770919067,
+          "opaque": 107034,
+          "transparent": 418483,
+          "soft": 112630
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-onggi-conch",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-onggi-conch_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            118,
+            246,
+            1077,
+            816
+          ],
+          "margin": 59,
+          "occupancy": 0.8588516746411483,
+          "opaque": 535369,
+          "transparent": 1029281,
+          "soft": 542661
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-onggi-conch",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-onggi-conch_v1_sprite.png",
+      "width": 1390,
+      "height": 1390,
+      "cell": 695,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            97,
+            190,
+            559,
+            403
+          ],
+          "margin": 39,
+          "occupancy": 0.8043165467625899,
+          "opaque": 139398,
+          "transparent": 335608,
+          "soft": 147068
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            96,
+            190,
+            555,
+            407
+          ],
+          "margin": 44,
+          "occupancy": 0.7985611510791367,
+          "opaque": 136842,
+          "transparent": 339324,
+          "soft": 143330
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            98,
+            189,
+            557,
+            404
+          ],
+          "margin": 40,
+          "occupancy": 0.8014388489208633,
+          "opaque": 138960,
+          "transparent": 336220,
+          "soft": 146363
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            98,
+            189,
+            555,
+            405
+          ],
+          "margin": 42,
+          "occupancy": 0.7985611510791367,
+          "opaque": 138481,
+          "transparent": 337063,
+          "soft": 145548
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-kite-ray",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-kite-ray_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            41,
+            163,
+            1174,
+            920
+          ],
+          "margin": 39,
+          "occupancy": 0.9362041467304625,
+          "opaque": 393728,
+          "transparent": 1168953,
+          "soft": 402563
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-kite-ray",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-kite-ray_v1_sprite.png",
+      "width": 1442,
+      "height": 1442,
+      "cell": 721,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            127,
+            161,
+            500,
+            455
+          ],
+          "margin": 94,
+          "occupancy": 0.6934812760055479,
+          "opaque": 86353,
+          "transparent": 426536,
+          "soft": 92762
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            65,
+            208,
+            561,
+            349
+          ],
+          "margin": 65,
+          "occupancy": 0.7780859916782247,
+          "opaque": 83394,
+          "transparent": 430351,
+          "soft": 88780
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            89,
+            251,
+            537,
+            332
+          ],
+          "margin": 89,
+          "occupancy": 0.7447988904299584,
+          "opaque": 79536,
+          "transparent": 433310,
+          "soft": 86026
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            100,
+            163,
+            527,
+            438
+          ],
+          "margin": 94,
+          "occupancy": 0.7309292649098474,
+          "opaque": 84294,
+          "transparent": 428032,
+          "soft": 91224
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-millstone-snail",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-millstone-snail_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            87,
+            249,
+            1083,
+            790
+          ],
+          "margin": 84,
+          "occupancy": 0.8636363636363636,
+          "opaque": 494731,
+          "transparent": 1067762,
+          "soft": 503954
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-millstone-snail",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-millstone-snail_v1_sprite.png",
+      "width": 1390,
+      "height": 1390,
+      "cell": 695,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            83,
+            187,
+            545,
+            390
+          ],
+          "margin": 67,
+          "occupancy": 0.7841726618705036,
+          "opaque": 121230,
+          "transparent": 351117,
+          "soft": 131682
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            92,
+            187,
+            536,
+            389
+          ],
+          "margin": 67,
+          "occupancy": 0.7712230215827338,
+          "opaque": 121162,
+          "transparent": 351076,
+          "soft": 131738
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            86,
+            189,
+            543,
+            386
+          ],
+          "margin": 66,
+          "occupancy": 0.781294964028777,
+          "opaque": 119925,
+          "transparent": 353363,
+          "soft": 129406
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            110,
+            189,
+            519,
+            383
+          ],
+          "margin": 66,
+          "occupancy": 0.7467625899280576,
+          "opaque": 118663,
+          "transparent": 355177,
+          "soft": 127638
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-puffed-rice-urchin",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-puffed-rice-urchin_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            92,
+            189,
+            1070,
+            877
+          ],
+          "margin": 92,
+          "occupancy": 0.8532695374800638,
+          "opaque": 647117,
+          "transparent": 912365,
+          "soft": 659041
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-puffed-rice-urchin",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-puffed-rice-urchin_v1_sprite.png",
+      "width": 1450,
+      "height": 1450,
+      "cell": 725,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            120,
+            183,
+            491,
+            413
+          ],
+          "margin": 114,
+          "occupancy": 0.6772413793103448,
+          "opaque": 141433,
+          "transparent": 366721,
+          "soft": 158785
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            119,
+            182,
+            487,
+            415
+          ],
+          "margin": 119,
+          "occupancy": 0.6717241379310345,
+          "opaque": 140014,
+          "transparent": 372847,
+          "soft": 152636
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            117,
+            184,
+            489,
+            411
+          ],
+          "margin": 117,
+          "occupancy": 0.6744827586206896,
+          "opaque": 141942,
+          "transparent": 362985,
+          "soft": 162557
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            113,
+            185,
+            491,
+            415
+          ],
+          "margin": 113,
+          "occupancy": 0.6772413793103448,
+          "opaque": 142529,
+          "transparent": 366423,
+          "soft": 159053
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-jangseung-goby",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-jangseung-goby_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            46,
+            318,
+            1165,
+            638
+          ],
+          "margin": 43,
+          "occupancy": 0.9290271132376395,
+          "opaque": 432500,
+          "transparent": 1130034,
+          "soft": 441972
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-jangseung-goby",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\normal\\hangang-jangseung-goby_v1_sprite.png",
+      "width": 1478,
+      "height": 1478,
+      "cell": 739,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            97,
+            250,
+            570,
+            316
+          ],
+          "margin": 72,
+          "occupancy": 0.7713125845737483,
+          "opaque": 103570,
+          "transparent": 436258,
+          "soft": 109634
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            87,
+            251,
+            580,
+            313
+          ],
+          "margin": 72,
+          "occupancy": 0.7848443843031123,
+          "opaque": 102355,
+          "transparent": 437036,
+          "soft": 108846
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            122,
+            255,
+            545,
+            301
+          ],
+          "margin": 72,
+          "occupancy": 0.7374830852503383,
+          "opaque": 97723,
+          "transparent": 438739,
+          "soft": 107173
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            95,
+            252,
+            572,
+            309
+          ],
+          "margin": 72,
+          "occupancy": 0.774018944519621,
+          "opaque": 102898,
+          "transparent": 434994,
+          "soft": 110951
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-porcelain-seahorse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-porcelain-seahorse_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            218,
+            93,
+            880,
+            1088
+          ],
+          "margin": 73,
+          "occupancy": 0.8676236044657097,
+          "opaque": 451849,
+          "transparent": 1106397,
+          "soft": 464679
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-porcelain-seahorse",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-porcelain-seahorse_v1_sprite.png",
+      "width": 1402,
+      "height": 1402,
+      "cell": 701,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            196,
+            110,
+            410,
+            526
+          ],
+          "margin": 65,
+          "occupancy": 0.7503566333808844,
+          "opaque": 104946,
+          "transparent": 377521,
+          "soft": 113292
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            198,
+            107,
+            411,
+            536
+          ],
+          "margin": 58,
+          "occupancy": 0.7646219686162625,
+          "opaque": 105669,
+          "transparent": 375229,
+          "soft": 115561
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            165,
+            109,
+            444,
+            513
+          ],
+          "margin": 79,
+          "occupancy": 0.7318116975748931,
+          "opaque": 96467,
+          "transparent": 385594,
+          "soft": 105293
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            197,
+            108,
+            411,
+            522
+          ],
+          "margin": 71,
+          "occupancy": 0.7446504992867332,
+          "opaque": 107287,
+          "transparent": 371996,
+          "soft": 118768
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-talchum-puffer",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-talchum-puffer_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            54,
+            223,
+            1186,
+            802
+          ],
+          "margin": 14,
+          "occupancy": 0.9457735247208932,
+          "opaque": 592226,
+          "transparent": 940970,
+          "soft": 631032
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-talchum-puffer",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-talchum-puffer_v1_sprite.png",
+      "width": 1438,
+      "height": 1438,
+      "cell": 719,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            129,
+            217,
+            499,
+            355
+          ],
+          "margin": 91,
+          "occupancy": 0.694019471488178,
+          "opaque": 107172,
+          "transparent": 392381,
+          "soft": 124292
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            156,
+            229,
+            471,
+            342
+          ],
+          "margin": 92,
+          "occupancy": 0.655076495132128,
+          "opaque": 96312,
+          "transparent": 402804,
+          "soft": 113856
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            119,
+            230,
+            509,
+            342
+          ],
+          "margin": 91,
+          "occupancy": 0.7079276773296245,
+          "opaque": 104050,
+          "transparent": 393703,
+          "soft": 123070
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            131,
+            230,
+            496,
+            342
+          ],
+          "margin": 92,
+          "occupancy": 0.6898470097357441,
+          "opaque": 102176,
+          "transparent": 393587,
+          "soft": 123165
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-janggu-turtle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-janggu-turtle_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            107,
+            253,
+            1071,
+            786
+          ],
+          "margin": 76,
+          "occupancy": 0.854066985645933,
+          "opaque": 529021,
+          "transparent": 1031629,
+          "soft": 539389
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-janggu-turtle",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-janggu-turtle_v1_sprite.png",
+      "width": 1318,
+      "height": 1318,
+      "cell": 659,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            86,
+            177,
+            506,
+            336
+          ],
+          "margin": 67,
+          "occupancy": 0.7678300455235205,
+          "opaque": 112672,
+          "transparent": 309149,
+          "soft": 124803
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            80,
+            174,
+            505,
+            387
+          ],
+          "margin": 74,
+          "occupancy": 0.7663125948406677,
+          "opaque": 113519,
+          "transparent": 305832,
+          "soft": 128151
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            95,
+            176,
+            490,
+            325
+          ],
+          "margin": 74,
+          "occupancy": 0.7435508345978755,
+          "opaque": 107623,
+          "transparent": 313653,
+          "soft": 120379
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            93,
+            175,
+            492,
+            356
+          ],
+          "margin": 74,
+          "occupancy": 0.7465857359635811,
+          "opaque": 110456,
+          "transparent": 305454,
+          "soft": 128547
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hanbok-koi",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-hanbok-koi_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            185,
+            1147,
+            904
+          ],
+          "margin": 47,
+          "occupancy": 0.9146730462519936,
+          "opaque": 517264,
+          "transparent": 1032165,
+          "soft": 539166
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hanbok-koi",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-hanbok-koi_v1_sprite.png",
+      "width": 1506,
+      "height": 1506,
+      "cell": 753,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            93,
+            181,
+            583,
+            473
+          ],
+          "margin": 77,
+          "occupancy": 0.7742363877822045,
+          "opaque": 137331,
+          "transparent": 415942,
+          "soft": 150505
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            92,
+            240,
+            584,
+            421
+          ],
+          "margin": 77,
+          "occupancy": 0.7755644090305445,
+          "opaque": 133563,
+          "transparent": 417823,
+          "soft": 148594
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            110,
+            214,
+            564,
+            455
+          ],
+          "margin": 79,
+          "occupancy": 0.749003984063745,
+          "opaque": 132178,
+          "transparent": 414468,
+          "soft": 152082
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            92,
+            183,
+            587,
+            480
+          ],
+          "margin": 74,
+          "occupancy": 0.7795484727755644,
+          "opaque": 141144,
+          "transparent": 408463,
+          "soft": 158002
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-seonbi-koi",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-seonbi-koi_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            233,
+            1174,
+            791
+          ],
+          "margin": 30,
+          "occupancy": 0.9362041467304625,
+          "opaque": 499999,
+          "transparent": 1049558,
+          "soft": 522156
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-seonbi-koi",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-seonbi-koi_v1_sprite.png",
+      "width": 1466,
+      "height": 1466,
+      "cell": 733,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            83,
+            234,
+            584,
+            417
+          ],
+          "margin": 66,
+          "occupancy": 0.7967257844474761,
+          "opaque": 134100,
+          "transparent": 388193,
+          "soft": 148840
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            67,
+            236,
+            600,
+            394
+          ],
+          "margin": 66,
+          "occupancy": 0.8185538881309686,
+          "opaque": 118772,
+          "transparent": 406435,
+          "soft": 130558
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            100,
+            185,
+            567,
+            441
+          ],
+          "margin": 66,
+          "occupancy": 0.7735334242837654,
+          "opaque": 126282,
+          "transparent": 394953,
+          "soft": 142141
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            66,
+            237,
+            601,
+            391
+          ],
+          "margin": 66,
+          "occupancy": 0.819918144611187,
+          "opaque": 128801,
+          "transparent": 393690,
+          "soft": 143346
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-devil-squid",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-red-devil-squid_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            62,
+            205,
+            1134,
+            843
+          ],
+          "margin": 58,
+          "occupancy": 0.9043062200956937,
+          "opaque": 478401,
+          "transparent": 1077183,
+          "soft": 493949
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-devil-squid",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-red-devil-squid_v1_sprite.png",
+      "width": 1610,
+      "height": 1610,
+      "cell": 805,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            210,
+            260,
+            465,
+            378
+          ],
+          "margin": 130,
+          "occupancy": 0.577639751552795,
+          "opaque": 82913,
+          "transparent": 554933,
+          "soft": 92690
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            208,
+            308,
+            467,
+            329
+          ],
+          "margin": 130,
+          "occupancy": 0.5801242236024845,
+          "opaque": 79762,
+          "transparent": 558192,
+          "soft": 89376
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            194,
+            344,
+            482,
+            290
+          ],
+          "margin": 129,
+          "occupancy": 0.5987577639751552,
+          "opaque": 75474,
+          "transparent": 562883,
+          "soft": 84708
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            210,
+            266,
+            468,
+            369
+          ],
+          "margin": 127,
+          "occupancy": 0.5813664596273292,
+          "opaque": 83138,
+          "transparent": 552136,
+          "soft": 95432
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mugunghwa-butterflyfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-mugunghwa-butterflyfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            86,
+            133,
+            1089,
+            934
+          ],
+          "margin": 79,
+          "occupancy": 0.868421052631579,
+          "opaque": 626432,
+          "transparent": 928912,
+          "soft": 642902
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mugunghwa-butterflyfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-mugunghwa-butterflyfish_v1_sprite.png",
+      "width": 1510,
+      "height": 1510,
+      "cell": 755,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            158,
+            223,
+            495,
+            407
+          ],
+          "margin": 102,
+          "occupancy": 0.6556291390728477,
+          "opaque": 125549,
+          "transparent": 427902,
+          "soft": 141809
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            202,
+            212,
+            445,
+            409
+          ],
+          "margin": 108,
+          "occupancy": 0.5894039735099338,
+          "opaque": 107606,
+          "transparent": 444537,
+          "soft": 125247
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            168,
+            232,
+            480,
+            382
+          ],
+          "margin": 107,
+          "occupancy": 0.6357615894039735,
+          "opaque": 111718,
+          "transparent": 425847,
+          "soft": 143892
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            202,
+            232,
+            446,
+            383
+          ],
+          "margin": 107,
+          "occupancy": 0.590728476821192,
+          "opaque": 104423,
+          "transparent": 432656,
+          "soft": 137177
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-tiger-catfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-tiger-catfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            321,
+            1170,
+            623
+          ],
+          "margin": 32,
+          "occupancy": 0.9330143540669856,
+          "opaque": 378197,
+          "transparent": 1183183,
+          "soft": 388519
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-tiger-catfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-tiger-catfish_v1_sprite.png",
+      "width": 1518,
+      "height": 1518,
+      "cell": 759,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            107,
+            279,
+            564,
+            304
+          ],
+          "margin": 88,
+          "occupancy": 0.7430830039525692,
+          "opaque": 86154,
+          "transparent": 480749,
+          "soft": 94846
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            73,
+            277,
+            584,
+            300
+          ],
+          "margin": 73,
+          "occupancy": 0.769433465085639,
+          "opaque": 87913,
+          "transparent": 480576,
+          "soft": 95036
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            96,
+            285,
+            575,
+            289
+          ],
+          "margin": 88,
+          "occupancy": 0.7575757575757576,
+          "opaque": 86516,
+          "transparent": 479709,
+          "soft": 95963
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            86,
+            281,
+            578,
+            292
+          ],
+          "margin": 86,
+          "occupancy": 0.761528326745718,
+          "opaque": 87359,
+          "transparent": 481099,
+          "soft": 94644
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-pungmul-seabass",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-pungmul-seabass_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            64,
+            235,
+            1143,
+            760
+          ],
+          "margin": 47,
+          "occupancy": 0.9114832535885168,
+          "opaque": 500399,
+          "transparent": 1051781,
+          "soft": 519506
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-pungmul-seabass",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-pungmul-seabass_v1_sprite.png",
+      "width": 1394,
+      "height": 1394,
+      "cell": 697,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            67,
+            204,
+            565,
+            361
+          ],
+          "margin": 65,
+          "occupancy": 0.8106169296987088,
+          "opaque": 115706,
+          "transparent": 357571,
+          "soft": 127949
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            82,
+            225,
+            551,
+            343
+          ],
+          "margin": 64,
+          "occupancy": 0.7905308464849354,
+          "opaque": 112884,
+          "transparent": 359441,
+          "soft": 126094
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            117,
+            206,
+            518,
+            356
+          ],
+          "margin": 62,
+          "occupancy": 0.7431850789096126,
+          "opaque": 110482,
+          "transparent": 362670,
+          "soft": 122926
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            101,
+            210,
+            532,
+            352
+          ],
+          "margin": 64,
+          "occupancy": 0.763271162123386,
+          "opaque": 110786,
+          "transparent": 361759,
+          "soft": 123826
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-neon-hangul-bream",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-neon-hangul-bream_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            76,
+            220,
+            1118,
+            800
+          ],
+          "margin": 60,
+          "occupancy": 0.8915470494417863,
+          "opaque": 495046,
+          "transparent": 1068136,
+          "soft": 503253
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-neon-hangul-bream",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-neon-hangul-bream_v1_sprite.png",
+      "width": 1606,
+      "height": 1606,
+      "cell": 803,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            220,
+            303,
+            436,
+            309
+          ],
+          "margin": 147,
+          "occupancy": 0.5429638854296388,
+          "opaque": 73982,
+          "transparent": 564436,
+          "soft": 80146
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            194,
+            303,
+            463,
+            309
+          ],
+          "margin": 146,
+          "occupancy": 0.5765877957658779,
+          "opaque": 74194,
+          "transparent": 564709,
+          "soft": 79817
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            192,
+            301,
+            465,
+            312
+          ],
+          "margin": 146,
+          "occupancy": 0.5790784557907845,
+          "opaque": 78947,
+          "transparent": 557858,
+          "soft": 86734
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            215,
+            303,
+            441,
+            308
+          ],
+          "margin": 147,
+          "occupancy": 0.5491905354919053,
+          "opaque": 73650,
+          "transparent": 563501,
+          "soft": 81125
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-pine-turtle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-pine-turtle_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            62,
+            109,
+            1145,
+            1047
+          ],
+          "margin": 47,
+          "occupancy": 0.9130781499202552,
+          "opaque": 631186,
+          "transparent": 899969,
+          "soft": 672076
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-pine-turtle",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-pine-turtle_v1_sprite.png",
+      "width": 1530,
+      "height": 1530,
+      "cell": 765,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            138,
+            177,
+            525,
+            482
+          ],
+          "margin": 102,
+          "occupancy": 0.6862745098039216,
+          "opaque": 137267,
+          "transparent": 433409,
+          "soft": 151692
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            116,
+            177,
+            547,
+            499
+          ],
+          "margin": 89,
+          "occupancy": 0.7150326797385621,
+          "opaque": 138824,
+          "transparent": 430852,
+          "soft": 154220
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            129,
+            178,
+            536,
+            469
+          ],
+          "margin": 100,
+          "occupancy": 0.7006535947712418,
+          "opaque": 135512,
+          "transparent": 435188,
+          "soft": 149918
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            142,
+            177,
+            522,
+            452
+          ],
+          "margin": 101,
+          "occupancy": 0.6823529411764706,
+          "opaque": 131408,
+          "transparent": 439138,
+          "soft": 145970
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-silla-crown-jellyfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-silla-crown-jellyfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            52,
+            1146,
+            1138
+          ],
+          "margin": 47,
+          "occupancy": 0.9138755980861244,
+          "opaque": 521961,
+          "transparent": 966551,
+          "soft": 605540
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-silla-crown-jellyfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-silla-crown-jellyfish_v1_sprite.png",
+      "width": 1446,
+      "height": 1446,
+      "cell": 723,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            112,
+            141,
+            531,
+            495
+          ],
+          "margin": 80,
+          "occupancy": 0.7344398340248963,
+          "opaque": 113453,
+          "transparent": 378078,
+          "soft": 144415
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            156,
+            143,
+            490,
+            490
+          ],
+          "margin": 77,
+          "occupancy": 0.677731673582296,
+          "opaque": 111707,
+          "transparent": 383216,
+          "soft": 139294
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            114,
+            144,
+            529,
+            500
+          ],
+          "margin": 79,
+          "occupancy": 0.7316735822959889,
+          "opaque": 114450,
+          "transparent": 374032,
+          "soft": 148494
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            161,
+            143,
+            481,
+            499
+          ],
+          "margin": 81,
+          "occupancy": 0.690179806362379,
+          "opaque": 108542,
+          "transparent": 383731,
+          "soft": 138865
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-incense-seahorse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-incense-seahorse_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            223,
+            61,
+            873,
+            1110
+          ],
+          "margin": 61,
+          "occupancy": 0.8851674641148325,
+          "opaque": 409571,
+          "transparent": 1145788,
+          "soft": 425720
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-incense-seahorse",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-incense-seahorse_v1_sprite.png",
+      "width": 1386,
+      "height": 1386,
+      "cell": 693,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            168,
+            87,
+            427,
+            552
+          ],
+          "margin": 54,
+          "occupancy": 0.7965367965367965,
+          "opaque": 105893,
+          "transparent": 359354,
+          "soft": 120575
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            73,
+            86,
+            522,
+            555
+          ],
+          "margin": 52,
+          "occupancy": 0.8008658008658008,
+          "opaque": 113886,
+          "transparent": 351554,
+          "soft": 128369
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            87,
+            84,
+            509,
+            537
+          ],
+          "margin": 72,
+          "occupancy": 0.7748917748917749,
+          "opaque": 112075,
+          "transparent": 350297,
+          "soft": 129624
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            163,
+            86,
+            432,
+            545
+          ],
+          "margin": 62,
+          "occupancy": 0.7864357864357865,
+          "opaque": 107856,
+          "transparent": 353588,
+          "soft": 126393
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-seven-branched-blade",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-seven-branched-blade_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            47,
+            287,
+            1160,
+            681
+          ],
+          "margin": 47,
+          "occupancy": 0.9250398724082934,
+          "opaque": 271233,
+          "transparent": 1284228,
+          "soft": 287298
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-seven-branched-blade",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\rare\\hangang-seven-branched-blade_v1_sprite.png",
+      "width": 1374,
+      "height": 1374,
+      "cell": 687,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            80,
+            176,
+            551,
+            368
+          ],
+          "margin": 56,
+          "occupancy": 0.8020378457059679,
+          "opaque": 70176,
+          "transparent": 389785,
+          "soft": 81620
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            79,
+            134,
+            549,
+            438
+          ],
+          "margin": 59,
+          "occupancy": 0.7991266375545851,
+          "opaque": 77495,
+          "transparent": 381131,
+          "soft": 90141
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            80,
+            202,
+            546,
+            325
+          ],
+          "margin": 61,
+          "occupancy": 0.7947598253275109,
+          "opaque": 71400,
+          "transparent": 386408,
+          "soft": 85004
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            78,
+            162,
+            556,
+            405
+          ],
+          "margin": 53,
+          "occupancy": 0.8093158660844251,
+          "opaque": 77578,
+          "transparent": 375559,
+          "soft": 95859
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-moon-white-tiger",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-moon-white-tiger_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            20,
+            239,
+            1218,
+            809
+          ],
+          "margin": 16,
+          "occupancy": 0.9712918660287081,
+          "opaque": 431619,
+          "transparent": 1082074,
+          "soft": 490249
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-moon-white-tiger",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-moon-white-tiger_v1_sprite.png",
+      "width": 1610,
+      "height": 1610,
+      "cell": 805,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            221,
+            291,
+            480,
+            316
+          ],
+          "margin": 104,
+          "occupancy": 0.5962732919254659,
+          "opaque": 76400,
+          "transparent": 542614,
+          "soft": 105376
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            222,
+            295,
+            482,
+            323
+          ],
+          "margin": 101,
+          "occupancy": 0.5987577639751552,
+          "opaque": 75011,
+          "transparent": 541778,
+          "soft": 106224
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            196,
+            273,
+            507,
+            308
+          ],
+          "margin": 102,
+          "occupancy": 0.6298136645962733,
+          "opaque": 75346,
+          "transparent": 544939,
+          "soft": 103065
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            227,
+            276,
+            475,
+            332
+          ],
+          "margin": 103,
+          "occupancy": 0.5900621118012422,
+          "opaque": 75789,
+          "transparent": 534202,
+          "soft": 113745
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-celadon-sea-dragon",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-celadon-sea-dragon_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            27,
+            251,
+            1211,
+            756
+          ],
+          "margin": 16,
+          "occupancy": 0.9657097288676236,
+          "opaque": 362552,
+          "transparent": 1126669,
+          "soft": 445564
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-celadon-sea-dragon",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-celadon-sea-dragon_v1_sprite.png",
+      "width": 1398,
+      "height": 1398,
+      "cell": 699,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            81,
+            218,
+            563,
+            330
+          ],
+          "margin": 55,
+          "occupancy": 0.8054363376251789,
+          "opaque": 92286,
+          "transparent": 361726,
+          "soft": 126840
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            56,
+            218,
+            591,
+            358
+          ],
+          "margin": 52,
+          "occupancy": 0.8454935622317596,
+          "opaque": 91462,
+          "transparent": 361872,
+          "soft": 126674
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            74,
+            218,
+            571,
+            349
+          ],
+          "margin": 54,
+          "occupancy": 0.8168812589413448,
+          "opaque": 88887,
+          "transparent": 363260,
+          "soft": 125292
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            70,
+            218,
+            577,
+            343
+          ],
+          "margin": 52,
+          "occupancy": 0.8254649499284692,
+          "opaque": 98333,
+          "transparent": 350556,
+          "soft": 137998
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-taegeuk-twin-fish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-taegeuk-twin-fish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            47,
+            111,
+            1169,
+            1038
+          ],
+          "margin": 38,
+          "occupancy": 0.9322169059011164,
+          "opaque": 719046,
+          "transparent": 802091,
+          "soft": 769609
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-taegeuk-twin-fish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-taegeuk-twin-fish_v1_sprite.png",
+      "width": 1562,
+      "height": 1562,
+      "cell": 781,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            219,
+            255,
+            425,
+            396
+          ],
+          "margin": 130,
+          "occupancy": 0.5441741357234315,
+          "opaque": 97791,
+          "transparent": 485902,
+          "soft": 123762
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            232,
+            258,
+            413,
+            383
+          ],
+          "margin": 136,
+          "occupancy": 0.528809218950064,
+          "opaque": 94635,
+          "transparent": 490323,
+          "soft": 119404
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            234,
+            255,
+            411,
+            377
+          ],
+          "margin": 136,
+          "occupancy": 0.5262483994878361,
+          "opaque": 97309,
+          "transparent": 485857,
+          "soft": 123900
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            229,
+            253,
+            421,
+            385
+          ],
+          "margin": 131,
+          "occupancy": 0.5390524967989757,
+          "opaque": 97037,
+          "transparent": 489864,
+          "soft": 119844
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mago-creator",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-mago-creator_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            56,
+            62,
+            1152,
+            1140
+          ],
+          "margin": 46,
+          "occupancy": 0.9186602870813397,
+          "opaque": 789917,
+          "transparent": 679953,
+          "soft": 892420
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mago-creator",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-mago-creator_v1_sprite.png",
+      "width": 1390,
+      "height": 1390,
+      "cell": 695,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            85,
+            110,
+            530,
+            530
+          ],
+          "margin": 55,
+          "occupancy": 0.762589928057554,
+          "opaque": 182425,
+          "transparent": 279362,
+          "soft": 203569
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            80,
+            111,
+            536,
+            528
+          ],
+          "margin": 56,
+          "occupancy": 0.7712230215827338,
+          "opaque": 177032,
+          "transparent": 281246,
+          "soft": 201669
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            86,
+            111,
+            529,
+            527
+          ],
+          "margin": 57,
+          "occupancy": 0.7611510791366907,
+          "opaque": 182844,
+          "transparent": 272779,
+          "soft": 210101
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            83,
+            111,
+            530,
+            528
+          ],
+          "margin": 56,
+          "occupancy": 0.762589928057554,
+          "opaque": 177892,
+          "transparent": 278345,
+          "soft": 204563
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-haetae-guardian",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-haetae-guardian_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            48,
+            221,
+            1170,
+            851
+          ],
+          "margin": 36,
+          "occupancy": 0.9330143540669856,
+          "opaque": 627641,
+          "transparent": 901652,
+          "soft": 670646
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-haetae-guardian",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-haetae-guardian_v1_sprite.png",
+      "width": 1454,
+      "height": 1454,
+      "cell": 727,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            78,
+            195,
+            561,
+            420
+          ],
+          "margin": 78,
+          "occupancy": 0.7716643741403026,
+          "opaque": 153888,
+          "transparent": 355078,
+          "soft": 173142
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            49,
+            195,
+            585,
+            430
+          ],
+          "margin": 49,
+          "occupancy": 0.8046767537826685,
+          "opaque": 158977,
+          "transparent": 348922,
+          "soft": 179378
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            69,
+            196,
+            563,
+            421
+          ],
+          "margin": 69,
+          "occupancy": 0.7744154057771664,
+          "opaque": 150219,
+          "transparent": 354911,
+          "soft": 173422
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            52,
+            196,
+            581,
+            423
+          ],
+          "margin": 52,
+          "occupancy": 0.7991746905089409,
+          "opaque": 159252,
+          "transparent": 344720,
+          "soft": 183569
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-millennial-gumiho",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-millennial-gumiho_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            34,
+            67,
+            1199,
+            1071
+          ],
+          "margin": 21,
+          "occupancy": 0.956140350877193,
+          "opaque": 744771,
+          "transparent": 722834,
+          "soft": 849555
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-millennial-gumiho",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-millennial-gumiho_v1_sprite.png",
+      "width": 1454,
+      "height": 1454,
+      "cell": 727,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            112,
+            142,
+            534,
+            501
+          ],
+          "margin": 81,
+          "occupancy": 0.734525447042641,
+          "opaque": 160228,
+          "transparent": 329207,
+          "soft": 199174
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            109,
+            157,
+            537,
+            486
+          ],
+          "margin": 81,
+          "occupancy": 0.7386519944979367,
+          "opaque": 154576,
+          "transparent": 333810,
+          "soft": 194582
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            116,
+            165,
+            529,
+            471
+          ],
+          "margin": 82,
+          "occupancy": 0.7276478679504814,
+          "opaque": 147345,
+          "transparent": 336640,
+          "soft": 191778
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            106,
+            163,
+            539,
+            479
+          ],
+          "margin": 82,
+          "occupancy": 0.7414030261348006,
+          "opaque": 160043,
+          "transparent": 315413,
+          "soft": 212933
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-dokdo-guardian",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-dokdo-guardian_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            18,
+            295,
+            1221,
+            704
+          ],
+          "margin": 15,
+          "occupancy": 0.9736842105263158,
+          "opaque": 448005,
+          "transparent": 1084321,
+          "soft": 487852
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-dokdo-guardian",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-dokdo-guardian_v1_sprite.png",
+      "width": 1530,
+      "height": 1530,
+      "cell": 765,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            130,
+            243,
+            551,
+            376
+          ],
+          "margin": 84,
+          "occupancy": 0.7202614379084967,
+          "opaque": 108973,
+          "transparent": 458706,
+          "soft": 126257
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            132,
+            261,
+            552,
+            375
+          ],
+          "margin": 81,
+          "occupancy": 0.7215686274509804,
+          "opaque": 101084,
+          "transparent": 465493,
+          "soft": 119514
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            134,
+            266,
+            553,
+            334
+          ],
+          "margin": 78,
+          "occupancy": 0.722875816993464,
+          "opaque": 93755,
+          "transparent": 475002,
+          "soft": 110043
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            132,
+            248,
+            549,
+            353
+          ],
+          "margin": 84,
+          "occupancy": 0.7176470588235294,
+          "opaque": 105627,
+          "transparent": 461408,
+          "soft": 123626
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-iron-eater-bulgasari",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-iron-eater-bulgasari_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            10,
+            133,
+            1237,
+            993
+          ],
+          "margin": 7,
+          "occupancy": 0.9864433811802232,
+          "opaque": 680044,
+          "transparent": 818899,
+          "soft": 753505
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-iron-eater-bulgasari",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\epic\\hangang-iron-eater-bulgasari_v1_sprite.png",
+      "width": 1394,
+      "height": 1394,
+      "cell": 697,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            84,
+            146,
+            565,
+            465
+          ],
+          "margin": 48,
+          "occupancy": 0.8106169296987088,
+          "opaque": 152739,
+          "transparent": 305780,
+          "soft": 179808
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            80,
+            146,
+            571,
+            455
+          ],
+          "margin": 46,
+          "occupancy": 0.8192252510760402,
+          "opaque": 146768,
+          "transparent": 310479,
+          "soft": 175110
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            85,
+            148,
+            567,
+            457
+          ],
+          "margin": 45,
+          "occupancy": 0.8134863701578192,
+          "opaque": 152360,
+          "transparent": 303127,
+          "soft": 182492
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            83,
+            147,
+            567,
+            453
+          ],
+          "margin": 47,
+          "occupancy": 0.8134863701578192,
+          "opaque": 147727,
+          "transparent": 301830,
+          "soft": 183777
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-immortal-turtle-ship",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-immortal-turtle-ship_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            21,
+            122,
+            1216,
+            1008
+          ],
+          "margin": 17,
+          "occupancy": 0.9696969696969697,
+          "opaque": 577391,
+          "transparent": 931057,
+          "soft": 640773
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-immortal-turtle-ship",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-immortal-turtle-ship_swim8_v1_sprite.png",
+      "width": 2416,
+      "height": 1208,
+      "cell": 604,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            167,
+            231,
+            287,
+            238
+          ],
+          "margin": 135,
+          "occupancy": 0.47516556291390727,
+          "opaque": 37619,
+          "transparent": 318499,
+          "soft": 46254
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            174,
+            231,
+            282,
+            245
+          ],
+          "margin": 128,
+          "occupancy": 0.46688741721854304,
+          "opaque": 37689,
+          "transparent": 317806,
+          "soft": 46978
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            171,
+            231,
+            284,
+            249
+          ],
+          "margin": 124,
+          "occupancy": 0.47019867549668876,
+          "opaque": 38378,
+          "transparent": 317828,
+          "soft": 46912
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            172,
+            231,
+            285,
+            236
+          ],
+          "margin": 137,
+          "occupancy": 0.4718543046357616,
+          "opaque": 37739,
+          "transparent": 319101,
+          "soft": 45664
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            170,
+            228,
+            292,
+            257
+          ],
+          "margin": 119,
+          "occupancy": 0.48344370860927155,
+          "opaque": 39617,
+          "transparent": 314623,
+          "soft": 50143
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            155,
+            229,
+            306,
+            261
+          ],
+          "margin": 114,
+          "occupancy": 0.5066225165562914,
+          "opaque": 42491,
+          "transparent": 311445,
+          "soft": 53334
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            168,
+            232,
+            292,
+            231
+          ],
+          "margin": 141,
+          "occupancy": 0.48344370860927155,
+          "opaque": 37907,
+          "transparent": 319201,
+          "soft": 45560
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            174,
+            230,
+            282,
+            237
+          ],
+          "margin": 137,
+          "occupancy": 0.46688741721854304,
+          "opaque": 38327,
+          "transparent": 317712,
+          "soft": 47075
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hunmin-spirit",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-hunmin-spirit_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            92,
+            114,
+            1086,
+            1029
+          ],
+          "margin": 76,
+          "occupancy": 0.8660287081339713,
+          "opaque": 610314,
+          "transparent": 904779,
+          "soft": 667431
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hunmin-spirit",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-hunmin-spirit_swim8_v1_sprite.png",
+      "width": 2008,
+      "height": 1004,
+      "cell": 502,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            126,
+            143,
+            267,
+            271
+          ],
+          "margin": 88,
+          "occupancy": 0.5398406374501992,
+          "opaque": 41172,
+          "transparent": 200377,
+          "soft": 51600
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            116,
+            143,
+            283,
+            274
+          ],
+          "margin": 85,
+          "occupancy": 0.5637450199203188,
+          "opaque": 43103,
+          "transparent": 196805,
+          "soft": 55165
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            115,
+            140,
+            287,
+            274
+          ],
+          "margin": 88,
+          "occupancy": 0.5717131474103586,
+          "opaque": 44238,
+          "transparent": 193678,
+          "soft": 58287
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            107,
+            139,
+            283,
+            283
+          ],
+          "margin": 80,
+          "occupancy": 0.5637450199203188,
+          "opaque": 46675,
+          "transparent": 193805,
+          "soft": 58165
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            122,
+            145,
+            277,
+            271
+          ],
+          "margin": 86,
+          "occupancy": 0.5517928286852589,
+          "opaque": 42833,
+          "transparent": 198425,
+          "soft": 53522
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            111,
+            146,
+            276,
+            272
+          ],
+          "margin": 84,
+          "occupancy": 0.549800796812749,
+          "opaque": 42301,
+          "transparent": 198166,
+          "soft": 53764
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            116,
+            149,
+            274,
+            266
+          ],
+          "margin": 87,
+          "occupancy": 0.545816733067729,
+          "opaque": 41429,
+          "transparent": 198371,
+          "soft": 53565
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            122,
+            149,
+            274,
+            264
+          ],
+          "margin": 89,
+          "occupancy": 0.545816733067729,
+          "opaque": 41134,
+          "transparent": 200857,
+          "soft": 51071
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-ungnyeo-mother",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-ungnyeo-mother_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            97,
+            124,
+            1060,
+            1029
+          ],
+          "margin": 97,
+          "occupancy": 0.8452950558213717,
+          "opaque": 641515,
+          "transparent": 888727,
+          "soft": 683404
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-ungnyeo-mother",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-ungnyeo-mother_swim8_v1_sprite.png",
+      "width": 2024,
+      "height": 1012,
+      "cell": 506,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            117,
+            151,
+            248,
+            267
+          ],
+          "margin": 88,
+          "occupancy": 0.5276679841897233,
+          "opaque": 41504,
+          "transparent": 203904,
+          "soft": 52071
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            105,
+            151,
+            264,
+            265
+          ],
+          "margin": 90,
+          "occupancy": 0.5237154150197628,
+          "opaque": 44119,
+          "transparent": 201409,
+          "soft": 54589
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            94,
+            151,
+            336,
+            268
+          ],
+          "margin": 76,
+          "occupancy": 0.6640316205533597,
+          "opaque": 47250,
+          "transparent": 197779,
+          "soft": 58190
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            114,
+            152,
+            326,
+            269
+          ],
+          "margin": 66,
+          "occupancy": 0.6442687747035574,
+          "opaque": 47963,
+          "transparent": 196759,
+          "soft": 59192
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            108,
+            151,
+            267,
+            259
+          ],
+          "margin": 96,
+          "occupancy": 0.5276679841897233,
+          "opaque": 42699,
+          "transparent": 203570,
+          "soft": 52398
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            100,
+            151,
+            273,
+            262
+          ],
+          "margin": 93,
+          "occupancy": 0.5395256916996047,
+          "opaque": 43393,
+          "transparent": 201570,
+          "soft": 54434
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            104,
+            151,
+            262,
+            265
+          ],
+          "margin": 90,
+          "occupancy": 0.5237154150197628,
+          "opaque": 42565,
+          "transparent": 201149,
+          "soft": 54818
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            114,
+            150,
+            251,
+            264
+          ],
+          "margin": 92,
+          "occupancy": 0.5217391304347826,
+          "opaque": 41796,
+          "transparent": 203595,
+          "soft": 52387
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-red-cheer-incarnation_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            73,
+            1173,
+            1077
+          ],
+          "margin": 31,
+          "occupancy": 0.9354066985645934,
+          "opaque": 724992,
+          "transparent": 792083,
+          "soft": 779859
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\fish\\mythic\\hangang-red-cheer-incarnation_swim8_v1_sprite.png",
+      "width": 2032,
+      "height": 1016,
+      "cell": 508,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            108,
+            158,
+            301,
+            240
+          ],
+          "margin": 99,
+          "occupancy": 0.59251968503937,
+          "opaque": 44576,
+          "transparent": 199169,
+          "soft": 58775
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            118,
+            154,
+            289,
+            252
+          ],
+          "margin": 101,
+          "occupancy": 0.5688976377952756,
+          "opaque": 42854,
+          "transparent": 199530,
+          "soft": 58423
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            121,
+            153,
+            289,
+            247
+          ],
+          "margin": 98,
+          "occupancy": 0.5688976377952756,
+          "opaque": 43074,
+          "transparent": 201075,
+          "soft": 56894
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            119,
+            153,
+            296,
+            242
+          ],
+          "margin": 93,
+          "occupancy": 0.5826771653543307,
+          "opaque": 43346,
+          "transparent": 200490,
+          "soft": 57493
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            110,
+            148,
+            299,
+            265
+          ],
+          "margin": 95,
+          "occupancy": 0.5885826771653543,
+          "opaque": 46829,
+          "transparent": 195637,
+          "soft": 62375
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            80,
+            130,
+            306,
+            253
+          ],
+          "margin": 80,
+          "occupancy": 0.6023622047244095,
+          "opaque": 46126,
+          "transparent": 196155,
+          "soft": 61875
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            109,
+            146,
+            332,
+            244
+          ],
+          "margin": 67,
+          "occupancy": 0.6535433070866141,
+          "opaque": 47826,
+          "transparent": 194168,
+          "soft": 63790
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            103,
+            152,
+            306,
+            245
+          ],
+          "margin": 99,
+          "occupancy": 0.6023622047244095,
+          "opaque": 46147,
+          "transparent": 197237,
+          "soft": 60757
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-convenience-chair",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-convenience-chair_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            215,
+            113,
+            856,
+            1057
+          ],
+          "margin": 84,
+          "occupancy": 0.8429027113237639,
+          "opaque": 458275,
+          "transparent": 1087048,
+          "soft": 483832
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-dolhareubang",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-dolhareubang_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            342,
+            100,
+            578,
+            1060
+          ],
+          "margin": 94,
+          "occupancy": 0.8452950558213717,
+          "opaque": 491675,
+          "transparent": 1073624,
+          "soft": 498215
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-onggi-jars",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-onggi-jars_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            121,
+            175,
+            1034,
+            942
+          ],
+          "margin": 99,
+          "occupancy": 0.8245614035087719,
+          "opaque": 762254,
+          "transparent": 801133,
+          "soft": 770599
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-bus-stop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-bus-stop_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            99,
+            186,
+            1061,
+            910
+          ],
+          "margin": 94,
+          "occupancy": 0.8460925039872408,
+          "opaque": 603722,
+          "transparent": 949935,
+          "soft": 621515
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-flower-palanquin",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-flower-palanquin_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            24,
+            104,
+            1208,
+            990
+          ],
+          "margin": 22,
+          "occupancy": 0.9633173843700159,
+          "opaque": 608699,
+          "transparent": 949099,
+          "soft": 622169
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-samulnori-set",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-samulnori-set_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            132,
+            1142,
+            990
+          ],
+          "margin": 55,
+          "occupancy": 0.9106858054226475,
+          "opaque": 742616,
+          "transparent": 816196,
+          "soft": 755475
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-gayageum",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-gayageum_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            39,
+            270,
+            1186,
+            797
+          ],
+          "margin": 29,
+          "occupancy": 0.9457735247208932,
+          "opaque": 397495,
+          "transparent": 1150222,
+          "soft": 421597
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-daegeum",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-daegeum_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            58,
+            256,
+            1141,
+            747
+          ],
+          "margin": 55,
+          "occupancy": 0.9098883572567783,
+          "opaque": 214113,
+          "transparent": 1346220,
+          "soft": 225474
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-jing-gong",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-jing-gong_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            151,
+            76,
+            956,
+            1110
+          ],
+          "margin": 68,
+          "occupancy": 0.8851674641148325,
+          "opaque": 664050,
+          "transparent": 890557,
+          "soft": 679696
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hahoe-mask-display",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\normal\\hangang-hahoe-mask-display_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            276,
+            146,
+            794,
+            992
+          ],
+          "margin": 116,
+          "occupancy": 0.7910685805422647,
+          "opaque": 522221,
+          "transparent": 1041474,
+          "soft": 530312
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-haeundae-breakwater",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-haeundae-breakwater_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            144,
+            115,
+            1041,
+            991
+          ],
+          "margin": 69,
+          "occupancy": 0.8301435406698564,
+          "opaque": 504961,
+          "transparent": 1055446,
+          "soft": 516293
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mini-turtle-ship",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-mini-turtle-ship_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            63,
+            65,
+            1166,
+            1085
+          ],
+          "margin": 25,
+          "occupancy": 0.9298245614035088,
+          "opaque": 737247,
+          "transparent": 817581,
+          "soft": 753812
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-fireworks-launcher",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-fireworks-launcher_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            134,
+            113,
+            1011,
+            1051
+          ],
+          "margin": 90,
+          "occupancy": 0.8381180223285486,
+          "opaque": 595115,
+          "transparent": 967381,
+          "soft": 603339
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-goguryeo-rider",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-goguryeo-rider_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            225,
+            54,
+            815,
+            1152
+          ],
+          "margin": 48,
+          "occupancy": 0.9186602870813397,
+          "opaque": 496789,
+          "transparent": 1056056,
+          "soft": 515317
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-pensive-bodhisattva",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-pensive-bodhisattva_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            349,
+            39,
+            607,
+            1175
+          ],
+          "margin": 39,
+          "occupancy": 0.9370015948963317,
+          "opaque": 491440,
+          "transparent": 1073700,
+          "soft": 497679
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-najeon-jewelry-box",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-najeon-jewelry-box_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            128,
+            210,
+            1021,
+            932
+          ],
+          "margin": 105,
+          "occupancy": 0.8141945773524721,
+          "opaque": 731467,
+          "transparent": 829571,
+          "soft": 741615
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-sipjangsaeng-screen",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-sipjangsaeng-screen_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            79,
+            246,
+            1098,
+            785
+          ],
+          "margin": 77,
+          "occupancy": 0.8755980861244019,
+          "opaque": 778595,
+          "transparent": 784059,
+          "soft": 787183
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-jangseung-pair",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\rare\\hangang-jangseung-pair_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            233,
+            103,
+            798,
+            1061
+          ],
+          "margin": 90,
+          "occupancy": 0.8460925039872408,
+          "opaque": 440442,
+          "transparent": 1120133,
+          "soft": 450993
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-sunken-lotte-tower",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-sunken-lotte-tower_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            362,
+            44,
+            567,
+            1175
+          ],
+          "margin": 35,
+          "occupancy": 0.9370015948963317,
+          "opaque": 300831,
+          "transparent": 1244317,
+          "soft": 327916
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-submerged-sungnyemun",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-submerged-sungnyemun_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            76,
+            100,
+            1123,
+            1055
+          ],
+          "margin": 55,
+          "occupancy": 0.8955342902711324,
+          "opaque": 809411,
+          "transparent": 715143,
+          "soft": 857262
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-sleeping-cheomseongdae",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-sleeping-cheomseongdae_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            241,
+            54,
+            787,
+            1113
+          ],
+          "margin": 54,
+          "occupancy": 0.8875598086124402,
+          "opaque": 576904,
+          "transparent": 976418,
+          "soft": 595941
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-sunken-dabotap",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-sunken-dabotap_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            168,
+            48,
+            934,
+            1166
+          ],
+          "margin": 40,
+          "occupancy": 0.9298245614035088,
+          "opaque": 462044,
+          "transparent": 1078959,
+          "soft": 493266
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-submerged-63-building",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-submerged-63-building_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            398,
+            29,
+            524,
+            1189
+          ],
+          "margin": 29,
+          "occupancy": 0.9481658692185008,
+          "opaque": 352379,
+          "transparent": 1200624,
+          "soft": 371732
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-sunken-independence-gate",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-sunken-independence-gate_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            98,
+            71,
+            1077,
+            1114
+          ],
+          "margin": 69,
+          "occupancy": 0.8883572567783095,
+          "opaque": 772058,
+          "transparent": 762191,
+          "soft": 809983
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-flooded-gwanghwamun",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-flooded-gwanghwamun_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            56,
+            125,
+            1164,
+            1004
+          ],
+          "margin": 34,
+          "occupancy": 0.9282296650717703,
+          "opaque": 769370,
+          "transparent": 758178,
+          "soft": 814022
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-admiral-yi-statue",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\decorations\\epic\\hangang-admiral-yi-statue_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            210,
+            18,
+            836,
+            1216
+          ],
+          "margin": 18,
+          "occupancy": 0.9696969696969697,
+          "opaque": 557155,
+          "transparent": 992192,
+          "soft": 580010
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-discarded-duck-boat",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-discarded-duck-boat_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            112,
+            176,
+            1085,
+            940
+          ],
+          "margin": 57,
+          "occupancy": 0.8652312599681021,
+          "opaque": 672653,
+          "transparent": 879717,
+          "soft": 692102
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-wet-transit-card",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-wet-transit-card_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            106,
+            225,
+            1059,
+            815
+          ],
+          "margin": 89,
+          "occupancy": 0.8444976076555024,
+          "opaque": 557553,
+          "transparent": 1007689,
+          "soft": 564237
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-dented-ramen-pot",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-dented-ramen-pot_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            106,
+            339,
+            1072,
+            698
+          ],
+          "margin": 76,
+          "occupancy": 0.8548644338118022,
+          "opaque": 502300,
+          "transparent": 1061770,
+          "soft": 510019
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-broken-cheering-stick",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-broken-cheering-stick_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            313,
+            122,
+            700,
+            1029
+          ],
+          "margin": 103,
+          "occupancy": 0.8205741626794258,
+          "opaque": 291895,
+          "transparent": 1273289,
+          "soft": 298370
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-old-karaoke-microphone",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-old-karaoke-microphone_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            214,
+            90,
+            820,
+            1095
+          ],
+          "margin": 69,
+          "occupancy": 0.8732057416267942,
+          "opaque": 309752,
+          "transparent": 1255570,
+          "soft": 316426
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-broken-soju-glass",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-broken-soju-glass_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            267,
+            209,
+            729,
+            846
+          ],
+          "margin": 199,
+          "occupancy": 0.6746411483253588,
+          "opaque": 472744,
+          "transparent": 1091853,
+          "soft": 479953
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-old-100-won",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-old-100-won_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            179,
+            196,
+            897,
+            886
+          ],
+          "margin": 172,
+          "occupancy": 0.715311004784689,
+          "opaque": 618369,
+          "transparent": 946533,
+          "soft": 625776
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-old-1000-won",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-old-1000-won_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            76,
+            238,
+            1112,
+            817
+          ],
+          "margin": 66,
+          "occupancy": 0.886762360446571,
+          "opaque": 559559,
+          "transparent": 1002849,
+          "soft": 569156
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-wet-taegeukgi",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-wet-taegeukgi_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            276,
+            83,
+            737,
+            963
+          ],
+          "margin": 83,
+          "occupancy": 0.7679425837320574,
+          "opaque": 329538,
+          "transparent": 1232431,
+          "soft": 339275
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-wet-exam-book",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-wet-exam-book_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            136,
+            220,
+            1027,
+            912
+          ],
+          "margin": 91,
+          "occupancy": 0.8189792663476874,
+          "opaque": 613045,
+          "transparent": 944434,
+          "soft": 627665
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-broken-backscratcher",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\normal\\hangang-broken-backscratcher_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            82,
+            90,
+            1089,
+            1084
+          ],
+          "margin": 80,
+          "occupancy": 0.868421052631579,
+          "opaque": 176544,
+          "transparent": 1386851,
+          "soft": 184893
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-last-pager",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-last-pager_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            168,
+            266,
+            935,
+            821
+          ],
+          "margin": 151,
+          "occupancy": 0.7456140350877193,
+          "opaque": 561830,
+          "transparent": 1002927,
+          "soft": 569171
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-olympic-badge",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-olympic-badge_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            277,
+            122,
+            689,
+            1035
+          ],
+          "margin": 97,
+          "occupancy": 0.8253588516746412,
+          "opaque": 509857,
+          "transparent": 1056201,
+          "soft": 515196
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-broken-celadon-censer",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-broken-celadon-censer_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            200,
+            149,
+            850,
+            964
+          ],
+          "margin": 141,
+          "occupancy": 0.7687400318979266,
+          "opaque": 561994,
+          "transparent": 1001975,
+          "soft": 569793
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hangul-woodblock-fragment",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-hangul-woodblock-fragment_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            107,
+            276,
+            1046,
+            764
+          ],
+          "margin": 101,
+          "occupancy": 0.8341307814992025,
+          "opaque": 503203,
+          "transparent": 1062083,
+          "soft": 509942
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-rusted-turtle-ship-iron",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-rusted-turtle-ship-iron_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            92,
+            260,
+            1080,
+            753
+          ],
+          "margin": 82,
+          "occupancy": 0.861244019138756,
+          "opaque": 379841,
+          "transparent": 1186021,
+          "soft": 385930
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-hanyang-map-fragment",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-hanyang-map-fragment_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            115,
+            137,
+            1067,
+            1019
+          ],
+          "margin": 72,
+          "occupancy": 0.8508771929824561,
+          "opaque": 638818,
+          "transparent": 921260,
+          "soft": 650920
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-moon-porcelain-shard",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-moon-porcelain-shard_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            155,
+            220,
+            957,
+            855
+          ],
+          "margin": 142,
+          "occupancy": 0.7631578947368421,
+          "opaque": 423552,
+          "transparent": 1141763,
+          "soft": 430401
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-rusted-cash-bundle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-033000\\trash\\rare\\hangang-rusted-cash-bundle_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            162,
+            61,
+            934,
+            1068
+          ],
+          "margin": 61,
+          "occupancy": 0.8516746411483254,
+          "opaque": 584443,
+          "transparent": 969713,
+          "soft": 602517
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

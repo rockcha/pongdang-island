@@ -1,4 +1,5 @@
 export const regionIcons:Record<string,{name:string;src:string}>={
+ hangang:{name:'한강의 불빛나루',src:'/region-icons/hangang.svg'},
  pharaoh:{name:'파라오의 황금해',src:'/region-icons/pharaoh-v2.png'},
  firefly:{name:'반딧불 요정여울',src:'/region-icons/firefly-v1.png'},
  mechsanctum:{name:'기계신의 성소',src:'/region-icons/mechsanctum-v1.png'},

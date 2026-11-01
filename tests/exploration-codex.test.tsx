@@ -17,7 +17,7 @@ it('combines weapons, twenty-one spells and nineteen armor entries in one codex'
  expect(within(learned).getByText('불꽃 피해 20')).toBeTruthy()
  expect(within(learned).getByText('습득')).toBeTruthy()
  const planned=within(panel).getByRole('heading',{name:'라의 심판'}).closest('article')!
- expect(within(planned).getByText('현재 연습에서 사용 가능')).toBeTruthy()
+ expect(within(planned).getByText('현재 탐험에서 사용 가능')).toBeTruthy()
  expect(within(planned).getByText('2,600')).toBeTruthy()
  expect(within(planned).queryByRole('button')).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'중급 10'}))

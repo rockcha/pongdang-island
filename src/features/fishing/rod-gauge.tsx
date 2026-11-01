@@ -3,6 +3,7 @@
 import {RodGaugeCharm} from './rod-gauge-charm'
 
 const themes:Record<string,{ink:string;light:string;pattern:string}>={
+ hangang:{ink:'#263953',light:'#f4e5c4',pattern:'linear-gradient(135deg,#cc344414,transparent 45%,#2863ac18)'},
  pharaoh:{ink:'#624622',light:'#f6df9e',pattern:'repeating-linear-gradient(135deg,transparent 0 22px,#d3a44918 23px 24px)'},
  firefly:{ink:'#304a38',light:'#e8d990',pattern:'radial-gradient(ellipse at 15% 110%,#e8d99030,transparent 65%)'},
  mechsanctum:{ink:'#314b49',light:'#9fe0cc',pattern:'repeating-linear-gradient(135deg,transparent 0 22px,#d6b77a16 23px 24px)'},

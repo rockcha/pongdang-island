@@ -1,0 +1,12 @@
+{
+  "id": "hangang-overview",
+  "path": "public/regions/hangang/overview-v1.png",
+  "source": "sources/hangang-overview.source",
+  "tool": "image_gen",
+  "transparent_background": false,
+  "referenceRoles": {
+    "userAttachment": "Broad night skyline mood only; original composition and Korean riverside setting"
+  },
+  "prompt": "Create a NEW polished 2D fantasy fishing game background, a wide 1536x1024 landscape scene called 한강의 불빛나루 (Han River Lantern Ferry). Take only the broad mood from the user's Seoul night reference: deep indigo starry sky, softly glowing city and a very tall slender tower on the right. Do NOT reproduce the photograph, hanging star ornaments, exact skyline or composition. Invent a distinctly Korean illustrated riverside: expansive calm Han River occupies the entire lower 50 percent for playable fishing water, unobstructed center. Far bank shows a softly luminous Seoul skyline, a slender Lotte-inspired tower off-center right, distant Namsan observatory on a green hill left, a graceful Korean arched bridge crossing far middle ground, and a small traditional hanok pavilion roof along left bank. Subtle warm paper lanterns on the far shoreline, moonlight and gold city reflections on navy water. Tasteful Korean dancheong colors and roof silhouettes. Foreground only the very bottom corners have tiny riverbank grasses, NO pier/platform across center, no people, no fish, no UI, no letters, no watermarks. Crisp beautifully painted storybook game scenery with soft gradients, rich indigo/teal and warm gold accents, atmospheric but clean, mobile fishing screen legibility. Fully opaque background, wide landscape.",
+  "originalSource": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-e92b60a9-0a58-49c3-9db1-92e922ecc36d.png"
+}

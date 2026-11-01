@@ -11,15 +11,16 @@ it('separates spell flavor from live damage, blind effect and casting rules',()=
  const monster=getMonster('treasure-scarab')
  render(<MonsterMoveDetails monster={monster} kind="sealed-flash"/>)
  expect(document.querySelector('.exploration-move-intro p')?.textContent).not.toContain('30%')
- const facts=screen.getAllByRole('definition')[0].closest('dl')!
- expect(facts.textContent).toContain('12');expect(facts.textContent).toContain('명중률 −30%')
+ const facts=document.querySelector('dl[aria-label="스킬 효과"]')!
+ expect(document.querySelector('.monster-move-damage')?.textContent).toContain('12')
+ expect(facts.textContent).toContain('명중률 −30%')
  expect(facts.textContent).toContain('다음 기본 공격 1회');expect(facts.textContent).toContain('50%')
- expect(facts.textContent).toContain('마법 저항력');expect(facts.textContent).toContain('회피와 치명타 없음')
+ expect(screen.getByText('마법 저항력 적용 · 회피와 치명타 없음')).toBeTruthy()
 })
 it('shows physical damage variance and critical chance separately',()=>{
  render(<MonsterMoveDetails monster={getMonster('sand-scorpion')} kind="basic"/>)
  expect(screen.getByText('5–9')).toBeTruthy();expect(screen.getByText('5%')).toBeTruthy()
- expect(screen.getByText('방어력')).toBeTruthy()
+ expect(screen.getByText('방어력 적용 · 회피 가능')).toBeTruthy()
 })
 function restRoom(initial:PracticeState){
  const visit=createRoomVisit('rest-camp',initial,'rest',()=>0)

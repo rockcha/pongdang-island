@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "512061c66832359099d2f31098725512ab664e68222c4d6bc4642c18c0b85255",
+  "migrationHash": "c4c69aef65fdecd75e85a873b6ef4f9e9db96e6e3abd1c42be232aa244e14fc8",
   "structure": {
     "enums": [
       {
@@ -169,6 +169,18 @@
       {
         "rls": true,
         "name": "exploration_feedback",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "exploration_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "exploration_runs",
         "schema": "app_private",
         "force_rls": false
       },
@@ -415,6 +427,12 @@
       {
         "rls": true,
         "name": "player_relic_loadouts",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "pongi_whack_maintenance",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2127,6 +2145,136 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "run_id",
+        "type": "uuid",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "request",
+        "type": "jsonb",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "receipt",
+        "type": "jsonb",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "revision",
+        "type": "integer",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "model",
+        "type": "jsonb",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "abandoned_at",
+        "type": "timestamp with time zone",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "reward_gold",
+        "type": "integer",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -4423,6 +4571,36 @@
         "name": "crafted_id",
         "type": "text",
         "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "boolean",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "default": "true",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "starts_at",
+        "type": "timestamp with time zone",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "released_at",
+        "type": "timestamp with time zone",
+        "table": "pongi_whack_maintenance",
         "schema": "app_private",
         "default": null,
         "identity": "",
@@ -12070,6 +12248,30 @@
         "definition": "CREATE INDEX exploration_feedback_visible_idx ON app_private.exploration_feedback USING btree (created_at DESC, id DESC) WHERE (deleted_at IS NULL)"
       },
       {
+        "name": "exploration_operations_pkey",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX exploration_operations_pkey ON app_private.exploration_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "exploration_operations_run",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "CREATE INDEX exploration_operations_run ON app_private.exploration_operations USING btree (run_id)"
+      },
+      {
+        "name": "exploration_runs_pkey",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX exploration_runs_pkey ON app_private.exploration_runs USING btree (id)"
+      },
+      {
+        "name": "exploration_runs_user",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "CREATE INDEX exploration_runs_user ON app_private.exploration_runs USING btree (user_id, started_at DESC)"
+      },
+      {
         "name": "farm_animal_jobs_pkey",
         "table": "farm_animal_jobs",
         "schema": "app_private",
@@ -12518,6 +12720,12 @@
         "table": "player_relic_loadouts",
         "schema": "app_private",
         "definition": "CREATE INDEX relic_loadouts_relic_owner ON app_private.player_relic_loadouts USING btree (relic_id, user_id)"
+      },
+      {
+        "name": "pongi_whack_maintenance_pkey",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX pongi_whack_maintenance_pkey ON app_private.pongi_whack_maintenance USING btree (id)"
       },
       {
         "name": "pongi_whack_runs_pkey",
@@ -16751,6 +16959,26 @@
         "securityDefiner": true
       },
       {
+        "name": "exploration_server_commit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_server_commit(p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r app_private.exploration_runs; op app_private.exploration_operations; receipt jsonb; complete boolean;\nbegin\n if p_user is null or p_run is null or p_operation is null or p_request is null then raise exception 'INVALID_REQUEST';end if;\n perform pg_advisory_xact_lock(hashtextextended('exploration:'||p_user::text,0));\n select * into op from app_private.exploration_operations where user_id=p_user and operation_id=p_operation;\n if found then\n  if op.run_id<>p_run or op.request is distinct from p_request then raise exception 'OPERATION_CONFLICT';end if;\n  return op.receipt;\n end if;\n if p_model is null or p_model->>'version' is distinct from '1' or p_model#>>'{state,mode}' is distinct from 'practice' then raise exception 'INVALID_MODEL';end if;\n select * into r from app_private.exploration_runs where id=p_run for update;\n if not found then\n  if p_revision<>-1 or p_request->>'type' is distinct from 'start' or p_model#>>'{state,market,floor}' is distinct from '1' then raise exception 'RUN_NOT_FOUND';end if;\n  update app_private.exploration_runs set abandoned_at=clock_timestamp() where user_id=p_user and finished_at is null and abandoned_at is null;\n  insert into app_private.exploration_runs(id,user_id,model) values(p_run,p_user,p_model) returning * into r;\n else\n  if r.user_id<>p_user then raise exception 'RUN_NOT_FOUND';end if;\n  if r.finished_at is not null or r.abandoned_at is not null then raise exception 'RUN_CLOSED';end if;\n  if r.revision<>p_revision then raise exception 'REVISION_CONFLICT';end if;\n  if p_request->>'type'='leave' then\n   update app_private.exploration_runs set abandoned_at=clock_timestamp(),revision=revision+1 where id=r.id returning * into r;\n  else\n   update app_private.exploration_runs set model=p_model,revision=revision+1 where id=r.id returning * into r;\n  end if;\n end if;\n complete:=coalesce((r.model#>>'{state,completed}')::boolean,false);\n if complete and r.abandoned_at is null then\n  if r.model#>>'{state,market,floor}' is distinct from '50' or r.model#>>'{state,finalBossDefeated}' is distinct from 'true'\n   or r.model#>>'{state,combat,monsterId}' is distinct from 'golden-pharaoh' or r.model#>>'{state,combat,status}' is distinct from 'won'\n   or coalesce((r.model#>>'{state,hp}')::numeric,0)<=0 then raise exception 'EXPLORATION_INCOMPLETE';end if;\n  perform set_config('request.jwt.claim.sub',p_user::text,true);\n  perform app_private.get_gold_wallet();\n  update public.player_wallets set gold=gold+2000,updated_at=clock_timestamp() where user_id=p_user;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(p_user,r.id,'charge','arcade:exploration:reward',2000);\n  update app_private.exploration_runs set finished_at=clock_timestamp(),reward_gold=2000 where id=r.id returning * into r;\n end if;\n receipt:=jsonb_build_object('id',r.id,'revision',r.revision,'model',r.model,'rewardGold',r.reward_gold,'finishedAt',r.finished_at,'abandoned',r.abandoned_at is not null);\n insert into app_private.exploration_operations(user_id,operation_id,run_id,request,receipt) values(p_user,p_operation,p_run,p_request,receipt);\n return receipt;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "exploration_server_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_server_state(p_user uuid, p_run uuid, p_operation uuid, p_request jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r app_private.exploration_runs; op app_private.exploration_operations;\nbegin\n select * into op from app_private.exploration_operations where user_id=p_user and operation_id=p_operation;\n if found then\n  if op.run_id<>p_run or op.request is distinct from p_request then raise exception 'OPERATION_CONFLICT';end if;\n  return jsonb_build_object('receipt',op.receipt);\n end if;\n select * into r from app_private.exploration_runs where id=p_run and user_id=p_user;\n if not found then return null;end if;\n return jsonb_build_object('id',r.id,'revision',r.revision,'model',r.model,'rewardGold',r.reward_gold,'finishedAt',r.finished_at,'abandoned',r.abandoned_at is not null);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "farm_action",
         "config": [
           "search_path=\"\""
@@ -17837,7 +18065,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_hits jsonb",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_action(p_action text, p_operation_id uuid, p_run_id uuid, p_hits jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid(); t timestamptz:=clock_timestamp(); r app_private.pongi_whack_runs;\n hit jsonb; target jsonb; seen integer[]:='{}'; idx integer; ms integer; last_ms integer:=-1000;\n points integer; total integer:=0; error_count integer:=0; balance bigint;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','start','finish','leave') then raise exception 'INVALID_ACTION';end if;\n perform pg_advisory_xact_lock(hashtextextended('pongi-whack:'||uid::text,0));\n if p_action='state' then\n  select * into r from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes' order by started_at desc limit 1;\n elsif p_action='start' then\n  if p_operation_id is null then raise exception 'OPERATION_REQUIRED';end if;\n  select * into r from app_private.pongi_whack_runs where user_id=uid and operation_id=p_operation_id;\n  if not found then\n   if exists(select 1 from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes') then raise exception 'ACTIVE_RUN';end if;\n   perform app_private.get_gold_wallet();\n   update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=uid and gold>=10 returning gold into balance;\n   if not found then raise exception 'INSUFFICIENT_GOLD';end if;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(uid,p_operation_id,'buy','arcade:pongi-whack',-10);\n   insert into app_private.pongi_whack_runs(user_id,operation_id,started_at,targets,duration_ms)\n    values(uid,p_operation_id,t+interval '3 seconds',app_private.pongi_whack_board(),30000) returning * into r;\n  end if;\n else\n  select * into r from app_private.pongi_whack_runs where id=p_run_id and user_id=uid for update;\n  if not found then raise exception 'RUN_NOT_FOUND';end if;\n  if r.finished_at is null and r.abandoned_at is null then\n   if p_action='leave' then\n    update app_private.pongi_whack_runs set abandoned_at=t where id=r.id returning * into r;\n   else\n    if t<r.started_at+make_interval(secs=>r.duration_ms/1000.0) then raise exception 'TOO_EARLY';end if;\n    if t>r.started_at+interval '15 minutes' then raise exception 'RUN_EXPIRED';end if;\n    -- Close submissions before the existing one-minute weekly settlement grace ends.\n    if t>((date_trunc('week',(r.started_at+make_interval(secs=>r.duration_ms/1000.0)) at time zone 'Asia/Seoul')+interval '7 days') at time zone 'Asia/Seoul')+interval '45 seconds' then raise exception 'RUN_EXPIRED';end if;\n    if p_hits is null or jsonb_typeof(p_hits)<>'array' then raise exception 'INVALID_HITS';end if;\n    if jsonb_array_length(p_hits)>250 then raise exception 'INVALID_HITS';end if;\n    for hit in select value from jsonb_array_elements(p_hits) loop\n     if jsonb_typeof(hit)<>'object' or jsonb_typeof(hit->'id')<>'number' or jsonb_typeof(hit->'ms')<>'number'\n      or not coalesce(hit->>'id' ~ '^[0-9]{1,3}$',false) or not coalesce(hit->>'ms' ~ '^[0-9]{1,5}$',false) then raise exception 'INVALID_HITS';end if;\n     idx:=(hit->>'id')::integer;ms:=(hit->>'ms')::integer;target:=r.targets->idx;\n     if target is null or idx=any(seen) or ms<(target->>'at')::integer+80 or ms>=(target->>'until')::integer or ms-last_ms<60 then raise exception 'INVALID_HITS';end if;\n     seen:=array_append(seen,idx);last_ms:=ms;\n     points:=case target->>'kind' when 'golden' then 10 when 'pongi' then 1 else -2 end;\n     total:=greatest(0,total+points);if points<0 then error_count:=error_count+1;end if;\n    end loop;\n    update app_private.pongi_whack_runs set finished_at=started_at+make_interval(secs=>r.duration_ms/1000.0),score=total,reward_gold=total,mistakes=error_count,hits=p_hits where id=r.id returning * into r;\n    if total>0 then\n     update public.player_wallets set gold=gold+total,updated_at=clock_timestamp() where user_id=uid;\n     insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n      values(uid,gen_random_uuid(),'charge','arcade:pongi-whack:reward',total);\n    end if;\n   end if;\n  end if;\n end if;\n select gold into balance from public.player_wallets where user_id=uid;\n return jsonb_build_object('serverNow',clock_timestamp(),'gold',balance,'run',case when r.id is null then null else app_private.pongi_whack_state(r) end);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_action(p_action text, p_operation_id uuid, p_run_id uuid, p_hits jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid(); t timestamptz:=clock_timestamp(); r app_private.pongi_whack_runs;\n hit jsonb; target jsonb; seen integer[]:='{}'; idx integer; ms integer; last_ms integer:=-1000;\n points integer; total integer:=0; error_count integer:=0; balance bigint;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','start','finish','leave') then raise exception 'INVALID_ACTION';end if;\n perform pg_advisory_xact_lock(hashtextextended('pongi-whack:'||uid::text,0));\n if p_action='state' then\n  select * into r from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes' order by started_at desc limit 1;\n elsif p_action='start' then\n  if p_operation_id is null then raise exception 'OPERATION_REQUIRED';end if;\n  select * into r from app_private.pongi_whack_runs where user_id=uid and operation_id=p_operation_id;\n  if not found then\n   -- Preserve retries of an accepted operation; reject only genuinely new starts.\n   if app_private.pongi_whack_maintenance_active(clock_timestamp()) then raise exception 'PONGI_WHACK_MAINTENANCE';end if;\n   if exists(select 1 from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes') then raise exception 'ACTIVE_RUN';end if;\n   perform app_private.get_gold_wallet();\n   update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=uid and gold>=10 returning gold into balance;\n   if not found then raise exception 'INSUFFICIENT_GOLD';end if;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(uid,p_operation_id,'buy','arcade:pongi-whack',-10);\n   insert into app_private.pongi_whack_runs(user_id,operation_id,started_at,targets,duration_ms)\n    values(uid,p_operation_id,t+interval '3 seconds',app_private.pongi_whack_board(),30000) returning * into r;\n  end if;\n else\n  select * into r from app_private.pongi_whack_runs where id=p_run_id and user_id=uid for update;\n  if not found then raise exception 'RUN_NOT_FOUND';end if;\n  if r.finished_at is null and r.abandoned_at is null then\n   if p_action='leave' then\n    update app_private.pongi_whack_runs set abandoned_at=t where id=r.id returning * into r;\n   else\n    if t<r.started_at+make_interval(secs=>r.duration_ms/1000.0) then raise exception 'TOO_EARLY';end if;\n    if t>r.started_at+interval '15 minutes' then raise exception 'RUN_EXPIRED';end if;\n    -- Close submissions before the existing one-minute weekly settlement grace ends.\n    if t>((date_trunc('week',(r.started_at+make_interval(secs=>r.duration_ms/1000.0)) at time zone 'Asia/Seoul')+interval '7 days') at time zone 'Asia/Seoul')+interval '45 seconds' then raise exception 'RUN_EXPIRED';end if;\n    if p_hits is null or jsonb_typeof(p_hits)<>'array' then raise exception 'INVALID_HITS';end if;\n    if jsonb_array_length(p_hits)>250 then raise exception 'INVALID_HITS';end if;\n    for hit in select value from jsonb_array_elements(p_hits) loop\n     if jsonb_typeof(hit)<>'object' or jsonb_typeof(hit->'id')<>'number' or jsonb_typeof(hit->'ms')<>'number'\n      or not coalesce(hit->>'id' ~ '^[0-9]{1,3}$',false) or not coalesce(hit->>'ms' ~ '^[0-9]{1,5}$',false) then raise exception 'INVALID_HITS';end if;\n     idx:=(hit->>'id')::integer;ms:=(hit->>'ms')::integer;target:=r.targets->idx;\n     if target is null or idx=any(seen) or ms<(target->>'at')::integer+80 or ms>=(target->>'until')::integer or ms-last_ms<60 then raise exception 'INVALID_HITS';end if;\n     seen:=array_append(seen,idx);last_ms:=ms;\n     points:=case target->>'kind' when 'golden' then 10 when 'pongi' then 1 else -2 end;\n     total:=greatest(0,total+points);if points<0 then error_count:=error_count+1;end if;\n    end loop;\n    update app_private.pongi_whack_runs set finished_at=started_at+make_interval(secs=>r.duration_ms/1000.0),score=total,reward_gold=total,mistakes=error_count,hits=p_hits where id=r.id returning * into r;\n    if total>0 then\n     update public.player_wallets set gold=gold+total,updated_at=clock_timestamp() where user_id=uid;\n     insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n      values(uid,gen_random_uuid(),'charge','arcade:pongi-whack:reward',total);\n    end if;\n   end if;\n  end if;\n end if;\n select gold into balance from public.player_wallets where user_id=uid;\n return jsonb_build_object('serverNow',clock_timestamp(),'gold',balance,\n 'maintenance',(select jsonb_build_object('startsAt',m.starts_at,'releasedAt',m.released_at,'active',app_private.pongi_whack_maintenance_active(clock_timestamp())) from app_private.pongi_whack_maintenance m where m.id),\n 'run',case when r.id is null then null else app_private.pongi_whack_state(r) end);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17859,6 +18087,16 @@
         "arguments": "p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select app_private.arcade_weekly_leaderboard('pongi-whack',p_offset)\n$function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_maintenance_active(p_at timestamp with time zone DEFAULT clock_timestamp())\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select exists(select 1 from app_private.pongi_whack_maintenance\n where id and p_at>=starts_at and (released_at is null or p_at<released_at))\n$function$\n",
+        "securityDefiner": false
       },
       {
         "name": "pongi_whack_state",
@@ -19788,6 +20026,26 @@
         "schema": "public",
         "arguments": "p_action text, p_id uuid, p_body text",
         "definition": "CREATE OR REPLACE FUNCTION public.exploration_feedback_action(p_action text, p_id uuid, p_body text DEFAULT NULL::text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.exploration_feedback_action(p_action,p_id,p_body)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "exploration_server_commit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.exploration_server_commit(p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.exploration_server_commit(p_user,p_run,p_operation,p_request,p_revision,p_model)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "exploration_server_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.exploration_server_state(p_user uuid, p_run uuid, p_operation uuid, p_request jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.exploration_server_state(p_user,p_run,p_operation,p_request)$function$\n",
         "securityDefiner": false
       },
       {
@@ -22111,6 +22369,120 @@
       {
         "name": "exploration_feedback_user_id_not_null",
         "table": "exploration_feedback",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "exploration_operations_operation_id_not_null",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "exploration_operations_pkey",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "exploration_operations_receipt_not_null",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL receipt"
+      },
+      {
+        "name": "exploration_operations_request_not_null",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL request"
+      },
+      {
+        "name": "exploration_operations_run_id_fkey",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (run_id) REFERENCES app_private.exploration_runs(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exploration_operations_run_id_not_null",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL run_id"
+      },
+      {
+        "name": "exploration_operations_user_id_fkey",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exploration_operations_user_id_not_null",
+        "table": "exploration_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "exploration_runs_check",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "CHECK (((reward_gold = 0) OR (finished_at IS NOT NULL)))"
+      },
+      {
+        "name": "exploration_runs_id_not_null",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "exploration_runs_model_not_null",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL model"
+      },
+      {
+        "name": "exploration_runs_pkey",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "exploration_runs_revision_check",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "CHECK ((revision >= 0))"
+      },
+      {
+        "name": "exploration_runs_revision_not_null",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL revision"
+      },
+      {
+        "name": "exploration_runs_reward_gold_check",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "CHECK ((reward_gold = ANY (ARRAY[0, 2000])))"
+      },
+      {
+        "name": "exploration_runs_reward_gold_not_null",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL reward_gold"
+      },
+      {
+        "name": "exploration_runs_started_at_not_null",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL started_at"
+      },
+      {
+        "name": "exploration_runs_user_id_fkey",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exploration_runs_user_id_not_null",
+        "table": "exploration_runs",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -24465,6 +24837,36 @@
         "table": "player_relic_loadouts",
         "schema": "app_private",
         "definition": "CHECK (((relic_id IS NULL) <> (crafted_id IS NULL)))"
+      },
+      {
+        "name": "pongi_whack_maintenance_check",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "CHECK (((released_at IS NULL) OR (released_at >= starts_at)))"
+      },
+      {
+        "name": "pongi_whack_maintenance_id_check",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "CHECK (id)"
+      },
+      {
+        "name": "pongi_whack_maintenance_id_not_null",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "pongi_whack_maintenance_pkey",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "pongi_whack_maintenance_starts_at_not_null",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "NOT NULL starts_at"
       },
       {
         "name": "pongi_whack_runs_check",
@@ -40740,6 +41142,48 @@
         "arguments": "p_action text, p_id uuid, p_body text"
       },
       {
+        "name": "exploration_server_commit",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb"
+      },
+      {
+        "name": "exploration_server_commit",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb"
+      },
+      {
+        "name": "exploration_server_commit",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb"
+      },
+      {
+        "name": "exploration_server_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb"
+      },
+      {
+        "name": "exploration_server_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb"
+      },
+      {
+        "name": "exploration_server_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb"
+      },
+      {
         "name": "farm_action",
         "role": "anon",
         "schema": "app_private",
@@ -43069,6 +43513,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_offset integer"
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
       },
       {
         "name": "pongi_whack_state",
@@ -47122,6 +47587,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_action text, p_id uuid, p_body text"
+      },
+      {
+        "name": "exploration_server_commit",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb"
+      },
+      {
+        "name": "exploration_server_commit",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb"
+      },
+      {
+        "name": "exploration_server_commit",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb"
+      },
+      {
+        "name": "exploration_server_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb"
+      },
+      {
+        "name": "exploration_server_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb"
+      },
+      {
+        "name": "exploration_server_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb"
       },
       {
         "name": "farm_action",

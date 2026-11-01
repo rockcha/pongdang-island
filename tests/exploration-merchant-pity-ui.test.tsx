@@ -11,10 +11,14 @@ vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:vi.fn()}))
 vi.mock('@/features/exploration/exploration-audio',()=>({createExplorationAudio:()=>({startMusic(){},unlock(){},play(){},dispose(){},startDescent(){},stopDescent(){}})}))
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();vi.unstubAllGlobals()})
 const advance=async(ms:number)=>{await act(async()=>{await vi.advanceTimersByTimeAsync(ms)})}
-it('opens the guaranteed merchant before any door choice and returns to the same floor after trading',async()=>{
+it('shows a single guaranteed merchant door and returns to the same floor choices after trading',async()=>{
  const initial=practice.newPractice(()=>0,'practice'),state=queueForcedMerchant({...initial,gold:1000,market:drawPracticeFloor(11,()=>0)})
  vi.spyOn(practice,'newPractice').mockReturnValue(state);vi.useFakeTimers();vi.stubGlobal('matchMedia',()=>({matches:true}))
  render(<StrictMode><ExplorationGame nickname="퐁이" mode="practice" onLeave={()=>{}}/></StrictMode>);await advance(100)
+ const gate=screen.getByRole('group',{name:'지하 11층의 하나뿐인 문'})
+ expect(gate.querySelectorAll('button')).toHaveLength(1)
+ expect(screen.queryByRole('region',{name:'상인 방'})).toBeNull()
+ fireEvent.click(gate.querySelector('button')!);fireEvent.click(screen.getByRole('button',{name:'선택한 문으로 입장'}));await advance(100)
  expect(screen.getByRole('region',{name:'상인 방'})).toBeTruthy()
  expect(screen.queryByRole('group',{name:'지하 11층의 세 문'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'구매한다'}));fireEvent.click(screen.getByRole('button',{name:'포션',exact:true}))

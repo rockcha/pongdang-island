@@ -1,9 +1,9 @@
 {
   "profile": "rod-shop-q90-320-v1",
   "summary": {
-    "count": 22,
-    "sourceBytes": 81310479,
-    "displayBytes": 1343516
+    "count": 23,
+    "sourceBytes": 84455859,
+    "displayBytes": 1386464
   },
   "items": [
     {
@@ -258,6 +258,38 @@
       "reel": {
         "url": "/game-art/rod-shop/reel/1bf8d3c1bc0e7284f757fe44-320.webp",
         "bytes": 42350,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "hangang",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261102-033000/equipment/rods/hangang/thumbnail.png",
+          "sourceHash": "407d7dc18685efb8581df2b5d2079f1e26f9c4954538505d663aa45d4c595f05",
+          "sourceBytes": 463928
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261102-033000/equipment/rods/hangang/reel-frame.png",
+          "sourceHash": "2d648e6eb4efeef222e9660c7ea317e0d1ac45ea4c7a2db96f7ba6160a18133c",
+          "sourceBytes": 1142076
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261102-033000/equipment/rods/hangang/reel-rotor.png",
+          "sourceHash": "23b2a831e1487c0c3fce19e019b020d19e5b7bc915640a4f6a02ec8b088ffd6b",
+          "sourceBytes": 1539376
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/d6a004f0033586791375823b-320.webp",
+        "bytes": 18334,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/88b20ed474209b1ba4af22b5-320.webp",
+        "bytes": 24614,
         "width": 320,
         "height": 320
       }

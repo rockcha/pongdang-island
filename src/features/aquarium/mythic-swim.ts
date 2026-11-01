@@ -10,6 +10,7 @@ import plunderMythicSheets from './plunder-mythic-action-layouts.json'
 import mechsanctumMythicSheets from './mechsanctum-mythic-action-layouts.json'
 import fireflyMythicSheets from './firefly-mythic-action-layouts.json'
 import pharaohMythicSheets from './pharaoh-mythic-action-layouts.json'
+import hangangMythicSheets from './hangang-mythic-action-layouts.json'
 import {pharaohMythicFrame} from './pharaoh-mythic-motion'
 import {halloweenMythicFrame} from './halloween-spirits'
 import {sharedDecorationColumns,sharedDecorationAsset} from './shared-decoration-animation'
@@ -17,6 +18,7 @@ export function mythicSheetColumns(path:string){return sharedDecorationColumns(p
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
+ ...hangangMythicSheets,
  ...pharaohMythicSheets,
  ...fireflyMythicSheets,
  ...starruinsBluegoldSheets,
@@ -52,7 +54,7 @@ for(const sheet of sheets){
 }
 const sheetFor=(path:string)=>canonicalSheets.get(path)
 const plunderPaths=new Set(plunderMythicSheets.map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
-const reversibleActionPaths=new Set([...pharaohMythicSheets,...fireflyMythicSheets,...starruinsBluegoldSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
+const reversibleActionPaths=new Set([...hangangMythicSheets,...pharaohMythicSheets,...fireflyMythicSheets,...starruinsBluegoldSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
 export function mythicSwimAsset(path:string,rarity:string){
  if(rarity!=='mythic')return null
  const decoration=sharedDecorationAsset(path)

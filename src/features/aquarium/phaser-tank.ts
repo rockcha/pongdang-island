@@ -23,6 +23,8 @@ import {hasHalloweenSpirits} from './halloween-spirits'
 import {HalloweenSpiritRenderer} from './halloween-spirit-renderer'
 import {hasPharaohAwakening} from './pharaoh-golden-effects'
 import {PharaohGoldenRenderer} from './pharaoh-golden-renderer'
+import {hasHangangMythicEffect} from './hangang-mythic-effects'
+import {HangangMythicRenderer} from './hangang-mythic-renderer'
 import {clampTankCameraView,aquariumLayoutWidth,panoramaTankHeight,draggedTankView,tankWorldItem,tankItemSpace} from './tank-world'
 import type {TankWorldOptions} from './tank-world'
 
@@ -47,7 +49,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   const cameraOffset=()=>layoutWidth()*view
   const itemSpace=(item:OwnedCollectible)=>tankItemSpace(item,layoutWidth(),columns,world?.preserveArrangement)
   const motionItem=(item:OwnedCollectible)=>itemSpace(item).local?item:tankWorldItem(item,layoutWidth(),columns)
-  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number; editingFrame?:number; spirits?:HalloweenSpiritRenderer; emission?:CrimsonEmissionRenderer; golden?:PharaohGoldenRenderer }>()
+  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number; editingFrame?:number; spirits?:HalloweenSpiritRenderer; emission?:CrimsonEmissionRenderer; golden?:PharaohGoldenRenderer; hangang?:HangangMythicRenderer }>()
   const queued = new Set<string>(), failed = new Set<string>()
   let spiritsQueued=false
   let selectedId:string|null=null
@@ -197,12 +199,12 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       }
       const ids = new Set(items.map(item => item.id))
       const spawns=swimSpawnLayout(items.map(motionItem),worldWidth(),worldHeight())
-      for (const [id, entry] of entries) if (!ids.has(id)) { dragging.delete(id);entry.golden?.destroy();entry.emission?.destroy();entry.spirits?.destroy();entry.sprite.destroy();entries.delete(id) }
+      for (const [id, entry] of entries) if (!ids.has(id)) { dragging.delete(id);entry.hangang?.destroy();entry.golden?.destroy();entry.emission?.destroy();entry.spirits?.destroy();entry.sprite.destroy();entries.delete(id) }
       for (const item of items) {
         const base=asset(item), enhanced=mythicSwimAsset(base.path,item.species.rarity)
         const path=enhanced?.path??base.path,sheet=base.sheet,key=textureKey(path)
         const old = entries.get(item.id)
-        if (old && old.path !== path) { old.golden?.destroy();old.emission?.destroy();old.spirits?.destroy();old.sprite.destroy();entries.delete(item.id) }
+        if (old && old.path !== path) { old.hangang?.destroy();old.golden?.destroy();old.emission?.destroy();old.spirits?.destroy();old.sprite.destroy();entries.delete(item.id) }
         if (!this.textures.exists(key)) {
           if (!queued.has(key) && !failed.has(key)) { queued.add(key); this.load.image(key, world?.assetUrl?.(path)??enhanced?.url??('url' in base?base.url:undefined)??collectibleUrl(path)) }
           continue
@@ -229,7 +231,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         // gaps in a small sponge or other stationary species.
         sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:draggable(item)?'grab':'pointer'})
         this.input.setDraggable(sprite,draggable(item))
-        entries.set(item.id, { motion: new InhabitantMotion(motionItem(item), clock,spawns.get(item.id)), sprite, path, sheet, golden:hasPharaohAwakening(item.species.id)?new PharaohGoldenRenderer(this):undefined, emission:hasCrimsonEmission(item.species.id)?new CrimsonEmissionRenderer(this):undefined, spirits:hasHalloweenSpirits(item.species.id)?new HalloweenSpiritRenderer(this):undefined })
+        entries.set(item.id, { motion: new InhabitantMotion(motionItem(item), clock,spawns.get(item.id)), sprite, path, sheet, hangang:hasHangangMythicEffect(item.species.id)?new HangangMythicRenderer(this):undefined, golden:hasPharaohAwakening(item.species.id)?new PharaohGoldenRenderer(this):undefined, emission:hasCrimsonEmission(item.species.id)?new CrimsonEmissionRenderer(this):undefined, spirits:hasHalloweenSpirits(item.species.id)?new HalloweenSpiritRenderer(this):undefined })
       }
       // A renderer survives tank switches. Release sheets from previous tanks,
       // including late loads that finished after their tank was left.
@@ -266,6 +268,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(dragging.has(entry.motion.item.id)){
           entry.emission?.draw(entry.sprite,clock,entry.motion.item.animation_seed,frozen)
           entry.golden?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite)
+          entry.hangang?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite)
           entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite,Number(entry.sprite.getData('logicalSize')??entry.sprite.displayWidth))
           continue
         }
@@ -290,6 +293,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         entry.sprite.setFlipX(flipped)
         entry.emission?.draw(entry.sprite,clock,entry.motion.item.animation_seed,frozen)
         entry.golden?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite)
+        entry.hangang?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite)
         entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite,pose.size)
       }
       if(selectedId){const entry=entries.get(selectedId);if(entry){const bounds=entry.sprite.getBounds();onSelectionPosition?.(selectedId,(bounds.centerX-cameraOffset())*zoom*viewport.width/layoutWidth(),(bounds.top-cameraY())*zoom*viewport.width/layoutWidth())}}

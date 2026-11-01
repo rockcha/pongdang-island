@@ -1,0 +1,66 @@
+/* Keep resources on the left and the icon legend on the right at every size. */
+.exploration-game .exploration-split-hud{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:5px 16px;padding:3px 0 5px}
+.exploration-game .exploration-split-hud>.exploration-status-main{grid-column:1;grid-row:1;display:block;min-width:0}
+.exploration-game .exploration-split-hud .exploration-hud-identity{display:flex;align-items:center;gap:6px;min-width:0;margin-bottom:3px}
+.exploration-game .exploration-split-hud .exploration-avatar-ring{width:24px;height:24px;padding:0;border:0;background:none;flex-shrink:0}
+.exploration-game .exploration-split-hud .exploration-avatar-ring>img{width:24px;height:24px}
+.exploration-game .exploration-split-hud .exploration-player-name{display:flex;align-items:center;gap:5px;min-width:0;font-size:11px;line-height:1.4;margin:0}
+.exploration-game .exploration-split-hud .exploration-player-name>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exploration-game .exploration-split-hud .exploration-player-name>small{flex-shrink:0;padding:2px 5px;font-size:8px}
+.exploration-game .exploration-split-hud .exploration-vitals{display:grid;grid-template-columns:minmax(0,1fr);gap:3px}
+.exploration-game .exploration-split-hud .exploration-resource-row{display:block;min-height:19px}
+.exploration-game .exploration-split-hud .exploration-meter{display:grid;grid-template-columns:12px minmax(0,1fr) 51px;align-items:center;gap:5px;min-width:0;width:100%}
+.exploration-game .exploration-split-hud .exploration-meter>span:last-child{width:auto;white-space:nowrap;text-align:right;font-size:10px}
+.exploration-game .exploration-split-hud .exploration-meter b{font-size:12px;font-weight:500}
+.exploration-game .exploration-split-hud .exploration-meter small{font-size:9px;margin-left:1px}
+.exploration-game .exploration-split-hud :is(progress,.exploration-health-meter){min-width:0;width:100%;height:5px}
+.exploration-game .exploration-split-hud>.exploration-stat-summary{grid-column:2;grid-row:1;display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,.9fr));grid-template-rows:repeat(2,30px);gap:3px;min-width:0;align-self:center}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only{display:contents}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only>div{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:5px;min-width:0;min-height:30px;padding:2px;border:0;border-radius:6px;background:#ffffff03;cursor:pointer;color:#e2c180}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only>div:hover{background:#ffffff09}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only :is(dt,dd,svg){color:inherit}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only dt{display:flex;align-items:center;gap:0}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only dt>span{display:none}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only svg{width:13px;height:13px;flex-shrink:0}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only dd{margin:0;font-size:12px;line-height:1.2;white-space:nowrap}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only dd small{font-size:9px;margin-left:1px}
+.exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only[data-attack-variance=true] [data-stat=attack] dd{font-size:10px;letter-spacing:-.2px}
+.exploration-game .exploration-split-hud [data-stat=critical],.exploration-stat-legend-list [data-stat=critical] dt{color:#ed9f98!important}
+.exploration-game .exploration-split-hud [data-stat=evasion],.exploration-stat-legend-list [data-stat=evasion] dt{color:#9ccbb7!important}
+.exploration-game .exploration-split-hud [data-stat=defense],.exploration-stat-legend-list [data-stat=defense] dt{color:#cebf90!important}
+.exploration-game .exploration-split-hud [data-stat=resistance],.exploration-stat-legend-list [data-stat=resistance] dt{color:#8dbdce!important}
+.exploration-stat-help{display:flex;align-items:center;justify-content:center;width:100%;min-height:30px;color:#a7b49e;cursor:pointer;border-radius:6px}
+.exploration-stat-help:hover{color:#e1e7d8;background:#ffffff07}
+.exploration-game .exploration-split-hud>.exploration-player-ailments,.exploration-game .exploration-split-hud>.exploration-contract-badges{grid-column:1/-1;grid-row:auto;margin:0;min-width:0}
+.exploration-game .exploration-split-hud>.exploration-player-ailments{display:flex;align-items:center;gap:6px;height:32px;min-height:32px;max-height:32px;border-top:1px solid #ffffff08;overflow:hidden}
+.exploration-game .exploration-player-ailments>.ailment-guide-button{display:flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;margin:0;padding:0;color:#aab6a4;border-radius:5px}
+.exploration-game .exploration-player-ailments>.ailment-guide-button:hover{background:#ffffff08;color:#e1e7d8}
+.exploration-game .exploration-player-ailments>ul{flex:1;min-width:0;height:100%;align-items:center;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.exploration-game .exploration-player-ailments>ul::-webkit-scrollbar{display:none}
+.exploration-game .exploration-player-ailments>ul>li{flex-shrink:0}
+.exploration-no-ailments{color:#8d988a;font-size:10px;line-height:1.5;white-space:nowrap}
+.exploration-game .exploration-toolbar .exploration-menu-trigger{display:flex;align-items:center;justify-content:center;min-width:36px;min-height:36px;padding:0;color:#c0c8b5}
+.exploration-menu-actions{display:grid;gap:7px}
+.exploration-menu-actions button{display:flex;align-items:center;justify-content:flex-start;gap:12px;min-height:48px;width:100%;padding:10px 13px;border-radius:9px;background:#ffffff04;color:#d6ddcc;font-size:13px;cursor:pointer}
+.exploration-menu-actions button:hover{background:#ffffff09}
+.exploration-stat-legend{max-height:85dvh;overflow-y:auto}
+.exploration-stat-legend-list{display:grid;gap:12px;margin:0}
+.exploration-stat-legend-list>div{padding-bottom:12px;border-bottom:1px solid #ffffff0c}
+.exploration-stat-legend-list>div:last-child{padding-bottom:0;border-bottom:0}
+.exploration-stat-legend-list dt{display:flex;align-items:center;gap:8px;font-size:13px;color:#e2c180}
+.exploration-stat-legend-list dt svg{width:17px;height:17px;flex-shrink:0}
+.exploration-stat-legend-list dt strong{margin-left:auto;font-size:16px;font-weight:500;font-variant-numeric:tabular-nums}
+.exploration-stat-legend-list dd{font-size:11px;line-height:1.8;color:#acb59f;margin-top:5px;word-break:keep-all}
+@media(max-width:360px){
+ .exploration-game .exploration-split-hud{gap:5px 10px}
+ .exploration-game .exploration-split-hud .exploration-meter{grid-template-columns:11px minmax(0,1fr) 47px;gap:4px}
+ .exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only>div{gap:3px}
+ .exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only dd{font-size:11px}
+ .exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only svg{width:11px;height:11px}
+}
+@media(max-height:540px){
+ .exploration-game .exploration-split-hud{padding-block:0;gap:3px 16px}
+ .exploration-game .exploration-split-hud>.exploration-stat-summary{grid-template-rows:repeat(2,27px)}
+ .exploration-game .exploration-split-hud .exploration-combat-stats.is-icons-only>div,.exploration-stat-help{min-height:27px}
+ .exploration-game .exploration-split-hud .exploration-hud-identity{margin-bottom:0}
+}

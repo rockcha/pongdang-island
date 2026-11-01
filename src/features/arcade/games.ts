@@ -7,7 +7,7 @@ const OddEvenGame = lazy(() => import('./odd-even-game'))
 const BrickBreakerGame = lazy(() => import('./brick-breaker-game'))
 const LadderGame = lazy(() => import('./ladder-game'))
 const PongiWhackGame = lazy(() => import('./pongi-whack-game'))
-const TowerDefenseGame = lazy(() => import('./tower-defense-game'))
+const ExplorationGame = lazy(() => import('../exploration/exploration-page').then(module=>({default:module.ExplorationPage})))
 
 export type ArcadeGame = {
   id: string
@@ -94,12 +94,17 @@ export const arcadeGames: ArcadeGame[] = [
     rewardMode: 'settlement',
   },
   {
-    id: 'underground',
-    title: '지하 탐험하기',
-    description: '섬 아래 숨겨진 길을 따라 지하 세계를 탐험해요.',
+    id: 'exploration',
+    title: '파라오의 황금해',
+    description: '왕릉 지하 50층을 돌파하고 2,000골드를 즉시 받아요.',
     icon: Pickaxe,
-    tags: ['luck', 'brain'],
-    status: 'coming-soon',
+    tags: ['brain'],
+    entryFee: 0,
+    dailyLimit: null,
+    status: 'ready',
+    component: ExplorationGame,
+    thumbnail: '/arcade/exploration/thumbnail.webp',
+    rewardMode: 'instant',
   },
   {
     id: 'brick-breaker',
@@ -117,13 +122,12 @@ export const arcadeGames: ArcadeGame[] = [
   {
     id: 'tower-defense',
     title: '퐁이의 타워디펜스',
-    description: '30초 동안 포탑과 벽을 세우고 조개금고를 지켜요. 무료 5웨이브 연습판.',
+    description: '새로운 방어전을 준비하고 있어요.',
     icon: Castle,
     tags: ['brain'],
     entryFee: 0,
     dailyLimit: null,
-    status: 'ready',
-    component: TowerDefenseGame,
+    status: 'coming-soon',
     thumbnail: '/arcade/tower-defense/thumbnail.svg',
   },
 ]

@@ -8,16 +8,20 @@ import {combatMagic} from './combat-state'
 import {spellManaCost,potionRecoveryAmount,equipGear,grantPracticeSupplies,merchantPotions,potionBlock,toggleSpell,type Gear,type PotionKind,type PracticeState} from './practice-state'
 export type InventoryTab='weapon'|'armor'|'magic'|'potion'
 const tabs=[{id:'weapon',name:'무기',Icon:Swords},{id:'armor',name:'보호구',Icon:Shield},{id:'magic',name:'마법',Icon:Sparkles},{id:'potion',name:'포션',Icon:Droplets}] as const
-export function PracticeInventory({initialTab,open,onOpenChange,state,onChange,onUsePotion,onEquipChange}:{onEquipChange:()=>void;onUsePotion:(kind:PotionKind)=>boolean;initialTab:InventoryTab;open:boolean;onOpenChange:(open:boolean)=>void;state:PracticeState;onChange:React.Dispatch<React.SetStateAction<PracticeState>>}){
+export function PracticeInventory({initialTab,open,onOpenChange,state,onChange,onUsePotion,onEquipChange,busy=false,onEquip,onToggleSpell}:{busy?:boolean;onEquip?:(kind:'weapon'|'armor',id:string)=>void;onToggleSpell?:(id:string)=>void;onEquipChange:()=>void;onUsePotion:(kind:PotionKind)=>boolean;initialTab:InventoryTab;open:boolean;onOpenChange:(open:boolean)=>void;state:PracticeState;onChange:React.Dispatch<React.SetStateAction<PracticeState>>}){
  const [tab,setTab]=useState<InventoryTab>('weapon'),[notice,setNotice]=useState('')
  useEffect(()=>{if(open){setTab(initialTab);setNotice('')}},[open,initialTab])
  function spell(id:string){
+  if(busy)return
   if(!state.equippedSpells.includes(id)&&state.equippedSpells.length===2){setNotice('마법은 최대 2개까지 장착할 수 있어요. 먼저 하나를 해제해주세요.');return}
+  if(onToggleSpell){onToggleSpell(id);return}
   const next=toggleSpell(state,id);if(next===state)return
   setNotice('');onChange(next);onEquipChange()
  }
  function equip(kind:'weapon'|'armor',item:Gear){
+  if(busy)return
   if((kind==='weapon'?state.weaponId:state.armorId)===item.id)return
+  if(onEquip){onEquip(kind,item.id);return}
   const next=equipGear(state,kind,item.id,state.combat?.status==='active');if(next===state)return
   onChange(next);onEquipChange()
  }
@@ -28,6 +32,6 @@ export function PracticeInventory({initialTab,open,onOpenChange,state,onChange,o
  <div id="exploration-bag-items" role="tabpanel" aria-labelledby={`exploration-tab-${tab}`} className="exploration-inventory-items">
  {tab==='magic'?(state.spells.length?state.spells.map(item=>{const equipped=state.equippedSpells.includes(item.id);return <article key={item.id} className="exploration-inventory-card" data-equipped={equipped}><div className="exploration-inventory-item-art">{item.image?<img src={item.image} alt=""/>:<Sparkles size={28}/>}</div><div className="exploration-inventory-item-copy"><div className="exploration-item-heading"><h3>{item.name}</h3><span className="exploration-item-mana">MP {spellManaCost(state,item)}</span></div><p>{combatMagic[item.id as keyof typeof combatMagic]??item.description}</p><button className="exploration-equip-button" aria-pressed={equipped} onClick={()=>spell(item.id)}>{equipped?<><Check size={12}/>마법 해제</>:'마법 장착'}</button></div></article>}):<p className="exploration-empty-spells"><Sparkles size={30}/>아직 발견한 마법이 없어요. 마법 상인에게 주문을 배워보세요.</p>):tab==='potion'?merchantPotions.map(potion=><article key={potion.id} className="exploration-inventory-card"><div className="exploration-inventory-item-art"><img src={potion.image} alt=""/></div><div className="exploration-inventory-item-copy"><h3>{potion.name}</h3><p>{potion.kind==='health'?'체력':'마나'} {potionRecoveryAmount(state,potion.kind)} 회복 · 보유 {state.potions[potion.kind]}개</p><button className="exploration-equip-button" disabled={!!potionBlock(state,potion.kind)} onClick={()=>{if(onUsePotion(potion.kind))setNotice(`${potion.name}을 사용했어요.`)}}>{potionBlock(state,potion.kind)??'사용하기'}</button></div></article>):<>{items.map(item=>{const equipped=(tab==='weapon'?state.weaponId:state.armorId)===item.id;return <article key={item.id} className="exploration-inventory-card" data-equipped={equipped}><div className="exploration-inventory-item-art">{item.image?<img src={item.image} alt=""/>:tab==='weapon'?<Swords size={28}/>:<Shield size={28}/>}</div><div className="exploration-inventory-item-copy"><div className="exploration-item-heading"><h3>{item.name}</h3>{equipped&&<span className="exploration-equipped-mark"><Check size={11}/>장착 중</span>}</div><GearAttributes gear={item}/><WeaponEffect gear={item}/><p>{item.description}</p><button className="exploration-equip-button" aria-pressed={equipped} onClick={()=>equip(tab,item)}>{equipped?'사용 중':tab==='weapon'?'주 무기로 선택':'주 보호구로 선택'}</button></div></article>})}</>}
  </div>{notice&&<p role="alert" className="exploration-inventory-notice">{notice}</p>}
- <div className="exploration-inventory-footer"><ExplorationCodex ownedIds={[...state.weapons,...state.armor,...state.spells].map(item=>item.id)} initialCategory={tab==='magic'?'spell':tab==='armor'?'armor':'weapon'}/>{state.mode!=='practice'&&<button className="exploration-practice-supplies" disabled={state.supplies||state.combat?.status==='active'} onClick={()=>onChange(grantPracticeSupplies)}>{state.supplies?'연습 물품 지급 완료':'연습 물품 받기'}</button>}<button className="exploration-modal-return" onClick={()=>onOpenChange(false)}>닫기</button></div>
+ <div className="exploration-inventory-footer"><ExplorationCodex ownedIds={[...state.weapons,...state.armor,...state.spells].map(item=>item.id)} initialCategory={tab==='magic'?'spell':tab==='armor'?'armor':'weapon'}/>{state.mode!=='practice'&&<button className="exploration-practice-supplies" disabled={state.supplies||state.combat?.status==='active'} onClick={()=>onChange(grantPracticeSupplies)}>{state.supplies?'테스트 물품 지급 완료':'테스트 물품 받기'}</button>}<button className="exploration-modal-return" onClick={()=>onOpenChange(false)}>닫기</button></div>
  </DialogContent></Dialog>
 }

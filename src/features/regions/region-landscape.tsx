@@ -3,7 +3,7 @@ import {regionImageUrl,type Region} from './api'
 
 // The kingdom overview must remain fully visible; fishing has its own scenery.
 export function RegionLandscape({region,alt=region.name,className='',position='center',locked=false}:{region:Pick<Region,'id'|'name'|'image_path'>;alt?:string;className?:string;position?:'center'|'bottom';locked?:boolean}){
- const overview=region.id==='pharaoh',src=regionImageUrl(region.image_path)
+ const overview=region.id==='pharaoh'||region.id==='hangang',src=regionImageUrl(region.image_path)
  const framing=overview?'object-contain':`object-cover ${position==='bottom'?'object-bottom':'object-center'}`
  const treatment=locked?'grayscale brightness-[0.35]':''
  return <>

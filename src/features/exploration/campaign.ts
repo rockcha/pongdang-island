@@ -3,6 +3,8 @@ import {supplyCheckFloors} from './merchant-pity'
 import type {FloorMarket} from './merchant-stock'
 import type {MonsterId} from './monster-catalog'
 import type {WeaponTier} from './weapon-catalog'
+import type {PracticeState} from './practice-state'
+import {canOfferPracticeRoom} from './room-rules'
 
 export type ExplorationMode='test'|'practice'
 export const practiceFinalFloor=50
@@ -25,8 +27,8 @@ function weighted<T>(items:readonly {value:T;weight:number}[],random:()=>number)
  return items[items.length-1].value
 }
 export function floorMonsterPool(floor:number,intermediate=false):{value:MonsterId;weight:number}[]{
- const ids:MonsterId[]=intermediate?['sand-wraith','tomb-hook-guard','tomb-lantern-jellyfish','hourglass-sentinel','mirror-mask-mage']:['jar-wisp','talisman-lizard','sand-scorpion','saw-claw-crab','bandage-mummy','lapis-cobra','cracked-shield-scarab','cowardly-tomb-rat']
- const weights=intermediate?(floor<16?[100,0,0,0,0]:floor<21?[45,35,0,20,0]:floor<26?[25,25,20,20,10]:[20,20,20,20,20]):floor<=5?[40,35,25,0,0,0,0,0]:floor===6?[15,15,25,25,20,0,0,0]:floor<=8?[15,10,20,20,20,0,15,0]:floor<=10?[10,10,20,20,15,5,10,10]:floor<=20?[10,10,10,20,20,10,10,10]:[5,5,10,20,20,20,10,10]
+ const ids:MonsterId[]=intermediate?['sand-wraith','tomb-hook-guard','tomb-lantern-jellyfish','hourglass-sentinel','mirror-mask-mage']:['jar-wisp','talisman-lizard','sand-scorpion','sand-wing-bat','bandage-mummy','lapis-cobra','cracked-shield-scarab','cowardly-tomb-rat','night-eyed-desert-fox']
+ const weights=intermediate?(floor<16?[100,0,0,0,0]:floor<21?[45,35,0,20,0]:floor<26?[25,25,20,20,10]:[20,20,20,20,20]):floor<=5?[40,35,25,0,0,0,0,0,0]:floor===6?[15,15,25,15,20,0,0,0,10]:floor<=8?[15,10,20,10,20,0,15,0,10]:floor<=10?[10,10,20,10,15,5,10,10,10]:floor<=20?[10,10,10,10,20,10,10,10,10]:[5,5,10,10,20,20,10,10,10]
  return ids.map((value,index)=>({value,weight:weights[index]})).filter(item=>item.weight>0)
 }
 export function drawFloorMonster(floor:number,random=Math.random,intermediate=false):MonsterId{return weighted(floorMonsterPool(floor,intermediate),random)}
@@ -40,39 +42,54 @@ export function drawRewardTier(floor:number,random=Math.random):WeaponTier{
 }
 export function campaignChestGold(floor:number,random=Math.random){const [min,max]=floor<=10?[150,250]:floor<=20?[250,400]:floor<=30?[350,550]:floor<=40?[450,650]:[550,800];return min+Math.floor(random()*(max-min+1))}
 function roomFamily(id:RoomTypeId){return id.startsWith('rest-')?'rest':id.startsWith('investigate-')?'investigate':id.startsWith('merchant-')||id.startsWith('magic-')?'merchant':id==='warning-wall'?'lore':(id==='sleeping-giant'||id==='sealed-scarab')?'giant':id}
-function eventRoom(floor:number,excluded:RoomTypeId[],random:()=>number):RoomTypeId{
+function eventRoom(floor:number,excluded:RoomTypeId[],random:()=>number,state?:PracticeState):RoomTypeId{
  const band=campaignEventWeights.find(item=>floor<=item.through)??campaignEventWeights[campaignEventWeights.length-1]
- const candidates:{value:string;weight:number}[]=Object.entries(band).filter(([key,weight])=>key!=='through'&&weight>0&&!excluded.some(id=>roomFamily(id)===key)).map(([value,weight])=>({value,weight}))
+ const variants:Record<string,RoomTypeId[]>={rest:['rest-oasis','rest-camp','rest-garden'],investigate:['investigate-guards','investigate-wall','investigate-alchemy'],giant:['sleeping-giant','sealed-scarab'],lore:['warning-wall']}
+ const candidates:{value:RoomTypeId[];weight:number}[]=Object.entries(band).filter(([key,weight])=>key!=='through'&&weight>0&&!excluded.some(id=>roomFamily(id)===key)).map(([family,weight])=>({value:(variants[family]??[family as RoomTypeId]).filter(id=>canOfferPracticeRoom(state,id)),weight})).filter(item=>item.value.length>0)
  const choiceRooms:RoomTypeId[]=[]
  if(floor>=6)choiceRooms.push('deep-well')
  if(floor>=7&&floor<=17)choiceRooms.push('forbidden-trade')
  if(floor>=7&&floor<=45)choiceRooms.push('soul-lantern')
  if(floor>=11&&floor<=45)choiceRooms.push('cursed-gem-eye')
  if(canUseTeleport(floor))choiceRooms.push('broken-teleport')
- for(const value of choiceRooms)if(!excluded.includes(value))candidates.push({value,weight:5})
- const family=weighted(candidates,random)
- if(family==='giant')return pick(['sleeping-giant','sealed-scarab'] as const,random)
- if(family==='rest')return pick(['rest-oasis','rest-camp','rest-garden'] as const,random)
- if(family==='investigate')return pick(['investigate-guards','investigate-wall','investigate-alchemy'] as const,random)
- return ({lore:'warning-wall',giant:'sleeping-giant'} as Record<string,RoomTypeId>)[family]??family as RoomTypeId
+ for(const value of choiceRooms)if(!excluded.includes(value)&&canOfferPracticeRoom(state,value))candidates.push({value:[value],weight:5})
+ const rooms=weighted(candidates,random)
+ return rooms.length===1?rooms[0]:pick(rooms,random)
 }
-function merchantRoom(floor:number,random:()=>number):RoomTypeId{
+function merchantRoom(floor:number,random:()=>number,state?:PracticeState):RoomTypeId|undefined{
  const ids:RoomTypeId[]=['merchant-hasan','magic-nadim','merchant-karim','magic-sahira','merchant-zahir','magic-nefera']
  const weights=floor<=10?[60,40,0,0,0,0]:floor<=15?[40,30,20,10,0,0]:floor<=20?[20,20,40,20,0,0]:floor<=30?[10,10,50,30,0,0]:floor<=40?[0,0,45,35,12,8]:[0,0,30,30,25,15]
- return weighted(ids.map((value,index)=>({value,weight:weights[index]})),random)
+ const candidates=ids.map((value,index)=>({value,weight:weights[index]})).filter(item=>item.weight>0&&canOfferPracticeRoom(state,item.value))
+ return candidates.length?weighted(candidates,random):undefined
 }
 export const fixedPracticeRooms:Partial<Record<number,RoomTypeId>>={3:'merchant-hasan',6:'erased-name',22:'erased-name-record',34:'nameless-guardian',8:'magic-nadim',18:'merchant-karim',19:'rest-oasis',20:'boss-anubis',28:'magic-sahira',29:'rest-garden',30:'boss-anubis',38:'merchant-zahir',39:'rest-camp',40:'boss-anubis',48:'magic-nefera',49:'rest-oasis',50:'boss-pharaoh'}
 export function canUseTeleport(floor:number){return floor>=7&&floor+3<=practiceFinalFloor&&![floor,floor+1,floor+2].some(level=>fixedPracticeRooms[level]||supplyCheckFloors.some(check=>check===level))}
-export function drawPracticeFloor(floor:number,random=Math.random):FloorMarket{
+export function drawPracticeFloor(floor:number,random=Math.random,previousState?:PracticeState):FloorMarket{
  const level=Math.max(1,Math.min(practiceFinalFloor,Math.floor(floor)))
+ // Evaluate eligibility at the destination, after the previous fight has ended.
+ const state=previousState?{...previousState,combat:null,market:{...previousState.market,floor:level}}:undefined
+ if(level===practiceFinalFloor)return {floor:level,doors:[practiceFinalBossRoom],weaponIds:[],armorIds:[],monsterIds:['random']}
  const fixed=fixedPracticeRooms
  // The guardian meets arrivals before door selection; keep its floor reserved for teleport protection.
- const extras:RoomTypeId[]=fixed[level]&&fixed[level]!=='nameless-guardian'?[fixed[level]!]:[]
- if(level>1&&!extras.some(id=>roomFamily(id)==='merchant')&&random()<practiceMerchantChance)extras.push(merchantRoom(level,random))
- while(extras.length<2)extras.push(eventRoom(level,extras,random))
+ const extras:RoomTypeId[]=fixed[level]&&fixed[level]!=='nameless-guardian'&&canOfferPracticeRoom(state,fixed[level]!)?[fixed[level]!]:[]
+ if(level>1&&!extras.some(id=>roomFamily(id)==='merchant')&&random()<practiceMerchantChance){const merchant=merchantRoom(level,random,state);if(merchant)extras.push(merchant)}
+ while(extras.length<2)extras.push(eventRoom(level,extras,random,state))
  const doors:RoomTypeId[]=['monster',...extras]
  for(let index=doors.length-1;index>0;index--){const other=Math.floor(random()*(index+1));[doors[index],doors[other]]=[doors[other],doors[index]]}
  return {floor:level,doors,weaponIds:[],armorIds:[],monsterIds:doors.map(type=>type==='monster'?drawFloorMonster(level,random):type==='guardian'?drawFloorMonster(level,random,true):'random')}
+}
+export function refreshPracticeDoors(state:PracticeState,random=Math.random):PracticeState{
+ if(state.mode!=='practice')return state
+ const doors=[...state.market.doors],monsterIds=[...(state.market.monsterIds??doors.map(()=>'random' as const))]
+ let changed=false,door=state.door
+ for(let index=0;index<doors.length;index++){
+  if(canOfferPracticeRoom(state,doors[index]))continue
+  doors[index]=eventRoom(state.market.floor,doors.filter((_,other)=>other!==index),random,state)
+  monsterIds[index]=doors[index]==='guardian'?drawFloorMonster(state.market.floor,random,true):'random'
+  if(door===index)door=null
+  changed=true
+ }
+ return changed?{...state,door,market:{...state.market,doors,monsterIds}}:state
 }
 export function campaignDoorClue(type:RoomTypeId){
  const family=roomFamily(type)

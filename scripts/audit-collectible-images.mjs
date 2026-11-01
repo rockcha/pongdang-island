@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
 
-const root=process.argv[2], partial=process.argv.includes('--partial')
+const root=process.argv[2], partial=process.argv.includes('--partial'),final=process.argv.includes('--final')
 if(!root)throw Error('Usage: node scripts/audit-collectible-images.mjs <batch> [--partial]')
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'))
 const results=[], thumbs=[]
@@ -10,7 +10,7 @@ for(const item of manifest.items){
   for(const type of ['thumbnail',...(item.frames>1?['sprite']:[])]){
     const relative=type==='thumbnail'?item.thumbnail_path:item.sprite_sheet_path
     const source=path.join(root,'sources',`${item.id}-${type}.source`)
-    const file=fs.existsSync(source)?source:path.join(root,relative)
+    const file=!final&&fs.existsSync(source)?source:path.join(root,relative)
     if(!fs.existsSync(file)){results.push({id:item.id,type,missing:true});continue}
     const {data,info}=await sharp(file).ensureAlpha().raw().toBuffer({resolveWithObject:true})
     const columns=type==='thumbnail'?1:item.frames===8?4:2, rows=type==='thumbnail'?1:2
@@ -50,7 +50,7 @@ for(let start=0;start<thumbs.length;start+=6){
     await canvas.composite(layers).png().toFile(path.join(previewRoot,`thumbs-${start}-${name}.png`))
   }
 }
-fs.writeFileSync(path.join(root,'audit.json'),JSON.stringify({results},null,2)+'\n')
+fs.writeFileSync(path.join(root,final?'final-audit.json':'audit.json'),JSON.stringify({results},null,2)+'\n')
 const missing=results.filter(r=>r.missing).length, flagged=results.filter(r=>r.warnings?.length)
 console.log(JSON.stringify({checked:results.length-missing,missing,flagged:flagged.map(r=>({id:r.id,type:r.type,warnings:r.warnings})),contactSheets:Math.ceil(thumbs.length/6)*2}))
 if(!partial&&(missing||flagged.length))process.exitCode=1

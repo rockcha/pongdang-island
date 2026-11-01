@@ -1,0 +1,687 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "checkedAt": "2026-11-01T19:11:40.815Z",
+  "scope": "Only the new Hangang public assets; not frontend deployment or full database compatibility",
+  "files": [
+    {
+      "path": "decorations/epic/hangang-admiral-yi-statue_v1_thumbnail.png",
+      "sha256": "36d12ac517bce04d51ca620d6c2c3c020b2c4d85a4852a4ea1eca4e5eb38cc89",
+      "bytes": 1413882
+    },
+    {
+      "path": "decorations/epic/hangang-flooded-gwanghwamun_v1_thumbnail.png",
+      "sha256": "da61fe39945dbdf5753636342c1a031f0898b6d2013e5caa6d7de711316c286e",
+      "bytes": 2091345
+    },
+    {
+      "path": "decorations/epic/hangang-sleeping-cheomseongdae_v1_thumbnail.png",
+      "sha256": "ce0b5eb7249f675dd9c80857414fdf56c86c6873b55a1cffd6f318667819c9bf",
+      "bytes": 1538777
+    },
+    {
+      "path": "decorations/epic/hangang-submerged-63-building_v1_thumbnail.png",
+      "sha256": "39e0271611dbe587ffabfe8846750763a33c326d74dc37b733f6f339b468844d",
+      "bytes": 893772
+    },
+    {
+      "path": "decorations/epic/hangang-submerged-sungnyemun_v1_thumbnail.png",
+      "sha256": "299a674c232a67ebda9f69a81c734bb5b16e37b13f9fad20d21ffbf1e9535a0f",
+      "bytes": 2214818
+    },
+    {
+      "path": "decorations/epic/hangang-sunken-dabotap_v1_thumbnail.png",
+      "sha256": "dfec024136beb72d6617c55d7bd1f93c1351d273f53963c7331ef650b29d13fa",
+      "bytes": 1256641
+    },
+    {
+      "path": "decorations/epic/hangang-sunken-independence-gate_v1_thumbnail.png",
+      "sha256": "504e2cb9505f5b43de5d4fc22d6d2c0af21da07ba16c78c82e5fe2f0c74fbe0b",
+      "bytes": 1828520
+    },
+    {
+      "path": "decorations/epic/hangang-sunken-lotte-tower_v1_thumbnail.png",
+      "sha256": "962d999a3eda97a17e609e2f3bce018f86ce811138b266d5d1abb04c25685ad9",
+      "bytes": 864733
+    },
+    {
+      "path": "decorations/normal/hangang-bus-stop_v1_thumbnail.png",
+      "sha256": "66f2a68d74b600427d8c7cca8d455e46d633f47d171c8c48f59b6d085df21341",
+      "bytes": 879645
+    },
+    {
+      "path": "decorations/normal/hangang-convenience-chair_v1_thumbnail.png",
+      "sha256": "1b887bd8351b16aea42c0de101b68f83001a4b12566eebee5e429067c4b05a74",
+      "bytes": 694451
+    },
+    {
+      "path": "decorations/normal/hangang-daegeum_v1_thumbnail.png",
+      "sha256": "b1e730c7c4e0360df55f20642a595649722e4515478ef98ce844fcb35021c90d",
+      "bytes": 564984
+    },
+    {
+      "path": "decorations/normal/hangang-dolhareubang_v1_thumbnail.png",
+      "sha256": "1589bd36799cb8bd55676a1b780e308fe8c7be09805440f3c1dd1fe3d7b237b7",
+      "bytes": 1081437
+    },
+    {
+      "path": "decorations/normal/hangang-flower-palanquin_v1_thumbnail.png",
+      "sha256": "a2a07510e0eaaa4fec19e6474795bf21874222c13fe8e8f19ce625ef867bedaa",
+      "bytes": 1294717
+    },
+    {
+      "path": "decorations/normal/hangang-gayageum_v1_thumbnail.png",
+      "sha256": "8e838bd7788dbf8bff5e75a5989e304c19d8a0c24a95f489fb6657ab804f4edc",
+      "bytes": 974547
+    },
+    {
+      "path": "decorations/normal/hangang-hahoe-mask-display_v1_thumbnail.png",
+      "sha256": "7ea0105965e2ec4bb85d9d6e09733ab2dce132d6b2476170817817f7a9e0f495",
+      "bytes": 1029080
+    },
+    {
+      "path": "decorations/normal/hangang-jing-gong_v1_thumbnail.png",
+      "sha256": "cf6284bad265f221d34064e14921aeae987eab8eb8ca764cca31c1775f7cf814",
+      "bytes": 1255316
+    },
+    {
+      "path": "decorations/normal/hangang-onggi-jars_v1_thumbnail.png",
+      "sha256": "71cc7ea69eb146c89b50632d44ef1e865245f6dd04c1a65dc453143dc7aa10f4",
+      "bytes": 1262369
+    },
+    {
+      "path": "decorations/normal/hangang-samulnori-set_v1_thumbnail.png",
+      "sha256": "e910205099c5c64221861184a7e103d84b6e0a44cbfd26485b947490d74b32e4",
+      "bytes": 1453351
+    },
+    {
+      "path": "decorations/rare/hangang-fireworks-launcher_v1_thumbnail.png",
+      "sha256": "7995ca372555b001d3b0c7c01371d0bbd3180fb89c7699af6775bf7be7a35695",
+      "bytes": 1177341
+    },
+    {
+      "path": "decorations/rare/hangang-goguryeo-rider_v1_thumbnail.png",
+      "sha256": "573f8caee76b8740721c0082d289f035f70b1868b7a6636a0f4e535e13b93663",
+      "bytes": 1339963
+    },
+    {
+      "path": "decorations/rare/hangang-haeundae-breakwater_v1_thumbnail.png",
+      "sha256": "568c86eae6f29d224d1167a73cf45804769c2e9545bf95177972b05afef91b40",
+      "bytes": 1052228
+    },
+    {
+      "path": "decorations/rare/hangang-jangseung-pair_v1_thumbnail.png",
+      "sha256": "a1b8f6be33bb43cb9da1d44de8138796c3f84da41eb7a2ca061e163516f1ce26",
+      "bytes": 951561
+    },
+    {
+      "path": "decorations/rare/hangang-mini-turtle-ship_v1_thumbnail.png",
+      "sha256": "feb5c10bd410c0a7b8117979a15f8eed35f6fb9c97595526f00d542b2982d153",
+      "bytes": 1534635
+    },
+    {
+      "path": "decorations/rare/hangang-najeon-jewelry-box_v1_thumbnail.png",
+      "sha256": "d421a80de8214649e8e10ea581b22c14b8d48245a774aaefb38b2cfa0d64e6b5",
+      "bytes": 1580812
+    },
+    {
+      "path": "decorations/rare/hangang-pensive-bodhisattva_v1_thumbnail.png",
+      "sha256": "4f19eb72608ddb79662ab40a123527b2b6e7625d89f02504c97e02c58a1628ae",
+      "bytes": 1160953
+    },
+    {
+      "path": "decorations/rare/hangang-sipjangsaeng-screen_v1_thumbnail.png",
+      "sha256": "64ebadbddaaebb60bacf1c2155242810ea8a39b21001ceb2f9618f2b15e5e632",
+      "bytes": 1697559
+    },
+    {
+      "path": "equipment/rods/hangang/float.png",
+      "sha256": "d7fb3b41674cb3d3f1e738fbb31974f2e72989c82ae70fd48584853d131346a4",
+      "bytes": 217916
+    },
+    {
+      "path": "equipment/rods/hangang/reel-frame.png",
+      "sha256": "2d648e6eb4efeef222e9660c7ea317e0d1ac45ea4c7a2db96f7ba6160a18133c",
+      "bytes": 1142076
+    },
+    {
+      "path": "equipment/rods/hangang/reel-rotor.png",
+      "sha256": "23b2a831e1487c0c3fce19e019b020d19e5b7bc915640a4f6a02ec8b088ffd6b",
+      "bytes": 1539376
+    },
+    {
+      "path": "equipment/rods/hangang/thumbnail.png",
+      "sha256": "407d7dc18685efb8581df2b5d2079f1e26f9c4954538505d663aa45d4c595f05",
+      "bytes": 463928
+    },
+    {
+      "path": "fish/epic/hangang-celadon-sea-dragon_v1_sprite.png",
+      "sha256": "894b37fa3d8bec7fbdd702be53bd88a88e18d6dbb896cb7b2ee44435b758570f",
+      "bytes": 1459708
+    },
+    {
+      "path": "fish/epic/hangang-celadon-sea-dragon_v1_thumbnail.png",
+      "sha256": "ab8eb2a1b3cb2ffc66ec6ae178f4b953371131ae70a64f1c27d18f38e2691234",
+      "bytes": 1059254
+    },
+    {
+      "path": "fish/epic/hangang-dokdo-guardian_v1_sprite.png",
+      "sha256": "c34119a43be3d6f8553996bac09cb35a4039656d47b216b7ce2cef7595526e92",
+      "bytes": 1453269
+    },
+    {
+      "path": "fish/epic/hangang-dokdo-guardian_v1_thumbnail.png",
+      "sha256": "36807af0bde6446169aff5d5a8f5b738aae18259e0a404b984a90ec351957b74",
+      "bytes": 1158185
+    },
+    {
+      "path": "fish/epic/hangang-haetae-guardian_v1_sprite.png",
+      "sha256": "919f17e136ad6f56bfb091caee53b8e7c9be97061395b072ea77b828c06ed0ff",
+      "bytes": 2322774
+    },
+    {
+      "path": "fish/epic/hangang-haetae-guardian_v1_thumbnail.png",
+      "sha256": "c3abbadc9e219ec6f5c5b55736366538c04f31f71934e1fc054ef7b022d27365",
+      "bytes": 1681153
+    },
+    {
+      "path": "fish/epic/hangang-iron-eater-bulgasari_v1_sprite.png",
+      "sha256": "70d3474e9291b379928e3ee1c26a9cb1b681c5424c57c162041192de2d42d299",
+      "bytes": 2268962
+    },
+    {
+      "path": "fish/epic/hangang-iron-eater-bulgasari_v1_thumbnail.png",
+      "sha256": "827ea7bf200d334d9ea6f730df2da8efa0cb97aabb28bed935b1505e57a7fe59",
+      "bytes": 1983412
+    },
+    {
+      "path": "fish/epic/hangang-mago-creator_v1_sprite.png",
+      "sha256": "f7a612aebf4d88c5ae13e71945635e3abdec4926b6ea35b681d064c5601a5594",
+      "bytes": 2499478
+    },
+    {
+      "path": "fish/epic/hangang-mago-creator_v1_thumbnail.png",
+      "sha256": "975e89281555586e9b35e3d7c59703c6a3627d32f7ee671579cc61cabdff3e76",
+      "bytes": 1967854
+    },
+    {
+      "path": "fish/epic/hangang-millennial-gumiho_v1_sprite.png",
+      "sha256": "d65ec868d00e84529637058ea4345f9c2b316c93fff575ecd65e5334cce1a938",
+      "bytes": 2076499
+    },
+    {
+      "path": "fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
+      "sha256": "4c7be2351c2feb7e5a63e167cce8a06274945400f487fbda7247fc50eb81f980",
+      "bytes": 1640419
+    },
+    {
+      "path": "fish/epic/hangang-moon-white-tiger_v1_sprite.png",
+      "sha256": "21389d610c606af9ae4b8073eb08ac5b52c1a2de6e15c7743fd76ea92033f1a6",
+      "bytes": 1197836
+    },
+    {
+      "path": "fish/epic/hangang-moon-white-tiger_v1_thumbnail.png",
+      "sha256": "db7b672d456b220988278da36a745a615bb91cfd0daa53b1fc4a9d7b6c395954",
+      "bytes": 1211977
+    },
+    {
+      "path": "fish/epic/hangang-taegeuk-twin-fish_v1_sprite.png",
+      "sha256": "cd2fc3fdeb37e8be91300087fac75fed03c00479ac4d144a633146ff48ae088f",
+      "bytes": 1470345
+    },
+    {
+      "path": "fish/epic/hangang-taegeuk-twin-fish_v1_thumbnail.png",
+      "sha256": "c7f2a68c234895c10f7dbb99194d04f1043e4f64b2d47930616875496c558683",
+      "bytes": 1817736
+    },
+    {
+      "path": "fish/mythic/hangang-hunmin-spirit_compat_v1_sprite.png",
+      "sha256": "9c3f879b26ea2da6189b8c17e8138293e910af2f2264bc881d9c3ef30506271e",
+      "bytes": 683178
+    },
+    {
+      "path": "fish/mythic/hangang-hunmin-spirit_swim8_v1_sprite.png",
+      "sha256": "bc3c889898ff2b07fe63c8c4285d6bd008242fc4222fefae12ed0848aefaee1f",
+      "bytes": 1332912
+    },
+    {
+      "path": "fish/mythic/hangang-hunmin-spirit_v1_thumbnail.png",
+      "sha256": "fe3f2813537e351cd21de0a74ee1efba27ef6803ba07d27235cd2725bed9fc30",
+      "bytes": 1590650
+    },
+    {
+      "path": "fish/mythic/hangang-immortal-turtle-ship_compat_v1_sprite.png",
+      "sha256": "013a8843375a5e89f0f165bf6f2c8a319937ceaa8ffc0bc730a14815ab16cdc9",
+      "bytes": 606977
+    },
+    {
+      "path": "fish/mythic/hangang-immortal-turtle-ship_swim8_v1_sprite.png",
+      "sha256": "5579548d7cc381d4c7d1ee7c3b1b135fd3007f6eba881e15cc484973570d0b40",
+      "bytes": 1238878
+    },
+    {
+      "path": "fish/mythic/hangang-immortal-turtle-ship_v1_thumbnail.png",
+      "sha256": "ff01f80a537929386d670bc2aaba82ca18d7f20137744afc01db4013addf8a08",
+      "bytes": 1670666
+    },
+    {
+      "path": "fish/mythic/hangang-red-cheer-incarnation_compat_v1_sprite.png",
+      "sha256": "1ae3cdd8acb7a11422aebf4fa49900b5708a6a6ba10f7033a22bf3209378d60e",
+      "bytes": 696489
+    },
+    {
+      "path": "fish/mythic/hangang-red-cheer-incarnation_swim8_v1_sprite.png",
+      "sha256": "d31569ee673decda2fb087722e2e800df3bd2890ad8c74157f7f68d5d518ad4c",
+      "bytes": 1444701
+    },
+    {
+      "path": "fish/mythic/hangang-red-cheer-incarnation_v1_thumbnail.png",
+      "sha256": "d59349c59cb11380aeb52024234a9dfdda588c9859bc44d5fed16052c462557b",
+      "bytes": 1781750
+    },
+    {
+      "path": "fish/mythic/hangang-ungnyeo-mother_compat_v1_sprite.png",
+      "sha256": "9cbb70c8017f69912378a029a752852d06c66decca45bcccd3640e7384960100",
+      "bytes": 714692
+    },
+    {
+      "path": "fish/mythic/hangang-ungnyeo-mother_swim8_v1_sprite.png",
+      "sha256": "53b13342159eb462977c101a25cf8df87cfd8e0475d8f5cd2caa2237b0e6c0b2",
+      "bytes": 1393557
+    },
+    {
+      "path": "fish/mythic/hangang-ungnyeo-mother_v1_thumbnail.png",
+      "sha256": "52969e7011a400e913c4e7d3d016825f0960ad65620f64b3e1e280418a8c853f",
+      "bytes": 1675510
+    },
+    {
+      "path": "fish/normal/hangang-bibimbap-octopus_v1_sprite.png",
+      "sha256": "c2b969ca0cf33c8e42b066f5b1206c8e2ceee47886f7513393cd32032e4276c9",
+      "bytes": 1925151
+    },
+    {
+      "path": "fish/normal/hangang-bibimbap-octopus_v1_thumbnail.png",
+      "sha256": "4b6d3aeec8770cc9c6e3197ff72d02e5f7ae01f68793036e50eb60f3e3d9c775",
+      "bytes": 1099877
+    },
+    {
+      "path": "fish/normal/hangang-dalgona-starfish_v1_sprite.png",
+      "sha256": "e9cc5fe145274cfcc005511f83d4841bbccc0f17465cfb257046ae6b379749a2",
+      "bytes": 1299766
+    },
+    {
+      "path": "fish/normal/hangang-dalgona-starfish_v1_thumbnail.png",
+      "sha256": "0f04647944aa0b5182b913afca46525002b69248d86c5c9497d484f85e7f8698",
+      "bytes": 951158
+    },
+    {
+      "path": "fish/normal/hangang-hangeun-crab_v1_sprite.png",
+      "sha256": "b54c03254129125aa498575575856c9c8584e340bfd03c5a653becefb32d16bf",
+      "bytes": 1375999
+    },
+    {
+      "path": "fish/normal/hangang-hangeun-crab_v1_thumbnail.png",
+      "sha256": "9578952acc856419d3977f27b3d4cb7781ae31d2fe152bbe46c711db8c3a1818",
+      "bytes": 993891
+    },
+    {
+      "path": "fish/normal/hangang-jangseung-goby_v1_sprite.png",
+      "sha256": "65691344de4dfaca6db7628c7a9d408fdb393c09f73c6b9bb9ebd203e09a1e63",
+      "bytes": 1392088
+    },
+    {
+      "path": "fish/normal/hangang-jangseung-goby_v1_thumbnail.png",
+      "sha256": "b8eb55eb11ba017f7e548f2054246c33cbb5e03b90f3cc93af57acba9b0d3c3a",
+      "bytes": 979275
+    },
+    {
+      "path": "fish/normal/hangang-kite-ray_v1_sprite.png",
+      "sha256": "01d6dd12e401de9937f51897b30f0313893d09bfb00df3257371c8f10d597adf",
+      "bytes": 1038552
+    },
+    {
+      "path": "fish/normal/hangang-kite-ray_v1_thumbnail.png",
+      "sha256": "66ef9f2619d8599d5e52012bd98b4bb5c6e3c0f85ade25db9687c84a3ce65bbd",
+      "bytes": 764168
+    },
+    {
+      "path": "fish/normal/hangang-millstone-snail_v1_sprite.png",
+      "sha256": "861a2638b1b0c3d39ac3667ee1542afcce4d8c19453de58e374e8fd246cbdcb2",
+      "bytes": 1525183
+    },
+    {
+      "path": "fish/normal/hangang-millstone-snail_v1_thumbnail.png",
+      "sha256": "07807ec877446d4aff73549c31baf35b089bfdd9978af70fa47e98ac53cd7671",
+      "bytes": 1017261
+    },
+    {
+      "path": "fish/normal/hangang-mugunghwa-shrimp_v1_sprite.png",
+      "sha256": "29e7db010a9344ba1e8d9b5b18d0ae61b85d5057296d16e8342bd89dfb501954",
+      "bytes": 1317439
+    },
+    {
+      "path": "fish/normal/hangang-mugunghwa-shrimp_v1_thumbnail.png",
+      "sha256": "707d8e7a3595f554fd71cc6eb8ef667c93e73078e98d2281fab6c1cd19d8f71a",
+      "bytes": 932168
+    },
+    {
+      "path": "fish/normal/hangang-onggi-conch_v1_sprite.png",
+      "sha256": "f72eb980ce50af8743936a39fd5966b328143a255e38831260921488b7b1f257",
+      "bytes": 1658729
+    },
+    {
+      "path": "fish/normal/hangang-onggi-conch_v1_thumbnail.png",
+      "sha256": "89748733b56885033be26ea9144edfcbed2cb67d7f8ad39a502703d6e74df5aa",
+      "bytes": 984918
+    },
+    {
+      "path": "fish/normal/hangang-puffed-rice-urchin_v1_sprite.png",
+      "sha256": "dd047558d5c920e16f3c3a912fdad1978890be8349dd8374ddbd8bf1cdddb965",
+      "bytes": 1783609
+    },
+    {
+      "path": "fish/normal/hangang-puffed-rice-urchin_v1_thumbnail.png",
+      "sha256": "d6f57ce96124200742a5549f16e590f8e5be16ba132a3f515753563078b96e63",
+      "bytes": 1260569
+    },
+    {
+      "path": "fish/normal/hangang-ramen-jellyfish_v1_sprite.png",
+      "sha256": "9d27dc8fdf9686edb7488c12e21c22a590046edbd6806d209f22665064fb8536",
+      "bytes": 1489107
+    },
+    {
+      "path": "fish/normal/hangang-ramen-jellyfish_v1_thumbnail.png",
+      "sha256": "f26a4902881bcb4153b0183d192379f232a9b7573d299311b2302b210aef58c1",
+      "bytes": 991729
+    },
+    {
+      "path": "fish/normal/hangang-red-devil-puffer_v1_sprite.png",
+      "sha256": "93d1013bdb434f295474e7979b447eedbaedb8fa94737dbabce5ab18b7cb6fae",
+      "bytes": 1439473
+    },
+    {
+      "path": "fish/normal/hangang-red-devil-puffer_v1_thumbnail.png",
+      "sha256": "eb07935fc4bcab8f1c63dce0c8c6895778a22c5f3deb7a36412e29ca5c052dd2",
+      "bytes": 830767
+    },
+    {
+      "path": "fish/normal/hangang-soju-shell-snail_v1_sprite.png",
+      "sha256": "9f6c41327e1070e0e15fe90e298e7c2a8e48b598590a430c085d372738384f52",
+      "bytes": 1388043
+    },
+    {
+      "path": "fish/normal/hangang-soju-shell-snail_v1_thumbnail.png",
+      "sha256": "32e57f584a34a7c530d6223ba0ac6dedbc13d131ebb4df248b23ac022b13ad07",
+      "bytes": 965690
+    },
+    {
+      "path": "fish/normal/hangang-taegeuk-minnow_v1_sprite.png",
+      "sha256": "6998a473296bcaf30074f4ab7c2c888990770d3fa9b7605e6ef376cf9dae74f7",
+      "bytes": 965166
+    },
+    {
+      "path": "fish/normal/hangang-taegeuk-minnow_v1_thumbnail.png",
+      "sha256": "e853eb676f0442d1d6ec05f5fb918b42705a659274647f76e84e5a4e1016db24",
+      "bytes": 635041
+    },
+    {
+      "path": "fish/rare/hangang-hanbok-koi_v1_sprite.png",
+      "sha256": "25fba148f0c4bdffca3d3e380324361fc9a224bb03512ae933b058787966a751",
+      "bytes": 1783135
+    },
+    {
+      "path": "fish/rare/hangang-hanbok-koi_v1_thumbnail.png",
+      "sha256": "d50cffacaaf8b88940cde3b0a9f7f225f42c84bb862353eafeb49575f97f469d",
+      "bytes": 1172552
+    },
+    {
+      "path": "fish/rare/hangang-incense-seahorse_v1_sprite.png",
+      "sha256": "7b79e5dd68519bcca994845f469c3a8cc2fd38265b8c280857c28259407e5572",
+      "bytes": 1651027
+    },
+    {
+      "path": "fish/rare/hangang-incense-seahorse_v1_thumbnail.png",
+      "sha256": "d0f617c51e1533c77b30ea6d2510e1d54157876bc3101dd3ee005a96ce85cdba",
+      "bytes": 1084655
+    },
+    {
+      "path": "fish/rare/hangang-janggu-turtle_v1_sprite.png",
+      "sha256": "e4576e5ff86046109431b2dcb0422ad726bea67038de3632aaf2c0c1ea412117",
+      "bytes": 1393242
+    },
+    {
+      "path": "fish/rare/hangang-janggu-turtle_v1_thumbnail.png",
+      "sha256": "bf68829909b4ed8811d6fa867464fdeaa23c57a2f3aabd5812dd8a153abb95c7",
+      "bytes": 1043346
+    },
+    {
+      "path": "fish/rare/hangang-mugunghwa-butterflyfish_v1_sprite.png",
+      "sha256": "e8cb5737363eaf09dd0f5d41c08c233e0963142dd2d3c6211a8f9d94799de4c0",
+      "bytes": 1408156
+    },
+    {
+      "path": "fish/rare/hangang-mugunghwa-butterflyfish_v1_thumbnail.png",
+      "sha256": "41e8b010f392ff3f2d919a485ecf6c712409ac294ac7728c783bb6a751a61c1d",
+      "bytes": 1284394
+    },
+    {
+      "path": "fish/rare/hangang-neon-hangul-bream_v1_sprite.png",
+      "sha256": "fd265e0edce5d775c3db6f0cc7ebdfaf82e49e64dd02474cc22a9c301923198d",
+      "bytes": 1095133
+    },
+    {
+      "path": "fish/rare/hangang-neon-hangul-bream_v1_thumbnail.png",
+      "sha256": "112f4ae96cb3d0527c0547f1aecf3877d54e7485cd5f3cc09871fdf71c79bac3",
+      "bytes": 1124270
+    },
+    {
+      "path": "fish/rare/hangang-pine-turtle_v1_sprite.png",
+      "sha256": "6349c87c5cafe6f95b756f0942a8c5e7fefc6055bdfa80dccf6a620cc9c08415",
+      "bytes": 1962220
+    },
+    {
+      "path": "fish/rare/hangang-pine-turtle_v1_thumbnail.png",
+      "sha256": "72eff9f53800477dee64cf5b1adf00792d87fcbffab79ef6acd9ed49bb26e503",
+      "bytes": 1578741
+    },
+    {
+      "path": "fish/rare/hangang-porcelain-seahorse_v1_sprite.png",
+      "sha256": "79b49b8a87f7120b4f8d9f33c6db6951b13754710c9b0d77ce72f35ef4c70253",
+      "bytes": 1438654
+    },
+    {
+      "path": "fish/rare/hangang-porcelain-seahorse_v1_thumbnail.png",
+      "sha256": "138f85cf061fc53d98c0286e5cd67001175956bba339850945dbe287335c898b",
+      "bytes": 1052432
+    },
+    {
+      "path": "fish/rare/hangang-pungmul-seabass_v1_sprite.png",
+      "sha256": "4a5985c9925b356307c7f10a10c1e4435c3207884f419f8a39dc6cefeb220d92",
+      "bytes": 1549543
+    },
+    {
+      "path": "fish/rare/hangang-pungmul-seabass_v1_thumbnail.png",
+      "sha256": "1f9f97325db36eb624f349afddfe9a2bb0b97d44b64f8a9712404a4d70834386",
+      "bytes": 1120292
+    },
+    {
+      "path": "fish/rare/hangang-red-devil-squid_v1_sprite.png",
+      "sha256": "2b2b6491cf40e52dbe3d15d88021dbb405025ec88c0dec47cb1f99ecb09d3d18",
+      "bytes": 1098807
+    },
+    {
+      "path": "fish/rare/hangang-red-devil-squid_v1_thumbnail.png",
+      "sha256": "435881f424c31a4bd8be8adbb96db4d4c4cfcb4e8c31d0b6ee93af56860326a7",
+      "bytes": 960827
+    },
+    {
+      "path": "fish/rare/hangang-seonbi-koi_v1_sprite.png",
+      "sha256": "d0bddf10bc543649c93b4d0f00075a831fcde1514a47580345f33c692ec59f2b",
+      "bytes": 1579508
+    },
+    {
+      "path": "fish/rare/hangang-seonbi-koi_v1_thumbnail.png",
+      "sha256": "c1776b66b06715bcd04a84c86ab2a5257fb635c4e05588d5c1c2d797fb122cf3",
+      "bytes": 1023793
+    },
+    {
+      "path": "fish/rare/hangang-seven-branched-blade_v1_sprite.png",
+      "sha256": "a2b0539e15253f3a8f459b5983c3916df6bac203f26c08f131a71dc627ba15b7",
+      "bytes": 1148420
+    },
+    {
+      "path": "fish/rare/hangang-seven-branched-blade_v1_thumbnail.png",
+      "sha256": "e9808df8d61a8d16d60d1d1b08110bfb5b0f7032c215c553e960736a113d5f0e",
+      "bytes": 747788
+    },
+    {
+      "path": "fish/rare/hangang-silla-crown-jellyfish_v1_sprite.png",
+      "sha256": "7933e6a176b528a5c19e0ea12a0cb7d71e3f299706deeb1ffe6f1520bd462d1b",
+      "bytes": 1607554
+    },
+    {
+      "path": "fish/rare/hangang-silla-crown-jellyfish_v1_thumbnail.png",
+      "sha256": "cda1047d09166f913d5266f0b356db233afd809341eb17ad1bdc0817443aeae7",
+      "bytes": 1304258
+    },
+    {
+      "path": "fish/rare/hangang-talchum-puffer_v1_sprite.png",
+      "sha256": "48c1a1d319f51591bb8cdf355e65382cf4b0e3157b2d30b412230513579d4684",
+      "bytes": 1353363
+    },
+    {
+      "path": "fish/rare/hangang-talchum-puffer_v1_thumbnail.png",
+      "sha256": "fdbdd3b8dd5c8068f9e79632a44fdacb4eaafa7dae4887861d41570ef0a1e0c4",
+      "bytes": 1212460
+    },
+    {
+      "path": "fish/rare/hangang-tiger-catfish_v1_sprite.png",
+      "sha256": "aff437b169cb69510c4183b2c485ef2634c914a1fda6e531a35b7d8a16872c04",
+      "bytes": 1152848
+    },
+    {
+      "path": "fish/rare/hangang-tiger-catfish_v1_thumbnail.png",
+      "sha256": "573afa7b8d93aec8a49bb739ebb9543964314eb870f81cd64da61a007f614c47",
+      "bytes": 758023
+    },
+    {
+      "path": "fishing/close-water/hangang-v1.png",
+      "sha256": "9b577b5cabf83eac77e7de74fc7b33005e7690d7851cc9a6d9305f6999d642fa",
+      "bytes": 1508643
+    },
+    {
+      "path": "fishing/platforms/hangang-v1.png",
+      "sha256": "94f06065021870cf964b9aeba193213b7c9e64bbe2e3c6b662e56724815dfc07",
+      "bytes": 1678920
+    },
+    {
+      "path": "fishing/scenery/hangang-v1.png",
+      "sha256": "892fe018716bfd3109b19581659a78f68335e5f1ba251ca076e100723a5272eb",
+      "bytes": 2486662
+    },
+    {
+      "path": "regions/hangang/map-v1.png",
+      "sha256": "700791471732465bc8051871920f1cd49fa945466f170375e67ca1986f5c69b2",
+      "bytes": 3439260
+    },
+    {
+      "path": "regions/hangang/overview-v1.png",
+      "sha256": "89d961c9f601046207c01e8fd2e8072c1edc5fa1d23307017d65d2f34e91cc73",
+      "bytes": 2482496
+    },
+    {
+      "path": "trash/normal/hangang-broken-backscratcher_v1_thumbnail.png",
+      "sha256": "a39d262223820c2df71ff9042a73de34b512ed3c44520f96ea5497d2d0168c51",
+      "bytes": 454850
+    },
+    {
+      "path": "trash/normal/hangang-broken-cheering-stick_v1_thumbnail.png",
+      "sha256": "4253655afb0e8ae4c2ef716efb7287aa191dc50a1230493da651263586c5ae55",
+      "bytes": 628265
+    },
+    {
+      "path": "trash/normal/hangang-broken-soju-glass_v1_thumbnail.png",
+      "sha256": "a5715ea6aecb066f3c6587a56039fbe71e928349446b461b9da0c6153e9255f7",
+      "bytes": 1003616
+    },
+    {
+      "path": "trash/normal/hangang-dented-ramen-pot_v1_thumbnail.png",
+      "sha256": "ac25e81caa2944cb55785c99488e15ed63be96a2c48f7c6a404b6fcc52386012",
+      "bytes": 956396
+    },
+    {
+      "path": "trash/normal/hangang-discarded-duck-boat_v1_thumbnail.png",
+      "sha256": "f9d2f00ee269232736d3da6cf91e61d021fed2a146d577421014491df8dc2261",
+      "bytes": 1445299
+    },
+    {
+      "path": "trash/normal/hangang-old-100-won_v1_thumbnail.png",
+      "sha256": "363498171cf248f9d77911ebb7948922b4cd8a7dff93599910a5b6f744e5d3cf",
+      "bytes": 1621235
+    },
+    {
+      "path": "trash/normal/hangang-old-1000-won_v1_thumbnail.png",
+      "sha256": "4f92b09b98c93b4485454f7be4c3d412ace56d47d571178c42d1d0e7c87aaeab",
+      "bytes": 1372328
+    },
+    {
+      "path": "trash/normal/hangang-old-karaoke-microphone_v1_thumbnail.png",
+      "sha256": "75b8aa122758474e4a081b6184299ffb214c2f2443165185d25b53990f837298",
+      "bytes": 822952
+    },
+    {
+      "path": "trash/normal/hangang-wet-exam-book_v1_thumbnail.png",
+      "sha256": "297398aa051ce26fa7c490c4d7fefd503b37de7ff532fa0df5594f2425490ced",
+      "bytes": 1101807
+    },
+    {
+      "path": "trash/normal/hangang-wet-taegeukgi_v1_thumbnail.png",
+      "sha256": "512560315bc923052199e02dd99625d09a21e87c9035e762bf79a15b95e70ccf",
+      "bytes": 768247
+    },
+    {
+      "path": "trash/normal/hangang-wet-transit-card_v1_thumbnail.png",
+      "sha256": "f0b71f3550e1c48e5f69c2836b249089837fe022f8747893e4c920f8ea785162",
+      "bytes": 1114095
+    },
+    {
+      "path": "trash/rare/hangang-broken-celadon-censer_v1_thumbnail.png",
+      "sha256": "59be99f9104790779473f91f66f17823b4841be8ed6b90797019d41ed8b60adb",
+      "bytes": 1192003
+    },
+    {
+      "path": "trash/rare/hangang-hangul-woodblock-fragment_v1_thumbnail.png",
+      "sha256": "6263d43f64d1640a334064d2fa333384c4c3dad2428043ed6f15bd15a2e9a760",
+      "bytes": 1273626
+    },
+    {
+      "path": "trash/rare/hangang-hanyang-map-fragment_v1_thumbnail.png",
+      "sha256": "68c5c8700249ea17a15b1cb63a6c15c47968f6bcc17489c2c6c77042c8cddbae",
+      "bytes": 1659310
+    },
+    {
+      "path": "trash/rare/hangang-last-pager_v1_thumbnail.png",
+      "sha256": "bdec9953bc6ed8472a3f7cc90ce2980b87badf2f09875a0228a0af8102fdfbc4",
+      "bytes": 1195862
+    },
+    {
+      "path": "trash/rare/hangang-moon-porcelain-shard_v1_thumbnail.png",
+      "sha256": "bc299cdf4b96fefa837980c5f8290977c929dd4b8b0668d878fa018b921ecd39",
+      "bytes": 921125
+    },
+    {
+      "path": "trash/rare/hangang-olympic-badge_v1_thumbnail.png",
+      "sha256": "f2496646a69277a10ab20b40da77c7d645c0b76c8449e7ed636c9634973ce1fc",
+      "bytes": 1229307
+    },
+    {
+      "path": "trash/rare/hangang-rusted-cash-bundle_v1_thumbnail.png",
+      "sha256": "de309aac77780f3c38acb9cb5cb8ca6ae2f1de6dc1819ed3d57cce61399dadd0",
+      "bytes": 1412017
+    },
+    {
+      "path": "trash/rare/hangang-rusted-turtle-ship-iron_v1_thumbnail.png",
+      "sha256": "da481bb9d31611e0966d6cb10d6ce793acffe4756850b2657f5e1b7ba022a93c",
+      "bytes": 927947
+    }
+  ]
+}

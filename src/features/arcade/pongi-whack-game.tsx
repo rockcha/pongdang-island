@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { useAuth } from '@/components/auth-provider'
-import { useAccountResource } from '@/lib/account-query'
+import { useAccountResource, useServerDeadlines } from '@/lib/account-query'
 import { randomId } from '@/lib/random-id'
 import { GameTabs, GameStartOverlay } from './game-controls'
 import { GameModal } from './game-modal'
@@ -26,6 +26,7 @@ import { GoldIcon } from '@/features/gold/gold-provider'
 import { GoldChange } from '@/features/gold/gold-change'
 import { playRewardSound } from '@/features/gold/purchase-sound'
 import { useEquippedRelic } from '@/features/relics/use-equipped-relic'
+import { whackMaintenanceActive, whackReworkSchedule, whackReworkMessage } from './pongi-whack-maintenance'
 
 const art = '/arcade/pongi-whack/'
 const names = {
@@ -105,6 +106,10 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
   const goldenCount = equippedRelic?.effect_kind === 'pongi_whack_golden_count'
     && [2,4,10].includes(equippedRelic.effect_value) ? equippedRelic.effect_value : 1
   const query = useAccountResource('pongi-whack', readWhack)
+  const maintenance = query.data?.maintenance ?? whackReworkSchedule
+  const sampledAt = query.dataUpdatedAt || Date.now()
+  const serverNow = useServerDeadlines(query.data?.serverNow, sampledAt, [maintenance.startsAt, maintenance.releasedAt])
+  const maintenanceBlocked = whackMaintenanceActive(maintenance, serverNow)
   const [tab, setTab] = useState<'game' | 'rank'>('game'),
     [run, setRun] = useState<WhackRun | null>(null)
   const [practice, setPractice] = useState(false),
@@ -179,6 +184,13 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
   }
   async function start(isPractice: boolean) {
     if (lock.current) return
+    const currentNow = query.data?.serverNow
+      ? Date.parse(query.data.serverNow) + Math.max(0, Date.now() - sampledAt)
+      : Date.now()
+    if (whackMaintenanceActive(maintenance, currentNow)) {
+      setError(whackReworkMessage)
+      return
+    }
     if (isPractice) {
       const now = Date.now()
       open(
@@ -317,11 +329,17 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
               setConfirm(true)
             }}
             onPractice={() => void start(true)}
-            paidDisabled={busy || !signedIn || !!resumable}
-            practiceDisabled={busy}
+            paidDisabled={busy || !signedIn || !!resumable || maintenanceBlocked}
+            practiceDisabled={busy || maintenanceBlocked}
             fee={10}
             extraPanel={
-              resumable || error ? (
+              <>
+                <p role="status" className="bg-background px-3 py-2 text-center text-xs leading-5">
+                  {maintenanceBlocked ? whackReworkMessage : serverNow < Date.parse(maintenance.startsAt)
+                    ? '11월 2일 00:00(한국시간)부터 개편을 위해 실전·연습의 새 게임 시작이 중단돼요. 기존 보상은 기록을 집계한 뒤 안내할게요.'
+                    : '퐁이 잡기 이용이 재개됐어요.'}
+                </p>
+              {resumable || error ? (
                 <div className="space-y-2 bg-background px-3 py-2 text-center text-xs">
                   {resumable && (
                     <Button variant="secondary" disabled={busy} onClick={() => void resume()}>
@@ -334,7 +352,8 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
                     </p>
                   )}
                 </div>
-              ) : undefined
+              ) : null}
+              </>
             }
           >
             <div className="grid grid-cols-2 gap-2 text-left">
@@ -609,6 +628,7 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
         description="참가비 10골드가 소모돼요. 중도 종료 시 반환되지 않으며, 완료한 최고 기록만 주간 순위에 반영돼요."
         illustration="game"
         busy={busy}
+        confirmDisabled={maintenanceBlocked}
         error={error}
         onConfirm={() => void start(false)}
       />

@@ -42,6 +42,9 @@ export async function replayMigrations(db, { keepScheduledMaintenance = false } 
   if (!keepScheduledMaintenance && (await db.query("select to_regclass('app_private.fishing_maintenance') is not null present")).rows[0].present) {
     await db.exec('update app_private.fishing_maintenance set released_at=starts_at where id')
   }
+  if (!keepScheduledMaintenance && (await db.query("select to_regclass('app_private.pongi_whack_maintenance') is not null present")).rows[0].present) {
+    await db.exec('update app_private.pongi_whack_maintenance set released_at=starts_at where id')
+  }
 }
 
 export async function readCatalog(db) {

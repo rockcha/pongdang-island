@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "512061c66832359099d2f31098725512ab664e68222c4d6bc4642c18c0b85255",
+  "migrationHash": "d2954c8bdccdf5902d38e4d8730ca036f5ad1d350a80e86b73d6d892aa7bd9a6",
   "structure": {
     "enums": [
       {
@@ -415,6 +415,12 @@
       {
         "rls": true,
         "name": "player_relic_loadouts",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "pongi_whack_maintenance",
         "schema": "app_private",
         "force_rls": false
       },
@@ -4423,6 +4429,36 @@
         "name": "crafted_id",
         "type": "text",
         "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "boolean",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "default": "true",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "starts_at",
+        "type": "timestamp with time zone",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "released_at",
+        "type": "timestamp with time zone",
+        "table": "pongi_whack_maintenance",
         "schema": "app_private",
         "default": null,
         "identity": "",
@@ -12520,6 +12556,12 @@
         "definition": "CREATE INDEX relic_loadouts_relic_owner ON app_private.player_relic_loadouts USING btree (relic_id, user_id)"
       },
       {
+        "name": "pongi_whack_maintenance_pkey",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX pongi_whack_maintenance_pkey ON app_private.pongi_whack_maintenance USING btree (id)"
+      },
+      {
         "name": "pongi_whack_runs_pkey",
         "table": "pongi_whack_runs",
         "schema": "app_private",
@@ -17837,7 +17879,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_hits jsonb",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_action(p_action text, p_operation_id uuid, p_run_id uuid, p_hits jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid(); t timestamptz:=clock_timestamp(); r app_private.pongi_whack_runs;\n hit jsonb; target jsonb; seen integer[]:='{}'; idx integer; ms integer; last_ms integer:=-1000;\n points integer; total integer:=0; error_count integer:=0; balance bigint;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','start','finish','leave') then raise exception 'INVALID_ACTION';end if;\n perform pg_advisory_xact_lock(hashtextextended('pongi-whack:'||uid::text,0));\n if p_action='state' then\n  select * into r from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes' order by started_at desc limit 1;\n elsif p_action='start' then\n  if p_operation_id is null then raise exception 'OPERATION_REQUIRED';end if;\n  select * into r from app_private.pongi_whack_runs where user_id=uid and operation_id=p_operation_id;\n  if not found then\n   if exists(select 1 from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes') then raise exception 'ACTIVE_RUN';end if;\n   perform app_private.get_gold_wallet();\n   update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=uid and gold>=10 returning gold into balance;\n   if not found then raise exception 'INSUFFICIENT_GOLD';end if;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(uid,p_operation_id,'buy','arcade:pongi-whack',-10);\n   insert into app_private.pongi_whack_runs(user_id,operation_id,started_at,targets,duration_ms)\n    values(uid,p_operation_id,t+interval '3 seconds',app_private.pongi_whack_board(),30000) returning * into r;\n  end if;\n else\n  select * into r from app_private.pongi_whack_runs where id=p_run_id and user_id=uid for update;\n  if not found then raise exception 'RUN_NOT_FOUND';end if;\n  if r.finished_at is null and r.abandoned_at is null then\n   if p_action='leave' then\n    update app_private.pongi_whack_runs set abandoned_at=t where id=r.id returning * into r;\n   else\n    if t<r.started_at+make_interval(secs=>r.duration_ms/1000.0) then raise exception 'TOO_EARLY';end if;\n    if t>r.started_at+interval '15 minutes' then raise exception 'RUN_EXPIRED';end if;\n    -- Close submissions before the existing one-minute weekly settlement grace ends.\n    if t>((date_trunc('week',(r.started_at+make_interval(secs=>r.duration_ms/1000.0)) at time zone 'Asia/Seoul')+interval '7 days') at time zone 'Asia/Seoul')+interval '45 seconds' then raise exception 'RUN_EXPIRED';end if;\n    if p_hits is null or jsonb_typeof(p_hits)<>'array' then raise exception 'INVALID_HITS';end if;\n    if jsonb_array_length(p_hits)>250 then raise exception 'INVALID_HITS';end if;\n    for hit in select value from jsonb_array_elements(p_hits) loop\n     if jsonb_typeof(hit)<>'object' or jsonb_typeof(hit->'id')<>'number' or jsonb_typeof(hit->'ms')<>'number'\n      or not coalesce(hit->>'id' ~ '^[0-9]{1,3}$',false) or not coalesce(hit->>'ms' ~ '^[0-9]{1,5}$',false) then raise exception 'INVALID_HITS';end if;\n     idx:=(hit->>'id')::integer;ms:=(hit->>'ms')::integer;target:=r.targets->idx;\n     if target is null or idx=any(seen) or ms<(target->>'at')::integer+80 or ms>=(target->>'until')::integer or ms-last_ms<60 then raise exception 'INVALID_HITS';end if;\n     seen:=array_append(seen,idx);last_ms:=ms;\n     points:=case target->>'kind' when 'golden' then 10 when 'pongi' then 1 else -2 end;\n     total:=greatest(0,total+points);if points<0 then error_count:=error_count+1;end if;\n    end loop;\n    update app_private.pongi_whack_runs set finished_at=started_at+make_interval(secs=>r.duration_ms/1000.0),score=total,reward_gold=total,mistakes=error_count,hits=p_hits where id=r.id returning * into r;\n    if total>0 then\n     update public.player_wallets set gold=gold+total,updated_at=clock_timestamp() where user_id=uid;\n     insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n      values(uid,gen_random_uuid(),'charge','arcade:pongi-whack:reward',total);\n    end if;\n   end if;\n  end if;\n end if;\n select gold into balance from public.player_wallets where user_id=uid;\n return jsonb_build_object('serverNow',clock_timestamp(),'gold',balance,'run',case when r.id is null then null else app_private.pongi_whack_state(r) end);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_action(p_action text, p_operation_id uuid, p_run_id uuid, p_hits jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid(); t timestamptz:=clock_timestamp(); r app_private.pongi_whack_runs;\n hit jsonb; target jsonb; seen integer[]:='{}'; idx integer; ms integer; last_ms integer:=-1000;\n points integer; total integer:=0; error_count integer:=0; balance bigint;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','start','finish','leave') then raise exception 'INVALID_ACTION';end if;\n perform pg_advisory_xact_lock(hashtextextended('pongi-whack:'||uid::text,0));\n if p_action='state' then\n  select * into r from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes' order by started_at desc limit 1;\n elsif p_action='start' then\n  if p_operation_id is null then raise exception 'OPERATION_REQUIRED';end if;\n  select * into r from app_private.pongi_whack_runs where user_id=uid and operation_id=p_operation_id;\n  if not found then\n   -- Preserve retries of an accepted operation; reject only genuinely new starts.\n   if app_private.pongi_whack_maintenance_active(clock_timestamp()) then raise exception 'PONGI_WHACK_MAINTENANCE';end if;\n   if exists(select 1 from app_private.pongi_whack_runs where user_id=uid and abandoned_at is null and finished_at is null and started_at>t-interval '15 minutes') then raise exception 'ACTIVE_RUN';end if;\n   perform app_private.get_gold_wallet();\n   update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=uid and gold>=10 returning gold into balance;\n   if not found then raise exception 'INSUFFICIENT_GOLD';end if;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(uid,p_operation_id,'buy','arcade:pongi-whack',-10);\n   insert into app_private.pongi_whack_runs(user_id,operation_id,started_at,targets,duration_ms)\n    values(uid,p_operation_id,t+interval '3 seconds',app_private.pongi_whack_board(),30000) returning * into r;\n  end if;\n else\n  select * into r from app_private.pongi_whack_runs where id=p_run_id and user_id=uid for update;\n  if not found then raise exception 'RUN_NOT_FOUND';end if;\n  if r.finished_at is null and r.abandoned_at is null then\n   if p_action='leave' then\n    update app_private.pongi_whack_runs set abandoned_at=t where id=r.id returning * into r;\n   else\n    if t<r.started_at+make_interval(secs=>r.duration_ms/1000.0) then raise exception 'TOO_EARLY';end if;\n    if t>r.started_at+interval '15 minutes' then raise exception 'RUN_EXPIRED';end if;\n    -- Close submissions before the existing one-minute weekly settlement grace ends.\n    if t>((date_trunc('week',(r.started_at+make_interval(secs=>r.duration_ms/1000.0)) at time zone 'Asia/Seoul')+interval '7 days') at time zone 'Asia/Seoul')+interval '45 seconds' then raise exception 'RUN_EXPIRED';end if;\n    if p_hits is null or jsonb_typeof(p_hits)<>'array' then raise exception 'INVALID_HITS';end if;\n    if jsonb_array_length(p_hits)>250 then raise exception 'INVALID_HITS';end if;\n    for hit in select value from jsonb_array_elements(p_hits) loop\n     if jsonb_typeof(hit)<>'object' or jsonb_typeof(hit->'id')<>'number' or jsonb_typeof(hit->'ms')<>'number'\n      or not coalesce(hit->>'id' ~ '^[0-9]{1,3}$',false) or not coalesce(hit->>'ms' ~ '^[0-9]{1,5}$',false) then raise exception 'INVALID_HITS';end if;\n     idx:=(hit->>'id')::integer;ms:=(hit->>'ms')::integer;target:=r.targets->idx;\n     if target is null or idx=any(seen) or ms<(target->>'at')::integer+80 or ms>=(target->>'until')::integer or ms-last_ms<60 then raise exception 'INVALID_HITS';end if;\n     seen:=array_append(seen,idx);last_ms:=ms;\n     points:=case target->>'kind' when 'golden' then 10 when 'pongi' then 1 else -2 end;\n     total:=greatest(0,total+points);if points<0 then error_count:=error_count+1;end if;\n    end loop;\n    update app_private.pongi_whack_runs set finished_at=started_at+make_interval(secs=>r.duration_ms/1000.0),score=total,reward_gold=total,mistakes=error_count,hits=p_hits where id=r.id returning * into r;\n    if total>0 then\n     update public.player_wallets set gold=gold+total,updated_at=clock_timestamp() where user_id=uid;\n     insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n      values(uid,gen_random_uuid(),'charge','arcade:pongi-whack:reward',total);\n    end if;\n   end if;\n  end if;\n end if;\n select gold into balance from public.player_wallets where user_id=uid;\n return jsonb_build_object('serverNow',clock_timestamp(),'gold',balance,\n 'maintenance',(select jsonb_build_object('startsAt',m.starts_at,'releasedAt',m.released_at,'active',app_private.pongi_whack_maintenance_active(clock_timestamp())) from app_private.pongi_whack_maintenance m where m.id),\n 'run',case when r.id is null then null else app_private.pongi_whack_state(r) end);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17859,6 +17901,16 @@
         "arguments": "p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select app_private.arcade_weekly_leaderboard('pongi-whack',p_offset)\n$function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pongi_whack_maintenance_active(p_at timestamp with time zone DEFAULT clock_timestamp())\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select exists(select 1 from app_private.pongi_whack_maintenance\n where id and p_at>=starts_at and (released_at is null or p_at<released_at))\n$function$\n",
+        "securityDefiner": false
       },
       {
         "name": "pongi_whack_state",
@@ -24465,6 +24517,36 @@
         "table": "player_relic_loadouts",
         "schema": "app_private",
         "definition": "CHECK (((relic_id IS NULL) <> (crafted_id IS NULL)))"
+      },
+      {
+        "name": "pongi_whack_maintenance_check",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "CHECK (((released_at IS NULL) OR (released_at >= starts_at)))"
+      },
+      {
+        "name": "pongi_whack_maintenance_id_check",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "CHECK (id)"
+      },
+      {
+        "name": "pongi_whack_maintenance_id_not_null",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "pongi_whack_maintenance_pkey",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "pongi_whack_maintenance_starts_at_not_null",
+        "table": "pongi_whack_maintenance",
+        "schema": "app_private",
+        "definition": "NOT NULL starts_at"
       },
       {
         "name": "pongi_whack_runs_check",
@@ -43069,6 +43151,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_offset integer"
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "pongi_whack_maintenance_active",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
       },
       {
         "name": "pongi_whack_state",

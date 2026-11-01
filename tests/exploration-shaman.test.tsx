@@ -14,10 +14,10 @@ afterEach(()=>{cleanup();purchaseSound.mockClear()})
 const rolls=(...values:number[])=>()=>values.shift()??.99
 it.each(merchantTierBands)('uses the equipment merchant tier chances through floor $through',band=>{
  for(const roll of [0,.09999,.1,.19999,.2,.3,.35,.45,.6,.99]){
-  const stock=drawShamanStock(band.through,rolls(roll,0,roll,0,roll,0))
+  const stock=drawShamanStock(band.through,rolls(...Array.from({length:5},()=>[roll,0]).flat()))
   const tier=roll*100<band.ultimate?'ultimate':roll*100<band.ultimate+band.advanced?'advanced':'starter'
-  expect(stock.spellIds).toHaveLength(3);expect(new Set(stock.spellIds).size).toBe(3)
-  expect(stock.spellIds.map(id=>shamanSpells.find(spell=>spell.id===id)!.tier)).toEqual(Array(3).fill(tier))
+  expect(stock.spellIds).toHaveLength(5);expect(new Set(stock.spellIds).size).toBe(5)
+  expect(stock.spellIds.map(id=>shamanSpells.find(spell=>spell.id===id)!.tier)).toEqual(Array(5).fill(tier))
  }
 })
 it('does not add shaman rooms to the automatic floor draw',()=>{
@@ -29,7 +29,7 @@ it('learns only a displayed, implemented spell once and rejects insufficient gol
  expect(learned.gold).toBe(99750);expect(learned.spells.map(spell=>spell.id)).toEqual(['ember']);expect(learned.mp).toBe(40)
  expect(learned.shamanStock).toBe(initial.shamanStock)
  expect(learnShamanSpell(learned,'ember')).toBe(learned)
- expect(learnShamanSpell(initial,'sand')).toBe(initial)
+ expect(learnShamanSpell(initial,'compressed-water-bolt')).toBe(initial)
  const poor={...initial,gold:249};expect(learnShamanSpell(poor,'ember')).toBe(poor)
  const stale={...initial,shamanStock:drawShamanStock(2,()=>0)};expect(learnShamanSpell(stale,'ember')).toBe(stale)
  const future={...initial,shamanStock:{floor:1,spellIds:['compressed-water-bolt']}}
@@ -41,7 +41,7 @@ it('removes learned spells without rerolling the other offers',async()=>{
  function Harness(){const [state,setState]=useState<PracticeState>(initial);return <ShamanRoom state={state} onChange={setState} onDescend={()=>{}} onTalk={()=>{}}/>}
  render(<StrictMode><Harness/></StrictMode>);fireEvent.click(screen.getByRole('button',{name:'마법을 살펴본다'}))
  const names=within(screen.getByRole('dialog')).getAllByRole('heading',{level:4}).map(item=>item.textContent)
- expect(names).toHaveLength(3)
+ expect(names).toHaveLength(5)
  const ember=screen.getByRole('heading',{name:'작은 불꽃'}).closest('article')!
  fireEvent.click(within(ember).getByRole('button',{name:'배우기'}))
  await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())

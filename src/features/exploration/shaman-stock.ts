@@ -5,10 +5,11 @@ import {practiceSpells,type PracticeState} from './practice-state'
 import {combatMagic} from './combat-state'
 
 export type ShamanStock={shopkeeperId?:import('./shopkeepers').ShopkeeperId;floor:number;spellIds:string[]}
+export const spellOfferLimit=5
 export const shamanSpells=[...practiceSpells.map(spell=>({...spell,tier:'starter' as const,available:true,description:combatMagic[spell.id as keyof typeof combatMagic]??spell.description})),...plannedSpells]
 // Only selected rooms use this stock; no automatic room appearance roll is added.
 export function drawShamanStock(floor:number,random=Math.random):ShamanStock{
- return {floor,spellIds:drawTieredOffers(shamanSpells,floor,random)}
+ return {floor,spellIds:drawTieredOffers(shamanSpells,floor,random,spellOfferLimit)}
 }
 export function shamanLearningBlock(state:PracticeState,id:string):string|null{
  if(state.combat?.status==='active')return '전투 중에는 배울 수 없어요.'

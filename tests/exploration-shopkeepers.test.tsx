@@ -24,7 +24,7 @@ it.each(shopkeepers)('$name offers only their tier and retains stock independent
   expect(entered.market.weaponIds.every(id=>explorationWeapons.find(x=>x.id===id)?.tier===profile.tier)).toBe(true)
   expect(entered.market.armorIds.every(id=>explorationArmor.find(x=>x.id===id)?.tier===profile.tier)).toBe(true)
  }else{
-  expect(entered.shamanStock!.spellIds).toHaveLength(3);expect(new Set(entered.shamanStock!.spellIds).size).toBe(3)
+  expect(entered.shamanStock!.spellIds).toHaveLength(5);expect(new Set(entered.shamanStock!.spellIds).size).toBe(5)
   expect(entered.shamanStock!.spellIds.every(id=>shamanSpells.find(x=>x.id===id)?.tier===profile.tier)).toBe(true)
   const learned=learnShamanSpell(entered,entered.shamanStock!.spellIds[0]);expect(learned.spells).toHaveLength(1)
   expect(enterShopkeeper(learned,profile,()=>.99).shamanStock).toBe(entered.shamanStock)

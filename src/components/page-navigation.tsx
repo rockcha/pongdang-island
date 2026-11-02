@@ -39,6 +39,7 @@ export function pageNavigation(pathname:string,noticeCategory?:string){
  if(path==='/notifications')Icon=Mail
  if(path==='/download')Icon=Download
  if(/^\/(region|sailing)\//.test(path))Icon=FishingRod
+ if(path==='/exploration-stat-test'){label='탐험 스탯 테스트';Icon=FlaskConical;action={to:'/exploration',label:'탐험'}}
  if(path==='/voyage-bets-test'){label='만선 승부장 테스트';Icon=FlaskConical}
  if(path==='/fishing-records'){label='오늘의 낚시 기록';Icon=NotebookPen;action={to:'/fishing',label:'낚시로'}}
  const fallback=path==='/voyage-bets-test'?'/voyage-bets':action?.to??(path.startsWith('/friends/')?'/friends':/^\/(region|sailing)\//.test(path)?'/harbor':path.startsWith('/square/')?'/square':path==='/aquarium'?'/island-news':'/aquarium')

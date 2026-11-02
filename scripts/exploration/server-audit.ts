@@ -1,3 +1,5 @@
+import {newLocalGrowthModel} from '../../src/features/exploration/local-growth-model'
+import {availableGrowthPoints,type GrowthStat} from '../../src/features/exploration/growth'
 import {magicPlan,magicPurchaseValue} from './magic-audit'
 import {applyExplorationAction,newExplorationModel,type ExplorationAction} from '../../src/features/exploration/server-engine'
 import {auditAction,blindDoorIndex,prepareLoadout,type AuditPolicy} from './blind-audit'
@@ -16,9 +18,9 @@ import {campaignFinalFloor} from '../../src/features/exploration/campaign-profil
 /** Every state change uses the actual Edge Function's shared action reducer.
  * The bot never reads an unopened room, future stock, loot outcome or RNG roll.
  */
-export function runServerAudit(seed:number,policy:AuditPolicy){
+export function runServerAudit(seed:number,policy:AuditPolicy,growth?:GrowthStat|'balanced'){
  const random=seededRandom(seed),decisions=seededRandom(seed^0x13579)
- let model=newExplorationModel(random),commands=0,turns=0,battles=0,healthUsed=0,manaUsed=0,spent=0
+ let model=growth?newLocalGrowthModel(random):newExplorationModel(random),commands=0,turns=0,battles=0,healthUsed=0,manaUsed=0,spent=0
  const usage={spells:{} as Record<string,number>,weapons:{} as Record<string,number>,equipmentChanges:0}
  const thief={encounters:0,fights:0,letGo:0,healthStolen:0,manaStolen:0,healthRecovered:0,manaRecovered:0,deaths:0}
  const checkpoints:Record<number,{hp:number;gold:number;weapon:string;armor:string}>={}
@@ -41,6 +43,11 @@ export function runServerAudit(seed:number,policy:AuditPolicy){
  }
  for(let step=0;step<2500&&!model.state.completed&&model.state.hp>0;step++){
   const s=model.state,floor=s.market.floor
+  if(growth&&availableGrowthPoints(s)&&model.view==='doors'){
+   const order:GrowthStat[]=['health','attack','mana','magic','evasion','health','mana']
+   const spent=Object.values(s.growth!.allocations).reduce((sum,n)=>sum+n,0)
+   send({type:'allocate-stat',stat:growth==='balanced'?order[spent%order.length]:growth});continue
+  }
   checkpoints[floor]??={hp:s.hp/playerMaxHp(s),gold:s.gold,weapon:s.weaponId,armor:s.armorId}
   if(model.pendingLoot){send({type:'loot'});continue}
   const desired=policy.magicStrategy&&model.view==='combat'?s:prepareLoadout(s)

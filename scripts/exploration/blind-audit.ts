@@ -1,3 +1,4 @@
+import {directSpellDamage} from '../../src/features/exploration/growth'
 import {recordRoomEntry} from '../../src/features/exploration/room-rules'
 import {refreshPracticeDoors} from '../../src/features/exploration/campaign'
 import {beginForcedMerchant} from '../../src/features/exploration/shop-state'
@@ -55,7 +56,7 @@ export function auditAction(state:PracticeState,policy:AuditPolicy):CombatAction
  const basic=Math.max(1,stats.attack-monster.defense),criticalExpected=basic*(1+stats.critical/100)
  const affordable=policy.spells?state.spells.filter(spell=>(policy.combat==='tactical'||state.equippedSpells.includes(spell.id))&&state.mp>=spellManaCost(state,spell)):[]
  if(basic>=combat.enemyHp)return {type:'attack'}
- const lethal=affordable.find(spell=>Math.max(0,(spellMechanics[spell.id]?.damage??0)-monster.magicResistance)>=combat.enemyHp)
+ const lethal=affordable.find(spell=>Math.max(0,directSpellDamage(state,spellMechanics[spell.id]?.damage)-monster.magicResistance)>=combat.enemyHp)
  if(lethal&&policy.combat!=='basic')return {type:'magic',id:lethal.id}
  const heal=affordable.find(spell=>spellMechanics[spell.id]?.healing&&playerMaxHp(state)-state.hp>=Math.min(18,spellMechanics[spell.id].healing!))
  if(state.hp<playerMaxHp(state)*policy.healThreshold){
@@ -79,10 +80,10 @@ export function auditAction(state:PracticeState,policy:AuditPolicy):CombatAction
    if(utility)return {type:'magic',id:utility.id}
   }
   const damage=affordable.filter(spell=>spellMechanics[spell.id]?.damage).sort((a,b)=>{
-   const score=(spell:typeof a)=>{const p=spellMechanics[spell.id];return Math.max(1,(p.damage??0)-monster.magicResistance)+(p.stun?12:0)+(p.ailment?3:0)}
+   const score=(spell:typeof a)=>{const p=spellMechanics[spell.id];return Math.max(1,directSpellDamage(state,p.damage)-monster.magicResistance)+(p.stun?12:0)+(p.ailment?3:0)}
    return score(b)-score(a)
   })[0]
-  if(damage&&(spellMechanics[damage.id].damage??0)-monster.magicResistance>criticalExpected*1.3)return {type:'magic',id:damage.id}
+  if(damage&&directSpellDamage(state,spellMechanics[damage.id].damage)-monster.magicResistance>criticalExpected*1.3)return {type:'magic',id:damage.id}
   if(state.potions.mana&&state.mp<4&&state.spells.some(spell=>spellMechanics[spell.id]?.damage))return {type:'potion',kind:'mana'}
  }
  return {type:'attack'}

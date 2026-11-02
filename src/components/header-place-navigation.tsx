@@ -89,6 +89,7 @@ export const menuIcons:Record<string,typeof House>={
 menuIcons['/voyage-bets-test']=FlaskConical
 menuIcons['/fishing-records']=NotebookPen
 const groups=placeGroups
+const explorationStatTestPlace={to:'/exploration-stat-test',label:'탐험 스탯 테스트',icon:FlaskConical}
 const voyageTestPlace={to:'/voyage-bets-test',label:'만선 승부장 테스트',icon:FlaskConical}
 // A record page belongs in the fishing menu without creating an island facility.
 const fishingRecordsPlace={to:'/fishing-records',label:'오늘의 낚시 기록',icon:NotebookPen}
@@ -113,9 +114,9 @@ export function HeaderPlaceNavigation() {
     <nav aria-label="장소 바로가기" className="grid w-[224px] max-w-full shrink-0 grid-cols-7 gap-0.5 sm:w-[252px]">
       {groups.map((group) => {
         const items = group.sections.flatMap(section=>section.paths)
-          .flatMap(path=>operator&&path==='/voyage-bets'?[path,'/voyage-bets-test']:[path])
+          .flatMap(path=>operator&&path==='/exploration'?[path,'/exploration-stat-test']:operator&&path==='/voyage-bets'?[path,'/voyage-bets-test']:[path])
           .filter((path) => path !== '/collection-animation' || operator)
-          .map((path) => path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
+          .map((path) => path==='/exploration-stat-test'?explorationStatTestPlace:path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
@@ -169,7 +170,7 @@ export function HeaderPlaceNavigation() {
                             NEW
                           </span>
                         )}
-                        {(to === '/collection-animation'||to==='/voyage-bets-test') && (
+                        {(to === '/collection-animation'||to==='/voyage-bets-test'||to==='/exploration-stat-test') && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             운영자
                           </span>

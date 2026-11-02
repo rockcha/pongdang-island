@@ -2,8 +2,8 @@ import {getFloorMonster,type Monster} from './monster-catalog'
 import type {MonsterPatternState,PracticeState} from './practice-state'
 import {adjustDeepMonster,deepPatternNotice} from './deep-monster-patterns'
 
-export function getCombatMonster(state:Pick<PracticeState,'combat'|'market'|'mode'>):Monster{
- const monster=getFloorMonster(state.combat?.monsterId,state.market.floor,state.mode==='practice'),pattern=state.combat?.pattern
+export function getCombatMonster(state:Pick<PracticeState,'combat'|'market'|'mode'|'growth'>):Monster{
+ const monster=getFloorMonster(state.combat?.monsterId,state.market.floor,state.mode==='practice',!!state.growth),pattern=state.combat?.pattern
  if(monster.pattern==='shell')return {...monster,defense:Math.max(0,monster.defense-3*(pattern?.shellHits??0))}
  if(monster.pattern==='mirror')return {...monster,defense:monster.defense+(pattern?.mirrorGuard==='physical'?6:0),magicResistance:monster.magicResistance+(pattern?.mirrorGuard==='magic'?6:0)}
  return adjustDeepMonster(monster,state)

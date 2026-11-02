@@ -16,6 +16,7 @@ it('launches once during preparation, applies damage at the existing hit timing 
  vi.stubGlobal('matchMedia',()=>({matches:true}));vi.spyOn(Math,'random').mockReturnValue(.99);vi.useFakeTimers()
  render(<ExplorationGame nickname="퐁이" onLeave={()=>{}}/>);await advance(100)
  fireEvent.click(document.querySelector('.exploration-choice')!);fireEvent.click(screen.getByRole('button',{name:'몬스터 방 · 입장'}));await advance(100);await advance(100);await advance(100)
+ await advance(6000)
  fireEvent.click(screen.getByRole('button',{name:'마법',exact:true}));fireEvent.click(screen.getByRole('button',{name:'핏빛 파편 · MP 7 시전'}))
  const effect=document.querySelector('.spell-cast-effect')!
  expect(effect.getAttribute('data-spell')).toBe('crimson-shards');expect(effect.getAttribute('data-target')).toBe('enemy')

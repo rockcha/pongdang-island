@@ -6,6 +6,10 @@
 @keyframes spell-royal-ring{from{opacity:0;scale:.25;rotate:-40deg}30%{opacity:.9}to{opacity:0;scale:1.15;rotate:25deg}}
 @media(prefers-reduced-motion:reduce){.spell-grand-ring{animation:none;opacity:.3}.spell-cast-effect[data-tier=ultimate] .spell-impact{filter:none}}
 .spell-cast-effect svg{display:block;width:100%;height:100%;filter:drop-shadow(0 0 7px var(--spell-color))}
+.spell-cast-effect[data-spell=mana-bolt] .spell-missile{filter:drop-shadow(0 0 10px var(--spell-color))}
+.spell-cast-effect[data-spell=mana-bolt] .spell-missile::after{left:40%;width:20%;height:155%;background:linear-gradient(var(--spell-accent),var(--spell-color) 28%,transparent)}
+.spell-cast-effect[data-spell=mana-bolt] .spell-impact{width:125px;height:125px}
+.spell-cast-effect[data-spell=mana-bolt] .spell-impact>span{background:radial-gradient(circle,#effaff80,transparent 65%)}
 .exploration-enemy-art .combat-heal-number.is-player-spell{top:86%;font-size:19px}
 .spell-cast-source{position:absolute;left:50%;top:93%;width:65px;height:65px;transform:translate(-50%,-50%) rotateX(55deg);opacity:0;animation:spell-source 0.583s ease-out both}
 .spell-missile{position:absolute;left:50%;top:42%;width:var(--spell-size);height:var(--spell-size);transform:translate(-50%,-50%);opacity:0;animation:spell-flight 0.667s cubic-bezier(.36,.05,.5,1) var(--missile-delay) both;will-change:top,left,opacity}

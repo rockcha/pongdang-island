@@ -1,0 +1,52 @@
+.exploration-growth-trigger{padding:5px 10px;border:1px solid #c9a96680;border-radius:6px;background:#17130ee6;color:#ead29f;font-size:11px;cursor:pointer}
+.exploration-growth-panel{max-width:480px!important;max-height:85dvh;overflow:auto}
+.growth-heading{display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.growth-heading-icon{display:grid;place-items:center;color:#e7c77e}
+.growth-heading [data-slot=dialog-title]{flex:1;font-size:17px!important;line-height:1.4}
+.growth-points{display:flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid #d5b57560;border-radius:7px;color:#d7bd86;background:#d5b57510;font-size:9px;letter-spacing:.05em;white-space:nowrap}
+.growth-points strong{color:#ffe3a0;font-size:19px;line-height:1}
+.exploration-growth-options{display:grid;gap:9px;margin-top:3px}
+.exploration-growth-options .growth-option{--growth-color:#e19b91;--growth-tint:#e19b9110;display:flex;align-items:center;gap:13px;width:100%;padding:13px;text-align:left;border:1px solid #c9a96636;border-left:3px solid var(--growth-color);border-radius:10px;background:linear-gradient(110deg,var(--growth-tint),#15140f);color:#e6d9c3;transition:background .15s,border-color .15s,transform .15s}
+.growth-option[data-growth-stat=mana]{--growth-color:#89bbdf;--growth-tint:#89bbdf12}
+.growth-option[data-growth-stat=attack]{--growth-color:#e4ba73;--growth-tint:#e4ba7312}
+.growth-option[data-growth-stat=magic]{--growth-color:#b9a1e4;--growth-tint:#b9a1e412}
+.growth-option[data-growth-stat=evasion]{--growth-color:#8ec9b0;--growth-tint:#8ec9b012}
+.exploration-growth-options button.growth-option{cursor:pointer}
+.exploration-growth-options button.growth-option:hover:not(:disabled),.exploration-growth-options button.growth-option:focus-visible{border-color:var(--growth-color);background:linear-gradient(110deg,var(--growth-tint),#26231b);transform:translateX(2px);outline:2px solid var(--growth-color);outline-offset:2px}
+.exploration-growth-options button.growth-option:disabled{opacity:.55;cursor:wait}
+.growth-stat-icon{display:grid;place-items:center;flex:0 0 44px;height:44px;border:1px solid var(--growth-color);border-radius:12px;background:var(--growth-tint);color:var(--growth-color)}
+.growth-stat-copy{display:grid;gap:5px;flex:1;min-width:0}
+.growth-stat-title{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:#f1e8d7}
+.growth-increment{padding:2px 6px;border-radius:5px;background:var(--growth-tint);color:var(--growth-color);font-size:11px;font-weight:700}
+.growth-stat-title small{margin-left:auto;color:#a89d87;font-size:10px;font-weight:400;white-space:nowrap}
+.growth-stat-value{display:flex;align-items:center;gap:8px;min-height:25px;font-variant-numeric:tabular-nums}
+.growth-value-label{font-size:11px;color:#c5bba7;margin-right:2px}
+.growth-before{font-size:15px;color:#a59c8a}.growth-stat-value>svg{color:#8d826b;flex-shrink:0}
+.growth-stat-value strong,.growth-current{font-size:23px!important;line-height:1.1;font-weight:650;color:var(--growth-color)}
+.growth-stat-note{font-size:10px;color:#b9af9a;line-height:1.5}
+.growth-card-arrow{flex:0 0 18px;color:var(--growth-color);opacity:.7}
+@media(max-width:360px){.growth-heading [data-slot=dialog-title]{font-size:15px!important}.growth-heading{gap:6px}.growth-heading-icon{display:none}.exploration-growth-options .growth-option{padding:10px;gap:9px}.growth-stat-icon{flex-basis:34px;height:36px;border-radius:9px}.growth-stat-icon svg{width:20px;height:20px}.growth-stat-title{font-size:13px;gap:5px}.growth-stat-title small{font-size:9px}.growth-stat-value{gap:6px}.growth-stat-value strong{font-size:21px!important}.growth-value-label{font-size:10px}.growth-card-arrow{display:none}}
+.exploration-stat-test-page{padding:28px 18px;color:#decba8;max-width:600px;width:100%;margin:0 auto}
+.exploration-stat-test-page>header{margin-bottom:24px;color:#5c432d}
+.exploration-stat-test-page>header>span{font-size:10px;letter-spacing:.18em;color:#a47b4c}
+.exploration-stat-test-page h1{font-size:22px;margin:7px 0 10px}
+.exploration-stat-test-page>header p,.exploration-stat-test-note{font-size:12px;line-height:1.7;color:#94785c}
+.exploration-stat-test-card{padding:20px;border:1px solid #c5a46c55;border-radius:14px;background:linear-gradient(140deg,#18201c,#0d120f);box-shadow:0 8px 28px #241c0f18}
+.exploration-test-vital{display:flex;align-items:center;gap:10px;font-size:12px;margin-bottom:12px}
+.exploration-test-vital>span{min-width:26px}.exploration-test-vital>b{font-size:11px;min-width:54px;text-align:right}
+.exploration-test-vital progress{width:100%;height:8px;accent-color:#769e8a}.exploration-test-vital .exploration-health-meter{flex:1}
+.exploration-stat-test-card .exploration-stat-summary{margin:18px 0}.exploration-stat-test-actions{display:flex;gap:10px;margin:20px 0 14px}
+.exploration-stat-test-actions button{padding:12px 16px;border-radius:7px;background:#805537;color:#fff5e6;font-size:12px;cursor:pointer}.exploration-stat-test-actions button+button{background:#e9dbc6;color:#785438}
+.exploration-combat-stats [data-stat="magic"]{color:#b5a2e0}
+.exploration-game .exploration-split-hud>.exploration-stat-summary.has-growth{grid-template-columns:minmax(0,1.35fr) repeat(3,minmax(0,1fr))}
+.exploration-game .exploration-split-hud .has-growth [data-stat="magic"]{color:#b5a2e0!important}
+.exploration-game .exploration-split-hud .has-growth .exploration-stat-help{grid-column:4}
+.exploration-header-actions .exploration-growth-trigger{font-size:9px;padding:4px 6px;min-height:28px}
+.exploration-stat-test-card .exploration-stat-summary{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:6px}
+.exploration-stat-test-card .exploration-combat-stats{display:contents}
+.exploration-stat-test-card .exploration-combat-stats>div{display:flex;align-items:center;justify-content:center;gap:5px;min-height:38px;padding:5px;border:1px solid #c5a46c20;border-radius:6px;background:#ffffff03;font-size:13px;cursor:pointer}
+.exploration-stat-test-card .exploration-combat-stats :is(dt,dd){margin:0;display:flex;align-items:center;gap:4px}
+.exploration-stat-test-card .exploration-combat-stats dt>span{display:none}
+.exploration-stat-test-card .exploration-combat-stats svg{width:15px;height:15px}
+.exploration-stat-test-card .exploration-stat-help{grid-column:4}
+@media(max-width:360px){.exploration-game .exploration-split-hud .has-growth .exploration-combat-stats.is-icons-only>div{gap:2px}.exploration-game .exploration-split-hud .has-growth .exploration-combat-stats.is-icons-only dd{font-size:10px}}

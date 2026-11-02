@@ -18,6 +18,16 @@ beforeEach(()=>{mock.fleaReady=0;mock.relic=null;mock.newContent={board:false,ex
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
+it.each([false,true])('shows the local stat test directly after exploration only for operators: %s',async operator=>{
+ mock.operator=operator
+ render(<MemoryRouter><View/></MemoryRouter>)
+ const menu=await open('내 섬')
+ const test=within(menu).queryByRole('menuitem',{name:/탐험 스탯 테스트/})
+ if(!operator){expect(test).toBeNull();return}
+ expect(test?.getAttribute('href')).toBe('/exploration-stat-test')
+ const paths=Array.from(menu.querySelectorAll('a')).map(link=>link.getAttribute('href'))
+ expect(paths[paths.indexOf('/exploration')+1]).toBe('/exploration-stat-test')
+})
 it('keeps sellable request counts without a market dot when no actual NEW remains',async()=>{
  mock.fleaReady=2
  const view=render(<MemoryRouter><View/></MemoryRouter>)

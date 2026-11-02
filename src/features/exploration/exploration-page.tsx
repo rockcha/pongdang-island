@@ -1,3 +1,4 @@
+import {localExplorationEnabled} from './local-growth-model'
 import {type ExplorationMode} from './campaign'
 import {useEffect,useRef,useState} from 'react'
 import {LockKeyhole,MessageCircle} from 'lucide-react'
@@ -33,8 +34,8 @@ export function ExplorationPage(){
  const [tab,setTab]=useState<'game'|'feedback'|'rank'>('game')
  const [runId,setRunId]=useState<string>(),[starting,setStarting]=useState(false),[startError,setStartError]=useState('')
  const [confirmNew,setConfirmNew]=useState(false)
- const savedQuery=useAccountResource('exploration-saved-run',readSavedExploration,{enabled:!playing,staleTime:0})
- const saved=savedQuery.data
+ const savedQuery=useAccountResource('exploration-saved-run',readSavedExploration,{enabled:!playing&&!localExplorationEnabled,staleTime:0})
+ const saved=localExplorationEnabled?undefined:savedQuery.data
  const pendingResume=useRef<ExplorationRequest|undefined>(undefined)
  const pendingStart=useRef<string|undefined>(undefined),startLock=useRef(false),owner=useRef(session?.user.id);owner.current=session?.user.id
  const fullscreenRequest=useRef(0)
@@ -48,7 +49,7 @@ export function ExplorationPage(){
   const account=session.user.id
   startLock.current=true;setStarting(true);setStartError('')
   try{
-   if(selected==='practice'){
+   if(selected==='practice'&&!localExplorationEnabled){
     let request:ExplorationRequest
     if(resume){
      if(!saved)throw Error('NO_SAVED_EXPLORATION')
@@ -57,7 +58,7 @@ export function ExplorationPage(){
     }else{
      if(explorationStartsPaused)throw Error('EXPLORATION_START_PAUSED')
      pendingStart.current??=randomId()
-     request={runId:pendingStart.current,operationId:pendingStart.current,revision:-1,action:{type:'start'}}
+     request={runId:pendingStart.current,operationId:pendingStart.current,revision:-1,action:{type:'start',growthVersion:1}}
     }
     const receipt=await commandExploration(request)
     if(owner.current!==account)return
@@ -88,7 +89,7 @@ export function ExplorationPage(){
      poster="/arcade/exploration/thumbnail.webp"
      fee={0}
      paidLabel={saved?'이어하기':undefined}
-     paidDisabled={(!saved&&explorationStartsPaused)||!session||!!recovery||starting||savedQuery.isPending||!!savedQuery.error}
+     paidDisabled={(!saved&&explorationStartsPaused)||!session||!!recovery||starting||(!localExplorationEnabled&&(savedQuery.isPending||!!savedQuery.error))}
      onPaid={()=>enter('practice',!!saved)}
      extraAction={saved?<Button variant="secondary" className="min-h-14 rounded-none text-xs" disabled={explorationStartsPaused||starting||!!recovery} onClick={()=>setConfirmNew(true)}>새로 시작하기</Button>:undefined}
      onPractice={operator&&!loading?()=>enter('test'):undefined}
@@ -97,6 +98,7 @@ export function ExplorationPage(){
      rules={['문을 선택하고 무기·방어구·마법을 모아 성장해요.','몬스터와 보스를 물리치며 지하 80층까지 내려가요.','50층 라세프 처치 시 2,000골드, 80층 최종 완료 시 추가 2,000골드를 받아요. 테스트에는 지급되지 않아요.','체력이 0이 되면 탐험이 끝나요. 이미 받은 50층 보상은 유지돼요.']}
     >
      <ExplorationCodex/>
+     {localExplorationEnabled&&<p role="status" className="text-xs leading-5 text-amber-100">로컬 실전 · 성장 시스템 테스트 중입니다. 운영 진행·저장·보상에는 반영되지 않아요.</p>}
      {saved&&<p className="text-sm text-amber-100">저장된 탐험 · 지하 {saved.floor}층</p>}
      {savedQuery.error&&<div role="alert" className="text-xs">저장된 탐험을 확인하지 못했어요.<button className="ml-2 underline" onClick={()=>void savedQuery.refetch()}>다시 확인</button></div>}
      {explorationStartsPaused&&<p role="status" className="text-sm leading-6 text-amber-200">🛠️ 버그 점검으로 실전 탐험 신규 입장을 잠시 중단했습니다. 진행 중인 탐험은 계속 이용하실 수 있습니다.</p>}
@@ -113,6 +115,6 @@ export function ExplorationPage(){
    {tab==='rank'&&(session&&!recovery?<ExplorationRanking key={`ranking:${session.user.id}`}/>:<p className="p-4 text-sm text-muted-foreground">로그인 후 탐험 랭킹을 볼 수 있어요.</p>)}
   </div>
   <ConfirmDialog open={confirmNew} onOpenChange={setConfirmNew} title="새 탐험을 시작할까요?" description="저장된 탐험을 종료하고 처음부터 시작해요. 이미 받은 골드 보상은 유지돼요." confirmLabel="새로 시작하기" busy={starting} confirmDisabled={explorationStartsPaused} onConfirm={()=>{setConfirmNew(false);void enter('practice')}}/>
-  {session&&!recovery&&playing&&(mode==='practice'||operator&&!loading)&&(mode==='practice'&&runId?<VerifiedExplorationGame runId={runId} key={`game:${session.user.id}:${runId}`} nickname={getNickname(session)||'탐험가'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>:<TestExplorationGame key={`game:${session.user.id}`} nickname={getNickname(session)||'탐험가'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>)}
+  {session&&!recovery&&playing&&(mode==='practice'||operator&&!loading)&&(localExplorationEnabled&&mode==='practice'?<TestExplorationGame localPractice key={`local:${session.user.id}`} nickname={getNickname(session)||'tester'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>:mode==='practice'&&runId?<VerifiedExplorationGame runId={runId} key={`game:${session.user.id}:${runId}`} nickname={getNickname(session)||'탐험가'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>:<TestExplorationGame key={`game:${session.user.id}`} nickname={getNickname(session)||'탐험가'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>)}
  </section>
 }

@@ -316,7 +316,7 @@ it('enters a selectable monster room, fights the scorpion and keeps rewards on d
  vi.useFakeTimers()
  fireEvent.click(screen.getByRole('button',{name:'마법',exact:true}))
  expect(screen.getByText(/장착한 마법이 없어요/)).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'닫기 · 턴 소모 없음'}))
+ fireEvent.click(screen.getByRole('button',{name:'빠른 선택 닫기'}))
  for(let i=0;i<5;i++){
   const attack=screen.getByRole('button',{name:'공격',exact:true})
   expect(attack).toHaveProperty('disabled',false)

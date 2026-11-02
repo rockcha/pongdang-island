@@ -1,7 +1,7 @@
 // @vitest-environment node
 import {beforeAll,afterAll,it,expect} from 'vitest'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
-import {newExplorationModel,applyExplorationAction} from '../src/features/exploration/server-engine'
+import {newExplorationModel,newGrowthExplorationModel,applyExplorationAction} from '../src/features/exploration/server-engine'
 let db:any
 const owner=crypto.randomUUID(),other=crypto.randomUUID()
 async function commit(run:string,op:string,revision:number,action:string,model:unknown,user=owner){
@@ -21,6 +21,20 @@ function restModel(){
 }
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [owner,other])await db.query('insert into auth.users(id) values($1)',[id])},60000)
 afterAll(async()=>db?.close())
+it('stores and restores growth and starter magic without altering pre-growth saves',async()=>{
+ for(const factory of [newExplorationModel,newGrowthExplorationModel]){
+  const initial=factory(()=>.99),id=crypto.randomUUID()
+  await commit(id,crypto.randomUUID(),-1,'start',initial)
+  let model={...initial,state:{...initial.state,market:{...initial.state.market,doors:['rest-garden']}}}
+  model=applyExplorationAction(model,{type:'door',index:0},0,()=>.99)
+  const checkpoint=applyExplorationAction(model,{type:'rest'},0,()=>.99)
+  await commit(id,crypto.randomUUID(),0,'rest',checkpoint)
+  const resumed=await commit(id,crypto.randomUUID(),1,'resume',initial)
+  expect(resumed.model).toEqual(JSON.parse(JSON.stringify(checkpoint)))
+  expect(resumed.model.state.growth).toEqual(initial.state.growth)
+  expect(resumed.model.state.equippedSpells).toEqual(initial.state.equippedSpells)
+ }
+})
 it('saves only after resting, restores that snapshot on leave and resume, and isolates accounts',async()=>{
  const id=crypto.randomUUID(),initial=newExplorationModel(()=>.99),checkpoint=restModel(),op=crypto.randomUUID()
  await commit(id,crypto.randomUUID(),-1,'start',initial)

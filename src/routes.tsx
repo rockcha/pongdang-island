@@ -1,3 +1,4 @@
+const ExplorationStatTestPage=lazy(()=>import('@/features/exploration/exploration-stat-test-page').then(module=>({default:module.ExplorationStatTestPage})))
 import {DecorationShopPage} from '@/features/gold/decoration-shop-page'
 import {lazy} from 'react'
 import { OperatorGuard } from '@/components/operator-guard'
@@ -110,6 +111,7 @@ export function AppRoutes() {
             <Route path="fishing" element={<FishingShortcutPage />} />
             <Route path="fishing-records" element={<FishingRecordsPage />} />
             <Route path="exploration" element={<ExplorationPage />} />
+            <Route path="exploration-stat-test" element={<ExplorationStatTestPage/>}/>
             <Route path="farm" element={<FarmPage />} />
             <Route path="music-room" element={<MusicRoomPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />

@@ -1,3 +1,5 @@
+import {starterSpell} from './starter-spell'
+import {newGrowth,allocateGrowth,availableGrowthPoints,type GrowthStat} from './growth'
 import {campaignFinalFloor,campaignFinalBoss} from './campaign-profile'
 import {newPractice,equipGear,toggleSpell,usePotion,buyMerchantItem,type PracticeState} from './practice-state'
 import {drawFloorMonster,refreshPracticeDoors} from './campaign'
@@ -18,12 +20,17 @@ export {normalizeExplorationSpells} from './spell-availability'
 export const EXPLORATION_ENGINE_VERSION=2
 export type ExplorationModel={version:number;state:PracticeState;view:'doors'|'room'|'merchant'|'shaman'|'combat';visit:RoomVisit|null;settled:boolean;quizDeadline?:number;pendingLoot:RoomLoot|null;sequence:number;result?:CombatResult}
 export type ExplorationAction=
- |{type:'door';index:number}|{type:'descend'}|{type:'combat';action:CombatAction}
+ |{type:'allocate-stat';stat:GrowthStat}|{type:'door';index:number}|{type:'descend'}|{type:'combat';action:CombatAction}
  |{type:'equip';kind:'weapon'|'armor';id:string}|{type:'spell';id:string}|{type:'potion';kind:'health'|'mana'}
  |{type:'buy';id:string;quantity:number}|{type:'learn';id:string}|{type:'sell';kind:'weapon'|'armor';id:string}
  |{type:'search'|'rest'|'contract'|'awaken'|'quiz'|'loot'|'read'}|{type:'answer';index:number}
  |{type:'story';action:NameStoryAction}|{type:'guardian-fight'}|{type:'thief-fight'}
 export function newExplorationModel(random=Math.random):ExplorationModel{return {version:EXPLORATION_ENGINE_VERSION,state:{...newPractice(random,'practice'),campaignFinalFloor:80},view:'doors',visit:null,settled:false,pendingLoot:null,sequence:0}}
+// Only new starts opt into growth. Saved models are never upgraded on restore.
+export function newGrowthExplorationModel(random=Math.random):ExplorationModel{
+ const model=newExplorationModel(random)
+ return {...model,state:{...model.state,growth:newGrowth(),spells:[starterSpell],equippedSpells:[starterSpell.id],acquiredIds:[...(model.state.acquiredIds??[]),starterSpell.id]}}
+}
 function requireAction(ok:unknown):asserts ok {if(!ok)throw Error('INVALID_EXPLORATION_ACTION')}
 /** Only actions cross the trust boundary. State, encounters, loot and RNG stay on the server. */
 export function applyExplorationAction(previous:ExplorationModel,action:ExplorationAction,now=Date.now(),random=Math.random):ExplorationModel{
@@ -38,7 +45,9 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
   s=startMonsterCombat(bossRoom?recordRoomEntry(s,bossRoom):s,id,{ambush,loot,lootSource,random});m.view='combat';m.visit=null;m.settled=false
  }
  const visit=(id:RoomVisit['id'])=>{m.visit=createRoomVisit(id,s,`${s.market.floor}:${++m.sequence}:${id}`,random);s=enterRoomVisit(s,m.visit);m.view='room';m.settled=false;delete m.quizDeadline}
+ requireAction(!availableGrowthPoints(s)||action.type==='allocate-stat')
  switch(action.type){
+  case 'allocate-stat':{requireAction(m.view==='doors'&&!m.pendingLoot);const next=allocateGrowth(s,action.stat);requireAction(next!==s);s=next;break}
   case 'door':{
    requireAction(m.view==='doors'&&!m.pendingLoot)
    const required=requiredDoorRoom(s),doors=required?[required]:s.market.doors
@@ -128,7 +137,7 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
   }
   default:throw Error('INVALID_EXPLORATION_ACTION')
  }
- if(m.view==='doors'&&!s.completed&&!requiredDoorRoom(s))s=refreshPracticeDoors(s,random)
+ if(action.type!=='allocate-stat'&&m.view==='doors'&&!s.completed&&!requiredDoorRoom(s))s=refreshPracticeDoors(s,random)
  // Final completion can only be produced by the ordinary floor/boss rules above.
  if(s.completed)requireAction(s.market.floor===campaignFinalFloor(s)&&s.finalBossDefeated&&s.combat?.monsterId===campaignFinalBoss(s)&&s.combat.status==='won')
  m.state=s

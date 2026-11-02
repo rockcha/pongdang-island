@@ -1,5 +1,4 @@
-import {newExplorationModel,applyExplorationAction,normalizeExplorationSpells,EXPLORATION_ENGINE_VERSION} from '../_shared/exploration-engine.js'
-import {applyExplorationAction as applyLegacyAction} from '../_shared/exploration-engine-v1.js'
+import {newRunModel,applyRunAction} from '../_shared/exploration-routing.js'
 const EXPLORATION_STARTS_PAUSED = false
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS'}
 const json=(value:unknown,status=200)=>Response.json(value,{status,headers:cors})
@@ -33,14 +32,13 @@ Deno.serve(async(req:Request)=>{
    if(current)return json({error:'RUN_EXISTS'},409)
    if(body.revision!==-1)return json({error:'INVALID_REQUEST'},400)
    if(EXPLORATION_STARTS_PAUSED)return json({error:'EXPLORATION_START_PAUSED',message:'버그 점검으로 새 실전 탐험 입장을 잠시 중단했습니다.'},503)
-   model=newExplorationModel()
+   model=newRunModel(body.action.growthVersion)
   }else{
    if(!current)return json({error:'RUN_NOT_FOUND'},404)
    if(current.abandoned||current.finishedAt)return json({error:'RUN_CLOSED'},409)
    if(current.revision!==body.revision)return json({error:'REVISION_CONFLICT'},409)
-   if(![1,EXPLORATION_ENGINE_VERSION].includes(current.model.version))return json({error:'ENGINE_VERSION_MISMATCH'},409)
-   const advance=current.model.version===1?applyLegacyAction:applyExplorationAction
-   model=['leave','resume'].includes(body.action.type)?current.model:advance({...current.model,state:normalizeExplorationSpells(current.model.state)},body.action,Date.now())
+   if(![1,2].includes(current.model.version))return json({error:'ENGINE_VERSION_MISMATCH'},409)
+   model=['leave','resume'].includes(body.action.type)?current.model:applyRunAction(current.model,body.action,Date.now())
   }
   return json(await rpc('exploration_server_commit',{...args,p_revision:body.revision,p_model:model}))
  }catch(cause){

@@ -18,6 +18,7 @@ async function show(){
 async function battle(){
  fireEvent.change(screen.getByLabelText('1번 문 방 유형'),{target:{value:'monster:sand-scorpion'}});fireEvent.click(document.querySelector('.exploration-choice')!);fireEvent.click(document.querySelector('.exploration-preview-enter')!)
  for(let count=0;count<3;count++)await advance(100)
+ await advance(6000)
 }
 function close(){fireEvent.click(screen.getByRole('button',{name:'닫기',exact:true}))}
 it('opens inventory from four loadout slots and a fifth potion slot without management captions',async()=>{
@@ -30,13 +31,13 @@ it('opens inventory from four loadout slots and a fifth potion slot without mana
  fireEvent.click(screen.getByRole('button',{name:'마나 포션 마시기'}));expect(screen.queryByRole('dialog')).toBeNull()
  expect(screen.getByRole('progressbar',{name:'탐험가 마나'})).toHaveProperty('value',23)
 })
-it('opens real combat choice modals without spending a turn, then drinks once before an enemy counter',async()=>{
+it('opens combat quick pickers without spending a turn, then drinks once before an enemy counter',async()=>{
  await show();await battle();capture('battle')
  expect([...document.querySelector('.exploration-combat-actions')!.children].map(el=>el.getAttribute('aria-label')??el.textContent)).toEqual(['공격','마법','포션 마시기','도망 35%'])
- fireEvent.click(screen.getByRole('button',{name:'마법',exact:true}));expect(screen.getByRole('dialog',{name:'마법 선택'})).toBeTruthy();capture('battle-magic')
- fireEvent.click(screen.getByRole('button',{name:'닫기 · 턴 소모 없음'}));expect(screen.getByRole('button',{name:'공격',exact:true})).toHaveProperty('disabled',false)
- fireEvent.click(screen.getByRole('button',{name:'포션 마시기'}));expect(screen.getByRole('dialog').textContent).toContain('한 턴');capture('battle-potions')
- fireEvent.click(screen.getByRole('button',{name:'취소 · 턴 소모 없음'}));expect(screen.getByRole('progressbar',{name:'탐험가 체력'})).toHaveProperty('value',60)
+ fireEvent.click(screen.getByRole('button',{name:'마법',exact:true}));expect(screen.getByRole('dialog',{name:'마법 시전'})).toBeTruthy();capture('battle-magic')
+ fireEvent.click(screen.getByRole('button',{name:'빠른 선택 닫기'}));expect(screen.getByRole('button',{name:'공격',exact:true})).toHaveProperty('disabled',false)
+ fireEvent.click(screen.getByRole('button',{name:'포션 마시기'}));expect(screen.getByRole('dialog').textContent).toContain('1턴');capture('battle-potions')
+ fireEvent.click(screen.getByRole('button',{name:'빠른 선택 닫기'}));expect(screen.getByRole('progressbar',{name:'탐험가 체력'})).toHaveProperty('value',60)
  fireEvent.click(screen.getByRole('button',{name:'포션 마시기'}));fireEvent.click(screen.getByRole('button',{name:'체력 포션 마시기'}))
  expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('button',{name:'포션 마시기'})).toHaveProperty('disabled',true)
  await advance(1100)

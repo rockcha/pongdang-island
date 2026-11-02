@@ -4,17 +4,13 @@ import {ExplorerCombatStats} from '@/features/exploration/combat-stats'
 import {newPractice} from '@/features/exploration/practice-state'
 import {PlayerAilments} from '@/features/exploration/ailments'
 afterEach(cleanup)
-it('always shows the player status slot with a guide and replaces its empty state with active effects',()=>{
+it('shows empty buff and status slots and opens the details of an active effect',()=>{
  const state=newPractice(()=>0)
  const view=render(<PlayerAilments state={state}/>)
- expect(screen.getByText('상태이상 없음')).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'내 상태이상 안내'}))
- expect(screen.getByRole('dialog',{name:'상태이상'}).textContent).toContain('방어력으로 줄일 수 없으며')
- fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'})
+ expect(screen.getAllByText('없음')).toHaveLength(2)
  view.rerender(<PlayerAilments state={{...state,playerEffects:[{kind:'bleed',amount:3,turns:2}]}}/>)
- expect(screen.queryByText('상태이상 없음')).toBeNull()
- expect(screen.getByRole('button',{name:'내 상태이상 안내'})).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'출혈 · 턴당 피해 3 · 2턴 남음'}))
+ expect(screen.getAllByText('없음')).toHaveLength(1)
+ fireEvent.click(screen.getByRole('button',{name:/출혈.*턴당 피해 3.*2턴 남음/}))
  expect(screen.getByRole('dialog',{name:'출혈'}).textContent).toContain('플레이어 행동이 끝날 때')
 })
 it('shows all five current stats, including buffs and a negative magic resistance',()=>{

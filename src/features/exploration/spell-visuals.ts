@@ -1,9 +1,10 @@
 import type extraGlyphs from './spell-glyphs.json'
-export type SpellShape=keyof typeof extraGlyphs|'fire'|'drop'|'stone'|'thorns'|'rune'|'lance'|'snow'|'shards'|'chain'|'crown'|'storm'|'sun'|'shield'|'leaf'
+export type SpellShape=keyof typeof extraGlyphs|'orb'|'fire'|'drop'|'stone'|'thorns'|'rune'|'lance'|'snow'|'shards'|'chain'|'crown'|'storm'|'sun'|'shield'|'leaf'
 type Visual={color:string;accent:string;shape:SpellShape;size:number;count:number;target:'enemy'|'self';aura?:'shield'|'leaf'}
 const enemy=(color:string,accent:string,shape:SpellShape,size:number,count=1):Visual=>({color,accent,shape,size,count,target:'enemy'})
 const self=(color:string,accent:string,shape:SpellShape,size:number):Visual=>({color,accent,shape,size,count:1,target:'self'})
 export const spellVisuals:Record<string,Visual>={
+ 'mana-bolt':enemy('#80cfff','#effaff','orb',54),
  'solar-brand':enemy('#f8b750','#fff3bd','rune',80),
  'golden-shell-break':enemy('#e6b94d','#fff1c5','shards',78,3),
  'soul-knot':self('#bf9ce9','#e8faff','chain',86),

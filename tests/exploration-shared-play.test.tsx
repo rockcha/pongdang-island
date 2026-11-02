@@ -1,8 +1,10 @@
+// These regressions exercise the production boundary, not the local development override.
+vi.mock('@/features/exploration/local-growth-model',async importOriginal=>({...await importOriginal(),localExplorationEnabled:false}))
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {TestExplorationGame} from '@/features/exploration/test-exploration-game'
 import {VerifiedExplorationGame} from '@/features/exploration/verified-exploration-game'
-import {newExplorationModel} from '@/features/exploration/server-engine'
+import {newExplorationModel,newGrowthExplorationModel} from '@/features/exploration/server-engine'
 import {appQueryClient,accountQueryKey,setQueryAccount} from '@/lib/account-cache'
 import {combatTimings} from '@/features/exploration/combat-timing'
 import {deepMonsters} from '@/features/exploration/deep-monsters'
@@ -54,7 +56,7 @@ it('keeps the shared HUD and descent while giving only test play extra starting 
  expect(screen.queryByRole('button',{name:'테스트 물품 받기'})).toBeNull()
  cleanup()
  const id='00000000-0000-0000-0000-000000000123'
- appQueryClient.setQueryData(accountQueryKey('operator',['exploration-run',id]),{id,revision:0,model:newExplorationModel(),rewardGold:0,finishedAt:null,abandoned:false})
+ appQueryClient.setQueryData(accountQueryKey('operator',['exploration-run',id]),{id,revision:0,model:newGrowthExplorationModel(),rewardGold:0,finishedAt:null,abandoned:false})
  render(<VerifiedExplorationGame runId={id} nickname="탐험퐁이" onLeave={()=>{}}/>)
  expect(screen.getByLabelText('지하 1층으로 내려가는 중')).toBeTruthy()
  await advance(1200)

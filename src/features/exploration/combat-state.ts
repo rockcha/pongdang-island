@@ -1,3 +1,4 @@
+import {directSpellDamage} from './growth'
 import {shieldDamage} from './shield-damage'
 import {hasTimedSpell} from './timed-spells'
 import {campaignFinalFloor,campaignFinalBoss} from './campaign-profile'
@@ -20,7 +21,7 @@ export function monsterDefeatText(name:string){
  return `${name}${particle} 처치했습니다.`
 }
 
-export const combatMagic={ember:'불꽃 피해 20',tide:'다음 반격 2회 동안 받는 피해 8 감소',light:'내 체력 18 회복',sand:'피해 12 · 이번 반격 봉쇄',...Object.fromEntries(plannedSpells.map(spell=>[spell.id,spell.description]))} as const
+export const combatMagic={'mana-bolt':'기본 피해 10',ember:'불꽃 피해 20',tide:'다음 반격 2회 동안 받는 피해 8 감소',light:'내 체력 18 회복',sand:'피해 12 · 이번 반격 봉쇄',...Object.fromEntries(plannedSpells.map(spell=>[spell.id,spell.description]))} as const
 export type CombatAction={type:'attack'}|{type:'flee'}|{type:'magic';id:string}|{type:'potion';kind:import('./practice-state').PotionKind}
 export type CombatEvent={phase?:'player'|'reply';kind:'player'|'monster'|'defense'|'reward'|'system'|'status';text:string;damage?:number;rawDamage?:number;defenseBlocked?:number;critical?:boolean;healing?:number;manaRestored?:number;manaLost?:number;gold?:number;spellId?:string;weaponId?:string;weaponProc?:import('./ailments').AilmentKind;source?:string;target?:'player'|'monster';moveId?:string;attackType?:'physical'|'magic';effect?:'burn'|'evade'|'block'|'stun'|'freeze'|'miss'|'lifesteal'|'cleanse'|'blind'|'mana-drain'|'enemy-heal'|'magic-break'|'weaken'|'bleed'|'shield'|'potion'}
 export type CombatResult={state:PracticeState;playerState:PracticeState;actionState?:PracticeState;lines:string[];events:CombatEvent[]}
@@ -35,7 +36,7 @@ export function startScorpionCombat(state:PracticeState):PracticeState{
 export function startMonsterCombat(state:PracticeState,monsterId:MonsterId,options:{ambush?:boolean;random?:()=>number;loot?:RoomLoot;lootSource?:'chest';stolenPotions?:import('./potion-theft').StolenPotions}={}):PracticeState{
  if(state.hp<=0||state.combat?.status==='active')return state
  if(monsterId==='nameless-royal-warden'&&(canAppeaseNameGuardian(state)||state.nameStory?.gateOpened||state.nameStory?.rewardClaimed))return state
- const monster=getFloorMonster(monsterId,state.market.floor,state.mode==='practice')
+ const monster=getFloorMonster(monsterId,state.market.floor,state.mode==='practice',!!state.growth)
  const storyWarden=monsterId==='nameless-royal-warden'
  return {...state,...(storyWarden?{nameStory:{...state.nameStory,met:true}}:{}),combat:{...(options.stolenPotions?{stolenPotions:{...options.stolenPotions}}:{}),...(monster.pattern?{pattern:{}}:{}),...(equippedGearBonus(state,'openingShield')?{shield:{remaining:equippedGearBonus(state,'openingShield')}}:{}),monsterId,enemyHp:monster.maxHp,turn:0,status:'active',...(options.ambush?{ambush:true}:{}),...(options.loot||monster.tier==='boss'||(monster.id==='ancient-giant'||monster.id==='treasure-scarab')?{loot:options.loot??drawRoomLoot(state,storyWarden?'advanced':monster.id===campaignFinalBoss(state)||state.mode==='practice'&&monster.tier==='boss'&&state.market.floor>=30?'ultimate':'advanced',options.random??Math.random),lootClaimed:false,...(options.lootSource?{lootSource:options.lootSource}:{})}:{})}}
 }
@@ -125,7 +126,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   if(!power)return unchanged
   const manaCost=spellManaCost(state,spell);next.mp-=manaCost
   if(power.breakShield&&next.combat.pattern?.shieldHp){next.combat.pattern.shieldHp=0;next.combat.pattern.shieldTurns=0;record({kind:'status',target:'monster',effect:'shield',text:'적의 보호막을 전부 파괴했습니다.'})}
-  const spellDamage=power.damage?absorbEnemyShield(power.damage,monster.magicResistance):0
+  const spellDamage=power.damage?absorbEnemyShield(directSpellDamage(state,power.damage),monster.magicResistance):0
   if(power.timed)next.combat.spellEffects=[...(next.combat.spellEffects??[]).filter(effect=>effect.id!==power.timed!.id),{...power.timed}]
   if(spellDamage){next.combat.enemyHp=Math.max(0,next.combat.enemyHp-spellDamage);if(monster.pattern==='mirror')next.combat.pattern!.mirrorGuard='magic'}
   if(power.guard){next.combat.ward={amount:power.guard,turns:power.guardTurns??1};next.combat.wardSpellId=spell.id};stunned=stunned||power.stun===true
@@ -135,7 +136,7 @@ export function resolveCombatTurn(state:PracticeState,action:CombatAction,random
   if(power.shield){next.combat.shield={remaining:Math.max(next.combat.shield?.remaining??0,power.shield.remaining)};next.combat.shieldSpellId=spell.id}
   if(power.attackBuff){next.combat.attackBuff={...power.attackBuff};next.combat.attackBuffName=spell.name;next.combat.attackBuffSpellId=spell.id}
   const description=[spellDamage?`피해 ${spellDamage}${stunned?' · 이번 반격 봉쇄':''}`:null,power.healing?`체력 ${spellHealing} 회복`:null,power.shield?`보호막 ${power.shield.remaining}`:null,power.cleanse?'상태이상 전부 정화':power.cleanseCount?`상태이상 ${power.cleanseCount}개 정화`:null].filter(Boolean).join(' · ')||combatMagic[action.id as keyof typeof combatMagic]
-  record({kind:'player',spellId:spell.id,damage:spellDamage||undefined,rawDamage:power.damage||undefined,defenseBlocked:power.damage?enemyDefenseBlocked:undefined,healing:power.healing?spellHealing:undefined,text:`${spell.name} 시전! ${description} · 마나 ${manaCost} 소모.`})
+  record({kind:'player',spellId:spell.id,damage:spellDamage||undefined,rawDamage:directSpellDamage(state,power.damage)||undefined,defenseBlocked:power.damage?enemyDefenseBlocked:undefined,healing:power.healing?spellHealing:undefined,text:`${spell.name} 시전! ${description} · 마나 ${manaCost} 소모.`})
   const effect=power.ailment
   if(next.combat.enemyHp>0&&effect&&!(effect.kind==='freeze'&&state.combat.freezeGuard)&&(effect.chance>=100||random()*100<effect.chance)){
    const ailment={kind:effect.kind,amount:effect.amount,turns:effect.turns}

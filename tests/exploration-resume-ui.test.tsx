@@ -1,3 +1,5 @@
+// These regressions exercise the production boundary, not the local development override.
+vi.mock('@/features/exploration/local-growth-model',async importOriginal=>({...await importOriginal(),localExplorationEnabled:false}))
 import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {ExplorationPage} from '@/features/exploration/exploration-page'
@@ -26,7 +28,7 @@ it('allows a non-operator account to start a fresh real exploration and keeps te
  expect(screen.queryByText(/실전 탐험 신규 입장을 잠시 중단/)).toBeNull()
  fireEvent.click(start)
  await screen.findByTestId('resumed-game')
- expect(mocks.command).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({revision:-1,action:{type:'start'}}))
+ expect(mocks.command).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({revision:-1,action:{type:'start',growthVersion:1}}))
  const sent=mocks.command.mock.calls[0][0];expect(sent.runId).toBe(sent.operationId)
 })
 it('shows Continue and New Game for an account save after reopening',async()=>{

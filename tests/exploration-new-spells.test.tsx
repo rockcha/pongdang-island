@@ -7,6 +7,7 @@ import {spellMechanics} from '@/features/exploration/spell-mechanics'
 import {startMonsterCombat,resolveCombatTurn} from '@/features/exploration/combat-state'
 import {spellVisuals} from '@/features/exploration/spell-visuals'
 import {SpellCastEffect} from '@/features/exploration/spell-cast-effect'
+import {starterSpell} from '@/features/exploration/local-growth-model'
 import {enterShopkeeper} from '@/features/exploration/shop-state'
 import {getShopkeeper} from '@/features/exploration/shopkeepers'
 afterEach(cleanup)
@@ -37,7 +38,7 @@ it('respects chance failures and the existing freeze lock rule',()=>{
  expect(second.events.some(e=>e.kind==='monster')).toBe(true)
 })
 it('gives every learned spell a distinct visual and uses self effects for protective spells',()=>{
- const spells=[...practiceSpells,...plannedSpells]
+ const spells=[starterSpell,...practiceSpells,...plannedSpells]
  expect(spells.map(spell=>spell.id).sort()).toEqual(Object.keys(spellVisuals).sort())
  expect(new Set(spells.map(s=>JSON.stringify(spellVisuals[s.id]))).size).toBe(spells.length)
  for(const spell of spells){

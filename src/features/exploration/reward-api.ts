@@ -3,7 +3,7 @@ import {accountCommand} from '@/lib/account-command'
 import {invalidateAccountResource,appQueryClient,accountQueryKey,getQueryAccount,isCurrentAccount} from '@/lib/account-cache'
 import type {ExplorationAction,ExplorationModel} from './server-engine'
 export type ExplorationReceipt={id:string;revision:number;model:ExplorationModel;rewardGold:number;finishedAt:string|null;abandoned:boolean}
-export type ExplorationRequest={runId:string;operationId:string;revision:number;action:ExplorationAction|{type:'start'}|{type:'leave'}|{type:'resume'}}
+export type ExplorationRequest={runId:string;operationId:string;revision:number;action:ExplorationAction|{type:'start';growthVersion?:1}|{type:'leave'}|{type:'resume'}}
 async function invoke(body:ExplorationRequest|{runId:string;operationId:string;revision:number;action:{type:'state'}},signal?:AbortSignal):Promise<ExplorationReceipt>{
  const {data,error}=await createClient().functions.invoke<ExplorationReceipt>('exploration-game',{body,signal})
  if(error){

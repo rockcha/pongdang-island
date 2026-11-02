@@ -75,3 +75,21 @@ it('lets the database restore a checkpoint during maintenance without trusting a
  expect((await handler(request({type:'resume',savedModel:{gold:999999}}))).status).toBe(200)
  expect(JSON.parse(fetcher.mock.calls[2][1].body).p_model).toEqual(JSON.parse(JSON.stringify(model)))
 })
+it('grants starter magic and growth only to a new start from a capable client',async()=>{
+ fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json(null)).mockResolvedValueOnce(Response.json({id,revision:0}))
+ expect((await handler(request({type:'start',growthVersion:1},{revision:-1}))).status).toBe(200)
+ const model=JSON.parse(fetcher.mock.calls[2][1].body).p_model
+ expect(model.state.growth).toMatchObject({version:1,allocations:{health:0,mana:0,attack:0,magic:0,evasion:0}})
+ expect(model.state.spells).toEqual([expect.objectContaining({id:'mana-bolt',mana:5})])
+ expect(model.state.equippedSpells).toEqual(['mana-bolt'])
+})
+it('keeps a saved v2 run unchanged on resume even when a client requests growth',async()=>{
+ const model=newExplorationModel(()=>0)
+ model.state.market.floor=21
+ fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json({id,revision:0,model})).mockResolvedValueOnce(Response.json({id,revision:1}))
+ expect((await handler(request({type:'resume',growthVersion:1}))).status).toBe(200)
+ const committed=JSON.parse(fetcher.mock.calls[2][1].body).p_model
+ expect(committed).toEqual(JSON.parse(JSON.stringify(model)))
+ expect(committed.state.growth).toBeUndefined()
+ expect(committed.state.equippedSpells).not.toContain('mana-bolt')
+})

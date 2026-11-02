@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {Info} from 'lucide-react'
+import {Flame,Info} from 'lucide-react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import type {PracticeState} from './practice-state'
 import {plannedSpells} from './spell-catalog'
@@ -7,7 +7,8 @@ import {plannedSpells} from './spell-catalog'
 import {ailmentDefinitions as definitions,ailmentDescription,type AilmentKind,type EnemyAilment} from './ailment-rules'
 export {ailmentDescription,type AilmentKind,type EnemyAilment} from './ailment-rules'
 const effectRules:Record<AilmentKind,string>={bleed:'지속 피해량과 남은 횟수는 걸린 효과의 아이콘에서 확인할 수 있어요.',freeze:'대상의 행동을 막습니다. 같은 상대를 연속으로 얼리는 데에는 제한이 있어요.',burn:'지속 피해를 주는 효과가 아니라, 포션과 치유 효과로 회복하는 양을 줄여요.',weaken:'공격으로 주는 피해를 줄입니다. 감소량과 적용 횟수는 걸린 효과에 따라 달라요.',blind:'기본 공격이 빗나갈 확률을 높입니다. 마법의 명중에는 영향을 주지 않아요.'}
-export function AilmentIcon({kind}:{kind:AilmentKind|'magic-break'|'shield'|'might'}){
+export function AilmentIcon({kind}:{kind:AilmentKind|'magic-break'|'shield'|'might'|'lantern'}){
+ if(kind==='lantern')return <Flame className="ailment-icon" size={18} aria-hidden="true"/>
  if(kind==='shield'||kind==='might')return <svg className="ailment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">{kind==='shield'?<path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6Z"/>:<path d="m14 3 7 1-1 7-10 10-7-7ZM4 10l10 10"/>}</svg>
  if(kind==='magic-break')return <svg className="ailment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6Z"/><path d="m12 6 2 4 4 2-4 2-2 4-2-4-4-2 4-2ZM3 3l18 18"/></svg>
  return <svg className="ailment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -35,7 +36,8 @@ function EnemyShieldBadge({shield}:{shield?:{remaining:number;turns?:number}}){
 export function PlayerAilments({state}:{state:PracticeState}){
  const [selected,setSelected]=useState<string|null>(null)
  const effects=state.playerEffects??[]
- const badges:Array<{id:string;kind:AilmentKind|'magic-break'|'shield'|'might';name:string;count:string;detail:string;rule:string;spellId?:string;buff?:boolean}>=effects.map(effect=>({id:effect.kind,kind:effect.kind,name:definitions[effect.kind].name,count:`${effect.turns}${effect.kind==='freeze'?'회':'턴'}`,detail:ailmentDescription(effect),rule:effect.kind==='bleed'?'플레이어 행동이 끝날 때 체력이 감소합니다. 방어력으로 줄일 수 없으며, 정화로 해제할 수 있어요.':definitions[effect.kind].rule}))
+ const badges:Array<{id:string;kind:AilmentKind|'magic-break'|'shield'|'might'|'lantern';name:string;count:string;detail:string;rule:string;spellId?:string;buff?:boolean}>=effects.map(effect=>({id:effect.kind,kind:effect.kind,name:definitions[effect.kind].name,count:`${effect.turns}${effect.kind==='freeze'?'회':'턴'}`,detail:ailmentDescription(effect),rule:effect.kind==='bleed'?'플레이어 행동이 끝날 때 체력이 감소합니다. 방어력으로 줄일 수 없으며, 정화로 해제할 수 있어요.':definitions[effect.kind].rule}))
+ if(state.soulLantern==='ready')badges.push({id:'soul-lantern',kind:'lantern',name:'영혼의 등불',count:'1회',detail:'사망 시 체력 20으로 부활',rule:'이번 탐험에서 사망하면 한 번 부활하고 등불이 꺼집니다. 전투가 끝나도 유지되며 보스전에서도 적용됩니다. 점화할 때 바친 최대 체력 10은 부활 후에도 돌아오지 않습니다.'})
  if(state.combat?.status==='active'){
   const {shield,attackBuff,ward}=state.combat
   if(ward)badges.push({id:'ward',kind:'shield',name:'물결의 보호',count:ward.turns+'회',detail:'받는 피해 '+ward.amount+' 감소',rule:'다음 반격을 받을 때마다 횟수를 소모합니다. 출혈에는 적용되지 않아요.'})
@@ -46,7 +48,7 @@ export function PlayerAilments({state}:{state:PracticeState}){
   if(state.combat.playerBlind)badges.push({id:'combat-blind',kind:'blind',name:'실명',count:'1회',detail:`다음 기본 공격 1회의 명중률 ${state.combat.playerBlind}% 감소`,rule:'기본 공격을 시도하면 해제됩니다. 마법 사용으로는 소모되지 않아요.'})
  }
  for(const badge of badges){
-  badge.buff=['ward','shield','might'].includes(badge.id)
+  badge.buff=['ward','shield','might','soul-lantern'].includes(badge.id)
   badge.spellId=badge.id==='ward'?(state.combat?.wardSpellId??'tide'):badge.id==='shield'?state.combat?.shieldSpellId:badge.id==='might'?(state.combat?.attackBuffSpellId??state.spells.find(spell=>spell.name===badge.name)?.id):undefined
   const spell=state.spells.find(spell=>spell.id===badge.spellId)??plannedSpells.find(spell=>spell.id===badge.spellId)
   if(spell&&badge.id!=='shield')badge.name=spell.name

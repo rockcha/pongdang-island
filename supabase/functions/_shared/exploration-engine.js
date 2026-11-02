@@ -729,7 +729,7 @@ function canOfferPracticeRoom(state, id) {
 	if (id === "warning-wall" && recent.includes(id)) return false;
 	if ((id === "curse" || id === "thief") && (last === "curse" || last === "thief")) return false;
 	if (id === "thief" && state.potions.health + state.potions.mana === 0) return false;
-	if (id === "scales" && !state.weapons.some((item) => item.id !== state.weaponId) && !state.armor.some((item) => item.id !== state.armorId)) return false;
+	if (id === "scales" && !state.weapons.some((item) => item.id !== state.weaponId) && !state.armor.some((item) => item.id !== state.armorId) && !state.spells.some((item) => !state.equippedSpells.includes(item.id))) return false;
 	if ([
 		"soul-lantern",
 		"forbidden-trade",
@@ -746,7 +746,7 @@ var campaignEventWeights = [
 	{
 		through: 5,
 		scales: 0,
-		rest: 30,
+		rest: 24,
 		lore: 30,
 		investigate: 25,
 		chest: 15,
@@ -759,7 +759,7 @@ var campaignEventWeights = [
 	{
 		through: 10,
 		scales: 5,
-		rest: 25,
+		rest: 20,
 		lore: 15,
 		investigate: 25,
 		chest: 15,
@@ -772,7 +772,7 @@ var campaignEventWeights = [
 	{
 		through: 20,
 		scales: 5,
-		rest: 10,
+		rest: 8,
 		lore: 5,
 		investigate: 25,
 		chest: 15,
@@ -785,7 +785,7 @@ var campaignEventWeights = [
 	{
 		through: 30,
 		scales: 5,
-		rest: 8,
+		rest: 6,
 		lore: 5,
 		investigate: 22,
 		chest: 15,
@@ -798,7 +798,7 @@ var campaignEventWeights = [
 	{
 		through: 40,
 		scales: 5,
-		rest: 10,
+		rest: 8,
 		lore: 5,
 		investigate: 25,
 		chest: 10,
@@ -811,7 +811,7 @@ var campaignEventWeights = [
 	{
 		through: 50,
 		scales: 5,
-		rest: 8,
+		rest: 6,
 		lore: 5,
 		investigate: 22,
 		chest: 10,
@@ -824,7 +824,7 @@ var campaignEventWeights = [
 	{
 		through: 80,
 		scales: 5,
-		rest: 14,
+		rest: 11,
 		lore: 6,
 		investigate: 20,
 		chest: 12,
@@ -2986,7 +2986,17 @@ function gearSalePrice(gear) {
 	const price = merchantGoods.find((item) => item.gear?.id === gear.id)?.price ?? (gear.attack !== void 0 ? 100 : 80);
 	return Math.max(1, Math.floor(price * .4));
 }
+function spellSalePrice(spell) {
+	const price = plannedSpells.find((item) => item.id === spell.id)?.learnPrice ?? practiceSpells.find((item) => item.id === spell.id)?.learnPrice ?? 100;
+	return Math.max(1, Math.floor(price * .4));
+}
 function gearSaleBlock(state, kind, id) {
+	if (kind === "magic") {
+		if (state.combat) return "전투 중에는 판매할 수 없어요.";
+		if (!state.spells.some((item) => item.id === id)) return "보유하지 않은 마법";
+		if (state.equippedSpells.includes(id)) return "장착 중 · 먼저 마법을 해제하세요";
+		return null;
+	}
 	const inventory = kind === "weapon" ? state.weapons : state.armor;
 	if (state.combat) return "전투 중에는 판매할 수 없어요.";
 	if (!inventory.some((item) => item.id === id)) return "보유하지 않은 장비";
@@ -2996,6 +3006,12 @@ function gearSaleBlock(state, kind, id) {
 }
 function sellRoomGear(state, kind, id) {
 	if (gearSaleBlock(state, kind, id)) return state;
+	if (kind === "magic") return {
+		...state,
+		acquiredIds: recordAcquired(state),
+		gold: state.gold + spellSalePrice(state.spells.find((item) => item.id === id)),
+		spells: state.spells.filter((item) => item.id !== id)
+	};
 	const key = kind === "weapon" ? "weapons" : "armor", gear = state[key].find((item) => item.id === id);
 	return {
 		...state,
@@ -3060,6 +3076,7 @@ var practiceEnemyGrowth = {
 	magicPerBand: 1,
 	goldPerBand: .35
 };
+var lateEnemyDamageMultiplier = 1.3;
 var finalBossBalance = {
 	hp: 220,
 	attack: 22,
@@ -3563,7 +3580,7 @@ var explorationMonsters = [
 		"gold": 220,
 		"arrival": "거울가면의 표면에 당신의 무기가 비친다. 다른 방법으로 공격해야 할 것 같다.",
 		"image": "/exploration/monsters/mirror-mask-mage.png",
-		basic: move("mirror-staff", "거울 지팡이", 11, "거울 지팡이로 후려칩니다. 기본 공격에 맞으면 방어력 +6, 마법에 맞으면 마법 저항력 +6으로 전환됩니다. 두 효과는 함께 유지되지 않습니다."),
+		basic: move("mirror-staff", "거울 지팡이", 11, "거울 지팡이로 후려칩니다. 기본 공격에 맞으면 방어력 +10, 마법에 맞으면 마법 저항력 +10으로 전환됩니다. 두 효과는 함께 유지되지 않습니다."),
 		magic: [move("mirror-shards", "거울 파편", 11, "반짝이는 거울 파편을 날려 마법 피해를 줍니다.")]
 	},
 	{
@@ -3672,19 +3689,34 @@ function baseFloorMonster(id, floor, practice) {
 	};
 }
 function getFloorMonster(id, floor, practice, growth = false) {
-	const base = baseFloorMonster(id, floor, practice), monster = practice && growth && floor < 10 && base.tier !== "boss" ? {
+	const original = baseFloorMonster(id, floor, practice);
+	const late = practice && floor > 50 && original.tier !== "boss";
+	const attack = Math.round(original.attack * lateEnemyDamageMultiplier);
+	const base = late ? {
+		...original,
+		attack,
+		basic: {
+			...original.basic,
+			damage: attack
+		},
+		magic: original.magic.map((move) => ({
+			...move,
+			damage: Math.round(move.damage * lateEnemyDamageMultiplier)
+		}))
+	} : original;
+	const monster = practice && growth && floor < 10 && base.tier !== "boss" ? {
 		...base,
 		maxHp: Math.max(1, Math.floor(base.maxHp * .85))
 	} : base, points = growth ? Math.max(0, Math.min(7, Math.floor((floor - 1) / 10))) : 0;
 	if (!points) return monster;
-	const boss = monster.tier === "boss", hp = boss ? statEnemyGrowth.bossHpPerPoint : statEnemyGrowth.hpPerPoint, extra = Math.round(points * (boss ? statEnemyGrowth.bossAttackPerPoint : statEnemyGrowth.attackPerPoint)), attack = monster.attack + extra;
+	const boss = monster.tier === "boss", hp = boss ? statEnemyGrowth.bossHpPerPoint : statEnemyGrowth.hpPerPoint, extra = Math.round(points * (boss ? statEnemyGrowth.bossAttackPerPoint : statEnemyGrowth.attackPerPoint)), grownAttack = monster.attack + extra;
 	return {
 		...monster,
 		maxHp: Math.round(monster.maxHp * (1 + points * hp)),
-		attack,
+		attack: grownAttack,
 		basic: {
 			...monster.basic,
-			damage: attack
+			damage: grownAttack
 		},
 		magic: monster.magic.map((move) => ({
 			...move,
@@ -3766,8 +3798,8 @@ function getCombatMonster(state) {
 	};
 	if (monster.pattern === "mirror") return {
 		...monster,
-		defense: monster.defense + (pattern?.mirrorGuard === "physical" ? 6 : 0),
-		magicResistance: monster.magicResistance + (pattern?.mirrorGuard === "magic" ? 6 : 0)
+		defense: monster.defense + (pattern?.mirrorGuard === "physical" ? 10 : 0),
+		magicResistance: monster.magicResistance + (pattern?.mirrorGuard === "magic" ? 10 : 0)
 	};
 	return adjustDeepMonster(monster, state);
 }
@@ -4675,7 +4707,7 @@ var adventureRooms = [
 		title: "보스 앞 보급 상자",
 		background: bg("chest"),
 		intro: ["거대한 문 앞에 붉은 약병과 푸른 약병이 든 보급 상자가 놓여 있다."],
-		progress: ["보급 상자를 열었다. 체력 포션 2개 · 마나 포션 1개를 획득했다."]
+		progress: ["보급 상자를 열었다. 체력 포션 1개 · 마나 포션 1개를 획득했다."]
 	},
 	{
 		id: "erased-name",
@@ -5196,7 +5228,7 @@ function createRoomVisit(id, state, key = `${state.market.floor}:${id}`, random 
 	};
 	if (room.kind === "supply") visit.outcome = {
 		kind: "potions",
-		health: 2,
+		health: 1,
 		mana: 1
 	};
 	if (room.kind === "curse") {
@@ -5383,7 +5415,6 @@ function applyExplorationAction(previous, action, now = Date.now(), random = Mat
 			requireAction(m.view !== "doors" && !m.pendingLoot);
 			requireAction(!m.quizDeadline || m.settled);
 			requireAction(room?.kind !== "sphinx" || m.settled);
-			requireAction(room?.kind !== "supply" || m.settled);
 			if (s.forcedMerchant?.phase === "active") {
 				s = {
 					...finishForcedMerchant(s),
@@ -5444,7 +5475,7 @@ function applyExplorationAction(previous, action, now = Date.now(), random = Mat
 			s = usePotion(s, action.kind);
 			break;
 		case "buy":
-			requireAction(m.view === "merchant" && Number.isSafeInteger(action.quantity) && action.quantity > 0 && action.quantity <= 9999);
+			requireAction((m.view === "merchant" || m.view === "shaman" && merchantPotions.some((potion) => potion.id === action.id)) && Number.isSafeInteger(action.quantity) && action.quantity > 0 && action.quantity <= 9999);
 			s = buyMerchantItem(s, action.id, action.quantity);
 			break;
 		case "learn":
@@ -5452,7 +5483,11 @@ function applyExplorationAction(previous, action, now = Date.now(), random = Mat
 			s = learnShamanSpell(s, action.id);
 			break;
 		case "sell":
-			requireAction(m.view === "room" && room?.kind === "scales" && ["weapon", "armor"].includes(action.kind));
+			requireAction(m.view === "room" && room?.kind === "scales" && [
+				"weapon",
+				"armor",
+				"magic"
+			].includes(action.kind));
 			s = sellRoomGear(s, action.kind, action.id);
 			break;
 		case "search":

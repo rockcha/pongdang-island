@@ -1,7 +1,7 @@
 import {starterSpell} from './starter-spell'
 import {newGrowth,allocateGrowth,availableGrowthPoints,type GrowthStat} from './growth'
 import {campaignFinalFloor,campaignFinalBoss} from './campaign-profile'
-import {newPractice,equipGear,toggleSpell,usePotion,buyMerchantItem,type PracticeState} from './practice-state'
+import {newPractice,equipGear,toggleSpell,usePotion,buyMerchantItem,merchantPotions,type PracticeState} from './practice-state'
 import {drawFloorMonster,refreshPracticeDoors} from './campaign'
 import {advanceExploration,requiredDoorRoom,needsNameGuardian,meetNameGuardian,finishNameGuardian,enterBossOasis} from './run-state'
 import {beginForcedMerchant,enterShopkeeper} from './shop-state'
@@ -22,7 +22,7 @@ export type ExplorationModel={version:number;state:PracticeState;view:'doors'|'r
 export type ExplorationAction=
  |{type:'allocate-stat';stat:GrowthStat}|{type:'door';index:number}|{type:'descend'}|{type:'combat';action:CombatAction}
  |{type:'equip';kind:'weapon'|'armor';id:string}|{type:'spell';id:string}|{type:'potion';kind:'health'|'mana'}
- |{type:'buy';id:string;quantity:number}|{type:'learn';id:string}|{type:'sell';kind:'weapon'|'armor';id:string}
+ |{type:'buy';id:string;quantity:number}|{type:'learn';id:string}|{type:'sell';kind:'weapon'|'armor'|'magic';id:string}
  |{type:'search'|'rest'|'contract'|'awaken'|'quiz'|'loot'|'read'}|{type:'answer';index:number}
  |{type:'story';action:NameStoryAction}|{type:'guardian-fight'}|{type:'thief-fight'}
 export function newExplorationModel(random=Math.random):ExplorationModel{return {version:EXPLORATION_ENGINE_VERSION,state:{...newPractice(random,'practice'),campaignFinalFloor:80},view:'doors',visit:null,settled:false,pendingLoot:null,sequence:0}}
@@ -70,7 +70,6 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
    requireAction(m.view!=='doors'&&!m.pendingLoot)
    requireAction(!m.quizDeadline||m.settled)
    requireAction(room?.kind!=='sphinx'||m.settled)
-   requireAction(room?.kind!=='supply'||m.settled)
    if(s.forcedMerchant?.phase==='active'){s={...finishForcedMerchant(s),door:null};m.view='doors';break}
    let next=enterBossOasis(s)
    if(next!==s){s=next;visit('rest-oasis');break}
@@ -92,9 +91,9 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
    s=equipGear(s,action.kind,action.id,true);break
   case 'spell':requireAction(!m.pendingLoot);s=toggleSpell(s,action.id);break
   case 'potion':requireAction(['health','mana'].includes(action.kind)&&!s.combat&&!m.pendingLoot);s=usePotion(s,action.kind);break
-  case 'buy':requireAction(m.view==='merchant'&&Number.isSafeInteger(action.quantity)&&action.quantity>0&&action.quantity<=9999);s=buyMerchantItem(s,action.id,action.quantity);break
+  case 'buy':requireAction((m.view==='merchant'||m.view==='shaman'&&merchantPotions.some(potion=>potion.id===action.id))&&Number.isSafeInteger(action.quantity)&&action.quantity>0&&action.quantity<=9999);s=buyMerchantItem(s,action.id,action.quantity);break
   case 'learn':requireAction(m.view==='shaman');s=learnShamanSpell(s,action.id);break
-  case 'sell':requireAction(m.view==='room'&&room?.kind==='scales'&&['weapon','armor'].includes(action.kind));s=sellRoomGear(s,action.kind,action.id);break
+  case 'sell':requireAction(m.view==='room'&&room?.kind==='scales'&&['weapon','armor','magic'].includes(action.kind));s=sellRoomGear(s,action.kind,action.id);break
   case 'search':
    offer();requireAction(room?.kind==='chest'||room?.kind==='investigate'||room?.kind==='supply');m.settled=true
    if(m.visit!.outcome.kind==='monster')encounter(m.visit!.outcome.monsterId)

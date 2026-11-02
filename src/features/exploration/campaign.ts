@@ -14,13 +14,13 @@ export const practiceFinalBossId='golden-pharaoh' as const
 export const practiceFinalBossRoom='boss-pharaoh' as const
 export const practiceMerchantChance=.25
 export const campaignEventWeights=[
- {through:5,scales:0,rest:30,lore:30,investigate:25,chest:15,sphinx:0,thief:0,curse:0,giant:0,guardian:0},
- {through:10,scales:5,rest:25,lore:15,investigate:25,chest:15,sphinx:10,thief:5,curse:0,giant:0,guardian:0},
- {through:20,scales:5,rest:10,lore:5,investigate:25,chest:15,sphinx:10,thief:5,curse:5,giant:5,guardian:15},
- {through:30,scales:5,rest:8,lore:5,investigate:22,chest:15,sphinx:10,thief:5,curse:5,giant:5,guardian:20},
- {through:40,scales:5,rest:10,lore:5,investigate:25,chest:10,sphinx:10,thief:5,curse:5,giant:5,guardian:20},
- {through:50,scales:5,rest:8,lore:5,investigate:22,chest:10,sphinx:10,thief:5,curse:5,giant:5,guardian:25},
- {through:80,scales:5,rest:14,lore:6,investigate:20,chest:12,sphinx:10,thief:3,curse:3,giant:7,guardian:20},
+ {through:5,scales:0,rest:24,lore:30,investigate:25,chest:15,sphinx:0,thief:0,curse:0,giant:0,guardian:0},
+ {through:10,scales:5,rest:20,lore:15,investigate:25,chest:15,sphinx:10,thief:5,curse:0,giant:0,guardian:0},
+ {through:20,scales:5,rest:8,lore:5,investigate:25,chest:15,sphinx:10,thief:5,curse:5,giant:5,guardian:15},
+ {through:30,scales:5,rest:6,lore:5,investigate:22,chest:15,sphinx:10,thief:5,curse:5,giant:5,guardian:20},
+ {through:40,scales:5,rest:8,lore:5,investigate:25,chest:10,sphinx:10,thief:5,curse:5,giant:5,guardian:20},
+ {through:50,scales:5,rest:6,lore:5,investigate:22,chest:10,sphinx:10,thief:5,curse:5,giant:5,guardian:25},
+ {through:80,scales:5,rest:11,lore:6,investigate:20,chest:12,sphinx:10,thief:3,curse:3,giant:7,guardian:20},
 ] as const
 const pick=<T,>(items:readonly T[],random:()=>number)=>items[Math.min(items.length-1,Math.floor(random()*items.length))]
 function weighted<T>(items:readonly {value:T;weight:number}[],random:()=>number):T{

@@ -1,7 +1,8 @@
 import {expect,it} from 'vitest'
 import {existsSync} from 'node:fs'
 import {deepMonsters} from '@/features/exploration/deep-monsters'
-import {getFloorMonster,sandScorpion,type MonsterId} from '@/features/exploration/monster-catalog'
+import {getFloorMonster,getMonster,sandScorpion,type MonsterId} from '@/features/exploration/monster-catalog'
+import {floorMonsterPool} from '@/features/exploration/campaign'
 import {newPractice,practiceSpells,type PracticeState} from '@/features/exploration/practice-state'
 import {startMonsterCombat,resolveCombatTurn} from '@/features/exploration/combat-state'
 import {getCombatMonster,monsterPatternNotice} from '@/features/exploration/monster-patterns'
@@ -12,11 +13,29 @@ function fight(id:MonsterId){
  return startMonsterCombat({...base,market:{...base.market,floor:id==='black-sun-aker'?80:id==='golden-scales-maaken'?65:51},weapons:[{...base.weapons[0],attack:26,attackVariance:0,critical:0}],armor:[{...base.armor[0],reduction:5,magicReduction:6,evasion:0}],spells:practiceSpells,equippedSpells:['ember','sand'],potions:{health:5,mana:3}},id,{random:roll})
 }
 const attack=(state:PracticeState)=>resolveCombatTurn(state,{type:'attack'},roll)
+it('buffs direct damage across every late-floor encounter without changing bosses or test mode',()=>{
+ for(const floor of [51,60,79])for(const {value:id} of floorMonsterPool(floor)){
+  const before=getFloorMonster(id,50,true),after=getFloorMonster(id,floor,true)
+  expect(after.attack).toBe(Math.round(before.attack*1.3))
+  expect(after.basic.damage).toBe(after.attack)
+  expect(after.magic.map(move=>move.damage)).toEqual(before.magic.map(move=>Math.round(move.damage*1.3)))
+  expect([after.maxHp,after.defense,after.magicResistance,after.gold]).toEqual([before.maxHp,before.defense,before.magicResistance,before.gold])
+  expect(getFloorMonster(id,floor,false)).toEqual(getMonster(id))
+ }
+})
 it.each(deepMonsters)('ships $id artwork, skill icons and explicit late-game stats without double scaling',monster=>{
  expect(existsSync('public'+monster.image)).toBe(true)
  for(const move of [monster.basic,...monster.magic])expect(existsSync('public'+move.image)).toBe(true)
  expect(monsterGrounding[monster.id].bottomGap).toBeGreaterThan(0)
- expect(getFloorMonster(monster.id,80,true)).toEqual(monster)
+ expect(getFloorMonster(monster.id,50,true)).toEqual(monster)
+ const late=getFloorMonster(monster.id,80,true)
+ expect(late).toMatchObject({maxHp:monster.maxHp,defense:monster.defense,magicResistance:monster.magicResistance,gold:monster.gold})
+ if(monster.tier==='boss')expect(late).toEqual(monster)
+ else{
+  expect(late.attack).toBe(Math.round(monster.attack*1.3))
+  expect(late.basic.damage).toBe(late.attack)
+  expect(late.magic.map(move=>move.damage)).toEqual(monster.magic.map(move=>Math.round(move.damage*1.3)))
+ }
  expect(sandScorpion.id).toBe('sand-scorpion')
 })
 it('alternates the moth physical and magic counters and previews the next one',()=>{
@@ -25,6 +44,8 @@ it('alternates the moth physical and magic counters and previews the next one',(
  const first=attack(initial),second=attack(first.state)
  expect(first.events.find(event=>event.kind==='monster')?.attackType).toBe('physical')
  expect(second.events.find(event=>event.kind==='monster')?.attackType).toBe('magic')
+ expect(first.events.find(event=>event.kind==='monster')?.rawDamage).toBe(22)
+ expect(second.events.find(event=>event.kind==='monster')?.rawDamage).toBe(22)
  expect(first.state.combat?.pattern?.cycle).toBe(1)
 })
 it('strips crocodile armor after a landed basic while magic cannot strip it',()=>{
@@ -53,7 +74,7 @@ it('uses devourer bleeding and 20 percent blindness without molting or healing a
  expect(jaws.state.playerEffects).toContainEqual({kind:'bleed',amount:2,turns:3})
  expect(jaws.state.combat?.pattern?.shed).toBeUndefined()
  expect(jaws.events.some(event=>event.effect==='enemy-heal')).toBe(false)
- expect(getCombatMonster(jaws.state)).toMatchObject({maxHp:140,attack:17,defense:4})
+ expect(getCombatMonster(jaws.state)).toMatchObject({maxHp:140,attack:22,defense:4})
  const breath=resolveCombatTurn(initial,{type:'attack'},()=>.3)
  expect(breath.events.find(event=>event.kind==='monster')).toMatchObject({moveId:'devourer-breath',attackType:'magic'})
  expect(breath.state.combat?.playerBlind).toBe(20)
@@ -159,5 +180,7 @@ it.each(deepMonsters.filter(monster=>monster.tier!=='boss'))('lets a late-game p
   if(state.combat?.status==='won')wins++
   expect(turns).toBeLessThan(60)
  }
- expect(wins).toBe(20)
+ // Harder encounters should remain viable for this fixed physical-only policy,
+ // rather than guaranteeing a win for every seed without using any magic.
+ expect(wins).toBeGreaterThanOrEqual(16)
 })

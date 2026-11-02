@@ -178,7 +178,7 @@ export function createExplorationAudio() {
         prepare();startMusic()
       } catch {}
     },
-    play(kind: 'loot'|'enemy-magic'|'equip'|'attack'|'fire'|'magic'|'flee'|'hit'|'defense'|'door'|'arrival'|'critical'|'health-potion'|'mana-potion'|'gold') {
+    play(kind: 'loot'|'enemy-magic'|'equip'|'attack'|'fire'|'magic'|'flee'|'hit'|'defense'|'door'|'arrival'|'critical'|'health-potion'|'mana-potion'|'gold'|'growth') {
       if (disposed || document.hidden || !readFishingSound() || audioVolume('effects') === 0) return
       if(kind==='loot'||kind==='equip'||kind==='magic'||kind==='enemy-magic'||kind==='gold'||kind==='health-potion'||kind==='mana-potion'||kind==='fire'||kind==='critical'||kind==='attack'||kind==='hit'||kind==='door'||kind==='arrival'){sample(kind);return}
       try {
@@ -189,7 +189,10 @@ export function createExplorationAudio() {
         }
         volume()
         if (context.state === 'suspended') void context.resume().catch(() => {})
-        if (kind === 'flee') {
+        if (kind === 'growth') {
+          tone(660, 660, 0.1, 0, 'sine', 0.07)
+          tone(880, 880, 0.16, 0.07, 'sine', 0.06)
+        } else if (kind === 'flee') {
           noise(0.12, 1800, 0.08)
           tone(180, 100, 0.07, 0, 'triangle', 0.09)
           tone(150, 80, 0.07, 0.11, 'triangle', 0.06)

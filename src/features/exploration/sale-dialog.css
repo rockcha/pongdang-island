@@ -1,0 +1,13 @@
+.exploration-modal.exploration-sale-dialog{display:flex;flex-direction:column;gap:12px;width:min(560px,calc(100vw - 28px));max-height:85dvh;background:#100f0c;color:#e9dcc2;border:1px solid #ac874855}
+.sale-balance{display:flex;align-items:center;gap:6px;color:#e6c67e;font-size:13px;font-variant-numeric:tabular-nums}
+.sale-tabs{display:flex;gap:5px;border-bottom:1px solid #c5a46c30;padding-bottom:9px;flex-shrink:0}
+.sale-tabs button{display:flex;align-items:center;justify-content:center;gap:6px;flex:1;padding:9px 5px;border-radius:7px;color:#b8ab92;background:#ffffff05;border:1px solid transparent;cursor:pointer;font-size:12px}
+.sale-tabs button[aria-selected=true]{background:#b28a4520;border-color:#b28a4560;color:#edd39b}
+.sale-tabs small{font-size:10px;color:#c7ac74}
+.sale-items{min-height:0;overflow-y:auto;overscroll-behavior:contain;flex:1}
+.sale-items article{display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid #c5a46c20}
+.sale-items article>img{width:38px;height:48px;object-fit:contain}
+.sale-item-copy{min-width:0}.sale-item-copy h3{font-size:13px;margin:0 0 5px;color:#eee0bf}.sale-item-copy p,.sale-item-copy>small{font-size:11px;line-height:1.6;margin:0;color:#bfb39b}
+.sale-item-copy .equipment-attributes{display:flex;flex-wrap:wrap;gap:4px 8px}.sale-item-copy .equipment-stat{display:inline-flex;gap:3px;align-items:center;font-size:10px}.sale-item-copy .exploration-stat-icon{width:12px;height:12px}.sale-item-copy .equipment-effect{display:flex;gap:4px;font-size:10px;line-height:1.5;margin-top:4px}.sale-item-copy .equipment-effect svg{width:12px;height:12px;flex-shrink:0}
+.sale-item-action{display:grid;gap:7px;justify-items:end}.sale-item-action>span{display:flex;align-items:center;gap:4px;color:#e8c67e;font-size:12px;font-variant-numeric:tabular-nums}.sale-item-action button{padding:7px 13px;border:1px solid #b28a4570;border-radius:6px;background:#b28a4525;color:#efd69f;cursor:pointer;font-size:12px;min-height:36px}.sale-item-action button:disabled{opacity:.4;cursor:default}
+.sale-empty{padding:28px 8px;text-align:center;font-size:13px;color:#cabb9e}.sale-empty small{display:block;margin-top:8px;font-size:11px;color:#9e937c}

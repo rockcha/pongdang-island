@@ -1,4 +1,4 @@
-import {practiceEnemyGrowth,finalBossBalance,statEnemyGrowth} from './campaign-balance'
+import {practiceEnemyGrowth,finalBossBalance,statEnemyGrowth,lateEnemyDamageMultiplier} from './campaign-balance'
 import {basicAttackRange,monsterAttackVariance} from './attack-roll'
 import {deepMonsters,deepMonsterIds} from './deep-monsters'
 export type MonsterId='sandstone-shield-guard'|'potion-thief'|'black-sun-moth'|'golden-armored-crocodile'|'black-sand-devourer'|'gem-backed-tomb-tortoise'|'golden-scales-maaken'|'black-sun-aker'|'cracked-shield-scarab'|'cowardly-tomb-rat'|'hourglass-sentinel'|'mirror-mask-mage'|'sand-scorpion'|'bandage-mummy'|'lapis-cobra'|'sand-wraith'|'tomb-lantern-jellyfish'|'obsidian-anubis'|'jar-wisp'|'talisman-lizard'|'night-eyed-desert-fox'|'sand-wing-bat'|'tomb-hook-guard'|'ancient-giant'|'treasure-scarab'|'golden-pharaoh'|'nameless-royal-warden'
@@ -24,7 +24,7 @@ export const explorationMonsters:Monster[]=[
  {"id":"cracked-shield-scarab","name":"금간 방패풍뎅이","tier":"normal","pattern":"shell","maxHp":38,"attack":8,"critical":5,"defense":6,"magicResistance":0,"gold":130,"arrival":"두 줄의 금이 간 방패껍질을 앞세운 풍뎅이가 길을 막는다.","image":"/exploration/monsters/cracked-shield-scarab.png",basic:move("shield-ram","금간 방패 돌진",8,"방패 같은 등껍질로 들이받습니다. 기본 공격에 적중당할 때마다 방어력이 3 감소하며, 2번 맞으면 껍질이 완전히 깨집니다."),magic:[]},
  {"id":"cowardly-tomb-rat","name":"겁쟁이 도굴쥐","tier":"normal","pattern":"coward","maxHp":28,"attack":7,"critical":10,"defense":1,"magicResistance":1,"gold":150,"arrival":"동전 주머니를 꼭 쥔 도굴쥐가 출구를 힐끔거린다.","image":"/exploration/monsters/cowardly-tomb-rat.png",basic:move("tomb-rat-bite","도굴쥐 앞니",7,"작은 앞니로 물어뜯습니다."),magic:[move("rat-scurry","줄행랑",0,"체력이 절반 이하가 되면 기본 공격 후 도망을 준비합니다. 다음 행동까지 처치하거나 행동을 막지 못하면 달아납니다. 보상은 없습니다.")]},
  {id:'hourglass-sentinel',name:'모래시계 파수꾼',tier:'intermediate',pattern:'hourglass',maxHp:75,attack:8,critical:5,defense:3,magicResistance:4,gold:220,arrival:'가슴의 모래시계에서 서늘한 빛이 번진다. 돌주먹에 서리가 맺힌다.',image:'/exploration/monsters/hourglass-sentinel.png',basic:{...move('hourglass-fist','서리 주먹',8,'약한 물리 공격. 빙결 상태인 대상에게 기본 피해 +10. 추가 피해를 더한 뒤 치명타와 방어력을 적용합니다.'),frozenBonus:10},magic:[{...move('hourglass-burst','얼어붙은 모래',10,'35% 확률로 사용. 마법 피해 10과 1턴 빙결. 빙결은 다음 행동을 한 번 막으며, 빙결이 풀리는 턴에는 다시 걸리지 않습니다.'),playerAilment:{kind:'freeze',amount:1,turns:1}}]},
- {"id":"mirror-mask-mage","name":"거울가면 주술사","tier":"intermediate","pattern":"mirror","maxHp":68,"attack":11,"critical":5,"defense":2,"magicResistance":2,"gold":220,"arrival":"거울가면의 표면에 당신의 무기가 비친다. 다른 방법으로 공격해야 할 것 같다.","image":"/exploration/monsters/mirror-mask-mage.png",basic:move("mirror-staff","거울 지팡이",11,"거울 지팡이로 후려칩니다. 기본 공격에 맞으면 방어력 +6, 마법에 맞으면 마법 저항력 +6으로 전환됩니다. 두 효과는 함께 유지되지 않습니다."),magic:[move("mirror-shards","거울 파편",11,"반짝이는 거울 파편을 날려 마법 피해를 줍니다.")]},
+ {"id":"mirror-mask-mage","name":"거울가면 주술사","tier":"intermediate","pattern":"mirror","maxHp":68,"attack":11,"critical":5,"defense":2,"magicResistance":2,"gold":220,"arrival":"거울가면의 표면에 당신의 무기가 비친다. 다른 방법으로 공격해야 할 것 같다.","image":"/exploration/monsters/mirror-mask-mage.png",basic:move("mirror-staff","거울 지팡이",11,"거울 지팡이로 후려칩니다. 기본 공격에 맞으면 방어력 +10, 마법에 맞으면 마법 저항력 +10으로 전환됩니다. 두 효과는 함께 유지되지 않습니다."),magic:[move("mirror-shards","거울 파편",11,"반짝이는 거울 파편을 날려 마법 피해를 줍니다.")]},
  {id:'potion-thief',name:'포션 도둑',tier:'normal',maxHp:36,attack:7,critical:0,defense:1,magicResistance:1,gold:0,image:'/exploration/rooms/desert-thief.png',arrival:'도둑이 훔친 포션을 움켜쥐고 맞선다.',basic:move('pouch-slam','포션 주머니 휘두르기',7,'훔친 포션 주머니를 휘두릅니다. 처치하면 이번에 도둑맞은 포션만 되찾습니다.'),magic:[]},
  {id:'sandstone-shield-guard',name:'사암 방패병',tier:'normal',maxHp:55,attack:8,critical:0,defense:2,magicResistance:1,gold:150,skillChance:.3,arrival:'사암 갑옷을 두른 병사가 커다란 방패로 길을 막는다.',image:'/exploration/monsters/sandstone-shield-guard.png',basic:move('sandstone-guard-club','석봉 타격',8,'짧은 돌곤봉으로 공격합니다.'),magic:[{...move('sandstone-guard-wall','모래 방벽',0,'보호막 30을 얻습니다. 보호막이 남아 있는 동안 재사용하지 않으며, 이 행동에는 공격하지 않습니다.'),enemyShield:{amount:30}}]},
  ...deepMonsters,
@@ -57,8 +57,12 @@ function baseFloorMonster(id:MonsterId|undefined,floor:number,practice:boolean):
  return {...monster,gold:Math.round(monster.gold*(1+band*practiceEnemyGrowth.goldPerBand)),maxHp:Math.round(monster.maxHp*(1+band*hp)),attack:monster.attack+band*attack,magic:monster.magic.map(move=>({...move,damage:move.damage?move.damage+band*practiceEnemyGrowth.magicPerBand:0}))}
 }
 export function getFloorMonster(id:MonsterId|undefined,floor:number,practice:boolean,growth=false):Monster{
- const base=baseFloorMonster(id,floor,practice),monster=practice&&growth&&floor<10&&base.tier!=='boss'?{...base,maxHp:Math.max(1,Math.floor(base.maxHp*.85))}:base,points=growth?Math.max(0,Math.min(7,Math.floor((floor-1)/10))):0
+ const original=baseFloorMonster(id,floor,practice)
+ const late=practice&&floor>50&&original.tier!=='boss'
+ const attack=Math.round(original.attack*lateEnemyDamageMultiplier)
+ const base=late?{...original,attack,basic:{...original.basic,damage:attack},magic:original.magic.map(move=>({...move,damage:Math.round(move.damage*lateEnemyDamageMultiplier)}))}:original
+ const monster=practice&&growth&&floor<10&&base.tier!=='boss'?{...base,maxHp:Math.max(1,Math.floor(base.maxHp*.85))}:base,points=growth?Math.max(0,Math.min(7,Math.floor((floor-1)/10))):0
  if(!points)return monster
- const boss=monster.tier==='boss',hp=boss?statEnemyGrowth.bossHpPerPoint:statEnemyGrowth.hpPerPoint,extra=Math.round(points*(boss?statEnemyGrowth.bossAttackPerPoint:statEnemyGrowth.attackPerPoint)),attack=monster.attack+extra
- return {...monster,maxHp:Math.round(monster.maxHp*(1+points*hp)),attack,basic:{...monster.basic,damage:attack},magic:monster.magic.map(move=>({...move,damage:move.damage?move.damage+extra:0}))}
+ const boss=monster.tier==='boss',hp=boss?statEnemyGrowth.bossHpPerPoint:statEnemyGrowth.hpPerPoint,extra=Math.round(points*(boss?statEnemyGrowth.bossAttackPerPoint:statEnemyGrowth.attackPerPoint)),grownAttack=monster.attack+extra
+ return {...monster,maxHp:Math.round(monster.maxHp*(1+points*hp)),attack:grownAttack,basic:{...monster.basic,damage:grownAttack},magic:monster.magic.map(move=>({...move,damage:move.damage?move.damage+extra:0}))}
 }

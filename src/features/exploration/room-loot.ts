@@ -1,7 +1,9 @@
 import {acquiredItemIds,recordAcquired} from './acquisition-history'
 import {explorationWeapons,type WeaponTier} from './weapon-catalog'
 import {explorationArmor} from './armor-catalog'
-import {merchantGoods,merchantPotions,clampGearResources,type Gear,type PotionKind,type PracticeState} from './practice-state'
+import {merchantGoods,merchantPotions,practiceSpells,clampGearResources,type Gear,type Spell,type PotionKind,type PracticeState} from './practice-state'
+import {plannedSpells} from './spell-catalog'
+export type RoomSaleKind='weapon'|'armor'|'magic'
 export type RoomLoot={kind:'weapon'|'armor';id:string;name:string;image?:string;gear:Gear;price:number}|{kind:'potion';id:string;name:string;image?:string;potionKind:PotionKind;price:number}
 const pick=<T,>(items:readonly T[],random:()=>number)=>items[Math.min(items.length-1,Math.floor(random()*items.length))]
 export function drawRoomLoot(state:PracticeState,tier:WeaponTier='starter',random=Math.random):RoomLoot{
@@ -21,7 +23,17 @@ export function gearSalePrice(gear:Gear){
  const price=merchantGoods.find(item=>item.gear?.id===gear.id)?.price??(gear.attack!==undefined?100:80)
  return Math.max(1,Math.floor(price*.4))
 }
-export function gearSaleBlock(state:PracticeState,kind:'weapon'|'armor',id:string){
+export function spellSalePrice(spell:Spell){
+ const price=plannedSpells.find(item=>item.id===spell.id)?.learnPrice??practiceSpells.find(item=>item.id===spell.id)?.learnPrice??100
+ return Math.max(1,Math.floor(price*.4))
+}
+export function gearSaleBlock(state:PracticeState,kind:RoomSaleKind,id:string){
+ if(kind==='magic'){
+  if(state.combat)return '전투 중에는 판매할 수 없어요.'
+  if(!state.spells.some(item=>item.id===id))return '보유하지 않은 마법'
+  if(state.equippedSpells.includes(id))return '장착 중 · 먼저 마법을 해제하세요'
+  return null
+ }
  const inventory=kind==='weapon'?state.weapons:state.armor
  if(state.combat)return '전투 중에는 판매할 수 없어요.'
  if(!inventory.some(item=>item.id===id))return '보유하지 않은 장비'
@@ -29,8 +41,9 @@ export function gearSaleBlock(state:PracticeState,kind:'weapon'|'armor',id:strin
  if((kind==='weapon'?state.weaponId:state.armorId)===id)return '장착 중 · 먼저 다른 장비를 선택하세요'
  return null
 }
-export function sellRoomGear(state:PracticeState,kind:'weapon'|'armor',id:string){
+export function sellRoomGear(state:PracticeState,kind:RoomSaleKind,id:string){
  if(gearSaleBlock(state,kind,id))return state
+ if(kind==='magic')return {...state,acquiredIds:recordAcquired(state),gold:state.gold+spellSalePrice(state.spells.find(item=>item.id===id)!),spells:state.spells.filter(item=>item.id!==id)}
  const key=kind==='weapon'?'weapons':'armor',gear=state[key].find(item=>item.id===id)!
  return {...state,acquiredIds:recordAcquired(state),gold:state.gold+gearSalePrice(gear),[key]:state[key].filter(item=>item.id!==id)}
 }

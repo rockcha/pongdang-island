@@ -3,6 +3,19 @@ import {afterEach,expect,it} from 'vitest'
 import {EnemyAilments,PlayerAilments,AilmentGuide,type EnemyAilment} from '@/features/exploration/ailments'
 import {newPractice} from '@/features/exploration/practice-state'
 afterEach(cleanup)
+it('keeps the lit soul lantern in buffs outside combat and removes it when consumed',()=>{
+ const state={...newPractice(),soulLantern:'ready' as const}
+ const view=render(<PlayerAilments state={state}/>)
+ const badge=screen.getByRole('button',{name:'영혼의 등불 · 사망 시 체력 20으로 부활 · 1회 남음'})
+ expect(badge.closest('ul')?.getAttribute('aria-label')).toBe('탐험가 버프')
+ fireEvent.click(badge)
+ expect(screen.getByRole('dialog').textContent).toContain('보스전에서도 적용')
+ view.rerender(<PlayerAilments state={{...state,combat:{enemyHp:30,turn:1,status:'active'}}}/>)
+ expect(screen.getByRole('dialog')).toBeTruthy()
+ view.rerender(<PlayerAilments state={{...state,soulLantern:'spent'}}/>)
+ expect(screen.queryByRole('button',{name:/영혼의 등불/})).toBeNull()
+ expect(screen.queryByRole('dialog')).toBeNull()
+})
 it('shows the lizard curse as one basic attack and closes its details when consumed',()=>{
  const state={...newPractice(),combat:{enemyHp:36,turn:1,status:'active' as const,playerWeaken:2}}
  const view=render(<PlayerAilments state={state}/>)
@@ -14,7 +27,7 @@ it('shows the lizard curse as one basic attack and closes its details when consu
 it('explains the one-turn magic resistance reduction and removes its badge when it expires',()=>{
  const state={...newPractice(),combat:{enemyHp:65,turn:1,status:'active' as const,magicResistanceDown:10}}
  const view=render(<PlayerAilments state={state}/>)
- const badge=screen.getByRole('button',{name:'마법 저항력 10 감소 · 1턴 남음'})
+ const badge=screen.getByRole('button',{name:/마법 저항력 10 감소 · 1턴 남음/})
  expect(badge.querySelector('svg')).toBeTruthy()
  fireEvent.click(badge)
  expect(screen.getByRole('dialog').textContent).toContain('다음 턴의 적 행동이 끝나면 해제')
@@ -27,7 +40,7 @@ it('shows player blindness and burn as separate clickable effects and removes co
  const view=render(<PlayerAilments state={state}/>)
  expect(screen.getByRole('list',{name:'탐험가 상태이상'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'실명 · 다음 기본 공격 1회의 명중률 30% 감소 · 1회 남음'}).querySelector('svg')).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'화상 · 치유량 40% 감소 · 2턴 남음'}))
+ fireEvent.click(screen.getByRole('button',{name:/화상 · 치유량 40% 감소 · 2턴 남음/}))
  expect(screen.getByRole('dialog').textContent).toContain('받는 치유량 감소')
  view.rerender(<PlayerAilments state={{...state,playerEffects:[]}}/>)
  expect(screen.queryByRole('dialog')).toBeNull()

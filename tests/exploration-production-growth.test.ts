@@ -25,6 +25,16 @@ it('continues a restored pre-growth run with the exact previous engine',()=>{
  expect(routed.state.equippedSpells).not.toContain('mana-bolt')
  expect(()=>applyRunAction(saved,{type:'allocate-stat',stat:'health'},1000,()=>.2)).toThrow()
 })
+it('accepts every first-floor stat through production routing and rejects duplicate allocation',()=>{
+ for(const stat of ['health','mana','attack','magic','evasion']){
+  const model=JSON.parse(JSON.stringify(newRunModel(1,()=>.2)))
+  expect(model.state.market.floor).toBe(1)
+  const grown=applyRunAction(model,{type:'allocate-stat',stat},1000,()=>.2)
+  expect(grown.state.growth.allocations[stat]).toBe(1)
+  expect(()=>applyRunAction(JSON.parse(JSON.stringify(grown)),{type:'allocate-stat',stat},1000,()=>.2)).toThrow()
+  expect(model.state.growth.allocations[stat]).toBe(0)
+ }
+})
 it('persists new growth through serialization and spends one checkpoint point only once',()=>{
  const model=newRunModel(1,()=>.2)
  const checkpoint=JSON.parse(JSON.stringify({...model,state:{...model.state,market:{...model.state.market,floor:11}}}))

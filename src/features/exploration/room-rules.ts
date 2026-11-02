@@ -20,7 +20,7 @@ export function canOfferPracticeRoom(state:PracticeState|undefined,id:RoomTypeId
  if(id==='warning-wall'&&recent.includes(id))return false
  if((id==='curse'||id==='thief')&&(last==='curse'||last==='thief'))return false
  if(id==='thief'&&state.potions.health+state.potions.mana===0)return false
- if(id==='scales'&&!state.weapons.some(item=>item.id!==state.weaponId)&&!state.armor.some(item=>item.id!==state.armorId))return false
+ if(id==='scales'&&!state.weapons.some(item=>item.id!==state.weaponId)&&!state.armor.some(item=>item.id!==state.armorId)&&!state.spells.some(item=>!state.equippedSpells.includes(item.id)))return false
  if(['soul-lantern','forbidden-trade','broken-teleport'].includes(id)&&choiceRoomBlock(state,id as ChoiceRoomId))return false
  const merchant=shopkeeperForRoom(id)
  if(merchant?.kind==='magic'){

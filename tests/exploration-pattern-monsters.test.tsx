@@ -70,11 +70,11 @@ it('adds ten basic damage against a frozen target and skips its action without s
 })
 it('adapts mirror resistance after each successful direct hit and switches rather than stacking',()=>{
  const base=fight('mirror-mask-mage'),physical=hit(base),magic=resolveCombatTurn(physical.state,{type:'magic',id:'ember'},()=>.99)
- expect(physical.events[0].damage).toBe(8);expect(getCombatMonster(physical.state)).toMatchObject({defense:8,magicResistance:2})
- expect(magic.events[0].damage).toBe(18);expect(getCombatMonster(magic.state)).toMatchObject({defense:2,magicResistance:8})
+ expect(physical.events[0].damage).toBe(8);expect(getCombatMonster(physical.state)).toMatchObject({defense:12,magicResistance:2})
+ expect(magic.events[0].damage).toBe(18);expect(getCombatMonster(magic.state)).toMatchObject({defense:2,magicResistance:12})
  const repeated=resolveCombatTurn(magic.state,{type:'magic',id:'ember'},()=>.99)
- expect(repeated.events[0].damage).toBe(12)
- expect(getCombatMonster(hit(magic.state).state)).toMatchObject({defense:8,magicResistance:2})
+ expect(repeated.events[0].damage).toBe(8)
+ expect(getCombatMonster(hit(magic.state).state)).toMatchObject({defense:12,magicResistance:2})
 })
 it.each([['cracked-shield-scarab',7],['cowardly-tomb-rat',9],['hourglass-sentinel',16],['mirror-mask-mage',21]] as const)('gates %s until floor %s and ships all artwork', (id,start)=>{
  const monster=getMonster(id),intermediate=monster.tier==='intermediate'

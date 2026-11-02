@@ -11,7 +11,7 @@ export function RoomEffectDetails({id,state,recovery,gemOutcome,done=false}:{id:
  let items:EffectFact[]=[]
  const hp=Math.max(0,playerMaxHp(state)-state.hp),mp=Math.max(0,playerManaMax(state)-state.mp)
  const gain=(amount:number)=>amount>0?`+${amount}`:'가득 참'
- if(id==='boss-supply-chest')items=[{label:'체력 포션',value:'+2개',icon:<img src="/exploration/potions/health-potion.png" alt=""/>,tone:'health',note:done?'획득 완료':'상자를 열면 확정 획득'},{label:'마나 포션',value:'+1개',icon:<img src="/exploration/potions/mana-potion.png" alt=""/>,tone:'mana',note:done?'획득 완료':'상자를 열면 확정 획득'}]
+ if(id==='boss-supply-chest')items=[{label:'체력 포션',value:'+1개',icon:<img src="/exploration/potions/health-potion.png" alt=""/>,tone:'health',note:done?'획득 완료':'상자를 열면 확정 획득'},{label:'마나 포션',value:'+1개',icon:<img src="/exploration/potions/mana-potion.png" alt=""/>,tone:'mana',note:done?'획득 완료':'상자를 열면 확정 획득'}]
  if(id.startsWith('rest-'))items=[{label:'체력 회복',value:gain(recovery?.hp??hp),icon:<Heart/>,tone:'health',note:done?'회복 완료':'최대 체력까지'},{label:'마나 회복',value:gain(recovery?.mp??mp),icon:<Droplets/>,tone:'mana',note:done?'회복 완료':'최대 마나까지'}]
  if(id==='soul-lantern')items=[{label:'최대 체력',value:'−10',icon:<Heart/>,tone:'danger',note:'최소 20 유지 · 재점화마다 지불'},{label:'사망 시 부활',value:'체력 20 · 1회',icon:<Flame/>,tone:'gold',note:'막보스 포함 · 소진 후 다시 계약 가능'}]
  if(id==='deep-well')items=[{label:'체력 회복',value:gain(recovery?.hp??hp),icon:<Heart/>,tone:'health',note:'최대 체력까지'},{label:done?'남은 마나':'마나 소모',value:done?'0':'전부',icon:<Droplets/>,tone:'danger',note:done?'회복의 대가':'마나가 0이 됩니다'}]

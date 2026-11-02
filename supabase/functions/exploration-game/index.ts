@@ -1,4 +1,6 @@
-import {newExplorationModel,applyExplorationAction,EXPLORATION_ENGINE_VERSION} from '../_shared/exploration-engine.js'
+import {newExplorationModel,applyExplorationAction,normalizeExplorationSpells,EXPLORATION_ENGINE_VERSION} from '../_shared/exploration-engine.js'
+import {applyExplorationAction as applyLegacyAction} from '../_shared/exploration-engine-v1.js'
+const EXPLORATION_STARTS_PAUSED = false
 const cors={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type','Access-Control-Allow-Methods':'POST, OPTIONS'}
 const json=(value:unknown,status=200)=>Response.json(value,{status,headers:cors})
 const uuid=(v:unknown)=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v)
@@ -30,18 +32,20 @@ Deno.serve(async(req:Request)=>{
   if(body.action.type==='start'){
    if(current)return json({error:'RUN_EXISTS'},409)
    if(body.revision!==-1)return json({error:'INVALID_REQUEST'},400)
+   if(EXPLORATION_STARTS_PAUSED)return json({error:'EXPLORATION_START_PAUSED',message:'버그 점검으로 새 실전 탐험 입장을 잠시 중단했습니다.'},503)
    model=newExplorationModel()
   }else{
    if(!current)return json({error:'RUN_NOT_FOUND'},404)
    if(current.abandoned||current.finishedAt)return json({error:'RUN_CLOSED'},409)
    if(current.revision!==body.revision)return json({error:'REVISION_CONFLICT'},409)
-   if(current.model.version!==EXPLORATION_ENGINE_VERSION)return json({error:'ENGINE_VERSION_MISMATCH'},409)
-   model=body.action.type==='leave'?current.model:applyExplorationAction(current.model,body.action,Date.now())
+   if(![1,EXPLORATION_ENGINE_VERSION].includes(current.model.version))return json({error:'ENGINE_VERSION_MISMATCH'},409)
+   const advance=current.model.version===1?applyLegacyAction:applyExplorationAction
+   model=['leave','resume'].includes(body.action.type)?current.model:advance({...current.model,state:normalizeExplorationSpells(current.model.state)},body.action,Date.now())
   }
   return json(await rpc('exploration_server_commit',{...args,p_revision:body.revision,p_model:model}))
  }catch(cause){
   const message=cause instanceof Error?cause.message:''
-  if(['REVISION_CONFLICT','OPERATION_CONFLICT','RUN_CLOSED'].includes(message))return json({error:message},409)
+  if(['REVISION_CONFLICT','OPERATION_CONFLICT','RUN_CLOSED','NO_SAVED_EXPLORATION'].includes(message))return json({error:message},409)
   return json({error:'INVALID_EXPLORATION_ACTION'},400)
  }
 })

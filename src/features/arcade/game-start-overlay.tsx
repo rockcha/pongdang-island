@@ -10,6 +10,7 @@ export function GameStartOverlay({
   onPaid,
   onPractice,
   practiceLabel='연습',
+  paidLabel,
   paidDisabled,
   practiceDisabled,
   fee = 10,
@@ -27,6 +28,7 @@ export function GameStartOverlay({
   onPaid: () => void
   onPractice?: () => void
   practiceLabel?:string
+  paidLabel?:string
   paidDisabled: boolean
   practiceDisabled?: boolean
   fee?: number
@@ -45,12 +47,12 @@ export function GameStartOverlay({
         <Button
           className={`min-h-14 min-w-0 ${compactFreeLabel && fee === 0 ? 'gap-0' : 'gap-1'} rounded-none border-r border-border px-1 text-xs`}
           aria-label={
-            fee === 0 ? `실전${compactFreeLabel ? '' : ' '}${freeLabel}` : `실전 (골드 ${fee})`
+            paidLabel??(fee === 0 ? `실전${compactFreeLabel ? '' : ' '}${freeLabel}` : `실전 (골드 ${fee})`)
           }
           disabled={paidDisabled}
           onClick={onPaid}
         >
-          실전{compactFreeLabel && fee === 0 ? '' : ' '}
+          {paidLabel??<>실전{compactFreeLabel && fee === 0 ? '' : ' '}
           <span className="inline-flex items-center gap-0.5">
             {fee === 0 ? (
               freeLabel
@@ -65,7 +67,7 @@ export function GameStartOverlay({
                 {fee})
               </>
             )}
-          </span>
+          </span></>}
         </Button>
         {onPractice&&<Button
           variant="secondary"

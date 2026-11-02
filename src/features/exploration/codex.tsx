@@ -27,7 +27,7 @@ export function ExplorationCodex({ownedIds=[],initialCategory='weapon'}:{ownedId
  const tier=category==='spell'?spellTier:category==='armor'?armorTier:weaponTier
  const setTier=category==='spell'?setSpellTier:category==='armor'?setArmorTier:setWeaponTier
  const tierItems=category==='spell'?spells:category==='armor'?armorCatalog:explorationWeapons
- const weapons=explorationWeapons.filter(weapon=>(weaponTier==='all'||weapon.tier===weaponTier)&&(filter==='all'||(filter==='effect'?!!weapon.proc:filter==='utility'?!!(weapon.lifesteal||weapon.cleanseChance||weapon.spellManaDiscount):!hasWeaponEffect(weapon))))
+ const weapons=explorationWeapons.filter(weapon=>(weaponTier==='all'||weapon.tier===weaponTier)&&(filter==='all'||(filter==='effect'?!!weapon.proc:filter==='utility'?!!(weapon.shieldBreak||weapon.lifesteal||weapon.cleanseChance||weapon.spellManaDiscount):!hasWeaponEffect(weapon))))
  const shownSpells=spells.filter(spell=>spellTier==='all'||spell.tier===spellTier)
  function navigateTab(event:KeyboardEvent<HTMLButtonElement>,index:number){
   const next=event.key==='ArrowRight'?(index+1)%categories.length:event.key==='ArrowLeft'?(index+categories.length-1)%categories.length:event.key==='Home'?0:event.key==='End'?categories.length-1:-1

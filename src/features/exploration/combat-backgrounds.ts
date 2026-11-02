@@ -12,6 +12,8 @@ export const combatBackgrounds = [
 ] as const
 
 export const bossCombatBackgrounds = {
+ 'golden-scales-maaken':'maaken-scales-vault',
+ 'black-sun-aker':'aker-black-sun-throne',
  'obsidian-anubis':'anubis-judgment',
  'nameless-royal-warden':'warden-sealed-gate',
  'golden-pharaoh':'rasef-sun-throne',

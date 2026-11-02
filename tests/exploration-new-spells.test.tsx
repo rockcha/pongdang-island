@@ -38,10 +38,10 @@ it('respects chance failures and the existing freeze lock rule',()=>{
 })
 it('gives every learned spell a distinct visual and uses self effects for protective spells',()=>{
  const spells=[...practiceSpells,...plannedSpells]
- expect(spells).toHaveLength(29)
- expect(new Set(spells.map(s=>JSON.stringify(spellVisuals[s.id]))).size).toBe(29)
+ expect(spells.map(spell=>spell.id).sort()).toEqual(Object.keys(spellVisuals).sort())
+ expect(new Set(spells.map(s=>JSON.stringify(spellVisuals[s.id]))).size).toBe(spells.length)
  for(const spell of spells){
-  const visual=spellVisuals[spell.id],p=spellMechanics[spell.id],enemy=!!(p.damage||p.ailment||p.stun)
+  const visual=spellVisuals[spell.id],p=spellMechanics[spell.id],enemy=!!(p.damage||p.ailment||p.stun||p.timed&&['solar-brand','silent-seal'].includes(p.timed.id))
   expect(visual.target).toBe(enemy?'enemy':'self')
   const view=render(<SpellCastEffect spellId={spell.id}/>)
   expect(view.container.querySelector('.spell-cast-effect')?.getAttribute('data-spell')).toBe(spell.id)

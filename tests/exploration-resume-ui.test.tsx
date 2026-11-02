@@ -1,0 +1,58 @@
+import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {afterEach,beforeEach,expect,it,vi} from 'vitest'
+import {ExplorationPage} from '@/features/exploration/exploration-page'
+import {appQueryClient,setQueryAccount} from '@/lib/account-cache'
+import {newExplorationModel} from '@/features/exploration/server-engine'
+const mocks=vi.hoisted(()=>({read:vi.fn(),command:vi.fn(),owner:'one'}))
+vi.mock('@/features/exploration/saved-run-api',()=>({readSavedExploration:mocks.read}))
+vi.mock('@/features/exploration/reward-api',()=>({commandExploration:mocks.command}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:mocks.owner}},recovery:false}),getNickname:()=> '탐험가'}))
+vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:false,loading:false})}))
+vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({profile:null})}))
+vi.mock('@/features/exploration/exploration-feedback',()=>({ExplorationFeedback:()=>null}))
+vi.mock('@/features/exploration/exploration-ranking',()=>({ExplorationRanking:()=>null}))
+vi.mock('@/features/exploration/codex',()=>({ExplorationCodex:()=>null}))
+vi.mock('@/features/exploration/verified-exploration-game',()=>({VerifiedExplorationGame:({runId}:any)=><div data-testid="resumed-game">{runId}</div>}))
+const id='00000000-0000-0000-0000-000000009998',saved={id,floor:49,savedAt:'2026-11-02T11:00:00Z',revision:5}
+const receipt=()=>({id,revision:6,model:newExplorationModel(),rewardGold:0,finishedAt:null,abandoned:false})
+beforeEach(()=>{vi.stubGlobal('matchMedia',()=>({matches:false}));mocks.owner='one';setQueryAccount('one');mocks.read.mockReset().mockResolvedValue(saved);mocks.command.mockReset()})
+afterEach(()=>{cleanup();appQueryClient.clear();setQueryAccount(null);vi.unstubAllGlobals()})
+it('allows a non-operator account to start a fresh real exploration and keeps testing private',async()=>{
+ mocks.read.mockResolvedValue(null);mocks.command.mockResolvedValue(receipt())
+ render(<ExplorationPage/>)
+ const start=await screen.findByRole('button',{name:'실전 (무료)'})
+ await waitFor(()=>expect(start).toHaveProperty('disabled',false))
+ expect(screen.queryByRole('button',{name:'테스트'})).toBeNull()
+ expect(screen.queryByText(/실전 탐험 신규 입장을 잠시 중단/)).toBeNull()
+ fireEvent.click(start)
+ await screen.findByTestId('resumed-game')
+ expect(mocks.command).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({revision:-1,action:{type:'start'}}))
+ const sent=mocks.command.mock.calls[0][0];expect(sent.runId).toBe(sent.operationId)
+})
+it('shows Continue and New Game for an account save after reopening',async()=>{
+ mocks.command.mockResolvedValue(receipt());render(<ExplorationPage/>)
+ const resume=await screen.findByRole('button',{name:'이어하기'})
+ expect(resume).toHaveProperty('disabled',false)
+ expect(screen.getByRole('button',{name:'새로 시작하기'})).toHaveProperty('disabled',false)
+ expect(screen.getByText('저장된 탐험 · 지하 49층')).toBeTruthy()
+ fireEvent.click(resume)
+ await screen.findByTestId('resumed-game')
+ expect(mocks.command).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({runId:id,revision:5,action:{type:'resume'}}))
+})
+it('reuses the resume operation ID after an unknown response instead of creating another action',async()=>{
+ mocks.command.mockRejectedValueOnce(Error('offline')).mockResolvedValueOnce(receipt())
+ render(<ExplorationPage/>);fireEvent.click(await screen.findByRole('button',{name:'이어하기'}))
+ await screen.findByRole('alert')
+ fireEvent.click(screen.getByRole('button',{name:'이어하기'}))
+ await screen.findByTestId('resumed-game')
+ expect(mocks.command.mock.calls[0][0]).toEqual(mocks.command.mock.calls[1][0])
+})
+it('does not open an old account save when its resume response arrives after account switching',async()=>{
+ let finish!:(value:unknown)=>void;mocks.command.mockImplementation(()=>new Promise(resolve=>{finish=resolve}))
+ const view=render(<ExplorationPage/>);fireEvent.click(await screen.findByRole('button',{name:'이어하기'}))
+ await waitFor(()=>expect(finish).toBeDefined())
+ mocks.owner='two';setQueryAccount('two');mocks.read.mockResolvedValue(null);view.rerender(<ExplorationPage/>)
+ await act(async()=>{finish(receipt())})
+ await waitFor(()=>expect(screen.queryByRole('button',{name:'이어하기'})).toBeNull())
+ expect(screen.queryByTestId('resumed-game')).toBeNull()
+})

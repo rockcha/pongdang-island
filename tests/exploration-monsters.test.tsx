@@ -109,7 +109,7 @@ it('opens the treasure scarab spell as separate flavor and effect facts',()=>{
  captureLayout('treasure-scarab-detail')
 })
 it('starts all monsters with their configured health and has real artwork for every move',()=>{
- expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,36,28,70,115,100,220,120,38,28,75,68])
+ expect(explorationMonsters.map(monster=>monster.maxHp)).toEqual([38,55,20,65,65,100,28,33,36,28,70,115,100,220,120,38,28,75,68,36,100,115,120,130,245,320])
  for(const monster of explorationMonsters){
   expect(fight(monster.id).combat).toMatchObject({monsterId:monster.id,enemyHp:monster.maxHp})
   if(regularMonsters.includes(monster)){const index=regularMonsters.indexOf(monster);expect(drawMonster(()=>(index+.5)/regularMonsters.length).id).toBe(monster.id)}
@@ -133,7 +133,7 @@ it('applies enemy armor to physical hits and resistance only to damaging spells'
 it('gives normal monsters named physical attacks with crits and no magic',()=>{
  for(const monster of explorationMonsters.filter(monster=>!monster.magic.length)){
   const result=attack(fight(monster.id),.99,.99,0)
-  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({critical:true,damage:monster.attack*2-1,moveId:monster.basic.id,attackType:'physical',source:monster.name})
+  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({critical:monster.critical>0,damage:monster.attack*(monster.critical>0?2:1)-1,moveId:monster.basic.id,attackType:'physical',source:monster.name})
   expect(result.lines.join(' ')).toContain(monster.basic.name)
  }
 })

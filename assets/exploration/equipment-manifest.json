@@ -304,6 +304,18 @@
       "prompt": "Use case: stylized-concept. One isolated Egyptian fantasy RPG inventory armor: an empty Egyptian alchemist overcoat, earthy olive green and dark brown fabric, brass fasteners, practical belt with two small clearly distinct red and blue potion vials and leather utility pockets, modest middle-tier gear, no human or mannequin. Clean semi-realistic hand-painted 2D game equipment matching warm antique gold Egyptian dungeon loot, crisp readable silhouette at 48px, restrained ornament, soft warm upper-left lighting. Entire item centered with generous 12 percent transparent margins, no cropped tips or hems. Transparent background, clean alpha edges, no backdrop, no floor, no cast shadow, no pedestal, no letters or labels, no UI, no border, no detached particles.",
       "generatedAt": "2026-11-01",
       "generator": "built-in image_gen"
+    },
+    {
+      "id": "cracked-wall-hammer",
+      "source": "assets/exploration/shield-gear/cracked-wall-hammer.png",
+      "output": "public/exploration/weapons/cracked-wall-hammer.png",
+      "prompt": "Transparent background isolated RPG inventory weapon icon. A modest heavy tan sandstone hammer with a cracked rectangular stone head bound to a dark brown wooden haft with linen strips, few tiny turquoise chips in cracks, diagonal top-right head to bottom-left grip. Polished 2D painterly Egyptian tomb fantasy game item, readable silhouette, crisp clean alpha edges. Entire object with 10% clear margin, square canvas. No background, no floor, no text, no UI, no glow or particles. Common tier practical weapon."
+    },
+    {
+      "id": "lapis-shield-breaker",
+      "source": "assets/exploration/shield-gear/lapis-shield-breaker.png",
+      "output": "public/exploration/weapons/lapis-shield-breaker.png",
+      "prompt": "Transparent background isolated RPG inventory weapon icon. A one-handed Egyptian lapis lazuli flanged war mace, deep blue stone head with four angular bronze and gold striking ribs, compact broad angular crown head, dark leather wrapped handle with small bronze pommel. Diagonal head upper right grip lower left. Polished 2D painterly fantasy game item, restrained turquoise light within blue stone, readable clean silhouette, crisp alpha edges, entire object with 10% clear margin. Square canvas. No background, no floor, no text, no UI, no particle cloud. Mid tier shield-shattering weapon."
     }
   ]
 }

@@ -39,11 +39,11 @@ it('does not grant victory mana for fleeing, dying or merely owning the robe',()
 })
 it('grants the dawn shield only at entry, retains partial absorption across turns, then consumes it',()=>{
  const base=equipped('dawn-guardian-garb'),start=startMonsterCombat(base,'bandage-mummy')
- expect(start.combat?.shield).toEqual({remaining:5})
+ expect(start.combat?.shield).toEqual({remaining:8})
  const first=resolveCombatTurn(start,{type:'magic',id:'tide'},()=>.99).state
- expect(first.combat?.shield?.remaining).toBe(4)
+ expect(first.combat?.shield).toBeUndefined()
  const second=resolveCombatTurn(first,{type:'attack'},()=>.99).state
- expect(second.combat?.shield?.remaining).toBe(3)
+ expect(second.combat?.shield).toBeUndefined()
  const third=resolveCombatTurn(second,{type:'attack'},()=>.99).state
  expect(third.combat?.shield).toBeUndefined()
  const reequipped=equipGear(equipGear(third,'armor','old-diving-suit',true),'armor','dawn-guardian-garb',true)

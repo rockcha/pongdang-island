@@ -7,14 +7,23 @@ const request=(action:unknown,extra:object={})=>new Request('https://test.invali
 beforeAll(async()=>{vi.stubGlobal('Deno',{env:{get:(key:string)=>key==='SUPABASE_URL'?'https://test.invalid':'service-key'},serve:(callback:typeof handler)=>{handler=callback}});vi.stubGlobal('fetch',fetcher);await import('../supabase/functions/exploration-game/index.ts')})
 beforeEach(()=>fetcher.mockReset())
 afterAll(()=>vi.unstubAllGlobals())
-it('authenticates independently and initializes only canonical game state',async()=>{
+it('opens normal authenticated starts with authoritative 80-floor state and ignores forged rewards',async()=>{
  fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json(null)).mockResolvedValueOnce(Response.json({id,revision:0}))
- expect((await handler(request({type:'start',hp:99999,completed:true},{revision:-1,model:{completed:true},rewardGold:99999,userId:'victim'}))).status).toBe(200)
- const args=JSON.parse(fetcher.mock.calls[2][1].body)
- expect(args).toMatchObject({p_user:'owner',p_run:id,p_revision:-1,p_model:{version:1,state:{hp:100,gold:100,market:{floor:1}}}})
- expect(args.p_model.state.completed).toBeUndefined()
+ const response=await handler(request({type:'start',hp:99999,completed:true},{revision:-1,model:{completed:true},rewardGold:99999,userId:'victim'}))
+ expect(response.status).toBe(200)
+ expect(await response.json()).toMatchObject({id,revision:0})
+ expect(fetcher).toHaveBeenCalledTimes(3)
+ const commit=JSON.parse(fetcher.mock.calls[2][1].body)
+ expect(commit.p_user).toBe('owner')
+ expect(commit.p_model).toMatchObject({version:2,state:{hp:100,gold:100,campaignFinalFloor:80}})
+ expect(commit.p_model.state.completed).not.toBe(true)
  expect(fetcher.mock.calls[0][1].headers.Authorization).toBe('Bearer user-token')
- expect(fetcher.mock.calls[2][1].headers.Authorization).toBe('Bearer service-key')
+})
+it('replays an accepted start receipt without creating another run',async()=>{
+ const receipt={id,revision:0,model:newExplorationModel(()=>0)}
+ fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json({receipt}))
+ expect(await (await handler(request({type:'start'},{revision:-1}))).json()).toEqual(receipt)
+ expect(fetcher).toHaveBeenCalledTimes(2)
 })
 it('rejects missing authentication, unowned runs, stale versions and forged completion',async()=>{
  expect((await handler(new Request('https://test.invalid',{method:'POST',body:'{}'}))).status).toBe(401)
@@ -49,4 +58,20 @@ it('computes offered room actions against stored state, ignoring submitted state
  expect(args.p_model.view).toBe('room')
  expect(args.p_model.state.hp).toBe(100)
  expect(args.p_model.state.gold).toBe(100)
+})
+it('routes a stored legacy run to the original engine without upgrading its rules',async()=>{
+ const {newExplorationModel:legacyModel}=await import('../supabase/functions/_shared/exploration-engine-v1.js')
+ const initial=legacyModel(()=>0),model={...initial,state:{...initial.state,market:{...initial.state.market,doors:['rest-oasis']}}}
+ fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json({id,revision:0,model})).mockResolvedValueOnce(Response.json({id,revision:1}))
+ expect((await handler(request({type:'door',index:0}))).status).toBe(200)
+ const committed=JSON.parse(fetcher.mock.calls[2][1].body).p_model
+ expect(committed.version).toBe(1)
+ expect(committed.state.campaignFinalFloor).toBeUndefined()
+ expect(committed.view).toBe('room')
+})
+it('lets the database restore a checkpoint during maintenance without trusting a submitted save',async()=>{
+ const model=newExplorationModel(()=>0)
+ fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json({id,revision:0,model})).mockResolvedValueOnce(Response.json({id,revision:1}))
+ expect((await handler(request({type:'resume',savedModel:{gold:999999}}))).status).toBe(200)
+ expect(JSON.parse(fetcher.mock.calls[2][1].body).p_model).toEqual(JSON.parse(JSON.stringify(model)))
 })

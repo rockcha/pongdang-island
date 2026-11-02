@@ -74,6 +74,14 @@ export const encounterWonderLines=[
 ] as const
 
 const monsterArrivalVariants:Record<MonsterId,readonly string[]>={
+ 'sandstone-shield-guard':['방패 틈새에서 모래가 흘러내린다. 병사가 돌곤봉을 고쳐 쥔다.','단단한 사암 방패가 바닥을 울린다. 모래의 벽 뒤에서 시선이 번뜩인다.'],
+ 'potion-thief':['도둑이 포션 주머니를 움켜쥐고 뒤로 물러선다.','포션을 되찾으려면 도둑을 제압해야겠어.'],
+ 'black-sun-moth':['날개 위 금빛 문양이 반짝인다. 다음 날갯짓을 잘 봐야겠어.','검은 나방이 내려앉는다. 날개를 펴는 순간 공기가 뜨거워진다.'],
+ 'golden-armored-crocodile':['저 갑주도 계속 두드리면 벗겨질 것 같아.','악어가 길을 막고 있다. 등 위의 황금 갑주에 이음새가 보인다.'],
+ 'black-sand-devourer':['검은 모래 사이로 거대한 턱이 드러난다. 날카로운 이빨을 조심해야겠어.','모래 속에서 발톱이 솟아오른다. 검은 숨결이 시야를 가리기 전에 준비하자.'],
+ 'gem-backed-tomb-tortoise':['등의 보석에 빛이 모이고 있어. 충전할 때 끊어야겠는데?','돌인 줄 알았는데 거북이었어… 보석이 반짝이면 조심하자.'],
+ 'golden-scales-maaken':['집행자의 망치가 금빛으로 물든다. 저 망치에 맞으면 생명력까지 빼앗기겠어.','거대한 황금 추가 바닥을 긁는다. 낙인이 새겨지기 전에 회복할 틈을 살펴보자.'],
+ 'black-sun-aker':['왕릉의 가장 깊은 곳에서 황금가면이 떠오른다. 천년왕조의 마지막 유산이야.','황금가면의 두 눈이 빛난다. 마지막 봉인을 넘어야 이곳을 나갈 수 있어.'],
  'sand-scorpion':[
   '발밑의 모래가 꿈틀거리더니, 거대한 모래 전갈이 모습을 드러냈다.',
   '어둠 속에서 집게가 부딪히는 소리가 들린다. 모래 전갈이 천천히 다가온다.',
@@ -218,7 +226,7 @@ export function drawNarration(lines:readonly string[],previous?:string|null,rand
 }
 
 export function monsterArrivalLines(id:MonsterId):readonly string[]{
- return [getMonster(id).arrival,...monsterArrivalVariants[id]]
+ return [getMonster(id).arrival,...(monsterArrivalVariants[id]??[])]
 }
 
 export function drawMonsterArrival(id:MonsterId,previous?:string,random=Math.random):string{

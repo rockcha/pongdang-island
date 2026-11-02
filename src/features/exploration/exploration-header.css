@@ -39,6 +39,18 @@
 .exploration-game .exploration-player-ailments>ul::-webkit-scrollbar{display:none}
 .exploration-game .exploration-player-ailments>ul>li{flex-shrink:0}
 .exploration-no-ailments{color:#8d988a;font-size:10px;line-height:1.5;white-space:nowrap}
+.exploration-game .exploration-split-hud>.exploration-player-ailments{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+.exploration-effect-half{display:flex;align-items:center;gap:5px;min-width:0;height:100%;overflow:hidden;padding-inline:3px 6px}
+.exploration-effect-half+ .exploration-effect-half{border-left:1px solid #ffffff15;padding-left:8px}
+.exploration-effect-label{flex-shrink:0;color:#a5aa99;font-size:9px;white-space:nowrap}
+.exploration-effect-half:first-child .exploration-effect-label{color:#d7c58c}
+.exploration-game .exploration-effect-half>ul{display:flex;align-items:center;flex-wrap:nowrap;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;height:100%;gap:4px}
+.exploration-effect-half>ul::-webkit-scrollbar{display:none}
+.exploration-effect-half li{flex-shrink:0}
+.exploration-game .exploration-effect-half .ailment-badge{white-space:nowrap;min-height:20px;padding:1px 4px;font-size:9px;gap:3px}
+.exploration-effect-half .ailment-badge[data-beneficial=true]{color:#e6d9a9;border-color:#d4b96435;background:#d4b9640b}
+.exploration-game .exploration-effect-half .ailment-icon{width:16px;height:16px;object-fit:contain}
+.exploration-effect-half .ailment-badge small{border-radius:4px;background:#ffffff0c;padding:1px 3px;font-variant-numeric:tabular-nums}
 .exploration-game .exploration-toolbar .exploration-menu-trigger{display:flex;align-items:center;justify-content:center;min-width:36px;min-height:36px;padding:0;color:#c0c8b5}
 .exploration-menu-actions{display:grid;gap:7px}
 .exploration-menu-actions button{display:flex;align-items:center;justify-content:flex-start;gap:12px;min-height:48px;width:100%;padding:10px 13px;border-radius:9px;background:#ffffff04;color:#d6ddcc;font-size:13px;cursor:pointer}

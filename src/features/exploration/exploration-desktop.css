@@ -1,0 +1,37 @@
+/* Compact portrait composition at normal desktop zoom; phone rules stay unchanged. */
+@media(min-width:641px) and (min-height:541px){
+ .exploration-game.is-verified{grid-template-columns:minmax(0,min(420px,64dvh));grid-template-rows:auto minmax(0,1fr) auto;justify-content:center;gap:0;padding:0}
+ .exploration-game.is-verified>.exploration-top{padding:3px 10px 4px}
+ .exploration-game.is-verified .exploration-toolbar{min-height:26px;margin-bottom:3px}
+ .exploration-game.is-verified .exploration-split-hud{gap:3px 10px;padding:0}
+ .exploration-game.is-verified .exploration-split-hud .exploration-hud-identity{gap:5px;margin-bottom:3px}
+ .exploration-game.is-verified .exploration-split-hud .exploration-avatar-ring,.exploration-game.is-verified .exploration-split-hud .exploration-avatar-ring>img{width:18px;height:18px}
+ .exploration-game.is-verified .exploration-split-hud .exploration-player-name{font-size:10px}
+ .exploration-game.is-verified .exploration-split-hud .exploration-vitals{gap:2px}
+ .exploration-game.is-verified .exploration-split-hud .exploration-resource-row{min-height:16px}
+ .exploration-game.is-verified .exploration-split-hud>.exploration-stat-summary{grid-template-rows:repeat(2,24px);gap:2px}
+ .exploration-game.is-verified .exploration-split-hud .exploration-combat-stats.is-icons-only>div,.exploration-game.is-verified .exploration-stat-help{min-height:24px}
+ .exploration-game.is-verified .exploration-split-hud .exploration-combat-stats.is-icons-only dd{font-size:10px}
+ .exploration-game.is-verified .exploration-split-hud .exploration-combat-stats.is-icons-only svg{width:11px;height:11px}
+ .exploration-game.is-verified .exploration-split-hud>.exploration-player-ailments{height:22px;min-height:22px;max-height:22px;font-size:10px}
+ .exploration-game.is-verified .exploration-player-ailments>.ailment-guide-button{width:22px;height:22px;flex-basis:22px}
+ .exploration-game.is-verified .exploration-combat{padding-top:6px;gap:4px}
+ .exploration-game.is-verified .exploration-enemy-status{width:calc(100% - 20px);padding:5px 8px;gap:3px 8px}
+ .exploration-game.is-verified .exploration-enemy-status h2{font-size:12px;line-height:1.3}
+ .exploration-game.is-verified .exploration-enemy-status strong{font-size:12px}
+ .exploration-game.is-verified .exploration-monster-stage{grid-template-columns:58px minmax(0,1fr) 58px;padding-inline:10px;gap:4px}
+ .exploration-game.is-verified .exploration-monster-move{min-height:68px;padding:6px 3px;gap:3px}
+ .exploration-game.is-verified .exploration-monster-move img{width:24px;height:24px}
+ .exploration-game.is-verified .exploration-monster-move strong{font-size:9px}
+ .exploration-game.is-verified .exploration-combat-controls{padding:5px 10px 6px}
+ .exploration-game.is-verified .exploration-combat-controls>.exploration-enemy-intent{height:24px;min-height:24px;max-height:24px;margin-bottom:4px}
+ .exploration-game.is-verified .exploration-combat-controls>.exploration-enemy-intent p{font-size:10px;line-height:1.6}
+ .exploration-game.is-verified .exploration-combat-actions button:is(.combat-action-attack,.combat-action-magic,.combat-action-potion,.combat-action-flee){min-height:46px;padding:5px 3px;gap:3px}
+ .exploration-game.is-verified .exploration-combat-actions button .combat-action-icon{width:20px;height:20px}
+ .exploration-game.is-verified .exploration-combat-actions button>span{font-size:10px}
+ .exploration-game.is-verified .exploration-equipment-dock{padding-block:5px}
+ .exploration-game.is-verified .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot,.exploration-potion-loadout){min-height:46px;padding:4px 3px;gap:3px}
+ .exploration-game.is-verified .exploration-equipment-dock .exploration-equipped-weapon{width:20px;height:20px}
+ .exploration-game.is-verified .exploration-equipment-dock :is(.exploration-equipment,.exploration-spell-slot) strong{font-size:9px;line-height:1.2}
+ .exploration-game.is-verified .exploration-potion-loadout img{width:17px;height:20px}
+}

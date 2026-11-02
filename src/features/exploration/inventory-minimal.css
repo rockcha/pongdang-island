@@ -22,6 +22,10 @@
 .exploration-inventory.exploration-modal .exploration-inventory-footer{margin:0;padding-top:12px;gap:8px;flex-shrink:0}
 .exploration-inventory.exploration-modal .exploration-attuned-spells>span{border:1px solid #ac874830;background:#b58b4308}
 .exploration-inventory.exploration-modal .exploration-attuned-spells b{color:#c9b58b}
+.exploration-inventory.exploration-modal .exploration-attuned-spells b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exploration-inventory.exploration-modal .exploration-attuned-spells .exploration-slot-unequip{flex-shrink:0;margin-left:auto;padding:5px 7px;min-height:30px;border:1px solid #ac874840;border-radius:5px;background:#b58b4310;color:#d8c494;font-size:10px;cursor:pointer}
+.exploration-inventory.exploration-modal .exploration-attuned-spells .exploration-slot-unequip:hover{background:#b58b4325}
+.exploration-inventory.exploration-modal .exploration-attuned-spells .exploration-slot-unequip:disabled{opacity:.4;cursor:default}
 .exploration-inventory.exploration-modal button:focus-visible{outline:2px solid #d3ad65;outline-offset:2px}
 .exploration-inventory.exploration-modal .exploration-discard-actions{grid-column:1/-1;display:flex;align-items:center;justify-content:flex-end;gap:8px;font-size:11px;color:#b89a8c}
 .exploration-discard-actions button{display:inline-flex;align-items:center;gap:4px;padding:5px 8px;border:1px solid #ae796c30;border-radius:6px;background:transparent;color:#bd9587;font-size:11px;min-height:28px}

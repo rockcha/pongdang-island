@@ -1,0 +1,23 @@
+{
+  "purpose": "Exploration shield guard and shield-breaking weapons",
+  "images": [
+    {
+      "id": "sandstone-shield-guard",
+      "source": "assets/exploration/shield-gear/sandstone-shield-guard.png",
+      "output": "public/exploration/monsters/sandstone-shield-guard.png",
+      "prompt": "Transparent background isolated full-body enemy game sprite for an Egyptian tomb RPG. A squat intimidating sandstone shield soldier, rough tan stone armor, dark hollow eyes with faint turquoise light, faded blue linen sash, big round sandstone shield in left hand and short blunt stone club in right. FRONT three-quarter facing viewer, both feet visible grounded same baseline, entire silhouette inside canvas with 8% clear margin. Painterly polished 2D fantasy game art, crisp clean edges, restrained gold details, warm torch-lit tan tones, no text, no UI, no ground or scenery, no mist or particles. Square canvas. Distinct from gold hourglass robot, normal weak soldier."
+    },
+    {
+      "id": "cracked-wall-hammer",
+      "source": "assets/exploration/shield-gear/cracked-wall-hammer.png",
+      "output": "public/exploration/weapons/cracked-wall-hammer.png",
+      "prompt": "Transparent background isolated RPG inventory weapon icon. A modest heavy tan sandstone hammer with a cracked rectangular stone head bound to a dark brown wooden haft with linen strips, few tiny turquoise chips in cracks, diagonal top-right head to bottom-left grip. Polished 2D painterly Egyptian tomb fantasy game item, readable silhouette, crisp clean alpha edges. Entire object with 10% clear margin, square canvas. No background, no floor, no text, no UI, no glow or particles. Common tier practical weapon."
+    },
+    {
+      "id": "lapis-shield-breaker",
+      "source": "assets/exploration/shield-gear/lapis-shield-breaker.png",
+      "output": "public/exploration/weapons/lapis-shield-breaker.png",
+      "prompt": "Transparent background isolated RPG inventory weapon icon. A one-handed Egyptian lapis lazuli flanged war mace, deep blue stone head with four angular bronze and gold striking ribs, compact broad angular crown head, dark leather wrapped handle with small bronze pommel. Diagonal head upper right grip lower left. Polished 2D painterly fantasy game item, restrained turquoise light within blue stone, readable clean silhouette, crisp alpha edges, entire object with 10% clear margin. Square canvas. No background, no floor, no text, no UI, no particle cloud. Mid tier shield-shattering weapon."
+    }
+  ]
+}

@@ -9,9 +9,9 @@ export function HealthMeter({value,max,label}:{value:number;max:number;label:str
   if(!element||!foreground)return
   const damaged=value<previous.current.value&&max===previous.current.max
   const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false
-  foreground.style.transition=damaged&&!reduced?'width 250ms ease-out':'none'
+  foreground.style.transition='none'
   foreground.style.width=`${percent}%`
-  element.style.transition=damaged&&!reduced?'width 1000ms cubic-bezier(.2,0,.4,1) 1200ms':'none'
+  element.style.transition=damaged&&!reduced?'width 300ms ease-out 150ms':'none'
   element.style.width=`${percent}%`
   previous.current={value,max}
  },[value,max,percent])

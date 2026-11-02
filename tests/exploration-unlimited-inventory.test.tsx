@@ -2,12 +2,33 @@ import {useState} from 'react'
 import {cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {PracticeInventory} from '@/features/exploration/practice-inventory'
-import {buyMerchantItem,newPractice,grantPracticeSupplies} from '@/features/exploration/practice-state'
+import {buyMerchantItem,newPractice,grantPracticeSupplies,practiceSpells} from '@/features/exploration/practice-state'
 import {explorationWeapons} from '@/features/exploration/weapon-catalog'
 import {explorationArmor} from '@/features/exploration/armor-catalog'
 import {drawRoomLoot,receiveRoomLoot} from '@/features/exploration/room-loot'
 
 afterEach(cleanup)
+it('unequips a spell directly from its upper slot while retaining ownership and the other spell',()=>{
+ const initial={...newPractice(()=>0),spells:practiceSpells,equippedSpells:['ember','tide']}
+ let latest=initial
+ function Harness(){const [state,onChange]=useState(initial);latest=state;return <PracticeInventory initialTab="magic" open onOpenChange={()=>{}} state={state} onChange={onChange} onUsePotion={()=>false} onEquipChange={()=>{}}/>}
+ render(<Harness/>)
+ fireEvent.click(screen.getByRole('button',{name:'작은 불꽃 장착 해제'}))
+ expect(latest.equippedSpells).toEqual(['tide'])
+ expect(latest.spells).toEqual(practiceSpells)
+ expect(screen.queryByRole('button',{name:'작은 불꽃 장착 해제'})).toBeNull()
+})
+it('dispatches a slot removal through the server callback and disables it while busy',()=>{
+ const state={...newPractice(()=>0),spells:practiceSpells,equippedSpells:['ember','tide']},onToggleSpell=vi.fn(),onChange=vi.fn()
+ const props={initialTab:'magic' as const,open:true,onOpenChange:()=>{},state,onChange,onUsePotion:()=>false,onEquipChange:()=>{},onToggleSpell}
+ const view=render(<PracticeInventory {...props}/>)
+ fireEvent.click(screen.getByRole('button',{name:'작은 불꽃 장착 해제'}))
+ expect(onToggleSpell).toHaveBeenCalledExactlyOnceWith('ember');expect(onChange).not.toHaveBeenCalled()
+ view.rerender(<PracticeInventory {...props} busy/>)
+ const button=screen.getByRole('button',{name:'작은 불꽃 장착 해제'})
+ expect(button).toHaveProperty('disabled',true);fireEvent.click(button)
+ expect(onToggleSpell).toHaveBeenCalledTimes(1)
+})
 it('can purchase the entire equipment catalog without losing existing or equipped gear',()=>{
  const base=newPractice(()=>0)
  let state={...base,market:{...base.market,weaponIds:explorationWeapons.map(x=>x.id),armorIds:explorationArmor.map(x=>x.id)}}

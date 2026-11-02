@@ -18,6 +18,8 @@ vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:vi.fn()}))
 vi.mock('@/features/exploration/exploration-feedback',()=>({ExplorationFeedback:()=> <section aria-label="탐험 피드백"/>}))
 vi.mock('@/features/exploration/reward-api',()=>({commandExploration:vi.fn(async(request:any)=>({id:request.runId,abandoned:false,finishedAt:null}))}))
 vi.mock('@/features/exploration/verified-exploration-game',()=>({VerifiedExplorationGame:(props:any)=><ExplorationGame {...props} mode="practice"/>}))
+// Retain the legacy demo fixtures separately from the current shared-mode integration tests.
+vi.mock('@/features/exploration/test-exploration-game',()=>({TestExplorationGame:(props:any)=><ExplorationGame {...props} mode="test"/>}))
 vi.mock('@/features/exploration/exploration-audio',()=>({createExplorationAudio:()=>({startMusic(){},unlock(){},play(){},dispose(){},startDescent(){},stopDescent(){},startQuizClock(){},stopQuizClock(){}})}))
 afterEach(()=>{cleanup();vi.useRealTimers();vi.unstubAllGlobals();vi.restoreAllMocks()})
 async function advance(ms:number){await act(async()=>{await vi.advanceTimersByTimeAsync(ms)})}
@@ -33,6 +35,7 @@ it('changes door and monster narration on the next floor even when randomness re
   fireEvent.click(document.querySelectorAll('.exploration-choice')[0]);fireEvent.click(document.querySelector('.exploration-preview-enter')!)
   await advance(100);await advance(100);await advance(100)
   expect(screen.getByRole('region',{name:'청금석 코브라 전투'})).toBeTruthy()
+  await advance(1000)
   return screen.getByLabelText('탐험 로그').textContent
  }
  const firstMonsterLine=await enterCobra()
@@ -65,15 +68,10 @@ it('announces death only when the lethal counterattack and HP loss are shown',as
  await advance(combatTimings.reply-combatTimings.player-1);expect(screen.queryByText('사망하였습니다.')).toBeNull()
  await advance(1);expect(screen.getByText('사망하였습니다.')).toBeTruthy();expect(screen.getByRole('button',{name:'메인 화면으로'})).toBeTruthy()
 })
-it('offers test and real practice as distinct starts, with selects and supplies only in test mode',async()=>{
+it('keeps operator testing available after reopening real exploration',async()=>{
  setup();render(<ExplorationPage/>);capture('mode-lobby')
- expect(screen.getByRole('button',{name:'실전 (무료)'})).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'테스트'}));await advance(100)
+ fireEvent.click(screen.getByRole('button',{name:'테스트'}));await advance(100)
  expect(screen.getByLabelText('탐험용 골드').textContent).toBe('100,000');expect(screen.getAllByRole('combobox')).toHaveLength(3);capture('test-doors')
- cleanup();render(<ExplorationPage/>);fireEvent.click(screen.getByRole('button',{name:'실전 (무료)'}));await advance(100);await advance(100)
- expect(screen.getByLabelText('탐험용 골드').textContent).toBe('100');expect(document.querySelector('.exploration-potion-loadout>div>span:nth-child(1)')?.textContent).toBe('×0');expect(document.querySelector('.exploration-potion-loadout>div>span:nth-child(2)')?.textContent).toBe('×0');expect(screen.queryByRole('combobox')).toBeNull()
- expect(document.querySelectorAll('.exploration-choice')).toHaveLength(3);await advance(1800);capture('practice-doors')
- fireEvent.click(screen.getByRole('button',{name:'주무기 교체'}))
- expect(screen.queryByRole('button',{name:'테스트 물품 받기'})).toBeNull()
 })
 it('plays fifty actual UI floors and requires the final boss before completion',async()=>{
  // Controlled safe route tests navigation, without relying on removed room-revealing door clues.

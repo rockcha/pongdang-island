@@ -11,7 +11,7 @@ async function commit(uid:string,run:string,op:string,request:object,revision:nu
 }
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [a,b])await db.query('insert into auth.users(id) values($1)',[id])},60000)
 afterAll(async()=>{await db?.close()})
-it('allows only the server to commit state and atomically pays 2000 exactly once',async()=>{
+it('allows only the server to pay each checkpoint once and accumulates 4000 only after final completion',async()=>{
  const id=crypto.randomUUID(),start=crypto.randomUUID(),op=crypto.randomUUID(),initial=newExplorationModel(()=>0)
  for(const role of ['anon','authenticated'])await expect(commit(a,id,start,{type:'start'},-1,initial,role)).rejects.toThrow(/permission denied/)
  const started=await commit(a,id,start,{type:'start'},-1,initial)
@@ -19,17 +19,47 @@ it('allows only the server to commit state and atomically pays 2000 exactly once
  const invalid={...initial,state:{...initial.state,completed:true}}
  await expect(commit(a,id,op,{type:'descend'},0,invalid)).rejects.toThrow(/INCOMPLETE/)
  expect((await db.query('select revision from app_private.exploration_runs where id=$1',[id])).rows[0].revision).toBe(0)
- const completed={...initial,state:{...initial.state,market:{...initial.state.market,floor:50},completed:true,finalBossDefeated:true,combat:{monsterId:'golden-pharaoh',enemyHp:0,status:'won',turn:20,lootClaimed:true}}}
+ const completed={...initial,state:{...initial.state,market:{...initial.state.market,floor:80},completed:true,finalBossDefeated:true,combat:{monsterId:'black-sun-aker',enemyHp:0,status:'won',turn:20,lootClaimed:true}}}
+ await expect(commit(a,id,op,{type:'descend'},0,completed)).rejects.toThrow(/CHECKPOINT_REQUIRED/)
  const before=(await db.query('select gold from public.player_wallets where user_id=$1',[a])).rows[0]?.gold??0
- const result=await commit(a,id,op,{type:'descend'},0,completed)
- expect(result).toMatchObject({revision:1,rewardGold:2000})
+ const checkpoint={...initial,state:{...initial.state,market:{...initial.state.market,floor:50},combat:{monsterId:'golden-pharaoh',enemyHp:0,status:'won',turn:20}}}
+ const checkpointOp=crypto.randomUUID(),paid=await commit(a,id,checkpointOp,{type:'combat'},0,checkpoint)
+ expect(paid).toMatchObject({revision:1,rewardGold:2000,finishedAt:null})
+ expect(await commit(a,id,checkpointOp,{type:'combat'},0,checkpoint)).toEqual(paid)
+ expect((await db.query('select gold from public.player_wallets where user_id=$1',[a])).rows[0].gold).toBe(before+2000)
+ expect(await commit(a,id,crypto.randomUUID(),{type:'loot'},1,checkpoint)).toMatchObject({revision:2,rewardGold:2000,finishedAt:null})
+ const result=await commit(a,id,op,{type:'descend'},2,completed)
+ expect(result).toMatchObject({revision:3,rewardGold:4000})
  const gold=(await db.query('select gold from public.player_wallets where user_id=$1',[a])).rows[0].gold
- expect(gold).toBe(before+2000)
+ expect(gold).toBe(before+4000)
  await db.query('update public.player_wallets set gold=gold+17 where user_id=$1',[a])
- expect(await commit(a,id,op,{type:'descend'},0,completed)).toEqual(result)
+ expect(await commit(a,id,op,{type:'descend'},2,completed)).toEqual(result)
  expect((await db.query('select gold from public.player_wallets where user_id=$1',[a])).rows[0].gold).toBe(gold+17)
- await expect(commit(a,id,crypto.randomUUID(),{type:'descend'},1,completed)).rejects.toThrow(/RUN_CLOSED/)
- expect((await db.query('select count(*)::int n from public.gold_transactions where user_id=$1 and operation_id=$2',[a,id])).rows[0].n).toBe(1)
+ await expect(commit(a,id,crypto.randomUUID(),{type:'descend'},3,completed)).rejects.toThrow(/RUN_CLOSED/)
+ expect((await db.query("select count(*)::int n from public.gold_transactions where user_id=$1 and operation_id in ($2::uuid,md5('exploration:80:'||$2::text)::uuid)",[a,id])).rows[0].n).toBe(2)
+})
+it('keeps the first checkpoint payment after death, leaving, or starting a new run',async()=>{
+ const initial=newExplorationModel(()=>0),id=crypto.randomUUID()
+ await commit(b,id,crypto.randomUUID(),{type:'start'},-1,initial)
+ const before=(await db.query('select gold from public.player_wallets where user_id=$1',[b])).rows[0]?.gold??0
+ const checkpoint={...initial,state:{...initial.state,market:{...initial.state.market,floor:50},combat:{monsterId:'golden-pharaoh',enemyHp:0,status:'won'}}}
+ await commit(b,id,crypto.randomUUID(),{type:'combat'},0,checkpoint)
+ const lost={...initial,state:{...initial.state,hp:0,market:{...initial.state.market,floor:60},combat:{monsterId:'black-sand-devourer',enemyHp:1,status:'lost'}}}
+ expect(await commit(b,id,crypto.randomUUID(),{type:'combat'},1,lost)).toMatchObject({rewardGold:2000,finishedAt:null})
+ expect(await commit(b,id,crypto.randomUUID(),{type:'leave'},2,lost)).toMatchObject({rewardGold:2000,abandoned:true})
+ await commit(b,crypto.randomUUID(),crypto.randomUUID(),{type:'start'},-1,initial)
+ expect((await db.query('select gold from public.player_wallets where user_id=$1',[b])).rows[0].gold).toBe(before+2000)
+})
+it('preserves 50-floor legacy rewards and rejects early v2 completion or changing engine versions',async()=>{
+ const fresh=newExplorationModel(()=>0),id=crypto.randomUUID()
+ const legacy={...fresh,version:1,state:{...fresh.state,campaignFinalFloor:undefined}}
+ await commit(a,id,crypto.randomUUID(),{type:'start'},-1,legacy)
+ await expect(commit(a,id,crypto.randomUUID(),{type:'descend'},0,fresh)).rejects.toThrow(/INVALID_MODEL/)
+ const completed={...legacy,state:{...legacy.state,market:{...legacy.state.market,floor:50},completed:true,finalBossDefeated:true,combat:{monsterId:'golden-pharaoh',enemyHp:0,status:'won'}}}
+ expect(await commit(a,id,crypto.randomUUID(),{type:'descend'},0,completed)).toMatchObject({rewardGold:2000})
+ const next=crypto.randomUUID()
+ await commit(a,next,crypto.randomUUID(),{type:'start'},-1,fresh)
+ await expect(commit(a,next,crypto.randomUUID(),{type:'descend'},0,{...completed,version:2,state:{...completed.state,campaignFinalFloor:80}})).rejects.toThrow(/INCOMPLETE/)
 })
 it('isolates owners, rejects stale writes and conflicting retries, and closes superseded runs',async()=>{
  const id=crypto.randomUUID(),op=crypto.randomUUID(),initial=newExplorationModel(()=>0)

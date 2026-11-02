@@ -38,6 +38,7 @@ export type Database = {
     Functions: {
       recycle_relics: { Args: { p_action: string; p_inputs: import('@/features/relics/recycling-api').RelicMaterial[]; p_operation_id: string }; Returns: import('@/features/relics/api').RelicState }
       exploration_leaderboard: { Args: { p_offset?: number }; Returns: import('@/features/exploration/ranking-api').ExplorationRankingData }
+      exploration_saved_run: { Args: Record<string,never>; Returns: import('@/features/exploration/saved-run-api').SavedExplorationRun|null }
       exploration_feedback: { Args: { p_offset?: number }; Returns: import('@/features/exploration/feedback-api').ExplorationComments }
       exploration_feedback_action: { Args: { p_action: 'add'|'edit'|'delete'; p_id: string; p_body?: string|null }; Returns: string }
       my_island_state:{Args:Record<string,never>;Returns:import('@/features/my-island/api').IslandSnapshot}

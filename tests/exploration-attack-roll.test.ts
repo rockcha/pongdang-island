@@ -33,20 +33,21 @@ it('rolls all player weapons before critical damage and enemy physical defense',
 it('rolls all monster basic attacks before critical damage and player armor',()=>{
  for(const monster of explorationMonsters)for(const variance of [0,.5,.999])for(const critical of [false,true]){
   const initial=startMonsterCombat({...newPractice(()=>0),mp:15,potions:{health:0,mana:1}},monster.id)
-  const result=resolveCombatTurn(initial,{type:'potion',kind:'mana'},rolls(...(monster.magic.length?[.999]:[]),.999,critical?0:.999,variance))
+  const physical=monster.basic.attackType!=='magic'
+  const result=resolveCombatTurn(initial,{type:'potion',kind:'mana'},rolls(...(monster.magic.length?[.999]:[]),...(physical?[.999]:[]),critical?0:.999,variance))
   const actualCritical=critical&&monster.critical>0
-  const expected=rollBasicAttack(monster.attack,()=>variance,monsterAttackVariance)*(actualCritical?2:1)-1
-  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({damage:expected,critical:actualCritical,attackType:'physical',moveId:monster.basic.id})
-  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({rawDamage:expected+1,defenseBlocked:1})
+  const reduction=physical?1:0,expected=rollBasicAttack(monster.attack,()=>variance,monsterAttackVariance)*(actualCritical?2:1)-reduction
+  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({damage:expected,critical:actualCritical,attackType:physical?'physical':'magic',moveId:monster.basic.id})
+  expect(result.events.find(event=>event.kind==='monster')).toMatchObject({rawDamage:expected+reduction,defenseBlocked:reduction})
   expect(result.state.hp).toBe(100-expected)
  }
 })
 it('leaves monster magic and player magic fixed and avoids basic variance draws',()=>{
- for(const monster of explorationMonsters.filter(monster=>monster.magic.length&&monster.magic[0].damage>0&&monster.pattern!=='hourglass')){
+ for(const monster of explorationMonsters.filter(monster=>monster.magic.length&&monster.magic[0].damage>0&&!['eclipse-moth','gilded-armor','gem-charge','black-sun'].includes(monster.pattern??''))){
   const initial=startMonsterCombat({...newPractice(()=>0),mp:15,potions:{health:0,mana:1}},monster.id)
   const random=vi.fn(rolls(0))
   const result=resolveCombatTurn(initial,{type:'potion',kind:'mana'},random)
-  expect(result.events.find(event=>event.kind==='monster')?.damage).toBe(monster.magic[0].damage)
+  expect(result.events.find(event=>event.kind==='monster')?.damage).toBe(monster.magic[0].damage-(monster.magic[0].attackType==='physical'?1:0))
   expect(random).toHaveBeenCalledTimes(1)
  }
  const mage=startMonsterCombat({...newPractice(()=>0),spells:practiceSpells,equippedSpells:['sand']},'sand-scorpion')

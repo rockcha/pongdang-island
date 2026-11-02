@@ -1,3 +1,4 @@
+import {hasTimedSpell} from './timed-spells'
 import {drawPracticeFloor,type ExplorationMode} from './campaign'
 import {acquiredItemIds,recordAcquired} from './acquisition-history'
 import {spellMechanics} from './spell-mechanics'
@@ -9,7 +10,7 @@ import {practiceSpellLearningPrices} from './spell-catalog'
 import {drawFloorMarket,type FloorMarket} from './merchant-stock'
 import {healingAfterReduction} from './status-effects'
 import type {ShamanStock} from './shaman-stock'
-export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;maxManaBonus?:number;spellManaDiscount?:number;victoryManaRestore?:number;openingShield?:number;potionBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
+export type Gear={id:string;name:string;description:string;attack?:number;attackVariance?:number;critical?:number;reduction?:number;magicReduction?:number;maxHpBonus?:number;maxManaBonus?:number;spellManaDiscount?:number;victoryManaRestore?:number;openingShield?:number;shieldBreak?:boolean;potionBonus?:number;evasion?:number;escapeBonus?:number;image?:string;proc?:WeaponProc;lifesteal?:number;cleanseChance?:number}
 export type Spell={id:string;name:string;description:string;message:string;mana:number;image?:string;learnPrice?:number}
 export const starterWeapon:Gear={id:'dull-dagger',name:'무딘 단검',description:'손에 익은 오래된 단검.',attack:10,critical:5,image:'/exploration/weapons/dull-dagger.png'}
 export const practiceSpells:Spell[]=[
@@ -17,14 +18,14 @@ export const practiceSpells:Spell[]=[
  {id:'tide',mana:5,name:'물결의 보호',description:'잔잔한 물결을 몸 주위에 두릅니다.',message:'얇은 물결이 몸 주위를 천천히 맴돕니다.'},
  {id:'light',mana:5,name:'길잡이 빛',description:'빛으로 어두운 길의 흔적을 살핍니다.',message:'푸른 빛이 세 문 앞의 발자국을 밝힙니다.'},
  {id:'sand',mana:7,name:'모래의 속삭임',description:'모래에 남은 오래된 이야기를 듣습니다.',message:'모래알 사이로 알아들을 수 없는 속삭임이 들립니다.'},
-].map(spell=>({...spell,image:`/exploration/magic/${spell.id}.png`,learnPrice:practiceSpellLearningPrices[spell.id as keyof typeof practiceSpellLearningPrices]}))
-export type MonsterPatternState={shellHits?:number;fleeReady?:boolean;charging?:boolean;mirrorGuard?:'physical'|'magic';}
-export type CombatState={pattern?:MonsterPatternState;enemyFled?:boolean;ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns?:number};attackBuffName?:string;attackBuff?:{attack:number;critical:number;turns:number}}
+].map(spell=>({...spell,image:`/exploration/magic/svg-v2/${spell.id}.svg`,learnPrice:practiceSpellLearningPrices[spell.id as keyof typeof practiceSpellLearningPrices]}))
+export type MonsterPatternState={lastMove?:string;shieldHp?:number;shieldTurns?:number;shellHits?:number;fleeReady?:boolean;charging?:boolean;mirrorGuard?:'physical'|'magic';cycle?:number;shed?:boolean;stage?:number;bonusGold?:number;}
+export type CombatState={stolenPotions?:import('./potion-theft').StolenPotions;pattern?:MonsterPatternState;enemyFled?:boolean;ambush?:boolean;loot?:import('./room-loot').RoomLoot;lootClaimed?:boolean;monsterId?:import('./monster-catalog').MonsterId;enemyHp:number;turn:number;status:'active'|'won'|'lost'|'escaped';effects?:import('./ailments').EnemyAilment[];freezeGuard?:boolean;playerBlind?:number;playerWeaken?:number;magicResistanceDown?:number;spellEffects?:import('./timed-spells').TimedSpellEffect[];wardSpellId?:string;shieldSpellId?:string;attackBuffSpellId?:string;ward?:{amount:number;turns:number};lootSource?:'chest';shield?:{remaining:number;turns?:number};attackBuffName?:string;attackBuff?:{attack:number;critical:number;turns:number}}
 export const playerMaxMp=40
 export function playerManaMax(state:PracticeState){return Math.max(0,playerMaxMp+equippedGearBonus(state,'maxManaBonus'))}
 export function playerAttackStats(state:PracticeState){
  const weapon=state.weapons.find(item=>item.id===state.weaponId),combat=state.combat?.status==='active'?state.combat:undefined
- const weaken=combat?.playerWeaken??0
+ const weaken=(combat?.playerWeaken??0)+(combat?state.playerEffects?.find(effect=>effect.kind==='weaken')?.amount??0:0)
  return {attack:Math.max(1,(weapon?.attack??1)+(combat?.attackBuff?.attack??0)-weaken),variance:weapon?.attackVariance??0,critical:combat?.ambush?100:Math.min(100,(weapon?.critical??0)+(combat?.attackBuff?.critical??0)),weaken}
 }
 export type PotionKind='health'|'mana'
@@ -32,7 +33,7 @@ export const merchantPotions=[
  {id:'health-potion',kind:'health' as const,name:'체력 포션',amount:30,price:100,description:'체력 30 회복',image:'/exploration/potions/health-potion.png'},
  {id:'mana-potion',kind:'mana' as const,name:'마나 포션',amount:15,price:100,description:'마나 15 회복',image:'/exploration/potions/mana-potion.png'},
 ]
-export type PracticeState={recentRooms?:import('./room-preview').RoomTypeId[];guardianCheckpoint?:boolean;bossRestPending?:boolean;equipmentMerchantVisits?:number[];supplyChecks?:number[];forcedMerchant?:{floor:number;id:import('./shopkeepers').ShopkeeperId;phase:'pending'|'active'};nameStory?:{choice?:'restored'|'left';recordRead?:boolean;nameLearned?:boolean;met?:boolean;gateOpened?:boolean;guardianDefeated?:boolean;rewardClaimed?:boolean};maxHpSacrifice?:number;soulLantern?:'ready'|'spent';pendingFloorAdvance?:number;mode?:ExplorationMode;completed?:boolean;finalBossDefeated?:boolean;acquiredIds?:string[];roomVisitKey?:string;gold:number;hp:number;mp:number;weapons:Gear[];armor:Gear[];spells:Spell[];weaponId:string;armorId:string;equippedSpells:string[];door:number|null;supplies:boolean;combat:CombatState|null;escapeBoost:number;market:FloorMarket;shamanStock?:ShamanStock|null;merchantStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,import('./shop-state').EquipmentStock>>;shamanStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,ShamanStock>>;potions:Record<PotionKind,number>;playerEffects?:import('./ailments').EnemyAilment[]}
+export type PracticeState={campaignFinalFloor?:50|80;recentRooms?:import('./room-preview').RoomTypeId[];guardianCheckpoint?:boolean;bossRestPending?:boolean;equipmentMerchantVisits?:number[];supplyChecks?:number[];forcedMerchant?:{floor:number;id:import('./shopkeepers').ShopkeeperId;phase:'pending'|'active'};nameStory?:{choice?:'restored'|'left';recordRead?:boolean;nameLearned?:boolean;met?:boolean;gateOpened?:boolean;guardianDefeated?:boolean;rewardClaimed?:boolean};maxHpSacrifice?:number;soulLantern?:'ready'|'spent';pendingFloorAdvance?:number;mode?:ExplorationMode;completed?:boolean;finalBossDefeated?:boolean;acquiredIds?:string[];roomVisitKey?:string;gold:number;hp:number;mp:number;weapons:Gear[];armor:Gear[];spells:Spell[];weaponId:string;armorId:string;equippedSpells:string[];door:number|null;supplies:boolean;combat:CombatState|null;escapeBoost:number;market:FloorMarket;shamanStock?:ShamanStock|null;merchantStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,import('./shop-state').EquipmentStock>>;shamanStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,ShamanStock>>;potions:Record<PotionKind,number>;playerEffects?:import('./ailments').EnemyAilment[]}
 export function newPractice(random=Math.random,mode:ExplorationMode='test'):PracticeState{
  const state:PracticeState={acquiredIds:[starterWeapon.id,starterArmor.id],...(mode==='practice'?{mode}:{}),gold:mode==='practice'?100:100000,hp:100,mp:playerMaxMp,weapons:[starterWeapon],armor:[starterArmor],spells:[],weaponId:starterWeapon.id,armorId:starterArmor.id,equippedSpells:[],door:null,supplies:false,combat:null,escapeBoost:0,market:{floor:1,doors:[],weaponIds:[],armorIds:[]},potions:{health:0,mana:0}}
  return {...state,market:mode==='practice'?drawPracticeFloor(1,random,state):drawFloorMarket(1,random)}
@@ -123,11 +124,11 @@ export type IncomingAttack='physical'|'magic'
 // Evasion belongs only to physical basic attacks. Spells always use magic defense.
 export function incomingDamage(state:PracticeState,amount:number,type:IncomingAttack,guard=0,magicResistanceDown=state.combat?.magicResistanceDown??0){
  const armor=state.armor.find(gear=>gear.id===state.armorId)
- const reduction=type==='physical'?armor?.reduction:(armor?.magicReduction??0)-magicResistanceDown
+ const reduction=type==='physical'?(armor?.reduction??0)*(hasTimedSpell(state,'sandstone-skin')?2:1):(armor?.magicReduction??0)*(hasTimedSpell(state,'lapis-veil')?2:1)-magicResistanceDown
  const armored=Math.max(1,amount-(reduction??0))
  return Math.max(0,armored-guard)
 }
-export function basicAttackEvasion(state:PracticeState,type:IncomingAttack){return type==='physical'?Math.min(100,Math.max(0,state.armor.find(gear=>gear.id===state.armorId)?.evasion??0)):0}
+export function basicAttackEvasion(state:PracticeState,type:IncomingAttack){return type==='physical'?Math.min(100,Math.max(0,(state.armor.find(gear=>gear.id===state.armorId)?.evasion??0)-(hasTimedSpell(state,'sandstone-skin')?10:0))):0}
 export function potionBlock(state:PracticeState,kind:PotionKind,duringCombat=false):string|null{
  if(state.combat?.status==='active'&&!duringCombat)return '전투 행동에서 사용해요.'
  if(state.hp<=0)return '지금은 사용할 수 없어요.'

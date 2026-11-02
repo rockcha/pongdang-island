@@ -28,6 +28,7 @@
     "images:rod-shop": "node scripts/build-rod-shop-art.mjs",
     "images:island": "node scripts/build-island-art.mjs",
     "exploration:engine": "node scripts/build-exploration-engine.mjs",
+    "exploration:spell-icons": "node scripts/build-exploration-spell-icons.mjs",
     "exploration:engine:check": "node scripts/build-exploration-engine.mjs --check",
     "exploration:balance": "node scripts/exploration/run-balance.mjs",
     "exploration:balance:blind": "node scripts/exploration/run-deep-audit.mjs"

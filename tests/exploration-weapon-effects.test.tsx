@@ -61,7 +61,7 @@ it('launches a crossbow bolt once, keeps damage at 1100ms, and clears before the
  vi.spyOn(practice,'newPractice').mockReturnValue({...fresh,weapons:[weapon],weaponId:weapon.id,market:{...fresh.market,monsterIds:['bandage-mummy','random','random'],doors:['monster','sphinx','monster']}})
  vi.stubGlobal('matchMedia',()=>({matches:true}));vi.spyOn(Math,'random').mockReturnValue(.99);vi.useFakeTimers()
  render(<ExplorationGame nickname="퐁이" onLeave={()=>{}}/>);await advance(100)
- fireEvent.click(document.querySelector('.exploration-choice')!);fireEvent.click(screen.getByRole('button',{name:'몬스터 방 · 입장'}));await advance(100);await advance(100);await advance(100)
+ fireEvent.click(document.querySelector('.exploration-choice')!);fireEvent.click(screen.getByRole('button',{name:'몬스터 방 · 입장'}));await advance(100);await advance(100);await advance(100);await advance(1200);await advance(1000)
  fireEvent.click(screen.getByRole('button',{name:'공격',exact:true}))
  const effect=document.querySelector('.weapon-attack-effect')!
  expect(effect.getAttribute('data-weapon')).toBe(weapon.id)

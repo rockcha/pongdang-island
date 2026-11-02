@@ -8,6 +8,7 @@ export type CatalogWeapon=Gear&{attack:number;critical:number;image:string;price
 // IDs remain stable when a weapon's name or silhouette changes, preserving ownership and combat references.
 const art=(id:string)=>`/exploration/weapons/${id}.png`
 export const starterWeapons:(CatalogWeapon&{price:number})[]=[
+ {id:'cracked-wall-hammer',merchantAvailable:true,name:'금간 방벽 망치',tier:'starter',attack:11,critical:0,price:360,role:'석망치 · 보호막 파괴',shieldBreak:true,description:'기본 공격 적중 시 피해를 주기 전에 적 보호막을 전부 파괴한다. 빗나가면 발동하지 않는다.',image:art('cracked-wall-hammer')},
  {id:'serrated-bronze-sword',name:'톱날 청동검',attack:13,critical:4,tier:'starter',price:330,merchantAvailable:true,role:'톱날검 · 출혈',description:'촘촘한 청동 톱니로 상처를 벌리는 검. 공격력보다 적중 후 이어지는 출혈이 강점이다.',image:art('serrated-bronze-sword'),proc:{kind:'bleed',chance:15,amount:2,turns:2}},
  {id:'frost-tip-spear',name:'서리촉 창',attack:13,critical:3,tier:'starter',price:360,merchantAvailable:true,role:'빙촉창 · 빙결',description:'작은 얼음 촉을 단 곧은 창. 고른 찌르기 사이에 빙결을 노려 반격할 틈을 줄인다.',image:art('frost-tip-spear'),proc:{kind:'freeze',chance:10,amount:1,turns:1}},
  {id:'ember-scimitar',name:'잿불 부지깽이',attack:14,critical:4,tier:'starter',price:320,merchantAvailable:true,role:'화로 도구 · 치유 억제',description:'화로에서 꺼낸 갈고리 끝에 잿불이 남아 있다. 묵직하게 찍으며 화상으로 적이 받는 치유를 방해한다.',image:art('ember-scimitar'),proc:{kind:'burn',chance:25,amount:40,turns:3}},
@@ -32,6 +33,7 @@ const starterToolWeapons:CatalogWeapon[]=[
  {id:'fishing-hook-weapon',name:'낚시용 갈고리',tier:'starter',attack:12,critical:12,price:250,role:'낚시 갈고리 · 급소 공략',description:'손잡이를 감은 커다란 낚시 갈고리. 묵직한 타격보다 휘어진 촉으로 빈틈을 거는 치명타가 강점이다.',image:art('fishing-hook-weapon')},
 ]
 const advancedWeapons:CatalogWeapon[]=[
+ {id:'lapis-shield-breaker',name:'청금석 파쇄추',tier:'advanced',attack:17,critical:5,price:950,role:'청금석 철퇴 · 보호막 파괴',shieldBreak:true,description:'기본 공격 적중 시 피해를 주기 전에 적 보호막을 전부 파괴한다. 보호막을 깨뜨린 타격에도 정상적으로 피해를 준다.',image:art('lapis-shield-breaker')},
  {id:'inscription-mage-staff',name:'비문술사의 지팡이',tier:'advanced',attack:15,critical:3,spellManaDiscount:1,price:950,role:'주술 지팡이 · 마나 절약',description:'고대 비문이 마력의 낭비를 줄인다. 마법 마나 소모가 1 감소하며, 최소 1을 소모한다.',image:art('inscription-mage-staff')},
  {id:'lapis-moon-staff',name:'청금석 달지팡이',tier:'advanced',attack:16,critical:4,maxManaBonus:10,price:850,role:'달지팡이 · 최대 마나',description:'푸른 달구슬에 마력을 담는 지팡이. 장착하면 최대 마나가 10 증가하며, 현재 마나는 회복되지 않는다.',image:art('lapis-moon-staff')},
  {id:'heartstone-warhammer',name:'심장석 전투망치',tier:'advanced',attack:17,critical:3,maxHpBonus:25,price:850,role:'전투망치 · 최대 체력',description:'붉은 심장석을 박은 묵직한 망치. 장착하면 최대 체력이 25 증가하며, 현재 체력은 회복되지 않는다.',image:art('heartstone-warhammer')},
@@ -67,9 +69,10 @@ const sustainWeapons:CatalogWeapon[]=[
 ]
 export const explorationWeapons:CatalogWeapon[]=[...starterWeapons,...starterToolWeapons,...advancedWeapons,...ultimateWeapons,...sustainWeapons].map(weapon=>({...weapon,merchantAvailable:true}))
 
-export function hasWeaponEffect(gear:Gear){return !!(gear.proc||gear.lifesteal||gear.cleanseChance||gear.spellManaDiscount||gear.victoryManaRestore||gear.openingShield||gear.potionBonus)}
+export function hasWeaponEffect(gear:Gear){return !!(gear.shieldBreak||gear.proc||gear.lifesteal||gear.cleanseChance||gear.spellManaDiscount||gear.victoryManaRestore||gear.openingShield||gear.potionBonus)}
 
 export function weaponEffectText(gear:Gear){
+ if(gear.shieldBreak)return '기본 공격 적중 시 피해 계산 전에 적 보호막 전부 파괴 · 빗나가면 미발동'
  if(gear.spellManaDiscount)return `마법 마나 소모 −${gear.spellManaDiscount} · 최소 1`
  if(gear.victoryManaRestore)return `전투 승리 시 마나 ${gear.victoryManaRestore} 회복`
  if(gear.openingShield)return `전투 시작 시 보호막 ${gear.openingShield}`

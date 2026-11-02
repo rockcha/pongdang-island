@@ -1,5 +1,6 @@
+import {campaignFinalFloor,campaignFinalBoss} from './campaign-profile'
 import {newPractice,equipGear,toggleSpell,usePotion,buyMerchantItem,type PracticeState} from './practice-state'
-import {drawFloorMonster,refreshPracticeDoors,practiceFinalBossId} from './campaign'
+import {drawFloorMonster,refreshPracticeDoors} from './campaign'
 import {advanceExploration,requiredDoorRoom,needsNameGuardian,meetNameGuardian,finishNameGuardian,enterBossOasis} from './run-state'
 import {beginForcedMerchant,enterShopkeeper} from './shop-state'
 import {finishForcedMerchant} from './merchant-pity'
@@ -11,25 +12,27 @@ import {acceptChoiceRoom,type ChoiceRoomId} from './choice-room-state'
 import {receiveRoomLoot,refreshRoomLoot,drawRoomLoot,sellRoomGear,type RoomLoot} from './room-loot'
 import {learnShamanSpell} from './shaman-stock'
 import {progressNameStory,canAppeaseNameGuardian,type NameStoryAction} from './name-story'
+import {normalizeExplorationSpells} from './spell-availability'
+export {normalizeExplorationSpells} from './spell-availability'
 
-export const EXPLORATION_ENGINE_VERSION=1
+export const EXPLORATION_ENGINE_VERSION=2
 export type ExplorationModel={version:number;state:PracticeState;view:'doors'|'room'|'merchant'|'shaman'|'combat';visit:RoomVisit|null;settled:boolean;quizDeadline?:number;pendingLoot:RoomLoot|null;sequence:number;result?:CombatResult}
 export type ExplorationAction=
  |{type:'door';index:number}|{type:'descend'}|{type:'combat';action:CombatAction}
  |{type:'equip';kind:'weapon'|'armor';id:string}|{type:'spell';id:string}|{type:'potion';kind:'health'|'mana'}
  |{type:'buy';id:string;quantity:number}|{type:'learn';id:string}|{type:'sell';kind:'weapon'|'armor';id:string}
  |{type:'search'|'rest'|'contract'|'awaken'|'quiz'|'loot'|'read'}|{type:'answer';index:number}
- |{type:'story';action:NameStoryAction}|{type:'guardian-fight'}
-export function newExplorationModel(random=Math.random):ExplorationModel{return {version:EXPLORATION_ENGINE_VERSION,state:newPractice(random,'practice'),view:'doors',visit:null,settled:false,pendingLoot:null,sequence:0}}
+ |{type:'story';action:NameStoryAction}|{type:'guardian-fight'}|{type:'thief-fight'}
+export function newExplorationModel(random=Math.random):ExplorationModel{return {version:EXPLORATION_ENGINE_VERSION,state:{...newPractice(random,'practice'),campaignFinalFloor:80},view:'doors',visit:null,settled:false,pendingLoot:null,sequence:0}}
 function requireAction(ok:unknown):asserts ok {if(!ok)throw Error('INVALID_EXPLORATION_ACTION')}
 /** Only actions cross the trust boundary. State, encounters, loot and RNG stay on the server. */
 export function applyExplorationAction(previous:ExplorationModel,action:ExplorationAction,now=Date.now(),random=Math.random):ExplorationModel{
  requireAction(previous.version===EXPLORATION_ENGINE_VERSION&&action&&typeof action.type==='string')
- const m:ExplorationModel={...previous,result:undefined};let s=m.state
+ const m:ExplorationModel={...previous,state:normalizeExplorationSpells(previous.state),result:undefined};let s=m.state
  requireAction(!s.completed&&s.hp>0)
  const room=m.visit?getAdventureRoom(m.visit.id):null
  const offer=()=>requireAction(m.view==='room'&&room&&!m.settled&&!m.pendingLoot)
- const encounter=(id:Parameters<typeof startMonsterCombat>[1],ambush=false,bossRoom?:'boss-anubis'|'boss-pharaoh')=>{
+ const encounter=(id:Parameters<typeof startMonsterCombat>[1],ambush=false,bossRoom?:import('./adventure-rooms').AdventureRoomId)=>{
   const loot=m.visit?.outcome.kind==='monster'?m.visit.outcome.loot:undefined
   const lootSource=m.visit?.id==='chest'?'chest' as const:undefined
   s=startMonsterCombat(bossRoom?recordRoomEntry(s,bossRoom):s,id,{ambush,loot,lootSource,random});m.view='combat';m.visit=null;m.settled=false
@@ -49,7 +52,7 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
    }else{
     if(id==='nameless-guardian'&&needsNameGuardian(s))s=meetNameGuardian(s)
     const definition=getAdventureRoom(id);requireAction(definition)
-    if(definition.kind==='boss')encounter(definition.monsterId!,false,definition.id as 'boss-anubis'|'boss-pharaoh')
+    if(definition.kind==='boss')encounter(definition.monsterId!,false,definition.id)
     else visit(definition.id)
    }
    break
@@ -108,6 +111,12 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
    m.settled=action.action!=='open-gate';break
   }
   case 'guardian-fight':offer();requireAction(room?.id==='nameless-guardian'&&!canAppeaseNameGuardian(s)&&!s.nameStory?.gateOpened);encounter('nameless-royal-warden');break
+  case 'thief-fight':{
+   offer();requireAction(room?.kind==='thief'&&m.visit!.stolen.health+m.visit!.stolen.mana>0)
+   s=startMonsterCombat(s,'potion-thief',{stolenPotions:m.visit!.stolen,random})
+   m.view='combat';m.visit=null;m.settled=true
+   break
+  }
   case 'loot':{
    requireAction(m.pendingLoot)
    s=receiveRoomLoot(s,m.pendingLoot);m.pendingLoot=null
@@ -121,7 +130,7 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
  }
  if(m.view==='doors'&&!s.completed&&!requiredDoorRoom(s))s=refreshPracticeDoors(s,random)
  // Final completion can only be produced by the ordinary floor/boss rules above.
- if(s.completed)requireAction(s.market.floor===50&&s.finalBossDefeated&&s.combat?.monsterId===practiceFinalBossId&&s.combat.status==='won')
+ if(s.completed)requireAction(s.market.floor===campaignFinalFloor(s)&&s.finalBossDefeated&&s.combat?.monsterId===campaignFinalBoss(s)&&s.combat.status==='won')
  m.state=s
  return m
 }

@@ -35,6 +35,12 @@ it('ranks one authoritative best per player, completed runs ahead of equal floor
  }finally{await db.exec('reset role')}
  expect((await db.query('select count(*)::int n from public.gold_transactions')).rows[0].n).toBe(walletBefore)
 })
+it('includes the 80-floor version alongside legacy progress without exposing stored models',async()=>{
+ await db.query(`insert into app_private.exploration_runs(id,user_id,revision,model,finished_at,reward_gold) values($1,$2,2,$3,now(),4000)`,[crypto.randomUUID(),users[0],{version:2,state:{campaignFinalFloor:80,mode:'practice',market:{floor:80}}}])
+ await db.query("select set_config('request.jwt.claim.sub',$1,false)",[users[2]])
+ await db.exec('set role authenticated')
+ try{const result=await rank();expect(result.rows[0]).toMatchObject({userId:users[0],floor:80,completed:true});expect(result.total).toBe(24)}finally{await db.exec('reset role')}
+})
 it('denies anonymous callers and direct run writes while keeping the public RPC an invoker',async()=>{
  await db.exec('set role anon');try{await expect(rank()).rejects.toThrow(/permission denied/)}finally{await db.exec('reset role')}
  await db.exec("select set_config('request.jwt.claim.sub','',false)");await db.exec('set role authenticated')

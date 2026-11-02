@@ -4,6 +4,12 @@ type Visual={color:string;accent:string;shape:SpellShape;size:number;count:numbe
 const enemy=(color:string,accent:string,shape:SpellShape,size:number,count=1):Visual=>({color,accent,shape,size,count,target:'enemy'})
 const self=(color:string,accent:string,shape:SpellShape,size:number):Visual=>({color,accent,shape,size,count:1,target:'self'})
 export const spellVisuals:Record<string,Visual>={
+ 'solar-brand':enemy('#f8b750','#fff3bd','rune',80),
+ 'golden-shell-break':enemy('#e6b94d','#fff1c5','shards',78,3),
+ 'soul-knot':self('#bf9ce9','#e8faff','chain',86),
+ 'silent-seal':enemy('#a0c5db','#fff2c6','obelisk',82),
+ 'lapis-veil':self('#509fea','#d7f6ff','shield',88),
+ 'sandstone-skin':self('#cea56d','#fff0cb','stone',80),
  'silver-crescent':{"shape":"crescent","color":"#b9d5f2","accent":"#f3f7ff","size":62,"count":1,"target":"enemy","aura":"shield"},
  'sand-swallow-feather':{"shape":"feather","color":"#e5c18b","accent":"#fff3d2","size":66,"count":1,"target":"self"},
  'little-lotus':{"shape":"lotus","color":"#a4dfbf","accent":"#fff1e8","size":70,"count":1,"target":"self"},
@@ -23,7 +29,6 @@ export const spellVisuals:Record<string,Visual>={
  'solar-lance':enemy('#ffd36a','#fffbd5','lance',86),
  'frost-wave':enemy('#86d8ee','#efffff','snow',58,3),
  'oasis-breath':self('#8ed9b6','#d8fff1','leaf',76),
- 'purifying-spring':self('#b4eee3','#ffffff','rune',72),
  'sun-god-glare':enemy('#ffeaa0','#ffffff','sun',88),
  'sun-kings-majesty':self('#e3b556','#fff2b8','crown',90),
  'judgment-of-ra':enemy('#ffbd5b','#fff8c2','sun',104),

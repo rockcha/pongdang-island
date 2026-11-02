@@ -4,3 +4,31 @@
 .exploration-game.is-verified .verified-error{position:absolute;z-index:20;left:12px;right:12px;top:12px;padding:14px;border:1px solid #b79657;border-radius:12px;background:#14242af2;color:#f4e6c9;font-size:13px}
 .exploration-game.is-verified .verified-error button{min-height:44px;padding:8px 12px}
 .verified-room-portrait{max-width:180px;max-height:22dvh;object-fit:contain;align-self:center;filter:drop-shadow(0 5px 10px #0008)}
+
+.exploration-game.is-verified .exploration-scene[data-scene=descent]{background:#0c1414;overflow:hidden}
+.exploration-game.is-verified .exploration-descent-scene{width:100%;height:100%;min-height:0;padding:0;display:block}
+.exploration-game.is-verified .exploration-descent-scene .exploration-stairway{width:100%;height:100%;padding:0;max-height:none}
+.exploration-game.is-verified .exploration-descent-scene .exploration-warning{padding:30px 16px 16px;font-size:13px;text-align:center;line-height:1.8;word-break:keep-all}
+.exploration-game.is-verified .exploration-merchant{display:flex;flex-direction:column;gap:12px;overflow-y:auto;overflow-x:hidden;padding:14px;justify-content:center}
+.exploration-game.is-verified .exploration-merchant-art{flex:1;min-height:80px;height:auto;max-height:32dvh;width:100%;display:flex;align-items:center;justify-content:center}
+.exploration-game.is-verified .exploration-merchant-art>img{display:block;width:100%;height:100%;max-width:240px;max-height:32dvh;object-fit:contain}
+.exploration-game.is-verified .exploration-merchant-choices{flex-shrink:0;width:min(100%,360px);align-self:center}
+.exploration-game.is-verified .exploration-npc-dialogue{flex-shrink:0;width:100%;min-width:0}
+.exploration-game.is-verified .exploration-npc-dialogue .exploration-choice-log{margin-top:10px}
+.exploration-game.is-verified .exploration-shop-items article>img,.exploration-minimal-shop .exploration-shop-items .exploration-shop-weapon{width:48px;height:56px;max-width:48px;object-fit:contain;flex-shrink:0}
+.exploration-game.is-verified .exploration-shop-items article>div{min-width:0}
+@media(max-height:700px){.exploration-game.is-verified .exploration-merchant{gap:6px;padding:8px}.exploration-game.is-verified .exploration-merchant-art,.exploration-game.is-verified .exploration-merchant-art>img{max-height:23dvh}}
+.potion-thief-stage{display:flex;flex:1;min-height:80px;align-items:flex-end;justify-content:center}
+.combat-used-move{position:absolute;z-index:8;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:7px;max-width:calc(100% - 24px);padding:6px 10px;border:0;background:none;box-shadow:none;pointer-events:none;color:#ffe6ad;text-shadow:0 2px 5px #000,0 0 12px #000b;isolation:isolate;animation:combat-move-reveal .22s ease-out both}
+.combat-used-move::before{content:'';position:absolute;z-index:-1;inset:-10px -25px;background:radial-gradient(ellipse,#090d0b70 0%,#090d0b28 45%,transparent 72%);filter:blur(6px)}
+.combat-used-move>img{width:28px;height:28px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 4px #0009)}
+.combat-used-move strong{font-size:14px;line-height:1.4;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@keyframes combat-move-reveal{from{opacity:0;translate:0 3px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){.combat-used-move{animation:none}}
+.combat-used-move-name{color:#e9cd91;font-size:11px!important}
+.is-thief .exploration-room-panel{flex-shrink:0}
+.is-thief .exploration-room-panel .exploration-log-speaker{display:inline}
+.potion-thief-entrance{animation:potion-thief-appear 1.2s ease-out both}
+@keyframes potion-thief-appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.potion-thief-entrance{animation:none}}
+.exploration-floor-toast.is-shared-arrival{top:clamp(64px,24%,140px);animation-duration:2.4s}

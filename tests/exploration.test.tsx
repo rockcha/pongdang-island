@@ -22,11 +22,13 @@ vi.mock('@/features/profile/player-avatar',()=>({PlayerAvatar:({nickname}:any)=>
 vi.mock('@/features/exploration/exploration-feedback',()=>({ExplorationFeedback:()=> <section aria-label="탐험 피드백"/>}))
 vi.mock('@/features/exploration/reward-api',()=>({commandExploration:vi.fn(async(request:any)=>({id:request.runId,abandoned:false,finishedAt:null}))}))
 vi.mock('@/features/exploration/verified-exploration-game',()=>({VerifiedExplorationGame:()=> <section aria-label="파라오 지하 탐험"><span aria-label="탐험용 골드">100</span></section>}))
+// Keep these historical demo fixtures; current shared-mode behavior is covered in exploration-shared-play.
+vi.mock('@/features/exploration/test-exploration-game',async()=>({TestExplorationGame:(await import('@/features/exploration/exploration-game')).ExplorationGame}))
 beforeEach(()=>{access.operator=true;access.loading=false;vi.stubGlobal('matchMedia',()=>({matches:false}))})
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.restoreAllMocks();vi.useRealTimers();Object.defineProperty(document,'fullscreenElement',{configurable:true,value:null});delete document.documentElement.requestFullscreen;delete document.exitFullscreen})
 function show(){const router=createMemoryRouter([{path:'/exploration',element:<ExplorationPage/>},{path:'/elsewhere',element:<p>다른 페이지</p>}],{initialEntries:['/exploration']});render(<StrictMode><RouterProvider router={router}/></StrictMode>);return router}
 async function start(){show();fireEvent.click(screen.getByRole('button',{name:'테스트'}));await waitFor(()=>expect(screen.queryByLabelText('지하 1층으로 내려가는 중')).toBeNull(),{timeout:5000})}
-it('opens practice to regular users while keeping testing operator-only, including during permission loading',async()=>{
+it('pauses real starts for regular users and during permission loading, keeping testing operator-only',async()=>{
  access.operator=false;show()
  if(process.env.FEEDBACK_UI_QA)writeFileSync('artifacts/exploration-public-lobby.fragment.html',document.querySelector('.exploration-lobby')!.outerHTML)
  expect(screen.queryByRole('button',{name:'테스트'})).toBeNull()
@@ -35,12 +37,12 @@ it('opens practice to regular users while keeping testing operator-only, includi
  expect(screen.getByRole('region',{name:'탐험 피드백'})).toBeTruthy()
  fireEvent.click(screen.getByRole('tab',{name:'게임 플레이'}))
  fireEvent.click(screen.getByRole('button',{name:'실전 (무료)'}))
- expect(await screen.findByRole('region',{name:'파라오 지하 탐험'})).toBeTruthy()
- expect(screen.getByLabelText('탐험용 골드').textContent).toBe('100')
+ expect(screen.queryByRole('region',{name:'파라오 지하 탐험'})).toBeNull()
+ expect(screen.getByText(/버그 점검으로 실전 탐험 신규 입장을 잠시 중단/)).toBeTruthy()
  expect(screen.queryByLabelText('1번 문 방 유형')).toBeNull()
  cleanup();access.loading=true;show()
  expect(screen.queryByRole('button',{name:'테스트'})).toBeNull()
- expect(screen.getByRole('button',{name:'실전 (무료)'})).toHaveProperty('disabled',false)
+ expect(screen.getByRole('button',{name:'실전 (무료)'})).toHaveProperty('disabled',true)
 })
 it('starts with the specified gear, health, descent animation and three inspectable locked doors',async()=>{
  show();fireEvent.click(screen.getByRole('button',{name:'테스트'}))
@@ -305,7 +307,7 @@ it('enters a selectable monster room, fights the scorpion and keeps rewards on d
  expect(screen.queryByRole('region',{name:'몬스터 방 등장'})).toBeNull()
  expect(screen.getByRole('button',{name:'공격',exact:true})).toBeTruthy()
  expect(sounds.startMusic).toHaveBeenCalledWith('combat')
- expect(scorpionArrivalLines.some(line=>document.querySelector('.exploration-enemy-intent')?.textContent===`탐험: ${line}`)).toBe(true)
+ await waitFor(()=>expect(scorpionArrivalLines.some(line=>document.querySelector('.exploration-enemy-intent')?.textContent?.includes(line))).toBe(true),{timeout:2000})
  expect(screen.getByRole('progressbar',{name:'모래 전갈 체력'})).toHaveProperty('value',38)
  expect(screen.getByRole('button',{name:'주보호구 교체'})).toHaveProperty('disabled',false)
  expect(screen.queryByRole('button',{name:'몬스터 방 · 입장',exact:true})).toBeNull()

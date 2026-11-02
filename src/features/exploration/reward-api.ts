@@ -3,7 +3,7 @@ import {accountCommand} from '@/lib/account-command'
 import {invalidateAccountResource,appQueryClient,accountQueryKey,getQueryAccount,isCurrentAccount} from '@/lib/account-cache'
 import type {ExplorationAction,ExplorationModel} from './server-engine'
 export type ExplorationReceipt={id:string;revision:number;model:ExplorationModel;rewardGold:number;finishedAt:string|null;abandoned:boolean}
-export type ExplorationRequest={runId:string;operationId:string;revision:number;action:ExplorationAction|{type:'start'|'leave'}}
+export type ExplorationRequest={runId:string;operationId:string;revision:number;action:ExplorationAction|{type:'start'}|{type:'leave'}|{type:'resume'}}
 async function invoke(body:ExplorationRequest|{runId:string;operationId:string;revision:number;action:{type:'state'}},signal?:AbortSignal):Promise<ExplorationReceipt>{
  const {data,error}=await createClient().functions.invoke<ExplorationReceipt>('exploration-game',{body,signal})
  if(error){
@@ -11,15 +11,17 @@ async function invoke(body:ExplorationRequest|{runId:string;operationId:string;r
   const code=response?await response.clone().json().then(v=>v.error).catch(()=>undefined):undefined
   throw Object.assign(Error(code??error.message),{definitive:!!code&&response?.status!==503})
  }
- if(!data||data.id!==body.runId||!data.model||!Number.isInteger(data.revision)||![0,2000].includes(data.rewardGold))throw Error('INVALID_EXPLORATION_RECEIPT')
+ if(!data||data.id!==body.runId||!data.model||!Number.isInteger(data.revision)||![0,2000,4000].includes(data.rewardGold))throw Error('INVALID_EXPLORATION_RECEIPT')
  return data
 }
 export function readExplorationRun(id:string,signal:AbortSignal){return invoke({runId:id,operationId:id,revision:-1,action:{type:'state'}},signal)}
 export function commandExploration(request:ExplorationRequest){
  const scope=getQueryAccount()
+ let previousReward=0
  return accountCommand(async()=>{
   const receipt=await invoke(request)
   const current=scope&&isCurrentAccount(scope)?appQueryClient.getQueryData<ExplorationReceipt>(accountQueryKey(scope.owner,['exploration-run',request.runId])):undefined
+  previousReward=current?.rewardGold??0
   return current&&current.revision>receipt.revision?current:receipt
- },{resource:['exploration-run',request.runId],invalidate:request.action.type==='start'?[]:['exploration-ranking'],after:receipt=>{if(receipt.rewardGold>0)invalidateAccountResource('wallet')}})
+ },{resource:['exploration-run',request.runId],invalidate:request.action.type==='start'?['exploration-saved-run']:['exploration-ranking','exploration-saved-run'],after:receipt=>{if(receipt.rewardGold>previousReward)invalidateAccountResource('wallet')}})
 }

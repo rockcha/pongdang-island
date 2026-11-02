@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "c1a0f25d74a5205542aeb5d1615b3fc4c7aa32a2819887108dc0ed5d9e537fe0",
+  "migrationHash": "e4584dba94c37e437bea3db805f7727aee2476d94f0ceb7f2fbe8ed176ff00ed",
   "structure": {
     "enums": [
       {
@@ -2293,6 +2293,26 @@
         "default": "0",
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "saved_model",
+        "type": "jsonb",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "saved_at",
+        "type": "timestamp with time zone",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -17189,7 +17209,17 @@
         ],
         "schema": "app_private",
         "arguments": "p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_RANKING_PAGE';end if;\n with progress as (\n  select r.id,r.user_id,r.started_at,(r.model#>>'{state,market,floor}')::integer as floor,\n   r.reward_gold=2000 and r.finished_at is not null as completed\n  from app_private.exploration_runs r\n  where r.revision>0 and r.model->>'version'='1' and r.model#>>'{state,mode}'='practice'\n   and r.model#>>'{state,market,floor}' ~ '^([1-9]|[1-4][0-9]|50)$'\n ), personal as (\n  select p.*,row_number() over(partition by user_id order by floor desc,completed desc,started_at,id) as personal_rank from progress p\n ), ranks as (\n  select p.*,row_number() over(order by floor desc,completed desc,started_at,id) as rank from personal p where personal_rank=1\n ), page as (select * from ranks order by rank offset p_offset limit 20)\n select jsonb_build_object('total',(select count(*) from ranks),'offset',p_offset,'rows',coalesce((\n  select jsonb_agg(jsonb_build_object(\n   'id',p.id,'userId',p.user_id,'rank',p.rank,'floor',p.floor,'completed',p.completed,\n   'nickname',coalesce(profile.nickname,'탐험가'),'avatarPath',profile.avatar_path,\n   'level',app_private.player_level(p.user_id),'levelProgress',app_private.player_level_progress(p.user_id),\n   'mine',p.user_id=u,'friendCode',profile.friend_code,\n   'friendStatus',(select f.status from public.friend_requests f\n    where f.status in ('pending','accepted') and ((f.sender_id=u and f.recipient_id=p.user_id) or (f.recipient_id=u and f.sender_id=p.user_id))\n    order by f.created_at desc limit 1)\n  ) order by p.rank) from page p left join public.player_profiles profile on profile.id=p.user_id\n ),'[]'::jsonb)) into result;\n return result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_RANKING_PAGE';end if;\n with progress as (\n  select r.id,r.user_id,r.started_at,(r.model#>>'{state,market,floor}')::integer as floor,\n   r.reward_gold=(case when r.model->>'version'='2' then 4000 else 2000 end) and r.finished_at is not null as completed\n  from app_private.exploration_runs r\n  where r.revision>0 and r.model->>'version' in ('1','2') and r.model#>>'{state,mode}'='practice'\n   and r.model#>>'{state,market,floor}' ~ '^([1-9]|[1-7][0-9]|80)$'\n ), personal as (\n  select p.*,row_number() over(partition by user_id order by floor desc,completed desc,started_at,id) as personal_rank from progress p\n ), ranks as (\n  select p.*,row_number() over(order by floor desc,completed desc,started_at,id) as rank from personal p where personal_rank=1\n ), page as (select * from ranks order by rank offset p_offset limit 20)\n select jsonb_build_object('total',(select count(*) from ranks),'offset',p_offset,'rows',coalesce((\n  select jsonb_agg(jsonb_build_object(\n   'id',p.id,'userId',p.user_id,'rank',p.rank,'floor',p.floor,'completed',p.completed,\n   'nickname',coalesce(profile.nickname,'탐험가'),'avatarPath',profile.avatar_path,\n   'level',app_private.player_level(p.user_id),'levelProgress',app_private.player_level_progress(p.user_id),\n   'mine',p.user_id=u,'friendCode',profile.friend_code,\n   'friendStatus',(select f.status from public.friend_requests f\n    where f.status in ('pending','accepted') and ((f.sender_id=u and f.recipient_id=p.user_id) or (f.recipient_id=u and f.sender_id=p.user_id))\n    order by f.created_at desc limit 1)\n  ) order by p.rank) from page p left join public.player_profiles profile on profile.id=p.user_id\n ),'[]'::jsonb)) into result;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "exploration_saved_run",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_saved_run()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select jsonb_build_object('id',id,'floor',(saved_model#>>'{state,market,floor}')::integer,'savedAt',saved_at,'revision',revision)\n into result from app_private.exploration_runs\n where user_id=u and saved_model is not null and abandoned_at is null and finished_at is null\n  and coalesce((model#>>'{state,hp}')::numeric,0)>0 and not coalesce((model#>>'{state,completed}')::boolean,false)\n order by started_at desc,id limit 1;\n return result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17199,7 +17229,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_server_commit(p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r app_private.exploration_runs; op app_private.exploration_operations; receipt jsonb; complete boolean;\nbegin\n if p_user is null or p_run is null or p_operation is null or p_request is null then raise exception 'INVALID_REQUEST';end if;\n perform pg_advisory_xact_lock(hashtextextended('exploration:'||p_user::text,0));\n select * into op from app_private.exploration_operations where user_id=p_user and operation_id=p_operation;\n if found then\n  if op.run_id<>p_run or op.request is distinct from p_request then raise exception 'OPERATION_CONFLICT';end if;\n  return op.receipt;\n end if;\n if p_model is null or p_model->>'version' is distinct from '1' or p_model#>>'{state,mode}' is distinct from 'practice' then raise exception 'INVALID_MODEL';end if;\n select * into r from app_private.exploration_runs where id=p_run for update;\n if not found then\n  if p_revision<>-1 or p_request->>'type' is distinct from 'start' or p_model#>>'{state,market,floor}' is distinct from '1' then raise exception 'RUN_NOT_FOUND';end if;\n  update app_private.exploration_runs set abandoned_at=clock_timestamp() where user_id=p_user and finished_at is null and abandoned_at is null;\n  insert into app_private.exploration_runs(id,user_id,model) values(p_run,p_user,p_model) returning * into r;\n else\n  if r.user_id<>p_user then raise exception 'RUN_NOT_FOUND';end if;\n  if r.finished_at is not null or r.abandoned_at is not null then raise exception 'RUN_CLOSED';end if;\n  if r.revision<>p_revision then raise exception 'REVISION_CONFLICT';end if;\n  if p_request->>'type'='leave' then\n   update app_private.exploration_runs set abandoned_at=clock_timestamp(),revision=revision+1 where id=r.id returning * into r;\n  else\n   update app_private.exploration_runs set model=p_model,revision=revision+1 where id=r.id returning * into r;\n  end if;\n end if;\n complete:=coalesce((r.model#>>'{state,completed}')::boolean,false);\n if complete and r.abandoned_at is null then\n  if r.model#>>'{state,market,floor}' is distinct from '50' or r.model#>>'{state,finalBossDefeated}' is distinct from 'true'\n   or r.model#>>'{state,combat,monsterId}' is distinct from 'golden-pharaoh' or r.model#>>'{state,combat,status}' is distinct from 'won'\n   or coalesce((r.model#>>'{state,hp}')::numeric,0)<=0 then raise exception 'EXPLORATION_INCOMPLETE';end if;\n  perform set_config('request.jwt.claim.sub',p_user::text,true);\n  perform app_private.get_gold_wallet();\n  update public.player_wallets set gold=gold+2000,updated_at=clock_timestamp() where user_id=p_user;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(p_user,r.id,'charge','arcade:exploration:reward',2000);\n  update app_private.exploration_runs set finished_at=clock_timestamp(),reward_gold=2000 where id=r.id returning * into r;\n end if;\n receipt:=jsonb_build_object('id',r.id,'revision',r.revision,'model',r.model,'rewardGold',r.reward_gold,'finishedAt',r.finished_at,'abandoned',r.abandoned_at is not null);\n insert into app_private.exploration_operations(user_id,operation_id,run_id,request,receipt) values(p_user,p_operation,p_run,p_request,receipt);\n return receipt;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exploration_server_commit(p_user uuid, p_run uuid, p_operation uuid, p_request jsonb, p_revision integer, p_model jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r app_private.exploration_runs; op app_private.exploration_operations; receipt jsonb; complete boolean; reward_delta integer:=0; reward_operation uuid;\nbegin\n if p_user is null or p_run is null or p_operation is null or p_request is null then raise exception 'INVALID_REQUEST';end if;\n perform pg_advisory_xact_lock(hashtextextended('exploration:'||p_user::text,0));\n select * into op from app_private.exploration_operations where user_id=p_user and operation_id=p_operation;\n if found then\n  if op.run_id<>p_run or op.request is distinct from p_request then raise exception 'OPERATION_CONFLICT';end if;\n  return op.receipt;\n end if;\n if p_model is null or coalesce(p_model->>'version','') not in ('1','2') or p_model#>>'{state,mode}' is distinct from 'practice' then raise exception 'INVALID_MODEL';end if;\n if p_model->>'version'='2' and p_model#>>'{state,campaignFinalFloor}' is distinct from '80' then raise exception 'INVALID_MODEL';end if;\n select * into r from app_private.exploration_runs where id=p_run for update;\n if not found then\n  if p_revision<>-1 or p_request->>'type' is distinct from 'start' or p_model#>>'{state,market,floor}' is distinct from '1' then raise exception 'RUN_NOT_FOUND';end if;\n  update app_private.exploration_runs set abandoned_at=clock_timestamp() where user_id=p_user and finished_at is null and abandoned_at is null;\n  insert into app_private.exploration_runs(id,user_id,model) values(p_run,p_user,p_model) returning * into r;\n else\n  if r.model->>'version' is distinct from p_model->>'version' then raise exception 'INVALID_MODEL';end if;\n  if r.user_id<>p_user then raise exception 'RUN_NOT_FOUND';end if;\n  if r.finished_at is not null or r.abandoned_at is not null then raise exception 'RUN_CLOSED';end if;\n  if r.revision<>p_revision then raise exception 'REVISION_CONFLICT';end if;\n  if p_request->>'type'='resume' then\n   if r.saved_model is null or coalesce((r.model#>>'{state,hp}')::numeric,0)<=0 then raise exception 'NO_SAVED_EXPLORATION';end if;\n   update app_private.exploration_runs set model=saved_model,revision=revision+1 where id=r.id returning * into r;\n  elsif p_request->>'type'='leave' and r.saved_model is not null and coalesce((r.model#>>'{state,hp}')::numeric,0)>0 then\n   update app_private.exploration_runs set model=saved_model,revision=revision+1 where id=r.id returning * into r;\n  elsif p_request->>'type'='leave' then\n   update app_private.exploration_runs set abandoned_at=clock_timestamp(),revision=revision+1 where id=r.id returning * into r;\n  else\n   update app_private.exploration_runs set model=p_model,revision=revision+1 where id=r.id returning * into r;\n  end if;\n end if;\n if p_request->>'type'='rest' and r.abandoned_at is null and r.model->>'view'='room' and r.model->>'settled'='true'\n  and r.model#>>'{visit,id}' in ('rest-oasis','rest-camp','rest-garden') and coalesce((r.model#>>'{state,hp}')::numeric,0)>0 then\n  update app_private.exploration_runs set saved_model=model,saved_at=clock_timestamp() where id=r.id returning * into r;\n end if;\n complete:=coalesce((r.model#>>'{state,completed}')::boolean,false);\n if complete and r.abandoned_at is null then\n  if r.model#>>'{state,market,floor}' is distinct from (case when r.model->>'version'='2' then '80' else '50' end)\n   or r.model#>>'{state,finalBossDefeated}' is distinct from 'true'\n   or r.model#>>'{state,combat,monsterId}' is distinct from (case when r.model->>'version'='2' then 'black-sun-aker' else 'golden-pharaoh' end)\n   or r.model#>>'{state,combat,status}' is distinct from 'won'\n   or coalesce((r.model#>>'{state,hp}')::numeric,0)<=0 then raise exception 'EXPLORATION_INCOMPLETE';end if;\n  if r.model->>'version'='2' and r.reward_gold<>2000 then raise exception 'EXPLORATION_CHECKPOINT_REQUIRED';end if;\n  reward_delta:=2000;\n elsif r.abandoned_at is null and r.model->>'version'='2' and r.reward_gold=0\n  and r.model#>>'{state,market,floor}'='50' and r.model#>>'{state,combat,monsterId}'='golden-pharaoh'\n  and r.model#>>'{state,combat,status}'='won' and coalesce((r.model#>>'{state,hp}')::numeric,0)>0 then\n  reward_delta:=2000;\n end if;\n if reward_delta>0 then\n  -- The existing per-account transaction lock serializes all rewards. A distinct stable\n  -- operation ID per checkpoint also prevents duplicate ledger entries across retries.\n  reward_operation:=case when complete and r.model->>'version'='2' then md5('exploration:80:'||r.id::text)::uuid else r.id end;\n  perform set_config('request.jwt.claim.sub',p_user::text,true);\n  perform app_private.get_gold_wallet();\n  update public.player_wallets set gold=gold+reward_delta,updated_at=clock_timestamp() where user_id=p_user;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(p_user,reward_operation,'charge','arcade:exploration:reward',reward_delta);\n  update app_private.exploration_runs set finished_at=case when complete then clock_timestamp() else finished_at end,\n   reward_gold=reward_gold+reward_delta where id=r.id returning * into r;\n end if;\n receipt:=jsonb_build_object('id',r.id,'revision',r.revision,'model',r.model,'rewardGold',r.reward_gold,'finishedAt',r.finished_at,'abandoned',r.abandoned_at is not null);\n insert into app_private.exploration_operations(user_id,operation_id,run_id,request,receipt) values(p_user,p_operation,p_run,p_request,receipt);\n return receipt;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -20323,6 +20353,16 @@
         "securityDefiner": false
       },
       {
+        "name": "exploration_saved_run",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.exploration_saved_run()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.exploration_saved_run()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "exploration_server_commit",
         "config": [
           "search_path=\"\""
@@ -22725,12 +22765,6 @@
         "definition": "NOT NULL user_id"
       },
       {
-        "name": "exploration_runs_check",
-        "table": "exploration_runs",
-        "schema": "app_private",
-        "definition": "CHECK (((reward_gold = 0) OR (finished_at IS NOT NULL)))"
-      },
-      {
         "name": "exploration_runs_id_not_null",
         "table": "exploration_runs",
         "schema": "app_private",
@@ -22764,13 +22798,19 @@
         "name": "exploration_runs_reward_gold_check",
         "table": "exploration_runs",
         "schema": "app_private",
-        "definition": "CHECK ((reward_gold = ANY (ARRAY[0, 2000])))"
+        "definition": "CHECK ((reward_gold = ANY (ARRAY[0, 2000, 4000])))"
       },
       {
         "name": "exploration_runs_reward_gold_not_null",
         "table": "exploration_runs",
         "schema": "app_private",
         "definition": "NOT NULL reward_gold"
+      },
+      {
+        "name": "exploration_runs_reward_state_check",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "CHECK (((reward_gold = 0) OR (((model ->> 'version'::text) = '1'::text) AND (reward_gold = 2000) AND (finished_at IS NOT NULL)) OR (((model ->> 'version'::text) = '2'::text) AND (((reward_gold = 2000) AND (finished_at IS NULL)) OR ((reward_gold = 4000) AND (finished_at IS NOT NULL))))))"
       },
       {
         "name": "exploration_runs_started_at_not_null",
@@ -22789,6 +22829,12 @@
         "table": "exploration_runs",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "exploration_saved_pair",
+        "table": "exploration_runs",
+        "schema": "app_private",
+        "definition": "CHECK (((saved_model IS NULL) = (saved_at IS NULL)))"
       },
       {
         "name": "farm_animal_jobs_animal_id_fkey",
@@ -41632,6 +41678,27 @@
         "arguments": "p_offset integer"
       },
       {
+        "name": "exploration_saved_run",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "exploration_saved_run",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "exploration_saved_run",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "exploration_server_commit",
         "role": "anon",
         "schema": "app_private",
@@ -48203,6 +48270,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_offset integer"
+      },
+      {
+        "name": "exploration_saved_run",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "exploration_saved_run",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "exploration_saved_run",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "exploration_server_commit",

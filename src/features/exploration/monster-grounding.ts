@@ -3,6 +3,14 @@ import type {MonsterId} from './monster-catalog'
 // Measured from current sprite alpha bounds (alpha > 50). Keep transparent
 // padding while aligning the visible feet to the arena floor at any aspect ratio.
 export const monsterGrounding: Record<MonsterId, {aspect: number; bottomGap: number}> = {
+  'sandstone-shield-guard':{aspect:1,bottomGap:0.0207},
+  'potion-thief':{aspect:1,bottomGap:0.01},
+  'black-sun-moth':{aspect:1,bottomGap:0.1471},
+  'golden-armored-crocodile':{aspect:1,bottomGap:0.1302},
+  'black-sand-devourer':{aspect:1,bottomGap:0.0677},
+  'gem-backed-tomb-tortoise':{aspect:1,bottomGap:0.1224},
+  'golden-scales-maaken':{aspect:1,bottomGap:0.0169},
+  'black-sun-aker':{aspect:1,bottomGap:0.0534},
   "sand-scorpion": {
     "aspect": 1,
     "bottomGap": 0.051
@@ -81,4 +89,4 @@ export const monsterGrounding: Record<MonsterId, {aspect: number; bottomGap: num
   }
 }
 
-export const airborneMonsters = new Set<MonsterId>(['sand-wing-bat','tomb-lantern-jellyfish','sand-wraith','jar-wisp'])
+export const airborneMonsters = new Set<MonsterId>(['sand-wing-bat','tomb-lantern-jellyfish','sand-wraith','jar-wisp','black-sun-moth','black-sun-aker'])

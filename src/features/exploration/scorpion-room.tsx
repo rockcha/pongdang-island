@@ -1,3 +1,4 @@
+import {bossPreludeLines} from './boss-prelude'
 import {spellVisuals} from './spell-visuals'
 import {WeaponAttackEffect} from './weapon-attack-effect'
 import {SpellCastEffect} from './spell-cast-effect'
@@ -8,7 +9,7 @@ import {HealthMeter} from './health-meter'
 import type {RoomLoot} from './room-loot'
 import {CombatMagicDialog} from './combat-magic-dialog'
 import {PotionChoiceDialog} from './potion-choice-dialog'
-import {useEffect,useEffectEvent,useId,useState,type CSSProperties} from 'react'
+import {useEffect,useEffectEvent,useId,useRef,useState,type CSSProperties} from 'react'
 import {combatBackgrounds,combatBackgroundUrl,resolveCombatBackground,type CombatBackground} from './combat-backgrounds'
 import {airborneMonsters,monsterGrounding} from './monster-grounding'
 import {formatBasicAttack} from './attack-roll'
@@ -21,17 +22,47 @@ import {StatIcon} from './equipment-stats'
 import {getCombatMonster,monsterPatternNotice} from './monster-patterns'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import {playerAttackStats,type PracticeState} from './practice-state'
+import {stolenPotionLabel} from './potion-theft'
 
-export function ScorpionRoom({background=combatBackgrounds[0],logEvent,state,busy,feedback,latestLog,speaker,onAction,onDescend,onReturnToMain,onReward,onLootReady}:{background?:CombatBackground;logEvent?:import('./combat-state').CombatEvent;state:PracticeState;busy:boolean;latestLog:string;speaker:string;feedback:TurnFeedback|null;onAction:(action:CombatAction)=>void;onDescend:()=>void;onReturnToMain:()=>void;onReward?:()=>void;onLootReady?:(loot:RoomLoot)=>void}){
+export const monsterPreludeLines=[
+ '뭔가 이상한 소리가 들리는데…?',
+ '잠깐, 저 어둠 속에서 뭔가 움직였어…!',
+ '발소리가 들려… 여기 나 말고 누가 있나 봐.',
+ '공기가 달라졌어… 조심해야겠는데?',
+ '저 앞에 누가 있는 것 같아… 준비하자!',
+] as const
+
+export function ScorpionRoom({background=combatBackgrounds[0],backdropUrl,nickname,avatarPath,logEvent,state,busy,feedback,latestLog,speaker,onAction,onDescend,onReturnToMain,onReward,onLootReady}:{background?:CombatBackground;backdropUrl?:string;nickname?:string;avatarPath?:string|null;logEvent?:import('./combat-state').CombatEvent;state:PracticeState;busy:boolean;latestLog:string;speaker:string;feedback:TurnFeedback|null;onAction:(action:CombatAction)=>void;onDescend:()=>void;onReturnToMain:()=>void;onReward?:()=>void;onLootReady?:(loot:RoomLoot)=>void}){
  const [magic,setMagic]=useState(false),[potions,setPotions]=useState(false)
  const [moveDetail,setMoveDetail]=useState<string|null>(null)
  const combat=state.combat!
  const attackDescription=useId(),attackStats=playerAttackStats(state),attackDisplay=formatBasicAttack(attackStats.attack,attackStats.variance)
- const monster=getCombatMonster(state),patternNotice=monsterPatternNotice(state),rewardGold=monster.gold
+ const monster=getCombatMonster(state),patternNotice=monster.pattern==='black-sun'&&combat.pattern?.shieldHp?undefined:monsterPatternNotice(state),rewardGold=monster.gold+(combat.pattern?.bonusGold??0)
  const arenaBackground=resolveCombatBackground(monster.id,background)
  const selectedMove=moveDetail==='basic'?monster.basic:monster.magic.find(move=>move.id===moveDetail)
- const active=combat.status==='active'
- const won=combat.status==='won'
+ // The player-hit snapshot can reach zero HP before the final victory receipt is presented.
+ const won=combat.status==='won'||combat.status==='active'&&combat.enemyHp<=0
+ const active=combat.status==='active'&&!won
+ const [entrance,setEntrance]=useState(()=>({key:`${state.market.floor}:${monster.id}`,revealed:combat.turn>0,line:(()=>{const pool=bossPreludeLines(monster)??monsterPreludeLines;return pool[Math.floor(Math.random()*pool.length)]})()}))
+ const entering=active&&monster.id!=='potion-thief'&&combat.turn===0&&!feedback&&!entrance.revealed
+ const entranceTimer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined)
+ function finishPrelude(){
+  if(entranceTimer.current!==undefined)clearTimeout(entranceTimer.current)
+  entranceTimer.current=setTimeout(()=>setEntrance(previous=>({...previous,revealed:true})),1000)
+ }
+ useEffect(()=>{
+  const key=`${state.market.floor}:${monster.id}`
+  setEntrance(previous=>previous.key===key?previous:{key,revealed:combat.turn>0,line:(()=>{const pool=bossPreludeLines(monster)??monsterPreludeLines;return pool[Math.floor(Math.random()*pool.length)]})()})
+  return()=>{clearTimeout(entranceTimer.current);entranceTimer.current=undefined}
+ },[monster.id,state.market.floor,active,combat.turn])
+ function chooseAction(action:CombatAction){
+  if(busy||entering)return
+  onAction(action)
+ }
+ useEffect(()=>{setMagic(false);setPotions(false)},[monster.id,state.market.floor])
+ useEffect(()=>{
+  if(!active){setMagic(false);setPotions(false)}
+ },[active])
  const playReward=useEffectEvent(()=>onReward?.())
  function offerLoot(){if(combat.loot&&!combat.lootClaimed)onLootReady?.(combat.loot)}
  const revealLoot=useEffectEvent(offerLoot)
@@ -55,6 +86,10 @@ export function ScorpionRoom({background=combatBackgrounds[0],logEvent,state,bus
  const manaRestored=feedback&&(feedback.phase==='player'||feedback.phase==='reply')?feedback.events.filter(event=>(event.phase??'player')===feedback.phase).reduce((total,event)=>total+(event.manaRestored??0),0):0
  const selfSpell=!!player?.spellId&&spellVisuals[player.spellId]?.target==='self'
  const reply=feedback?.phase==='reply'?feedback.events.find(event=>event.kind==='monster'||event.kind==='defense'):undefined
+ const usedMoveEvent=feedback&&(feedback.phase==='counter'||feedback.phase==='reply')?feedback.events.find(event=>event.phase==='reply'&&event.moveId&&event.source===monster.name):undefined
+ const usedMove=usedMoveEvent?[monster.basic,...monster.magic].find(move=>move.id===usedMoveEvent.moveId):undefined
+ const resultMove=resultEventMove()
+ function resultEventMove(){const id=logEvent?.moveId??reply?.moveId;return [monster.basic,...monster.magic].find(move=>move.id===id)}
  const healing=feedback?.phase==='player'?feedback.events.find(event=>event.phase!=='reply'&&event.healing!==undefined&&!event.source):undefined
  const revival=feedback?.phase==='reply'?feedback.events.find(event=>event.phase==='reply'&&event.kind==='system'&&event.healing):undefined
  const enemyHealing=feedback?.phase==='reply'?feedback.events.find(event=>event.effect==='enemy-heal'):undefined
@@ -63,36 +98,39 @@ export function ScorpionRoom({background=combatBackgrounds[0],logEvent,state,bus
  const weaponStrike=feedback?.action==='attack'?feedback.events.find(event=>event.kind==='player'&&event.weaponId):undefined
  const resultEvent=logEvent?.kind==='status'&&feedback?.phase==='reply'?feedback.events.find(event=>event.kind==='monster')??logEvent:logEvent
  const resultText=resultEvent!==logEvent?`${resultEvent?.text} ${latestLog}`:latestLog
- return <section className={`exploration-combat ${won?'is-victory':''} ${feedback?.phase==='prepare'?'is-preparing':''} ${feedback?.phase==='counter'?'is-countering':''}`} style={{'--combat-backdrop':`url(${combatBackgroundUrl(arenaBackground)})`} as CSSProperties} data-victory-step={won?victoryStep:undefined} data-action={feedback?.action} aria-label={`${monster.name} 전투`}>
+ return <section className={`exploration-combat ${entering?'is-encounter-prelude':''} ${won?'is-victory':''} ${!won&&feedback?.phase==='prepare'?'is-preparing':''} ${!won&&feedback?.phase==='counter'?'is-countering':''}`} style={{'--combat-backdrop':`url(${backdropUrl??combatBackgroundUrl(arenaBackground)})`} as CSSProperties} data-victory-step={won?victoryStep:undefined} data-action={feedback?.action} aria-label={`${monster.name} 전투`}>
   {!won&&reply?.kind==='monster'&&<div key={`impact-${feedback?.id}`} className="combat-impact-screen" aria-hidden="true"/>}
   <header className="exploration-enemy-status"><span>{state.mode==='practice'?'MONSTER · 실전':'MONSTER · 테스트 전투'}</span><h2>{monster.name}</h2><div><HealthMeter key={monster.id} label={`${monster.name} 체력`} max={monster.maxHp} value={combat.enemyHp}/><strong>{combat.enemyHp} / {monster.maxHp}</strong></div><dl className="exploration-monster-stats" aria-label="몬스터 능력치">{([{kind:'attack',label:'공격력',value:monster.attack},{kind:'critical',label:'치명타',value:`${monster.critical}%`},{kind:'defense',label:'방어력',value:monster.defense},{kind:'resistance',label:'마법 저항력',value:monster.magicResistance}] as const).map(stat=><div key={stat.kind} title={stat.label} aria-label={`${stat.label} ${stat.value}`}><dt><StatIcon kind={stat.kind}/><span className="sr-only">{stat.label}</span></dt><dd>{stat.value}</dd></div>)}</dl></header>
-  {!won&&<EnemyAilments effects={combat.effects??[]}/>}
+  {!won&&<EnemyAilments effects={combat.effects??[]} spellEffects={combat.spellEffects} shield={combat.pattern?.shieldHp?{remaining:combat.pattern.shieldHp,turns:combat.pattern.shieldTurns}:undefined}/>}
   {active&&patternNotice&&<div className="exploration-monster-pattern" role="status" aria-label="몬스터 패턴" data-urgent={!!(combat.pattern?.fleeReady||combat.pattern?.charging)}>{patternNotice}</div>}
   <div className="exploration-monster-stage has-combat-background" data-combat-background={arenaBackground}>
+   {!won&&usedMove&&<div className="combat-used-move" role="status" aria-label={`${usedMove.id===monster.basic.id?'기본 공격':'스킬'} · ${usedMove.name}`} key={`${feedback?.id}-${usedMove.id}`}><img src={usedMove.image} alt=""/><strong>{usedMove.name}</strong></div>}
    {weaponStrike&&feedback&&(feedback.phase==='prepare'||feedback.phase==='player')&&<WeaponAttackEffect key={feedback.id} weaponId={weaponStrike.weaponId!} phase={feedback.phase} critical={weaponStrike.critical} missed={weaponStrike.effect==='miss'} proc={feedback.events.find(event=>event.weaponProc)?.weaponProc} lifesteal={feedback.events.some(event=>event.effect==='lifesteal'&&(event.healing??0)>0)} cleanse={feedback.events.some(event=>event.effect==='cleanse')}/>}
 
    {feedback?.action==='magic'&&(feedback.phase==='prepare'||feedback.phase==='player')&&feedback.events.find(event=>event.spellId)?.spellId&&<SpellCastEffect key={feedback.id} spellId={feedback.events.find(event=>event.spellId)!.spellId!}/>}
    {(!won||victoryStep<1)&&<button disabled={won} className="exploration-monster-move is-basic" aria-label={`기본 공격 · ${monster.basic.name} 설명`} onClick={()=>setMoveDetail('basic')} data-active={feedback?.phase==='counter'&&feedback.events.some(event=>event.moveId===monster.basic.id)}><small>기본 공격</small><img src={monster.basic.image} alt=""/><strong>{monster.basic.name}</strong></button>}
   {(!won||victoryStep<1)&&<div className="exploration-monster-entrance" key={monster.id}><div data-airborne={airborneMonsters.has(monster.id)} style={{'--sprite-aspect':monsterGrounding[monster.id].aspect,'--sprite-bottom-gap':`${monsterGrounding[monster.id].bottomGap*100}%`} as CSSProperties} className={`exploration-enemy-art ${won?'is-defeated':''}`}><img key={`${feedback?.id}-${feedback?.phase}`} className={player?.damage?'has-turn':''} src={monster.image} alt={monster.name} draggable={false}/>
+   {!won&&(combat.pattern?.shieldHp??0)>0&&<div className="combat-enemy-shield" data-damage={combat.pattern!.shieldHp!<=10?'heavy':combat.pattern!.shieldHp!<=20?'light':'intact'} aria-hidden="true"><span/><span/><svg className="combat-shield-cracks" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none"><g className="shield-cracks-light"><path d="m25 8 7 18-9 9 13 12-6 14m2-35 12 4 5-8M82 35 68 43l5 12-13 10m8-22-10-7"/></g><g className="shield-cracks-heavy"><path d="m50 2-4 17 12 12-11 15 8 16-12 14 3 22M4 55l17-5 15 11 11-15m-26 4 4-15M96 73 78 67l-8 15-15-20m23 5 3-12M18 85l12-9 13 0"/></g></svg></div>}
    {player?.damage!==undefined&&player.effect!=='miss'&&<div key={`attack-${feedback?.id}`} className={`combat-enemy-hit ${feedback?.action==='magic'?'is-magic':''}`} aria-hidden="true"><span className={player.critical?'is-critical':''}>{player.critical&&<small>치명타!</small>}−{player.damage}</span></div>}
    {enemyHealing&&<span key={`enemy-heal-${feedback?.id}`} className="combat-heal-number" aria-hidden="true">+{enemyHealing.healing} 회복</span>}
-   {revival&&<span className="combat-heal-number is-revival" role="status">등불 부활 +{revival.healing}</span>}
+   {revival&&<span className="combat-heal-number is-revival" role="status">{revival.spellId==='soul-knot'?'영혼의 매듭 · 체력 1로 생존':`등불 부활 +${revival.healing}`}</span>}
    {healing?.healing!==undefined&&<span key={`heal-${feedback?.id}`} className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">+{healing.healing} 회복</span>}
    {cleansing&&!healing&&<span className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">정화!</span>}
    {manaRestored>0&&<span className="combat-heal-number is-mana">+{manaRestored} 마나</span>}
    {player&&(!player.damage)&&(player.damage===undefined||player.effect==='miss')&&player.healing===undefined&&player.effect!=='potion'&&(!player.spellId||selfSpell)&&<span key={`ward-${feedback?.id}`} className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">{player.effect==='miss'?'빗나감':<><Shield size={22}/>방어</>}</span>}
   </div></div>}
-   {(!won||victoryStep<1)&&<div className="exploration-monster-magic-list">{monster.magic.length?monster.magic.map(move=><button key={move.id} disabled={won} className="exploration-monster-move is-magic" aria-label={`마법 · ${move.name} 설명`} onClick={()=>setMoveDetail(move.id)} data-active={feedback?.phase==='counter'&&feedback.events.some(event=>event.moveId===move.id)}><small>마법</small><img src={move.image} alt=""/><strong>{move.name}</strong></button>):<button disabled={won} className="exploration-monster-move is-magic" aria-label="마법 · 마법 없음 설명" onClick={()=>setMoveDetail('no-magic')}><small>마법</small><img src="/exploration/monster-skills/no-magic.svg" alt=""/><strong>마법 없음</strong><span>—</span></button>}</div>}
+   {(!won||victoryStep<1)&&<div className="exploration-monster-magic-list">{monster.magic.length?monster.magic.map(move=><button key={move.id} disabled={won} className="exploration-monster-move is-magic" aria-label={`마법 · ${move.name} 설명`} onClick={()=>setMoveDetail(move.id)} data-active={feedback?.phase==='counter'&&feedback.events.some(event=>event.moveId===move.id)}><small>스킬</small><img src={move.image} alt=""/><strong>{move.name}</strong></button>):<button disabled={won} className="exploration-monster-move is-magic" aria-label="마법 · 마법 없음 설명" onClick={()=>setMoveDetail('no-magic')}><small>스킬</small><img src="/exploration/monster-skills/no-magic.svg" alt=""/><strong>마법 없음</strong><span>—</span></button>}</div>}
    {won&&victoryStep===2&&rewardGold>0&&<div className="combat-victory-gold" role="status"><Coins size={26}/><span>골드 +{rewardGold.toLocaleString()}</span></div>}
+   {won&&victoryStep>=2&&combat.stolenPotions&&<div className="combat-victory-gold" role="status"><span>{stolenPotionLabel(combat.stolenPotions)} 되찾음</span></div>}
   </div>
   <Dialog open={!won&&moveDetail!==null} onOpenChange={open=>{if(!open)setMoveDetail(null)}}><DialogContent className="exploration-modal exploration-monster-move-detail"><DialogHeader><DialogTitle>{selectedMove?.name??'마법 없음'}</DialogTitle><DialogDescription>{monster.name} · {moveDetail==='basic'?'기본 공격':'마법'}</DialogDescription></DialogHeader><MonsterMoveDetails monster={monster} kind={moveDetail??'basic'}/></DialogContent></Dialog>
   {!won&&reply&&<div key={`reply-${feedback?.id}`} className={`combat-reply-number ${reply.kind==='defense'?'is-defense':''}`} aria-hidden="true">{reply.kind==='monster'?`${reply.critical?'치명타! ':''}−${reply.damage??0}`:reply.effect==='evade'?'회피!':reply.effect==='freeze'?'빙결!':reply.effect==='miss'?'빗나감!':reply.effect==='stun'?'반격 봉쇄':'−0'}</div>}
   <div className="exploration-combat-controls">
-   <CombatResultLog event={won?undefined:resultEvent} speaker={won?'탐험':speaker} text={won?monsterDefeatText(monster.name):resultText}/>
+   {entering?<ChoiceLog nickname={nickname??speaker} avatarPath={avatarPath} text={entrance.line} onTextComplete={finishPrelude}/>:<CombatResultLog nickname={nickname} avatarPath={avatarPath} event={won?undefined:resultEvent} moveName={!won?resultMove?.name:undefined} speaker={won?'탐험':speaker} text={won?monsterDefeatText(monster.name):resultText}/>}
    {active?<>
-    <CombatMagicDialog state={state} open={magic&&active} onOpenChange={setMagic} busy={busy} onCast={id=>onAction({type:'magic',id})}/>
-    <PotionChoiceDialog state={state} open={potions&&active} onOpenChange={setPotions} busy={busy} onUse={kind=>{if(busy)return false;onAction({type:'potion',kind});return true}}/>
-    <div className="exploration-combat-actions" data-no-escape={monster.tier==='boss'}><button className="combat-action-attack" disabled={busy} aria-label="공격" aria-describedby={attackDescription} title={`공격력 ${attackStats.attack} · ${attackStats.variance?'피해 범위 '+attackDisplay:'고정 공격력'} · 치명타 ${attackStats.critical}% · 적 방어력 적용 전`} onClick={()=>onAction({type:'attack'})}><CombatIcon kind="attack"/><span>공격</span><span className="combat-attack-stats" id={attackDescription} data-weakened={attackStats.weaken>0}><span><StatIcon kind="attack"/><span className="sr-only">공격력 </span>{attackDisplay}</span><span className="combat-attack-critical"><StatIcon kind="critical"/><span className="sr-only">치명타율 </span>{attackStats.critical}%</span>{attackStats.weaken>0&&<span className="combat-attack-curse">약화 −{attackStats.weaken}</span>}</span></button><button className="combat-action-magic" disabled={busy} aria-expanded={magic} onClick={()=>setMagic(value=>!value)}><CombatIcon kind="magic"/><span>마법</span></button><button className="combat-action-potion" aria-label="포션 마시기" disabled={busy} onClick={()=>setPotions(true)}><CombatIcon kind="potion"/><span>포션 마시기</span></button>{monster.tier!=='boss'&&<button className="combat-action-flee" disabled={busy} title="기본 35% + 현재 주무기·주보호구의 도망 효과 + 임시 효과" onClick={()=>onAction({type:'flee'})}><CombatIcon kind="flee"/><span>도망 <small>{escapeChance(state)}%</small></span></button>}</div>
+    <CombatMagicDialog state={state} open={magic&&active} onOpenChange={setMagic} busy={busy||entering} onCast={id=>chooseAction({type:'magic',id})}/>
+    <PotionChoiceDialog state={state} open={potions&&active} onOpenChange={setPotions} busy={busy||entering} onUse={kind=>{if(busy||entering)return false;chooseAction({type:'potion',kind});return true}}/>
+    <div className="exploration-combat-actions" data-no-escape={monster.tier==='boss'}><button className="combat-action-attack" disabled={busy||entering} aria-label="공격" aria-describedby={attackDescription} title={`공격력 ${attackStats.attack} · ${attackStats.variance?'피해 범위 '+attackDisplay:'고정 공격력'} · 치명타 ${attackStats.critical}% · 적 방어력 적용 전`} onClick={()=>chooseAction({type:'attack'})}><CombatIcon kind="attack"/><span>공격</span><span className="combat-attack-stats" id={attackDescription} data-weakened={attackStats.weaken>0}><span><StatIcon kind="attack"/><span className="sr-only">공격력 </span>{attackDisplay}</span><span className="combat-attack-critical"><StatIcon kind="critical"/><span className="sr-only">치명타율 </span>{attackStats.critical}%</span>{attackStats.weaken>0&&<span className="combat-attack-curse">약화 −{attackStats.weaken}</span>}</span></button><button className="combat-action-magic" disabled={busy||entering} aria-expanded={magic} onClick={()=>setMagic(value=>!value)}><CombatIcon kind="magic"/><span>마법</span></button><button className="combat-action-potion" aria-label="포션 마시기" disabled={busy||entering} onClick={()=>setPotions(true)}><CombatIcon kind="potion"/><span>포션 마시기</span></button>{monster.tier!=='boss'&&<button className="combat-action-flee" disabled={busy||entering} title="기본 35% + 현재 주무기·주보호구의 도망 효과 + 임시 효과" onClick={()=>chooseAction({type:'flee'})}><CombatIcon kind="flee"/><span>도망 <small>{escapeChance(state)}%</small></span></button>}</div>
    </>:won?<div className="combat-victory-next">{victoryStep===3&&combat.lootSource==='chest'&&!combat.lootClaimed&&<button disabled={busy} onClick={offerLoot}>상자 열기</button>}{victoryStep===3&&<button disabled={busy||!!onLootReady&&!!combat.loot&&!combat.lootClaimed} onClick={onDescend}>{nextRoomLabel(state)}</button>}</div>:null}
   </div>
  </section>

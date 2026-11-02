@@ -30,7 +30,10 @@ it('breaks shield armor on landed basics after calculating that hit and never br
 it('telegraphs rat escape for a full action, gives no reward and can be stopped by a finishing spell',()=>{
  const base=fight('cowardly-tomb-rat'),first=hit(base),prepared=hit(first.state)
  expect(prepared.state.combat?.pattern?.fleeReady).toBe(true);expect(prepared.playerState.combat?.pattern?.fleeReady).toBeFalsy()
- expect(prepared.state.hp).toBe(first.state.hp)
+ expect(prepared.state.hp).toBeLessThan(first.state.hp)
+ const attackIndex=prepared.events.findIndex(event=>event.moveId==='tomb-rat-bite')
+ expect(attackIndex).toBeGreaterThanOrEqual(0)
+ expect(prepared.events.findIndex(event=>event.moveId==='rat-scurry')).toBeGreaterThan(attackIndex)
  const escaped=hit(prepared.state)
  expect(escaped.state.combat).toMatchObject({status:'escaped',enemyFled:true});expect(escaped.state.gold).toBe(base.gold)
  expect(escaped.events.some(x=>x.kind==='reward')).toBe(false)
@@ -45,15 +48,25 @@ it('delays prepared flight while frozen without cancelling it',()=>{
  const fled=resolveCombatTurn({...frozen,mp:0},{type:'potion',kind:'mana'},()=>.99).state
  expect(fled.combat?.enemyFled).toBe(true)
 })
-it('charges without damage, retains the warning through a stun and fires on the next available action',()=>{
- const base=fight('hourglass-sentinel'),charged=hit(base,.1)
- expect(charged.state.hp).toBe(100);expect(charged.state.combat?.pattern?.charging).toBe(true)
- expect(charged.playerState.combat?.pattern?.charging).toBeFalsy();expect(monsterPatternNotice(charged.state)).toContain('충전 완료')
- const stunned=resolveCombatTurn(charged.state,{type:'magic',id:'sand'},()=>.99).state
- expect(stunned.hp).toBe(100);expect(stunned.combat?.pattern?.charging).toBe(true)
- const burst=hit(stunned)
- expect(burst.state.hp).toBe(72);expect(burst.state.combat?.pattern?.charging).toBe(false)
- expect(burst.events.find(x=>x.kind==='monster')?.moveId).toBe('hourglass-burst')
+it('randomly freezes without charging and prevents consecutive freeze locks',()=>{
+ const base=fight('hourglass-sentinel'),ice=hit(base,.1)
+ expect(ice.events.find(x=>x.kind==='monster')?.moveId).toBe('hourglass-burst')
+ expect(ice.state.combat?.pattern?.charging).toBeFalsy()
+ expect(monsterPatternNotice(ice.state)).toBeUndefined()
+ expect(ice.state.playerEffects).toContainEqual({kind:'freeze',amount:1,turns:1})
+ const frozen=resolveCombatTurn(ice.state,{type:'magic',id:'ember'},()=>.1)
+ expect(frozen.state.mp).toBe(ice.state.mp)
+ expect(frozen.state.combat?.enemyHp).toBe(ice.state.combat?.enemyHp)
+ expect(frozen.events.some(x=>x.effect==='freeze'&&x.target==='player')).toBe(true)
+ expect(frozen.state.playerEffects?.some(x=>x.kind==='freeze')).toBe(false)
+ expect(hit(frozen.state,.1).events.some(x=>x.kind==='player')).toBe(true)
+})
+it('adds ten basic damage against a frozen target and skips its action without spending potions',()=>{
+ const base=fight('hourglass-sentinel'),plain=hit(base,.99)
+ const frozen=resolveCombatTurn({...base,playerEffects:[{kind:'freeze',amount:1,turns:1}]},{type:'potion',kind:'health'},()=>.99)
+ expect(frozen.events.find(x=>x.kind==='monster')?.rawDamage).toBe(plain.events.find(x=>x.kind==='monster')!.rawDamage!+10)
+ expect(frozen.state.potions).toEqual(base.potions)
+ expect(frozen.state.playerEffects).toEqual([])
 })
 it('adapts mirror resistance after each successful direct hit and switches rather than stacking',()=>{
  const base=fight('mirror-mask-mage'),physical=hit(base),magic=resolveCombatTurn(physical.state,{type:'magic',id:'ember'},()=>.99)

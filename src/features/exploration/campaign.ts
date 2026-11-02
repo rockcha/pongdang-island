@@ -5,6 +5,7 @@ import type {MonsterId} from './monster-catalog'
 import type {WeaponTier} from './weapon-catalog'
 import type {PracticeState} from './practice-state'
 import {canOfferPracticeRoom} from './room-rules'
+import {campaignFinalFloor,campaignFinalRoom,campaignBossFloors} from './campaign-profile'
 
 export type ExplorationMode='test'|'practice'
 export const practiceFinalFloor=50
@@ -18,6 +19,7 @@ export const campaignEventWeights=[
  {through:30,scales:5,rest:8,lore:5,investigate:22,chest:15,sphinx:10,thief:5,curse:5,giant:5,guardian:20},
  {through:40,scales:5,rest:10,lore:5,investigate:25,chest:10,sphinx:10,thief:5,curse:5,giant:5,guardian:20},
  {through:50,scales:5,rest:8,lore:5,investigate:22,chest:10,sphinx:10,thief:5,curse:5,giant:5,guardian:25},
+ {through:80,scales:5,rest:14,lore:6,investigate:20,chest:12,sphinx:10,thief:3,curse:3,giant:7,guardian:20},
 ] as const
 const pick=<T,>(items:readonly T[],random:()=>number)=>items[Math.min(items.length-1,Math.floor(random()*items.length))]
 function weighted<T>(items:readonly {value:T;weight:number}[],random:()=>number):T{
@@ -27,9 +29,15 @@ function weighted<T>(items:readonly {value:T;weight:number}[],random:()=>number)
  return items[items.length-1].value
 }
 export function floorMonsterPool(floor:number,intermediate=false):{value:MonsterId;weight:number}[]{
+ if(floor>50){
+  const deep:{value:MonsterId;weight:number}[]=[{value:'black-sun-moth',weight:floor<60?25:20},{value:'golden-armored-crocodile',weight:floor<60?25:20},{value:'black-sand-devourer',weight:floor<56?0:25},{value:'gem-backed-tomb-tortoise',weight:floor<60?0:25}]
+  const oldWeight=floor<60?12:5
+  return [...deep,{value:'sand-wraith' as const,weight:oldWeight},{value:'tomb-hook-guard' as const,weight:oldWeight}].filter(item=>item.weight>0)
+ }
  const ids:MonsterId[]=intermediate?['sand-wraith','tomb-hook-guard','tomb-lantern-jellyfish','hourglass-sentinel','mirror-mask-mage']:['jar-wisp','talisman-lizard','sand-scorpion','sand-wing-bat','bandage-mummy','lapis-cobra','cracked-shield-scarab','cowardly-tomb-rat','night-eyed-desert-fox']
  const weights=intermediate?(floor<16?[100,0,0,0,0]:floor<21?[45,35,0,20,0]:floor<26?[25,25,20,20,10]:[20,20,20,20,20]):floor<=5?[40,35,25,0,0,0,0,0,0]:floor===6?[15,15,25,15,20,0,0,0,10]:floor<=8?[15,10,20,10,20,0,15,0,10]:floor<=10?[10,10,20,10,15,5,10,10,10]:floor<=20?[10,10,10,10,20,10,10,10,10]:[5,5,10,10,20,20,10,10,10]
- return ids.map((value,index)=>({value,weight:weights[index]})).filter(item=>item.weight>0)
+ const shieldGuard=floor>=16&&floor<=30&&!intermediate
+ return [...ids.map((value,index)=>({value,weight:weights[index]*(shieldGuard ? .9 : 1)})),...(shieldGuard?[{value:'sandstone-shield-guard' as const,weight:10}]:[])].filter(item=>item.weight>0)
 }
 export function drawFloorMonster(floor:number,random=Math.random,intermediate=false):MonsterId{return weighted(floorMonsterPool(floor,intermediate),random)}
 export function drawInvestigationMonster(floor:number,random=Math.random):MonsterId{
@@ -63,12 +71,17 @@ function merchantRoom(floor:number,random:()=>number,state?:PracticeState):RoomT
  return candidates.length?weighted(candidates,random):undefined
 }
 export const fixedPracticeRooms:Partial<Record<number,RoomTypeId>>={3:'merchant-hasan',6:'erased-name',22:'erased-name-record',34:'nameless-guardian',8:'magic-nadim',18:'merchant-karim',19:'rest-oasis',20:'boss-anubis',28:'magic-sahira',29:'rest-garden',30:'boss-anubis',38:'merchant-zahir',39:'rest-camp',40:'boss-anubis',48:'magic-nefera',49:'rest-oasis',50:'boss-pharaoh'}
-export function canUseTeleport(floor:number){return floor>=7&&floor+3<=practiceFinalFloor&&![floor,floor+1,floor+2].some(level=>fixedPracticeRooms[level]||supplyCheckFloors.some(check=>check===level))}
+export const deepPreparationRooms:Partial<Record<number,RoomTypeId>>={54:'merchant-zahir',58:'rest-camp',62:'magic-nefera',63:'merchant-zahir',64:'rest-garden',69:'merchant-zahir',70:'rest-oasis',74:'magic-nefera',77:'merchant-zahir',79:'rest-garden'}
+export function canUseTeleport(floor:number){return floor>=7&&floor+3<=80&&![floor,floor+1,floor+2].some(level=>fixedPracticeRooms[level]||deepPreparationRooms[level]||level in campaignBossFloors||supplyCheckFloors.some(check=>check===level))}
 export function drawPracticeFloor(floor:number,random=Math.random,previousState?:PracticeState):FloorMarket{
- const level=Math.max(1,Math.min(practiceFinalFloor,Math.floor(floor)))
+ const final=campaignFinalFloor(previousState??{}),level=Math.max(1,Math.min(final,Math.floor(floor)))
  // Evaluate eligibility at the destination, after the previous fight has ended.
  const state=previousState?{...previousState,combat:null,market:{...previousState.market,floor:level}}:undefined
- if(level===practiceFinalFloor)return {floor:level,doors:[practiceFinalBossRoom],weaponIds:[],armorIds:[],monsterIds:['random']}
+ if(level===final)return {floor:level,doors:[campaignFinalRoom(previousState??{})],weaponIds:[],armorIds:[],monsterIds:['random']}
+ if(final===80){
+  const mandatory=campaignBossFloors[level as keyof typeof campaignBossFloors]??deepPreparationRooms[level]
+  if(mandatory)return {floor:level,doors:[mandatory],weaponIds:[],armorIds:[],monsterIds:['random']}
+ }
  const fixed=fixedPracticeRooms
  // The guardian meets arrivals before door selection; keep its floor reserved for teleport protection.
  const extras:RoomTypeId[]=fixed[level]&&fixed[level]!=='nameless-guardian'&&canOfferPracticeRoom(state,fixed[level]!)?[fixed[level]!]:[]

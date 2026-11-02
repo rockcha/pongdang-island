@@ -1,4 +1,4 @@
-﻿import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
+import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import {Droplets,Heart} from 'lucide-react'
 import {merchantPotions,potionRecoveryAmount,playerMaxHp,playerManaMax,potionBlock,type PotionKind,type PracticeState} from './practice-state'
 export function PotionChoiceDialog({state,open,onOpenChange,onUse,busy=false}:{state:PracticeState;open:boolean;onOpenChange:(open:boolean)=>void;onUse:(kind:PotionKind)=>boolean;busy?:boolean}){

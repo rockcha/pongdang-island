@@ -5,6 +5,7 @@ import {finishForcedMerchant} from '../../src/features/exploration/merchant-pity
 import {spellManaCost,newPractice,playerMaxHp,playerManaMax,playerAttackStats,equipGear,usePotion,buyMerchantItem,floorMerchantGoods,type PracticeState,type Gear} from '../../src/features/exploration/practice-state'
 import {resolveCombatTurn,startMonsterCombat,type CombatAction} from '../../src/features/exploration/combat-state'
 import {getFloorMonster,type MonsterId} from '../../src/features/exploration/monster-catalog'
+import {getCombatMonster} from '../../src/features/exploration/monster-patterns'
 import {explorationWeapons} from '../../src/features/exploration/weapon-catalog'
 import {explorationArmor} from '../../src/features/exploration/armor-catalog'
 import {drawPracticeFloor,practiceFinalFloor,practiceFinalBossId} from '../../src/features/exploration/campaign'
@@ -24,7 +25,7 @@ export function blindDoorIndex(seed:number,floor:number,doorCount=3){return Math
 const rng=(seed:number,floor:number,salt:number)=>seededRandom(seed^Math.imul(floor,104729)^salt)
 const inc=(map:Record<string,number>,key:string,n=1)=>{map[key]=(map[key]??0)+n}
 const tier=(id:string)=>explorationWeapons.find(item=>item.id===id)?.tier??explorationArmor.find(item=>item.id===id)?.tier??'starter'
-export type AuditPolicy={id:string;label:string;combat:'basic'|'balanced'|'tactical'|'flee';risk:'skip'|'prudent'|'all';healthTarget:number;manaTarget:number;healThreshold:number;quizAccuracy:number;contracts:boolean;shops:boolean;spells:boolean;story:boolean;teleport:boolean;emergencyFlee?:boolean;shopPriority?:'potions'|'gear';frugalMagic?:boolean;denyContract?:ChoiceRoomId;forceContract?:ChoiceRoomId}
+export type AuditPolicy={magicStrategy?:import('./magic-audit').MagicStrategy;id:string;label:string;combat:'basic'|'balanced'|'tactical'|'flee';risk:'skip'|'prudent'|'all';healthTarget:number;manaTarget:number;healThreshold:number;quizAccuracy:number;contracts:boolean;shops:boolean;spells:boolean;story:boolean;teleport:boolean;emergencyFlee?:boolean;shopPriority?:'potions'|'gear';frugalMagic?:boolean;denyContract?:ChoiceRoomId;forceContract?:ChoiceRoomId;thief?:'leave'|'prudent'|'fight'}
 export const basePolicy:AuditPolicy={id:'balanced',label:'균형형',combat:'balanced',risk:'prudent',healthTarget:2,manaTarget:1,healThreshold:.4,quizAccuracy:.8,contracts:true,shops:true,spells:true,story:true,teleport:false}
 export const baselinePolicies:AuditPolicy[]=[
  {...basePolicy,id:'basic',label:'기본 공격 중심',combat:'basic',spells:false},
@@ -50,7 +51,7 @@ export function prepareLoadout(state:PracticeState){
  return next
 }
 export function auditAction(state:PracticeState,policy:AuditPolicy):CombatAction{
- const combat=state.combat!,monster=getFloorMonster(combat.monsterId,state.market.floor,true),stats=playerAttackStats(state)
+ const combat=state.combat!,monster=getCombatMonster(state),stats=playerAttackStats(state)
  const basic=Math.max(1,stats.attack-monster.defense),criticalExpected=basic*(1+stats.critical/100)
  const affordable=policy.spells?state.spells.filter(spell=>(policy.combat==='tactical'||state.equippedSpells.includes(spell.id))&&state.mp>=spellManaCost(state,spell)):[]
  if(basic>=combat.enemyHp)return {type:'attack'}

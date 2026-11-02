@@ -20,10 +20,10 @@ export const explorationArmor:Armor[]=[
  {"id":"nightwind-shadow-garb","name":"밤바람의 무영복","tier":"ultimate","reduction":4,"magicReduction":4,"maxHpBonus":25,"evasion":30,"price":2600,"description":"밤바람처럼 몸을 감춰 기본 공격을 흘려보내는 무영복.","image":"/exploration/armor/nightwind-shadow-garb.png","role":"회피형"},
  {id:'starwell-priest-robe',name:'별샘 사제복',tier:'advanced',reduction:1,magicReduction:4,maxHpBonus:10,maxManaBonus:15,evasion:0,price:850,role:'최대 마나형',description:'별빛을 수놓은 예복이 마력을 담아 둔다. 최대 마나가 15 증가하며, 장착만으로 체력이나 마나가 회복되지는 않는다.',image:'/exploration/armor/starwell-priest-robe.png'},
  {id:'echo-priest-robe',name:'잔향의 사제복',tier:'advanced',reduction:1,magicReduction:3,maxHpBonus:10,evasion:0,victoryManaRestore:3,price:900,role:'승리 마나 회복형',description:'전투 승리 시 장착 중이면 마나 3을 회복한다. 도망에는 발동하지 않으며 최대 마나를 넘지 않는다.',image:'/exploration/armor/echo-priest-robe.png'},
- {id:'dawn-guardian-garb',name:'여명의 수호복',tier:'advanced',reduction:2,magicReduction:2,maxHpBonus:15,evasion:5,openingShield:5,price:850,role:'시작 보호막형',description:'전투 시작 시 피해 5를 흡수하는 보호막을 얻는다. 물리·마법 공격에 적용되며, 소진되거나 전투가 끝나면 사라진다.',image:'/exploration/armor/dawn-guardian-garb.png'},
+ {id:'dawn-guardian-garb',name:'여명의 수호복',tier:'advanced',reduction:2,magicReduction:2,maxHpBonus:15,evasion:5,openingShield:8,price:850,role:'시작 보호막형',description:'전투 시작 시 피해 8을 흡수하는 보호막을 얻는다. 물리·마법 공격에 적용되며, 소진되거나 전투가 끝나면 사라진다.',image:'/exploration/armor/dawn-guardian-garb.png'},
  {id:'alchemist-overcoat',name:'연금술사의 외투',tier:'advanced',reduction:2,magicReduction:2,maxHpBonus:15,evasion:0,potionBonus:5,price:900,role:'포션 강화형',description:'장착 중 체력·마나 포션 회복량이 5 증가한다. 화상의 회복 감소는 보너스를 더한 뒤 적용된다.',image:'/exploration/armor/alchemist-overcoat.png'},
 ]
-export const starterArmor:Gear={id:'old-diving-suit',name:'낡은 잠수복',description:'닳았지만 몸을 가볍게 감싸는 잠수복.',reduction:1,magicReduction:0,maxHpBonus:0,evasion:5,image:'/exploration/armor/old-diving-suit.png'}
+export const starterArmor:Gear={id:'old-diving-suit',name:'낡은 천옷',description:'닳았지만 몸을 가볍게 감싸는 천옷.',reduction:1,magicReduction:0,maxHpBonus:0,evasion:5,image:'/exploration/armor/old-diving-suit.png'}
 export const practiceArmor:Gear[]=[starterArmor,
  {id:'linen-wrap',escapeBonus:10,name:'아마포 보호복',description:'연습용 · 여러 겹의 천으로 몸을 보호합니다.',reduction:2,magicReduction:1,maxHpBonus:5,evasion:10,image:'/exploration/armor/linen-wrap.png'},
  {id:'gold-guard',name:'황금 흉갑',description:'연습용 · 무겁지만 단단한 보호구.',reduction:4,magicReduction:0,maxHpBonus:10,evasion:0,image:'/exploration/armor/gold-guard.png'},

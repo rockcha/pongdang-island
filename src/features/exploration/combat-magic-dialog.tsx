@@ -1,4 +1,4 @@
-﻿import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
+import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import {Sparkles} from 'lucide-react'
 import {combatMagic} from './combat-state'
 import {spellManaCost,playerManaMax,type PracticeState} from './practice-state'

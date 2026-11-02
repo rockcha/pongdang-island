@@ -1,0 +1,52 @@
+{
+    "generator":  "built-in image_gen",
+    "createdAt":  "2026-11-02",
+    "purpose":  "Exploration deep-tomb monsters and bosses. Game combat assets, not aquarium collectibles.",
+    "references":  [
+                       "src/features/exploration/assets/sand-scorpion.png"
+                   ],
+    "images":  [
+                   {
+                       "id":  "black-sun-moth",
+                       "source":  "assets/exploration/monsters/originals/black-sun-moth.png",
+                       "output":  "public/exploration/monsters/black-sun-moth.png",
+                       "prompt":  "Use case: stylized-concept. Black Sun Moth: broad charcoal velvety wings with antique Egyptian gold geometric ornaments, amber eclipse patterns, turquoise eyes. Standalone full-body transparent PNG. Match sand scorpion rendering, not anatomy; centered square, 10% margins; no scenery, text, particles, halo, gore or detached pixels."
+                   },
+                   {
+                       "id":  "golden-armored-crocodile",
+                       "source":  "assets/exploration/monsters/originals/golden-armored-crocodile.png",
+                       "output":  "public/exploration/monsters/golden-armored-crocodile.png",
+                       "prompt":  "Use case: stylized-concept. Create ONE standalone production fantasy RPG monster transparent PNG cutout. SUBJECT: Golden Armored Crocodile: a broad heavy quadrupedal crocodile with thick layered ancient Egyptian gold back plates, turquoise inlays, natural dark olive scales, a powerful low tail and slightly open long toothy snout. Three-quarter frontal view showing all four clawed legs and whole tail. Clearly a crocodile, not an insect. No extra limbs. STYLE REFERENCE ONLY: attached golden sand scorpion; match its crisp polished hand-painted fantasy RPG material rendering, sharp controlled detail and warm Egyptian gold accents, NOT its scorpion anatomy. Centered square composition with 10% clear margin ALL sides. Whole creature including extremities visible, clean opaque body, crisp antialiased alpha edges. Actual transparent background. No floor, cast shadow, pedestal, text, UI, watermark, frame, particles, fog, glow halo, blood, gore, severed anatomy, extra characters. No detached pixels."
+                   },
+                   {
+                       "id":  "black-sand-devourer",
+                       "source":  "assets/exploration/monsters/originals/black-sand-devourer.png",
+                       "output":  "public/exploration/monsters/black-sand-devourer.png",
+                       "prompt":  "Use case: stylized-concept. Create ONE standalone production fantasy RPG monster transparent PNG cutout. SUBJECT: Black Sand Devourer: one compact powerful desert burrowing predator creature made of solid charcoal sandstone plates, four squat clawed legs, a wedge-shaped head with amber eyes, a small toothy mouth, layered cracked black carapace with restrained warm gold cracks. A readable complete animal silhouette, not an amorphous cloud or worm. Three-quarter frontal view, full body and tail. STYLE REFERENCE ONLY: attached golden sand scorpion; match its crisp polished hand-painted fantasy RPG material rendering, sharp controlled detail and warm Egyptian gold accents, NOT its scorpion anatomy. Centered square composition with 10% clear margin ALL sides. Whole creature including extremities visible, clean opaque body, crisp antialiased alpha edges. Actual transparent background. No floor, cast shadow, pedestal, text, UI, watermark, frame, particles, fog, glow halo, blood, gore, severed anatomy, extra characters. No detached pixels."
+                   },
+                   {
+                       "id":  "gem-backed-tomb-tortoise",
+                       "source":  "assets/exploration/monsters/originals/gem-backed-tomb-tortoise.png",
+                       "output":  "public/exploration/monsters/gem-backed-tomb-tortoise.png",
+                       "prompt":  "Use case: stylized-concept. Create ONE standalone production fantasy RPG monster transparent PNG cutout. SUBJECT: Gem-backed Tomb Tortoise: one ancient squat terrestrial tortoise with four thick sturdy feet, broad domed dark bronze shell containing a small number of large polished turquoise and amber gemstones, Egyptian gold geometric bands, wise expressive teal eyes. Three-quarter front view, full shell and all feet visible, distinct big low tortoise silhouette. Not aquatic, no fins. STYLE REFERENCE ONLY: attached golden sand scorpion; match its crisp polished hand-painted fantasy RPG material rendering, sharp controlled detail and warm Egyptian gold accents, NOT its scorpion anatomy. Centered square composition with 10% clear margin ALL sides. Whole creature including extremities visible, clean opaque body, crisp antialiased alpha edges. Actual transparent background. No floor, cast shadow, pedestal, text, UI, watermark, frame, particles, fog, glow halo, blood, gore, severed anatomy, extra characters. No detached pixels."
+                   },
+                   {
+                       "id":  "golden-scales-maaken",
+                       "source":  "assets/exploration/monsters/originals/golden-scales-maaken.png",
+                       "output":  "public/exploration/monsters/golden-scales-maaken.png",
+                       "prompt":  "Use case: stylized-concept. Create ONE standalone production fantasy RPG monster transparent PNG cutout. SUBJECT: Maaken, Executor of the Golden Scales: ONE imposing ancient Egyptian humanoid judge boss, full body standing, broad gold and ivory armor over dark lapis robe, a smooth dignified ibis-faced gold mask, holding a compact balanced golden weighing scale in one hand and a heavy judgment mace in the other. Character and held equipment only, no throne or scenery. Full feet and entire scale/mace visible. Clear imposing silhouette, detailed but readable on mobile. STYLE REFERENCE ONLY: attached golden sand scorpion; match its crisp polished hand-painted fantasy RPG material rendering, sharp controlled detail and warm Egyptian gold accents, NOT its scorpion anatomy. Centered square composition with 10% clear margin ALL sides. Whole creature including extremities visible, clean opaque body, crisp antialiased alpha edges. Actual transparent background. No floor, cast shadow, pedestal, text, UI, watermark, frame, particles, fog, glow halo, blood, gore, severed anatomy, extra characters. No detached pixels."
+                   },
+                   {
+                       "id":  "black-sun-aker",
+                       "source":  "assets/exploration/monsters/originals/black-sun-aker.png",
+                       "output":  "public/exploration/monsters/black-sun-aker.png",
+                       "prompt":  "Use case: stylized-concept. Create ONE standalone production fantasy RPG monster transparent PNG cutout. SUBJECT: Aker, First Pharaoh of the Black Sun: ONE final boss ancient Egyptian pharaoh, full body standing, regal black obsidian and antique gold armor, charcoal and burgundy royal cloth, imposing double crown with a small eclipsed-sun emblem attached physically to the crown, glowing restrained amber eyes, holding one long black-and-gold sun scepter. No floating halo, no throne, no scenery. Full feet and complete scepter visible. Distinct dark sovereign silhouette rather than blue-and-gold existing pharaoh. STYLE REFERENCE ONLY: attached golden sand scorpion; match its crisp polished hand-painted fantasy RPG material rendering, sharp controlled detail and warm Egyptian gold accents, NOT its scorpion anatomy. Centered square composition with 10% clear margin ALL sides. Whole creature including extremities visible, clean opaque body, crisp antialiased alpha edges. Actual transparent background. No floor, cast shadow, pedestal, text, UI, watermark, frame, particles, fog, glow halo, blood, gore, severed anatomy, extra characters. No detached pixels."
+                   },
+                   {
+                       "id":  "golden-mask",
+                       "source":  "assets/exploration/monsters/originals/golden-mask.png",
+                       "output":  "public/exploration/monsters/golden-mask.png",
+                       "prompt":  "Transparent standalone floating Egyptian golden funerary mask with ornate nemes headdress, turquoise inlays and glowing gold eyes. Detailed polished hand-painted cartoon fantasy RPG sprite, centered with clear margins. No human body, scenery, text or shadow."
+                   }
+               ]
+}

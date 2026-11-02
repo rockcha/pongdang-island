@@ -3,6 +3,8 @@ export type WeaponVisual={motion:WeaponMotion;color:string;accent:string;angle:n
 const visual=(motion:WeaponMotion,color:string,accent:string,angle:number,reach:number,weight:number,tier:WeaponVisual['tier']='starter',detail?:WeaponVisual['detail']):WeaponVisual=>({motion,color,accent,angle,reach,weight,tier,detail})
 // Visual identities follow the actual item silhouettes; they never change hit count or damage.
 export const weaponVisuals:Record<string,WeaponVisual>={
+ 'cracked-wall-hammer':visual('smash','#b99b75','#f9dfac',-20,.9,1.1),
+ 'lapis-shield-breaker':visual('smash','#579dd4','#f4d68b',-20,1,1.2,'advanced'),
  'inscription-mage-staff':visual('staff','#b9a17a','#b4ece8',-18,1.02,.94,'advanced'),
  'lapis-moon-staff':visual('staff','#5d9ce0','#d2f1ff',-18,1.04,.95,'advanced'),
  'heartstone-warhammer':visual('smash','#c9786d','#ffe2bf',-18,.95,1.25,'advanced'),

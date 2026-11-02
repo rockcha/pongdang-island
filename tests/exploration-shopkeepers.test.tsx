@@ -63,7 +63,7 @@ it('applies might for four following actions, then removes it',()=>{
  expect(state.combat?.attackBuff).toBeUndefined()
 })
 it('cleanses monster flags and bleeding before the next tick',()=>{
- const state=ready('purifying-spring');state.combat={...state.combat,playerBlind:30,playerWeaken:2,magicResistanceDown:10};const result=resolveCombatTurn({...state,playerEffects:[{kind:'bleed',amount:2,turns:3}]},{type:'magic',id:'purifying-spring'},()=>.5)
+ const state=ready('phoenix-breath');state.combat={...state.combat,playerBlind:30,playerWeaken:2,magicResistanceDown:10};const result=resolveCombatTurn({...state,playerEffects:[{kind:'bleed',amount:2,turns:3}]},{type:'magic',id:'phoenix-breath'},()=>.5)
  expect(result.playerState.playerEffects).toEqual([]);expect(result.playerState.combat?.playerBlind).toBeUndefined();expect(result.playerState.combat?.magicResistanceDown).toBeUndefined()
 })
 

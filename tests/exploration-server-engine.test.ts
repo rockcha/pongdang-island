@@ -12,9 +12,9 @@ it('accepts only offered doors and never accepts client state, rewards, bosses o
 })
 it('runs real combat, blocks boss escape and requires victory and loot before completion',()=>{
  const initial=newExplorationModel(()=>0)
- const m:ExplorationModel={...initial,state:{...initial.state,market:{...initial.state.market,floor:50},weapons:initial.state.weapons.map(w=>({...w,attack:10000}))}}
+ const m:ExplorationModel={...initial,state:{...initial.state,market:{...initial.state.market,floor:80},weapons:initial.state.weapons.map(w=>({...w,attack:10000}))}}
  let current=step(m,{type:'door',index:0},0,()=>0)
- expect(current.state.combat?.monsterId).toBe('golden-pharaoh')
+ expect(current.state.combat?.monsterId).toBe('black-sun-aker')
  expect(()=>step(current,{type:'combat',action:{type:'flee'}},0,()=>0)).toThrow()
  expect(()=>step(current,{type:'descend'},0,()=>0)).toThrow()
  current=step(current,{type:'combat',action:{type:'attack'}},0,()=>0)

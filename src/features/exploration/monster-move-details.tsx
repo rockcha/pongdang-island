@@ -11,20 +11,25 @@ const narratives:Record<string,string>={
 export function MonsterMoveDetails({monster,kind}:{monster:Monster;kind:string}){
  const basic=kind==='basic',skill=basic?monster.basic:monster.magic.find(move=>move.id===kind)
  if(!skill)return <p>이 몬스터는 마법을 사용하지 않고 매 턴 기본 공격을 사용합니다.</p>
+ const physical=(skill.attackType??(basic?'physical':'magic'))==='physical'
  const range=basicAttackRange(monster.attack,monsterAttackVariance),chance=monsterMoveChance(monster,basic)
  const facts:EffectFact[]=[{label:'사용 확률',value:chance,icon:<Percent/>}]
- if(skill.effect==='blind')facts.push({label:'실명',value:'명중률 −30%',icon:<AilmentIcon kind="blind"/>,tone:'danger',note:'다음 기본 공격 1회 · 중첩 없음'})
+ if(skill.effect==='blind')facts.push({label:'실명',value:`명중률 −${skill.blindAmount??30}%`,icon:<AilmentIcon kind="blind"/>,tone:'danger',note:'다음 기본 공격 1회 · 중첩 없음'})
  if(skill.effect==='weaken')facts.push({label:'약화',value:'기본 공격력 −2',icon:<AilmentIcon kind="weaken"/>,tone:'danger',note:'다음 기본 공격 1회 · 중첩 없음'})
  if(skill.effect==='magic-break')facts.push({label:'마저 감소',value:'−10 · 1턴',icon:<AilmentIcon kind="magic-break"/>,tone:'danger',note:'마법 저항력을 10 감소 · 음수 가능 · 중첩 없음'})
  if(skill.effect==='mana-drain')facts.push({label:'마나 감소',value:'−4',icon:<Droplets/>,tone:'danger',note:'남은 마나만큼만 감소'})
  if(skill.effect==='lifesteal')facts.push({label:'생명력 흡수',value:'실제 피해의 50%',icon:<Heart/>,tone:'health',note:'회복량 내림 · 최대 체력 초과 없음'})
+ if(skill.lifesteal)facts.push({label:'생명력 흡수',value:`실제 피해의 ${skill.lifesteal}%`,icon:<Heart/>,tone:'health',note:'회피·완전 방어 시 회복 없음 · 회복량 내림'})
+ if(skill.enemyShield)facts.push({label:'황금 보호막',value:String(skill.enemyShield.amount),icon:<AilmentIcon kind="shield"/>,note:'턴 제한 없음 · 보호막에는 방어력·마저 미적용 · 유지 중 재사용 없음'})
+ if(skill.frozenBonus)facts.push({label:'빙결 대상 추가 피해',value:`+${skill.frozenBonus}`,icon:<AilmentIcon kind="freeze"/>,tone:'danger',note:'기본 피해에 더한 뒤 치명타·방어력 적용'})
+ if(skill.playerAilment){const effect=skill.playerAilment;facts.push({label:effect.kind==='freeze'?'빙결':effect.kind==='weaken'?'약화':'회복 억제',value:effect.kind==='freeze'?'다음 행동 봉쇄':effect.kind==='weaken'?`공격력 −${effect.amount}`:`회복량 −${effect.amount}%`,icon:<AilmentIcon kind={effect.kind}/>,tone:'danger',note:effect.kind==='freeze'?`${effect.turns}회 · 해제 턴 재빙결 불가`:`${effect.turns}턴 · 중첩 없음 · 정화 가능`})}
  if(skill.bleed)facts.push({label:'출혈',value:`피해 ${skill.bleed.amount}, ${skill.bleed.turns}턴`,icon:<AilmentIcon kind="bleed"/>,tone:'danger',note:`적중 시 ${skill.bleed.chance}% · 행동 종료마다 피해 · 중첩 없음`})
  return <><div className="exploration-move-intro"><img src={skill.image} alt=""/><p>{narratives[skill.id]??skill.description}</p></div>
-  {(basic||skill.damage>0)&&<div className="monster-move-damage" data-kind={basic?'physical':'magic'}>
-   <dl><dt>{basic?<StatIcon kind="attack"/>:<Sparkles size={15}/>}<span>{basic?'공격력':'마법 피해'}</span></dt><dd>{basic?`${range.min}–${range.max}`:skill.damage}</dd></dl>
+  {(basic||skill.damage>0)&&<div className="monster-move-damage" data-kind={physical?'physical':'magic'}>
+   <dl><dt>{basic?<StatIcon kind="attack"/>:<Sparkles size={15}/>}<span>{basic?'공격력':physical?'물리 피해':'마법 피해'}</span></dt><dd>{basic?`${range.min}–${range.max}`:skill.damage}</dd></dl>
    {basic&&<dl className="monster-move-critical"><dt><StatIcon kind="critical"/><span>치명타 확률</span></dt><dd>{monster.critical}%</dd><small>발동 시 피해 2배</small></dl>}
   </div>}
-  {(basic||skill.damage>0)&&<p className="monster-move-defense">{basic?'방어력 적용 · 회피 가능':'마법 저항력 적용 · 회피와 치명타 없음'}</p>}
+  {(basic||skill.damage>0)&&<p className="monster-move-defense">{basic?(physical?'방어력 적용 · 회피 가능':'마법 저항력 적용 · 회피 불가 · 치명타 가능'):physical?'방어력 적용 · 회피와 치명타 없음':'마법 저항력 적용 · 회피와 치명타 없음'}</p>}
   <EffectFacts items={facts} label="스킬 효과"/>
  </>
 }

@@ -31,7 +31,9 @@ export const adventureRooms=[
  {id:'sealed-scarab',kind:'giant',monsterId:'treasure-scarab',name:'아이템 드롭 · 봉인된 보물갑충',title:'봉인된 보물갑충',background:'/exploration/rooms/scarab-sealed-treasury.png',intro:['황금 궤짝처럼 웅크린 갑충이 봉인에 묶여 있다. 봉인을 건드리면 깨어날 것 같다.'],progress:['봉인에 금이 간다. 보물갑충의 푸른 눈에 빛이 돌아온다.']},
  {id:'sleeping-giant',kind:'giant',monsterId:'ancient-giant',name:'아이템 드롭 · 잠든 고대거인',title:'잠든 고대거인',background:'/exploration/rooms/giant-slumber-chamber.png',intro:['거대한 돌의 몸이 미동도 없이 잠들어 있다. 가까이 다가가 깨우거나, 조용히 지나갈 수 있다.'],progress:['거인의 눈이 푸르게 빛난다. 무거운 돌주먹이 천천히 들린다.']},
  {id:'boss-anubis',kind:'boss',monsterId:'obsidian-anubis',name:'중간보스 · 흑요석 아누비스',title:'흑요석 아누비스',background:combatBackgroundUrl(resolveCombatBackground('obsidian-anubis')),intro:['살아 있는 자여, 이 문을 넘을 자격을 증명하라.'],progress:['왕릉의 문이 닫혔다. 이 싸움에서 도망칠 수 없다.']},
- {id:'boss-pharaoh',kind:'boss',monsterId:'golden-pharaoh',name:'최종보스 · 황금왕 라세프',title:'황금왕 라세프',background:combatBackgroundUrl(resolveCombatBackground('golden-pharaoh')),intro:['황금의 왕이 옥좌에서 일어선다. 왕릉의 마지막 문지기가 그대를 내려다본다.'],progress:['왕의 심판을 넘어야 왕릉을 벗어날 수 있다. 이 싸움에서는 도망칠 수 없다.']},
+ {id:'boss-pharaoh',kind:'boss',monsterId:'golden-pharaoh',name:'50층 보스 · 황금왕 라세프',title:'황금왕 라세프',background:combatBackgroundUrl(resolveCombatBackground('golden-pharaoh')),intro:['황금의 왕이 옥좌에서 일어선다. 오래된 왕이 그대를 내려다본다.'],progress:['왕의 심판을 넘어야 한다. 이 싸움에서는 도망칠 수 없다.']},
+ {id:'boss-maaken',kind:'boss',monsterId:'golden-scales-maaken',name:'65층 보스 · 황금 저울의 집행자, 마아켄',title:'황금 저울의 집행자, 마아켄',background:combatBackgroundUrl(resolveCombatBackground('golden-scales-maaken')),intro:['황금 추가 돌바닥을 긁는다. 집행자가 심판의 망치를 든다.'],progress:['집행자의 심판을 넘어야 한다. 이 싸움에서는 도망칠 수 없다.']},
+ {id:'boss-golden-mask',kind:'boss',monsterId:'black-sun-aker',name:'80층 최종보스 · 천년왕조의 마지막 유산, 황금가면',title:'천년왕조의 마지막 유산, 황금가면',background:combatBackgroundUrl(resolveCombatBackground('black-sun-aker')),intro:['천년의 봉인이 풀리고 황금가면의 눈에 빛이 깃든다.'],progress:['왕조의 마지막 유산을 쓰러뜨려야 탐험을 완료할 수 있다. 이 싸움에서는 도망칠 수 없다.']},
  {id:'sphinx',kind:'sphinx',name:'스핑크스 · 영혼의 수수께끼',title:'영혼의 수수께끼',background:bg('sphinx'),intro:['“답하지 못한다면, 네 영혼의 절반을 가져가겠다.” 스핑크스가 고요히 눈을 뜬다.'],progress:['“너의 답을 인정한다. 길을 열어 주겠다.”']},
  {id:'scales',kind:'scales',name:'저울 · 망자의 거래소',title:'망자의 거래소',background:bg('scales'),intro:['저울은 황금 대신, 네가 내려놓을 물건을 기다린다.'],progress:['저울이 천천히 균형을 되찾는다. 장비가 사라진 자리에 금화가 남았다.']},
 ] as const satisfies readonly RoomDefinition[]
@@ -226,7 +228,7 @@ export function createRoomVisit(id:AdventureRoomId,state:PracticeState,key=`${st
  const room=getAdventureRoom(id)!,visit:RoomVisit={key,id,entry:sample(room.intro,random),progress:sample(room.kind==='lore'?room.progress.filter(text=>text!==previousInscription):room.progress,random),outcome:{kind:'none'},hpLost:0,mpLost:0,stolen:{health:0,mana:0},question:sample(sphinxQuestions,random)}
  if(room.kind==='curse'){visit.hpLost=Math.min(Math.max(0,state.hp-1),Math.floor(state.hp*.4));visit.mpLost=Math.floor(state.mp*.4)}
  if(room.kind==='thief'){
-  const bag={...state.potions},count=Math.min(bag.health+bag.mana,random()<.5?1:2)
+  const bag={...state.potions},count=Math.min(bag.health+bag.mana,2)
   for(let index=0;index<count;index++){const kind=random()*(bag.health+bag.mana)<bag.health?'health':'mana';bag[kind]--;visit.stolen[kind]++}
   if(!count)visit.entry='도둑은 빈 포션 주머니를 뒤지다 투덜거리며 물러선다.'
  }

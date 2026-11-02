@@ -1,17 +1,18 @@
-import {useEffect,useState} from 'react'
+import {useEffect,useEffectEvent,useState} from 'react'
 
 /** Keep one complete accessible sentence while the visual text catches up. */
-export function TypedText({text,animate=true}:{text:string;animate?:boolean}){
+export function TypedText({text,animate=true,onComplete}:{text:string;animate?:boolean;onComplete?:()=>void}){
  const [frame,setFrame]=useState({text:'',count:0})
+ const complete=useEffectEvent(()=>onComplete?.())
  const reduced=typeof window.matchMedia==='function'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches
  useEffect(()=>{
-  if(!animate||reduced)return
+  if(!animate||reduced){complete();return}
   const started=performance.now()
   const duration=Math.min(1100,Math.max(280,Array.from(text).length*22))
   const timer=setInterval(()=>{
    const progress=Math.min(1,(performance.now()-started)/duration)
    setFrame({text,count:Math.ceil(Array.from(text).length*progress)})
-   if(progress===1)clearInterval(timer)
+   if(progress===1){clearInterval(timer);complete()}
   },16)
   return()=>clearInterval(timer)
  },[text,animate,reduced])

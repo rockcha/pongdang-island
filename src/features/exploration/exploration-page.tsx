@@ -4,11 +4,13 @@ import {LockKeyhole,MessageCircle} from 'lucide-react'
 import {useAuth,getNickname} from '@/components/auth-provider'
 import {useSocial} from '@/features/social/social-provider'
 import {useOperator} from '@/features/notices/use-operator'
-import {GameTabs,GameStartOverlay,type GameTab} from '@/features/arcade/game-controls'
+import {GameMenuTabs,GameStartOverlay} from '@/features/arcade/game-controls'
+import {appArt} from '@/components/app-art'
 import {GamePanel,GameStage} from '@/features/arcade/game-layout'
 import {ExplorationGame} from './exploration-game'
 import {ExplorationCodex} from './codex'
 import {ExplorationFeedback} from './exploration-feedback'
+import {ExplorationRanking} from './exploration-ranking'
 import {commandExploration} from './reward-api'
 import {VerifiedExplorationGame} from './verified-exploration-game'
 import {randomId} from '@/lib/random-id'
@@ -22,7 +24,7 @@ export function ExplorationPage(){
  const {operator,loading}=useOperator()
  const {session,recovery}=useAuth(),{profile}=useSocial()
  const [playing,setPlaying]=useState(false),[mode,setMode]=useState<ExplorationMode>('practice')
- const [tab,setTab]=useState<GameTab>('game')
+ const [tab,setTab]=useState<'game'|'feedback'|'rank'>('game')
  const [runId,setRunId]=useState<string>(),[starting,setStarting]=useState(false),[startError,setStartError]=useState('')
  const pendingStart=useRef<string|undefined>(undefined),startLock=useRef(false),owner=useRef(session?.user.id);owner.current=session?.user.id
  const fullscreenRequest=useRef(0)
@@ -54,7 +56,11 @@ export function ExplorationPage(){
   }
  }
  return <section className="exploration-lobby exploration-arcade-lobby" aria-label="탐험">
-  <GameTabs id="exploration" value={tab} onChange={setTab} secondaryLabel="피드백" secondaryIcon={MessageCircle}/>
+  <GameMenuTabs id="exploration" value={tab} onChange={setTab} tabs={[
+   {value:'game',label:'게임 플레이',icon:appArt.gameplay},
+   {value:'feedback',label:'피드백',icon:MessageCircle},
+   {value:'rank',label:'랭킹',icon:appArt.ranking},
+  ]}/>
   <GamePanel id="exploration" hidden={tab!=='game'}>
    <GameStage>
     <GameStartOverlay
@@ -76,8 +82,11 @@ export function ExplorationPage(){
     </GameStartOverlay>
    </GameStage>
   </GamePanel>
-  <div role="tabpanel" id="exploration-rank-panel" aria-labelledby="exploration-rank-tab" hidden={tab!=='rank'} className={`${tab==='rank'?'flex':'hidden'} min-h-0 min-w-0 flex-1 flex-col overflow-y-auto`}>
+  <div role="tabpanel" id="exploration-feedback-panel" aria-labelledby="exploration-feedback-tab" hidden={tab!=='feedback'} className={`${tab==='feedback'?'flex':'hidden'} min-h-0 min-w-0 flex-1 flex-col overflow-y-auto`}>
    <ExplorationFeedback key={`feedback:${session?.user.id??'guest'}`} owner={session?.user.id}/>
+  </div>
+  <div role="tabpanel" id="exploration-rank-panel" aria-labelledby="exploration-rank-tab" hidden={tab!=='rank'} className={`${tab==='rank'?'flex':'hidden'} min-h-0 min-w-0 flex-1 flex-col overflow-y-auto`}>
+   {tab==='rank'&&(session&&!recovery?<ExplorationRanking key={`ranking:${session.user.id}`}/>:<p className="p-4 text-sm text-muted-foreground">로그인 후 탐험 랭킹을 볼 수 있어요.</p>)}
   </div>
   {session&&!recovery&&playing&&(mode==='practice'||operator&&!loading)&&(mode==='practice'&&runId?<VerifiedExplorationGame runId={runId} key={`game:${session.user.id}:${runId}`} nickname={getNickname(session)||'탐험가'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>:<ExplorationGame mode={mode} key={`game:${session.user.id}`} nickname={getNickname(session)||'탐험가'} avatarPath={profile?.avatar_path} onLeave={()=>setPlaying(false)}/>)}
  </section>

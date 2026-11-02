@@ -21,5 +21,5 @@ export function commandExploration(request:ExplorationRequest){
   const receipt=await invoke(request)
   const current=scope&&isCurrentAccount(scope)?appQueryClient.getQueryData<ExplorationReceipt>(accountQueryKey(scope.owner,['exploration-run',request.runId])):undefined
   return current&&current.revision>receipt.revision?current:receipt
- },{resource:['exploration-run',request.runId],after:receipt=>{if(receipt.rewardGold>0)invalidateAccountResource('wallet')}})
+ },{resource:['exploration-run',request.runId],invalidate:request.action.type==='start'?[]:['exploration-ranking'],after:receipt=>{if(receipt.rewardGold>0)invalidateAccountResource('wallet')}})
 }

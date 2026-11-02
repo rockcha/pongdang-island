@@ -5,7 +5,8 @@ begin
  insert into auth.users(id) values(u);
  insert into public.player_profiles(id,nickname) values(u,'유물칭호검증'||left(u::text,6));
  perform set_config('request.jwt.claim.sub',u::text,true);
- for r in select id from public.fishing_relics order by (rarity='mythic'),id limit 15 loop
+ -- Include a mythic explicitly; new catalog additions can exceed fifteen others.
+ for r in select id from public.fishing_relics order by (rarity='mythic') desc,id limit 15 loop
   n:=n+1;
   insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(u,r.id);
   if not exists(select 1 from app_private.title_dirty where user_id=u) then raise exception 'RELIC_TITLE_NOT_QUEUED';end if;

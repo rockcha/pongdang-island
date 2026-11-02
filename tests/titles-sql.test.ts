@@ -6,7 +6,9 @@ import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db
 const uid='00000000-0000-0000-0000-000000000901',other='00000000-0000-0000-0000-000000000902'
 async function user(sql,args=[],who=uid){await db.exec('savepoint request;set role authenticated');try{await db.query("select set_config('request.jwt.claim.sub',$1,false)",[who]);return await db.query(sql,args)}catch(e){await db.exec('rollback to savepoint request');throw e}finally{await db.exec('reset role;release savepoint request')}}
-async function state(){return (await user('select public.title_state() s')).rows[0].s}
+// These legacy metric fixtures write history directly, bypassing gameplay events.
+// Request a batch explicitly; separate activity tests cover quiet cached reads.
+async function state(){await db.query('insert into app_private.title_dirty(user_id) values($1) on conflict do nothing',[uid]);return (await user('select public.title_state() s')).rows[0].s}
 async function log({at='2026-10-19T12:00:00Z',kind=null,rarity=null,species=null,source='manual',bait='bait',region='pongdang',last=false,vessel=null,batch=null,item=null}={}){await db.query('insert into app_private.title_fishing_log(user_id,event_key,occurred_at,source,kind,rarity,species_id,collectible_id,bait_id,region_id,last_bait,vessel_id,batch_id) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)',[uid,crypto.randomUUID(),at,source,kind,rarity,species,item,bait,region,last,vessel,batch])}
 async function earned(){return (await state()).titles.filter(t=>t.earnedAt).map(t=>t.id)}
 async function relicDiscovery(id:string){
@@ -17,7 +19,7 @@ beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},6
 beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000) on conflict(user_id) do update set gold=excluded.gold',[id])}})
 afterEach(async()=>{await db.exec('rollback')});afterAll(async()=>{await db?.close()})
 it('lists all catalog titles and forbids equipping an unearned title',async()=>{
- const s=await state();expect(s.titles).toHaveLength(catalog.title_catalog.length);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(73)
+ const s=await state();expect(s.titles).toHaveLength(catalog.title_catalog.length);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(catalog.title_catalog.filter(t=>t.category==='growth').length)
  expect(s.equipped).toBe('beginner');expect(s.titles.filter(t=>t.earnedAt).map(t=>t.id)).toEqual(['beginner'])
  await expect(user("select public.equip_title('fishing-4')")).rejects.toThrow(/NOT_EARNED/)
 })
@@ -47,7 +49,7 @@ it('recognizes prior relic discoveries without current ownership',async()=>{
 })
 
 it('preserves equipped relic titles after sale and does not count a reacquired relic twice or notify twice',async()=>{
- const relic=(await db.query("select id,sell_price from public.fishing_relics where rarity='mythic' limit 1")).rows[0]
+ const relic=(await db.query("select id,sell_price from public.fishing_relics where rarity='mythic' and sell_price>0 and enabled limit 1")).rows[0]
  await relicDiscovery(relic.id)
  expect(await earned()).toEqual(expect.arrayContaining(['relic-first','relic-mythic']))
  await user("select public.equip_title('relic-mythic')")
@@ -238,12 +240,13 @@ it('awards all four tailwind tiers only to the sender and sends each notice once
   const trip=(await db.query("insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,returns_at,claimed_at) values($1,'dinghy','pongdang','{\"bait\":3}','{}',now()+interval '1 hour',now()) returning id",[other])).rows[0].id
   await db.query('insert into app_private.expedition_boosts(expedition_id,helper_id,nickname) values($1,$2,$3)',[trip,uid,'sender'])
   if([4,19,49,99].includes(i)){
+   expect((await db.query('select 1 from app_private.title_dirty where user_id=$1',[uid])).rows).toHaveLength(1)
    const titles=(await state()).titles.filter(t=>t.id.startsWith('tailwind-'))
    expect(titles.filter(t=>t.earnedAt)).toHaveLength([4,19,49,99].indexOf(i)+1)
    expect(titles[3].progress).toBe(i===99?100:null)
   }
  }
- expect((await db.query('select 1 from app_private.title_dirty where user_id=$1',[uid])).rows).toHaveLength(1)
+ expect((await db.query('select 1 from app_private.title_dirty where user_id=$1',[uid])).rows).toHaveLength(0)
  await state();await state()
  expect((await db.query("select count(*) n from public.notifications where recipient_id=$1 and achievement_id like 'tailwind-%'",[uid])).rows[0].n).toBe(4)
  expect((await user('select public.title_state() s',[],other)).rows[0].s.titles.filter(t=>t.id.startsWith('tailwind-')).every(t=>!t.earnedAt&&t.progress===null)).toBe(true)

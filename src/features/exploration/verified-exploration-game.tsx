@@ -34,6 +34,7 @@ import {LootDialog} from './loot-dialog'
 import {StatusScreenEffects} from './status-screen-effects'
 import {createExplorationAudio} from './exploration-audio'
 import {combatTimings} from './combat-timing'
+import {combatPhaseEvents,combatPresentation} from './combat-presentation'
 import type {CombatResult,TurnFeedback} from './combat-state'
 import './verified-exploration.css'
 
@@ -43,7 +44,7 @@ export function VerifiedExplorationGame({runId,nickname,avatarPath,onLeave}:{run
  const [busy,setBusy]=useState(false),[error,setError]=useState(''),[bag,setBag]=useState(false),[leave,setLeave]=useState(false),[history,setHistory]=useState(false)
  const [bagTab,setBagTab]=useState<InventoryTab>('weapon'),[potions,setPotions]=useState(false)
  const [selected,setSelected]=useState<number|null>(null),[art,setArt]=useState(drawFloorArt)
- const [animation,setAnimation]=useState<{before:PracticeState;result:CombatResult;phase:'prepare'|'player'|'counter'|'reply';action:TurnFeedback['action'];id:number}|null>(null)
+ const [animation,setAnimation]=useState<{before:PracticeState;result:CombatResult;phase:TurnFeedback['phase'];action:TurnFeedback['action'];id:number}|null>(null)
  const pending=useRef<ExplorationRequest|null>(null),lock=useRef(false),active=useRef(true),current=useRef(receipt);current.current=receipt
  const audio=useRef<ReturnType<typeof createExplorationAudio>|null>(null)
  const timers=useRef<ReturnType<typeof setTimeout>[]>([])
@@ -84,13 +85,16 @@ export function VerifiedExplorationGame({runId,nickname,avatarPath,onLeave}:{run
     const result=next.model.result,id=next.revision,combatAction=request.action.action.type
     timers.current.forEach(clearTimeout);timers.current=[]
     setAnimation({before:latest.model.state,result,phase:'prepare',action:combatAction,id})
-    const schedule=(ms:number,phase:'player'|'counter'|'reply')=>timers.current.push(setTimeout(()=>{
+    const schedule=(ms:number,phase:TurnFeedback['phase'])=>timers.current.push(setTimeout(()=>{
      setAnimation({before:latest.model.state,result,phase,action:combatAction,id})
-     if(phase==='player')audio.current?.play(combatAction==='attack'?'attack':combatAction==='magic'?'magic':combatAction==='potion'?'health-potion':'flee')
+     if(phase==='player')audio.current?.play(combatAction==='attack'?(result.events.some(e=>e.kind==='player'&&e.critical)?'critical':'attack'):combatAction==='magic'?'magic':combatAction==='potion'?'health-potion':'flee')
      if(phase==='reply'&&result.events.some(e=>e.kind==='monster'))audio.current?.play('hit')
     },ms))
-    schedule(combatTimings.player,'player');schedule(combatTimings.counter,'counter');schedule(combatTimings.reply,'reply')
-    timers.current.push(setTimeout(()=>{setAnimation(null);setBusy(false);lock.current=false},combatTimings.done))
+    const pause=result.actionState?combatTimings.statusPause:0
+    schedule(combatTimings.player,'player')
+    if(result.actionState)schedule(combatTimings.bleed,'bleed')
+    schedule(combatTimings.counter+pause,'counter');schedule(combatTimings.reply+pause,'reply')
+    timers.current.push(setTimeout(()=>{timers.current=[];setAnimation(null);setBusy(false);lock.current=false},combatTimings.done+pause))
     return
    }
    if(request.action.type==='buy'||request.action.type==='learn')audio.current?.play('loot')
@@ -105,14 +109,15 @@ export function VerifiedExplorationGame({runId,nickname,avatarPath,onLeave}:{run
  if(!receipt)return createPortal(<section className="exploration-game"><p role="status">탐험을 불러오고 있어요.</p>{query.error&&<button onClick={()=>void query.refetch()}>다시 불러오기</button>}<button onClick={onLeave}>메인 화면으로</button></section>,document.body)
  if(receipt.abandoned)return createPortal(<section className="exploration-game exploration-run-complete"><div><h1>탐험이 종료됐어요</h1><p>다른 화면에서 새 탐험을 시작했거나 이미 나간 탐험이에요.</p><button onClick={onLeave}>메인 화면으로</button></div></section>,document.body)
  const model=receipt.model,server=model.state
- const state=animation?animation.phase==='reply'?animation.result.state:animation.phase==='prepare'?animation.before:animation.result.playerState:server
- const feedback:TurnFeedback|null=animation?{id:animation.id,phase:animation.phase,action:animation.action,events:animation.result.events}:null
+ const state=animation?animation.phase==='reply'?animation.result.state:animation.phase==='prepare'?animation.before:animation.phase==='player'?(animation.result.actionState??animation.result.playerState):animation.result.playerState:server
+ const feedback:TurnFeedback|null=animation?{id:animation.id,phase:animation.phase,action:animation.action,events:combatPhaseEvents(animation.result,animation.phase)}:null
  const required=requiredDoorRoom(state),doors=required?[required]:state.market.doors
  const room=model.visit?getAdventureRoom(model.visit.id):null
  const keeper=getShopkeeper(model.view==='shaman'?state.shamanStock?.shopkeeperId:state.market.shopkeeperId)
  const combatBackground=resolveCombatBackground(state.combat?.monsterId,combatBackgrounds[0])
  const background=model.view==='combat'?combatBackgroundUrl(combatBackground):room?.background??(['merchant','shaman'].includes(model.view)?keeper.background:dungeonBackgrounds[art.background])
- const latest=animation?animation.result.events.filter(e=>animation.phase==='reply'?e.phase==='reply':e.phase!=='reply').at(-1)?.text??'공격할 틈을 살핀다…':model.result?.lines.join('\n')??model.visit?.entry??'문을 선택하고 탐험을 계속하세요.'
+ const presentation=animation?combatPresentation(animation.result,animation.phase,animation.action):model.result?combatPresentation(model.result,model.result.events.some(e=>e.phase==='reply')?'reply':'player'):undefined
+ const latest=presentation?.text??model.visit?.entry??'문을 선택하고 탐험을 계속하세요.'
  const disabled=busy||!!pending.current||!!animation
  const command=(action:ExplorationAction)=>void send(action)
  const roomAction=(type:'search'|'rest'|'contract'|'awaken'|'quiz')=><button onClick={()=>command({type})}>{({search:'조사한다',rest:'쉬었다 간다',contract:'선택을 받아들인다',awaken:'봉인을 건드린다',quiz:'문제를 듣는다'} as const)[type]}</button>
@@ -125,7 +130,7 @@ export function VerifiedExplorationGame({runId,nickname,avatarPath,onLeave}:{run
   </header>
   {errorPanel}<main className="exploration-scene has-dungeon-art is-close-scene" inert={disabled} data-scene={model.view==='doors'?'dungeon':model.view==='merchant'||model.view==='shaman'?'merchant':room?.id??'combat'} data-shopkeeper={model.view==='merchant'||model.view==='shaman'?keeper.id:undefined} style={{backgroundImage:`linear-gradient(#07101430,#07101410 55%,#07101480),url(${background})`}}>
     {model.view==='doors'&&<><div className={`exploration-doors ${doors.length===1?'is-single':''}`} data-door-count={doors.length} role="group" aria-label={`지하 ${state.market.floor}층의 ${doors.length===1?'하나뿐인 문':'세 문'}`}>{doors.map((_,index)=><button key={index} className="exploration-choice" aria-pressed={selected===index} onClick={()=>setSelected(index)}><DoorSprite skin={art.doors[index]} opening={busy&&selected===index}/><span className="exploration-choice-copy"><small>0{index+1}</small><strong>{doorSkins[art.doors[index]].name}</strong></span></button>)}</div><div className="exploration-door-controls"><ChoiceLog speaker="탐험" text={latest}/><button className="exploration-preview-enter" disabled={selected===null} onClick={()=>{audio.current?.play('door');command({type:'door',index:selected!})}}>{selected===null?'문을 선택해주세요':'선택한 문으로 입장'}</button></div></>}
-    {model.view==='combat'&&state.combat&&<ScorpionRoom background={combatBackground} state={state} busy={disabled} feedback={feedback} latestLog={latest} speaker="탐험" onAction={action=>command({type:'combat',action})} onDescend={()=>command({type:'descend'})} onReturnToMain={()=>setLeave(true)} onReward={()=>audio.current?.play('loot')} onLootReady={()=>{}}/>}
+    {model.view==='combat'&&state.combat&&<ScorpionRoom background={combatBackground} logEvent={presentation?.event} state={state} busy={disabled} feedback={feedback} latestLog={latest} speaker="탐험" onAction={action=>command({type:'combat',action})} onDescend={()=>command({type:'descend'})} onReturnToMain={()=>setLeave(true)} onReward={()=>audio.current?.play('loot')} onLootReady={()=>{}}/>}
     {(['merchant','shaman'].includes(model.view))&&<section className="exploration-merchant"><div className="exploration-merchant-art"><img src={keeper.portrait} alt={keeper.name}/></div><div className="exploration-npc-dialogue"><h2>{keeper.name}<small>{keeper.shopName}</small></h2></div><div className="exploration-shop-items">
      {model.view==='merchant'?floorMerchantGoods(state).map(item=><article key={item.id}><div><h3>{item.name}</h3><p>{item.description}</p><small>{item.price} 골드</small></div><button disabled={!!purchaseBlock(state,item.id)} onClick={()=>command({type:'buy',id:item.id,quantity:1})}>{purchaseBlock(state,item.id)??'구매'}</button></article>):(state.shamanStock?.spellIds??[]).flatMap(id=>shamanSpells.filter(s=>s.id===id)).map(spell=><article key={spell.id}><img src={spell.image} alt=""/><div><h3>{spell.name}</h3><p>{spell.description}</p><small>{spell.learnPrice} 골드</small></div><button disabled={!!shamanLearningBlock(state,spell.id)} onClick={()=>command({type:'learn',id:spell.id})}>{shamanLearningBlock(state,spell.id)??'배우기'}</button></article>)}
     </div><button onClick={()=>command({type:'descend'})}>{state.forcedMerchant?'문으로 돌아간다':'아래층으로 내려간다.'}</button></section>}
@@ -154,7 +159,7 @@ export function VerifiedExplorationGame({runId,nickname,avatarPath,onLeave}:{run
   <LootDialog loot={!animation?model.pendingLoot:null} onClaim={()=>{if(!disabled)command({type:'loot'})}}/>
   <PracticeInventory initialTab={bagTab} open={bag} onOpenChange={setBag} state={state} busy={disabled} onChange={()=>{}} onEquipChange={()=>{}} onEquip={(kind,id)=>command({type:'equip',kind,id})} onToggleSpell={id=>command({type:'spell',id})} onUsePotion={kind=>{if(!disabled)command({type:'potion',kind});return false}}/>
   <PotionChoiceDialog open={potions} onOpenChange={setPotions} state={state} busy={disabled} onUse={kind=>{if(!disabled)command({type:'potion',kind});return false}}/>
-  <Dialog open={history} onOpenChange={setHistory}><DialogContent className="exploration-modal"><DialogHeader><DialogTitle>현재 탐험</DialogTitle><DialogDescription>지하 {state.market.floor}층 · 체력 {state.hp} · 탐험용 골드 {state.gold}</DialogDescription></DialogHeader><p>{latest}</p></DialogContent></Dialog>
+  <Dialog open={history} onOpenChange={setHistory}><DialogContent className="exploration-modal"><DialogHeader><DialogTitle>현재 탐험</DialogTitle><DialogDescription>지하 {state.market.floor}층 · 체력 {state.hp} · 탐험용 골드 {state.gold}</DialogDescription></DialogHeader><p>{model.result?.lines.join('\n')??latest}</p></DialogContent></Dialog>
   <ConfirmDialog compact open={leave} onOpenChange={setLeave} title="탐험을 마치고 나갈까요?" description="완료하지 않은 탐험에는 골드 보상이 지급되지 않아요." confirmLabel="나가기" cancelLabel="계속 탐험" onConfirm={()=>void send({type:'leave'})}/>
  </section>,document.body)
 }

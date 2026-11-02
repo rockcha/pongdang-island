@@ -5,6 +5,8 @@ import {VerifiedExplorationGame} from '@/features/exploration/verified-explorati
 import {applyExplorationAction,newExplorationModel} from '@/features/exploration/server-engine'
 import {commandExploration,type ExplorationReceipt} from '@/features/exploration/reward-api'
 import {readFileSync,readdirSync,writeFileSync} from 'node:fs'
+import {startMonsterCombat} from '@/features/exploration/combat-state'
+import {combatTimings} from '@/features/exploration/combat-timing'
 const invoke=vi.fn(),id='00000000-0000-0000-0000-000000000123'
 vi.mock('@/lib/client',()=>({createClient:()=>({functions:{invoke:(...args:any[])=>invoke(...args)}})}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'one'}}})}))
@@ -12,7 +14,7 @@ vi.mock('@/features/profile/player-avatar',()=>({PlayerAvatar:()=>null}))
 vi.mock('@/features/arcade/game-leave-guard',()=>({GameLeaveGuard:()=>null}))
 vi.mock('@/features/exploration/exploration-audio',()=>({createExplorationAudio:()=>({startMusic(){},unlock(){},play(){},dispose(){},startDescent(){},stopDescent(){}})}))
 beforeEach(()=>{setQueryAccount('one');invoke.mockReset();vi.stubGlobal('matchMedia',()=>({matches:true}))})
-afterEach(()=>{cleanup();setQueryAccount(null);appQueryClient.clear();vi.unstubAllGlobals()})
+afterEach(()=>{cleanup();setQueryAccount(null);appQueryClient.clear();vi.unstubAllGlobals();vi.useRealTimers()})
 const seed=(model=newExplorationModel(()=>0)):ExplorationReceipt=>{const data={id,revision:0,model,rewardGold:0,finishedAt:null,abandoned:false};appQueryClient.setQueryData(accountQueryKey('one',['exploration-run',id]),data);return data}
 it('sends only the selected action and keeps an uncertain request ID for explicit retry',async()=>{
  const model=newExplorationModel(()=>0);model.state.market.doors=['rest-oasis'];const original=seed(model)
@@ -86,4 +88,42 @@ it('can exit a run that was superseded by another tab without sending another wr
  fireEvent.click(screen.getByRole('button',{name:'메인 화면으로'}))
  expect(leave).toHaveBeenCalledOnce()
  expect(invoke).not.toHaveBeenCalled()
+})
+it.each([false,true])('keeps rapid clicks to one turn and presents attack, bleeding and counter separately (bleeding=%s)',async(bleeding)=>{
+ vi.useFakeTimers()
+ const model=newExplorationModel(()=>0)
+ model.view='combat';model.state=startMonsterCombat({...model.state,weapons:[{...model.state.weapons[0],attack:14,attackVariance:4,critical:100}],...(bleeding?{playerEffects:[{kind:'bleed' as const,amount:2,turns:3}]}:{})},'sand-scorpion')
+ model.state.combat!.enemyHp=100
+ const rolls=[0,0] // Critical, lowest weapon roll, then a landed ordinary counter.
+ const original=seed(model),next={...original,revision:1,model:applyExplorationAction(model,{type:'combat',action:{type:'attack'}},0,()=>rolls.shift()??.99)}
+ const hit=next.model.result!.events.find(e=>e.kind==='player')!,reply=next.model.result!.events.find(e=>e.kind==='monster'||e.kind==='defense')!
+ expect(hit).toMatchObject({damage:19,critical:true}) // (10 × 2) − 1 armor.
+ let finish!:(v:any)=>void;invoke.mockReturnValueOnce(new Promise(resolve=>{finish=resolve}))
+ render(<VerifiedExplorationGame runId={id} nickname="탐험가" onLeave={()=>{}}/>)
+ const attack=screen.getByRole('button',{name:'공격',exact:true})
+ for(let i=0;i<20;i++)fireEvent.click(attack)
+ expect(invoke).toHaveBeenCalledTimes(1)
+ await act(async()=>finish({data:next,error:null}))
+ const log=()=>screen.getByLabelText('탐험 로그').textContent!
+ expect(log()).not.toContain('19 피해')
+ expect((screen.getByRole('button',{name:'주무기 교체'}) as HTMLButtonElement).disabled).toBe(true)
+ await act(async()=>vi.advanceTimersByTimeAsync(combatTimings.player))
+ expect(log()).toContain('치명타');expect(log()).toContain('19 피해')
+ expect(screen.getByRole('progressbar',{name:'탐험가 체력'}).getAttribute('value')).toBe('100')
+ if(bleeding){
+  await act(async()=>vi.advanceTimersByTimeAsync(combatTimings.bleed-combatTimings.player))
+  expect(log()).toContain('출혈로');expect(log()).toContain('2 피해')
+  expect(screen.getByRole('progressbar',{name:'탐험가 체력'}).getAttribute('value')).toBe('98')
+ }
+ const pause=bleeding?combatTimings.statusPause:0
+ await act(async()=>vi.advanceTimersByTimeAsync(combatTimings.reply+pause-(bleeding?combatTimings.bleed:combatTimings.player)))
+ expect(log()).toContain(`${reply.damage} 피해`);expect(log()).toContain('입었습니다')
+ for(let i=0;i<20;i++)fireEvent.click(attack)
+ expect(invoke).toHaveBeenCalledTimes(1)
+ await act(async()=>vi.advanceTimersByTimeAsync(combatTimings.done-combatTimings.reply))
+ invoke.mockResolvedValueOnce({data:{...next,revision:2,model:applyExplorationAction(next.model,{type:'combat',action:{type:'attack'}},1,()=>.99)},error:null})
+ fireEvent.click(attack);await act(async()=>{})
+ expect(invoke).toHaveBeenCalledTimes(2)
+ expect(invoke.mock.calls[1][1].body.revision).toBe(1)
+ expect(invoke.mock.calls[1][1].body.operationId).not.toBe(invoke.mock.calls[0][1].body.operationId)
 })

@@ -4,13 +4,15 @@ import {pathToFileURL} from 'node:url'
 import sharp from 'sharp'
 import {build} from 'vite'
 const refinement=process.argv.includes('--refinement')
+const effects=process.argv.includes('--effects')
 const {batch,items}=await import(refinement?'./prepare-hangang-refinement.mjs':'./prepare-hangang-assets.mjs')
 const original=refinement?await import('./prepare-hangang-assets.mjs'):null
 fs.mkdirSync('artifacts',{recursive:true})
 const fish=items.filter(i=>i.frames>1).map(i=>({...i,sourceBatch:batch}))
 if(original)fish.push(...original.items.filter(i=>i.frames===8&&!items.some(n=>n.id===i.id)).map(i=>({...i,sourceBatch:original.batch})))
+if(effects)fish.splice(0,fish.length,...fish.filter(i=>['hangang-mago-creator','hangang-hunmin-spirit','hangang-ungnyeo-mother','hangang-immortal-turtle-ship'].includes(i.id)))
 const sprite=i=>i.sourceBatch+'/'+i.sprite_sheet_path
-for(let start=0;start<fish.length;start+=4){
+for(let start=0;!effects&&start<fish.length;start+=4){
  const layers=[]
  for(const [n,i] of fish.slice(start,start+4).entries())layers.push({input:await sharp(sprite(i)).resize(500,500,{fit:'contain',background:'#173744'}).png().toBuffer(),left:n%2*512+6,top:Math.floor(n/2)*512+6})
  await sharp({create:{width:1024,height:1024,channels:4,background:'#173744'}}).composite(layers).png().toFile(`${batch}/review/sprite-sheets-${start}.png`)
@@ -26,4 +28,4 @@ const ready=Promise.all(data.map(async i=>{const img=new Image();img.src=i.url;a
 window.renderAt=async function(time,reduced=false){await ready;window.previewTime=time;for(const {i,img,canvas} of entries){const c=canvas.getContext('2d'),asset=api.mythicSwimAsset(i.sprite_sheet_path,i.rarity),p=asset?.path??i.sprite_sheet_path,frame=asset?api.mythicSwimFrame(p,time,0,reduced):reduced?0:[0,1,2,3,2,1][Math.floor(time*3)%6],layout=(asset?api.mythicSwimLayout(p,frame):api.swimFrameLayout(p,frame)),cols=i.frames/2,cell=img.width/cols,size=170*layout.scale,x=100-size*layout.originX,y=100-size*layout.originY;c.clearRect(0,0,200,200);api.drawHangangMythicCanvas(c,i.id,time,0,reduced,x,y,size,'back');c.drawImage(img,frame%cols*cell,Math.floor(frame/cols)*cell,cell,cell,x,y,size,size);api.drawHangangMythicCanvas(c,i.id,time,0,reduced,x,y,size);}return {count:entries.length,width:document.documentElement.scrollWidth,viewport:innerWidth}};
 let prev=performance.now();function tick(now){if(window.playing)window.previewTime+=(now-prev)/1000;prev=now;window.renderAt(window.previewTime,reduce.checked);requestAnimationFrame(tick)}ready.then(()=>requestAnimationFrame(tick));
 </script>`)
-console.log('Generated all-frame contact sheets and runtime animation review: artifacts/hangang-preview.html')
+console.log((effects?'Generated focused four-mythic effect review':'Generated all-frame contact sheets and runtime animation review')+': artifacts/hangang-preview.html')

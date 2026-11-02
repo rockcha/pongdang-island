@@ -1,0 +1,306 @@
+{
+  "assets": [
+    {
+      "id": "hangang-mago-creator",
+      "width": 2048,
+      "height": 1024,
+      "normalizedWidth": 2048,
+      "normalizedHeight": 1024,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 65,
+          "top": 70,
+          "width": 376,
+          "height": 400,
+          "opaque": 97765,
+          "margin": 42
+        },
+        {
+          "frame": 1,
+          "left": 66,
+          "top": 53,
+          "width": 378,
+          "height": 407,
+          "opaque": 98574,
+          "margin": 52
+        },
+        {
+          "frame": 2,
+          "left": 72,
+          "top": 55,
+          "width": 363,
+          "height": 401,
+          "opaque": 94131,
+          "margin": 55
+        },
+        {
+          "frame": 3,
+          "left": 75,
+          "top": 63,
+          "width": 380,
+          "height": 398,
+          "opaque": 92989,
+          "margin": 51
+        },
+        {
+          "frame": 4,
+          "left": 79,
+          "top": 79,
+          "width": 341,
+          "height": 383,
+          "opaque": 85268,
+          "margin": 50
+        },
+        {
+          "frame": 5,
+          "left": 71,
+          "top": 62,
+          "width": 383,
+          "height": 397,
+          "opaque": 96726,
+          "margin": 53
+        },
+        {
+          "frame": 6,
+          "left": 72,
+          "top": 84,
+          "width": 365,
+          "height": 386,
+          "opaque": 89016,
+          "margin": 42
+        },
+        {
+          "frame": 7,
+          "left": 62,
+          "top": 64,
+          "width": 381,
+          "height": 403,
+          "opaque": 98027,
+          "margin": 45
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "hangang-haetae-guardian",
+      "width": 1254,
+      "height": 1254,
+      "normalizedWidth": 1254,
+      "normalizedHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 25,
+          "top": 218,
+          "width": 600,
+          "height": 293,
+          "opaque": 110135,
+          "margin": 2
+        },
+        {
+          "frame": 1,
+          "left": 22,
+          "top": 220,
+          "width": 565,
+          "height": 370,
+          "opaque": 115368,
+          "margin": 22
+        },
+        {
+          "frame": 2,
+          "left": 32,
+          "top": 109,
+          "width": 573,
+          "height": 289,
+          "opaque": 106138,
+          "margin": 22
+        },
+        {
+          "frame": 3,
+          "left": 23,
+          "top": 113,
+          "width": 577,
+          "height": 305,
+          "opaque": 106209,
+          "margin": 23
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "hangang-millennial-gumiho",
+      "width": 1254,
+      "height": 1254,
+      "normalizedWidth": 1254,
+      "normalizedHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 72,
+          "top": 232,
+          "width": 539,
+          "height": 250,
+          "opaque": 77904,
+          "margin": 16
+        },
+        {
+          "frame": 1,
+          "left": 52,
+          "top": 228,
+          "width": 515,
+          "height": 271,
+          "opaque": 74553,
+          "margin": 52
+        },
+        {
+          "frame": 2,
+          "left": 75,
+          "top": 184,
+          "width": 540,
+          "height": 258,
+          "opaque": 76261,
+          "margin": 12
+        },
+        {
+          "frame": 3,
+          "left": 26,
+          "top": 186,
+          "width": 545,
+          "height": 250,
+          "opaque": 75714,
+          "margin": 26
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "hangang-iron-eater-bulgasari",
+      "width": 1254,
+      "height": 1254,
+      "normalizedWidth": 1254,
+      "normalizedHeight": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 22,
+          "top": 165,
+          "width": 596,
+          "height": 323,
+          "opaque": 104643,
+          "margin": 9
+        },
+        {
+          "frame": 1,
+          "left": 25,
+          "top": 165,
+          "width": 581,
+          "height": 377,
+          "opaque": 107609,
+          "margin": 21
+        },
+        {
+          "frame": 2,
+          "left": 48,
+          "top": 122,
+          "width": 574,
+          "height": 362,
+          "opaque": 100870,
+          "margin": 5
+        },
+        {
+          "frame": 3,
+          "left": 16,
+          "top": 123,
+          "width": 600,
+          "height": 313,
+          "opaque": 104805,
+          "margin": 11
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "width": 1774,
+      "height": 887,
+      "normalizedWidth": 1776,
+      "normalizedHeight": 888,
+      "frames": [
+        {
+          "frame": 0,
+          "left": 88,
+          "top": 113,
+          "width": 307,
+          "height": 267,
+          "opaque": 51675,
+          "margin": 49
+        },
+        {
+          "frame": 1,
+          "left": 76,
+          "top": 112,
+          "width": 318,
+          "height": 271,
+          "opaque": 52991,
+          "margin": 50
+        },
+        {
+          "frame": 2,
+          "left": 66,
+          "top": 112,
+          "width": 311,
+          "height": 272,
+          "opaque": 52854,
+          "margin": 60
+        },
+        {
+          "frame": 3,
+          "left": 62,
+          "top": 113,
+          "width": 311,
+          "height": 269,
+          "opaque": 52774,
+          "margin": 62
+        },
+        {
+          "frame": 4,
+          "left": 91,
+          "top": 73,
+          "width": 306,
+          "height": 274,
+          "opaque": 53134,
+          "margin": 47
+        },
+        {
+          "frame": 5,
+          "left": 75,
+          "top": 74,
+          "width": 311,
+          "height": 273,
+          "opaque": 53115,
+          "margin": 58
+        },
+        {
+          "frame": 6,
+          "left": 67,
+          "top": 75,
+          "width": 325,
+          "height": 272,
+          "opaque": 54238,
+          "margin": 52
+        },
+        {
+          "frame": 7,
+          "left": 62,
+          "top": 74,
+          "width": 314,
+          "height": 270,
+          "opaque": 52616,
+          "margin": 62
+        }
+      ],
+      "valid": true
+    }
+  ]
+}

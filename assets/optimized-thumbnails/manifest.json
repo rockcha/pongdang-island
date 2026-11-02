@@ -5153,26 +5153,6 @@
       }
     },
     {
-      "key": "fish/epic/hangang-mago-creator_v1_thumbnail.png",
-      "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-mago-creator_v1_thumbnail.png",
-      "sourceHash": "975e89281555586e9b35e3d7c59703c6a3627d32f7ee671579cc61cabdff3e76",
-      "sourceBytes": 1967854,
-      "sourceWidth": 1254,
-      "sourceHeight": 1254,
-      "small": {
-        "url": "/game-art/thumbnails/a3deaad9fbb197eb9d3e2c69-320.webp",
-        "bytes": 44910,
-        "width": 320,
-        "height": 320
-      },
-      "large": {
-        "url": "/game-art/thumbnails/4bda2a7fb22c2420789c6f1c-640.webp",
-        "bytes": 138330,
-        "width": 640,
-        "height": 640
-      }
-    },
-    {
       "key": "fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
       "source": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
       "sourceHash": "4c7be2351c2feb7e5a63e167cce8a06274945400f487fbda7247fc50eb81f980",
@@ -7148,6 +7128,26 @@
       "large": {
         "url": "/game-art/thumbnails/dead9ae4d2c30c29764e919b-640.webp",
         "bytes": 137144,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hangang-mago-creator_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261102-091000/fish/mythic/hangang-mago-creator_v2_thumbnail.png",
+      "sourceHash": "975e89281555586e9b35e3d7c59703c6a3627d32f7ee671579cc61cabdff3e76",
+      "sourceBytes": 1967854,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a3deaad9fbb197eb9d3e2c69-320.webp",
+        "bytes": 44910,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4bda2a7fb22c2420789c6f1c-640.webp",
+        "bytes": 138330,
         "width": 640,
         "height": 640
       }

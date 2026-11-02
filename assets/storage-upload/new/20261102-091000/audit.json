@@ -1,0 +1,576 @@
+{
+  "results": [
+    {
+      "id": "hangang-mago-creator",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\fish\\mythic\\hangang-mago-creator_v2_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            56,
+            62,
+            1152,
+            1140
+          ],
+          "margin": 46,
+          "occupancy": 0.9186602870813397,
+          "opaque": 789917,
+          "transparent": 679953,
+          "soft": 892420
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-mago-creator",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\sources\\hangang-mago-creator-sprite.source",
+      "width": 2048,
+      "height": 1024,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            65,
+            70,
+            376,
+            400
+          ],
+          "margin": 42,
+          "occupancy": 0.78125,
+          "opaque": 97765,
+          "transparent": 159507,
+          "soft": 101632
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            66,
+            53,
+            378,
+            407
+          ],
+          "margin": 52,
+          "occupancy": 0.794921875,
+          "opaque": 98574,
+          "transparent": 159605,
+          "soft": 101686
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            72,
+            55,
+            363,
+            401
+          ],
+          "margin": 55,
+          "occupancy": 0.783203125,
+          "opaque": 94131,
+          "transparent": 163307,
+          "soft": 97943
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            75,
+            63,
+            380,
+            398
+          ],
+          "margin": 51,
+          "occupancy": 0.77734375,
+          "opaque": 92989,
+          "transparent": 164997,
+          "soft": 95928
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            79,
+            79,
+            341,
+            383
+          ],
+          "margin": 50,
+          "occupancy": 0.748046875,
+          "opaque": 85268,
+          "transparent": 173427,
+          "soft": 87858
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            71,
+            62,
+            383,
+            397
+          ],
+          "margin": 53,
+          "occupancy": 0.775390625,
+          "opaque": 96726,
+          "transparent": 161630,
+          "soft": 99523
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            72,
+            84,
+            365,
+            386
+          ],
+          "margin": 42,
+          "occupancy": 0.75390625,
+          "opaque": 89016,
+          "transparent": 170087,
+          "soft": 91098
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            62,
+            64,
+            381,
+            403
+          ],
+          "margin": 45,
+          "occupancy": 0.787109375,
+          "opaque": 98027,
+          "transparent": 160755,
+          "soft": 100565
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-haetae-guardian",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\fish\\epic\\hangang-haetae-guardian_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            48,
+            221,
+            1170,
+            851
+          ],
+          "margin": 36,
+          "occupancy": 0.9330143540669856,
+          "opaque": 627641,
+          "transparent": 901652,
+          "soft": 670646
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-haetae-guardian",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\sources\\hangang-haetae-guardian-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            25,
+            218,
+            600,
+            293
+          ],
+          "margin": 2,
+          "occupancy": 0.9569377990430622,
+          "opaque": 110135,
+          "transparent": 266607,
+          "soft": 126375
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            22,
+            220,
+            565,
+            370
+          ],
+          "margin": 22,
+          "occupancy": 0.9011164274322169,
+          "opaque": 115368,
+          "transparent": 261399,
+          "soft": 131625
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            32,
+            109,
+            573,
+            289
+          ],
+          "margin": 22,
+          "occupancy": 0.9138755980861244,
+          "opaque": 106138,
+          "transparent": 271655,
+          "soft": 121352
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            23,
+            113,
+            577,
+            305
+          ],
+          "margin": 23,
+          "occupancy": 0.9202551834130781,
+          "opaque": 106209,
+          "transparent": 270978,
+          "soft": 122027
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-millennial-gumiho",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\fish\\epic\\hangang-millennial-gumiho_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            34,
+            67,
+            1199,
+            1071
+          ],
+          "margin": 21,
+          "occupancy": 0.956140350877193,
+          "opaque": 744771,
+          "transparent": 722834,
+          "soft": 849555
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-millennial-gumiho",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\sources\\hangang-millennial-gumiho-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            72,
+            232,
+            539,
+            250
+          ],
+          "margin": 16,
+          "occupancy": 0.8596491228070176,
+          "opaque": 77904,
+          "transparent": 266053,
+          "soft": 127041
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            52,
+            228,
+            515,
+            271
+          ],
+          "margin": 52,
+          "occupancy": 0.8213716108452951,
+          "opaque": 74553,
+          "transparent": 270756,
+          "soft": 122335
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            75,
+            184,
+            540,
+            258
+          ],
+          "margin": 12,
+          "occupancy": 0.861244019138756,
+          "opaque": 76261,
+          "transparent": 272886,
+          "soft": 120205
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            26,
+            186,
+            545,
+            250
+          ],
+          "margin": 26,
+          "occupancy": 0.8692185007974481,
+          "opaque": 75714,
+          "transparent": 278521,
+          "soft": 114574
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-iron-eater-bulgasari",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\fish\\epic\\hangang-iron-eater-bulgasari_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            10,
+            133,
+            1237,
+            993
+          ],
+          "margin": 7,
+          "occupancy": 0.9864433811802232,
+          "opaque": 680044,
+          "transparent": 818899,
+          "soft": 753505
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-iron-eater-bulgasari",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\sources\\hangang-iron-eater-bulgasari-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            22,
+            165,
+            596,
+            323
+          ],
+          "margin": 9,
+          "occupancy": 0.9505582137161085,
+          "opaque": 104643,
+          "transparent": 266287,
+          "soft": 126810
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            25,
+            165,
+            581,
+            377
+          ],
+          "margin": 21,
+          "occupancy": 0.9266347687400319,
+          "opaque": 107609,
+          "transparent": 261098,
+          "soft": 132003
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            48,
+            122,
+            574,
+            362
+          ],
+          "margin": 5,
+          "occupancy": 0.9154704944178629,
+          "opaque": 100870,
+          "transparent": 270140,
+          "soft": 122945
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            16,
+            123,
+            600,
+            313
+          ],
+          "margin": 11,
+          "occupancy": 0.9569377990430622,
+          "opaque": 104805,
+          "transparent": 264345,
+          "soft": 128729
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\fish\\mythic\\hangang-red-cheer-incarnation_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            73,
+            1173,
+            1077
+          ],
+          "margin": 31,
+          "occupancy": 0.9354066985645934,
+          "opaque": 724992,
+          "transparent": 792083,
+          "soft": 779859
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261102-091000\\sources\\hangang-red-cheer-incarnation-sprite.source",
+      "width": 1774,
+      "height": 887,
+      "cell": 443.5,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            88,
+            113,
+            307,
+            267
+          ],
+          "margin": 48.5,
+          "occupancy": 0.6922209695603156,
+          "opaque": 51675,
+          "transparent": 136175,
+          "soft": 59959
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            76,
+            112,
+            318,
+            271
+          ],
+          "margin": 49.5,
+          "occupancy": 0.7170236753100339,
+          "opaque": 52991,
+          "transparent": 135095,
+          "soft": 61016
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            66,
+            112,
+            311,
+            272
+          ],
+          "margin": 59.5,
+          "occupancy": 0.7012401352874859,
+          "opaque": 52854,
+          "transparent": 135519,
+          "soft": 60619
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            62,
+            113,
+            311,
+            269
+          ],
+          "margin": 61.5,
+          "occupancy": 0.7012401352874859,
+          "opaque": 52774,
+          "transparent": 134769,
+          "soft": 61322
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            91,
+            73,
+            306,
+            274
+          ],
+          "margin": 46.5,
+          "occupancy": 0.6899661781285231,
+          "opaque": 53134,
+          "transparent": 135100,
+          "soft": 61056
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            75,
+            74,
+            311,
+            273
+          ],
+          "margin": 57.5,
+          "occupancy": 0.7012401352874859,
+          "opaque": 53115,
+          "transparent": 134700,
+          "soft": 61383
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            67,
+            75,
+            325,
+            272
+          ],
+          "margin": 51.5,
+          "occupancy": 0.7328072153325818,
+          "opaque": 54238,
+          "transparent": 133484,
+          "soft": 62661
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            62,
+            74,
+            314,
+            270
+          ],
+          "margin": 62,
+          "occupancy": 0.7080045095828635,
+          "opaque": 52616,
+          "transparent": 135476,
+          "soft": 60650
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

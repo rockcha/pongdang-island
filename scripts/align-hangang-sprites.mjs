@@ -1,7 +1,9 @@
 import fs from 'node:fs'
 import sharp from 'sharp'
-import {batch,items} from './prepare-hangang-assets.mjs'
-const partial=process.argv.includes('--partial'),four={},eight=[],records=[],audits=[],overlays=[]
+const refinement=process.argv.includes('--refinement')
+const {batch,items}=await import(refinement?'./prepare-hangang-refinement.mjs':'./prepare-hangang-assets.mjs')
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''))
+const partial=process.argv.includes('--partial'),four=refinement?read('src/features/aquarium/hangang-frame-layouts.json'):{},eight=refinement?read('src/features/aquarium/hangang-mythic-action-layouts.json').filter(r=>!items.some(i=>i.frames===8&&i.id===r.id)):[],records=[],audits=[],overlays=[]
 const pix=(d,w,x,y)=>(y*w+x)*4
 for(const item of items.filter(i=>i.kind==='fish')){
  const source=`${batch}/sources/${item.id}-sprite.source`
@@ -25,13 +27,13 @@ for(const item of items.filter(i=>i.kind==='fish')){
   bounds.push({frame,left,top,width:right-left+1,height:bottom-top+1,opaque,margin})
  }
  const b=bounds[0],size=Math.max(24,Math.round(cell*.06)),candidates=[]
- const manual={
+ const manual=(refinement?{'hangang-mago-creator':[313,100,24,24],'hangang-red-cheer-incarnation':[308,187,27,27]}:{
   'hangang-pungmul-seabass':[470,360,38,38],
   'hangang-seven-branched-blade':[95,325,30,30],
   'hangang-ungnyeo-mother':[260,137,24,24],
   'hangang-red-cheer-incarnation':[302,249,27,27],
- }[item.id]
- const hint=item.id.includes('moon-white-tiger')?[.87,.46]:item.id.includes('turtle-ship')?[.5,.45]:item.id.includes('hunmin')?[.5,.65]:item.rarity==='mythic'?[.52,.45]:[.68,.42]
+ })[item.id]
+ const hint=refinement?(item.id.includes('mago')?[.7,.18]:item.id.includes('red-cheer')?[.78,.35]:[.85,.38]):item.id.includes('moon-white-tiger')?[.87,.46]:item.id.includes('turtle-ship')?[.5,.45]:item.id.includes('hunmin')?[.5,.65]:item.rarity==='mythic'?[.52,.45]:[.68,.42]
  for(const fx of [hint[0]-.12,hint[0],hint[0]+.12])for(const fy of [hint[1]-.12,hint[1],hint[1]+.12]){
   const x=manual?manual[0]:Math.round(b.left+b.width*fx-size/2),y=manual?manual[1]:Math.round(b.top+b.height*fy-size/2),patchSize=manual?manual[2]:size;if(x<0||y<0||x+patchSize>=cell||y+patchSize>=cell)continue
   let samples=0,opaque=0,sum=0,sum2=0;const points=[]
@@ -46,7 +48,7 @@ for(const item of items.filter(i=>i.kind==='fish')){
  for(const candidate of candidates.slice(0,3)){
   const frames=[{frame:0,dx:0,dy:0,rmse:0}];let total=0
   for(let frame=1;frame<item.frames;frame++){
-   const ox=frame%columns*cell,oy=Math.floor(frame/columns)*cell,range=Math.round(cell*.25);let match={dx:0,dy:0,error:Infinity}
+   const ox=frame%columns*cell,oy=Math.floor(frame/columns)*cell,range=Math.round(cell*(refinement&&item.id==='hangang-mago-creator'?.08:.25));let match={dx:0,dy:0,error:Infinity}
    for(const step of [3,1]){
     const reach=step===3?range:3,cx=step===3?0:match.dx,cy=step===3?0:match.dy
     for(let dy=cy-reach;dy<=cy+reach;dy+=step)for(let dx=cx-reach;dx<=cx+reach;dx+=step){
@@ -72,10 +74,11 @@ for(const item of items.filter(i=>i.kind==='fish')){
  fs.writeFileSync(file,bytes)
  const scale=Number((.84/Math.max(...bounds.map(f=>Math.max(f.width,f.height)/newCell))).toFixed(6)),shifts=Array.from({length:item.frames},()=>[0,0])
  if(item.frames===8){
-  eight.push({id:item.id,aliases:[item.id,item.id+'_swim8_v1',item.id+'_compat_v1'],cell:newCell,scale,shifts,assetVersion:1});fs.mkdirSync('public/aquarium/swim',{recursive:true});fs.copyFileSync(file,`public/aquarium/swim/${item.id}_swim8_v1_sprite.png`)
+  const version=refinement?2:1
+  eight.push({id:item.id,aliases:[item.id,item.id+'_swim8_v1',item.id+'_compat_v1',...(refinement?[item.id+'_swim8_v2',item.id+'_compat_v2']:[])],cell:newCell,scale,shifts,assetVersion:version});fs.mkdirSync('public/aquarium/swim',{recursive:true});fs.copyFileSync(file,`public/aquarium/swim/${item.id}_swim8_v${version}_sprite.png`)
   const compat=Buffer.alloc(newCell*newCell*16)
   for(let frame=0;frame<4;frame++)for(let y=0;y<newCell;y++)out.copy(compat,((Math.floor(frame/2)*newCell+y)*newCell*2+frame%2*newCell)*4,(y*width+frame*newCell)*4,(y*width+(frame+1)*newCell)*4)
-  await sharp(compat,{raw:{width:newCell*2,height:newCell*2,channels:4}}).png().toFile(`${batch}/fish/mythic/${item.id}_compat_v1_sprite.png`)
+  await sharp(compat,{raw:{width:newCell*2,height:newCell*2,channels:4}}).png().toFile(`${batch}/fish/mythic/${item.id}_compat_v${version}_sprite.png`)
  }else four[item.sprite_sheet_path]={cell:newCell,scale,shifts}
  const [px,py,pw,ph]=best.patch
  overlays.push({id:item.id,input:await sharp(data,{raw:{width:info.width,height:info.height,channels:4}}).extract({left:0,top:0,width:cell,height:cell}).resize(240,240).composite([{input:Buffer.from(`<svg width="240" height="240"><rect x="${px/cell*240}" y="${py/cell*240}" width="${pw/cell*240}" height="${ph/cell*240}" fill="none" stroke="#ff316f" stroke-width="2"/></svg>`)}]).png().toBuffer()})
@@ -89,4 +92,4 @@ fs.writeFileSync(batch+'/registration.json',JSON.stringify(records,null,2)+'\n')
 fs.writeFileSync(batch+'/raw-sprite-audit.json',JSON.stringify({assets:audits},null,2)+'\n')
 fs.writeFileSync('src/features/aquarium/hangang-frame-layouts.json',JSON.stringify(four,null,2)+'\n')
 fs.writeFileSync('src/features/aquarium/hangang-mythic-action-layouts.json',JSON.stringify(eight,null,2)+'\n')
-console.log(JSON.stringify({aligned:records.length,expected:39,rawMarginChecked:true,rgbaPreserved:true}))
+console.log(JSON.stringify({aligned:records.length,expected:items.filter(i=>i.frames>1).length,rawMarginChecked:true,rgbaPreserved:true}))

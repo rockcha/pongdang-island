@@ -66,6 +66,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
           }
         }
         drawSpirits(false)
+        if(hangang)drawHangangMythicCanvas(context!,species.id,time,0,reduced,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size,'back')
         context!.drawImage(image,(index%columns)*cellWidth,Math.floor(index/columns)*cellHeight,cellWidth,cellHeight,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size,size)
         drawCrimson?.(context!,index,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size,crimsonEmission(time,0,reduced))
         drawSpirits(true)

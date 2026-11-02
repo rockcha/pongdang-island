@@ -1,0 +1,316 @@
+{
+  "status": "verified-and-uploaded",
+  "region_id": "hangang",
+  "tool": "built-in image_gen",
+  "items": [
+    {
+      "id": "hangang-mago-creator",
+      "kind": "fish",
+      "name": "천지를 빚은 태초의 손 · 마고",
+      "description": "산과 강을 빚었다는 마고가 두 손에 작은 산하를 품고 한강을 바라봐요.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.75",
+      "speed": "0.007",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/hangang-mago-creator_v2_thumbnail.png",
+      "sell_price": 3800,
+      "sprite_sheet_path": "fish/mythic/hangang-mago-creator_swim8_v2_sprite.png",
+      "native_region_id": "hangang",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 8,
+      "action": "Hands held forward together, empty upward-facing palms at a stable location. Keep face and torso rigid while the fingers open gently and both hands draw together then unfold; flowing Korean hanbok sleeves and long white hair trail LEFT in the water. Eight physical poses: 4 gentle floating/swimming poses; 4 prepare, open palms, relax and return. No miniature mountain or star baked into the sprite: a separate game effect will create it.",
+      "previousThumbnail": "fish/epic/hangang-mago-creator_v1_thumbnail.png",
+      "compatibility_path": "fish/mythic/hangang-mago-creator_compat_v2_sprite.png"
+    },
+    {
+      "id": "hangang-haetae-guardian",
+      "kind": "fish",
+      "name": "서울의 수호신 · 해태",
+      "description": "옳고 그름을 살피는 해태가 서울의 밤과 물길을 든든하게 지켜요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.02",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/hangang-haetae-guardian_v1_thumbnail.png",
+      "sell_price": 1400,
+      "sprite_sheet_path": "fish/epic/hangang-haetae-guardian_v2_sprite.png",
+      "native_region_id": "hangang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 4,
+      "action": "An underwater forward-swimming Korean blue/gold haetae. Body is HORIZONTAL, buoyant, belly clear of any ground. Forelegs sweep forward then backward as slow swimming paddles; hind legs extend backward behind hips then tuck slightly. Mane and tail flow left. Never standing, walking, running or contacting a floor. Four connected paddling poses; same head, chest and scale.",
+      "previousThumbnail": "fish/epic/hangang-haetae-guardian_v1_thumbnail.png",
+      "compatibility_path": null
+    },
+    {
+      "id": "hangang-millennial-gumiho",
+      "kind": "fish",
+      "name": "천년구미호",
+      "description": "천 년의 달빛을 아홉 꼬리에 모은 구미호가 여우구슬을 품고 나타나요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.02",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
+      "sell_price": 1420,
+      "sprite_sheet_path": "fish/epic/hangang-millennial-gumiho_v2_sprite.png",
+      "native_region_id": "hangang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 4,
+      "action": "An underwater forward-swimming nine-tailed white fox. Horizontal streamlined body, forepaws paddle water with small alternating strokes, hind paws stretch back and relax, nine long tails trail LEFT in a coherent slow traveling wave. No stepping on ground, standing or running. Keep exactly nine tails, face and torso stable; four continuous physical swim poses.",
+      "previousThumbnail": "fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
+      "compatibility_path": null
+    },
+    {
+      "id": "hangang-iron-eater-bulgasari",
+      "kind": "fish",
+      "name": "철을 먹고 자라난 재앙 · 불가사리",
+      "description": "쇠를 먹을수록 단단해진다는 전설의 짐승이에요. 바다의 별 불가사리와는 다른 존재예요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.02",
+      "size": 115,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/hangang-iron-eater-bulgasari_v1_thumbnail.png",
+      "sell_price": 1440,
+      "sprite_sheet_path": "fish/epic/hangang-iron-eater-bulgasari_v2_sprite.png",
+      "native_region_id": "hangang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 4,
+      "action": "An underwater forward-swimming armored Korean bulgasari beast. Horizontal buoyant torso, forelegs make connected swimming paddle strokes, hind legs extend backward then gently flex, long trunk points to SCREEN RIGHT and stays stable, tail streams LEFT. No walking, stomping, standing or bottom contact. Keep armored chest/head fixed; four connected aquatic propulsion poses.",
+      "previousThumbnail": "fish/epic/hangang-iron-eater-bulgasari_v1_thumbnail.png",
+      "compatibility_path": null
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "kind": "fish",
+      "name": "붉은 함성의 화신 · 붉은악마",
+      "description": "붉은 응원의 불꽃과 북소리가 모여 탄생한 거대한 정령이에요. 북을 두드릴 때마다 함성의 물결이 퍼져요.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.75",
+      "speed": "0.007",
+      "size": 170,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/hangang-red-cheer-incarnation_v1_thumbnail.png",
+      "sell_price": 3800,
+      "sprite_sheet_path": "fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+      "native_region_id": "hangang",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "right",
+      "frames": 8,
+      "action": "Korean red cheering fire spirit holding its ONE round taegeuk drum. Lock the FACE, CHEST AND DRUM TOGETHER at exactly the same positions and scale in ALL eight cells. Never turn torso, change face perspective, shrink/enlarge drum, crouch, bob or rotate. The mallet arm alone articulates. Flames remain one compact attached mass, only small outer tips flutter. Frames0-3 gentle arm/flame movement; frame4 mallet raised moderately, frame5 mallet contacts drum with a small wrist movement, frame6 releases contact, frame7 same neutral arm position as frame0. No dramatic pose or separate second drum. No detached particles, halos, sparks or effects.",
+      "previousThumbnail": "fish/mythic/hangang-red-cheer-incarnation_v1_thumbnail.png",
+      "compatibility_path": "fish/mythic/hangang-red-cheer-incarnation_compat_v2_sprite.png"
+    }
+  ],
+  "assets": [
+    {
+      "id": "hangang-mago-creator",
+      "tool": "built-in image_gen",
+      "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Neutral: forearms forward, both empty palms gently open upward; robe tails flow left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Fingers gently curl inward a little; left sleeve lifts slightly in current; head and chest unchanged. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Fingers relax and right sleeve floats a little higher; hair tips flow gently left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Return to neutral upward palms, long red ribbon settles slightly lower. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Both empty hands draw gently together in front of the same chest, preparing creation. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Hands gently unfold, both empty palms turn upward and slightly apart to reveal a world supplied by a separate effect. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Wrists relax downward slightly while palms remain cupped; robe tips drift left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Return to the neutral upward-palms position with relaxed fingers, preparing to loop. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+      "poses": [
+        {
+          "id": "hangang-mago-creator",
+          "frame": 0,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Neutral: forearms forward, both empty palms gently open upward; robe tails flow left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-807418a2-0487-48a6-99e6-e2b11ad34a73.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        },
+        {
+          "id": "hangang-mago-creator",
+          "frame": 1,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Fingers gently curl inward a little; left sleeve lifts slightly in current; head and chest unchanged. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-76ec6f43-16ed-4a85-8735-550998e49976.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        },
+        {
+          "id": "hangang-mago-creator",
+          "frame": 2,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Fingers relax and right sleeve floats a little higher; hair tips flow gently left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-c1627658-9be7-442e-b22c-6f05b66946f2.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        },
+        {
+          "id": "hangang-mago-creator",
+          "frame": 3,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Return to neutral upward palms, long red ribbon settles slightly lower. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-18b79cb6-a8a6-4288-b423-9f901611c07e.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        },
+        {
+          "id": "hangang-mago-creator",
+          "frame": 4,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Both empty hands draw gently together in front of the same chest, preparing creation. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-3c19ad35-4552-4d97-90e5-ec74952a0411.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        },
+        {
+          "id": "hangang-mago-creator",
+          "frame": 5,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Hands gently unfold, both empty palms turn upward and slightly apart to reveal a world supplied by a separate effect. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-3fc927e8-e15d-4901-80f0-b9769fcf0aed.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        },
+        {
+          "id": "hangang-mago-creator",
+          "frame": 6,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Wrists relax downward slightly while palms remain cupped; robe tips drift left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-0a801450-6d80-4d08-b60c-d0f2c163c0c6.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        },
+        {
+          "id": "hangang-mago-creator",
+          "frame": 7,
+          "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Return to the neutral upward-palms position with relaxed fingers, preparing to loop. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+          "original": "C:\\Users\\user\\.codex\\generated_images\\01a19830-3861-70a1-b75a-0d8bfbc2ca05\\exec-1bfec2a9-63c5-4cde-9847-7ef08601c816.png",
+          "tool": "built-in image_gen",
+          "reference": "sources/hangang-mago-neutral-reference.png"
+        }
+      ],
+      "assembly": {
+        "method": "Separate generated physical poses, one common source canvas and uniform export scale; no silhouette crop or per-frame zoom",
+        "sourceCell": 1254,
+        "cell": 512,
+        "scale": 0.4082934609250399
+      },
+      "path": "fish/mythic/hangang-mago-creator_swim8_v2_sprite.png",
+      "type": "sprite",
+      "original": "sources/hangang-mago-creator-sprite.source"
+    },
+    {
+      "id": "hangang-mago-creator",
+      "path": "fish/mythic/hangang-mago-creator_compat_v2_sprite.png",
+      "type": "compatibility-sprite",
+      "derivedFrom": "fish/mythic/hangang-mago-creator_swim8_v2_sprite.png",
+      "method": "Lossless RGBA repack of the first four final poses"
+    },
+    {
+      "id": "hangang-haetae-guardian",
+      "prompt": "Edit the approved character into a NEW production animation sheet. Reference1 fixes IDENTITY and MATERIALS; Reference2 fixes SIZE and GRID only. 2 columns x 2 rows, four square cells, square sheet. An underwater forward-swimming Korean blue/gold haetae. Body is HORIZONTAL, buoyant, belly clear of any ground. Forelegs sweep forward then backward as slow swimming paddles; hind legs extend backward behind hips then tuck slightly. Mane and tail flow left. Never standing, walking, running or contacting a floor. Four connected paddling poses; same head, chest and scale. ALL poses face SCREEN RIGHT. One same anatomical character, fixed rigid head/chest anchor, SAME SCALE and perspective in every cell. Render characters SMALL, only central 48% of each cell, minimum 20% completely transparent padding ALL four edges including all tips. No cell overlap, no cropping, no resizing between poses. Preserve colors, ornament, exact identity and soft detailed Korean fantasy illustration. Real physically different articulated poses, never duplicate stills; animation must return naturally to frame0. True clean alpha, no opaque background, no ground, no shadows, grid, labels, letters or water. No floating particles or broad aura. Keep exact complete 서울의 수호신 · 해태 anatomy.",
+      "destination": "assets/storage-upload/new/20261102-091000/fish/epic/hangang-haetae-guardian_v2_sprite.png",
+      "refs": [
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/fish/epic/hangang-haetae-guardian_v1_thumbnail.png",
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/sources/hangang-haetae-guardian-placement-guide.png"
+      ],
+      "tool": "built-in image_gen",
+      "original": "sources/hangang-haetae-guardian-sprite.source",
+      "path": "fish/epic/hangang-haetae-guardian_v2_sprite.png",
+      "type": "sprite"
+    },
+    {
+      "id": "hangang-millennial-gumiho",
+      "prompt": "Edit the approved character into a NEW production animation sheet. Reference1 fixes IDENTITY and MATERIALS; Reference2 fixes SIZE and GRID only. 2 columns x 2 rows, four square cells, square sheet. An underwater forward-swimming nine-tailed white fox. Horizontal streamlined body, forepaws paddle water with small alternating strokes, hind paws stretch back and relax, nine long tails trail LEFT in a coherent slow traveling wave. No stepping on ground, standing or running. Keep exactly nine tails, face and torso stable; four continuous physical swim poses. ALL poses face SCREEN RIGHT. One same anatomical character, fixed rigid head/chest anchor, SAME SCALE and perspective in every cell. Render characters SMALL, only central 48% of each cell, minimum 20% completely transparent padding ALL four edges including all tips. No cell overlap, no cropping, no resizing between poses. Preserve colors, ornament, exact identity and soft detailed Korean fantasy illustration. Real physically different articulated poses, never duplicate stills; animation must return naturally to frame0. True clean alpha, no opaque background, no ground, no shadows, grid, labels, letters or water. No floating particles or broad aura. Keep exact complete nine-tail fox anatomy.",
+      "destination": "assets/storage-upload/new/20261102-091000/fish/epic/hangang-millennial-gumiho_v2_sprite.png",
+      "refs": [
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/fish/epic/hangang-millennial-gumiho_v1_thumbnail.png",
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/sources/hangang-millennial-gumiho-placement-guide.png"
+      ],
+      "tool": "built-in image_gen",
+      "original": "sources/hangang-millennial-gumiho-sprite.source",
+      "path": "fish/epic/hangang-millennial-gumiho_v2_sprite.png",
+      "type": "sprite"
+    },
+    {
+      "id": "hangang-iron-eater-bulgasari",
+      "prompt": "Edit the approved character into a NEW production animation sheet. Reference1 fixes IDENTITY and MATERIALS; Reference2 fixes SIZE and GRID only. 2 columns x 2 rows, four square cells, square sheet. An underwater forward-swimming armored Korean bulgasari beast. Horizontal buoyant torso, forelegs make connected swimming paddle strokes, hind legs extend backward then gently flex, long trunk points to SCREEN RIGHT and stays stable, tail streams LEFT. No walking, stomping, standing or bottom contact. Keep armored chest/head fixed; four connected aquatic propulsion poses. ALL poses face SCREEN RIGHT. One same anatomical character, fixed rigid head/chest anchor, SAME SCALE and perspective in every cell. Render characters SMALL, only central 48% of each cell, minimum 20% completely transparent padding ALL four edges including all tips. No cell overlap, no cropping, no resizing between poses. Preserve colors, ornament, exact identity and soft detailed Korean fantasy illustration. Real physically different articulated poses, never duplicate stills; animation must return naturally to frame0. True clean alpha, no opaque background, no ground, no shadows, grid, labels, letters or water. No floating particles or broad aura. Keep exact complete 철을 먹고 자라난 재앙 · 불가사리 anatomy.",
+      "destination": "assets/storage-upload/new/20261102-091000/fish/epic/hangang-iron-eater-bulgasari_v2_sprite.png",
+      "refs": [
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/fish/epic/hangang-iron-eater-bulgasari_v1_thumbnail.png",
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/sources/hangang-iron-eater-bulgasari-placement-guide.png"
+      ],
+      "tool": "built-in image_gen",
+      "original": "sources/hangang-iron-eater-bulgasari-sprite.source",
+      "path": "fish/epic/hangang-iron-eater-bulgasari_v2_sprite.png",
+      "type": "sprite"
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "prompt": "Edit this exact 8-frame 4x2 transparent animation sheet. Preserve all eight physically distinct poses and exact character identity. REDUCE EVERY COMPLETE CHARACTER uniformly to 65% of its current size around its own cell center. Keep the entire 2:1 canvas and four columns by two rows; DO NOT trim transparent canvas or zoom back in. Need at least 20% entirely transparent margins ALL sides of every cell. Remove ALL loose detached particles, specks, sparks, aura outside character, and clean ragged alpha fringes. Preserve actual hair/cloth/flame shape. The face, chest AND round drum must be identical size, geometry, perspective and position relative to each other in ALL eight cells. Correct the striking pose's drum to match frame0 exactly; only the wrist/mallet arm articulates with SMALL movement. Head never shifts or crouches. Preserve compact flame mass; only attached tips flutter. Neutral frame7 connects naturally to frame0. No new expression or torso rotation.",
+      "destination": "assets/storage-upload/new/20261102-091000/fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+      "refs": [
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/fish/mythic/hangang-red-cheer-incarnation_v1_thumbnail.png",
+        "C:\\Users\\user\\Desktop\\pongdang-island/assets/storage-upload/new/20261102-091000/sources/hangang-red-cheer-incarnation-placement-guide.png"
+      ],
+      "tool": "built-in image_gen",
+      "original": "sources/hangang-red-cheer-incarnation-sprite.source",
+      "editSource": "sources/hangang-red-cheer-incarnation-sprite-rejected-margin.source",
+      "path": "fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+      "type": "sprite"
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "path": "fish/mythic/hangang-red-cheer-incarnation_compat_v2_sprite.png",
+      "type": "compatibility-sprite",
+      "derivedFrom": "fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+      "method": "Lossless RGBA repack of the first four final poses"
+    },
+    {
+      "id": "hangang-mago-creator",
+      "path": "fish/mythic/hangang-mago-creator_v2_thumbnail.png",
+      "type": "thumbnail",
+      "derivedFrom": "assets/storage-upload/new/20261102-033000/fish/epic/hangang-mago-creator_v1_thumbnail.png",
+      "method": "Unchanged approved identity, copied into the mythic asset namespace"
+    }
+  ],
+  "entries": [
+    {
+      "id": "hangang-mago-creator",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/hangang-mago-creator_swim8_v2_sprite.png",
+      "source": "sources/hangang-mago-creator-sprite.source",
+      "prompt": "Edit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Neutral: forearms forward, both empty palms gently open upward; robe tails flow left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Fingers gently curl inward a little; left sleeve lifts slightly in current; head and chest unchanged. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Fingers relax and right sleeve floats a little higher; hair tips flow gently left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Return to neutral upward palms, long red ribbon settles slightly lower. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Both empty hands draw gently together in front of the same chest, preparing creation. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Hands gently unfold, both empty palms turn upward and slightly apart to reveal a world supplied by a separate effect. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Wrists relax downward slightly while palms remain cupped; robe tips drift left. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.\n\nEdit this exact Korean creator goddess into ONE full-body animation pose, NOT a sheet. Return to the neutral upward-palms position with relaxed fingers, preparing to loop. Preserve the EXACT same right-facing face, flower hairpiece, fixed head/chest, body scale and proportions, ivory-red hanbok, gold floral details, long white hair. Same side-three-quarter perspective, not frontal. Empty hands, absolutely no mountains or orbs. Complete compact full figure from top of hair to lowest robe hem occupies ONLY the CENTRAL 60% of a SQUARE image, at least20% entirely transparent margin ALL sides. Do not zoom or crop. Transparent background with clean sharp alpha, no loose specks, no particles, no glow, no scenery or floor. Soft painted Korean fantasy art exactly matching reference. Only the stated hand/sleeve/hair pose changes. One figure only, square canvas, no grid or text.",
+      "referenceRoles": {
+        "identity": "fish/mythic/hangang-mago-creator_v2_thumbnail.png",
+        "placement": "sources/hangang-mago-creator-placement-guide.png"
+      },
+      "facing_direction": "right"
+    },
+    {
+      "id": "hangang-red-cheer-incarnation",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+      "source": "sources/hangang-red-cheer-incarnation-sprite.source",
+      "prompt": "Edit this exact 8-frame 4x2 transparent animation sheet. Preserve all eight physically distinct poses and exact character identity. REDUCE EVERY COMPLETE CHARACTER uniformly to 65% of its current size around its own cell center. Keep the entire 2:1 canvas and four columns by two rows; DO NOT trim transparent canvas or zoom back in. Need at least 20% entirely transparent margins ALL sides of every cell. Remove ALL loose detached particles, specks, sparks, aura outside character, and clean ragged alpha fringes. Preserve actual hair/cloth/flame shape. The face, chest AND round drum must be identical size, geometry, perspective and position relative to each other in ALL eight cells. Correct the striking pose's drum to match frame0 exactly; only the wrist/mallet arm articulates with SMALL movement. Head never shifts or crouches. Preserve compact flame mass; only attached tips flutter. Neutral frame7 connects naturally to frame0. No new expression or torso rotation.",
+      "referenceRoles": {
+        "identity": "fish/mythic/hangang-red-cheer-incarnation_v1_thumbnail.png",
+        "placement": "sources/hangang-red-cheer-incarnation-placement-guide.png"
+      },
+      "facing_direction": "right"
+    }
+  ],
+  "verification": {
+    "originalMarginAudit": "raw-sprite-audit.json",
+    "individualPoseAudit": "individual-pose-audit.json",
+    "independentFaceRegistration": [
+      "final-registration-4.json",
+      "final-registration-8.json"
+    ],
+    "secondaryDrumRegistration": "red-secondary-registration.json",
+    "runtimeReview": "runtime-review.json",
+    "publicBytes": "upload-verification.json"
+  }
+}

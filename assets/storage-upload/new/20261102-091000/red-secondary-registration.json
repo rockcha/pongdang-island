@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261102-091000/fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+    "storage_path":  "fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+    "patch":  [
+                  356,
+                  336,
+                  21,
+                  21
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  3,
+                       "dy":  2,
+                       "rmse":  9.7635306427667281
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  1,
+                       "dy":  1,
+                       "rmse":  9.2879118278786965
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  2,
+                       "dy":  1,
+                       "rmse":  11.578260769605233
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  3,
+                       "dy":  1,
+                       "rmse":  9.3987624022462413
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  2,
+                       "dy":  2,
+                       "rmse":  36.990691051801072
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  -1,
+                       "dy":  1,
+                       "rmse":  13.486766000152043
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  -1,
+                       "dy":  -1,
+                       "rmse":  14.466357876261794
+                   }
+               ]
+}

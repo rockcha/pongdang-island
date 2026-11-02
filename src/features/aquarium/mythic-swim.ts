@@ -12,6 +12,7 @@ import fireflyMythicSheets from './firefly-mythic-action-layouts.json'
 import pharaohMythicSheets from './pharaoh-mythic-action-layouts.json'
 import hangangMythicSheets from './hangang-mythic-action-layouts.json'
 import {pharaohMythicFrame} from './pharaoh-mythic-motion'
+import {hangangMythicFrame} from './hangang-mythic-motion'
 import {halloweenMythicFrame} from './halloween-spirits'
 import {sharedDecorationColumns,sharedDecorationAsset} from './shared-decoration-animation'
 export function mythicSheetColumns(path:string){return sharedDecorationColumns(path)??(mythicDetailedPaths.includes(path)?4:2)}
@@ -70,6 +71,8 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  const halloweenFrame=halloweenMythicFrame(path,time,seed)
  if(halloweenFrame!==null)return halloweenFrame
  const phase=((time+seed/1000000)%6+6)%6
+ const hangangFrame=hangangMythicFrame(sheetFor(path)!.id,phase)
+ if(hangangFrame!==null)return hangangFrame
  const pharaohFrame=pharaohMythicFrame(path,phase)
  if(pharaohFrame!==null)return pharaohFrame
  if(plunderPaths.has(path)){

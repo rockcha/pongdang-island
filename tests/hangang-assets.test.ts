@@ -3,7 +3,6 @@ import {expect,it} from 'vitest'
 import fs from 'node:fs'
 import sharp from 'sharp'
 import {mythicSwimAsset,mythicSwimFrame} from '@/features/aquarium/mythic-swim'
-import catalog from '../supabase/catalog/catalog.json'
 const root='assets/storage-upload/new/20261102-033000/'
 const read=(p:string)=>JSON.parse(fs.readFileSync(root+p,'utf8').replace(/^\uFEFF/,''))
 it('keeps all original and final frames clear of edges with real alpha',()=>{
@@ -19,13 +18,14 @@ it('preserves original pixels with baked anchors and no runtime double correctio
  for(const n of [4,8])for(const s of read(`final-registration-${n}.json`))for(const f of s.frames){expect([f.dx,f.dy],s.storage_path+' '+f.frame).toEqual([0,0]);expect(f.rmse).toBeLessThan(60)}
 })
 it('keeps a lossless four-pose compatibility sheet and resolves eight distinct six-second mythical poses',async()=>{
- for(const s of catalog.collectible_species.filter(s=>s.native_region_id==='hangang'&&s.rarity==='mythic')){
-  expect(s.sprite_sheet_path).toContain('_compat_v1_sprite.png')
-  const asset=mythicSwimAsset(s.sprite_sheet_path!,'mythic')!
+ // The original release remains reproducible after newer catalog art replaces it.
+ for(const s of read('manifest.json').items.filter(s=>s.rarity==='mythic')){
+  const compatibilityPath=`fish/mythic/${s.id}_compat_v1_sprite.png`
+  const asset=mythicSwimAsset(compatibilityPath,'mythic')!
   expect(asset).not.toBeNull()
   expect(new Set(Array.from({length:120},(_,n)=>mythicSwimFrame(asset.path,n/20,0)))).toEqual(new Set([0,1,2,3,4,5,6,7]))
   expect(mythicSwimFrame(asset.path,5,0,true)).toBe(0)
-  const compatibility=root+s.sprite_sheet_path,enhanced='public'+asset.url,m=await sharp(compatibility).metadata(),cell=m.width!/2
+  const compatibility=root+compatibilityPath,enhanced=`public/aquarium/swim/${s.id}_swim8_v1_sprite.png`,m=await sharp(compatibility).metadata(),cell=m.width!/2
   expect(m.width).toBe(m.height)
   for(let frame=0;frame<4;frame++){
    const a=await sharp(compatibility).extract({left:frame%2*cell,top:Math.floor(frame/2)*cell,width:cell,height:cell}).ensureAlpha().raw().toBuffer()

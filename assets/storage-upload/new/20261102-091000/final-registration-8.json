@@ -1,0 +1,124 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261102-091000/fish/mythic/hangang-mago-creator_swim8_v2_sprite.png",
+        "storage_path":  "fish/mythic/hangang-mago-creator_swim8_v2_sprite.png",
+        "patch":  [
+                      338,
+                      125,
+                      24,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  17.526319493835551
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  14.316729724346967
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  13.731948377779462
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.981593956982518
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.053845484717073
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  10.056675332832416
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  13.585234401731904
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261102-091000/fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+        "storage_path":  "fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+        "patch":  [
+                      354,
+                      233,
+                      27,
+                      27
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  31.104066662784835
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  28.544042209873016
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  32.603207446545333
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  31.541321124385469
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  37.281503374021284
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  32.096690341282816
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  30.374310945799227
+                       }
+                   ]
+    }
+]

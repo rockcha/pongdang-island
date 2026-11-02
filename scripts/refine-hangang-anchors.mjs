@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import sharp from 'sharp'
-import {batch,items} from './prepare-hangang-assets.mjs'
+const refinement=process.argv.includes('--refinement')
+const {batch,items}=await import(refinement?'./prepare-hangang-refinement.mjs':'./prepare-hangang-assets.mjs')
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,'')),records=read(batch+'/registration.json'),four=read('src/features/aquarium/hangang-frame-layouts.json'),eight=read('src/features/aquarium/hangang-mythic-action-layouts.json')
 let changed=0
 for(const count of [4,8])for(const measurement of read(`${batch}/final-registration-${count}.json`)){
@@ -18,13 +19,13 @@ for(const count of [4,8])for(const measurement of read(`${batch}/final-registrat
  record.padding+=pad;record.scale*=cell/oldCell;record.cell=cell
  const layout=count===8?eight.find(r=>r.id===record.id):four[record.storage_path]
  layout.cell=cell;layout.scale=record.scale
- if(count===8)fs.copyFileSync(file,`public/aquarium/swim/${record.id}_swim8_v1_sprite.png`)
+ if(count===8)fs.copyFileSync(file,`public/aquarium/swim/${record.id}_swim8_v${layout.assetVersion??1}_sprite.png`)
  changed++
 }
 for(const i of items.filter(i=>i.frames===8)){
  const record=records.find(r=>r.id===i.id),cell=record.cell,{data}=await sharp(batch+'/'+i.sprite_sheet_path).ensureAlpha().raw().toBuffer({resolveWithObject:true}),out=Buffer.alloc(cell*cell*4*4)
  for(let frame=0;frame<4;frame++)for(let y=0;y<cell;y++)data.copy(out,((Math.floor(frame/2)*cell+y)*cell*2+frame%2*cell)*4,(y*cell*4+frame*cell)*4,(y*cell*4+(frame+1)*cell)*4)
- await sharp(out,{raw:{width:cell*2,height:cell*2,channels:4}}).png().toFile(`${batch}/fish/mythic/${i.id}_compat_v1_sprite.png`)
+ await sharp(out,{raw:{width:cell*2,height:cell*2,channels:4}}).png().toFile(batch+'/'+(i.compatibility_path??`fish/mythic/${i.id}_compat_v1_sprite.png`))
 }
 for(const count of [4,8])fs.writeFileSync(`${batch}/final-anchors-${count}.json`,JSON.stringify(records.filter(r=>r.frames.length===count).map(r=>({file:batch+'/'+r.storage_path,storage_path:r.storage_path,patch:[r.patch[0]+r.padding,r.patch[1]+r.padding,r.patch[2],r.patch[3]]})),null,2)+'\n')
 fs.writeFileSync(batch+'/registration.json',JSON.stringify(records,null,2)+'\n')

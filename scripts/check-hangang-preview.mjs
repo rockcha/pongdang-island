@@ -3,6 +3,7 @@ import {mkdtempSync,writeFileSync,rmSync} from 'node:fs'
 import {tmpdir} from 'node:os'
 import {resolve,join,dirname,basename} from 'node:path'
 import {pathToFileURL} from 'node:url'
+const refinement=process.argv.includes('--refinement'),expected=refinement?8:39,batch=refinement?'assets/storage-upload/new/20261102-091000':'assets/storage-upload/new/20261102-033000'
 const profile=mkdtempSync(join(tmpdir(),'pongdang-hangang-'))
 const browser=spawn('C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',['--headless','--disable-gpu','--no-sandbox','--remote-debugging-port=9338',`--user-data-dir=${profile}`,'about:blank'],{windowsHide:true,stdio:'ignore'})
 let socket
@@ -25,15 +26,20 @@ try{
    const r=await cdp('Runtime.evaluate',{expression:`(async()=>{window.playing=false;return await window.renderAt(${time},${reduced})})()`,awaitPromise:true,returnByValue:true})
    if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails))
    const state=r.result.value
-   if(state.count!==39||state.width>width+1)throw Error(JSON.stringify({time,width,state}))
+   if(state.count!==expected||state.width>width+1)throw Error(JSON.stringify({time,width,state}))
    evidence.push({width,time,reduced,...state})
   }
   await cdp('Runtime.evaluate',{expression:'window.renderAt(5.2,false)' ,awaitPromise:true})
   const shot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:true})
   writeFileSync(`artifacts/hangang-preview-${width}.png`,Buffer.from(shot.data,'base64'))
+  if(refinement&&width===1000)for(const time of [1.9,4.8,5.45]){
+   await cdp('Runtime.evaluate',{expression:`window.renderAt(${time},false)`,awaitPromise:true})
+   const phaseShot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:true})
+   writeFileSync(`artifacts/hangang-refinement-phase-${time}.png`,Buffer.from(phaseShot.data,'base64'))
+  }
  }
- writeFileSync('assets/storage-upload/new/20261102-033000/runtime-review.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'Actual runtime frame/layout/effect helpers and local final PNGs; desktop/mobile review harness, not authenticated production gameplay',evidence},null,2)+'\n')
- console.log('PASS: 39 decoded animated sprites at 390/1000px, all eight mythic poses, six-second runtime and reduced motion')
+ writeFileSync(batch+'/runtime-review.json',JSON.stringify({checkedAt:new Date().toISOString(),scope:'Actual runtime frame/layout/effect helpers and local final PNGs; desktop/mobile review harness, not authenticated production gameplay',evidence},null,2)+'\n')
+ console.log('PASS: '+expected+' decoded animated sprites at 390/1000px, all eight mythic poses, six-second runtime and reduced motion')
 }finally{
  socket?.close();browser.kill();await new Promise(r=>setTimeout(r,500))
  if(dirname(profile)!==resolve(tmpdir())||!basename(profile).startsWith('pongdang-hangang-'))throw Error('Unexpected preview profile path')

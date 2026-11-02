@@ -1,0 +1,113 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261102-091000/fish/epic/hangang-haetae-guardian_v2_sprite.png",
+        "storage_path":  "fish/epic/hangang-haetae-guardian_v2_sprite.png",
+        "patch":  [
+                      563,
+                      394,
+                      38,
+                      38
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  15.536366957073717
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  18.58639669252312
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  26.54361711348805
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261102-091000/fish/epic/hangang-millennial-gumiho_v2_sprite.png",
+        "storage_path":  "fish/epic/hangang-millennial-gumiho_v2_sprite.png",
+        "patch":  [
+                      570,
+                      397,
+                      38,
+                      38
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.685371064862645
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.3280134176322154
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.8281084638058083
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261102-091000/fish/epic/hangang-iron-eater-bulgasari_v2_sprite.png",
+        "storage_path":  "fish/epic/hangang-iron-eater-bulgasari_v2_sprite.png",
+        "patch":  [
+                      482,
+                      313,
+                      38,
+                      38
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  24.109004185993182
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  28.553878274186179
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  26.745928186477528
+                       }
+                   ]
+    }
+]

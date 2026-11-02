@@ -135,14 +135,16 @@
     "assetVersion": 1
   },
   {
-    "id": "hangang-red-cheer-incarnation",
+    "id": "hangang-mago-creator",
     "aliases": [
-      "hangang-red-cheer-incarnation",
-      "hangang-red-cheer-incarnation_swim8_v1",
-      "hangang-red-cheer-incarnation_compat_v1"
+      "hangang-mago-creator",
+      "hangang-mago-creator_swim8_v1",
+      "hangang-mago-creator_compat_v1",
+      "hangang-mago-creator_swim8_v2",
+      "hangang-mago-creator_compat_v2"
     ],
-    "cell": 508,
-    "scale": 1.285301,
+    "cell": 562,
+    "scale": 1.159902,
     "shifts": [
       [
         0,
@@ -177,6 +179,53 @@
         0
       ]
     ],
-    "assetVersion": 1
+    "assetVersion": 2
+  },
+  {
+    "id": "hangang-red-cheer-incarnation",
+    "aliases": [
+      "hangang-red-cheer-incarnation",
+      "hangang-red-cheer-incarnation_swim8_v1",
+      "hangang-red-cheer-incarnation_compat_v1",
+      "hangang-red-cheer-incarnation_swim8_v2",
+      "hangang-red-cheer-incarnation_compat_v2"
+    ],
+    "cell": 536,
+    "scale": 1.385354,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "assetVersion": 2
   }
 ]

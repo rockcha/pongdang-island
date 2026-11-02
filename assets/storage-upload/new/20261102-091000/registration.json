@@ -1,0 +1,562 @@
+[
+  {
+    "id": "hangang-mago-creator",
+    "storage_path": "fish/mythic/hangang-mago-creator_swim8_v2_sprite.png",
+    "sourceDimensions": [
+      2048,
+      1024
+    ],
+    "sourceCell": 512,
+    "cell": 562,
+    "padding": 25,
+    "scale": 1.159902,
+    "patch": [
+      313,
+      100,
+      24,
+      24
+    ],
+    "opaqueSamples": 64,
+    "contrast": 41.2576352229828,
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 1,
+        "dy": -17,
+        "rmse": 17.52631949383555
+      },
+      {
+        "frame": 2,
+        "dx": 6,
+        "dy": -16,
+        "rmse": 14.316729724346967
+      },
+      {
+        "frame": 3,
+        "dx": -9,
+        "dy": -10,
+        "rmse": 13.731948377779462
+      },
+      {
+        "frame": 4,
+        "dx": 6,
+        "dy": 7,
+        "rmse": 11.981593956982518
+      },
+      {
+        "frame": 5,
+        "dx": -3,
+        "dy": -10,
+        "rmse": 11.053845484717073
+      },
+      {
+        "frame": 6,
+        "dx": 7,
+        "dy": 12,
+        "rmse": 10.056675332832416
+      },
+      {
+        "frame": 7,
+        "dx": 4,
+        "dy": -7,
+        "rmse": 13.585234401731904
+      }
+    ],
+    "rgbaPreserved": true,
+    "method": "Rounded source grid boundaries; at most one transparent pixel added per cell; opaque rigid-patch RGB registration; inverse integer translation encoded in PNG; uniform padding and scale; no source pixel discarded",
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 65,
+          "top": 70,
+          "width": 376,
+          "height": 400,
+          "opaque": 97765,
+          "margin": 42
+        },
+        {
+          "frame": 1,
+          "left": 66,
+          "top": 53,
+          "width": 378,
+          "height": 407,
+          "opaque": 98574,
+          "margin": 52
+        },
+        {
+          "frame": 2,
+          "left": 72,
+          "top": 55,
+          "width": 363,
+          "height": 401,
+          "opaque": 94131,
+          "margin": 55
+        },
+        {
+          "frame": 3,
+          "left": 75,
+          "top": 63,
+          "width": 380,
+          "height": 398,
+          "opaque": 92989,
+          "margin": 51
+        },
+        {
+          "frame": 4,
+          "left": 79,
+          "top": 79,
+          "width": 341,
+          "height": 383,
+          "opaque": 85268,
+          "margin": 50
+        },
+        {
+          "frame": 5,
+          "left": 71,
+          "top": 62,
+          "width": 383,
+          "height": 397,
+          "opaque": 96726,
+          "margin": 53
+        },
+        {
+          "frame": 6,
+          "left": 72,
+          "top": 84,
+          "width": 365,
+          "height": 386,
+          "opaque": 89016,
+          "margin": 42
+        },
+        {
+          "frame": 7,
+          "left": 62,
+          "top": 64,
+          "width": 381,
+          "height": 403,
+          "opaque": 98027,
+          "margin": 45
+        }
+      ]
+    }
+  },
+  {
+    "id": "hangang-haetae-guardian",
+    "storage_path": "fish/epic/hangang-haetae-guardian_v2_sprite.png",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "sourceCell": 627,
+    "cell": 865,
+    "padding": 119,
+    "scale": 1.211,
+    "patch": [
+      444,
+      275,
+      38,
+      38
+    ],
+    "opaqueSamples": 169,
+    "contrast": 58.96444462255954,
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -10,
+        "dy": 0,
+        "rmse": 15.536366957073717
+      },
+      {
+        "frame": 2,
+        "dx": 3,
+        "dy": -111,
+        "rmse": 18.58639669252312
+      },
+      {
+        "frame": 3,
+        "dx": -16,
+        "dy": -110,
+        "rmse": 26.54361711348805
+      }
+    ],
+    "rgbaPreserved": true,
+    "method": "Rounded source grid boundaries; at most one transparent pixel added per cell; opaque rigid-patch RGB registration; inverse integer translation encoded in PNG; uniform padding and scale; no source pixel discarded",
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 25,
+          "top": 218,
+          "width": 600,
+          "height": 293,
+          "opaque": 110135,
+          "margin": 2
+        },
+        {
+          "frame": 1,
+          "left": 22,
+          "top": 220,
+          "width": 565,
+          "height": 370,
+          "opaque": 115368,
+          "margin": 22
+        },
+        {
+          "frame": 2,
+          "left": 32,
+          "top": 109,
+          "width": 573,
+          "height": 289,
+          "opaque": 106138,
+          "margin": 22
+        },
+        {
+          "frame": 3,
+          "left": 23,
+          "top": 113,
+          "width": 577,
+          "height": 305,
+          "opaque": 106209,
+          "margin": 23
+        }
+      ]
+    }
+  },
+  {
+    "id": "hangang-millennial-gumiho",
+    "storage_path": "fish/epic/hangang-millennial-gumiho_v2_sprite.png",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "sourceCell": 627,
+    "cell": 745,
+    "padding": 59,
+    "scale": 1.148257,
+    "patch": [
+      511,
+      338,
+      38,
+      38
+    ],
+    "opaqueSamples": 169,
+    "contrast": 32.32173799342975,
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -51,
+        "dy": -1,
+        "rmse": 12.685371064862645
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -42,
+        "rmse": 9.328013417632215
+      },
+      {
+        "frame": 3,
+        "dx": -51,
+        "dy": -42,
+        "rmse": 9.828108463805808
+      }
+    ],
+    "rgbaPreserved": true,
+    "method": "Rounded source grid boundaries; at most one transparent pixel added per cell; opaque rigid-patch RGB registration; inverse integer translation encoded in PNG; uniform padding and scale; no source pixel discarded",
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 72,
+          "top": 232,
+          "width": 539,
+          "height": 250,
+          "opaque": 77904,
+          "margin": 16
+        },
+        {
+          "frame": 1,
+          "left": 52,
+          "top": 228,
+          "width": 515,
+          "height": 271,
+          "opaque": 74553,
+          "margin": 52
+        },
+        {
+          "frame": 2,
+          "left": 75,
+          "top": 184,
+          "width": 540,
+          "height": 258,
+          "opaque": 76261,
+          "margin": 12
+        },
+        {
+          "frame": 3,
+          "left": 26,
+          "top": 186,
+          "width": 545,
+          "height": 250,
+          "opaque": 75714,
+          "margin": 26
+        }
+      ]
+    }
+  },
+  {
+    "id": "hangang-iron-eater-bulgasari",
+    "storage_path": "fish/epic/hangang-iron-eater-bulgasari_v2_sprite.png",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "sourceCell": 627,
+    "cell": 715,
+    "padding": 44,
+    "scale": 1.001,
+    "patch": [
+      438,
+      269,
+      38,
+      38
+    ],
+    "opaqueSamples": 169,
+    "contrast": 59.56986207379229,
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -25,
+        "dy": 5,
+        "rmse": 24.109004185993182
+      },
+      {
+        "frame": 2,
+        "dx": -2,
+        "dy": -34,
+        "rmse": 28.55387827418618
+      },
+      {
+        "frame": 3,
+        "dx": 7,
+        "dy": -36,
+        "rmse": 26.745928186477528
+      }
+    ],
+    "rgbaPreserved": true,
+    "method": "Rounded source grid boundaries; at most one transparent pixel added per cell; opaque rigid-patch RGB registration; inverse integer translation encoded in PNG; uniform padding and scale; no source pixel discarded",
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 22,
+          "top": 165,
+          "width": 596,
+          "height": 323,
+          "opaque": 104643,
+          "margin": 9
+        },
+        {
+          "frame": 1,
+          "left": 25,
+          "top": 165,
+          "width": 581,
+          "height": 377,
+          "opaque": 107609,
+          "margin": 21
+        },
+        {
+          "frame": 2,
+          "left": 48,
+          "top": 122,
+          "width": 574,
+          "height": 362,
+          "opaque": 100870,
+          "margin": 5
+        },
+        {
+          "frame": 3,
+          "left": 16,
+          "top": 123,
+          "width": 600,
+          "height": 313,
+          "opaque": 104805,
+          "margin": 11
+        }
+      ]
+    }
+  },
+  {
+    "id": "hangang-red-cheer-incarnation",
+    "storage_path": "fish/mythic/hangang-red-cheer-incarnation_swim8_v2_sprite.png",
+    "sourceDimensions": [
+      1774,
+      887
+    ],
+    "sourceCell": 444,
+    "cell": 536,
+    "padding": 46,
+    "scale": 1.385354,
+    "patch": [
+      308,
+      187,
+      27,
+      27
+    ],
+    "opaqueSamples": 81,
+    "contrast": 69.20607980142721,
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -12,
+        "dy": -1,
+        "rmse": 31.104066662784835
+      },
+      {
+        "frame": 2,
+        "dx": -24,
+        "dy": -1,
+        "rmse": 28.544042209873016
+      },
+      {
+        "frame": 3,
+        "dx": -28,
+        "dy": -1,
+        "rmse": 32.60320744654533
+      },
+      {
+        "frame": 4,
+        "dx": -2,
+        "dy": -38,
+        "rmse": 31.54132112438547
+      },
+      {
+        "frame": 5,
+        "dx": -11,
+        "dy": -38,
+        "rmse": 37.281503374021284
+      },
+      {
+        "frame": 6,
+        "dx": -16,
+        "dy": -38,
+        "rmse": 32.096690341282816
+      },
+      {
+        "frame": 7,
+        "dx": -22,
+        "dy": -37,
+        "rmse": 30.374310945799227
+      }
+    ],
+    "rgbaPreserved": true,
+    "method": "Rounded source grid boundaries; at most one transparent pixel added per cell; opaque rigid-patch RGB registration; inverse integer translation encoded in PNG; uniform padding and scale; no source pixel discarded",
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 88,
+          "top": 113,
+          "width": 307,
+          "height": 267,
+          "opaque": 51675,
+          "margin": 49
+        },
+        {
+          "frame": 1,
+          "left": 76,
+          "top": 112,
+          "width": 318,
+          "height": 271,
+          "opaque": 52991,
+          "margin": 50
+        },
+        {
+          "frame": 2,
+          "left": 66,
+          "top": 112,
+          "width": 311,
+          "height": 272,
+          "opaque": 52854,
+          "margin": 60
+        },
+        {
+          "frame": 3,
+          "left": 62,
+          "top": 113,
+          "width": 311,
+          "height": 269,
+          "opaque": 52774,
+          "margin": 62
+        },
+        {
+          "frame": 4,
+          "left": 91,
+          "top": 73,
+          "width": 306,
+          "height": 274,
+          "opaque": 53134,
+          "margin": 47
+        },
+        {
+          "frame": 5,
+          "left": 75,
+          "top": 74,
+          "width": 311,
+          "height": 273,
+          "opaque": 53115,
+          "margin": 58
+        },
+        {
+          "frame": 6,
+          "left": 67,
+          "top": 75,
+          "width": 325,
+          "height": 272,
+          "opaque": 54238,
+          "margin": 52
+        },
+        {
+          "frame": 7,
+          "left": 62,
+          "top": 74,
+          "width": 314,
+          "height": 270,
+          "opaque": 52616,
+          "margin": 62
+        }
+      ]
+    }
+  }
+]

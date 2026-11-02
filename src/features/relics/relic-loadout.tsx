@@ -17,6 +17,8 @@ import {playRelicEquipSound,playRelicUnequipSound} from '@/features/gold/purchas
 import {RelicCatalogTabs} from './relic-catalog-tabs'
 import {RelicGold} from './relic-gold'
 import {RelicCraftingGuide} from './relic-crafting-guide'
+import {RelicRecombination,useRelicRecycling} from './relic-recycling'
+import {Recycle} from 'lucide-react'
 import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs'
 import './relics.css'
 
@@ -34,6 +36,7 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
  const navigate=useNavigate(),{session}=useAuth()
  const [open,setOpen]=useState(page),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
  const [state,setState,query]=useAccountState<RelicState>('relics',readRelics,{enabled:open})
+ const recycling=useRelicRecycling({storageKey:storageKey+':recycling',state,onState:setState})
  const [notice,setNotice]=useState('')
  const [tab,setTab]=useState('inventory'),[craftBusy,setCraftBusy]=useState(false),[craftLocked,setCraftLocked]=useState(false)
  const [equipEffect,setEquipEffect]=useState<RelicTransition|null>(null)
@@ -57,9 +60,9 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
  useEffect(()=>{if(query.error&&!purchase)setError('유물을 불러오지 못했어요. 다시 시도해 주세요.')},[query.error,purchase])
  useEffect(()=>{if(attempt>0)void query.refetch({cancelRefetch:false}).then(result=>{if(!result.error)setError('')})},[attempt])
  function remember(p:Purchase|null){setPending(p);try{if(p)localStorage.setItem(storageKey,JSON.stringify(p));else localStorage.removeItem(storageKey)}catch{/* Retain the same operation in memory. */}}
- function select(id:string|null,name:string){if(!state||pending)return;setError('');setNotice('');setPurchase({id,name,operation:randomId(),fee:state.equippedId?(state.unequipFee??state.changeFee):(state.equipFee??0)})}
+ function select(id:string|null,name:string){if(!state||pending||recycling.locked)return;setError('');setNotice('');setPurchase({id,name,operation:randomId(),fee:state.equippedId?(state.unequipFee??state.changeFee):(state.equipFee??0)})}
  async function share(relic:Relic){
-  if(!session||lock.current||pending)return
+  if(!session||lock.current||pending||recycling.locked)return
   lock.current=true;setSaving(true);setError('')
   try{
    const caught=await loadRelicShowcaseCatch(relic.id)
@@ -108,21 +111,23 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    {pending&&<Button disabled={saving} onClick={()=>{setError('');setPurchase(pending)}}>{pending.action==='sell'?'판매':'장착'} 결과 다시 확인</Button>}
    {!state&&!error&&<p role="status" className="py-6 text-center text-sm">유물을 불러오는 중…</p>}
    {state&&<>
-    <Tabs value={tab} onValueChange={value=>{if(!craftBusy)setTab(String(value))}} className="flex min-h-0 flex-1 flex-col">
-     <TabsList aria-label="유물 메뉴" className="relic-page-tabs shrink-0"><TabsTrigger value="inventory" disabled={craftBusy}><RelicIcon className={`size-7 shrink-0 object-contain ${tab==='inventory'?'':'grayscale opacity-55'}`}/>보유 유물</TabsTrigger><TabsTrigger value="craft" disabled={!state.canCraft||saving||!!pending||craftBusy}><img src="/app-icons/relic-craft.png" alt="" aria-hidden="true" className={`size-7 shrink-0 object-contain ${tab==='craft'?'':'grayscale opacity-55'}`}/>{state.canCraft?'세공':'세공 준비 중'}{craftLocked&&!craftBusy&&<span className="relic-tab-notice">결과 확인</span>}</TabsTrigger></TabsList>
+    <Tabs value={tab} onValueChange={value=>{if(!craftBusy&&!recycling.busy)setTab(String(value))}} className="flex min-h-0 flex-1 flex-col">
+     <TabsList aria-label="유물 메뉴" className="relic-page-tabs shrink-0" style={{gridTemplateColumns:'repeat(3,minmax(0,1fr))'}}><TabsTrigger value="inventory" disabled={craftBusy||recycling.busy}><RelicIcon className={`size-7 shrink-0 object-contain ${tab==='inventory'?'':'grayscale opacity-55'}`}/>보유 유물</TabsTrigger><TabsTrigger value="craft" disabled={!state.canCraft||saving||!!pending||craftBusy||recycling.locked}><img src="/app-icons/relic-craft.png" alt="" aria-hidden="true" className={`size-7 shrink-0 object-contain ${tab==='craft'?'':'grayscale opacity-55'}`}/>{state.canCraft?'세공':'세공 준비 중'}{craftLocked&&!craftBusy&&<span className="relic-tab-notice">결과 확인</span>}</TabsTrigger><TabsTrigger value="recombine" disabled={saving||!!pending||craftBusy||craftLocked||recycling.busy}><Recycle className="size-5 shrink-0"/>재조합</TabsTrigger></TabsList>
      <TabsContent value="inventory" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col gap-4 px-5 pb-4 pt-4 [&[hidden]]:hidden">
-      <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending||craftLocked} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>setPickerOpen(true)} onUnequip={()=>select(null,'유물 해제')}/>
+      <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending||craftLocked||recycling.locked} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>setPickerOpen(true)} onUnequip={()=>select(null,'유물 해제')}/>
       <div className="flex items-center justify-between text-xs text-muted-foreground"><span>{state.relics.filter(r=>r.owned).length}종 보유</span><Button variant="ghost" size="sm" className="text-xs text-primary" onClick={()=>{setOpen(false);navigate('/item-collection?tab=relic')}}>유물 도감</Button></div>
       {!state.relics.some(r=>r.owned)&&<p className="py-6 text-center text-xs text-muted-foreground">아직 보유한 유물이 없어요.</p>}
       <Dialog open={pickerOpen} onOpenChange={value=>{if(!saving&&!purchase)setPickerOpen(value)}}><DialogContent className="flex h-[80dvh] max-h-[85dvh] flex-col overflow-hidden rounded-2xl sm:max-w-lg"><DialogHeader><DialogTitle>유물 {state.equippedId?'교체':'장착'}</DialogTitle><DialogDescription className="sr-only">장착할 유물을 선택해 주세요.</DialogDescription></DialogHeader>
-       <RelicCatalogTabs state={state} disabled={saving||!!pending||craftLocked} listRef={list} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
+       <RelicCatalogTabs state={state} disabled={saving||!!pending||craftLocked||recycling.locked} listRef={list} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onDismantle={r=>recycling.prepare('dismantle',[{id:r.id,quantity:1}])} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
       </DialogContent></Dialog>
      </TabsContent>
      <TabsContent value="craft" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col [&[hidden]]:hidden">
-      {state.canCraft&&<RelicCraftingGuide state={state} disabled={saving||!!pending} storageKey={storageKey+':craft'} onState={setState} onBusyChange={setCraftBusy} onLockChange={setCraftLocked} onOpenInventory={()=>setTab('inventory')} onShare={r=>void share(r)}/>}
+      {state.canCraft&&<RelicCraftingGuide state={state} disabled={saving||!!pending||recycling.locked} storageKey={storageKey+':craft'} onState={setState} onBusyChange={setCraftBusy} onLockChange={setCraftLocked} onOpenInventory={()=>setTab('inventory')} onShare={r=>void share(r)}/>}
      </TabsContent>
+     <TabsContent value="recombine" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col [&[hidden]]:hidden">{tab==='recombine'&&<RelicRecombination state={state} disabled={saving||!!pending||craftBusy||craftLocked||recycling.locked} onRecombine={inputs=>recycling.prepare('recombine',inputs)}/>}</TabsContent>
     </Tabs>
    </>}
+   {recycling.dialogs}
  </>
  return <>
   {page?<section aria-label="유물" className="flex min-h-0 flex-1 flex-col">
@@ -130,7 +135,7 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    <div ref={scene} className="flex min-h-0 flex-1 flex-col gap-4">{content}</div>
   </section>:<>
    <Button type="button" size="sm" variant="outline" onClick={()=>{setError('');setOpen(true)}}><RelicIcon className="size-5"/>유물 장착</Button>
-   <Dialog open={open} onOpenChange={value=>{if(!saving&&!craftBusy)setOpen(value)}}><DialogContent showCloseButton={!craftBusy} className={`flex max-h-[85dvh] flex-col overflow-hidden sm:max-w-lg ${tab==='craft'?'h-[85dvh]':''}`}>
+   <Dialog open={open} onOpenChange={value=>{if(!saving&&!craftBusy&&!recycling.busy)setOpen(value)}}><DialogContent showCloseButton={!craftBusy&&!recycling.busy} className={`flex max-h-[85dvh] flex-col overflow-hidden sm:max-w-lg ${tab==='craft'||tab==='recombine'?'h-[85dvh]':''}`}>
     <DialogHeader className={tab==='craft'?'sr-only':undefined}><DialogTitle>유물 장착</DialogTitle><DialogDescription>장착은 무료이며 한 번에 하나만 장착할 수 있어요. 해제와 교체에는 해제 비용만 들어요.</DialogDescription></DialogHeader>
     <div ref={scene} className="flex min-h-0 flex-1 flex-col gap-4">{content}</div>
    </DialogContent></Dialog>

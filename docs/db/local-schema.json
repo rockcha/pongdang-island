@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "a4b104bed7b95cd88f0d4d07fe661f08953ef8e128884629c3372f18d97f4221",
+  "migrationHash": "41591481af60eda5c03c06179e3f1df455c64933042ed7d7084667406df3ad79",
   "structure": {
     "enums": [
       {
@@ -493,6 +493,12 @@
       {
         "rls": true,
         "name": "relic_craft_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "relic_recycling_operations",
         "schema": "app_private",
         "force_rls": false
       },
@@ -5561,6 +5567,66 @@
         "name": "created_at",
         "type": "timestamp with time zone",
         "table": "relic_craft_operations",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "action",
+        "type": "text",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "inputs",
+        "type": "jsonb",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "relic_recycling_operations",
         "schema": "app_private",
         "default": "clock_timestamp()",
         "identity": "",
@@ -12914,6 +12980,12 @@
         "definition": "CREATE UNIQUE INDEX relic_craft_operations_pkey ON app_private.relic_craft_operations USING btree (user_id, operation_id)"
       },
       {
+        "name": "relic_recycling_operations_pkey",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX relic_recycling_operations_pkey ON app_private.relic_recycling_operations USING btree (user_id, operation_id)"
+      },
+      {
         "name": "relic_test_grants_pkey",
         "table": "relic_test_grants",
         "schema": "app_private",
@@ -18285,7 +18357,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_caption text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;\n result_id uuid;species jsonb;crafted_id text;crafted jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select c.id into crafted_id from app_private.relic_craft_operations o\n join app_private.crafted_relics c on c.user_id=o.user_id and c.id=o.result->>'craftedId'\n  and c.base_id=o.base_id and c.attached_id=o.attached_id\n where o.user_id=u and o.operation_id=p_operation_id and o.result->>'success'='true';\n if found then\n  crafted:=app_private.crafted_relic_showcase(crafted_id);\n  species:=crafted->'species';\n  insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n  values(u,p_operation_id,btrim(p_caption),species,(species->>'rarity')::public.game_rarity,\n   crafted->>'regionName',(crafted->>'caughtAt')::timestamptz,false,1) returning id into result_id;\n  return result_id;\n end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n species:=p.result->'attempt'->'species';\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or a.rarity not in ('epic','mythic')\n or species->>'id' is null or species->>'rarity' is distinct from a.rarity::text\n or coalesce(species->>'kind','') not in ('fish','trash','decoration','relic')\n then raise exception 'CATCH_NOT_SHAREABLE';end if;\n if species->>'kind'='relic' and (a.rarity<>'mythic' or p.relic_id is null\n  or species->>'id' is distinct from 'relic-'||p.relic_id\n  or p.snapshot->>'id' is distinct from species->>'id') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),species,a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;\n result_id uuid;species jsonb;crafted_id text;crafted jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select c.id into crafted_id from app_private.relic_craft_operations o\n join app_private.crafted_relics c on c.user_id=o.user_id and c.id=o.result->>'craftedId'\n  and c.base_id=o.base_id and c.attached_id=o.attached_id\n where o.user_id=u and o.operation_id=p_operation_id and o.result->>'success'='true';\n if found then\n  crafted:=app_private.crafted_relic_showcase(crafted_id);\n elsif exists(select 1 from app_private.relic_recycling_operations where user_id=u and operation_id=p_operation_id and action='recombine') then\n  crafted:=app_private.recombined_relic_showcase(p_operation_id);\n end if;\n if crafted is not null then\n  species:=crafted->'species';\n  insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n  values(u,p_operation_id,btrim(p_caption),species,(species->>'rarity')::public.game_rarity,\n   crafted->>'regionName',(crafted->>'caughtAt')::timestamptz,false,1) returning id into result_id;\n  return result_id;\n end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n species:=p.result->'attempt'->'species';\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or a.rarity not in ('epic','mythic')\n or species->>'id' is null or species->>'rarity' is distinct from a.rarity::text\n or coalesce(species->>'kind','') not in ('fish','trash','decoration','relic') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n if species->>'kind'='relic' and (a.rarity<>'mythic' or p.relic_id is null\n  or species->>'id' is distinct from 'relic-'||p.relic_id\n  or p.snapshot->>'id' is distinct from species->>'id') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),species,a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18379,6 +18451,26 @@
         "securityDefiner": true
       },
       {
+        "name": "recombined_relic_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.recombined_relic_showcase(p_operation uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();payload jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select jsonb_build_object('operationId',o.operation_id,'regionName','유물 재조합','caughtAt',o.created_at,'firstDiscovery',false,\n  'species',jsonb_build_object('id','relic-'||r.id,'kind','relic','name',r.name,'description',r.description,\n   'rarity',r.rarity,'thumbnail_path',r.thumbnail_path,'sprite_sheet_path',null,'sell_price',r.sell_price,\n   'swim_y_min',null,'swim_y_max',null,'speed',0,'size',1)) into payload\n from app_private.relic_recycling_operations o join public.fishing_relics r on r.id=o.result#>>'{receivedIds,0}'\n where o.user_id=u and o.operation_id=p_operation and o.action='recombine' and r.enabled and r.rarity='mythic';\n if payload is null then raise exception 'CATCH_NOT_SHAREABLE';end if;\n return payload;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "recycle_relics",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.recycle_relics(p_action text, p_inputs jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();previous app_private.relic_recycling_operations;inputs jsonb;\n total integer;distinct_grades integer;source_grade text;target_grade public.game_rarity;\n equipped text;composite app_private.crafted_relics;received text[];reward text;result jsonb;unequipped boolean:=false;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('recombine','dismantle') then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if jsonb_typeof(p_inputs) is distinct from 'array' then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if jsonb_array_length(p_inputs) not between 1 and 6 then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if exists(select 1 from jsonb_array_elements(p_inputs) e where jsonb_typeof(e) is distinct from 'object'\n  or jsonb_typeof(e->'id') is distinct from 'string' or length(e->>'id') not between 1 and 200\n  or jsonb_typeof(e->'quantity') is distinct from 'number' or coalesce(e->>'quantity','') !~ '^[1-6]$') then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n select jsonb_agg(jsonb_build_object('id',id,'quantity',quantity) order by id),sum(quantity)::integer into inputs,total\n from(select id,sum(quantity)::integer quantity from jsonb_to_recordset(p_inputs) as i(id text,quantity integer) group by id)i;\n if (p_action='recombine' and total<>6) or (p_action='dismantle' and total<>1) then raise exception 'RELIC_RECOMBINATION_COUNT';end if;\n -- Match the wallet-first locking order used by crafting, selling and equipment.\n perform app_private.get_gold_wallet();perform 1 from public.player_wallets where user_id=u for update;\n select * into previous from app_private.relic_recycling_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>p_action or previous.inputs<>inputs then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('recycling',previous.result,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n if p_action='recombine' then\n  select count(*),count(distinct r.rarity),min(r.rarity::text) into total,distinct_grades,source_grade\n  from public.fishing_relics r join jsonb_to_recordset(inputs) as i(id text,quantity integer) on r.id=i.id\n  where r.enabled and r.rarity in ('rare','epic');\n  if total<>jsonb_array_length(inputs) or distinct_grades<>1 then raise exception 'RELIC_RECOMBINATION_GRADE';end if;\n  target_grade:=case source_grade when 'rare' then 'epic'::public.game_rarity else 'mythic'::public.game_rarity end;\n  perform 1 from app_private.player_fishing_relics r where r.user_id=u and r.relic_id in(select i->>'id' from jsonb_array_elements(inputs)i) order by relic_id for update;\n  select relic_id into equipped from app_private.player_relic_loadouts where user_id=u;\n  if exists(select 1 from jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   left join app_private.player_fishing_relics r on r.user_id=u and r.relic_id=i.id\n   where coalesce(r.quantity,0)-case when equipped=i.id then 1 else 0 end<i.quantity) then raise exception 'RELIC_MATERIAL_UNAVAILABLE';end if;\n  select id into reward from public.fishing_relics where enabled and rarity=target_grade order by random() limit 1;\n  if reward is null then raise exception 'RELIC_RECOMBINATION_EMPTY';end if;\n  delete from app_private.player_fishing_relics r using jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   where r.user_id=u and r.relic_id=i.id and r.quantity=i.quantity;\n  update app_private.player_fishing_relics r set quantity=r.quantity-i.quantity from jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   where r.user_id=u and r.relic_id=i.id;\n  insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) select u,i->>'id' from jsonb_array_elements(inputs)i on conflict do nothing;\n  received:=array[reward];\n else\n  select * into composite from app_private.crafted_relics where user_id=u and id=inputs->0->>'id' for update;\n  if not found then raise exception 'RELIC_CRAFTED_NOT_OWNED';end if;\n  if exists(select 1 from app_private.player_relic_loadouts where user_id=u and crafted_id=composite.id) then\n   if app_private.production_active_count()>4 then raise exception 'RELIC_FUEL_PRODUCTION_ACTIVE:4';end if;\n   if app_private.bait_production_active_count()>4 then raise exception 'RELIC_BAIT_PRODUCTION_ACTIVE:4';end if;\n   delete from app_private.player_relic_loadouts where user_id=u and crafted_id=composite.id;\n   unequipped:=true;\n  end if;\n  received:=array[composite.base_id,composite.attached_id];\n  delete from app_private.crafted_relics where user_id=u and id=composite.id;\n end if;\n insert into app_private.player_fishing_relics(user_id,relic_id,quantity)\n  select u,id,1 from unnest(received)id order by id\n  on conflict(user_id,relic_id) do update set quantity=app_private.player_fishing_relics.quantity+1;\n insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) select u,id from unnest(received)id on conflict do nothing;\n result:=jsonb_build_object('action',p_action,'cost',0,'consumed',inputs,'receivedIds',to_jsonb(received),'unequipped',unequipped);\n insert into app_private.relic_recycling_operations(user_id,operation_id,action,inputs,result) values(u,p_operation_id,p_action,inputs,result);\n -- A zero-value receipt shares the operation namespace with existing relic commands.\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','relic-recycle:'||p_action,0);\n return app_private.relic_state()||jsonb_build_object('recycling',result,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "refresh_return_notifications",
         "config": [
           "search_path=\"\""
@@ -18435,7 +18527,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_relic_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_showcase_catch(p_relic_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();p app_private.prepared_fishing_casts;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if exists(select 1 from app_private.crafted_relics where user_id=u and id=p_relic_id) then\n  return app_private.crafted_relic_showcase(p_relic_id);\n end if;\n select c.* into p from app_private.prepared_fishing_casts c\n join public.fishing_attempts a on a.user_id=c.user_id and a.operation_id=c.operation_id\n where c.user_id=u and c.relic_id=p_relic_id and c.finished_at is not null and c.eligible\n  and a.rarity='mythic' and c.result#>>'{attempt,species,kind}'='relic'\n  and c.result#>>'{attempt,species,rarity}'='mythic'\n  and c.result#>>'{attempt,species,id}'='relic-'||p_relic_id\n order by c.finished_at desc,c.operation_id limit 1;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n return jsonb_build_object('operationId',p.operation_id,'species',p.result#>'{attempt,species}',\n  'firstDiscovery',coalesce((p.result#>>'{attempt,firstDiscovery}')::boolean,false),\n  'regionName',(select name from public.regions where id=p.region_id),'caughtAt',p.created_at);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_showcase_catch(p_relic_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();p app_private.prepared_fishing_casts;operation uuid;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if exists(select 1 from app_private.crafted_relics where user_id=u and id=p_relic_id) then\n  return app_private.crafted_relic_showcase(p_relic_id);\n end if;\n select c.* into p from app_private.prepared_fishing_casts c\n join public.fishing_attempts a on a.user_id=c.user_id and a.operation_id=c.operation_id\n where c.user_id=u and c.relic_id=p_relic_id and c.finished_at is not null and c.eligible\n  and a.rarity='mythic' and c.result#>>'{attempt,species,kind}'='relic'\n  and c.result#>>'{attempt,species,rarity}'='mythic'\n  and c.result#>>'{attempt,species,id}'='relic-'||p_relic_id\n order by c.finished_at desc,c.operation_id limit 1;\n if found then\n  return jsonb_build_object('operationId',p.operation_id,'species',p.result#>'{attempt,species}',\n   'firstDiscovery',coalesce((p.result#>>'{attempt,firstDiscovery}')::boolean,false),\n   'regionName',(select name from public.regions where id=p.region_id),'caughtAt',p.created_at);\n end if;\n select o.operation_id into operation from app_private.relic_recycling_operations o\n join public.fishing_relics r on r.id=p_relic_id and r.enabled and r.rarity='mythic'\n where o.user_id=u and o.action='recombine' and o.result#>>'{receivedIds,0}'=p_relic_id\n order by o.created_at desc,o.operation_id limit 1;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n return app_private.recombined_relic_showcase(operation);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18445,7 +18537,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); originals jsonb; composites jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select coalesce(jsonb_agg(to_jsonb(r)||jsonb_build_object(\n  'discovered',exists(select 1 from app_private.player_fishing_relic_discoveries d where d.user_id=u and d.relic_id=r.id),\n  'owned',coalesce(d.quantity,0)>0,'quantity',coalesce(d.quantity,0)) order by r.effect_kind,r.effect_value,r.id),'[]'::jsonb)\n into originals from public.fishing_relics r left join app_private.player_fishing_relics d on d.user_id=u and d.relic_id=r.id where r.enabled;\n select coalesce(jsonb_agg(jsonb_build_object('id',c.id,'name',a.name||' · '||b.name,\n  'description',a.description||' / '||b.description,'rarity',greatest(a.rarity,b.rarity),'thumbnail_path',a.thumbnail_path,\n  'attached',jsonb_build_object('id',b.id,'name',b.name,'thumbnail_path',b.thumbnail_path),\n  'crafted',true,'owned',true,'discovered',true,'quantity',1,'sell_price',0,\n  'effect_kind',a.effect_kind,'effect_value',a.effect_value,\n  'effects',jsonb_build_array(jsonb_build_object('kind',a.effect_kind,'value',a.effect_value),jsonb_build_object('kind',b.effect_kind,'value',b.effect_value))) order by c.created_at,c.id),'[]'::jsonb)\n into composites from app_private.crafted_relics c join public.fishing_relics a on a.id=c.base_id join public.fishing_relics b on b.id=c.attached_id\n where c.user_id=u and a.enabled and b.enabled;\n return jsonb_build_object('equippedId',(select coalesce(crafted_id,relic_id) from app_private.player_relic_loadouts where user_id=u),\n  'changeFee',500,'equipFee',0,'unequipFee',500,'canCraft',true,'relics',originals||composites);\nend$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); originals jsonb; composites jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select coalesce(jsonb_agg(to_jsonb(r)||jsonb_build_object(\n  'discovered',exists(select 1 from app_private.player_fishing_relic_discoveries d where d.user_id=u and d.relic_id=r.id),\n  'owned',coalesce(d.quantity,0)>0,'quantity',coalesce(d.quantity,0)) order by r.effect_kind,r.effect_value,r.id),'[]'::jsonb)\n into originals from public.fishing_relics r left join app_private.player_fishing_relics d on d.user_id=u and d.relic_id=r.id where r.enabled;\n select coalesce(jsonb_agg(jsonb_build_object('id',c.id,'baseId',c.base_id,'name',a.name||' · '||b.name,\n  'description',a.description||' / '||b.description,'rarity',greatest(a.rarity,b.rarity),'thumbnail_path',a.thumbnail_path,\n  'attached',jsonb_build_object('id',b.id,'name',b.name,'thumbnail_path',b.thumbnail_path),\n  'crafted',true,'owned',true,'discovered',true,'quantity',1,'sell_price',0,\n  'effect_kind',a.effect_kind,'effect_value',a.effect_value,\n  'effects',jsonb_build_array(jsonb_build_object('kind',a.effect_kind,'value',a.effect_value),jsonb_build_object('kind',b.effect_kind,'value',b.effect_value))) order by c.created_at,c.id),'[]'::jsonb)\n into composites from app_private.crafted_relics c join public.fishing_relics a on a.id=c.base_id join public.fishing_relics b on b.id=c.attached_id\n where c.user_id=u and a.enabled and b.enabled;\n return jsonb_build_object('equippedId',(select coalesce(crafted_id,relic_id) from app_private.player_relic_loadouts where user_id=u),\n  'changeFee',500,'equipFee',0,'unequipFee',500,'canCraft',true,'relics',originals||composites);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -20806,6 +20898,16 @@
         "schema": "public",
         "arguments": "p_gift_id uuid, p_reaction text",
         "definition": "CREATE OR REPLACE FUNCTION public.react_to_collectible_gift(p_gift_id uuid, p_reaction text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.react_to_collectible_gift(p_gift_id,p_reaction)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "recycle_relics",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.recycle_relics(p_action text, p_inputs jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.recycle_relics(p_action,p_inputs,p_operation_id)$function$\n",
         "securityDefiner": false
       },
       {
@@ -25683,6 +25785,60 @@
       {
         "name": "relic_craft_operations_user_id_not_null",
         "table": "relic_craft_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "relic_recycling_operations_action_check",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "CHECK ((action = ANY (ARRAY['recombine'::text, 'dismantle'::text])))"
+      },
+      {
+        "name": "relic_recycling_operations_action_not_null",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL action"
+      },
+      {
+        "name": "relic_recycling_operations_created_at_not_null",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "relic_recycling_operations_inputs_not_null",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL inputs"
+      },
+      {
+        "name": "relic_recycling_operations_operation_id_not_null",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "relic_recycling_operations_pkey",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "relic_recycling_operations_result_not_null",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL result"
+      },
+      {
+        "name": "relic_recycling_operations_user_id_fkey",
+        "table": "relic_recycling_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "relic_recycling_operations_user_id_not_null",
+        "table": "relic_recycling_operations",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -44144,6 +44300,48 @@
         "arguments": "p_gift_id uuid, p_reaction text"
       },
       {
+        "name": "recombined_relic_showcase",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation uuid"
+      },
+      {
+        "name": "recombined_relic_showcase",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation uuid"
+      },
+      {
+        "name": "recombined_relic_showcase",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation uuid"
+      },
+      {
+        "name": "recycle_relics",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "recycle_relics",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "recycle_relics",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid"
+      },
+      {
         "name": "refresh_return_notifications",
         "role": "anon",
         "schema": "app_private",
@@ -49245,6 +49443,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_gift_id uuid, p_reaction text"
+      },
+      {
+        "name": "recycle_relics",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "recycle_relics",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid"
+      },
+      {
+        "name": "recycle_relics",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid"
       },
       {
         "name": "refresh_return_notifications",

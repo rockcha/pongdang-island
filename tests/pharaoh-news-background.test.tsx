@@ -17,8 +17,8 @@ it('renders the actual news background using its public URL without the fallback
  expect(image.getAttribute('src')).toBe(url)
  fireEvent.load(image)
  expect(image.className).toContain('opacity-100')
- expect(image.className).toContain('object-contain')
- expect(image.className).not.toContain('object-bottom')
+ expect(image.className).toContain('object-cover')
+ expect(image.className).toContain('object-bottom')
  expect(screen.queryByRole('button',{name:'이미지 다시 시도'})).toBeNull()
 })
 it('keeps fishing at sea level and the kingdom overview separate',()=>{

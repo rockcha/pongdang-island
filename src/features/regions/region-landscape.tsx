@@ -1,13 +1,12 @@
 import {LandscapeImage} from '@/components/landscape-image'
 import {regionImageUrl,type Region} from './api'
 
-// The kingdom overview must remain fully visible; fishing has its own scenery.
+// Fill the entire scene on both portrait and landscape viewports.
 export function RegionLandscape({region,alt=region.name,className='',position='center',locked=false}:{region:Pick<Region,'id'|'name'|'image_path'>;alt?:string;className?:string;position?:'center'|'bottom';locked?:boolean}){
- const overview=region.id==='pharaoh'||region.id==='hangang',src=regionImageUrl(region.image_path)
- const framing=overview?'object-contain':`object-cover ${position==='bottom'?'object-bottom':'object-center'}`
+ const src=regionImageUrl(region.image_path)
+ // Keep the Han River's illuminated tower in frame when portrait cropping is needed.
+ const focal=region.id==='hangang'?(position==='bottom'?'object-[85%_bottom]':'object-[85%_center]'):(position==='bottom'?'object-bottom':'object-center')
+ const framing=`object-cover ${focal}`
  const treatment=locked?'grayscale brightness-[0.35]':''
- return <>
-  {overview&&<div aria-hidden="true" className={`pointer-events-none absolute inset-0 scale-110 bg-[#9a713f] bg-cover bg-center opacity-70 blur-2xl ${treatment} ${className}`} style={{backgroundImage:`url(${JSON.stringify(src)})`}}/>}
-  <LandscapeImage src={src} alt={alt} className={`absolute inset-0 size-full ${framing} ${treatment} ${className}`}/>
- </>
+ return <LandscapeImage src={src} alt={alt} className={`absolute inset-0 size-full ${framing} ${treatment} ${className}`}/>
 }

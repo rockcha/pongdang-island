@@ -95,7 +95,7 @@ export const arcadeGames: ArcadeGame[] = [
   },
   {
     id: 'exploration',
-    title: '파라오의 황금해',
+    title: '지하 탐험하기',
     description: '왕릉 지하 50층을 돌파하고 2,000골드를 즉시 받아요.',
     icon: Pickaxe,
     tags: ['brain'],

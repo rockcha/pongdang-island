@@ -82,7 +82,7 @@ it('places exploration in brain and instant rewards and opens its existing lobby
  setup()
  fireEvent.click(screen.getByRole('button',{name:'뇌지컬'}))
  fireEvent.click(screen.getByRole('button',{name:'즉시 보상'}))
- const game=screen.getByRole('link',{name:/파라오의 황금해/})
+ const game=screen.getByRole('link',{name:/지하 탐험하기/})
  expect(game.querySelector('img')?.getAttribute('src')).toBe('/arcade/exploration/thumbnail.webp')
  fireEvent.click(game)
  expect(await screen.findByText('탐험 화면')).toBeTruthy()

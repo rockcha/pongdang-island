@@ -1,3 +1,4 @@
+import {bossSupplyFloors} from './campaign-profile'
 import {supplyCheckFloors} from './merchant-pity'
 ﻿import type {RoomTypeId} from './room-preview'
 import type {FloorMarket} from './merchant-stock'
@@ -35,7 +36,7 @@ export function floorMonsterPool(floor:number,intermediate=false):{value:Monster
   return [...deep,{value:'sand-wraith' as const,weight:oldWeight},{value:'tomb-hook-guard' as const,weight:oldWeight}].filter(item=>item.weight>0)
  }
  const ids:MonsterId[]=intermediate?['sand-wraith','tomb-hook-guard','tomb-lantern-jellyfish','hourglass-sentinel','mirror-mask-mage']:['jar-wisp','talisman-lizard','sand-scorpion','sand-wing-bat','bandage-mummy','lapis-cobra','cracked-shield-scarab','cowardly-tomb-rat','night-eyed-desert-fox']
- const weights=intermediate?(floor<16?[100,0,0,0,0]:floor<21?[45,35,0,20,0]:floor<26?[25,25,20,20,10]:[20,20,20,20,20]):floor<=5?[40,35,25,0,0,0,0,0,0]:floor===6?[15,15,25,15,20,0,0,0,10]:floor<=8?[15,10,20,10,20,0,15,0,10]:floor<=10?[10,10,20,10,15,5,10,10,10]:floor<=20?[10,10,10,10,20,10,10,10,10]:[5,5,10,10,20,20,10,10,10]
+ const weights=intermediate?(floor<16?[0,0,0,100,0]:floor<21?[0,55,0,45,0]:floor<26?[25,25,20,20,10]:[20,20,20,20,20]):floor<=5?[40,35,25,0,0,0,0,0,0]:floor===6?[15,15,25,15,20,0,0,0,10]:floor<=8?[15,10,20,10,20,0,15,0,10]:floor<=10?[10,10,20,10,15,5,10,10,10]:floor<=20?[10,10,10,10,20,10,10,10,10]:[5,5,10,10,20,20,10,10,10]
  const shieldGuard=floor>=16&&floor<=30&&!intermediate
  return [...ids.map((value,index)=>({value,weight:weights[index]*(shieldGuard ? .9 : 1)})),...(shieldGuard?[{value:'sandstone-shield-guard' as const,weight:10}]:[])].filter(item=>item.weight>0)
 }
@@ -77,6 +78,7 @@ export function drawPracticeFloor(floor:number,random=Math.random,previousState?
  const final=campaignFinalFloor(previousState??{}),level=Math.max(1,Math.min(final,Math.floor(floor)))
  // Evaluate eligibility at the destination, after the previous fight has ended.
  const state=previousState?{...previousState,combat:null,market:{...previousState.market,floor:level}}:undefined
+ if(previousState?.growth&&bossSupplyFloors.includes(level))return {floor:level,doors:['boss-supply-chest'],weaponIds:[],armorIds:[],monsterIds:['random']}
  if(level===final)return {floor:level,doors:[campaignFinalRoom(previousState??{})],weaponIds:[],armorIds:[],monsterIds:['random']}
  if(final===80){
   const mandatory=campaignBossFloors[level as keyof typeof campaignBossFloors]??deepPreparationRooms[level]

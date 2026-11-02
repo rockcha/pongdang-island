@@ -17,11 +17,11 @@ it('starts local play with mana bolt equipped, preserving production and saved-r
  expect(next.state.growth).toBeUndefined();expect(next.state.equippedSpells).toEqual([])
 })
 it('grants seven points at ten-floor milestones without bypassing a protected checkpoint',()=>{
- expect([1,10,11,20,21,71,80].map(earnedGrowthPoints)).toEqual([0,0,1,1,2,7,7])
+ expect([1,10,11,20,21,71,80].map(earnedGrowthPoints)).toEqual([1,1,1,1,2,7,7])
  const state=newLocalGrowthModel(()=>0).state
  state.market.floor=9;state.pendingFloorAdvance=3
  const next=advanceExploration(state,()=>0)
- expect(next.market.floor).toBe(10);expect(availableGrowthPoints(next)).toBe(0)
+ expect(next.market.floor).toBe(10);expect(availableGrowthPoints(next)).toBe(1)
  const milestone=advanceExploration(next,()=>0)
  expect(milestone.market.floor).toBe(11);expect(availableGrowthPoints(milestone)).toBe(1)
 })
@@ -34,17 +34,17 @@ it('changes real resource limits, attacks, direct magic and physical evasion',()
  expect(basicAttackEvasion(evasion,'physical')).toBe(basicAttackEvasion(state,'physical')+4)
  expect(basicAttackEvasion(evasion,'magic')).toBe(0)
  expect(allocateGrowth(hp,'health')).toBe(hp)
- expect(allocateGrowth({...state,market:{...state.market,floor:10}},'health').hp).toBe(100)
+ expect(allocateGrowth({...state,market:{...state.market,floor:1}},'health').hp).toBe(105)
 })
 it('spends five mana for ten raw damage and applies strength and magic to actual combat',()=>{
  const original=newLocalGrowthModel(()=>0).state
  const raw=resolveCombatTurn(startScorpionCombat(original),{type:'magic',id:'mana-bolt'},()=>.5)
- expect(raw.state.mp).toBe(35);expect(raw.events.find(e=>e.spellId==='mana-bolt')).toMatchObject({rawDamage:10,damage:9})
+ expect(raw.state.mp).toBe(35);expect(raw.events.find(e=>e.spellId==='mana-bolt')).toMatchObject({rawDamage:12,damage:11})
  original.market.floor=11
  for(const stat of ['attack','magic'] as const){
   const upgraded=allocateGrowth(original,stat),battle=startScorpionCombat(upgraded)
   const result=resolveCombatTurn(battle,stat==='attack'?{type:'attack'}:{type:'magic',id:'mana-bolt'},()=>.5)
-  expect(result.events.find(e=>e.kind==='player')).toMatchObject({rawDamage:11})
+  expect(result.events.find(e=>e.kind==='player')).toMatchObject({rawDamage:stat==='magic'?13:11})
  }
  const poor=startScorpionCombat({...original,mp:4});expect(resolveCombatTurn(poor,{type:'magic',id:'mana-bolt'}).state).toBe(poor)
 })
@@ -59,7 +59,7 @@ it('requires exactly one valid allocation before another room and preserves door
  expect(model.state.growth.allocations.magic).toBe(0)
 })
 it('keeps all legacy monster rules and applies the local adjustment to normal and deep bosses',()=>{
- expect(getFloorMonster('sand-scorpion',1,true,true)).toEqual(getFloorMonster('sand-scorpion',1,true))
+ expect(getFloorMonster('sand-scorpion',1,true,true).maxHp).toBeLessThan(getFloorMonster('sand-scorpion',1,true).maxHp)
  for(const id of ['sand-scorpion','golden-pharaoh','black-sun-aker'] as const){
   const old=getFloorMonster(id,80,true),adjusted=getFloorMonster(id,80,true,true)
   expect(adjusted.maxHp).toBeGreaterThan(old.maxHp)

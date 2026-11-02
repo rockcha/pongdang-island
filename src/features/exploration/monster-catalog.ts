@@ -1,5 +1,4 @@
 import {practiceEnemyGrowth,finalBossBalance,statEnemyGrowth} from './campaign-balance'
-import {earnedGrowthPoints} from './growth'
 import {basicAttackRange,monsterAttackVariance} from './attack-roll'
 import {deepMonsters,deepMonsterIds} from './deep-monsters'
 export type MonsterId='sandstone-shield-guard'|'potion-thief'|'black-sun-moth'|'golden-armored-crocodile'|'black-sand-devourer'|'gem-backed-tomb-tortoise'|'golden-scales-maaken'|'black-sun-aker'|'cracked-shield-scarab'|'cowardly-tomb-rat'|'hourglass-sentinel'|'mirror-mask-mage'|'sand-scorpion'|'bandage-mummy'|'lapis-cobra'|'sand-wraith'|'tomb-lantern-jellyfish'|'obsidian-anubis'|'jar-wisp'|'talisman-lizard'|'night-eyed-desert-fox'|'sand-wing-bat'|'tomb-hook-guard'|'ancient-giant'|'treasure-scarab'|'golden-pharaoh'|'nameless-royal-warden'
@@ -58,7 +57,7 @@ function baseFloorMonster(id:MonsterId|undefined,floor:number,practice:boolean):
  return {...monster,gold:Math.round(monster.gold*(1+band*practiceEnemyGrowth.goldPerBand)),maxHp:Math.round(monster.maxHp*(1+band*hp)),attack:monster.attack+band*attack,magic:monster.magic.map(move=>({...move,damage:move.damage?move.damage+band*practiceEnemyGrowth.magicPerBand:0}))}
 }
 export function getFloorMonster(id:MonsterId|undefined,floor:number,practice:boolean,growth=false):Monster{
- const monster=baseFloorMonster(id,floor,practice),points=growth?earnedGrowthPoints(floor):0
+ const base=baseFloorMonster(id,floor,practice),monster=practice&&growth&&floor<10&&base.tier!=='boss'?{...base,maxHp:Math.max(1,Math.floor(base.maxHp*.85))}:base,points=growth?Math.max(0,Math.min(7,Math.floor((floor-1)/10))):0
  if(!points)return monster
  const boss=monster.tier==='boss',hp=boss?statEnemyGrowth.bossHpPerPoint:statEnemyGrowth.hpPerPoint,extra=Math.round(points*(boss?statEnemyGrowth.bossAttackPerPoint:statEnemyGrowth.attackPerPoint)),attack=monster.attack+extra
  return {...monster,maxHp:Math.round(monster.maxHp*(1+points*hp)),attack,basic:{...monster.basic,damage:attack},magic:monster.magic.map(move=>({...move,damage:move.damage?move.damage+extra:0}))}

@@ -4,10 +4,11 @@ import {drawInvestigationLoot,type RoomLoot} from './room-loot'
 import {playerMaxHp,playerManaMax,type PracticeState} from './practice-state'
 import {recordRoomEntry} from './room-rules'
 import {combatBackgroundUrl,resolveCombatBackground} from './combat-backgrounds'
-type RoomKind='story'|'choice'|'lore'|'rest'|'curse'|'thief'|'chest'|'investigate'|'giant'|'boss'|'sphinx'|'scales'
+type RoomKind='story'|'choice'|'lore'|'rest'|'curse'|'thief'|'chest'|'investigate'|'giant'|'boss'|'sphinx'|'scales'|'supply'
 type RoomDefinition={id:string;kind:RoomKind;name:string;title:string;intro:readonly string[];progress:readonly string[];background:string;monsterId?:MonsterId}
 const bg=(id:string)=>`/exploration/rooms/${id}.webp`
 export const adventureRooms=[
+ {id:'boss-supply-chest',kind:'supply',name:'보급 · 보스 앞 보급 상자',title:'보스 앞 보급 상자',background:bg('chest'),intro:['거대한 문 앞에 붉은 약병과 푸른 약병이 든 보급 상자가 놓여 있다.'],progress:['보급 상자를 열었다. 체력 포션 2개 · 마나 포션 1개를 획득했다.']},
  {id:'erased-name',kind:'story',name:'이야기 · 지워진 이름',title:'지워진 이름',background:bg('warning-wall'),intro:['지워진 이름 아래에 작은 돌조각이 떨어져 있다.'],progress:['아무 일도 일어나지 않았다.']},
  {id:'erased-name-record',kind:'story',name:'이야기 · 왕이 지운 기록',title:'왕이 지운 기록',background:bg('investigate-wall'),intro:['봉인된 기록에 왕이 지운 이름의 진실이 남아 있다.'],progress:['문지기 𓋴𓈖𓅱의 이름을 기억했다.']},
  {id:'nameless-guardian',kind:'story',name:'이야기 · 이름 없는 왕실 수문장',title:'이름 없는 왕실 수문장',background:combatBackgroundUrl(resolveCombatBackground('nameless-royal-warden')),intro:['흑청동 중갑의 왕실 수문장이 거대한 대검을 짚고 오래된 문을 지키고 있다. 가슴의 이름은 깊게 깎여 있다.'],progress:['가슴 명패에 금빛 이름이 되살아났다. 왕실 수문장이 자신을 기억해 냈다.']},
@@ -222,10 +223,11 @@ export const sphinxQuestions=[
     "correct": 1
   }
 ] as const
-export type RoomVisit={key:string;id:AdventureRoomId;entry:string;progress:string;outcome:{kind:'none'}|{kind:'gold';gold:number}|{kind:'loot';loot:RoomLoot}|{kind:'monster';monsterId:MonsterId;loot?:RoomLoot};hpLost:number;mpLost:number;stolen:{health:number;mana:number};question:typeof sphinxQuestions[number]}
+export type RoomVisit={key:string;id:AdventureRoomId;entry:string;progress:string;outcome:{kind:'none'}|{kind:'potions';health:number;mana:number}|{kind:'gold';gold:number}|{kind:'loot';loot:RoomLoot}|{kind:'monster';monsterId:MonsterId;loot?:RoomLoot};hpLost:number;mpLost:number;stolen:{health:number;mana:number};question:typeof sphinxQuestions[number]}
 const sample=<T,>(items:readonly T[],random:()=>number)=>items[Math.min(items.length-1,Math.floor(random()*items.length))]
 export function createRoomVisit(id:AdventureRoomId,state:PracticeState,key=`${state.market.floor}:${id}`,random=Math.random,previousInscription?:string):RoomVisit{
  const room=getAdventureRoom(id)!,visit:RoomVisit={key,id,entry:sample(room.intro,random),progress:sample(room.kind==='lore'?room.progress.filter(text=>text!==previousInscription):room.progress,random),outcome:{kind:'none'},hpLost:0,mpLost:0,stolen:{health:0,mana:0},question:sample(sphinxQuestions,random)}
+ if(room.kind==='supply')visit.outcome={kind:'potions',health:2,mana:1}
  if(room.kind==='curse'){visit.hpLost=Math.min(Math.max(0,state.hp-1),Math.floor(state.hp*.4));visit.mpLost=Math.floor(state.mp*.4)}
  if(room.kind==='thief'){
   const bag={...state.potions},count=Math.min(bag.health+bag.mana,2)
@@ -236,6 +238,7 @@ export function createRoomVisit(id:AdventureRoomId,state:PracticeState,key=`${st
   if(random()<.5)visit.outcome=room.kind==='chest'?{kind:'gold',gold:state.mode==='practice'?campaignChestGold(state.market.floor,random):160+state.market.floor*8+Math.floor(random()*101)}:{kind:'loot',loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}
   else visit.outcome={kind:'monster',monsterId:state.mode==='practice'?(room.kind==='chest'?drawFloorMonster(state.market.floor,random):drawInvestigationMonster(state.market.floor,random)):drawMonster(random).id,...(['investigate','chest'].includes(room.kind)?{loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}:{})}
  }
+ if(visit.outcome.kind==='gold')visit.progress=`상자에서 금화가 쏟아졌다. ${visit.outcome.gold.toLocaleString()} 골드를 획득했다.`
  return visit
 }
 export function enterRoomVisit(state:PracticeState,visit:RoomVisit):PracticeState{

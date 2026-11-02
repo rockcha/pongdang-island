@@ -11,8 +11,8 @@ export function combatPhaseEvents(result:CombatResult,phase:TurnFeedback['phase'
 /** Present one authoritative result, with complete numbers, at its actual phase. */
 export function combatPresentation(result:CombatResult,phase:TurnFeedback['phase'],action:CombatAction['type']='attack'){
  if(phase==='prepare')return {event:undefined,text:action==='attack'?'무기를 고쳐 쥐고, 공격할 틈을 노린다…':action==='magic'?'마력을 모으고 있다…':action==='potion'?'포션의 마개를 열고 있다…':'빠져나갈 틈을 살핀다…'}
- if(phase==='counter')return {event:undefined,text:result.events.some(e=>e.phase==='reply')?'적의 다음 행동을 살핀다…':'공격의 결과를 살핀다…'}
+ if(phase==='counter'){const event=combatPhaseEvents(result,'player').find(e=>e.kind==='player')??combatPhaseEvents(result,'player').at(-1);return {event,text:event?.text??(action==='flee'?'출구를 향해 달린다…':'')}}
  const events=combatPhaseEvents(result,phase)
  const event=phase==='player'?events.find(e=>e.kind==='player')??events.at(-1):phase==='bleed'?events.find(e=>e.effect==='bleed'&&e.damage!==undefined):events.find(e=>e.kind==='monster'||e.kind==='defense')??events.at(-1)
- return {event,text:event?.text??'공격의 결과를 살핀다…'}
+ return {event,text:event?.text??(action==='flee'?'출구를 향해 달린다…':'')}
 }

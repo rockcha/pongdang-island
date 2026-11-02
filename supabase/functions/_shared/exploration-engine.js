@@ -4,7 +4,7 @@ var starterSpell = {
 	id: "mana-bolt",
 	name: "마력탄",
 	mana: 5,
-	description: "작은 마력탄을 날립니다. 기본 피해 10",
+	description: "작은 마력탄을 날립니다. 기본 피해 12",
 	message: "작은 마력탄이 적을 향해 날아간다.",
 	image: "/exploration/magic/mana-bolt.svg"
 };
@@ -60,7 +60,7 @@ function newGrowth() {
 	};
 }
 function earnedGrowthPoints(floor) {
-	return Math.max(0, Math.min(7, Math.floor((floor - 1) / 10)));
+	return Math.max(1, Math.min(7, Math.floor((floor - 1) / 10)));
 }
 function growthBonus(state, stat) {
 	return (state.growth?.allocations[stat] ?? 0) * growthStats.find((item) => item.id === stat).amount;
@@ -99,6 +99,7 @@ var campaignBossFloors = {
 	65: "boss-maaken",
 	80: "boss-golden-mask"
 };
+var bossSupplyFloors = Object.keys(campaignBossFloors).map((floor) => Number(floor) - 1);
 //#endregion
 //#region src/features/exploration/timed-spells.ts
 function hasTimedSpell(state, id) {
@@ -895,16 +896,16 @@ function floorMonsterPool(floor, intermediate = false) {
 		"night-eyed-desert-fox"
 	];
 	const weights = intermediate ? floor < 16 ? [
+		0,
+		0,
+		0,
 		100,
-		0,
-		0,
-		0,
 		0
 	] : floor < 21 ? [
-		45,
-		35,
 		0,
-		20,
+		55,
+		0,
+		45,
 		0
 	] : floor < 26 ? [
 		25,
@@ -1145,6 +1146,13 @@ function drawPracticeFloor(floor, random = Math.random, previousState) {
 			floor: level
 		}
 	} : void 0;
+	if (previousState?.growth && bossSupplyFloors.includes(level)) return {
+		floor: level,
+		doors: ["boss-supply-chest"],
+		weaponIds: [],
+		armorIds: [],
+		monsterIds: ["random"]
+	};
 	if (level === final) return {
 		floor: level,
 		doors: [campaignFinalRoom(previousState ?? {})],
@@ -1206,7 +1214,7 @@ function refreshPracticeDoors(state, random = Math.random) {
 //#endregion
 //#region src/features/exploration/spell-mechanics.ts
 var spellMechanics = {
-	"mana-bolt": { damage: 10 },
+	"mana-bolt": { damage: 12 },
 	"solar-brand": { timed: {
 		id: "solar-brand",
 		turns: 3
@@ -2878,6 +2886,7 @@ function needsFinalBoss(state) {
 }
 function requiredDoorRoom(state) {
 	if (state.mode !== "practice") return;
+	if (state.growth && bossSupplyFloors.includes(state.market.floor)) return "boss-supply-chest";
 	if (state.forcedMerchant?.phase === "pending") return getShopkeeper(state.forcedMerchant.id).roomId;
 	if (needsNameGuardian(state)) return "nameless-guardian";
 	if (needsFinalBoss(state)) return campaignFinalRoom(state);
@@ -3663,7 +3672,10 @@ function baseFloorMonster(id, floor, practice) {
 	};
 }
 function getFloorMonster(id, floor, practice, growth = false) {
-	const monster = baseFloorMonster(id, floor, practice), points = growth ? earnedGrowthPoints(floor) : 0;
+	const base = baseFloorMonster(id, floor, practice), monster = practice && growth && floor < 10 && base.tier !== "boss" ? {
+		...base,
+		maxHp: Math.max(1, Math.floor(base.maxHp * .85))
+	} : base, points = growth ? Math.max(0, Math.min(7, Math.floor((floor - 1) / 10))) : 0;
 	if (!points) return monster;
 	const boss = monster.tier === "boss", hp = boss ? statEnemyGrowth.bossHpPerPoint : statEnemyGrowth.hpPerPoint, extra = Math.round(points * (boss ? statEnemyGrowth.bossAttackPerPoint : statEnemyGrowth.attackPerPoint)), attack = monster.attack + extra;
 	return {
@@ -3814,7 +3826,7 @@ function monsterDefeatText(name) {
 	return `${name}${last >= 44032 && last <= 55203 && (last - 44032) % 28 !== 0 ? "을" : "를"} 처치했습니다.`;
 }
 var combatMagic = {
-	"mana-bolt": "기본 피해 10",
+	"mana-bolt": "기본 피해 12",
 	ember: "불꽃 피해 20",
 	tide: "다음 반격 2회 동안 받는 피해 8 감소",
 	light: "내 체력 18 회복",
@@ -4657,6 +4669,15 @@ function resolveCombatBackground(monsterId, fallback = combatBackgrounds[0]) {
 var bg = (id) => `/exploration/rooms/${id}.webp`;
 var adventureRooms = [
 	{
+		id: "boss-supply-chest",
+		kind: "supply",
+		name: "보급 · 보스 앞 보급 상자",
+		title: "보스 앞 보급 상자",
+		background: bg("chest"),
+		intro: ["거대한 문 앞에 붉은 약병과 푸른 약병이 든 보급 상자가 놓여 있다."],
+		progress: ["보급 상자를 열었다. 체력 포션 2개 · 마나 포션 1개를 획득했다."]
+	},
+	{
 		id: "erased-name",
 		kind: "story",
 		name: "이야기 · 지워진 이름",
@@ -5173,6 +5194,11 @@ function createRoomVisit(id, state, key = `${state.market.floor}:${id}`, random 
 		},
 		question: sample(sphinxQuestions, random)
 	};
+	if (room.kind === "supply") visit.outcome = {
+		kind: "potions",
+		health: 2,
+		mana: 1
+	};
 	if (room.kind === "curse") {
 		visit.hpLost = Math.min(Math.max(0, state.hp - 1), Math.floor(state.hp * .4));
 		visit.mpLost = Math.floor(state.mp * .4);
@@ -5200,6 +5226,7 @@ function createRoomVisit(id, state, key = `${state.market.floor}:${id}`, random 
 			...["investigate", "chest"].includes(room.kind) ? { loot: drawInvestigationLoot(state, state.mode === "practice" ? drawRewardTier(state.market.floor, random) : state.market.floor > 50 ? "advanced" : "starter", random) } : {}
 		};
 	}
+	if (visit.outcome.kind === "gold") visit.progress = `상자에서 금화가 쏟아졌다. ${visit.outcome.gold.toLocaleString()} 골드를 획득했다.`;
 	return visit;
 }
 function enterRoomVisit(state, visit) {
@@ -5356,6 +5383,7 @@ function applyExplorationAction(previous, action, now = Date.now(), random = Mat
 			requireAction(m.view !== "doors" && !m.pendingLoot);
 			requireAction(!m.quizDeadline || m.settled);
 			requireAction(room?.kind !== "sphinx" || m.settled);
+			requireAction(room?.kind !== "supply" || m.settled);
 			if (s.forcedMerchant?.phase === "active") {
 				s = {
 					...finishForcedMerchant(s),
@@ -5429,9 +5457,16 @@ function applyExplorationAction(previous, action, now = Date.now(), random = Mat
 			break;
 		case "search":
 			offer();
-			requireAction(room?.kind === "chest" || room?.kind === "investigate");
+			requireAction(room?.kind === "chest" || room?.kind === "investigate" || room?.kind === "supply");
 			m.settled = true;
 			if (m.visit.outcome.kind === "monster") encounter(m.visit.outcome.monsterId);
+			else if (m.visit.outcome.kind === "potions") s = {
+				...s,
+				potions: {
+					health: s.potions.health + m.visit.outcome.health,
+					mana: s.potions.mana + m.visit.outcome.mana
+				}
+			};
 			else if (m.visit.outcome.kind === "gold") s = {
 				...s,
 				gold: s.gold + m.visit.outcome.gold

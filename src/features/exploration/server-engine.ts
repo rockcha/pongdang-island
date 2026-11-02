@@ -70,6 +70,7 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
    requireAction(m.view!=='doors'&&!m.pendingLoot)
    requireAction(!m.quizDeadline||m.settled)
    requireAction(room?.kind!=='sphinx'||m.settled)
+   requireAction(room?.kind!=='supply'||m.settled)
    if(s.forcedMerchant?.phase==='active'){s={...finishForcedMerchant(s),door:null};m.view='doors';break}
    let next=enterBossOasis(s)
    if(next!==s){s=next;visit('rest-oasis');break}
@@ -95,8 +96,9 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
   case 'learn':requireAction(m.view==='shaman');s=learnShamanSpell(s,action.id);break
   case 'sell':requireAction(m.view==='room'&&room?.kind==='scales'&&['weapon','armor'].includes(action.kind));s=sellRoomGear(s,action.kind,action.id);break
   case 'search':
-   offer();requireAction(room?.kind==='chest'||room?.kind==='investigate');m.settled=true
+   offer();requireAction(room?.kind==='chest'||room?.kind==='investigate'||room?.kind==='supply');m.settled=true
    if(m.visit!.outcome.kind==='monster')encounter(m.visit!.outcome.monsterId)
+   else if(m.visit!.outcome.kind==='potions')s={...s,potions:{health:s.potions.health+m.visit!.outcome.health,mana:s.potions.mana+m.visit!.outcome.mana}}
    else if(m.visit!.outcome.kind==='gold')s={...s,gold:s.gold+m.visit!.outcome.gold}
    else if(m.visit!.outcome.kind==='loot')m.pendingLoot=refreshRoomLoot(s,m.visit!.outcome.loot,random)
    break

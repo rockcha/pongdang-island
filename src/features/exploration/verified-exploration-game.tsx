@@ -1,3 +1,6 @@
+import {PurchaseReceipt,usePurchaseReceipt} from './purchase-receipt'
+import {RecoveryEffect} from './recovery-effect'
+import {sphinxTimeLimitSeconds} from './adventure-rooms'
 import {normalizeExplorationSpells} from './spell-availability'
 import {campaignFinalFloor,campaignFinalBoss} from './campaign-profile'
 import {GrowthPanel} from './growth-panel'
@@ -56,6 +59,10 @@ export function ExplorationPlay({runId,nickname,avatarPath,onLeave,receipt,dispa
  const [busy,setBusy]=useState(false),[error,setError]=useState(''),[bag,setBag]=useState(false),[leave,setLeave]=useState(false),[history,setHistory]=useState(false)
  const [bagTab,setBagTab]=useState<InventoryTab>('weapon'),[potions,setPotions]=useState(false)
  const [shop,setShop]=useState(false)
+ const [recovery,setRecovery]=useState<{hp:number;mp:number;key:number}|null>(null)
+ const [quizNow,setQuizNow]=useState(Date.now)
+ useEffect(()=>{if(!receipt?.model.quizDeadline||receipt.model.settled)return;setQuizNow(Date.now());const timer=setInterval(()=>setQuizNow(Date.now()),100);return()=>clearInterval(timer)},[receipt?.model.quizDeadline,receipt?.model.settled])
+ const {receipt:purchaseReceipt,showReceipt}=usePurchaseReceipt()
  const [doorTransition,setDoorTransition]=useState<ExplorationReceipt|null>(null)
  const [selected,setSelected]=useState<number|null>(null),[art,setArt]=useState(drawFloorArt)
  const [descendingFloor,setDescendingFloor]=useState<number|null>(null)
@@ -124,7 +131,11 @@ export function ExplorationPlay({runId,nickname,avatarPath,onLeave,receipt,dispa
     timers.current.push(setTimeout(()=>{timers.current=[];setDoorTransition(null);setSelected(null);setShop(false);setBusy(false);lock.current=false},Math.max(0,duration-(performance.now()-doorStarted))))
     return
    }
-   if(request.action.type==='descend'){setSelected(null);setShop(false)}
+   if(request.action.type==='descend'){setSelected(null);setShop(false);setRecovery(null)}
+   if(request.action.type==='rest'){
+    setRecovery({hp:Math.max(0,next.model.state.hp-latest.model.state.hp),mp:Math.max(0,next.model.state.mp-latest.model.state.mp),key:next.revision})
+    audio.current?.play('health-potion')
+   }
    if(request.action.type==='combat'&&next.model.result){
     const result=next.model.result,id=next.revision,combatAction=request.action.action.type
     timers.current.forEach(clearTimeout);timers.current=[]
@@ -141,7 +152,19 @@ export function ExplorationPlay({runId,nickname,avatarPath,onLeave,receipt,dispa
     timers.current.push(setTimeout(()=>{timers.current=[];setAnimation(null);setBusy(false);lock.current=false},combatTimings.done+pause))
     return
    }
-   if(request.action.type==='buy'||request.action.type==='learn')audio.current?.play('loot')
+   if(request.action.type==='buy'||request.action.type==='learn'){
+    audio.current?.play('loot')
+    if(next.model.state.gold<latest.model.state.gold){
+     const action=request.action
+     if(action.type==='buy'){
+      const item=floorMerchantGoods(latest.model.state).find(item=>item.id===action.id)
+      if(item){showReceipt({name:item.name+(item.kind==='potion'?' +'+action.quantity:''),image:item.kind==='potion'?item.image:undefined,kind:item.kind});setShop(false)}
+     }else{
+      const spell=shamanSpells.find(item=>item.id===action.id)
+      if(spell){showReceipt({name:spell.name,image:spell.image,kind:'magic'});setShop(false)}
+     }
+    }
+   }
    if(request.action.type==='learn')setShop(false)
    if(request.action.type==='equip'||request.action.type==='spell')audio.current?.play('equip')
    if(request.action.type==='potion')audio.current?.play(request.action.kind==='health'?'health-potion':'mana-potion')
@@ -176,26 +199,28 @@ export function ExplorationPlay({runId,nickname,avatarPath,onLeave,receipt,dispa
   <header className="exploration-top exploration-compact-header"><div className="exploration-toolbar"><div className="exploration-map-location"><h1>파라오의 황금해</h1><span className="exploration-level-chip"><ArrowDown size={10}/>지하 <b>{state.market.floor}</b>층<small> / {campaignFinalFloor(state)}</small></span></div><div className="exploration-header-actions"><span className="exploration-gold" aria-label="탐험용 골드"><Coins size={13}/>{state.gold.toLocaleString()}</span><GrowthPanel state={server} busy={disabled} ready={model.view==='doors'&&!descendingFloor} onAllocate={stat=>command({type:'allocate-stat',stat})}/><ExplorationMenu onPreview={()=>audio.current?.play('attack')} onHistory={()=>setHistory(true)} onLeave={()=>setLeave(true)}/></div></div>
    <section className="exploration-player-status exploration-split-hud" aria-label="탐험가 상태"><div className="exploration-status-main"><div className="exploration-hud-identity"><div className="exploration-avatar-ring"><PlayerAvatar nickname={nickname} path={avatarPath} className="size-6"/></div><strong className="exploration-player-name"><span>{nickname}</span>{state.combat?.status==='active'&&<small>전투 중</small>}</strong></div><div className="exploration-vitals"><div className="exploration-resource-row"><div className="exploration-meter exploration-hp"><span><Heart size={11}/><span className="sr-only">체력</span></span><HealthMeter label="탐험가 체력" value={state.hp} max={playerMaxHp(state)}/><span><b>{state.hp}</b><small>/{playerMaxHp(state)}</small></span></div></div><div className="exploration-resource-row"><div className="exploration-meter exploration-mp"><span><Droplets size={11}/><span className="sr-only">마나</span></span><progress aria-label="탐험가 마나" value={state.mp} max={playerManaMax(state)}/><span><b>{state.mp}</b><small>/{playerManaMax(state)}</small></span></div></div></div></div><PlayerAilments state={state}/><ExplorerCombatStats state={state} iconsOnly/></section>
   </header>
+  {purchaseReceipt&&<PurchaseReceipt key={purchaseReceipt.key} item={purchaseReceipt}/>}
+  {recovery&&<RecoveryEffect key={recovery.key} amount={recovery}/>}
   {errorPanel}<main className={`exploration-scene has-dungeon-art is-close-scene ${doorTransition?'is-entering-room':''}`} inert={disabled&&model.view!=='combat'} data-scene={descendingFloor!==null?'descent':model.view==='doors'?'dungeon':model.view==='merchant'||model.view==='shaman'?'merchant':room?.id??'combat'} data-shopkeeper={model.view==='merchant'||model.view==='shaman'?keeper.id:undefined} style={descendingFloor!==null?undefined:{backgroundImage:`linear-gradient(#07101430,#07101410 55%,#07101480),url(${background})`}}>
     {descendingFloor!==null?<DescentScene floor={descendingFloor}/>:<>
     {model.view==='doors'&&!required&&testTools?.(disabled)}
     {model.view==='doors'&&<><div className={`exploration-doors ${doors.length===1?'is-single':''} ${doorTransition?'is-focusing':''}`} data-door-count={doors.length} style={{'--door-pan':`${doorTransition&&doors.length>1?(1-(selected??0))*100/3:0}%`,transformOrigin:`${doorTransition&&doors.length>1?(((selected??0)+.5)/3)*100:50}% 45%`} as CSSProperties} role="group" aria-label={`지하 ${state.market.floor}층의 ${doors.length===1?'하나뿐인 문':'세 문'}`}>{doors.map((_,index)=><button key={index} className="exploration-choice" aria-pressed={selected===index} onClick={()=>setSelected(index)}><DoorSprite skin={art.doors[index]} opening={busy&&selected===index}/><span className="exploration-choice-copy"><small>0{index+1}</small><strong>{doorSkins[art.doors[index]].name}</strong></span></button>)}</div><div className="exploration-door-controls"><ChoiceLog speaker={nickname} nickname={nickname} avatarPath={avatarPath} text={latest}/><button className="exploration-preview-enter" disabled={selected===null} onClick={()=>{audio.current?.play('door');command({type:'door',index:selected!})}}>{selected===null?'문을 선택해주세요':'선택한 문으로 입장'}</button></div></>}
     {model.view==='combat'&&state.combat&&<ScorpionRoom background={combatBackground} backdropUrl={roomBackdrop} nickname={introduction?nickname:undefined} avatarPath={avatarPath} logEvent={presentation?.event} state={state} busy={disabled} feedback={feedback} latestLog={latest} speaker={introduction?nickname:'탐험'} onAction={action=>command({type:'combat',action})} onDescend={()=>command({type:'descend'})} onReturnToMain={()=>setLeave(true)} onReward={()=>audio.current?.play('loot')} onLootReady={()=>{}}/>}
     {(['merchant','shaman'].includes(model.view))&&<section className="exploration-merchant"><div className="exploration-merchant-art"><img src={keeper.portrait} alt={keeper.name}/></div><div className="exploration-npc-dialogue"><h2>{keeper.name}<small>{keeper.shopName}</small></h2><ChoiceLog speaker={keeper.name} text={keeper.greetings[0]}/></div><div className="exploration-merchant-choices"><button disabled={disabled} onClick={()=>setShop(true)}>{model.view==='shaman'?'마법을 살펴본다':'구매한다'}</button><button onClick={()=>command({type:'descend'})}>{state.forcedMerchant?'문으로 돌아간다':'아래층으로 내려간다.'}</button></div><Dialog open={shop} onOpenChange={setShop}><DialogContent className="exploration-modal exploration-room-preview exploration-shop exploration-minimal-shop"><DialogHeader><DialogTitle>{keeper.shopName}</DialogTitle><DialogDescription>배운 마법과 구매한 물품은 보관함에서 확인할 수 있어요.</DialogDescription></DialogHeader><div className="exploration-shop-gold"><Coins size={16}/>{state.gold.toLocaleString()} 골드</div><div className="exploration-shop-items">
-     {model.view==='merchant'?floorMerchantGoods(state).map(item=><article key={item.id}>{item.kind==='potion'?<img className="exploration-shop-weapon" src={item.image} alt=""/>:item.gear&&'image' in item.gear?<img className="exploration-shop-weapon" src={item.gear.image} alt=""/>:<span aria-hidden="true">{item.kind==='armor'?<Shield size={24}/>:item.kind==='magic'?<Sparkles size={24}/>:<Swords size={24}/>}</span>}<div><h3>{item.name}</h3><p>{item.description}</p><small>{item.price} 골드</small></div><button disabled={!!purchaseBlock(state,item.id)} onClick={()=>command({type:'buy',id:item.id,quantity:1})}>{purchaseBlock(state,item.id)??'구매'}</button></article>):(state.shamanStock?.spellIds??[]).flatMap(id=>shamanSpells.filter(s=>s.id===id)).map(spell=><article key={spell.id}><img className="exploration-shop-weapon" src={spell.image} alt=""/><div><h3>{spell.name}</h3><p>{spell.description}</p><small>{spell.learnPrice} 골드</small></div><button disabled={!!shamanLearningBlock(state,spell.id)} onClick={()=>command({type:'learn',id:spell.id})}>{shamanLearningBlock(state,spell.id)??'배우기'}</button></article>)}
+     {model.view==='merchant'?floorMerchantGoods(state).map(item=><article key={item.id}>{item.kind==='potion'?<img className="exploration-shop-weapon" src={item.image} alt=""/>:item.gear&&'image' in item.gear?<img className="exploration-shop-weapon" src={item.gear.image} alt=""/>:<span aria-hidden="true">{item.kind==='armor'?<Shield size={24}/>:item.kind==='magic'?<Sparkles size={24}/>:<Swords size={24}/>}</span>}<div><h3>{item.name}</h3><p>{item.description}</p><small>{item.price} 골드</small></div><button disabled={!!purchaseBlock(state,item.id)} onClick={()=>command({type:'buy',id:item.id,quantity:1})}>{purchaseBlock(state,item.id)??'구매'}</button></article>):(state.shamanStock?.spellIds??[]).flatMap(id=>shamanSpells.filter(s=>s.id===id)).map(spell=><article key={spell.id}><img className="exploration-shop-weapon" src={spell.image} alt=""/><div><h3>{spell.name}</h3><p>{spell.description}</p><span className="exploration-spell-mana"><Droplets size={13}/> 마나 {spell.mana} 소모</span><small>{spell.learnPrice} 골드</small></div><button disabled={!!shamanLearningBlock(state,spell.id)} onClick={()=>command({type:'learn',id:spell.id})}>{shamanLearningBlock(state,spell.id)??'배우기'}</button></article>)}
     </div><button onClick={()=>setShop(false)}>상인에게 돌아가기</button></DialogContent></Dialog></section>}
     {model.view==='room'&&room?.kind==='thief'&&model.visit&&<PotionThiefRoom key={model.visit.key} stolen={model.visit.stolen} canFight={model.version>=2} busy={disabled} onFight={()=>command({type:'thief-fight'})} onLeave={()=>command({type:'descend'})}/>}
     {model.view==='room'&&room&&room.kind!=='thief'&&model.visit&&<section className={`exploration-adventure-room is-${room.kind}`}>
      {room.kind==='giant'&&<img className="verified-room-portrait" src={getMonster(room.monsterId).image} alt={room.title}/>}
      {room.id==='nameless-guardian'&&<img className="verified-room-portrait" src="/exploration/npcs/nameless-royal-warden.png" alt="이름 없는 왕실 수문장"/>}
-     <div className="exploration-room-panel"><div className="exploration-npc-dialogue"><h2>{room.title}</h2><p>{room.id==='nameless-guardian'?nameStoryGreeting(state):room.kind==='rest'?(model.settled?(testTools||localOnly?'체력과 마나를 회복했습니다. 테스트 진행은 저장되지 않아요.':'체력과 마나를 회복하고 탐험을 저장했습니다.'):'쉬고 게임을 저장하겠습니까?'):model.settled?model.visit.progress:model.visit.entry}</p></div><RoomEffectDetails id={room.id} state={state} done={model.settled}/><div className="exploration-room-decisions">
+     <div className="exploration-room-panel"><div className="exploration-npc-dialogue"><h2>{room.title}</h2><p>{room.id==='nameless-guardian'?nameStoryGreeting(state):room.kind==='rest'?(model.settled?(testTools||localOnly?'체력과 마나를 회복했습니다. 테스트 진행은 저장되지 않아요.':'체력과 마나를 회복하고 탐험을 저장했습니다.'):'쉬고 게임을 저장하겠습니까?'):model.settled?(model.visit.outcome.kind==='gold'?`금화 ${model.visit.outcome.gold.toLocaleString()} 골드를 획득했습니다.`:model.visit.progress):model.visit.entry}</p></div><RoomEffectDetails id={room.id} state={state} done={model.settled}/><div className="exploration-room-decisions">
      {!model.settled&&<>
-      {(room.kind==='chest'||room.kind==='investigate')&&roomAction('search')}
+      {(room.kind==='chest'||room.kind==='investigate'||room.kind==='supply')&&<button onClick={()=>command({type:'search'})}>{room.kind==='supply'?'보급 상자를 연다':'상자를 살펴본다'}</button>}
       {room.kind==='rest'&&roomAction('rest')}
       {room.kind==='lore'&&<button onClick={()=>command({type:'read'})}>읽어본다</button>}
       {room.kind==='choice'&&<><p>{room.intro[0]}</p><button disabled={!!choiceRoomBlock(state,room.id as ChoiceRoomId)} onClick={()=>command({type:'contract'})}>{choiceRoomBlock(state,room.id as ChoiceRoomId)??'선택을 받아들인다'}</button></>}
       {room.kind==='giant'&&roomAction('awaken')}
-      {room.kind==='sphinx'&&(model.quizDeadline?<><p>{model.visit.question.question}</p>{model.visit.question.answers.map((answer,index)=><button key={answer} onClick={()=>command({type:'answer',index})}>{answer}</button>)}</>:roomAction('quiz'))}
+      {room.kind==='sphinx'&&(model.quizDeadline?<div className="verified-sphinx-quiz"><div className="verified-quiz-clock" data-urgent={model.quizDeadline-quizNow<=5000}><strong>남은 시간 {Math.max(0,Math.ceil((model.quizDeadline-quizNow)/1000))}초</strong><progress aria-label="퀴즈 남은 시간" max={sphinxTimeLimitSeconds*1000} value={Math.max(0,model.quizDeadline-quizNow)}/></div><h3>{model.visit.question.question}</h3><div>{model.visit.question.answers.map((answer,index)=><button key={answer} disabled={disabled||quizNow>=model.quizDeadline!} onClick={()=>command({type:'answer',index})}><b>{index+1}.</b> {answer}</button>)}</div></div>:roomAction('quiz'))}
       {room.kind==='sphinx'&&<button onClick={()=>command({type:'answer',index:-1})}>영혼의 절반을 내어준다 · 체력 50% 감소</button>}
       {room.id==='erased-name'&&<><button onClick={()=>command({type:'story',action:'restore'})}>지워진 이름을 다시 새긴다</button><button onClick={()=>command({type:'story',action:'leave-name'})}>남의 무덤에 손대지 않는다</button></>}
       {room.id==='erased-name-record'&&<button onClick={()=>command({type:'story',action:'read-record'})}>먼지를 털고 기록을 읽는다</button>}
@@ -212,6 +237,6 @@ export function ExplorationPlay({runId,nickname,avatarPath,onLeave,receipt,dispa
   <PracticeInventory initialTab={bagTab} open={bag} onOpenChange={setBag} state={state} busy={disabled} onChange={()=>{}} onEquipChange={()=>{}} onEquip={(kind,id)=>command({type:'equip',kind,id})} onToggleSpell={id=>command({type:'spell',id})} onUsePotion={kind=>{if(!disabled)command({type:'potion',kind});return false}}/>
   <PotionChoiceDialog open={potions} onOpenChange={setPotions} state={state} busy={disabled} onUse={kind=>{if(!disabled)command({type:'potion',kind});return false}}/>
   <Dialog open={history} onOpenChange={setHistory}><DialogContent className="exploration-modal"><DialogHeader><DialogTitle>현재 탐험</DialogTitle><DialogDescription>지하 {state.market.floor}층 · 체력 {state.hp} · 탐험용 골드 {state.gold}</DialogDescription></DialogHeader><p>{model.result?.lines.join('\n')??latest}</p></DialogContent></Dialog>
-  <ConfirmDialog compact open={leave} onOpenChange={setLeave} title="탐험을 마치고 나갈까요?" description={testTools||localOnly?'테스트 진행은 저장되지 않아요.':'휴식방에서 저장했다면 그 시점부터 이어할 수 있어요. 저장 이후 진행은 사라지며, 이미 받은 보상은 유지돼요.'} confirmLabel="나가기" cancelLabel="계속 탐험" onConfirm={()=>void send({type:'leave'})}/>
+  <ConfirmDialog compact open={leave} onOpenChange={setLeave} title="탐험을 마치고 나갈까요?" description={testTools||localOnly?'테스트 진행은 저장되지 않아요.':'현재 진행을 저장하고 나갑니다. 다음에 같은 층과 상태에서 이어할 수 있어요.'} confirmLabel="나가기" cancelLabel="계속 탐험" onConfirm={()=>void send({type:'leave'})}/>
  </section>,document.body)
 }

@@ -4,7 +4,7 @@ import {drawFloorMarket} from './merchant-stock'
 import {recordRoomEntry} from './room-rules'
 import {getShopkeeper} from './shopkeepers'
 import type {PracticeState} from './practice-state'
-import {campaignFinalFloor,campaignFinalRoom,campaignBossFloors} from './campaign-profile'
+import {campaignFinalFloor,campaignFinalRoom,campaignBossFloors,bossSupplyFloors} from './campaign-profile'
 export function needsNameGuardian(state:PracticeState){return state.mode==='practice'&&state.market.floor===34&&!state.nameStory?.met}
 export function meetNameGuardian(state:PracticeState):PracticeState{return needsNameGuardian(state)?{...state,guardianCheckpoint:true,nameStory:{...state.nameStory,met:true}}:state}
 export function finishNameGuardian(state:PracticeState):PracticeState{
@@ -19,6 +19,7 @@ export function canLeaveRoom(state:PracticeState){return !state.forcedMerchant&&
 export function needsFinalBoss(state:PracticeState){return state.mode==='practice'&&state.market.floor>=campaignFinalFloor(state)&&!state.finalBossDefeated&&!state.completed}
 export function requiredDoorRoom(state:PracticeState){
  if(state.mode!=='practice')return
+ if(state.growth&&bossSupplyFloors.includes(state.market.floor))return 'boss-supply-chest' as const
  if(state.forcedMerchant?.phase==='pending')return getShopkeeper(state.forcedMerchant.id).roomId
  if(needsNameGuardian(state))return 'nameless-guardian' as const
  if(needsFinalBoss(state))return campaignFinalRoom(state)

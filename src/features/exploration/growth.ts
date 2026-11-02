@@ -10,7 +10,7 @@ export const growthStats=[
 export type GrowthStat=typeof growthStats[number]['id']
 export type ExplorationGrowth={version:1;previewPoints?:number;allocations:Record<GrowthStat,number>}
 export function newGrowth():ExplorationGrowth{return {version:1,allocations:{health:0,mana:0,attack:0,magic:0,evasion:0}}}
-export function earnedGrowthPoints(floor:number){return Math.max(0,Math.min(7,Math.floor((floor-1)/10)))}
+export function earnedGrowthPoints(floor:number){return Math.max(1,Math.min(7,Math.floor((floor-1)/10)))}
 export function growthBonus(state:Pick<PracticeState,'growth'>,stat:GrowthStat){return (state.growth?.allocations[stat]??0)*growthStats.find(item=>item.id===stat)!.amount}
 export function availableGrowthPoints(state:PracticeState){return state.growth?Math.max(0,earnedGrowthPoints(state.market.floor)+(state.growth.previewPoints??0)-Object.values(state.growth.allocations).reduce((sum,n)=>sum+n,0)):0}
 export function allocateGrowth(state:PracticeState,stat:GrowthStat):PracticeState{

@@ -32,3 +32,5 @@
 @keyframes potion-thief-appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.potion-thief-entrance{animation:none}}
 .exploration-floor-toast.is-shared-arrival{top:clamp(64px,24%,140px);animation-duration:2.4s}
+
+.verified-sphinx-quiz{display:grid;gap:14px;padding:16px;background:#101c19f2;border:1px solid #cfb66e;border-radius:12px;width:100%;text-align:left}.verified-sphinx-quiz h3{font-size:18px;line-height:1.7;color:#fff1cb;margin:0}.verified-sphinx-quiz>div:last-child{display:grid;gap:8px}.verified-sphinx-quiz button{width:100%;min-height:48px;text-align:left;font-size:15px!important}.verified-quiz-clock{display:grid;gap:8px;color:#f5d990;font-variant-numeric:tabular-nums}.verified-quiz-clock progress{width:100%;height:10px;accent-color:#e5c16d}.verified-quiz-clock[data-urgent=true]{color:#ff9d8b}.verified-quiz-clock[data-urgent=true] progress{accent-color:#ef826c}

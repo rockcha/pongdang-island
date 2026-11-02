@@ -1,0 +1,29 @@
+{
+  "verified_at": "2026-11-02T04:52:39.839Z",
+  "scope": "Local real shop component and Phaser tank; synthetic fish; all non-local HTTP blocked; no real purchases",
+  "shop": {
+    "cards": 2,
+    "prices": [
+      3500,
+      3800
+    ],
+    "purchaseConfirmations": true,
+    "uncropped": true
+  },
+  "tanks": [
+    {
+      "id": "hangang-fireworks-night",
+      "world": 1170,
+      "viewport": 390,
+      "image": "/assets/storage-upload/new/20261102-134047/aquarium-backgrounds/hangang-fireworks-night-panorama-v1.png"
+    },
+    {
+      "id": "cheomseongdae-stars",
+      "world": 1170,
+      "viewport": 390,
+      "image": "/assets/storage-upload/new/20261102-134047/aquarium-backgrounds/cheomseongdae-stars-panorama-v1.png"
+    }
+  ],
+  "errors": [],
+  "frontend_deployed": false
+}

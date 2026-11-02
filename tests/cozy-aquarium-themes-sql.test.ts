@@ -5,7 +5,7 @@ import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db
 const uid='00000000-0000-0000-0000-000000000709'
 const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).aquarium_backgrounds
-const themes=['20261019-085100','20261019-085940','20261019-090840','20261019-092750','20261021-150650','20261021-151542','20261022-cozy-doll-room','20261024-003808'].flatMap(batch=>JSON.parse(readFileSync(`assets/storage-upload/new/${batch}/manifest.json`,'utf8')).items).map(theme=>({...theme,price:catalog.find(item=>item.id===theme.id).price,image_path:catalog.find(item=>item.id===theme.id).image_path})).concat(catalog.filter(theme=>['sunlit-tropical-aquascape','black-sail-cove','fairy-dew-grove','fairy-petal-palace','fairy-moonlit-lake','halloween-pumpkin-teahouse','halloween-ghost-glasshouse','halloween-witch-lavender-room','pharaoh-sleeping-pyramid-court','pharaoh-sunken-sun-tomb'].includes(theme.id)))
+const themes=['20261019-085100','20261019-085940','20261019-090840','20261019-092750','20261021-150650','20261021-151542','20261022-cozy-doll-room','20261024-003808'].flatMap(batch=>JSON.parse(readFileSync(`assets/storage-upload/new/${batch}/manifest.json`,'utf8')).items).map(theme=>({...theme,price:catalog.find(item=>item.id===theme.id).price,image_path:catalog.find(item=>item.id===theme.id).image_path})).concat(catalog.filter(theme=>['sunlit-tropical-aquascape','black-sail-cove','fairy-dew-grove','fairy-petal-palace','fairy-moonlit-lake','halloween-pumpkin-teahouse','halloween-ghost-glasshouse','halloween-witch-lavender-room','pharaoh-sleeping-pyramid-court','pharaoh-sunken-sun-tomb','hangang-fireworks-night','cheomseongdae-stars'].includes(theme.id)))
 const initialGold=themes.reduce((sum,theme)=>sum+theme.price,0)+10000
 beforeAll(async()=>{
  db=await createLocalDatabase();await replayMigrations(db)
@@ -18,7 +18,7 @@ afterAll(async()=>{await db?.close()})
 it('keeps paid theme prices within tier ranges and the starter background free',async()=>{
  const state=(await db.query('select public.aquarium_state() s')).rows[0].s
  expect(state.catalog.find(item=>item.id==='default').price).toBe(0)
- for(const [tier,min,max] of [['simple',200,400],['mood',400,800],['special',800,3000]] as const){
+ for(const [tier,min,max] of [['simple',200,400],['mood',400,800],['special',800,3800]] as const){
   const prices=state.catalog.filter(item=>item.tier===tier&&item.id!=='default').map(item=>item.price)
   expect(Math.min(...prices)).toBe(min)
   expect(Math.max(...prices)).toBe(max)

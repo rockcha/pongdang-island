@@ -229,6 +229,13 @@
       "tier": "simple"
     },
     {
+      "id": "cheomseongdae-stars",
+      "name": "별을 담은 첨성대",
+      "price": 3800,
+      "image_path": "cheomseongdae-stars-panorama-v1.png",
+      "tier": "special"
+    },
+    {
       "id": "cherry-blossom-pond",
       "name": "벚꽃이 고인 연못",
       "price": 550,
@@ -373,6 +380,13 @@
       "name": "마녀가 비운 보랏빛 방",
       "price": 1800,
       "image_path": "halloween-witch-lavender-room-panorama-v1.png",
+      "tier": "special"
+    },
+    {
+      "id": "hangang-fireworks-night",
+      "name": "한강 불꽃의 밤",
+      "price": 3500,
+      "image_path": "hangang-fireworks-night-panorama-v1.png",
       "tier": "special"
     },
     {

@@ -1,10 +1,10 @@
 {
   "profile": "webp-q90-inside-960-v1",
   "summary": {
-    "count": 72,
-    "sourceBytes": 190308830,
-    "previewBytes": 13970242,
-    "reductionPercent": 92.66
+    "count": 74,
+    "sourceBytes": 195748173,
+    "previewBytes": 14394250,
+    "reductionPercent": 92.65
   },
   "items": [
     {
@@ -131,6 +131,20 @@
         "bytes": 167520,
         "width": 960,
         "height": 569
+      }
+    },
+    {
+      "key": "cheomseongdae-stars-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261102-134047/aquarium-backgrounds/cheomseongdae-stars-panorama-v1.png",
+      "sourceHash": "8ac113d4a369727e8e78fb1495491582d1747de52eea6b868e662f28639cf661",
+      "sourceBytes": 2849728,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "preview": {
+        "url": "/game-art/background-previews/2fe9a4afe75ff5bc4553b6e0-960.webp",
+        "bytes": 225674,
+        "width": 960,
+        "height": 640
       }
     },
     {
@@ -425,6 +439,20 @@
         "bytes": 164590,
         "width": 960,
         "height": 570
+      }
+    },
+    {
+      "key": "hangang-fireworks-night-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261102-134047/aquarium-backgrounds/hangang-fireworks-night-panorama-v1.png",
+      "sourceHash": "db3a7d25b5801bce8e2f8291d058549fbce66c5d87b246c6905054b893f0d1c4",
+      "sourceBytes": 2589615,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "preview": {
+        "url": "/game-art/background-previews/12142b1c21d8c967a8d4d6c0-960.webp",
+        "bytes": 198334,
+        "width": 960,
+        "height": 640
       }
     },
     {

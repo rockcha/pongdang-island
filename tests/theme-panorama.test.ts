@@ -22,7 +22,7 @@ it('uses uploaded panoramas in production and preserves unregistered theme rende
   for (const theme of catalog.aquarium_backgrounds) expect(themePanoramaUrl(theme.image_path)).toMatch(/^https:\/\/art\.example\/.*-panorama-v[1-9]\d*\.png$/)
 })
 
-it.each(['sunlit-tropical-aquascape-v1.png','black-sail-cove-v1.png','fairy-dew-grove-panorama-v1.png','fairy-petal-palace-panorama-v1.png','fairy-moonlit-lake-panorama-v1.png','halloween-pumpkin-teahouse-panorama-v1.png','halloween-ghost-glasshouse-panorama-v1.png','halloween-witch-lavender-room-panorama-v1.png'] as const)('resolves %s from its own generation batch and the same uploaded panorama', (path) => {
+it.each(['sunlit-tropical-aquascape-v1.png','black-sail-cove-v1.png','fairy-dew-grove-panorama-v1.png','fairy-petal-palace-panorama-v1.png','fairy-moonlit-lake-panorama-v1.png','halloween-pumpkin-teahouse-panorama-v1.png','halloween-ghost-glasshouse-panorama-v1.png','halloween-witch-lavender-room-panorama-v1.png','hangang-fireworks-night-panorama-v1.png','cheomseongdae-stars-panorama-v1.png'] as const)('resolves %s from its own generation batch and the same uploaded panorama', (path) => {
   vi.stubEnv('DEV',true)
   expect(themePanoramaUrl(path)).toBe('/'+panoramas[path].localPath)
   vi.stubEnv('DEV',false)

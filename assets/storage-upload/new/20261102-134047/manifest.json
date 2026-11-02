@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-11-02T04:41:32.515Z",
+  "status": "registered",
+  "references": [],
+  "files": [
+    {
+      "theme_id": "hangang-fireworks-night",
+      "name": "한강 불꽃의 밤",
+      "price": 3500,
+      "tier": "special",
+      "local_path": "aquarium-backgrounds/hangang-fireworks-night-panorama-v1.png",
+      "storage_path": "hangang-fireworks-night-panorama-v1.png",
+      "generated_source": "assets/storage-upload/new/20261102-134047/sources/hangang-fireworks-night-panorama-v1.png",
+      "tool_source": "C:/Users/user/.codex/generated_images/01a19830-3861-70a1-b75a-0d8bfbc2ca05/exec-487c8621-7980-4df0-b533-5f29001c1f72.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Create ONE complete landscape 3:2 panoramic aquarium game background, high resolution, no panels, no UI, no lettering or signatures. Theme 'Han River Fireworks Night' from Korea. Premium beautifully painted stylized fantasy environment, clean elegant readable forms, subtle painterly texture, refined jewel colors rather than photo realism. Wide continuous underwater Han River scene seen through crystal clear water, with a distant small Seoul city skyline and an elegant illuminated Korean bridge confined to the upper fifth. Very top edge opens onto a deep midnight blue sky with THREE tasteful large gold, rose pink and pale cyan fireworks blooms; beautifully controlled fine sparks, never a noisy wall of particles. Firework colors reflect as soft vertical streaks on the upper water and dissolve into rich calm indigo and teal water. Main center and middle two thirds are quiet open translucent underwater swimming space with low contrast and just a few restrained suspended light specks. Along bottom corners: small smooth river stones and restrained graceful reeds, subtle Korean pavilion roof silhouette on far lower-left edge as an environmental ornament; sophisticated not cluttered. Broad soft pool of reflected pink gold light across the riverbed. A welcoming magical premium Korean night festival atmosphere. Side thirds contain scenery but central third has calm usable water so portrait center crop is also beautiful. Complete polished edge-to-edge scene. No fish, no animals, no people, no aquarium glass, no text, no border, no giant central object. Fireworks and landmarks stay in upper fifth; foreground stones stay at lower margins. LANDSCAPE 3:2 aspect ratio.",
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "db3a7d25b5801bce8e2f8291d058549fbce66c5d87b246c6905054b893f0d1c4",
+      "generated_sha256": "b8b4c8ce7ed5e63ef226fcfc37335b724b3cf8745e33f6931c904d263f9bba5a",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-02T04:42:03.620Z"
+    },
+    {
+      "theme_id": "cheomseongdae-stars",
+      "name": "별을 담은 첨성대",
+      "price": 3800,
+      "tier": "special",
+      "local_path": "aquarium-backgrounds/cheomseongdae-stars-panorama-v1.png",
+      "storage_path": "cheomseongdae-stars-panorama-v1.png",
+      "generated_source": "assets/storage-upload/new/20261102-134047/sources/cheomseongdae-stars-panorama-v1.png",
+      "tool_source": "C:/Users/user/.codex/generated_images/01a19830-3861-70a1-b75a-0d8bfbc2ca05/exec-6a5b217a-d229-4e18-9c3a-ea5a16c732ff.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Create ONE complete landscape 3:2 panoramic aquarium game background, high resolution, no panels, no UI, no lettering or signatures. Theme 'Cheomseongdae Holding the Stars', an exquisite Korean Silla starlit underwater sanctuary. Premium clean stylized fantasy game environment illustration with refined painterly rendering and elegant warm stone against deep lapis and violet-blue water. A clearly recognizable Korean Cheomseongdae observatory stands on the LEFT THIRD at the lower-left side: squat tapered bottle-shaped ancient stacked granite astronomical tower, wider gently curved base, narrower cylindrical neck, small dark SQUARE window about mid-height, characteristic two crossed square stone-beam layers forming the open square top. NOT a pagoda, NOT a lighthouse, NOT a castle, NOT a tall western tower. A few pale gold stars float delicately just above its top; a very subtle thin constellation arc and Milky Way shimmer at the upper perimeter, with transparent blue rays descending into clear water. Rich submerged Gyeongju garden around the bottom edge, smooth granite paving, just a few lotus leaves and thin aquatic grasses, one low Korean stone lantern far right margin. Center and right-middle two thirds stay calm open luminous deep-blue swimming water, low contrast, no large central structure. The distant upper background dissolves into magical blue starlight with soft Korean mountain silhouettes, seamless underwater fantasy, no harsh horizon stripe. Very restrained celestial particles, no excessive fog or glow. Sophisticated luxurious mystical calm, beautiful light and crisp recognizable silhouette, high-value special aquarium wallpaper. No fish, no animals, no people, no text, no numbers, no border, no grid. Full edge-to-edge LANDSCAPE 3:2.",
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "8ac113d4a369727e8e78fb1495491582d1747de52eea6b868e662f28639cf661",
+      "generated_sha256": "79f3659701ea86da47ce6ad3af323ea1e2e51ef5d90c9a8eed40e97361f8d9b9",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-02T04:42:07.300Z"
+    }
+  ],
+  "catalog_registered": true,
+  "registered_project": "ewafafphiovbpjwogwzn",
+  "registered_at": "2026-11-02T04:50:51.677Z",
+  "remote_migration": "20261102044626_korean_special_aquarium_themes",
+  "frontend_deployed": false
+}

@@ -1,3 +1,4 @@
+const TrainingPage=lazy(()=>import('@/features/training/training-page').then(module=>({default:module.TrainingPage})))
 const RelicRoulettePage=lazy(()=>import('@/features/relic-roulette/roulette-page').then(module=>({default:module.RelicRoulettePage})))
 const ExplorationStatTestPage=lazy(()=>import('@/features/exploration/exploration-stat-test-page').then(module=>({default:module.ExplorationStatTestPage})))
 import {DecorationShopPage} from '@/features/gold/decoration-shop-page'
@@ -115,6 +116,7 @@ export function AppRoutes() {
             <Route path="relic-roulette" element={<RelicRoulettePage />} />
             <Route path="exploration-stat-test" element={<ExplorationStatTestPage/>}/>
             <Route path="farm" element={<FarmPage />} />
+            {import.meta.env.DEV&&<Route path="training" element={<TrainingPage/>}/>}
             <Route path="music-room" element={<MusicRoomPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />
             <Route path="region/:regionId" element={<RegionPage />} />

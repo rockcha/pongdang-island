@@ -41,7 +41,7 @@ it('blocks recovery while a workshop has an active or uncollected batch',()=>{
  vi.useFakeTimers()
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  getMilk();open('유제품 공방 (14,12)');open('버터 만들기');close()
- open('꾸미기');open('유제품 공방 (14,12)');open('회수')
+ open('편집하기');open('유제품 공방 (14,12)');open('회수')
  expect(screen.getByRole('status').textContent).toContain('가공품을 먼저 받은 뒤')
  expect(screen.getByRole('button',{name:'유제품 공방 (14,12)'})).toBeTruthy()
  act(()=>vi.advanceTimersByTime(4000));open('회수')

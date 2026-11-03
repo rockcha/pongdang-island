@@ -1,4 +1,5 @@
 import {bossPreludeLines} from './boss-prelude'
+import {isRevivalEvent} from './combat-presentation'
 import {spellVisuals} from './spell-visuals'
 import {WeaponAttackEffect} from './weapon-attack-effect'
 import {SpellCastEffect} from './spell-cast-effect'
@@ -90,7 +91,7 @@ export function ScorpionRoom({background=combatBackgrounds[0],backdropUrl,nickna
  const resultMove=resultEventMove()
  function resultEventMove(){const id=logEvent?.moveId??reply?.moveId;return [monster.basic,...monster.magic].find(move=>move.id===id)}
  const healing=feedback?.phase==='player'?feedback.events.find(event=>event.phase!=='reply'&&event.healing!==undefined&&!event.source):undefined
- const revival=feedback?.phase==='reply'?feedback.events.find(event=>event.phase==='reply'&&event.kind==='system'&&event.healing):undefined
+ const revival=feedback&&(feedback.phase==='reply'||feedback.phase==='bleed')?feedback.events.find(isRevivalEvent):undefined
  const enemyHealing=feedback?.phase==='reply'?feedback.events.find(event=>event.effect==='enemy-heal'):undefined
 
  const cleansing=feedback?.phase==='player'&&feedback.events.some(event=>event.effect==='cleanse')
@@ -112,7 +113,7 @@ export function ScorpionRoom({background=combatBackgrounds[0],backdropUrl,nickna
    {!won&&(combat.pattern?.shieldHp??0)>0&&<div className="combat-enemy-shield" data-damage={combat.pattern!.shieldHp!<=10?'heavy':combat.pattern!.shieldHp!<=20?'light':'intact'} aria-hidden="true"><span/><span/><svg className="combat-shield-cracks" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none"><g className="shield-cracks-light"><path d="m25 8 7 18-9 9 13 12-6 14m2-35 12 4 5-8M82 35 68 43l5 12-13 10m8-22-10-7"/></g><g className="shield-cracks-heavy"><path d="m50 2-4 17 12 12-11 15 8 16-12 14 3 22M4 55l17-5 15 11 11-15m-26 4 4-15M96 73 78 67l-8 15-15-20m23 5 3-12M18 85l12-9 13 0"/></g></svg></div>}
    {player?.damage!==undefined&&player.effect!=='miss'&&<div key={`attack-${feedback?.id}`} className={`combat-enemy-hit ${feedback?.action==='magic'?'is-magic':''}`} aria-hidden="true"><span className={player.critical?'is-critical':''}>{player.critical&&<small>치명타!</small>}−{player.damage}</span></div>}
    {enemyHealing&&<span key={`enemy-heal-${feedback?.id}`} className="combat-heal-number" aria-hidden="true">+{enemyHealing.healing} 회복</span>}
-   {revival&&<span className="combat-heal-number is-revival" role="status">{revival.spellId==='soul-knot'?'영혼의 매듭 · 체력 1로 생존':`등불 부활 +${revival.healing}`}</span>}
+   {revival&&<span key={`revival-${feedback?.id}-${feedback?.phase}`} className="combat-heal-number is-revival" role="status">{revival.spellId==='soul-knot'?'영혼의 매듭 · 체력 1로 생존':`영혼의 등불 발동 · 체력 ${revival.healing}`}</span>}
    {healing?.healing!==undefined&&<span key={`heal-${feedback?.id}`} className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">+{healing.healing} 회복</span>}
    {cleansing&&!healing&&<span className={`combat-heal-number ${selfSpell?'is-player-spell':feedback?.action==='attack'?'is-player-weapon':''}`} aria-hidden="true">정화!</span>}
    {manaRestored>0&&<span className="combat-heal-number is-mana">+{manaRestored} 마나</span>}

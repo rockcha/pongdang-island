@@ -2,6 +2,9 @@ import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/r
 import {MemoryRouter,useLocation} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {HeaderPlaceNavigation,headerPlaces} from '@/components/header-place-navigation'
+const trainingAuth=vi.hoisted(()=>({email:null as string|null}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:trainingAuth.email?{user:{email:trainingAuth.email}}:null})}))
+beforeEach(()=>{trainingAuth.email=null})
 const mock=vi.hoisted(()=>({fleaReady:0,rouletteReady:false,relic:null as {name:string;thumbnail_path:string}|null,newContent:{board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null,fuel:null as {ready:number;total:number}|null,bait:null as {ready:number;total:number}|null}))
 vi.mock('@/components/menu-activity',async original=>({...await original<typeof import('@/components/menu-activity')>(),useMenuActivity:()=>({
  '/flea-market':{kind:'flea',running:0,ready:mock.fleaReady},
@@ -19,6 +22,13 @@ beforeEach(()=>{mock.rouletteReady=false;mock.fleaReady=0;mock.relic=null;mock.n
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
+it.each([{operator:true,email:'0@0.com',visible:true},{operator:false,email:'0@0.com',visible:false},{operator:true,email:'other@example.com',visible:false}])('shows local training only for the target operator: $email / $operator',async value=>{
+ mock.operator=value.operator;trainingAuth.email=value.email
+ render(<MemoryRouter><View/></MemoryRouter>)
+ const menu=await open('내 섬'),item=within(menu).queryByRole('menuitem',{name:/훈련장/})
+ expect(!!item).toBe(value.visible)
+ if(item){expect(item.getAttribute('href')).toBe('/training');expect(item.textContent).toContain('운영자')}
+})
 it('shows roulette NEW and the collection dot until the daily free spin is used',async()=>{
  mock.rouletteReady=true
  const view=render(<MemoryRouter initialEntries={['/relic-roulette']}><View/></MemoryRouter>)

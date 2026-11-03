@@ -14,7 +14,7 @@ it('drags seeds across plots once, grows for ten seconds, then harvests concurre
  const map=container.querySelector('.top-farm-map')!,viewport=container.querySelector('.top-farm-viewport')!
  vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:1120,bottom:960,width:1120,height:960,x:0,y:0,toJSON:()=>({})})
  const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId:1,pointerType:'mouse'}))
- click('심기');click('밀 4개')
+ click('씨앗 심기');click('밀 4개')
  pointer('pointerdown',9,13);pointer('pointermove',11,13);pointer('pointermove',9,13);pointer('pointerup',9,13)
  expect(container.querySelector('.farm-plant-bar')?.textContent).toContain('×1')
  expect(container.querySelector('.farm-seed-tray')).toBeNull()
@@ -35,7 +35,7 @@ it('drags seeds across plots once, grows for ten seconds, then harvests concurre
  act(()=>vi.advanceTimersByTime(1))
  expect(container.querySelectorAll('[data-harvesting]')).toHaveLength(0)
  expect(screen.queryByRole('progressbar',{name:/밀 성장/})).toBeNull()
- click('창고')
+ click('창고 (18,5)')
  const warehouse=screen.getByRole('dialog')
  expect(warehouse.querySelectorAll('.farm-warehouse-slot')).toHaveLength(1)
  expect(within(warehouse).getByText('×15')).toBeTruthy()
@@ -45,7 +45,7 @@ it('drags seeds across plots once, grows for ten seconds, then harvests concurre
 it('harvests a mature plot with a tap while seeds remain selected, without consuming another seed',()=>{
  vi.useFakeTimers()
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('심기');click('밀 4개');click('밭 (9,13)')
+ click('씨앗 심기');click('밀 4개');click('밭 (9,13)')
  act(()=>vi.advanceTimersByTime(10000))
  click('밭 (9,13)')
  expect(container.querySelectorAll('[data-harvesting]')).toHaveLength(1)

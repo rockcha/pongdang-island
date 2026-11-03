@@ -1,26 +1,33 @@
-/* Reserve real space for the controls, including expanded trays and safe areas. */
-.top-farm{display:grid;grid-template-rows:auto minmax(0,1fr) auto;height:100dvh;background:#80b8bf}
-.top-farm-header{position:relative;inset:auto;justify-self:start;width:calc(100% - 24px);max-width:500px;margin:max(10px,env(safe-area-inset-top)) 12px 0;padding:4px 8px;gap:0 8px;flex-wrap:wrap;border-radius:15px;min-height:56px}
+/* The farm fills the screen; controls float above it without reserving map space. */
+.top-farm{display:block;height:100dvh;background:#80b8bf}
+.top-farm-header{position:absolute;inset:auto;top:0;left:0;width:calc(100% - 24px);max-width:500px;margin:max(10px,env(safe-area-inset-top)) 12px 0;padding:4px 8px;gap:0 8px;flex-wrap:wrap;border-radius:15px;min-height:56px}
 .top-farm-header>.farm-capacity-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));flex:0 0 100%;width:100%;border-top:1px solid #eadbc6;margin:2px 0 0;padding:8px 0 6px;gap:8px}
 .farm-capacity-item{display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;font-size:10px;color:#a08464;min-width:0}
 .farm-capacity-item+.farm-capacity-item{border-left:1px solid #e9dbc8}.farm-capacity-item>svg{flex:none;color:#a58058}.farm-capacity-item strong{font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;color:#7c5c40}.farm-capacity-item i{font-style:normal;font-size:10px;font-weight:400;color:#aa947b}.farm-capacity-item[data-full=true] strong{color:#ad7847}
 .top-farm-header h1{flex:1;font-size:15px;white-space:nowrap}
 .top-farm-header>a,.top-farm-header>button{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.top-farm-header>button:disabled{opacity:.35;cursor:default}
 .top-farm-header .top-farm-gold{min-width:0;padding:0 4px;gap:6px;font-size:12px}
 .top-farm-help{top:114px;right:auto;left:clamp(12px,calc(100vw - 297px),227px);z-index:8;font-size:11px}
 .top-farm-help strong{font-size:12px;font-weight:500}.top-farm-help p{margin:6px 0}.top-farm-help button{display:flex;align-items:center;gap:7px;min-height:44px}
-.top-farm-viewport{position:relative;inset:auto;min-height:0;min-width:0;touch-action:none}
+.top-farm-viewport{position:absolute;inset:0;min-height:0;min-width:0;touch-action:none}
 .farm-map-canvas{display:grid;place-items:center;min-width:100%;min-height:100%;width:max-content;height:max-content;padding:50dvh 50vw}
 .top-farm-map{margin:0;flex:none}
 .top-farm-camera{top:max(118px,calc(env(safe-area-inset-top) + 110px));right:12px;padding:3px;border-radius:12px}
 .top-farm-camera button{width:44px;height:44px}
-.top-farm-bottom{position:relative;inset:auto;min-width:0;background:none;padding:8px 12px max(10px,env(safe-area-inset-bottom));gap:7px;pointer-events:auto}
+.top-farm-bottom{position:absolute;inset:auto 0 0;min-width:0;background:none;padding:8px 12px max(10px,env(safe-area-inset-bottom));gap:7px;pointer-events:none}
 .top-farm-bottom>*{max-width:520px}
 .top-farm-message{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:min(440px,calc(100vw - 40px));margin:0;padding:7px 12px;font-size:11px;pointer-events:none}
 .top-farm-message button{pointer-events:auto;min-height:32px}
-.farm-crop-tools{margin:0;padding:4px;min-height:64px;gap:4px;border-radius:17px;box-shadow:0 3px 15px #35596516}
-.farm-crop-tools button{flex-direction:column;gap:4px;min-height:54px;font-size:11px;border-radius:12px}
-.farm-crop-tools button span{display:flex;align-items:center;gap:5px}
+.farm-crop-tools{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:4px;min-height:64px;gap:2px;border-radius:17px;box-shadow:0 3px 15px #35596516}
+.farm-crop-tools button{flex-direction:column;gap:4px;min-height:54px;padding:6px 2px;font-size:11px;border-radius:12px}
+.farm-crop-tools button span{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.farm-crop-tools .farm-land-icon{width:24px;height:21px;margin:0}
+.farm-crop-tools button[aria-pressed=true]{background:#eee0c7;color:#825431}
+.farm-shop-categories{display:flex;gap:4px;margin:5px 12px 0;padding:3px;border-radius:10px;background:#f1e6d5}
+.farm-shop-categories button{flex:1;min-height:40px;border-radius:8px;font-size:11px}
+.farm-shop-categories button[aria-pressed=true]{background:#fff9ee;color:#825431}
+@media(max-width:420px){.farm-crop-tools button{font-size:10px}}
 .farm-crop-tools button b{display:grid;place-items:center;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:#a27548;color:#fff8e9;font-size:9px;font-weight:500}
 .farm-seed-tray{display:block;margin:0;padding:8px 12px;max-height:240px;overflow:auto;box-shadow:0 4px 14px #35596518}
 .farm-seed-tray>header{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}

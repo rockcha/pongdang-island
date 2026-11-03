@@ -61,7 +61,7 @@ it('prepares animals once, reserves capacity while preparing, then produces only
 })
 it('shows rotten crops with a discard action and resets the plot without adding warehouse goods',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('심기');click('밀 4개');click('밭 (9,13)');act(()=>vi.advanceTimersByTime(70000))
+ click('씨앗 심기');click('밀 4개');click('밭 (9,13)');act(()=>vi.advanceTimersByTime(70000))
  expect(container.querySelector('[data-crop-rotten="10"]')).toBeTruthy()
  expect(container.querySelector('[data-crop-rotten="10"] .farm-status-ready')).toBeTruthy()
  click('폐기하기');expect(screen.getByText('폐기했어요')).toBeTruthy()
@@ -77,7 +77,7 @@ it('collects ready animal products immediately into the livestock tab and keeps 
  click('젖소 (16,9)');click('닭 (14,10)')
  expect(screen.queryByRole('dialog')).toBeNull()
  expect(container.querySelectorAll('[data-animal-status="idle"]')).toHaveLength(2)
- click('창고');click('축산물')
+ click('창고 (18,5)');click('축산물')
  expect(screen.getByText('우유')).toBeTruthy();expect(screen.getByText('달걀')).toBeTruthy()
  expect(screen.getAllByText('×1')).toHaveLength(2)
 })

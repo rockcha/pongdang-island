@@ -13,7 +13,7 @@ function setup(){
  const owned=(x:number,y:number)=>result.container.querySelector(`[data-farm-cell="${x},${y}"]`)?.getAttribute('data-farm-owned')==='true'
  return {...result,pointer,owned}
 }
-function buyFive(){click('꾸미기');click('땅 0칸 보유');click('땅 구매');click('5칸 구매 · 250 G');click('땅 5칸 보유')}
+function buyFive(){click('편집하기');click('땅 0칸 보유');click('땅 구매');click('5칸 구매 · 250 G');click('땅 5칸 보유')}
 
 it('previews an entire drag and commits it once on release, with one undo and no gold refund',()=>{
  const {container,pointer,owned}=setup();buyFive()
@@ -31,7 +31,7 @@ it('previews an entire drag and commits it once on release, with one undo and no
  expect(screen.getByRole('button',{name:'땅 놓기'}).getAttribute('aria-pressed')).toBe('true')
 })
 it('recovers a stroke and restores all recovered cells with a single undo',()=>{
- const {pointer,owned}=setup();click('꾸미기');click('땅 0칸 보유');click('땅 회수')
+ const {pointer,owned}=setup();click('편집하기');click('땅 0칸 보유');click('땅 회수')
  pointer('pointerdown',4,7);pointer('pointermove',4,10);pointer('pointerup',4,10)
  expect(screen.getByRole('button',{name:'땅 4칸 보유'})).toBeTruthy()
  for(let y=7;y<=10;y++)expect(owned(4,y)).toBe(false)
@@ -64,7 +64,7 @@ it('preserves research completion that occurs during a land gesture',()=>{
  const {pointer}=setup()
  click('종자 연구소 (12,8)');click('감자 연구 · 30 G');click('Close');act(()=>vi.advanceTimersByTime(200))
  buyFive();pointer('pointerdown',3,4);act(()=>vi.advanceTimersByTime(3000));pointer('pointerup',3,4)
- click('완료');click('종자 상점 (8,5)')
+ click('편집하기');click('종자 상점 (8,5)')
  click('감자 선택')
  expect(screen.getByRole('button',{name:'감자 종자 구매'})).toBeTruthy()
  expect(document.querySelector('.top-farm-gold')?.textContent).toContain('14,720')

@@ -25,7 +25,7 @@ it('always shows all sales goods with live stock badges and disables selling zer
  expect(screen.getByRole('button',{name:'밀 판매'})).toHaveProperty('disabled',true)
 })
 it('links warehouse stock to processing and separates building management from the main action',()=>{
- render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('창고')
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('창고 (18,5)')
  expect(document.querySelector('.farm-upgrade-panel')).toBeNull()
  fireEvent.click(document.querySelector('.farm-warehouse-slot')!);click('가공소로 →')
  expect(screen.getByRole('dialog',{name:'제분소'})).toBeTruthy()

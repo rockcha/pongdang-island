@@ -48,7 +48,7 @@ it('offers storing an idle building directly from its dialog and returns it to t
  click('보관하기');expect(screen.queryByRole('dialog')).toBeNull()
  expect(screen.queryByRole('button',{name:'종자 상점 (8,5)'})).toBeNull()
  click('보관함');fireEvent.click(screen.getByRole('button',{name:/종자 상점.*보관 1개.*배치하기/}))
- fireEvent.click(document.querySelector('[data-farm-cell="8,5"]')!);click('완료')
+ fireEvent.click(document.querySelector('[data-farm-cell="8,5"]')!);click('편집하기')
  expect(screen.getByRole('button',{name:'종자 상점 (8,5)'})).toBeTruthy()
 })
 it('keeps storage disabled for a finished but unclaimed mill batch and enables it after claiming',()=>{

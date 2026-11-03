@@ -40,12 +40,12 @@ it('supports configuring a future building to allow multiple purchases',()=>{
 })
 it('disables owned building cards, including a stored building, while allowing that building to be placed from storage',()=>{
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('꾸미기');click('건물')
+ click('상점');click('건물')
  const palette=container.querySelector('.top-farm-palette')!,cards=within(palette as HTMLElement).getAllByRole('button').filter(button=>button.hasAttribute('data-owned'))
  expect(cards.length).toBe(12)
  for(const button of cards){expect(button).toHaveProperty('disabled',true);expect(button.textContent).toContain('보유 중');expect(button.getAttribute('data-owned')).toBe('true')}
- click('목록 닫기');click('둘러보기');click('종자 상점 (8,5)');click('회수')
- click('건물');expect(within(container.querySelector('.top-farm-palette') as HTMLElement).getByRole('button',{name:/종자 상점.*보유 중/})).toHaveProperty('disabled',true)
+ click('목록 닫기');click('종자 상점 (8,5)');click('회수')
+ click('상점');expect(within(container.querySelector('.top-farm-palette') as HTMLElement).getByRole('button',{name:/종자 상점.*보유 중/})).toHaveProperty('disabled',true)
  click('보관함');fireEvent.click(screen.getByRole('button',{name:/종자 상점.*보관 1개/}));fireEvent.click(container.querySelector('[data-farm-cell="8,5"]')!)
  expect(screen.getByRole('button',{name:'종자 상점 (8,5)'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')

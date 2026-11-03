@@ -5,7 +5,7 @@ import {TopviewFarm} from '@/features/farm/topview-farm'
 
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
-function setup(){vi.useFakeTimers();const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('꾸미기');click('개간하기');return result}
+function setup(){vi.useFakeTimers();const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('편집하기');click('개간하기');return result}
 it('clears multiple selected tiles concurrently in three seconds and charges once per tile',()=>{
  const {container}=setup()
  click('개간 위치 8,13')
@@ -25,11 +25,12 @@ it('clears multiple selected tiles concurrently in three seconds and charges onc
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
 })
 it('removes a plot without putting it into storage or refunding gold',()=>{
- setup();click('둘러보기');click('밭 (9,13)');click('제거하기')
+ setup();click('개간하기');click('밭 (9,13)');click('제거하기')
  expect(screen.queryByRole('button',{name:'밭 (9,13)'})).toBeNull()
  click('보관함')
  expect(screen.queryByRole('button',{name:/밭.*보관/})).toBeNull()
- expect(screen.getByText('회수한 개체가 여기에 보관돼요.')).toBeTruthy()
+ expect(screen.getByText('보관 중인 개체가 없어요.')).toBeTruthy()
+ click('Close')
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
 })
 it('starts a full drag together and reserves the remaining plot capacity for pending jobs',()=>{

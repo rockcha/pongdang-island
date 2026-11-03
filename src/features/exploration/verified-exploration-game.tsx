@@ -45,7 +45,7 @@ import {LootDialog} from './loot-dialog'
 import {StatusScreenEffects} from './status-screen-effects'
 import {createExplorationAudio} from './exploration-audio'
 import {combatTimings} from './combat-timing'
-import {combatPhaseEvents,combatPresentation} from './combat-presentation'
+import {combatPhaseEvents,combatPresentation,finalCombatPhase} from './combat-presentation'
 import {DescentScene} from './descent-scene'
 import {drawDoorArrival,drawMonsterArrival} from './exploration-narration'
 import {encounterRoomBackdrop} from './encounter-background'
@@ -209,7 +209,7 @@ export function ExplorationPlay({runId,nickname,avatarPath,onLeave,receipt,dispa
  const combatBackground=resolveCombatBackground(state.combat?.monsterId,ambientCombatBackground)
  const roomBackdrop=model.view==='combat'?encounterRoomBackdrop(state):undefined
  const background=model.view==='combat'?(roomBackdrop??combatBackgroundUrl(combatBackground)):room?.background??(['merchant','shaman'].includes(model.view)?keeper.background:dungeonBackgrounds[art.background])
- const presentation=animation?combatPresentation(animation.result,animation.phase,animation.action):model.result?combatPresentation(model.result,model.result.events.some(e=>e.phase==='reply')?'reply':'player'):undefined
+ const presentation=animation?combatPresentation(animation.result,animation.phase,animation.action):model.result?combatPresentation(model.result,finalCombatPhase(model.result)):undefined
  const introduction=model.view==='combat'&&!presentation
  const latest=presentation?.text??(introduction?monsterArrival:model.visit?.entry??doorArrival)
  const disabled=busy||!!pending.current||!!animation||descendingFloor!==null

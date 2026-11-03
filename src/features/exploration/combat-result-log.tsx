@@ -1,9 +1,11 @@
 import type {ReactNode} from 'react'
 import type {CombatEvent} from './combat-state'
 import {ChoiceLog} from './choice-log'
+import {isRevivalEvent} from './combat-presentation'
 
 function resultSentence(event:CombatEvent):{sentence:ReactNode;tone:string}|undefined{
  if(event.kind==='system'&&event.spellId==='soul-knot')return {sentence:<>영혼의 매듭으로 <strong>체력 1</strong>로 살아남았습니다.</>,tone:'recovery'}
+ if(isRevivalEvent(event))return {sentence:<>영혼의 등불이 발동해 <strong>체력 {event.healing}</strong> 상태로 부활했습니다.</>,tone:'recovery'}
  if(event.effect==='miss'&&event.kind==='player')return {sentence:'공격이 빗나갔습니다.',tone:'neutral'}
  if(event.damage!==undefined&&(event.kind==='monster'||event.kind==='player'||event.effect==='bleed')){
   const incoming=event.kind==='monster'||event.target==='player'

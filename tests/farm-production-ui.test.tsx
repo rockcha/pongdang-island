@@ -54,7 +54,7 @@ it('enables flour collection after ten seconds and keeps processed sales separat
  fireEvent.click(screen.getByRole('button',{name:'수령하기'}))
  expect(screen.getByRole('status').textContent).toContain('창고에 보관했습니다.')
  act(()=>vi.advanceTimersByTime(200))
- fireEvent.click(screen.getByRole('button',{name:'창고',exact:true}));fireEvent.click(screen.getByRole('button',{name:'가공품'}))
+ fireEvent.click(screen.getByRole('button',{name:'창고 (18,5)',exact:true}));fireEvent.click(screen.getByRole('button',{name:'가공품'}))
  expect(screen.getByText('×3')).toBeTruthy()
 })
 it('prepares a purchased chicken for ten seconds and delivers it to object storage for placement',()=>{
@@ -68,7 +68,8 @@ it('prepares a purchased chicken for ten seconds and delivers it to object stora
  fireEvent.click(screen.getByRole('button',{name:'보관함',exact:true}))
  expect(screen.getByRole('button',{name:/닭.*보관 1개.*배치하기/})).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:/닭.*보관 1개.*배치하기/}))
- expect(screen.getByRole('navigation',{name:'농장 편집 도구'})).toBeTruthy()
+ expect(screen.getByRole('navigation',{name:'농사 도구'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'편집하기'}).getAttribute('aria-pressed')).toBe('true')
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,700')
 })
 it('finishes research after leaving the laboratory and unlocks buying and planting that crop',()=>{

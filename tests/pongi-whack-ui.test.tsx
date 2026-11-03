@@ -20,6 +20,7 @@ it('blocks both new game modes using server time while keeping ranking available
  expect(screen.getByText(whackReworkMessage)).toBeTruthy()
  expect(screen.getByRole('tab',{name:'랭킹'})).toHaveProperty('disabled',false)
  expect(mocks.command).not.toHaveBeenCalled()
+ expect(screen.queryByRole('button',{name:'개편 연습하기'})).toBeNull()
 })
 it('updates an already-open start menu at midnight without polling',async()=>{
  vi.useFakeTimers({toFake:['Date','setTimeout','clearTimeout']})

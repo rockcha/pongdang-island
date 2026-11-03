@@ -34,6 +34,12 @@ it('retains a 30 second board with all three fake types possible immediately',as
  expect(b.filter((t:any)=>t.kind==='golden')).toHaveLength(1)
  expect(run.durationMs).toBe(30000);expect(b.every((t:any)=>t.until<=30000)).toBe(true)
  expect(b.every((t:any)=>t.hole>=0&&t.hole<12)).toBe(true)
+ expect(b).toHaveLength(144)
+ for(const at of new Set<number>(b.filter((t:any)=>t.at>=10000).map((t:any)=>t.at))){
+  const wave=b.filter((t:any)=>t.at===at)
+  expect(wave).toHaveLength(5)
+  expect(wave.every((t:any)=>t.sinkMs>=72&&t.sinkMs<=178)).toBe(true)
+ }
  for(const t of b)expect(b.filter((o:any)=>o.id!==t.id&&o.hole===t.hole&&o.at<t.until&&o.until>t.at)).toHaveLength(0)
  const seen=new Set<string>()
  for(let i=0;i<20;i++){
@@ -41,6 +47,14 @@ it('retains a 30 second board with all three fake types possible immediately',as
   for(const target of board.filter(t=>t.at<10000))seen.add(target.kind)
  }
  expect([...seen]).toEqual(expect.arrayContaining(['impostor','hay','sandcastle']))
+})
+it('keeps the new all-correct average near seventy-two points without changing payout rules',async()=>{
+ const result=await db.query(`select avg(points)::float average from generate_series(1,250) g cross join lateral (
+  select sum(case t->>'kind' when 'golden' then 10 when 'pongi' then 1 else 0 end)::integer points
+  from jsonb_array_elements(case when g>0 then app_private.pongi_whack_board() else '[]'::jsonb end) t
+ ) s`)
+ expect(result.rows[0].average).toBeGreaterThan(69)
+ expect(result.rows[0].average).toBeLessThan(75)
 })
 it('deducts two points for the sandcastle and pays the resulting score once',async()=>{
  const {run}=await action('start',crypto.randomUUID())
@@ -54,7 +68,8 @@ it('recomputes points on the server and is idempotent after finishing',async()=>
  const {run}=await action('start',crypto.randomUUID())
  await db.query("update app_private.pongi_whack_runs set started_at=clock_timestamp()-interval '31 seconds' where id=$1",[run.id])
  let total=0,mistakes=0
- const hits=run.targets.map((t:any)=>{const p=t.kind==='pongi'?1:t.kind==='golden'?10:-2;total=Math.max(0,total+p);if(p<0)mistakes++;return {id:t.id,ms:t.at+150}})
+ let previousAt=-1,waveIndex=0
+ const hits=run.targets.map((t:any)=>{if(t.at!==previousAt){previousAt=t.at;waveIndex=0}const p=t.kind==='pongi'?1:t.kind==='golden'?10:-2;total=Math.max(0,total+p);if(p<0)mistakes++;return {id:t.id,ms:t.at+150+60*waveIndex++}})
  const finished=await action('finish',null,run.id,hits)
  expect(finished.run).toMatchObject({score:total,rewardGold:total,mistakes});expect(finished.run.finishedAt).toBeTruthy()
  expect((await action('finish',null,run.id,[])).run.score).toBe(total)

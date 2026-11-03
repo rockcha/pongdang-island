@@ -21,8 +21,8 @@ begin
   if state->'run'->'targets'<>saved then raise exception 'BOARD_CHANGED_AFTER_UNEQUIP';end if;
   if (select count(*) from jsonb_array_elements(app_private.pongi_whack_board()) t where t->>'kind'='golden')<>1 then raise exception 'UNEQUIP_BONUS_REMAINS';end if;
   update app_private.pongi_whack_runs set started_at=clock_timestamp()-interval '31 seconds' where id=run_id;
-  select jsonb_agg(jsonb_build_object('id',(t->>'id')::integer,'ms',(t->>'at')::integer+150) order by (t->>'at')::integer)
-   into hit_log from jsonb_array_elements(saved) t where t->>'kind'='golden';
+  select jsonb_agg(jsonb_build_object('id',(t->>'id')::integer,'ms',(t->>'at')::integer+150+60*(wave_index-1)) order by (t->>'at')::integer,wave_index)
+   into hit_log from (select t,row_number() over(partition by t->>'at' order by (t->>'id')::integer) wave_index from jsonb_array_elements(saved) t where t->>'kind'='golden') hits;
   state:=public.pongi_whack_action('finish',null,run_id,hit_log);
   expected:=item.effect_value::integer*10;
   if (state->'run'->>'score')::integer<>expected or (state->'run'->>'rewardGold')::integer<>expected then raise exception 'RELIC_REWARD_MISMATCH';end if;

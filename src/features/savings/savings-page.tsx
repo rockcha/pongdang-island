@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Shell, RotateCw } from 'lucide-react'
+import { RotateCw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { useAuth } from '@/components/auth-provider'
@@ -11,7 +11,6 @@ import { savingsStatus } from './savings-time'
 import {
   SavingsAccountPanel,
   SavingsHistory,
-  SavingsMoney as Money,
   SavingsPlanPanel,
 } from './savings-panels'
 import {useAccountState} from '@/lib/account-query'
@@ -163,15 +162,14 @@ function AccountSavings() {
               {receipt && (
                 <div
                   role="status"
-                  className="savings-received space-y-3 rounded-2xl border border-primary/20 bg-primary/5 p-5 text-center"
+                  className="savings-received rounded-xl border border-primary/20 bg-primary/5 p-4"
                 >
-                  <Shell className="mx-auto size-12 text-primary" />
-                  <p className="text-sm">
+                  <p className="text-xs font-medium text-primary">
                     {receipt.closeKind === 'matured'
-                      ? '조개가 모아둔 선물이에요!'
-                      : '맡긴 원금을 돌려받았어요.'}
+                      ? '만기 수령 완료'
+                      : '원금 반환 완료'}
                   </p>
-                  <Money value={receipt.payout} large />
+                  <p className="mt-2 text-xs leading-5">{number(receipt.payout)}골드가 지갑에 들어왔어요.</p>
                   {receipt.bonus > 0 && (
                     <p className="text-xs text-primary">
                       만기 보너스 {number(receipt.bonus)}골드 포함
@@ -179,7 +177,7 @@ function AccountSavings() {
                   )}
                   <Button
                     variant="ghost"
-                    className="min-h-11 w-full"
+                    className="mt-2 min-h-9 w-full text-xs"
                     onClick={() => setReceipt(null)}
                   >
                     확인

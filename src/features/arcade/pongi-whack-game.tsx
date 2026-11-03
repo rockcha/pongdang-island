@@ -322,7 +322,7 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
         >
           <GameStartOverlay
             title="퐁이 잡기"
-            description="진짜 퐁이를 찾는 30초의 집중!"
+            description="쏟아지는 퐁이 속 진짜를 찾는 30초!"
             poster={art + 'thumbnail-clean.webp'}
             onPaid={() => {
               setError('')
@@ -337,7 +337,7 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
                 <p role="status" className="bg-background px-3 py-2 text-center text-xs leading-5">
                   {maintenanceBlocked ? whackReworkMessage : serverNow < Date.parse(maintenance.startsAt)
                     ? '11월 2일 00:00(한국시간)부터 개편을 위해 실전·연습의 새 게임 시작이 중단돼요. 기존 보상은 기록을 집계한 뒤 안내할게요.'
-                    : '퐁이 잡기 이용이 재개됐어요.'}
+                    : '퐁이 잡기 개편 완료! 10초부터 5마리씩 쏟아져요.'}
                 </p>
               {resumable || error ? (
                 <div className="space-y-2 bg-background px-3 py-2 text-center text-xs">
@@ -459,12 +459,13 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
                   const caught = target && hits.some((h) => h.id === target.id)
                   const reaction = target && feedback.find((f) => f.id === target.id)
                   const age = target ? Math.max(0, elapsed - target.at) : 0
-                  const motion = whackMotion(target?.at ?? 0)
+                  const motion = whackMotion(target?.at ?? 0, duration)
+                  const sinkMs = target?.sinkMs ?? motion.sinkMs
                   const rise = 1 - Math.pow(1 - Math.min(1, age / motion.riseMs), 3)
                   const sink = target
                     ? Math.min(
                         1,
-                        Math.max(0, (elapsed - target.until + motion.sinkMs) / motion.sinkMs),
+                        Math.max(0, (elapsed - target.until + sinkMs) / sinkMs),
                       ) ** 2
                     : 0
                   const y = reaction
@@ -584,6 +585,7 @@ function PongiWhackSession({ signedIn }: { signedIn: boolean }) {
                       ? '연습 기록은 순위에 반영되지 않아요.'
                       : '이번 주 최고 기록으로 순위에도 반영돼요.'}
                   </p>
+                  {phase === 'done' && <p>잡은 퐁이 {score.hits-score.mistakes}마리 · 놓친 퐁이 {Math.max(0,(run?.targets.filter(t=>whackPoints(t.kind)>0).length??0)-(score.hits-score.mistakes))}마리</p>}
                   {!practice && phase === 'done' && (
                     <p className="flex items-center justify-center gap-1 text-primary">
                       <GoldIcon className="size-5" />

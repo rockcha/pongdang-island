@@ -1,6 +1,7 @@
 ﻿import { Check, ChevronDown, ChevronRight, Clock3, Shell } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { RelicIcon } from '@/components/collection-filter-icons'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { remainingTime } from './savings-time'
 import type { SavingsAccount } from './api'
@@ -216,15 +217,9 @@ export function SavingsAccountPanel({
     missed = status === 'missed'
   const target = due ? account.depositDeadline : full ? account.maturesAt : account.nextOpenAt
   const urgent = due && target !== null && Date.parse(target) - now <= 3600000
-  const label = matured
-    ? '만기 수령 가능'
-    : missed
-      ? '납입 기한 지남'
-      : due
-        ? '납입 가능'
-        : full
-          ? '전액 납입 완료'
-          : '이번 회차 완료'
+  const relicBonus = account.relicBonusPercent ?? 0
+  const interestRate = missed ? 0 : account.bonusPercent * (1 + relicBonus / 100)
+  const finalPrincipal = account.daily_amount * account.term_days
   return (
     <div className="space-y-3">
       <section
@@ -233,102 +228,47 @@ export function SavingsAccountPanel({
       >
         <div className="px-4 pb-5 pt-4">
           <div className="flex items-center justify-between gap-3">
-            <span className="rounded-full bg-secondary/70 px-2.5 py-1 text-[10px] text-muted-foreground">
-              {account.term_days}일 적금 · 보너스 {account.bonusPercent}%
+            <h2 className="text-sm font-medium">조개적금</h2>
+            <span className={`rounded-full px-2.5 py-1 text-[11px] ${missed ? 'bg-destructive/5 text-destructive' : 'bg-primary/5 text-primary'}`}>
+              {missed ? '납입 기한 지남' : matured ? '만기 완료' : '진행 중'}
             </span>
-            <Shell aria-hidden="true" className="size-8 text-primary/45" strokeWidth={1.3} />
           </div>
-          {(account.relicBonusPercent??0)>0&&<p className="mt-2 text-[11px] text-primary">기본 이자에 유물 보너스 +{account.relicBonusPercent}% · 가입 시 확정</p>}
-          <h2 id="savings-balance-title" className="mt-4 text-xs text-muted-foreground">
-            모은 골드
-          </h2>
+          <p className="mt-1 text-[11px] text-muted-foreground">{account.term_days}일 적금 · {account.paid_count} / {account.term_days}회 납입</p>
+          <h3 id="savings-balance-title" className="mt-6 text-xs text-muted-foreground">현재 모은 골드</h3>
           <p className="mt-2 flex items-baseline gap-1.5">
             <SavingsMoney value={account.principal} large />
             <span className="text-xs text-muted-foreground">골드</span>
           </p>
-          <p className="mt-2 text-[11px] leading-5 text-muted-foreground">
-            {missed ? (
-              '납입 기한이 지나 보너스 없이 원금만 돌려받아요.'
-            ) : (
-              <>
-                {full ? '만기에 받는 골드' : '모두 납입하면'}{' '}
-                <strong className="font-medium text-primary">
-                  {number(account.expectedPayout)}골드
-                </strong>
-                {!full && '를 받아요.'}
-              </>
-            )}
-          </p>
-          <div className="mt-6">
-            <div className="mb-3 flex items-center justify-between text-[10px]">
-              <span className="text-muted-foreground">납입 진행</span>
-              <span className="tabular-nums">
-                <strong className="font-medium text-primary">{account.paid_count}</strong> /{' '}
-                {account.term_days}회 완료
-              </span>
+          <dl className="mt-5 space-y-3 text-xs">
+            <div className="flex items-center justify-between gap-3"><dt className="text-muted-foreground">최종 이자율</dt><dd className="font-medium tabular-nums">{number(interestRate)}%</dd></div>
+            <div className="flex items-center justify-between gap-3"><dt className="text-muted-foreground">{missed ? '돌려받는 원금' : '만기 예상 수령'}</dt><dd className="text-base font-semibold tabular-nums text-primary">{number(missed ? account.principal : account.expectedPayout)}<span className="ml-1 text-[10px] font-normal">골드</span></dd></div>
+          </dl>
+          <p className="mt-2 text-right text-[10px] leading-5 text-muted-foreground">{missed ? '기한을 놓쳐 이자가 지급되지 않아요.' : `총 ${number(finalPrincipal)}골드 납입 시 · 이자 ${number(account.expectedBonus)}골드 포함`}</p>
+          <div className="mt-5 space-y-3 border-t border-border/60 pt-4">
+            <div>
+              <p className={`flex items-center gap-1.5 text-xs font-medium ${missed ? 'text-destructive' : 'text-primary'}`}><span aria-hidden="true" className="size-1.5 rounded-full bg-current"/>{missed ? '보너스 지급 불가' : matured ? '보너스 확정' : '보너스 유지 중'}</p>
+              <p className="mt-1 text-[11px] leading-5 text-muted-foreground">{missed ? '납입 기한이 지나 기본·유물 보너스 없이 원금만 돌려받아요.' : full ? '모든 회차를 기한 내 납입했어요.' : '현재까지 기한을 지켰어요. 다음 납입도 기한 내 완료해주세요.'}</p>
             </div>
-            <ol
-              aria-label="납입 현황"
-              className="relative flex justify-between gap-1 before:pointer-events-none before:absolute before:left-3.5 before:right-3.5 before:top-3.5 before:h-px before:bg-border/80"
-            >
-              {Array.from({ length: account.term_days }, (_, index) => {
-                const done = index < account.paid_count,
-                  current = index === account.paid_count && due
-                return (
-                  <li
-                    key={index}
-                    aria-label={`${index + 1}회차 ${done ? '완료' : current ? '납입 가능' : '대기'}`}
-                    className="relative z-10 flex flex-col items-center gap-1.5"
-                  >
-                    <span
-                      className={`grid size-7 place-items-center rounded-full text-[10px] ${done ? 'bg-primary text-primary-foreground' : current ? 'border-2 border-primary bg-background font-medium text-primary' : 'border border-border bg-background text-muted-foreground'}`}
-                    >
-                      {done ? <Check aria-hidden="true" className="size-3.5" /> : index + 1}
-                    </span>
-                    <span className="text-[9px] text-muted-foreground">{index + 1}회차</span>
-                  </li>
-                )
-              })}
-            </ol>
+            {relicBonus > 0 ? <div className="flex items-center gap-2.5 rounded-xl bg-primary/5 px-3 py-2.5"><RelicIcon className="size-8 shrink-0 object-contain"/><div><p className="text-[11px] font-medium text-primary">유물 효과 받고 가입했어요</p><p className="mt-0.5 text-[10px] leading-5 text-muted-foreground">가입 시 기본 이자 +{relicBonus}% 확정{missed ? ' · 현재 보너스 지급 불가' : ' · 장착 변경과 무관'}</p></div></div> : <p className="text-[11px] text-muted-foreground">유물 효과 없이 가입한 적금이에요.</p>}
           </div>
         </div>
         <div
           className={`space-y-3 border-t border-border/60 p-4 ${urgent ? 'bg-amber-50/70 dark:bg-amber-950/20' : matured ? 'bg-primary/5' : 'bg-secondary/25'}`}
         >
-          <div className="flex items-center gap-1.5 text-[10px] text-primary">
-            {due ? (
-              <span aria-hidden="true" className="size-1.5 rounded-full bg-primary" />
-            ) : matured || full ? (
-              <Check aria-hidden="true" className="size-3.5" />
-            ) : (
-              <Clock3 aria-hidden="true" className="size-3.5" />
-            )}
-            {label}
-          </div>
-          <p className="text-xs leading-5">
-            {due
-              ? `이번 회차에 ${number(account.daily_amount)}골드를 넣을 수 있어요.`
-              : matured
-                ? '차곡차곡 모은 골드에 보너스까지 준비됐어요.'
-                : missed
-                  ? '모아둔 원금을 안전하게 돌려받으세요.'
-                  : full
-                    ? '모두 넣었어요. 만기가 되면 보너스와 함께 받아요.'
-                    : '이번 회차는 넣었어요. 다음 납입을 기다려주세요.'}
-          </p>
+          {(matured || missed) && <p className="text-xs leading-5">{matured ? '원금과 만기 보너스를 받을 수 있어요.' : '모아둔 원금을 돌려받을 수 있어요.'}</p>}
           {target && !missed && !matured && (
             <p
-              className={`flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] ${urgent ? 'text-amber-900 dark:text-amber-200' : 'text-muted-foreground'}`}
+              className={`flex flex-wrap items-center justify-between gap-2 text-xs ${urgent ? 'text-amber-900 dark:text-amber-200' : 'text-muted-foreground'}`}
             >
               <span className="inline-flex items-center gap-1">
-                <Clock3 aria-hidden="true" className="size-3" />
-                {due ? '이번 납입 마감까지' : full ? '만기까지' : '다음 납입까지'}
+                {due ? '납입 마감까지' : full ? '만기까지' : '다음 납입까지'}
               </span>
-              <span className="font-medium tabular-nums tracking-wide text-foreground">
+              <span className={`text-lg font-semibold tabular-nums tracking-wide ${urgent ? 'text-amber-900 dark:text-amber-200' : 'text-primary'}`}>
                 {remainingTime(target, now)}
               </span>
             </p>
           )}
+          {!full && !missed && account.nextOpenAt && account.depositDeadline && <div className="text-[10px] leading-5 text-muted-foreground"><p>납입 가능 시간</p><p className="tabular-nums">{date(account.nextOpenAt)} ~ {date(account.depositDeadline)} (한국 시간)</p></div>}
           {urgent && (
             <p className="text-[10px] leading-5 text-amber-900 dark:text-amber-200">
               마감까지 1시간 이내예요. 이번 회차를 납입해주세요.
@@ -358,13 +298,11 @@ export function SavingsAccountPanel({
             </Button>
           ) : (
             <Button className="min-h-12 w-full rounded-xl text-xs" variant="secondary" disabled>
-              <Check className="size-4" />
-              {full ? '만기를 기다리는 중' : '납입 완료'}
+              {full ? '만기를 기다리는 중' : '다음 납입 대기 중'}
             </Button>
           )}
         </div>
       </section>
-      {!full && !missed && <SavingsDeadlineNotice />}
       <details className="group rounded-xl border border-border/60 bg-background">
         <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-2 px-4 text-xs font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
           적금 정보

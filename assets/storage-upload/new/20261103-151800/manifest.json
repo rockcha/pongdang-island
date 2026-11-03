@@ -1,0 +1,386 @@
+{
+  "tool": "built-in image_gen",
+  "status": "verified-and-uploaded",
+  "referenceRoles": {
+    "style": "assets/references/collectible-style/common-rare-pongi.png",
+    "identity": "Each approved thumbnail for its own sprite; never the otter anatomy.",
+    "placement": "sources/*-placement-guide.source; PNG copies under artifacts/previews/cute-common-species for the generation tool."
+  },
+  "items": [
+    {
+      "id": "round-sandfish",
+      "name": "동글 도루묵",
+      "kind": "fish",
+      "rarity": "common",
+      "price": 18,
+      "movement_type": "swim",
+      "swim_y_min": 0.6,
+      "swim_y_max": 0.85,
+      "speed": 0.025,
+      "size": 44,
+      "frames": 4,
+      "folder": "fish/normal",
+      "promptKey": "roundThumbnail",
+      "thumbnail_path": "fish/normal/round-sandfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/round-sandfish_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "thumbnailPreparation": {
+        "source": "sources/round-sandfish-thumbnail.source",
+        "padding": 0,
+        "method": "Uniform transparent padding only; original RGBA pixels unchanged",
+        "original": {
+          "width": 1254,
+          "height": 1254,
+          "box": [
+            82,
+            363,
+            1086,
+            558
+          ]
+        }
+      },
+      "spritePreparation": {
+        "source": "sources/round-sandfish-sprite.source",
+        "sourceCell": 627,
+        "cell": 659,
+        "padding": 16,
+        "method": "Integer translation of full cells; common transparent padding; no resizing or alpha modification",
+        "rgbaPreserved": true,
+        "anchors": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.556683848755748
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 6.664877210818975
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 4.119775360333114
+          }
+        ]
+      }
+    },
+    {
+      "id": "flattened-otter-plush",
+      "name": "납작해진 해달 인형",
+      "kind": "trash",
+      "rarity": "rare",
+      "price": 20,
+      "movement_type": "fixed",
+      "swim_y_min": 0.84,
+      "swim_y_max": 0.92,
+      "speed": 0.001,
+      "size": 48,
+      "frames": 1,
+      "folder": "trash/rare",
+      "promptKey": "otterThumbnail",
+      "thumbnail_path": "trash/rare/flattened-otter-plush_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "thumbnailPreparation": {
+        "source": "sources/flattened-otter-plush-thumbnail.source",
+        "padding": 46,
+        "method": "Uniform transparent padding only; original RGBA pixels unchanged",
+        "original": {
+          "width": 1254,
+          "height": 1254,
+          "box": [
+            45,
+            402,
+            1144,
+            499
+          ]
+        }
+      }
+    },
+    {
+      "id": "unstuffed-seahorse-plush",
+      "name": "솜 빠진 해마 인형",
+      "kind": "trash",
+      "rarity": "rare",
+      "price": 25,
+      "movement_type": "fixed",
+      "swim_y_min": 0.84,
+      "swim_y_max": 0.92,
+      "speed": 0.001,
+      "size": 46,
+      "frames": 1,
+      "folder": "trash/rare",
+      "promptKey": "seahorseThumbnail",
+      "thumbnail_path": "trash/rare/unstuffed-seahorse-plush_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "thumbnailPreparation": {
+        "source": "sources/unstuffed-seahorse-plush-thumbnail.source",
+        "padding": 0,
+        "method": "Uniform transparent padding only; original RGBA pixels unchanged",
+        "original": {
+          "width": 1254,
+          "height": 1254,
+          "box": [
+            293,
+            99,
+            645,
+            1074
+          ]
+        }
+      }
+    },
+    {
+      "id": "worn-seal-plush",
+      "name": "꼬질 물개 인형",
+      "kind": "trash",
+      "rarity": "rare",
+      "price": 30,
+      "movement_type": "fixed",
+      "swim_y_min": 0.84,
+      "swim_y_max": 0.92,
+      "speed": 0.001,
+      "size": 52,
+      "frames": 1,
+      "folder": "trash/rare",
+      "promptKey": "sealThumbnail",
+      "thumbnail_path": "trash/rare/worn-seal-plush_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "facing_direction": null,
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "thumbnailPreparation": {
+        "source": "sources/worn-seal-plush-thumbnail.source",
+        "padding": 0,
+        "method": "Uniform transparent padding only; original RGBA pixels unchanged",
+        "original": {
+          "width": 1254,
+          "height": 1254,
+          "box": [
+            95,
+            192,
+            1063,
+            915
+          ]
+        }
+      }
+    },
+    {
+      "id": "baby-blenny",
+      "name": "새끼 베도라치",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 90,
+      "movement_type": "swim",
+      "swim_y_min": 0.55,
+      "swim_y_max": 0.85,
+      "speed": 0.032,
+      "size": 52,
+      "frames": 4,
+      "folder": "fish/rare",
+      "promptKey": "blennyThumbnail",
+      "thumbnail_path": "fish/rare/baby-blenny_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/baby-blenny_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "thumbnailPreparation": {
+        "source": "sources/baby-blenny-thumbnail.source",
+        "padding": 41,
+        "method": "Uniform transparent padding only; original RGBA pixels unchanged",
+        "original": {
+          "width": 1254,
+          "height": 1254,
+          "box": [
+            54,
+            466,
+            1134,
+            323
+          ]
+        }
+      },
+      "spritePreparation": {
+        "source": "sources/baby-blenny-sprite.source",
+        "sourceCell": 627,
+        "cell": 659,
+        "padding": 16,
+        "method": "Integer translation of full cells; common transparent padding; no resizing or alpha modification",
+        "rgbaPreserved": true,
+        "anchors": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 1,
+            "dy": 0,
+            "rmse": 11.710397233285663
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 4.931356538613323
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 10.408010408923932
+          }
+        ]
+      }
+    },
+    {
+      "id": "pearlspot-wrasse",
+      "name": "진주점 놀래기",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 110,
+      "movement_type": "swim",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.75,
+      "speed": 0.045,
+      "size": 58,
+      "frames": 4,
+      "folder": "fish/rare",
+      "promptKey": "wrasseThumbnail",
+      "thumbnail_path": "fish/rare/pearlspot-wrasse_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/pearlspot-wrasse_v1_sprite.png",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "thumbnailPreparation": {
+        "source": "sources/pearlspot-wrasse-thumbnail.source",
+        "padding": 63,
+        "method": "Uniform transparent padding only; original RGBA pixels unchanged",
+        "original": {
+          "width": 1254,
+          "height": 1254,
+          "box": [
+            36,
+            372,
+            1172,
+            509
+          ]
+        }
+      },
+      "spritePreparation": {
+        "source": "sources/pearlspot-wrasse-sprite.source",
+        "sourceCell": 627,
+        "cell": 659,
+        "padding": 16,
+        "method": "Integer translation of full cells; common transparent padding; no resizing or alpha modification",
+        "rgbaPreserved": true,
+        "anchors": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 11.217661855306568
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 10.801423930601532
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 13.82104212268897
+          }
+        ]
+      }
+    }
+  ],
+  "assets": [
+    {
+      "storage_path": "fish/normal/round-sandfish_v1_thumbnail.png",
+      "sha256": "695edc6d590f91ee5ce2f9a5af2d8e12c32763efc12ed00f70b9056a19063c2e",
+      "bytes": 594942
+    },
+    {
+      "storage_path": "fish/normal/round-sandfish_v1_sprite.png",
+      "sha256": "22d88da0c073d44317e73aac92cdc6640f83d700a58942e6c52b24d5c4a6bc5d",
+      "bytes": 946925
+    },
+    {
+      "storage_path": "trash/rare/flattened-otter-plush_v1_thumbnail.png",
+      "sha256": "b78ea7d0c047cba96aacdf8fa43293e6f99cb14ecc64ed38ff002ab38cd1b0d2",
+      "bytes": 917348
+    },
+    {
+      "storage_path": "trash/rare/unstuffed-seahorse-plush_v1_thumbnail.png",
+      "sha256": "3a3ae0552c1f43ec07c188a3104e8d561319a4f4e20622eada822d7a9a00b925",
+      "bytes": 839770
+    },
+    {
+      "storage_path": "trash/rare/worn-seal-plush_v1_thumbnail.png",
+      "sha256": "f06e2690142e5ced68a8412dc852e668d655e99f06b6da71398854309c3a512a",
+      "bytes": 964724
+    },
+    {
+      "storage_path": "fish/rare/baby-blenny_v1_thumbnail.png",
+      "sha256": "ac39232baf970654d5859e6e638d2414869182c9070487985cb875c735e4e9f0",
+      "bytes": 575552
+    },
+    {
+      "storage_path": "fish/rare/baby-blenny_v1_sprite.png",
+      "sha256": "dd4ed8cd3865e9d909e287b83d69daa13cea55900c1d70f70b3179aafddcfb16",
+      "bytes": 667646
+    },
+    {
+      "storage_path": "fish/rare/pearlspot-wrasse_v1_thumbnail.png",
+      "sha256": "8161632fcdfbc3dcd28abb1603766fbcfdb72b850a405f3b6219906709d153b4",
+      "bytes": 927769
+    },
+    {
+      "storage_path": "fish/rare/pearlspot-wrasse_v1_sprite.png",
+      "sha256": "c0c7625be1c3bcbceffc3414ea6bcca99c627fec8f10f2ba11bc969668ab6d5b",
+      "bytes": 928601
+    }
+  ],
+  "movementNotes": "Fixed trash uses its explicit .84-.92 bottom placement band and legacy required positive speed; movement_type=fixed prevents travel. Fish swim with the individually declared depth ranges.",
+  "promptsFile": "prompts.json",
+  "review": {
+    "alpha": "Raw and final source audits passed; light and dark composites visually reviewed",
+    "anchors": "All final sprite head anchors have zero integer displacement; real opaque eye/cheek patches reviewed",
+    "browser": "Actual CollectiblePreview and TankInhabitants, DPR 1/2/3, normal and reduced motion, no page errors; three full loops observed per normal run",
+    "storage": "Nine public objects downloaded and SHA-256 matched final PNG bytes",
+    "database": "Six species and 108 habitats applied to ewafafphiovbpjwogwzn; post-query verified",
+    "verifiedAt": "2026-11-03T06:41:06.130822Z"
+  }
+}

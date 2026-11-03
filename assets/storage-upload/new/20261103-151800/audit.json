@@ -1,0 +1,355 @@
+{
+  "results": [
+    {
+      "id": "round-sandfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\round-sandfish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            82,
+            363,
+            1086,
+            558
+          ],
+          "margin": 82,
+          "occupancy": 0.8660287081339713,
+          "opaque": 344277,
+          "transparent": 1221392,
+          "soft": 350402
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "round-sandfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\round-sandfish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            39,
+            179,
+            545,
+            284
+          ],
+          "margin": 39,
+          "occupancy": 0.8692185007974481,
+          "opaque": 87816,
+          "transparent": 299393,
+          "soft": 93463
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            47,
+            181,
+            537,
+            277
+          ],
+          "margin": 43,
+          "occupancy": 0.8564593301435407,
+          "opaque": 85766,
+          "transparent": 300641,
+          "soft": 92222
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            47,
+            180,
+            537,
+            276
+          ],
+          "margin": 43,
+          "occupancy": 0.8564593301435407,
+          "opaque": 85627,
+          "transparent": 301608,
+          "soft": 91216
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            39,
+            179,
+            545,
+            281
+          ],
+          "margin": 39,
+          "occupancy": 0.8692185007974481,
+          "opaque": 87129,
+          "transparent": 294680,
+          "soft": 98174
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "flattened-otter-plush",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\flattened-otter-plush-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            402,
+            1144,
+            499
+          ],
+          "margin": 45,
+          "occupancy": 0.9122807017543859,
+          "opaque": 384621,
+          "transparent": 1181565,
+          "soft": 390365
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "unstuffed-seahorse-plush",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\unstuffed-seahorse-plush-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            293,
+            99,
+            645,
+            1074
+          ],
+          "margin": 81,
+          "occupancy": 0.8564593301435407,
+          "opaque": 424147,
+          "transparent": 1140136,
+          "soft": 431478
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "worn-seal-plush",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\worn-seal-plush-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            95,
+            192,
+            1063,
+            915
+          ],
+          "margin": 95,
+          "occupancy": 0.8476874003189793,
+          "opaque": 563030,
+          "transparent": 997044,
+          "soft": 575263
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "baby-blenny",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\baby-blenny-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            54,
+            466,
+            1134,
+            323
+          ],
+          "margin": 54,
+          "occupancy": 0.9043062200956937,
+          "opaque": 232113,
+          "transparent": 1334589,
+          "soft": 236593
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "baby-blenny",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\baby-blenny-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            44,
+            236,
+            533,
+            156
+          ],
+          "margin": 44,
+          "occupancy": 0.8500797448165869,
+          "opaque": 53331,
+          "transparent": 333447,
+          "soft": 59466
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            48,
+            236,
+            530,
+            155
+          ],
+          "margin": 48,
+          "occupancy": 0.8452950558213717,
+          "opaque": 54784,
+          "transparent": 331063,
+          "soft": 61836
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            44,
+            235,
+            534,
+            155
+          ],
+          "margin": 44,
+          "occupancy": 0.8516746411483254,
+          "opaque": 53345,
+          "transparent": 330996,
+          "soft": 61877
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            42,
+            235,
+            536,
+            155
+          ],
+          "margin": 42,
+          "occupancy": 0.8548644338118022,
+          "opaque": 53333,
+          "transparent": 330516,
+          "soft": 62342
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pearlspot-wrasse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\pearlspot-wrasse-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            36,
+            372,
+            1172,
+            509
+          ],
+          "margin": 36,
+          "occupancy": 0.9346092503987241,
+          "opaque": 375140,
+          "transparent": 1190764,
+          "soft": 380852
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pearlspot-wrasse",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\sources\\pearlspot-wrasse-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            44,
+            196,
+            537,
+            233
+          ],
+          "margin": 44,
+          "occupancy": 0.8564593301435407,
+          "opaque": 78799,
+          "transparent": 308441,
+          "soft": 84253
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            48,
+            191,
+            533,
+            235
+          ],
+          "margin": 46,
+          "occupancy": 0.8500797448165869,
+          "opaque": 76581,
+          "transparent": 309966,
+          "soft": 82717
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            42,
+            196,
+            539,
+            233
+          ],
+          "margin": 42,
+          "occupancy": 0.8596491228070176,
+          "opaque": 79140,
+          "transparent": 305624,
+          "soft": 87090
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            41,
+            194,
+            540,
+            236
+          ],
+          "margin": 41,
+          "occupancy": 0.861244019138756,
+          "opaque": 78823,
+          "transparent": 305491,
+          "soft": 87202
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

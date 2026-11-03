@@ -1,5 +1,6 @@
 // @vitest-environment node
 import {afterAll,afterEach,beforeAll,beforeEach,expect,it} from 'vitest'
+import {readFileSync} from 'node:fs'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db:any,uid:string
 const seeds:Record<string,number>={}
@@ -31,6 +32,57 @@ beforeEach(async()=>{
  await db.query('insert into public.player_wallets(user_id,gold) values($1,5000) on conflict(user_id) do update set gold=5000',[uid])
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
+async function ticketSpin(free:boolean,op=crypto.randomUUID()){
+ await db.exec('set role authenticated')
+ const state=(await db.query('select public.relic_roulette_ticket_spin($1,$2) s',[op,free])).rows[0].s
+ await db.exec('reset role');return state
+}
+async function buyTickets(quantity:number|null,op=crypto.randomUUID()){
+ await db.exec('set role authenticated')
+ const state=(await db.query('select public.relic_roulette_buy_tickets($1,$2) s',[op,quantity])).rows[0].s
+ await db.exec('reset role');return state
+}
+it('purchases, persists, replays and spends tickets without affecting legacy free tracking or other accounts',async()=>{
+ const sql=readFileSync('tests/fixtures/relic-roulette-tickets-smoke.sql','utf8').replace(/^begin;\r?\n/,'').replace(/rollback;\s*$/,'')
+ await db.exec(sql)
+})
+it('validates purchase amounts and capacity and rolls back rejected purchases without touching gold',async()=>{
+ for(const quantity of [null,0,-1,1.5,1001,11]){
+  await db.exec('savepoint purchase_failure')
+  await expect(buyTickets(quantity)).rejects.toThrow()
+  await db.exec('rollback to purchase_failure;reset role;release savepoint purchase_failure')
+ }
+ const state=(await db.query('select public.relic_roulette_state() s')).rows[0].s
+ expect(state).toMatchObject({tickets:0,gold:5000,freeAvailable:true})
+ await db.query('insert into app_private.relic_roulette_tickets(user_id,quantity) values($1,1000000)',[uid])
+ await db.exec('savepoint max_tickets')
+ await expect(buyTickets(1)).rejects.toThrow('ROULETTE_TICKET_LIMIT')
+ await db.exec('rollback to max_tickets;reset role;release savepoint max_tickets')
+ expect((await db.query('select public.relic_roulette_state() s')).rows[0].s).toMatchObject({tickets:1000000,gold:5000})
+})
+it.each(['rare','epic','mythic'])('ticket spins grant real %s relics and replay without another reward',async grade=>{
+ await buyTickets(5)
+ await db.query('select setseed($1)',[seeds.none]);await ticketSpin(true)
+ await db.query('select setseed($1)',[seeds[grade]])
+ const op=crypto.randomUUID(),first=await ticketSpin(false,op)
+ expect(first).toMatchObject({tickets:4,gold:2500})
+ expect(first.spin.relic).toMatchObject({rarity:grade,quantityBefore:0,quantityAfter:1})
+ expect((await ticketSpin(false,op)).spin).toEqual(first.spin)
+ const id=first.spin.relic.id
+ expect((await db.query('select quantity from app_private.player_fishing_relics where user_id=$1 and relic_id=$2',[uid,id])).rows[0].quantity).toBe(1)
+ expect((await db.query('select count(*)::int n from app_private.player_fishing_relic_discoveries where user_id=$1 and relic_id=$2',[uid,id])).rows[0].n).toBe(1)
+})
+it('does not fall back to charging gold when tickets are empty, including losing spins',async()=>{
+ await buyTickets(1);await ticketSpin(true)
+ await db.query('select setseed($1)',[seeds.none])
+ const state=await ticketSpin(false)
+ expect(state.spin).toMatchObject({grade:'none',ticketsUsed:1,cost:0})
+ expect(state).toMatchObject({tickets:0,gold:4500})
+ await db.exec('savepoint empty_tickets')
+ await expect(ticketSpin(false)).rejects.toThrow('INSUFFICIENT_ROULETTE_TICKETS')
+ await db.exec('rollback to empty_tickets;reset role;release savepoint empty_tickets')
+ expect((await db.query('select public.relic_roulette_state() s')).rows[0].s).toMatchObject({tickets:0,gold:4500})
+})
 it('assigns exactly 60%, 34%, 5% and 1% of all ten thousand roll values',async()=>{
  expect((await db.query('select app_private.relic_roulette_grade(n) grade,count(*)::integer n from generate_series(0,9999)n group by grade order by grade')).rows).toEqual([{grade:'epic',n:500},{grade:'mythic',n:100},{grade:'none',n:6000},{grade:'rare',n:3400}])
 })

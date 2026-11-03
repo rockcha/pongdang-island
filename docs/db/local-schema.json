@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "b72068618198fb3e0f8487ff9eaa650f4b54fa572ab20def7805cc1dcc7fa871",
+  "migrationHash": "1fd8ceef928936b63ac5b5b16c724c33e04195f5e99e67bcd877304b6b4618ea",
   "structure": {
     "enums": [
       {
@@ -505,6 +505,24 @@
       {
         "rls": true,
         "name": "relic_roulette_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "relic_roulette_tickets",
         "schema": "app_private",
         "force_rls": false
       },
@@ -5735,6 +5753,126 @@
         "name": "created_at",
         "type": "timestamp with time zone",
         "table": "relic_roulette_operations",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "integer",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "total_gold",
+        "type": "integer",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "integer",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "relic_roulette_tickets",
         "schema": "app_private",
         "default": "clock_timestamp()",
         "identity": "",
@@ -13182,6 +13320,30 @@
         "definition": "CREATE UNIQUE INDEX relic_roulette_operations_pkey ON app_private.relic_roulette_operations USING btree (user_id, operation_id)"
       },
       {
+        "name": "relic_roulette_ticket_purchases_pkey",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX relic_roulette_ticket_purchases_pkey ON app_private.relic_roulette_ticket_purchases USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "relic_roulette_ticket_history",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "CREATE INDEX relic_roulette_ticket_history ON app_private.relic_roulette_ticket_spins USING btree (user_id, created_at DESC, operation_id)"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_pkey",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX relic_roulette_ticket_spins_pkey ON app_private.relic_roulette_ticket_spins USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "relic_roulette_tickets_pkey",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX relic_roulette_tickets_pkey ON app_private.relic_roulette_tickets USING btree (user_id)"
+      },
+      {
         "name": "relic_test_grants_pkey",
         "table": "relic_test_grants",
         "schema": "app_private",
@@ -18817,6 +18979,16 @@
         "securityDefiner": true
       },
       {
+        "name": "relic_roulette_buy_tickets",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_quantity integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_roulette_buy_tickets(p_operation_id uuid, p_quantity integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();balance integer;previous app_private.relic_roulette_ticket_purchases;\n total integer;tickets integer;receipt jsonb;at_time timestamptz;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_ROULETTE_REQUEST';end if;\n if p_quantity is null or p_quantity not between 1 and 1000 then raise exception 'INVALID_ROULETTE_TICKET_QUANTITY';end if;\n perform app_private.get_gold_wallet();\n -- The same wallet lock serializes ticket purchases, ticket uses and legacy spins.\n select gold into balance from public.player_wallets where user_id=u for update;\n select * into previous from app_private.relic_roulette_ticket_purchases where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.quantity<>p_quantity then raise exception 'OPERATION_CONFLICT';end if;\n  receipt:=jsonb_build_object('operationId',p_operation_id,'quantity',previous.quantity,'totalGold',previous.total_gold);\n  return app_private.relic_roulette_state()||jsonb_build_object('purchase',receipt,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id)\n  or exists(select 1 from app_private.relic_roulette_operations where user_id=u and operation_id=p_operation_id)\n  or exists(select 1 from app_private.relic_roulette_ticket_spins where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n total:=p_quantity*500;\n if balance<total then raise exception 'INSUFFICIENT_GOLD';end if;\n at_time:=clock_timestamp();\n insert into app_private.relic_roulette_tickets(user_id,quantity,updated_at) values(u,p_quantity,at_time)\n  on conflict(user_id) do update set quantity=app_private.relic_roulette_tickets.quantity+p_quantity,updated_at=excluded.updated_at\n  where app_private.relic_roulette_tickets.quantity<=1000000-p_quantity returning quantity into tickets;\n if not found then raise exception 'ROULETTE_TICKET_LIMIT';end if;\n update public.player_wallets set gold=gold-total,updated_at=at_time where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','relic-roulette-ticket',-total);\n insert into app_private.relic_roulette_ticket_purchases(user_id,operation_id,quantity,total_gold,created_at) values(u,p_operation_id,p_quantity,total,at_time);\n receipt:=jsonb_build_object('operationId',p_operation_id,'quantity',p_quantity,'totalGold',total);\n return app_private.relic_roulette_state()||jsonb_build_object('purchase',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "relic_roulette_grade",
         "config": [
           "search_path=\"\""
@@ -18843,7 +19015,17 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_roulette_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();at_time timestamptz:=clock_timestamp();today date;available boolean;history jsonb;wallet jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n today:=(at_time at time zone 'Asia/Seoul')::date;\n wallet:=app_private.get_gold_wallet();\n available:=not exists(select 1 from app_private.relic_roulette_operations where user_id=u and spin_day=today and cost=0);\n select coalesce(jsonb_agg(result order by created_at desc,operation_id),'[]'::jsonb) into history\n from(select result,created_at,operation_id from app_private.relic_roulette_operations where user_id=u order by created_at desc,operation_id limit 10)t;\n return jsonb_build_object('gold',(wallet->>'gold')::integer,'freeAvailable',available,'nextCost',case when available then 0 else 500 end,\n  'serverNow',at_time,'resetAt',(today+1)::timestamp at time zone 'Asia/Seoul','history',history,\n  'odds',jsonb_build_object('none',60,'rare',34,'epic',5,'mythic',1));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_roulette_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();at_time timestamptz:=clock_timestamp();today date;available boolean;history jsonb;wallet jsonb;tickets integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n today:=(at_time at time zone 'Asia/Seoul')::date;\n wallet:=app_private.get_gold_wallet();\n available:=not exists(select 1 from app_private.relic_roulette_operations where user_id=u and spin_day=today and cost=0);\n select coalesce((select quantity from app_private.relic_roulette_tickets where user_id=u),0) into tickets;\n select coalesce(jsonb_agg(result order by created_at desc,operation_id),'[]'::jsonb) into history\n from (select result,created_at,operation_id from (\n  (select result,created_at,operation_id from app_private.relic_roulette_operations where user_id=u order by created_at desc,operation_id limit 10)\n  union all\n  (select result,created_at,operation_id from app_private.relic_roulette_ticket_spins where user_id=u order by created_at desc,operation_id limit 10)\n ) recent order by created_at desc,operation_id limit 10) t;\n return jsonb_build_object('gold',(wallet->>'gold')::integer,'tickets',tickets,'ticketPrice',500,\n  'freeAvailable',available,'nextCost',case when available then 0 else 500 end,\n  'serverNow',at_time,'resetAt',(today+1)::timestamp at time zone 'Asia/Seoul','history',history,\n  'odds',jsonb_build_object('none',60,'rare',34,'epic',5,'mythic',1));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_expected_free boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_roulette_ticket_spin(p_operation_id uuid, p_expected_free boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();legacy app_private.relic_roulette_operations;previous app_private.relic_roulette_ticket_spins;\n available boolean;at_time timestamptz;today date;tickets integer;grade text;reward public.fishing_relics;\n relic jsonb:=null;result jsonb;quantity_after integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_expected_free is null then raise exception 'INVALID_ROULETTE_REQUEST';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=u for update;\n select * into previous from app_private.relic_roulette_ticket_spins where user_id=u and operation_id=p_operation_id;\n if found then\n  if p_expected_free then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_roulette_state()||jsonb_build_object('spin',previous.result,'replayed',true);\n end if;\n select * into legacy from app_private.relic_roulette_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if not p_expected_free or not legacy.expected_free then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_roulette_state()||jsonb_build_object('spin',legacy.result,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id)\n  or exists(select 1 from app_private.relic_roulette_ticket_purchases where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n at_time:=clock_timestamp();today:=(at_time at time zone 'Asia/Seoul')::date;\n available:=not exists(select 1 from app_private.relic_roulette_operations where user_id=u and spin_day=today and cost=0);\n if available<>p_expected_free then raise exception 'ROULETTE_PRICE_CHANGED';end if;\n if available then return app_private.relic_roulette_spin(p_operation_id,true);end if;\n update app_private.relic_roulette_tickets set quantity=quantity-1,updated_at=at_time where user_id=u and quantity>0 returning quantity into tickets;\n if not found then raise exception 'INSUFFICIENT_ROULETTE_TICKETS';end if;\n grade:=app_private.relic_roulette_grade(floor(random()*10000)::integer);\n if grade<>'none' then\n  select * into reward from public.fishing_relics where enabled and rarity::text=grade order by random() limit 1;\n  if not found then raise exception 'ROULETTE_UNAVAILABLE';end if;\n  insert into app_private.player_fishing_relics(user_id,relic_id,quantity) values(u,reward.id,1)\n   on conflict(user_id,relic_id) do update set quantity=app_private.player_fishing_relics.quantity+1 returning quantity into quantity_after;\n  insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(u,reward.id) on conflict do nothing;\n  relic:=jsonb_build_object('id',reward.id,'name',reward.name,'description',reward.description,'rarity',reward.rarity,'thumbnail_path',reward.thumbnail_path,'quantityBefore',quantity_after-1,'quantityAfter',quantity_after);\n end if;\n -- A zero-gold ledger entry reserves the operation ID without charging twice.\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','relic-roulette-ticket-use',0);\n result:=jsonb_build_object('operationId',p_operation_id,'grade',grade,'cost',0,'ticketsUsed',1,'createdAt',at_time,'relic',relic);\n insert into app_private.relic_roulette_ticket_spins(user_id,operation_id,result,created_at) values(u,p_operation_id,result,at_time);\n return app_private.relic_roulette_state()||jsonb_build_object('spin',result,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -21287,6 +21469,16 @@
         "securityDefiner": false
       },
       {
+        "name": "relic_roulette_buy_tickets",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_quantity integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.relic_roulette_buy_tickets(p_operation_id uuid, p_quantity integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.relic_roulette_buy_tickets(p_operation_id,p_quantity)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "relic_roulette_spin",
         "config": [
           "search_path=\"\""
@@ -21304,6 +21496,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.relic_roulette_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.relic_roulette_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_expected_free boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.relic_roulette_ticket_spin(p_operation_id uuid, p_expected_free boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.relic_roulette_ticket_spin(p_operation_id,p_expected_free)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -26281,6 +26483,138 @@
       {
         "name": "relic_roulette_operations_user_id_not_null",
         "table": "relic_roulette_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_check",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "CHECK ((total_gold = (quantity * 500)))"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_created_at_not_null",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_operation_id_not_null",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_pkey",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_quantity_check",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "CHECK (((quantity >= 1) AND (quantity <= 1000)))"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_quantity_not_null",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_total_gold_not_null",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "NOT NULL total_gold"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_user_id_fkey",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "relic_roulette_ticket_purchases_user_id_not_null",
+        "table": "relic_roulette_ticket_purchases",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_created_at_not_null",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_operation_id_not_null",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_pkey",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_result_check",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_typeof(result) = 'object'::text))"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_result_not_null",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "NOT NULL result"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_user_id_fkey",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "relic_roulette_ticket_spins_user_id_not_null",
+        "table": "relic_roulette_ticket_spins",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "relic_roulette_tickets_pkey",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "relic_roulette_tickets_quantity_check",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "definition": "CHECK (((quantity >= 0) AND (quantity <= 1000000)))"
+      },
+      {
+        "name": "relic_roulette_tickets_quantity_not_null",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "relic_roulette_tickets_updated_at_not_null",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "relic_roulette_tickets_user_id_fkey",
+        "table": "relic_roulette_tickets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "relic_roulette_tickets_user_id_not_null",
+        "table": "relic_roulette_tickets",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -45063,6 +45397,27 @@
         "arguments": "p_effect text"
       },
       {
+        "name": "relic_roulette_buy_tickets",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "relic_roulette_buy_tickets",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "relic_roulette_buy_tickets",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
         "name": "relic_roulette_grade",
         "role": "anon",
         "schema": "app_private",
@@ -45124,6 +45479,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_expected_free boolean"
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_expected_free boolean"
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_expected_free boolean"
       },
       {
         "name": "relic_showcase_catch",
@@ -50250,6 +50626,27 @@
         "arguments": ""
       },
       {
+        "name": "relic_roulette_buy_tickets",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "relic_roulette_buy_tickets",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "relic_roulette_buy_tickets",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
         "name": "relic_roulette_spin",
         "role": "anon",
         "schema": "public",
@@ -50290,6 +50687,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_expected_free boolean"
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_expected_free boolean"
+      },
+      {
+        "name": "relic_roulette_ticket_spin",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_expected_free boolean"
       },
       {
         "name": "relic_showcase_catch",

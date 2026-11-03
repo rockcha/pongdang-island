@@ -83,3 +83,28 @@
 .roulette-reward-actions { display: grid; gap: 11px; }
 .roulette-reward-actions button { min-height: 42px; border-radius: 8px; background: var(--primary); color: var(--primary-foreground); font-size: 13px; cursor: pointer; }
 .roulette-reward-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: var(--primary); font-size: 11px; }
+.roulette-ticket-balance { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0 0 12px; }
+.roulette-ticket-balance p { display: flex; align-items: center; gap: 7px; color: var(--rr-brown); font-size: 12px; }
+.roulette-ticket-balance strong { margin-left: 3px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.roulette-ticket-balance > button { min-height: 36px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; color: var(--rr-brown); font-size: 11px; cursor: pointer; }
+.roulette-ticket-balance > button:disabled { opacity: .4; cursor: default; }
+.roulette-ticket-dialog { gap: 16px; padding: 24px; }
+.roulette-ticket-dialog [data-slot='dialog-header'] { align-items: center; text-align: center; gap: 8px; }
+.roulette-ticket-dialog [data-slot='dialog-title'] { font-size: 18px; font-weight: 500; }
+.roulette-ticket-dialog [data-slot='dialog-description'] { font-size: 11px; line-height: 1.8; }
+.roulette-ticket-symbol { display: grid; place-items: center; width: 50px; height: 50px; margin-bottom: 2px; border-radius: 15px; background: var(--secondary); color: var(--primary); }
+.roulette-ticket-price { display: flex; align-items: center; justify-content: space-between; color: var(--muted-foreground); font-size: 11px; }
+.roulette-ticket-price strong { color: var(--primary); font-weight: 500; }
+.roulette-ticket-stepper { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px; border: 1px solid var(--border); border-radius: 12px; }
+.roulette-ticket-stepper > div { display: flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; }
+.roulette-ticket-stepper input { width: 100%; max-width: 100px; border: 0; background: transparent; padding: 4px; text-align: center; font-size: 24px; box-shadow: none; font-variant-numeric: tabular-nums; }
+.roulette-ticket-stepper span { color: var(--muted-foreground); font-size: 12px; }
+.roulette-ticket-presets { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 7px; }
+.roulette-ticket-presets button { min-height: 36px; border: 1px solid var(--border); border-radius: 8px; color: var(--muted-foreground); font-size: 11px; cursor: pointer; }
+.roulette-ticket-presets button[aria-pressed='true'] { background: var(--secondary); border-color: color-mix(in srgb,var(--primary) 35%,var(--border)); color: var(--primary); }
+.roulette-ticket-presets button:disabled { opacity: .4; cursor: default; }
+.roulette-ticket-total { display: grid; gap: 9px; padding: 16px 0 0; border-top: 1px solid var(--border); font-size: 12px; }
+.roulette-ticket-total p { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.roulette-ticket-total strong { color: var(--primary); font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.roulette-ticket-total p + p { color: var(--muted-foreground); font-size: 10px; }
+:is(.roulette-ticket-balance,.roulette-ticket-presets) button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }

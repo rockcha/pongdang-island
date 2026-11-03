@@ -1598,5 +1598,23 @@
     "path": "fish/mythic/mechsanctum-automakion_swim8_v1_sprite.png",
     "facing": "right",
     "sha256": "e93c6ac5ff06a297991b0c02ddd0997f325de0e133c8a32d149890becfd4629d"
+  },
+  {
+    "id": "round-sandfish",
+    "path": "fish/normal/round-sandfish_v1_sprite.png",
+    "facing": "right",
+    "sha256": "22d88da0c073d44317e73aac92cdc6640f83d700a58942e6c52b24d5c4a6bc5d"
+  },
+  {
+    "id": "baby-blenny",
+    "path": "fish/rare/baby-blenny_v1_sprite.png",
+    "facing": "right",
+    "sha256": "dd4ed8cd3865e9d909e287b83d69daa13cea55900c1d70f70b3179aafddcfb16"
+  },
+  {
+    "id": "pearlspot-wrasse",
+    "path": "fish/rare/pearlspot-wrasse_v1_sprite.png",
+    "facing": "right",
+    "sha256": "c0c7625be1c3bcbceffc3414ea6bcca99c627fec8f10f2ba11bc969668ab6d5b"
   }
 ]

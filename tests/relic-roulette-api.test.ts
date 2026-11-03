@@ -1,5 +1,5 @@
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
-import {readRoulette,spinRoulette,type RouletteState} from '../src/features/relic-roulette/api'
+import {buyRouletteTickets,readRoulette,spinRoulette,type RouletteState} from '../src/features/relic-roulette/api'
 import {appQueryClient,accountQueryKey,setQueryAccount} from '../src/lib/account-cache'
 const mocks=vi.hoisted(()=>({rpc:vi.fn(),abort:vi.fn()}))
 vi.mock('@/lib/client',()=>({createClient:()=>({rpc:mocks.rpc})}))
@@ -34,4 +34,29 @@ it('leaves financial retries to the caller and never retries a lost request auto
  await expect(spinRoulette(request)).rejects.toThrow('network')
  expect(mocks.rpc).toHaveBeenCalledTimes(1)
  expect(appQueryClient.getQueryData(accountQueryKey('one','relic-roulette'))).toBeUndefined()
+})
+it('uses the ticket endpoint for new requests while retaining the legacy endpoint for old pending requests',async()=>{
+ mocks.rpc.mockResolvedValue({data:receipt,error:null})
+ await spinRoulette({...request,useTicket:true})
+ expect(mocks.rpc).toHaveBeenCalledExactlyOnceWith('relic_roulette_ticket_spin',{p_operation_id:request.operation,p_expected_free:true})
+})
+it('publishes a validated ticket purchase and refreshes the wallet without spinning',async()=>{
+ const data={...receipt,tickets:5,purchase:{operationId:request.operation,quantity:5,totalGold:2500}}
+ appQueryClient.setQueryData(accountQueryKey('one','wallet'),{})
+ mocks.rpc.mockResolvedValue({data,error:null})
+ await buyRouletteTickets({operation:request.operation,quantity:5})
+ expect(mocks.rpc).toHaveBeenCalledExactlyOnceWith('relic_roulette_buy_tickets',{p_operation_id:request.operation,p_quantity:5})
+ expect(appQueryClient.getQueryData(accountQueryKey('one','relic-roulette'))).toEqual(data)
+ expect(appQueryClient.getQueryState(accountQueryKey('one','wallet'))?.isInvalidated).toBe(true)
+})
+it('drops a late ticket purchase after an account change and rejects an invalid receipt',async()=>{
+ let resolve!:(value:unknown)=>void
+ mocks.rpc.mockImplementation(()=>new Promise(done=>{resolve=done}))
+ const promise=buyRouletteTickets({operation:request.operation,quantity:5})
+ setQueryAccount('two')
+ resolve({data:{...receipt,purchase:{operationId:request.operation,quantity:5,totalGold:2500}},error:null})
+ await expect(promise).rejects.toThrow('ACCOUNT_CHANGED')
+ expect(appQueryClient.getQueryData(accountQueryKey('two','relic-roulette'))).toBeUndefined()
+ mocks.rpc.mockResolvedValue({data:{...receipt,purchase:{operationId:'wrong',quantity:5,totalGold:2500}},error:null})
+ await expect(buyRouletteTickets({operation:request.operation,quantity:5})).rejects.toThrow('INVALID_ROULETTE_RECEIPT')
 })

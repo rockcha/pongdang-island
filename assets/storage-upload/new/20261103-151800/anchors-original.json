@@ -1,0 +1,113 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261103-151800/sources/round-sandfish-sprite.source",
+        "storage_path":  "fish/normal/round-sandfish_v1_sprite.png",
+        "patch":  [
+                      465,
+                      280,
+                      44,
+                      50
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  3.5566838487557479
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.6648772108189753
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.1197753603331142
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261103-151800/sources/baby-blenny-sprite.source",
+        "storage_path":  "fish/rare/baby-blenny_v1_sprite.png",
+        "patch":  [
+                      490,
+                      278,
+                      40,
+                      50
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  1,
+                           "dy":  0,
+                           "rmse":  11.710397233285663
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.9313565386133229
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  10.408010408923932
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261103-151800/sources/pearlspot-wrasse-sprite.source",
+        "storage_path":  "fish/rare/pearlspot-wrasse_v1_sprite.png",
+        "patch":  [
+                      478,
+                      286,
+                      40,
+                      46
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.217661855306568
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  10.801423930601532
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  13.82104212268897
+                       }
+                   ]
+    }
+]

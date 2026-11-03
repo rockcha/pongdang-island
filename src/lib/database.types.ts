@@ -38,6 +38,8 @@ export type Database = {
     Functions: {
       relic_roulette_state: {Args:Record<string,never>;Returns:import('@/features/relic-roulette/api').RouletteState}
       relic_roulette_spin: {Args:{p_operation_id:string;p_expected_free:boolean};Returns:import('@/features/relic-roulette/api').RouletteState}
+      relic_roulette_ticket_spin: {Args:{p_operation_id:string;p_expected_free:boolean};Returns:import('@/features/relic-roulette/api').RouletteState}
+      relic_roulette_buy_tickets: {Args:{p_operation_id:string;p_quantity:number};Returns:import('@/features/relic-roulette/api').RouletteState}
       recycle_relics: { Args: { p_action: string; p_inputs: import('@/features/relics/recycling-api').RelicMaterial[]; p_operation_id: string }; Returns: import('@/features/relics/api').RelicState }
       exploration_leaderboard: { Args: { p_offset?: number }; Returns: import('@/features/exploration/ranking-api').ExplorationRankingData }
       exploration_saved_run: { Args: Record<string,never>; Returns: import('@/features/exploration/saved-run-api').SavedExplorationRun|null }

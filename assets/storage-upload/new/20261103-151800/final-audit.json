@@ -1,0 +1,355 @@
+{
+  "results": [
+    {
+      "id": "round-sandfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\fish\\normal\\round-sandfish_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            82,
+            363,
+            1086,
+            558
+          ],
+          "margin": 82,
+          "occupancy": 0.8660287081339713,
+          "opaque": 344277,
+          "transparent": 1221392,
+          "soft": 350402
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "round-sandfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\fish\\normal\\round-sandfish_v1_sprite.png",
+      "width": 1318,
+      "height": 1318,
+      "cell": 659,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            55,
+            195,
+            545,
+            284
+          ],
+          "margin": 55,
+          "occupancy": 0.8270106221547799,
+          "opaque": 87816,
+          "transparent": 340545,
+          "soft": 93463
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            63,
+            197,
+            537,
+            277
+          ],
+          "margin": 59,
+          "occupancy": 0.8148710166919575,
+          "opaque": 85766,
+          "transparent": 341793,
+          "soft": 92222
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            63,
+            196,
+            537,
+            276
+          ],
+          "margin": 59,
+          "occupancy": 0.8148710166919575,
+          "opaque": 85627,
+          "transparent": 342760,
+          "soft": 91216
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            55,
+            195,
+            545,
+            281
+          ],
+          "margin": 55,
+          "occupancy": 0.8270106221547799,
+          "opaque": 87129,
+          "transparent": 335832,
+          "soft": 98174
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "flattened-otter-plush",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\trash\\rare\\flattened-otter-plush_v1_thumbnail.png",
+      "width": 1346,
+      "height": 1346,
+      "cell": 1346,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            91,
+            448,
+            1144,
+            499
+          ],
+          "margin": 91,
+          "occupancy": 0.849925705794948,
+          "opaque": 384621,
+          "transparent": 1420765,
+          "soft": 390365
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "unstuffed-seahorse-plush",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\trash\\rare\\unstuffed-seahorse-plush_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            293,
+            99,
+            645,
+            1074
+          ],
+          "margin": 81,
+          "occupancy": 0.8564593301435407,
+          "opaque": 424147,
+          "transparent": 1140136,
+          "soft": 431478
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "worn-seal-plush",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\trash\\rare\\worn-seal-plush_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            95,
+            192,
+            1063,
+            915
+          ],
+          "margin": 95,
+          "occupancy": 0.8476874003189793,
+          "opaque": 563030,
+          "transparent": 997044,
+          "soft": 575263
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "baby-blenny",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\fish\\rare\\baby-blenny_v1_thumbnail.png",
+      "width": 1336,
+      "height": 1336,
+      "cell": 1336,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            95,
+            507,
+            1134,
+            323
+          ],
+          "margin": 95,
+          "occupancy": 0.8488023952095808,
+          "opaque": 232113,
+          "transparent": 1546969,
+          "soft": 236593
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "baby-blenny",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\fish\\rare\\baby-blenny_v1_sprite.png",
+      "width": 1318,
+      "height": 1318,
+      "cell": 659,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            252,
+            533,
+            156
+          ],
+          "margin": 60,
+          "occupancy": 0.8088012139605463,
+          "opaque": 53331,
+          "transparent": 374599,
+          "soft": 59466
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            63,
+            252,
+            530,
+            155
+          ],
+          "margin": 63,
+          "occupancy": 0.8042488619119879,
+          "opaque": 54784,
+          "transparent": 372215,
+          "soft": 61836
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            60,
+            251,
+            534,
+            155
+          ],
+          "margin": 60,
+          "occupancy": 0.8103186646433991,
+          "opaque": 53345,
+          "transparent": 372148,
+          "soft": 61877
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            58,
+            251,
+            536,
+            155
+          ],
+          "margin": 58,
+          "occupancy": 0.8133535660091047,
+          "opaque": 53333,
+          "transparent": 371668,
+          "soft": 62342
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pearlspot-wrasse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\fish\\rare\\pearlspot-wrasse_v1_thumbnail.png",
+      "width": 1380,
+      "height": 1380,
+      "cell": 1380,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            99,
+            435,
+            1172,
+            509
+          ],
+          "margin": 99,
+          "occupancy": 0.8492753623188406,
+          "opaque": 375140,
+          "transparent": 1522648,
+          "soft": 380852
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pearlspot-wrasse",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261103-151800\\fish\\rare\\pearlspot-wrasse_v1_sprite.png",
+      "width": 1318,
+      "height": 1318,
+      "cell": 659,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            212,
+            537,
+            233
+          ],
+          "margin": 60,
+          "occupancy": 0.8148710166919575,
+          "opaque": 78799,
+          "transparent": 349593,
+          "soft": 84253
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            64,
+            207,
+            533,
+            235
+          ],
+          "margin": 62,
+          "occupancy": 0.8088012139605463,
+          "opaque": 76581,
+          "transparent": 351118,
+          "soft": 82717
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            58,
+            212,
+            539,
+            233
+          ],
+          "margin": 58,
+          "occupancy": 0.8179059180576631,
+          "opaque": 79140,
+          "transparent": 346776,
+          "soft": 87090
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            57,
+            210,
+            540,
+            236
+          ],
+          "margin": 57,
+          "occupancy": 0.8194233687405159,
+          "opaque": 78823,
+          "transparent": 346643,
+          "soft": 87202
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

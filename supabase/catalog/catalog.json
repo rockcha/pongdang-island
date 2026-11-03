@@ -1444,6 +1444,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "baby-blenny",
+      "kind": "fish",
+      "name": "새끼 베도라치",
+      "description": "아직 작은 베도라치. 길쭉한 몸의 갈색 무늬와 눈 위의 짧은 돌기를 뽐내며 꼬리를 살랑인다.",
+      "swim_y_min": "0.55",
+      "swim_y_max": "0.85",
+      "speed": "0.032",
+      "size": 52,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/baby-blenny_v1_thumbnail.png",
+      "sell_price": 90,
+      "sprite_sheet_path": "fish/rare/baby-blenny_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "bean-pufferfish",
       "kind": "fish",
       "name": "콩알 복어",
@@ -4375,6 +4393,24 @@
       "native_region_id": "firefly",
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "flattened-otter-plush",
+      "kind": "trash",
+      "name": "납작해진 해달 인형",
+      "description": "물에 젖어 납작해진 해달 봉제인형. 축 처진 팔다리와 덧댄 천 아래로 작은 미소가 남아 있다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 48,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/flattened-otter-plush_v1_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -11632,6 +11668,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "pearlspot-wrasse",
+      "kind": "fish",
+      "name": "진주점 놀래기",
+      "description": "민트빛 등과 산호빛 줄무늬 사이로 진주색 점이 이어진 놀래기. 부채꼴 꼬리를 부드럽게 흔들며 헤엄친다.",
+      "swim_y_min": "0.3",
+      "swim_y_max": "0.75",
+      "speed": "0.045",
+      "size": 58,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pearlspot-wrasse_v1_thumbnail.png",
+      "sell_price": 110,
+      "sprite_sheet_path": "fish/rare/pearlspot-wrasse_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "pebble-hermit-crab",
       "kind": "fish",
       "name": "조약돌 소라게",
@@ -14362,6 +14416,24 @@
       "thumbnail_path": "fish/normal/round-filefish_thumbnail.png",
       "sell_price": 25,
       "sprite_sheet_path": "fish/normal/round-filefish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "round-sandfish",
+      "kind": "fish",
+      "name": "동글 도루묵",
+      "description": "모래빛 동글한 몸에 작은 점무늬가 콕콕 박힌 도루묵. 짧은 꼬리와 부드러운 등지느러미를 살랑이며 헤엄친다.",
+      "swim_y_min": "0.6",
+      "swim_y_max": "0.85",
+      "speed": "0.025",
+      "size": 44,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/round-sandfish_v1_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": "fish/normal/round-sandfish_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -17896,6 +17968,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "unstuffed-seahorse-plush",
+      "kind": "trash",
+      "name": "솜 빠진 해마 인형",
+      "description": "배의 봉제선 사이로 솜이 조금 빠져나온 민트빛 해마 인형. 구부러진 꼬리까지 여전히 포근하다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 46,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/unstuffed-seahorse-plush_v1_thumbnail.png",
+      "sell_price": 25,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "upward-sinking-waterfall",
       "kind": "decoration",
       "name": "하늘로 가라앉는 폭포",
@@ -18164,6 +18254,24 @@
       "movement_type": "swim",
       "flip_with_direction": true,
       "travel_direction": "both"
+    },
+    {
+      "id": "worn-seal-plush",
+      "kind": "trash",
+      "name": "꼬질 물개 인형",
+      "description": "물살에 떠밀려 조금 꼬질해진 연보라색 물개 인형. 동그란 눈과 덧댄 천이 정겨운 표정을 만든다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 52,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/worn-seal-plush_v1_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
     }
   ],
   "collectible_habitats": [
@@ -18421,6 +18529,78 @@
     },
     {
       "species_id": "aurora-eel",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "baby-blenny",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "baby-blenny",
       "region_id": "whitenight"
     },
     {
@@ -20086,6 +20266,78 @@
     {
       "species_id": "firefly-woodgrain-turtle",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "flattened-otter-plush",
+      "region_id": "whitenight"
     },
     {
       "species_id": "flower-coral-seadragon",
@@ -27212,6 +27464,78 @@
       "region_id": "dreamabyss"
     },
     {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pearlspot-wrasse",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "pebble-hermit-crab",
       "region_id": "bluegrove"
     },
@@ -28629,6 +28953,78 @@
     },
     {
       "species_id": "round-filefish",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "round-sandfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "round-sandfish",
       "region_id": "whitenight"
     },
     {
@@ -33084,6 +33480,78 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "unstuffed-seahorse-plush",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "upward-sinking-waterfall",
       "region_id": "bluegrove"
     },
@@ -33318,6 +33786,78 @@
     {
       "species_id": "whorl-tetragonites",
       "region_id": "primal"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "worn-seal-plush",
+      "region_id": "whitenight"
     }
   ],
   "region_maps": [

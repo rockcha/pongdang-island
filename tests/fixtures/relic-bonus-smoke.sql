@@ -178,6 +178,21 @@ begin
    if not exists(select 1 from jsonb_array_elements(state->'vessels') v where (v->>'harbor_duration_percent')::numeric=r.effect_value) then raise exception 'HARBOR_DURATION_PREVIEW_WRONG';end if;
    perform public.equip_relic(null,gen_random_uuid(),500);
    reset role;continue;
+  elsif r.effect_kind='savings_interest_bonus_percent' then
+   set local role authenticated;
+   state:=public.savings_state();
+   if (state->>'relicBonusPercent')::numeric<>r.effect_value then raise exception 'SAVINGS_PREVIEW_WRONG';end if;
+   perform public.equip_relic(null,gen_random_uuid(),500);
+   state:=public.savings_state();
+   if (state->>'relicBonusPercent')::numeric<>0 then raise exception 'SAVINGS_BONUS_AFTER_UNEQUIP';end if;
+   reset role;continue;
+  elsif r.effect_kind='bait_refund_percent' then
+   set local role authenticated;
+   p:=public.prepare_discovery_fishing('pongdang','bait',gen_random_uuid(),false);
+   reset role;
+   if (select (bait_snapshot->>'relic_bait_refund_percent')::numeric from app_private.prepared_fishing_casts where user_id=u and operation_id=(p->>'operation_id')::uuid)<>r.effect_value then raise exception 'REFUND_SNAPSHOT_WRONG';end if;
+   update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result='{}'::jsonb where user_id=u and operation_id=(p->>'operation_id')::uuid;
+   set local role authenticated;perform public.equip_relic(null,gen_random_uuid(),500);reset role;continue;
   else raise exception 'UNKNOWN_EFFECT %',r.effect_kind;
   end if;
  end loop;

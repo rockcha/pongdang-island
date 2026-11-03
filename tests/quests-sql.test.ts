@@ -30,6 +30,29 @@ it('returns requested goals and rewards with no progress for a new player',async
  await expect(claim('daily',s.daily.start,'fish')).rejects.toThrow(/INCOMPLETE/)
  await expect(claim('daily',s.daily.start,'all')).rejects.toThrow(/INCOMPLETE/)
 })
+it.each(['buy','sell'])('counts a flea %s post and awards the daily fuel only once',async side=>{
+ const operation=crypto.randomUUID(),items=[{kind:'fuel',id:'fuel',quantity:1,unit_price:10}]
+ const post=(await user('select public.flea_post($1,$2,$3,$4) p',[side,'퀘스트 게시글',JSON.stringify(items),operation])).rows[0].p
+ await user('select public.flea_post($1,$2,$3,$4) p',[side,'퀘스트 게시글',JSON.stringify(items),operation])
+ expect((await db.query('select count(*)::int n from app_private.flea_posts where owner_id=$1',[uid])).rows[0].n).toBe(1)
+ const s=await state()
+ expect(s.daily.quests.find(q=>q.id==='post')).toMatchObject({progress:1,complete:true,rewardFuel:1})
+ expect(s.weekly.quests.find(q=>q.id==='trade').progress).toBe(0)
+ const before=await fuel()
+ expect((await claim('daily',s.daily.start,'post')).creditedFuel).toBe(1)
+ expect((await claim('daily',s.daily.start,'post')).creditedFuel).toBe(0)
+ expect(await fuel()).toBe(before+1)
+ await user('select public.flea_cancel($1,$2)',[post.id,crypto.randomUUID()])
+ expect((await state()).daily.quests.find(q=>q.id==='post')).toMatchObject({progress:1,complete:true,claimed:true})
+})
+it('uses the caller and Korean day boundaries for flea posting progress',async()=>{
+ await db.query("select set_config('request.jwt.claim.sub',$1,false)",[uid])
+ const progress=async()=>((await db.query("select app_private.quest_period('daily','2026-11-03T03:00:00Z') s")).rows[0].s.quests.find(q=>q.id==='post').progress)
+ await db.query("insert into app_private.flea_posts(owner_id,side,title,created_at) values($1,'buy','다른 사람 글','2026-11-02T15:00:00Z'),($2,'sell','어제 글','2026-11-02T14:59:59Z'),($2,'sell','다음 날 글','2026-11-03T15:00:00Z')",[other,uid])
+ expect(await progress()).toBe(0)
+ await db.query("insert into app_private.flea_posts(owner_id,side,title,status,created_at) values($1,'buy','오늘 마감한 글','cancelled','2026-11-02T15:00:00Z')",[uid])
+ expect(await progress()).toBe(1)
+})
 it('does not pay fuel again for a quest already claimed before the reward changed',async()=>{
  await user("select public.exchange_post('sell','fuel','fuel',1,'gold','gold',30,gen_random_uuid())")
  const s=await state(),beforeFuel=await fuel()

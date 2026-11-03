@@ -10,7 +10,7 @@ begin
  for r in select * from public.fishing_relics where effect_kind='bait_discount_gold' order by effect_value loop
   set local role authenticated;perform public.equip_relic(r.id,gen_random_uuid(),0);reset role;
   for b in select * from public.fishing_baits where price is not null order by id loop
-   unit:=greatest(1,b.price-r.effect_value::integer);
+   unit:=case when b.price>=40 then greatest(1,b.price-r.effect_value::integer) else b.price end;
    set local role authenticated;s:=public.fishing_state();reset role;
    if not exists(select 1 from jsonb_array_elements(s->'baits') x where x->>'id'=b.id and (x->>'price')::integer=unit and (x->>'base_price')::integer=b.price) then raise exception 'PRICE_DISPLAY_MISMATCH %',b.id;end if;
    select gold,coalesce((inventory->>b.id)::integer,0) into balance,stock from public.player_wallets where user_id=u;

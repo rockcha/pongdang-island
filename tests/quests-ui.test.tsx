@@ -21,6 +21,7 @@ it('shows the fuel icon and credits a fuel quest without announcing gold',async(
  const next=structuredClone(s);next.daily.quests[0].claimed=true;next.credited=0;next.creditedFuel=1;mock.claim.mockResolvedValue(next)
  setup();fireEvent.click(screen.getByRole('button',{name:'퀘스트'}))
  const button=await screen.findByRole('button',{name:'판매글 올리기 연료 1통 받기'})
+ expect(screen.getByText('거래소 판매글 · 벼룩시장 사요/팔아요')).toBeTruthy()
  expect(button.querySelector('img')?.getAttribute('src')).toBe('/app-icons/fuel-can.svg')
  fireEvent.click(button)
  await screen.findByRole('button',{name:'판매글 올리기 보상 수령 완료'})

@@ -26,6 +26,18 @@ export function SavingsMoney({ value, large = false }: { value: number; large?: 
   )
 }
 
+function SavingsDeadlineNotice() {
+  return (
+    <div className="flex gap-2.5 rounded-xl border border-primary/20 bg-primary/5 p-3.5">
+      <Clock3 aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
+      <div className="space-y-1 text-xs leading-5">
+        <p className="font-medium text-primary">한 번이라도 납입 기한을 놓치면 보너스를 받을 수 없어요.</p>
+        <p className="text-[11px] text-muted-foreground">기본·유물 보너스 없이 납입한 원금만 돌려받아요. 납입 기한은 가입 시각 기준 24시간 단위예요.</p>
+      </div>
+    </div>
+  )
+}
+
 type PlanProps = {
   plans: readonly { days: 3 | 5 | 7; bonus: number }[]
   term: 3 | 5 | 7
@@ -58,12 +70,6 @@ export function SavingsPlanPanel({
 }: PlanProps) {
   return (
     <div className="space-y-5">
-      <header>
-        <h2 className="text-base font-medium">차곡차곡, 조개에 모아요</h2>
-        <p className="mt-1 text-xs leading-5 text-muted-foreground">
-          매일 한 번씩 넣고 만기에 보너스까지 받아요.
-        </p>
-      </header>
       <fieldset disabled={disabled}>
         <legend className="mb-2.5 text-xs font-medium">얼마 동안 모을까요?</legend>
         <div className="grid grid-cols-3 gap-2">
@@ -86,7 +92,6 @@ export function SavingsPlanPanel({
           ))}
         </div>
       </fieldset>
-      {relicBonusPercent>0&&<p className="rounded-xl bg-secondary/50 px-3 py-2 text-xs leading-5 text-primary">유물 효과 · 조개 적금 이자 +{relicBonusPercent}%<span className="block text-[10px] text-muted-foreground">모든 기간에 적용 · 가입 시 확정</span></p>}
       <div className="space-y-2.5">
         <div className="flex items-center justify-between gap-2">
           <label htmlFor="savings-amount" className="text-xs font-medium">
@@ -157,7 +162,12 @@ export function SavingsPlanPanel({
           </div>
         </dl>
       </div>
-      <div className="space-y-2">
+      <div className="space-y-3">
+        <SavingsDeadlineNotice />
+        <p className="text-[11px] leading-5 text-muted-foreground">
+          가입 순간 장착한 유물의 효과가 적용돼요. 가입 후 유물을 바꿔도 해당 적금의 효과는 유지돼요.
+          {relicBonusPercent > 0 && <span className="mt-1 block text-primary">현재 유물 · 기본 이자에 +{relicBonusPercent}% 추가</span>}
+        </p>
         <Button
           className="min-h-12 w-full rounded-xl text-xs"
           disabled={disabled || !valid || gold < Number(amount)}
@@ -228,7 +238,7 @@ export function SavingsAccountPanel({
             </span>
             <Shell aria-hidden="true" className="size-8 text-primary/45" strokeWidth={1.3} />
           </div>
-          {(account.relicBonusPercent??0)>0&&<p className="mt-2 text-[11px] text-primary">조개 적금 이자 +{account.relicBonusPercent}% · 가입 시 확정</p>}
+          {(account.relicBonusPercent??0)>0&&<p className="mt-2 text-[11px] text-primary">기본 이자에 유물 보너스 +{account.relicBonusPercent}% · 가입 시 확정</p>}
           <h2 id="savings-balance-title" className="mt-4 text-xs text-muted-foreground">
             모은 골드
           </h2>
@@ -354,6 +364,7 @@ export function SavingsAccountPanel({
           )}
         </div>
       </section>
+      {!full && !missed && <SavingsDeadlineNotice />}
       <details className="group rounded-xl border border-border/60 bg-background">
         <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-2 px-4 text-xs font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
           적금 정보
@@ -363,6 +374,7 @@ export function SavingsAccountPanel({
           />
         </summary>
         <div className="border-t border-border/50 px-4 pb-3 pt-4">
+          <p className="mb-4 text-[11px] leading-5 text-muted-foreground">가입 순간 장착한 유물의 효과가 적용돼요. 가입 후 유물을 바꿔도 해당 적금의 효과는 유지돼요.</p>
           <dl className="space-y-3 text-[11px]">
             <div className="flex justify-between gap-2">
               <dt className="text-muted-foreground">매일 납입</dt>

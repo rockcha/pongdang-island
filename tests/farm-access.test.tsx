@@ -4,7 +4,7 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {FarmPage} from '@/pages/farm-page'
 const access=vi.hoisted(()=>({operator:false,loading:false,mount:vi.fn()}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>access}))
-vi.mock('@/features/farm/isometric-farm',()=>({IsometricFarmPage:()=>{access.mount(true);return <p>농장 편집 화면</p>}}))
+vi.mock('@/features/farm/topview-farm',()=>({TopviewFarm:()=>{access.mount(true);return <p>농장 편집 화면</p>}}))
 afterEach(()=>{cleanup();access.mount.mockClear();access.operator=false;access.loading=false})
 it('shows preparation to nonoperators without mounting or querying the farm editor',()=>{
  render(<MemoryRouter><FarmPage/></MemoryRouter>)

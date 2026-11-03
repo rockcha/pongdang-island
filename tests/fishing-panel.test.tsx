@@ -1,7 +1,8 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { createMemoryRouter,Link,MemoryRouter,RouterProvider } from 'react-router'
-const {load,prepare,begin,finish,refresh,transact,storage,aquarium}=vi.hoisted(()=>({load:vi.fn(),prepare:vi.fn(),begin:vi.fn(),finish:vi.fn(),refresh:vi.fn(),transact:vi.fn(),storage:vi.fn(),aquarium:vi.fn()}))
+const {load,prepare,begin,finish,refresh,transact,storage,aquarium,refundToast}=vi.hoisted(()=>({load:vi.fn(),prepare:vi.fn(),begin:vi.fn(),finish:vi.fn(),refresh:vi.fn(),transact:vi.fn(),storage:vi.fn(),aquarium:vi.fn(),refundToast:vi.fn()}))
+vi.mock('sonner',()=>({toast:{success:refundToast,error:vi.fn()}}))
 vi.mock('@/features/aquarium/api',async original=>({...await original<typeof import('@/features/aquarium/api')>(),loadCollectibleStorage:storage,loadAquarium:aquarium,readAquarium:aquarium}))
 vi.mock('@/features/fishing/tension-fishing-game',()=>({TensionFishingGame:({onCaught,onCancel,onFailed,active,challenge,outline,start,onStartFight,expiresAt}:{onStartFight?:()=>Promise<boolean>;expiresAt?:string;onCaught:()=>void;onCancel:()=>void;onFailed:(reason:string)=>void;active:boolean;challenge:{rarity:string;failureAt?:number};outline?:{name:string};start?:{label:string;disabled:boolean;onStart:()=>void}})=>active?<div data-testid="challenge" data-rarity={challenge.rarity} data-doomed={challenge.failureAt!==undefined} data-outline={outline?.name??'generic'} data-deadline={expiresAt}>{onStartFight&&<button onClick={()=>void onStartFight()}>입질 시작</button>}<button onClick={onCaught}>미니게임 성공</button><button onClick={onCancel}>미니게임 취소</button><button onClick={()=>onFailed('snap')}>미니게임 실패</button></div>:<div>낚싯대가 준비됐어요{start&&<button disabled={start.disabled} onClick={start.onStart}>{start.label}</button>}</div>}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
@@ -85,6 +86,27 @@ it('shows distinct Pongi artwork for a full gauge, an empty gauge and a chance e
 })
 function dismissResult(){const clock=vi.spyOn(Date,'now').mockReturnValue(Date.now()+1000);try{fireEvent.click(screen.getByRole('button',{name:'낚시 실패 결과 닫기'}))}finally{clock.mockRestore()}}
 async function start(){fireEvent.click(await screen.findByRole('button',{name:'퐁당 지렁이 1개로 낚시하기'}));await screen.findByRole('button',{name:'미니게임 성공'})}
+it('shows a Pongi toast when the server confirms a returned bait',async()=>{
+ setup()
+ finish.mockResolvedValue({attempt:{...plan,species:null,rarity:null},replayed:false,baitRefunded:true,refundedBaitId:'bait'})
+ await start();fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}))
+ await waitFor(()=>expect(refundToast).toHaveBeenCalledExactlyOnceWith('유물의 힘으로 미끼 1개가 돌아왔어요!',{id:'bait-refund:prepared-id',description:'퐁당 지렁이 +1'}))
+})
+it('notifies a recovered receipt once even when that result is read again',async()=>{
+ setup()
+ prepare.mockResolvedValue({...plan,finished:true,result:{attempt:{...plan,species:null,rarity:null},replayed:true,baitRefunded:true,refundedBaitId:'bait'}})
+ fireEvent.click(await screen.findByRole('button',{name:'퐁당 지렁이 1개로 낚시하기'}))
+ await waitFor(()=>expect(refundToast).toHaveBeenCalledTimes(1))
+ dismissResult()
+ fireEvent.click(await screen.findByRole('button',{name:'퐁당 지렁이 1개로 낚시하기'}))
+ await waitFor(()=>expect(prepare).toHaveBeenCalledTimes(2))
+ expect(refundToast).toHaveBeenCalledTimes(1)
+})
+it('does not show a refund toast when no bait was returned',async()=>{
+ setup();await start();fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}))
+ await waitFor(()=>expect(finish).toHaveBeenCalledOnce())
+ expect(refundToast).not.toHaveBeenCalled()
+})
 it('keeps harbor and collection tools without the removed native species modal',async()=>{
  setup()
  await screen.findByRole('button',{name:/미끼통/})

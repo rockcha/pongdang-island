@@ -57,12 +57,12 @@ it('keeps fractional trap reductions and the saved departure duration after uneq
 it('discounts the boat purchase and bases resale on actual payment after loadout changes',async()=>{
  const vessel=(await db.query('select id,price from public.harbor_vessels where price>=1000 order by price limit 1')).rows[0]
  await equip('old-captain-seal')
- expect((await user('select public.harbor_state() s')).vessels.find(v=>v.id===vessel.id).price).toBe(vessel.price-50)
+ expect((await user('select public.harbor_state() s')).vessels.find(v=>v.id===vessel.id).price).toBe(vessel.price-100)
  const purchase=await user("select public.harbor_action('buy',$1,$2) s",[crypto.randomUUID(),vessel.id])
  const boat=purchase.boats.find(b=>b.vessel_id===vessel.id)
  await equip(null)
  const sale=await user("select public.harbor_action('sell',$1,null,null,1,$2) s",[crypto.randomUUID(),boat.id])
- expect(sale.receipt.gold).toBe(Math.floor((vessel.price-50)/2))
+ expect(sale.receipt.gold).toBe(Math.floor((vessel.price-100)/2))
 })
 it('subtracts half a second from new fishing waits without changing pending casts',async()=>{
  const prepare=async()=>user("select public.prepare_fishing('pongdang','bait',$1,false) s",[crypto.randomUUID()])

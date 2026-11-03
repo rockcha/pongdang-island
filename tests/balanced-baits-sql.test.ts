@@ -1,6 +1,7 @@
 // @vitest-environment node
 import {afterAll,beforeAll,expect,it} from 'vitest'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
+import catalog from '../supabase/catalog/catalog.json'
 const uid='00000000-0000-0000-0000-000000006801'
 const honey='bait_halfmoon_honey',snow='bait_snowflake_salt',tail='bait_shooting_star_tail'
 let db:Awaited<ReturnType<typeof createLocalDatabase>>
@@ -17,7 +18,8 @@ it('charges approved prices once per operation and reports fixed success with ro
  await db.exec('select public.fishing_rod_state()')
  await db.query("insert into public.player_fishing_rods(user_id,rod_id) values($1,'calm')",[uid])
  await db.exec("select public.equip_fishing_rod('calm')")
- for(const [id,price,chance] of [[honey,100,7500],[snow,35,5000],[tail,40,8000]] as const){
+ for(const id of [honey,snow,tail]){
+  const bait=catalog.fishing_baits.find(b=>b.id===id)!,price=bait.price!,chance=bait.success_chance_bp
   const op=crypto.randomUUID()
   await db.exec('set role authenticated')
   try{
@@ -29,7 +31,8 @@ it('charges approved prices once per operation and reports fixed success with ro
  }
 })
 it('resolves all 10000 grade rolls exactly, including the shared-only bait baseline',async()=>{
- for(const [id,counts] of [[honey,[5000,5000,0,0]],[snow,[8320,1500,150,30]],[tail,[9900,0,0,100]]] as const){
+ for(const id of [honey,snow,tail]){
+  const bait=catalog.fishing_baits.find(b=>b.id===id)!,counts=[bait.common_bp,bait.rare_bp,bait.epic_bp,bait.mythic_bp]
   const rows=(await db.query("select app_private.resolve_regional_fishing($1,'pongdang',n) rarity,count(*)::int n from generate_series(0,9999)n group by rarity",[id])).rows
   for(const [index,rarity] of ['common','rare','epic','mythic'].entries())expect(rows.find(r=>r.rarity===rarity)?.n??0).toBe(counts[index])
  }

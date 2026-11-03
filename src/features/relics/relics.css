@@ -305,6 +305,9 @@
 .relic-recombine-selection { display: flex; align-items: center; justify-content: space-between; color: var(--muted-foreground); font-size: 11px; }
 .relic-recombine-selection button { color: var(--primary); font-size: 10px; cursor: pointer; }
 .relic-recombine-selection button:disabled { opacity: .4; cursor: default; }
+.relic-recombine-actions { display: flex; align-items: center; gap: 12px; }
+.relic-recombine-selection .relic-recombine-auto { min-height: 32px; padding: 5px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--secondary); font-size: 11px; }
+.relic-recombine-selection button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .relic-recombine-slots { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 5px; }
 .relic-recombine-slot { display: grid; place-items: center; min-width: 0; aspect-ratio: 1; border: 1px dashed var(--border); border-radius: 8px; color: var(--muted-foreground); }
 .relic-recombine-slot[data-filled='true'] { border-style: solid; cursor: pointer; }

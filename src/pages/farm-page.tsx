@@ -4,7 +4,7 @@ import {ArrowLeft} from 'lucide-react'
 import {appArt} from '@/components/app-art'
 import {useOperator} from '@/features/notices/use-operator'
 
-const FarmEditor=lazy(()=>import('@/features/farm/isometric-farm').then(m=>({default:m.IsometricFarmPage})))
+const FarmEditor=lazy(()=>import('@/features/farm/topview-farm').then(m=>({default:m.TopviewFarm})))
 const loading=<p role="status" className="p-8 text-center text-xs text-muted-foreground">농장을 준비하고 있어요…</p>
 export function FarmPage(){
  const {operator,loading:checking}=useOperator()

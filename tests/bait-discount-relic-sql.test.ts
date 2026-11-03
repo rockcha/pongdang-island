@@ -3,7 +3,7 @@ import {expect,it} from 'vitest'
 import {readFileSync} from 'node:fs'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 
-it('discounts every purchasable bait through new and legacy routes, preserves quotes and isolates players',async()=>{
+it('discounts eligible purchasable baits through new and legacy routes, preserves quotes and isolates players',async()=>{
  const db=await createLocalDatabase()
  try{
   await replayMigrations(db)

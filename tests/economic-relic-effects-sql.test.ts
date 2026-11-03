@@ -39,6 +39,30 @@ it('makes all six originals available through discovery and the item catalog',as
  const collection=await call('select public.collection_state() s')
  expect(collection.catalog.filter(r=>ids.some(id=>r.id==='relic-'+id))).toHaveLength(6)
 })
+it.each([['sea-merchant-shell-token',2],['sea-king-trade-ledger',5]])('applies %s only at the original forty-gold boundary across purchase routes',async(id,discount)=>{
+ await equip(id as string)
+ for(const base of [39,40,41]){
+  await db.query("update public.fishing_baits set price=$1 where id='bait'",[base])
+  const expected=base-(base>=40?Number(discount):0)
+  const preview=(await call('select public.fishing_state() s')).baits.find(b=>b.id==='bait')
+  expect(preview).toMatchObject({base_price:base,price:expected,priceDiscountGold:base-expected})
+  const before=await wallet(),op=crypto.randomUUID()
+  await call("select public.buy_fishing_bait_bulk('bait',3,$1,$2) s",[op,expected])
+  await call("select public.buy_fishing_bait_bulk('bait',3,$1,$2) s",[op,expected])
+  await call("select public.buy_fishing_bait_at_price('bait',$1,$2) s",[crypto.randomUUID(),expected])
+  await call("select public.trade_gold($1,'buy','bait') s",[crypto.randomUUID()])
+  expect((await wallet()).gold).toBe(before.gold-expected*5)
+  expect((await wallet()).inventory.bait).toBe(before.inventory.bait+5)
+ }
+})
+it('retains the legacy interest rate on already opened accounts',async()=>{
+ await equip('sea-king-golden-vault')
+ const opened=await call("select public.savings_action('open',$1,null,3,100) s",[crypto.randomUUID()])
+ await db.query('update public.shell_savings set relic_bonus_percent=2 where id=$1',[opened.account.id])
+ const current=await call('select public.savings_state() s')
+ expect(current.relicBonusPercent).toBe(50)
+ expect(current.account).toMatchObject({relicBonusPercent:2,expectedBonus:61})
+})
 
 it.each([['returning-bait-pouch',1],['tide-return-bait-box',3],['sea-king-endless-bait-pot',5]])('snapshots %s at %s percent and refunds only once',async(id,percent)=>{
  await equip(id as string);const p=await prepare()
@@ -69,7 +93,7 @@ it.each(['failed','expired','old-cast'])('never refunds a %s cast',async(mode)=>
  expect((await wallet()).inventory.bait).toBe(99)
 })
 
-it.each([['coin-cradling-clam',2],['sea-merchant-pearl-vault',5],['sea-king-golden-vault',10]].flatMap(([id,percent])=>[3,5,7].map(days=>({id:String(id),percent:Number(percent),days}))))('adds $percent percent to the interest of a $days-day plan',async({id,percent,days})=>{
+it.each([['coin-cradling-clam',10],['sea-merchant-pearl-vault',25],['sea-king-golden-vault',50]].flatMap(([id,percent])=>[3,5,7].map(days=>({id:String(id),percent:Number(percent),days}))))('adds $percent percent to the interest of a $days-day plan',async({id,percent,days})=>{
  await equip(id)
  const operation=crypto.randomUUID(),opened=await call('select public.savings_action($1,$2,null,$3,101) s',['open',operation,days]),account=opened.account.id
  const principal=101*days,base=Math.floor(principal*({3:20,5:25,7:30}[days]!)/100),bonus=base+Math.floor(base*percent/100)
@@ -91,7 +115,7 @@ it('does not upgrade an existing plan when equipped later, or pay interest for c
  const opened=await call("select public.savings_action('open',$1,null,3,100) s",[crypto.randomUUID()])
  await equip('sea-king-golden-vault')
  const state=await call('select public.savings_state() s')
- expect(state.relicBonusPercent).toBe(10);expect(state.account.relicBonusPercent).toBe(0)
+ expect(state.relicBonusPercent).toBe(50);expect(state.account.relicBonusPercent).toBe(0)
  expect((await call("select public.savings_action('withdraw',$1,$2) s",[crypto.randomUUID(),opened.account.id])).receipt).toMatchObject({bonus:0,payout:100})
 })
 it('combines the two new effects and rejects combining two relics from the same family',async()=>{
@@ -103,7 +127,7 @@ it('combines the two new effects and rejects combining two relics from the same 
  await db.exec(fn.replaceAll('random()','0::double precision'))
  const combined=await call('select public.craft_relic($1,$2,$3) s',['sea-king-endless-bait-pot','sea-king-golden-vault',crypto.randomUUID()])
  await equip(combined.craft.craftedId)
- expect((await call('select public.savings_state() s')).relicBonusPercent).toBe(10)
+ expect((await call('select public.savings_state() s')).relicBonusPercent).toBe(50)
  const p=await prepare()
  expect((await db.query("select bait_snapshot->>'relic_bait_refund_percent' chance from app_private.prepared_fishing_casts where user_id=$1 and operation_id=$2",[uid,p.operation_id])).rows[0].chance).toBe('5')
 })

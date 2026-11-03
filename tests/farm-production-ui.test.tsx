@@ -1,0 +1,45 @@
+import {act,cleanup,fireEvent,render,screen,within} from '@testing-library/react'
+import {MemoryRouter} from 'react-router'
+import {afterEach,expect,it,vi} from 'vitest'
+import {TopviewFarm} from '@/features/farm/topview-farm'
+afterEach(()=>{cleanup();vi.useRealTimers()})
+it('sells a chosen quantity immediately at the farm store',()=>{
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'농산물 상점 (11,5)'}))
+ fireEvent.click(screen.getByRole('tab',{name:'농산물 판매'}))
+ fireEvent.change(screen.getByRole('spinbutton',{name:'밀 수량'}),{target:{value:'4'}})
+ fireEvent.click(screen.getByRole('button',{name:'밀 판매'}))
+ const dialog=screen.getByRole('dialog',{name:'농산물 상점'})
+ expect(dialog.textContent).toContain('15,100 G')
+ expect(within(dialog).getByRole('status').textContent).toContain('밀 4개를 판매했어요.')
+ expect(dialog.textContent).toContain('보유 8개')
+})
+it('shows potato research and prevents paying twice',()=>{
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'종자 연구소 (12,8)'}))
+ fireEvent.click(screen.getByRole('button',{name:'300 G로 연구하기'}))
+ expect(screen.getByRole('button',{name:'연구 완료'})).toHaveProperty('disabled',true)
+ expect(screen.getByRole('dialog').textContent).toContain('14,700 G')
+})
+it('enables flour collection after ten seconds and keeps processed sales separate',()=>{
+ vi.useFakeTimers()
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'제분소 (6,12)'}))
+ fireEvent.change(screen.getByRole('spinbutton',{name:'밀 수량'}),{target:{value:'3'}})
+ fireEvent.click(screen.getByRole('button',{name:'밀 제분 시작'}))
+ expect(screen.getByRole('button',{name:'수령하기'})).toHaveProperty('disabled',true)
+ act(()=>vi.advanceTimersByTime(10000))
+ expect(screen.getByRole('button',{name:'수령하기'})).toHaveProperty('disabled',false)
+ fireEvent.click(screen.getByRole('button',{name:'수령하기'}))
+ expect(screen.getByRole('status').textContent).toContain('밀가루를 수령했어요.')
+ expect(document.querySelector('.top-farm-summary')?.textContent).toContain('밀가루 3')
+})
+it('buys a chicken from the coop then enters placement with the purchased animal',()=>{
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'닭장 (10,8)'}))
+ fireEvent.click(screen.getByRole('button',{name:'닭 구매 · 300 G'}))
+ expect(screen.queryByRole('dialog')).toBeNull()
+ expect(screen.getByRole('navigation',{name:'농장 편집 도구'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,700')
+ expect(screen.getByRole('button',{name:/닭.*보관 1개/})).toBeTruthy()
+})

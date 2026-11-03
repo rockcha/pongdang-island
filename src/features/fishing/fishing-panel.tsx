@@ -36,7 +36,7 @@ import { GoldIcon, useGold } from '@/features/gold/gold-provider'
 import { Link,useNavigate } from 'react-router'
 import {startShowcaseDraft} from '@/features/showcase/draft'
 import { prepareFishing,startFishingFight,finishFishing, fishingError, loadFishing } from './api'
-import type { PreparedFishing,FishingAttempt, FishingState } from './api'
+import type { PreparedFishing,FishingAttempt,FishingResult,FishingState } from './api'
 
 const {map:Map}=appArt
 
@@ -50,6 +50,8 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
  const {selected:equippedRod,rods}=useRods()
  const {session}=useAuth()
  const userId=session?.user.id??'guest'
+ const currentOwner=useRef(userId);currentOwner.current=userId
+ const refundNotices=useRef({owner:userId,seen:new Set<string>()})
  const [trip,setTrip]=useState<{userId:string;items:FishingAttempt[]}>(()=>({userId,items:[]}))
  const catches=trip.userId===userId?trip.items:[]
  const [testOpen,setTestOpen]=useState(false)
@@ -82,6 +84,16 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
  const lock=useRef(false)
  const pending=useRef<{id:string;bait:string;region:string;stage:'prepare'|'finish';won?:boolean;reason?:string}|null>(null)
  const request=useRef(0)
+ function notifyRefund(data:FishingResult){
+  if(!active.current||currentOwner.current!==userId||!data.baitRefunded)return
+  if(refundNotices.current.owner!==userId)refundNotices.current={owner:userId,seen:new Set<string>()}
+  const operation=data.attempt.operation_id,seen=refundNotices.current.seen
+  if(seen.has(operation))return
+  if(seen.size>=100)seen.delete(seen.values().next().value!)
+  seen.add(operation)
+  const baitId=data.refundedBaitId??data.attempt.bait_id,name=state?.baits.find(b=>b.id===baitId)?.name??'미끼'
+  toast.success('유물의 힘으로 미끼 1개가 돌아왔어요!',{id:`bait-refund:${operation}`,description:`${name} +1`})
+ }
  async function reload(){
   const version=++request.current
   try{const data=await loadFishing();if(active.current&&version===request.current){setState(data);setError('')}}
@@ -136,6 +148,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
     pending.current??={id:plan!.operation_id,bait:plan!.bait_id,region:plan!.region_id,stage:'finish',won:false,reason:'cancelled'}
     pending.current.stage='finish';pending.current.won??=false
     const data=await finishFishing(pending.current.id,pending.current.won)
+    notifyRefund(data)
     if(data.attempt.species)rememberCatch(data.attempt)
    }
    pending.current=null;setGameOpen(false);setUncertain(false);setPrepared(null)
@@ -160,7 +173,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
    const data=await finishFishing(pending.current.id,pending.current.won)
    const localReason=pending.current.reason
    pending.current=null
-   if(active.current&&data.baitRefunded)toast.success('유물의 힘으로 미끼 1개가 돌아왔어요!',{id:`bait-refund:${data.attempt.operation_id}`})
+   notifyRefund(data)
    if(active.current)showResult(data.attempt,!data.failure_reason||data.failure_reason==='minigame'?localReason:data.failure_reason)
    await Promise.allSettled([refresh(),reload()])
   }catch(cause){if(active.current)showError(cause)}
@@ -176,6 +189,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
    setPrepared(plan)
    if(plan.finished){
     if(!plan.result)throw new Error('낚시 결과를 확인하지 못했어요.')
+    notifyRefund(plan.result)
     showResult(plan.result.attempt,plan.result.failure_reason)
     await Promise.allSettled([refresh(),reload()])
     return false
@@ -195,7 +209,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
    const plan=await prepareFishing(pending.current.region,pending.current.bait,pending.current.id)
    if(!active.current)return
    pending.current=null;setPrepared(plan);setSelected(plan.bait_id);setUncertain(false)
-   if(plan.finished&&plan.result)showResult(plan.result.attempt,plan.result.failure_reason)
+   if(plan.finished&&plan.result){notifyRefund(plan.result);showResult(plan.result.attempt,plan.result.failure_reason)}
    else setGameOpen(true)
    await Promise.allSettled([refresh(),reload()])
   }catch(cause){if(active.current)showError(cause)}

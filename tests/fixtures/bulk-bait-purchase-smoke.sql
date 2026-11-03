@@ -29,10 +29,10 @@ begin
  set local role authenticated;
  perform public.equip_relic('sea-king-trade-ledger',gen_random_uuid(),0);
  op:=gen_random_uuid();
- s:=public.buy_fishing_bait_bulk('bait',99,op,greatest(1,price-2));
- if (s->>'gold')::integer<>1000000-greatest(1,price-2)*99 or (s#>>'{inventory,bait}')::integer<>129 then raise exception 'BULK_DISCOUNT_WRONG';end if;
+ s:=public.buy_fishing_bait_bulk('bait',99,op,greatest(1,price-5));
+ if (s->>'gold')::integer<>1000000-greatest(1,price-5)*99 or (s#>>'{inventory,bait}')::integer<>129 then raise exception 'BULK_DISCOUNT_WRONG';end if;
  perform public.equip_relic(null,gen_random_uuid(),500);
- s:=public.buy_fishing_bait_bulk('bait',99,op,greatest(1,price-2));
+ s:=public.buy_fishing_bait_bulk('bait',99,op,greatest(1,price-5));
  if (s->>'delta')::integer<>0 or (s#>>'{inventory,bait}')::integer<>129 then raise exception 'RETRY_REPRICED';end if;
  begin perform 1 from app_private.bait_purchase_operations;raise exception 'RECEIPT_READ_ALLOWED';exception when insufficient_privilege then null;end;
  reset role;

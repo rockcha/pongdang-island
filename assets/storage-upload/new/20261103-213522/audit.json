@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "id": "discard-basket",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-213522\\sources\\discard-basket-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            96,
+            110,
+            310,
+            326
+          ],
+          "margin": 76,
+          "occupancy": 0.63671875,
+          "opaque": 69625,
+          "transparent": 190180,
+          "soft": 71125
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

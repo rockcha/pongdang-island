@@ -1,14 +1,14 @@
 import {acquiredItemIds,recordAcquired} from './acquisition-history'
 import {explorationWeapons,type WeaponTier} from './weapon-catalog'
-import {explorationArmor} from './armor-catalog'
+import {explorationArmor,getExplorationArmor} from './armor-catalog'
 import {merchantGoods,merchantPotions,practiceSpells,clampGearResources,type Gear,type Spell,type PotionKind,type PracticeState} from './practice-state'
-import {plannedSpells} from './spell-catalog'
+import {plannedSpells,adeptSpells} from './spell-catalog'
 export type RoomSaleKind='weapon'|'armor'|'magic'
 export type RoomLoot={kind:'weapon'|'armor';id:string;name:string;image?:string;gear:Gear;price:number}|{kind:'potion';id:string;name:string;image?:string;potionKind:PotionKind;price:number}
 const pick=<T,>(items:readonly T[],random:()=>number)=>items[Math.min(items.length-1,Math.floor(random()*items.length))]
 export function drawRoomLoot(state:PracticeState,tier:WeaponTier='starter',random=Math.random):RoomLoot{
  const owned=acquiredItemIds(state)
- const pool:RoomLoot[]=[...explorationWeapons.filter(item=>item.tier===tier&&!owned.has(item.id)).map(gear=>({kind:'weapon' as const,id:gear.id,name:gear.name,image:gear.image,price:gear.price,gear})),...explorationArmor.filter(item=>item.tier===tier&&!owned.has(item.id)).map(gear=>({kind:'armor' as const,id:gear.id,name:gear.name,image:gear.image,price:gear.price,gear}))]
+ const pool:RoomLoot[]=[...explorationWeapons.filter(item=>item.tier===tier&&!owned.has(item.id)).map(gear=>({kind:'weapon' as const,id:gear.id,name:gear.name,image:gear.image,price:gear.price,gear})),...getExplorationArmor(state).filter(item=>item.tier===tier&&!owned.has(item.id)).map(gear=>({kind:'armor' as const,id:gear.id,name:gear.name,image:gear.image,price:gear.price,gear}))]
  if(pool.length)return pick(pool,random)
  const potion=pick(merchantPotions,random);return {kind:'potion',id:potion.id,name:potion.name,image:potion.image,potionKind:potion.kind,price:potion.price}
 }
@@ -24,7 +24,7 @@ export function gearSalePrice(gear:Gear){
  return Math.max(1,Math.floor(price*.4))
 }
 export function spellSalePrice(spell:Spell){
- const price=plannedSpells.find(item=>item.id===spell.id)?.learnPrice??practiceSpells.find(item=>item.id===spell.id)?.learnPrice??100
+ const price=[...plannedSpells,...adeptSpells].find(item=>item.id===spell.id)?.learnPrice??practiceSpells.find(item=>item.id===spell.id)?.learnPrice??100
  return Math.max(1,Math.floor(price*.4))
 }
 export function gearSaleBlock(state:PracticeState,kind:RoomSaleKind,id:string){

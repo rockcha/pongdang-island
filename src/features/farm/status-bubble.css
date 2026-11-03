@@ -1,0 +1,5 @@
+.farm-status-ready{animation:farm-status-float 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.farm-sleep-letter{opacity:.8;transform-box:fill-box;transform-origin:center;animation:farm-sleep-rise 3.6s ease-in-out infinite}.farm-sleep-second{animation-delay:.35s}.farm-sleep-third{animation-delay:.7s}
+@keyframes farm-status-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes farm-sleep-rise{0%,100%{opacity:.75;transform:translate(0,1px) scale(.95) rotate(-4deg)}50%{opacity:1;transform:translate(1px,-1.5px) scale(1.04) rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){.farm-status-ready,.farm-sleep-letter{animation:none;opacity:1;transform:none}}

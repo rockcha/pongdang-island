@@ -1,0 +1,62 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm ground/growth UI art only; no DB species, prices, movement or remote upload",
+  "references": [
+    "assets/references/collectible-style/common-rare-pongi.png",
+    "public/farm/art/v3/buildings/office.png"
+  ],
+  "items": [
+    {
+      "id": "empty",
+      "prompt": "Use case: stylized-concept. Generate ONE transparent PNG game tile for the cozy Pongdang Island farm. Reference 1 is STYLE ONLY warm friendly cartoon cel shading and soft thin brown outlines; do not copy the otter. Reference 2 is STYLE and rustic palette ONLY, not building anatomy. Subject: one empty cultivated soil plot, an almost square orthogonal footprint seen from a gently elevated front/top view, NOT an isometric diamond. Softly rounded earth corners, warm medium cocoa soil, three broad shallow horizontal planting furrows, a few tiny natural soil crumbs, very subtle front earth thickness. Clean minimal hand-painted cartoon rendering matching the reference farm, readable at 40 pixels. It must look like cultivated EARTH, not a wooden tray, planter box, bread, planks or sand. No wooden border, stone border, grass border, plant, seed, tool, text, symbols, UI, heavy outline, ground plane or cast shadow. Entire isolated square earth tile centered, approximately 80% canvas width and 72% height, even transparent padding. True alpha transparency; no checkerboard, black background or white matte.",
+      "frames": 1,
+      "generatedSource": "sources/empty-generated.source",
+      "source": "sources/empty-thumbnail.source",
+      "thumbnail_path": "farm/art/v6/plots/empty.png",
+      "referenceRole": "Pongi cartoon style and farm building palette",
+      "sha256": "1f45517263aecd4bf105fa0ab4ef92fada55fe2bb66f2521e3fbd38f04f26d5f"
+    },
+    {
+      "id": "sown",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT soil tile to preserve. Create ONE transparent PNG growth-state variant for the Pongdang Island farm. Preserve the entire original cultivated soil tile, footprint, camera angle, canvas proportions, rounded earth outline, grooves, soil palette and lighting, in the same position and size. Change ONLY the planting details on the soil. Clean cozy cartoon art, thin soft brown edges and warm cel shading matching the source. Six planting positions in TWO rows of THREE, centered evenly on the soil. Whole object uncut, transparent padding, actual alpha transparency. No grass border, planter frame, text, labels, UI, backdrop, checkerboard, glow, tools or cast shadow. Freshly sown immediately after planting: six small neat dark damp seed dimples, a few light cocoa soil crumbs beside each. Slightly darker watered soil only around each tiny dimple. NO green plant yet. Very simple and clear at 40 pixels.",
+      "frames": 1,
+      "generatedSource": "sources/sown-generated.source",
+      "source": "sources/sown-thumbnail.source",
+      "thumbnail_path": "farm/art/v6/plots/sown.png",
+      "referenceRole": "Exact generated empty soil tile, preserving footprint and camera",
+      "sha256": "2157f1af62e74a1b5189e332821491c90bd90e708dbdd84857eabf251e12a0dc"
+    },
+    {
+      "id": "sprout",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT soil tile to preserve. Create ONE transparent PNG growth-state variant for the Pongdang Island farm. Preserve the entire original cultivated soil tile, footprint, camera angle, canvas proportions, rounded earth outline, grooves, soil palette and lighting, in the same position and size. Change ONLY the planting details on the soil. Clean cozy cartoon art, thin soft brown edges and warm cel shading matching the source. Six planting positions in TWO rows of THREE, centered evenly on the soil. Whole object uncut, transparent padding, actual alpha transparency. No grass border, planter frame, text, labels, UI, backdrop, checkerboard, glow, tools or cast shadow. Tiny fresh seedlings: six small delicate two-leaf sprouts, each with a short slender stem and two rounded pale fresh green cotyledons. Very young, mostly visible soil, modest plant size. No mature leaves, fruit or flowers.",
+      "frames": 1,
+      "generatedSource": "sources/sprout-generated.source",
+      "source": "sources/sprout-thumbnail.source",
+      "thumbnail_path": "farm/art/v6/plots/sprout.png",
+      "referenceRole": "Exact generated empty soil tile, preserving footprint and camera",
+      "sha256": "b94f7518c3d0ebed73443b0915770484a06d66f382a25864be84f0f51272bd20"
+    },
+    {
+      "id": "young-leafy",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT soil tile to preserve. Create ONE transparent PNG growth-state variant for the Pongdang Island farm. Preserve the entire original cultivated soil tile, footprint, camera angle, canvas proportions, rounded earth outline, grooves, soil palette and lighting, in the same position and size. Change ONLY the planting details on the soil. Clean cozy cartoon art, thin soft brown edges and warm cel shading matching the source. Six planting positions in TWO rows of THREE, centered evenly on the soil. Whole object uncut, transparent padding, actual alpha transparency. No grass border, planter frame, text, labels, UI, backdrop, checkerboard, glow, tools or cast shadow. Young growing broadleaf plants: six compact plants, each with four soft rounded green leaves opening outward, larger than a seedling but still showing earth between plants. Fresh sage and lively natural greens, slightly elevated front view. No fruit, flower or harvest item. Leaves must stay inside the tile silhouette horizontally.",
+      "frames": 1,
+      "generatedSource": "sources/young-leafy-generated.source",
+      "source": "sources/young-leafy-thumbnail.source",
+      "thumbnail_path": "farm/art/v6/plots/young-leafy.png",
+      "referenceRole": "Exact generated empty soil tile, preserving footprint and camera",
+      "sha256": "a37b30430fde6cf3e9757ee43cdbff68807db81b229969d1775c0dc77f8cbf47"
+    },
+    {
+      "id": "young-wheat",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT soil tile to preserve. Create ONE transparent PNG growth-state variant for the Pongdang Island farm. Preserve the entire original cultivated soil tile, footprint, camera angle, canvas proportions, rounded earth outline, grooves, soil palette and lighting, in the same position and size. Change ONLY the planting details on the soil. Clean cozy cartoon art, thin soft brown edges and warm cel shading matching the source. Six planting positions in TWO rows of THREE, centered evenly on the soil. Whole object uncut, transparent padding, actual alpha transparency. No grass border, planter frame, text, labels, UI, backdrop, checkerboard, glow, tools or cast shadow. Young growing WHEAT before grain heads: six little tufts of slender upright green wheat blades, 3-5 gently curving narrow leaves each, larger than tiny seedlings yet still short with soil visible between tufts. No broad leaves, no ears or golden grain yet. Leaves stay inside tile bounds.",
+      "frames": 1,
+      "generatedSource": "sources/young-wheat-generated.source",
+      "source": "sources/young-wheat-thumbnail.source",
+      "thumbnail_path": "farm/art/v6/plots/young-wheat.png",
+      "referenceRole": "Exact generated empty soil tile, preserving footprint and camera",
+      "sha256": "dbee27a81d114f992247d971ebd5e8cd6089ec794bf8636cfa845af9f5b5dd8c"
+    }
+  ],
+  "normalization": "Uniform contain resize into transparent 512px square without changing color/alpha; shared viewBox uses the union of visible alpha >=32 plus 10px padding, avoiding stage-by-stage scaling or repositioning. Full PNG alpha retained.",
+  "viewBox": "51 83 410 345"
+}

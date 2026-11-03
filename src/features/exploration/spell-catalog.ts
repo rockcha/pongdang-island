@@ -1,4 +1,5 @@
 import type {WeaponTier} from './weapon-catalog'
+import {usesCurrentBalance,type BalanceProfile} from './balance-profile'
 
 // Learning costs are paid once per learned spell, not per cast. Random offerings
 // should reference these IDs and prices rather than duplicating price tables.
@@ -38,3 +39,22 @@ export const plannedSpells:PlannedSpell[]=[
 
 // Existing practice spells retain their current effects and availability.
 export const practiceSpellLearningPrices={ember:250,tide:350,light:300,sand:400} as const
+
+export type SpellTier=WeaponTier|'adept'
+export const spellTierNames:Record<SpellTier,string>={starter:'일반',advanced:'중급',adept:'중상급',ultimate:'고급'}
+export type BalancedSpell=Omit<PlannedSpell,'tier'>&{tier:SpellTier}
+export const adeptSpells:BalancedSpell[]=[
+ {id:'gold-dust-lance',name:'사금의 창',tier:'adept',kind:'damage',mana:11,learnPrice:1400,description:'피해 58',available:true},
+ {id:'frost-chain',name:'서리 사슬',tier:'adept',kind:'damage-status',mana:12,learnPrice:1500,description:'피해 48 · 35% 확률로 빙결: 행동 1회 봉쇄 · 연속 빙결 불가',available:true},
+ {id:'twilight-drain',name:'황혼의 흡수',tier:'adept',kind:'damage',mana:12,learnPrice:1500,description:'피해 44 · 체력 12 회복',available:true},
+ {id:'lapis-bulwark',name:'청금석 방벽',tier:'adept',kind:'buff',mana:11,learnPrice:1200,description:'보호막 42 · 소진까지 유지 · 방어력·마저 적용 전 직접 피해 흡수',available:true},
+ {id:'blooming-lotus',name:'만개한 연꽃',tier:'adept',kind:'healing',mana:13,learnPrice:1600,description:'내 상태이상 1개 해제 후 체력 48 회복',available:true},
+].map(spell=>({...spell,tier:'adept',kind:spell.kind as PlannedSpell['kind'],available:true,image:`/exploration/magic/svg-v2/${spell.id}.svg`}))
+
+/** Receipts keep their paid mana cost. Only offers for new runs use revised costs. */
+export function getPlannedSpells(state?:BalanceProfile):BalancedSpell[]{
+ return usesCurrentBalance(state)?[...plannedSpells.map(spell=>spell.tier==='ultimate'?{...spell,mana:spell.mana+2}:spell),...adeptSpells]:plannedSpells
+}
+export function spellShopTier(tier:WeaponTier,state:BalanceProfile&{market:{floor:number}}):SpellTier{
+ return usesCurrentBalance(state)&&tier==='ultimate'&&state.market.floor<51?'adept':tier
+}

@@ -1,0 +1,404 @@
+{
+  "results": [
+    {
+      "id": "flour",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\flour.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            48,
+            148,
+            160
+          ],
+          "margin": 48,
+          "occupancy": 0.625,
+          "opaque": 18489,
+          "transparent": 46277,
+          "soft": 18820
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "egg",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\egg.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            54,
+            60,
+            148,
+            146
+          ],
+          "margin": 50,
+          "occupancy": 0.578125,
+          "opaque": 14541,
+          "transparent": 50290,
+          "soft": 14918
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "milk",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\milk.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            83,
+            46,
+            88,
+            161
+          ],
+          "margin": 46,
+          "occupancy": 0.62890625,
+          "opaque": 12097,
+          "transparent": 52880,
+          "soft": 12287
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "butter",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\butter.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            47,
+            62,
+            150,
+            126
+          ],
+          "margin": 47,
+          "occupancy": 0.5859375,
+          "opaque": 11894,
+          "transparent": 53001,
+          "soft": 12266
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "strawberryMilk",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\strawberryMilk.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            70,
+            35,
+            121,
+            186
+          ],
+          "margin": 35,
+          "occupancy": 0.7265625,
+          "opaque": 16054,
+          "transparent": 48688,
+          "soft": 16417
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "eggCookies",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\eggCookies.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            44,
+            66,
+            166,
+            137
+          ],
+          "margin": 44,
+          "occupancy": 0.6484375,
+          "opaque": 15619,
+          "transparent": 49201,
+          "soft": 15972
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pancakes",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\pancakes.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            54,
+            58,
+            145,
+            140
+          ],
+          "margin": 54,
+          "occupancy": 0.56640625,
+          "opaque": 15242,
+          "transparent": 49616,
+          "soft": 15596
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "cake",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\goods\\cake.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            55,
+            55,
+            144,
+            150
+          ],
+          "margin": 51,
+          "occupancy": 0.5859375,
+          "opaque": 16160,
+          "transparent": 48451,
+          "soft": 16712
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "dairy",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\dairy.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            51,
+            412,
+            424
+          ],
+          "margin": 37,
+          "occupancy": 0.828125,
+          "opaque": 141909,
+          "transparent": 117841,
+          "soft": 143321
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "bakery",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\bakery.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            51,
+            47,
+            410,
+            427
+          ],
+          "margin": 38,
+          "occupancy": 0.833984375,
+          "opaque": 142108,
+          "transparent": 116412,
+          "soft": 144488
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "processed",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\processed.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            48,
+            412,
+            427
+          ],
+          "margin": 37,
+          "occupancy": 0.833984375,
+          "opaque": 143117,
+          "transparent": 116132,
+          "soft": 144828
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "office",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\office.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            51,
+            414,
+            421
+          ],
+          "margin": 40,
+          "occupancy": 0.822265625,
+          "opaque": 143228,
+          "transparent": 116632,
+          "soft": 144293
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "livestock",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\livestock.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            43,
+            422,
+            425
+          ],
+          "margin": 43,
+          "occupancy": 0.830078125,
+          "opaque": 150269,
+          "transparent": 108908,
+          "soft": 152144
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "barn",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\barn.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            47,
+            414,
+            419
+          ],
+          "margin": 46,
+          "occupancy": 0.818359375,
+          "opaque": 147066,
+          "transparent": 112438,
+          "soft": 148735
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\coop.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            51,
+            50,
+            410,
+            416
+          ],
+          "margin": 46,
+          "occupancy": 0.8125,
+          "opaque": 133454,
+          "transparent": 126538,
+          "soft": 134416
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "mill",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\farm\\art\\v1\\buildings\\mill.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            72,
+            39,
+            368,
+            433
+          ],
+          "margin": 39,
+          "occupancy": 0.845703125,
+          "opaque": 121970,
+          "transparent": 137865,
+          "soft": 123189
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

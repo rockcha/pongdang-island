@@ -1,3 +1,4 @@
+import {usesCurrentBalance} from './balance-profile'
 import {drawRewardTier,drawFloorMonster,drawInvestigationMonster,campaignChestGold} from './campaign'
 ﻿import {drawMonster,type MonsterId} from './monster-catalog'
 import {drawInvestigationLoot,type RoomLoot} from './room-loot'
@@ -236,7 +237,7 @@ export function createRoomVisit(id:AdventureRoomId,state:PracticeState,key=`${st
  }
  if(room.kind==='chest'||room.kind==='investigate'){
   if(random()<.5)visit.outcome=room.kind==='chest'?{kind:'gold',gold:state.mode==='practice'?campaignChestGold(state.market.floor,random):160+state.market.floor*8+Math.floor(random()*101)}:{kind:'loot',loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}
-  else visit.outcome={kind:'monster',monsterId:state.mode==='practice'?(room.kind==='chest'?drawFloorMonster(state.market.floor,random):drawInvestigationMonster(state.market.floor,random)):drawMonster(random).id,...(['investigate','chest'].includes(room.kind)?{loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}:{})}
+  else visit.outcome={kind:'monster',monsterId:state.mode==='practice'?(room.kind==='chest'?drawFloorMonster(state.market.floor,random):drawInvestigationMonster(state.market.floor,random,usesCurrentBalance(state))):drawMonster(random).id,...(['investigate','chest'].includes(room.kind)?{loot:drawInvestigationLoot(state,state.mode==='practice'?drawRewardTier(state.market.floor,random):state.market.floor>50?'advanced':'starter',random)}:{})}
  }
  if(visit.outcome.kind==='gold')visit.progress=`상자에서 금화가 쏟아졌다. ${visit.outcome.gold.toLocaleString()} 골드를 획득했다.`
  return visit

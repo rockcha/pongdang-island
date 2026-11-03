@@ -1,0 +1,27 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm prototype only, not uploaded",
+  "references": [
+    "public/farm/art/v3/buildings/office.png"
+  ],
+  "items": [
+    {
+      "id": "warehouse",
+      "frames": 1,
+      "source": "sources/warehouse-thumbnail.source",
+      "thumbnail_path": "farm/art/v3/buildings/warehouse.png",
+      "public_path": "/farm/art/v3/buildings/warehouse.png",
+      "prompt": "Use case: stylized-concept. Create ONE new transparent PNG sprite for a cozy rustic farming island game: a small farm WAREHOUSE, matching the provided farm office as a style-only reference. Keep the same warm hand-painted storybook cartoon wood grain, soft brown outlines, orthographic front-facing camera, slight top-down visibility, short muted sage corrugated METAL roof, dominant front facade occupying about 65% of building height, clean readable shapes at 80px. Warehouse identity: wide central partially open sliding wooden double door showing neatly stacked wooden produce crates and beige sacks, one modest side shelf, a simple painted crate pictogram on a small wooden sign with NO lettering. Real functional countryside storage shed, not a shop or a residence. Compact square 2x2 game footprint. Centered whole building, complete uncut silhouette, bottom aligned near 90% of square canvas, generous transparent padding above, true transparent background, subtle contact shadow only directly beneath building. No ground tile, scene, people, UI, text, tile roof, ornate roof, halo, stray pixels or opaque backdrop. Reference image is style and camera only, create distinct new warehouse architecture.",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 0,
+        "visibleTop": 119,
+        "visibleBottom": 445,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "sha256": "88c7bb986967667d13806d9c76e63ddd539b4598debb4f5fae6b9988241bcc23"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "results": [
+    {
+      "id": "empty",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-230238\\sources\\empty-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            93,
+            390,
+            324
+          ],
+          "margin": 61,
+          "occupancy": 0.76171875,
+          "opaque": 118317,
+          "transparent": 141997,
+          "soft": 119137
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sown",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-230238\\sources\\sown-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            94,
+            390,
+            324
+          ],
+          "margin": 61,
+          "occupancy": 0.76171875,
+          "opaque": 118624,
+          "transparent": 141132,
+          "soft": 120060
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sprout",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-230238\\sources\\sprout-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            94,
+            390,
+            324
+          ],
+          "margin": 61,
+          "occupancy": 0.76171875,
+          "opaque": 118816,
+          "transparent": 141667,
+          "soft": 119499
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "young-leafy",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-230238\\sources\\young-leafy-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            94,
+            390,
+            324
+          ],
+          "margin": 61,
+          "occupancy": 0.76171875,
+          "opaque": 118837,
+          "transparent": 141593,
+          "soft": 119575
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "young-wheat",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-230238\\sources\\young-wheat-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            94,
+            390,
+            324
+          ],
+          "margin": 61,
+          "occupancy": 0.76171875,
+          "opaque": 118836,
+          "transparent": 141627,
+          "soft": 119505
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

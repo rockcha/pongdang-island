@@ -1,18 +1,21 @@
 import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
+import {explorationWeapons,hasWeaponEffect} from '@/features/exploration/weapon-catalog'
+import {getPlannedSpells} from '@/features/exploration/spell-catalog'
+import {practiceSpells} from '@/features/exploration/practice-state'
 import {ExplorationCodex} from '@/features/exploration/codex'
 import {armorCatalog,practiceArmor,merchantArmorPrice} from '@/features/exploration/armor-catalog'
 import {newPractice,grantPracticeSupplies,merchantGoods} from '@/features/exploration/practice-state'
 
 afterEach(()=>{cleanup();vi.useRealTimers()})
 function show(){render(<ExplorationCodex ownedIds={['ember','old-diving-suit']}/>);fireEvent.click(screen.getByRole('button',{name:'도감'}))}
-it('combines weapons, twenty-one spells and nineteen armor entries in one codex',()=>{
+it('combines current weapons, spells and armor entries in one codex',()=>{
  show()
  expect(screen.getByRole('dialog',{name:'도감'})).toBeTruthy()
- expect(screen.getByRole('tab',{name:'무기 48'}).getAttribute('aria-selected')).toBe('true')
- fireEvent.click(screen.getByRole('tab',{name:'마법 29'}))
+ expect(screen.getByRole('tab',{name:`무기 ${explorationWeapons.length}`}).getAttribute('aria-selected')).toBe('true')
+ fireEvent.click(screen.getByRole('tab',{name:`마법 ${practiceSpells.length+getPlannedSpells({balanceVersion:2}).length}`}))
  const panel=screen.getByRole('tabpanel')
- expect(within(panel).getAllByRole('heading')).toHaveLength(29)
+ expect(within(panel).getAllByRole('heading')).toHaveLength(practiceSpells.length+getPlannedSpells({balanceVersion:2}).length)
  const learned=within(panel).getByRole('heading',{name:'작은 불꽃'}).closest('article')!
  expect(within(learned).getByText('불꽃 피해 20')).toBeTruthy()
  expect(within(learned).getByText('습득')).toBeTruthy()
@@ -20,8 +23,9 @@ it('combines weapons, twenty-one spells and nineteen armor entries in one codex'
  expect(within(planned).getByText('현재 탐험에서 사용 가능')).toBeTruthy()
  expect(within(planned).getByText('2,600')).toBeTruthy()
  expect(within(planned).queryByRole('button')).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'중급 10'}))
- expect(within(panel).getAllByRole('heading')).toHaveLength(10)
+ const intermediate=getPlannedSpells({balanceVersion:2}).filter(spell=>spell.tier==='advanced').length
+ fireEvent.click(screen.getByRole('button',{name:`중급 ${intermediate}`}))
+ expect(within(panel).getAllByRole('heading')).toHaveLength(intermediate)
  fireEvent.click(screen.getByRole('tab',{name:'방어구 23'}))
  expect(within(panel).getAllByRole('heading')).toHaveLength(23)
  expect(within(panel).getByRole('heading',{name:'모래바람 망토'})).toBeTruthy()
@@ -35,14 +39,15 @@ it('combines weapons, twenty-one spells and nineteen armor entries in one codex'
 })
 it('supports keyboard tabs and preserves weapon filters when returning from another category',()=>{
  show()
- fireEvent.click(screen.getByRole('button',{name:'중급 17'}))
+ fireEvent.click(screen.getByRole('button',{name:`중급 ${explorationWeapons.filter(item=>item.tier==='advanced').length}`}))
  fireEvent.click(screen.getByRole('button',{name:'기본형'}))
- const weapon=screen.getByRole('tab',{name:'무기 48'})
+ const weapon=screen.getByRole('tab',{name:`무기 ${explorationWeapons.length}`})
  fireEvent.keyDown(weapon,{key:'ArrowRight'})
- expect(document.activeElement).toBe(screen.getByRole('tab',{name:'마법 29'}))
- expect(screen.getByRole('tab',{name:'마법 29'}).getAttribute('aria-selected')).toBe('true')
- fireEvent.keyDown(screen.getByRole('tab',{name:'마법 29'}),{key:'ArrowLeft'})
- expect(screen.getAllByRole('img')).toHaveLength(8)
+ const magic=screen.getByRole('tab',{name:`마법 ${practiceSpells.length+getPlannedSpells({balanceVersion:2}).length}`})
+ expect(document.activeElement).toBe(magic)
+ expect(magic.getAttribute('aria-selected')).toBe('true')
+ fireEvent.keyDown(magic,{key:'ArrowLeft'})
+ expect(screen.getAllByRole('img')).toHaveLength(explorationWeapons.filter(item=>item.tier==='advanced'&&!hasWeaponEffect(item)).length)
 })
 it('opens directly to the corresponding inventory category and reuses actual armor data',()=>{
  render(<ExplorationCodex initialCategory="armor"/>);fireEvent.click(screen.getByRole('button',{name:'도감'}))

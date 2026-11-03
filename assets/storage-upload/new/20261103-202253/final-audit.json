@@ -1,0 +1,54 @@
+{
+  "results": [
+    {
+      "id": "cow",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-202253\\farm\\art\\v4\\animals\\cow.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            101,
+            254,
+            311,
+            207
+          ],
+          "margin": 51,
+          "occupancy": 0.607421875,
+          "opaque": 38326,
+          "transparent": 222368,
+          "soft": 38882
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "chicken",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-202253\\farm\\art\\v4\\animals\\chicken.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            93,
+            69,
+            302,
+            392
+          ],
+          "margin": 51,
+          "occupancy": 0.765625,
+          "opaque": 73315,
+          "transparent": 187055,
+          "soft": 74190
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

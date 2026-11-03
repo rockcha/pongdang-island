@@ -1,5 +1,5 @@
 import {useLayoutEffect,useRef,useState,type RefObject} from 'react'
-import {Check,Move,Undo2,X} from 'lucide-react'
+import {Check,Move,Trash2,Undo2,X} from 'lucide-react'
 import {MAP_W,TILE,objectArtHeight,topviewItems,type TopviewObject} from './topview-model'
 
 export function FarmObjectMenu({object,svgRef,viewportRef,moving,valid,onMove,onRecover,onConfirm,onCancel,onClose}:{object:TopviewObject;svgRef:RefObject<SVGSVGElement|null>;viewportRef:RefObject<HTMLDivElement|null>;moving:boolean;valid:boolean;onMove:()=>void;onRecover:()=>void;onConfirm:()=>void;onCancel:()=>void;onClose:()=>void}){
@@ -32,7 +32,7 @@ export function FarmObjectMenu({object,svgRef,viewportRef,moving,valid,onMove,on
  },[object.x,object.y,object.kind,item,svgRef,viewportRef,moving])
  return <div ref={menu} role="group" aria-label={`${item.name} ${moving?'이동':'편집'} 메뉴`} className="top-farm-object-menu" data-below={position?.below} style={{left:position?.left??0,top:position?.top??0,visibility:position?'visible':'hidden'}}>
   <header><strong>{item.name}{moving?' 이동 중':''}</strong><button aria-label="개체 메뉴 닫기" onClick={moving?onCancel:onClose}><X size={13}/></button></header>
-  <div>{moving?<><button disabled={!valid} onClick={onConfirm}><Check size={14}/>배치</button><button onClick={onCancel}><X size={14}/>취소</button></>:<><button onClick={onMove}><Move size={14}/>이동</button><button onClick={onRecover}><Undo2 size={14}/>회수</button></>}</div>
+  <div>{moving?<><button disabled={!valid} onClick={onConfirm}><Check size={14}/>배치</button><button onClick={onCancel}><X size={14}/>취소</button></>:<><button onClick={onMove}><Move size={14}/>이동</button><button onClick={onRecover}>{object.kind==='plot'?<><Trash2 size={14}/>제거하기</>:<><Undo2 size={14}/>회수</>}</button></>}</div>
   <i aria-hidden="true" style={{left:position?.arrow??'50%'}}/>
  </div>
 }

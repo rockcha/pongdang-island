@@ -1,5 +1,6 @@
 import {RoomEffectDetails,roomNarrative,roomOutcomeNarrative,type ResourceDelta} from './room-effect-details'
 import {RecoveryEffect} from './recovery-effect'
+import {DormantMonsterHealth} from './dormant-monster-health'
 import {NameStoryRoom} from './name-story-room'
 import {acceptChoiceRoom,choiceRoomBlock,type ChoiceRoomId} from './choice-room-state'
 import {PurchaseReceipt,usePurchaseReceipt} from './purchase-receipt'
@@ -88,6 +89,7 @@ export function AdventureRoom({visit,state,onChange,onTalk,onDescend,onEncounter
  {manaLoss!==null&&<div className="combat-victory-gold exploration-room-gold exploration-room-mana-loss" role="status" aria-label="마나 감소"><Droplets size={26}/><span>마나 −{manaLoss}</span></div>}
  {room.kind==='thief'&&<div className="exploration-room-character"><img src="/exploration/rooms/desert-thief.png" alt="정면을 바라보는 모래두건 도둑" draggable={false}/></div>}
  {room.kind==='giant'&&<div className={'exploration-sleeping-giant '+(phase==='awakening'?'is-awakening':'is-dormant')}><img src={room.id==='sleeping-giant'?(phase==='awakening'?'/exploration/rooms/ancient-giant.png':'/exploration/rooms/ancient-giant-sleeping.png'):getMonster(room.monsterId).image} alt={phase==='awakening'?'깨어나는 '+getMonster(room.monsterId).name:room.title}/><span>처치 시 아이템 확정 · 첫 공격 확정 치명타 · 첫 반격 봉쇄</span></div>}
+ {room.kind==='giant'&&<DormantMonsterHealth id={room.monsterId!} state={state}/>}
  <div className="exploration-room-panel"><div className="exploration-npc-dialogue"><h2>{room.title}</h2>
  <ChoiceLog className="exploration-room-dialogue" speaker={room.title} label="방 진행" text={phase==='quiz'?visit.question.question:result||roomNarrative(room.id)||visit.entry}/></div>
  {phase!=='quiz'&&<RoomEffectDetails id={room.id} state={state} recovery={recovery} gemOutcome={gemOutcome} done={phase==='result'}/>}

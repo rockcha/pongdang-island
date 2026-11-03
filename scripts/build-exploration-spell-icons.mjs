@@ -9,6 +9,7 @@ const code=output.output.find(item=>item.type==='chunk').code
 const {spellVisuals}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'))
 const extra=JSON.parse(await fs.readFile('src/features/exploration/spell-glyphs.json','utf8'))
 const shapes={
+ orb:['M40 13a27 27 0 1 1 0 54 27 27 0 0 1 0-54Z','m40 19 4 16 16 5-16 5-4 16-4-16-16-5 16-5Z'],
  fire:['M44 6c4 18-14 18-8 34-9-3-10-10-10-10C9 50 21 72 40 72c21 0 32-21 15-42 0 10-6 13-6 13 6-18-5-37-5-37Z','M41 37c2 12-10 12-8 22 2 12 20 12 18-1-1-9-10-11-10-21Z'],
  drop:['M40 6C32 25 15 34 15 49a25 25 0 0 0 50 0C65 34 48 25 40 6Z','M25 47c0 12 6 17 15 18M40 15v19'],
  stone:['m24 15 27-3 17 23-8 26-26 10-22-21Z','m24 15 10 27 34-7M34 42l-1 29M12 50l22-8 26 19M51 12 34 42','m8 21 12 4M4 39l9 1M12 65l10-5'],

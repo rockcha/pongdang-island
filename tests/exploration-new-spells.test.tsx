@@ -1,7 +1,7 @@
 import {cleanup,render} from '@testing-library/react'
 import {afterEach,expect,it} from 'vitest'
 import {existsSync,writeFileSync} from 'node:fs'
-import {plannedSpells} from '@/features/exploration/spell-catalog'
+import {plannedSpells,adeptSpells} from '@/features/exploration/spell-catalog'
 import {practiceSpells,newPractice} from '@/features/exploration/practice-state'
 import {spellMechanics} from '@/features/exploration/spell-mechanics'
 import {startMonsterCombat,resolveCombatTurn} from '@/features/exploration/combat-state'
@@ -38,7 +38,7 @@ it('respects chance failures and the existing freeze lock rule',()=>{
  expect(second.events.some(e=>e.kind==='monster')).toBe(true)
 })
 it('gives every learned spell a distinct visual and uses self effects for protective spells',()=>{
- const spells=[starterSpell,...practiceSpells,...plannedSpells]
+ const spells=[starterSpell,...practiceSpells,...plannedSpells,...adeptSpells]
  expect(spells.map(spell=>spell.id).sort()).toEqual(Object.keys(spellVisuals).sort())
  expect(new Set(spells.map(s=>JSON.stringify(spellVisuals[s.id]))).size).toBe(spells.length)
  for(const spell of spells){

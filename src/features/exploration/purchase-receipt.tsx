@@ -1,7 +1,7 @@
 ﻿import {useEffect,useRef,useState} from 'react'
 import {Check} from 'lucide-react'
 
-type PurchaseItem={name:string;image?:string;acquired?:boolean;kind:'weapon'|'armor'|'magic'|'potion'}
+type PurchaseItem={name:string;image?:string;acquired?:boolean;items?:{name:string;image?:string;quantity:number}[];kind:'weapon'|'armor'|'magic'|'potion'}
 export function usePurchaseReceipt(){
  const [receipt,setReceipt]=useState<(PurchaseItem&{key:number})|null>(null)
  const sequence=useRef(0)
@@ -15,7 +15,7 @@ export function usePurchaseReceipt(){
 export function PurchaseReceipt({item}:{item:PurchaseItem}){
  return <div className="exploration-purchase-overlay" role="status" aria-label={item.acquired?'아이템 획득':'구매 알림'} aria-live="polite" aria-atomic="true"><div className="exploration-purchase-receipt">
   <span className="exploration-purchase-label"><Check size={14}/>{item.acquired?'획득 완료':'구매 완료'}</span>
-  <div className="exploration-purchase-art">{item.image&&<img src={item.image} alt="" draggable={false}/>}</div>
-  <strong>{item.name}</strong><small>{item.kind==='magic'?'마법을 습득했습니다':'보관함에 추가되었습니다'}</small>
+  {item.items?<div className="exploration-supply-items">{item.items.map(entry=><div key={entry.name}>{entry.image&&<img src={entry.image} alt="" draggable={false}/>}<span>{entry.name} ×{entry.quantity}</span></div>)}</div>:<div className="exploration-purchase-art">{item.image&&<img src={item.image} alt="" draggable={false}/>}</div>}
+  <strong>{item.name}</strong><small>{item.kind==='magic'?'마법을 습득했습니다':item.kind==='potion'&&item.acquired?'포션 주머니에 넣었어요':'보관함에 추가되었습니다'}</small>
  </div></div>
 }

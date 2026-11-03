@@ -1,6 +1,11 @@
 ﻿import type {EnemyAilment} from './ailments'
 export type SpellMechanics={damage?:number;breakShield?:boolean;timed?:import('./timed-spells').TimedSpellEffect;healing?:number;guard?:number;guardTurns?:number;stun?:boolean;cleanse?:boolean;cleanseCount?:number;shield?:{remaining:number};attackBuff?:{attack:number;critical:number;turns:number};ailment?:EnemyAilment&{chance:number}}
 export const spellMechanics:Record<string,SpellMechanics>={
+ 'gold-dust-lance':{damage:58},
+ 'frost-chain':{damage:48,ailment:{kind:'freeze',amount:1,turns:1,chance:35}},
+ 'twilight-drain':{damage:44,healing:12},
+ 'lapis-bulwark':{shield:{remaining:42}},
+ 'blooming-lotus':{healing:48,cleanseCount:1},
  'mana-bolt':{damage:12},
  'solar-brand':{timed:{id:'solar-brand',turns:3}},
  'golden-shell-break':{damage:32,breakShield:true},

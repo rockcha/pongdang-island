@@ -1,7 +1,8 @@
 import {playerMaxHp,playerManaMax,practiceSpells,type PracticeState} from './practice-state'
 import {choiceRoomBlock,type ChoiceRoomId} from './choice-room-state'
 import {acquiredItemIds} from './acquisition-history'
-import {plannedSpells} from './spell-catalog'
+import {getPlannedSpells,spellShopTier} from './spell-catalog'
+import {usesCurrentBalance} from './balance-profile'
 import {shopkeeperForRoom} from './shopkeepers'
 import type {RoomTypeId} from './room-preview'
 
@@ -12,6 +13,7 @@ export function recordRoomEntry(state:PracticeState,id:RoomTypeId):PracticeState
 
 export function canOfferPracticeRoom(state:PracticeState|undefined,id:RoomTypeId):boolean{
  if(!state)return true
+ if(usesCurrentBalance(state)&&state.market.floor<21&&['sleeping-giant','sealed-scarab'].includes(id))return false
  const recent=state.recentRooms??[],last=recent.at(-1)
  if(id==='monster'||id==='guardian'||id==='chest'||id.startsWith('boss-'))return true
  if(id===last)return false
@@ -25,7 +27,7 @@ export function canOfferPracticeRoom(state:PracticeState|undefined,id:RoomTypeId
  const merchant=shopkeeperForRoom(id)
  if(merchant?.kind==='magic'){
   const acquired=acquiredItemIds(state)
-  const spells=merchant.tier==='starter'?practiceSpells:plannedSpells.filter(spell=>spell.tier===merchant.tier&&spell.available)
+  const spells=merchant.tier==='starter'?practiceSpells:getPlannedSpells(state).filter(spell=>spell.tier===spellShopTier(merchant.tier,state)&&spell.available)
   if(!spells.some(spell=>!acquired.has(spell.id)))return false
  }
  return true

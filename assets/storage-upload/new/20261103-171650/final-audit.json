@@ -1,0 +1,254 @@
+{
+  "results": [
+    {
+      "id": "wheat",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\crops\\wheat.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            47,
+            27,
+            162,
+            205
+          ],
+          "margin": 24,
+          "occupancy": 0.80078125,
+          "opaque": 14198,
+          "transparent": 49605,
+          "soft": 14954
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "potato",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\crops\\potato.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            40,
+            49,
+            176,
+            162
+          ],
+          "margin": 40,
+          "occupancy": 0.6875,
+          "opaque": 18608,
+          "transparent": 46091,
+          "soft": 18996
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sweetPotato",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\crops\\sweetPotato.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            44,
+            62,
+            168,
+            136
+          ],
+          "margin": 44,
+          "occupancy": 0.65625,
+          "opaque": 15343,
+          "transparent": 49482,
+          "soft": 15689
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "carrot",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\crops\\carrot.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            59,
+            24,
+            151,
+            208
+          ],
+          "margin": 24,
+          "occupancy": 0.8125,
+          "opaque": 14798,
+          "transparent": 49722,
+          "soft": 15209
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "corn",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\crops\\corn.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            39,
+            28,
+            173,
+            206
+          ],
+          "margin": 22,
+          "occupancy": 0.8046875,
+          "opaque": 19467,
+          "transparent": 45083,
+          "soft": 19980
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "strawberry",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\crops\\strawberry.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            33,
+            32,
+            190,
+            189
+          ],
+          "margin": 32,
+          "occupancy": 0.7421875,
+          "opaque": 21411,
+          "transparent": 43145,
+          "soft": 21903
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tomato",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\crops\\tomato.png",
+      "width": 256,
+      "height": 256,
+      "cell": 256,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            43,
+            45,
+            172,
+            173
+          ],
+          "margin": 38,
+          "occupancy": 0.67578125,
+          "opaque": 20942,
+          "transparent": 43756,
+          "soft": 21307
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "seedShop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\buildings\\seedShop.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            51,
+            52,
+            410,
+            421
+          ],
+          "margin": 39,
+          "occupancy": 0.822265625,
+          "opaque": 139852,
+          "transparent": 119674,
+          "soft": 141223
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "store",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\buildings\\store.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            74,
+            61,
+            364,
+            400
+          ],
+          "margin": 51,
+          "occupancy": 0.78125,
+          "opaque": 120501,
+          "transparent": 138517,
+          "soft": 122675
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "lab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\farm\\art\\v1\\buildings\\lab.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            92,
+            43,
+            328,
+            426
+          ],
+          "margin": 43,
+          "occupancy": 0.83203125,
+          "opaque": 115020,
+          "transparent": 145414,
+          "soft": 115845
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

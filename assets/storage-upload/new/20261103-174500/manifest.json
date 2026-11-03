@@ -1,0 +1,149 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm artwork replacement; no gameplay, DB or Storage changes",
+  "items": [
+    {
+      "id": "barn",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/barn.png",
+      "source": "sources/barn-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm rendering only; architecture designed independently",
+      "prompt": "Create ONE replacement game sprite: a practical small COW BARN on a real farm, isolated on genuine transparent alpha background. Style: warm hand-painted casual farming RPG, thin restrained brown outlines, natural muted colors, clean readable details, NOT photorealistic, not a toy shop. Use the attached wheat icon ONLY as a palette/brush rendering reference. Architecture MUST be a humble working farm barn: simple rectangular RED WEATHERED VERTICAL WOOD siding, a STRAIGHT dark charcoal GALVANIZED STANDING-SEAM METAL GABLE ROOF with flat straight panels and a straight ridge, shallow eaves, cream X-braced double timber barn doors, one tiny ventilation opening, two modest hay bales beside the entrance. NO ceramic tiles, NO curved or wavy tile rows, NO Korean/Chinese/Japanese tiled roof, NO upturned eaves, NO ornamental ridge caps, NO temple/hanok/shopfront architecture, NO flowerpots, lanterns, garlands, scroll signs, awnings, faces, writing or decorative crest. Camera is HIGH top-down orthographic farming RPG view, approximately 65-70 degrees from above, so most of the roof surface is visible and the front wall is shallow at the bottom; NOT a front elevation and NOT an isometric diamond. Front edge horizontal, rectangular square-tile footprint, squat usable agricultural proportions. One compact building for a 2x2 square tile footprint, complete silhouette centered at bottom-center ground contact, ample 12% clear margins all around, no ground plane, scenery, cast shadow, particles, text, grids, matte fringe or background pixels. Let the doors and metal roof immediately read as a REAL FARM BARN.",
+      "sha256": "cdda79920ddee2c9f3d5d38232ed00b8a0d196e3a09a102615bf823c6436dc90",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "office",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/office.png",
+      "source": "sources/office-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. FARMLAND MANAGEMENT OFFICE: a humble small single-room farm utility shed. Light natural vertical timber siding, simple low pitched straight SAGE GREEN STANDING-SEAM METAL ROOF, one wooden door and one simple square window. A modest rolled land plan and spade leaning under the eave, one tiny undecorated rectangular board with a simple plot-grid drawing, no lettering. This is an ordinary administrative farm shed, no sales counter or awning.",
+      "sha256": "d6e551f6666c279cd1cbef78c343028d38686b9f51ca70035ca56b1d1343c580",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "seedShop",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/seedShop.png",
+      "source": "sources/seedShop-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. SEED SHOP: an open-front FARM POTTING SHED with a simple straight lean-to GALVANIZED GREY METAL ROOF at the back, light weathered timber posts and counter. Two practical wooden racks with small plain kraft seed packets bearing only tiny crop drawings, tidy seedling trays and one watering can. Roof should not hide all the racks. No ornate facade or flowers. Functional seed supply stall on a farm.",
+      "sha256": "829e157682d030080d4dfd515b47534c3346f8977c63823a90b62e76eea6142d",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "livestock",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/livestock.png",
+      "source": "sources/livestock-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. LIVESTOCK MANAGEMENT SHED: a low open-sided timber FEED AND EQUIPMENT SHED, straight shallow BLUE-GREY CORRUGATED METAL ROOF, stout timber posts, a neat feed trough, two tied hay bales and a plain storage cupboard visible under the front opening. An actual working animal-care shed; no red barn doors, no shop counter, no animal faces or animals.",
+      "sha256": "6ee5b0dcdb60539174cfff24295ce0c220b636be2abe66a69825072858bd3cd7",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "coop",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/coop.png",
+      "source": "sources/coop-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. CHICKEN COOP: small raised rustic timber henhouse with a plain straight SINGLE-SLOPE ZINC METAL ROOF, short wooden ramp to a low dark hen door, one side nesting-box hatch and a small attached rectangular chicken-wire enclosure fitting entirely within the compact square footprint. Natural wood, straw beige and grey. No ornamental sign, no chickens outside the enclosure, no curved roof edges.",
+      "sha256": "b0a523466d3968cc59fa174f1e3014bde8ceda9cf2cd373a90b89276621b09c7",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "mill",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/mill.png",
+      "source": "sources/mill-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. FLOUR MILL: a compact squat ROUND PALE STONE WINDMILL tower with a simple straight-sided CONICAL WOODEN SHINGLE CAP, FOUR restrained wooden lattice wind sails fully visible inside the canvas, one small wooden door and one flour sack near its base. Real rural mill construction, no storefront, no colorful ceramic tile roof or decorative sign. Distinct round silhouette, keep all four sails away from the edges.",
+      "sha256": "0ba2e7feeecc8e55c0adcdcb4d37b0e6740b8355c8d43bb2dd188b2f4c50ea0d",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "dairy",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/dairy.png",
+      "source": "sources/dairy-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. DAIRY WORKSHOP: a modest small working cream-painted timber dairy building, straight low pitched PALE BLUE-GREY SHEET METAL ROOF with a small practical vent, one door and one wide square work window, two stainless steel milk churns beside the entrance, a tiny work shelf with a butter block. Pale cream, muted blue-grey and natural wood. No shop awning, ornamental sign or flower garlands. Real practical dairy processing room.",
+      "sha256": "43100c65316ce05a8e7853136d5126ca86e61cf94552c372213c4fa4386edccb",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "bakery",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/bakery.png",
+      "source": "sources/bakery-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. SMALL FARM BAKERY: a compact warm red-brown BRICK BAKEHOUSE with a plain dark slate-grey STANDING-SEAM METAL GABLE ROOF, straight eaves, a small square brick chimney, practical arched brick oven mouth and a short timber door visible on front, one small wooden bread tray beside the entrance. Real countryside bakehouse with distinctive brick material, no cartoon temple roof, no decorative storefront or flower garlands.",
+      "sha256": "c8a7b481cb80d86d16c9b363644cd2afeaece70b0dae29a5404518e582b751a8",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    },
+    {
+      "id": "processed",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v2/buildings/processed.png",
+      "source": "sources/processed-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "sources/barn-thumbnail.source",
+      "referenceRole": "Rustic farm rendering and overhead camera only; not repeated barn geometry",
+      "prompt": "Create ONE isolated practical FARM BUILDING game sprite on genuine transparent alpha background. Match attached barn ONLY for warm hand-painted rural game rendering, restrained brown linework, modest weathering, natural agricultural proportions and HIGH overhead orthographic RPG camera. Do NOT copy its red walls or barn doors to every building. The roof is viewed from about 65 degrees above and the front wall is shallow at bottom, horizontal front edge, no isometric diamond angle. Functional small-scale countryside architecture, squat and usable, not a shop decorated as a temple. NO ceramic/clay roof tiles, no rounded tile rows, no wavy roofs, no traditional East Asian architecture, no hanok/temple roof, no upturned corners or ornamental ridge caps, no decorative curved signs, flower garlands, lanterns, bows or unnecessary ornaments. No text, lettering, symbols floating outside subject, faces, scenery, ground plane, cast ground shadow, smoke, glow, opaque backdrop, white/black fringe. Complete compact structure for a 2x2 square tile footprint, fully within square canvas with at least 12% clear transparent margin, consistent bottom-center contact. PROCESSED FOOD SALES STALL: a practical FARM MARKET STAND built from plain light timber posts and crates, simple STRAIGHT TAUT CREAM CANVAS CANOPY stretched over a light frame as the ONLY roof, with a narrow muted ochre stripe at edge. No rigid tiled roof at all. One glass-front counter holding butter, a pink milk bottle and a small cake, a small wooden cash box and stacked plain supply crates. A useful rural selling stand, no flowers, signs or lanterns.",
+      "sha256": "0bc89404d98e19a0c49670ab3af1bdcc305be9d2d812a4cc136e1ee8d45e90cd",
+      "preparation": "Uniform full-canvas downsampling only; preserve alpha and original framing"
+    }
+  ],
+  "verification": {
+    "rawAudit": "9 assets; no alpha or margin warnings",
+    "finalAudit": "9 assets; no alpha or margin warnings",
+    "architecture": "Each replacement reviewed: straight sheet-metal roofs, canvas canopy or wooden windmill cap; no ceramic tiles, upturned eaves or ornamental ridge caps",
+    "visual": "Light and dark contact sheets plus actual map, building dialog and editor palette reviewed",
+    "browser": "360px DPR3 reduced motion; 390px DPR2; 1280px DPR2. All 11 buildings loaded; nine new v2 assets, two existing non-tile assets. No old tile artwork in the editor palette, page errors or horizontal modal overflow.",
+    "scope": "Local farm trial artwork only; no remote DB, Storage or Git push"
+  }
+}

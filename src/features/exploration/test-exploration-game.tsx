@@ -8,7 +8,7 @@ import {regularMonsters,explorationMonsters,type MonsterId} from './monster-cata
 import {requiredDoorRoom} from './run-state'
 import {randomId} from '@/lib/random-id'
 import {explorationWeapons} from './weapon-catalog'
-import {shamanSpells} from './shaman-stock'
+import {getShamanSpells} from './shaman-stock'
 const testMonsters=explorationMonsters.filter(monster=>monster.tier!=='boss'||['golden-scales-maaken','black-sun-aker'].includes(monster.id))
 
 /** A local session of the real engine, with test supplies and room/monster overrides. Never pays rewards. */
@@ -17,7 +17,7 @@ export function TestExplorationGame({nickname,avatarPath,onLeave,localPractice=f
   const model=newLocalGrowthModel()
   if(!localPractice)model.state={...model.state,gold:100000,potions:{health:10,mana:10},
    weapons:[...model.state.weapons,...explorationWeapons.filter(weapon=>!model.state.weapons.some(owned=>owned.id===weapon.id)).map(weapon=>({...weapon,proc:weapon.proc?{...weapon.proc}:undefined}))],
-   spells:[...model.state.spells,...shamanSpells.filter(spell=>!model.state.spells.some(owned=>owned.id===spell.id)).map(spell=>({...spell,message:spell.description}))],
+   spells:[...model.state.spells,...getShamanSpells(model.state).filter(spell=>!model.state.spells.some(owned=>owned.id===spell.id)).map(spell=>({...spell,message:spell.description}))],
   }
   return {id:randomId(),revision:0,model,rewardGold:0,finishedAt:null,abandoned:false}
  })

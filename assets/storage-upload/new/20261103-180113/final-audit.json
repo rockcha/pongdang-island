@@ -1,0 +1,279 @@
+{
+  "results": [
+    {
+      "id": "barn",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\barn.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            35,
+            119,
+            442,
+            311
+          ],
+          "margin": 35,
+          "occupancy": 0.86328125,
+          "opaque": 127252,
+          "transparent": 128405,
+          "soft": 132754
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\coop.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            35,
+            157,
+            442,
+            301
+          ],
+          "margin": 35,
+          "occupancy": 0.86328125,
+          "opaque": 109639,
+          "transparent": 149826,
+          "soft": 111065
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "lab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\lab.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            50,
+            398,
+            417
+          ],
+          "margin": 45,
+          "occupancy": 0.814453125,
+          "opaque": 145991,
+          "transparent": 114146,
+          "soft": 146968
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "office",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\office.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            26,
+            120,
+            460,
+            316
+          ],
+          "margin": 26,
+          "occupancy": 0.8984375,
+          "opaque": 135708,
+          "transparent": 120906,
+          "soft": 140208
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "seedShop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\seedShop.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            53,
+            80,
+            406,
+            381
+          ],
+          "margin": 51,
+          "occupancy": 0.79296875,
+          "opaque": 142858,
+          "transparent": 116874,
+          "soft": 144287
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "livestock",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\livestock.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            28,
+            119,
+            456,
+            304
+          ],
+          "margin": 28,
+          "occupancy": 0.890625,
+          "opaque": 129610,
+          "transparent": 129552,
+          "soft": 131702
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "mill",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\mill.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            86,
+            11,
+            340,
+            464
+          ],
+          "margin": 11,
+          "occupancy": 0.90625,
+          "opaque": 110315,
+          "transparent": 147782,
+          "soft": 112442
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "dairy",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\dairy.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            20,
+            99,
+            472,
+            340
+          ],
+          "margin": 20,
+          "occupancy": 0.921875,
+          "opaque": 148201,
+          "transparent": 110741,
+          "soft": 150493
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "bakery",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\bakery.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            42,
+            72,
+            425,
+            361
+          ],
+          "margin": 42,
+          "occupancy": 0.830078125,
+          "opaque": 130404,
+          "transparent": 129480,
+          "soft": 131677
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "processed",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\processed.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            36,
+            94,
+            439,
+            367
+          ],
+          "margin": 36,
+          "occupancy": 0.857421875,
+          "opaque": 149157,
+          "transparent": 107701,
+          "soft": 153492
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "store",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\farm\\art\\v3\\buildings\\store.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            62,
+            58,
+            388,
+            399
+          ],
+          "margin": 55,
+          "occupancy": 0.779296875,
+          "opaque": 141336,
+          "transparent": 117684,
+          "soft": 143612
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

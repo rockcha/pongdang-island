@@ -1,0 +1,254 @@
+{
+  "results": [
+    {
+      "id": "empty",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\empty-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            7,
+            8,
+            497,
+            495
+          ],
+          "margin": 7,
+          "occupancy": 0.970703125,
+          "opaque": 230871,
+          "transparent": 27638,
+          "soft": 232802
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sown",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\sown-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            7,
+            8,
+            497,
+            496
+          ],
+          "margin": 7,
+          "occupancy": 0.970703125,
+          "opaque": 232102,
+          "transparent": 26656,
+          "soft": 233673
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "stem",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\stem-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            7,
+            9,
+            498,
+            497
+          ],
+          "margin": 6,
+          "occupancy": 0.97265625,
+          "opaque": 232408,
+          "transparent": 26325,
+          "soft": 234056
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "wheat-ready",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\wheat-ready-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            7,
+            8,
+            498,
+            498
+          ],
+          "margin": 6,
+          "occupancy": 0.97265625,
+          "opaque": 233176,
+          "transparent": 25779,
+          "soft": 234677
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "potato-ready",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\potato-ready-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            7,
+            8,
+            498,
+            495
+          ],
+          "margin": 7,
+          "occupancy": 0.97265625,
+          "opaque": 231759,
+          "transparent": 26912,
+          "soft": 233559
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sweetPotato-ready",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\sweetPotato-ready-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            8,
+            9,
+            496,
+            495
+          ],
+          "margin": 8,
+          "occupancy": 0.96875,
+          "opaque": 230376,
+          "transparent": 28240,
+          "soft": 232274
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "carrot-ready",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\carrot-ready-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            8,
+            9,
+            496,
+            494
+          ],
+          "margin": 8,
+          "occupancy": 0.96875,
+          "opaque": 230178,
+          "transparent": 28429,
+          "soft": 232079
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "corn-ready",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\corn-ready-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            7,
+            8,
+            498,
+            496
+          ],
+          "margin": 7,
+          "occupancy": 0.97265625,
+          "opaque": 231932,
+          "transparent": 26699,
+          "soft": 233720
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "strawberry-ready",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\strawberry-ready-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            7,
+            8,
+            499,
+            497
+          ],
+          "margin": 6,
+          "occupancy": 0.974609375,
+          "opaque": 233076,
+          "transparent": 25685,
+          "soft": 234726
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tomato-ready",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-231501\\sources\\tomato-ready-thumbnail.source",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            8,
+            9,
+            496,
+            495
+          ],
+          "margin": 8,
+          "occupancy": 0.96875,
+          "opaque": 230780,
+          "transparent": 27791,
+          "soft": 232722
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

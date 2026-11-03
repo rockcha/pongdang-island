@@ -3,7 +3,7 @@ import {shieldDamage} from './shield-damage'
 import {hasTimedSpell} from './timed-spells'
 import {campaignFinalFloor,campaignFinalBoss} from './campaign-profile'
 import {drawRoomLoot,type RoomLoot} from './room-loot'
-import {plannedSpells} from './spell-catalog'
+import {plannedSpells,adeptSpells} from './spell-catalog'
 import {spellMechanics} from './spell-mechanics'
 import {cleanseSpellState,playerManaMax,equippedGearBonus,spellManaCost,playerMaxHp,playerAttackStats,usePotion,merchantPotions,incomingDamage,basicAttackEvasion,type PracticeState} from './practice-state'
 import {applyEnemyAilment,healingAfterReduction} from './status-effects'
@@ -21,7 +21,7 @@ export function monsterDefeatText(name:string){
  return `${name}${particle} 처치했습니다.`
 }
 
-export const combatMagic={'mana-bolt':'기본 피해 12',ember:'불꽃 피해 20',tide:'다음 반격 2회 동안 받는 피해 8 감소',light:'내 체력 18 회복',sand:'피해 12 · 이번 반격 봉쇄',...Object.fromEntries(plannedSpells.map(spell=>[spell.id,spell.description]))} as const
+export const combatMagic={'mana-bolt':'기본 피해 12',ember:'불꽃 피해 20',tide:'다음 반격 2회 동안 받는 피해 8 감소',light:'내 체력 18 회복',sand:'피해 12 · 이번 반격 봉쇄',...Object.fromEntries([...plannedSpells,...adeptSpells].map(spell=>[spell.id,spell.description]))} as const
 export type CombatAction={type:'attack'}|{type:'flee'}|{type:'magic';id:string}|{type:'potion';kind:import('./practice-state').PotionKind}
 export type CombatEvent={phase?:'player'|'reply';kind:'player'|'monster'|'defense'|'reward'|'system'|'status';text:string;damage?:number;rawDamage?:number;defenseBlocked?:number;critical?:boolean;healing?:number;manaRestored?:number;manaLost?:number;gold?:number;spellId?:string;weaponId?:string;weaponProc?:import('./ailments').AilmentKind;source?:string;target?:'player'|'monster';moveId?:string;attackType?:'physical'|'magic';effect?:'burn'|'evade'|'block'|'stun'|'freeze'|'miss'|'lifesteal'|'cleanse'|'blind'|'mana-drain'|'enemy-heal'|'magic-break'|'weaken'|'bleed'|'shield'|'potion'}
 export type CombatResult={state:PracticeState;playerState:PracticeState;actionState?:PracticeState;lines:string[];events:CombatEvent[]}

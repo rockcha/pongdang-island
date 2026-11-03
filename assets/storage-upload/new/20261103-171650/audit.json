@@ -1,0 +1,254 @@
+{
+  "results": [
+    {
+      "id": "wheat",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\wheat-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            233,
+            134,
+            788,
+            1002
+          ],
+          "margin": 118,
+          "occupancy": 0.7990430622009569,
+          "opaque": 330088,
+          "transparent": 1218809,
+          "soft": 352422
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "potato",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\potato-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            199,
+            243,
+            856,
+            788
+          ],
+          "margin": 199,
+          "occupancy": 0.682615629984051,
+          "opaque": 441339,
+          "transparent": 1122739,
+          "soft": 449108
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "sweetPotato",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\sweetPotato-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            215,
+            306,
+            824,
+            663
+          ],
+          "margin": 215,
+          "occupancy": 0.6570972886762361,
+          "opaque": 364789,
+          "transparent": 1201772,
+          "soft": 369960
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "carrot",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\carrot-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            291,
+            119,
+            738,
+            1015
+          ],
+          "margin": 119,
+          "occupancy": 0.8094098883572568,
+          "opaque": 349142,
+          "transparent": 1213684,
+          "soft": 357580
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "corn",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\corn-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            193,
+            139,
+            846,
+            1006
+          ],
+          "margin": 109,
+          "occupancy": 0.8022328548644339,
+          "opaque": 462232,
+          "transparent": 1099866,
+          "soft": 471884
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "strawberry",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\strawberry-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            162,
+            159,
+            931,
+            923
+          ],
+          "margin": 159,
+          "occupancy": 0.7424242424242424,
+          "opaque": 508609,
+          "transparent": 1054636,
+          "soft": 517269
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tomato",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\tomato-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            213,
+            221,
+            840,
+            845
+          ],
+          "margin": 188,
+          "occupancy": 0.6738437001594896,
+          "opaque": 497926,
+          "transparent": 1066491,
+          "soft": 505304
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "seedShop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\seedShop-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            126,
+            128,
+            1002,
+            1031
+          ],
+          "margin": 95,
+          "occupancy": 0.8221690590111643,
+          "opaque": 836792,
+          "transparent": 721165,
+          "soft": 850847
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "store",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\store-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            182,
+            149,
+            889,
+            978
+          ],
+          "margin": 127,
+          "occupancy": 0.7799043062200957,
+          "opaque": 720662,
+          "transparent": 831458,
+          "soft": 740566
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "lab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-171650\\sources\\lab-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            225,
+            107,
+            804,
+            1041
+          ],
+          "margin": 106,
+          "occupancy": 0.8301435406698564,
+          "opaque": 688144,
+          "transparent": 877115,
+          "soft": 694303
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

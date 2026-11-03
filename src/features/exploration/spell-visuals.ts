@@ -4,6 +4,11 @@ type Visual={color:string;accent:string;shape:SpellShape;size:number;count:numbe
 const enemy=(color:string,accent:string,shape:SpellShape,size:number,count=1):Visual=>({color,accent,shape,size,count,target:'enemy'})
 const self=(color:string,accent:string,shape:SpellShape,size:number):Visual=>({color,accent,shape,size,count:1,target:'self'})
 export const spellVisuals:Record<string,Visual>={
+ 'gold-dust-lance':enemy('#efbb5f','#fff1b4','lance',84),
+ 'frost-chain':enemy('#90d9ef','#ecfcff','chain',84,2),
+ 'twilight-drain':{...enemy('#ac81b9','#ffe0c4','bloodmoon',82),aura:'leaf'},
+ 'lapis-bulwark':self('#5489d1','#d9f5ff','shield',94),
+ 'blooming-lotus':self('#f0b5cc','#fff3dc','lotus',94),
  'mana-bolt':enemy('#80cfff','#effaff','orb',54),
  'solar-brand':enemy('#f8b750','#fff3bd','rune',80),
  'golden-shell-break':enemy('#e6b94d','#fff1c5','shards',78,3),

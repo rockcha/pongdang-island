@@ -34,3 +34,10 @@
 .exploration-floor-toast.is-shared-arrival{top:clamp(64px,24%,140px);animation-duration:2.4s}
 
 .verified-sphinx-quiz{display:grid;gap:14px;padding:16px;background:#101c19f2;border:1px solid #cfb66e;border-radius:12px;width:100%;text-align:left}.verified-sphinx-quiz h3{font-size:18px;line-height:1.7;color:#fff1cb;margin:0}.verified-sphinx-quiz>div:last-child{display:grid;gap:8px}.verified-sphinx-quiz button{width:100%;min-height:48px;text-align:left;font-size:15px!important}.verified-quiz-clock{display:grid;gap:8px;color:#f5d990;font-variant-numeric:tabular-nums}.verified-quiz-clock progress{width:100%;height:10px;accent-color:#e5c16d}.verified-quiz-clock[data-urgent=true]{color:#ff9d8b}.verified-quiz-clock[data-urgent=true] progress{accent-color:#ef826c}
+.exploration-dormant-health{width:min(260px,85%);margin:8px auto 14px;color:#eadbc0;font-size:12px}
+.exploration-dormant-health>div{display:flex;justify-content:space-between;gap:12px;margin-bottom:5px}
+.exploration-dormant-health strong{font-variant-numeric:tabular-nums;font-weight:500}
+.exploration-dormant-health .exploration-health-meter{display:block;width:100%;height:6px}
+.exploration-supply-items{display:flex;justify-content:center;gap:18px;margin:12px 0}
+.exploration-supply-items>div{display:grid;justify-items:center;gap:5px;font-size:12px}
+.exploration-supply-items img{width:60px;height:70px;object-fit:contain}

@@ -58,7 +58,7 @@ export function ExplorationPage(){
     }else{
      if(explorationStartsPaused)throw Error('EXPLORATION_START_PAUSED')
      pendingStart.current??=randomId()
-     request={runId:pendingStart.current,operationId:pendingStart.current,revision:-1,action:{type:'start',growthVersion:1}}
+     request={runId:pendingStart.current,operationId:pendingStart.current,revision:-1,action:{type:'start',growthVersion:1,balanceVersion:2}}
     }
     const receipt=await commandExploration(request)
     if(owner.current!==account)return

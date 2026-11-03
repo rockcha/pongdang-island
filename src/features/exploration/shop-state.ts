@@ -1,7 +1,8 @@
+import {spellShopTier} from './spell-catalog'
 import {acquiredItemIds} from './acquisition-history'
 import {explorationWeapons} from './weapon-catalog'
 import {explorationArmor} from './armor-catalog'
-import {shamanSpells,spellOfferLimit,type ShamanStock} from './shaman-stock'
+import {getShamanSpells,spellOfferLimit,type ShamanStock} from './shaman-stock'
 import type {PracticeState} from './practice-state'
 import {getShopkeeper,type ShopkeeperId,type ShopkeeperProfile} from './shopkeepers'
 import {equipmentOfferLimit} from './merchant-stock'
@@ -26,6 +27,6 @@ export function enterShopkeeper(state:PracticeState,profile:ShopkeeperProfile,ra
   return {...state,equipmentMerchantVisits:[...new Set([...(state.equipmentMerchantVisits??[]),floor])],market:{...state.market,...stock},merchantStocks:{...state.merchantStocks,[profile.id]:stock}}
  }
  const saved=state.shamanStocks?.[profile.id]
- const stock:ShamanStock=saved?.floor===floor?saved:{floor,shopkeeperId:profile.id,spellIds:drawUniqueOffers(shamanSpells.filter(item=>item.tier===profile.tier&&!acquired.has(item.id)),random,spellOfferLimit)}
+ const stock:ShamanStock=saved?.floor===floor?saved:{floor,shopkeeperId:profile.id,spellIds:drawUniqueOffers(getShamanSpells(state).filter(item=>item.tier===spellShopTier(profile.tier,state)&&!acquired.has(item.id)),random,spellOfferLimit)}
  return {...state,shamanStock:stock,shamanStocks:{...state.shamanStocks,[profile.id]:stock}}
 }

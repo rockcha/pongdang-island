@@ -1,0 +1,49 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm art only; no remote upload",
+  "references": [
+    "assets/references/collectible-style/common-rare-pongi.png",
+    "public/farm/art/v3/buildings/office.png"
+  ],
+  "normalization": "Uniform contain resize onto transparent 512px square, whole-RGBA baseline alignment, runtime viewBox includes all alpha pixels with padding",
+  "items": [
+    {
+      "id": "cow",
+      "frames": 1,
+      "generatedSource": "sources/cow-generated.source",
+      "source": "sources/cow-thumbnail.source",
+      "thumbnail_path": "farm/art/v4/animals/cow.png",
+      "prompt": "Use case: stylized-concept. ONE standalone transparent PNG game sprite for the cozy Pongdang island farm. Style references: image 1 is ONLY warm friendly cartoon rendering, soft thin brown outlines and clean cel-shaded color, not the otter's anatomy or accessories; image 2 is ONLY the rustic farm palette and slightly elevated front camera. Match those assets but simplify to clean readable cartoon forms at 48-80 pixels. Gentle three-quarter side view facing right with slightly visible back, all four feet or both legs grounded, centered whole body, entire silhouette uncut with clean transparent edges. No text, UI, symbols, bubble, ground tile, landscape, equipment, clothing, glitter, excessive fur texture, halo, white/black matte edge, stray pixels or checkerboard. True transparent background; at most a very subtle tight contact shadow. A cute compact cream-white dairy cow with a few rounded warm charcoal patches, small tan horns, rounded ears, short legs, a soft blush-pink muzzle, modest dark eyes with tiny highlights, relaxed standing pose, clearly readable tail. Animal proportions, not a human mascot. Broad horizontal body suitable for a 2x1 game footprint.",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 102,
+        "visibleTop": 254,
+        "visibleBottom": 460,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "viewBox": "91 243 331 229",
+      "sha256": "bb4b773999903b6d773b868d20360371e26dbc0c3d2d88ce3d1136137de962d9"
+    },
+    {
+      "id": "chicken",
+      "frames": 1,
+      "generatedSource": "sources/chicken-generated.source",
+      "source": "sources/chicken-thumbnail.source",
+      "thumbnail_path": "farm/art/v4/animals/chicken.png",
+      "prompt": "Use case: stylized-concept. ONE standalone transparent PNG game sprite for the cozy Pongdang island farm. Style references: image 1 is ONLY warm friendly cartoon rendering, soft thin brown outlines and clean cel-shaded color, not the otter's anatomy or accessories; image 2 is ONLY the rustic farm palette and slightly elevated front camera. Match those assets but simplify to clean readable cartoon forms at 48-80 pixels. Gentle three-quarter side view facing right with slightly visible back, all four feet or both legs grounded, centered whole body, entire silhouette uncut with clean transparent edges. No text, UI, symbols, bubble, ground tile, landscape, equipment, clothing, glitter, excessive fur texture, halo, white/black matte edge, stray pixels or checkerboard. True transparent background; at most a very subtle tight contact shadow. A cute plump cream-colored hen, warm coral comb and tiny wattle, small golden beak and golden legs, modest dark eyes with tiny highlights, neatly folded wings and small tail feathers, relaxed standing pose. Compact rounded body suitable for a 1x1 game footprint.",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 5,
+        "visibleTop": 69,
+        "visibleBottom": 460,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "viewBox": "20 17 456 454",
+      "sha256": "c529df63f7861f21b8a794e9b4d085b04da9dbab387edeb26dd1339f03702f30"
+    }
+  ]
+}

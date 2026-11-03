@@ -32,7 +32,8 @@ Deno.serve(async(req:Request)=>{
    if(current)return json({error:'RUN_EXISTS'},409)
    if(body.revision!==-1)return json({error:'INVALID_REQUEST'},400)
    if(EXPLORATION_STARTS_PAUSED)return json({error:'EXPLORATION_START_PAUSED',message:'버그 점검으로 새 실전 탐험 입장을 잠시 중단했습니다.'},503)
-   model=newRunModel(body.action.growthVersion)
+   // Cached clients cannot render adept spell IDs. Opt in only after the UI refreshes.
+   model=newRunModel(body.action.growthVersion,Math.random,body.action.balanceVersion??1)
   }else{
    if(!current)return json({error:'RUN_NOT_FOUND'},404)
    if(current.abandoned||current.finishedAt)return json({error:'RUN_CLOSED'},409)

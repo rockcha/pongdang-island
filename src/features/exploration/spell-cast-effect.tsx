@@ -1,5 +1,5 @@
 import type {CSSProperties} from 'react'
-import {plannedSpells} from './spell-catalog'
+import {plannedSpells,adeptSpells} from './spell-catalog'
 import {spellVisuals,type SpellShape} from './spell-visuals'
 import './spell-cast-effect.css'
 import extraGlyphs from './spell-glyphs.json'
@@ -16,7 +16,7 @@ function Sigil({shape}:{shape:SpellShape}){
 export function SpellCastEffect({spellId}:{spellId:string}){
  const visual=spellVisuals[spellId]
  if(!visual)return null
- const tier=plannedSpells.find(spell=>spell.id===spellId)?.tier??'starter'
+ const tier=[...plannedSpells,...adeptSpells].find(spell=>spell.id===spellId)?.tier??'starter'
  const style={'--spell-color':visual.color,'--spell-accent':visual.accent,'--spell-size':visual.size+'px'} as CSSProperties
  return <div className="spell-cast-effect" data-tier={tier} data-spell={spellId} data-shape={visual.shape} data-target={visual.target} style={style} aria-hidden="true">
   <div className="spell-cast-source"><Sigil shape={visual.shape}/></div>

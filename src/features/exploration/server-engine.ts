@@ -1,3 +1,4 @@
+import {usesCurrentBalance} from './balance-profile'
 import {starterSpell} from './starter-spell'
 import {newGrowth,allocateGrowth,availableGrowthPoints,type GrowthStat} from './growth'
 import {campaignFinalFloor,campaignFinalBoss} from './campaign-profile'
@@ -29,7 +30,7 @@ export function newExplorationModel(random=Math.random):ExplorationModel{return 
 // Only new starts opt into growth. Saved models are never upgraded on restore.
 export function newGrowthExplorationModel(random=Math.random):ExplorationModel{
  const model=newExplorationModel(random)
- return {...model,state:{...model.state,growth:newGrowth(),spells:[starterSpell],equippedSpells:[starterSpell.id],acquiredIds:[...(model.state.acquiredIds??[]),starterSpell.id]}}
+ return {...model,state:{...model.state,balanceVersion:2,growth:newGrowth(),spells:[starterSpell],equippedSpells:[starterSpell.id],acquiredIds:[...(model.state.acquiredIds??[]),starterSpell.id]}}
 }
 function requireAction(ok:unknown):asserts ok {if(!ok)throw Error('INVALID_EXPLORATION_ACTION')}
 /** Only actions cross the trust boundary. State, encounters, loot and RNG stay on the server. */
@@ -57,7 +58,7 @@ export function applyExplorationAction(previous:ExplorationModel,action:Explorat
    if(profile){s=s.forcedMerchant?.phase==='pending'?beginForcedMerchant(s,random):enterShopkeeper(s,profile,random);m.view=profile.kind==='equipment'?'merchant':'shaman'}
    else if(id==='monster'||id==='guardian'){
     const selected=s.market.monsterIds?.[action.index]
-    s=recordRoomEntry(s,id);encounter(selected&&selected!=='random'?selected:drawFloorMonster(s.market.floor,random,id==='guardian'))
+    s=recordRoomEntry(s,id);encounter(selected&&selected!=='random'?selected:drawFloorMonster(s.market.floor,random,id==='guardian',usesCurrentBalance(s)))
    }else{
     if(id==='nameless-guardian'&&needsNameGuardian(s))s=meetNameGuardian(s)
     const definition=getAdventureRoom(id);requireAction(definition)

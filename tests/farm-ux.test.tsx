@@ -1,0 +1,53 @@
+import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
+import {MemoryRouter} from 'react-router'
+import {afterEach,expect,it,vi} from 'vitest'
+import {TopviewFarm} from '@/features/farm/topview-farm'
+afterEach(()=>{cleanup();vi.useRealTimers()})
+const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
+it('shows seed ownership without research labels and keeps only growth time in the plot detail',()=>{
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('밭 (9,13)')
+ const picker=screen.getByRole('group',{name:'심을 작물'})
+ expect(picker.textContent).toContain('× 4개');expect(picker.querySelectorAll('.farm-picker-owned')).toHaveLength(7)
+ expect(picker.querySelectorAll('svg')).toHaveLength(0)
+ click('토마토 선택');expect(screen.getByText('소요 시간 8초')).toBeTruthy()
+ expect(screen.queryByText('종자 연구 필요')).toBeNull()
+ expect(screen.getByRole('button',{name:'토마토 심기'})).toHaveProperty('disabled',true)
+ expect(screen.getByRole('button',{name:'토마토 선택'}).getAttribute('data-locked')).toBe('true')
+})
+it('always shows all sales goods with live stock badges and disables selling zero stock',()=>{
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('농작물 판매소 (11,5)')
+ expect(document.querySelectorAll('.farm-sim-quantity-row')).toHaveLength(1)
+ fireEvent.change(screen.getByRole('spinbutton',{name:'밀 수량'}),{target:{value:'12'}});click('밀 판매')
+ expect(document.querySelectorAll('.farm-item-picker>button')).toHaveLength(9)
+ expect(screen.getByRole('button',{name:'밀 선택'}).textContent).toContain('×0')
+ expect(screen.getByRole('button',{name:'밀 선택'}).getAttribute('data-locked')).toBe('true')
+ expect(screen.queryByRole('button',{name:'전체 품목 보기'})).toBeNull()
+ expect(screen.getByRole('button',{name:'밀 판매'})).toHaveProperty('disabled',true)
+})
+it('links warehouse stock to processing and separates building management from the main action',()=>{
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('창고')
+ expect(document.querySelector('.farm-upgrade-panel')).toBeNull()
+ fireEvent.click(document.querySelector('.farm-warehouse-slot')!);click('가공소로 →')
+ expect(screen.getByRole('dialog',{name:'제분소'})).toBeTruthy()
+ expect(screen.getByRole('group',{name:'건물 배치 관리'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'보관하기'})).toBeTruthy()
+ click('이동하기');expect(screen.queryByRole('dialog')).toBeNull()
+ expect(screen.queryByRole('group',{name:'제분소 이동 메뉴'})).toBeNull();expect(screen.getByRole('button',{name:'배치 위치 6,9'})).toBeTruthy()
+})
+it('connects completed research to purchase and planting the purchased crop',()=>{
+ vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ click('종자 연구소 (12,8)');click('감자 연구 · 30 G');act(()=>vi.advanceTimersByTime(3000))
+ click('종자 구매하기 →');click('감자 선택');click('감자 종자 구매');click('심으러 가기 →')
+ expect(document.querySelector('.farm-plant-bar')?.textContent).toContain('감자')
+ click('밭 (9,13)');expect(screen.getByRole('progressbar',{name:'감자 성장 (9,13)'})).toBeTruthy()
+})
+it('reopens the seed shop on the last purchased crop instead of the last browsed crop',()=>{
+ vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ click('종자 연구소 (12,8)');click('감자 연구 · 30 G');act(()=>vi.advanceTimersByTime(3000))
+ click('종자 구매하기 →');click('감자 선택');click('감자 종자 구매');click('Close');act(()=>vi.advanceTimersByTime(200))
+ click('종자 상점 (8,5)')
+ expect(screen.getByRole('button',{name:'감자 선택'}).getAttribute('aria-pressed')).toBe('true')
+ click('밀 선택');click('Close');act(()=>vi.advanceTimersByTime(200));click('종자 상점 (8,5)')
+ expect(screen.getByRole('button',{name:'감자 선택'}).getAttribute('aria-pressed')).toBe('true')
+ click('심으러 가기 →');expect(document.querySelector('.farm-plant-bar')?.textContent).toContain('감자')
+})

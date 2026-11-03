@@ -4,6 +4,16 @@ import {newExplorationModel} from '../src/features/exploration/server-engine'
 let handler:(request:Request)=>Promise<Response>
 const fetcher=vi.fn(),id='00000000-0000-0000-0000-000000000123',op='00000000-0000-0000-0000-000000000124'
 const request=(action:unknown,extra:object={})=>new Request('https://test.invalid/exploration-game',{method:'POST',headers:{Authorization:'Bearer user-token'},body:JSON.stringify({runId:id,operationId:op,revision:0,action,...extra})})
+it('starts revised rules only for the updated client and preserves cached client starts',async()=>{
+ for(const balanceVersion of [undefined,2]){
+  fetcher.mockReset()
+  fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json(null)).mockResolvedValueOnce(Response.json({id,revision:0}))
+  expect((await handler(request({type:'start',growthVersion:1,...(balanceVersion?{balanceVersion}:{})},{revision:-1}))).status).toBe(200)
+  const commit=JSON.parse(fetcher.mock.calls[2][1].body)
+  expect(commit.p_model.state.balanceVersion).toBe(balanceVersion)
+  expect(commit.p_model.state.growth.version).toBe(1)
+ }
+})
 beforeAll(async()=>{vi.stubGlobal('Deno',{env:{get:(key:string)=>key==='SUPABASE_URL'?'https://test.invalid':'service-key'},serve:(callback:typeof handler)=>{handler=callback}});vi.stubGlobal('fetch',fetcher);await import('../supabase/functions/exploration-game/index.ts')})
 beforeEach(()=>fetcher.mockReset())
 afterAll(()=>vi.unstubAllGlobals())

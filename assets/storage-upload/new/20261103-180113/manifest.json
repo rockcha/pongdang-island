@@ -1,0 +1,278 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm building artwork edits; retain the approved style and increase front visibility",
+  "items": [
+    {
+      "id": "barn",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/barn.png",
+      "source": "sources/barn-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/barn.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the red vertical timber cow barn, charcoal straight metal gable roof, cream X-braced doors and hay bales. Shorten the roof's projected depth considerably and increase the front wall. OPEN ONE of the large barn doors slightly: a friendly small HOLSTEIN COW HEAD and a little neck/forequarters peek out from the doorway, ears and pink muzzle clearly visible, remaining mostly inside the barn. The cow belongs inside this building, not a separate animal placed outside. Natural small farm-animal eyes, no giant mascot face. Large barn doors and the peeking cow are the visual identity.",
+      "sha256": "b056ebbe07ae6a98e8aeca99e12ec76a60d600318094178d29811012be514049",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 4,
+        "visibleTop": 119,
+        "visibleBottom": 429,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "coop",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/coop.png",
+      "source": "sources/coop-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/coop.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the practical wooden raised chicken coop, simple zinc single-slope roof, short ramp and small attached wire-mesh run. Show much more of the front door, nesting hatch and the front of the run, with the roof reduced to a short shallow top strip. Add TWO small friendly HENS, one cream hen peeking from the nesting opening and one brown hen partially visible inside the wire enclosure, plus a little straw. Keep animals subtly integrated inside the coop's footprint, no free-standing animals outside. The ramp, nesting boxes and visible hens identify the building.",
+      "sha256": "3396a00468d92de4fd904f60e48e3d72d3061908d9bdebef6e56cd00207f779a",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 9,
+        "visibleTop": 157,
+        "visibleBottom": 457,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "lab",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/lab.png",
+      "source": "sources/lab-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/lab.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Transform the existing seed greenhouse into an unmistakable AGRICULTURAL SEED RESEARCH LAB while preserving its sage-green framing, warm wooden base, pale glass colors and current hand-painted rendering. Make the front elevation dominant: one broad clear front window reveals a tidy RESEARCH BENCH with a small recognizable MICROSCOPE, several glass SEED SAMPLE JARS with different seeds, and two seedlings under small glass domes. Include a simple magnifying glass and a seedling tray. Use a shallow modest glass-and-metal pitched roof covering at most 25-30% of the visible height, not a tall greenhouse roof. A small flat rectangular wooden panel above the entrance can bear a simple leaf-and-flask drawing WITHOUT letters. Workroom architecture and readable research equipment, not just rows of greenhouse plants. No science-fiction neon or chemical smoke.",
+      "sha256": "a2efe3620692d053f310fe6e9a2090af4952ebd3045fa2765cdcbfe7d3ca9d25",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": -2,
+        "visibleTop": 50,
+        "visibleBottom": 466,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "office",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/office.png",
+      "source": "sources/office-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/office.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the modest natural timber farmland management office and muted green straight metal roof. Reduce roof depth and enlarge the front wall with a normal door, a broad square window and a clearly visible LARGE FIELD PLAN BOARD showing simple green rectangular farm plots without lettering. A spade and rolled plans rest against one side. Make it visibly a field-management office, not a seed shop or livestock shed.",
+      "sha256": "f0b6610a0a6e564eefc1a20c27f52d967ed22e9eb9afd259ea8f30a1acb55479",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 10,
+        "visibleTop": 120,
+        "visibleBottom": 435,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "seedShop",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/seedShop.png",
+      "source": "sources/seedShop-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/seedShop.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the practical open-front seed supply shed, plain zinc lean-to roof, timber posts and counter. Reduce roof depth and make the FRONT SEED DISPLAY much taller and wider: two clear shelves of kraft seed packets with large simple crop drawings, a tidy seedling tray on the counter, small seed sacks below, one watering can at the side. No tiny illegible clutter. The seed packets and seedlings should immediately identify a seed shop.",
+      "sha256": "8abfcff522df10572100a87827f9d7da6c4d994cbf7ca1da5d44e1fb98f7d5e8",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 5,
+        "visibleTop": 80,
+        "visibleBottom": 460,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "livestock",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/livestock.png",
+      "source": "sources/livestock-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/livestock.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the open-front timber livestock management/feed shed and plain blue-grey metal roof. Greatly reduce projected roof depth and enlarge the usable front opening. Clearly expose a HAY STORAGE BAY with two large tied straw bales, a feed bin, hanging bucket and a simple trough, plus a plain cupboard on one side. Tall visible timber posts and practical agricultural equipment make this an animal-care/feed management shed, distinct from a barn with closed doors. No shop counter.",
+      "sha256": "9a6a7aefa0934758f3982bf5e3efa9e35cede8c810d911e435397dd036a34ceb",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 10,
+        "visibleTop": 119,
+        "visibleBottom": 422,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "mill",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/mill.png",
+      "source": "sources/mill-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/mill.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the round pale stone windmill, modest conical wooden shingle cap, four wooden lattice sails and flour sack. Use a lower front-biased camera with a much taller visible STONE TOWER FRONT and a SMALLER CAP. Clearly show a front arched wooden door and a simple millstone leaning near a flour sack at the base. Keep all four sails fully inside transparent margins. The stone tower, lattice sails and millstone distinguish the flour mill.",
+      "sha256": "d55d7bb7245e478f521bfda2204d401592f7fe71b843739f3dd5de9f4d95b45a",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": -8,
+        "visibleTop": 11,
+        "visibleBottom": 474,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "dairy",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/dairy.png",
+      "source": "sources/dairy-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/dairy.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the cream-painted timber dairy workshop and pale blue-grey straight sheet-metal roof. Reduce roof depth and enlarge the front WORK WINDOW and door. Show two LARGE STAINLESS MILK CHURNS beside the entrance and, through the front window, a simple milk-processing vat and a small butter block on a clean workbench. A simple milk-bottle drawing on a plain small rectangular panel is allowed, no letters. Its clearly visible milk-processing equipment distinguishes it from an ordinary farm office.",
+      "sha256": "a128fb537d25c0e2423bf4e59e47c82a7fe476d84f399589ec1df303c6216198",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 0,
+        "visibleTop": 99,
+        "visibleBottom": 438,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "bakery",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/bakery.png",
+      "source": "sources/bakery-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/bakery.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the rustic red-brown brick bakehouse, plain dark standing-seam metal roof and square brick chimney. Reduce the roof to a shallow upper section and enlarge the brick front: make the ARCHED BRICK OVEN opening prominent, with warm baked bread visible inside, a short practical timber door beside it, a neat bread tray and flour sack outside the door but inside the compact silhouette. The brick oven and bread identify the bakery immediately. No ornamental storefront, smoke, flowers or curved roof.",
+      "sha256": "278badf2495eacb9e1d4678b5ab843e5357802b86069af5a6a9eb0d7ef6bd4eb",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 7,
+        "visibleTop": 72,
+        "visibleBottom": 432,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "processed",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/processed.png",
+      "source": "sources/processed-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v2/buildings/processed.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the practical timber processed-food market stall with a taut cream canvas canopy and narrow muted ochre edge. Make the CANOPY MUCH SHALLOWER in the picture and the FRONT GLASS DISPLAY COUNTER much larger, containing clearly readable butter, a pink strawberry milk bottle and a small cake, plus a wooden cash box and a couple of supply crates below. The actual foods should be the identity, not the canopy. No tiled or rigid decorative roof.",
+      "sha256": "ad8b2149534e66d891e6328c4e7bb72110bdac8873a7a40d0008f5147c0ba71d",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": -15,
+        "visibleTop": 94,
+        "visibleBottom": 460,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    },
+    {
+      "id": "store",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v3/buildings/store.png",
+      "source": "sources/store-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/store.png",
+      "referenceRole": "Edit target: preserve its hand-painted materials and identity, change camera and functional front details",
+      "prompt": "EDIT the attached existing farm building sprite. Keep its current warm hand-painted rustic game illustration style, natural materials, modest weathering, restrained brown linework and color palette. Preserve a genuine transparent alpha background. Reproject the building to a LOWER, FRONT-BIASED ELEVATED CAMERA about 25-30 degrees above horizontal. The vertical FRONT FACADE and its functional interior should occupy roughly 60-65% of the building's visible height. The visible roof should occupy at most 25-35%, not dominate the picture. Make front doors, windows and work areas larger and easier to identify at 48px. Front edge stays horizontal, no isometric side rotation. Keep the same compact 2x2 square tile footprint, full subject centered with bottom-center contact and at least 12% clear transparent margins. No ceramic roof tiles, curved tile rows, upturned eaves, ornamental ridge caps, flower garlands, decorative shop crests, text, letters, watermarks, scenery, ground plane, cast ground shadow, blur, glow or matte fringe. Do not flatten or erase the hand-painted material detail. Keep the existing humble timber produce-selling stall, warm orange-and-ivory striped fabric canopy, baskets of carrots, tomatoes and corn and small hanging weighing scale. Preserve the warm hand-painted material style used in the farm. Lower the camera so the FRONT COUNTER AND PRODUCE BASKETS dominate and the projected canopy depth is smaller. Make the vegetables and practical scale large and clear at small size. No ceramic roof tiles, flower decoration or ornamental sign.",
+      "sha256": "44b5e596ec9a01d8e6be2b9ae9b99671f27aadc85371cb3a1b044ee8c0311bd6",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "offsetY": 0,
+        "visibleTop": 58,
+        "visibleBottom": 456,
+        "targetBaseline": 460,
+        "noVisiblePixelsCropped": true
+      },
+      "preparation": "Uniform full-canvas downsampling and integer translation to common ground baseline; no aspect-ratio changes or visible pixel cropping"
+    }
+  ],
+  "verification": {
+    "sourceAudit": "11 assets; no alpha or margin warnings",
+    "finalAudit": "11 assets; no alpha or margin warnings",
+    "visual": "All light/dark composites reviewed. Front facades, work areas and building-specific equipment are visibly larger while preserving the approved material style. Barn cow, coop hens and seed-research equipment reviewed.",
+    "browser": "360px DPR3 reduced motion; 390px DPR2; 1280px DPR2. All 11 v3 buildings load on the map and in editor palette; research lab, barn, coop and dairy dialogs reviewed. No page errors, old artwork or horizontal modal overflow.",
+    "tests": "18 related UI tests passed; full build passed",
+    "scope": "Local operator trial artwork only; no gameplay, remote DB, Storage, commit or push changes"
+  }
+}

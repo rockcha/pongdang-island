@@ -1,0 +1,229 @@
+{
+  "results": [
+    {
+      "id": "barn",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\barn-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            144,
+            186,
+            965,
+            937
+          ],
+          "margin": 131,
+          "occupancy": 0.7695374800637959,
+          "opaque": 798811,
+          "transparent": 759621,
+          "soft": 812589
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "office",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\office-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            142,
+            185,
+            969,
+            928
+          ],
+          "margin": 141,
+          "occupancy": 0.7727272727272727,
+          "opaque": 804039,
+          "transparent": 754701,
+          "soft": 817547
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "seedShop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\seedShop-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            143,
+            205,
+            968,
+            914
+          ],
+          "margin": 135,
+          "occupancy": 0.7719298245614035,
+          "opaque": 806264,
+          "transparent": 747795,
+          "soft": 824396
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "livestock",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\livestock-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            138,
+            188,
+            979,
+            921
+          ],
+          "margin": 137,
+          "occupancy": 0.7807017543859649,
+          "opaque": 802267,
+          "transparent": 753218,
+          "soft": 819075
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\coop-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            150,
+            308,
+            954,
+            813
+          ],
+          "margin": 133,
+          "occupancy": 0.7607655502392344,
+          "opaque": 616942,
+          "transparent": 929207,
+          "soft": 643042
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "mill",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\mill-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            215,
+            114,
+            829,
+            1041
+          ],
+          "margin": 99,
+          "occupancy": 0.8301435406698564,
+          "opaque": 544852,
+          "transparent": 999794,
+          "soft": 572569
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "dairy",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\dairy-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            129,
+            186,
+            981,
+            961
+          ],
+          "margin": 107,
+          "occupancy": 0.7822966507177034,
+          "opaque": 844950,
+          "transparent": 720046,
+          "soft": 851844
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "bakery",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\bakery-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            143,
+            160,
+            964,
+            949
+          ],
+          "margin": 143,
+          "occupancy": 0.7687400318979266,
+          "opaque": 781209,
+          "transparent": 778001,
+          "soft": 794215
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "processed",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-174500\\sources\\processed-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            165,
+            259,
+            924,
+            884
+          ],
+          "margin": 111,
+          "occupancy": 0.7368421052631579,
+          "opaque": 725217,
+          "transparent": 822957,
+          "soft": 749371
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

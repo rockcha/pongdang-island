@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "id": "warehouse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-193512\\farm\\art\\v3\\buildings\\warehouse.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            24,
+            119,
+            464,
+            327
+          ],
+          "margin": 24,
+          "occupancy": 0.90625,
+          "opaque": 141573,
+          "transparent": 115018,
+          "soft": 146149
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

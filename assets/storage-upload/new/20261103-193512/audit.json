@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "id": "warehouse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-193512\\sources\\warehouse-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            291,
+            1135,
+            802
+          ],
+          "margin": 59,
+          "occupancy": 0.905103668261563,
+          "opaque": 848336,
+          "transparent": 690699,
+          "soft": 881458
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

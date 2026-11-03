@@ -1,3 +1,4 @@
+import {usesCurrentBalance,type BalanceProfile} from './balance-profile'
 import type {Gear} from './practice-state'
 import type {WeaponTier} from './weapon-catalog'
 
@@ -38,3 +39,8 @@ export const armorCatalog:ArmorEntry[]=[
  ...explorationArmor.map(gear=>({gear,source:'merchant' as const,tier:gear.tier,role:gear.role,price:gear.price})),
 ]
 export function armorStats(gear:Gear){return `방어력 ${gear.reduction??0} · 마법 저항력 ${gear.magicReduction??0} · 최대 체력 +${gear.maxHpBonus??0} · 회피율 ${gear.evasion??0}%`+(gear.escapeBonus?` · 도망 +${gear.escapeBonus}%p`:'')}
+
+/** Resolve offers and rewards by run, never rewrite armor already in the inventory. */
+export function getExplorationArmor(state?:BalanceProfile):Armor[]{
+ return usesCurrentBalance(state)?explorationArmor.map(armor=>armor.id==='golden-scales-aegis'?{...armor,reduction:5,magicReduction:5,maxHpBonus:25,evasion:5}:armor):explorationArmor
+}

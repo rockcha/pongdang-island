@@ -1,0 +1,254 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local operator farm trial; no remote DB or Storage changes",
+  "items": [
+    {
+      "id": "flour",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/flour.png",
+      "source": "sources/flour-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: one small cream linen flour sack, folded open top showing a little white flour, tied honey-brown cord and a simple small wheat-ear emblem WITHOUT text; rustic and clean.",
+      "sha256": "852189436cda37ae5e68aa8d07ade7fbc638c8517aa985df4a44ac63bffa830c",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "egg",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/egg.png",
+      "source": "sources/egg-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: THREE fresh warm ivory chicken eggs, softly rounded, one upright and two nestled beside it, subtle warm shading, no basket or nest.",
+      "sha256": "ba2dbf93a638fda5cd80821c400e32b458748420209a0985e5aecd2912e25cd1",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "milk",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/milk.png",
+      "source": "sources/milk-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: one short clear glass milk bottle filled with creamy white milk, soft mint-green metal cap, a tiny blank cream label, restrained glass highlights, no lettering.",
+      "sha256": "0ff4f8d8c10fa847e2c1e0c18143c657201709b0f743cd2990c29e8b7dcf379a",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "butter",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/butter.png",
+      "source": "sources/butter-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: a small golden butter block with ONE thin butter curl on top, partially unwrapped in simple cream paper, appetizing soft edges, no knife or plate.",
+      "sha256": "9e584fc6e487369c873f8798ecb472655cc4f2e69ddda20a48193855d4abfe47",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "strawberryMilk",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/strawberryMilk.png",
+      "source": "sources/strawberryMilk-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: a short glass bottle filled with pastel pink strawberry milk, cream cap, simple strawberry-shaped emblem on a blank cream label, one small ripe strawberry at its base, no lettering.",
+      "sha256": "0f28adcd16e958b611ddf22ee79467975d5d6c4d00356818af857fdca3c24b4a",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "eggCookies",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/eggCookies.png",
+      "source": "sources/eggCookies-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: three petite golden egg cookies, rounded flower shapes with warm yellow centers and softly browned edges, overlapping neatly, one tiny cookie crumb only if attached, no plate or packaging.",
+      "sha256": "1b1c144e99a1be8493802ec79819a4957f8c95481bdef58e4bbf0979aacadb00",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "pancakes",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/pancakes.png",
+      "source": "sources/pancakes-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: a little stack of three fluffy golden pancakes, small square of butter on top and restrained amber honey drizzle, on ONE simple tiny ivory plate fully inside the silhouette; no cutlery, no fruit.",
+      "sha256": "21927c0c353d6a716329e64d3718eea8e6d9d5e98cacb3a871a1d0c2d37530f2",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "cake",
+      "kind": "good",
+      "thumbnail_path": "farm/art/v1/goods/cake.png",
+      "source": "sources/cake-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/crops/wheat.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Readable as an inventory icon at 32px. Inventory icon: one small whole strawberry sponge cake, cream icing, golden sponge layers visible at a neat cut wedge, two small strawberries on top, elegant and cute, no candles or decorative text, on a tiny plain ivory cake board.",
+      "sha256": "0f967e0c6518163239deaef1ccdbcca97b4fd4e41098652aab60b3fadf11af65",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "dairy",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/dairy.png",
+      "source": "sources/dairy-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Farm map building sprite, top-down orthographic RPG camera about 60 degrees above: roof dominates the upper area, shallow front wall visible at the bottom. Horizontal front facade, verticals parallel, no isometric diamond angle. Fit a 2x2 square tile footprint, bottom-center ground contact, same scale as attached seed shop. A tiny DAIRY WORKSHOP, square footprint with a broad pale sage and cream tiled roof, honey timber walls, a simple hanging MILK BOTTLE shaped wooden emblem without letters, two small milk churns and a neat golden butter display at the front counter. Distinct dairy silhouette, no animals.",
+      "sha256": "da0c5a571c2a60e91b1d60ba5ed66399d161a13d0a231db0eb3c47b18fde9555",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "bakery",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/bakery.png",
+      "source": "sources/bakery-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Farm map building sprite, top-down orthographic RPG camera about 60 degrees above: roof dominates the upper area, shallow front wall visible at the bottom. Horizontal front facade, verticals parallel, no isometric diamond angle. Fit a 2x2 square tile footprint, bottom-center ground contact, same scale as attached seed shop. A tiny COZY BAKERY, square footprint, broad warm cinnamon red tiled roof, cream walls and honey timber doorway, a little brick chimney, small arched oven window with warm amber interior, a bread-loaf-shaped wooden emblem without letters, two neat trays of golden pastries at front. No smoke or steam outside silhouette.",
+      "sha256": "cda326c87773221304e40b50698f18e48943bb4eeb93d9cac447061642bd0719",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "processed",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/processed.png",
+      "source": "sources/processed-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated polished game asset on genuine transparent alpha background. Cozy Pongdang Island farming game, warm hand-painted cartoon with thin soft brown outlines, gentle cel shading, cream highlights and readable compact silhouette. Use the references ONLY for consistent rendering and warm palette. No otter, fishing rod, starfish, faces on objects, writing, typography, watermark, grid, particles, detached glows, opaque background or cast ground shadow. Full subject completely inside square canvas with at least 12% transparent margins; clean antialiased alpha edges without white/black fringe. Farm map building sprite, top-down orthographic RPG camera about 60 degrees above: roof dominates the upper area, shallow front wall visible at the bottom. Horizontal front facade, verticals parallel, no isometric diamond angle. Fit a 2x2 square tile footprint, bottom-center ground contact, same scale as attached seed shop. A tiny ARTISAN FOOD SELLING SHOP, square footprint, broad warm amber and cream striped canopy, honey timber counter displaying a butter block, a pink milk bottle and a small cake in a neat glass case, small brass cash till. Distinctive artisan provisions shop, no vegetables, no seed packets or lettering.",
+      "sha256": "d831d3c52af864ff1017aba57ed5df388635f5e8d0ab97dca8d38d8bd3c6bbb0",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "office",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/office.png",
+      "source": "sources/office-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated cozy Pongdang Island farming game building sprite on genuine transparent alpha. Match attached seed shop ONLY for warm hand-painted cartoon rendering, thin brown outlines, honey timber details, gently shaded tiled roofs, no animal anatomy or seed packets. Top-down orthographic RPG camera 60 degrees above: broad roof visible, shallow FRONT wall at bottom; horizontal facade, no isometric diamond. Full compact building for a 2 by 2 square tile footprint, bottom-center contact, complete subject with 12% clear margins. Readable at 64px. No text, letters, numbers, watermark, scenery, opaque background, ground shadow, particles, smoke or fringes. FARMLAND MANAGEMENT OFFICE: small ivory and warm wood cottage, broad muted dusty teal tiled roof, a simple sprout-over-square-plot wooden emblem without letters, one tidy rolled land plan and potted seedling on a side desk, little brass wall lantern. Clearly an administrative cottage, no produce counter.",
+      "sha256": "9d15583a52748f0eb5640347e0cdd7b6efa92ca04877beda4dc10d1f15836df4",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "livestock",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/livestock.png",
+      "source": "sources/livestock-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated cozy Pongdang Island farming game building sprite on genuine transparent alpha. Match attached seed shop ONLY for warm hand-painted cartoon rendering, thin brown outlines, honey timber details, gently shaded tiled roofs, no animal anatomy or seed packets. Top-down orthographic RPG camera 60 degrees above: broad roof visible, shallow FRONT wall at bottom; horizontal facade, no isometric diamond. Full compact building for a 2 by 2 square tile footprint, bottom-center contact, complete subject with 12% clear margins. Readable at 64px. No text, letters, numbers, watermark, scenery, opaque background, ground shadow, particles, smoke or fringes. LIVESTOCK MANAGEMENT OFFICE: small honey timber cottage with a broad muted lavender-grey tiled roof, a simple wooden pawprint emblem without letters above the doorway, neatly stacked straw feed bundles at one side and a small blank wooden noticeboard with a paw symbol. Clearly distinct from farmland office and from a barn, no animals.",
+      "sha256": "80eeb42cd768cb0074683145a978ce39d8737a15f4eec7bb4ad182ba71a9da59",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "barn",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/barn.png",
+      "source": "sources/barn-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated cozy Pongdang Island farming game building sprite on genuine transparent alpha. Match attached seed shop ONLY for warm hand-painted cartoon rendering, thin brown outlines, honey timber details, gently shaded tiled roofs, no animal anatomy or seed packets. Top-down orthographic RPG camera 60 degrees above: broad roof visible, shallow FRONT wall at bottom; horizontal facade, no isometric diamond. Full compact building for a 2 by 2 square tile footprint, bottom-center contact, complete subject with 12% clear margins. Readable at 64px. No text, letters, numbers, watermark, scenery, opaque background, ground shadow, particles, smoke or fringes. COW BARN: compact warm red timber barn, broad terracotta tiled gambrel-style roof viewed from above, shallow front with large cream double doors and crossed wood braces, a small simple cow-head silhouette emblem above the door, two hay bundles at the sides, no milk display, no animals.",
+      "sha256": "cea63018caf03d1f3c52afca23c8b4a9428030aa7195406e24e635891ca759b7",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "coop",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/coop.png",
+      "source": "sources/coop-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated cozy Pongdang Island farming game building sprite on genuine transparent alpha. Match attached seed shop ONLY for warm hand-painted cartoon rendering, thin brown outlines, honey timber details, gently shaded tiled roofs, no animal anatomy or seed packets. Top-down orthographic RPG camera 60 degrees above: broad roof visible, shallow FRONT wall at bottom; horizontal facade, no isometric diamond. Full compact building for a 2 by 2 square tile footprint, bottom-center contact, complete subject with 12% clear margins. Readable at 64px. No text, letters, numbers, watermark, scenery, opaque background, ground shadow, particles, smoke or fringes. CHICKEN COOP: a small cream and honey-wood hen house on a low timber base, broad warm mustard-yellow tiled roof viewed from above, front low arched hen door with a little wooden ramp, simple egg-shaped wooden emblem, a neat tiny nest box attached at right, no chickens or loose eggs outside silhouette.",
+      "sha256": "afcfb71a36d6a7bcd11b64b92555355434923ebdfe7af515a8e54aaa28c57a15",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    },
+    {
+      "id": "mill",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/mill.png",
+      "source": "sources/mill-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "reference": "public/farm/art/v1/buildings/seedShop.png",
+      "referenceRole": "Warm cartoon style and map camera only; each food and building has a distinct silhouette",
+      "prompt": "Create ONE isolated cozy Pongdang Island farming game building sprite on genuine transparent alpha. Match attached seed shop ONLY for warm hand-painted cartoon rendering, thin brown outlines, honey timber details, gently shaded tiled roofs, no animal anatomy or seed packets. Top-down orthographic RPG camera 60 degrees above: broad roof visible, shallow FRONT wall at bottom; horizontal facade, no isometric diamond. Full compact building for a 2 by 2 square tile footprint, bottom-center contact, complete subject with 12% clear margins. Readable at 64px. No text, letters, numbers, watermark, scenery, opaque background, ground shadow, particles, smoke or fringes. FLOUR MILL: compact cream plaster windmill with a broad pale sage timber cap roof, four graceful honey timber wind sails fully contained within the square silhouette, small front door at bottom, one neat cream flour sack with a wheat emblem at one side. Large clear silhouette, warm cottage style, no rotating blur or detached particles.",
+      "sha256": "a28b044867926ee182f86ccd3c27b11afbd2a74afefd895a99c9698451776264",
+      "preparation": "Uniform full-canvas downsampling; preserve alpha, framing and aspect ratio"
+    }
+  ],
+  "verification": {
+    "sourceAudit": "16 assets, no warnings",
+    "finalAudit": "16 assets, no warnings",
+    "visual": "All light and dark composites reviewed; actual mobile UI reviewed",
+    "browser": "360px DPR3 reduced motion; 390px DPR2; 1280px DPR2; images loaded, no page errors or horizontal modal overflow",
+    "flow": "Actual TopviewFarm: mill wheat, research and grow strawberries, feed cow and chicken, collect milk and eggs, craft all five foods including cake from crafted butter, sell all five with exact gold balance. Time accelerated with reduced motion.",
+    "scope": "Local operator trial only; no remote DB, Storage or Git push"
+  }
+}

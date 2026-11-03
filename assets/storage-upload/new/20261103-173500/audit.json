@@ -1,0 +1,404 @@
+{
+  "results": [
+    {
+      "id": "flour",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\flour-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            254,
+            237,
+            727,
+            778
+          ],
+          "margin": 237,
+          "occupancy": 0.620414673046252,
+          "opaque": 439390,
+          "transparent": 1126096,
+          "soft": 446004
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "egg",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\egg-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            265,
+            295,
+            721,
+            714
+          ],
+          "margin": 245,
+          "occupancy": 0.5749601275917066,
+          "opaque": 345817,
+          "transparent": 1218276,
+          "soft": 353921
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "milk",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\milk-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            407,
+            226,
+            431,
+            788
+          ],
+          "margin": 226,
+          "occupancy": 0.6283891547049442,
+          "opaque": 287445,
+          "transparent": 1279200,
+          "soft": 293043
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "butter",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\butter-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            230,
+            308,
+            731,
+            610
+          ],
+          "margin": 230,
+          "occupancy": 0.5829346092503987,
+          "opaque": 282417,
+          "transparent": 1283671,
+          "soft": 288683
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "strawberryMilk",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\strawberryMilk-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            345,
+            174,
+            589,
+            906
+          ],
+          "margin": 174,
+          "occupancy": 0.722488038277512,
+          "opaque": 381076,
+          "transparent": 1183722,
+          "soft": 388448
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "eggCookies",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\eggCookies-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            217,
+            327,
+            812,
+            664
+          ],
+          "margin": 217,
+          "occupancy": 0.6475279106858054,
+          "opaque": 370995,
+          "transparent": 1193543,
+          "soft": 378580
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "pancakes",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\pancakes-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            267,
+            288,
+            708,
+            681
+          ],
+          "margin": 267,
+          "occupancy": 0.5645933014354066,
+          "opaque": 362631,
+          "transparent": 1203196,
+          "soft": 368840
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "cake",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\cake-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            272,
+            271,
+            701,
+            733
+          ],
+          "margin": 250,
+          "occupancy": 0.5845295055821371,
+          "opaque": 384172,
+          "transparent": 1176855,
+          "soft": 395074
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "dairy",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\dairy-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            123,
+            125,
+            1008,
+            1039
+          ],
+          "margin": 90,
+          "occupancy": 0.828548644338118,
+          "opaque": 848997,
+          "transparent": 710636,
+          "soft": 861601
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "bakery",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\bakery-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            125,
+            116,
+            1004,
+            1046
+          ],
+          "margin": 92,
+          "occupancy": 0.8341307814992025,
+          "opaque": 850922,
+          "transparent": 701433,
+          "soft": 870495
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "processed",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\processed-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            124,
+            119,
+            1006,
+            1044
+          ],
+          "margin": 91,
+          "occupancy": 0.8325358851674641,
+          "opaque": 856146,
+          "transparent": 697599,
+          "soft": 874494
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "office",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\office-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            120,
+            125,
+            1015,
+            1030
+          ],
+          "margin": 99,
+          "occupancy": 0.8213716108452951,
+          "opaque": 857460,
+          "transparent": 704733,
+          "soft": 867174
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "livestock",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\livestock-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            111,
+            106,
+            1033,
+            1040
+          ],
+          "margin": 106,
+          "occupancy": 0.8293460925039873,
+          "opaque": 899043,
+          "transparent": 656030,
+          "soft": 915867
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "barn",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\barn-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            121,
+            116,
+            1012,
+            1024
+          ],
+          "margin": 114,
+          "occupancy": 0.8165869218500797,
+          "opaque": 880237,
+          "transparent": 677612,
+          "soft": 894405
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\coop-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            126,
+            124,
+            1002,
+            1016
+          ],
+          "margin": 114,
+          "occupancy": 0.810207336523126,
+          "opaque": 798567,
+          "transparent": 763787,
+          "soft": 807875
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "mill",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-173500\\sources\\mill-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            176,
+            96,
+            902,
+            1059
+          ],
+          "margin": 96,
+          "occupancy": 0.8444976076555024,
+          "opaque": 730002,
+          "transparent": 830943,
+          "soft": 740851
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

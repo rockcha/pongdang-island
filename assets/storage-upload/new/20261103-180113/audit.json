@@ -1,0 +1,279 @@
+{
+  "results": [
+    {
+      "id": "barn",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\barn-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            86,
+            282,
+            1082,
+            760
+          ],
+          "margin": 86,
+          "occupancy": 0.8628389154704944,
+          "opaque": 761726,
+          "transparent": 772298,
+          "soft": 799381
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\coop-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            87,
+            362,
+            1080,
+            737
+          ],
+          "margin": 87,
+          "occupancy": 0.861244019138756,
+          "opaque": 656609,
+          "transparent": 901503,
+          "soft": 670380
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "lab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\lab-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            140,
+            129,
+            974,
+            1020
+          ],
+          "margin": 105,
+          "occupancy": 0.8133971291866029,
+          "opaque": 873193,
+          "transparent": 687137,
+          "soft": 884844
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "office",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\office-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            64,
+            271,
+            1126,
+            772
+          ],
+          "margin": 64,
+          "occupancy": 0.89792663476874,
+          "opaque": 811276,
+          "transparent": 723067,
+          "soft": 848586
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "seedShop",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\seedShop-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            129,
+            185,
+            995,
+            932
+          ],
+          "margin": 129,
+          "occupancy": 0.7934609250398724,
+          "opaque": 855463,
+          "transparent": 704791,
+          "soft": 867613
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "livestock",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\livestock-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            68,
+            267,
+            1118,
+            743
+          ],
+          "margin": 68,
+          "occupancy": 0.8915470494417863,
+          "opaque": 775961,
+          "transparent": 780123,
+          "soft": 791700
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "mill",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\mill-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            211,
+            47,
+            831,
+            1135
+          ],
+          "margin": 47,
+          "occupancy": 0.905103668261563,
+          "opaque": 658191,
+          "transparent": 891290,
+          "soft": 679952
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "dairy",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\dairy-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            242,
+            1154,
+            833
+          ],
+          "margin": 50,
+          "occupancy": 0.9202551834130781,
+          "opaque": 886353,
+          "transparent": 661715,
+          "soft": 910642
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "bakery",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\bakery-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            104,
+            160,
+            1040,
+            884
+          ],
+          "margin": 104,
+          "occupancy": 0.8293460925039873,
+          "opaque": 780080,
+          "transparent": 778495,
+          "soft": 793759
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "processed",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\processed-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            90,
+            267,
+            1074,
+            898
+          ],
+          "margin": 89,
+          "occupancy": 0.8564593301435407,
+          "opaque": 891814,
+          "transparent": 642517,
+          "soft": 929332
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "store",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261103-180113\\sources\\store-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            152,
+            143,
+            951,
+            977
+          ],
+          "margin": 134,
+          "occupancy": 0.7791068580542265,
+          "opaque": 845082,
+          "transparent": 705310,
+          "soft": 867111
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

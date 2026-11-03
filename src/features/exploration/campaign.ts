@@ -1,3 +1,4 @@
+import {usesCurrentBalance} from './balance-profile'
 import {bossSupplyFloors} from './campaign-profile'
 import {supplyCheckFloors} from './merchant-pity'
 ﻿import type {RoomTypeId} from './room-preview'
@@ -29,20 +30,21 @@ function weighted<T>(items:readonly {value:T;weight:number}[],random:()=>number)
  for(const item of items){roll-=item.weight;if(roll<0)return item.value}
  return items[items.length-1].value
 }
-export function floorMonsterPool(floor:number,intermediate=false):{value:MonsterId;weight:number}[]{
+export function floorMonsterPool(floor:number,intermediate=false,rebalanced=false):{value:MonsterId;weight:number}[]{
  if(floor>50){
   const deep:{value:MonsterId;weight:number}[]=[{value:'black-sun-moth',weight:floor<60?25:20},{value:'golden-armored-crocodile',weight:floor<60?25:20},{value:'black-sand-devourer',weight:floor<56?0:25},{value:'gem-backed-tomb-tortoise',weight:floor<60?0:25}]
   const oldWeight=floor<60?12:5
   return [...deep,{value:'sand-wraith' as const,weight:oldWeight},{value:'tomb-hook-guard' as const,weight:oldWeight}].filter(item=>item.weight>0)
  }
  const ids:MonsterId[]=intermediate?['sand-wraith','tomb-hook-guard','tomb-lantern-jellyfish','hourglass-sentinel','mirror-mask-mage']:['jar-wisp','talisman-lizard','sand-scorpion','sand-wing-bat','bandage-mummy','lapis-cobra','cracked-shield-scarab','cowardly-tomb-rat','night-eyed-desert-fox']
+ if(intermediate&&rebalanced&&floor<21)return floor<16?floorMonsterPool(floor):[{value:'tomb-hook-guard',weight:100}]
  const weights=intermediate?(floor<16?[0,0,0,100,0]:floor<21?[0,55,0,45,0]:floor<26?[25,25,20,20,10]:[20,20,20,20,20]):floor<=5?[40,35,25,0,0,0,0,0,0]:floor===6?[15,15,25,15,20,0,0,0,10]:floor<=8?[15,10,20,10,20,0,15,0,10]:floor<=10?[10,10,20,10,15,5,10,10,10]:floor<=20?[10,10,10,10,20,10,10,10,10]:[5,5,10,10,20,20,10,10,10]
  const shieldGuard=floor>=16&&floor<=30&&!intermediate
  return [...ids.map((value,index)=>({value,weight:weights[index]*(shieldGuard ? .9 : 1)})),...(shieldGuard?[{value:'sandstone-shield-guard' as const,weight:10}]:[])].filter(item=>item.weight>0)
 }
-export function drawFloorMonster(floor:number,random=Math.random,intermediate=false):MonsterId{return weighted(floorMonsterPool(floor,intermediate),random)}
-export function drawInvestigationMonster(floor:number,random=Math.random):MonsterId{
- return drawFloorMonster(floor,random,floor>=11&&random()<(floor>=21?.35:.2))
+export function drawFloorMonster(floor:number,random=Math.random,intermediate=false,rebalanced=false):MonsterId{return weighted(floorMonsterPool(floor,intermediate,rebalanced),random)}
+export function drawInvestigationMonster(floor:number,random=Math.random,rebalanced=false):MonsterId{
+ return drawFloorMonster(floor,random,floor>=11&&random()<(floor>=21?.35:.2),rebalanced)
 }
 export function drawRewardTier(floor:number,random=Math.random):WeaponTier{
  if(floor>30)return random()<(floor<=40?.2:.4)?'ultimate':'advanced'
@@ -91,7 +93,7 @@ export function drawPracticeFloor(floor:number,random=Math.random,previousState?
  while(extras.length<2)extras.push(eventRoom(level,extras,random,state))
  const doors:RoomTypeId[]=['monster',...extras]
  for(let index=doors.length-1;index>0;index--){const other=Math.floor(random()*(index+1));[doors[index],doors[other]]=[doors[other],doors[index]]}
- return {floor:level,doors,weaponIds:[],armorIds:[],monsterIds:doors.map(type=>type==='monster'?drawFloorMonster(level,random):type==='guardian'?drawFloorMonster(level,random,true):'random')}
+ return {floor:level,doors,weaponIds:[],armorIds:[],monsterIds:doors.map(type=>type==='monster'?drawFloorMonster(level,random,false,usesCurrentBalance(state)):type==='guardian'?drawFloorMonster(level,random,true,usesCurrentBalance(state)):'random')}
 }
 export function refreshPracticeDoors(state:PracticeState,random=Math.random):PracticeState{
  if(state.mode!=='practice')return state
@@ -100,7 +102,7 @@ export function refreshPracticeDoors(state:PracticeState,random=Math.random):Pra
  for(let index=0;index<doors.length;index++){
   if(canOfferPracticeRoom(state,doors[index]))continue
   doors[index]=eventRoom(state.market.floor,doors.filter((_,other)=>other!==index),random,state)
-  monsterIds[index]=doors[index]==='guardian'?drawFloorMonster(state.market.floor,random,true):'random'
+  monsterIds[index]=doors[index]==='guardian'?drawFloorMonster(state.market.floor,random,true,usesCurrentBalance(state)):'random'
   if(door===index)door=null
   changed=true
  }

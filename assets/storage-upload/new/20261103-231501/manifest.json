@@ -1,0 +1,121 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm art only; no DB/catalog updates or remote upload",
+  "references": [
+    "assets/references/collectible-style/common-rare-pongi.png",
+    "assets/storage-upload/new/20261103-230238/sources/empty-generated.source"
+  ],
+  "items": [
+    {
+      "id": "empty",
+      "prompt": "Use case: stylized-concept. Generate ONE transparent PNG game tile for the cozy Pongdang Island farm. Reference 1 is STYLE ONLY warm friendly cartoon cel shading and soft thin brown outlines; do not copy the otter. Reference 2 is STYLE and rustic palette ONLY, not building anatomy. Subject: one empty cultivated soil plot, an almost square orthogonal footprint seen from a gently elevated front/top view, NOT an isometric diamond. Softly rounded earth corners, warm medium cocoa soil, three broad shallow horizontal planting furrows, a few tiny natural soil crumbs, very subtle front earth thickness. Clean minimal hand-painted cartoon rendering matching the reference farm, readable at 40 pixels. It must look like cultivated EARTH, not a wooden tray, planter box, bread, planks or sand. No wooden border, stone border, grass border, plant, seed, tool, text, symbols, UI, heavy outline, ground plane or cast shadow. Entire isolated square earth tile centered, approximately 80% canvas width and 72% height, even transparent padding. True alpha transparency; no checkerboard, black background or white matte.",
+      "reusedFrom": "assets/storage-upload/new/20261103-230238/sources/empty-generated.source",
+      "frames": 1,
+      "generatedSource": "sources/empty-generated.source",
+      "source": "sources/empty-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/empty.png",
+      "sha256": "d6c4d360967d2b752bbbd87859463342e260245d7ec4224725630404cceeee80"
+    },
+    {
+      "id": "sown",
+      "referenceImage": "assets/storage-upload/new/20261103-231501/sources/sown-before-seed.source",
+      "prompt": "Use case: precise-object-edit. Preserve the EXACT soil tile, camera, outline, furrows, position, scale and warm cartoon colors in the reference. Change ONLY its central planting hole: show exactly ONE LARGE pale warm-cream seed, about a quarter of the earth tile width, nestled diagonally in the center and half-covered by a small mound of dark moist cocoa soil. The bright seed must be clearly visible at 40px, visibly different from an empty dark hole. A little damp darker earth around the seed shows freshly planted status. ONE seed and ONE planting site only. No sprout, leaves, other holes, rows, UI, symbols, text, extra objects, backdrop or matte. Actual alpha-transparent background, matching original canvas and tile footprint. Friendly clean farm cartoon rendering.",
+      "frames": 1,
+      "generatedSource": "sources/sown-generated.source",
+      "source": "sources/sown-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/sown.png",
+      "sha256": "03af8f057b47af94dc3704b59e1e1bb0ab75dde809f1a8ea42b221cf81164097"
+    },
+    {
+      "id": "stem",
+      "prompt": "Use case: precise-object-edit. Preserve the exact soil tile and the SINGLE existing tall green stem and two leaves. Move ONLY the whole green plant and its small root mound about 60 pixels DOWN on this 1280px canvas so its entire visual silhouette is centered vertically on the soil. Do not move or resize the soil. Keep one large slender stem, two broad young leaves and one tiny top bud, no extra plants. Clean warm farm cartoon, preserve true alpha transparency and all original framing. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/stem-generated.source",
+      "source": "sources/stem-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/stem.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-231501/sources/stem-before-center.source",
+      "sha256": "33e5e9920e4f827fcfc0d468c1a7270bb3212ad5c5eefd36f30f4edc78a5dbec"
+    },
+    {
+      "id": "wheat-ready",
+      "prompt": "Use case: precise-object-edit. Preserve the exact soil tile and SINGLE golden wheat stalk with ONE grain ear and a few narrow leaves. Move ONLY the whole wheat plant and its small root mound about 65 pixels DOWN on this 1280px canvas so its entire visual silhouette is centered vertically on the soil. Do not move or resize the earth. Keep one big wheat plant only, preserve warm cartoon rendering and true alpha transparency. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/wheat-ready-generated.source",
+      "source": "sources/wheat-ready-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/wheat-ready.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-231501/sources/wheat-before-center.source",
+      "sha256": "2fbab0501d7bf4794f77e3ab1709a30633d93fa435f0f916a56a62d899f9a657"
+    },
+    {
+      "id": "potato-ready",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT cultivated soil tile. Preserve its warm hand-painted cartoon style, camera angle, soil outline, furrows and exact position/size. This tile will fill a single square game cell with almost no padding after packing. Change ONLY the crop on top. CRITICAL: exactly ONE LARGE planting site in the CENTER of the whole tile, never several plants, no rows of plants, no repeated seedlings. One dominant crop fills about 65-75% of the soil tile width and height, large and clear at 40px. Root it in the central foreground soil. All plants, leaves and produce stay inside the original earth tile silhouette so adjacent tiles can sit closely. No planter frame, grass border, text, numbers, labels, UI, characters, sparkle, tools, extra loose produce, scene, checkerboard or matte. Actual transparent background, same canvas proportions and soil footprint as reference. Fully grown potato: exactly ONE LARGE central compact lush potato plant with broad green leaves and ONE LARGE golden-tan round potato visibly peeking out of the soil at the base. No extra potatoes, no repeated plants. The one tuber should be clearly visible and prominent. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/potato-ready-generated.source",
+      "source": "sources/potato-ready-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/potato-ready.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-230238/sources/empty-generated.source",
+      "sha256": "eb738ec823c0408892ee10b029b286b29a5cd47f714ea2d72fe2274882d39974"
+    },
+    {
+      "id": "sweetPotato-ready",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT cultivated soil tile. Preserve its warm hand-painted cartoon style, camera angle, soil outline, furrows and exact position/size. This tile will fill a single square game cell with almost no padding after packing. Change ONLY the crop on top. CRITICAL: exactly ONE LARGE planting site in the CENTER of the whole tile, never several plants, no rows of plants, no repeated seedlings. One dominant crop fills about 65-75% of the soil tile width and height, large and clear at 40px. Root it in the central foreground soil. All plants, leaves and produce stay inside the original earth tile silhouette so adjacent tiles can sit closely. No planter frame, grass border, text, numbers, labels, UI, characters, sparkle, tools, extra loose produce, scene, checkerboard or matte. Actual transparent background, same canvas proportions and soil footprint as reference. Fully grown sweet potato: exactly ONE LARGE central compact plant with rich green heart-shaped leaves and ONE LARGE elongated rosy-purple sweet potato protruding slightly from the soil in front. No extra roots or repeated plants. Make the one purple sweet potato prominent. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/sweetPotato-ready-generated.source",
+      "source": "sources/sweetPotato-ready-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/sweetPotato-ready.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-230238/sources/empty-generated.source",
+      "sha256": "e2a713205b980f2e3b83b9cfb19217d5a9258b86780434737c5000ad29f49a49"
+    },
+    {
+      "id": "carrot-ready",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT cultivated soil tile. Preserve its warm hand-painted cartoon style, camera angle, soil outline, furrows and exact position/size. This tile will fill a single square game cell with almost no padding after packing. Change ONLY the crop on top. CRITICAL: exactly ONE LARGE planting site in the CENTER of the whole tile, never several plants, no rows of plants, no repeated seedlings. One dominant crop fills about 65-75% of the soil tile width and height, large and clear at 40px. Root it in the central foreground soil. All plants, leaves and produce stay inside the original earth tile silhouette so adjacent tiles can sit closely. No planter frame, grass border, text, numbers, labels, UI, characters, sparkle, tools, extra loose produce, scene, checkerboard or matte. Actual transparent background, same canvas proportions and soil footprint as reference. Fully grown carrot: exactly ONE LARGE bright orange carrot rooted at the center, its broad orange shoulder and upper root clearly visible above soil, with ONE luxuriant feathery green leafy top from the same root. No other carrots. Prominent single orange carrot, not a loose harvested bundle. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/carrot-ready-generated.source",
+      "source": "sources/carrot-ready-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/carrot-ready.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-230238/sources/empty-generated.source",
+      "sha256": "6b6ca901f99e9f45260d02057768fb158dadc3b025c01dbed321fa2790b248e0"
+    },
+    {
+      "id": "corn-ready",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT cultivated soil tile. Preserve its warm hand-painted cartoon style, camera angle, soil outline, furrows and exact position/size. This tile will fill a single square game cell with almost no padding after packing. Change ONLY the crop on top. CRITICAL: exactly ONE LARGE planting site in the CENTER of the whole tile, never several plants, no rows of plants, no repeated seedlings. One dominant crop fills about 65-75% of the soil tile width and height, large and clear at 40px. Root it in the central foreground soil. All plants, leaves and produce stay inside the original earth tile silhouette so adjacent tiles can sit closely. No planter frame, grass border, text, numbers, labels, UI, characters, sparkle, tools, extra loose produce, scene, checkerboard or matte. Actual transparent background, same canvas proportions and soil footprint as reference. Fully grown corn: exactly ONE LARGE sturdy central green corn stalk with several curved long leaves and exactly ONE plump prominent golden corn cob in an open green husk. No second stalk or second cob. Keep the whole tall plant compact inside the tile silhouette. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/corn-ready-generated.source",
+      "source": "sources/corn-ready-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/corn-ready.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-230238/sources/empty-generated.source",
+      "sha256": "7fff3749455b444b13b2fa4af4aa2ff24d51d6c0472a5b1576e03bb3f8e8b992"
+    },
+    {
+      "id": "strawberry-ready",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT cultivated soil tile. Preserve its warm hand-painted cartoon style, camera angle, soil outline, furrows and exact position/size. This tile will fill a single square game cell with almost no padding after packing. Change ONLY the crop on top. CRITICAL: exactly ONE LARGE planting site in the CENTER of the whole tile, never several plants, no rows of plants, no repeated seedlings. One dominant crop fills about 65-75% of the soil tile width and height, large and clear at 40px. Root it in the central foreground soil. All plants, leaves and produce stay inside the original earth tile silhouette so adjacent tiles can sit closely. No planter frame, grass border, text, numbers, labels, UI, characters, sparkle, tools, extra loose produce, scene, checkerboard or matte. Actual transparent background, same canvas proportions and soil footprint as reference. Fully grown strawberry: exactly ONE LARGE central strawberry plant with three-lobed rich green leaves and exactly ONE LARGE ripe heart-shaped red strawberry with a green cap and a few tiny golden seeds, attached near its base. No additional berries or plants. The single red fruit is big and clearly visible. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/strawberry-ready-generated.source",
+      "source": "sources/strawberry-ready-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/strawberry-ready.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-230238/sources/empty-generated.source",
+      "sha256": "0c52ddf64c75488ebdc1f4a606e9b158841997d7652b12f41266fcb47edc2c14"
+    },
+    {
+      "id": "tomato-ready",
+      "prompt": "Use case: precise-object-edit. Image 1 is the EXACT cultivated soil tile. Preserve its warm hand-painted cartoon style, camera angle, soil outline, furrows and exact position/size. This tile will fill a single square game cell with almost no padding after packing. Change ONLY the crop on top. CRITICAL: exactly ONE LARGE planting site in the CENTER of the whole tile, never several plants, no rows of plants, no repeated seedlings. One dominant crop fills about 65-75% of the soil tile width and height, large and clear at 40px. Root it in the central foreground soil. All plants, leaves and produce stay inside the original earth tile silhouette so adjacent tiles can sit closely. No planter frame, grass border, text, numbers, labels, UI, characters, sparkle, tools, extra loose produce, scene, checkerboard or matte. Actual transparent background, same canvas proportions and soil footprint as reference. Fully grown tomato: exactly ONE LARGE compact central tomato plant with a short branching green stem and a few rich green leaves, carrying exactly ONE LARGE smooth round ripe red tomato with a star-shaped green calyx. No additional tomatoes or plants, no stake or trellis. Single big round tomato visibly distinct from strawberry. CRITICAL CENTERING: the visual bounding-box center of the WHOLE plant (from its top leaf or grain to the root base, including side leaves) must coincide with the soil tile's visual center BOTH horizontally AND vertically, around 51% of canvas width and 46% of canvas height. Do not center only the roots. The plant's root base sits below the center and its tip sits equally far above the center. Preserve the exact soil tile footprint and its position. ",
+      "frames": 1,
+      "generatedSource": "sources/tomato-ready-generated.source",
+      "source": "sources/tomato-ready-thumbnail.source",
+      "thumbnail_path": "farm/art/v7/plots/tomato-ready.png",
+      "referenceImage": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261103-230238/sources/empty-generated.source",
+      "sha256": "de8fba05f83509cbf271297adee3515b59e56f44910fbbb8266cfbb09b6e3238"
+    }
+  ],
+  "normalization": {
+    "commonCrop": {
+      "left": 59,
+      "top": 91,
+      "width": 395,
+      "height": 330
+    },
+    "outputSize": 512,
+    "padding": 4,
+    "method": "Normalize generated canvases to 512; use one shared union of visible alpha >=32 with 2px margin; fill 504x504 and add 4px transparent padding. Intentional common vertical fit makes the earth occupy a square game cell. Same crop/fit for all stages; no separate per-stage scaling. Originals preserved."
+  }
+}

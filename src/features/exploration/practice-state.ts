@@ -4,7 +4,7 @@ import {drawPracticeFloor,type ExplorationMode} from './campaign'
 import {acquiredItemIds,recordAcquired} from './acquisition-history'
 import {spellMechanics} from './spell-mechanics'
 import {formatBasicAttack} from './attack-roll'
-import {starterArmor,practiceArmor,merchantArmor,merchantArmorPrice,explorationArmor,armorStats} from './armor-catalog'
+import {starterArmor,practiceArmor,merchantArmor,merchantArmorPrice,explorationArmor,getExplorationArmor,armorStats} from './armor-catalog'
 export {starterArmor} from './armor-catalog'
 import {explorationWeapons,weaponEffectText,type WeaponProc} from './weapon-catalog'
 import {practiceSpellLearningPrices} from './spell-catalog'
@@ -34,7 +34,7 @@ export const merchantPotions=[
  {id:'health-potion',kind:'health' as const,name:'체력 포션',amount:30,price:100,description:'체력 30 회복',image:'/exploration/potions/health-potion.png'},
  {id:'mana-potion',kind:'mana' as const,name:'마나 포션',amount:15,price:100,description:'마나 15 회복',image:'/exploration/potions/mana-potion.png'},
 ]
-export type PracticeState={growth?:ExplorationGrowth;campaignFinalFloor?:50|80;recentRooms?:import('./room-preview').RoomTypeId[];guardianCheckpoint?:boolean;bossRestPending?:boolean;equipmentMerchantVisits?:number[];supplyChecks?:number[];forcedMerchant?:{floor:number;id:import('./shopkeepers').ShopkeeperId;phase:'pending'|'active'};nameStory?:{choice?:'restored'|'left';recordRead?:boolean;nameLearned?:boolean;met?:boolean;gateOpened?:boolean;guardianDefeated?:boolean;rewardClaimed?:boolean};maxHpSacrifice?:number;soulLantern?:'ready'|'spent';pendingFloorAdvance?:number;mode?:ExplorationMode;completed?:boolean;finalBossDefeated?:boolean;acquiredIds?:string[];roomVisitKey?:string;gold:number;hp:number;mp:number;weapons:Gear[];armor:Gear[];spells:Spell[];weaponId:string;armorId:string;equippedSpells:string[];door:number|null;supplies:boolean;combat:CombatState|null;escapeBoost:number;market:FloorMarket;shamanStock?:ShamanStock|null;merchantStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,import('./shop-state').EquipmentStock>>;shamanStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,ShamanStock>>;potions:Record<PotionKind,number>;playerEffects?:import('./ailments').EnemyAilment[]}
+export type PracticeState={balanceVersion?:2;growth?:ExplorationGrowth;campaignFinalFloor?:50|80;recentRooms?:import('./room-preview').RoomTypeId[];guardianCheckpoint?:boolean;bossRestPending?:boolean;equipmentMerchantVisits?:number[];supplyChecks?:number[];forcedMerchant?:{floor:number;id:import('./shopkeepers').ShopkeeperId;phase:'pending'|'active'};nameStory?:{choice?:'restored'|'left';recordRead?:boolean;nameLearned?:boolean;met?:boolean;gateOpened?:boolean;guardianDefeated?:boolean;rewardClaimed?:boolean};maxHpSacrifice?:number;soulLantern?:'ready'|'spent';pendingFloorAdvance?:number;mode?:ExplorationMode;completed?:boolean;finalBossDefeated?:boolean;acquiredIds?:string[];roomVisitKey?:string;gold:number;hp:number;mp:number;weapons:Gear[];armor:Gear[];spells:Spell[];weaponId:string;armorId:string;equippedSpells:string[];door:number|null;supplies:boolean;combat:CombatState|null;escapeBoost:number;market:FloorMarket;shamanStock?:ShamanStock|null;merchantStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,import('./shop-state').EquipmentStock>>;shamanStocks?:Partial<Record<import('./shopkeepers').ShopkeeperId,ShamanStock>>;potions:Record<PotionKind,number>;playerEffects?:import('./ailments').EnemyAilment[]}
 export function newPractice(random=Math.random,mode:ExplorationMode='test'):PracticeState{
  const state:PracticeState={acquiredIds:[starterWeapon.id,starterArmor.id],...(mode==='practice'?{mode}:{}),gold:mode==='practice'?100:100000,hp:100,mp:playerMaxMp,weapons:[starterWeapon],armor:[starterArmor],spells:[],weaponId:starterWeapon.id,armorId:starterArmor.id,equippedSpells:[],door:null,supplies:false,combat:null,escapeBoost:0,market:{floor:1,doors:[],weaponIds:[],armorIds:[]},potions:{health:0,mana:0}}
  return {...state,market:mode==='practice'?drawPracticeFloor(1,random,state):drawFloorMarket(1,random)}
@@ -51,7 +51,11 @@ export const merchantGoods=[
 export function floorMerchantGoods(state:PracticeState){
  const ids=[...state.market.weaponIds,...state.market.armorIds,...merchantPotions.map(item=>item.id)]
  const acquired=acquiredItemIds(state)
- return ids.flatMap(id=>merchantGoods.filter(item=>item.id===id&&(item.kind==='potion'||!acquired.has(item.id))))
+ return ids.flatMap(id=>merchantGoods.filter(item=>item.id===id&&(item.kind==='potion'||!acquired.has(item.id)))).map(item=>{
+  if(item.kind!=='armor')return item
+  const gear=getExplorationArmor(state).find(armor=>armor.id===item.id)??item.gear
+  return {...item,gear,description:armorStats(gear)}
+ })
 }
 export function purchaseBlock(state:PracticeState,id:string,quantity=1):string|null{
  if(!Number.isSafeInteger(quantity)||quantity<1)return '수량 확인'
@@ -67,7 +71,7 @@ export function purchaseBlock(state:PracticeState,id:string,quantity=1):string|n
 }
 export function buyMerchantItem(state:PracticeState,id:string,quantity=1):PracticeState{
  if(purchaseBlock(state,id,quantity))return state
- const item=merchantGoods.find(item=>item.id===id)!
+ const item=floorMerchantGoods(state).find(item=>item.id===id)!
  const next={...state,gold:state.gold-item.price*quantity,...(item.kind!=='potion'?{acquiredIds:recordAcquired(state,item.id)}:{})}
  if(item.kind==='potion')return {...next,potions:{...state.potions,[item.potionKind]:state.potions[item.potionKind]+quantity}}
  if(item.kind==='weapon')return clampGearResources({...next,weapons:[...state.weapons,item.gear]})

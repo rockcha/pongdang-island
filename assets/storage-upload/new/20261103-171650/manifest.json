@@ -1,0 +1,146 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local operator farm trial only; no DB catalog or Storage changes",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "referenceRole": "Warm cartoon rendering only; no otter anatomy or accessories",
+  "items": [
+    {
+      "id": "wheat",
+      "kind": "crop",
+      "thumbnail_path": "farm/art/v1/crops/wheat.png",
+      "source": "sources/wheat-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Inventory crop icon, square canvas, readable at 32 pixels. A small tied bundle of three golden ripe wheat ears, oat-like plump golden grains and short stems, warm honey palette.",
+      "sha256": "a385a1b2d23df41985cc6a655fd6230f88d4eabe348bbddc0c2f978faa19ed7e",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "potato",
+      "kind": "crop",
+      "thumbnail_path": "farm/art/v1/crops/potato.png",
+      "source": "sources/potato-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Inventory crop icon, square canvas, readable at 32 pixels. Two cute round dusty golden potatoes, one slightly behind the other, a few small dimples and ONE fresh leaf.",
+      "sha256": "7e93d896ac34de5bb6f8f11510c08fed4d7543ae1a01fd59097cb6911c837ff5",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "sweetPotato",
+      "kind": "crop",
+      "thumbnail_path": "farm/art/v1/crops/sweetPotato.png",
+      "source": "sources/sweetPotato-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Inventory crop icon, square canvas, readable at 32 pixels. Two softly curved purple-red sweet potatoes, one small cut end shows rich golden yellow interior, clean compact silhouette.",
+      "sha256": "4137b17e5398f775da64a87df36f2b11e15a949cfa4accbfae900fab8b270fa0",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "carrot",
+      "kind": "crop",
+      "thumbnail_path": "farm/art/v1/crops/carrot.png",
+      "source": "sources/carrot-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Inventory crop icon, square canvas, readable at 32 pixels. One plump orange carrot with three fresh green fronds, slight diagonal, tiny natural grooves.",
+      "sha256": "0d1a823433a4e2bddf9ce3754e35264e798c5853b3e8e46189a9488d4b915583",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "corn",
+      "kind": "crop",
+      "thumbnail_path": "farm/art/v1/crops/corn.png",
+      "source": "sources/corn-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Inventory crop icon, square canvas, readable at 32 pixels. One golden corn cob with a neat few broad green husk leaves folded down, large clear kernels.",
+      "sha256": "c832c70123031a4fdc986cd828a0bd4c5eb740fd72971e0d2b8a39697526551a",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "strawberry",
+      "kind": "crop",
+      "thumbnail_path": "farm/art/v1/crops/strawberry.png",
+      "source": "sources/strawberry-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Inventory crop icon, square canvas, readable at 32 pixels. Two plump ripe coral-red strawberries with tiny cream seeds and fresh green crowns, no face.",
+      "sha256": "2d7439ab9db1d4466da5d4b04f0b61fb8e7ae7056b31133d94e918c1e1cbaa00",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "tomato",
+      "kind": "crop",
+      "thumbnail_path": "farm/art/v1/crops/tomato.png",
+      "source": "sources/tomato-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Inventory crop icon, square canvas, readable at 32 pixels. One round ripe warm red tomato, fresh green five-point calyx and a small secondary tomato behind.",
+      "sha256": "bd8751dae405010125040c0c22a10af2a6103963f0d5d56a1ea84685c97099ac",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "seedShop",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/seedShop.png",
+      "source": "sources/seedShop-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Farm map building SPRITE, top-down orthographic RPG view from approximately 60 degrees above, roof prominently visible with a shallow FRONT wall along bottom, parallel verticals and horizontal aligned front facade, NOT isometric/diagonal diamond. Compact footprint for a 2 by 2 square tile grid. Same visual scale and bottom-center contact point for all buildings. A tiny SEED SHOP, square footprint, muted sage green broad tiled roof, warm honey timber walls, open front counter with three illustrated seed packets and a tray of green seedlings, little sprout-shaped wooden sign WITHOUT letters. Distinctive lush seedling-shop silhouette.",
+      "sha256": "d35336b1edb3420b3848423e254c139f3816e73e279663a9fa2d62a541d56d6f",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "store",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/store.png",
+      "source": "sources/store-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Farm map building SPRITE, top-down orthographic RPG view from approximately 60 degrees above, roof prominently visible with a shallow FRONT wall along bottom, parallel verticals and horizontal aligned front facade, NOT isometric/diagonal diamond. Compact footprint for a 2 by 2 square tile grid. Same visual scale and bottom-center contact point for all buildings. A tiny FARM PRODUCE SELLING STALL, square footprint, warm terracotta and ivory striped awning roof, sturdy honey timber counter displaying three baskets with carrots, tomatoes and golden corn, a small hanging brass weighing scale, no seed packets. Distinctive market stall silhouette.",
+      "sha256": "4ffcb3cc904b6efc357ebffecbb20a083277334987fd1d6a66fb429aebed4adc",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    },
+    {
+      "id": "lab",
+      "kind": "building",
+      "thumbnail_path": "farm/art/v1/buildings/lab.png",
+      "source": "sources/lab-thumbnail.source",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Create ONE isolated game asset on genuine transparent alpha background. Use the attached otter ONLY for warm soft cartoon cel-shading and thin brown outlines, never copy the animal, fishing rod or starfish. Cozy Korean island farming game, hand-painted clean readable silhouette, warm cream highlights, tasteful natural saturation, polished illustration, no face on objects. No text, lettering, watermark, scenery, grid, glow, particles, opaque backdrop, cast shadow or border fringe. Full subject centered with generous 12% clear transparent margins. Farm map building SPRITE, top-down orthographic RPG view from approximately 60 degrees above, roof prominently visible with a shallow FRONT wall along bottom, parallel verticals and horizontal aligned front facade, NOT isometric/diagonal diamond. Compact footprint for a 2 by 2 square tile grid. Same visual scale and bottom-center contact point for all buildings. A tiny SEED RESEARCH GREENHOUSE, square footprint, sage green frame with pale aqua glass pitched roof, warm wood base, clearly visible rows of tiny plants inside, a small side workbench with one magnifying glass and seedling pots, botanical research identity, no sci-fi or laboratory neon.",
+      "sha256": "f4b7e62c60e1da1603e1cc13a38f04ed2e520514e6fb4428807730ad56a296e8",
+      "preparation": "Uniform full-canvas downsampling only; preserve original alpha, framing and aspect ratio"
+    }
+  ],
+  "verification": {
+    "rawAudit": "10 assets, no warnings",
+    "finalAudit": "10 assets, no warnings",
+    "visual": "Light/dark composites and actual UI reviewed",
+    "browser": "360px DPR3 reduced motion; 390px DPR2; 1280px DPR2; no page errors or horizontal dialog overflow",
+    "flow": "Research continues after closing the lab; unlock, purchase, plant, harvest, sale and exact balance verified",
+    "deployment": "Local files only; no push, remote catalog or production frontend deployment"
+  }
+}

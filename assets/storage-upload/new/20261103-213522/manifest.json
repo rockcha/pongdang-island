@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm UI action icon; no DB species, movement, price or remote upload",
+  "references": [
+    "assets/references/collectible-style/common-rare-pongi.png"
+  ],
+  "items": [
+    {
+      "id": "discard-basket",
+      "frames": 1,
+      "generatedSource": "sources/discard-basket-generated.source",
+      "source": "sources/discard-basket-thumbnail.source",
+      "thumbnail_path": "farm/art/v5/ui/discard-basket.png",
+      "prompt": "Use case: stylized-concept. Create ONE standalone transparent PNG icon for the Pongdang Island cozy farm game, replacing its discard-rotten-crop action icon. Reference image is STYLE ONLY: warm clean cartoon rendering, soft thin brown outlines and friendly cel-shaded forms; do not copy the otter, face, hook, accessories or black preview background. Subject: a small beautifully drawn rustic light honey-brown wooden harvest basket with a thick rounded rim, three or four broad readable wood slats, and two gently wilted sage/ochre leaves and a small bent stem poking out. It should suggest collecting and clearing spoiled plants, clean and cute, no disgusting decay. Slight elevated front view, compact centered silhouette, generous transparent margin, entire object visible. Designed to read clearly as a 28px farm UI icon and a 78px result illustration. Warm cream highlights, soft brown shading, muted green leaves; minimal surface detail, no face, no text, no symbols, no speech bubble or border, no sparkle, no scene, no ground, no cast shadow, no black/white matte, no checkerboard. Actual alpha-transparent background.",
+      "viewBox": "0 0 509 512",
+      "sha256": "6d2e217e9b686075b070e27bd68ca80ecd096dfd9d90218353ba5dce07d3c077",
+      "normalization": "Uniform contain resize to transparent 512px square; runtime viewBox contains all alpha plus 12px padding"
+    }
+  ]
+}

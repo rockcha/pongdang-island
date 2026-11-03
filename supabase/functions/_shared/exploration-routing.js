@@ -13,5 +13,12 @@ export function newRunModel(growthVersion,random=Math.random){
 export function applyRunAction(model,action,now=Date.now(),random=Math.random){
  const advance=model.version===1?applyV1:model.version===2&&!model.state.growth?applyV2:model.version===2&&model.state.growth.version===1?applyExplorationAction:null
  if(!advance)throw Error('ENGINE_VERSION_MISMATCH')
- return advance({...model,state:normalizeExplorationSpells(model.state)},action,now,random)
+ const normalized={...model,state:normalizeExplorationSpells(model.state)}
+ // Older saved-run engines only accept purchases in the equipment merchant view.
+ // Route potion purchases through their existing price, quantity and combat checks.
+ if(model.view==='shaman'&&action.type==='buy'&&['health-potion','mana-potion'].includes(action.id)){
+  const next=advance({...normalized,view:'merchant'},action,now,random)
+  return {...next,view:'shaman'}
+ }
+ return advance(normalized,action,now,random)
 }

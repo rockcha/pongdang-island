@@ -9,6 +9,12 @@ it('shows sellable request counts rather than production collection wording',()=
  expect(screen.queryByText(/수령/)).toBeNull()
 })
 const now=Date.parse('2026-10-26T12:00:00Z'),past=new Date(now-60000).toISOString(),future=new Date(now+120000).toISOString()
+it('restores the roulette badge at the server reset deadline without marking visits as usage',()=>{
+ const summary={serverNow:new Date(now).toISOString(),production:{total:0,sites:[]},baitProduction:{total:0,sites:[]},harbor:{dockSlots:2,returnsAt:[]},expedition:{returnsAt:null},savings:{account:null},relicRoulette:{freeAvailable:false,resetsAt:future}} satisfies MenuStatus
+ expect(summarizeMenuActivity(summary,now)['/relic-roulette'].ready).toBe(0)
+ expect(summarizeMenuActivity(summary,now+120000)['/relic-roulette'].ready).toBe(1)
+ expect(summarizeMenuActivity({...summary,relicRoulette:{freeAvailable:true,resetsAt:future}},now)['/relic-roulette'].ready).toBe(1)
+})
 it('separates running, claimable and expired production and uses owned boats instead of dock slots',()=>{
  const summary={serverNow:new Date(now).toISOString(),production:{total:4,sites:[{completesAt:future,expiresAt:future},{completesAt:past,expiresAt:future},{completesAt:past,expiresAt:past}]},baitProduction:{total:0,sites:[]},harbor:{total:5,dockSlots:2,returnsAt:[past,future]},expedition:{returnsAt:future},personalBait:{completesAt:past},savings:{account:null}} satisfies MenuStatus
  const activity=summarizeMenuActivity(summary,now)

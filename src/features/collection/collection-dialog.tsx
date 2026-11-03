@@ -718,7 +718,7 @@ export function CollectionBook({
                         {mapRegionName(s)}
                       </span>
                     )}
-                    {s.kind !== 'map' && s.kind !== 'relic' && (
+                    {s.kind !== 'map' && (
                       <span
                         aria-label={`가치 ${s.sell_price.toLocaleString('ko-KR')} 골드`}
                         className="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] tabular-nums text-primary"
@@ -812,7 +812,7 @@ export function CollectionBook({
               {detail.kind !== 'map' && detail.kind !== 'relic' && (
                 <PrimaryHabitat species={detail} />
               )}
-              {detail.kind !== 'relic' && (
+              {(
                 <div className="flex items-center justify-between text-sm">
                   {detail.kind === 'map' ? (
                     <span className="text-xs text-muted-foreground">

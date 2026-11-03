@@ -2,6 +2,7 @@ import {placeGroups} from '@/lib/place-groups'
 import {NavigationCategoryIcon} from './navigation-category-icon'
 import {useMenuActivity,MenuActivityLine} from './menu-activity'
 import {RelicIcon} from '@/components/collection-filter-icons'
+import {RouletteIcon} from './roulette-icon'
 import {RelicArtwork} from '@/features/relics/relic-artwork'
 import {useEquippedRelic} from '@/features/relics/use-equipped-relic'
 import { useSavingsStatus } from '@/features/savings/use-savings-status'
@@ -32,6 +33,7 @@ const {
 } = appArt
 
 export const headerPlaces = [
+  {to:'/relic-roulette',label:'유물 룰렛',icon:RouletteIcon},
   {to:'/exploration',label:'탐험',icon:Compass},
   { to: '/voyage-bets', label: '만선 승부장', icon: appArt.shipyard },
   { to: '/fishing-records', label: '오늘의 낚시 기록', icon: NotebookPen },
@@ -77,6 +79,7 @@ export const headerPlaces = [
 ]
 
 export const menuIcons:Record<string,typeof House>={
+ '/relic-roulette':RouletteIcon,
  '/exploration':Compass,
  '/my-island':House,
  '/profile':UserRound,'/aquarium':Fish,'/music-room':AudioLines,'/decoration-shop':Shapes,
@@ -102,6 +105,7 @@ export function HeaderPlaceNavigation() {
     { operator } = useOperator()
   const current = /^\/(region|sailing)\//.test(pathname) ? '/fishing' : pathname
   const merchantReady=(activity['/merchant-orders']?.ready??0)>0
+  const rouletteReady=(activity['/relic-roulette']?.ready??0)>0
   const hasNewContent=(to:string)=>
     (to==='/board'&&newContent.board)||
     (to==='/showcase'&&newContent.showcase)||
@@ -109,6 +113,7 @@ export function HeaderPlaceNavigation() {
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/flea-market'&&newContent.flea)
     ||(to==='/merchant-orders'&&merchantReady)
+    ||(to==='/relic-roulette'&&rouletteReady)
 
   return (
     <nav aria-label="장소 바로가기" className="grid w-[224px] max-w-full shrink-0 grid-cols-7 gap-0.5 sm:w-[252px]">
@@ -146,7 +151,7 @@ export function HeaderPlaceNavigation() {
                   className="w-64 max-w-[calc(100vw-1.5rem)] origin-[var(--transform-origin)] max-h-[var(--available-height)] overflow-y-auto overscroll-contain rounded-xl border border-border/60 bg-popover p-1.5 text-popover-foreground shadow-lg shadow-black/10 outline-none"
                 >
                   {items.map(({ to, label, icon: ItemIcon }) => {
-                    const ItemOutline=menuIcons[to]??ItemIcon
+                    const ItemOutline=to==='/relics'?RelicIcon:menuIcons[to]??ItemIcon
                     const active = selected?.to === to
                     const heading=group.sections.find(section=>section.paths[0]===to)?.label
                     return (
@@ -160,11 +165,11 @@ export function HeaderPlaceNavigation() {
                         <span className="relative grid size-8 shrink-0 place-items-center">
                           <ItemOutline aria-hidden="true" className="size-5 text-primary/80" strokeWidth={1.7}/>
                         </span>
-                        <span className="min-w-0 flex-1"><span className="block truncate">{label}</span>{activity[to]&&<MenuActivityLine activity={activity[to]}/>}</span>
+                        <span className="min-w-0 flex-1"><span className="block truncate">{label}</span>{to!=='/relic-roulette'&&activity[to]&&<MenuActivityLine activity={activity[to]}/>}</span>
                         {to==='/relics'&&equippedRelic&&<span className="flex max-w-20 shrink-0 items-center gap-1" title={`장착 중: ${equippedRelic.name}`}><RelicArtwork relic={equippedRelic} name={`장착 중: ${equippedRelic.name}`} className="size-6"/><span className="min-w-0 truncate text-[10px]">{equippedRelic.name}</span></span>}
                         {hasNewContent(to) && (
                           <span
-                            aria-label={to==='/merchant-orders'?'납품 가능한 의뢰 있음':'새 글 있음'}
+                            aria-label={to==='/relic-roulette'?'오늘 무료 뽑기 가능':to==='/merchant-orders'?'납품 가능한 의뢰 있음':'새 글 있음'}
                             className="text-[9px] font-bold tracking-wider text-rose-600 dark:text-rose-400"
                           >
                             NEW

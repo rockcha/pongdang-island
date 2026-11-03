@@ -1,0 +1,85 @@
+.relic-roulette-page {
+  --rr-brown: var(--primary, #995e36);
+  --rr-muted: var(--muted-foreground, #806651);
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px 16px;
+  color: var(--foreground, #4a3328);
+  background: var(--background, #fff8ee);
+}
+.roulette-heading { margin-bottom: 20px; }
+.roulette-eyebrow { display: inline-flex; align-items: center; gap: 6px; color: var(--rr-muted); font-size: 11px; }
+.roulette-heading h1 { margin: 7px 0; font-size: 22px; font-weight: 600; letter-spacing: -.5px; }
+.roulette-heading > p { color: var(--rr-muted); font-size: 12px; line-height: 1.8; }
+/* The application stays narrow even in a desktop browser. Never use viewport
+   width to turn this into columns: the wheel must retain the whole app width. */
+.roulette-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.roulette-stage { position: relative; min-width: 0; border: 1px solid var(--border, #ead7c2); border-radius: 14px; background: var(--card, #fffdf9); overflow: hidden; }
+.roulette-stage-top { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 15px 16px 0; }
+.roulette-daily { color: var(--rr-brown); background: color-mix(in srgb, var(--rr-brown) 8%, transparent); padding: 5px 9px; border-radius: 6px; font-size: 11px; white-space: nowrap; }
+.roulette-sound { display: grid; place-items: center; flex-shrink: 0; width: 30px; height: 30px; color: var(--rr-muted); border: 1px solid var(--border); border-radius: 7px; cursor: pointer; }
+.roulette-sound:hover { background: color-mix(in srgb, var(--rr-brown) 6%, transparent); }
+.roulette-canvas { width: 100%; min-width: 0; aspect-ratio: 640 / 620; }
+.roulette-canvas canvas { display: block !important; max-width: 100%; }
+.roulette-loading { position: absolute; top: 42%; left: 0; width: 100%; text-align: center; font-size: 11px; color: var(--rr-muted); }
+.roulette-action-area { padding: 0 16px 17px; text-align: center; }
+.roulette-spin { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 46px; padding: 10px; border-radius: 8px; background: var(--rr-brown); color: var(--primary-foreground, #fff8ee); font-size: 13px; font-weight: 500; line-height: 1.6; cursor: pointer; }
+.roulette-spin:hover:not(:disabled) { filter: brightness(.95); }
+.roulette-spin:disabled { opacity: .5; cursor: default; }
+.roulette-reset { margin: 10px 0; font-size: 10px; color: var(--rr-muted); line-height: 1.8; }
+.roulette-wallet { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--rr-muted); font-size: 11px; }
+.roulette-wallet strong { margin-left: 3px; color: var(--foreground); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.roulette-error { margin-top: 12px; color: #a44132; font-size: 12px; line-height: 1.8; }
+.roulette-error button { text-decoration: underline; cursor: pointer; }
+.roulette-probabilities { min-width: 0; padding: 2px 3px; }
+.roulette-stage .roulette-probabilities { padding: 0 16px; margin-bottom: 16px; }
+.roulette-probabilities h2 { margin-bottom: 12px; font-size: 12px; font-weight: 500; }
+.roulette-odds-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 13px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.roulette-odds-row { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 0 4px; font-size: 11px; }
+.roulette-odds-row + .roulette-odds-row { border-left: 1px solid var(--border); }
+.roulette-odds-row > span { display: flex; align-items: center; gap: 5px; color: var(--rr-muted); }
+.roulette-odds-row i { width: 5px; height: 5px; border-radius: 50%; }
+.roulette-odds-row strong { font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.roulette-odds-row small { margin-left: 2px; color: var(--rr-muted); font-size: 9px; }
+.roulette-probabilities > p { margin-top: 10px; color: var(--rr-muted); font-size: 10px; line-height: 1.8; }
+.roulette-history { margin-top: 24px; padding-top: 17px; border-top: 1px solid var(--border); }
+.roulette-history > header { display: flex; align-items: center; justify-content: space-between; }
+.roulette-history h2 { font-size: 12px; font-weight: 500; }
+.roulette-history header > span { color: var(--rr-muted); font-size: 10px; }
+.roulette-history-empty { padding: 20px 0; text-align: center; color: var(--rr-muted); font-size: 11px; }
+.roulette-history ol { margin-top: 10px; }
+.roulette-history li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.roulette-history li > div { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 4px; }
+.roulette-history li strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; font-weight: 500; }
+.roulette-history li small { color: var(--rr-muted); font-size: 9px; }
+.roulette-history li > span:last-child { color: var(--rr-muted); font-size: 10px; white-space: nowrap; }
+.roulette-history-art, .roulette-history-sand { width: 32px; height: 32px; }
+.roulette-history-sand { display: grid; place-items: center; color: #b49a7e; font-size: 23px; }
+.roulette-notes { padding: 15px 0 0; color: var(--rr-muted); font-size: 10px; line-height: 1.9; }
+.roulette-notes a { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; color: var(--rr-brown); }
+.roulette-turning { animation: roulette-turn 1.5s linear infinite; }
+@keyframes roulette-turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .roulette-turning { animation: none; } }
+.roulette-miss { margin: 0; padding: 0 8px; color: var(--rr-muted); text-align: center; font-size: 12px; }
+.roulette-reward-dialog { max-width: 320px; gap: 18px; padding: 26px 22px 20px; border: 1px solid var(--border); background: var(--background); text-align: center; }
+.roulette-reward-dialog [data-slot='dialog-header'] { align-items: center; gap: 7px; }
+.roulette-reward-dialog [data-slot='dialog-title'] { font-size: 17px; font-weight: 500; }
+.roulette-reward-dialog [data-slot='dialog-description'] { font-size: 11px; color: var(--muted-foreground); }
+.roulette-reward-badge { font-size: 11px; font-weight: 500; }
+.roulette-reward-display { display: grid; place-items: center; min-height: 140px; background: radial-gradient(ellipse at center, #ddc09c25, transparent 68%); }
+.roulette-reward-dialog[data-grade='rare'] .roulette-reward-display { background: radial-gradient(ellipse at center, #78b7d825, transparent 68%); }
+.roulette-reward-dialog[data-grade='epic'] .roulette-reward-display { background: radial-gradient(ellipse at center, #b18bd525, transparent 68%); }
+.roulette-reward-dialog[data-grade='mythic'] .roulette-reward-display { background: radial-gradient(ellipse at center, #efbd5840, transparent 68%); }
+.roulette-reward-illustration { width: 116px; height: 116px; }
+.roulette-reward-copy h3 { margin-bottom: 8px; font-size: 16px; font-weight: 500; }
+.roulette-reward-copy p { color: var(--muted-foreground); font-size: 12px; line-height: 1.9; text-wrap: pretty; }
+.roulette-reward-quantity { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 11px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.roulette-reward-quantity > span { color: var(--muted-foreground); font-size: 10px; }
+.roulette-reward-quantity strong { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.roulette-reward-actions { display: grid; gap: 11px; }
+.roulette-reward-actions button { min-height: 42px; border-radius: 8px; background: var(--primary); color: var(--primary-foreground); font-size: 13px; cursor: pointer; }
+.roulette-reward-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: var(--primary); font-size: 11px; }

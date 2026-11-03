@@ -83,7 +83,7 @@ it('keeps creatures separate from maps and relics and labels the new decoration 
  expect(screen.queryByRole('button',{name:'유물'})).toBeNull()
  expect(screen.getByRole('button',{name:'장식품'}).querySelector('img')?.getAttribute('src')).toBe('/app-icons/collection-decoration-v1.webp')
 })
-it('filters the relic catalog by functional category and shows effects instead of sale value',async()=>{
+it('filters the relic catalog by functional category and shows effects alongside gold value',async()=>{
  appQueryClient.clear()
  const relic=(id:string,description:string)=>({...base,id:'relic-'+id,relicId:id,kind:'relic',name:id,description,rarity:'rare',sell_price:0,discovered:true,habitats:[]})
  relicApi.read.mockResolvedValue({relics:[{id:'fishing',owned:true,effect_kind:'fishing_wait_seconds'},{id:'voyage',owned:true,effect_kind:'harbor_duration_percent'}]})
@@ -94,7 +94,7 @@ it('filters the relic catalog by functional category and shows effects instead o
  await choose('유물 효과','항해')
  await waitFor(()=>expect(cards()).toEqual(['voyage']))
  expect(screen.getByText('어선 항해 시간 단축')).toBeTruthy()
- expect(screen.queryByLabelText(/가치 .*골드/)).toBeNull()
+ expect(screen.getByLabelText(/가치 .*골드/)).toBeTruthy()
 })
 async function openFilters(){
  fireEvent.click(screen.getByRole('button',{name:/^도감 필터/}))
@@ -140,7 +140,7 @@ it('uses acquired maps and actual relic ownership rather than relic discovery hi
  expect(screen.queryByRole('combobox',{name:'도감 상태'})).toBeNull()
 })
 it('shows map pieces and relics in their own categories without placement or sale controls',async()=>{
- const relic={...base,id:'relic-test',kind:'relic',name:'작은 유물',description:'통발 미끼당 대기 시간 30초 단축 · 장착 중에만 효과가 적용돼요.',rarity:'rare',sell_price:0,discovered:true,habitats:[]}
+ const relic={...base,id:'relic-test',kind:'relic',name:'작은 유물',description:'통발 미끼당 대기 시간 30초 단축 · 장착 중에만 효과가 적용돼요.',rarity:'rare',sell_price:200,discovered:true,habitats:[]}
  load.mockResolvedValue({items:[],catalog:[shared,map,relic]})
  const add=vi.fn()
  render(<CollectionBook mode="items" onAddTemporary={add}/>)
@@ -151,10 +151,13 @@ it('shows map pieces and relics in their own categories without placement or sal
  expect(within(screen.getByRole('article',{name:'지도 조각'})).queryByLabelText(/가치/)).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'유물'}))
  expect(cards()).toEqual(['작은 유물'])
+ expect(within(screen.getByRole('article',{name:'작은 유물'})).getByLabelText('가치 200 골드')).toBeTruthy()
  expect(screen.getByText('발견 1/1')).toBeTruthy()
  expect(screen.queryByRole('button',{name:'작은 유물 임시 넣기'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'작은 유물 상세 보기'}))
  expect(within(screen.getByRole('dialog')).getByText('통발 미끼당 대기 시간 30초 단축')).toBeTruthy()
+ expect(within(screen.getByRole('dialog')).getByText('가치')).toBeTruthy()
+ expect(within(screen.getByRole('dialog')).getByText('200')).toBeTruthy()
  expect(screen.queryByText('최초 1회 발견 · 어항 배치·판매·선물·거래 불가')).toBeNull()
  expect(screen.queryByText(/장착 중에만 효과가 적용돼요/)).toBeNull()
  expect(add).not.toHaveBeenCalled()

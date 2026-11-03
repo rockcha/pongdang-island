@@ -85,6 +85,7 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
     if(effectRelic)setEquipEffect({id:purchase.operation,kind:purchase.id?'equip':'unequip',relic:effectRelic})
    }
    setState(next);remember(null);setPurchase(null);if(purchase.action!=='sell')setPickerOpen(false)
+   else setNotice(`${purchase.name} 1개를 판매하고 ${purchase.fee.toLocaleString('ko-KR')}골드를 받았어요.`)
   }
   catch(cause){
    if(!alive.current||request!==revision.current)return
@@ -111,20 +112,20 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    {pending&&<Button disabled={saving} onClick={()=>{setError('');setPurchase(pending)}}>{pending.action==='sell'?'판매':'장착'} 결과 다시 확인</Button>}
    {!state&&!error&&<p role="status" className="py-6 text-center text-sm">유물을 불러오는 중…</p>}
    {state&&<>
-    <Tabs value={tab} onValueChange={value=>{if(!craftBusy&&!recycling.busy)setTab(String(value))}} className="flex min-h-0 flex-1 flex-col">
+    <Tabs value={tab} onValueChange={value=>{if(!craftBusy&&!recycling.busy){setTab(String(value));setNotice('')}}} className="flex min-h-0 flex-1 flex-col">
      <TabsList aria-label="유물 메뉴" className="relic-page-tabs shrink-0" style={{gridTemplateColumns:'repeat(3,minmax(0,1fr))'}}><TabsTrigger value="inventory" disabled={craftBusy||recycling.busy}><RelicIcon className={`size-7 shrink-0 object-contain ${tab==='inventory'?'':'grayscale opacity-55'}`}/>보유 유물</TabsTrigger><TabsTrigger value="craft" disabled={!state.canCraft||saving||!!pending||craftBusy||recycling.locked}><img src="/app-icons/relic-craft.png" alt="" aria-hidden="true" className={`size-7 shrink-0 object-contain ${tab==='craft'?'':'grayscale opacity-55'}`}/>{state.canCraft?'세공':'세공 준비 중'}{craftLocked&&!craftBusy&&<span className="relic-tab-notice">결과 확인</span>}</TabsTrigger><TabsTrigger value="recombine" disabled={saving||!!pending||craftBusy||craftLocked||recycling.busy}><Recycle className="size-5 shrink-0"/>재조합</TabsTrigger></TabsList>
-     <TabsContent value="inventory" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col gap-4 px-5 pb-4 pt-4 [&[hidden]]:hidden">
+     <TabsContent value="inventory" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-5 pb-4 pt-4 [&[hidden]]:hidden">
       <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending||craftLocked||recycling.locked} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>setPickerOpen(true)} onUnequip={()=>select(null,'유물 해제')}/>
-      <div className="flex items-center justify-between text-xs text-muted-foreground"><span>{state.relics.filter(r=>r.owned).length}종 보유</span><Button variant="ghost" size="sm" className="text-xs text-primary" onClick={()=>{setOpen(false);navigate('/item-collection?tab=relic')}}>유물 도감</Button></div>
-      {!state.relics.some(r=>r.owned)&&<p className="py-6 text-center text-xs text-muted-foreground">아직 보유한 유물이 없어요.</p>}
+      {page&&!pickerOpen&&<RelicCatalogTabs layout="grid" state={state} disabled={saving||!!pending||craftLocked||recycling.locked} listRef={list} onOpenCatalog={()=>{setOpen(false);navigate('/item-collection?tab=relic')}} onEquip={r=>select(r.id,r.name)} onDismantle={r=>recycling.prepare('dismantle',[{id:r.id,quantity:1}])} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>}
+      {!page&&<><div className="flex items-center justify-between text-xs text-muted-foreground"><span>{state.relics.filter(r=>r.owned).length}종 보유</span><Button variant="ghost" size="sm" className="text-xs text-primary" onClick={()=>{setOpen(false);navigate('/item-collection?tab=relic')}}>유물 도감</Button></div>{!state.relics.some(r=>r.owned)&&<p className="py-6 text-center text-xs text-muted-foreground">아직 보유한 유물이 없어요.</p>}</>}
       <Dialog open={pickerOpen} onOpenChange={value=>{if(!saving&&!purchase)setPickerOpen(value)}}><DialogContent className="flex h-[80dvh] max-h-[85dvh] flex-col overflow-hidden rounded-2xl sm:max-w-lg"><DialogHeader><DialogTitle>유물 {state.equippedId?'교체':'장착'}</DialogTitle><DialogDescription className="sr-only">장착할 유물을 선택해 주세요.</DialogDescription></DialogHeader>
-       <RelicCatalogTabs state={state} disabled={saving||!!pending||craftLocked||recycling.locked} listRef={list} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onDismantle={r=>recycling.prepare('dismantle',[{id:r.id,quantity:1}])} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
+       <RelicCatalogTabs state={state} disabled={saving||!!pending||craftLocked||recycling.locked} listRef={list} onEquip={r=>select(r.id,r.name)} onDismantle={r=>recycling.prepare('dismantle',[{id:r.id,quantity:1}])} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
       </DialogContent></Dialog>
      </TabsContent>
      <TabsContent value="craft" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col [&[hidden]]:hidden">
       {state.canCraft&&<RelicCraftingGuide state={state} disabled={saving||!!pending||recycling.locked} storageKey={storageKey+':craft'} onState={setState} onBusyChange={setCraftBusy} onLockChange={setCraftLocked} onOpenInventory={()=>setTab('inventory')} onShare={r=>void share(r)}/>}
      </TabsContent>
-     <TabsContent value="recombine" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col [&[hidden]]:hidden">{tab==='recombine'&&<RelicRecombination state={state} disabled={saving||!!pending||craftBusy||craftLocked||recycling.locked} onRecombine={inputs=>recycling.prepare('recombine',inputs)}/>}</TabsContent>
+     <TabsContent value="recombine" keepMounted className="mt-0 flex min-h-0 flex-1 flex-col [&[hidden]]:hidden">{tab==='recombine'&&<RelicRecombination state={state} resetKey={recycling.completedOperation} disabled={saving||!!pending||craftBusy||craftLocked||recycling.locked} onRecombine={inputs=>recycling.prepare('recombine',inputs)}/>}</TabsContent>
     </Tabs>
    </>}
    {recycling.dialogs}

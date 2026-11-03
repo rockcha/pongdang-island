@@ -2,9 +2,10 @@ import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/r
 import {MemoryRouter,useLocation} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {HeaderPlaceNavigation,headerPlaces} from '@/components/header-place-navigation'
-const mock=vi.hoisted(()=>({fleaReady:0,relic:null as {name:string;thumbnail_path:string}|null,newContent:{board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null,fuel:null as {ready:number;total:number}|null,bait:null as {ready:number;total:number}|null}))
+const mock=vi.hoisted(()=>({fleaReady:0,rouletteReady:false,relic:null as {name:string;thumbnail_path:string}|null,newContent:{board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null,fuel:null as {ready:number;total:number}|null,bait:null as {ready:number;total:number}|null}))
 vi.mock('@/components/menu-activity',async original=>({...await original<typeof import('@/components/menu-activity')>(),useMenuActivity:()=>({
  '/flea-market':{kind:'flea',running:0,ready:mock.fleaReady},
+ '/relic-roulette':{running:0,ready:mock.rouletteReady?1:0},
  ...(mock.fuel?{'/production':{...mock.fuel,running:1,unit:'곳'}}:{}),...(mock.bait?{'/bait-production':{...mock.bait,running:1,unit:'곳'}}:{}),...(mock.harbor?{'/port':{...mock.harbor,running:1,unit:'척'}}:{}),...(mock.status?{'/expeditions':{single:'유인',running:mock.status==='sailing'?1:0,ready:mock.status==='returned'?1:0,remaining:120000}}:{})
 })}))
 vi.mock('@/features/savings/use-savings-status',()=>({useSavingsStatus:()=>mock.savings}))
@@ -14,10 +15,27 @@ vi.mock('@/features/port/use-harbor-status',()=>({useHarborStatus:()=>mock.harbo
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:mock.operator,loading:false})}))
 vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus:()=>mock.status}))
 vi.mock('@/features/production/use-production-menu-status',()=>({useProductionMenuStatus:(kind:string)=>kind==='fuel'?mock.fuel:mock.bait}))
-beforeEach(()=>{mock.fleaReady=0;mock.relic=null;mock.newContent={board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null;mock.fuel=null;mock.bait=null})
+beforeEach(()=>{mock.rouletteReady=false;mock.fleaReady=0;mock.relic=null;mock.newContent={board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null;mock.fuel=null;mock.bait=null})
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
+it('shows roulette NEW and the collection dot until the daily free spin is used',async()=>{
+ mock.rouletteReady=true
+ const view=render(<MemoryRouter initialEntries={['/relic-roulette']}><View/></MemoryRouter>)
+ expect(screen.getByRole('button',{name:'수집'}).getAttribute('aria-current')).toBe('location')
+ expect(screen.getByRole('button',{name:'수집'}).querySelector('[data-category-activity]')).toBeTruthy()
+ expect(screen.getByRole('button',{name:'내 섬'}).querySelector('[data-category-activity]')).toBeNull()
+ expect(screen.getByRole('button',{name:'소식'}).querySelector('[data-category-activity]')).toBeNull()
+ const menu=await open('수집'),items=within(menu).getAllByRole('menuitem')
+ const index=items.findIndex(item=>item.getAttribute('href')==='/relics')
+ expect(items[index].querySelector('img')?.getAttribute('src')).toBe('/app-icons/relic.png')
+ expect(items[index+1].getAttribute('href')).toBe('/relic-roulette')
+ expect(items[index+1].querySelector('svg.lucide-roulette')).toBeTruthy()
+ expect(within(items[index+1]).getByLabelText('오늘 무료 뽑기 가능').textContent).toBe('NEW')
+ mock.rouletteReady=false;view.rerender(<MemoryRouter initialEntries={['/relic-roulette']}><View/></MemoryRouter>)
+ expect(screen.queryByLabelText('오늘 무료 뽑기 가능')).toBeNull()
+ expect(screen.getByRole('button',{name:'수집'}).querySelector('[data-category-activity]')).toBeNull()
+})
 it.each([false,true])('shows the local stat test directly after exploration only for operators: %s',async operator=>{
  mock.operator=operator
  render(<MemoryRouter><View/></MemoryRouter>)
@@ -58,7 +76,7 @@ it.each([
  ['소식',['/island-news','/square/notices','/square/suggestions','/square/bugs']],
  ['생산',['/bait-production','/my-bait-production','/production']],
  ['장터',['/shop','/item-shop','/decoration-shop','/shipyard','/bait-production-shop','/production-shop','/flea-market','/exchange','/merchant-orders']],
- ['수집',['/storage','/warehouse','/collection','/item-collection','/titles','/relics']],
+ ['수집',['/storage','/warehouse','/collection','/item-collection','/titles','/relics','/relic-roulette']],
  ['광장',['/friends','/board','/showcase','/hall-of-fame','/development-fund','/square/sponsorship','/square/begging']],
 ])('keeps the correct destinations in %s',async(name,paths)=>{
  render(<MemoryRouter><View/></MemoryRouter>)

@@ -13,6 +13,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run db:verify
+      - run: npm test -- tests/relic-roulette-sql.test.ts
       - run: npm run arcade:engine:check
       - run: npm run exploration:engine:check
       - run: npm test -- tests/exploration-reward-sql.test.ts tests/exploration-server-engine.test.ts tests/exploration-edge.test.ts

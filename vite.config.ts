@@ -5,8 +5,21 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig } from 'vite'
 import { imageRuntimeCaching } from './build/image-cache.ts'
 
+// Raw artwork, database history and generated previews are not browser modules.
+// Watching them creates thousands of Windows filesystem watchers before loading.
+const devWatchIgnored = ['artifacts', 'assets', 'docs', 'supabase', 'tests', 'scripts', 'tmp', '.cache', '.agents', '.github']
+  .map(directory => fileURLToPath(new URL(`./${directory}`, import.meta.url)).replaceAll('\\', '/'))
+
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    watch: {
+      ignored: path => {
+        const normalized = path.replaceAll('\\', '/')
+        return devWatchIgnored.some(directory => normalized === directory || normalized.startsWith(`${directory}/`))
+      },
+    },
+  },
   build:{manifest:true},
   // Temporary HTML previews and browser profiles are not application entries.
   optimizeDeps: { entries: ['index.html'] },

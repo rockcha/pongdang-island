@@ -14,4 +14,6 @@ jobs:
       - run: npm ci
       - run: npm run client-data:check
       - run: npm run test:client-data
+      - run: npm test -- tests/relic-recycling-ui.test.tsx tests/relic-recycling-api.test.ts
+      - run: npm test -- tests/relic-roulette-api.test.ts tests/relic-roulette-ui.test.tsx tests/relic-roulette-model.test.ts tests/header-place-navigation.test.tsx
       - run: npm run build

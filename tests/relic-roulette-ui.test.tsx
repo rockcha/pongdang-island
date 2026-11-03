@@ -1,0 +1,72 @@
+import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {afterEach,beforeEach,expect,it,vi} from 'vitest'
+import {MemoryRouter} from 'react-router'
+import {RelicRoulettePage} from '../src/features/relic-roulette/roulette-page'
+import {appQueryClient,accountQueryKey,setQueryAccount} from '../src/lib/account-cache'
+import type {RouletteState} from '../src/features/relic-roulette/api'
+const mocks=vi.hoisted(()=>({rpc:vi.fn(),turn:vi.fn(async()=>{}),destroy:vi.fn(),sound:vi.fn()}))
+vi.mock('@/lib/client',()=>({createClient:()=>({rpc:mocks.rpc})}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'roulette-owner'}},recovery:false})}))
+vi.mock('@/features/relic-roulette/wheel-scene',()=>({mountRelicWheel:()=>({spin:mocks.turn,destroy:mocks.destroy})}))
+vi.mock('@/features/gold/purchase-sound',()=>({playRelicResultSound:mocks.sound}))
+vi.mock('@/features/relics/relic-artwork',()=>({RelicArtwork:({relic}:{relic:{name:string}})=><span>{relic.name} 그림</span>}))
+vi.mock('@/components/confirm-dialog',()=>({ConfirmDialog:({open,onConfirm,onOpenChange}:{open:boolean;onConfirm:()=>void;onOpenChange:(value:boolean)=>void})=>open?<div role="dialog"><button onClick={onConfirm}>500골드로 돌리기 확인</button><button onClick={()=>onOpenChange(false)}>취소</button></div>:null}))
+const initial:RouletteState={gold:3000,freeAvailable:true,nextCost:0,serverNow:new Date().toISOString(),resetAt:new Date(Date.now()+86400000).toISOString(),history:[],odds:{none:60,rare:34,epic:5,mythic:1}}
+function mount(state=initial){
+ appQueryClient.setQueryData(accountQueryKey('roulette-owner','relic-roulette'),state)
+ mocks.rpc.mockImplementation((name:string)=>name==='relic_roulette_state'?{abortSignal:()=>Promise.resolve({data:state,error:null})}:Promise.reject(Error('UNEXPECTED_SPIN')))
+ return render(<MemoryRouter><RelicRoulettePage/></MemoryRouter>)
+}
+async function ready(){await waitFor(()=>expect(screen.getByRole('button',{name:/룰렛 돌리기/}).getAttribute('disabled')).toBeNull())}
+beforeEach(()=>{setQueryAccount('roulette-owner');vi.stubGlobal('matchMedia',()=>({matches:false}));sessionStorage.clear();mocks.rpc.mockReset();mocks.turn.mockClear()})
+afterEach(()=>{cleanup();appQueryClient.clear();setQueryAccount(null);vi.unstubAllGlobals()})
+it('starts the free spin once, waits for animation, and displays the server result',async()=>{
+ mount();await ready()
+ let finish!:()=>void;mocks.turn.mockImplementationOnce(()=>new Promise<void>(resolve=>{finish=resolve}))
+ mocks.rpc.mockImplementation((name:string,args:any)=>Promise.resolve({data:{...initial,freeAvailable:false,nextCost:500,spin:{operationId:args.p_operation_id,grade:'none',cost:0,relic:null,createdAt:new Date().toISOString()}},error:null}))
+ const button=screen.getByRole('button',{name:'오늘의 무료 룰렛 돌리기'})
+ fireEvent.click(button);fireEvent.click(button)
+ await waitFor(()=>expect(mocks.turn).toHaveBeenCalledTimes(1))
+ expect(mocks.rpc.mock.calls.filter(call=>call[0]==='relic_roulette_spin')).toHaveLength(1)
+ expect(screen.queryByText('아쉽지만, 이번에는 꽝!')).toBeNull()
+ await act(async()=>finish())
+ expect(screen.queryByText('아쉽지만, 이번에는 꽝!')).toBeNull()
+ expect(screen.queryByRole('dialog')).toBeNull()
+ expect(mocks.rpc.mock.calls.find(call=>call[0]==='relic_roulette_spin')![1].p_expected_free).toBe(true)
+})
+it('shows the awarded relic and server quantity snapshot in a modal only after the wheel stops',async()=>{
+ mount();await ready()
+ let finish!:()=>void;mocks.turn.mockImplementationOnce(()=>new Promise<void>(resolve=>{finish=resolve}))
+ mocks.rpc.mockImplementation((_name:string,args:any)=>Promise.resolve({data:{...initial,freeAvailable:false,nextCost:500,spin:{operationId:args.p_operation_id,grade:'mythic',cost:0,createdAt:new Date().toISOString(),relic:{id:'test-relic',name:'황금빛 유물',description:'낚시 보상이 늘어나요.',thumbnail_path:'/relics/test.png',rarity:'mythic',quantityBefore:2,quantityAfter:3}}},error:null}))
+ fireEvent.click(screen.getByRole('button',{name:'오늘의 무료 룰렛 돌리기'}))
+ await waitFor(()=>expect(mocks.turn).toHaveBeenCalledTimes(1))
+ expect(screen.queryByRole('dialog')).toBeNull()
+ await act(async()=>finish())
+ expect(screen.getByRole('dialog',{name:'유물을 획득했어요!'})).toBeTruthy()
+ expect(screen.getByText('황금빛 유물')).toBeTruthy()
+ expect(screen.getByText('낚시 보상이 늘어나요.')).toBeTruthy()
+ expect(screen.getByText(/2개/).textContent?.replace(/\s+/g,' ').trim()).toBe('2개 3개')
+ expect(screen.getByRole('link',{name:/유물 보관함/}).getAttribute('href')).toBe('/relics')
+ fireEvent.click(screen.getByRole('button',{name:'확인',exact:true}))
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+})
+it('requires a cost confirmation for paid spins and does not charge when cancelled',async()=>{
+ mount({...initial,freeAvailable:false,nextCost:500});await ready()
+ fireEvent.click(screen.getByRole('button',{name:'500골드로 룰렛 돌리기'}))
+ expect(screen.getByRole('dialog')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'취소'}))
+ expect(mocks.rpc.mock.calls.filter(call=>call[0]==='relic_roulette_spin')).toHaveLength(0)
+})
+it('retains the operation after a lost response and across a remount, then reuses it for confirmation',async()=>{
+ const view=mount();await ready()
+ mocks.rpc.mockRejectedValueOnce(Error('network disconnected'))
+ fireEvent.click(screen.getByRole('button',{name:'오늘의 무료 룰렛 돌리기'}))
+ await waitFor(()=>expect(screen.getByRole('button',{name:'같은 회전 다시 확인'}).getAttribute('disabled')).toBeNull())
+ const first=mocks.rpc.mock.calls.find(call=>call[0]==='relic_roulette_spin')![1]
+ view.unmount();mount();
+ await waitFor(()=>expect(screen.getByRole('button',{name:'같은 회전 다시 확인'}).getAttribute('disabled')).toBeNull())
+ mocks.rpc.mockResolvedValueOnce({data:{...initial,spin:{operationId:first.p_operation_id,grade:'none',cost:0,relic:null,createdAt:new Date().toISOString()}},error:null})
+ fireEvent.click(screen.getByRole('button',{name:'같은 회전 다시 확인'}))
+ await waitFor(()=>expect(mocks.rpc.mock.calls.filter(call=>call[0]==='relic_roulette_spin')).toHaveLength(2))
+ expect(mocks.rpc.mock.calls.filter(call=>call[0]==='relic_roulette_spin')[1][1]).toEqual(first)
+})

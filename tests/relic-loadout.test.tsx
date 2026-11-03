@@ -15,29 +15,29 @@ const state={equippedId:null,changeFee:500,equipFee:0,unequipFee:500,relics:[a,b
 async function openPicker(){fireEvent.click(await screen.findByRole('button',{name:/\uC720\uBB3C \uC120\uD0DD|\uC7A5\uCC29 \uC720\uBB3C \uAD50\uCCB4/}))}
 async function findArticle(name:string){if(!screen.queryByRole('article',{name}))await openPicker();return screen.findByRole('article',{name})}
 afterEach(()=>{cleanup();localStorage.clear();vi.clearAllMocks()})
-it('shares a crafted rare relic without exposing a sale action',async()=>{
- const relic={...a,id:'crafted-a',name:'결합 모래시계',crafted:true,sell_price:0,attached:b}
+it('only offers dismantling for a crafted relic in the inventory menu',async()=>{
+ const relic={...a,id:'crafted-a',name:'crafted relic',crafted:true,sell_price:0,attached:b}
  load.mockResolvedValue({...state,relics:[a,relic]})
- shareCatch.mockResolvedValue({operationId:'craft-receipt',species:{...relic,kind:'relic'},regionName:'유물 세공',caughtAt:'2026-10-29T14:00:00Z',firstDiscovery:false})
- render(<RelicPage/>);await openPicker()
- fireEvent.click(screen.getByRole('button',{name:`${relic.name} 더보기`}))
- expect(screen.queryByRole('menuitem',{name:/판매/})).toBeNull()
- fireEvent.click(await screen.findByRole('menuitem',{name:'자랑하기'}))
- await waitFor(()=>expect(navigate).toHaveBeenCalledWith('/showcase/new',expect.anything()))
- expect(shareCatch).toHaveBeenCalledWith(relic.id)
- expect(equip).not.toHaveBeenCalled();expect(sell).not.toHaveBeenCalled()
-})
-it('shares an owned mythic from its verified catch without selling or changing equipment',async()=>{
- const relic={...b,owned:true}
- const caught={operationId:'real-relic-catch',species:{...relic,id:'relic-'+relic.id,kind:'relic'},firstDiscovery:true,regionName:'퐁당섬 앞바다',caughtAt:'2026-10-25T14:00:00Z'}
- load.mockResolvedValue({...state,relics:[a,relic],equippedId:relic.id})
- shareCatch.mockResolvedValue(caught)
  render(<RelicPage/>)
+ const card=await screen.findByRole('article',{name:relic.name})
+ expect(within(card).getByRole('button',{name:relic.name+' 분해'}).textContent).toBe('분해')
+ expect(within(card).queryByText(/사용 가능|여분/)).toBeNull()
+ expect(within(card).queryByRole('button',{name:relic.name+' 더보기'})).toBeNull()
+ expect(screen.queryByRole('menuitem',{name:'\uC790\uB791\uD558\uAE30'})).toBeNull()
+ expect(screen.queryByRole('menuitem',{name:/\uD310\uB9E4/})).toBeNull()
+ expect(shareCatch).not.toHaveBeenCalled();expect(navigate).not.toHaveBeenCalled()
+})
+it('hides sharing and empty menus for owned mythic relics while preserving picker sales',async()=>{
+ const relic={...b,owned:true}
+ load.mockResolvedValue({...state,relics:[a,relic],equippedId:relic.id})
+ render(<RelicPage/>)
+ await screen.findByRole('article',{name:relic.name})
+ expect(screen.queryByRole('button',{name:relic.name+' \uB354\uBCF4\uAE30'})).toBeNull()
  await openPicker()
- fireEvent.click(await screen.findByRole('button',{name:`${relic.name} 더보기`}))
- fireEvent.click(await screen.findByRole('menuitem',{name:'자랑하기'}))
- await waitFor(()=>expect(navigate).toHaveBeenCalledWith('/showcase/new',expect.objectContaining({state:{showcaseDraft:expect.any(String)}})))
- expect(shareCatch).toHaveBeenCalledWith(relic.id)
+ fireEvent.click(await screen.findByRole('button',{name:relic.name+' \uB354\uBCF4\uAE30'}))
+ expect((await screen.findByRole('menuitem',{name:/\uD310\uB9E4/})).getAttribute('aria-disabled')).toBe('true')
+ expect(screen.queryByRole('menuitem',{name:'\uC790\uB791\uD558\uAE30'})).toBeNull()
+ expect(shareCatch).not.toHaveBeenCalled();expect(navigate).not.toHaveBeenCalled()
  expect(equip).not.toHaveBeenCalled();expect(sell).not.toHaveBeenCalled()
 })
 it('shows a production capacity rejection without changing equipment or playing equip effects',async()=>{
@@ -141,15 +141,30 @@ it('clears a dismissed confirmation error while preserving an uncertain operatio
 it('keeps the inventory focused on owned relics and links to the shared item collection',async()=>{
  load.mockResolvedValue(state);render(<RelicPage/>)
  await screen.findByRole('button',{name:'유물 선택'})
- expect(screen.queryByRole('article')).toBeNull()
+ expect(screen.getByRole('article',{name:a.name})).toBeTruthy()
  expect(screen.getByRole('heading',{name:'장착 유물'}).querySelector('img')).toBeNull()
  expect(screen.getByRole('tab',{name:'보유 유물'}).getAttribute('aria-selected')).toBe('true')
  await findArticle(a.name);expect(screen.queryByRole('article',{name:b.name})).toBeNull()
- expect(screen.queryByRole('button',{name:'유물 도감'})).toBeNull()
- fireEvent.click(within(screen.getByRole('dialog')).getByRole('button',{name:'Close'}))
+ expect(screen.getByRole('button',{name:'유물 도감'})).toBeTruthy()
+ expect(screen.queryByRole('dialog')).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'유물 도감'}))
  expect(navigate).toHaveBeenCalledWith('/item-collection?tab=relic')
  expect(screen.queryByRole('article',{name:b.name})).toBeNull()
+})
+it('quotes a sale directly from the inline inventory and protects the last equipped copy',async()=>{
+ load.mockResolvedValue({...state,equippedId:'a',relics:[{...a,quantity:2},b]})
+ sell.mockResolvedValue({...state,equippedId:'a',relics:[{...a,quantity:1},b]})
+ render(<RelicPage/>)
+ const card=await screen.findByRole('article',{name:a.name})
+ const sale=within(card).getByRole('button',{name:`${a.name} 1개 판매 · 200 골드`})
+ fireEvent.click(sale)
+ expect(sell).not.toHaveBeenCalled()
+ expect(screen.getByRole('alertdialog').textContent).toContain('유물 1개를 판매해요')
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'판매하기'}))
+ await waitFor(()=>expect(sell).toHaveBeenCalledWith('a',expect.any(String),200))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(screen.getByRole('button',{name:`${a.name} 1개 판매 · 200 골드`})).toHaveProperty('disabled',true)
+ expect(await screen.findByRole('status')).toHaveProperty('textContent',`${a.name} 1개를 판매하고 200골드를 받았어요.`)
 })
 
 it('sorts crafted relics first and filters rarity without triggering a transaction',async()=>{

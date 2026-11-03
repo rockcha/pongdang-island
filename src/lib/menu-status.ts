@@ -14,6 +14,7 @@ export type MenuStatus = {
   savings: { account: SavingsAccount | null }
   merchant?: { ready: number; total: number; availableAt: string | null; resetsAt: string }
   flea?: { sellable: number }
+  relicRoulette?: { freeAvailable: boolean; resetsAt: string }
 }
 export async function readMenuStatus(signal: AbortSignal): Promise<MenuStatus> {
   const { data, error } = await createClient().rpc('menu_status').abortSignal(signal)

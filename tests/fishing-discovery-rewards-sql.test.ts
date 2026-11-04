@@ -241,6 +241,7 @@ it('denies forged discovery writes, cross-account reads, and trading synthetic r
  await rejected(()=>db.exec("insert into app_private.player_fishing_relics(user_id,relic_id) values(auth.uid(),'test-relic')"),'permission denied')
  await rejected(()=>db.exec("insert into public.fishing_relics(id,name,rarity,thumbnail_path) values('forged','Forged','mythic','x')"),'permission denied')
  await rejected(()=>db.exec("select app_private.fishing_discovery_candidates('rare')"),'permission denied')
+ await rejected(()=>db.exec("select app_private.pick_progress_map_piece('rare')"),'permission denied')
  await rejected(()=>db.query("select public.exchange_post('sell','collectible','relic-test-relic',1,'gold','gold',1,$1,'Relic sale')",[crypto.randomUUID()]),'INVALID_EXCHANGE_ASSET')
  await db.exec('reset role')
  const other=crypto.randomUUID();await db.query('insert into auth.users(id) values($1)',[other])
@@ -249,4 +250,74 @@ it('denies forged discovery writes, cross-account reads, and trading synthetic r
  await db.exec('reset role;set role anon')
  await rejected(()=>db.exec('select * from public.fishing_relics'),'permission denied')
  await db.exec('reset role')
+})
+
+async function addProgressMap(id:string,count=4){
+ await db.query("insert into public.regions(id,name,description,rarity,sort_order,image_path,requires_map_fragment) select $1,$1,'Progress fixture','rare',(select coalesce(max(sort_order),0)+1 from public.regions),$1||'.png',true",[id])
+ await db.query("insert into public.fishing_map_blueprints(region_id,piece_count,thumbnail_path,enabled,rarity) values($1,$2,'test.png',true,'rare')",[id,count])
+}
+async function ownMapPieces(region:string,pieces:number[],user=uid){
+ for(const piece of pieces)await db.query('insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number) values($1,$2,$3) on conflict do nothing',[user,region,piece])
+}
+async function sampleProgressMaps(draws:number){
+ // The argument depends on each draw so PostgreSQL invokes the volatile picker per row.
+ return (await db.query(`select p.region_id,count(*)::integer count,min(p.piece_number)::integer first_piece
+  from generate_series(1,$1) draw(n)
+  cross join lateral app_private.pick_progress_map_piece(case when draw.n>0 then 'rare'::public.game_rarity else null::public.game_rarity end) p
+  group by p.region_id order by p.region_id`,[draws])).rows
+}
+it('prioritizes the most collected eligible map and preserves an already prepared result',async()=>{
+ await category('map');await addProgressMap('progress-b')
+ await ownMapPieces('discovery-test',[1,2]);await ownMapPieces('progress-b',[1])
+ const first=await prepare()
+ expect(first.species.mapRegionId).toBe('discovery-test')
+ expect([3,4]).toContain(first.species.pieceNumber)
+ await ownMapPieces('progress-b',[2,3])
+ expect((await prepare(first.operation_id)).species).toEqual(first.species)
+ expect((await db.query('select inventory->>$2 remaining from public.player_wallets where user_id=$1',[uid,bait])).rows[0].remaining).toBe('999')
+ await finish(first.operation_id,false)
+ const next=await prepare()
+ expect(next.species.mapRegionId).toBe('progress-b');expect(next.species.pieceNumber).toBe(4)
+})
+it('gives tied regions equal odds despite unequal remaining piece counts',async()=>{
+ await addProgressMap('progress-b',8);await addProgressMap('progress-c')
+ await ownMapPieces('discovery-test',[1,2]);await ownMapPieces('progress-b',[1,2]);await ownMapPieces('progress-c',[1])
+ await db.exec('select setseed(0.125)')
+ const rows=await sampleProgressMaps(600)
+ expect(rows.map((row:any)=>row.region_id)).toEqual(['discovery-test','progress-b'])
+ expect(rows.reduce((sum:number,row:any)=>sum+row.count,0)).toBe(600)
+ for(const row of rows){expect(row.count).toBeGreaterThan(240);expect(row.count).toBeLessThan(360);expect(row.first_piece).toBeGreaterThan(2)}
+})
+it('still draws from eligible regions when every map has zero collected pieces',async()=>{
+ await addProgressMap('progress-b',8);await db.exec('select setseed(0.25)')
+ const rows=await sampleProgressMaps(150)
+ expect(rows.map((row:any)=>row.region_id)).toEqual(['discovery-test','progress-b'])
+ expect(rows.reduce((sum:number,row:any)=>sum+row.count,0)).toBe(150)
+})
+it('counts progress across grades but only selects pieces of the already rolled grade',async()=>{
+ await addProgressMap('progress-b')
+ await db.exec(`update public.fishing_map_blueprints set piece_rarities='["common","mythic","epic","rare"]'::jsonb where region_id='discovery-test'`)
+ await ownMapPieces('discovery-test',[1,2,3]);await ownMapPieces('progress-b',[1,2])
+ const best=(await db.query("select * from app_private.pick_progress_map_piece('rare')")).rows[0]
+ expect(best.region_id).toBe('discovery-test');expect(best.piece_number).toBe(4)
+ await db.exec(`update public.fishing_map_blueprints set piece_rarities='["common","mythic","epic","mythic"]'::jsonb where region_id='discovery-test'`)
+ expect((await db.query("select region_id from app_private.pick_progress_map_piece('rare')")).rows[0].region_id).toBe('progress-b')
+})
+it('excludes unlocked, disabled and complete maps and retains ordinary fallback',async()=>{
+ await category('map');await addProgressMap('progress-b');await addProgressMap('progress-c')
+ await ownMapPieces('discovery-test',[1,2,3]);await ownMapPieces('progress-b',[1,2]);await ownMapPieces('progress-c',[1])
+ await db.query("insert into public.player_map_fragments(user_id,region_id) values($1,'discovery-test')",[uid])
+ expect((await db.query("select region_id from app_private.pick_progress_map_piece('rare')")).rows[0].region_id).toBe('progress-b')
+ await db.exec("update public.fishing_map_blueprints set enabled=false where region_id='progress-b'")
+ expect((await db.query("select region_id from app_private.pick_progress_map_piece('rare')")).rows[0].region_id).toBe('progress-c')
+ await ownMapPieces('progress-c',[2,3,4])
+ expect((await db.query("select * from app_private.pick_progress_map_piece('rare')")).rows).toHaveLength(0)
+ expect((await prepare()).species.kind).toBe('trash')
+})
+it('uses only the current account progress when choosing a map',async()=>{
+ await addProgressMap('progress-b',8);await ownMapPieces('discovery-test',[1])
+ const other=crypto.randomUUID();await db.query('insert into auth.users(id) values($1)',[other]);await ownMapPieces('progress-b',[1,2,3,4,5,6,7],other)
+ expect((await db.query("select region_id from app_private.pick_progress_map_piece('rare')")).rows[0].region_id).toBe('discovery-test')
+ await db.query("select set_config('request.jwt.claim.sub',$1,false)",[other])
+ expect((await db.query("select region_id from app_private.pick_progress_map_piece('rare')")).rows[0].region_id).toBe('progress-b')
 })

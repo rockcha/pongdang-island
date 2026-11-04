@@ -1,0 +1,779 @@
+{
+  "results": [
+    {
+      "id": "shared-decor-moon-fishing-pongi-statue",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-moon-fishing-pongi-statue_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            105,
+            44,
+            299,
+            420
+          ],
+          "margin": 44,
+          "occupancy": 0.8203125,
+          "opaque": 67441,
+          "transparent": 149086,
+          "soft": 112034
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-rainbow-current-fountain",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-rainbow-current-fountain_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            84,
+            53,
+            344,
+            398
+          ],
+          "margin": 53,
+          "occupancy": 0.77734375,
+          "opaque": 67245,
+          "transparent": 190850,
+          "soft": 70065
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-ocean-treasure-chest",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-ocean-treasure-chest_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            78,
+            75,
+            359,
+            362
+          ],
+          "margin": 75,
+          "occupancy": 0.70703125,
+          "opaque": 98761,
+          "transparent": 160656,
+          "soft": 100678
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-diving-bell-lookout",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-diving-bell-lookout_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            101,
+            30,
+            308,
+            444
+          ],
+          "margin": 30,
+          "occupancy": 0.8671875,
+          "opaque": 97410,
+          "transparent": 161956,
+          "soft": 99085
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-star-whale-lighthouse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-star-whale-lighthouse_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            78,
+            48,
+            335,
+            412
+          ],
+          "margin": 48,
+          "occupancy": 0.8046875,
+          "opaque": 67160,
+          "transparent": 190576,
+          "soft": 70465
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-coral-palace-miniature",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-coral-palace-miniature_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            70,
+            40,
+            364,
+            411
+          ],
+          "margin": 40,
+          "occupancy": 0.802734375,
+          "opaque": 89912,
+          "transparent": 165523,
+          "soft": 95192
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-island-guardian-pongi-statue",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-island-guardian-pongi-statue_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            123,
+            39,
+            250,
+            436
+          ],
+          "margin": 37,
+          "occupancy": 0.8515625,
+          "opaque": 78435,
+          "transparent": 181717,
+          "soft": 79498
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-coral-flower-greenhouse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\epic\\shared-decor-coral-flower-greenhouse_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            80,
+            42,
+            351,
+            415
+          ],
+          "margin": 42,
+          "occupancy": 0.810546875,
+          "opaque": 107056,
+          "transparent": 152829,
+          "soft": 108396
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-fishing-king-pongi-sign",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-fishing-king-pongi-sign_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            87,
+            55,
+            338,
+            410
+          ],
+          "margin": 47,
+          "occupancy": 0.80078125,
+          "opaque": 95106,
+          "transparent": 165127,
+          "soft": 95947
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-wave-wall-clock",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-wave-wall-clock_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            94,
+            42,
+            320,
+            415
+          ],
+          "margin": 42,
+          "occupancy": 0.810546875,
+          "opaque": 81753,
+          "transparent": 178183,
+          "soft": 82985
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-pearl-clamshell-lamp",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-pearl-clamshell-lamp_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            98,
+            79,
+            316,
+            354
+          ],
+          "margin": 79,
+          "occupancy": 0.69140625,
+          "opaque": 79184,
+          "transparent": 181382,
+          "soft": 79971
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-pearl-clamshell-music-box",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-pearl-clamshell-music-box_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            100,
+            53,
+            312,
+            396
+          ],
+          "margin": 53,
+          "occupancy": 0.7734375,
+          "opaque": 86437,
+          "transparent": 172927,
+          "soft": 88237
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-fish-milk-vending-machine",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-fish-milk-vending-machine_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            109,
+            49,
+            286,
+            421
+          ],
+          "margin": 42,
+          "occupancy": 0.822265625,
+          "opaque": 102443,
+          "transparent": 157880,
+          "soft": 103496
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-otter-family-hourglass",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-otter-family-hourglass_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            35,
+            424,
+            444
+          ],
+          "margin": 33,
+          "occupancy": 0.8671875,
+          "opaque": 128619,
+          "transparent": 130766,
+          "soft": 129977
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-bread-hat-gull-postman",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-bread-hat-gull-postman_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            74,
+            57,
+            360,
+            408
+          ],
+          "margin": 47,
+          "occupancy": 0.796875,
+          "opaque": 85657,
+          "transparent": 174161,
+          "soft": 86804
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-conch-shell-bathhouse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-conch-shell-bathhouse_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            66,
+            394,
+            387
+          ],
+          "margin": 58,
+          "occupancy": 0.76953125,
+          "opaque": 108984,
+          "transparent": 151295,
+          "soft": 109867
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-little-jellyfish-lamp",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-little-jellyfish-lamp_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            116,
+            47,
+            278,
+            415
+          ],
+          "margin": 47,
+          "occupancy": 0.810546875,
+          "opaque": 54311,
+          "transparent": 205714,
+          "soft": 55303
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-pongi-shell-icecream-stall",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\rare\\shared-decor-pongi-shell-icecream-stall_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            75,
+            34,
+            362,
+            450
+          ],
+          "margin": 28,
+          "occupancy": 0.87890625,
+          "opaque": 119954,
+          "transparent": 136361,
+          "soft": 124169
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-little-log-shelter",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-little-log-shelter_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            84,
+            126,
+            343,
+            263
+          ],
+          "margin": 84,
+          "occupancy": 0.669921875,
+          "opaque": 67918,
+          "transparent": 192715,
+          "soft": 68611
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-pongi-footprint-sandcastle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-pongi-footprint-sandcastle_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            75,
+            42,
+            361,
+            419
+          ],
+          "margin": 42,
+          "occupancy": 0.818359375,
+          "opaque": 100330,
+          "transparent": 159523,
+          "soft": 101496
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-seaweed-flowerpot",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-seaweed-flowerpot_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            119,
+            54,
+            274,
+            413
+          ],
+          "margin": 45,
+          "occupancy": 0.806640625,
+          "opaque": 65773,
+          "transparent": 194097,
+          "soft": 66776
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-seashell-chair",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-seashell-chair_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            106,
+            65,
+            308,
+            394
+          ],
+          "margin": 53,
+          "occupancy": 0.76953125,
+          "opaque": 83467,
+          "transparent": 175424,
+          "soft": 85685
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-mini-fishing-rod-rack",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-mini-fishing-rod-rack_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            117,
+            39,
+            268,
+            428
+          ],
+          "margin": 39,
+          "occupancy": 0.8359375,
+          "opaque": 50479,
+          "transparent": 208457,
+          "soft": 51830
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-fish-bread-sign",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-fish-bread-sign_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            92,
+            392,
+            344
+          ],
+          "margin": 60,
+          "occupancy": 0.765625,
+          "opaque": 86353,
+          "transparent": 173869,
+          "soft": 87279
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-pongi-nap-basket",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-pongi-nap-basket_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            99,
+            398,
+            328
+          ],
+          "margin": 57,
+          "occupancy": 0.77734375,
+          "opaque": 98158,
+          "transparent": 162211,
+          "soft": 99002
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-seashell-footwash",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-seashell-footwash_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            88,
+            86,
+            343,
+            344
+          ],
+          "margin": 81,
+          "occupancy": 0.671875,
+          "opaque": 90409,
+          "transparent": 169934,
+          "soft": 91233
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-little-crab-umbrella-stand",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-little-crab-umbrella-stand_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            131,
+            35,
+            244,
+            436
+          ],
+          "margin": 35,
+          "occupancy": 0.8515625,
+          "opaque": 64193,
+          "transparent": 195950,
+          "soft": 65063
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-floating-bubble-balloons",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-floating-bubble-balloons_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            93,
+            48,
+            326,
+            424
+          ],
+          "margin": 40,
+          "occupancy": 0.828125,
+          "opaque": 64614,
+          "transparent": 194227,
+          "soft": 66459
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-fish-towel-clothesline",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-fish-towel-clothesline_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            96,
+            395,
+            327
+          ],
+          "margin": 57,
+          "occupancy": 0.771484375,
+          "opaque": 89717,
+          "transparent": 167771,
+          "soft": 92084
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-pongi-paw-bench",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-pongi-paw-bench_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            71,
+            77,
+            365,
+            374
+          ],
+          "margin": 61,
+          "occupancy": 0.73046875,
+          "opaque": 95409,
+          "transparent": 164756,
+          "soft": 96348
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-decor-sleepy-octopus-planter",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-200313\\decorations\\normal\\shared-decor-sleepy-octopus-planter_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            98,
+            72,
+            303,
+            368
+          ],
+          "margin": 72,
+          "occupancy": 0.71875,
+          "opaque": 83616,
+          "transparent": 176430,
+          "soft": 84807
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

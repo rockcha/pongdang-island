@@ -19486,6 +19486,595 @@
       "flip_with_direction": false,
       "travel_direction": "both",
       "weather_type": null
+    },
+    {
+      "id": "shared-decor-bread-hat-gull-postman",
+      "kind": "decoration",
+      "name": "빵모자 쓴 갈매기 우체부",
+      "description": "빵모자와 편지 가방을 갖추고 통통하게 서 있는 갈매기 우체부 장식.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 82,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-bread-hat-gull-postman_v1_thumbnail.png",
+      "sell_price": 140,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-conch-shell-bathhouse",
+      "kind": "decoration",
+      "name": "소라껍데기 목욕탕",
+      "description": "소라껍데기 욕탕의 물 위로 퐁이의 귀만 빼꼼 보이는 목욕탕.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 92,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-conch-shell-bathhouse_v1_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-coral-flower-greenhouse",
+      "kind": "decoration",
+      "name": "산호꽃 온실",
+      "description": "둥근 유리 지붕 아래 산호꽃이 가득 피어난 작은 온실.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 126,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-coral-flower-greenhouse_v1_thumbnail.png",
+      "sell_price": 740,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-coral-palace-miniature",
+      "kind": "decoration",
+      "name": "산호궁전 미니어처",
+      "description": "산호와 조개로 만든 작은 궁전. 창문마다 따뜻한 빛이 맺혀 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 130,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-coral-palace-miniature_v1_thumbnail.png",
+      "sell_price": 820,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-diving-bell-lookout",
+      "kind": "decoration",
+      "name": "잠수종 전망대",
+      "description": "유리 잠수종 안에 퐁이 인형과 산호를 꾸민 작은 전망대.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-diving-bell-lookout_v1_thumbnail.png",
+      "sell_price": 780,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-fish-bread-sign",
+      "kind": "decoration",
+      "name": "물고기빵 간판",
+      "description": "붕어빵 모양의 간판이 오늘의 어획을 알린다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-fish-bread-sign_v1_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-fish-milk-vending-machine",
+      "kind": "decoration",
+      "name": "물고기 우유 자판기",
+      "description": "물고기 무늬 버튼 아래 조개컵이 놓인 작은 우유 자판기.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-fish-milk-vending-machine_v1_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-fish-towel-clothesline",
+      "kind": "decoration",
+      "name": "생선 모양 빨랫줄",
+      "description": "작은 생선 모양 수건을 나란히 널어 둔 앙증맞은 빨랫줄.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-fish-towel-clothesline_v1_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-fishing-king-pongi-sign",
+      "kind": "decoration",
+      "name": "낚시왕 퐁이 입간판",
+      "description": "낚싯대를 들고 으쓱해하는 퐁이 그림이 반기는 입간판.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-fishing-king-pongi-sign_v1_thumbnail.png",
+      "sell_price": 130,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-floating-bubble-balloons",
+      "kind": "decoration",
+      "name": "둥실둥실 물방울 풍선",
+      "description": "낚싯줄에 매달린 물방울 풍선들이 작은 받침 위에 모여 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 82,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-floating-bubble-balloons_v1_thumbnail.png",
+      "sell_price": 44,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-island-guardian-pongi-statue",
+      "kind": "decoration",
+      "name": "섬 수호신 퐁이 석상",
+      "description": "물방울 왕관과 조개 방패를 갖춘 퐁이 수호신. 작은 섬을 든든히 지킨다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-island-guardian-pongi-statue_v1_thumbnail.png",
+      "sell_price": 800,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-little-crab-umbrella-stand",
+      "kind": "decoration",
+      "name": "꼬마 게 우산꽂이",
+      "description": "꼬마 게 모양 받침이 집게로 접힌 우산을 꼭 잡고 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-little-crab-umbrella-stand_v1_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-little-jellyfish-lamp",
+      "kind": "decoration",
+      "name": "꼬마 해파리 전등",
+      "description": "둥근 갓과 부드러운 촉수로 꾸민 해파리 모양 전등.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 84,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-little-jellyfish-lamp_v1_thumbnail.png",
+      "sell_price": 130,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-little-log-shelter",
+      "kind": "decoration",
+      "name": "꼬마 통나무 쉼터",
+      "description": "작은 수초가 붙은 통나무 쉼터. 동그란 입구 안쪽이 아늑하다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-little-log-shelter_v1_thumbnail.png",
+      "sell_price": 36,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-mini-fishing-rod-rack",
+      "kind": "decoration",
+      "name": "미니 낚싯대 거치대",
+      "description": "낚싯대 두 대를 가지런히 세워 둔 작은 나무 거치대.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-mini-fishing-rod-rack_v1_thumbnail.png",
+      "sell_price": 38,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-moon-fishing-pongi-statue",
+      "kind": "decoration",
+      "name": "달빛을 낚는 퐁이 동상",
+      "description": "퐁이가 낚싯대로 작은 달을 건져 올리는 조형물. 은은한 달빛이 낚싯줄 끝에 머문다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 116,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-moon-fishing-pongi-statue_v1_thumbnail.png",
+      "sell_price": 800,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-ocean-treasure-chest",
+      "kind": "decoration",
+      "name": "바다의 보물상자",
+      "description": "살짝 열린 뚜껑 사이로 진주와 반짝이는 조개가 흘러나오는 보물상자.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 108,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-ocean-treasure-chest_v1_thumbnail.png",
+      "sell_price": 760,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-otter-family-hourglass",
+      "kind": "decoration",
+      "name": "해달 가족 모래시계",
+      "description": "조개알이 담긴 유리 양쪽을 해달 가족 조각이 감싸 안은 모래시계.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 82,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-otter-family-hourglass_v1_thumbnail.png",
+      "sell_price": 150,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-pearl-clamshell-lamp",
+      "kind": "decoration",
+      "name": "진주 조개 램프",
+      "description": "열린 조개 안쪽의 진주가 포근한 빛을 머금은 램프.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-pearl-clamshell-lamp_v1_thumbnail.png",
+      "sell_price": 150,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-pearl-clamshell-music-box",
+      "kind": "decoration",
+      "name": "진주 조개 오르골",
+      "description": "진주와 작은 산호 정원을 담은 조개 오르골. 옆에 앙증맞은 태엽이 달려 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 84,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-pearl-clamshell-music-box_v1_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-pongi-footprint-sandcastle",
+      "kind": "decoration",
+      "name": "퐁이 발자국 모래성",
+      "description": "작은 모래성 앞에 퐁이 발자국이 콕콕 이어져 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 72,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-pongi-footprint-sandcastle_v1_thumbnail.png",
+      "sell_price": 38,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-pongi-nap-basket",
+      "kind": "decoration",
+      "name": "퐁이 낮잠 바구니",
+      "description": "폭신한 해초 이불 아래 퐁이의 코가 빼꼼 보이는 낮잠 바구니.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 74,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-pongi-nap-basket_v1_thumbnail.png",
+      "sell_price": 42,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-pongi-paw-bench",
+      "kind": "decoration",
+      "name": "퐁이 발바닥 벤치",
+      "description": "말랑한 퐁이 발바닥 모양 좌석이 놓인 작은 벤치.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 78,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-pongi-paw-bench_v1_thumbnail.png",
+      "sell_price": 48,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-pongi-shell-icecream-stall",
+      "kind": "decoration",
+      "name": "퐁이의 조개 아이스크림 가판대",
+      "description": "작은 물고기 과자를 꽂은 아이스크림을 진열한 퐁이의 조개 가판대.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 96,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-pongi-shell-icecream-stall_v1_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-rainbow-current-fountain",
+      "kind": "decoration",
+      "name": "무지개 해류 분수",
+      "description": "고리 모양 물줄기 사이로 작은 물고기 장식이 어우러진 분수. 물결에 무지개빛이 고인다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 122,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-rainbow-current-fountain_v1_thumbnail.png",
+      "sell_price": 840,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-seashell-chair",
+      "kind": "decoration",
+      "name": "조개껍데기 의자",
+      "description": "등받이는 큰 조개껍데기, 좌석은 포근한 진주빛 방석인 의자.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-seashell-chair_v1_thumbnail.png",
+      "sell_price": 36,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-seashell-footwash",
+      "kind": "decoration",
+      "name": "조개껍데기 발 씻는 곳",
+      "description": "작은 조개 대야 옆에 물고기 발자국 무늬를 새겨 둔 발 씻는 곳.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-seashell-footwash_v1_thumbnail.png",
+      "sell_price": 36,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-seaweed-flowerpot",
+      "kind": "decoration",
+      "name": "해초 화분",
+      "description": "동그란 화분에서 초록 해초가 무성하게 자라는 작은 장식.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 62,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-seaweed-flowerpot_v1_thumbnail.png",
+      "sell_price": 34,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-sleepy-octopus-planter",
+      "kind": "decoration",
+      "name": "졸린 문어 화분",
+      "description": "졸린 문어 장식이 작은 화분을 꼭 끌어안고 꾸벅거린다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 76,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/shared-decor-sleepy-octopus-planter_v1_thumbnail.png",
+      "sell_price": 48,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-star-whale-lighthouse",
+      "kind": "decoration",
+      "name": "별고래 등대",
+      "description": "고래 모양 등대가 작은 창과 등불로 별빛을 바다 쪽에 비춘다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 130,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/shared-decor-star-whale-lighthouse_v1_thumbnail.png",
+      "sell_price": 860,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "shared-decor-wave-wall-clock",
+      "kind": "decoration",
+      "name": "파도 시계",
+      "description": "파도 모양 시곗바늘과 조개 테두리가 어우러진 둥근 벽시계.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/shared-decor-wave-wall-clock_v1_thumbnail.png",
+      "sell_price": 140,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
     }
   ],
   "collectible_habitats": [
@@ -35359,6 +35948,2238 @@
     },
     {
       "species_id": "worn-seal-plush",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
       "region_id": "whitenight"
     }
   ],

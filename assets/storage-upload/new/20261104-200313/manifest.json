@@ -1,0 +1,1266 @@
+{
+  "formatVersion": 1,
+  "status": "production-released",
+  "batch": "assets/storage-upload/new/20261104-200313",
+  "generator": "built-in image_gen",
+  "priceReason": "User chose arithmetic means of 40 common, 150 rare, 800 epic for these new decorations.",
+  "items": [
+    {
+      "id": "shared-decor-moon-fishing-pongi-statue",
+      "name": "달빛을 낚는 퐁이 동상",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 800,
+      "size": 116,
+      "description": "퐁이가 낚싯대로 작은 달을 건져 올리는 조형물. 은은한 달빛이 낚싯줄 끝에 머문다.",
+      "concept": "A sculpted otter mascot Pongi seated on a polished stone pedestal, holding a fishing rod that lifts one small luminous crescent moon. The entire rod, moon and thin fishing line are visible, physically attached to the sculpture.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-moon-fishing-pongi-statue_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create one transparent-background isolated aquarium decoration game asset, square framing with generous 10% clear margins, entire ornament visible, readable at small size. Subject: 달빛을 낚는 퐁이 동상. A sculpted otter mascot Pongi seated on a polished stone pedestal, holding a fishing rod that lifts one small luminous crescent moon. The entire rod, moon and thin fishing line are visible, physically attached to the sculpture. Use reference 1 ONLY as style reference: soft polished fantasy storybook illustration, delicate controlled colored outlines, luminous pearl materials, subtle hand-painted dimensional shading. Do NOT copy the reference manta-ray silhouette, screen frame or checkerboard. Reference 2 ONLY supplies the Pongi otter character identity, NOT the cartoon rendering style. A single cohesive collectible ornament, three-quarter front view, no surrounding scenery, no horizon, no ground plane, no detached particles, no text or border, no opaque backdrop, no white/black matte halo. Glow stays inside the object and does not obscure its clean silhouette. True transparent alpha PNG.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-bb3dee2a-8fa1-4854-94d9-596c0ab417ef.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style",
+        "Pongi identity only"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 253937,
+        "sha256": "40da628083ada31bedae8255d564703d90d8f65d33c4f85795d9900a15a0a39e"
+      }
+    },
+    {
+      "id": "shared-decor-rainbow-current-fountain",
+      "name": "무지개 해류 분수",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 840,
+      "size": 122,
+      "description": "고리 모양 물줄기 사이로 작은 물고기 장식이 어우러진 분수. 물결에 무지개빛이 고인다.",
+      "concept": "An elegant shallow shell basin fountain with ONE looping ring-shaped stream of turquoise water with soft rainbow refraction and three tiny fish ornaments appearing to swim within that ring, all contained in one cohesive ornament.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-rainbow-current-fountain_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 무지개 해류 분수. An elegant shallow shell basin fountain with ONE looping ring-shaped stream of turquoise water with soft rainbow refraction and three tiny fish ornaments appearing to swim within that ring, all contained in one cohesive ornament. Reference 1 is ONLY the rendering-style reference: refined soft fantasy storybook illustration, delicate controlled colored outlines, dimensional hand-painted materials. Do not copy its manta silhouette, checkerboard or screen border. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-1cc9c057-9c20-401a-bc52-14a84ac10f9b.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 238748,
+        "sha256": "77f42165dd03bf59dc7faf3888bb46b83ffaca0fd9486a212a54dc5978a1785c"
+      }
+    },
+    {
+      "id": "shared-decor-ocean-treasure-chest",
+      "name": "바다의 보물상자",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 760,
+      "size": 108,
+      "description": "살짝 열린 뚜껑 사이로 진주와 반짝이는 조개가 흘러나오는 보물상자.",
+      "concept": "An ornate ocean treasure chest with lid partly open, overflowing with luminous pearls and shimmering seashells, marine patina and tasteful small coral details. Treasure is clustered at the chest, not scattered around the canvas.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-ocean-treasure-chest_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 바다의 보물상자. An ornate ocean treasure chest with lid partly open, overflowing with luminous pearls and shimmering seashells, marine patina and tasteful small coral details. Treasure is clustered at the chest, not scattered around the canvas. Reference 1 is ONLY the rendering-style reference: refined soft fantasy storybook illustration, delicate controlled colored outlines, dimensional hand-painted materials. Do not copy its manta silhouette, checkerboard or screen border. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-b7a7c118-a791-4e0d-9d74-e9980a814eb1.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 349772,
+        "sha256": "709f458babf3b7453e6a3dd7c59915d0c3eba31261c2cd0c2d9a4d981059dbd1"
+      }
+    },
+    {
+      "id": "shared-decor-diving-bell-lookout",
+      "name": "잠수종 전망대",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 780,
+      "size": 120,
+      "description": "유리 잠수종 안에 퐁이 인형과 산호를 꾸민 작은 전망대.",
+      "concept": "A transparent glass diving bell observatory with antique brass frame on a stable small base. Inside the bell are a tiny plush otter mascot Pongi and a carefully arranged coral garden, both clearly visible through the glass.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-diving-bell-lookout_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 잠수종 전망대. A transparent glass diving bell observatory with antique brass frame on a stable small base. Inside the bell are a tiny plush otter mascot Pongi and a carefully arranged coral garden, both clearly visible through the glass. Reference 1 is ONLY the rendering-style reference: refined soft fantasy storybook illustration, delicate controlled colored outlines, dimensional hand-painted materials. Do not copy its manta silhouette, checkerboard or screen border. Reference 2 is ONLY the identity of Pongi, the warm-brown otter mascot with cream muzzle and belly, black nose, small round ears and starfish hair clip. Retain the fantasy rendering style. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-2842e93b-6b71-4635-b735-e50a06023af9.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style",
+        "Pongi identity only"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 343717,
+        "sha256": "f04b1daa679df9d3d7fe9f60aaa25eb6fd93c2d817f6ce4074ce4e20201c2b84"
+      }
+    },
+    {
+      "id": "shared-decor-star-whale-lighthouse",
+      "name": "별고래 등대",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 860,
+      "size": 130,
+      "description": "고래 모양 등대가 작은 창과 등불로 별빛을 바다 쪽에 비춘다.",
+      "concept": "A sculptural whale-shaped lighthouse: the round whale body is the tower, whale tail as architectural finial, tiny lit windows and a compact star-shaped lantern facing outward. A small bounded beam close to the lantern, no environmental scenery.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-star-whale-lighthouse_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 별고래 등대. A sculptural whale-shaped lighthouse: the round whale body is the tower, whale tail as architectural finial, tiny lit windows and a compact star-shaped lantern facing outward. A small bounded beam close to the lantern, no environmental scenery. Reference 1 is ONLY the rendering-style reference: refined soft fantasy storybook illustration, delicate controlled colored outlines, dimensional hand-painted materials. Do not copy its manta silhouette, checkerboard or screen border. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-97c60c28-0ca3-48ae-9abf-965d603e6f0a.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 232382,
+        "sha256": "3ed05cf9bb269e327ce1e55c52110e7c56e5514191784807583c05607428fc2b"
+      }
+    },
+    {
+      "id": "shared-decor-coral-palace-miniature",
+      "name": "산호궁전 미니어처",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 820,
+      "size": 130,
+      "description": "산호와 조개로 만든 작은 궁전. 창문마다 따뜻한 빛이 맺혀 있다.",
+      "concept": "An exquisite miniature palace built from pink coral branches and pearlescent seashells, several small curved towers, arched doors and warm illuminated windows, unified small oval base.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-coral-palace-miniature_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 산호궁전 미니어처. An exquisite miniature palace built from pink coral branches and pearlescent seashells, several small curved towers, arched doors and warm illuminated windows, unified small oval base. Reference 1 is ONLY the rendering-style reference: refined soft fantasy storybook illustration, delicate controlled colored outlines, dimensional hand-painted materials. Do not copy its manta silhouette, checkerboard or screen border. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-fb34080e-4694-4813-a476-7516426c46cc.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 324428,
+        "sha256": "980d05c93d97d71cbf05b1d0e500459be2c68c4288c6b3c339d65f10cd2cfbd9"
+      }
+    },
+    {
+      "id": "shared-decor-island-guardian-pongi-statue",
+      "name": "섬 수호신 퐁이 석상",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 800,
+      "size": 120,
+      "description": "물방울 왕관과 조개 방패를 갖춘 퐁이 수호신. 작은 섬을 든든히 지킨다.",
+      "concept": "A stone otter mascot Pongi guardian statue wearing a waterdrop-shaped crown and holding a seashell shield, dignified yet friendly, carved pale stone with restrained teal and gold inlay, whole statue and pedestal.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-island-guardian-pongi-statue_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 섬 수호신 퐁이 석상. A stone otter mascot Pongi guardian statue wearing a waterdrop-shaped crown and holding a seashell shield, dignified yet friendly, carved pale stone with restrained teal and gold inlay, whole statue and pedestal. Reference 1 is ONLY the rendering-style reference: refined soft fantasy storybook illustration, delicate controlled colored outlines, dimensional hand-painted materials. Do not copy its manta silhouette, checkerboard or screen border. Reference 2 is ONLY the identity of Pongi, the warm-brown otter mascot with cream muzzle and belly, black nose, small round ears and starfish hair clip. Retain the fantasy rendering style. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-91f585e9-400e-4a8b-ac6a-ef5d74c671a2.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style",
+        "Pongi identity only"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 262214,
+        "sha256": "4b0da4f4cc5a64badb68bd4c27c7f507e5598484233280faf0fdd96b602137d8"
+      }
+    },
+    {
+      "id": "shared-decor-coral-flower-greenhouse",
+      "name": "산호꽃 온실",
+      "rarity": "epic",
+      "kind": "decoration",
+      "sell_price": 740,
+      "size": 126,
+      "description": "둥근 유리 지붕 아래 산호꽃이 가득 피어난 작은 온실.",
+      "concept": "An enchanting miniature coral-flower greenhouse with a domed transparent glass roof, delicate aged-brass ribs and doorway, filled with pink peach and lilac coral blossoms, clear silhouette and stable oval base.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/epic/shared-decor-coral-flower-greenhouse_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 산호꽃 온실. An enchanting miniature coral-flower greenhouse with a domed transparent glass roof, delicate aged-brass ribs and doorway, filled with pink peach and lilac coral blossoms, clear silhouette and stable oval base. Reference 1 is ONLY the rendering-style reference: refined soft fantasy storybook illustration, delicate controlled colored outlines, dimensional hand-painted materials. Do not copy its manta silhouette, checkerboard or screen border. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-97703de4-d2d6-40a5-8c8e-68ad0e1419b9.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 372897,
+        "sha256": "99b6534fcb26b39eac20ce8ad8ddf1f0bb0e38d9d9906c2d48ad085200bc2c7d"
+      }
+    },
+    {
+      "id": "shared-decor-fishing-king-pongi-sign",
+      "name": "낚시왕 퐁이 입간판",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 130,
+      "size": 76,
+      "description": "낚싯대를 들고 으쓱해하는 퐁이 그림이 반기는 입간판.",
+      "concept": "A freestanding wooden sandwich-board sign with a proud smiling Pongi otter mascot holding a fishing rod painted on the board; tiny carved fish emblem instead of lettering, sturdy feet, no extra character outside the sign.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-fishing-king-pongi-sign_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 낚시왕 퐁이 입간판. A freestanding wooden sandwich-board sign with a proud smiling Pongi otter mascot holding a fishing rod painted on the board; tiny carved fish emblem instead of lettering, sturdy feet, no extra character outside the sign. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. When Pongi appears, match the reference otter's warm-brown fur, cream muzzle and belly, round ears, black nose and starfish hair clip. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-be9ff2ca-ea79-4a7e-9371-59190205c639.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 271894,
+        "sha256": "a17befb5fdf5e7ace1e7a98981437c41991a4c7df07eed817bc39a96ace5ed30"
+      }
+    },
+    {
+      "id": "shared-decor-wave-wall-clock",
+      "name": "파도 시계",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 140,
+      "size": 78,
+      "description": "파도 모양 시곗바늘과 조개 테두리가 어우러진 둥근 벽시계.",
+      "concept": "A round hanging wall clock with stylized ocean-wave shaped clock hands, ivory shell rim, twelve tiny shell hour markers, no numbers or letters, face and hanging loop clearly visible.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-wave-wall-clock_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 파도 시계. A round hanging wall clock with stylized ocean-wave shaped clock hands, ivory shell rim, twelve tiny shell hour markers, no numbers or letters, face and hanging loop clearly visible. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-60f5cb9f-d04b-4722-b25d-a68e6378a154.png",
+      "placement_y_range": [
+        0.28,
+        0.58
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 220081,
+        "sha256": "bf1dbd245bf0e74e44368c19a85bc7fe0b3907d70a30853dff1d263870f55ad4"
+      }
+    },
+    {
+      "id": "shared-decor-pearl-clamshell-lamp",
+      "name": "진주 조개 램프",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 150,
+      "size": 78,
+      "description": "열린 조개 안쪽의 진주가 포근한 빛을 머금은 램프.",
+      "concept": "A pearlescent pink clam shell standing open on a tiny rounded base, one luminous cream pearl inside serving as a warm lamp. Glow stays inside and very close to the shell, clean opaque outer edge.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-pearl-clamshell-lamp_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 진주 조개 램프. A pearlescent pink clam shell standing open on a tiny rounded base, one luminous cream pearl inside serving as a warm lamp. Glow stays inside and very close to the shell, clean opaque outer edge. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-6f0ad004-e1f1-40c7-a648-602720804f14.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 227460,
+        "sha256": "1b9de4d4fe90a0cbbbd11a5ad64205ab74401ea47fa9c933bbb0f3130b5b1fc9"
+      }
+    },
+    {
+      "id": "shared-decor-pearl-clamshell-music-box",
+      "name": "진주 조개 오르골",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 160,
+      "size": 84,
+      "description": "진주와 작은 산호 정원을 담은 조개 오르골. 옆에 앙증맞은 태엽이 달려 있다.",
+      "concept": "An open pearly clam-shell music box with a tiny coral garden and pearl inside, a clearly visible small golden winding key on its side, curved decorative feet. No real music notes floating outside.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-pearl-clamshell-music-box_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 진주 조개 오르골. An open pearly clam-shell music box with a tiny coral garden and pearl inside, a clearly visible small golden winding key on its side, curved decorative feet. No real music notes floating outside. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-a7162c82-4acc-43e8-b202-37bff8c6426d.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 283178,
+        "sha256": "ccb1622d0c463b5573f226a7c81efd6edd2b61a963d838db60a7cb96d625db92"
+      }
+    },
+    {
+      "id": "shared-decor-fish-milk-vending-machine",
+      "name": "물고기 우유 자판기",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 170,
+      "size": 90,
+      "description": "물고기 무늬 버튼 아래 조개컵이 놓인 작은 우유 자판기.",
+      "concept": "A cute compact pastel-cream milk vending machine decorated with a fish emblem, three fish-shaped buttons, a bottle display, and one small shell cup under its milk nozzle. No labels or lettering.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-fish-milk-vending-machine_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 물고기 우유 자판기. A cute compact pastel-cream milk vending machine decorated with a fish emblem, three fish-shaped buttons, a bottle display, and one small shell cup under its milk nozzle. No labels or lettering. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-e86ca213-a3bc-46f0-886f-20860bc8e620.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 270365,
+        "sha256": "a4e2493f82fbe43a0458b8815a1206e551dbed527859f7ea9065b77e7f858d40"
+      }
+    },
+    {
+      "id": "shared-decor-otter-family-hourglass",
+      "name": "해달 가족 모래시계",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 150,
+      "size": 82,
+      "description": "조개알이 담긴 유리 양쪽을 해달 가족 조각이 감싸 안은 모래시계.",
+      "concept": "A clear-glass hourglass filled with tiny shell beads instead of sand, warmly framed by two parent otter figures and one baby otter nestled at the base, soft Pongi-family faces, full stable ornament.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-otter-family-hourglass_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 해달 가족 모래시계. A clear-glass hourglass filled with tiny shell beads instead of sand, warmly framed by two parent otter figures and one baby otter nestled at the base, soft Pongi-family faces, full stable ornament. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. When Pongi appears, match the reference otter's warm-brown fur, cream muzzle and belly, round ears, black nose and starfish hair clip. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-dfa71169-dc71-4dd4-b519-981c4ebbabd4.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 371918,
+        "sha256": "76eb3dd3aa48f8b9b563b740afad125eddc2693886e77cf3c3f92daa4e77acd4"
+      }
+    },
+    {
+      "id": "shared-decor-bread-hat-gull-postman",
+      "name": "빵모자 쓴 갈매기 우체부",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 140,
+      "size": 82,
+      "description": "빵모자와 편지 가방을 갖추고 통통하게 서 있는 갈매기 우체부 장식.",
+      "concept": "A plump white seagull postman figurine standing on a little stable stone base, wearing a bread-roll hat and a brown mail satchel filled with envelopes, charming tiny orange beak and feet, full body.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-bread-hat-gull-postman_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 빵모자 쓴 갈매기 우체부. A plump white seagull postman figurine standing on a little stable stone base, wearing a bread-roll hat and a brown mail satchel filled with envelopes, charming tiny orange beak and feet, full body. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-90180e0d-5420-4ed1-a2a0-d551ce31758a.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 227920,
+        "sha256": "c53ec0d981ce39cf402ff78a16ebd7a17cd29c8d73256293b57ef072cfcef2ed"
+      }
+    },
+    {
+      "id": "shared-decor-conch-shell-bathhouse",
+      "name": "소라껍데기 목욕탕",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 170,
+      "size": 92,
+      "description": "소라껍데기 욕탕의 물 위로 퐁이의 귀만 빼꼼 보이는 목욕탕.",
+      "concept": "A large curled conch-shell bathtub containing a cozy warm-water pool with only the top of Pongi otter's head and two round ears peeking above the water, a tiny folded towel on the rim. No detached steam cloud.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-conch-shell-bathhouse_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 소라껍데기 목욕탕. A large curled conch-shell bathtub containing a cozy warm-water pool with only the top of Pongi otter's head and two round ears peeking above the water, a tiny folded towel on the rim. No detached steam cloud. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. When Pongi appears, match the reference otter's warm-brown fur, cream muzzle and belly, round ears, black nose and starfish hair clip. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-9ffc350a-dde2-4cd1-ab13-bbb8b2137269.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 308237,
+        "sha256": "1983f728551825e4fc62868b331866e3c507b5cdea49f9c932c1b89d17206fe5"
+      }
+    },
+    {
+      "id": "shared-decor-little-jellyfish-lamp",
+      "name": "꼬마 해파리 전등",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 130,
+      "size": 84,
+      "description": "둥근 갓과 부드러운 촉수로 꾸민 해파리 모양 전등.",
+      "concept": "A cute jellyfish-shaped hanging pendant lamp, rounded pastel-mint glass dome with a warm inner light and short softly curled translucent tentacle tassels, a short cord and top hanging hook entirely in frame.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-little-jellyfish-lamp_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 꼬마 해파리 전등. A cute jellyfish-shaped hanging pendant lamp, rounded pastel-mint glass dome with a warm inner light and short softly curled translucent tentacle tassels, a short cord and top hanging hook entirely in frame. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-3be7e504-ec91-40ad-8e5b-b9dc2c766fef.png",
+      "placement_y_range": [
+        0.28,
+        0.58
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 166666,
+        "sha256": "3c3aaee2ce39ec05f34fd90c1a9e28e053ba1e6d3b2d74b08ff18c26827790b9"
+      }
+    },
+    {
+      "id": "shared-decor-pongi-shell-icecream-stall",
+      "name": "퐁이의 조개 아이스크림 가판대",
+      "rarity": "rare",
+      "kind": "decoration",
+      "sell_price": 160,
+      "size": 96,
+      "description": "작은 물고기 과자를 꽂은 아이스크림을 진열한 퐁이의 조개 가판대.",
+      "concept": "A miniature seashell ice cream stand with a shell-shaped canopy, small Pongi otter vendor behind the counter, two ice cream cones each topped with a tiny fish-shaped biscuit, compact playful display, no text.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/rare/shared-decor-pongi-shell-icecream-stall_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 퐁이의 조개 아이스크림 가판대. A miniature seashell ice cream stand with a shell-shaped canopy, small Pongi otter vendor behind the counter, two ice cream cones each topped with a tiny fish-shaped biscuit, compact playful display, no text. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. When Pongi appears, match the reference otter's warm-brown fur, cream muzzle and belly, round ears, black nose and starfish hair clip. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-639d2963-c72c-4d55-879a-550185781b22.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 349974,
+        "sha256": "71534b2801e756c65d2c0b645320d9e4f605907ca76298ac66c25600d87f8e28"
+      }
+    },
+    {
+      "id": "shared-decor-little-log-shelter",
+      "name": "꼬마 통나무 쉼터",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 36,
+      "size": 70,
+      "description": "작은 수초가 붙은 통나무 쉼터. 동그란 입구 안쪽이 아늑하다.",
+      "concept": "A short hollow log shelter with one round tunnel entrance, a few tiny seaweed leaves attached to the side and soft moss on top, simple cozy aquarium ornament.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-little-log-shelter_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 꼬마 통나무 쉼터. A short hollow log shelter with one round tunnel entrance, a few tiny seaweed leaves attached to the side and soft moss on top, simple cozy aquarium ornament. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-3aa716aa-9631-4204-8a1d-38d0467c7a2a.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 178767,
+        "sha256": "e0a1419879f67f9b784fda4924fd7375a8396760690f7a1745de584376aa47eb"
+      }
+    },
+    {
+      "id": "shared-decor-pongi-footprint-sandcastle",
+      "name": "퐁이 발자국 모래성",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 38,
+      "size": 72,
+      "description": "작은 모래성 앞에 퐁이 발자국이 콕콕 이어져 있다.",
+      "concept": "A small two-tower sandcastle on its own compact oval sand base, three clear otter paw prints leading to its little doorway, a tiny shell atop one tower, no broad ground plane.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-pongi-footprint-sandcastle_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 퐁이 발자국 모래성. A small two-tower sandcastle on its own compact oval sand base, three clear otter paw prints leading to its little doorway, a tiny shell atop one tower, no broad ground plane. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-42b29f8d-fcc3-41df-8c43-acaeaf4e9485.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 284291,
+        "sha256": "2a4e20e25a03b22fd0cca6a43c60865990cc8c56d1c3922f169da9934f97911e"
+      }
+    },
+    {
+      "id": "shared-decor-seaweed-flowerpot",
+      "name": "해초 화분",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 34,
+      "size": 62,
+      "description": "동그란 화분에서 초록 해초가 무성하게 자라는 작은 장식.",
+      "concept": "A small round terracotta pot containing a tidy lush cluster of gently curved green seaweed fronds, a tiny shell attached to the pot, simple appealing silhouette.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-seaweed-flowerpot_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 해초 화분. A small round terracotta pot containing a tidy lush cluster of gently curved green seaweed fronds, a tiny shell attached to the pot, simple appealing silhouette. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-f92ff3c4-4aee-41f2-8dd3-f9c1892f4a16.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 185665,
+        "sha256": "4aa626e0054bec29839d1235fb78ca64bb04cabc8cd6d4db4220b0308ecb8625"
+      }
+    },
+    {
+      "id": "shared-decor-seashell-chair",
+      "name": "조개껍데기 의자",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 36,
+      "size": 64,
+      "description": "등받이는 큰 조개껍데기, 좌석은 포근한 진주빛 방석인 의자.",
+      "concept": "A miniature shell chair with a pink scallop-shell backrest, pearly cream cushion and four short coral-like legs, whole empty chair, no character.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-seashell-chair_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 조개껍데기 의자. A miniature shell chair with a pink scallop-shell backrest, pearly cream cushion and four short coral-like legs, whole empty chair, no character. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-19cbdd78-5a50-43d4-b18c-ea4846d8ab09.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 209415,
+        "sha256": "0ac19b5e770aaae31f189ae94cf1f806afad26aa68a99606ae43ebc8170f9a3a"
+      }
+    },
+    {
+      "id": "shared-decor-mini-fishing-rod-rack",
+      "name": "미니 낚싯대 거치대",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 38,
+      "size": 70,
+      "description": "낚싯대 두 대를 가지런히 세워 둔 작은 나무 거치대.",
+      "concept": "A compact wooden fishing rod stand holding two miniature fishing rods, small neatly attached reels and bobbers, entire rod tips and stand visible, no long loose lines.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-mini-fishing-rod-rack_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 미니 낚싯대 거치대. A compact wooden fishing rod stand holding two miniature fishing rods, small neatly attached reels and bobbers, entire rod tips and stand visible, no long loose lines. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-4572055e-b533-421c-97e4-eeaf12445d9e.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 168659,
+        "sha256": "4f620c54840cf2edd53b6a7286f4b1898b9336dd73e1ff09d737f733f55e5c1a"
+      }
+    },
+    {
+      "id": "shared-decor-fish-bread-sign",
+      "name": "물고기빵 간판",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 40,
+      "size": 70,
+      "description": "붕어빵 모양의 간판이 오늘의 어획을 알린다.",
+      "concept": "A freestanding fish-shaped golden taiyaki pastry shop sign on two small wooden feet. The fish-shaped board has the exact clean Korean lettering '오늘의 어획!' painted on it. No other lettering.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-fish-bread-sign_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 물고기빵 간판. A freestanding fish-shaped golden taiyaki pastry shop sign on two small wooden feet. The fish-shaped board has the exact clean Korean lettering '오늘의 어획!' painted on it. No other lettering. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. Keep the requested Korean sign text exact.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-2ba496d3-c295-44ae-a086-85d5a99a771f.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 242074,
+        "sha256": "9db853cb75ab91071332f672cad3c7386c2bfaf1646af802db66d790f21dd183"
+      }
+    },
+    {
+      "id": "shared-decor-pongi-nap-basket",
+      "name": "퐁이 낮잠 바구니",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 42,
+      "size": 74,
+      "description": "폭신한 해초 이불 아래 퐁이의 코가 빼꼼 보이는 낮잠 바구니.",
+      "concept": "A cozy woven wicker basket with Pongi the brown otter asleep tucked under a fluffy green seaweed blanket, only its cute nose and a small part of the face peeking out, whole basket visible.",
+      "pongi": true,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-pongi-nap-basket_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 퐁이 낮잠 바구니. A cozy woven wicker basket with Pongi the brown otter asleep tucked under a fluffy green seaweed blanket, only its cute nose and a small part of the face peeking out, whole basket visible. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. When Pongi appears, match the reference otter's warm-brown fur, cream muzzle and belly, round ears, black nose and starfish hair clip. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-9848fabe-9ffb-40e4-a810-0b15c2fd1f0b.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 296205,
+        "sha256": "032c56a1ace0773a7f80263b61da2bcf9097a0900d37cab51f535eaa1a6d2f3e"
+      }
+    },
+    {
+      "id": "shared-decor-seashell-footwash",
+      "name": "조개껍데기 발 씻는 곳",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 36,
+      "size": 64,
+      "description": "작은 조개 대야 옆에 물고기 발자국 무늬를 새겨 둔 발 씻는 곳.",
+      "concept": "A shallow scallop-shell foot-washing basin filled with a little clear water, on a compact pebble base with two tiny stylized fish-footprint motifs impressed beside it, all one miniature ornament.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-seashell-footwash_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 조개껍데기 발 씻는 곳. A shallow scallop-shell foot-washing basin filled with a little clear water, on a compact pebble base with two tiny stylized fish-footprint motifs impressed beside it, all one miniature ornament. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-848224aa-d2ee-4d04-9f60-917ee6de49dc.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 252645,
+        "sha256": "a05c23c70cf4db5207c0b5a8787c500089f954a10bbb592f664db9c180d8ca8d"
+      }
+    },
+    {
+      "id": "shared-decor-little-crab-umbrella-stand",
+      "name": "꼬마 게 우산꽂이",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 40,
+      "size": 70,
+      "description": "꼬마 게 모양 받침이 집게로 접힌 우산을 꼭 잡고 있다.",
+      "concept": "A cute small orange crab-shaped umbrella stand figurine holding one neatly folded pastel umbrella securely between its claws, stable base, full umbrella tip visible.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-little-crab-umbrella-stand_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 꼬마 게 우산꽂이. A cute small orange crab-shaped umbrella stand figurine holding one neatly folded pastel umbrella securely between its claws, stable base, full umbrella tip visible. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-892b0ec4-55df-4951-a5cb-7d11a3f1871b.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 181922,
+        "sha256": "0a0fb842182b6716eb52e808a542c61758a53896d936c4ac3caa8a2c3172900b"
+      }
+    },
+    {
+      "id": "shared-decor-floating-bubble-balloons",
+      "name": "둥실둥실 물방울 풍선",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 44,
+      "size": 82,
+      "description": "낚싯줄에 매달린 물방울 풍선들이 작은 받침 위에 모여 있다.",
+      "concept": "A cluster of five translucent waterdrop-shaped bubble balloons with visible pastel edges, tied by delicate fishing lines to one small seashell weight at the bottom, full decorative bundle visible.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-floating-bubble-balloons_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 둥실둥실 물방울 풍선. A cluster of five translucent waterdrop-shaped bubble balloons with visible pastel edges, tied by delicate fishing lines to one small seashell weight at the bottom, full decorative bundle visible. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-b3e2725f-90cb-4a26-9cd9-3917f9d8f7ce.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 187948,
+        "sha256": "715c84e5218fb8afc3a53c6cfc5f88387cef6528685dc8e264148420b072729c"
+      }
+    },
+    {
+      "id": "shared-decor-fish-towel-clothesline",
+      "name": "생선 모양 빨랫줄",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 40,
+      "size": 80,
+      "description": "작은 생선 모양 수건을 나란히 널어 둔 앙증맞은 빨랫줄.",
+      "concept": "A tiny clothesline between two short wooden posts on a compact stable base, three small fish-shaped pastel towels clipped neatly along the line, no real fish or animals.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-fish-towel-clothesline_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 생선 모양 빨랫줄. A tiny clothesline between two short wooden posts on a compact stable base, three small fish-shaped pastel towels clipped neatly along the line, no real fish or animals. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-a1692c83-7b86-471d-849c-2fa686ae9ffe.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 276740,
+        "sha256": "4f3ad824b9ecc8f9d2e945e59bcb2e5b5523235fa320ded9efaf68146e786984"
+      }
+    },
+    {
+      "id": "shared-decor-pongi-paw-bench",
+      "name": "퐁이 발바닥 벤치",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 48,
+      "size": 78,
+      "description": "말랑한 퐁이 발바닥 모양 좌석이 놓인 작은 벤치.",
+      "concept": "A small bench whose cushioned seat and back are shaped like cute otter paw pads, warm cream and peach colors, two sturdy curved wooden supports, clean cozy design, no character.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-pongi-paw-bench_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 퐁이 발바닥 벤치. A small bench whose cushioned seat and back are shaped like cute otter paw pads, warm cream and peach colors, two sturdy curved wooden supports, clean cozy design, no character. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-51d9e9ea-084d-46ac-8ae5-3ba60d75b5a8.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 202439,
+        "sha256": "9e19cc4e2189a766e92db989584127dc2a732b1a29ab017aaabb8a20abd0eb45"
+      }
+    },
+    {
+      "id": "shared-decor-sleepy-octopus-planter",
+      "name": "졸린 문어 화분",
+      "rarity": "common",
+      "kind": "decoration",
+      "sell_price": 48,
+      "size": 76,
+      "description": "졸린 문어 장식이 작은 화분을 꼭 끌어안고 꾸벅거린다.",
+      "concept": "A sleepy small lavender octopus planter ornament with its short curled arms hugging a terracotta pot containing a few seaweed sprigs, half-closed friendly eyes, one cohesive figurine.",
+      "pongi": false,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": 0,
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "frames": 1,
+      "native_region_id": null,
+      "weather_type": null,
+      "thumbnail_path": "decorations/normal/shared-decor-sleepy-octopus-planter_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "prompt": "Create ONE isolated transparent PNG aquarium decoration collectible, square canvas, full object entirely visible, generous 10 percent clear margins. Subject: 졸린 문어 화분. A sleepy small lavender octopus planter ornament with its short curled arms hugging a terracotta pot containing a few seaweed sprigs, half-closed friendly eyes, one cohesive figurine. Reference 1 supplies the existing Pongi game's warm clean cartoon style: rounded shapes, crisp warm-brown outlines, soft dimensional cel shading and a friendly polished mobile-game finish. Do not copy its fishing pose into unrelated objects. The animal in the reference is a style guide only; do not add an otter to this object. Three-quarter front view, compact cohesive freestanding ornament, readable at small size. True transparent alpha background, clean cutout edges with absolutely no white/gray/black matte, NO halo, NO bloom or exterior glow, no detached sparkle particles, no environment, no horizon or broad floor, no surrounding water or scene. Any light is contained INSIDE the object. Keep every outer contour solid and crisp; preserve transparency through glass and gaps. No border, watermark or captions. No written text.",
+      "referenceImages": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sourcePath": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-b481fd5e-c72a-48bb-85c0-82b6821ee042.png",
+      "placement_y_range": [
+        0.78,
+        0.94
+      ],
+      "referenceRoles": [
+        "style"
+      ],
+      "final": {
+        "width": 512,
+        "height": 512,
+        "bytes": 224360,
+        "sha256": "93724e712c913e731f951c378b684cbd6d6ea62b554f4e19c59c548a23ce3d26"
+      }
+    }
+  ],
+  "releasedAt": "2026-11-04T11:27:05.000Z",
+  "review": {
+    "backgrounds": [
+      "light",
+      "dark"
+    ],
+    "all31Reviewed": true,
+    "technicalAudit": "final-audit.json",
+    "publicImages": "31 SHA-256 matches; cache max-age=31536000",
+    "physicalDeviceCheck": false
+  }
+}

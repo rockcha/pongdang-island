@@ -15286,6 +15286,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-amber-sperm-whale",
+      "kind": "fish",
+      "name": "호박빛 향유고래",
+      "description": "호박빛 물결 무늬를 두른 커다란 향유고래. 포근한 금빛 배를 반짝이며 느긋하게 헤엄친다.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.75",
+      "speed": "0.017",
+      "size": 168,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-amber-sperm-whale_v1_thumbnail.png",
+      "sell_price": 1100,
+      "sprite_sheet_path": "fish/epic/shared-amber-sperm-whale_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-apricot-tongue-snail",
       "kind": "fish",
       "name": "살구무늬 혀고둥",
@@ -15682,6 +15700,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-jadeback-humpback",
+      "kind": "fish",
+      "name": "청옥등 혹등고래",
+      "description": "청옥빛 등이 물살을 따라 은은히 빛나는 혹등고래. 긴 가슴지느러미를 부드럽게 흘리며 바다를 누빈다.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.65",
+      "speed": "0.016",
+      "size": 174,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-jadeback-humpback_v1_thumbnail.png",
+      "sell_price": 1150,
+      "sprite_sheet_path": "fish/epic/shared-jadeback-humpback_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-lapis-crown-jelly",
       "kind": "fish",
       "name": "청금석 왕관해파리",
@@ -16006,6 +16042,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-silkback-fin-whale",
+      "kind": "fish",
+      "name": "비단등 긴수염고래",
+      "description": "비단처럼 매끄러운 등에 푸른 보랏빛이 흐르는 긴수염고래. 넓은 꼬리를 우아하게 흔들며 유영한다.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.65",
+      "speed": "0.019",
+      "size": 182,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-silkback-fin-whale_v1_thumbnail.png",
+      "sell_price": 1000,
+      "sprite_sheet_path": "fish/epic/shared-silkback-fin-whale_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-silver-ghost-shark",
       "kind": "fish",
       "name": "은빛 유령상어",
@@ -16036,6 +16090,24 @@
       "thumbnail_path": "fish/normal/shared-silver-salmon_thumbnail.png",
       "sell_price": 43,
       "sprite_sheet_path": "fish/normal/shared-silver-salmon_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-sunset-belly-blue-whale",
+      "kind": "fish",
+      "name": "노을배 대왕고래",
+      "description": "푸른 몸과 노을빛 배가 어우러진 거대한 대왕고래. 천천히 꼬리를 저으며 따스한 빛을 물결에 남긴다.",
+      "swim_y_min": "0.3",
+      "swim_y_max": "0.7",
+      "speed": "0.014",
+      "size": 190,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-sunset-belly-blue-whale_v1_thumbnail.png",
+      "sell_price": 1200,
+      "sprite_sheet_path": "fish/epic/shared-sunset-belly-blue-whale_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -29640,6 +29712,78 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-amber-sperm-whale",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-apricot-tongue-snail",
       "region_id": "bluegrove"
     },
@@ -30744,6 +30888,78 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-jadeback-humpback",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-lapis-crown-jelly",
       "region_id": "bluegrove"
     },
@@ -31636,6 +31852,78 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-silkback-fin-whale",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-silver-ghost-shark",
       "region_id": "bluegrove"
     },
@@ -31729,6 +32017,78 @@
     },
     {
       "species_id": "shared-silver-salmon",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "hangang"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "mechsanctum"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "pharaoh"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-sunset-belly-blue-whale",
       "region_id": "whitenight"
     },
     {

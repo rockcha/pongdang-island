@@ -1,0 +1,294 @@
+[
+  {
+    "id": "shared-amber-sperm-whale",
+    "cell": 691,
+    "padding": 32,
+    "translation": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -25,
+        "dy": 0,
+        "rmse": 14.73762297197881
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 14.830211906280544
+      },
+      {
+        "frame": 3,
+        "dx": -25,
+        "dy": -26,
+        "rmse": 13.028695774337772
+      }
+    ],
+    "frames": [
+      {
+        "count": 90142,
+        "bounds": [
+          32,
+          64,
+          658,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 85531,
+        "bounds": [
+          58,
+          65,
+          669,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 82848,
+        "bounds": [
+          59,
+          58,
+          658,
+          684
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 86794,
+        "bounds": [
+          58,
+          58,
+          669,
+          684
+        ],
+        "patchOpaque": 676
+      }
+    ]
+  },
+  {
+    "id": "shared-jadeback-humpback",
+    "cell": 691,
+    "padding": 32,
+    "translation": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.417976744904676
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.291871770450122
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 2.215963408353237
+      }
+    ],
+    "frames": [
+      {
+        "count": 93357,
+        "bounds": [
+          32,
+          43,
+          658,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 100055,
+        "bounds": [
+          32,
+          32,
+          658,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 86950,
+        "bounds": [
+          32,
+          32,
+          658,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 94758,
+        "bounds": [
+          32,
+          32,
+          658,
+          658
+        ],
+        "patchOpaque": 676
+      }
+    ]
+  },
+  {
+    "id": "shared-silkback-fin-whale",
+    "cell": 691,
+    "padding": 32,
+    "translation": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.598739629197981
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 12.54608787581429
+      },
+      {
+        "frame": 3,
+        "dx": 1,
+        "dy": -1,
+        "rmse": 11.886162719630372
+      }
+    ],
+    "frames": [
+      {
+        "count": 73225,
+        "bounds": [
+          32,
+          32,
+          658,
+          650
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 72654,
+        "bounds": [
+          32,
+          87,
+          644,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 73184,
+        "bounds": [
+          32,
+          38,
+          658,
+          659
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 78600,
+        "bounds": [
+          31,
+          33,
+          651,
+          659
+        ],
+        "patchOpaque": 676
+      }
+    ]
+  },
+  {
+    "id": "shared-sunset-belly-blue-whale",
+    "cell": 691,
+    "padding": 32,
+    "translation": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.592991689326803
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 16.977745055233154
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 16.300231006467286
+      }
+    ],
+    "frames": [
+      {
+        "count": 117981,
+        "bounds": [
+          32,
+          55,
+          658,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 116853,
+        "bounds": [
+          32,
+          49,
+          658,
+          658
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 118066,
+        "bounds": [
+          32,
+          58,
+          658,
+          684
+        ],
+        "patchOpaque": 676
+      },
+      {
+        "count": 131931,
+        "bounds": [
+          32,
+          58,
+          658,
+          684
+        ],
+        "patchOpaque": 676
+      }
+    ]
+  }
+]

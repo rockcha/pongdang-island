@@ -1,0 +1,184 @@
+{
+  "tool": "built-in image_gen",
+  "project": "ewafafphiovbpjwogwzn",
+  "createdAt": "2026-11-04T14:13:30+09:00",
+  "scope": "Four large shared epic fantasy whales; revised away from realism at user request",
+  "remoteCatalogApplied": false,
+  "items": [
+    {
+      "id": "shared-amber-sperm-whale",
+      "name": "호박빛 향유고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1100,
+      "size": 168,
+      "speed": "0.017",
+      "movement_type": "swim",
+      "swim_y_min": 0.35,
+      "swim_y_max": 0.75,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/shared-amber-sperm-whale_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/shared-amber-sperm-whale_v1_sprite.png",
+      "sourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-37fed276-b07f-4992-b407-199485c2898e.png",
+      "styleReference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "styleRole": "Soft luminous fantasy illustration; preserve whale silhouette, not manta anatomy",
+      "thumbnailPrompt": "Use case: stylized-concept. Final transparent epic-tier fantasy game collectible thumbnail: 호박빛 향유고래. IMPORTANT USER CORRECTION: the previous direction was MUCH TOO REALISTIC. Closely match the attached EPIC/MYTHIC reference's charming SOFT FANTASY ILLUSTRATION style, luminous smooth painterly gradients, expressive friendly face, delicate colored contours, gently exaggerated flowing shapes and beautiful jewel-like light. The reference controls rendering, softness, facial charm and light, but NOT its manta anatomy, purple palette, star stickers or wing silhouette. This must feel like a magical illustrated creature from the SAME GAME as the reference, not a realistic wildlife illustration or scientific plate. Subject: A large friendly fantasy SPERM WHALE with an adorably rounded rectangular forehead, plump long whale torso and thick elegant horizontal tail flukes. A readable softly stylized sperm-whale silhouette, not realistic anatomical rendering. Rich honey amber, warm caramel and chestnut gradients with a creamy glowing underside. Beautiful amber-glass-like soft translucent light swirls along the back, smooth luminous skin, sweet expressive amber eye, subtle gentle smile. Delicate flowing fins, no hard crystals or accessories. Composition: ONE isolated whale facing RIGHT (head RIGHT, tail LEFT), full body in appealing side-three-quarter view; the enormous body is the focus. Fit all flippers and tail tips inside the square with 10% transparent margin; occupy 80% canvas width. No clipped fins. Avoid realistic wrinkles, pores, scars, harsh anatomy lines, photographic textures, tiny impassive eye, gritty shadows, thick black outlines, detached sparkles, scenery, text, watermark, grids or painted checkerboard. Genuine clean alpha transparency with smooth antialiased edges, no halo.",
+      "cleanupPrompt": "Edit this approved fantasy whale thumbnail for final game-asset isolation ONLY. Preserve EXACTLY this whale's beautiful soft fantasy illustration style, face, warm friendly expression, silhouette design, markings and color palette. Do NOT make it realistic. Remove ALL mist, smoke, haze, aura, broad glow outside the silhouette, stray sparkles and colored specks outside the whale. This is especially important for the silver-blue whale if there is any surrounding cloud. Keep only the whale's physical body, fins and tail; restrained highlights and patterns ON the body may remain. The exterior must be genuine fully transparent alpha right up to a clean smoothly antialiased silhouette with no white/black matte fringe. Reframe the full complete uncut whale SMALLER within the same square: about 74% image width, centered, with at least 12% completely empty transparent margin on every side, including tail tips and flippers. Reconstruct a tail tip if necessary rather than clipping. Head stays on RIGHT, tail LEFT. No background, no panel, no text, no floor shadow. This is the final isolated collectible art, clean edges are essential.",
+      "spritePrompt": "Create a final EPIC fantasy whale ANIMATED SPRITE SHEET: 호박빛 향유고래. Reference image 1 is the approved whale IDENTITY and SOFT FANTASY ILLUSTRATION STYLE: match its exact face, body shape, palette, creamy belly, markings and luminous delicate shading; DO NOT make it realistic. Reference image 2 is ONLY a 2x2 POSITION/GRID GUIDE with repeated stills, NOT an animation to copy. Output ONE square transparent PNG containing exactly FOUR equal square cells in a strict 2 columns x 2 rows grid, read top-left, top-right, bottom-left, bottom-right. NO visible grid or labels. In every cell the SAME complete whale faces RIGHT, with the SAME SCALE and the eye, head and main rigid torso at EXACTLY the SAME cell coordinates. Use fixed face/eye and chest anchor points; DO NOT recenter to chase the tail. Entire silhouette and moving parts stay inside the cell with at least 8% transparent margin on all sides. Smooth four-step slow swimming cycle: frame 0 tail peduncle gently curled upward; frame 1 tail and flukes sweep slightly down/back; frame 2 tail flukes at the lowest point with gentle opposite flex; frame 3 tail recovers upward toward frame 0. Keep the main head/torso completely stable. Pectoral fins softly trail with the water through small connected poses, never alternate giant arm strokes. Long humpback pectorals flow subtly. Distinct real tail/flipper motion is REQUIRED, not four duplicated stills, not brightness-only or blink-only changes. No per-frame zoom, no whole-body bobbing, no color drift or face changes. Keep eyes open and expression consistent. Loop 0-1-2-3-0 naturally. GENUINE ALPHA TRANSPARENCY: there must be ZERO fog, white clouds, haze, halos, detached sparks, particles or colored specks anywhere outside the physical whale. Remove any such artifacts from the identity reference. Crisp smooth colored antialiased contours with no white/black fringe. No background pixels, text, logos or frame. Cell occupancy around 78-84% of width at the widest pose. Preserve beautiful friendly fantasy style from thumbnail, not wildlife realism.",
+      "spriteSourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-c78a2773-eb10-4328-b0be-52dd728e8dd3.png"
+    },
+    {
+      "id": "shared-jadeback-humpback",
+      "name": "청옥등 혹등고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1150,
+      "size": 174,
+      "speed": "0.016",
+      "movement_type": "swim",
+      "swim_y_min": 0.25,
+      "swim_y_max": 0.65,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/shared-jadeback-humpback_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/shared-jadeback-humpback_v1_sprite.png",
+      "sourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-ec35ec82-d6b9-402d-b72d-376b8c586136.png",
+      "styleReference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "styleRole": "Soft luminous fantasy illustration; preserve whale silhouette, not manta anatomy",
+      "thumbnailPrompt": "Use case: stylized-concept. Final transparent epic-tier fantasy game collectible thumbnail: 청옥등 혹등고래. IMPORTANT USER CORRECTION: the previous direction was MUCH TOO REALISTIC. Closely match the attached EPIC/MYTHIC reference's charming SOFT FANTASY ILLUSTRATION style, luminous smooth painterly gradients, expressive friendly face, delicate colored contours, gently exaggerated flowing shapes and beautiful jewel-like light. The reference controls rendering, softness, facial charm and light, but NOT its manta anatomy, purple palette, star stickers or wing silhouette. This must feel like a magical illustrated creature from the SAME GAME as the reference, not a realistic wildlife illustration or scientific plate. Subject: A large beautiful fantasy HUMPBACK WHALE with a rounded gentle face, full graceful body, long softly flowing pectoral flippers and broad horizontal whale tail flukes. Rich luminous jade teal back blending through turquoise into an ivory cream belly, elegant jade-water light patterns across its smooth back. Friendly expressive sea-green eye and a subtle smile. Both pectorals flow down/back in elegant whale shapes, not upright manta wings. Soft clean fantasy shapes, no skin pores or realistic wrinkles. Composition: ONE isolated whale facing RIGHT (head RIGHT, tail LEFT), full body in appealing side-three-quarter view; the enormous body is the focus. Fit all flippers and tail tips inside the square with 10% transparent margin; occupy 80% canvas width. No clipped fins. Avoid realistic wrinkles, pores, scars, harsh anatomy lines, photographic textures, tiny impassive eye, gritty shadows, thick black outlines, detached sparkles, scenery, text, watermark, grids or painted checkerboard. Genuine clean alpha transparency with smooth antialiased edges, no halo.",
+      "cleanupPrompt": "Edit this approved fantasy whale thumbnail for final game-asset isolation ONLY. Preserve EXACTLY this whale's beautiful soft fantasy illustration style, face, warm friendly expression, silhouette design, markings and color palette. Do NOT make it realistic. Remove ALL mist, smoke, haze, aura, broad glow outside the silhouette, stray sparkles and colored specks outside the whale. This is especially important for the silver-blue whale if there is any surrounding cloud. Keep only the whale's physical body, fins and tail; restrained highlights and patterns ON the body may remain. The exterior must be genuine fully transparent alpha right up to a clean smoothly antialiased silhouette with no white/black matte fringe. Reframe the full complete uncut whale SMALLER within the same square: about 74% image width, centered, with at least 12% completely empty transparent margin on every side, including tail tips and flippers. Reconstruct a tail tip if necessary rather than clipping. Head stays on RIGHT, tail LEFT. No background, no panel, no text, no floor shadow. This is the final isolated collectible art, clean edges are essential.",
+      "spritePrompt": "Create a final EPIC fantasy whale ANIMATED SPRITE SHEET: 청옥등 혹등고래. Reference image 1 is the approved whale IDENTITY and SOFT FANTASY ILLUSTRATION STYLE: match its exact face, body shape, palette, creamy belly, markings and luminous delicate shading; DO NOT make it realistic. Reference image 2 is ONLY a 2x2 POSITION/GRID GUIDE with repeated stills, NOT an animation to copy. Output ONE square transparent PNG containing exactly FOUR equal square cells in a strict 2 columns x 2 rows grid, read top-left, top-right, bottom-left, bottom-right. NO visible grid or labels. In every cell the SAME complete whale faces RIGHT, with the SAME SCALE and the eye, head and main rigid torso at EXACTLY the SAME cell coordinates. Use fixed face/eye and chest anchor points; DO NOT recenter to chase the tail. Entire silhouette and moving parts stay inside the cell with at least 8% transparent margin on all sides. Smooth four-step slow swimming cycle: frame 0 tail peduncle gently curled upward; frame 1 tail and flukes sweep slightly down/back; frame 2 tail flukes at the lowest point with gentle opposite flex; frame 3 tail recovers upward toward frame 0. Keep the main head/torso completely stable. Pectoral fins softly trail with the water through small connected poses, never alternate giant arm strokes. Long humpback pectorals flow subtly. Distinct real tail/flipper motion is REQUIRED, not four duplicated stills, not brightness-only or blink-only changes. No per-frame zoom, no whole-body bobbing, no color drift or face changes. Keep eyes open and expression consistent. Loop 0-1-2-3-0 naturally. GENUINE ALPHA TRANSPARENCY: there must be ZERO fog, white clouds, haze, halos, detached sparks, particles or colored specks anywhere outside the physical whale. Remove any such artifacts from the identity reference. Crisp smooth colored antialiased contours with no white/black fringe. No background pixels, text, logos or frame. Cell occupancy around 78-84% of width at the widest pose. Preserve beautiful friendly fantasy style from thumbnail, not wildlife realism.",
+      "spriteSourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-ef023023-3b03-4f0a-88e5-e04fce5c7841.png"
+    },
+    {
+      "id": "shared-silkback-fin-whale",
+      "name": "비단등 긴수염고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1000,
+      "size": 182,
+      "speed": "0.019",
+      "movement_type": "swim",
+      "swim_y_min": 0.25,
+      "swim_y_max": 0.65,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/shared-silkback-fin-whale_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/shared-silkback-fin-whale_v1_sprite.png",
+      "sourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-f7653805-b28c-4c45-8e85-5ee9768e4fd5.png",
+      "styleReference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "styleRole": "Soft luminous fantasy illustration; preserve whale silhouette, not manta anatomy",
+      "thumbnailPrompt": "Use case: stylized-concept. Final transparent epic-tier fantasy game collectible thumbnail: 비단등 긴수염고래. IMPORTANT USER CORRECTION: the previous direction was MUCH TOO REALISTIC. Closely match the attached EPIC/MYTHIC reference's charming SOFT FANTASY ILLUSTRATION style, luminous smooth painterly gradients, expressive friendly face, delicate colored contours, gently exaggerated flowing shapes and beautiful jewel-like light. The reference controls rendering, softness, facial charm and light, but NOT its manta anatomy, purple palette, star stickers or wing silhouette. This must feel like a magical illustrated creature from the SAME GAME as the reference, not a realistic wildlife illustration or scientific plate. Subject: A large elegant fantasy FIN WHALE with a long rounded streamlined body, gently tapered friendly face, small flowing pectorals and broad horizontal whale flukes. Lustrous steel-blue, pale silver and pearl-cream gradients like softly illuminated silk, flowing lengthwise silver-blue light streaks integrated into its smooth back. Expressive sapphire eye and subtle soft smile. Long graceful whale body, delicate soft fin edges. No literal fabric or accessories, no photoreal skin. Composition: ONE isolated whale facing RIGHT (head RIGHT, tail LEFT), full body in appealing side-three-quarter view; the enormous body is the focus. Fit all flippers and tail tips inside the square with 10% transparent margin; occupy 80% canvas width. No clipped fins. Avoid realistic wrinkles, pores, scars, harsh anatomy lines, photographic textures, tiny impassive eye, gritty shadows, thick black outlines, detached sparkles, scenery, text, watermark, grids or painted checkerboard. Genuine clean alpha transparency with smooth antialiased edges, no halo.",
+      "cleanupPrompt": "Edit this approved fantasy whale thumbnail for final game-asset isolation ONLY. Preserve EXACTLY this whale's beautiful soft fantasy illustration style, face, warm friendly expression, silhouette design, markings and color palette. Do NOT make it realistic. Remove ALL mist, smoke, haze, aura, broad glow outside the silhouette, stray sparkles and colored specks outside the whale. This is especially important for the silver-blue whale if there is any surrounding cloud. Keep only the whale's physical body, fins and tail; restrained highlights and patterns ON the body may remain. The exterior must be genuine fully transparent alpha right up to a clean smoothly antialiased silhouette with no white/black matte fringe. Reframe the full complete uncut whale SMALLER within the same square: about 74% image width, centered, with at least 12% completely empty transparent margin on every side, including tail tips and flippers. Reconstruct a tail tip if necessary rather than clipping. Head stays on RIGHT, tail LEFT. No background, no panel, no text, no floor shadow. This is the final isolated collectible art, clean edges are essential.",
+      "spritePrompt": "Create a final EPIC fantasy whale ANIMATED SPRITE SHEET: 비단등 긴수염고래. Reference image 1 is the approved whale IDENTITY and SOFT FANTASY ILLUSTRATION STYLE: match its exact face, body shape, palette, creamy belly, markings and luminous delicate shading; DO NOT make it realistic. Reference image 2 is ONLY a 2x2 POSITION/GRID GUIDE with repeated stills, NOT an animation to copy. Output ONE square transparent PNG containing exactly FOUR equal square cells in a strict 2 columns x 2 rows grid, read top-left, top-right, bottom-left, bottom-right. NO visible grid or labels. In every cell the SAME complete whale faces RIGHT, with the SAME SCALE and the eye, head and main rigid torso at EXACTLY the SAME cell coordinates. Use fixed face/eye and chest anchor points; DO NOT recenter to chase the tail. Entire silhouette and moving parts stay inside the cell with at least 8% transparent margin on all sides. Smooth four-step slow swimming cycle: frame 0 tail peduncle gently curled upward; frame 1 tail and flukes sweep slightly down/back; frame 2 tail flukes at the lowest point with gentle opposite flex; frame 3 tail recovers upward toward frame 0. Keep the main head/torso completely stable. Pectoral fins softly trail with the water through small connected poses, never alternate giant arm strokes. Long humpback pectorals flow subtly. Distinct real tail/flipper motion is REQUIRED, not four duplicated stills, not brightness-only or blink-only changes. No per-frame zoom, no whole-body bobbing, no color drift or face changes. Keep eyes open and expression consistent. Loop 0-1-2-3-0 naturally. GENUINE ALPHA TRANSPARENCY: there must be ZERO fog, white clouds, haze, halos, detached sparks, particles or colored specks anywhere outside the physical whale. Remove any such artifacts from the identity reference. Crisp smooth colored antialiased contours with no white/black fringe. No background pixels, text, logos or frame. Cell occupancy around 78-84% of width at the widest pose. Preserve beautiful friendly fantasy style from thumbnail, not wildlife realism.",
+      "spriteSourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-7c855596-2a8b-4cf7-b436-4fc13d67623d.png"
+    },
+    {
+      "id": "shared-sunset-belly-blue-whale",
+      "name": "노을배 대왕고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1200,
+      "size": 190,
+      "speed": "0.014",
+      "movement_type": "swim",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.7,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "frames": 4,
+      "thumbnail_path": "fish/epic/shared-sunset-belly-blue-whale_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/shared-sunset-belly-blue-whale_v1_sprite.png",
+      "sourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-1ed09fba-db30-472a-917e-7c030f05be03.png",
+      "styleReference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "styleRole": "Soft luminous fantasy illustration; preserve whale silhouette, not manta anatomy",
+      "thumbnailPrompt": "Use case: stylized-concept. Final transparent epic-tier fantasy game collectible thumbnail: 노을배 대왕고래. IMPORTANT USER CORRECTION: the previous direction was MUCH TOO REALISTIC. Closely match the attached EPIC/MYTHIC reference's charming SOFT FANTASY ILLUSTRATION style, luminous smooth painterly gradients, expressive friendly face, delicate colored contours, gently exaggerated flowing shapes and beautiful jewel-like light. The reference controls rendering, softness, facial charm and light, but NOT its manta anatomy, purple palette, star stickers or wing silhouette. This must feel like a magical illustrated creature from the SAME GAME as the reference, not a realistic wildlife illustration or scientific plate. Subject: A very large gentle fantasy BLUE WHALE, broad rounded head, long plush majestic barrel body, small graceful pectorals and a broad powerful horizontal whale tail. Deep dreamy ocean blue and soft azure gradients on the smooth back, a gorgeous pale peach-apricot-rose sunset glow across the cream belly, warm softly translucent fin edges. Large kind expressive blue eye with tasteful highlight and a tiny gentle smile. Cute graceful premium fantasy illustration, not zoological realism, not a baby toy. Composition: ONE isolated whale facing RIGHT (head RIGHT, tail LEFT), full body in appealing side-three-quarter view; the enormous body is the focus. Fit all flippers and tail tips inside the square with 10% transparent margin; occupy 80% canvas width. No clipped fins. Avoid realistic wrinkles, pores, scars, harsh anatomy lines, photographic textures, tiny impassive eye, gritty shadows, thick black outlines, detached sparkles, scenery, text, watermark, grids or painted checkerboard. Genuine clean alpha transparency with smooth antialiased edges, no halo.",
+      "cleanupPrompt": "Edit this approved fantasy whale thumbnail for final game-asset isolation ONLY. Preserve EXACTLY this whale's beautiful soft fantasy illustration style, face, warm friendly expression, silhouette design, markings and color palette. Do NOT make it realistic. Remove ALL mist, smoke, haze, aura, broad glow outside the silhouette, stray sparkles and colored specks outside the whale. This is especially important for the silver-blue whale if there is any surrounding cloud. Keep only the whale's physical body, fins and tail; restrained highlights and patterns ON the body may remain. The exterior must be genuine fully transparent alpha right up to a clean smoothly antialiased silhouette with no white/black matte fringe. Reframe the full complete uncut whale SMALLER within the same square: about 74% image width, centered, with at least 12% completely empty transparent margin on every side, including tail tips and flippers. Reconstruct a tail tip if necessary rather than clipping. Head stays on RIGHT, tail LEFT. No background, no panel, no text, no floor shadow. This is the final isolated collectible art, clean edges are essential.",
+      "spritePrompt": "Create a final EPIC fantasy whale ANIMATED SPRITE SHEET: 노을배 대왕고래. Reference image 1 is the approved whale IDENTITY and SOFT FANTASY ILLUSTRATION STYLE: match its exact face, body shape, palette, creamy belly, markings and luminous delicate shading; DO NOT make it realistic. Reference image 2 is ONLY a 2x2 POSITION/GRID GUIDE with repeated stills, NOT an animation to copy. Output ONE square transparent PNG containing exactly FOUR equal square cells in a strict 2 columns x 2 rows grid, read top-left, top-right, bottom-left, bottom-right. NO visible grid or labels. In every cell the SAME complete whale faces RIGHT, with the SAME SCALE and the eye, head and main rigid torso at EXACTLY the SAME cell coordinates. Use fixed face/eye and chest anchor points; DO NOT recenter to chase the tail. Entire silhouette and moving parts stay inside the cell with at least 8% transparent margin on all sides. Smooth four-step slow swimming cycle: frame 0 tail peduncle gently curled upward; frame 1 tail and flukes sweep slightly down/back; frame 2 tail flukes at the lowest point with gentle opposite flex; frame 3 tail recovers upward toward frame 0. Keep the main head/torso completely stable. Pectoral fins softly trail with the water through small connected poses, never alternate giant arm strokes. Long humpback pectorals flow subtly. Distinct real tail/flipper motion is REQUIRED, not four duplicated stills, not brightness-only or blink-only changes. No per-frame zoom, no whole-body bobbing, no color drift or face changes. Keep eyes open and expression consistent. Loop 0-1-2-3-0 naturally. GENUINE ALPHA TRANSPARENCY: there must be ZERO fog, white clouds, haze, halos, detached sparks, particles or colored specks anywhere outside the physical whale. Remove any such artifacts from the identity reference. Crisp smooth colored antialiased contours with no white/black fringe. No background pixels, text, logos or frame. Cell occupancy around 78-84% of width at the widest pose. Preserve beautiful friendly fantasy style from thumbnail, not wildlife realism.",
+      "spriteSourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a1a49f-824c-7393-933a-0efe2b1b5c48\\exec-3f4264ba-20af-409d-9868-f4cc114c34b5.png"
+    }
+  ],
+  "assets": [
+    {
+      "storage_path": "fish/epic/shared-amber-sperm-whale_v1_thumbnail.png",
+      "sha256": "4eda26bb0c33836b24e3e0eee4c4186eb10691dd77f70253eaf480a07187d0e5",
+      "bytes": 474218
+    },
+    {
+      "storage_path": "fish/epic/shared-amber-sperm-whale_v1_sprite.png",
+      "sha256": "841574146cf78f05e7cab682a7f78d19c18dab5443c356828195ae2249a4af43",
+      "bytes": 1019738
+    },
+    {
+      "storage_path": "fish/epic/shared-jadeback-humpback_v1_thumbnail.png",
+      "sha256": "8b027d331304de7b035c9a987e7852d43be5083508ccc2e2bf0fc43b84195f51",
+      "bytes": 464999
+    },
+    {
+      "storage_path": "fish/epic/shared-jadeback-humpback_v1_sprite.png",
+      "sha256": "bc49edd70d23d4b9df670a7138c71d3f3e94c40e15894925ac48745450cc7cd6",
+      "bytes": 995415
+    },
+    {
+      "storage_path": "fish/epic/shared-silkback-fin-whale_v1_thumbnail.png",
+      "sha256": "112153031d69ce683fe50724b3579a41304507851e295d8b3f5f075771e097fe",
+      "bytes": 410071
+    },
+    {
+      "storage_path": "fish/epic/shared-silkback-fin-whale_v1_sprite.png",
+      "sha256": "92078583c9aabb400bb79fe2bf5f5405d4bc9c7e6eff3d58ed89e3ffe45a85a3",
+      "bytes": 814596
+    },
+    {
+      "storage_path": "fish/epic/shared-sunset-belly-blue-whale_v1_thumbnail.png",
+      "sha256": "5c7633cad93bc599b076b129ecc56ee112e02e0d4776e9df2ac1bfebcf64f72a",
+      "bytes": 446716
+    },
+    {
+      "storage_path": "fish/epic/shared-sunset-belly-blue-whale_v1_sprite.png",
+      "sha256": "f5d9a2024270a258068f8d94484e75b880e7e9a4237dd17021df973b7189ac69",
+      "bytes": 1024178
+    }
+  ],
+  "species": [
+    {
+      "id": "shared-amber-sperm-whale",
+      "name": "호박빛 향유고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1100,
+      "region": null
+    },
+    {
+      "id": "shared-jadeback-humpback",
+      "name": "청옥등 혹등고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1150,
+      "region": null
+    },
+    {
+      "id": "shared-silkback-fin-whale",
+      "name": "비단등 긴수염고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1000,
+      "region": null
+    },
+    {
+      "id": "shared-sunset-belly-blue-whale",
+      "name": "노을배 대왕고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1200,
+      "region": null
+    }
+  ],
+  "storageUploaded": true,
+  "deploymentBlocker": "Management API returns HTTP 401; catalog REST read succeeds. Migration has not been applied remotely.",
+  "migration": "supabase/migrations/20261104052124_four_shared_epic_fantasy_whales.sql"
+}

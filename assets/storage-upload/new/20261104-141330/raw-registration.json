@@ -1,0 +1,150 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261104-141330/sources/shared-amber-sperm-whale-sprite.source",
+        "storage_path":  "fish/epic/shared-amber-sperm-whale_v1_sprite.png",
+        "patch":  [
+                      439,
+                      276,
+                      26,
+                      26
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -25,
+                           "dy":  0,
+                           "rmse":  14.73762297197881
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  14.830211906280544
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -25,
+                           "dy":  -26,
+                           "rmse":  13.028695774337772
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261104-141330/sources/shared-jadeback-humpback-sprite.source",
+        "storage_path":  "fish/epic/shared-jadeback-humpback_v1_sprite.png",
+        "patch":  [
+                      439,
+                      276,
+                      26,
+                      26
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.4179767449046761
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  3.2918717704501219
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  2.2159634083532369
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261104-141330/sources/shared-silkback-fin-whale-sprite.source",
+        "storage_path":  "fish/epic/shared-silkback-fin-whale_v1_sprite.png",
+        "patch":  [
+                      439,
+                      276,
+                      26,
+                      26
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.598739629197981
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  12.54608787581429
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  -1,
+                           "rmse":  11.886162719630372
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261104-141330/sources/shared-sunset-belly-blue-whale-sprite.source",
+        "storage_path":  "fish/epic/shared-sunset-belly-blue-whale_v1_sprite.png",
+        "patch":  [
+                      439,
+                      276,
+                      26,
+                      26
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.5929916893268032
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  16.977745055233154
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  16.300231006467286
+                       }
+                   ]
+    }
+]

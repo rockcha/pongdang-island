@@ -1,0 +1,372 @@
+{
+  "results": [
+    {
+      "id": "shared-amber-sperm-whale",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-amber-sperm-whale-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            153,
+            380,
+            921,
+            484
+          ],
+          "margin": 153,
+          "occupancy": 0.7344497607655502,
+          "opaque": 235177,
+          "transparent": 1326212,
+          "soft": 245859
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-amber-sperm-whale",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-amber-sperm-whale-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            68,
+            144,
+            514,
+            294
+          ],
+          "margin": 45,
+          "occupancy": 0.8197767145135566,
+          "opaque": 81519,
+          "transparent": 302987,
+          "soft": 89988
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            23,
+            184,
+            535,
+            256
+          ],
+          "margin": 23,
+          "occupancy": 0.8532695374800638,
+          "opaque": 77369,
+          "transparent": 307598,
+          "soft": 85409
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            43,
+            158,
+            539,
+            257
+          ],
+          "margin": 43,
+          "occupancy": 0.8596491228070176,
+          "opaque": 74297,
+          "transparent": 310281,
+          "soft": 82679
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            28,
+            150,
+            530,
+            259
+          ],
+          "margin": 28,
+          "occupancy": 0.8452950558213717,
+          "opaque": 77976,
+          "transparent": 306335,
+          "soft": 86631
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-jadeback-humpback",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-jadeback-humpback-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            163,
+            345,
+            889,
+            583
+          ],
+          "margin": 163,
+          "occupancy": 0.7089314194577353,
+          "opaque": 217386,
+          "transparent": 1340144,
+          "soft": 231779
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-jadeback-humpback",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-jadeback-humpback-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            69,
+            153,
+            494,
+            321
+          ],
+          "margin": 64,
+          "occupancy": 0.7878787878787878,
+          "opaque": 70895,
+          "transparent": 299772,
+          "soft": 93174
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            49,
+            186,
+            514,
+            296
+          ],
+          "margin": 49,
+          "occupancy": 0.8197767145135566,
+          "opaque": 67699,
+          "transparent": 293074,
+          "soft": 99875
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            49,
+            209,
+            514,
+            271
+          ],
+          "margin": 49,
+          "occupancy": 0.8197767145135566,
+          "opaque": 64914,
+          "transparent": 306179,
+          "soft": 86798
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            49,
+            172,
+            514,
+            295
+          ],
+          "margin": 49,
+          "occupancy": 0.8197767145135566,
+          "opaque": 68249,
+          "transparent": 298371,
+          "soft": 94576
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-silkback-fin-whale",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-silkback-fin-whale-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            132,
+            389,
+            982,
+            469
+          ],
+          "margin": 132,
+          "occupancy": 0.7830940988835726,
+          "opaque": 193745,
+          "transparent": 1368806,
+          "soft": 203056
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-silkback-fin-whale",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-silkback-fin-whale-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            47,
+            189,
+            522,
+            246
+          ],
+          "margin": 47,
+          "occupancy": 0.8325358851674641,
+          "opaque": 56358,
+          "transparent": 319904,
+          "soft": 72900
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            32,
+            223,
+            537,
+            213
+          ],
+          "margin": 32,
+          "occupancy": 0.8564593301435407,
+          "opaque": 54254,
+          "transparent": 320475,
+          "soft": 72289
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            34,
+            245,
+            535,
+            192
+          ],
+          "margin": 34,
+          "occupancy": 0.8532695374800638,
+          "opaque": 53704,
+          "transparent": 319945,
+          "soft": 72829
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            37,
+            197,
+            532,
+            237
+          ],
+          "margin": 37,
+          "occupancy": 0.8484848484848485,
+          "opaque": 55951,
+          "transparent": 314529,
+          "soft": 78255
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-sunset-belly-blue-whale",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-sunset-belly-blue-whale-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            186,
+            361,
+            868,
+            533
+          ],
+          "margin": 186,
+          "occupancy": 0.6921850079744817,
+          "opaque": 202811,
+          "transparent": 1352715,
+          "soft": 219154
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-sunset-belly-blue-whale",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-141330\\sources\\shared-sunset-belly-blue-whale-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            71,
+            160,
+            487,
+            311
+          ],
+          "margin": 69,
+          "occupancy": 0.7767145135566188,
+          "opaque": 68086,
+          "transparent": 275148,
+          "soft": 117679
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            49,
+            208,
+            509,
+            261
+          ],
+          "margin": 49,
+          "occupancy": 0.8118022328548644,
+          "opaque": 65037,
+          "transparent": 276276,
+          "soft": 116562
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            48,
+            204,
+            510,
+            236
+          ],
+          "margin": 48,
+          "occupancy": 0.8133971291866029,
+          "opaque": 63395,
+          "transparent": 275063,
+          "soft": 117778
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            49,
+            165,
+            509,
+            280
+          ],
+          "margin": 49,
+          "occupancy": 0.8118022328548644,
+          "opaque": 66291,
+          "transparent": 261198,
+          "soft": 131702
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

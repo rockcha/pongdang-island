@@ -18,7 +18,7 @@ afterAll(async()=>{await db?.close()})
 it('keeps paid theme prices within tier ranges and the starter background free',async()=>{
  const state=(await db.query('select public.aquarium_state() s')).rows[0].s
  expect(state.catalog.find(item=>item.id==='default').price).toBe(0)
- for(const [tier,min,max] of [['simple',200,400],['mood',400,800],['special',800,3800]] as const){
+ for(const [tier,min,max] of [['simple',200,400],['mood',400,800],['special',800,4200]] as const){
   const prices=state.catalog.filter(item=>item.tier===tier&&item.id!=='default').map(item=>item.price)
   expect(Math.min(...prices)).toBe(min)
   expect(Math.max(...prices)).toBe(max)

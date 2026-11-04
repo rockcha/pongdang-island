@@ -481,6 +481,13 @@
       "tier": "mood"
     },
     {
+      "id": "pearl-lantern-street",
+      "name": "진주등 상점가",
+      "price": 800,
+      "image_path": "pearl-lantern-street-panorama-v1.png",
+      "tier": "special"
+    },
+    {
       "id": "pharaoh-sleeping-pyramid-court",
       "name": "잠든 피라미드의 뜰",
       "price": 2500,
@@ -639,6 +646,13 @@
       "name": "수몰된 오락실",
       "price": 1050,
       "image_path": "sunken-arcade.png",
+      "tier": "special"
+    },
+    {
+      "id": "sunlit-coral-street",
+      "name": "햇살 산호 거리",
+      "price": 800,
+      "image_path": "sunlit-coral-street-panorama-v1.png",
       "tier": "special"
     },
     {

@@ -1,10 +1,10 @@
 {
   "profile": "webp-q90-inside-960-v1",
   "summary": {
-    "count": 74,
-    "sourceBytes": 195748173,
-    "previewBytes": 14394250,
-    "reductionPercent": 92.65
+    "count": 76,
+    "sourceBytes": 199852421,
+    "previewBytes": 14592414,
+    "reductionPercent": 92.7
   },
   "items": [
     {
@@ -624,6 +624,20 @@
       }
     },
     {
+      "key": "pearl-lantern-street-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261105-025835/aquarium-backgrounds/pearl-lantern-street-panorama-v1.png",
+      "sourceHash": "514533f72cb54a2209d62cdb8f3eb8d64afc908a22590bcd0e8959a7dc5d488d",
+      "sourceBytes": 1974562,
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "preview": {
+        "url": "/game-art/background-previews/e5cfcd89561a21cfebecff40-960.webp",
+        "bytes": 94132,
+        "width": 960,
+        "height": 540
+      }
+    },
+    {
       "key": "pearl.png",
       "source": "assets/storage-upload/new/20261025-014955/aquarium-backgrounds/pearl-panorama-v2.png",
       "sourceHash": "83f85275cf403f6fa6a55f1db18ec63853e5e255b5996da85825336c237f840b",
@@ -957,6 +971,20 @@
         "bytes": 264688,
         "width": 960,
         "height": 569
+      }
+    },
+    {
+      "key": "sunlit-coral-street-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261105-025835/aquarium-backgrounds/sunlit-coral-street-panorama-v1.png",
+      "sourceHash": "687a70dd5a63a3daad3dfa09cf219cea613be4f8c39241e9b69faa5bfbfcdda7",
+      "sourceBytes": 2129686,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "preview": {
+        "url": "/game-art/background-previews/4bc42531319cdd24de458fd7-960.webp",
+        "bytes": 104032,
+        "width": 960,
+        "height": 480
       }
     },
     {

@@ -2,7 +2,7 @@ import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
-import {coastline,initialTopview,placementValid} from '@/features/farm/topview-model'
+import {coastline,initialTopview,objectAt,objectArtHeight,placementValid,TILE} from '@/features/farm/topview-model'
 import {applyLandStroke,buyLandStock} from '@/features/farm/land-tools'
 afterEach(cleanup)
 it('only draws shore against water and reconnects it when new land is purchased',()=>{
@@ -29,10 +29,23 @@ it('buys stored land and only places connected tiles without another gold charge
 })
 it('checks the complete rectangular footprint and excludes the object being moved',()=>{
  const state=initialTopview()
- expect(placementValid(state,'barn',18,14)).toBe(false)
+ expect(placementValid(state,'barn',16,13)).toBe(false)
+ expect(placementValid(state,'barn',19,14)).toBe(false)
  expect(placementValid(state,'office',6,5)).toBe(false)
  expect(placementValid(state,'office',6,5,1)).toBe(true)
  expect(placementValid(state,'chicken',6,9)).toBe(true)
+})
+it('fits decorations on a single land cell and leaves the neighboring cell free for another object',()=>{
+ for(const kind of ['tree','flowers','fence','bench','pond'] as const){
+  const single={...initialTopview(),land:['0,0'],objects:[]}
+  expect(placementValid(single,kind,0,0),kind).toBe(true)
+  const placed={...single,objects:[{id:1,kind,x:0,y:0}]}
+  expect(placementValid(placed,kind,0,0),kind).toBe(false)
+  expect(objectAt(placed,1,0),kind).toBeUndefined()
+  expect(objectAt(placed,0,1),kind).toBeUndefined()
+  expect(placementValid({...placed,land:['0,0','1,0']},kind,1,0),kind).toBe(true)
+  expect(objectArtHeight(kind),kind+' art bounds').toBeLessThanOrEqual(TILE)
+ }
 })
 it('offers land purchase in the current farm with an explicitly simulated balance',()=>{
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>)

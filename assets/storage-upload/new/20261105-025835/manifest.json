@@ -1,0 +1,34 @@
+{
+  "tool": "built-in image_gen",
+  "bucket": "aquarium-backgrounds",
+  "files": [
+    {
+      "theme_id": "sunlit-coral-street",
+      "status": "generated",
+      "storage_path": "sunlit-coral-street-panorama-v1.png",
+      "local_path": "aquarium-backgrounds/sunlit-coral-street-panorama-v1.png",
+      "sha256": "687a70dd5a63a3daad3dfa09cf219cea613be4f8c39241e9b69faa5bfbfcdda7",
+      "generatedSource": "exec-75409477-619f-4251-8c92-669e956964ea.png",
+      "references": [],
+      "prompt": "One wide landscape background for an AQUARIUM game, entirely UNDERWATER. A beautiful simple clean submerged city pedestrian street, pastel ivory and soft blush townhouses with arched doors and sage shop awnings, elegant modest European-style small storefronts, arranged across the distant back and at the outer edges. Everything is immersed in clear luminous turquoise water: visible overhead water surface ripples at the very top, soft shafts of refracted sunlight descending through the water, delicate caustic light patterns on facades and pale sandy stone pavement, tiny suspended particles and sparse rising bubbles, distant buildings fading into blue-green underwater haze. No open-air sky. A few graceful sea grasses and tiny pink corals at the bases of buildings instead of land plants, tasteful seashell architectural details. The town feels lovingly maintained, charming and magical, NOT a disaster ruin. Wide straight-on aquarium-stage composition, low buildings mostly in upper half and sides, the middle and lower half is a broad clean pale sandy promenade for fish to swim in front, no large central object. Simple shapes, restrained props, generous breathing room. Premium soft hand-painted storybook gouache illustration for a cozy Korean mobile game, muted pastel aqua, warm ivory, dusty rose and sage, delicate luminous highlights, beautifully composed, clean and elegant rather than busy. Underwater immersion unmistakable. No fish, no people, no characters, no text, no signs with lettering, no UI, no aquarium glass border. Full-bleed single panoramic landscape, not a collage.",
+      "generated_sha256": "9c46a7298b247a1d1c027aab241362c9eb70425b28306a482cdea56c09dd483b",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-04T17:59:41.710Z"
+    },
+    {
+      "theme_id": "pearl-lantern-street",
+      "status": "generated",
+      "storage_path": "pearl-lantern-street-panorama-v1.png",
+      "local_path": "aquarium-backgrounds/pearl-lantern-street-panorama-v1.png",
+      "sha256": "514533f72cb54a2209d62cdb8f3eb8d64afc908a22590bcd0e8959a7dc5d488d",
+      "generatedSource": "exec-bf0c5dfe-10d5-4813-8adf-14478e5aeb3d.png",
+      "references": [],
+      "prompt": "Create one beautiful standalone wide landscape AQUARIUM THEME BACKGROUND. Entire scene is underwater, a clean simple charming city shopping street on the seabed at blue hour. Beautiful modest two-story storefronts in dusty periwinkle, muted blue and ivory stone, elegant arched windows with very gentle warm pearl light, small navy scalloped awnings, tasteful bronze details. Only a few buildings set across the distant back and outer edges, with a broad OPEN central pedestrian square of pale blue sandy paving occupying the lower half; space for aquarium creatures to swim in front. Two slender pearl globe streetlamps near the edges, small coral planters and restrained ribbons of sea grass around building feet. Overhead is deep clear blue WATER, not sky: softly visible water ripples at the top, faint descending blue light shafts, suspended tiny particles and a few bubbles, distant buildings disappearing into watery blue haze. Delicate bioluminescent sea plants provide subtle lavender light near the corners. Warm shop windows and pearl lamps softly illuminate the water. Peaceful, tidy, pretty and inviting submerged city, not abandoned wreckage. Aquarium stage composition, clean readable negative space, minimal small details, simple refined forms, no dense decorative clutter. Soft premium hand-painted gouache storybook mobile game art, rounded tasteful architecture, matte painterly texture, desaturated blue and lilac with restrained amber and pearl accents. Dreamy and cozy, no neon or cyberpunk, no photorealism. No fish, no people, no cars, no text or lettering on storefronts, no UI, no glass tank border, no collage. Full-bleed wide panoramic illustration.",
+      "generated_sha256": "1572ab2e3110a54f006a5de995476466e1fe383103233346bc48e84ee3da0e2a",
+      "uploaded": true,
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-04T17:59:44.630Z"
+    }
+  ]
+}

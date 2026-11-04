@@ -5,12 +5,12 @@ export const topviewItems:Record<FarmTool,{name:string;w:number;h:number;group:'
  office:{name:'농지 관리소',w:2,h:2,group:'건물',price:1000},seedShop:{name:'종자 상점',w:2,h:2,group:'건물',price:100},store:{name:'농작물 판매소',w:2,h:2,group:'건물',price:100,purchaseLimit:Infinity},barn:{name:'외양간',w:2,h:2,group:'건물',price:1000,purchaseLimit:Infinity},
  coop:{name:'닭장',w:2,h:2,group:'건물',price:500,purchaseLimit:Infinity},lab:{name:'종자 연구소',w:2,h:2,group:'건물',price:200},mill:{name:'제분소',w:2,h:2,group:'건물',price:700,purchaseLimit:Infinity},processed:{name:'가공품 판매소',w:2,h:2,group:'건물',price:100,purchaseLimit:Infinity},dairy:{name:'유제품 공방',w:2,h:2,group:'건물',price:200},bakery:{name:'작은 빵집',w:2,h:2,group:'건물',price:250,purchaseLimit:Infinity},
  chicken:{name:'닭',w:1,h:1,group:'동물',price:300},cow:{name:'젖소',w:2,h:1,group:'동물',price:800},sheep:{name:'양',w:1,h:1,group:'동물',price:600},
- plot:{name:'밭',w:1,h:1,group:'꾸미기',price:10},tree:{name:'나무',w:2,h:2,group:'꾸미기',price:100},flowers:{name:'꽃밭',w:1,h:1,group:'꾸미기',price:40},fence:{name:'울타리',w:1,h:1,group:'꾸미기',price:40},bench:{name:'벤치',w:2,h:1,group:'꾸미기',price:80},pond:{name:'작은 연못',w:3,h:2,group:'꾸미기',price:200},
+ plot:{name:'밭',w:1,h:1,group:'꾸미기',price:10},tree:{name:'나무',w:1,h:1,group:'꾸미기',price:100},flowers:{name:'꽃밭',w:1,h:1,group:'꾸미기',price:40},fence:{name:'울타리',w:1,h:1,group:'꾸미기',price:40},bench:{name:'벤치',w:1,h:1,group:'꾸미기',price:80},pond:{name:'작은 연못',w:1,h:1,group:'꾸미기',price:200},
 }
 export type TopviewObject={id:number;kind:FarmTool;x:number;y:number;level?:number;orderKey?:number}
 export type TopviewState={gold:number;landStock:number;tileStock:number;land:string[];objects:TopviewObject[];paths:string[];nextId:number;stored:FarmTool[];storedLevels?:Partial<Record<FarmTool,number[]>>;storedOrderKeys?:Partial<Record<'store'|'processed',(number|null)[]>>;simulation:FarmSimulation}
 export const MAP_W=24,MAP_H=20,TILE=40,TEST_LAND_PRICE=50
-export function objectArtHeight(kind:FarmTool){const item=topviewItems[kind];return item.h*TILE+(item.group==='동물'?8:kind==='tree'?45:0)}
+export function objectArtHeight(kind:FarmTool){const item=topviewItems[kind];return item.h*TILE+(item.group==='동물'?8:0)}
 export const cellKey=(x:number,y:number)=>`${x},${y}`
 export function coastline(land:string[]){
  const owned=new Set(land)

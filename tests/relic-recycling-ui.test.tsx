@@ -19,15 +19,23 @@ const state:RelicState={equippedId:a.id,changeFee:500,equipFee:0,unequipFee:500,
 const receipt=(action:'recombine'|'dismantle',inputs:any)=>({...state,equippedId:action==='dismantle'?null:a.id,relics:action==='dismantle'?[{...a,quantity:8},{...b,quantity:5},epic,mythic]:[{...a,quantity:1},b,{...epic,owned:true,quantity:1},mythic,composite],recycling:{action,cost:0 as const,consumed:inputs,receivedIds:action==='dismantle'?[a.id,b.id]:[epic.id],unequipped:action==='dismantle'}})
 beforeEach(()=>{mock.owner='recycling-user';setQueryAccount(mock.owner);mock.read.mockResolvedValue(state);mock.fresh.mockResolvedValue(state);mock.recycle.mockImplementation(async r=>receipt(r.action,r.inputs));vi.stubGlobal('matchMedia',()=>({matches:true,addEventListener(){},removeEventListener(){}}))})
 afterEach(()=>{cleanup();setQueryAccount(null);appQueryClient.clear();vi.resetAllMocks();vi.unstubAllGlobals();localStorage.clear()})
+async function chooseGrade(grade:'rare'|'epic'|'mythic'){
+ const label=grade==='rare'?'희귀 6개':grade==='epic'?'특급 6개':'신화 3개'
+ const trigger=screen.getByRole('combobox',{name:'재조합 재료 등급'})
+ if(trigger.textContent?.includes(label))return
+ fireEvent.click(trigger)
+ fireEvent.keyDown(await screen.findByRole('option',{name:label}),{key:'Enter'})
+ await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
+}
 async function recombine(){fireEvent.click(await screen.findByRole('tab',{name:'재조합'}));for(let i=0;i<6;i++)fireEvent.click(screen.getByRole('button',{name:a.name+' 1개 넣기'}));fireEvent.click(screen.getByRole('button',{name:'무료로 재조합하기'}))}
 it.each(['rare','epic'] as const)('auto fills only the selected %s grade and protects equipped and crafted copies',async grade=>{
  const first={...a,rarity:grade,quantity:3},second={...b,rarity:grade,quantity:4}
  const opposite={...epic,rarity:grade==='rare'?'epic' as const:'rare' as const,quantity:6,owned:true}
  mock.read.mockResolvedValue({...state,relics:[opposite,first,{...composite,rarity:grade},second,mythic]})
  render(<RelicPage/>);fireEvent.click(await screen.findByRole('tab',{name:'재조합'}))
- fireEvent.change(screen.getByRole('combobox',{name:'재조합 재료 등급'}),{target:{value:grade}})
+ await chooseGrade(grade)
  fireEvent.click(screen.getByRole('button',{name:'자동 넣기'}))
- expect(screen.getByRole('combobox',{name:'재조합 재료 등급'})).toHaveProperty('value',grade)
+ expect(screen.getByRole('combobox',{name:'재조합 재료 등급'}).textContent).toContain(grade==='rare'?'희귀 6개':'특급 6개')
  const slots=within(screen.getByLabelText('선택한 유물 6칸'))
  expect(slots.getAllByRole('button',{name:a.name+' 1개 선택 해제'})).toHaveLength(2)
  expect(slots.getAllByRole('button',{name:b.name+' 1개 선택 해제'})).toHaveLength(4)
@@ -38,12 +46,12 @@ it('keeps an incomplete selected grade instead of switching to another available
  mock.read.mockResolvedValue({...state,relics:[{...a,quantity:6},{...epic,quantity:6,owned:true},mythic,composite]})
  render(<RelicPage/>);fireEvent.click(await screen.findByRole('tab',{name:'재조합'}))
  fireEvent.click(screen.getByRole('button',{name:'자동 넣기'}))
- expect(screen.getByRole('combobox',{name:'재조합 재료 등급'})).toHaveProperty('value','rare')
+ expect(screen.getByRole('combobox',{name:'재조합 재료 등급'}).textContent).toContain('희귀 6개')
  expect(screen.getByLabelText('선택한 재조합 재료').textContent).toContain('5 / 6')
  expect(screen.getByRole('button',{name:'무료로 재조합하기'})).toHaveProperty('disabled',true)
- fireEvent.change(screen.getByRole('combobox',{name:'재조합 재료 등급'}),{target:{value:'epic'}})
+ await chooseGrade('epic')
  fireEvent.click(screen.getByRole('button',{name:'자동 넣기'}))
- expect(screen.getByRole('combobox',{name:'재조합 재료 등급'})).toHaveProperty('value','epic')
+ expect(screen.getByRole('combobox',{name:'재조합 재료 등급'}).textContent).toContain('특급 6개')
  expect(screen.getByLabelText('선택한 재조합 재료').textContent).toContain('6 / 6')
  fireEvent.click(screen.getByRole('button',{name:'무료로 재조합하기'}))
  const guard=screen.getByRole('alertdialog')
@@ -54,9 +62,9 @@ it('keeps an incomplete selected grade instead of switching to another available
 it('disables automatic filling when the selected grade has no usable copies',async()=>{
  mock.read.mockResolvedValue({...state,relics:[a,b,{...epic,quantity:0},mythic,composite]})
  render(<RelicPage/>);fireEvent.click(await screen.findByRole('tab',{name:'재조합'}))
- fireEvent.change(screen.getByRole('combobox',{name:'재조합 재료 등급'}),{target:{value:'epic'}})
+ await chooseGrade('epic')
  expect(screen.getByRole('button',{name:'자동 넣기'})).toHaveProperty('disabled',true)
- expect(screen.getByRole('combobox',{name:'재조합 재료 등급'})).toHaveProperty('value','epic')
+ expect(screen.getByRole('combobox',{name:'재조합 재료 등급'}).textContent).toContain('특급 6개')
  expect(screen.getByLabelText('선택한 재조합 재료').textContent).toContain('0 / 6')
 })
 it('shows only six selected images and lets players remove one copy or clear the slots',async()=>{
@@ -86,12 +94,11 @@ it('plays the fusion only after server confirmation and clears the selected mate
  expect(screen.getByLabelText('선택한 재조합 재료').textContent).toContain('0 / 6')
  expect(mock.recycle).toHaveBeenCalledTimes(1)
 })
-it('protects the equipped copy, shows the random pool, and confirms consumption before a guaranteed upgrade',async()=>{
+it('protects the equipped copy, omits the pool link, and confirms consumption before an upgrade',async()=>{
  render(<RelicPage/>);fireEvent.click(await screen.findByRole('tab',{name:'재조합'}))
  expect(screen.getByText('장착 1개 보호 · 사용 가능 6개')).toBeTruthy()
  expect(screen.getByRole('button',{name:'무료로 재조합하기'})).toHaveProperty('disabled',true)
- fireEvent.click(screen.getByRole('button',{name:'결과 유물 보기'}));expect(screen.getByRole('dialog').textContent).toContain('1종 중 1개가 같은 확률')
- fireEvent.keyDown(screen.getByRole('dialog'),{key:'Escape'});await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+ expect(screen.queryByRole('button',{name:'결과 유물 보기'})).toBeNull()
  for(let i=0;i<6;i++)fireEvent.click(screen.getByRole('button',{name:a.name+' 1개 넣기'}))
  expect(screen.getByRole('button',{name:a.name+' 1개 넣기'})).toHaveProperty('disabled',true)
  expect(screen.getByLabelText('선택한 재조합 재료').textContent).toContain('6 / 6')
@@ -134,4 +141,31 @@ it('blocks double submission and competing crafting while a request is in flight
  expect(screen.getByRole('tab',{name:'재조합',hidden:true}).getAttribute('aria-selected')).toBe('true')
  const request=mock.recycle.mock.calls[0][0]
  await act(async()=>finish(receipt('recombine',request.inputs)));await screen.findByRole('dialog',{name:'재조합 완료'})
+})
+
+it('fills three mythic originals, protects the equipped copy, and confirms a same-grade reward',async()=>{
+ const owned={...mythic,owned:true,quantity:4}
+ mock.read.mockResolvedValue({...state,equippedId:mythic.id,relics:[a,b,epic,owned,{...composite,rarity:'mythic'}]})
+ mock.recycle.mockImplementation(async r=>({...state,equippedId:mythic.id,relics:[a,b,epic,{...owned,quantity:2}],recycling:{action:'recombine',cost:0,consumed:r.inputs,receivedIds:[mythic.id],unequipped:false}}))
+ render(<RelicPage/>);fireEvent.click(await screen.findByRole('tab',{name:'재조합'}));await chooseGrade('mythic')
+ expect(screen.getByRole('combobox',{name:'재조합 재료 등급'}).className).toContain('bg-secondary')
+ fireEvent.click(screen.getByRole('button',{name:'자동 넣기'}))
+ expect(within(screen.getByLabelText('선택한 유물 3칸')).getAllByRole('button')).toHaveLength(3)
+ expect(screen.getByLabelText('선택한 재조합 재료').textContent).toContain('3 / 3')
+ expect(screen.getByRole('button',{name:mythic.name+' 1개 넣기'})).toHaveProperty('disabled',true)
+ fireEvent.click(screen.getByRole('button',{name:'무료로 재조합하기'}))
+ const guard=screen.getByRole('alertdialog');expect(guard.textContent).toContain('유물 3개를 재조합할까요?')
+ expect(guard.textContent).toContain('신화 유물 1개');expect(guard.textContent).not.toContain('상위 등급')
+ fireEvent.click(within(guard).getByRole('button',{name:'재조합하기'}))
+ const result=await screen.findByRole('dialog',{name:'재조합 완료'})
+ expect(result.textContent).not.toContain('상위 등급')
+ expect(mock.recycle).toHaveBeenCalledWith({action:'recombine',inputs:[{id:mythic.id,quantity:3}],operation:expect.any(String)})
+})
+it('restores an uncertain three-mythic request with the same operation id',async()=>{
+ const request={action:'recombine',inputs:[{id:mythic.id,quantity:3}],operation:crypto.randomUUID()}
+ localStorage.setItem('pongdang:relic-loadout:recycling-user:recycling',JSON.stringify(request))
+ mock.read.mockResolvedValue({...state,relics:[a,b,epic,{...mythic,owned:true,quantity:3}]})
+ render(<RelicPage/>);fireEvent.click(await screen.findByRole('button',{name:'이전 재조합 결과 다시 확인'}))
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'같은 요청 다시 확인'}))
+ await waitFor(()=>expect(mock.recycle).toHaveBeenCalledWith(request))
 })

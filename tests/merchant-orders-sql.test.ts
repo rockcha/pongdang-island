@@ -158,25 +158,28 @@ it('rejects oversized messages before consuming items',async()=>{
  await expect(asUser(me,'select public.deliver_merchant_order($1,$2,$3)',[o.id,crypto.randomUUID(),'가'.repeat(81)])).rejects.toThrow('MERCHANT_MESSAGE_TOO_LONG')
  expect((await state()).deliveredToday).toBe(0)
 })
-it('computes every agreed bonus including multiple rares and epic or mythic supplements',async()=>{
+it('reduces every bonus by ten percent rounded to whole gold, including grade supplements',async()=>{
  const bonus=async(grades,quantities)=> (await db.query('select app_private.merchant_order_bonus($1::jsonb) n',[JSON.stringify(grades.map((rarity,i)=>({rarity,quantity:quantities[i]})))])).rows[0].n
- for(const [rarity,expected] of [['common',72],['rare',90],['epic',225],['mythic',540]])expect(await bonus([rarity],[1])).toBe(expected)
+ for(const [rarity,expected] of [['common',65],['rare',81],['epic',203],['mythic',486]])expect(await bonus([rarity],[1])).toBe(expected)
  for(const [grades,quantities,expected] of [
   [['common','common'],[1,1],120],[['rare','common'],[1,1],200],[['rare','rare'],[1,1],250],
   [['common','common'],[1,2],200],[['rare','common'],[1,2],300],[['common','rare'],[1,2],380],[['rare','rare'],[1,2],500],
   [['common','common','common'],[1,1,2],600],[['rare','common','common'],[1,1,2],800],[['rare','rare','common'],[1,1,2],1000],
   [['epic','common'],[1,1],370],[['mythic','common'],[1,2],800],[['epic','common','common'],[1,1,2],850],
   [['mythic','common','common'],[1,1,2],1200],
- ])expect(await bonus(grades,quantities)).toBe(expected)
+ ])expect(await bonus(grades,quantities)).toBe(Math.round(expected*0.9))
  await expect(asUser(me,'select app_private.merchant_order_bonus($1::jsonb)',[JSON.stringify([{rarity:'common',quantity:1}])])).rejects.toThrow('permission denied')
 })
 it('keeps an existing single-kind snapshot and pays its original amount after the nerf',async()=>{
  const definition=(await db.query("select pg_get_functiondef('app_private.merchant_order_bonus(jsonb)'::regprocedure) definition")).rows[0].definition
- await db.exec(definition.replace("when 'common' then 72 when 'rare' then 90 when 'epic' then 225 else 540 end", "when 'common' then 80 when 'rare' then 100 when 'epic' then 250 else 600 end"))
+ // Generate a board with the immediately preceding bonus, then restore the nerf.
+ expect(definition.match(/ \* 0\.9/g)).toHaveLength(2)
+ await db.exec(definition.replaceAll(' * 0.9',''))
  const before=await state(),single=before.orders.find(o=>o.items.length===1)
  await db.exec(definition)
  const current=await state()
  expect(current.orders.map(o=>o.id)).toEqual(before.orders.map(o=>o.id))
+ expect(current.orders.map(o=>[o.baseGold,o.rewardGold])).toEqual(before.orders.map(o=>[o.baseGold,o.rewardGold]))
  expect(current.orders.find(o=>o.id===single.id).rewardGold).toBe(single.rewardGold)
  const newBonus=(await db.query('select app_private.merchant_order_bonus($1::jsonb) n',[JSON.stringify(single.items)])).rows[0].n
  expect(newBonus).toBeLessThan(single.rewardGold-single.baseGold)

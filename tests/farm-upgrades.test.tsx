@@ -71,6 +71,6 @@ it('preserves an upgraded building level after recovery and placement',()=>{
  click('농지 관리소 (6,5)');click('업그레이드 · 50 G');act(()=>vi.advanceTimersByTime(10000));click('Close');act(()=>vi.advanceTimersByTime(200))
  click('편집하기');click('농지 관리소 (6,5)');click('회수');click('보관함')
  fireEvent.click(screen.getByRole('button',{name:/농지 관리소.*보관 1개/}))
- fireEvent.click(document.querySelector('[data-farm-cell="6,5"]')!);click('편집하기');click('농지 관리소 (6,5)')
+ fireEvent.click(document.querySelector('[data-farm-cell="6,5"]')!);click('완료');click('농지 관리소 (6,5)')
  expect(screen.getByText('Lv. 2')).toBeTruthy()
 })

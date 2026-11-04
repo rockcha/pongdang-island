@@ -75,7 +75,8 @@ it('prepares a purchased chicken for ten seconds and delivers it to object stora
  expect(screen.getByRole('button',{name:/닭.*보관 1개.*배치하기/})).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:/닭.*보관 1개.*배치하기/}))
  expect(screen.getByRole('navigation',{name:'농사 도구'})).toBeTruthy()
- expect(screen.getByRole('button',{name:'편집하기'}).getAttribute('aria-pressed')).toBe('true')
+ expect(screen.getByRole('button',{name:'보관함',exact:true}).getAttribute('aria-pressed')).toBe('true')
+ expect(screen.getByRole('button',{name:/닭.*보관 1개.*배치하기/}).getAttribute('aria-pressed')).toBe('true')
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,700')
 })
 it('finishes research after leaving the laboratory and unlocks buying and planting that crop',()=>{

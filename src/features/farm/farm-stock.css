@@ -39,4 +39,4 @@
 .farm-tile-choice{display:flex;align-items:center;gap:20px;padding:20px;border:1px solid #dfc7a6;border-radius:14px;background:#fcf2e3;text-align:left}
 .farm-tile-choice>span{display:flex;flex-direction:column;gap:8px}.farm-tile-choice strong{font-size:15px;font-weight:500}.farm-tile-choice small{font-size:12px;color:#967450}.farm-tile-choice:disabled{cursor:default;color:#8e7962}
 .farm-seed-shop-button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px;border:1px solid #d9bf99;border-radius:12px;background:#efe1ca;color:#775334;font-size:12px}
-@media(max-width:420px){#farm-tile-menu>button,#farm-storage-menu>button{flex-direction:column;gap:4px;padding-inline:5px;font-size:10px}#farm-tile-menu>.farm-tool-done,#farm-storage-menu>.farm-tool-done{padding-inline:12px}.farm-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.farm-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

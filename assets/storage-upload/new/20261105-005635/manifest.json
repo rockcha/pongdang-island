@@ -1,0 +1,64 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Replace tree and pond camera angle only; retain existing 1x1 footprints and other farm artwork",
+  "baseManifest": "assets/storage-upload/new/20261105-001622/manifest.json",
+  "normalization": "Uniform contain resize on transparent 512px square; RGBA retained after resizing. Runtime frame registers alpha >=4 with 8px padding to exclude invisible alpha dust.",
+  "items": [
+    {
+      "id": "tree",
+      "frames": 1,
+      "generatedSource": "sources/tree-generated.source",
+      "thumbnail_path": "farm/art/v10/decor/tree.png",
+      "references": [
+        "public/farm/art/v8/decor/tree.png",
+        "public/farm/art/v8/decor/flowers.png"
+      ],
+      "prompt": "Edit Image 1, the existing farm decoration. Image 2 (the flower garden) is the CAMERA AND ART STYLE REFERENCE. Match the flower garden's elevated overhead game-camera view, softly painted fine natural textures, muted warm olive/sage/beige palette and clean gentle contours. This is a small 1x1 square-grid farm prop. Keep the full object inside the frame with transparent margins, crisp clean alpha edges, no text, no UI, no scenery or ground island. Change the 3D VIEWPOINT of the object, not just its 2D rotation or scale. TREE: Repaint this same leafy tree viewed from clearly ABOVE, about 60 degrees looking down from horizontal, a cozy elevated near-top view like the flower bed. The upper surfaces of the layered rounded canopy must dominate the picture. The crown is a compact organic almost-round mass, broad and naturally lobed, layered clusters of dusty olive and muted yellow-sage leaves with delicate veins and soft depth. Preserve the tree's existing leaf and bark palette. Only a very short small hint of gray-brown trunk/root collar peeks out beneath the LOWER CENTRAL edge of the canopy; canopy occupies at least 85% of the object's height. No long exposed upright trunk, no portrait/tree-at-eye-level view, no tall triangular tree silhouette, no large visible branching scaffold. We should feel we are looking down onto the crown, not standing in front of the tree. Show some leaf clumps overlapping one another to convey overhead volume. Compact near-square silhouette, orthographic elevated game view, not a diamond/isometric ground tile. ONE tree, no other objects. Genuine transparent background.",
+      "viewBox": "18 24 476 447",
+      "sourceSha256": "d0f034a17578064f0c8a73f4c40d46ffceed9ce34d07e09f5c1c681cb5166599",
+      "sha256": "5415c3e514d41d55adf706b353f8e31aacee1f9aef62a6e838f2f05cb3130403",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "registrationAlphaThreshold": 4,
+        "alphaBounds": {
+          "left": 26,
+          "top": 32,
+          "right": 485,
+          "bottom": 462
+        },
+        "padding": 8,
+        "transparentPixels": 117061,
+        "rgbaPreservedAfterResize": true
+      }
+    },
+    {
+      "id": "pond",
+      "frames": 1,
+      "generatedSource": "sources/pond-generated.source",
+      "thumbnail_path": "farm/art/v10/decor/pond.png",
+      "references": [
+        "public/farm/art/v8/decor/pond.png",
+        "public/farm/art/v8/decor/flowers.png"
+      ],
+      "prompt": "Edit Image 1, the existing farm decoration. Image 2 (the flower garden) is the CAMERA AND ART STYLE REFERENCE. Match the flower garden's elevated overhead game-camera view, softly painted fine natural textures, muted warm olive/sage/beige palette and clean gentle contours. This is a small 1x1 square-grid farm prop. Keep the full object inside the frame with transparent margins, crisp clean alpha edges, no text, no UI, no scenery or ground island. Change the 3D VIEWPOINT of the object, not just its 2D rotation or scale. POND: Repaint the same small natural stone-ring pond from a CLEARLY HIGHER overhead viewpoint, about 60 degrees looking down from horizontal. The water surface should be almost round, a gently organic circle slightly wider than tall, width-to-height of the water around 1.15 to 1.25, rather than the current very flat horizontal oval. See the TOP surfaces of stones all the way around a low shallow rim, with little vertical wall thickness. Keep the same pale warm weathered beige/gray stones with restrained moss, muted gray-sage water, a couple of lily pads, one tiny soft cream-pink lily and very short sparse reeds toward the back. The open water is the dominant central area. The pond must read naturally on ONE square farm cell and match the flower garden's overhead perspective. No tall reeds, no thick raised basin, no deep frontal stone wall, no low eye-level/front view. Whole compact near-round pond fully visible. Genuine alpha transparency outside the stone rim, opaque water inside.",
+      "viewBox": "57 74 394 342",
+      "sourceSha256": "7b8852ad9ee0ec20b3710fb54ecbc28486f0264c69fca69afbabeb69b537de45",
+      "sha256": "a9d32a4de999309eb54ee7d69937f242249c445191b7550bc53a980f60c7e62b",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "registrationAlphaThreshold": 4,
+        "alphaBounds": {
+          "left": 65,
+          "top": 82,
+          "right": 442,
+          "bottom": 407
+        },
+        "padding": 8,
+        "transparentPixels": 154355,
+        "rgbaPreservedAfterResize": true
+      }
+    }
+  ]
+}

@@ -1,9 +1,19 @@
-.farm-tool-menu{display:flex;gap:6px;padding:6px;border:1px solid #e4d2b5;border-radius:15px;background:#fff9eef5;box-shadow:0 3px 15px #35596516}
-.farm-tool-menu>button{position:relative;display:flex;flex:1;align-items:center;justify-content:center;gap:7px;min-width:0;min-height:46px;padding:8px 12px;border:1px solid transparent;border-radius:10px;color:#98734f;font-size:12px;white-space:nowrap}
-.farm-tool-menu>button[aria-pressed=true]{border-color:#d8be97;background:#eee0c7;color:#825431}
-.farm-tool-menu>button:focus-visible{outline:2px solid #ad7144;outline-offset:2px}
-.farm-tool-menu>.farm-tool-done{flex:0 0 auto;padding-inline:14px;background:#95613d;color:#fff6e7}
-@media(max-width:420px){#farm-land-menu>button{flex-direction:column;gap:4px;padding-inline:5px;font-size:10px}#farm-land-menu>.farm-tool-done{padding-inline:12px}}
+.farm-tool-panel{display:flex;flex-direction:column;gap:12px;min-width:0;max-height:calc(100dvh - 240px);overflow-y:auto;overscroll-behavior:contain;padding:14px;border:1px solid #e4d2b5;border-radius:18px;background:#fff9eef7;box-shadow:0 5px 22px #35596520;scrollbar-width:thin}
+.farm-tool-panel>header{display:flex;align-items:flex-start;gap:12px;flex:none}
+.farm-tool-panel>header>div{flex:1;min-width:0}.farm-tool-panel>header strong{display:block;padding-top:3px;font-size:13px;font-weight:500;color:#795539}
+.farm-tool-panel>header p{margin-top:5px;font-size:11px;line-height:1.6;color:#927b60;text-wrap:pretty}
+.farm-tool-panel .farm-tool-done{display:flex;flex:none;align-items:center;justify-content:center;gap:5px;min-width:66px;min-height:44px;padding:8px 12px;border:1px solid #855b36;border-radius:11px;background:#95613d;color:#fff6e7;font-size:12px}
+.farm-tool-menu{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);flex:none;gap:8px;padding:0;border:0;background:none;box-shadow:none}
+.farm-tool-menu>button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:76px;padding:12px 5px;border:1px solid #e7d7bf;border-radius:12px;background:#fbf3e6;color:#92704f;font-size:11px;line-height:1.4;text-align:center}
+.farm-tool-menu>button>svg{width:20px;height:20px;flex:none}.farm-tool-menu>button>.farm-count-badge{top:5px;right:5px;min-width:18px;height:18px;font-size:9px}
+.farm-tool-menu>button[aria-pressed=true]{border-color:#b28d5d;background:#ede5ce;color:#72512f;box-shadow:inset 0 0 0 1px #b28d5d}
+.farm-tool-panel button:focus-visible{outline:2px solid #ad7144;outline-offset:2px}
+.farm-tool-panel>.farm-storage-shelf{min-width:0;padding:0;border:0;border-top:1px solid #ebddc7;border-radius:0;background:none;box-shadow:none}
+.farm-tool-panel>.farm-storage-shelf>div{padding:12px 2px 3px;max-height:150px}.farm-tool-panel>.farm-storage-shelf>p{padding:20px 8px;line-height:1.6}
+.farm-crop-tools>button:first-child{position:relative;margin-right:3px}.farm-crop-tools>button:first-child::after{content:'';position:absolute;right:-3px;top:12px;bottom:12px;width:1px;background:#e4d4ba}
+.farm-crop-tools>button[aria-pressed=true]{box-shadow:inset 0 0 0 1px #d4b994}
+@media(max-height:600px){.farm-tool-panel{max-height:calc(100dvh - 210px);gap:8px;padding:10px}.farm-tool-menu>button{min-height:60px;padding-block:8px;gap:5px}.farm-tool-panel>header p{margin-top:3px}.farm-tool-panel>.farm-storage-shelf>div{max-height:120px}}
+@media(max-width:380px){.farm-tool-panel{padding:12px}.farm-tool-panel>header{gap:8px}.farm-tool-panel>header p{font-size:10px}.farm-tool-menu{gap:6px}.farm-tool-menu>button{font-size:10px}}
 .farm-tool-badge{position:absolute;top:-3px;right:-1px;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border:2px solid #fff9ee;border-radius:12px;background:#a27548;color:#fff8e9;font-size:10px;font-weight:500;font-variant-numeric:tabular-nums}
 .farm-seed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .farm-seed-grid>button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:176px;padding:18px 10px;border:1px solid #dfc7a6;border-radius:16px;background:#fcf2e3;color:#745135;cursor:pointer}
@@ -25,4 +35,3 @@
 .farm-seed-cursor{position:fixed;top:0;left:0;display:none;z-index:10;pointer-events:none;will-change:transform}
 .farm-seed-cursor .farm-good-icon{position:absolute;top:-12px;left:-12px;width:32px;height:32px;filter:drop-shadow(1px 2px 2px #584b3866)}
 .top-farm-viewport[data-seed-cursor=true],.top-farm-viewport[data-seed-cursor=true] *{cursor:none!important}
-@media(max-width:380px){.farm-tool-menu{gap:3px}.farm-tool-menu>button{gap:5px;padding:8px 5px;font-size:11px}}

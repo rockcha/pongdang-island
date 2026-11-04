@@ -84,14 +84,13 @@ export function RelicRecombination({state,disabled,onRecombine,resetKey}:{state:
  const [grade,setGrade]=useState<'rare'|'epic'>('rare'),[counts,setCounts]=useState<Record<string,number>>({})
  const candidates=state.relics.filter(r=>!r.crafted&&r.rarity===grade&&relicQuantity(r)>0)
  const available=(r:Relic)=>Math.max(0,relicQuantity(r)-(r.id===state.equippedId?1:0))
- const autoGroups=(['rare','epic'] as const).map(rarity=>({rarity,relics:state.relics.filter(r=>!r.crafted&&r.rarity===rarity&&available(r)>0)}))
- const autoGroup=autoGroups.find(group=>group.relics.reduce((sum,r)=>sum+available(r),0)>=6)??autoGroups.find(group=>group.relics.length>0)
+ const autoCandidates=candidates.filter(r=>available(r)>0)
  function autoFill(){
-  if(disabled||!autoGroup)return
+  if(disabled||!autoCandidates.length)return
   let remaining=6
   const next:Record<string,number>={}
-  for(const relic of autoGroup.relics){const quantity=Math.min(available(relic),remaining);if(quantity>0)next[relic.id]=quantity;remaining-=quantity;if(!remaining)break}
-  setGrade(autoGroup.rarity);setCounts(next)
+  for(const relic of autoCandidates){const quantity=Math.min(available(relic),remaining);if(quantity>0)next[relic.id]=quantity;remaining-=quantity;if(!remaining)break}
+  setCounts(next)
  }
  const selected=candidates.map(r=>({id:r.id,quantity:Math.min(counts[r.id]??0,available(r))})).filter(i=>i.quantity>0)
  const total=selected.reduce((n,i)=>n+i.quantity,0),target=grade==='rare'?'epic':'mythic'
@@ -103,7 +102,7 @@ export function RelicRecombination({state,disabled,onRecombine,resetKey}:{state:
  return <section aria-label="유물 재조합" className="relic-recombine-panel">
   <div className="relic-recombine-plan"><div><h3 className="flex items-center gap-2 text-sm font-semibold"><Recycle className="size-4"/>유물 재조합</h3><p className="mt-2 text-[11px] leading-5 text-muted-foreground">같은 등급 6개 유물을 재조합해 상위 등급 유물 1개를 랜덤으로 얻을 수 있습니다.</p></div>
   <div className="flex items-center gap-3 rounded-xl border border-border p-3"><select aria-label="재조합 재료 등급" disabled={disabled} value={grade} onChange={e=>{setGrade(e.target.value as 'rare'|'epic');setCounts({})}} className="h-10 min-w-0 flex-1 rounded-lg border border-border bg-background px-2 text-sm"><option value="rare">희귀 6개</option><option value="epic">특급 6개</option></select><ArrowUp className="size-4 text-primary"/><span className="text-xs font-medium">무작위 {rarities[target].label} 1개</span></div>
-  <div className="relic-recombine-selection"><span role="status" aria-label="선택한 재조합 재료">선택 {total} / 6개</span><div className="relic-recombine-actions"><button type="button" className="relic-recombine-auto" title="희귀 → 특급 순으로 같은 등급 유물을 최대 6개 채워요. 장착한 1개와 세공 유물은 제외돼요." disabled={disabled||!autoGroup} onClick={autoFill}>자동 넣기</button><button type="button" disabled={disabled||!total} onClick={()=>setCounts({})}>초기화</button></div></div>
+  <div className="relic-recombine-selection"><span role="status" aria-label="선택한 재조합 재료">선택 {total} / 6개</span><div className="relic-recombine-actions"><button type="button" className="relic-recombine-auto" title={`${rarities[grade].label} 유물을 최대 6개 채워요. 장착한 1개와 세공 유물은 제외돼요.`} disabled={disabled||!autoCandidates.length} onClick={autoFill}>자동 넣기</button><button type="button" disabled={disabled||!total} onClick={()=>setCounts({})}>초기화</button></div></div>
   <div className="relic-recombine-slots" aria-label="선택한 유물 6칸">{Array.from({length:6},(_,index)=>{const relic=slots[index];return relic?<button key={index} className="relic-recombine-slot" data-filled="true" style={{background:`color-mix(in srgb, ${rarities[relic.rarity].effectColor} 14%, var(--card))`,borderColor:`color-mix(in srgb, ${rarities[relic.rarity].effectColor} 30%, var(--border))`}} aria-label={`${relic.name} 1개 선택 해제`} title={`${relic.name} · 눌러서 1개 빼기`} disabled={disabled} onClick={()=>change(relic,-1)}><RelicArtwork relic={relic} className="size-8"/></button>:<span key={index} className="relic-recombine-slot" data-filled="false"><Plus size={13}/></span>})}</div>
   <button className="relic-pool-link" disabled={disabled} onClick={()=>setPoolOpen(true)}>결과 유물 보기</button></div>
   <div className="relic-recombine-scroll"><div className="space-y-2">{candidates.map(r=>{const amount=selected.find(i=>i.id===r.id)?.quantity??0,spare=available(r);return <article aria-label={r.name} key={r.id} data-selected={amount>0} className="relic-recombine-candidate"><RelicArtwork relic={r} className="size-10 shrink-0"/><div className="min-w-0 flex-1"><p className="text-xs font-medium">{r.name}</p><p className="mt-1 text-[10px] text-muted-foreground">{r.id===state.equippedId?'장착 1개 보호 · ':''}사용 가능 {spare}개</p></div><div className="flex shrink-0 items-center gap-0.5"><Button variant="ghost" size="icon" aria-label={`${r.name} 1개 빼기`} disabled={disabled||amount===0} onClick={()=>change(r,-1)}><Minus className="size-4"/></Button><output className="w-4 text-center text-xs" aria-label={`${r.name} 선택 수량`}>{amount}</output><Button variant="ghost" size="icon" aria-label={`${r.name} 1개 넣기`} disabled={disabled||amount>=spare||total>=6} onClick={()=>change(r,1)}><Plus className="size-4"/></Button></div></article>})}{!candidates.length&&<p className="py-8 text-center text-xs text-muted-foreground">보유한 {rarities[grade].label} 유물이 없어요.</p>}</div></div>

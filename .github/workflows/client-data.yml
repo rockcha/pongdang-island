@@ -1,19 +1,47 @@
 name: Client data boundaries
 on:
   push:
+    branches: [main]
   pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   client-data:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/assets/
+            !/artifacts/
+            /assets/**/
+            !/assets/**/*.*
+            /assets/**/*.json
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
       - run: npm ci
+      - uses: actions/cache@v4
+        with:
+          path: node_modules/.tmp/*.tsbuildinfo
+          key: tsc-${{ runner.os }}-${{ hashFiles('package-lock.json', 'tsconfig*.json') }}-${{ github.sha }}
+          restore-keys: |
+            tsc-${{ runner.os }}-${{ hashFiles('package-lock.json', 'tsconfig*.json') }}-
       - run: npm run client-data:check
-      - run: npm run test:client-data
-      - run: npm test -- tests/relic-recycling-ui.test.tsx tests/relic-recycling-api.test.ts
-      - run: npm test -- tests/relic-roulette-api.test.ts tests/relic-roulette-ui.test.tsx tests/relic-roulette-model.test.ts tests/header-place-navigation.test.tsx
+      - name: Client regressions (one test runner)
+        run: npm run test:client-data -- tests/relic-recycling-ui.test.tsx tests/relic-recycling-api.test.ts tests/relic-roulette-api.test.ts tests/relic-roulette-ui.test.tsx tests/relic-roulette-model.test.ts tests/header-place-navigation.test.tsx tests/deployment-tools.test.ts
       - run: npm run build
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: app-build-report
+          path: artifacts/deploy/build-report.json
+          if-no-files-found: ignore
+          retention-days: 7

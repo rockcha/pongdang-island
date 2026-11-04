@@ -1,0 +1,11 @@
+# Raw art and review records remain versioned, but are not production build inputs.
+assets/
+artifacts/
+docs/
+tests/
+.agents/
+.github/
+.cache/
+tmp/
+.env*
+*.log

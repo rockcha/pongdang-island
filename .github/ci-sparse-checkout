@@ -1,0 +1,7 @@
+# Keep the runnable app, tests and DB history; asset metadata is needed by SQL tests.
+/*
+!/assets/
+!/artifacts/
+/assets/**/
+!/assets/**/*.*
+/assets/**/*.json

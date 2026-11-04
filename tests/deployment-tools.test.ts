@@ -39,3 +39,11 @@ it('keeps workflow checkout rules aligned, including the metadata required by SQ
   expect(workflow).toContain('cancel-in-progress: true')
  }
 })
+it('Vercel ignores root raw artwork while retaining nested game assets',async()=>{
+ const root=await mkdtemp(path.join(tmpdir(),'pongdang-vercel-ignore-'));temporary.push(root)
+ execFileSync('git',['init','--quiet'],{cwd:root})
+ await writeFile(path.join(root,'.vercelignore'),await readFile('.vercelignore','utf8'))
+ const files=['assets/storage-upload/raw.png','artifacts/preview.png','src/features/exploration/assets/doors-a.png','public/assets/decoration.png','public/music/theme.mp3','.env.storage.local']
+ const ignored=execFileSync('git',['-c','core.excludesFile=.vercelignore','check-ignore','--no-index','--stdin','-z'],{cwd:root,input:files.join('\0')+'\0'}).toString().split('\0').filter(Boolean)
+ expect(ignored).toEqual(['assets/storage-upload/raw.png','artifacts/preview.png','.env.storage.local'])
+})

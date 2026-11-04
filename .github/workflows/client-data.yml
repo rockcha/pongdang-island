@@ -36,7 +36,7 @@ jobs:
             tsc-${{ runner.os }}-${{ hashFiles('package-lock.json', 'tsconfig*.json') }}-
       - run: npm run client-data:check
       - name: Client regressions (one test runner)
-        run: npm run test:client-data -- tests/relic-recycling-ui.test.tsx tests/relic-recycling-api.test.ts tests/relic-roulette-api.test.ts tests/relic-roulette-ui.test.tsx tests/relic-roulette-model.test.ts tests/header-place-navigation.test.tsx tests/deployment-tools.test.ts
+        run: npm run test:client-data -- tests/relic-recycling-ui.test.tsx tests/relic-recycling-api.test.ts tests/relic-roulette-api.test.ts tests/relic-roulette-ui.test.tsx tests/relic-roulette-model.test.ts tests/header-place-navigation.test.tsx tests/deployment-tools.test.ts tests/merchant-orders-ui.test.tsx
       - run: npm run build
       - uses: actions/upload-artifact@v4
         if: always()

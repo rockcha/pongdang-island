@@ -20,6 +20,8 @@ for(const item of manifest.items){
 }
 catalog.collectible_habitats=catalog.collectible_habitats.filter(h=>!ids.has(h.species_id))
 for(const id of ids)for(const region of catalog.regions)catalog.collectible_habitats.push({species_id:id,region_id:region.id})
-// Preserve existing row order so a new batch does not rewrite unrelated catalog data.
+// Catalog arrays must follow the replay reader's ordering; values remain unchanged.
+catalog.collectible_species.sort((a,b)=>a.id<b.id?-1:a.id>b.id?1:0)
+catalog.collectible_habitats.sort((a,b)=>a.species_id.localeCompare(b.species_id,'en')||a.region_id.localeCompare(b.region_id,'en'))
 fs.writeFileSync(file,JSON.stringify(catalog,null,2)+'\n')
 console.log('Registered '+ids.size+' common-pool decorations across '+catalog.regions.length+' regions locally')

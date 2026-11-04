@@ -4,9 +4,11 @@ import {mechsanctumArt} from './mechsanctum-art'
 import {fireflyArt} from './firefly-art'
 import {pharaohArt} from './pharaoh-art'
 import {hangangArt} from './hangang-art'
+import {galaxyArt} from './galaxy-art'
 const horizonRegions=new Set(['siren','mukhyang','pongdang','coral','mistmoon','starruins','dreamabyss','primal','bluegrove','whitenight','cloudferry','scrapisle'])
 
 export function fishingBannerPath(regionId:string){
+ if(regionId==='galaxy')return galaxyArt.banner
  if(regionId==='hangang')return hangangArt.banner
  if(regionId==='pharaoh')return pharaohArt.banner
  if(regionId==='firefly')return fireflyArt.banner

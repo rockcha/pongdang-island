@@ -6,6 +6,7 @@ function CloudferryFloat(){
 }
 
 const materials:Record<string,{width:number;colors:string[];band:string;dash:string}>={
+ galaxy:{width:5,colors:['#111827','#b8c1df','#24283e'],band:'#d9c9a0',dash:'1 3 1 20'},
  hangang:{width:5.2,colors:['#263953','#f4e5c4','#9f3546'],band:'#c5a05e',dash:'1 2 1 21'},
  pharaoh:{width:5.2,colors:['#8b612e','#f7e5ba','#bc883c'],band:'#e6b955',dash:'1 2 1 21'},
  firefly:{width:5.2,colors:['#66492e','#caa46a','#6d8446'],band:'#d6c77c',dash:'1 2 1 21'},
@@ -37,6 +38,7 @@ export function ExtraShaft({id,path,gradientId}:{id:string;path:string;gradientI
  </g>
 }
 export function ExtraFrame({id}:{id:string}){
+ if(id==='galaxy')return <g data-skin-frame={id}><circle r="32" fill="#171c32" stroke="#c9d2e8" strokeWidth="3"/><ellipse rx="38" ry="12" transform="rotate(-25)" fill="none" stroke="#d9c9a0" strokeWidth="3"/><circle r="23" fill="#424968" stroke="#8e9bbb"/><path d="m0-14 3 10 10 3-10 3-3 10-3-10-10-3 10-3Z" fill="#f7e8bd"/></g>
  if(id==='mechsanctum')return <g data-skin-frame={id}><circle r="34" fill="#314b49" stroke="#d6b77a" strokeWidth="4"/><circle r="26" fill="none" stroke="#7bd5c5" strokeWidth="2"/></g>
  if(id==='plunder')return <g data-skin-frame={id}><circle r="34" fill="#34272a" stroke="#d6ab63" strokeWidth="4"/><circle r="27" fill="none" stroke="#ad4347" strokeWidth="3"/><path d="M-17-22 17 22M17-22-17 22" stroke="#d6ab63" strokeWidth="2"/></g>
  if(id==='nyamnyam'||id==='swift')return <g data-skin-frame={id}><circle r="34" fill={id==='swift'?'#26364f':'#435c3b'} stroke="#d9b66f" strokeWidth="4"/><circle r="28" fill="none" stroke="#f5dfb2"/></g>
@@ -53,6 +55,7 @@ export function ExtraFrame({id}:{id:string}){
  return <g data-skin-frame={id}><circle r="35" fill="#346f73" stroke="#d8e5d0" strokeWidth="3"/><circle r="30" fill="#5b9994" stroke="#bce7d6"/><path d="M-27-13q8-5 13 0m28 26q8 5 13 0" fill="none" stroke="#edf4da" strokeWidth="1.4"/></g>
 }
 export function ExtraRotor({id}:{id:string}){
+ if(id==='galaxy')return <g data-skin-rotor={id}><ellipse rx="24" ry="10" fill="none" stroke="#d9c9a0" strokeWidth="2"/><circle r="9" fill="#c3cce8" stroke="#7784ae" strokeWidth="2"/><circle cx="22" cy="-4" r="4" fill="#e7c79b"/></g>
  if(id==='mechsanctum')return <g data-skin-rotor={id}>{Array.from({length:12},(_,i)=><path key={i} transform={`rotate(${i*30})`} d="M-4-20V-28H4V-20Z" fill="#d6b77a"/>)}<circle r="23" fill="#806846" stroke="#d6b77a" strokeWidth="2"/><circle r="7" fill="#7bd5c5"/><path d="M0 0 20 14" stroke="#d6b77a" strokeWidth="3"/><circle cx="22" cy="16" r="5" fill="#314b49"/></g>
  if(id==='plunder')return <g data-skin-rotor={id}><circle r="27" fill="#32292b" stroke="#d6ab63" strokeWidth="2"/><path d="m0-25 5 18 18 7-18 5-5 20-5-20-18-5 18-7Z" fill="#b44348" stroke="#f2d49d"/><circle r="5" fill="#d6ab63"/><path d="M0 0 22 16" stroke="#d6ab63" strokeWidth="3"/><circle cx="24" cy="18" r="5" fill="#b44348" stroke="#d6ab63"/></g>
  if(id==='nyamnyam'||id==='swift')return <g data-skin-rotor={id}>{[0,120,240].map(a=><path key={a} transform={`rotate(${a})`} d="M0-3Q-24-25-22 3Q-11-6 0 3Z" fill={id==='swift'?'#f4e4c3':'#ed9975'} stroke="#d9b66f"/>)}<circle r="5" fill="#d9b66f"/><path d="M0 0 22 15" stroke="#d9b66f" strokeWidth="3"/><circle cx="24" cy="17" r="5" fill={id==='swift'?'#d99935':'#ed9975'}/></g>
@@ -68,6 +71,7 @@ export function ExtraRotor({id}:{id:string}){
  return <g data-skin-rotor={id}>{[0,120,240].map(a=><path key={a} transform={`rotate(${a})`} d="M0-5C-23-15-29 10-18 19C-23 4-9 0 0 5Z" fill="#f0ebd2" stroke="#c7e3cb"/>)}<circle r="5.5" fill="#c8e6d9" stroke="#f8edc6"/><path d="M0 0 22 11" stroke="#cbdcba" strokeWidth="2.5"/><circle cx="24" cy="12" r="4.5" fill="#f5eed8"/></g>
 }
 export function ExtraFloat({id}:{id:string}){
+ if(id==='galaxy')return <g data-skin-float={id}><path d="M0-18V-9" stroke="#d9c9a0" strokeWidth="2"/><circle r="9" fill="#a4b6da" stroke="#58698f"/><ellipse rx="15" ry="4" transform="rotate(-25)" fill="none" stroke="#e3cfa8" strokeWidth="2"/><path d="M0 9V18" stroke="#d9c9a0" strokeWidth="2"/></g>
  if(id==='mechsanctum')return <g data-skin-float={id}><path d="M0-18V-11M0 12V17" stroke="#d6b77a" strokeWidth="2"/><ellipse rx="6" ry="12" fill="#7bd5c5" stroke="#806846" strokeWidth="2"/><path d="M-6-4H6" stroke="#d6b77a" strokeWidth="3"/></g>
  if(id==='plunder')return <g data-skin-float={id}><path d="M0-17V-10" stroke="#d6ab63" strokeWidth="2"/><ellipse rx="6" ry="11" fill="#34272a" stroke="#d6ab63"/><path d="M-6 1H6" stroke="#ad4347" strokeWidth="5"/><circle cy="-4" r="3" fill="#fff0d2"/><path d="M-1-4H1" stroke="#34272a" strokeWidth="1"/></g>
  if(id==='nyamnyam'||id==='swift')return <g data-skin-float={id}><path d="M0-12C-9-5-7 7 0 12C7 7 9-5 0-12Z" fill={id==='swift'?'#26364f':'#fff0d5'} stroke="#d9b66f"/><path d="M-5 0H5" stroke={id==='swift'?'#d9b66f':'#ed9975'} strokeWidth="5"/><path d="M0-18V-12" stroke="#d9b66f" strokeWidth="2"/></g>
@@ -84,6 +88,7 @@ export function ExtraFloat({id}:{id:string}){
  return <g data-skin-float={id}><ellipse rx="6.5" ry="9" fill="#6baaa7" stroke="#dce9d3"/><path d="M-6-2Q-3-5 0-2T6-2M-6 3Q-3 0 0 3T6 3" fill="none" stroke="#fff0d4" strokeWidth="1.4"/><path d="M0-15v6" stroke="#f6e4b9" strokeWidth="2"/></g>
 }
 export function ExtraGrip({id}:{id:string}){
+ if(id==='galaxy')return <g data-skin-grip={id}><rect x="-8" y="-25" width="16" height="50" rx="7" fill="#24283e" stroke="#d9c9a0" strokeWidth="2"/><path d="M-6-15H6M-6-5H6M-6 5H6M-6 15H6" stroke="#7584aa" strokeWidth="2"/></g>
  if(id==='firefly')return <g data-skin-grip={id}><path d="M0-13V10M0-5Q-10-12-7-3Q-3 0 0-5M0 2Q9-5 8 2Q5 7 0 2" fill="#88a65b" stroke="#d6c77c" strokeWidth="1.3"/><ellipse cy="11" rx="4" ry="5" fill="#a87442" stroke="#e4c58a"/></g>
  if(id==='mechsanctum')return <g data-skin-grip={id}><path d="M-5-16H5M-5-10H5M-5-4H5" stroke="#d6b77a" strokeWidth="2"/><circle cy="6" r="4" fill="#7bd5c5" stroke="#806846"/></g>
  if(id==='plunder')return <g data-skin-grip={id}><path d="M-5-14H5M-5-8H5M-5-2H5" stroke="#ad4347" strokeWidth="3"/><circle cy="7" r="5" fill="#d6ab63"/><path d="M-2 6H2M0 4V10" stroke="#34272a" strokeWidth="1.5"/></g>

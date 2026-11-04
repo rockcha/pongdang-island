@@ -1,0 +1,3410 @@
+{
+  "checkedAt": "2026-11-04T19:37:39.332Z",
+  "scope": "Actual Phaser aquarium (42 species) and collection preview (7 mythics), local asset URLs and fixture inventory; no authenticated account writes",
+  "evidence": [
+    {
+      "width": 375,
+      "sample": 0,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 1.0435619338125544,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 0.8940387999999997,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 0.9566286004315375,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 32.089571422766014,
+              "y": 123.77342832814438,
+              "size": 165,
+              "direction": 1,
+              "angle": 0.9312780377969336,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 159.03775390925867,
+              "y": 162.63164435677766,
+              "size": 165,
+              "direction": 1,
+              "angle": -0.23257706043067752,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 101.99792894323193,
+              "y": 84.7063866520652,
+              "size": 165,
+              "direction": -1,
+              "angle": -0.17966720841053405,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 26.30209270705202,
+              "y": 264.6932975641376,
+              "size": 165,
+              "direction": 1,
+              "angle": -2.211894618183832,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 190.45937103947858,
+              "y": 256.9523551952918,
+              "size": 165,
+              "direction": 1,
+              "angle": -0.0976501919616068,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 42,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 147,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 0.8940387999999997,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 86.44630917323504,
+              "y": 224.72922527671165,
+              "size": 56,
+              "direction": -1,
+              "angle": -0.06948814600345331,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 70.00621736607587,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 238.48138670235556,
+              "y": 353.6230921913345,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.0549315120083262,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 251.9649132857402,
+              "y": 279.9092163409396,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 163.40988332915524,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 204.0429716970451,
+              "y": 128.82664245116743,
+              "size": 56,
+              "direction": 1,
+              "angle": 0.10108588284150809,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 279.7986848900158,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 114.47670703525677,
+              "y": 118.36426558613186,
+              "size": 56,
+              "direction": 1,
+              "angle": 1.6244494362473931,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 106.8393628316705,
+              "y": 359.01392018085966,
+              "size": 56,
+              "direction": -1,
+              "angle": 0.12341605162596533,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 47.12609371885403,
+              "y": 316.7952772921026,
+              "size": 56,
+              "direction": -1,
+              "angle": 0.13114017029130742,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 239.28908409441823,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 233.7653517586837,
+              "y": 276.1734651590857,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 224.40496349098663,
+              "y": 405.94214560112056,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.13210210136894707,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 141.44181101961323,
+              "y": 238.11066297039199,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 127.66928516566439,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 286.7893974643103,
+              "y": 132.15688628484145,
+              "size": 76,
+              "direction": 1,
+              "angle": 0.02619243655735918,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 39.05730088724966,
+              "y": 254.67811479014782,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.405941621494326,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 133.79845880061393,
+              "y": 140.48672684927286,
+              "size": 76,
+              "direction": -1,
+              "angle": -0.37157904098038497,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 12.680152236679938,
+              "y": 349.0461639312694,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.09510108304672182,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 210.96363222710374,
+              "y": 243.31318888118992,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.11256154702765098,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 141.21700477892534,
+              "y": 218.21437273360482,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 274.78360114077975,
+              "y": 340.10190052035125,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.3684370888214531,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 282.16456261518226,
+              "y": 232.28988494732914,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.8563627830679764,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 163.04032634313901,
+              "y": 293.88083103908195,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.22586807412005588,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 84.73239517369721,
+              "y": 292.44723602047185,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.0806484298464686,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 64.35970334422775,
+              "y": 274.1330498093142,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 271.91335746382424,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 193.27170669767892,
+              "y": 221.15389328732851,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 14.400532956903886,
+              "y": 183.54064373929847,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.8688181012865567,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 229.73388645252257,
+              "y": 142.78502566573823,
+              "size": 110,
+              "direction": -1,
+              "angle": -0.7949383533001173,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 116.45989017796164,
+              "y": 313.73601980883234,
+              "size": 110,
+              "direction": 1,
+              "angle": -0.2187797681565571,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 116.03180004863039,
+              "y": 189.3379014236339,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.3893381968724052,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 233.3949906351248,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 175.8224572835249,
+              "y": 150.85755441586542,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.17056359809846117,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 20.015019438518326,
+              "y": 119.07398117308024,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.43392810019889605,
+              "frame": 0
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 375,
+      "sample": 1,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 1.6955619341701798,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 1.4170387999999987,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 1.608628600789163,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 33.689034371561014,
+              "y": 123.91473479444988,
+              "size": 165,
+              "direction": 1,
+              "angle": 2.088950583212159,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 159.3380110016644,
+              "y": 162.50397595417235,
+              "size": 165,
+              "direction": 1,
+              "angle": -0.68514872017631,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 101.59325754279998,
+              "y": 84.77983031225469,
+              "size": 165,
+              "direction": -1,
+              "angle": -0.7318176641829123,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 28.925543594853195,
+              "y": 264.3656777380029,
+              "size": 165,
+              "direction": 1,
+              "angle": -4.8364753557654785,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 190.55547827142735,
+              "y": 256.74635512193504,
+              "size": 165,
+              "direction": 1,
+              "angle": -0.22295541189352247,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 42,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 147,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 1.4170387999999987,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 86.3560822228061,
+              "y": 224.83720364920896,
+              "size": 56,
+              "direction": -1,
+              "angle": -0.23868376358873372,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 70.25919549408125,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 238.56904268167852,
+              "y": 353.5353439796819,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.22578836766966243,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 251.94804370670767,
+              "y": 279.86041200307017,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 163.26442647225014,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 204.15389987449836,
+              "y": 128.95813681423647,
+              "size": 56,
+              "direction": 1,
+              "angle": 0.29705294296265183,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 278.3762261608595,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 115.96985463824817,
+              "y": 118.67944259739322,
+              "size": 56,
+              "direction": 1,
+              "angle": 4.047497159058096,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 106.53500208234007,
+              "y": 358.95715605720164,
+              "size": 56,
+              "direction": -1,
+              "angle": 0.6100850689407152,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 46.99832436595259,
+              "y": 316.61317144463214,
+              "size": 56,
+              "direction": -1,
+              "angle": 0.34498267839330365,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 239.28908409441823,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 233.74532281469214,
+              "y": 276.12220875446076,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 224.57165508631547,
+              "y": 405.8318001466621,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.4416511680565771,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 141.46143626929376,
+              "y": 238.06022943659036,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 127.81704512983083,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 286.84506393855264,
+              "y": 132.22265339288677,
+              "size": 76,
+              "direction": 1,
+              "angle": 0.1281427889319705,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 40.41306805249088,
+              "y": 254.46524829272022,
+              "size": 76,
+              "direction": 1,
+              "angle": -3.6404258845227124,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 133.2751625537362,
+              "y": 140.58570480643152,
+              "size": 76,
+              "direction": -1,
+              "angle": -1.3720198033449944,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 12.593460205777236,
+              "y": 348.5841481900837,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.23525936373662867,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 211.08656216278516,
+              "y": 243.1815005754639,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.3290626500808705,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 141.21700477892534,
+              "y": 218.16276816423314,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 273.8535026861689,
+              "y": 340.041449002415,
+              "size": 76,
+              "direction": -1,
+              "angle": 1.0345166228198248,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 280.63009400549487,
+              "y": 232.16235937868515,
+              "size": 76,
+              "direction": -1,
+              "angle": 2.1959519079807808,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 163.28136227482554,
+              "y": 293.74166636651626,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.6469961333618569,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 84.63245493594407,
+              "y": 292.3343221790328,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.2652760376720305,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 64.35970334422775,
+              "y": 274.0796819035855,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 269.5376907943231,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 193.25378192060526,
+              "y": 221.10421968598547,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 15.722337636698661,
+              "y": 183.67227156811612,
+              "size": 110,
+              "direction": 1,
+              "angle": 2.2619216030828966,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 228.30058130939196,
+              "y": 142.9041893644297,
+              "size": 110,
+              "direction": -1,
+              "angle": -2.0512971684251293,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 116.90976579724855,
+              "y": 313.66783601619005,
+              "size": 110,
+              "direction": 1,
+              "angle": -1.0427774506204501,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 116.70558529666984,
+              "y": 189.41855896030808,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.3533706484946506,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 233.12887998124995,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 175.9873924238447,
+              "y": 151.04872830748957,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.44570261188742233,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 21.1922180287735,
+              "y": 119.14081011690942,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.1495346121723382,
+              "frame": 1
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 375,
+      "sample": 2,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 2.3475619345278034,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 1.9400387999999946,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 2.260628601146787,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 36.123455255832035,
+              "y": 124.13417726822247,
+              "size": 165,
+              "direction": 1,
+              "angle": 3.22646253761584,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 159.79681402935338,
+              "y": 162.3060240022507,
+              "size": 165,
+              "direction": 1,
+              "angle": -1.0591941127972497,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 100.97253589665715,
+              "y": 84.89435169581982,
+              "size": 165,
+              "direction": -1,
+              "angle": -1.4036163749719641,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 32.87990892695298,
+              "y": 263.85846583281113,
+              "size": 165,
+              "direction": 1,
+              "angle": -6.906049578530483,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 190.70267772923725,
+              "y": 256.42639160641676,
+              "size": 165,
+              "direction": 1,
+              "angle": -0.3404055356562511,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 42,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 147,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 1.9400387999999946,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 86.21278358480627,
+              "y": 225.01118985360094,
+              "size": 56,
+              "direction": -1,
+              "angle": -0.39367755529948023,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 70.6656259280461,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 238.70830787230852,
+              "y": 353.3939404211101,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.3813294214932255,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 251.9207032076542,
+              "y": 279.78278255849307,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 163.0305038113799,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 204.33052502710194,
+              "y": 129.16955418928106,
+              "size": 56,
+              "direction": 1,
+              "angle": 0.48600222377944224,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 277.7506116154089,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 118.32184389602547,
+              "y": 119.18500649177876,
+              "size": 56,
+              "direction": 1,
+              "angle": 6.481082832528248,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 106.05011372123539,
+              "y": 358.8657299180794,
+              "size": 56,
+              "direction": -1,
+              "angle": 1.2873491175158551,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 46.795882382277284,
+              "y": 316.32082512927315,
+              "size": 56,
+              "direction": -1,
+              "angle": 0.5575955301995607,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 239.28908409441823,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 233.71287120541737,
+              "y": 276.0425294976533,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 224.8352219599894,
+              "y": 405.6549491788339,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.7241835320330982,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 141.49321202592924,
+              "y": 237.9823669292454,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 128.05464340958494,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 286.9335120075319,
+              "y": 132.32857276806038,
+              "size": 76,
+              "direction": 1,
+              "angle": 0.23900975428081214,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 42.552745040410215,
+              "y": 254.12406120632474,
+              "size": 76,
+              "direction": 1,
+              "angle": -5.888862303362571,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 132.44718238353983,
+              "y": 140.74468276232145,
+              "size": 76,
+              "direction": -1,
+              "angle": -2.2719910704562496,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 12.456480226563459,
+              "y": 347.84401682498856,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.377525879094518,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 211.28125567119147,
+              "y": 242.96978667170177,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.5356567879370561,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 141.21700477892534,
+              "y": 218.0844586207782,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 272.3760688876779,
+              "y": 339.9441120757902,
+              "size": 76,
+              "direction": -1,
+              "angle": 1.7039695626739089,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 278.2071841267897,
+              "y": 231.9577572786781,
+              "size": 76,
+              "direction": -1,
+              "angle": 3.581511365299313,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 163.66616117051478,
+              "y": 293.5174890157464,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.0591664681328803,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 84.47407611032779,
+              "y": 292.1525992757612,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.43528017194907265,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 64.35970334422775,
+              "y": 273.99966118021234,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 268.38974178245604,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 193.22474358409096,
+              "y": 221.03014858861732,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 17.811549840832562,
+              "y": 183.88383385144132,
+              "size": 110,
+              "direction": 1,
+              "angle": 3.6990883499486835,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 226.03832369080715,
+              "y": 143.09567270636987,
+              "size": 110,
+              "direction": -1,
+              "angle": -3.3517503284255907,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 117.62639083400578,
+              "y": 313.55786085813037,
+              "size": 110,
+              "direction": 1,
+              "angle": -1.8887633077929926,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 117.7739142316657,
+              "y": 189.54832980585743,
+              "size": 110,
+              "direction": 1,
+              "angle": 2.2592712942519104,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 232.70116895936255,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 176.249172260897,
+              "y": 151.35591785859904,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.721123878316429,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 23.05792613724201,
+              "y": 119.2484041082411,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.8853067194731439,
+              "frame": 3
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 375,
+      "sample": 3,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 2.9995619348854254,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 2.4630387999999903,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 2.912628601504409,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 39.32747786868081,
+              "y": 124.42923693971764,
+              "size": 165,
+              "direction": 1,
+              "angle": 4.329283550879309,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 160.40323807043166,
+              "y": 162.04029600967044,
+              "size": 165,
+              "direction": 1,
+              "angle": -1.3996662042501478,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 100.14872293296871,
+              "y": 85.04898927649026,
+              "size": 165,
+              "direction": -1,
+              "angle": -1.897747211149961,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 38.0292502290334,
+              "y": 263.1786685568534,
+              "size": 165,
+              "direction": 1,
+              "angle": -7.465904375359367,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 190.89772899051223,
+              "y": 255.99609579490192,
+              "size": 165,
+              "direction": 1,
+              "angle": -0.45034411140114117,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 42,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 147,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 2.4630387999999903,
+          "view": 0,
+          "width": 375,
+          "viewportWidth": 375,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 86.01906288365305,
+              "y": 225.24997241537295,
+              "size": 56,
+              "direction": -1,
+              "angle": -0.5394998867323271,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 71.2217319518174,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 238.8966472442109,
+              "y": 353.1998547568034,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.5242462010902978,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 251.88295661067684,
+              "y": 279.6770963361637,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 162.71010300100156,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 204.56994210236942,
+              "y": 129.4590577356958,
+              "size": 56,
+              "direction": 1,
+              "angle": 0.6668932821336004,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 277.0520689611426,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 121.47356490649881,
+              "y": 119.87562817083574,
+              "size": 56,
+              "direction": 1,
+              "angle": 8.382569724150235,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 105.39245597957215,
+              "y": 358.7403086667632,
+              "size": 56,
+              "direction": -1,
+              "angle": 1.8221192962727322,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 46.522898120239695,
+              "y": 315.9211312939768,
+              "size": 56,
+              "direction": -1,
+              "angle": 0.7605731640470709,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 239.28908409441823,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 233.6680811718895,
+              "y": 275.93519438573026,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 225.18984763185094,
+              "y": 405.41357636770823,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.9877041040572133,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 141.53703864533819,
+              "y": 237.87783891939188,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 128.38003871255506,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 287.0531371605659,
+              "y": 132.47386602958062,
+              "size": 76,
+              "direction": 1,
+              "angle": 0.33231733739921643,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 45.425871230279455,
+              "y": 253.6583602961869,
+              "size": 76,
+              "direction": 1,
+              "angle": -7.97021238250834,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 131.33233613088288,
+              "y": 140.96215293054834,
+              "size": 76,
+              "direction": -1,
+              "angle": -3.1044136673298643,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 12.272311449454843,
+              "y": 346.8343445036303,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.5131939403411881,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 211.5436754237023,
+              "y": 242.67989873165288,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.7310198662779009,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 141.21700477892534,
+              "y": 217.9801783461606,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 270.3784173176467,
+              "y": 339.8106221537973,
+              "size": 76,
+              "direction": -1,
+              "angle": 2.3635056320553063,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 274.9519978260563,
+              "y": 231.678201103893,
+              "size": 76,
+              "direction": -1,
+              "angle": 4.616306203078968,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 164.1892038904904,
+              "y": 293.20990711420615,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.4569385530881303,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 84.26046569872744,
+              "y": 291.903503697123,
+              "size": 76,
+              "direction": -1,
+              "angle": 0.5949493171587291,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 64.35970334422775,
+              "y": 273.89372170842654,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 267.0954483978633,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 193.1846702416616,
+              "y": 220.9323604000566,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 20.621435302371566,
+              "y": 184.17343715614217,
+              "size": 110,
+              "direction": 1,
+              "angle": 5.1147261724949535,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 223.00029526380405,
+              "y": 143.35772570369153,
+              "size": 110,
+              "direction": -1,
+              "angle": -4.5153397408583675,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 118.5982283805252,
+              "y": 313.406772774132,
+              "size": 110,
+              "direction": 1,
+              "angle": -2.652659401273849,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 119.21560362334026,
+              "y": 189.72615732276964,
+              "size": 110,
+              "direction": 1,
+              "angle": 3.1364288866879426,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 232.1156873203832,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 176.60281934861376,
+              "y": 151.77631047791618,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.9853012201855962,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 25.574494008648173,
+              "y": 119.39594432097086,
+              "size": 110,
+              "direction": 1,
+              "angle": 2.613407873779506,
+              "frame": 0
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 390,
+      "painted": [
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        }
+      ]
+    },
+    {
+      "width": 985,
+      "sample": 0,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 1.019393333333333,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 1.0310266666666668,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 1.019393333333333,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 542.1421453692043,
+              "y": 176.72665684483496,
+              "size": 165,
+              "direction": -1,
+              "angle": 1.4001889745648535,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 281.1515610655532,
+              "y": 285.28622335209894,
+              "size": 165,
+              "direction": 1,
+              "angle": -3.562673032335577,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 398.15587410350463,
+              "y": 84.7120001848388,
+              "size": 165,
+              "direction": -1,
+              "angle": -0.5487716595264525,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 80.31547483001403,
+              "y": 269.14749719795805,
+              "size": 165,
+              "direction": 1,
+              "angle": -1.504559140116872,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 742.3954395407916,
+              "y": 200.06892284449972,
+              "size": 165,
+              "direction": -1,
+              "angle": 1.5710655178613728,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 164,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 574,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 1.0310266666666668,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 696.7269725337953,
+              "y": 149.3794535451118,
+              "size": 56,
+              "direction": -1,
+              "angle": -1.6495074036883268,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 204.05329530393033,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 500.1892737013778,
+              "y": 127.21270844108294,
+              "size": 56,
+              "direction": -1,
+              "angle": -1.3976738904070356,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 733.766776180913,
+              "y": 279.8972519757061,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 475.78335826481975,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 299.33636944717927,
+              "y": 136.74555894463973,
+              "size": 56,
+              "direction": -1,
+              "angle": -1.171206418246605,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 813.3957777890041,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 692.6481707017751,
+              "y": 223.46252168641288,
+              "size": 56,
+              "direction": -1,
+              "angle": -1.4373074166269646,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 882.7093981261975,
+              "y": 109.46523820341788,
+              "size": 56,
+              "direction": -1,
+              "angle": -1.4663589638012338,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 225.77174768234516,
+              "y": 154.5678681409327,
+              "size": 56,
+              "direction": 1,
+              "angle": 2.6737216659352607,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 696.8638217044343,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 680.7633110590724,
+              "y": 276.1606996470022,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 653.6368403184268,
+              "y": 405.9152516048613,
+              "size": 56,
+              "direction": 1,
+              "angle": -0.6913271570038175,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 411.92435167256554,
+              "y": 238.09804551572483,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 371.9065159192874,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 672.1308558757523,
+              "y": 295.05822765437784,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.1085868061534718,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 614.1739724021627,
+              "y": 106.67763700999845,
+              "size": 76,
+              "direction": 1,
+              "angle": 0.7550187336730372,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 761.1385615752047,
+              "y": 327.0185067748675,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.5425839512106505,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 448.64131569072697,
+              "y": 205.43034754919597,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.8113427359846235,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 480.35171043149853,
+              "y": 335.8442410386658,
+              "size": 76,
+              "direction": 1,
+              "angle": -2.088874944219208,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 429.31858643492683,
+              "y": 218.20131415144374,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 861.8912767530934,
+              "y": 331.86523778003163,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.16177453640421488,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 795.8658596521085,
+              "y": 156.6642365792791,
+              "size": 76,
+              "direction": 1,
+              "angle": 0.5849046994865401,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 248.16118949239194,
+              "y": 327.05692111953783,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.6480948769619963,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 273.14621918669144,
+              "y": 227.81232539314894,
+              "size": 76,
+              "direction": -1,
+              "angle": -0.40593064738757895,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 195.6621081602108,
+              "y": 274.1194404735438,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 824.16717656472,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 638.1469316358941,
+              "y": 221.14118204414825,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 584.1569905197963,
+              "y": 228.79408376463704,
+              "size": 110,
+              "direction": -1,
+              "angle": -0.785261303512189,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 815.9466885464107,
+              "y": 225.42316149567154,
+              "size": 110,
+              "direction": 1,
+              "angle": -0.5664489409470863,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 401.67435291569655,
+              "y": 106.9527997704235,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.2628796595168896,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 102.66010787590224,
+              "y": 297.2942932364891,
+              "size": 110,
+              "direction": 1,
+              "angle": -1.3996764251523421,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 770.4299221451354,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 77.47699703316458,
+              "y": 224.14188579199717,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.008491527815356,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 67.03880867643889,
+              "y": 119.09024009951399,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.6617192914346363,
+              "frame": 0
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 985,
+      "sample": 1,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 1.616993333333331,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 1.628626666666665,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 1.616993333333331,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 538.153959224512,
+              "y": 176.55339777264385,
+              "size": 165,
+              "direction": -1,
+              "angle": 2.2976600293981932,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 285.10204423092415,
+              "y": 284.8443477406097,
+              "size": 165,
+              "direction": 1,
+              "angle": -5.8800842832218,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 396.65889555481203,
+              "y": 84.78163752266569,
+              "size": 165,
+              "direction": -1,
+              "angle": -1.1028135966492467,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 90.38033657607474,
+              "y": 268.8369724366362,
+              "size": 165,
+              "direction": 1,
+              "angle": -1.728563553053724,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 737.5243414048307,
+              "y": 199.8736387925481,
+              "size": 165,
+              "direction": -1,
+              "angle": 2.1786075986629756,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 164,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 574,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 1.628626666666665,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 693.6994003686242,
+              "y": 149.6101303281488,
+              "size": 56,
+              "direction": -1,
+              "angle": -3.593341333359206,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 205.09072238347346,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 497.3307255930898,
+              "y": 127.40822971569676,
+              "size": 56,
+              "direction": -1,
+              "angle": -3.0936609273541396,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 733.6973603919585,
+              "y": 279.82886186069567,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 475.18662843736536,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 298.0912874314574,
+              "y": 136.9181957344786,
+              "size": 56,
+              "direction": -1,
+              "angle": -2.715035736349286,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 809.8855383090022,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 687.4789625662745,
+              "y": 223.6635277350435,
+              "size": 56,
+              "direction": -1,
+              "angle": -2.1007712764828224,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 878.5657682195331,
+              "y": 109.6694011910313,
+              "size": 56,
+              "direction": -1,
+              "angle": -2.585307317948629,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 229.41506011184086,
+              "y": 154.9402767367845,
+              "size": 56,
+              "direction": 1,
+              "angle": 5.202698982424126,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 696.8638217044343,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 680.680904144331,
+              "y": 276.089682751355,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 654.3162181797163,
+              "y": 405.76001418411687,
+              "size": 56,
+              "direction": 1,
+              "angle": -1.6776205376934994,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 412.00507604603354,
+              "y": 238.0284013896994,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 372.5126661565821,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 673.1753814217185,
+              "y": 294.8778491895284,
+              "size": 76,
+              "direction": 1,
+              "angle": -2.589246539755355,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 614.8320745681078,
+              "y": 107.18949855184802,
+              "size": 76,
+              "direction": 1,
+              "angle": 1.6387253751629185,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 761.6138840726334,
+              "y": 326.60809114365327,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.183691951096736,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 451.06114056062023,
+              "y": 205.1771159892821,
+              "size": 76,
+              "direction": 1,
+              "angle": -4.005479715459552,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 482.1926184865053,
+              "y": 335.50920936231637,
+              "size": 76,
+              "direction": 1,
+              "angle": -4.5831336847836,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 429.31858643492683,
+              "y": 218.13065023430022,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 862.1993188725708,
+              "y": 331.7899815448224,
+              "size": 76,
+              "direction": 1,
+              "angle": -0.6585134712987384,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 796.4094235117869,
+              "y": 156.85031649156866,
+              "size": 76,
+              "direction": 1,
+              "angle": 1.3471957886204773,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 250.21453847450155,
+              "y": 326.82413656117404,
+              "size": 76,
+              "direction": 1,
+              "angle": -3.680890775310278,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 272.6730225672193,
+              "y": 227.9353715564193,
+              "size": 76,
+              "direction": -1,
+              "angle": -1.1562144366157205,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 195.6621081602108,
+              "y": 274.0467843967487,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 817.8894310461446,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 638.0633187897619,
+              "y": 221.07373419973746,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 579.8165061002239,
+              "y": 228.9030967100404,
+              "size": 110,
+              "direction": -1,
+              "angle": -1.330101871031938,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 816.4832724550427,
+              "y": 225.25050992295778,
+              "size": 110,
+              "direction": 1,
+              "angle": -1.3279742392927558,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 403.6731343235177,
+              "y": 107.13130868268902,
+              "size": 110,
+              "direction": 1,
+              "angle": 2.827383105757406,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 107.8945801883251,
+              "y": 297.0976622057287,
+              "size": 110,
+              "direction": 1,
+              "angle": -2.0303151010784632,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 769.1924203119584,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 81.75144401130986,
+              "y": 224.28189903553988,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.728991340297107,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 72.4835334960876,
+              "y": 119.18442294083657,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.9382481767567351,
+              "frame": 2
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 985,
+      "sample": 2,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 2.214593333333329,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 2.226226666666663,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 2.214593333333329,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 532.3216262529203,
+              "y": 176.29528947214368,
+              "size": 165,
+              "direction": -1,
+              "angle": 2.5010058072299017,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 290.9002305939916,
+              "y": 284.1870254243812,
+              "size": 165,
+              "direction": 1,
+              "angle": -6.381692593255422,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 394.4540086466623,
+              "y": 84.88576841674454,
+              "size": 165,
+              "direction": -1,
+              "angle": -1.6523107736836327,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 104.96823559817723,
+              "y": 268.375686632785,
+              "size": 165,
+              "direction": 1,
+              "angle": -1.8035525194841568,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 730.3595291481339,
+              "y": 199.58267347039634,
+              "size": 165,
+              "direction": -1,
+              "angle": 2.30511922978054,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 164,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 574,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 2.226226666666663,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 689.0507087776823,
+              "y": 149.9703217720407,
+              "size": 56,
+              "direction": -1,
+              "angle": -4.301077268262303,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 206.7051283647989,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 492.9397254348641,
+              "y": 127.7135631577897,
+              "size": 56,
+              "direction": -1,
+              "angle": -3.839276136167958,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 733.5882427072345,
+              "y": 279.72329025506855,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 474.2569424304113,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 296.17382827689147,
+              "y": 137.18708341917042,
+              "size": 56,
+              "direction": -1,
+              "angle": -4.239153795007322,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 807.6919679007955,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 679.61826872864,
+              "y": 223.97575743070556,
+              "size": 56,
+              "direction": -1,
+              "angle": -2.252216322531374,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 872.180308179668,
+              "y": 109.98803858906638,
+              "size": 56,
+              "direction": -1,
+              "angle": -2.8163471727911036,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 234.99363500020934,
+              "y": 155.51929615117407,
+              "size": 56,
+              "direction": 1,
+              "angle": 5.817435749502708,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 696.8638217044343,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 680.5514076332998,
+              "y": 275.9820087721882,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 655.3539497510043,
+              "y": 405.51911578826525,
+              "size": 56,
+              "direction": 1,
+              "angle": -2.581902684384009,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 412.13182873550966,
+              "y": 237.9233957310043,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 373.4568990869201,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 674.7800167285113,
+              "y": 294.59635462385023,
+              "size": 76,
+              "direction": 1,
+              "angle": -3.9953546958294566,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 615.835093546442,
+              "y": 107.98387700335059,
+              "size": 76,
+              "direction": 1,
+              "angle": 2.4974875966194854,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 762.3405067170709,
+              "y": 325.9695959101256,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.8095971747222648,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 454.75436513539455,
+              "y": 204.78436072780423,
+              "size": 76,
+              "direction": 1,
+              "angle": -5.6865705063384935,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 485.010012763834,
+              "y": 334.9874297279453,
+              "size": 76,
+              "direction": 1,
+              "angle": -7.016747453837737,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 429.31858643492683,
+              "y": 218.02555281337274,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 862.67239623384,
+              "y": 331.6725684335098,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.1603906099006476,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 797.2383593161393,
+              "y": 157.139431377603,
+              "size": 76,
+              "direction": 1,
+              "angle": 2.06304269720865,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 253.38645871325969,
+              "y": 326.4607653755691,
+              "size": 76,
+              "direction": 1,
+              "angle": -5.702357057740426,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 271.94831017610824,
+              "y": 228.12723923410852,
+              "size": 76,
+              "direction": -1,
+              "angle": -1.801337135107288,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 195.6621081602108,
+              "y": 273.9397628103591,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 813.6602096337867,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 637.931948176657,
+              "y": 220.97483378927654,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 573.1894364895899,
+              "y": 229.07282338419188,
+              "size": 110,
+              "direction": -1,
+              "angle": -1.4481447329576824,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 817.301173812498,
+              "y": 224.98177585166903,
+              "size": 110,
+              "direction": 1,
+              "angle": -2.0352041609639233,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 406.7528737246969,
+              "y": 107.4103651168799,
+              "size": 110,
+              "direction": 1,
+              "angle": 4.415299015668997,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 115.91621522643683,
+              "y": 296.7911589322543,
+              "size": 110,
+              "direction": 1,
+              "angle": -2.166891067802205,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 767.2657155976957,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 88.30964936180054,
+              "y": 224.49982586305373,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.8778717465119843,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 80.82310345565838,
+              "y": 119.33134654643032,
+              "size": 110,
+              "direction": 1,
+              "angle": 0.999959860187389,
+              "frame": 0
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 985,
+      "sample": 3,
+      "errors": [],
+      "stats": [
+        {
+          "count": 7,
+          "textures": 7,
+          "clock": 2.8121933333333273,
+          "renderer": "WebGL"
+        },
+        {
+          "count": 35,
+          "textures": 35,
+          "clock": 2.823826666666661,
+          "renderer": "WebGL"
+        }
+      ],
+      "frames": [
+        {
+          "clock": 2.8121933333333273,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-necropolis",
+              "x": 524.7776510922424,
+              "y": 175.95484049329986,
+              "size": 165,
+              "direction": -1,
+              "angle": 2.5772765293447786,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-genesis",
+              "x": 298.4292695684803,
+              "y": 283.3213063837794,
+              "size": 165,
+              "direction": 1,
+              "angle": -6.542737676916416,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-ananke",
+              "x": 391.5801763997024,
+              "y": 85.02365249482484,
+              "size": 165,
+              "direction": -1,
+              "angle": -2.1911740981246863,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-apocalypsis",
+              "x": 123.65490980123866,
+              "y": 267.76903493009024,
+              "size": 165,
+              "direction": 1,
+              "angle": -1.857142326786714,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-eos",
+              "x": 721.0345011396115,
+              "y": 199.1988228493466,
+              "size": 165,
+              "direction": -1,
+              "angle": 2.352984983885343,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-control-tower",
+              "x": 164,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-pongi-moon-base",
+              "x": 574,
+              "y": 327.25,
+              "size": 165,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "clock": 2.823826666666661,
+          "view": 0,
+          "width": 985,
+          "viewportWidth": 985,
+          "height": 550,
+          "inhabitants": [
+            {
+              "id": "galaxy-stardust-anchovy",
+              "x": 682.8755114108274,
+              "y": 150.45728906013778,
+              "size": 56,
+              "direction": -1,
+              "angle": -4.485367619727945,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-moon-crab",
+              "x": 208.88010485388054,
+              "y": 470.7929372177343,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-meteor-puffer",
+              "x": 487.10423590483447,
+              "y": 128.12641398945038,
+              "size": 56,
+              "direction": -1,
+              "angle": -4.0220068724680775,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-galactic-jellyfish",
+              "x": 733.4397047540768,
+              "y": 279.5816833944449,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-saturn-whelk",
+              "x": 473.00293584594584,
+              "y": 459.8993303678464,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-comet-shrimp",
+              "x": 293.61865727668953,
+              "y": 137.54966784811705,
+              "size": 56,
+              "direction": -1,
+              "angle": -5.725775847982196,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-cosmic-starfish",
+              "x": 805.1869217626629,
+              "y": 464.5573507652036,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-moonlight-seahorse",
+              "x": 669.2845468705781,
+              "y": 224.39560789080303,
+              "size": 56,
+              "direction": -1,
+              "angle": -2.321665406166407,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-nebula-ray",
+              "x": 863.6652834724539,
+              "y": 110.41861165804644,
+              "size": 56,
+              "direction": -1,
+              "angle": -2.887039926456658,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-shooting-star-squid",
+              "x": 242.3820237672326,
+              "y": 156.2986567600476,
+              "size": 56,
+              "direction": 1,
+              "angle": 6.001132391001296,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-orbital-snail",
+              "x": 696.8638217044343,
+              "y": 470.7517234158469,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-cosmic-dust",
+              "x": 680.3751875211872,
+              "y": 275.8388219581364,
+              "size": 56,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-antenna-goby",
+              "x": 656.7247646401283,
+              "y": 405.19551576600577,
+              "size": 56,
+              "direction": 1,
+              "angle": -3.4196614301737123,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-alien-slime",
+              "x": 412.3041768249558,
+              "y": 237.7841675279446,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-helmet-hermit",
+              "x": 374.7303460719923,
+              "y": 475.681640368409,
+              "size": 56,
+              "direction": 1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-crescent-dragon",
+              "x": 676.9127281499849,
+              "y": 294.2160035587851,
+              "size": 76,
+              "direction": 1,
+              "angle": -5.32203179233851,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-comet-thresher",
+              "x": 617.1569000395174,
+              "y": 109.05106562240904,
+              "size": 76,
+              "direction": 1,
+              "angle": 3.297430714950962,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-planet-turtle",
+              "x": 763.3011816050739,
+              "y": 325.1096454211003,
+              "size": 76,
+              "direction": 1,
+              "angle": -2.396886291451506,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-aurora-seahorse",
+              "x": 459.62875000678974,
+              "y": 204.2570664874831,
+              "size": 76,
+              "direction": 1,
+              "angle": -6.107659782864901,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-gravity-octopus",
+              "x": 488.73948422704444,
+              "y": 334.28389141538844,
+              "size": 76,
+              "direction": 1,
+              "angle": -8.635901418105467,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-eclipse-jellyfish",
+              "x": 429.31858643492683,
+              "y": 217.88711727284948,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-constellation-dragon",
+              "x": 863.3009519826578,
+              "y": 331.5139635914905,
+              "size": 76,
+              "direction": 1,
+              "angle": -1.5655808036751326,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-astronaut-puffer",
+              "x": 798.331447277411,
+              "y": 157.52829841500997,
+              "size": 76,
+              "direction": 1,
+              "angle": 2.726762294318738,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-binary-nautilus",
+              "x": 257.6270162540168,
+              "y": 325.9696544616918,
+              "size": 76,
+              "direction": 1,
+              "angle": -6.465565339790778,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-meteor-angler",
+              "x": 270.9882545254336,
+              "y": 228.38627122864884,
+              "size": 76,
+              "direction": -1,
+              "angle": -2.394937623463523,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-plasma-jellyfish",
+              "x": 195.6621081602108,
+              "y": 273.7994708394449,
+              "size": 76,
+              "direction": 1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-black-hole-urchin",
+              "x": 808.7980347255511,
+              "y": 447.92705005976603,
+              "size": 76,
+              "direction": -1,
+              "angle": 0,
+              "frame": 2
+            },
+            {
+              "id": "galaxy-solaris",
+              "x": 637.7532067463204,
+              "y": 220.84549587831705,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 0
+            },
+            {
+              "id": "galaxy-nebula",
+              "x": 564.4393965072426,
+              "y": 229.3016027294389,
+              "size": 110,
+              "direction": -1,
+              "angle": -1.493824335431736,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-nova",
+              "x": 818.3791546787309,
+              "y": 224.61964528291014,
+              "size": 110,
+              "direction": 1,
+              "angle": -2.688961622281509,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-orbis",
+              "x": 410.8590864749122,
+              "y": 107.78809018034511,
+              "size": 110,
+              "direction": 1,
+              "angle": 5.12680525367879,
+              "frame": 1
+            },
+            {
+              "id": "galaxy-entropy",
+              "x": 126.54977298195541,
+              "y": 296.37751092306274,
+              "size": 110,
+              "direction": 1,
+              "angle": -2.2231592943474814,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-station-hermit",
+              "x": 764.6686731152271,
+              "y": 419.65246864187066,
+              "size": 110,
+              "direction": -1,
+              "angle": 0,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-ufo-pongi",
+              "x": 97.01430579528672,
+              "y": 224.79348407074403,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.9272280659243441,
+              "frame": 3
+            },
+            {
+              "id": "galaxy-astronaut-pongi",
+              "x": 91.8720582216005,
+              "y": 119.52978934623633,
+              "size": 110,
+              "direction": 1,
+              "angle": 1.0268925533061604,
+              "frame": 1
+            }
+          ]
+        }
+      ],
+      "previews": 7,
+      "busy": 0
+    },
+    {
+      "width": 1000,
+      "painted": [
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        },
+        {
+          "painted": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "profile": "webp-q90-inside-960-v1",
   "summary": {
-    "count": 76,
-    "sourceBytes": 199852421,
-    "previewBytes": 14592414,
-    "reductionPercent": 92.7
+    "count": 79,
+    "sourceBytes": 206159694,
+    "previewBytes": 14863442,
+    "reductionPercent": 92.79
   },
   "items": [
     {
@@ -327,6 +327,48 @@
         "bytes": 185818,
         "width": 960,
         "height": 569
+      }
+    },
+    {
+      "key": "galaxy-lunar-base-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261105-033000/aquarium-backgrounds/galaxy-lunar-base-panorama-v1.png",
+      "sourceHash": "57a2fd65fc960495359126df3419277bd444697a1a95855ca9bd7efc6744a835",
+      "sourceBytes": 1985058,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "preview": {
+        "url": "/game-art/background-previews/0332b158e56cc139e981aeab-960.webp",
+        "bytes": 82646,
+        "width": 960,
+        "height": 480
+      }
+    },
+    {
+      "key": "galaxy-observation-palace-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261105-033000/aquarium-backgrounds/galaxy-observation-palace-panorama-v1.png",
+      "sourceHash": "337454cdf7dd58850ff531b0b0b5859d278bfca6a06eb14c61e2a8dcbfdcae35",
+      "sourceBytes": 2282885,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "preview": {
+        "url": "/game-art/background-previews/9285503c08b24ade7249a9ee-960.webp",
+        "bytes": 102648,
+        "width": 960,
+        "height": 480
+      }
+    },
+    {
+      "key": "galaxy-space-station-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261105-033000/aquarium-backgrounds/galaxy-space-station-panorama-v1.png",
+      "sourceHash": "b6a3c4c91368e66b0aacef5cbc2e8eeda2c174730879ec1bd1469dbbb92a27a5",
+      "sourceBytes": 2039330,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "preview": {
+        "url": "/game-art/background-previews/c8e29a886bea4a2da5b2d535-960.webp",
+        "bytes": 85734,
+        "width": 960,
+        "height": 480
       }
     },
     {

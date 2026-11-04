@@ -1,0 +1,122 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "scope": "Galaxy catalog rows, map recipe, rod, habitats, theme tiers/prices, and migration receipt; full remote structure comparison not performed",
+  "localMigration": "20261104193948_galaxy_region_catalog.sql",
+  "remote": {
+    "map": {
+      "rarity": "rare",
+      "enabled": true,
+      "region_id": "galaxy",
+      "piece_count": 6,
+      "piece_rarities": [
+        "rare",
+        "rare",
+        "rare",
+        "epic",
+        "epic",
+        "epic"
+      ],
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/galaxy/map-v1.png"
+    },
+    "rod": {
+      "id": "galaxy",
+      "name": "은하 궤도 낚싯대",
+      "price": 2800,
+      "region_id": "galaxy",
+      "native_bonus_bp": 200,
+      "failure_reduction_bp": 200,
+      "wait_reduction_seconds": 1
+    },
+    "groups": [
+      {
+        "n": 15,
+        "kind": "fish",
+        "rarity": "common",
+        "average": 60
+      },
+      {
+        "n": 12,
+        "kind": "fish",
+        "rarity": "rare",
+        "average": 260
+      },
+      {
+        "n": 8,
+        "kind": "fish",
+        "rarity": "epic",
+        "average": 1450
+      },
+      {
+        "n": 7,
+        "kind": "fish",
+        "rarity": "mythic",
+        "average": 3300
+      },
+      {
+        "n": 19,
+        "kind": "trash",
+        "rarity": "common",
+        "average": 25
+      },
+      {
+        "n": 19,
+        "kind": "trash",
+        "rarity": "rare",
+        "average": 80
+      },
+      {
+        "n": 14,
+        "kind": "decoration",
+        "rarity": "common",
+        "average": 40
+      },
+      {
+        "n": 16,
+        "kind": "decoration",
+        "rarity": "rare",
+        "average": 155
+      },
+      {
+        "n": 2,
+        "kind": "decoration",
+        "rarity": "epic",
+        "average": 900
+      }
+    ],
+    "region": {
+      "id": "galaxy",
+      "name": "은하수의 끝자락",
+      "rarity": "epic",
+      "created_at": "2026-11-04T19:54:17.644138+00:00",
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/galaxy/overview-v1.png",
+      "sort_order": 19,
+      "description": "검은 우주와 은빛 물결이 만나는 고요한 끝자락. 달빛 나루에서 행성과 별의 이야기를 품은 생명들을 만나 보세요.",
+      "requires_map_fragment": true
+    },
+    "themes": [
+      {
+        "id": "galaxy-lunar-base",
+        "tier": "special",
+        "price": 3800
+      },
+      {
+        "id": "galaxy-observation-palace",
+        "tier": "special",
+        "price": 4200
+      },
+      {
+        "id": "galaxy-space-station",
+        "tier": "special",
+        "price": 3500
+      }
+    ],
+    "history": [
+      {
+        "name": "galaxy_region_catalog",
+        "version": "20261104195417"
+      }
+    ],
+    "habitats": 112,
+    "checked_at": "2026-11-04T19:54:37.196731+00:00"
+  }
+}

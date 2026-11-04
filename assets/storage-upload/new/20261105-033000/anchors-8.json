@@ -1,0 +1,611 @@
+[
+  {
+    "id": "galaxy-necropolis",
+    "storage_path": "fish/mythic/galaxy-necropolis_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-necropolis.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 78,
+        "top": 106,
+        "width": 294,
+        "height": 237,
+        "margin": 72,
+        "opaque": 28512
+      },
+      {
+        "frame": 1,
+        "left": 76,
+        "top": 105,
+        "width": 297,
+        "height": 238,
+        "margin": 71,
+        "opaque": 29290
+      },
+      {
+        "frame": 2,
+        "left": 72,
+        "top": 100,
+        "width": 302,
+        "height": 244,
+        "margin": 70,
+        "opaque": 30982
+      },
+      {
+        "frame": 3,
+        "left": 77,
+        "top": 105,
+        "width": 296,
+        "height": 238,
+        "margin": 71,
+        "opaque": 29173
+      },
+      {
+        "frame": 4,
+        "left": 77,
+        "top": 107,
+        "width": 294,
+        "height": 230,
+        "margin": 73,
+        "opaque": 27984
+      },
+      {
+        "frame": 5,
+        "left": 68,
+        "top": 103,
+        "width": 308,
+        "height": 243,
+        "margin": 68,
+        "opaque": 37226
+      },
+      {
+        "frame": 6,
+        "left": 75,
+        "top": 105,
+        "width": 296,
+        "height": 239,
+        "margin": 73,
+        "opaque": 30034
+      },
+      {
+        "frame": 7,
+        "left": 77,
+        "top": 106,
+        "width": 296,
+        "height": 234,
+        "margin": 71,
+        "opaque": 28547
+      }
+    ],
+    "patch": [
+      328,
+      205,
+      22,
+      20
+    ]
+  },
+  {
+    "id": "galaxy-genesis",
+    "storage_path": "fish/mythic/galaxy-genesis_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-genesis.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 78,
+        "top": 106,
+        "width": 287,
+        "height": 224,
+        "margin": 78,
+        "opaque": 31321
+      },
+      {
+        "frame": 1,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 224,
+        "margin": 78,
+        "opaque": 32260
+      },
+      {
+        "frame": 2,
+        "left": 79,
+        "top": 106,
+        "width": 286,
+        "height": 225,
+        "margin": 79,
+        "opaque": 32842
+      },
+      {
+        "frame": 3,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 215,
+        "margin": 78,
+        "opaque": 31060
+      },
+      {
+        "frame": 4,
+        "left": 79,
+        "top": 105,
+        "width": 286,
+        "height": 216,
+        "margin": 79,
+        "opaque": 31109
+      },
+      {
+        "frame": 5,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 228,
+        "margin": 78,
+        "opaque": 32424
+      },
+      {
+        "frame": 6,
+        "left": 79,
+        "top": 105,
+        "width": 286,
+        "height": 219,
+        "margin": 79,
+        "opaque": 31411
+      },
+      {
+        "frame": 7,
+        "left": 78,
+        "top": 105,
+        "width": 286,
+        "height": 225,
+        "margin": 78,
+        "opaque": 31243
+      }
+    ],
+    "patch": [
+      310,
+      215,
+      22,
+      20
+    ]
+  },
+  {
+    "id": "galaxy-ananke",
+    "storage_path": "fish/mythic/galaxy-ananke_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-ananke.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 126,
+        "top": 112,
+        "width": 193,
+        "height": 232,
+        "margin": 100,
+        "opaque": 27004
+      },
+      {
+        "frame": 1,
+        "left": 126,
+        "top": 112,
+        "width": 197,
+        "height": 232,
+        "margin": 100,
+        "opaque": 27535
+      },
+      {
+        "frame": 2,
+        "left": 126,
+        "top": 111,
+        "width": 198,
+        "height": 232,
+        "margin": 101,
+        "opaque": 27692
+      },
+      {
+        "frame": 3,
+        "left": 125,
+        "top": 111,
+        "width": 197,
+        "height": 232,
+        "margin": 101,
+        "opaque": 27652
+      },
+      {
+        "frame": 4,
+        "left": 118,
+        "top": 110,
+        "width": 201,
+        "height": 234,
+        "margin": 100,
+        "opaque": 27841
+      },
+      {
+        "frame": 5,
+        "left": 117,
+        "top": 109,
+        "width": 214,
+        "height": 235,
+        "margin": 100,
+        "opaque": 29024
+      },
+      {
+        "frame": 6,
+        "left": 125,
+        "top": 110,
+        "width": 200,
+        "height": 232,
+        "margin": 102,
+        "opaque": 27949
+      },
+      {
+        "frame": 7,
+        "left": 125,
+        "top": 111,
+        "width": 193,
+        "height": 233,
+        "margin": 100,
+        "opaque": 27095
+      }
+    ],
+    "patch": [
+      225,
+      145,
+      22,
+      23
+    ]
+  },
+  {
+    "id": "galaxy-apocalypsis",
+    "storage_path": "fish/mythic/galaxy-apocalypsis_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-apocalypsis.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 73,
+        "top": 93,
+        "width": 291,
+        "height": 290,
+        "margin": 61,
+        "opaque": 44808
+      },
+      {
+        "frame": 1,
+        "left": 70,
+        "top": 93,
+        "width": 291,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45564
+      },
+      {
+        "frame": 2,
+        "left": 68,
+        "top": 92,
+        "width": 298,
+        "height": 291,
+        "margin": 61,
+        "opaque": 46265
+      },
+      {
+        "frame": 3,
+        "left": 73,
+        "top": 93,
+        "width": 292,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45246
+      },
+      {
+        "frame": 4,
+        "left": 76,
+        "top": 93,
+        "width": 288,
+        "height": 290,
+        "margin": 61,
+        "opaque": 44758
+      },
+      {
+        "frame": 5,
+        "left": 41,
+        "top": 92,
+        "width": 359,
+        "height": 291,
+        "margin": 41,
+        "opaque": 51495
+      },
+      {
+        "frame": 6,
+        "left": 73,
+        "top": 93,
+        "width": 293,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45683
+      },
+      {
+        "frame": 7,
+        "left": 73,
+        "top": 93,
+        "width": 292,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45007
+      }
+    ],
+    "patch": [
+      230,
+      128,
+      22,
+      23
+    ]
+  },
+  {
+    "id": "galaxy-eos",
+    "storage_path": "fish/mythic/galaxy-eos_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-eos.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 134,
+        "top": 119,
+        "width": 176,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22179
+      },
+      {
+        "frame": 1,
+        "left": 130,
+        "top": 119,
+        "width": 180,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22253
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 119,
+        "width": 178,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22600
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 119,
+        "width": 179,
+        "height": 205,
+        "margin": 119,
+        "opaque": 21858
+      },
+      {
+        "frame": 4,
+        "left": 136,
+        "top": 119,
+        "width": 166,
+        "height": 204,
+        "margin": 119,
+        "opaque": 22041
+      },
+      {
+        "frame": 5,
+        "left": 137,
+        "top": 120,
+        "width": 175,
+        "height": 203,
+        "margin": 120,
+        "opaque": 22127
+      },
+      {
+        "frame": 6,
+        "left": 133,
+        "top": 119,
+        "width": 175,
+        "height": 204,
+        "margin": 119,
+        "opaque": 22192
+      },
+      {
+        "frame": 7,
+        "left": 132,
+        "top": 120,
+        "width": 177,
+        "height": 203,
+        "margin": 120,
+        "opaque": 22059
+      }
+    ],
+    "patch": [
+      246,
+      147,
+      19,
+      21
+    ]
+  },
+  {
+    "id": "galaxy-pongi-control-tower",
+    "storage_path": "fish/mythic/galaxy-pongi-control-tower_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-pongi-control-tower.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 132,
+        "top": 85,
+        "width": 178,
+        "height": 273,
+        "margin": 85,
+        "opaque": 31575
+      },
+      {
+        "frame": 1,
+        "left": 128,
+        "top": 80,
+        "width": 182,
+        "height": 278,
+        "margin": 80,
+        "opaque": 32237
+      },
+      {
+        "frame": 2,
+        "left": 130,
+        "top": 77,
+        "width": 179,
+        "height": 281,
+        "margin": 77,
+        "opaque": 31796
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 76,
+        "width": 179,
+        "height": 282,
+        "margin": 76,
+        "opaque": 31457
+      },
+      {
+        "frame": 4,
+        "left": 132,
+        "top": 80,
+        "width": 176,
+        "height": 277,
+        "margin": 80,
+        "opaque": 31606
+      },
+      {
+        "frame": 5,
+        "left": 114,
+        "top": 57,
+        "width": 212,
+        "height": 301,
+        "margin": 57,
+        "opaque": 36374
+      },
+      {
+        "frame": 6,
+        "left": 128,
+        "top": 76,
+        "width": 186,
+        "height": 282,
+        "margin": 76,
+        "opaque": 32866
+      },
+      {
+        "frame": 7,
+        "left": 131,
+        "top": 85,
+        "width": 178,
+        "height": 272,
+        "margin": 85,
+        "opaque": 31633
+      }
+    ],
+    "patch": [
+      222,
+      260,
+      24,
+      24
+    ]
+  },
+  {
+    "id": "galaxy-pongi-moon-base",
+    "storage_path": "fish/mythic/galaxy-pongi-moon-base_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-pongi-moon-base.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35058
+      },
+      {
+        "frame": 1,
+        "left": 98,
+        "top": 119,
+        "width": 247,
+        "height": 206,
+        "margin": 98,
+        "opaque": 35500
+      },
+      {
+        "frame": 2,
+        "left": 99,
+        "top": 119,
+        "width": 246,
+        "height": 206,
+        "margin": 99,
+        "opaque": 35611
+      },
+      {
+        "frame": 3,
+        "left": 99,
+        "top": 119,
+        "width": 245,
+        "height": 206,
+        "margin": 99,
+        "opaque": 35257
+      },
+      {
+        "frame": 4,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35104
+      },
+      {
+        "frame": 5,
+        "left": 98,
+        "top": 119,
+        "width": 247,
+        "height": 206,
+        "margin": 98,
+        "opaque": 35550
+      },
+      {
+        "frame": 6,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35116
+      },
+      {
+        "frame": 7,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35028
+      }
+    ],
+    "patch": [
+      151,
+      270,
+      24,
+      24
+    ]
+  }
+]

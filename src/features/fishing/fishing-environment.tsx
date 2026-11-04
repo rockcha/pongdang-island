@@ -4,9 +4,11 @@ import {mechsanctumArt} from '@/features/regions/mechsanctum-art'
 import {fireflyArt} from '@/features/regions/firefly-art'
 import {pharaohArt} from '@/features/regions/pharaoh-art'
 import {hangangArt} from '@/features/regions/hangang-art'
+import {galaxyArt} from '@/features/regions/galaxy-art'
 import { memo,useState } from 'react'
 
 export const fishingEnvironments={
+ galaxy:{name:'은하수의 끝자락',water:'#090e20',deck:'#c4c7d0',edge:'#848da9',waterEnd:1536,deckStart:1065},
  hangang:{name:'한강의 불빛나루',water:'#153b59',deck:'#75543d',edge:'#ccaf79',waterEnd:1536,deckStart:1065},
  pharaoh:{name:'파라오의 황금해',water:'#c28b38',deck:'#d5b786',edge:'#a87530',waterEnd:1536,deckStart:1065},
  firefly:{name:'반딧불 요정여울',water:'#287e76',deck:'#98693e',edge:'#e0c27d',waterEnd:1536,deckStart:1065},
@@ -29,6 +31,7 @@ export const fishingEnvironments={
 const platformMaterials:Record<string,string>={plunder:'wood',nyamnyam:'bamboo',siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
+ if(id==='galaxy')return {id,...fishingEnvironments[id],src:galaxyArt.fishing.water,frontSrc:galaxyArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:galaxyArt.fishing.scenery,platformSrc:galaxyArt.fishing.platform,material:'metal'}
  if(id==='hangang')return {id,...fishingEnvironments[id],src:hangangArt.fishing.water,frontSrc:hangangArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:hangangArt.fishing.scenery,platformSrc:hangangArt.fishing.platform,material:'wood'}
  if(id==='pharaoh')return {id,...fishingEnvironments[id],src:pharaohArt.fishing.water,frontSrc:pharaohArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:pharaohArt.fishing.scenery,platformSrc:pharaohArt.fishing.platform,material:'sandstone'}
  if(id==='firefly')return {id,...fishingEnvironments[id],src:fireflyArt.fishing.water,frontSrc:fireflyArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:fireflyArt.fishing.scenery,platformSrc:fireflyArt.fishing.platform,material:'wood'}
@@ -60,7 +63,7 @@ export const FishingStandby=memo(function FishingStandby({regionId}:{regionId:st
 })
 export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string;y:number;platformHeight?:number}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
- const keepEdges=theme.id==='plunder'||theme.id==='nyamnyam'||theme.id==='mechsanctum'||theme.id==='firefly'||theme.id==='pharaoh'||theme.id==='hangang'
+ const keepEdges=theme.id==='galaxy'||theme.id==='plunder'||theme.id==='nyamnyam'||theme.id==='mechsanctum'||theme.id==='firefly'||theme.id==='pharaoh'||theme.id==='hangang'
  if(theme.platformSrc)return <svg x={-4} y={y} width={408} height={platformHeight} viewBox="0 0 1200 480" preserveAspectRatio={keepEdges?'none':'xMidYMin slice'} overflow="hidden" data-fishing-platform={theme.id} data-platform-material={theme.material}>
   {failed!==theme.platformSrc?<image className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===theme.platformSrc?1:0} onLoad={()=>setLoaded(theme.platformSrc)} href={theme.platformSrc} width="1200" height="480" preserveAspectRatio={keepEdges?'xMidYMax meet':'xMidYMax slice'} onError={()=>setFailed(theme.platformSrc)}/>:<>
    <path d="M0 75 140 55 265 80 430 58 615 82 780 50 980 77 1200 58V480H0Z" fill={theme.deck}/>

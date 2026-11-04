@@ -111,6 +111,7 @@ export function AppRoutes() {
             <Route path="relics" element={<RelicPage />} />
             <Route path="harbor" element={<HarborPage />} />
             <Route path="fishing" element={<FishingShortcutPage />} />
+            <Route path="weather-fishing-test" element={<OperatorGuard><RegionPage weatherTest/></OperatorGuard>} />
             <Route path="fishing-records" element={<FishingRecordsPage />} />
             <Route path="exploration" element={<ExplorationPage />} />
             <Route path="relic-roulette" element={<RelicRoulettePage />} />

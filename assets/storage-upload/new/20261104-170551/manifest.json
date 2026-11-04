@@ -1,0 +1,560 @@
+{
+  "formatVersion": 1,
+  "status": "production-released",
+  "batch": "assets/storage-upload/new/20261104-170551",
+  "priceReason": "User specified 2000–2500 gold for weather-exclusive fish, independent of ordinary rarity prices.",
+  "technicalRarity": "common: required legacy schema/game parameter only; weather pool has no grade weights",
+  "items": [
+    {
+      "id": "weather-pongi-raincoat",
+      "key": "raincoat",
+      "name": "노란 우비 퐁이",
+      "weather_type": "rain",
+      "sell_price": 2000,
+      "swim_y_min": 0.18,
+      "swim_y_max": 0.6,
+      "speed": 0.03,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "노란 우비 자락을 나부끼며 물살을 가르는 퐁이. 비가 오는 동안 만나볼 수 있어요.",
+      "thumbnail_path": "fish/normal/weather-pongi-raincoat_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-raincoat_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-8b622a00-300c-4fe2-ab71-40073ac1d8ff.png",
+      "thumbnailPrompt": "Yellow Raincoat Pongi, warm brown otter mascot style reference, horizontal right-facing swimming in yellow hooded raincoat, transparent background, full body with safe margins.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.03490496525808
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.4033162839200033
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.766373718532764
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-9b20bc1e-31e9-4d90-9cb7-c5ae1a85506e.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Yellow Raincoat Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT raincoat, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Coat tails gently wave. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-leaf-umbrella",
+      "key": "leaf-umbrella",
+      "name": "연잎 우산 퐁이",
+      "weather_type": "rain",
+      "sell_price": 2200,
+      "swim_y_min": 0.12,
+      "swim_y_max": 0.48,
+      "speed": 0.026,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "커다란 연잎을 한 손으로 꼭 잡고 유유히 헤엄치는 퐁이. 연잎 끝의 물방울을 소중히 지켜요.",
+      "thumbnail_path": "fish/normal/weather-pongi-leaf-umbrella_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-leaf-umbrella_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-979ca2f2-fdb2-4c01-ad43-d90fa691796e.png",
+      "thumbnailPrompt": "ONE isolated full-body SWIMMING Pongi otter mascot collectible thumbnail, SQUARE image on fully transparent background. Reference is character identity and warm cartoon shading ONLY: brown fur, cream muzzle/belly, rounded ears, pink starfish on head. Remove fishing line/hook and seated pose. Body horizontal swimming toward SCREEN RIGHT, head/mouth RIGHT and tail LEFT, four paws paddling. Warm cel shading, crisp thin brown contours. Full character centered with 12% transparent margins. Absolutely NO outer glow, colored aura, shadow, haze, background, water, ground, text or detached particles. Outside character silhouette use fully transparent pixels with ALPHA ZERO, never soft colored fog. Design: A fresh green lotus-leaf umbrella held in one front paw above and behind head, green stem held near chest, small droplets ONLY attached to leaf edge. Other paws paddle. Entire leaf and stem inside canvas.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.1060847293142233
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 5.882202703237565
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.75
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-d10926d7-eab7-4d46-b4a4-b6384affce4e.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Leaf Umbrella Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. The paw holding the green leaf stem stays locked to the stem; only FREE paw, hind paws and tail paddle. Leaf gently tilts by a few degrees, head/body do not tilt. Keep leaf entirely inside each cell. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-red-scarf",
+      "key": "red-scarf",
+      "name": "목도리 퐁이",
+      "weather_type": "snow",
+      "sell_price": 2100,
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.65,
+      "speed": 0.029,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "빨간 목도리를 길게 휘날리며 헤엄치는 퐁이. 머리 위에 내려앉은 눈도 잊을 만큼 신이 났어요.",
+      "thumbnail_path": "fish/normal/weather-pongi-red-scarf_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-red-scarf_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-b15205cf-e26e-416a-b1bd-168a83df167d.png",
+      "thumbnailPrompt": "ONE isolated full-body SWIMMING Pongi otter mascot collectible thumbnail, SQUARE image on fully transparent background. Reference is character identity and warm cartoon shading ONLY: brown fur, cream muzzle/belly, rounded ears, pink starfish on head. Remove fishing line/hook and seated pose. Body horizontal swimming toward SCREEN RIGHT, head/mouth RIGHT and tail LEFT, four paws paddling. Warm cel shading, crisp thin brown contours. Full character centered with 12% transparent margins. Absolutely NO outer glow, colored aura, shadow, haze, background, water, ground, text or detached particles. Outside character silhouette use fully transparent pixels with ALPHA ZERO, never soft colored fog. Design: A cozy long red knitted scarf tied around neck, scarf ends flowing left behind body. A tiny dusting of white snow only on head fur. Four paws paddle. No other clothing.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.0893959415961265
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.8780105788126362
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 5.03835596838865
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-5a512fd9-5415-46a0-a544-5ccedda34e61.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Red Scarf Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Keep red scarf wrapped around neck identically, only trailing scarf ends gently wave left while paws and tail paddle. Snow on head stays attached. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-snowflake-cape",
+      "key": "snowflake-cape",
+      "name": "눈꽃 망토 퐁이",
+      "weather_type": "snow",
+      "sell_price": 2400,
+      "swim_y_min": 0.16,
+      "swim_y_max": 0.58,
+      "speed": 0.025,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "눈꽃 자수가 놓인 푸른 망토를 두른 퐁이. 꼬리를 흔들 때마다 망토 끝이 부드럽게 일렁여요.",
+      "thumbnail_path": "fish/normal/weather-pongi-snowflake-cape_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-snowflake-cape_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-535f48a7-a100-4fe0-bce1-1d0b890f8989.png",
+      "thumbnailPrompt": "ONE isolated full-body SWIMMING Pongi otter mascot collectible thumbnail, SQUARE image on fully transparent background. Reference is character identity and warm cartoon shading ONLY: brown fur, cream muzzle/belly, rounded ears, pink starfish on head. Remove fishing line/hook and seated pose. Body horizontal swimming toward SCREEN RIGHT, head/mouth RIGHT and tail LEFT, four paws paddling. Warm cel shading, crisp thin brown contours. Full character centered with 12% transparent margins. Absolutely NO outer glow, colored aura, shadow, haze, background, water, ground, text or detached particles. Outside character silhouette use fully transparent pixels with ALPHA ZERO, never soft colored fog. Design: A small ice-blue cape with white embroidered snowflakes and silver snowflake clasp. Cape flows behind to left, paws extended in swimming pose. No light or glow beyond cape edge.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.2282032613043894
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.37714266689943
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 2.893492592476443
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-5ea17afa-15e1-47a4-922f-cdc1f250ff47.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Snowflake Cape Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Keep the embroidered ice-blue cape and silver clasp identical; only cape hem, paws and tail subtly move. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-sand-goggles",
+      "key": "sand-goggles",
+      "name": "모래바람 고글 퐁이",
+      "weather_type": "dust",
+      "sell_price": 2000,
+      "swim_y_min": 0.28,
+      "swim_y_max": 0.72,
+      "speed": 0.034,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "모래바람에도 끄떡없는 고글과 스카프를 착용한 퐁이. 앞발을 힘차게 저으며 바다를 탐험해요.",
+      "thumbnail_path": "fish/normal/weather-pongi-sand-goggles_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-sand-goggles_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-5cc9cde7-c3c2-4b26-99d4-f856fc556f1a.png",
+      "thumbnailPrompt": "ONE single isolated full-body swimming Pongi mascot collectible thumbnail on a fully transparent background. Reference defines character and warm cartoon shading ONLY. Warm brown otter, cream muzzle and belly, rounded ears, small pink starfish on head, same identity as reference. Body stretched horizontally swimming toward SCREEN RIGHT in clear side-three-quarter profile, head RIGHT tail LEFT, four otter paws paddling. NOT sitting, standing, frontal or floating upright. Gentle warm cel shading and thin soft brown outline, crisp silhouette. Full body and all props within square canvas, 12% transparent margin. Absolutely NO exterior glow, NO colored aura, NO shadows outside the character, NO ground shadow, NO haze or wash, NO water/background, NO text. Transparent pixels directly outside silhouette must have alpha zero, not soft colored fog. Design: Sandstorm Goggles Pongi: large brass-rimmed amber clear goggles over eyes, lightweight sandy beige scarf covering mouth and flowing to LEFT, determined but adorable. Brown otter tail and fur visible, no suit or backpack. A few dust flecks ONLY ON THE GOGGLES, not floating around.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 4.852889873411181
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 5.137574907086604
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 5.460117746209246
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-c36ea6d4-2423-47c3-9b38-dc25d26e632d.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Sandstorm Goggles Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Rigid goggles and scarf covering mouth remain fixed to face. Only trailing beige scarf ends wave and paws/tail paddle. Keep determined expression. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-desert-traveler",
+      "key": "desert-traveler",
+      "name": "사막 여행자 퐁이",
+      "weather_type": "dust",
+      "sell_price": 2300,
+      "swim_y_min": 0.24,
+      "swim_y_max": 0.68,
+      "speed": 0.027,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "터번과 작은 여행 가방을 챙겨 길을 나선 퐁이. 나침반을 달랑이며 새로운 물길을 찾아 헤엄쳐요.",
+      "thumbnail_path": "fish/normal/weather-pongi-desert-traveler_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-desert-traveler_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-092e50dd-d2e9-47ad-acd6-ab0a09ca7c41.png",
+      "thumbnailPrompt": "ONE single isolated full-body swimming Pongi mascot collectible thumbnail on a fully transparent background. Reference defines character and warm cartoon shading ONLY. Warm brown otter, cream muzzle and belly, rounded ears, small pink starfish on head, same identity as reference. Body stretched horizontally swimming toward SCREEN RIGHT in clear side-three-quarter profile, head RIGHT tail LEFT, four otter paws paddling. NOT sitting, standing, frontal or floating upright. Gentle warm cel shading and thin soft brown outline, crisp silhouette. Full body and all props within square canvas, 12% transparent margin. Absolutely NO exterior glow, NO colored aura, NO shadows outside the character, NO ground shadow, NO haze or wash, NO water/background, NO text. Transparent pixels directly outside silhouette must have alpha zero, not soft colored fog. Design: Desert Traveler Pongi: cream fabric turban wrapped around head with starfish pin, long blue-green turban ribbon trailing LEFT, tiny tan expedition backpack secured on back, small compass charm, four paws swimming.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.4760098716918475
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.41711177642201
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 4.184658126581386
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-fa943f97-0d95-4dac-b3b6-582c789365f9.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Desert Traveler Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Turban, backpack and compass remain firmly attached in identical positions. Only trailing turquoise turban ribbon gently waves with paw/tail swimming phases. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-comet-tail",
+      "key": "comet-tail",
+      "name": "유성 꼬리 퐁이",
+      "weather_type": "meteor",
+      "sell_price": 2500,
+      "swim_y_min": 0.12,
+      "swim_y_max": 0.52,
+      "speed": 0.036,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "꼬리 끝에 푸른 별 장식을 단 퐁이. 밤하늘을 가르는 유성처럼 날렵하게 물살을 미끄러져요.",
+      "thumbnail_path": "fish/normal/weather-pongi-comet-tail_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-comet-tail_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-a1395274-d9ce-4a56-921a-65ef44f2fe90.png",
+      "thumbnailPrompt": "ONE single isolated full-body swimming Pongi mascot collectible thumbnail on a fully transparent background. Reference defines character and warm cartoon shading ONLY. Warm brown otter, cream muzzle and belly, rounded ears, small pink starfish on head, same identity as reference. Body stretched horizontally swimming toward SCREEN RIGHT in clear side-three-quarter profile, head RIGHT tail LEFT, four otter paws paddling. NOT sitting, standing, frontal or floating upright. Gentle warm cel shading and thin soft brown outline, crisp silhouette. Full body and all props within square canvas, 12% transparent margin. Absolutely NO exterior glow, NO colored aura, NO shadows outside the character, NO ground shadow, NO haze or wash, NO water/background, NO text. Transparent pixels directly outside silhouette must have alpha zero, not soft colored fog. Design: Comet Tail Pongi: a small blue star pendant tied near tail tip, a short solid translucent blue ribbon attached to tail like a comet trail, navy little neckerchief with gold star embroidery. No detached particles or aura.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 8.809147532361663
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 10.747254171285903
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 9.931633585619856
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-c42387e2-601f-4fdc-9d70-6dd473265eff.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Comet Tail Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Keep navy neckerchief and blue star charm attached near tail tip; the tail oscillates gently with short blue ribbon. Do not add particles or glow. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-star-collector",
+      "key": "star-collector",
+      "name": "별 줍는 퐁이",
+      "weather_type": "meteor",
+      "sell_price": 2400,
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.62,
+      "speed": 0.025,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "작은 유리병에 별 조각을 모은 퐁이. 병을 품에 꼭 안고 뒷발로 조심조심 헤엄쳐요.",
+      "thumbnail_path": "fish/normal/weather-pongi-star-collector_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-star-collector_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-dc77ccf8-97ee-441c-a43b-d5948493f1f5.png",
+      "thumbnailPrompt": "ONE isolated full-body SWIMMING Pongi otter mascot collectible thumbnail, fully transparent background. Reference is character identity and warm cartoon shading ONLY: brown fur, cream muzzle/belly, rounded ears, pink starfish on head. Remove fishing line/hook and seated pose. Body horizontal facing SCREEN RIGHT, head/mouth RIGHT and tail LEFT, four paws paddling, not upright. Warm cel shading, clean thin brown contours. Full character with all accessories centered in SQUARE composition with generous 12% transparent margins. No exterior glow, colored aura, shadow, haze, background, water, ground, text, checkerboard, detached particles. Alpha zero outside crisp character silhouette. Design: Star Collector Pongi: cuddling a SMALL clear glass bottle containing THREE little golden star-shaped stones in front paws, warm gold ribbon on bottle cork, small navy star hair accessory beside pink starfish. Hind paws kick to swim, bottle fully enclosed by paws, NO light halo outside glass.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.092227140245148
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 2.911864733973099
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.804071449902012
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-de8f0714-369f-4a84-9e99-9f3460437b9d.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Star Collector Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Both forepaws keep holding the small glass star bottle firmly and identically, do NOT swing the bottle or change star count. Swimming is driven by hind-paw kicks and gentle tail wave only. All bottle details and head remain fixed. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-cherry-cape",
+      "key": "cherry-cape",
+      "name": "벚꽃 망토 퐁이",
+      "weather_type": "blossom",
+      "sell_price": 2300,
+      "swim_y_min": 0.16,
+      "swim_y_max": 0.56,
+      "speed": 0.028,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "분홍 꽃잎을 겹겹이 두른 퐁이. 물결을 따라 펼쳐지는 망토가 작은 봄날을 데려와요.",
+      "thumbnail_path": "fish/normal/weather-pongi-cherry-cape_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-cherry-cape_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-5896882a-90fb-4f84-8a04-2d60a4d8d76a.png",
+      "thumbnailPrompt": "ONE isolated full-body SWIMMING Pongi otter mascot collectible thumbnail, fully transparent background. Reference is character identity and warm cartoon shading ONLY: brown fur, cream muzzle/belly, rounded ears, pink starfish on head. Remove fishing line/hook and seated pose. Body horizontal facing SCREEN RIGHT, head/mouth RIGHT and tail LEFT, four paws paddling, not upright. Warm cel shading, clean thin brown contours. Full character with all accessories centered in SQUARE composition with generous 12% transparent margins. No exterior glow, colored aura, shadow, haze, background, water, ground, text, checkerboard, detached particles. Alpha zero outside crisp character silhouette. Design: Cherry Blossom Cape Pongi: wears a small cape made of layered soft pink cherry blossom petals flowing left, tiny five-petal cherry blossom brooch at neck, pink starfish remains visible. All petals are attached to cape, no floating petals.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.558863478592465
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.6308222719337793
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 4.4138268298553145
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-7147d5dc-80ea-4693-b4ef-f15b67081d33.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Cherry Blossom Cape Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Keep all layers of the pink petal cape and cherry flower clasp identical. Only cape's trailing petal edges, paws and tail gently move. Do NOT detach petals. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    },
+    {
+      "id": "weather-pongi-flower-bouquet",
+      "key": "flower-bouquet",
+      "name": "꽃다발 퐁이",
+      "weather_type": "blossom",
+      "sell_price": 2200,
+      "swim_y_min": 0.22,
+      "swim_y_max": 0.64,
+      "speed": 0.026,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "facing_direction": "right",
+      "description": "머리에 데이지를 꽂고 꽃다발을 안은 퐁이. 소중한 친구에게 꽃을 전하러 뒷발을 저으며 헤엄쳐요.",
+      "thumbnail_path": "fish/normal/weather-pongi-flower-bouquet_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/weather-pongi-flower-bouquet_v1_sprite.png",
+      "sourceThumbnail": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-d90acd6e-91dd-4c74-be10-982841d00527.png",
+      "thumbnailPrompt": "ONE isolated full-body SWIMMING Pongi otter mascot collectible thumbnail, fully transparent background. Reference is character identity and warm cartoon shading ONLY: brown fur, cream muzzle/belly, rounded ears, pink starfish on head. Remove fishing line/hook and seated pose. Body horizontal facing SCREEN RIGHT, head/mouth RIGHT and tail LEFT, four paws paddling, not upright. Warm cel shading, clean thin brown contours. Full character with all accessories centered in SQUARE composition with generous 12% transparent margins. No exterior glow, colored aura, shadow, haze, background, water, ground, text, checkerboard, detached particles. Alpha zero outside crisp character silhouette. Design: Flower Bouquet Pongi: a single white daisy tucked beside the pink starfish on head, holding a petite bouquet of yellow daisies and tiny blue flowers tied with a mint ribbon. Body horizontal swimming, hind paws gently kicking, bouquet held in front paws without hiding face.",
+      "tool": "image_gen.imagegen",
+      "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+      "review": {
+        "thumbnailFacing": "right",
+        "sprite": "right-facing four-frame paddle loop; head anchor measured and translated in PNG; uniform 24px cell padding",
+        "originalAnchor": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 4.073069110057997
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.993291055857327
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.5277230966890785
+          }
+        ],
+        "cell": 675
+      },
+      "sourceSprite": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-8e803d04-83ca-4505-8386-71a6541f67df.png",
+      "spritePrompt": "Create a real FOUR-FRAME swimming animation sprite sheet for Flower Bouquet Pongi. Image 1 is the APPROVED character identity and appearance. Image 2 is a POSITION/SCALE GUIDE ONLY with repeated identical poses: do NOT simply duplicate those poses. Output EXACTLY a 2x2 grid, four equal square cells, transparent background, no lines, no labels, no text. Match warm cartoon drawing and EXACT clothing/accessories, head, face, starfish and proportions. In EVERY cell, body horizontal and head on SCREEN RIGHT, tail LEFT. Keep eyes, rigid muzzle and torso at IDENTICAL relative coordinates and same size across all four cells. The animation is a gentle paddling loop: frame0 front paws reaching, hind paws slightly down, tail up; frame1 front paws pressing backward, hind paws tucked, tail neutral; frame2 front paws under chest, hind paws extend, tail down; frame3 front paws recover forward, hind paws begin tuck, tail neutral. Both forepaws firmly hold the yellow/blue flower bouquet, keep flowers and head daisy identical, do not change arrangement. Hind paws kick and tail gently waves to drive swimming. The mint bouquet ribbon may flutter subtly. Head/eyes stay open and stable; do NOT move whole character up/down, rotate, flip, change expression or alter costume. Preserve 10-12 percent clear margin in EACH cell including whiskers/tail. Each character about 82% cell width. Crisp fully transparent silhouette edges, no outer glow, shadow, fog or background. All four poses face SCREEN RIGHT. Four distinct subtle swimming limb/tail phases, coherent repeat from frame3 to frame0.",
+      "frames": 4
+    }
+  ],
+  "releasedAt": "2026-11-04T09:46:46.042Z"
+}

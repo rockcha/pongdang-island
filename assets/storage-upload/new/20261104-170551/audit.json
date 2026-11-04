@@ -1,0 +1,924 @@
+{
+  "results": [
+    {
+      "id": "weather-pongi-raincoat",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-raincoat_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            124,
+            422,
+            263
+          ],
+          "margin": 45,
+          "occupancy": 0.82421875,
+          "opaque": 61778,
+          "transparent": 198486,
+          "soft": 62778
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-raincoat",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-raincoat_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            53,
+            146,
+            523,
+            342
+          ],
+          "margin": 51,
+          "occupancy": 0.8341307814992025,
+          "opaque": 96448,
+          "transparent": 281671,
+          "soft": 111069
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            52,
+            146,
+            524,
+            301
+          ],
+          "margin": 51,
+          "occupancy": 0.835725677830941,
+          "opaque": 87254,
+          "transparent": 286808,
+          "soft": 106004
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            44,
+            147,
+            532,
+            315
+          ],
+          "margin": 44,
+          "occupancy": 0.8484848484848485,
+          "opaque": 88592,
+          "transparent": 280128,
+          "soft": 112682
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            48,
+            147,
+            528,
+            315
+          ],
+          "margin": 48,
+          "occupancy": 0.8421052631578947,
+          "opaque": 90451,
+          "transparent": 282887,
+          "soft": 109923
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-leaf-umbrella",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-leaf-umbrella_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            46,
+            67,
+            420,
+            378
+          ],
+          "margin": 46,
+          "occupancy": 0.8203125,
+          "opaque": 95870,
+          "transparent": 163298,
+          "soft": 97445
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-leaf-umbrella",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-leaf-umbrella_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            68,
+            72,
+            509,
+            466
+          ],
+          "margin": 50,
+          "occupancy": 0.8118022328548644,
+          "opaque": 145538,
+          "transparent": 230202,
+          "soft": 162536
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            51,
+            82,
+            525,
+            416
+          ],
+          "margin": 51,
+          "occupancy": 0.8373205741626795,
+          "opaque": 135664,
+          "transparent": 235944,
+          "soft": 156829
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            56,
+            80,
+            520,
+            429
+          ],
+          "margin": 51,
+          "occupancy": 0.8293460925039873,
+          "opaque": 136576,
+          "transparent": 231749,
+          "soft": 161069
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            50,
+            77,
+            526,
+            430
+          ],
+          "margin": 50,
+          "occupancy": 0.8389154704944178,
+          "opaque": 138184,
+          "transparent": 228730,
+          "soft": 163959
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-red-scarf",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-red-scarf_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            123,
+            422,
+            266
+          ],
+          "margin": 45,
+          "occupancy": 0.82421875,
+          "opaque": 68328,
+          "transparent": 191302,
+          "soft": 69683
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-red-scarf",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-red-scarf_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            53,
+            148,
+            523,
+            340
+          ],
+          "margin": 51,
+          "occupancy": 0.8341307814992025,
+          "opaque": 106968,
+          "transparent": 270939,
+          "soft": 121908
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            48,
+            148,
+            521,
+            309
+          ],
+          "margin": 48,
+          "occupancy": 0.8309409888357256,
+          "opaque": 98570,
+          "transparent": 279605,
+          "soft": 113271
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            46,
+            148,
+            523,
+            334
+          ],
+          "margin": 46,
+          "occupancy": 0.8341307814992025,
+          "opaque": 97958,
+          "transparent": 279678,
+          "soft": 113221
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            45,
+            148,
+            524,
+            320
+          ],
+          "margin": 45,
+          "occupancy": 0.835725677830941,
+          "opaque": 103693,
+          "transparent": 272954,
+          "soft": 119927
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-snowflake-cape",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-snowflake-cape_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            125,
+            422,
+            261
+          ],
+          "margin": 45,
+          "occupancy": 0.82421875,
+          "opaque": 62798,
+          "transparent": 197231,
+          "soft": 63972
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-snowflake-cape",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-snowflake-cape_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            63,
+            150,
+            520,
+            330
+          ],
+          "margin": 44,
+          "occupancy": 0.8293460925039873,
+          "opaque": 100235,
+          "transparent": 284439,
+          "soft": 108378
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            53,
+            150,
+            521,
+            302
+          ],
+          "margin": 53,
+          "occupancy": 0.8309409888357256,
+          "opaque": 89676,
+          "transparent": 294515,
+          "soft": 98307
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            53,
+            150,
+            521,
+            310
+          ],
+          "margin": 53,
+          "occupancy": 0.8309409888357256,
+          "opaque": 89403,
+          "transparent": 291655,
+          "soft": 101189
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            53,
+            150,
+            520,
+            314
+          ],
+          "margin": 53,
+          "occupancy": 0.8293460925039873,
+          "opaque": 95330,
+          "transparent": 287841,
+          "soft": 104984
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-sand-goggles",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-sand-goggles_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            118,
+            422,
+            276
+          ],
+          "margin": 45,
+          "occupancy": 0.82421875,
+          "opaque": 72283,
+          "transparent": 187672,
+          "soft": 73430
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-sand-goggles",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-sand-goggles_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            141,
+            527,
+            360
+          ],
+          "margin": 40,
+          "occupancy": 0.8405103668261563,
+          "opaque": 114523,
+          "transparent": 263354,
+          "soft": 129482
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            50,
+            141,
+            527,
+            334
+          ],
+          "margin": 50,
+          "occupancy": 0.8405103668261563,
+          "opaque": 105903,
+          "transparent": 270661,
+          "soft": 122114
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            54,
+            141,
+            523,
+            348
+          ],
+          "margin": 50,
+          "occupancy": 0.8341307814992025,
+          "opaque": 105887,
+          "transparent": 264282,
+          "soft": 128526
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            51,
+            141,
+            526,
+            341
+          ],
+          "margin": 50,
+          "occupancy": 0.8389154704944178,
+          "opaque": 109401,
+          "transparent": 259280,
+          "soft": 133531
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-desert-traveler",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-desert-traveler_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            126,
+            422,
+            260
+          ],
+          "margin": 45,
+          "occupancy": 0.82421875,
+          "opaque": 68115,
+          "transparent": 191368,
+          "soft": 69580
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-desert-traveler",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-desert-traveler_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            58,
+            152,
+            519,
+            326
+          ],
+          "margin": 50,
+          "occupancy": 0.8277511961722488,
+          "opaque": 107235,
+          "transparent": 264375,
+          "soft": 128421
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            44,
+            152,
+            532,
+            312
+          ],
+          "margin": 44,
+          "occupancy": 0.8484848484848485,
+          "opaque": 99793,
+          "transparent": 275764,
+          "soft": 117033
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            45,
+            152,
+            531,
+            323
+          ],
+          "margin": 45,
+          "occupancy": 0.84688995215311,
+          "opaque": 99639,
+          "transparent": 269874,
+          "soft": 122904
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            47,
+            152,
+            529,
+            312
+          ],
+          "margin": 47,
+          "occupancy": 0.8437001594896332,
+          "opaque": 101652,
+          "transparent": 265107,
+          "soft": 127680
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-comet-tail",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-comet-tail_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            129,
+            422,
+            254
+          ],
+          "margin": 45,
+          "occupancy": 0.82421875,
+          "opaque": 58551,
+          "transparent": 201582,
+          "soft": 59531
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-comet-tail",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-comet-tail_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            155,
+            515,
+            319
+          ],
+          "margin": 51,
+          "occupancy": 0.8213716108452951,
+          "opaque": 91105,
+          "transparent": 290868,
+          "soft": 102054
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            42,
+            155,
+            533,
+            305
+          ],
+          "margin": 42,
+          "occupancy": 0.8500797448165869,
+          "opaque": 84013,
+          "transparent": 299938,
+          "soft": 93034
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            41,
+            156,
+            534,
+            306
+          ],
+          "margin": 41,
+          "occupancy": 0.8516746411483254,
+          "opaque": 83301,
+          "transparent": 296726,
+          "soft": 96272
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            43,
+            156,
+            532,
+            305
+          ],
+          "margin": 43,
+          "occupancy": 0.8484848484848485,
+          "opaque": 86013,
+          "transparent": 295804,
+          "soft": 97147
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-star-collector",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-star-collector_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            46,
+            122,
+            420,
+            268
+          ],
+          "margin": 46,
+          "occupancy": 0.8203125,
+          "opaque": 74518,
+          "transparent": 185638,
+          "soft": 75604
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-star-collector",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-star-collector_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            63,
+            147,
+            513,
+            343
+          ],
+          "margin": 51,
+          "occupancy": 0.8181818181818182,
+          "opaque": 115372,
+          "transparent": 267059,
+          "soft": 125775
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            42,
+            147,
+            534,
+            329
+          ],
+          "margin": 42,
+          "occupancy": 0.8516746411483254,
+          "opaque": 110164,
+          "transparent": 271603,
+          "soft": 121239
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            41,
+            147,
+            535,
+            324
+          ],
+          "margin": 41,
+          "occupancy": 0.8532695374800638,
+          "opaque": 110457,
+          "transparent": 271630,
+          "soft": 121187
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            42,
+            147,
+            534,
+            323
+          ],
+          "margin": 42,
+          "occupancy": 0.8516746411483254,
+          "opaque": 109928,
+          "transparent": 269874,
+          "soft": 122937
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-cherry-cape",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-cherry-cape_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            124,
+            422,
+            263
+          ],
+          "margin": 45,
+          "occupancy": 0.82421875,
+          "opaque": 66336,
+          "transparent": 193790,
+          "soft": 67432
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-cherry-cape",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-cherry-cape_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            152,
+            526,
+            325
+          ],
+          "margin": 49,
+          "occupancy": 0.8389154704944178,
+          "opaque": 102101,
+          "transparent": 281821,
+          "soft": 110941
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            42,
+            151,
+            533,
+            309
+          ],
+          "margin": 42,
+          "occupancy": 0.8500797448165869,
+          "opaque": 95422,
+          "transparent": 287515,
+          "soft": 105261
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            43,
+            151,
+            532,
+            308
+          ],
+          "margin": 43,
+          "occupancy": 0.8484848484848485,
+          "opaque": 94368,
+          "transparent": 286030,
+          "soft": 106839
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            40,
+            151,
+            536,
+            307
+          ],
+          "margin": 40,
+          "occupancy": 0.8548644338118022,
+          "opaque": 96330,
+          "transparent": 284854,
+          "soft": 107906
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-flower-bouquet",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-flower-bouquet_v1_thumbnail.png",
+      "width": 512,
+      "height": 512,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            46,
+            117,
+            420,
+            278
+          ],
+          "margin": 46,
+          "occupancy": 0.8203125,
+          "opaque": 67159,
+          "transparent": 192698,
+          "soft": 68371
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-pongi-flower-bouquet",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261104-170551\\fish\\weather\\weather-pongi-flower-bouquet_v1_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            138,
+            518,
+            345
+          ],
+          "margin": 52,
+          "occupancy": 0.8261562998405104,
+          "opaque": 105652,
+          "transparent": 268253,
+          "soft": 124676
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            50,
+            138,
+            524,
+            351
+          ],
+          "margin": 50,
+          "occupancy": 0.835725677830941,
+          "opaque": 101310,
+          "transparent": 268308,
+          "soft": 124630
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            46,
+            138,
+            529,
+            352
+          ],
+          "margin": 46,
+          "occupancy": 0.8437001594896332,
+          "opaque": 102495,
+          "transparent": 268250,
+          "soft": 124670
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            50,
+            138,
+            524,
+            342
+          ],
+          "margin": 50,
+          "occupancy": 0.835725677830941,
+          "opaque": 102548,
+          "transparent": 267179,
+          "soft": 125769
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

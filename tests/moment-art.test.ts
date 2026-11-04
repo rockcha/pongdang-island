@@ -1,21 +1,29 @@
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {practiceSpecies} from '@/features/fishing/fishing-practice'
 const loaded:string[]=[],fills:string[]=[]
-const mock=vi.hoisted(()=>({failed:new Set<string>(),font:vi.fn(),draw:vi.fn()}))
+const mock=vi.hoisted(()=>({failed:new Set<string>(),font:vi.fn(),draw:vi.fn(),text:vi.fn()}))
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/original/'+path}))
 vi.mock('@/features/collection/thumbnail-art',()=>({optimizedThumbnailUrl:()=>'/optimized.webp'}))
 beforeEach(()=>{
- vi.resetModules();loaded.length=0;fills.length=0;mock.failed.clear();mock.font.mockReset().mockResolvedValue([]);mock.draw.mockReset()
+ vi.resetModules();loaded.length=0;fills.length=0;mock.failed.clear();mock.font.mockReset().mockResolvedValue([]);mock.draw.mockReset();mock.text.mockReset()
  Object.defineProperty(document,'fonts',{configurable:true,value:{load:mock.font}})
  vi.stubGlobal('Image',class {
   crossOrigin='';naturalWidth=640;naturalHeight=480;onload=()=>{};onerror=()=>{};url=''
   set src(url:string){this.url=url;if(!url)return;loaded.push(url);queueMicrotask(()=>mock.failed.has(url)?this.onerror():this.onload())}
   get src(){return this.url}
  })
- const context=new Proxy({drawImage:mock.draw,measureText:(text:string)=>({width:text.length*18}),createRadialGradient:()=>({addColorStop:vi.fn()})},{get:(target,key)=>key in target?target[key as keyof typeof target]:()=>{},set:(target,key,value)=>{if(key==='fillStyle')fills.push(value);Reflect.set(target,key,value);return true}})
+ const context=new Proxy({drawImage:mock.draw,fillText:mock.text,measureText:(text:string)=>({width:text.length*18}),createRadialGradient:()=>({addColorStop:vi.fn()})},{get:(target,key)=>key in target?target[key as keyof typeof target]:()=>{},set:(target,key,value)=>{if(key==='fillStyle')fills.push(value);Reflect.set(target,key,value);return true}})
  vi.spyOn(HTMLCanvasElement.prototype,'getContext').mockReturnValue(context as unknown as CanvasRenderingContext2D)
 })
 afterEach(()=>{vi.restoreAllMocks();vi.unstubAllGlobals();vi.useRealTimers()})
+it('paints only a weather icon instead of a grade or weather-creature text label',async()=>{
+ const {paintCatchMoment}=await import('@/features/showcase/moment-art')
+ const fish={...practiceSpecies('common'),id:'weather-test',name:'날씨 퐁이',weather_type:'rain' as const}
+ await paintCatchMoment(document.createElement('canvas'),{species:fish,preview:true})
+ expect(mock.draw.mock.calls.some(([image])=>image.src.startsWith('data:image/svg+xml'))).toBe(true)
+ expect(mock.text.mock.calls.map(([text])=>text)).not.toContain('일반')
+ expect(mock.text.mock.calls.map(([text])=>text)).not.toContain('비 개체')
+})
 
 it('paints ink catches on paper, uses optimized artwork and tolerates older snapshots without descriptions',async()=>{
  const {paintCatchMoment}=await import('@/features/showcase/moment-art')

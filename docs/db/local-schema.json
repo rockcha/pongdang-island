@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "65af18de7a6dbba3a0124d978fe6dff5461ce44b26fe24538013faeb610ab8ac",
+  "migrationHash": "0f1f9e01b98e44157c278ad0066d3e6ee5f10a281d90b7ae8fa4ea50aafa91d8",
   "structure": {
     "enums": [
       {
@@ -229,6 +229,12 @@
       {
         "rls": true,
         "name": "fishing_maintenance",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "fishing_weather_days",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2787,6 +2793,36 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "day",
+        "type": "date",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "periods",
+        "type": "jsonb",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -8630,6 +8666,16 @@
         "generated": ""
       },
       {
+        "name": "weather_type",
+        "type": "text",
+        "table": "collectible_species",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "exchange_listing_comments",
@@ -12720,6 +12766,12 @@
         "definition": "CREATE UNIQUE INDEX fishing_maintenance_pkey ON app_private.fishing_maintenance USING btree (id)"
       },
       {
+        "name": "fishing_weather_days_pkey",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX fishing_weather_days_pkey ON app_private.fishing_weather_days USING btree (user_id)"
+      },
+      {
         "name": "flea_lines_escrow_gift_id_key",
         "table": "flea_lines",
         "schema": "app_private",
@@ -13996,6 +14048,12 @@
         "table": "collectible_species",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX collectible_species_pkey ON public.collectible_species USING btree (id)"
+      },
+      {
+        "name": "collectible_species_weather_pool_idx",
+        "table": "collectible_species",
+        "schema": "public",
+        "definition": "CREATE INDEX collectible_species_weather_pool_idx ON public.collectible_species USING btree (weather_type, id) WHERE (weather_type IS NOT NULL)"
       },
       {
         "name": "exchange_listing_comments_page",
@@ -16885,7 +16943,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_species_id text, p_at timestamp with time zone",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.collectible_available_at(p_species_id text, p_at timestamp with time zone)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select p_species_id is not null and p_at is not null and not exists (\n  select 1 from app_private.collectible_event_windows e\n  where starts_with(p_species_id,e.species_prefix)\n   and (p_at < e.starts_at or p_at >= e.ends_at)\n )\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.collectible_available_at(p_species_id text, p_at timestamp with time zone)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select p_species_id is not null and p_at is not null and not exists (\n select 1 from public.collectible_species s where s.id=p_species_id and s.weather_type is not null\n ) and not exists (\n  select 1 from app_private.collectible_event_windows e\n  where starts_with(p_species_id,e.species_prefix)\n   and (p_at < e.starts_at or p_at >= e.ends_at)\n )\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -17685,7 +17743,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;v_discount integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n v_discount:=app_private.relic_bonus('bait_discount_gold')::integer;\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',10000,'mechanicsVersion',2,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('base_price',b.price,'price',case when b.price is null then null else (case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'priceDiscountGold',case when b.price is null then 0 else b.price-(case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'baseSuccessChanceBp',10000,'successChanceBp',10000,'mechanicsVersion',2) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;v_discount integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n v_discount:=app_private.relic_bonus('bait_discount_gold')::integer;\n return jsonb_build_object('weather',app_private.fishing_weather_schedule(),'regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',10000,'mechanicsVersion',2,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('base_price',b.price,'price',case when b.price is null then null else (case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'priceDiscountGold',case when b.price is null then 0 else b.price-(case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'baseSuccessChanceBp',10000,'successChanceBp',10000,'mechanicsVersion',2) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17697,6 +17755,26 @@
         "arguments": "p_bait_id text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_success_chance_bp(p_bait_id text)\n RETURNS integer\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n return coalesce(b.success_chance_bp,case when p_bait_id='bait_safe' then 10000\n when p_bait_id in ('bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special') then 7000\n when p_bait_id='bait' then 3500 else 4000 end);\nend $function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "fishing_weather_at",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_weather_at(p_at timestamp with time zone)\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select value from jsonb_array_elements(app_private.fishing_weather_schedule(p_at)->'periods')\n where (value->>'startsAt')::timestamptz<=p_at and p_at<(value->>'endsAt')::timestamptz limit 1\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "fishing_weather_schedule",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_weather_schedule(p_at timestamp with time zone DEFAULT clock_timestamp())\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n v_uid uuid:=auth.uid();v_day date:=(p_at at time zone 'Asia/Seoul')::date;\n v_start timestamptz;v_periods jsonb;v_kinds text[];v_i integer;v_slot timestamptz;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_at is null then raise exception 'INVALID_WEATHER_TIME';end if;\n select periods into v_periods from app_private.fishing_weather_days where user_id=v_uid and day=v_day;\n if v_periods is null then\n  perform pg_advisory_xact_lock(hashtextextended('fishing-weather:'||v_uid::text,0));\n  select periods into v_periods from app_private.fishing_weather_days where user_id=v_uid and day=v_day;\n  if v_periods is null then\n   v_start:=v_day::timestamp at time zone 'Asia/Seoul';\n   select array_agg(kind order by random()) into v_kinds from unnest(\n    array['rain','snow','dust','meteor','blossom']) kind;\n   v_periods:='[]'::jsonb;\n   for v_i in 1..4 loop\n    v_slot:=v_start+make_interval(mins=>(v_i-1)*360+floor(random()*331)::integer);\n    v_periods:=v_periods||jsonb_build_array(jsonb_build_object('kind',v_kinds[v_i],\n     'startsAt',v_slot,'endsAt',v_slot+interval '30 minutes'));\n   end loop;\n   insert into app_private.fishing_weather_days(user_id,day,periods) values(v_uid,v_day,v_periods)\n    on conflict(user_id) do update set day=excluded.day,periods=excluded.periods;\n  end if;\n end if;\n return jsonb_build_object('day',v_day,'serverNow',p_at,'periods',v_periods);\nend $function$\n",
+        "securityDefiner": true
       },
       {
         "name": "flea_cancel",
@@ -18519,6 +18597,16 @@
         "securityDefiner": false
       },
       {
+        "name": "pick_weather_collectible",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_kind text, p_at timestamp with time zone, p_roll double precision",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_weather_collectible(p_kind text, p_at timestamp with time zone, p_roll double precision DEFAULT NULL::double precision)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_ids text[];v_roll double precision;\nbegin\n if p_kind is null or p_at is null then return null;end if;\n select array_agg(s.id order by s.id) into v_ids from public.collectible_species s\n where s.weather_type=p_kind and s.kind in ('fish','trash','decoration') and not exists (\n  select 1 from app_private.collectible_event_windows e where starts_with(s.id,e.species_prefix)\n   and (p_at<e.starts_at or p_at>=e.ends_at));\n if v_ids is null then return null;end if;\n v_roll:=coalesce(p_roll,random());\n if v_roll<0 or v_roll>=1 then raise exception 'INVALID_WEATHER_ROLL';end if;\n if v_roll>=0.03 then return null;end if;\n return v_ids[1+floor(random()*cardinality(v_ids))::integer];\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "place_collectible",
         "config": [
           "search_path=\"\""
@@ -18635,7 +18723,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_discovery_cast(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;v_reduction integer;\n v_roll double precision;v_category text;v_reward record;v_map text;v_piece integer;v_relic text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Keep the exhausted discovery bait refusal before every random draw. Moving\n -- it after the category roll would permit unlimited free map/relic rerolls.\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s\n  where app_private.collectible_available_at(s.id,statement_timestamp()) and s.kind in ('fish','trash','decoration')\n  and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then\n  raise exception 'ALL_COLLECTIBLES_DISCOVERED';\n end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n -- Grade-specific disjoint category ranges; absent categories return to the ordinary\n -- pool without increasing the other discovery category's chance.\n v_category:='ordinary';\n if p_discovery then\n  v_roll:=random();\n  v_category:=app_private.fishing_reward_category(v_roll,v_rarity);\n end if;\n if v_category<>'ordinary' then\n  select * into v_reward from app_private.fishing_discovery_candidates(v_rarity)\n  where category=v_category order by random() limit 1;\n  if found then\n   if v_category='map' then\n    v_map:=v_reward.region_id;v_piece:=v_reward.piece_number;\n    v_snapshot:=app_private.fishing_map_piece_payload(v_map,v_piece,v_uid);\n   else\n    v_relic:=v_reward.reward_id;v_snapshot:=app_private.fishing_relic_payload(v_relic);\n   end if;\n  end if;\n end if;\n if v_snapshot is null then\n  v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n end if;\n select r.wait_reduction_seconds into v_reduction from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=v_uid;\n v_wait:=greatest(1,13+12*random()-coalesce(v_reduction,0)-app_private.relic_bonus('fishing_wait_seconds'));\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,\n  map_piece_number,relic_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,v_map,v_piece,v_relic,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile||jsonb_build_object('discovery_version',1,'relic_bait_refund_percent',least(5,greatest(0,app_private.relic_bonus('bait_refund_percent')))),p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_discovery_cast(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;v_reduction integer;\n v_weather jsonb;v_roll double precision;v_category text;v_reward record;v_map text;v_piece integer;v_relic text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Keep the exhausted discovery bait refusal before every random draw. Moving\n -- it after the category roll would permit unlimited free map/relic rerolls.\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s\n  where app_private.collectible_available_at(s.id,statement_timestamp()) and s.kind in ('fish','trash','decoration')\n  and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then\n  raise exception 'ALL_COLLECTIBLES_DISCOVERED';\n end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_weather:=app_private.fishing_weather_at(v_started);\n v_species:=app_private.pick_weather_collectible(v_weather->>'kind',v_started);\n if v_species is not null then\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n else\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n -- Grade-specific disjoint category ranges; absent categories return to the ordinary\n -- pool without increasing the other discovery category's chance.\n v_category:='ordinary';\n if p_discovery then\n  v_roll:=random();\n  v_category:=app_private.fishing_reward_category(v_roll,v_rarity);\n end if;\n if v_category<>'ordinary' then\n  select * into v_reward from app_private.fishing_discovery_candidates(v_rarity)\n  where category=v_category order by random() limit 1;\n  if found then\n   if v_category='map' then\n    v_map:=v_reward.region_id;v_piece:=v_reward.piece_number;\n    v_snapshot:=app_private.fishing_map_piece_payload(v_map,v_piece,v_uid);\n   else\n    v_relic:=v_reward.reward_id;v_snapshot:=app_private.fishing_relic_payload(v_relic);\n   end if;\n  end if;\n end if;\n if v_snapshot is null then\n  v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n end if;\n end if;\n select r.wait_reduction_seconds into v_reduction from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=v_uid;\n v_wait:=greatest(1,13+12*random()-coalesce(v_reduction,0)-app_private.relic_bonus('fishing_wait_seconds'));\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,\n  map_piece_number,relic_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,v_map,v_piece,v_relic,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile||jsonb_build_object('weather',v_weather,'discovery_version',1,'relic_bait_refund_percent',least(5,greatest(0,app_private.relic_bonus('bait_refund_percent')))),p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18795,7 +18883,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_caption text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;\n result_id uuid;species jsonb;crafted_id text;crafted jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select c.id into crafted_id from app_private.relic_craft_operations o\n join app_private.crafted_relics c on c.user_id=o.user_id and c.id=o.result->>'craftedId'\n  and c.base_id=o.base_id and c.attached_id=o.attached_id\n where o.user_id=u and o.operation_id=p_operation_id and o.result->>'success'='true';\n if found then\n  crafted:=app_private.crafted_relic_showcase(crafted_id);\n elsif exists(select 1 from app_private.relic_recycling_operations where user_id=u and operation_id=p_operation_id and action='recombine') then\n  crafted:=app_private.recombined_relic_showcase(p_operation_id);\n end if;\n if crafted is not null then\n  species:=crafted->'species';\n  insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n  values(u,p_operation_id,btrim(p_caption),species,(species->>'rarity')::public.game_rarity,\n   crafted->>'regionName',(crafted->>'caughtAt')::timestamptz,false,1) returning id into result_id;\n  return result_id;\n end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n species:=p.result->'attempt'->'species';\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or a.rarity not in ('epic','mythic')\n or species->>'id' is null or species->>'rarity' is distinct from a.rarity::text\n or coalesce(species->>'kind','') not in ('fish','trash','decoration','relic') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n if species->>'kind'='relic' and (a.rarity<>'mythic' or p.relic_id is null\n  or species->>'id' is distinct from 'relic-'||p.relic_id\n  or p.snapshot->>'id' is distinct from species->>'id') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),species,a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;\n result_id uuid;species jsonb;weather_catch boolean;crafted_id text;crafted jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select c.id into crafted_id from app_private.relic_craft_operations o\n join app_private.crafted_relics c on c.user_id=o.user_id and c.id=o.result->>'craftedId'\n  and c.base_id=o.base_id and c.attached_id=o.attached_id\n where o.user_id=u and o.operation_id=p_operation_id and o.result->>'success'='true';\n if found then\n  crafted:=app_private.crafted_relic_showcase(crafted_id);\n elsif exists(select 1 from app_private.relic_recycling_operations where user_id=u and operation_id=p_operation_id and action='recombine') then\n  crafted:=app_private.recombined_relic_showcase(p_operation_id);\n end if;\n if crafted is not null then\n  species:=crafted->'species';\n  insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n  values(u,p_operation_id,btrim(p_caption),species,(species->>'rarity')::public.game_rarity,\n   crafted->>'regionName',(crafted->>'caughtAt')::timestamptz,false,1) returning id into result_id;\n  return result_id;\n end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n species:=p.result->'attempt'->'species';\n weather_catch:=coalesce(species->>'kind'='fish'\n  and species->>'weather_type' in ('rain','snow','dust','meteor','blossom')\n  and p.species_id=species->>'id'\n  and p.snapshot->>'id'=species->>'id'\n  and p.snapshot->>'weather_type'=species->>'weather_type',false);\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or (a.rarity not in ('epic','mythic') and not weather_catch)\n or species->>'id' is null or species->>'rarity' is distinct from a.rarity::text\n or coalesce(species->>'kind','') not in ('fish','trash','decoration','relic') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n if species->>'kind'='relic' and (a.rarity<>'mythic' or p.relic_id is null\n  or species->>'id' is distinct from 'relic-'||p.relic_id\n  or p.snapshot->>'id' is distinct from species->>'id') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),species,a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -23653,6 +23741,42 @@
         "table": "fishing_maintenance",
         "schema": "app_private",
         "definition": "NOT NULL starts_at"
+      },
+      {
+        "name": "fishing_weather_days_day_not_null",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "definition": "NOT NULL day"
+      },
+      {
+        "name": "fishing_weather_days_periods_check",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "definition": "CHECK (((jsonb_typeof(periods) = 'array'::text) AND (jsonb_array_length(periods) = 4)))"
+      },
+      {
+        "name": "fishing_weather_days_periods_not_null",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "definition": "NOT NULL periods"
+      },
+      {
+        "name": "fishing_weather_days_pkey",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "fishing_weather_days_user_id_fkey",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "fishing_weather_days_user_id_not_null",
+        "table": "fishing_weather_days",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "flea_lines_asset_not_null",
@@ -29217,6 +29341,12 @@
         "definition": "NOT NULL travel_direction"
       },
       {
+        "name": "collectible_species_weather_type_check",
+        "table": "collectible_species",
+        "schema": "public",
+        "definition": "CHECK ((weather_type = ANY (ARRAY['rain'::text, 'snow'::text, 'dust'::text, 'meteor'::text, 'blossom'::text])))"
+      },
+      {
         "name": "collectible_travel_direction",
         "table": "collectible_species",
         "schema": "public",
@@ -30318,7 +30448,7 @@
         "name": "fishing_showcase_posts_rarity_check",
         "table": "fishing_showcase_posts",
         "schema": "public",
-        "definition": "CHECK (((rarity = ANY (ARRAY['epic'::game_rarity, 'mythic'::game_rarity])) OR ((rarity = 'rare'::game_rarity) AND COALESCE((((species ->> 'kind'::text) = 'relic'::text) AND ((species ->> 'crafted'::text) = 'true'::text) AND (jsonb_typeof((species -> 'attached'::text)) = 'object'::text)), false))))"
+        "definition": "CHECK (((rarity = ANY (ARRAY['epic'::game_rarity, 'mythic'::game_rarity])) OR ((rarity = 'rare'::game_rarity) AND COALESCE((((species ->> 'kind'::text) = 'relic'::text) AND ((species ->> 'crafted'::text) = 'true'::text) AND (jsonb_typeof((species -> 'attached'::text)) = 'object'::text)), false)) OR COALESCE((((species ->> 'kind'::text) = 'fish'::text) AND ((species ->> 'weather_type'::text) = ANY (ARRAY['rain'::text, 'snow'::text, 'dust'::text, 'meteor'::text, 'blossom'::text]))), false)))"
       },
       {
         "name": "fishing_showcase_posts_rarity_not_null",
@@ -36259,6 +36389,13 @@
         "role": "authenticated",
         "table": "collectible_species",
         "column": "travel_direction",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "collectible_species",
+        "column": "weather_type",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -42709,6 +42846,48 @@
         "arguments": "p_bait_id text"
       },
       {
+        "name": "fishing_weather_at",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_weather_at",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_weather_at",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_weather_schedule",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_weather_schedule",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_weather_schedule",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
         "name": "flea_cancel",
         "role": "anon",
         "schema": "app_private",
@@ -44429,6 +44608,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_region_id text, p_rarity game_rarity, p_bait_id text"
+      },
+      {
+        "name": "pick_weather_collectible",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_at timestamp with time zone, p_roll double precision"
+      },
+      {
+        "name": "pick_weather_collectible",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_at timestamp with time zone, p_roll double precision"
+      },
+      {
+        "name": "pick_weather_collectible",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_at timestamp with time zone, p_roll double precision"
       },
       {
         "name": "place_collectible",

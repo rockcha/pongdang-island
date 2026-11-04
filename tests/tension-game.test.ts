@@ -120,7 +120,7 @@ it('varies casts while maintaining progressive resistance and stronger reeling t
  const s={...newTensionGame(()=>.5),phase:'playing' as const,time:4}
  expect(stepTensionGame(s,.1,true).tension).toBeGreaterThan(stepTensionGame(s,.1,false).tension)
 })
-it('shows stable varied approach and nibble messages before the first pull',()=>{
+it('shows stable varied approach and warning messages before the first pull',()=>{
  const messages=new Set<string>()
  for(let seed=1;seed<=20;seed++){
   const s={...newTensionGame(()=>.5),seed,phase:'playing' as const,time:.2}
@@ -139,7 +139,7 @@ it('stays quiet for the full waiting phase before approach commentary',()=>{
  expect(fishingMessage({...s,phase:'playing',time:.01})).not.toBe('')
 })
 
-it('selects from 24 exclusive fight messages per tier without changing game state',()=>{
+it('selects from 30 exclusive fight messages per tier without changing game state',()=>{
  const messages=Object.fromEntries(tiers.map(r=>[r,new Set<string>()])) as Record<typeof tiers[number],Set<string>>
  for(let seed=1;seed<=512;seed++){
   const time=fishingBiteSeconds(seed)+.1
@@ -152,12 +152,12 @@ it('selects from 24 exclusive fight messages per tier without changing game stat
    expect(game).toEqual(snapshot)
   }
  }
- for(const rarity of tiers)expect(messages[rarity].size).toBe(24)
- expect(new Set(tiers.flatMap(rarity=>[...messages[rarity]])).size).toBe(96)
+ for(const rarity of tiers)expect(messages[rarity].size).toBe(30)
+ expect(new Set(tiers.flatMap(rarity=>[...messages[rarity]])).size).toBe(120)
  for(const seed of [1,42,1234]){
   const base={...newTensionGame(()=>.5),seed,phase:'playing' as const}
   for(const time of [.1,fishingBiteSeconds(seed)*.8]){
-   expect(new Set(tiers.map(rarity=>fishingMessage({...base,rarity,time}))).size).toBe(1)
+   expect(new Set(tiers.map(rarity=>fishingMessage({...base,rarity,time}))).size).toBe(4)
   }
  }
 })

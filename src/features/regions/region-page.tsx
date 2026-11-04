@@ -10,14 +10,24 @@ import { loadRegionMap } from './api'
 import type { RegionMap } from './api'
 import {rememberRegion} from './remembered-region'
 import {FishingTools} from '@/features/fishing/fishing-tools'
-export function RegionPage(){
+import {weatherKinds,weatherNames,type WeatherKind,type WeatherPeriod} from '@/features/fishing/weather'
+import {weatherPracticePool} from '@/features/fishing/weather-creatures'
+import {WeatherCreaturePicker} from '@/features/fishing/weather-creature-picker'
+export function RegionPage({weatherTest=false}:{weatherTest?:boolean}){
  const {regionId}=useParams()
  const {session}=useAuth()
- return <Destination key={`${session?.user.id}:${regionId}`} regionId={regionId??''} userId={session?.user.id}/>
+ return <Destination key={`${session?.user.id}:${regionId}:${weatherTest}`} regionId={regionId??''} userId={session?.user.id} weatherTest={weatherTest}/>
 }
-function Destination({regionId,userId}:{regionId:string;userId?:string}){
- const sceneReady=useFishingSceneImages(regionId)
+function Destination({regionId:requestedRegion,userId,weatherTest}:{regionId:string;userId?:string;weatherTest:boolean}){
  const [map,setMap]=useState<RegionMap|null>(null)
+ const regionId=weatherTest?(map?.currentRegion??'pongdang'):requestedRegion
+ const sceneReady=useFishingSceneImages(regionId)
+ const [testWeather,setTestWeather]=useState<WeatherKind>('rain')
+ const [testSpeciesId,setTestSpeciesId]=useState('')
+ const weatherPool=weatherPracticePool(testWeather)
+ const testSpecies=weatherPool.find(species=>species.id===testSpeciesId)??weatherPool[0]
+ const [previewStart]=useState(()=>Date.now())
+ const preview:WeatherPeriod={kind:testWeather,startsAt:new Date(previewStart).toISOString(),endsAt:new Date(previewStart+30*60_000).toISOString()}
  const [error,setError]=useState('')
  const [attempt,setAttempt]=useState(0)
  const [oddsTarget,setOddsTarget]=useState<HTMLDivElement|null>(null)
@@ -50,11 +60,13 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
   <div className="relative flex min-h-0 flex-1 flex-col">
    <FishingTools map={map} toolsTop={headerBottom+12}>
    <div ref={setToolbar} role="group" aria-label="낚시 게이지" className="absolute inset-x-0 top-0 z-30 flex flex-col overflow-hidden text-white"/>
-   <FishingPanel regionId={region.id} toolbarTarget={toolbar} oddsTarget={oddsTarget} sceneHeader={<>
+   <FishingPanel regionId={region.id} regionName={region.name} toolbarTarget={toolbar} oddsTarget={oddsTarget} weatherTest={weatherTest} weatherPreview={preview} weatherSpecies={testSpecies} sceneHeader={<>
     <div aria-hidden="true" style={{height:headerBottom+48,background:'linear-gradient(180deg,rgba(9,35,54,0.78) 0%,rgba(9,35,54,0.48) 62%,rgba(9,35,54,0) 100%)'}} className="pointer-events-none absolute inset-x-0 top-0 z-10"/>
     <header ref={setSceneHeader} data-fishing-region-overlay className="pointer-events-none absolute left-4 right-16 top-3 z-20 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
-     <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5"><h1 className="flex min-w-0 items-center gap-1.5 text-lg font-normal tracking-tight sm:text-xl">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7 shrink-0 object-contain drop-shadow-sm"/>}{region.name}</h1><div ref={setOddsTarget} className="pointer-events-auto flex shrink-0 items-center"/></div>
+     <div className="flex min-w-0 items-center justify-between gap-2"><h1 title={region.name} className="flex min-w-0 items-center gap-1.5 text-lg font-normal tracking-tight sm:text-xl">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7 shrink-0 object-contain drop-shadow-sm"/>}<span className="truncate">{region.name}</span></h1><div ref={setOddsTarget} className="pointer-events-auto flex shrink-0 items-center"/></div>
      {region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white/90">{region.description}</p>}
+     {weatherTest&&<label className="pointer-events-auto mt-2 inline-flex max-w-full flex-wrap items-center gap-2 rounded-xl bg-slate-950/50 px-3 py-2 text-xs">날씨 낚시 테스트<select aria-label="테스트 날씨" value={testWeather} onChange={event=>setTestWeather(event.target.value as WeatherKind)} className="min-h-9 rounded-lg border border-white/30 bg-slate-800 px-3 text-white">{weatherKinds.map(kind=><option key={kind} value={kind}>{weatherNames[kind]}</option>)}</select><span className="text-[10px] text-white/70">미끼·보상 없음</span></label>}
+     {weatherTest&&testSpecies&&<div className="pointer-events-auto"><WeatherCreaturePicker kind={testWeather} selected={testSpecies.id} onSelect={setTestSpeciesId}/></div>}
      {region.id==='pharaoh'&&<Link to="/exploration" className="pointer-events-auto mt-1 inline-flex min-h-11 items-center rounded-lg border border-white/25 bg-black/20 px-3 text-xs text-amber-100 hover:bg-black/35">지하 탐험</Link>}
     </header>
    </>}/>

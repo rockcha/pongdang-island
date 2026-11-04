@@ -2,6 +2,13 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {readCollectionFilters,saveCollectionFilters} from '@/features/collection/filter-preference'
 
 afterEach(()=>{vi.restoreAllMocks();localStorage.clear()})
+it('persists weather filters per account and ignores unsupported weather values',()=>{
+ saveCollectionFilters('one',{tab:'all',rarity:'all',habitat:'all',status:'all',weather:'dust'})
+ expect(readCollectionFilters('one').weather).toBe('dust')
+ expect(readCollectionFilters('two').weather).toBeUndefined()
+ localStorage.setItem('pongdang:fishing-collection-filters:v1:one',JSON.stringify({weather:'hail'}))
+ expect(readCollectionFilters('one').weather).toBeUndefined()
+})
 
 it('keeps fishing filters separate for each account and leaves unpersisted books at their requested habitat',()=>{
  const filters={tab:'fish',rarity:'rare',habitat:'coral',status:'discovered'} as const

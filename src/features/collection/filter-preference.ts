@@ -9,6 +9,7 @@ export type CollectionFilters = {
   search?: string
   limited?: string
   effect?: string
+  weather?: 'all' | 'normal' | 'special' | 'rain' | 'snow' | 'dust' | 'meteor' | 'blossom'
 }
 const key = (userId: string) => `pongdang:fishing-collection-filters:v1:${userId}`
 
@@ -24,6 +25,7 @@ export function readCollectionFilters(userId?: string, initialRegion = 'all'): C
     const saved = JSON.parse(localStorage.getItem(key(userId)) ?? 'null')
     if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return fallback
     return {
+      ...(['normal','special','rain','snow','dust','meteor','blossom'].includes(saved.weather) ? {weather:saved.weather} : {}),
       ...(typeof saved.search === 'string' && saved.search
         ? { search: saved.search.slice(0, 100) }
         : {}),

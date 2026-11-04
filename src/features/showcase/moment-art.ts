@@ -6,6 +6,7 @@ import {limitedCollectionEvent} from '@/features/collection/limited-events'
 import {optimizedThumbnailUrl} from '@/features/collection/thumbnail-art'
 import {catchMomentTheme} from './moment-theme'
 import {relicEffectDescription} from '@/features/relics/relic-equipment-slot'
+import {weatherIconDataUrl} from '@/features/fishing/weather-icon-art'
 
 export type CatchMomentArt={species:Species;firstDiscovery?:boolean;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;renderVersion?:1}
 export const catchImageSize=1080
@@ -52,11 +53,12 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  const titleIcon=limitedCollectionEvent(species.id)?.iconPath??native?.src
  const titleIcons=[species.kind==='relic'?'/app-icons/relic.png':undefined,titleIcon].filter((path):path is string=>!!path)
  const region=Object.values(regionIcons).find(item=>item.name===regionName)
- const [creature,loadedTitleImages,regionImage,attachment]=await Promise.all([
+ const [creature,loadedTitleImages,regionImage,attachment,weatherImage]=await Promise.all([
   loadMomentCreature(species.thumbnail_path),
   Promise.all(titleIcons.map(path=>loadImage(path).catch(()=>null))),
   region?loadImage(region.src).catch(()=>null):Promise.resolve(null),
   species.attached?loadMomentCreature(species.attached.thumbnail_path):Promise.resolve(null),
+  species.weather_type?loadImage(weatherIconDataUrl(species.weather_type)):Promise.resolve(null),
   loadMomentFont(`${species.name} ${species.description??''} ${regionName??''} ${rarities[species.rarity].label} 미리보기 실제 포획 기록이 아니에요 NEW 0123456789`),
  ])
  const titleImages=loadedTitleImages.filter((image):image is HTMLImageElement=>image!==null)
@@ -87,9 +89,10 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
   ctx.beginPath();ctx.arc(805,580,83,0,Math.PI*2);ctx.fill();ctx.stroke()
   fitImage(ctx,attachment,735,510,140,140)
  }
- const isNew=firstDiscovery&&!practice,gradeWidth=104,newWidth=90,gap=16,total=gradeWidth+(isNew?newWidth+gap:0)
+ const isNew=firstDiscovery&&!practice,gradeWidth=weatherImage?44:104,newWidth=90,gap=16,total=gradeWidth+(isNew?newWidth+gap:0)
  const gradeBadge=catchBadgeColors(species.rarity)
- badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,gradeBadge.background,30,gradeBadge.text)
+ if(weatherImage)fitImage(ctx,weatherImage,540-total/2,690,44,44)
+ else badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,gradeBadge.background,30,gradeBadge.text)
  if(isNew)badge(ctx,'NEW',540-total/2+gradeWidth+gap,690,newWidth,'#dc2626',25)
  ctx.font=`700 58px ${font}`;ctx.fillStyle=theme.text
  const titlePrefixWidth=titleImages.length*68

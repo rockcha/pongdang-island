@@ -19,7 +19,7 @@ export function ShowcasePage(){
  const [preview,setPreview]=useState<ShowcasePost|null>(null)
  useEffect(()=>{
   if(!previewDraft){setPreview(null);return}
-  setPreview({id:'preview',author_id:owner,author_name:nickname,avatar_path:null,operation_id:previewDraft.operationId,caption:previewDraft.caption,species:previewDraft.species,rarity:previewDraft.species.rarity as 'epic'|'mythic',region_name:previewDraft.regionName,caught_at:previewDraft.caughtAt,created_at:previewDraft.caughtAt,first_discovery:previewDraft.firstDiscovery,render_version:previewDraft.renderVersion,reactions:{},my_reaction:null})
+  setPreview({id:'preview',author_id:owner,author_name:nickname,avatar_path:null,operation_id:previewDraft.operationId,caption:previewDraft.caption,species:previewDraft.species,rarity:previewDraft.species.rarity,region_name:previewDraft.regionName,caught_at:previewDraft.caughtAt,created_at:previewDraft.caughtAt,first_discovery:previewDraft.firstDiscovery,render_version:previewDraft.renderVersion,reactions:{},my_reaction:null})
  },[previewDraft,owner,nickname])
  useEffect(()=>{
   let alive=true;setFeed(null);setError('')

@@ -1,3 +1,4 @@
+import {fishingToolButton} from './fishing-tools'
 import {Lightbulb} from 'lucide-react'
 import {appArt} from '@/components/app-art'
 import {Button} from '@/components/ui/button'
@@ -7,7 +8,7 @@ import {fishingBaitEffect} from './bait-effects'
 import type {FishingBait} from './api'
 import type {FishingRod} from './fishing-rods'
 
-export function FishingOdds({bait,successChanceBp,rod,baseChanceBp=3500}:{bait?:FishingBait;successChanceBp?:number;rod?:FishingRod;baseChanceBp?:number}){
+export function FishingOdds({bait,successChanceBp,rod,baseChanceBp=3500,dock=false}:{dock?:boolean;bait?:FishingBait;successChanceBp?:number;rod?:FishingRod;baseChanceBp?:number}){
  const modern=bait?.mechanicsVersion===2
  const chance=bait?.successChanceBp??bait?.baseSuccessChanceBp??(bait?.id==='bait'?successChanceBp:undefined)
  const keys=Object.keys(rarities) as Rarity[]
@@ -17,11 +18,10 @@ export function FishingOdds({bait,successChanceBp,rod,baseChanceBp=3500}:{bait?:
  const baseRarity:Record<Rarity,number>={common:86.5,rare:12,epic:1.3,mythic:.2}
  const difference=(value:number)=>`${value>0?'+':''}${Number(value.toFixed(2))}%p`
  return <Dialog>
-  <DialogTrigger aria-label="낚시 잘하는 꿀팁" title="낚시 잘하는 꿀팁" render={<Button variant="ghost" className="min-h-9 shrink-0 gap-1 rounded-full border border-white/25 bg-white/10 px-2.5 text-[11px] text-white shadow-sm backdrop-blur-sm hover:bg-white/20 hover:text-white focus-visible:ring-white"/>}><Lightbulb aria-hidden="true" className="size-4"/>꿀팁</DialogTrigger>
+  <DialogTrigger aria-label="낚시 잘하는 꿀팁" title="낚시 잘하는 꿀팁" render={<Button variant="ghost" className={dock?fishingToolButton+" flex-col gap-0.5 text-[9px]":"min-h-9 gap-1 rounded-full px-2.5 text-xs"}/>}><Lightbulb aria-hidden="true" className="size-4"/>꿀팁</DialogTrigger>
   <DialogContent className="flex max-h-[85dvh] w-[calc(100%-2rem)] max-w-sm flex-col gap-0 overflow-hidden rounded-2xl p-0">
    <DialogHeader className="shrink-0 border-b px-5 pb-4 pt-5 pr-12"><DialogTitle className="flex items-center gap-2 text-base font-normal"><appArt.rod className="size-7"/>낚시 잘하는 꿀팁</DialogTitle><DialogDescription className="text-xs leading-5">게이지 조작부터 미끼·장비별 확률까지 알아보세요.</DialogDescription></DialogHeader>
    <div className="min-h-0 space-y-5 overflow-y-auto overscroll-contain p-5 text-xs leading-6">
-    <section aria-label="지도 조각과 유물" className="rounded-xl border border-primary/15 bg-secondary/25 p-4"><h2 className="mb-2 text-sm">지도 조각과 유물도 발견해요</h2><p>직접 낚시는 미끼로 등급을 정한 뒤 지도 조각 3% · 유물은 희귀 3%, 특급 5%, 신화 10%로 추첨해요. 전용 미끼에서도 같은 등급의 미획득 지도 조각·유물을 발견할 수 있어요.</p><p className="mt-2 text-muted-foreground">해당 등급의 미획득 후보가 없는 분류는 기존 포획물로 돌아가요. 지도 조각·유물은 도감에 기록돼요. 보유한 유물은 중복으로 나오지 않으며, 판매하면 다시 낚을 수 있어요. 어항 배치·선물·거래는 할 수 없어요.</p></section>
     <section aria-label="낚시 방법" className="rounded-xl border border-primary/20 bg-secondary/25 p-4"><h2 className="mb-3 text-sm font-medium">게이지를 가운데에서 유지해 주세요</h2><ol className="list-decimal space-y-2 pl-4 text-muted-foreground"><li>낚시를 시작하고 물고기가 입질할 때까지 기다려 주세요.</li><li>당기기 버튼을 클릭하거나 누르고 있으면 게이지가 올라가요. 손을 떼면 내려가요.</li><li><strong className="font-medium text-primary">게이지가 꽉 차기 전에 손을 떼세요.</strong> 높은 상태를 오래 유지하면 줄이 끊어져요.</li><li>너무 내려가 빈 상태가 이어져도 물고기를 놓쳐요. 누르기와 떼기를 반복하며 조업이 끝날 때까지 버텨 주세요.</li></ol><p className="mt-3 border-t border-primary/10 pt-2 text-[11px] text-muted-foreground">물고기가 세게 당길 때와 쉴 때의 속도가 달라요. 게이지 움직임을 보고 힘을 조절해 보세요.</p></section>
     <section aria-label="확률 읽는 순서" className="space-y-1"><h2 className="text-sm font-medium">확률은 이렇게 확인해요</h2><p className="text-muted-foreground">{modern?'미끼의 등급과 포획 대상을 추첨한 뒤 입질을 기다려요. 미끼 확률로 인한 강제 실패는 없고, 마지막 게이지 조작을 마치면 잡을 수 있어요. 모든 미끼의 입질 대기는 12~24초 사이에서 무작위로 정해져요.':'성공 판정 → 등급 추첨 → 해역별 개체 선택 순서예요. 성공 판정을 통과해도 게이지 조작을 마쳐야 잡을 수 있어요. 등급 확률은 성공했을 때의 비율이며, 매번 독립적으로 추첨해요.'}</p></section>
     <section aria-label="현재 장비 적용 효과" className="space-y-2 rounded-xl border border-primary/15 bg-secondary/25 p-3">

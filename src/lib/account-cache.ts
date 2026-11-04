@@ -126,6 +126,7 @@ export function resourceChanged<T>(
 }
 
 export const resourceEvents: Record<string, string[]> = {
+  'fishing-rods-changed':['fishing-state'],
   'board-changed':['new-content'],
   'exchange-changed':['new-content','flea','menu-status','flea-inventory'],
   'showcase-changed':['new-content'],
@@ -144,6 +145,7 @@ export const resourceEvents: Record<string, string[]> = {
     'savings',
     'wallet',
     'fishing',
+    'fishing-state',
     'production',
     'bait-production',
     'harbor',

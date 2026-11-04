@@ -7,7 +7,7 @@ vi.mock('@/features/aquarium/api',async original=>({...await original<typeof imp
 vi.mock('@/features/fishing/tension-fishing-game',()=>({TensionFishingGame:({onCaught,onCancel,onFailed,active,challenge,outline,start,onStartFight,expiresAt}:{onStartFight?:()=>Promise<boolean>;expiresAt?:string;onCaught:()=>void;onCancel:()=>void;onFailed:(reason:string)=>void;active:boolean;challenge:{rarity:string;failureAt?:number};outline?:{name:string};start?:{label:string;disabled:boolean;onStart:()=>void}})=>active?<div data-testid="challenge" data-rarity={challenge.rarity} data-doomed={challenge.failureAt!==undefined} data-outline={outline?.name??'generic'} data-deadline={expiresAt}>{onStartFight&&<button onClick={()=>void onStartFight()}>입질 시작</button>}<button onClick={onCaught}>미니게임 성공</button><button onClick={onCancel}>미니게임 취소</button><button onClick={()=>onFailed('snap')}>미니게임 실패</button></div>:<div>낚싯대가 준비됐어요{start&&<button disabled={start.disabled} onClick={start.onStart}>{start.label}</button>}</div>}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
-vi.mock('@/features/fishing/api',()=>({loadFishing:load,prepareFishing:prepare,startFishingFight:begin,finishFishing:finish,fishingError:()=> '결과를 다시 확인해주세요.'}))
+vi.mock('@/features/fishing/api',()=>({readFishing:load,loadFishing:load,prepareFishing:prepare,startFishingFight:begin,finishFishing:finish,fishingError:()=> '결과를 다시 확인해주세요.'}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:1000,inventory:{bait:2}},transact,refresh,busy:false,loading:false,error:''})}))
 import { FishingPanel } from '@/features/fishing/fishing-panel'
 import { CatchReveal } from '@/features/fishing/catch-reveal'
@@ -15,6 +15,19 @@ import { readFishingTrip } from '@/features/fishing/fishing-trip'
 const bait={id:'bait',name:'퐁당 지렁이',description:'퐁당섬의 선홍빛 지렁이',effect_kind:'fish',effect_description:'등급 확률',price:30,image_path:'/normal.png',common_bp:8500,rare_bp:1300,epic_bp:180,mythic_bp:20,failure_bp:0}
 const species={id:'sample',name:'달빛 퐁울복',kind:'fish',rarity:'rare',description:'푸른 바다의 친구',thumbnail_path:'fish/thumbnail.png'}
 const plan={operation_id:'prepared-id',region_id:'pongdang',bait_id:'bait',eligible:true,species,rarity:'rare',wait_seconds:3,failure_at:6,failure_reason:'escape',finished:false,expires_at:'2099-01-01'}
+it('keeps weather practice separate from an existing real cast and never spends bait or grants rewards',async()=>{
+ load.mockResolvedValue({baits:[bait],prepared:plan})
+ render(<MemoryRouter><FishingPanel regionId="pongdang" weatherTest weatherPreview={{kind:'dust',startsAt:'2026-11-04T03:00:00Z',endsAt:'2026-11-04T03:30:00Z'}}/></MemoryRouter>)
+ fireEvent.click(await screen.findByRole('button',{name:'날씨 낚시 테스트 시작'}))
+ expect(screen.getByTestId('challenge').getAttribute('data-rarity')).toBe('common')
+ expect(screen.getByTestId('challenge').getAttribute('data-outline')).toMatch(/고글|여행자/)
+ fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}))
+ expect(prepare).not.toHaveBeenCalled()
+ expect(begin).not.toHaveBeenCalled()
+ expect(finish).not.toHaveBeenCalled()
+ expect(transact).not.toHaveBeenCalled()
+ expect(screen.queryByRole('button',{name:/미끼통 열기/})).toBeNull()
+})
 it('shows equipped rod and selected bait images in the four-button dock',async()=>{
  load.mockResolvedValue({baits:[bait],successChanceBp:3500})
  const target=document.createElement('div')
@@ -24,7 +37,7 @@ it('shows equipped rod and selected bait images in the four-button dock',async()
   const tools=within(target)
   const baitButton=await screen.findByRole('button',{name:/미끼통 열기/})
   expect(target.contains(baitButton)).toBe(false)
-  expect(baitButton.querySelector('img')?.getAttribute('src')).toBe('/normal.png')
+  await waitFor(()=>expect(baitButton.querySelector('img')?.getAttribute('src')).toBe('/normal.png'))
   expect(baitButton.getAttribute('aria-label')).toContain('2개')
   expect(screen.getByRole('button',{name:'낚싯대 선택 · 입문용 낚싯대'}).querySelector('img')?.getAttribute('src')).toContain('equipment/rods/starter/thumbnail.png')
   const dock=screen.getByRole('group',{name:'낚시 준비 도구'})

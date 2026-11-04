@@ -9,6 +9,8 @@ beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},6
 afterAll(async()=>{await db.close()})
 beforeEach(async()=>{
  await db.exec('begin')
+ // These fixtures exercise the ordinary grade/category branch, independently of weather windows.
+ await db.exec(`create or replace function app_private.fishing_weather_at(p_at timestamptz) returns jsonb language sql security definer set search_path='' as $$select null::jsonb$$`)
  uid=crypto.randomUUID()
  await db.query('insert into auth.users(id) values($1)',[uid])
  await db.query("insert into public.player_profiles(id,nickname) values($1,'발견테스터')",[uid])

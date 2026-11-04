@@ -38,7 +38,7 @@ export function AppLayout() {
  const warehouse=pathname==='/warehouse'
   const harbor=pathname==='/harbor'
   const port=pathname==='/port'
-  const fishing=pathname.startsWith('/region/')
+  const fishing=pathname.startsWith('/region/')||pathname==='/weather-fishing-test'
   const memory=pathname==='/arcade'||pathname.startsWith('/arcade/')||(pathname==='/exploration'||pathname==='/exploration-stat-test')
   const { wallet, loading: goldLoading, error: goldError } = useGold()
   if(/^\/(?:my-island|farm)\/?$/.test(pathname))return <main className="h-dvh w-full overflow-hidden"><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">섬을 준비하고 있어요…</p>}><Outlet/></Suspense></main>

@@ -5,13 +5,15 @@ import {useCollectionFilterStore} from '@/features/collection/use-collection-fil
 import {appQueryClient} from '@/lib/account-cache'
 import {CollectionBook,CollectionDialog} from '@/features/collection/collection-dialog'
 const {load}=vi.hoisted(()=>({load:vi.fn()}))
+const weatherPreview=vi.hoisted(()=>({enabled:false}))
+vi.mock('@/features/collection/development-weather-catalog',async original=>{const actual=await original<typeof import('@/features/collection/development-weather-catalog')>();return {...actual,developmentWeatherCatalog:catalog=>actual.developmentWeatherCatalog(catalog,weatherPreview.enabled)}})
 const relicApi=vi.hoisted(()=>({read:vi.fn()}))
 vi.mock('@/features/relics/api',async original=>({...await original<typeof import('@/features/relics/api')>(),readRelics:relicApi.read}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name,className}:{name:string;className?:string})=><span role="img" aria-label={name} className={className}/>}))
 vi.mock('@/features/collection/api',()=>({loadCollection:load,kindLabels:{fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도 조각',relic:'유물'}}))
-afterEach(()=>{cleanup();vi.clearAllMocks();localStorage.clear();useCollectionFilterStore.setState({owners:{}})})
+afterEach(()=>{cleanup();vi.clearAllMocks();localStorage.clear();useCollectionFilterStore.setState({owners:{}});weatherPreview.enabled=false})
 const coral={id:'coral',name:'산호빛 여울'},moon={id:'mistmoon',name:'안개달 해역'}
 const base={description:'작은 바다 친구의 이야기',size:52,speed:.05,thumbnail_path:'preview.png',discovered:false}
 const shared={...base,id:'shared',discovered:true,name:'공통 물고기',kind:'fish',rarity:'common',sell_price:30,habitats:[coral,moon]}
@@ -25,6 +27,30 @@ async function open(add?:()=>void){
  await screen.findByRole('article',{name:'공통 물고기'})
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
+it('shows both unpublished meteor Pongi in the development book without inventing discoveries',async()=>{
+ weatherPreview.enabled=true
+ load.mockResolvedValue({items:[],catalog:[shared]})
+ render(<CollectionBook rememberFiltersFor="me"/>)
+ await screen.findByRole('article',{name:shared.name})
+ await choose('날씨 개체','유성우')
+ expect(cards().sort()).toEqual(['별 줍는 퐁이','유성 꼬리 퐁이'].sort())
+ expect(screen.getByText('발견 0/2')).toBeTruthy()
+ expect(screen.getByText(/날씨 퐁이는 로컬 미리보기/)).toBeTruthy()
+})
+it('filters weather creatures independently of grade and clears the weather chip',async()=>{
+ const rain={...shared,id:'rain-test',name:'비 오는 퐁이',weather_type:'rain'}
+ const dust={...native,id:'dust-test',name:'황사 퐁이',weather_type:'dust'}
+ load.mockResolvedValue({items:[],catalog:[shared,rain,dust]})
+ render(<CollectionBook rememberFiltersFor="me"/>)
+ await screen.findByRole('article',{name:shared.name})
+ await choose('날씨 개체','비')
+ expect(cards()).toEqual([rain.name])
+ await choose('등급 선택','희귀')
+ expect(cards()).toEqual([rain.name])
+ fireEvent.click(screen.getByRole('button',{name:'비 필터 해제'}))
+ expect(cards()).toContain(dust.name)
+ expect(screen.queryByRole('button',{name:'비 필터 해제'})).toBeNull()
+})
 it('opens the aquarium catalog from its caption inside the same toolbar button',async()=>{
  load.mockResolvedValue({items:[],catalog:[shared]})
  render(<CollectionDialog toolbarLabel="바다 도감"/>)

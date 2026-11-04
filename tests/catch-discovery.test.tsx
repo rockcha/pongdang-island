@@ -1,11 +1,24 @@
-import {cleanup,render,screen} from '@testing-library/react'
+import {cleanup,render,screen,fireEvent,act} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {CatchReveal} from '@/features/fishing/catch-reveal'
 import {ExpeditionResults} from '@/features/expeditions/expedition-results'
 import type {Species} from '@/features/collection/api'
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(p:string)=>p}))
 const species={id:'test-fish',name:'새 물고기',thumbnail_path:'/fish.png',rarity:'common',description:'작은 물고기'} as Species
-afterEach(cleanup)
+afterEach(()=>{cleanup();vi.useRealTimers()})
+it('shows only the weather icon and permits a weather practice showcase preview',()=>{
+ vi.useFakeTimers()
+ const share=vi.fn()
+ render(<CatchReveal species={{...species,kind:'fish',weather_type:'rain'}} practice onShare={share} onDismiss={()=>{}}/>)
+ expect(screen.getByRole('img',{name:'비'}).querySelector('svg')).toBeTruthy()
+ expect(screen.queryByText('비 개체')).toBeNull()
+ expect(screen.queryByText('일반')).toBeNull()
+ const button=screen.getByRole('button',{name:'자랑하기'}) as HTMLButtonElement
+ expect(button.disabled).toBe(true)
+ act(()=>vi.advanceTimersByTime(1300))
+ fireEvent.click(button)
+ expect(share).toHaveBeenCalledOnce()
+})
 it('shows NEW only for a first real catch',()=>{
  const view=render(<CatchReveal species={species} firstDiscovery onDismiss={()=>{}}/>)
  expect(screen.getByLabelText('첫 발견').textContent).toContain('NEW')

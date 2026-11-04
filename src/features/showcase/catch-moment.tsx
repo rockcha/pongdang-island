@@ -1,5 +1,7 @@
 import {useEffect,useRef,useState} from 'react'
 import {rarities} from '@/lib/game/rarity'
+import {WeatherIcon} from '@/features/fishing/fishing-weather'
+import {weatherNames} from '@/features/fishing/weather'
 import {paintCatchMoment,type CatchMomentArt} from './moment-art'
 import {limitedCollectionEvent} from '@/features/collection/limited-events'
 import {collectibleUrl} from '@/features/collection/api'
@@ -41,13 +43,13 @@ function MomentArtwork({species,firstDiscovery=false,practice=false,preview=fals
  }
  return <div ref={container} data-catch-moment aria-busy={state==='loading'||(state==='failed'&&(!fallbackReady||!attachmentReady)&&!fallbackFailed)} className="relative aspect-square w-full shrink-0 overflow-hidden" style={{backgroundColor:theme.background}}>
   <canvas ref={canvas} width={1} height={1} aria-hidden="true" className={`size-full object-contain ${state==='ready'?lazy?'':'catch-center-figure':'opacity-0'}`}/>
-  <div role="status" className="sr-only"><span>{rarities[species.rarity].label}</span>{limitedCollectionEvent(species.id)&&<span>{limitedCollectionEvent(species.id)!.label} 한정</span>}<span>{species.name}</span><span>{description}</span>{firstDiscovery&&!practice&&<span aria-label="첫 발견">NEW</span>}{regionName&&<span>{regionName}</span>}</div>
+  <div role="status" className="sr-only"><span>{species.weather_type?weatherNames[species.weather_type]:rarities[species.rarity].label}</span>{limitedCollectionEvent(species.id)&&<span>{limitedCollectionEvent(species.id)!.label} 한정</span>}<span>{species.name}</span><span>{description}</span>{firstDiscovery&&!practice&&<span aria-label="첫 발견">NEW</span>}{regionName&&<span>{regionName}</span>}</div>
   {state!=='ready'&&<div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-5 text-center" style={{color:theme.text}}>
    <div className="relative grid h-[55%] w-4/5 place-items-center">
     {state==='failed'&&!fallbackFailed?<img key={fallbackUrl} src={fallbackUrl} alt={species.name} className="size-full object-contain" onLoad={fallbackLoaded} onError={fallbackError}/>:<span className="size-16 animate-pulse rounded-full bg-current opacity-10 motion-reduce:animate-none" aria-hidden="true"/>}
     {state==='failed'&&!fallbackFailed&&species.attached&&<img src={collectibleUrl(species.attached.thumbnail_path)} alt={`결합 유물: ${species.attached.name}`} className="absolute bottom-0 right-0 size-[30%] rounded-full border border-current/30 object-contain p-1" style={{backgroundColor:theme.background}} onLoad={()=>{setAttachmentReady(true);if(fallbackReady)readyCallback.current?.(true)}} onError={()=>{setFallbackFailed(true);readyCallback.current?.(false)}}/>}
    </div>
-   <span className="rounded bg-current/10 px-2 py-1 text-xs">{rarities[species.rarity].label}</span>
+   {species.weather_type?<span role="img" aria-label={weatherNames[species.weather_type]}><WeatherIcon kind={species.weather_type} className="size-7"/></span>:<span className="rounded bg-current/10 px-2 py-1 text-xs">{rarities[species.rarity].label}</span>}
    <strong className="text-balance text-lg">{species.kind==='relic'&&<span role="img" aria-label="유물" className="mr-1.5 inline-flex align-middle"><RelicIcon className="size-[1em] shrink-0"/></span>}{species.name}</strong>
    {description&&<p className="line-clamp-2 text-xs leading-5" style={{color:theme.muted}}>{description}</p>}
    {state==='loading'?<p className="text-xs" style={{color:theme.metadata}}>바다의 순간을 준비하는 중…</p>:<div className="text-xs" style={{color:theme.metadata}}>

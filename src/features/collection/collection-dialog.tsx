@@ -1,3 +1,6 @@
+import {weatherNames} from '@/features/fishing/weather'
+import {developmentWeatherCatalog,type BookCatalogEntry} from './development-weather-catalog'
+import {WeatherIcon} from '@/features/fishing/fishing-weather'
 import { fishingDockButton, fishingToolButton } from '@/components/fishing-dock-style'
 import { EmptyState } from '@/components/empty-state'
 import { appArt } from '@/components/app-art'
@@ -226,7 +229,7 @@ export function CollectionBook({
     initialRegion,
     initialTab,
   )
-  const { rarity, habitat, search = '', limited = 'all', effect = 'all' } = filters
+  const { rarity, habitat, search = '', limited = 'all', effect = 'all', weather = 'all' } = filters
   const tab =
     mode === 'items'
       ? filters.tab === 'relic'
@@ -239,7 +242,7 @@ export function CollectionBook({
   const status = isMapBook ? 'all' : filters.status
   const setEffect = (effect: string) => setFilters((previous) => ({ ...previous, effect }))
   const setLimited = (limited: string) => setFilters((previous) => ({ ...previous, limited }))
-  const [detail, setDetail] = useState<CatalogEntry | null>(null)
+  const [detail, setDetail] = useState<BookCatalogEntry | null>(null)
   const [attempt, setAttempt] = useState(0)
   const [mapPrices, setMapPrices] = useState<Record<string, number>>({})
   useEffect(() => {
@@ -270,7 +273,7 @@ export function CollectionBook({
       active = false
     }
   }, [attempt])
-  const catalog = (state?.catalog ?? []).filter((entry) =>
+  const catalog = developmentWeatherCatalog(state?.catalog ?? []).filter((entry) =>
     mode === 'items'
       ? entry.kind === 'map' || entry.kind === 'relic'
       : entry.kind !== 'map' && entry.kind !== 'relic',
@@ -312,7 +315,8 @@ export function CollectionBook({
       .filter(
         (s) =>
           (tab === 'all' || s.kind === tab) &&
-          (isMapBook || rarity === 'all' || s.rarity === rarity) &&
+          (isMapBook || !!s.weather_type || rarity === 'all' || s.rarity === rarity) &&
+          (mode === 'items' || weather === 'all' || (weather === 'normal' ? !s.weather_type : weather === 'special' ? !!s.weather_type : s.weather_type === weather)) &&
           (tab === 'relic' ||
             habitat === 'all' ||
             (mode === 'items'
@@ -396,6 +400,7 @@ export function CollectionBook({
                 },
               ]
             : []),
+          ...(mode === 'creatures' && weather !== 'all' ? [{key:'weather',label:weather==='special'?'날씨 개체':weather==='normal'?'날씨 제한 없음':weatherNames[weather],clear:()=>setFilters(previous=>({...previous,weather:'all'}))}] : []),
           ...(mode === 'creatures' && limited !== 'all'
             ? [
                 {
@@ -442,6 +447,7 @@ export function CollectionBook({
             status: 'all',
             limited: 'all',
             effect: 'all',
+            weather: 'all',
           }))
         }
         tabs={
@@ -508,6 +514,15 @@ export function CollectionBook({
         )}
         {mode === 'creatures' && (
           <section>
+            <h3 className="mb-2 text-xs font-medium">날씨</h3>
+            <IslandSelect label="날씨 개체" value={weather} onChange={value=>setFilters(previous=>({...previous,weather:value as typeof weather}))} options={[
+              {value:'all',label:'전체 개체'}, {value:'normal',label:'날씨 제한 없음'}, {value:'special',label:'날씨 개체 전체'},
+              ...(['rain','snow','dust','meteor','blossom'] as const).map(value=>({value,label:weatherNames[value],icon:<WeatherIcon kind={value} className="size-5"/>}))
+            ]}/>
+          </section>
+        )}
+        {mode === 'creatures' && (
+          <section>
             <h3 className="mb-2 text-xs font-medium">한정 이벤트</h3>
             <IslandSelect
               label="한정 이벤트 선택"
@@ -568,6 +583,7 @@ export function CollectionBook({
           </section>
         )}
       </CollectionToolbar>
+      {catalog.some(entry=>entry.developmentPreview)&&<p className="shrink-0 px-3 py-2 text-[11px] text-muted-foreground">날씨 퐁이는 로컬 미리보기예요. 실제 발견·보유 기록에는 반영되지 않아요.</p>}
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         {error && (
           <div role="alert" className="space-y-2 py-8 text-center text-sm">
@@ -669,7 +685,7 @@ export function CollectionBook({
                         name={entryLabel(s)}
                         className={
                           'aspect-square w-full max-w-24 ' +
-                          (!s.discovered && (!previewAll || s.kind === 'map')
+                          (!s.developmentPreview && !s.discovered && (!previewAll || s.kind === 'map')
                             ? s.kind === 'map'
                               ? 'grayscale opacity-70'
                               : '[&_img]:grayscale [&_img]:brightness-[.08]'
@@ -780,7 +796,7 @@ export function CollectionBook({
               {detail && entryLabel(detail)}
             </DialogTitle>
             <DialogDescription>
-              {detail && <RarityBadge rarity={detail.rarity} filled />} ·{' '}
+              {detail && (detail.weather_type?<span className="inline-flex items-center gap-1"><WeatherIcon kind={detail.weather_type} className="size-5"/>{weatherNames[detail.weather_type]} 개체</span>:<RarityBadge rarity={detail.rarity} filled />)} ·{' '}
               {detail && kindLabels[detail.kind]}
             </DialogDescription>
           </DialogHeader>
@@ -792,7 +808,7 @@ export function CollectionBook({
                 <div
                   className={
                     'w-full min-w-0 flex justify-center ' +
-                    (!detail.discovered && (!previewAll || detail.kind === 'map')
+                    (!detail.developmentPreview && !detail.discovered && (!previewAll || detail.kind === 'map')
                       ? detail.kind === 'map'
                         ? 'grayscale opacity-70'
                         : '[&_canvas]:grayscale [&_canvas]:brightness-[.08] [&_img]:grayscale [&_img]:brightness-[.08]'

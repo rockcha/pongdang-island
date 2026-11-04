@@ -42,6 +42,7 @@ export function useCollectionFilters(owner?: string, initialRegion = 'all', init
         search: '',
         limited: 'all',
         effect: 'all',
+        weather: 'all' as const,
       }
       useCollectionFilterStore.getState().set(owner, next)
       saveCollectionFilters(owner, next)

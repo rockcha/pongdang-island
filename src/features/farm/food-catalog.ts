@@ -28,5 +28,5 @@ export const recipeIds=Object.keys(farmRecipes) as RecipeId[]
 export const processedGoods=['flour',...recipeIds] as const
 export const isRecipeId=(id:unknown):id is RecipeId=>typeof id==='string'&&Object.hasOwn(farmRecipes,id)
 export function recipeBatchLimit(inventory:Record<RecipeIngredient,number>,id:RecipeId){
- return Math.min(99,...farmRecipes[id].ingredients.map(item=>Math.floor(inventory[item.good]/item.quantity)))
+ return Math.min(2,...farmRecipes[id].ingredients.map(item=>Math.floor(inventory[item.good]/item.quantity)))
 }

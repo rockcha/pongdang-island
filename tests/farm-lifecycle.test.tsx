@@ -9,14 +9,14 @@ afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 it('leaves a prepared animal waiting over the coop until tapped, then stores it exactly once',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('닭장 (10,8)');click('닭 구매 · 300 G');click('Close')
+ click('닭장 (10,8)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull()
  act(()=>vi.advanceTimersByTime(30000))
- click('보관함');expect(screen.getByText('보관 중인 개체가 없어요.')).toBeTruthy();click('Close');act(()=>vi.advanceTimersByTime(200))
+ click('보관함');expect(screen.getByText('보관 중인 개체가 없어요.')).toBeTruthy();click('완료');act(()=>vi.advanceTimersByTime(200))
  expect(screen.getByRole('button',{name:'닭 보관함으로 받기'})).toBeTruthy()
  click('닭 보관함으로 받기')
  expect(screen.queryByRole('button',{name:'닭 보관함으로 받기'})).toBeNull()
  expect(screen.queryByRole('dialog')).toBeNull()
- click('보관함');expect(screen.getByRole('button',{name:/닭.*보관 1개.*배치하기/})).toBeTruthy()
+ click('보관함');click('동물');expect(screen.getByRole('button',{name:/닭.*보관 1개.*배치하기/})).toBeTruthy()
 })
 it('rots exactly sixty seconds after maturity, forbids harvesting and only discards rotten crops',()=>{
  const state=simulateFarm(initialTopview(),10,{type:'plant',crop:'wheat'},0).state
@@ -61,7 +61,7 @@ it('prepares animals once, reserves capacity while preparing, then produces only
 })
 it('shows rotten crops with a discard action and resets the plot without adding warehouse goods',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('씨앗 심기');click('밀 4개');click('밭 (9,13)');act(()=>vi.advanceTimersByTime(70000))
+ click('농사');click('씨앗 심기');click('밀 4개');click('밭 (9,13)');act(()=>vi.advanceTimersByTime(70000))
  expect(container.querySelector('[data-crop-rotten="10"]')).toBeTruthy()
  expect(container.querySelector('[data-crop-rotten="10"] .farm-status-ready')).toBeTruthy()
  click('폐기하기');expect(screen.getByText('폐기했어요')).toBeTruthy()

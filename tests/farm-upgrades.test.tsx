@@ -8,8 +8,8 @@ import {TopviewFarm} from '@/features/farm/topview-farm'
 
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
-it('upgrades all three building types through ten levels for 50G and exactly ten seconds per level',()=>{
- for(const [id,step] of [[26,10],[1,4],[19,2]]){
+it('upgrades both upgradeable building types through ten levels for 50G and exactly ten seconds per level',()=>{
+ for(const [id,step] of [[26,10],[1,4]]){
   let state=initialTopview(),now=0
   for(let level=1;level<10;level++){
    expect(buildingCapacity(state.objects.find(o=>o.id===id)!)).toBe(step*level)
@@ -29,7 +29,7 @@ it('upgrades all three building types through ten levels for 50G and exactly ten
 it('locks warehouse inventory transactions during upgrade, preserves stock, and refunds cancellation only once',()=>{
  const before=initialTopview(),state=simulateFarm(before,26,{type:'upgrade'},0).state
  expect(warehouseAvailable(state)).toBe(false)
- for(const [id,action] of [[2,{type:'sell',good:'wheat',quantity:1}],[21,{type:'mill',quantity:1}],[4,{type:'feed'}]] as const)expect(simulateFarm(state,id,action,1000).state).toBe(state)
+ for(const [id,action] of [[2,{type:'sell',good:'wheat',quantity:1,orderDay:'1970-01-01'}],[21,{type:'mill',quantity:1}],[4,{type:'feed'}]] as const)expect(simulateFarm(state,id,action,1000).state).toBe(state)
  expect(state.simulation.inventory.wheat).toBe(12)
  const cancelled=simulateFarm(state,26,{type:'cancelUpgrade'},9999).state
  expect(cancelled.gold).toBe(before.gold);expect(warehouseCapacity(cancelled)).toBe(10)
@@ -43,16 +43,14 @@ it('suspends only the upgrading management building capacity while keeping all e
  expect(state.objects).toEqual(before.objects)
  const completed=simulateFarm(state,1,{type:'completeUpgrade'},10000).state
  expect(farmLimits(completed).plots).toBe(12)
- const livestock=simulateFarm(completed,19,{type:'upgrade'},10000).state
- expect(farmLimits(livestock)).toMatchObject({animals:2,usedAnimals:2})
- expect(farmLimits(simulateFarm(livestock,19,{type:'completeUpgrade'},20000).state).animals).toBe(6)
+ expect(farmLimits({...completed,objects:[...completed.objects,{id:90,kind:'barn',x:4,y:7}]}).animals).toBe(6)
 })
 it('keeps another warehouse usable and combines its capacity with completed building levels',()=>{
  const before=initialTopview();before.objects.push({id:50,kind:'warehouse',x:4,y:7,level:2})
  expect(warehouseCapacity(before)).toBe(30)
  const state=simulateFarm(before,26,{type:'upgrade'},0).state
  expect(warehouseAvailable(state)).toBe(true);expect(warehouseCapacity(state)).toBe(20)
- expect(simulateFarm(state,2,{type:'sell',good:'wheat',quantity:1},1000).state.gold).toBe(14957)
+ expect(simulateFarm(state,4,{type:'feed'},1000).state.simulation.inventory.wheat).toBe(11)
 })
 it('shows the warehouse hammer and progress, hides inventory while upgrading, and completes after leaving the dialog',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)

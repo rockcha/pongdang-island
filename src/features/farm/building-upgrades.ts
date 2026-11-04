@@ -1,9 +1,9 @@
 import type {FarmTool,TopviewObject,TopviewState} from './topview-model'
 
 export const UPGRADE_COST=50,UPGRADE_SECONDS=10,MAX_BUILDING_LEVEL=10
-export const isUpgradeable=(kind:FarmTool)=>kind==='warehouse'||kind==='office'||kind==='livestock'
+export const isUpgradeable=(kind:FarmTool)=>kind==='warehouse'||kind==='office'
 export const buildingLevel=(object:TopviewObject)=>Math.max(1,Math.min(MAX_BUILDING_LEVEL,object.level??1))
-export const buildingCapacity=(object:TopviewObject)=>buildingLevel(object)*(object.kind==='warehouse'?10:object.kind==='office'?4:object.kind==='livestock'?2:0)
+export const buildingCapacity=(object:TopviewObject)=>buildingLevel(object)*(object.kind==='warehouse'?10:object.kind==='office'?4:0)
 export const activeBuildings=(state:TopviewState,kind:FarmTool)=>state.objects.filter(o=>o.kind===kind&&!state.simulation.upgradeJobs[o.id])
 export const warehouseCapacity=(state:TopviewState)=>activeBuildings(state,'warehouse').reduce((sum,o)=>sum+buildingCapacity(o),0)
 export const warehouseAvailable=(state:TopviewState)=>activeBuildings(state,'warehouse').length>0

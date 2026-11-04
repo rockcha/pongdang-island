@@ -4,6 +4,9 @@ import './status-bubble.css'
 import {FarmDiscardIcon} from './discard-icon'
 // One outline joins the circular body to its tail without an internal seam.
 const bubbleOutline='M5 16.292A18 18 0 1 0 -5 16.292L0 24Z'
+export function FarmSleepGlyph(){
+ return <g className="farm-sleep-letters" fill="#a48a6c" fontFamily="Georgia, serif" fontWeight="500" aria-hidden="true"><text className="farm-sleep-letter" x="-9" y="9" fontSize="8">z</text><text className="farm-sleep-letter farm-sleep-second" x="-2" y="2" fontSize="10">z</text><text className="farm-sleep-letter farm-sleep-third" x="5" y="-5" fontSize="12">Z</text></g>
+}
 export function StatusGlyph({kind}:{kind:'hammer'|'pickaxe'|'harvest'|'research'|'mill'|'craft'|'trash'}){
  if(kind==='trash')return <FarmDiscardIcon x="-18" y="-19" width="36" height="36"/>
  const Icon={hammer:Hammer,pickaxe:Pickaxe,harvest:Scissors,research:FlaskConical,mill:Wheat,craft:ChefHat}[kind]

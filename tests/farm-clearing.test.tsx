@@ -5,7 +5,21 @@ import {TopviewFarm} from '@/features/farm/topview-farm'
 
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
-function setup(){vi.useFakeTimers();const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('편집하기');click('개간하기');return result}
+function setup(){vi.useFakeTimers();const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('농사');click('개간하기');return result}
+it('groups clearing and planting under farming and reserves the badge count for pending clearing',()=>{
+ vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ expect(screen.queryByRole('button',{name:'개간하기',exact:true})).toBeNull()
+ expect(screen.queryByRole('button',{name:'씨앗 심기',exact:true})).toBeNull()
+ click('농사')
+ expect(screen.getByRole('button',{name:'씨앗 심기',exact:true})).toBeTruthy()
+ expect(screen.getByLabelText('개간 가능 4칸')).toBeTruthy()
+ click('개간하기');click('개간 위치 8,13')
+ expect(screen.getByLabelText('개간 가능 3칸')).toBeTruthy()
+ act(()=>vi.advanceTimersByTime(3000))
+ expect(screen.getByLabelText('개간 가능 3칸')).toBeTruthy()
+ click('완료');expect(screen.queryByRole('region',{name:'농사 메뉴'})).toBeNull()
+ expect(screen.getByRole('button',{name:'농사',exact:true}).getAttribute('aria-expanded')).toBe('false')
+})
 it('clears multiple selected tiles concurrently in three seconds and charges once per tile',()=>{
  const {container}=setup()
  click('개간 위치 8,13')
@@ -25,12 +39,12 @@ it('clears multiple selected tiles concurrently in three seconds and charges onc
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
 })
 it('removes a plot without putting it into storage or refunding gold',()=>{
- setup();click('개간하기');click('밭 (9,13)');click('제거하기')
+ setup();click('완료');click('편집하기');click('밭 (9,13)');click('제거하기')
  expect(screen.queryByRole('button',{name:'밭 (9,13)'})).toBeNull()
  click('보관함')
  expect(screen.queryByRole('button',{name:/밭.*보관/})).toBeNull()
  expect(screen.getByText('보관 중인 개체가 없어요.')).toBeTruthy()
- click('Close')
+ click('완료')
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
 })
 it('starts a full drag together and reserves the remaining plot capacity for pending jobs',()=>{

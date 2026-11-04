@@ -1,0 +1,28 @@
+.farm-tool-menu{display:flex;gap:6px;padding:6px;border:1px solid #e4d2b5;border-radius:15px;background:#fff9eef5;box-shadow:0 3px 15px #35596516}
+.farm-tool-menu>button{position:relative;display:flex;flex:1;align-items:center;justify-content:center;gap:7px;min-width:0;min-height:46px;padding:8px 12px;border:1px solid transparent;border-radius:10px;color:#98734f;font-size:12px;white-space:nowrap}
+.farm-tool-menu>button[aria-pressed=true]{border-color:#d8be97;background:#eee0c7;color:#825431}
+.farm-tool-menu>button:focus-visible{outline:2px solid #ad7144;outline-offset:2px}
+.farm-tool-menu>.farm-tool-done{flex:0 0 auto;padding-inline:14px;background:#95613d;color:#fff6e7}
+@media(max-width:420px){#farm-land-menu>button{flex-direction:column;gap:4px;padding-inline:5px;font-size:10px}#farm-land-menu>.farm-tool-done{padding-inline:12px}}
+.farm-tool-badge{position:absolute;top:-3px;right:-1px;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border:2px solid #fff9ee;border-radius:12px;background:#a27548;color:#fff8e9;font-size:10px;font-weight:500;font-variant-numeric:tabular-nums}
+.farm-seed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.farm-seed-grid>button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:176px;padding:18px 10px;border:1px solid #dfc7a6;border-radius:16px;background:#fcf2e3;color:#745135;cursor:pointer}
+.farm-seed-grid>button:only-child{grid-column:1/-1;flex-direction:row;justify-content:flex-start;gap:22px;min-height:148px;padding:22px}
+.farm-seed-grid>button:not(:disabled):hover{border-color:#b38b5c;background:#f5e7d0}
+.farm-seed-grid>button:focus-visible,.farm-seed-shop-button:focus-visible{outline:2px solid #ad7144;outline-offset:3px}
+.farm-seed-grid>button:disabled{background:#f6f0e6;border-color:#e5d8c5;cursor:default}
+.farm-seed-grid .farm-good-icon{width:76px;height:76px;padding:3px;border:0;border-radius:0;background:none}
+.farm-seed-grid>button:disabled .farm-good-icon{filter:saturate(.65)}
+.farm-seed-details{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.farm-seed-grid>button:only-child .farm-seed-details{align-items:flex-start;text-align:left}
+.farm-seed-details strong{font-size:15px;font-weight:500}
+.farm-seed-stock{padding:4px 10px;border-radius:7px;background:#e5ecd5;color:#55663d;font-size:12px;font-variant-numeric:tabular-nums}
+.farm-seed-stock[data-empty=true]{background:#e9e0d3;color:#786957}
+.farm-seed-details small{font-size:11px;line-height:1.5;color:#8e7962}
+.farm-seed-picker .farm-seed-shop-button{display:flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:12px 16px;border:1px solid #d9bf99;border-radius:12px;background:#efe1ca;color:#775334;font-size:13px;cursor:pointer}
+.farm-seed-shop-button>svg:last-child{margin-left:auto}
+.farm-seed-shop-button>span{flex:1;text-align:left}
+.farm-seed-cursor{position:fixed;top:0;left:0;display:none;z-index:10;pointer-events:none;will-change:transform}
+.farm-seed-cursor .farm-good-icon{position:absolute;top:-12px;left:-12px;width:32px;height:32px;filter:drop-shadow(1px 2px 2px #584b3866)}
+.top-farm-viewport[data-seed-cursor=true],.top-farm-viewport[data-seed-cursor=true] *{cursor:none!important}
+@media(max-width:380px){.farm-tool-menu{gap:3px}.farm-tool-menu>button{gap:5px;padding:8px 5px;font-size:11px}}

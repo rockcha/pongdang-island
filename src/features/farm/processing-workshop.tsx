@@ -14,7 +14,7 @@ export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction}:{bu
    <div className={`farm-cooking-art ${remaining?'is-cooking':''}`}><FarmGoodIcon good={job.recipe}/><span>{remaining?<ChefHat size={19}/>:<span>✓</span>}</span></div>
    <h3>{farmGoods[job.recipe].name} <span>×{job.quantity}</span></h3><p>{remaining?`${remaining}초 후 맛있게 완성돼요`:'완성됐어요. 가공품을 받아주세요.'}</p>
    <div className="farm-sim-progress" role="progressbar" aria-label={`${farmGoods[job.recipe].name} 제작 진행`} aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{width:progress+'%'}}/></div>
-   <p className="farm-cooking-note">재료는 제작을 시작할 때 사용했어요.</p>
+   <p className="farm-cooking-note">재료는 제작을 시작할 때 사용했어요. 이 건물의 작업이 끝나면 다음 생산을 시작할 수 있어요.</p>
    <button className="farm-sim-primary" disabled={remaining>0} onClick={()=>onAction({type:'collectCraft'})}>{remaining?'만들고 있어요…':'가공품 받기'}</button>
   </section>
  }

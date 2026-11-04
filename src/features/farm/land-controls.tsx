@@ -1,17 +1,19 @@
 import {useEffect,useState} from 'react'
-import {LandPlot,Minus,Plus,Undo2} from 'lucide-react'
+import {LandPlot,Minus,Plus,Undo2,ShoppingBag,Check} from 'lucide-react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import {TEST_LAND_PRICE} from './topview-model'
-import type {LandTool,LandStrokeResult} from './land-tools'
+import type {LandTool} from './land-tools'
+import {FarmCountBadge} from './count-badge'
 
 export function LandBadge({count}:{count:number}){
- return <span className="farm-land-icon"><LandPlot size={20}/><span key={count} className="farm-land-badge" data-land-stock={count} aria-hidden="true">{count.toLocaleString()}</span></span>
+ return <span className="farm-land-icon farm-toolbar-icon" data-land-stock={count}><LandPlot size={20}/><FarmCountBadge count={count} label="보유 땅" unit="칸"/></span>
 }
-export function LandToolPanel({tool,stock,preview,onTool,onBuy}:{tool:LandTool;stock:number;preview:LandStrokeResult|null;onTool:(tool:LandTool)=>void;onBuy:()=>void}){
- return <section className="farm-land-panel" aria-label="땅 도구">
-  <header><LandPlot size={18}/><div><strong>땅 가꾸기</strong><span>여분 {stock.toLocaleString()}칸</span></div><button onClick={onBuy}>땅 구매</button></header>
-  <div className="farm-land-switch"><button aria-pressed={tool==='place'} onClick={()=>onTool('place')}><Plus size={14}/>땅 놓기</button><button aria-pressed={tool==='recover'} onClick={()=>onTool('recover')}><Undo2 size={14}/>땅 회수</button></div>
-  {preview?<p className="farm-land-preview-summary">{preview.changed.length}칸 {tool==='place'?'놓기':'회수'} · 여분 {preview.state.landStock.toLocaleString()}칸{preview.blocked.length>0&&<span> · 건너뜀 {preview.blocked.length}칸</span>}</p>:<p>누르거나 드래그해 선택하고, 손을 떼면 적용돼요.<small>두 손가락으로 이동·확대·축소할 수 있어요.</small></p>}
+export function LandToolPanel({tool,onTool,onBuy,onDone}:{tool:LandTool|null;onTool:(tool:LandTool)=>void;onBuy:()=>void;onDone:()=>void}){
+ return <section id="farm-land-menu" className="farm-tool-menu" aria-label="땅 도구">
+  <button aria-pressed={tool==='place'} onClick={()=>onTool('place')}><Plus size={17}/><span>땅 놓기</span></button>
+  <button aria-pressed={tool==='recover'} onClick={()=>onTool('recover')}><Undo2 size={17}/><span>땅 회수하기</span></button>
+  <button onClick={onBuy}><ShoppingBag size={17}/><span>땅 구매하기</span></button>
+  <button className="farm-tool-done" onClick={onDone}><Check size={16}/><span>완료</span></button>
  </section>
 }
 export function LandPurchaseDialog({open,gold,onOpenChange,onBuy}:{open:boolean;gold:number;onOpenChange:(open:boolean)=>void;onBuy:(quantity:number)=>boolean}){

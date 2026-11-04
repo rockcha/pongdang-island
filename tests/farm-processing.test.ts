@@ -8,7 +8,7 @@ const stocked=()=>{
  Object.assign(state.simulation.inventory,{milk:10,egg:10,flour:20,butter:5,strawberry:10})
  return state
 }
-it('creates every recipe with exact ingredients, time, collection and processed-store proceeds',()=>{
+it('creates every recipe with exact ingredients, time, collection and product values',()=>{
  for(const id of recipeIds){
   const recipe=farmRecipes[id],start=stocked(),building=recipe.building==='dairy'?24:25
   const wrong=recipe.building==='dairy'?25:24
@@ -26,9 +26,6 @@ it('creates every recipe with exact ingredients, time, collection and processed-
   expect(finished.state.simulation.inventory[id]).toBe(started.state.simulation.inventory[id]+2)
   expect(finished.effect?.type).toBe('crafted')
   expect(simulateFarm(finished.state,building,{type:'collectCraft'},ready).state).toBe(finished.state)
-  expect(simulateFarm(finished.state,2,{type:'sell',good:id,quantity:2},ready).state).toBe(finished.state)
-  const sold=simulateFarm(finished.state,22,{type:'sell',good:id,quantity:2},ready)
-  expect(sold.state.gold).toBe(start.gold+farmGoods[id].price*2)
   const inputValue=recipe.ingredients.reduce((sum,item)=>sum+farmGoods[item.good].price*item.quantity,0)
   expect(farmGoods[id].price).toBeGreaterThan(inputValue)
  }

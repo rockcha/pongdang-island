@@ -13,7 +13,28 @@ function setup(){
  const owned=(x:number,y:number)=>result.container.querySelector(`[data-farm-cell="${x},${y}"]`)?.getAttribute('data-farm-owned')==='true'
  return {...result,pointer,owned}
 }
-function buyFive(){click('편집하기');click('땅 0칸 보유');click('땅 구매');click('5칸 구매 · 250 G');click('땅 5칸 보유')}
+function buyFive(){click('편집하기');click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 250 G');click('땅 놓기')}
+it('offers three land actions and hides placement targets and previews when no land is in stock',()=>{
+ const {container,pointer,owned}=setup()
+ click('땅 0칸 보유')
+ expect(screen.getByRole('button',{name:'땅 회수하기'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'땅 구매하기'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'흙길 놓기'})).toBeNull()
+ click('땅 놓기')
+ expect(screen.queryByRole('button',{name:/^땅 \d+,\d+ 놓기$/})).toBeNull()
+ pointer('pointerdown',3,4);pointer('pointermove',2,4)
+ expect(container.querySelector('[data-land-preview]')).toBeNull()
+ pointer('pointerup',2,4);expect(owned(3,4)).toBe(false)
+ click('땅 구매하기');click('1칸');click('1칸 구매 · 50 G')
+ expect(screen.getByRole('button',{name:'땅 3,4 놓기'})).toBeTruthy()
+ pointer('pointerdown',3,4);pointer('pointerup',3,4)
+ expect(owned(3,4)).toBe(true)
+ expect(screen.queryByRole('button',{name:/^땅 \d+,\d+ 놓기$/})).toBeNull()
+ click('완료')
+ expect(screen.queryByRole('region',{name:'땅 도구'})).toBeNull()
+ expect(screen.getByRole('button',{name:'땅 0칸 보유'}).getAttribute('aria-expanded')).toBe('false')
+ expect(container.querySelector('.top-farm-viewport')?.getAttribute('data-land-tool')).toBe('false')
+})
 
 it('previews an entire drag and commits it once on release, with one undo and no gold refund',()=>{
  const {container,pointer,owned}=setup();buyFive()
@@ -31,7 +52,7 @@ it('previews an entire drag and commits it once on release, with one undo and no
  expect(screen.getByRole('button',{name:'땅 놓기'}).getAttribute('aria-pressed')).toBe('true')
 })
 it('recovers a stroke and restores all recovered cells with a single undo',()=>{
- const {pointer,owned}=setup();click('편집하기');click('땅 0칸 보유');click('땅 회수')
+ const {pointer,owned}=setup();click('편집하기');click('땅 0칸 보유');click('땅 회수하기')
  pointer('pointerdown',4,7);pointer('pointermove',4,10);pointer('pointerup',4,10)
  expect(screen.getByRole('button',{name:'땅 4칸 보유'})).toBeTruthy()
  for(let y=7;y<=10;y++)expect(owned(4,y)).toBe(false)
@@ -53,18 +74,18 @@ it('cancels a draft on Escape, pointer cancellation, or a second finger without 
 })
 it('does not allow undo to cross a land purchase and refunds no gold when land is recovered',()=>{
  const {pointer}=setup();buyFive();pointer('pointerdown',3,4);pointer('pointerup',3,4)
- click('땅 구매');click('1칸');click('1칸 구매 · 50 G')
+ click('땅 구매하기');click('1칸');click('1칸 구매 · 50 G')
  expect(screen.getByRole('button',{name:'한 단계 되돌리기'})).toHaveProperty('disabled',true)
- click('땅 회수');pointer('pointerdown',3,4);pointer('pointerup',3,4)
+ click('땅 회수하기');pointer('pointerdown',3,4);pointer('pointerup',3,4)
  expect(screen.getByRole('button',{name:'땅 6칸 보유'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,700')
 })
 it('preserves research completion that occurs during a land gesture',()=>{
  vi.useFakeTimers()
  const {pointer}=setup()
- click('종자 연구소 (12,8)');click('감자 연구 · 30 G');click('Close');act(()=>vi.advanceTimersByTime(200))
+ click('종자 연구소 (12,8)');click('감자 연구 · 30 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(200))
  buyFive();pointer('pointerdown',3,4);act(()=>vi.advanceTimersByTime(3000));pointer('pointerup',3,4)
- click('편집하기');click('종자 상점 (8,5)')
+ click('완료');click('종자 상점 (8,5)')
  click('감자 선택')
  expect(screen.getByRole('button',{name:'감자 종자 구매'})).toBeTruthy()
  expect(document.querySelector('.top-farm-gold')?.textContent).toContain('14,720')

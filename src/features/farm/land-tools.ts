@@ -56,7 +56,7 @@ export function applyLandStroke(state:TopviewState,tool:LandTool,cells:readonly 
  let progress=true
  while(progress&&pending.size){progress=false;for(const key of pending)if(canRemove(land,key)){land.delete(key);pending.delete(key);changed.push(fromKey(key));progress=true}}
  for(const key of pending)blocked.push({cell:fromKey(key),reason:land.size<=1?'last-land':'disconnected'})
- return {state:changed.length?{...state,land:state.land.filter(key=>land.has(key)),paths:state.paths.filter(key=>land.has(key)),landStock:state.landStock+changed.length}:state,changed,blocked}
+ return {state:changed.length?{...state,land:state.land.filter(key=>land.has(key)),paths:state.paths.filter(key=>land.has(key)),tileStock:state.tileStock+state.paths.filter(key=>!land.has(key)).length,landStock:state.landStock+changed.length}:state,changed,blocked}
 }
 
 export const landBlockMessages:Record<LandBlock,string>={outside:'섬을 넓힐 수 있는 영역을 골라주세요.',occupied:'건물·동물·작물이 있는 칸은 먼저 비워주세요.',disconnected:'섬이 둘로 나뉘는 칸은 회수할 수 없어요.','last-land':'마지막 땅 한 칸은 남겨주세요.','not-connected':'기존 섬과 이어지도록 땅을 선택해주세요.','out-of-stock':'여분 땅이 없어요. 땅 구매에서 먼저 준비해주세요.'}

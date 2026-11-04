@@ -4,10 +4,10 @@ import type {TopviewObject,TopviewState} from './topview-model'
 import {farmLimits,type FarmSimAction} from './farm-simulation'
 
 export function BuildingUpgradePanel({object,state,now,onAction}:{object:TopviewObject;state:TopviewState;now:number;onAction:(action:FarmSimAction)=>void}){
- const level=buildingLevel(object),job=state.simulation.upgradeJobs[object.id],capacity=buildingCapacity(object),unit=object.kind==='livestock'?'마리':'칸'
+ const level=buildingLevel(object),job=state.simulation.upgradeJobs[object.id],capacity=buildingCapacity(object),unit='칸'
  const progress=job?Math.min(100,Math.max(0,(now-job.startedAt)/(job.readyAt-job.startedAt)*100)):0
- const limits=farmLimits(state),used=object.kind==='office'?limits.usedPlots:object.kind==='livestock'?limits.totalAnimals:0
- const total=object.kind==='office'?limits.plots:object.kind==='livestock'?limits.animals:warehouseCapacity(state)
+ const limits=farmLimits(state),used=object.kind==='office'?limits.usedPlots:0
+ const total=object.kind==='office'?limits.plots:warehouseCapacity(state)
  return <section className="farm-upgrade-panel" aria-label="건물 업그레이드">
   <header><span>Lv. {level} <small>/ {MAX_BUILDING_LEVEL}</small></span></header>
   {!job&&<>{object.kind!=='warehouse'&&<div className="farm-capacity-detail"><div><span>{object.kind==='office'?'텃밭 사용':'전체 동물'}</span><strong>{used} / {total}{unit}</strong></div><div className="farm-sim-progress"><i style={{width:`${Math.min(100,used/Math.max(1,total)*100)}%`}}/></div></div>}{level<MAX_BUILDING_LEVEL&&<div className="farm-upgrade-preview"><span>확장 후 {object.kind==='warehouse'?'창고 용량':'전체 한도'}</span><strong>{total}{unit}<ArrowRight size={14}/>{total+capacity/level}{unit}</strong></div>}</>}

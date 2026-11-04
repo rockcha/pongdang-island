@@ -40,7 +40,7 @@ it('protects warehouse stock, reserved harvests, plot capacity and stored/pendin
  expect(farmBuildingStorageError(state,26)).not.toBeNull()
  expect(farmBuildingStorageError(state,1,1)).not.toBeNull()
  state.stored.push('cow')
- expect(farmBuildingStorageError(state,19)).not.toBeNull()
+ expect(farmBuildingStorageError(state,3)).not.toBeNull()
 })
 it('offers storing an idle building directly from its dialog and returns it to the placement inventory',()=>{
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
@@ -53,7 +53,7 @@ it('offers storing an idle building directly from its dialog and returns it to t
 })
 it('keeps storage disabled for a finished but unclaimed mill batch and enables it after claiming',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('제분소 (6,12)');click('밀 제분 시작')
+ click('제분소 (6,12)');click('밀 제분 시작');expect(screen.queryByRole('dialog')).toBeNull();click('제분소 (6,12)')
  click('보관하기');expect(screen.getByText('제분이 끝나고 밀가루를 받은 뒤 보관할 수 있어요.')).toBeTruthy()
  expect(screen.getByRole('button',{name:'보관하기'}).getAttribute('aria-disabled')).toBe('true')
  act(()=>vi.advanceTimersByTime(10000))

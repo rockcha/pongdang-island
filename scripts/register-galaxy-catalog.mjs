@@ -19,6 +19,9 @@ upsert('fishing_map_blueprints',{region_id:'galaxy',piece_count:6,thumbnail_path
 upsert('fishing_rods',{id:'galaxy',name:'은하 궤도 낚싯대',price:2800,region_id:'galaxy',failure_reduction_bp:200,native_bonus_bp:200,wait_reduction_seconds:1})
 for(const t of themes)upsert('aquarium_backgrounds',{id:t.id,name:t.name,price:t.price,image_path:`${t.id}-panorama-v1.png`,tier:t.tier})
 const compare=(a,b)=>a<b?-1:a>b?1:0
+for(const s of catalog.collectible_species.filter(s=>s.id.startsWith('shared-decor-')&&s.native_region_id===null)){
+ if(!catalog.collectible_habitats.some(h=>h.species_id===s.id&&h.region_id==='galaxy'))catalog.collectible_habitats.push({species_id:s.id,region_id:'galaxy'})
+}
 for(const table of ['regions','collectible_species','fishing_rods','aquarium_backgrounds'])catalog[table].sort((a,b)=>compare(a.id,b.id))
 catalog.fishing_map_blueprints.sort((a,b)=>compare(a.region_id,b.region_id))
 catalog.collectible_habitats.sort((a,b)=>compare(a.species_id,b.species_id)||compare(a.region_id,b.region_id))

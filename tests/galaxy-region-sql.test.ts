@@ -31,7 +31,8 @@ it('makes the complete native roster available with the requested kind and rarit
  const rows=(await db.query("select kind,rarity,count(*)::int n,avg(sell_price)::int average from public.collectible_species where native_region_id='galaxy' group by kind,rarity")).rows
  expect(rows).toHaveLength(9)
  for(const [kind,rarity,n,average] of [['fish','common',15,60],['fish','rare',12,260],['fish','epic',8,1450],['fish','mythic',7,3300],['trash','common',19,25],['trash','rare',19,80],['decoration','common',14,40],['decoration','rare',16,155],['decoration','epic',2,900]])expect(rows).toContainEqual({kind,rarity,n,average})
- expect((await db.query("select count(*)::int n from public.collectible_habitats where region_id='galaxy'")).rows[0].n).toBe(112)
+ expect((await db.query("select count(*)::int n from public.collectible_habitats h join public.collectible_species s on s.id=h.species_id where h.region_id='galaxy' and s.native_region_id='galaxy'")).rows[0].n).toBe(112)
+ expect((await db.query("select count(*)::int n from public.collectible_habitats where region_id='galaxy' and species_id like 'shared-decor-%'")).rows[0].n).toBe(31)
  expect((await db.query("select count(*)::int n from public.aquarium_backgrounds where id like 'galaxy-%' and tier='special' and price>=3500")).rows[0].n).toBe(3)
 })
 it('charges each special theme price once and permits equipping the purchased theme',async()=>{

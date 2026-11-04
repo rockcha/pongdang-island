@@ -1,0 +1,36 @@
+-- Generated from the catalog, narrowed to additive galaxy habitat links.
+begin;
+insert into public.collectible_habitats(species_id,region_id) values
+('shared-decor-bread-hat-gull-postman','galaxy'),
+('shared-decor-conch-shell-bathhouse','galaxy'),
+('shared-decor-coral-flower-greenhouse','galaxy'),
+('shared-decor-coral-palace-miniature','galaxy'),
+('shared-decor-diving-bell-lookout','galaxy'),
+('shared-decor-fish-bread-sign','galaxy'),
+('shared-decor-fish-milk-vending-machine','galaxy'),
+('shared-decor-fish-towel-clothesline','galaxy'),
+('shared-decor-fishing-king-pongi-sign','galaxy'),
+('shared-decor-floating-bubble-balloons','galaxy'),
+('shared-decor-island-guardian-pongi-statue','galaxy'),
+('shared-decor-little-crab-umbrella-stand','galaxy'),
+('shared-decor-little-jellyfish-lamp','galaxy'),
+('shared-decor-little-log-shelter','galaxy'),
+('shared-decor-mini-fishing-rod-rack','galaxy'),
+('shared-decor-moon-fishing-pongi-statue','galaxy'),
+('shared-decor-ocean-treasure-chest','galaxy'),
+('shared-decor-otter-family-hourglass','galaxy'),
+('shared-decor-pearl-clamshell-lamp','galaxy'),
+('shared-decor-pearl-clamshell-music-box','galaxy'),
+('shared-decor-pongi-footprint-sandcastle','galaxy'),
+('shared-decor-pongi-nap-basket','galaxy'),
+('shared-decor-pongi-paw-bench','galaxy'),
+('shared-decor-pongi-shell-icecream-stall','galaxy'),
+('shared-decor-rainbow-current-fountain','galaxy'),
+('shared-decor-seashell-chair','galaxy'),
+('shared-decor-seashell-footwash','galaxy'),
+('shared-decor-seaweed-flowerpot','galaxy'),
+('shared-decor-sleepy-octopus-planter','galaxy'),
+('shared-decor-star-whale-lighthouse','galaxy'),
+('shared-decor-wave-wall-clock','galaxy')
+on conflict(species_id,region_id) do nothing;
+commit;

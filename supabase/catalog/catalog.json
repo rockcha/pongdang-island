@@ -47,6 +47,15 @@
       "requires_map_fragment": true
     },
     {
+      "id": "galaxy",
+      "name": "은하수의 끝자락",
+      "description": "검은 우주와 은빛 물결이 만나는 고요한 끝자락. 달빛 나루에서 행성과 별의 이야기를 품은 생명들을 만나 보세요.",
+      "rarity": "epic",
+      "sort_order": 19,
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/galaxy/overview-v1.png",
+      "requires_map_fragment": true
+    },
+    {
       "id": "hangang",
       "name": "한강의 불빛나루",
       "description": "서울의 별빛과 한옥의 등불이 한강 위에서 만나요. 태극의 물결을 따라 한국의 이야기와 보물을 찾아보세요.",
@@ -327,6 +336,27 @@
       "tier": "mood"
     },
     {
+      "id": "galaxy-lunar-base",
+      "name": "달빛 탐사기지",
+      "price": 3800,
+      "image_path": "galaxy-lunar-base-panorama-v1.png",
+      "tier": "special"
+    },
+    {
+      "id": "galaxy-observation-palace",
+      "name": "은하 관측궁",
+      "price": 4200,
+      "image_path": "galaxy-observation-palace-panorama-v1.png",
+      "tier": "special"
+    },
+    {
+      "id": "galaxy-space-station",
+      "name": "별바다 우주정거장",
+      "price": 3500,
+      "image_path": "galaxy-space-station-panorama-v1.png",
+      "tier": "special"
+    },
+    {
       "id": "glacier",
       "name": "빙하의 숨결",
       "price": 550,
@@ -479,6 +509,13 @@
       "price": 600,
       "image_path": "pearl.png",
       "tier": "mood"
+    },
+    {
+      "id": "pearl-lantern-street",
+      "name": "진주등 상점가",
+      "price": 800,
+      "image_path": "pearl-lantern-street-panorama-v1.png",
+      "tier": "special"
     },
     {
       "id": "pharaoh-sleeping-pyramid-court",
@@ -639,6 +676,13 @@
       "name": "수몰된 오락실",
       "price": 1050,
       "image_path": "sunken-arcade.png",
+      "tier": "special"
+    },
+    {
+      "id": "sunlit-coral-street",
+      "name": "햇살 산호 거리",
+      "price": 800,
+      "image_path": "sunlit-coral-street-panorama-v1.png",
       "tier": "special"
     },
     {
@@ -4721,6 +4765,2134 @@
       "native_region_id": "whitenight",
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-abduction-device",
+      "kind": "decoration",
+      "name": "외계인 납치 장치",
+      "description": "UFO 아래에서 초록색 광선이 내려오는 장식",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-alien-abduction-device_v1_thumbnail.png",
+      "sell_price": 137,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-coin",
+      "kind": "trash",
+      "name": "외계 문명의 동전",
+      "description": "정체불명의 행성 문양이 새겨진 고대 동전",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-alien-coin_v1_thumbnail.png",
+      "sell_price": 56,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-drink-can",
+      "kind": "trash",
+      "name": "외계 음료수 캔",
+      "description": "정체불명의 외계 문자로 가득한 음료수 캔",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-alien-drink-can_v1_thumbnail.png",
+      "sell_price": 29,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-mushrooms",
+      "kind": "decoration",
+      "name": "외계 버섯 군락",
+      "description": "형광빛으로 빛나는 거대한 외계 버섯",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-alien-mushrooms_v1_thumbnail.png",
+      "sell_price": 158,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-planter",
+      "kind": "decoration",
+      "name": "외계 식물 화분",
+      "description": "보라색 촉수 잎이 자라는 화분",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-alien-planter_v1_thumbnail.png",
+      "sell_price": 38,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-scarecrow",
+      "kind": "decoration",
+      "name": "외계인 허수아비",
+      "description": "초록색 외계인 모양의 허수아비",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-alien-scarecrow_v1_thumbnail.png",
+      "sell_price": 46,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-slime",
+      "kind": "fish",
+      "name": "외계 슬라임",
+      "description": "연두색 반투명 몸을 오므렸다 펴며 떠다니는 작은 외계 슬라임",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.014",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-alien-slime_v1_thumbnail.png",
+      "sell_price": 72,
+      "sprite_sheet_path": "fish/normal/galaxy-alien-slime_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-alien-wallet",
+      "kind": "trash",
+      "name": "외계인의 분실 지갑",
+      "description": "알 수 없는 화폐와 이상한 신분증이 들어 있는 지갑",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-alien-wallet_v1_thumbnail.png",
+      "sell_price": 71,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-ananke",
+      "kind": "fish",
+      "name": "운명을 엮는 자, 아난케",
+      "description": "행성들을 실처럼 꿰어 목걸이로 만들고 은하의 운행을 조종하는 여신형 존재",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 165,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/galaxy-ananke_v1_thumbnail.png",
+      "sell_price": 3200,
+      "sprite_sheet_path": "fish/mythic/galaxy-ananke_swim8_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-antenna-goby",
+      "kind": "fish",
+      "name": "안테나 망둑어",
+      "description": "머리 위 두 가느다란 안테나로 별의 신호를 듣는 망둑어",
+      "swim_y_min": "0.6",
+      "swim_y_max": "0.88",
+      "speed": "0.024",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-antenna-goby_v1_thumbnail.png",
+      "sell_price": 70,
+      "sprite_sheet_path": "fish/normal/galaxy-antenna-goby_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-antigravity-rocks",
+      "kind": "decoration",
+      "name": "반중력 바위",
+      "description": "여러 개의 작은 돌이 공중에 떠 있는 조형물",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-antigravity-rocks_v1_thumbnail.png",
+      "sell_price": 167,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-apocalypsis",
+      "kind": "fish",
+      "name": "멸망의 집행자, 아포칼립시스",
+      "description": "부서진 행성을 갑옷처럼 두른 거대한 우주 기사",
+      "swim_y_min": "0.80",
+      "swim_y_max": "0.88",
+      "speed": "0.024",
+      "size": 165,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/galaxy-apocalypsis_v1_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/galaxy-apocalypsis_swim8_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-astronaut-footprints",
+      "kind": "decoration",
+      "name": "우주인 발자국",
+      "description": "달 표면처럼 생긴 작은 발자국 타일",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-astronaut-footprints_v1_thumbnail.png",
+      "sell_price": 43,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-astronaut-pongi",
+      "kind": "fish",
+      "name": "우주비행사 퐁이",
+      "description": "커다란 우주 헬멧과 하얀 우주복을 입은 퐁이",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-astronaut-pongi_v1_thumbnail.png",
+      "sell_price": 1610,
+      "sprite_sheet_path": "fish/epic/galaxy-astronaut-pongi_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-astronaut-pongi-statue",
+      "kind": "decoration",
+      "name": "우주비행사 퐁이 동상",
+      "description": "우주복을 입고 깃발을 꽂는 퐁이 동상",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-astronaut-pongi-statue_v1_thumbnail.png",
+      "sell_price": 131,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-astronaut-puffer",
+      "kind": "fish",
+      "name": "우주비행 복어",
+      "description": "우주복 헬멧 같은 투명한 막에 둘러싸인 복어",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-astronaut-puffer_v1_thumbnail.png",
+      "sell_price": 276,
+      "sprite_sheet_path": "fish/rare/galaxy-astronaut-puffer_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-aurora-seahorse",
+      "kind": "fish",
+      "name": "오로라 해마",
+      "description": "몸에서 여러 색의 오로라가 피어오르는 해마",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-aurora-seahorse_v1_thumbnail.png",
+      "sell_price": 236,
+      "sprite_sheet_path": "fish/rare/galaxy-aurora-seahorse_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-binary-nautilus",
+      "kind": "fish",
+      "name": "쌍성 앵무조개",
+      "description": "껍데기 안에서 두 개의 작은 태양이 회전하는 앵무조개",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-binary-nautilus_v1_thumbnail.png",
+      "sell_price": 284,
+      "sprite_sheet_path": "fish/rare/galaxy-binary-nautilus_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-black-box",
+      "kind": "trash",
+      "name": "블랙박스 기록장치",
+      "description": "실종된 우주선의 마지막 기록이 담긴 검은 상자",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-black-box_v1_thumbnail.png",
+      "sell_price": 53,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-black-hole-urchin",
+      "kind": "fish",
+      "name": "블랙홀 성게",
+      "description": "검은 구형 몸을 둘러싼 가시 사이로 작은 별빛이 빨려드는 성게",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.012",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-black-hole-urchin_v1_thumbnail.png",
+      "sell_price": 308,
+      "sprite_sheet_path": "fish/rare/galaxy-black-hole-urchin_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-clock",
+      "kind": "trash",
+      "name": "고장 난 우주 시계",
+      "description": "시간이 00:00에서 멈춰버린 전자시계",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-broken-clock_v1_thumbnail.png",
+      "sell_price": 31,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-cosmic-rod",
+      "kind": "trash",
+      "name": "우주 낚싯대 잔해",
+      "description": "별을 낚으려다 부러진 전설적인 낚싯대 조각",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-broken-cosmic-rod_v1_thumbnail.png",
+      "sell_price": 107,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-gravity-generator",
+      "kind": "trash",
+      "name": "고장 난 중력 발생기",
+      "description": "주변의 작은 물체를 둥둥 띄우는 장치",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-broken-gravity-generator_v1_thumbnail.png",
+      "sell_price": 62,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-moon-crown",
+      "kind": "trash",
+      "name": "깨진 달의 왕관",
+      "description": "초승달 장식이 달린 부서진 은빛 왕관",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-broken-moon-crown_v1_thumbnail.png",
+      "sell_price": 74,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-radio",
+      "kind": "trash",
+      "name": "고장 난 우주 무전기",
+      "description": "지직거리는 소리만 나오는 통신 장치",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-broken-radio_v1_thumbnail.png",
+      "sell_price": 24,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-solar-panel",
+      "kind": "trash",
+      "name": "부서진 태양광 패널",
+      "description": "파란 태양광 판이 반쯤 깨진 인공위성 부품",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-broken-solar-panel_v1_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-star-bulb",
+      "kind": "trash",
+      "name": "깨진 별빛 전구",
+      "description": "내부에 작은 별가루가 남아 있는 전구",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-broken-star-bulb_v1_thumbnail.png",
+      "sell_price": 32,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-broken-warp-engine",
+      "kind": "trash",
+      "name": "부서진 워프 엔진",
+      "description": "차원 이동 장치의 파손된 핵심 부품",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-broken-warp-engine_v1_thumbnail.png",
+      "sell_price": 59,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-capsule-house",
+      "kind": "decoration",
+      "name": "우주 캡슐 하우스",
+      "description": "둥근 우주 캡슐 형태의 작은 집",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-capsule-house_v1_thumbnail.png",
+      "sell_price": 146,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-comet-shrimp",
+      "kind": "fish",
+      "name": "혜성 새우",
+      "description": "움직일 때마다 꼬리에서 빛나는 입자가 흩날리는 새우",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-comet-shrimp_v1_thumbnail.png",
+      "sell_price": 56,
+      "sprite_sheet_path": "fish/normal/galaxy-comet-shrimp_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-comet-thresher",
+      "kind": "fish",
+      "name": "유성꼬리 여우상어",
+      "description": "꼬리가 긴 혜성처럼 빛나는 상어",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-comet-thresher_v1_thumbnail.png",
+      "sell_price": 220,
+      "sprite_sheet_path": "fish/rare/galaxy-comet-thresher_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-constellation-dragon",
+      "kind": "fish",
+      "name": "별자리 해룡",
+      "description": "몸의 발광점들이 별자리처럼 이어지는 해룡",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-constellation-dragon_v1_thumbnail.png",
+      "sell_price": 268,
+      "sprite_sheet_path": "fish/rare/galaxy-constellation-dragon_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-constellation-frame",
+      "kind": "decoration",
+      "name": "별자리 액자",
+      "description": "반짝이는 별자리 그림이 들어 있는 액자",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-constellation-frame_v1_thumbnail.png",
+      "sell_price": 42,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-cosmic-dust",
+      "kind": "fish",
+      "name": "우주먼지 뭉치",
+      "description": "작은 별 알갱이가 뭉쳐 천천히 숨 쉬는 은빛 우주먼지 생명체",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.014",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-cosmic-dust_v1_thumbnail.png",
+      "sell_price": 68,
+      "sprite_sheet_path": "fish/normal/galaxy-cosmic-dust_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-cosmic-starfish",
+      "kind": "fish",
+      "name": "우주 불가사리",
+      "description": "다섯 팔 끝에 각각 작은 별이 달린 불가사리",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.012",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-cosmic-starfish_v1_thumbnail.png",
+      "sell_price": 58,
+      "sprite_sheet_path": "fish/normal/galaxy-cosmic-starfish_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-cracked-lens",
+      "kind": "trash",
+      "name": "깨진 관측 렌즈",
+      "description": "별을 관찰하던 망원경의 금이 간 렌즈",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-cracked-lens_v1_thumbnail.png",
+      "sell_price": 27,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-cracked-star-orb",
+      "kind": "trash",
+      "name": "금이 간 별자리 구슬",
+      "description": "내부에 작은 별자리가 회전하는 수정 구슬",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-cracked-star-orb_v1_thumbnail.png",
+      "sell_price": 68,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-crescent-dragon",
+      "kind": "fish",
+      "name": "초승달 해룡",
+      "description": "초승달 형태의 뿔을 가진 은빛 바다용",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-crescent-dragon_v1_thumbnail.png",
+      "sell_price": 212,
+      "sprite_sheet_path": "fish/rare/galaxy-crescent-dragon_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-dented-helmet",
+      "kind": "trash",
+      "name": "찌그러진 우주 헬멧",
+      "description": "유리 부분이 깨진 낡은 우주비행사 헬멧",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-dented-helmet_v1_thumbnail.png",
+      "sell_price": 16,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-dented-nozzle",
+      "kind": "trash",
+      "name": "찌그러진 로켓 노즐",
+      "description": "발사 과정에서 떨어져 나온 금속 부품",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-dented-nozzle_v1_thumbnail.png",
+      "sell_price": 25,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-discarded-ufo",
+      "kind": "trash",
+      "name": "폐기된 소형 UFO",
+      "description": "동력이 꺼진 손바닥 크기의 비행접시",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-discarded-ufo_v1_thumbnail.png",
+      "sell_price": 83,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-eclipse-jellyfish",
+      "kind": "fish",
+      "name": "일식 해파리",
+      "description": "검은 중심부를 황금빛 고리가 감싸는 해파리",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.014",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-eclipse-jellyfish_v1_thumbnail.png",
+      "sell_price": 252,
+      "sprite_sheet_path": "fish/rare/galaxy-eclipse-jellyfish_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-empty-culture-vessel",
+      "kind": "trash",
+      "name": "외계 생명체 배양통",
+      "description": "내부가 비어 있는 정체불명의 생명체 배양 용기",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-empty-culture-vessel_v1_thumbnail.png",
+      "sell_price": 95,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-entropy",
+      "kind": "fish",
+      "name": "붕괴의 전조, 엔트로피",
+      "description": "주변의 빛을 흡수하며 검은 입자를 흩뿌리는 심해 아귀",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-entropy_v1_thumbnail.png",
+      "sell_price": 1490,
+      "sprite_sheet_path": "fish/epic/galaxy-entropy_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-eos",
+      "kind": "fish",
+      "name": "새벽별의 여신, 에오스",
+      "description": "긴 머리카락이 은하수로 이어지는 여신. 손끝에서 새벽별이 태어난다",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 165,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/galaxy-eos_v1_thumbnail.png",
+      "sell_price": 3400,
+      "sprite_sheet_path": "fish/mythic/galaxy-eos_swim8_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-exploration-flag",
+      "kind": "decoration",
+      "name": "우주 탐사 깃발",
+      "description": "작은 행성 그림이 그려진 탐사 깃발",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-exploration-flag_v1_thumbnail.png",
+      "sell_price": 36,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-faded-moon-flag",
+      "kind": "trash",
+      "name": "낡은 달 탐사 깃발",
+      "description": "색이 바래고 끝부분이 찢어진 깃발",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-faded-moon-flag_v1_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-faulty-hologram",
+      "kind": "trash",
+      "name": "오작동하는 홀로그램",
+      "description": "오래된 외계인의 모습이 깜빡이는 투영 장치",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-faulty-hologram_v1_thumbnail.png",
+      "sell_price": 86,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-food-pouch",
+      "kind": "trash",
+      "name": "우주식량 봉지",
+      "description": "우주비행사가 먹고 버린 은색 식량 포장지",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-food-pouch_v1_thumbnail.png",
+      "sell_price": 19,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-forbidden-chart",
+      "kind": "trash",
+      "name": "금지된 행성 지도",
+      "description": "현재 우주에는 존재하지 않는 행성이 표시된 지도",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-forbidden-chart_v1_thumbnail.png",
+      "sell_price": 92,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-frozen-hourglass",
+      "kind": "trash",
+      "name": "시간이 멈춘 모래시계",
+      "description": "모래알이 공중에 멈춰 있는 작은 모래시계",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-frozen-hourglass_v1_thumbnail.png",
+      "sell_price": 98,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-fuel-canister",
+      "kind": "trash",
+      "name": "로켓 연료통",
+      "description": "연료가 모두 떨어진 작은 로켓 연료통",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-fuel-canister_v1_thumbnail.png",
+      "sell_price": 17,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-galactic-jellyfish",
+      "kind": "fish",
+      "name": "은하 해파리",
+      "description": "투명한 갓 안에 작은 은하가 회전하는 해파리",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.014",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-galactic-jellyfish_v1_thumbnail.png",
+      "sell_price": 52,
+      "sprite_sheet_path": "fish/normal/galaxy-galactic-jellyfish_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-galactic-streetlamp",
+      "kind": "decoration",
+      "name": "은하수 가로등",
+      "description": "푸른 은하수가 나선형으로 감긴 가로등",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-galactic-streetlamp_v1_thumbnail.png",
+      "sell_price": 149,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-genesis",
+      "kind": "fish",
+      "name": "우주의 마지막 방주, 제네시스",
+      "description": "멸망한 우주 문명들의 도시를 등에 싣고 떠다니는 초거대 우주선 생명체",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 165,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/galaxy-genesis_v1_thumbnail.png",
+      "sell_price": 3100,
+      "sprite_sheet_path": "fish/mythic/galaxy-genesis_swim8_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-gravity-octopus",
+      "kind": "fish",
+      "name": "중력문어",
+      "description": "다리 끝에 작은 천체들이 매달려 공전하는 문어",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-gravity-octopus_v1_thumbnail.png",
+      "sell_price": 244,
+      "sprite_sheet_path": "fish/rare/galaxy-gravity-octopus_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-helmet-hermit",
+      "kind": "fish",
+      "name": "우주복 소라게",
+      "description": "버려진 우주비행사 헬멧을 집으로 사용하는 소라게",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.012",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-helmet-hermit_v1_thumbnail.png",
+      "sell_price": 74,
+      "sprite_sheet_path": "fish/normal/galaxy-helmet-hermit_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-hologram-globe",
+      "kind": "decoration",
+      "name": "홀로그램 지구본",
+      "description": "공중에 푸른 지구가 떠 있는 장치",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-hologram-globe_v1_thumbnail.png",
+      "sell_price": 152,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-impact-crater",
+      "kind": "decoration",
+      "name": "운석 충돌 분화구",
+      "description": "중심에 빛나는 운석이 박힌 작은 분화구",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-impact-crater_v1_thumbnail.png",
+      "sell_price": 173,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-meteor-angler",
+      "kind": "fish",
+      "name": "운석포식 아귀",
+      "description": "운석을 삼키며 몸속에서 녹여 빛을 내는 거대한 아귀",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-meteor-angler_v1_thumbnail.png",
+      "sell_price": 292,
+      "sprite_sheet_path": "fish/rare/galaxy-meteor-angler_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-meteor-gravel",
+      "kind": "trash",
+      "name": "운석 부스러기",
+      "description": "우주를 떠돌다 떨어져 나온 작은 돌멩이",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-meteor-gravel_v1_thumbnail.png",
+      "sell_price": 21,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-meteor-observatory",
+      "kind": "decoration",
+      "name": "유성우 관측소",
+      "description": "지붕 위에 별똥별이 떨어지는 효과가 있는 관측소",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-meteor-observatory_v1_thumbnail.png",
+      "sell_price": 179,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-meteor-puffer",
+      "kind": "fish",
+      "name": "운석 복어",
+      "description": "울퉁불퉁한 운석처럼 생긴 둥근 복어",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-meteor-puffer_v1_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/galaxy-meteor-puffer_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-meteor-sculpture",
+      "kind": "decoration",
+      "name": "별똥별 조형물",
+      "description": "땅에 떨어지는 별똥별을 형상화한 조형물",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-meteor-sculpture_v1_thumbnail.png",
+      "sell_price": 143,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-meteor-stone",
+      "kind": "decoration",
+      "name": "운석 장식석",
+      "description": "반짝이는 광물이 박힌 운석",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-meteor-stone_v1_thumbnail.png",
+      "sell_price": 39,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-mini-rocket",
+      "kind": "decoration",
+      "name": "미니 로켓",
+      "description": "빨간 뾰족 지붕을 가진 작은 로켓 모형",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-mini-rocket_v1_thumbnail.png",
+      "sell_price": 33,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-mini-space-station",
+      "kind": "decoration",
+      "name": "미니 우주정거장",
+      "description": "작은 태양광 패널이 달린 우주정거장 모형",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-mini-space-station_v1_thumbnail.png",
+      "sell_price": 164,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-mini-ufo",
+      "kind": "decoration",
+      "name": "미니 UFO",
+      "description": "땅에 착륙한 귀여운 비행접시",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-mini-ufo_v1_thumbnail.png",
+      "sell_price": 37,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-moon-crab",
+      "kind": "fish",
+      "name": "달조각 게",
+      "description": "달 표면처럼 분화구가 있는 등껍질을 가진 게",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.012",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-moon-crab_v1_thumbnail.png",
+      "sell_price": 48,
+      "sprite_sheet_path": "fish/normal/galaxy-moon-crab_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-moon-crystal-tree",
+      "kind": "decoration",
+      "name": "달의 수정나무",
+      "description": "은빛 줄기와 초승달 모양 잎을 가진 나무",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-moon-crystal-tree_v1_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-moon-fountain",
+      "kind": "decoration",
+      "name": "달빛 분수",
+      "description": "초승달에서 은빛 물이 흘러내리는 분수",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-moon-fountain_v1_thumbnail.png",
+      "sell_price": 140,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-moon-rock",
+      "kind": "decoration",
+      "name": "달 표면 바위",
+      "description": "크레이터가 파인 회색 달 바위",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-moon-rock_v1_thumbnail.png",
+      "sell_price": 34,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-moonlight-seahorse",
+      "kind": "fish",
+      "name": "달빛 해마",
+      "description": "초승달 모양의 꼬리를 가진 푸른 해마",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-moonlight-seahorse_v1_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/galaxy-moonlight-seahorse_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-nebula",
+      "kind": "fish",
+      "name": "성운을 삼킨 뱀, 네뷸라",
+      "description": "몸 전체가 보랏빛 성운으로 이루어진 거대한 우주 바다뱀",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-nebula_v1_thumbnail.png",
+      "sell_price": 1330,
+      "sprite_sheet_path": "fish/epic/galaxy-nebula_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-nebula-ray",
+      "kind": "fish",
+      "name": "성운 가오리",
+      "description": "날개에 보라색 성운 무늬가 흐르는 가오리",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-nebula-ray_v1_thumbnail.png",
+      "sell_price": 62,
+      "sprite_sheet_path": "fish/normal/galaxy-nebula-ray_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-necropolis",
+      "kind": "fish",
+      "name": "별의 무덤, 네크로폴리스",
+      "description": "멸망한 행성과 죽은 별의 잔해가 모여 만들어진 거대 생명체",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 165,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/galaxy-necropolis_v1_thumbnail.png",
+      "sell_price": 3000,
+      "sprite_sheet_path": "fish/mythic/galaxy-necropolis_swim8_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-nova",
+      "kind": "fish",
+      "name": "별의 장례자, 노바",
+      "description": "죽어가는 별을 등에 싣고 우주를 떠도는 거북",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-nova_v1_thumbnail.png",
+      "sell_price": 1370,
+      "sprite_sheet_path": "fish/epic/galaxy-nova_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-orbis",
+      "kind": "fish",
+      "name": "궤도의 지배자, 오르비스",
+      "description": "몸 주위에 일곱 개의 행성이 공전하는 문어",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-orbis_v1_thumbnail.png",
+      "sell_price": 1410,
+      "sprite_sheet_path": "fish/epic/galaxy-orbis_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-orbital-snail",
+      "kind": "fish",
+      "name": "궤도 달팽이",
+      "description": "작은 돌멩이들이 몸 주위를 공전하는 달팽이",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.012",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-orbital-snail_v1_thumbnail.png",
+      "sell_price": 66,
+      "sprite_sheet_path": "fish/normal/galaxy-orbital-snail_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-oxygen-tank",
+      "kind": "trash",
+      "name": "낡은 산소통",
+      "description": "산소가 모두 빠져나간 우주복용 산소통",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-oxygen-tank_v1_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-planet-turtle",
+      "kind": "fish",
+      "name": "행성수호 거북",
+      "description": "등껍질에 작은 숲과 바다가 있는 행성 거북",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-planet-turtle_v1_thumbnail.png",
+      "sell_price": 228,
+      "sprite_sheet_path": "fish/rare/galaxy-planet-turtle_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-plasma-jellyfish",
+      "kind": "fish",
+      "name": "플라즈마 해파리",
+      "description": "보랏빛 갓 안에서 푸른 플라즈마 줄기가 흐르는 해파리",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.014",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/galaxy-plasma-jellyfish_v1_thumbnail.png",
+      "sell_price": 300,
+      "sprite_sheet_path": "fish/rare/galaxy-plasma-jellyfish_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-pongi-button",
+      "kind": "trash",
+      "name": "퐁이 우주복 단추",
+      "description": "우주비행사 퐁이가 떨어뜨린 별 모양 단추",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-pongi-button_v1_thumbnail.png",
+      "sell_price": 34,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-pongi-control-tower",
+      "kind": "fish",
+      "name": "퐁이 우주관제탑",
+      "description": "꼭대기에 거대한 레이더가 회전하는 우주 통신탑",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 165,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/galaxy-pongi-control-tower_v1_thumbnail.png",
+      "sell_price": 3500,
+      "sprite_sheet_path": "fish/mythic/galaxy-pongi-control-tower_swim8_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-pongi-lost-spaceship",
+      "kind": "trash",
+      "name": "퐁이의 분실 우주선",
+      "description": "퐁이 이름표가 붙어 있는 고장 난 미니 우주선",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-pongi-lost-spaceship_v1_thumbnail.png",
+      "sell_price": 104,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-pongi-lunar-lander",
+      "kind": "decoration",
+      "name": "퐁이의 달 착륙선",
+      "description": "금빛 착륙 다리와 퐁이 창문이 달린 정교한 달 착륙선",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/galaxy-pongi-lunar-lander_v1_thumbnail.png",
+      "sell_price": 800,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-pongi-moon-base",
+      "kind": "fish",
+      "name": "퐁이 달 탐사기지",
+      "description": "반구형 돔 여러 개가 연결된 달 표면 탐사기지",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 165,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/galaxy-pongi-moon-base_v1_thumbnail.png",
+      "sell_price": 3600,
+      "sprite_sheet_path": "fish/mythic/galaxy-pongi-moon-base_swim8_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-pongi-space-lighthouse",
+      "kind": "decoration",
+      "name": "퐁이 우주등대",
+      "description": "유리 돔의 별빛 렌즈로 우주 항로를 비추는 퐁이 등대",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/galaxy-pongi-space-lighthouse_v1_thumbnail.png",
+      "sell_price": 1000,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-rift-shard",
+      "kind": "trash",
+      "name": "차원 균열 조각",
+      "description": "주변 공간을 일그러뜨리는 검은 유리 파편",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-rift-shard_v1_thumbnail.png",
+      "sell_price": 101,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-rocket-mailbox",
+      "kind": "decoration",
+      "name": "로켓 우체통",
+      "description": "로켓 모양의 작은 우체통",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-rocket-mailbox_v1_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-satellite-bolt",
+      "kind": "trash",
+      "name": "인공위성 나사",
+      "description": "우주를 떠돌던 커다란 육각 나사",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-satellite-bolt_v1_thumbnail.png",
+      "sell_price": 26,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-saturn-balloon",
+      "kind": "decoration",
+      "name": "토성 풍선",
+      "description": "고리가 달린 토성 모양 풍선",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-saturn-balloon_v1_thumbnail.png",
+      "sell_price": 44,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-saturn-whelk",
+      "kind": "fish",
+      "name": "토성고둥",
+      "description": "껍데기 주변에 토성처럼 고리가 떠 있는 고둥",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.012",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-saturn-whelk_v1_thumbnail.png",
+      "sell_price": 54,
+      "sprite_sheet_path": "fish/normal/galaxy-saturn-whelk_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-seatbelt",
+      "kind": "trash",
+      "name": "우주선 안전벨트",
+      "description": "좌석에서 뜯겨 나온 낡은 안전벨트",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-seatbelt_v1_thumbnail.png",
+      "sell_price": 33,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-severed-cable",
+      "kind": "trash",
+      "name": "끊어진 우주선 케이블",
+      "description": "끝부분에서 작은 전기 불꽃이 튀는 전선",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-severed-cable_v1_thumbnail.png",
+      "sell_price": 22,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-shooting-star-squid",
+      "kind": "fish",
+      "name": "별똥별 오징어",
+      "description": "머리가 별 모양이고 다리가 유성의 꼬리처럼 빛나는 오징어",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-shooting-star-squid_v1_thumbnail.png",
+      "sell_price": 64,
+      "sprite_sheet_path": "fish/normal/galaxy-shooting-star-squid_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-single-glove",
+      "kind": "trash",
+      "name": "우주 장갑 한 짝",
+      "description": "주인을 잃고 떠다니는 두꺼운 흰색 장갑",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-single-glove_v1_thumbnail.png",
+      "sell_price": 23,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-solar-system-model",
+      "kind": "decoration",
+      "name": "회전하는 태양계",
+      "description": "태양을 중심으로 작은 행성들이 공전하는 모형",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-solar-system-model_v1_thumbnail.png",
+      "sell_price": 134,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-solaris",
+      "kind": "fish",
+      "name": "태양을 품은 자, 솔라리스",
+      "description": "투명한 몸속에 작은 태양을 품고 있는 황금빛 해파리",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.014",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-solaris_v1_thumbnail.png",
+      "sell_price": 1290,
+      "sprite_sheet_path": "fish/epic/galaxy-solaris_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-space-fishing-pier",
+      "kind": "decoration",
+      "name": "우주 낚시터",
+      "description": "우주비행사 퐁이가 앉아 있는 초승달 낚시터",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-space-fishing-pier_v1_thumbnail.png",
+      "sell_price": 176,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-space-signpost",
+      "kind": "decoration",
+      "name": "우주 안내 표지판",
+      "description": "달·화성·지구 방향을 가리키는 표지판",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-space-signpost_v1_thumbnail.png",
+      "sell_price": 41,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-star-candy-machine",
+      "kind": "decoration",
+      "name": "별사탕 자판기",
+      "description": "별 모양 사탕을 판매하는 자판기",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-star-candy-machine_v1_thumbnail.png",
+      "sell_price": 47,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-star-streetlamp",
+      "kind": "decoration",
+      "name": "별빛 가로등",
+      "description": "꼭대기에 노란 별이 달린 가로등",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/galaxy-star-streetlamp_v1_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-stardust-anchovy",
+      "kind": "fish",
+      "name": "별가루 멸치",
+      "description": "몸속에 작은 별가루가 반짝이는 은빛 멸치",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/galaxy-stardust-anchovy_v1_thumbnail.png",
+      "sell_price": 46,
+      "sprite_sheet_path": "fish/normal/galaxy-stardust-anchovy_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-starlight-telescope",
+      "kind": "decoration",
+      "name": "별빛 관측 망원경",
+      "description": "금빛 별 장식이 달린 천체 망원경",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/galaxy-starlight-telescope_v1_thumbnail.png",
+      "sell_price": 161,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-station-hermit",
+      "kind": "fish",
+      "name": "우주정거장 소라게",
+      "description": "작은 우주정거장을 등에 지고 다니는 소라게",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.012",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-station-hermit_v1_thumbnail.png",
+      "sell_price": 1530,
+      "sprite_sheet_path": "fish/epic/galaxy-station-hermit_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-stopped-compass",
+      "kind": "trash",
+      "name": "멈춰버린 우주 나침반",
+      "description": "바늘이 존재하지 않는 별을 가리키는 나침반",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-stopped-compass_v1_thumbnail.png",
+      "sell_price": 77,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-supernova-film",
+      "kind": "trash",
+      "name": "초신성 관측 필름",
+      "description": "폭발하는 별의 마지막 순간이 기록된 필름",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-supernova-film_v1_thumbnail.png",
+      "sell_price": 80,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-ufo-pongi",
+      "kind": "fish",
+      "name": "UFO 퐁이",
+      "description": "작은 UFO를 타고 둥둥 떠다니는 퐁이",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/galaxy-ufo-pongi_v1_thumbnail.png",
+      "sell_price": 1570,
+      "sprite_sheet_path": "fish/epic/galaxy-ufo-pongi_v1_sprite.png",
+      "native_region_id": "galaxy",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-unfinished-sun",
+      "kind": "trash",
+      "name": "미완성 인공태양",
+      "description": "빛이 약해져 폐기된 작은 인공태양 장치",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-unfinished-sun_v1_thumbnail.png",
+      "sell_price": 89,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-unknown-wreckage",
+      "kind": "trash",
+      "name": "미확인 우주선 파편",
+      "description": "어느 문명의 것인지 알 수 없는 금속 잔해",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/galaxy-unknown-wreckage_v1_thumbnail.png",
+      "sell_price": 65,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both",
+      "weather_type": null
+    },
+    {
+      "id": "galaxy-warning-sign",
+      "kind": "trash",
+      "name": "우주선 경고 표지판",
+      "description": "위험 표시가 그려진 낡은 금속판",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/galaxy-warning-sign_v1_thumbnail.png",
+      "sell_price": 28,
+      "sprite_sheet_path": null,
+      "native_region_id": "galaxy",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both",
       "weather_type": null
     },
@@ -22259,6 +24431,454 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "galaxy-alien-abduction-device",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-alien-coin",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-alien-drink-can",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-alien-mushrooms",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-alien-planter",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-alien-scarecrow",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-alien-slime",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-alien-wallet",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-ananke",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-antenna-goby",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-antigravity-rocks",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-apocalypsis",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-astronaut-footprints",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-astronaut-pongi",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-astronaut-pongi-statue",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-astronaut-puffer",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-aurora-seahorse",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-binary-nautilus",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-black-box",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-black-hole-urchin",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-clock",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-cosmic-rod",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-gravity-generator",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-moon-crown",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-radio",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-solar-panel",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-star-bulb",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-broken-warp-engine",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-capsule-house",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-comet-shrimp",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-comet-thresher",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-constellation-dragon",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-constellation-frame",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-cosmic-dust",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-cosmic-starfish",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-cracked-lens",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-cracked-star-orb",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-crescent-dragon",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-dented-helmet",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-dented-nozzle",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-discarded-ufo",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-eclipse-jellyfish",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-empty-culture-vessel",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-entropy",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-eos",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-exploration-flag",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-faded-moon-flag",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-faulty-hologram",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-food-pouch",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-forbidden-chart",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-frozen-hourglass",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-fuel-canister",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-galactic-jellyfish",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-galactic-streetlamp",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-genesis",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-gravity-octopus",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-helmet-hermit",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-hologram-globe",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-impact-crater",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-meteor-angler",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-meteor-gravel",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-meteor-observatory",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-meteor-puffer",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-meteor-sculpture",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-meteor-stone",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-mini-rocket",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-mini-space-station",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-mini-ufo",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-moon-crab",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-moon-crystal-tree",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-moon-fountain",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-moon-rock",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-moonlight-seahorse",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-nebula",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-nebula-ray",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-necropolis",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-nova",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-orbis",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-orbital-snail",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-oxygen-tank",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-planet-turtle",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-plasma-jellyfish",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-pongi-button",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-pongi-control-tower",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-pongi-lost-spaceship",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-pongi-lunar-lander",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-pongi-moon-base",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-pongi-space-lighthouse",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-rift-shard",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-rocket-mailbox",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-satellite-bolt",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-saturn-balloon",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-saturn-whelk",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-seatbelt",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-severed-cable",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-shooting-star-squid",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-single-glove",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-solar-system-model",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-solaris",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-space-fishing-pier",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-space-signpost",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-star-candy-machine",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-star-streetlamp",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-stardust-anchovy",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-starlight-telescope",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-station-hermit",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-stopped-compass",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-supernova-film",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-ufo-pongi",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-unfinished-sun",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-unknown-wreckage",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "galaxy-warning-sign",
+      "region_id": "galaxy"
+    },
+    {
       "species_id": "giant-ammonite-fossil",
       "region_id": "primal"
     },
@@ -32096,6 +34716,10 @@
     },
     {
       "species_id": "shared-decor-bread-hat-gull-postman",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "shared-decor-bread-hat-gull-postman",
       "region_id": "hangang"
     },
     {
@@ -32168,6 +34792,10 @@
     },
     {
       "species_id": "shared-decor-conch-shell-bathhouse",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "shared-decor-conch-shell-bathhouse",
       "region_id": "hangang"
     },
     {
@@ -32240,6 +34868,10 @@
     },
     {
       "species_id": "shared-decor-coral-flower-greenhouse",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "shared-decor-coral-flower-greenhouse",
       "region_id": "hangang"
     },
     {
@@ -32312,6 +34944,10 @@
     },
     {
       "species_id": "shared-decor-coral-palace-miniature",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "shared-decor-coral-palace-miniature",
       "region_id": "hangang"
     },
     {
@@ -32384,6 +35020,10 @@
     },
     {
       "species_id": "shared-decor-diving-bell-lookout",
+      "region_id": "galaxy"
+    },
+    {
+      "species_id": "shared-decor-diving-bell-lookout",
       "region_id": "hangang"
     },
     {
@@ -32453,6 +35093,10 @@
     {
       "species_id": "shared-decor-fish-bread-sign",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fish-bread-sign",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-fish-bread-sign",
@@ -32525,6 +35169,10 @@
     {
       "species_id": "shared-decor-fish-milk-vending-machine",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fish-milk-vending-machine",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-fish-milk-vending-machine",
@@ -32597,6 +35245,10 @@
     {
       "species_id": "shared-decor-fish-towel-clothesline",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fish-towel-clothesline",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-fish-towel-clothesline",
@@ -32669,6 +35321,10 @@
     {
       "species_id": "shared-decor-fishing-king-pongi-sign",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-fishing-king-pongi-sign",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-fishing-king-pongi-sign",
@@ -32741,6 +35397,10 @@
     {
       "species_id": "shared-decor-floating-bubble-balloons",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-floating-bubble-balloons",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-floating-bubble-balloons",
@@ -32813,6 +35473,10 @@
     {
       "species_id": "shared-decor-island-guardian-pongi-statue",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-island-guardian-pongi-statue",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-island-guardian-pongi-statue",
@@ -32885,6 +35549,10 @@
     {
       "species_id": "shared-decor-little-crab-umbrella-stand",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-little-crab-umbrella-stand",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-little-crab-umbrella-stand",
@@ -32957,6 +35625,10 @@
     {
       "species_id": "shared-decor-little-jellyfish-lamp",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-little-jellyfish-lamp",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-little-jellyfish-lamp",
@@ -33029,6 +35701,10 @@
     {
       "species_id": "shared-decor-little-log-shelter",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-little-log-shelter",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-little-log-shelter",
@@ -33101,6 +35777,10 @@
     {
       "species_id": "shared-decor-mini-fishing-rod-rack",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-mini-fishing-rod-rack",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-mini-fishing-rod-rack",
@@ -33173,6 +35853,10 @@
     {
       "species_id": "shared-decor-moon-fishing-pongi-statue",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-moon-fishing-pongi-statue",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-moon-fishing-pongi-statue",
@@ -33245,6 +35929,10 @@
     {
       "species_id": "shared-decor-ocean-treasure-chest",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-ocean-treasure-chest",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-ocean-treasure-chest",
@@ -33317,6 +36005,10 @@
     {
       "species_id": "shared-decor-otter-family-hourglass",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-otter-family-hourglass",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-otter-family-hourglass",
@@ -33389,6 +36081,10 @@
     {
       "species_id": "shared-decor-pearl-clamshell-lamp",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-lamp",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-pearl-clamshell-lamp",
@@ -33461,6 +36157,10 @@
     {
       "species_id": "shared-decor-pearl-clamshell-music-box",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pearl-clamshell-music-box",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-pearl-clamshell-music-box",
@@ -33533,6 +36233,10 @@
     {
       "species_id": "shared-decor-pongi-footprint-sandcastle",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-footprint-sandcastle",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-pongi-footprint-sandcastle",
@@ -33605,6 +36309,10 @@
     {
       "species_id": "shared-decor-pongi-nap-basket",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-nap-basket",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-pongi-nap-basket",
@@ -33677,6 +36385,10 @@
     {
       "species_id": "shared-decor-pongi-paw-bench",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-paw-bench",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-pongi-paw-bench",
@@ -33749,6 +36461,10 @@
     {
       "species_id": "shared-decor-pongi-shell-icecream-stall",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-pongi-shell-icecream-stall",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-pongi-shell-icecream-stall",
@@ -33821,6 +36537,10 @@
     {
       "species_id": "shared-decor-rainbow-current-fountain",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-rainbow-current-fountain",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-rainbow-current-fountain",
@@ -33893,6 +36613,10 @@
     {
       "species_id": "shared-decor-seashell-chair",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-seashell-chair",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-seashell-chair",
@@ -33965,6 +36689,10 @@
     {
       "species_id": "shared-decor-seashell-footwash",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-seashell-footwash",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-seashell-footwash",
@@ -34037,6 +36765,10 @@
     {
       "species_id": "shared-decor-seaweed-flowerpot",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-seaweed-flowerpot",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-seaweed-flowerpot",
@@ -34109,6 +36841,10 @@
     {
       "species_id": "shared-decor-sleepy-octopus-planter",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-sleepy-octopus-planter",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-sleepy-octopus-planter",
@@ -34181,6 +36917,10 @@
     {
       "species_id": "shared-decor-star-whale-lighthouse",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-star-whale-lighthouse",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-star-whale-lighthouse",
@@ -34253,6 +36993,10 @@
     {
       "species_id": "shared-decor-wave-wall-clock",
       "region_id": "firefly"
+    },
+    {
+      "species_id": "shared-decor-wave-wall-clock",
+      "region_id": "galaxy"
     },
     {
       "species_id": "shared-decor-wave-wall-clock",
@@ -38309,6 +41053,15 @@
       "name": "반딧불 꽃등 낚싯대",
       "price": 1800,
       "region_id": "firefly",
+      "failure_reduction_bp": 200,
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
+    },
+    {
+      "id": "galaxy",
+      "name": "은하 궤도 낚싯대",
+      "price": 2800,
+      "region_id": "galaxy",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200,
       "wait_reduction_seconds": 1
@@ -43308,6 +46061,21 @@
       "enabled": true,
       "rarity": "rare",
       "piece_rarities": null
+    },
+    {
+      "region_id": "galaxy",
+      "piece_count": 6,
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/regions/galaxy/map-v1.png",
+      "enabled": true,
+      "rarity": "rare",
+      "piece_rarities": [
+        "rare",
+        "rare",
+        "rare",
+        "epic",
+        "epic",
+        "epic"
+      ]
     },
     {
       "region_id": "hangang",

@@ -232,7 +232,7 @@ function AccountMerchant({ owner }: { owner: string }) {
       <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain p-3">
         <div className="flex items-center justify-between gap-2">
           <p className="text-[11px] leading-5 text-muted-foreground">
-            서버 공통 선착순 · 보관함 개체로 납품해요.
+            나만의 일일 주문 · 보관함 개체로 납품해요.
           </p>
           <Button
             variant="ghost"
@@ -420,7 +420,7 @@ function AccountMerchant({ owner }: { owner: string }) {
                 </strong>
               </div>
               <p className="text-[11px] leading-5 text-muted-foreground">
-                선착순이라 확인하는 동안 다른 모험가가 먼저 납품할 수 있어요.
+                다른 모험가의 납품과 관계없이 각 주문을 한 번씩 완료할 수 있어요.
               </p>
               {canDeliver(active) && (
                 <label className="space-y-2 text-xs">

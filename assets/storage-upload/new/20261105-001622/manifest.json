@@ -1,0 +1,145 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Replacement artwork for existing local farm decorations; no DB or Storage changes",
+  "references": [
+    "public/farm/art/v3/buildings/mill.png"
+  ],
+  "normalization": "Uniform contain resize to transparent 512px PNG; source and resized RGBA retained without recoloring or background removal. Registration uses alpha >=4 to ignore invisible dust, with 8px extra margin around the silhouette.",
+  "items": [
+    {
+      "id": "tree",
+      "frames": 1,
+      "generatedSource": "sources/tree-generated.source",
+      "thumbnail_path": "farm/art/v8/decor/tree.png",
+      "prompt": "Create ONE production-ready transparent 2D game prop sprite: a mature, broad-canopied deciduous farm tree. The attached windmill image is STYLE REFERENCE ONLY: match its lovingly hand-painted storybook game rendering, subtle material texture, delicate warm brown contour, soft dimensional shading and warm ambient daylight. Do not draw or modify the windmill. Art direction: a gently toned-down palette of dusty olive and sage leaves, muted moss shadows, warm gray-brown weathered bark, small natural cream highlights; slightly less saturated than the reference. Rich organic leaf clusters with individually suggested leaves, asymmetrical natural branches, visibly textured trunk and roots. Friendly, grounded, artisanal, not glossy or photorealistic. Camera: orthographic front view with slightly elevated overhead visibility, a horizontal ground contact, appropriate beside the reference in a square-grid cozy farming game; no diamond/isometric base. A single tree, full canopy and roots visible, no chopped branches at image boundaries, centered with generous transparent margins. Sparse tiny tufts at the roots only, no scenery, no grass island or solid ground slab, no large cast shadow, no labels or text. Genuine clean alpha transparency, not a checkerboard or colored backdrop. Square image.",
+      "viewBox": "12 6 487 484",
+      "sourceSha256": "05bdfa6c7eb3244ae7c1e587a043e874b1b1056efa0d1a3de0b9e2fe10299d41",
+      "sha256": "1b35879fb064952033b963c21258e8b35ce1969c70bd379c6c2be7af8b8441d5",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "registrationAlphaThreshold": 4,
+        "alphaBounds": {
+          "left": 20,
+          "top": 14,
+          "right": 490,
+          "bottom": 481
+        },
+        "padding": 8,
+        "transparentPixels": 131997,
+        "rgbaPreservedAfterResize": true
+      }
+    },
+    {
+      "id": "bench",
+      "frames": 1,
+      "generatedSource": "sources/bench-generated.source",
+      "thumbnail_path": "farm/art/v8/decor/bench.png",
+      "prompt": "Create ONE isolated transparent 2D cozy farming game prop sprite. The attached windmill is a STYLE REFERENCE ONLY, not an edit target. Match its hand-painted storybook illustration, finely suggested natural material texture, thin subtle warm contours, soft volumetric shading and warm diffuse daylight. Use a slightly desaturated, toned-down palette of weathered warm browns, muted sage, stone beige and restrained cream highlights. Charming artisanal game art, not flat vector, not glossy 3D, not photography. Orthographic frontal view with gently elevated overhead visibility, horizontal ground contact, consistent with the reference in a square-grid game, no diamond base. Entire object visible, generous transparent margins, no scenery, no text, no checkerboard or colored backdrop, true clean alpha transparency. Subject: a rustic garden bench, two weathered honey-taupe wooden backrest planks and a thick plank seat, sturdy carved side supports with subdued dark sage metal braces. Beautiful visible grain, worn edges, tiny muted moss details near the feet, balanced inviting proportions. A shallow top face visible on the seat. Face directly toward the viewer, do not show it diagonally. Compact low silhouette about twice as wide as high, all four feet inside the frame. No cushions, no flowers or extra props. Square canvas.",
+      "viewBox": "25 116 460 300",
+      "sourceSha256": "66fb8a622d8e0922cd39ef3005bc2682bf1e6b71c8a58285fec692cf0c901027",
+      "sha256": "2a9e8bae0fb398c6f6756a1440f9da6567de72437478485011b3c9be1ef70e9b",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "registrationAlphaThreshold": 4,
+        "alphaBounds": {
+          "left": 33,
+          "top": 124,
+          "right": 476,
+          "bottom": 407
+        },
+        "padding": 8,
+        "transparentPixels": 180319,
+        "rgbaPreservedAfterResize": true
+      }
+    },
+    {
+      "id": "fence",
+      "frames": 1,
+      "generatedSource": "sources/fence-generated.source",
+      "thumbnail_path": "farm/art/v8/decor/fence.png",
+      "prompt": "Create ONE isolated transparent 2D cozy farming game prop sprite. The attached windmill is a STYLE REFERENCE ONLY, not an edit target. Match its hand-painted storybook illustration, finely suggested natural material texture, thin subtle warm contours, soft volumetric shading and warm diffuse daylight. Use a slightly desaturated, toned-down palette of weathered warm browns, muted sage, stone beige and restrained cream highlights. Charming artisanal game art, not flat vector, not glossy 3D, not photography. Orthographic frontal view with gently elevated overhead visibility, horizontal ground contact, consistent with the reference in a square-grid game, no diamond base. Entire object visible, generous transparent margins, no scenery, no text, no checkerboard or colored backdrop, true clean alpha transparency. Subject: ONE short rustic fence section, exactly two chunky weathered pale-oak posts connected by two horizontal wooden rails. The posts have gently rounded beveled tops, little end-grain texture, muted gray-beige paint worn away to warm wood, discreet knots and rusty fasteners. Natural small sage moss near the bottom. Front face parallel to image plane; no diagonal perspective. Compact mostly square silhouette that will read clearly on a single game tile, no tall pickets and no extra panels, no ground slab. Square canvas.",
+      "viewBox": "77 136 358 241",
+      "sourceSha256": "7f6f1cfa7b4053933d1fe88fe950230b9805ddf4bb4bdf3d864162d736aa5573",
+      "sha256": "34b77880ee8dce939c7015754e6f693c206d53edd240e23d365b198d94b5235c",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "registrationAlphaThreshold": 4,
+        "alphaBounds": {
+          "left": 85,
+          "top": 144,
+          "right": 426,
+          "bottom": 368
+        },
+        "padding": 8,
+        "transparentPixels": 210587,
+        "rgbaPreservedAfterResize": true
+      }
+    },
+    {
+      "id": "flowers",
+      "frames": 1,
+      "generatedSource": "sources/flowers-generated.source",
+      "thumbnail_path": "farm/art/v8/decor/flowers.png",
+      "prompt": "Create ONE isolated transparent 2D cozy farming game prop sprite. The attached windmill is a STYLE REFERENCE ONLY, not an edit target. Match its hand-painted storybook illustration, finely suggested natural material texture, thin subtle warm contours, soft volumetric shading and warm diffuse daylight. Use a slightly desaturated, toned-down palette of weathered warm browns, muted sage, stone beige and restrained cream highlights. Charming artisanal game art, not flat vector, not glossy 3D, not photography. Orthographic frontal view with gently elevated overhead visibility, horizontal ground contact, consistent with the reference in a square-grid game, no diamond base. Entire object visible, generous transparent margins, no scenery, no text, no checkerboard or colored backdrop, true clean alpha transparency. Subject: ONE small low-growing cottage garden flower bed, an organic rounded cluster of many small daisies and a few softly shaped garden blossoms among dusty sage and olive foliage. Muted ivory, faded apricot, dusty rose and pale ochre petals, small warm brown centers. A few rounded weathered beige stones subtly edging the bed, a little visible dark earth between plants, very low rim. Detailed petals and leaves with softly painted highlights, readable as one clustered decoration at small game size. Slightly overhead viewpoint so the bed surface is visible, compact square footprint, no large planter box, no pot, no decorative objects, no butterflies. Square canvas.",
+      "viewBox": "63 115 379 273",
+      "sourceSha256": "2cf6f408c614f60195ae07d4d0757d2eebf00f79dd8ec85f2a7ed951b2ee6c2c",
+      "sha256": "563ef8a0c0a0f617cd3a4c93de941f3f40d9a43ef7af0fbbff2549c54629005f",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "registrationAlphaThreshold": 4,
+        "alphaBounds": {
+          "left": 71,
+          "top": 123,
+          "right": 433,
+          "bottom": 379
+        },
+        "padding": 8,
+        "transparentPixels": 195750,
+        "rgbaPreservedAfterResize": true
+      }
+    },
+    {
+      "id": "pond",
+      "frames": 1,
+      "generatedSource": "sources/pond-generated.source",
+      "thumbnail_path": "farm/art/v8/decor/pond.png",
+      "prompt": "Create ONE isolated transparent 2D cozy farming game prop sprite. The attached windmill is a STYLE REFERENCE ONLY, not an edit target. Match its hand-painted storybook illustration, finely suggested natural material texture, thin subtle warm contours, soft volumetric shading and warm diffuse daylight. Use a slightly desaturated, toned-down palette of weathered warm browns, muted sage, stone beige and restrained cream highlights. Charming artisanal game art, not flat vector, not glossy 3D, not photography. Orthographic frontal view with gently elevated overhead visibility, horizontal ground contact, consistent with the reference in a square-grid game, no diamond base. Entire object visible, generous transparent margins, no scenery, no text, no checkerboard or colored backdrop, true clean alpha transparency. Subject: ONE small rustic garden pond, a low shallow organic oval pool about three units wide and two units deep, seen from gently elevated front view. Still muted gray-blue and sage-green water, restrained pale reflections and tiny ripples. A natural uneven rim of rounded weathered warm gray and beige stones with a little moss, a couple of small lily pads and ONE tiny muted cream-pink water flower, just a few reeds low on the rear edge. Softly painted mineral texture matching the reference windmill masonry. Complete oval shoreline visible and horizontal, no dramatic perspective, no raised basin, no grass island, no surrounding landscape, water opaque inside the pond and true alpha outside the stone edge. Square canvas.",
+      "viewBox": "41 129 429 251",
+      "sourceSha256": "a34c0caa5cd45673ff98cd819b531ccbba534657a521553d11b4e81f7fdcccc7",
+      "sha256": "4859b2ac08f00c239724be5fa476401136473a5642846e96daea7182b55c0fa0",
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "registrationAlphaThreshold": 4,
+        "alphaBounds": {
+          "left": 49,
+          "top": 137,
+          "right": 461,
+          "bottom": 371
+        },
+        "padding": 8,
+        "transparentPixels": 194913,
+        "rgbaPreservedAfterResize": true
+      }
+    }
+  ],
+  "textures": [
+    {
+      "id": "dirt",
+      "generatedSource": "sources/dirt-generated.source",
+      "thumbnail_path": "farm/art/v8/terrain/dirt.png",
+      "prompt": "Create ONE seamless tileable square terrain MATERIAL TEXTURE for a cozy hand-painted farm game. Attached windmill is STYLE REFERENCE ONLY for warm natural mineral texture and subtly illustrated painterly rendering; DO NOT depict the windmill or any object. Full-bleed flat orthographic overhead view of softly worn, compacted dusty farm path soil. Quiet low-saturation warm taupe, mushroom beige, gray-brown earth with subtle dry fine-grain flecks, numerous tiny irregular embedded weathered sand-colored pebbles and a few delicate worn scuffs. Small gravel occupies less than 8 percent of the surface. Very restrained natural tonal variation distributed uniformly across the whole texture. Fine detailed painted earth and mineral grain that reads at small game scale, harmonious with the windmill's stone and wood, not photographic and not flat vector. Absolutely no large round patches or circular stains, no big rocks, cobbles, flagstones, planks, grass, plants, leaves, cracks, footprints, objects, borders, bevel, tile edges, shadows, raised earth block, grid, scenery or text. Texture fills every edge, even diffuse illumination, no vignette or central highlight. Four edges should tile seamlessly. OPAQUE image, no transparency.",
+      "sourceSha256": "87a6f922552d82a2fef0c23c9d1f0840c7ec3bc48aa22e5d63ffb561ef4f95ee",
+      "sha256": "b171deac0b75601b172ece10f9af6fcc2d6bd4b299cd0352059b410e069b624d",
+      "layout": {
+        "width": 256,
+        "height": 256,
+        "tiling": "two-axis mirrored repetition in SVG; same material in map and picker"
+      }
+    }
+  ]
+}

@@ -59,7 +59,7 @@ export function merchantError(cause: unknown) {
   const message = String((cause as { message?: string })?.message ?? '')
   const errors: Record<string, string> = {
     MERCHANT_MESSAGE_TOO_LONG: '한마디는 80자 이내로 적어주세요.',
-    MERCHANT_ORDER_TAKEN: '다른 모험가가 먼저 납품했어요. 다른 주문을 골라주세요.',
+    MERCHANT_ORDER_TAKEN: '이미 납품한 주문이에요. 다른 주문을 골라주세요.',
     MERCHANT_INSUFFICIENT_ITEMS:
       '보관함의 개체가 부족해요. 어항에 있는 개체는 먼저 보관함으로 옮겨주세요.',
     MERCHANT_ORDER_EXPIRED: '새로운 날의 주문이 도착했어요. 목록을 새로 확인해주세요.',

@@ -1,0 +1,2144 @@
+[
+  {
+    "id": "galaxy-stardust-anchovy",
+    "storage_path": "fish/normal/galaxy-stardust-anchovy_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-stardust-anchovy.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 123,
+        "top": 223,
+        "width": 415,
+        "height": 172,
+        "margin": 89,
+        "opaque": 34385
+      },
+      {
+        "frame": 1,
+        "left": 89,
+        "top": 220,
+        "width": 422,
+        "height": 180,
+        "margin": 89,
+        "opaque": 35396
+      },
+      {
+        "frame": 2,
+        "left": 123,
+        "top": 197,
+        "width": 415,
+        "height": 171,
+        "margin": 89,
+        "opaque": 34232
+      },
+      {
+        "frame": 3,
+        "left": 91,
+        "top": 195,
+        "width": 420,
+        "height": 175,
+        "margin": 91,
+        "opaque": 33303
+      }
+    ]
+  },
+  {
+    "id": "galaxy-moon-crab",
+    "storage_path": "fish/normal/galaxy-moon-crab_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-moon-crab.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 101,
+        "top": 141,
+        "width": 455,
+        "height": 361,
+        "margin": 71,
+        "opaque": 96886
+      },
+      {
+        "frame": 1,
+        "left": 105,
+        "top": 140,
+        "width": 472,
+        "height": 359,
+        "margin": 50,
+        "opaque": 95337
+      },
+      {
+        "frame": 2,
+        "left": 95,
+        "top": 140,
+        "width": 463,
+        "height": 354,
+        "margin": 69,
+        "opaque": 96313
+      },
+      {
+        "frame": 3,
+        "left": 112,
+        "top": 140,
+        "width": 448,
+        "height": 360,
+        "margin": 67,
+        "opaque": 95902
+      }
+    ]
+  },
+  {
+    "id": "galaxy-meteor-puffer",
+    "storage_path": "fish/normal/galaxy-meteor-puffer_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-meteor-puffer.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 115,
+        "top": 152,
+        "width": 398,
+        "height": 318,
+        "margin": 114,
+        "opaque": 83652
+      },
+      {
+        "frame": 1,
+        "left": 125,
+        "top": 150,
+        "width": 388,
+        "height": 320,
+        "margin": 114,
+        "opaque": 81129
+      },
+      {
+        "frame": 2,
+        "left": 115,
+        "top": 152,
+        "width": 398,
+        "height": 319,
+        "margin": 114,
+        "opaque": 83479
+      },
+      {
+        "frame": 3,
+        "left": 107,
+        "top": 148,
+        "width": 406,
+        "height": 322,
+        "margin": 107,
+        "opaque": 84486
+      }
+    ]
+  },
+  {
+    "id": "galaxy-galactic-jellyfish",
+    "storage_path": "fish/normal/galaxy-galactic-jellyfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-galactic-jellyfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 143,
+        "top": 109,
+        "width": 356,
+        "height": 434,
+        "margin": 84,
+        "opaque": 81661
+      },
+      {
+        "frame": 1,
+        "left": 131,
+        "top": 130,
+        "width": 345,
+        "height": 402,
+        "margin": 95,
+        "opaque": 73381
+      },
+      {
+        "frame": 2,
+        "left": 160,
+        "top": 119,
+        "width": 343,
+        "height": 351,
+        "margin": 119,
+        "opaque": 63894
+      },
+      {
+        "frame": 3,
+        "left": 122,
+        "top": 91,
+        "width": 354,
+        "height": 420,
+        "margin": 91,
+        "opaque": 79096
+      }
+    ]
+  },
+  {
+    "id": "galaxy-saturn-whelk",
+    "storage_path": "fish/normal/galaxy-saturn-whelk_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-saturn-whelk.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 132,
+        "top": 180,
+        "width": 366,
+        "height": 259,
+        "margin": 129,
+        "opaque": 57284
+      },
+      {
+        "frame": 1,
+        "left": 132,
+        "top": 180,
+        "width": 366,
+        "height": 260,
+        "margin": 129,
+        "opaque": 57106
+      },
+      {
+        "frame": 2,
+        "left": 132,
+        "top": 181,
+        "width": 366,
+        "height": 258,
+        "margin": 129,
+        "opaque": 57433
+      },
+      {
+        "frame": 3,
+        "left": 132,
+        "top": 181,
+        "width": 366,
+        "height": 260,
+        "margin": 129,
+        "opaque": 57629
+      }
+    ]
+  },
+  {
+    "id": "galaxy-comet-shrimp",
+    "storage_path": "fish/normal/galaxy-comet-shrimp_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-comet-shrimp.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 123,
+        "top": 135,
+        "width": 386,
+        "height": 342,
+        "margin": 118,
+        "opaque": 41092
+      },
+      {
+        "frame": 1,
+        "left": 110,
+        "top": 135,
+        "width": 398,
+        "height": 348,
+        "margin": 110,
+        "opaque": 38733
+      },
+      {
+        "frame": 2,
+        "left": 120,
+        "top": 134,
+        "width": 389,
+        "height": 342,
+        "margin": 118,
+        "opaque": 41186
+      },
+      {
+        "frame": 3,
+        "left": 111,
+        "top": 137,
+        "width": 397,
+        "height": 327,
+        "margin": 111,
+        "opaque": 38120
+      }
+    ]
+  },
+  {
+    "id": "galaxy-cosmic-starfish",
+    "storage_path": "fish/normal/galaxy-cosmic-starfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-cosmic-starfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 125,
+        "top": 110,
+        "width": 371,
+        "height": 392,
+        "margin": 110,
+        "opaque": 64511
+      },
+      {
+        "frame": 1,
+        "left": 124,
+        "top": 114,
+        "width": 377,
+        "height": 390,
+        "margin": 114,
+        "opaque": 62201
+      },
+      {
+        "frame": 2,
+        "left": 124,
+        "top": 108,
+        "width": 377,
+        "height": 387,
+        "margin": 108,
+        "opaque": 64897
+      },
+      {
+        "frame": 3,
+        "left": 122,
+        "top": 105,
+        "width": 376,
+        "height": 395,
+        "margin": 105,
+        "opaque": 64558
+      }
+    ]
+  },
+  {
+    "id": "galaxy-moonlight-seahorse",
+    "storage_path": "fish/normal/galaxy-moonlight-seahorse_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-moonlight-seahorse.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 201,
+        "top": 121,
+        "width": 217,
+        "height": 377,
+        "margin": 121,
+        "opaque": 45396
+      },
+      {
+        "frame": 1,
+        "left": 182,
+        "top": 121,
+        "width": 236,
+        "height": 372,
+        "margin": 121,
+        "opaque": 46132
+      },
+      {
+        "frame": 2,
+        "left": 201,
+        "top": 121,
+        "width": 217,
+        "height": 377,
+        "margin": 121,
+        "opaque": 45382
+      },
+      {
+        "frame": 3,
+        "left": 195,
+        "top": 121,
+        "width": 223,
+        "height": 375,
+        "margin": 121,
+        "opaque": 46498
+      }
+    ]
+  },
+  {
+    "id": "galaxy-nebula-ray",
+    "storage_path": "fish/normal/galaxy-nebula-ray_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-nebula-ray.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 95,
+        "top": 175,
+        "width": 457,
+        "height": 273,
+        "margin": 75,
+        "opaque": 59402
+      },
+      {
+        "frame": 1,
+        "left": 104,
+        "top": 166,
+        "width": 447,
+        "height": 282,
+        "margin": 76,
+        "opaque": 61437
+      },
+      {
+        "frame": 2,
+        "left": 96,
+        "top": 165,
+        "width": 456,
+        "height": 281,
+        "margin": 75,
+        "opaque": 61211
+      },
+      {
+        "frame": 3,
+        "left": 61,
+        "top": 171,
+        "width": 490,
+        "height": 271,
+        "margin": 61,
+        "opaque": 60534
+      }
+    ]
+  },
+  {
+    "id": "galaxy-shooting-star-squid",
+    "storage_path": "fish/normal/galaxy-shooting-star-squid_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-shooting-star-squid.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 129,
+        "width": 362,
+        "height": 366,
+        "margin": 129,
+        "opaque": 73266
+      },
+      {
+        "frame": 1,
+        "left": 75,
+        "top": 129,
+        "width": 418,
+        "height": 370,
+        "margin": 75,
+        "opaque": 74897
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 129,
+        "width": 361,
+        "height": 366,
+        "margin": 129,
+        "opaque": 73191
+      },
+      {
+        "frame": 3,
+        "left": 141,
+        "top": 129,
+        "width": 352,
+        "height": 361,
+        "margin": 129,
+        "opaque": 71622
+      }
+    ]
+  },
+  {
+    "id": "galaxy-orbital-snail",
+    "storage_path": "fish/normal/galaxy-orbital-snail_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-orbital-snail.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 177,
+        "width": 365,
+        "height": 266,
+        "margin": 131,
+        "opaque": 64964
+      },
+      {
+        "frame": 1,
+        "left": 129,
+        "top": 175,
+        "width": 369,
+        "height": 268,
+        "margin": 129,
+        "opaque": 64185
+      },
+      {
+        "frame": 2,
+        "left": 128,
+        "top": 180,
+        "width": 371,
+        "height": 265,
+        "margin": 128,
+        "opaque": 64496
+      },
+      {
+        "frame": 3,
+        "left": 131,
+        "top": 180,
+        "width": 368,
+        "height": 261,
+        "margin": 128,
+        "opaque": 65030
+      }
+    ]
+  },
+  {
+    "id": "galaxy-cosmic-dust",
+    "storage_path": "fish/normal/galaxy-cosmic-dust_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-cosmic-dust.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 125,
+        "top": 128,
+        "width": 374,
+        "height": 366,
+        "margin": 125,
+        "opaque": 94655
+      },
+      {
+        "frame": 1,
+        "left": 132,
+        "top": 145,
+        "width": 367,
+        "height": 334,
+        "margin": 128,
+        "opaque": 85168
+      },
+      {
+        "frame": 2,
+        "left": 144,
+        "top": 144,
+        "width": 355,
+        "height": 323,
+        "margin": 128,
+        "opaque": 79215
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 127,
+        "width": 371,
+        "height": 363,
+        "margin": 127,
+        "opaque": 92851
+      }
+    ]
+  },
+  {
+    "id": "galaxy-antenna-goby",
+    "storage_path": "fish/normal/galaxy-antenna-goby_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-antenna-goby.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 107,
+        "top": 135,
+        "width": 418,
+        "height": 307,
+        "margin": 102,
+        "opaque": 59657
+      },
+      {
+        "frame": 1,
+        "left": 99,
+        "top": 143,
+        "width": 423,
+        "height": 296,
+        "margin": 99,
+        "opaque": 59794
+      },
+      {
+        "frame": 2,
+        "left": 107,
+        "top": 135,
+        "width": 418,
+        "height": 307,
+        "margin": 102,
+        "opaque": 59659
+      },
+      {
+        "frame": 3,
+        "left": 98,
+        "top": 134,
+        "width": 428,
+        "height": 306,
+        "margin": 98,
+        "opaque": 60102
+      }
+    ]
+  },
+  {
+    "id": "galaxy-alien-slime",
+    "storage_path": "fish/normal/galaxy-alien-slime_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-alien-slime.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 149,
+        "top": 126,
+        "width": 331,
+        "height": 373,
+        "margin": 126,
+        "opaque": 73871
+      },
+      {
+        "frame": 1,
+        "left": 161,
+        "top": 140,
+        "width": 314,
+        "height": 336,
+        "margin": 140,
+        "opaque": 65309
+      },
+      {
+        "frame": 2,
+        "left": 165,
+        "top": 148,
+        "width": 313,
+        "height": 300,
+        "margin": 148,
+        "opaque": 60241
+      },
+      {
+        "frame": 3,
+        "left": 151,
+        "top": 128,
+        "width": 329,
+        "height": 355,
+        "margin": 128,
+        "opaque": 70659
+      }
+    ]
+  },
+  {
+    "id": "galaxy-helmet-hermit",
+    "storage_path": "fish/normal/galaxy-helmet-hermit_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-helmet-hermit.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 128,
+        "top": 116,
+        "width": 372,
+        "height": 380,
+        "margin": 116,
+        "opaque": 91687
+      },
+      {
+        "frame": 1,
+        "left": 128,
+        "top": 116,
+        "width": 377,
+        "height": 379,
+        "margin": 116,
+        "opaque": 89577
+      },
+      {
+        "frame": 2,
+        "left": 128,
+        "top": 115,
+        "width": 377,
+        "height": 375,
+        "margin": 115,
+        "opaque": 91464
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 115,
+        "width": 372,
+        "height": 379,
+        "margin": 115,
+        "opaque": 91174
+      }
+    ]
+  },
+  {
+    "id": "galaxy-crescent-dragon",
+    "storage_path": "fish/rare/galaxy-crescent-dragon_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-crescent-dragon.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 173,
+        "top": 88,
+        "width": 287,
+        "height": 444,
+        "margin": 88,
+        "opaque": 60797
+      },
+      {
+        "frame": 1,
+        "left": 127,
+        "top": 88,
+        "width": 317,
+        "height": 435,
+        "margin": 88,
+        "opaque": 58845
+      },
+      {
+        "frame": 2,
+        "left": 175,
+        "top": 87,
+        "width": 285,
+        "height": 443,
+        "margin": 87,
+        "opaque": 60432
+      },
+      {
+        "frame": 3,
+        "left": 159,
+        "top": 87,
+        "width": 286,
+        "height": 410,
+        "margin": 87,
+        "opaque": 58741
+      }
+    ]
+  },
+  {
+    "id": "galaxy-comet-thresher",
+    "storage_path": "fish/rare/galaxy-comet-thresher_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-comet-thresher.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 112,
+        "top": 162,
+        "width": 424,
+        "height": 321,
+        "margin": 91,
+        "opaque": 41996
+      },
+      {
+        "frame": 1,
+        "left": 118,
+        "top": 111,
+        "width": 419,
+        "height": 373,
+        "margin": 90,
+        "opaque": 40864
+      },
+      {
+        "frame": 2,
+        "left": 112,
+        "top": 136,
+        "width": 424,
+        "height": 321,
+        "margin": 91,
+        "opaque": 42063
+      },
+      {
+        "frame": 3,
+        "left": 108,
+        "top": 165,
+        "width": 429,
+        "height": 274,
+        "margin": 90,
+        "opaque": 41551
+      }
+    ]
+  },
+  {
+    "id": "galaxy-planet-turtle",
+    "storage_path": "fish/rare/galaxy-planet-turtle_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-planet-turtle.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 67,
+        "top": 95,
+        "width": 493,
+        "height": 437,
+        "margin": 67,
+        "opaque": 121013
+      },
+      {
+        "frame": 1,
+        "left": 54,
+        "top": 95,
+        "width": 506,
+        "height": 398,
+        "margin": 54,
+        "opaque": 112488
+      },
+      {
+        "frame": 2,
+        "left": 67,
+        "top": 95,
+        "width": 493,
+        "height": 437,
+        "margin": 67,
+        "opaque": 121208
+      },
+      {
+        "frame": 3,
+        "left": 75,
+        "top": 95,
+        "width": 485,
+        "height": 406,
+        "margin": 67,
+        "opaque": 114278
+      }
+    ]
+  },
+  {
+    "id": "galaxy-aurora-seahorse",
+    "storage_path": "fish/rare/galaxy-aurora-seahorse_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-aurora-seahorse.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 173,
+        "top": 99,
+        "width": 287,
+        "height": 433,
+        "margin": 95,
+        "opaque": 62617
+      },
+      {
+        "frame": 1,
+        "left": 161,
+        "top": 99,
+        "width": 298,
+        "height": 406,
+        "margin": 99,
+        "opaque": 64783
+      },
+      {
+        "frame": 2,
+        "left": 173,
+        "top": 99,
+        "width": 287,
+        "height": 432,
+        "margin": 96,
+        "opaque": 62530
+      },
+      {
+        "frame": 3,
+        "left": 160,
+        "top": 99,
+        "width": 299,
+        "height": 433,
+        "margin": 95,
+        "opaque": 63769
+      }
+    ]
+  },
+  {
+    "id": "galaxy-gravity-octopus",
+    "storage_path": "fish/rare/galaxy-gravity-octopus_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-gravity-octopus.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 110,
+        "top": 107,
+        "width": 440,
+        "height": 439,
+        "margin": 77,
+        "opaque": 101866
+      },
+      {
+        "frame": 1,
+        "left": 66,
+        "top": 107,
+        "width": 471,
+        "height": 411,
+        "margin": 66,
+        "opaque": 98570
+      },
+      {
+        "frame": 2,
+        "left": 108,
+        "top": 106,
+        "width": 453,
+        "height": 440,
+        "margin": 66,
+        "opaque": 102620
+      },
+      {
+        "frame": 3,
+        "left": 102,
+        "top": 106,
+        "width": 463,
+        "height": 438,
+        "margin": 62,
+        "opaque": 103136
+      }
+    ]
+  },
+  {
+    "id": "galaxy-eclipse-jellyfish",
+    "storage_path": "fish/rare/galaxy-eclipse-jellyfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-eclipse-jellyfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 141,
+        "top": 118,
+        "width": 353,
+        "height": 409,
+        "margin": 100,
+        "opaque": 78469
+      },
+      {
+        "frame": 1,
+        "left": 155,
+        "top": 126,
+        "width": 314,
+        "height": 360,
+        "margin": 126,
+        "opaque": 62022
+      },
+      {
+        "frame": 2,
+        "left": 171,
+        "top": 125,
+        "width": 293,
+        "height": 321,
+        "margin": 125,
+        "opaque": 52774
+      },
+      {
+        "frame": 3,
+        "left": 144,
+        "top": 116,
+        "width": 340,
+        "height": 391,
+        "margin": 116,
+        "opaque": 71935
+      }
+    ]
+  },
+  {
+    "id": "galaxy-constellation-dragon",
+    "storage_path": "fish/rare/galaxy-constellation-dragon_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-constellation-dragon.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 158,
+        "top": 86,
+        "width": 304,
+        "height": 459,
+        "margin": 82,
+        "opaque": 74823
+      },
+      {
+        "frame": 1,
+        "left": 146,
+        "top": 86,
+        "width": 316,
+        "height": 447,
+        "margin": 86,
+        "opaque": 73080
+      },
+      {
+        "frame": 2,
+        "left": 158,
+        "top": 86,
+        "width": 304,
+        "height": 459,
+        "margin": 82,
+        "opaque": 74835
+      },
+      {
+        "frame": 3,
+        "left": 163,
+        "top": 86,
+        "width": 297,
+        "height": 453,
+        "margin": 86,
+        "opaque": 72495
+      }
+    ]
+  },
+  {
+    "id": "galaxy-astronaut-puffer",
+    "storage_path": "fish/rare/galaxy-astronaut-puffer_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-astronaut-puffer.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 120,
+        "top": 123,
+        "width": 390,
+        "height": 378,
+        "margin": 117,
+        "opaque": 104482
+      },
+      {
+        "frame": 1,
+        "left": 101,
+        "top": 123,
+        "width": 409,
+        "height": 378,
+        "margin": 101,
+        "opaque": 106407
+      },
+      {
+        "frame": 2,
+        "left": 120,
+        "top": 124,
+        "width": 390,
+        "height": 378,
+        "margin": 117,
+        "opaque": 104639
+      },
+      {
+        "frame": 3,
+        "left": 129,
+        "top": 124,
+        "width": 381,
+        "height": 378,
+        "margin": 117,
+        "opaque": 103006
+      }
+    ]
+  },
+  {
+    "id": "galaxy-binary-nautilus",
+    "storage_path": "fish/rare/galaxy-binary-nautilus_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-binary-nautilus.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 141,
+        "width": 419,
+        "height": 365,
+        "margin": 77,
+        "opaque": 90393
+      },
+      {
+        "frame": 1,
+        "left": 105,
+        "top": 141,
+        "width": 372,
+        "height": 350,
+        "margin": 105,
+        "opaque": 86302
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 114,
+        "width": 419,
+        "height": 359,
+        "margin": 77,
+        "opaque": 90462
+      },
+      {
+        "frame": 3,
+        "left": 105,
+        "top": 114,
+        "width": 422,
+        "height": 348,
+        "margin": 100,
+        "opaque": 89706
+      }
+    ]
+  },
+  {
+    "id": "galaxy-meteor-angler",
+    "storage_path": "fish/rare/galaxy-meteor-angler_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-meteor-angler.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 103,
+        "top": 113,
+        "width": 414,
+        "height": 369,
+        "margin": 103,
+        "opaque": 90933
+      },
+      {
+        "frame": 1,
+        "left": 81,
+        "top": 113,
+        "width": 436,
+        "height": 362,
+        "margin": 81,
+        "opaque": 90659
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 113,
+        "width": 414,
+        "height": 369,
+        "margin": 103,
+        "opaque": 90653
+      },
+      {
+        "frame": 3,
+        "left": 116,
+        "top": 113,
+        "width": 401,
+        "height": 369,
+        "margin": 110,
+        "opaque": 87280
+      }
+    ]
+  },
+  {
+    "id": "galaxy-plasma-jellyfish",
+    "storage_path": "fish/rare/galaxy-plasma-jellyfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-plasma-jellyfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 144,
+        "top": 81,
+        "width": 352,
+        "height": 464,
+        "margin": 81,
+        "opaque": 86848
+      },
+      {
+        "frame": 1,
+        "left": 140,
+        "top": 101,
+        "width": 343,
+        "height": 411,
+        "margin": 101,
+        "opaque": 76787
+      },
+      {
+        "frame": 2,
+        "left": 145,
+        "top": 99,
+        "width": 350,
+        "height": 359,
+        "margin": 99,
+        "opaque": 66273
+      },
+      {
+        "frame": 3,
+        "left": 140,
+        "top": 80,
+        "width": 353,
+        "height": 446,
+        "margin": 80,
+        "opaque": 84078
+      }
+    ]
+  },
+  {
+    "id": "galaxy-black-hole-urchin",
+    "storage_path": "fish/rare/galaxy-black-hole-urchin_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-black-hole-urchin.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 134,
+        "top": 128,
+        "width": 366,
+        "height": 363,
+        "margin": 127,
+        "opaque": 82928
+      },
+      {
+        "frame": 1,
+        "left": 135,
+        "top": 126,
+        "width": 363,
+        "height": 365,
+        "margin": 126,
+        "opaque": 82393
+      },
+      {
+        "frame": 2,
+        "left": 134,
+        "top": 127,
+        "width": 362,
+        "height": 361,
+        "margin": 127,
+        "opaque": 81325
+      },
+      {
+        "frame": 3,
+        "left": 134,
+        "top": 127,
+        "width": 365,
+        "height": 356,
+        "margin": 127,
+        "opaque": 82196
+      }
+    ]
+  },
+  {
+    "id": "galaxy-solaris",
+    "storage_path": "fish/epic/galaxy-solaris_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-solaris.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 75,
+        "top": 89,
+        "width": 486,
+        "height": 442,
+        "margin": 66,
+        "opaque": 108276
+      },
+      {
+        "frame": 1,
+        "left": 92,
+        "top": 96,
+        "width": 465,
+        "height": 407,
+        "margin": 70,
+        "opaque": 93639
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 98,
+        "width": 449,
+        "height": 371,
+        "margin": 75,
+        "opaque": 82024
+      },
+      {
+        "frame": 3,
+        "left": 79,
+        "top": 88,
+        "width": 481,
+        "height": 427,
+        "margin": 67,
+        "opaque": 103271
+      }
+    ]
+  },
+  {
+    "id": "galaxy-nebula",
+    "storage_path": "fish/epic/galaxy-nebula_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-nebula.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 126,
+        "width": 365,
+        "height": 373,
+        "margin": 126,
+        "opaque": 70642
+      },
+      {
+        "frame": 1,
+        "left": 107,
+        "top": 125,
+        "width": 389,
+        "height": 373,
+        "margin": 107,
+        "opaque": 70480
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 126,
+        "width": 365,
+        "height": 373,
+        "margin": 126,
+        "opaque": 70413
+      },
+      {
+        "frame": 3,
+        "left": 136,
+        "top": 126,
+        "width": 360,
+        "height": 376,
+        "margin": 125,
+        "opaque": 71795
+      }
+    ]
+  },
+  {
+    "id": "galaxy-nova",
+    "storage_path": "fish/epic/galaxy-nova_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-nova.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 104,
+        "top": 114,
+        "width": 450,
+        "height": 380,
+        "margin": 73,
+        "opaque": 89380
+      },
+      {
+        "frame": 1,
+        "left": 63,
+        "top": 114,
+        "width": 488,
+        "height": 374,
+        "margin": 63,
+        "opaque": 90049
+      },
+      {
+        "frame": 2,
+        "left": 104,
+        "top": 113,
+        "width": 450,
+        "height": 380,
+        "margin": 73,
+        "opaque": 89351
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 113,
+        "width": 422,
+        "height": 383,
+        "margin": 77,
+        "opaque": 86496
+      }
+    ]
+  },
+  {
+    "id": "galaxy-orbis",
+    "storage_path": "fish/epic/galaxy-orbis_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-orbis.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 81,
+        "top": 112,
+        "width": 484,
+        "height": 408,
+        "margin": 62,
+        "opaque": 123490
+      },
+      {
+        "frame": 1,
+        "left": 40,
+        "top": 112,
+        "width": 530,
+        "height": 396,
+        "margin": 40,
+        "opaque": 131164
+      },
+      {
+        "frame": 2,
+        "left": 74,
+        "top": 112,
+        "width": 495,
+        "height": 409,
+        "margin": 58,
+        "opaque": 125241
+      },
+      {
+        "frame": 3,
+        "left": 69,
+        "top": 111,
+        "width": 513,
+        "height": 402,
+        "margin": 45,
+        "opaque": 125422
+      }
+    ]
+  },
+  {
+    "id": "galaxy-entropy",
+    "storage_path": "fish/epic/galaxy-entropy_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-entropy.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 109,
+        "top": 146,
+        "width": 396,
+        "height": 319,
+        "margin": 109,
+        "opaque": 73750
+      },
+      {
+        "frame": 1,
+        "left": 108,
+        "top": 146,
+        "width": 397,
+        "height": 318,
+        "margin": 108,
+        "opaque": 72410
+      },
+      {
+        "frame": 2,
+        "left": 109,
+        "top": 146,
+        "width": 403,
+        "height": 319,
+        "margin": 109,
+        "opaque": 73854
+      },
+      {
+        "frame": 3,
+        "left": 107,
+        "top": 146,
+        "width": 398,
+        "height": 319,
+        "margin": 107,
+        "opaque": 74149
+      }
+    ]
+  },
+  {
+    "id": "galaxy-station-hermit",
+    "storage_path": "fish/epic/galaxy-station-hermit_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-station-hermit.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 76,
+        "top": 100,
+        "width": 495,
+        "height": 411,
+        "margin": 56,
+        "opaque": 105253
+      },
+      {
+        "frame": 1,
+        "left": 50,
+        "top": 99,
+        "width": 502,
+        "height": 396,
+        "margin": 50,
+        "opaque": 101158
+      },
+      {
+        "frame": 2,
+        "left": 76,
+        "top": 73,
+        "width": 499,
+        "height": 410,
+        "margin": 52,
+        "opaque": 103154
+      },
+      {
+        "frame": 3,
+        "left": 50,
+        "top": 73,
+        "width": 498,
+        "height": 409,
+        "margin": 50,
+        "opaque": 104372
+      }
+    ]
+  },
+  {
+    "id": "galaxy-ufo-pongi",
+    "storage_path": "fish/epic/galaxy-ufo-pongi_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-ufo-pongi.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120539
+      },
+      {
+        "frame": 1,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120407
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120521
+      },
+      {
+        "frame": 3,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120413
+      }
+    ]
+  },
+  {
+    "id": "galaxy-astronaut-pongi",
+    "storage_path": "fish/epic/galaxy-astronaut-pongi_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-astronaut-pongi.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 124,
+        "top": 71,
+        "width": 393,
+        "height": 478,
+        "margin": 71,
+        "opaque": 116707
+      },
+      {
+        "frame": 1,
+        "left": 120,
+        "top": 71,
+        "width": 397,
+        "height": 478,
+        "margin": 71,
+        "opaque": 117410
+      },
+      {
+        "frame": 2,
+        "left": 124,
+        "top": 70,
+        "width": 393,
+        "height": 478,
+        "margin": 70,
+        "opaque": 116800
+      },
+      {
+        "frame": 3,
+        "left": 108,
+        "top": 70,
+        "width": 409,
+        "height": 477,
+        "margin": 70,
+        "opaque": 116023
+      }
+    ]
+  },
+  {
+    "id": "galaxy-necropolis",
+    "storage_path": "fish/mythic/galaxy-necropolis_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-necropolis.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 78,
+        "top": 106,
+        "width": 294,
+        "height": 237,
+        "margin": 72,
+        "opaque": 28512
+      },
+      {
+        "frame": 1,
+        "left": 76,
+        "top": 105,
+        "width": 297,
+        "height": 238,
+        "margin": 71,
+        "opaque": 29290
+      },
+      {
+        "frame": 2,
+        "left": 72,
+        "top": 100,
+        "width": 302,
+        "height": 244,
+        "margin": 70,
+        "opaque": 30982
+      },
+      {
+        "frame": 3,
+        "left": 77,
+        "top": 105,
+        "width": 296,
+        "height": 238,
+        "margin": 71,
+        "opaque": 29173
+      },
+      {
+        "frame": 4,
+        "left": 77,
+        "top": 107,
+        "width": 294,
+        "height": 230,
+        "margin": 73,
+        "opaque": 27984
+      },
+      {
+        "frame": 5,
+        "left": 68,
+        "top": 103,
+        "width": 308,
+        "height": 243,
+        "margin": 68,
+        "opaque": 37226
+      },
+      {
+        "frame": 6,
+        "left": 75,
+        "top": 105,
+        "width": 296,
+        "height": 239,
+        "margin": 73,
+        "opaque": 30034
+      },
+      {
+        "frame": 7,
+        "left": 77,
+        "top": 106,
+        "width": 296,
+        "height": 234,
+        "margin": 71,
+        "opaque": 28547
+      }
+    ]
+  },
+  {
+    "id": "galaxy-genesis",
+    "storage_path": "fish/mythic/galaxy-genesis_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-genesis.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 78,
+        "top": 106,
+        "width": 287,
+        "height": 224,
+        "margin": 78,
+        "opaque": 31321
+      },
+      {
+        "frame": 1,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 224,
+        "margin": 78,
+        "opaque": 32260
+      },
+      {
+        "frame": 2,
+        "left": 79,
+        "top": 106,
+        "width": 286,
+        "height": 225,
+        "margin": 79,
+        "opaque": 32842
+      },
+      {
+        "frame": 3,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 215,
+        "margin": 78,
+        "opaque": 31060
+      },
+      {
+        "frame": 4,
+        "left": 79,
+        "top": 105,
+        "width": 286,
+        "height": 216,
+        "margin": 79,
+        "opaque": 31109
+      },
+      {
+        "frame": 5,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 228,
+        "margin": 78,
+        "opaque": 32424
+      },
+      {
+        "frame": 6,
+        "left": 79,
+        "top": 105,
+        "width": 286,
+        "height": 219,
+        "margin": 79,
+        "opaque": 31411
+      },
+      {
+        "frame": 7,
+        "left": 78,
+        "top": 105,
+        "width": 286,
+        "height": 225,
+        "margin": 78,
+        "opaque": 31243
+      }
+    ]
+  },
+  {
+    "id": "galaxy-ananke",
+    "storage_path": "fish/mythic/galaxy-ananke_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-ananke.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 126,
+        "top": 112,
+        "width": 193,
+        "height": 232,
+        "margin": 100,
+        "opaque": 27004
+      },
+      {
+        "frame": 1,
+        "left": 126,
+        "top": 112,
+        "width": 197,
+        "height": 232,
+        "margin": 100,
+        "opaque": 27535
+      },
+      {
+        "frame": 2,
+        "left": 126,
+        "top": 111,
+        "width": 198,
+        "height": 232,
+        "margin": 101,
+        "opaque": 27692
+      },
+      {
+        "frame": 3,
+        "left": 125,
+        "top": 111,
+        "width": 197,
+        "height": 232,
+        "margin": 101,
+        "opaque": 27652
+      },
+      {
+        "frame": 4,
+        "left": 118,
+        "top": 110,
+        "width": 201,
+        "height": 234,
+        "margin": 100,
+        "opaque": 27841
+      },
+      {
+        "frame": 5,
+        "left": 117,
+        "top": 109,
+        "width": 214,
+        "height": 235,
+        "margin": 100,
+        "opaque": 29024
+      },
+      {
+        "frame": 6,
+        "left": 125,
+        "top": 110,
+        "width": 200,
+        "height": 232,
+        "margin": 102,
+        "opaque": 27949
+      },
+      {
+        "frame": 7,
+        "left": 125,
+        "top": 111,
+        "width": 193,
+        "height": 233,
+        "margin": 100,
+        "opaque": 27095
+      }
+    ]
+  },
+  {
+    "id": "galaxy-apocalypsis",
+    "storage_path": "fish/mythic/galaxy-apocalypsis_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-apocalypsis.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 73,
+        "top": 93,
+        "width": 291,
+        "height": 290,
+        "margin": 61,
+        "opaque": 44808
+      },
+      {
+        "frame": 1,
+        "left": 70,
+        "top": 93,
+        "width": 291,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45564
+      },
+      {
+        "frame": 2,
+        "left": 68,
+        "top": 92,
+        "width": 298,
+        "height": 291,
+        "margin": 61,
+        "opaque": 46265
+      },
+      {
+        "frame": 3,
+        "left": 73,
+        "top": 93,
+        "width": 292,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45246
+      },
+      {
+        "frame": 4,
+        "left": 76,
+        "top": 93,
+        "width": 288,
+        "height": 290,
+        "margin": 61,
+        "opaque": 44758
+      },
+      {
+        "frame": 5,
+        "left": 41,
+        "top": 92,
+        "width": 359,
+        "height": 291,
+        "margin": 41,
+        "opaque": 51495
+      },
+      {
+        "frame": 6,
+        "left": 73,
+        "top": 93,
+        "width": 293,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45683
+      },
+      {
+        "frame": 7,
+        "left": 73,
+        "top": 93,
+        "width": 292,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45007
+      }
+    ]
+  },
+  {
+    "id": "galaxy-eos",
+    "storage_path": "fish/mythic/galaxy-eos_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-eos.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 134,
+        "top": 119,
+        "width": 176,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22179
+      },
+      {
+        "frame": 1,
+        "left": 130,
+        "top": 119,
+        "width": 180,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22253
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 119,
+        "width": 178,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22600
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 119,
+        "width": 179,
+        "height": 205,
+        "margin": 119,
+        "opaque": 21858
+      },
+      {
+        "frame": 4,
+        "left": 136,
+        "top": 119,
+        "width": 166,
+        "height": 204,
+        "margin": 119,
+        "opaque": 22041
+      },
+      {
+        "frame": 5,
+        "left": 137,
+        "top": 120,
+        "width": 175,
+        "height": 203,
+        "margin": 120,
+        "opaque": 22127
+      },
+      {
+        "frame": 6,
+        "left": 133,
+        "top": 119,
+        "width": 175,
+        "height": 204,
+        "margin": 119,
+        "opaque": 22192
+      },
+      {
+        "frame": 7,
+        "left": 132,
+        "top": 120,
+        "width": 177,
+        "height": 203,
+        "margin": 120,
+        "opaque": 22059
+      }
+    ]
+  },
+  {
+    "id": "galaxy-pongi-control-tower",
+    "storage_path": "fish/mythic/galaxy-pongi-control-tower_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-pongi-control-tower.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 132,
+        "top": 85,
+        "width": 178,
+        "height": 273,
+        "margin": 85,
+        "opaque": 31575
+      },
+      {
+        "frame": 1,
+        "left": 128,
+        "top": 80,
+        "width": 182,
+        "height": 278,
+        "margin": 80,
+        "opaque": 32237
+      },
+      {
+        "frame": 2,
+        "left": 130,
+        "top": 77,
+        "width": 179,
+        "height": 281,
+        "margin": 77,
+        "opaque": 31796
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 76,
+        "width": 179,
+        "height": 282,
+        "margin": 76,
+        "opaque": 31457
+      },
+      {
+        "frame": 4,
+        "left": 132,
+        "top": 80,
+        "width": 176,
+        "height": 277,
+        "margin": 80,
+        "opaque": 31606
+      },
+      {
+        "frame": 5,
+        "left": 114,
+        "top": 57,
+        "width": 212,
+        "height": 301,
+        "margin": 57,
+        "opaque": 36374
+      },
+      {
+        "frame": 6,
+        "left": 128,
+        "top": 76,
+        "width": 186,
+        "height": 282,
+        "margin": 76,
+        "opaque": 32866
+      },
+      {
+        "frame": 7,
+        "left": 131,
+        "top": 85,
+        "width": 178,
+        "height": 272,
+        "margin": 85,
+        "opaque": 31633
+      }
+    ]
+  },
+  {
+    "id": "galaxy-pongi-moon-base",
+    "storage_path": "fish/mythic/galaxy-pongi-moon-base_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-pongi-moon-base.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35058
+      },
+      {
+        "frame": 1,
+        "left": 98,
+        "top": 119,
+        "width": 247,
+        "height": 206,
+        "margin": 98,
+        "opaque": 35500
+      },
+      {
+        "frame": 2,
+        "left": 99,
+        "top": 119,
+        "width": 246,
+        "height": 206,
+        "margin": 99,
+        "opaque": 35611
+      },
+      {
+        "frame": 3,
+        "left": 99,
+        "top": 119,
+        "width": 245,
+        "height": 206,
+        "margin": 99,
+        "opaque": 35257
+      },
+      {
+        "frame": 4,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35104
+      },
+      {
+        "frame": 5,
+        "left": 98,
+        "top": 119,
+        "width": 247,
+        "height": 206,
+        "margin": 98,
+        "opaque": 35550
+      },
+      {
+        "frame": 6,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35116
+      },
+      {
+        "frame": 7,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35028
+      }
+    ]
+  }
+]

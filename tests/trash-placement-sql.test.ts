@@ -46,10 +46,20 @@ it('enforces ownership, live tank membership and valid transforms',async()=>{
  await db.query('update public.player_collectibles set tank_id=null where id=$1',[item])
  await expect(arrange()).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
 })
-it('keeps freely swimming fish ineligible and locks exclusive to trash',async()=>{
+it('allows fish locks and keeps decorations ineligible for optional locking',async()=>{
  await db.query("update public.player_collectibles set species_id='orange-clownfish' where id=$1",[item])
- await expect(arrange()).rejects.toThrow('INVALID_ITEM')
+ await expect(arrange()).resolves.toBeTruthy()
  await db.query("update public.player_collectibles set species_id='rusty-mini-anchor' where id=$1",[item])
  await expect(arrange()).rejects.toThrow('INVALID_ITEM')
  await expect(arrange(owner,false)).resolves.toBeTruthy()
+})
+it('persists fish locks and dragging without changing their species movement, then unlocks',async()=>{
+ await db.query("update public.player_collectibles set species_id='orange-clownfish' where id=$1",[item])
+ expect((await arrange()).rows[0].value.position_locked).toBe(true)
+ await user(owner,'select public.place_collectible($1,$2,.7,.8)',[item,tank])
+ const state=(await user(owner,'select public.aquarium_state() value')).rows[0].value
+ expect(state.inhabitants.find(c=>c.id===item)).toMatchObject({position_x:.7,position_y:.8,position_locked:true,species:{movement_type:'swim'}})
+ await expect(arrange(other)).rejects.toThrow('TANK_NOT_FOUND')
+ await arrange(owner,false)
+ expect((await user(owner,'select public.aquarium_state() value')).rows[0].value.inhabitants.find(c=>c.id===item).position_locked).toBe(false)
 })

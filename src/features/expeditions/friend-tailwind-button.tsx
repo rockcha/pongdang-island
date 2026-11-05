@@ -23,7 +23,6 @@ export function FriendTailwindButton({nickname,status,statusError=false,expanded
    const data=await boostFriendExpedition(trip)
    if(!alive.current)return
    onBoost(data);pending.current=null
-   toast.success(`${nickname}님의 통발에 물고기를 유인했어요.`)
   }catch(cause){if(alive.current){const message=String((cause as {message?:string})?.message??'');toast.error(message.includes('FRIENDSHIP_REQUIRED')?'현재 친구인 주민의 통발만 도울 수 있어요.':message.includes('EXPEDITION_NOT_SAILING')||message.includes('EXPEDITION_NOT_FOUND')?'이미 수확 준비가 끝난 통발이에요.':message.includes('PGRST202')?'물고기 유인 업데이트가 아직 서버에 반영되지 않았어요.':'물고기를 유인하지 못했어요. 다시 시도해주세요.')}}
   finally{locked.current=false;if(alive.current)setBusy(false)}
  }

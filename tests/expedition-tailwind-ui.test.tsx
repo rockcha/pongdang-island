@@ -3,7 +3,8 @@ import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {FriendTailwindButton} from '@/features/expeditions/friend-tailwind-button'
 import {ActiveExpeditionCard} from '@/features/expeditions/active-expedition-card'
 import {useFriendExpeditions} from '@/features/expeditions/use-friend-expeditions'
-const mock=vi.hoisted(()=>({boost:vi.fn(),load:vi.fn()}))
+const mock=vi.hoisted(()=>({boost:vi.fn(),load:vi.fn(),success:vi.fn(),error:vi.fn()}))
+vi.mock('sonner',()=>({toast:{success:mock.success,error:mock.error}}))
 vi.mock('@/features/expeditions/api',()=>({boostFriendExpedition:mock.boost,loadFriendExpeditions:mock.load}))
 vi.mock('@/features/expeditions/expedition-controls',()=>({BoatImage:({name}:{name:string})=><img alt={name}/>}))
 vi.mock('@/features/profile/player-avatar',()=>({PlayerAvatar:()=>null}))
@@ -37,6 +38,8 @@ it('helps immediately and retries the exact original trip after an uncertain res
  fireEvent.click(screen.getByRole('button',{name:'바다친구님 물고기 유인하기'}))
  await waitFor(()=>expect(apply).toHaveBeenCalledWith(reply))
  expect(mock.boost.mock.calls).toEqual([['trip'],['trip']])
+ expect(mock.success).not.toHaveBeenCalled()
+ expect(mock.error).toHaveBeenCalledTimes(1)
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
 })
 it('shows the destination, individual baits and expandable helper history without the removed text',()=>{

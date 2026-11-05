@@ -12,6 +12,7 @@ import {waitingFloatRipples} from './waiting-float-ripples'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
+ galaxy:{top:'#11182e',bottom:'#050916',light:'#d9d7f1'},
  hangang:{top:'#153b59',bottom:'#091d36',light:'#f4d89c'},
  pharaoh:{top:'#d7a750',bottom:'#93662b',light:'#fff0be'},
  firefly:{top:'#287e76',bottom:'#164b49',light:'#e8d990'},

@@ -3,19 +3,17 @@ import {type CropKind} from './crop-catalog'
 import {farmBuildingArtPath} from './building-art'
 import {FarmPlotArt} from './plot-art'
 import {farmAnimalArt} from './animal-art'
+import {farmDecorationArt} from './decoration-art'
 
 // Orthogonal ground footprints with a visible front face, shared by every test object.
 export function TopviewArt({kind,stage='empty',crop='wheat',progress}:{kind:FarmTool;stage?:'empty'|'growing'|'ready'|'rotten';crop?:CropKind;progress?:number}){
  if(kind==='cow'||kind==='chicken'){const art=farmAnimalArt[kind];return <svg viewBox={art.viewBox} aria-hidden="true"><image href={art.path} width="512" height="512"/></svg>}
  const building=farmBuildingArtPath(kind)
  if(building)return <svg viewBox="0 0 120 120" aria-hidden="true"><image href={building} width="120" height="120" preserveAspectRatio="xMidYMid meet"/></svg>
+ const decoration=farmDecorationArt[kind as keyof typeof farmDecorationArt]
+ if(decoration)return <svg viewBox={decoration.viewBox} preserveAspectRatio="xMidYMax meet" aria-hidden="true" data-farm-decoration={kind}><image href={decoration.path} width="512" height="512"/></svg>
  if(kind==='plot')return <FarmPlotArt stage={stage} crop={crop} progress={progress}/>
  if(kind==='sheep')return <LegacyAnimalArt kind={kind}/>
- if(kind==='tree')return <svg viewBox="0 0 90 110" overflow="visible" aria-hidden="true"><ellipse cx="46" cy="98" rx="30" ry="8" fill="#355330" opacity=".17"/><path d="m36 95 5-48h12l5 48 7 6H30Z" fill="#987048"/><path d="m47 75 18-17M45 60 30 45" stroke="#805b3d" strokeWidth="5"/>{[[45,26,25],[25,43,22],[65,43,23],[42,52,27]].map(([x,y,r],i)=><circle key={i} cx={x} cy={y} r={r} fill={['#6d984e','#5b8644','#789e53','#648d46'][i]} stroke="#52793e" strokeWidth="1.5"/>)}<path d="M27 27q12-16 28-10M18 43l8-5M37 47l12-5" fill="none" stroke="#a1ba68" strokeWidth="4" strokeLinecap="round"/></svg>
- if(kind==='pond')return <svg viewBox="0 0 120 80" aria-hidden="true"><path d="M9 30Q15 5 47 12T100 16q24 18 8 42T59 66Q3 77 9 30" fill="#a0ac76"/><path d="M16 32Q20 12 48 19t47 3q17 14 7 31T58 59Q9 68 16 32" fill="#80b7ad" stroke="#d5cf9c" strokeWidth="3"/><path d="M27 35h18m16 16h21m-14-22h18" stroke="#bce1cf" strokeWidth="2" strokeLinecap="round"/><ellipse cx="35" cy="48" rx="9" ry="4" fill="#749658"/><circle cx="38" cy="46" r="3" fill="#e7c1a1"/></svg>
- if(kind==='fence')return <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 13h32v5H4Zm0 13h32v5H4Z" fill="#e8d9b8" stroke="#aa946e"/><path d="M3 35V8l4-5 4 5v27m18 0V8l4-5 4 5v27" fill="#fff1d0" stroke="#aa946e"/></svg>
- if(kind==='bench')return <svg viewBox="0 0 80 40" aria-hidden="true"><path d="M12 12v23m56-23v23" stroke="#696f51" strokeWidth="5"/><path d="M7 5h66v13H7Zm0 17h66v8H7Z" fill="#bb905f" stroke="#8e6a45" strokeWidth="2"/><path d="M10 11h60" stroke="#d9b582" strokeWidth="2"/></svg>
- if(kind==='flowers')return <svg viewBox="0 0 40 40" aria-hidden="true">{[[10,17],[25,10],[27,29]].map(([x,y],i)=><g key={i}><path d={`M${x} ${y}v12`} stroke="#6f894b" strokeWidth="3"/><circle cx={x} cy={y} r="6" fill={['#e9b297','#e5c86c','#d5a6af'][i]}/><circle cx={x} cy={y} r="2" fill="#fbefd2"/></g>)}</svg>
  return <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="3" width="38" height="34" rx="4" fill="#9e754d"/>{[10,21,32].map(x=><g key={x}><path d={`M${x} 7v26`} stroke="#6f5138" strokeWidth="2"/>{stage!=='empty'&&[13,25].map(y=><g key={y}><path d={`M${x} ${y}l-5-4m5 4 5-4`} stroke={stage==='ready'&&crop==='wheat'?'#d9bc63':'#78984c'} strokeWidth="3" strokeLinecap="round"/>{stage==='ready'&&<circle cx={x} cy={y+2} r="3" fill={crop==='potato'?'#b9a17b':'#d8b65a'}/>}</g>)}</g>)}</svg>
 }
 

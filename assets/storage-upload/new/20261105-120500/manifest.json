@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "galaxy-ananke",
+      "name": "운명을 엮는 자, 아난케",
+      "kind": "fish",
+      "rarity": "mythic",
+      "frames": 8,
+      "thumbnail_path": "fish/mythic/galaxy-ananke_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/galaxy-ananke_swim8_v2_sprite.png"
+    }
+  ],
+  "references": {
+    "identity": "sources/galaxy-ananke-thumbnail.source",
+    "style": "assets/references/collectible-style/epic-mythic-starlight.png",
+    "placement": "placement-guide.png"
+  },
+  "sprite_prompt": "Animation sprite sheet: EXACT swimming Ananke goddess from input 1. Input 1 identity; input 2 PLACEMENT GUIDE ONLY, do not copy same stills. Four columns two rows, eight square cells, overall aspect 2:1. All poses face RIGHT, upper torso forward, hips and long lower body trail diagonally lower LEFT like swimming underwater, never standing vertical. Same face, violet gown, lavender hair, orbital crown and golden planet threads. Each whole character occupies central 60% of cell, transparent margin minimum 15% on EVERY side, matching guide's scale and head/torso position. First four poses: distinct gentle connected S-wave in skirt/lower legs and flowing hair; stable face and torso, no bobbing. Last four: anticipate by drawing threads in, lift planets gently, release, neutral recovery matching frame 1. Keep hands almost stable with subtle finger articulation; restrained changes to avoid jumps. No zoom, no body drift, no duplicated stills, no text/grid/background. True clean transparent alpha, no floating dust, glow close to surface. Preserve character identity and right-facing swimming posture in ALL 8 cells.",
+  "scope": "Local only. No remote database mutation or Storage upload.",
+  "motion": "Right-facing swimming full body, stable torso; skirt/hair waves; gentle thread-weaving action and recovery."
+}

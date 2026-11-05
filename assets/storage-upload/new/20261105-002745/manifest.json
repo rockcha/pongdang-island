@@ -1,0 +1,441 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local farm plot artwork and foreground layers; no DB, catalog, or remote upload",
+  "composition": {
+    "canvasSize": 512,
+    "soil": "One identical opaque full-bleed square under every stage",
+    "foreground": "Separate transparent PNG; visible alpha bounds centered on both axes",
+    "targetCenter": {
+      "x": 256,
+      "y": 256
+    },
+    "registrationAlphaThreshold": 8,
+    "maximumCenterError": 0
+  },
+  "items": [
+    {
+      "id": "empty",
+      "layer": "soil",
+      "generatedSource": "sources/empty-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/empty.png",
+      "references": [
+        "public/farm/art/v7/plots/empty.png"
+      ],
+      "prompt": "Generate ONE new square cultivated EARTH TEXTURE tile for a cozy hand-painted farming game. Attached image is a PALETTE AND SOFT PAINTED SOIL STYLE REFERENCE ONLY; do NOT copy its trapezoidal outline, tilted camera, rounded extruded block, or any perspective. CRITICAL GEOMETRY: camera looks EXACTLY straight down, orthographic 90-degree top-down plan view. The output is a completely OPAQUE FULL-BLEED PERFECT SQUARE MATERIAL, every pixel all the way to all four straight image edges is earth. The whole square image itself is the farm plot, not a smaller object on a background. Top and bottom widths exactly equal, left and right edges exactly parallel and vertical, horizontal top and bottom, no taper whatsoever. Warm softly painted cocoa-brown cultivated soil, slightly muted, subtle fine natural texture, THREE shallow horizontal planting furrows spaced evenly from top to bottom, each furrow extending straight across the square with consistent thickness, softly shaded depressions in a flat soil surface. A few tiny earth crumbs, restrained detail readable at 40 pixels. No plants, no seeds, no mound in the center, no roots, no border, no frame, no perspective side face, no drop shadow, no grass, no stones around edges, no planter box, no bread or wooden planks, no scene, no writing. Perfect square canvas, no padding, no transparency.",
+      "targetExtent": 512,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "opaqueFullSquare": true,
+        "padding": 0
+      },
+      "sourceSha256": "31e96b3dea683e296c0b409d86328e4dcddf96db56c8ffef9fd1fa2bd18224a0",
+      "sha256": "ac9991266539512941313fce8d3f76a04c416cd28de5f239f5e09092d9df9f83"
+    },
+    {
+      "id": "sown",
+      "layer": "crop",
+      "generatedSource": "sources/sown-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/sown.png",
+      "references": [
+        "public/farm/art/v7/plots/sown.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent foreground overlay. Keep ONLY the single cream seed and the tiny moist earth ring immediately cupping that seed in the center. Remove the ENTIRE large square soil tile, every furrow, every large earth surface, every border and all other soil. The result is just one visibly half-buried pale cream seed with a very compact dark earth collar, isolated on real alpha transparency. Preserve the reference seed's warm softly painted cartoon shape and colors, keep it large and clearly readable. Do not draw a new background or a replacement soil tile. No leaves or sprout. The seed and its tiny collar should be centered as one small self-contained motif, ample transparent margins, no loose detached pixels, no text, checkerboard, white/black matte or shadow. Square canvas.",
+      "targetExtent": 164,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 460,
+          "top": 461,
+          "width": 325,
+          "height": 268
+        },
+        "uniformScale": true,
+        "normalizedExtent": 154,
+        "resizedWidth": 154,
+        "resizedHeight": 127,
+        "offset": {
+          "left": 179,
+          "top": 193
+        },
+        "visibleBounds": {
+          "left": 181,
+          "top": 194,
+          "right": 330,
+          "bottom": 317,
+          "width": 150,
+          "height": 124,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "90e315e38b0d30c820765532c142f561aa55a3f34147bfa78e758e25478754d5",
+      "sha256": "e6001de4f293f2ef6ad7f62190368e3ddb90843fa50b0691a1ae1d95e072f9bc"
+    },
+    {
+      "id": "stem",
+      "layer": "crop",
+      "generatedSource": "sources/stem-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/stem.png",
+      "references": [
+        "public/farm/art/v7/plots/stem.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent foreground overlay. Preserve ONLY the SINGLE existing young green plant: one upright stem, two broad side leaves, the little upper bud, and its tiny root collar. Remove the ENTIRE square brown soil tile, all furrows, all large earth surfaces, the soil outline and every other background part. The plant must float on genuine clean alpha transparency, ready to be overlaid on a separate soil tile. Keep the reference's softly painted botanical cartoon anatomy and warm colors, no additional plants or leaves. The WHOLE visible plant from bud tip through leaf tips to root collar is centered in both X and Y within the square canvas, not just its roots. Generous transparent padding on all sides. No soil plate, pot, ground slab, grass, scene, lettering, checkerboard, white/black background, matte fringe or cast shadow.",
+      "targetExtent": 328,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 225,
+          "top": 169,
+          "width": 778,
+          "height": 892
+        },
+        "uniformScale": true,
+        "normalizedExtent": 328,
+        "resizedWidth": 286,
+        "resizedHeight": 328,
+        "offset": {
+          "left": 113,
+          "top": 92
+        },
+        "visibleBounds": {
+          "left": 114,
+          "top": 93,
+          "right": 397,
+          "bottom": 418,
+          "width": 284,
+          "height": 326,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "66e10f127be3f633df79467043da7ee53a23f995ad0b490df5ce79467b3c616c",
+      "sha256": "b58e51585802cacfbad0a09ea69777868123640f834618f4e46d350423d6a89b"
+    },
+    {
+      "id": "wheat-ready",
+      "layer": "crop",
+      "generatedSource": "sources/wheat-ready-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/wheat-ready.png",
+      "references": [
+        "public/farm/art/v7/plots/wheat-ready.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent FOREGROUND PLANT OVERLAY. Preserve ONLY the single golden wheat stalk, its ONE large grain ear, narrow leaves and very small root collar. Preserve the reference plant's warm softly painted cartoon rendering, anatomy, colors, recognizable fruit and leaves. REMOVE the ENTIRE square brown earth tile: no large soil surface, no furrows, no ground plate, no outline of the soil tile, no bottom earth layer. A few tiny crumbs touching the roots are allowed, but no separate mound or earth background. This must be a clean single botanical motif on genuine alpha transparency, to sit on top of a separately rendered soil tile. Do not add fruits or create multiple plants. Fit the complete plant with every leaf tip and root visible, generous transparent margins. Center the visual bounding box of the WHOLE plant on both X and Y axes, not just its root attachment point. Square transparent canvas. No pot, planter, grass, scenery, ground shadow, text, checkerboard, white/black matte or detached pixels.",
+      "targetExtent": 384,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 220,
+          "top": 86,
+          "width": 796,
+          "height": 1019
+        },
+        "uniformScale": true,
+        "normalizedExtent": 384,
+        "resizedWidth": 300,
+        "resizedHeight": 384,
+        "offset": {
+          "left": 106,
+          "top": 64
+        },
+        "visibleBounds": {
+          "left": 107,
+          "top": 65,
+          "right": 404,
+          "bottom": 446,
+          "width": 298,
+          "height": 382,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "9456d8f6c9bab5ab70743fcb2116f073b7ec9f04069d3930ca33f64dae7b26fd",
+      "sha256": "3925efacf2b5e55a4299a27184c189d44bd165c337b7cf67a1fe5b21ebdbd318"
+    },
+    {
+      "id": "potato-ready",
+      "layer": "crop",
+      "generatedSource": "sources/potato-ready-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/potato-ready.png",
+      "references": [
+        "public/farm/art/v7/plots/potato-ready.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent FOREGROUND PLANT OVERLAY. Preserve ONLY the single potato plant with broad green leaves, pale potato flowers, and the ONE large golden-tan potato at its base. The potato tuber is PART OF THE PLANT and must remain. Preserve the reference plant's warm softly painted cartoon rendering, anatomy, colors, recognizable fruit and leaves. REMOVE the ENTIRE square brown earth tile: no large soil surface, no furrows, no ground plate, no outline of the soil tile, no bottom earth layer. A few tiny crumbs touching the roots are allowed, but no separate mound or earth background. This must be a clean single botanical motif on genuine alpha transparency, to sit on top of a separately rendered soil tile. Do not add fruits or create multiple plants. Fit the complete plant with every leaf tip and root visible, generous transparent margins. Center the visual bounding box of the WHOLE plant on both X and Y axes, not just its root attachment point. Square transparent canvas. No pot, planter, grass, scenery, ground shadow, text, checkerboard, white/black matte or detached pixels.",
+      "targetExtent": 384,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 134,
+          "top": 62,
+          "width": 981,
+          "height": 1130
+        },
+        "uniformScale": true,
+        "normalizedExtent": 382,
+        "resizedWidth": 332,
+        "resizedHeight": 382,
+        "offset": {
+          "left": 90,
+          "top": 65
+        },
+        "visibleBounds": {
+          "left": 91,
+          "top": 66,
+          "right": 420,
+          "bottom": 445,
+          "width": 330,
+          "height": 380,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "62e944b5569c0e79937893fe479ada9d61c6bafa2454c7eb156df03f278cf7b6",
+      "sha256": "3cf107b37352c93614409d66b51515a13fabeb0efca5574b1508da5cd3cbfa2e"
+    },
+    {
+      "id": "sweetPotato-ready",
+      "layer": "crop",
+      "generatedSource": "sources/sweetPotato-ready-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/sweetPotato-ready.png",
+      "references": [
+        "public/farm/art/v7/plots/sweetPotato-ready.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent FOREGROUND PLANT OVERLAY. Preserve ONLY the single sweet-potato plant with its heart-shaped green leaves and ONE prominent rosy-purple sweet potato root. The purple root is PART OF THE PLANT and must remain. Preserve the reference plant's warm softly painted cartoon rendering, anatomy, colors, recognizable fruit and leaves. REMOVE the ENTIRE square brown earth tile: no large soil surface, no furrows, no ground plate, no outline of the soil tile, no bottom earth layer. A few tiny crumbs touching the roots are allowed, but no separate mound or earth background. This must be a clean single botanical motif on genuine alpha transparency, to sit on top of a separately rendered soil tile. Do not add fruits or create multiple plants. Fit the complete plant with every leaf tip and root visible, generous transparent margins. Center the visual bounding box of the WHOLE plant on both X and Y axes, not just its root attachment point. Square transparent canvas. No pot, planter, grass, scenery, ground shadow, text, checkerboard, white/black matte or detached pixels.",
+      "targetExtent": 384,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 161,
+          "top": 49,
+          "width": 923,
+          "height": 1142
+        },
+        "uniformScale": true,
+        "normalizedExtent": 384,
+        "resizedWidth": 310,
+        "resizedHeight": 384,
+        "offset": {
+          "left": 101,
+          "top": 64
+        },
+        "visibleBounds": {
+          "left": 102,
+          "top": 65,
+          "right": 409,
+          "bottom": 446,
+          "width": 308,
+          "height": 382,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "4fb45a5bf106fdb659d071569c48ecc2dee762e027de938879d6f138e7529bb2",
+      "sha256": "767146d47537925b6c969cab013510adb15464e47f95dc58194a2546782181c6"
+    },
+    {
+      "id": "carrot-ready",
+      "layer": "crop",
+      "generatedSource": "sources/carrot-ready-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/carrot-ready.png",
+      "references": [
+        "public/farm/art/v7/plots/carrot-ready.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent FOREGROUND PLANT OVERLAY. Preserve ONLY the single carrot plant with its feathery green foliage and ONE large orange carrot root. The orange root is PART OF THE PLANT and must remain. Preserve the reference plant's warm softly painted cartoon rendering, anatomy, colors, recognizable fruit and leaves. REMOVE the ENTIRE square brown earth tile: no large soil surface, no furrows, no ground plate, no outline of the soil tile, no bottom earth layer. A few tiny crumbs touching the roots are allowed, but no separate mound or earth background. This must be a clean single botanical motif on genuine alpha transparency, to sit on top of a separately rendered soil tile. Do not add fruits or create multiple plants. Fit the complete plant with every leaf tip and root visible, generous transparent margins. Center the visual bounding box of the WHOLE plant on both X and Y axes, not just its root attachment point. Square transparent canvas. No pot, planter, grass, scenery, ground shadow, text, checkerboard, white/black matte or detached pixels.",
+      "targetExtent": 384,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 148,
+          "top": 53,
+          "width": 952,
+          "height": 1127
+        },
+        "uniformScale": true,
+        "normalizedExtent": 384,
+        "resizedWidth": 324,
+        "resizedHeight": 384,
+        "offset": {
+          "left": 94,
+          "top": 64
+        },
+        "visibleBounds": {
+          "left": 95,
+          "top": 65,
+          "right": 416,
+          "bottom": 446,
+          "width": 322,
+          "height": 382,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "41b6989a8254bcf33634fcead03b23592c309caf64cd19d59e653d1f335c0a11",
+      "sha256": "7e7cd4e249b31ee34c43f94034518ba7cfa779e0e200ebf5b70cc4131795f818"
+    },
+    {
+      "id": "corn-ready",
+      "layer": "crop",
+      "generatedSource": "sources/corn-ready-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/corn-ready.png",
+      "references": [
+        "public/farm/art/v7/plots/corn-ready.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent FOREGROUND PLANT OVERLAY. Preserve ONLY the single upright corn plant with its ONE large yellow corn cob, green leaves, stem and small root collar. Preserve the reference plant's warm softly painted cartoon rendering, anatomy, colors, recognizable fruit and leaves. REMOVE the ENTIRE square brown earth tile: no large soil surface, no furrows, no ground plate, no outline of the soil tile, no bottom earth layer. A few tiny crumbs touching the roots are allowed, but no separate mound or earth background. This must be a clean single botanical motif on genuine alpha transparency, to sit on top of a separately rendered soil tile. Do not add fruits or create multiple plants. Fit the complete plant with every leaf tip and root visible, generous transparent margins. Center the visual bounding box of the WHOLE plant on both X and Y axes, not just its root attachment point. Square transparent canvas. No pot, planter, grass, scenery, ground shadow, text, checkerboard, white/black matte or detached pixels.",
+      "targetExtent": 384,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 233,
+          "top": 34,
+          "width": 761,
+          "height": 1111
+        },
+        "uniformScale": true,
+        "normalizedExtent": 384,
+        "resizedWidth": 263,
+        "resizedHeight": 384,
+        "offset": {
+          "left": 125,
+          "top": 64
+        },
+        "visibleBounds": {
+          "left": 126,
+          "top": 65,
+          "right": 385,
+          "bottom": 446,
+          "width": 260,
+          "height": 382,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "c53c5c5d50c2243c57be198ba18f722ff8633f124aa823695ded03248527b05b",
+      "sha256": "285baa474e8919a8eca4ab8e853bb31029b87d1627a4d60ef34e26ec66d8b6fa"
+    },
+    {
+      "id": "strawberry-ready",
+      "layer": "crop",
+      "generatedSource": "sources/strawberry-ready-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/strawberry-ready.png",
+      "references": [
+        "public/farm/art/v7/plots/strawberry-ready.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent FOREGROUND PLANT OVERLAY. Preserve ONLY the single strawberry plant with its green leaves, stems and ONE large red strawberry. Preserve the reference plant's warm softly painted cartoon rendering, anatomy, colors, recognizable fruit and leaves. REMOVE the ENTIRE square brown earth tile: no large soil surface, no furrows, no ground plate, no outline of the soil tile, no bottom earth layer. A few tiny crumbs touching the roots are allowed, but no separate mound or earth background. This must be a clean single botanical motif on genuine alpha transparency, to sit on top of a separately rendered soil tile. Do not add fruits or create multiple plants. Fit the complete plant with every leaf tip and root visible, generous transparent margins. Center the visual bounding box of the WHOLE plant on both X and Y axes, not just its root attachment point. Square transparent canvas. No pot, planter, grass, scenery, ground shadow, text, checkerboard, white/black matte or detached pixels.",
+      "targetExtent": 384,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 149,
+          "top": 72,
+          "width": 954,
+          "height": 1053
+        },
+        "uniformScale": true,
+        "normalizedExtent": 384,
+        "resizedWidth": 348,
+        "resizedHeight": 384,
+        "offset": {
+          "left": 82,
+          "top": 64
+        },
+        "visibleBounds": {
+          "left": 83,
+          "top": 65,
+          "right": 428,
+          "bottom": 446,
+          "width": 346,
+          "height": 382,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "e90b55284b08b072bec76bed7eb25a69ad6edf975913ca1fdac366ccf082de37",
+      "sha256": "1272668b4e9e1ce8d40df8a6ea9fe6e39c081a55c6e8335e52ae6d61867cf993"
+    },
+    {
+      "id": "tomato-ready",
+      "layer": "crop",
+      "generatedSource": "sources/tomato-ready-generated.source",
+      "thumbnail_path": "farm/art/v9/plots/tomato-ready.png",
+      "references": [
+        "public/farm/art/v7/plots/tomato-ready.png"
+      ],
+      "prompt": "Edit the attached farming game sprite into ONE transparent FOREGROUND PLANT OVERLAY. Preserve ONLY the single tomato plant with its green leaves, stems and ONE large red tomato. Preserve the reference plant's warm softly painted cartoon rendering, anatomy, colors, recognizable fruit and leaves. REMOVE the ENTIRE square brown earth tile: no large soil surface, no furrows, no ground plate, no outline of the soil tile, no bottom earth layer. A few tiny crumbs touching the roots are allowed, but no separate mound or earth background. This must be a clean single botanical motif on genuine alpha transparency, to sit on top of a separately rendered soil tile. Do not add fruits or create multiple plants. Fit the complete plant with every leaf tip and root visible, generous transparent margins. Center the visual bounding box of the WHOLE plant on both X and Y axes, not just its root attachment point. Square transparent canvas. No pot, planter, grass, scenery, ground shadow, text, checkerboard, white/black matte or detached pixels.",
+      "targetExtent": 384,
+      "layout": {
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "left": 192,
+          "top": 60,
+          "width": 860,
+          "height": 1099
+        },
+        "uniformScale": true,
+        "normalizedExtent": 384,
+        "resizedWidth": 300,
+        "resizedHeight": 384,
+        "offset": {
+          "left": 106,
+          "top": 64
+        },
+        "visibleBounds": {
+          "left": 107,
+          "top": 65,
+          "right": 404,
+          "bottom": 446,
+          "width": 298,
+          "height": 382,
+          "centerX": 256,
+          "centerY": 256
+        },
+        "centerError": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "sourceSha256": "b91a5b167a0ac567e7956ee3b17c16db4bb994c3b056588c773d457636177f8c",
+      "sha256": "c856f80b0b9db00eee7db5816e5d2641786fb2c9778b3ad7aea2703b3d049325"
+    }
+  ]
+}

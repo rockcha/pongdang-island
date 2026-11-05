@@ -24,7 +24,7 @@ export function tankWorldItem(item: OwnedCollectible, viewportWidth: number, col
   return { ...item, species: { ...item.species, size: Math.min(item.species.size, viewportWidth * .48), speed: Number(item.species.speed) / columns } }
 }
 export function tankItemSpace(item: OwnedCollectible, viewportWidth: number, columns: number, preserveArrangement = false) {
-  const local = columns > 1 && preserveArrangement && canArrangeSpecies(item.species)
+  const local = columns > 1 && preserveArrangement && canArrangeSpecies(item.species) && (item.species.kind!=='fish'||item.species.movement_type==='fixed'||item.position_locked===true)
   return { width: local ? viewportWidth : viewportWidth * columns, offset: local ? viewportWidth * (columns - 1) / 2 : 0, local }
 }
 

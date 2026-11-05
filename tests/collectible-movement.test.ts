@@ -131,3 +131,16 @@ it('pins trash at the saved location and manual rotation across taps, time and r
  expect(later.angle).not.toBe(released.angle)
  expect(Math.hypot(later.x-released.x,later.y-released.y)).toBeGreaterThan(0)
 })
+it('pins a swimmer without stopping animation, survives reload and swims again after release',()=>{
+ const fish={...item({kind:'fish',movement_type:'swim'}),position_x:.35,position_y:.55,position_locked:true}
+ const motion=new InhabitantMotion(fish),first={...motion.update(0,0,400,600)}
+ motion.flee(first.x,first.y,0,180)
+ const next={...motion.update(1,.1,400,600)}
+ expect(next.frame).not.toBe(first.frame)
+ expect({...next,frame:0}).toEqual({...first,frame:0})
+ expect(new InhabitantMotion(fish).update(1,0,400,600)).toEqual(next)
+ expect(motion.update(2,.1,400,600,true).frame).toBe(0)
+ motion.setItem({...fish,position_locked:false},3,400,600)
+ const released={...motion.update(3,.1,400,600)},later=motion.update(6,.1,400,600)
+ expect(Math.hypot(later.x-released.x,later.y-released.y)).toBeGreaterThan(0)
+})

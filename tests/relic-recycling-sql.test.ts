@@ -52,7 +52,7 @@ it('protects the equipped copy while allowing six spare copies',async()=>{
 it('rejects wrong grades, disabled relics, fabricated counts and unowned crafted relics without losing materials',async()=>{
  const rare=relics.find(r=>r.rarity==='rare'),epic=relics.find(r=>r.rarity==='epic'),mythic=relics.find(r=>r.rarity==='mythic')
  await reject('recombine',[{id:rare.id,quantity:3},{id:epic.id,quantity:3}],'RELIC_RECOMBINATION_GRADE')
- await reject('recombine',[{id:mythic.id,quantity:6}],'RELIC_RECOMBINATION_GRADE')
+ await reject('recombine',[{id:mythic.id,quantity:6}],'RELIC_RECOMBINATION_COUNT')
  for(const inputs of [null,{},[],[{id:rare.id,quantity:1.5}],[{id:rare.id,quantity:'6'}],[{id:rare.id,quantity:-6}],[{id:rare.id,quantity:99}]])await reject('recombine',inputs,'INVALID_RECYCLING_REQUEST')
  await reject('recombine',[{id:rare.id,quantity:5}],'RELIC_RECOMBINATION_COUNT')
  const disabled=(await db.query('select id from public.fishing_relics where not enabled limit 1')).rows[0].id
@@ -102,4 +102,28 @@ it('shares only a server-proven recombined mythic and deduplicates posts',async(
  expect((await db.query("select public.publish_fishing_showcase($1,'재시도') id",[op])).rows[0].id).toBe(post)
  await db.exec('reset role')
  expect((await db.query('select rarity,region_name from public.fishing_showcase_posts where id=$1',[post])).rows[0]).toEqual({rarity:'mythic',region_name:'유물 재조합'})
+})
+
+it('exchanges three mythics, allows the material itself as a reward, and replays exactly once',async()=>{
+ const material=relics.find(r=>r.rarity==='mythic'),op=crypto.randomUUID()
+ // Force the random pool to one valid candidate, including duplicate reward handling.
+ await db.query("update public.fishing_relics set enabled=false where rarity='mythic' and id<>$1",[material.id])
+ await db.query('insert into app_private.player_relic_loadouts(user_id,relic_id) values($1,$2)',[uid,material.id])
+ await db.query('update app_private.player_fishing_relics set quantity=4 where user_id=$1 and relic_id=$2',[uid,material.id])
+ const inputs=[{id:material.id,quantity:1},{id:material.id,quantity:2}]
+ const first=await call('recombine',inputs,op)
+ expect(first.recycling).toMatchObject({cost:0,receivedIds:[material.id],unequipped:false})
+ expect(first.equippedId).toBe(material.id);expect(await quantity(material.id)).toBe(2)
+ const again=await call('recombine',[{id:material.id,quantity:3}],op)
+ expect(again.replayed).toBe(true);expect(again.recycling).toEqual(first.recycling)
+ expect(await quantity(material.id)).toBe(2)
+ await reject('recombine',[{id:material.id,quantity:3}],'RELIC_MATERIAL_UNAVAILABLE')
+ expect(await quantity(material.id)).toBe(2)
+})
+it('requires the grade-specific total and rejects mixed mythics without consuming inventory',async()=>{
+ const mythic=relics.find(r=>r.rarity==='mythic'),epic=relics.find(r=>r.rarity==='epic')
+ for(const quantity of [2,4,6])await reject('recombine',[{id:mythic.id,quantity}],'RELIC_RECOMBINATION_COUNT')
+ await reject('recombine',[{id:epic.id,quantity:3}],'RELIC_RECOMBINATION_COUNT')
+ await reject('recombine',[{id:mythic.id,quantity:2},{id:epic.id,quantity:1}],'RELIC_RECOMBINATION_GRADE')
+ expect(await quantity(mythic.id)).toBe(6);expect(await quantity(epic.id)).toBe(6)
 })

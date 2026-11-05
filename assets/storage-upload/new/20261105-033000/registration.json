@@ -1,0 +1,5840 @@
+[
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-stardust-anchovy.png",
+    "storage_path": "fish/normal/galaxy-stardust-anchovy_v1_sprite.png",
+    "patch": [
+      464,
+      255,
+      30,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -26,
+        "dy": 0,
+        "rmse": 11.944978024257725
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 12.423566315676027
+      },
+      {
+        "frame": 3,
+        "dx": -26,
+        "dy": -26,
+        "rmse": 12.726350615946426
+      }
+    ],
+    "id": "galaxy-stardust-anchovy",
+    "sourceCell": 627,
+    "cell": 695,
+    "padding": 34,
+    "scale": 1.383412,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 123,
+        "top": 223,
+        "width": 415,
+        "height": 172,
+        "margin": 89,
+        "opaque": 34385
+      },
+      {
+        "frame": 1,
+        "left": 89,
+        "top": 220,
+        "width": 422,
+        "height": 180,
+        "margin": 89,
+        "opaque": 35396
+      },
+      {
+        "frame": 2,
+        "left": 123,
+        "top": 197,
+        "width": 415,
+        "height": 171,
+        "margin": 89,
+        "opaque": 34232
+      },
+      {
+        "frame": 3,
+        "left": 91,
+        "top": 195,
+        "width": 420,
+        "height": 175,
+        "margin": 91,
+        "opaque": 33303
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 123,
+          "top": 223,
+          "width": 415,
+          "height": 172,
+          "margin": 89,
+          "opaque": 34385
+        },
+        {
+          "frame": 1,
+          "left": 89,
+          "top": 220,
+          "width": 422,
+          "height": 180,
+          "margin": 89,
+          "opaque": 35396
+        },
+        {
+          "frame": 2,
+          "left": 123,
+          "top": 197,
+          "width": 415,
+          "height": 171,
+          "margin": 89,
+          "opaque": 34232
+        },
+        {
+          "frame": 3,
+          "left": 91,
+          "top": 195,
+          "width": 420,
+          "height": 175,
+          "margin": 91,
+          "opaque": 33303
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-moon-crab.png",
+    "storage_path": "fish/normal/galaxy-moon-crab_v1_sprite.png",
+    "patch": [
+      315,
+      230,
+      32,
+      32
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.1079078025403053
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.222382312947777
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.835944957954302
+      }
+    ],
+    "id": "galaxy-moon-crab",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.144322,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 101,
+        "top": 141,
+        "width": 455,
+        "height": 361,
+        "margin": 71,
+        "opaque": 96886
+      },
+      {
+        "frame": 1,
+        "left": 105,
+        "top": 140,
+        "width": 472,
+        "height": 359,
+        "margin": 50,
+        "opaque": 95337
+      },
+      {
+        "frame": 2,
+        "left": 95,
+        "top": 140,
+        "width": 463,
+        "height": 354,
+        "margin": 69,
+        "opaque": 96313
+      },
+      {
+        "frame": 3,
+        "left": 112,
+        "top": 140,
+        "width": 448,
+        "height": 360,
+        "margin": 67,
+        "opaque": 95902
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 101,
+          "top": 141,
+          "width": 455,
+          "height": 361,
+          "margin": 71,
+          "opaque": 96886
+        },
+        {
+          "frame": 1,
+          "left": 105,
+          "top": 140,
+          "width": 472,
+          "height": 359,
+          "margin": 50,
+          "opaque": 95337
+        },
+        {
+          "frame": 2,
+          "left": 95,
+          "top": 140,
+          "width": 463,
+          "height": 354,
+          "margin": 69,
+          "opaque": 96313
+        },
+        {
+          "frame": 3,
+          "left": 112,
+          "top": 140,
+          "width": 448,
+          "height": 360,
+          "margin": 67,
+          "opaque": 95902
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-meteor-puffer.png",
+    "storage_path": "fish/normal/galaxy-meteor-puffer_v1_sprite.png",
+    "patch": [
+      410,
+      270,
+      30,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.337289319193048
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.738248861804444
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.875136362284024
+      }
+    ],
+    "id": "galaxy-meteor-puffer",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.330345,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 115,
+        "top": 152,
+        "width": 398,
+        "height": 318,
+        "margin": 114,
+        "opaque": 83652
+      },
+      {
+        "frame": 1,
+        "left": 125,
+        "top": 150,
+        "width": 388,
+        "height": 320,
+        "margin": 114,
+        "opaque": 81129
+      },
+      {
+        "frame": 2,
+        "left": 115,
+        "top": 152,
+        "width": 398,
+        "height": 319,
+        "margin": 114,
+        "opaque": 83479
+      },
+      {
+        "frame": 3,
+        "left": 107,
+        "top": 148,
+        "width": 406,
+        "height": 322,
+        "margin": 107,
+        "opaque": 84486
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 115,
+          "top": 152,
+          "width": 398,
+          "height": 318,
+          "margin": 114,
+          "opaque": 83652
+        },
+        {
+          "frame": 1,
+          "left": 125,
+          "top": 150,
+          "width": 388,
+          "height": 320,
+          "margin": 114,
+          "opaque": 81129
+        },
+        {
+          "frame": 2,
+          "left": 115,
+          "top": 152,
+          "width": 398,
+          "height": 319,
+          "margin": 114,
+          "opaque": 83479
+        },
+        {
+          "frame": 3,
+          "left": 107,
+          "top": 148,
+          "width": 406,
+          "height": 322,
+          "margin": 107,
+          "opaque": 84486
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-galactic-jellyfish.png",
+    "storage_path": "fish/normal/galaxy-galactic-jellyfish_v1_sprite.png",
+    "patch": [
+      412,
+      222,
+      24,
+      26
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -21,
+        "dy": 5,
+        "rmse": 19.715599435754193
+      },
+      {
+        "frame": 2,
+        "dx": 7,
+        "dy": -21,
+        "rmse": 36.305082671408115
+      },
+      {
+        "frame": 3,
+        "dx": -22,
+        "dy": -25,
+        "rmse": 25.864295960948862
+      }
+    ],
+    "id": "galaxy-galactic-jellyfish",
+    "sourceCell": 627,
+    "cell": 693,
+    "padding": 33,
+    "scale": 1.34129,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 143,
+        "top": 109,
+        "width": 356,
+        "height": 434,
+        "margin": 84,
+        "opaque": 81661
+      },
+      {
+        "frame": 1,
+        "left": 131,
+        "top": 130,
+        "width": 345,
+        "height": 402,
+        "margin": 95,
+        "opaque": 73381
+      },
+      {
+        "frame": 2,
+        "left": 160,
+        "top": 119,
+        "width": 343,
+        "height": 351,
+        "margin": 119,
+        "opaque": 63894
+      },
+      {
+        "frame": 3,
+        "left": 122,
+        "top": 91,
+        "width": 354,
+        "height": 420,
+        "margin": 91,
+        "opaque": 79096
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 143,
+          "top": 109,
+          "width": 356,
+          "height": 434,
+          "margin": 84,
+          "opaque": 81661
+        },
+        {
+          "frame": 1,
+          "left": 131,
+          "top": 130,
+          "width": 345,
+          "height": 402,
+          "margin": 95,
+          "opaque": 73381
+        },
+        {
+          "frame": 2,
+          "left": 160,
+          "top": 119,
+          "width": 343,
+          "height": 351,
+          "margin": 119,
+          "opaque": 63894
+        },
+        {
+          "frame": 3,
+          "left": 122,
+          "top": 91,
+          "width": 354,
+          "height": 420,
+          "margin": 91,
+          "opaque": 79096
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-saturn-whelk.png",
+    "storage_path": "fish/normal/galaxy-saturn-whelk_v1_sprite.png",
+    "patch": [
+      270,
+      280,
+      30,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.301162633521313
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 2.303258561256204
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 4.616004766028736
+      }
+    ],
+    "id": "galaxy-saturn-whelk",
+    "sourceCell": 627,
+    "cell": 645,
+    "padding": 9,
+    "scale": 1.480328,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 132,
+        "top": 180,
+        "width": 366,
+        "height": 259,
+        "margin": 129,
+        "opaque": 57284
+      },
+      {
+        "frame": 1,
+        "left": 132,
+        "top": 180,
+        "width": 366,
+        "height": 260,
+        "margin": 129,
+        "opaque": 57106
+      },
+      {
+        "frame": 2,
+        "left": 132,
+        "top": 181,
+        "width": 366,
+        "height": 258,
+        "margin": 129,
+        "opaque": 57433
+      },
+      {
+        "frame": 3,
+        "left": 132,
+        "top": 181,
+        "width": 366,
+        "height": 260,
+        "margin": 129,
+        "opaque": 57629
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 132,
+          "top": 180,
+          "width": 366,
+          "height": 259,
+          "margin": 129,
+          "opaque": 57284
+        },
+        {
+          "frame": 1,
+          "left": 132,
+          "top": 180,
+          "width": 366,
+          "height": 260,
+          "margin": 129,
+          "opaque": 57106
+        },
+        {
+          "frame": 2,
+          "left": 132,
+          "top": 181,
+          "width": 366,
+          "height": 258,
+          "margin": 129,
+          "opaque": 57433
+        },
+        {
+          "frame": 3,
+          "left": 132,
+          "top": 181,
+          "width": 366,
+          "height": 260,
+          "margin": 129,
+          "opaque": 57629
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-comet-shrimp.png",
+    "storage_path": "fish/normal/galaxy-comet-shrimp_v1_sprite.png",
+    "patch": [
+      413,
+      256,
+      25,
+      25
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.714642190994724
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.247574395569542
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.881716696534232
+      }
+    ],
+    "id": "galaxy-comet-shrimp",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.357085,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 123,
+        "top": 135,
+        "width": 386,
+        "height": 342,
+        "margin": 118,
+        "opaque": 41092
+      },
+      {
+        "frame": 1,
+        "left": 110,
+        "top": 135,
+        "width": 398,
+        "height": 348,
+        "margin": 110,
+        "opaque": 38733
+      },
+      {
+        "frame": 2,
+        "left": 120,
+        "top": 134,
+        "width": 389,
+        "height": 342,
+        "margin": 118,
+        "opaque": 41186
+      },
+      {
+        "frame": 3,
+        "left": 111,
+        "top": 137,
+        "width": 397,
+        "height": 327,
+        "margin": 111,
+        "opaque": 38120
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 123,
+          "top": 135,
+          "width": 386,
+          "height": 342,
+          "margin": 118,
+          "opaque": 41092
+        },
+        {
+          "frame": 1,
+          "left": 110,
+          "top": 135,
+          "width": 398,
+          "height": 348,
+          "margin": 110,
+          "opaque": 38733
+        },
+        {
+          "frame": 2,
+          "left": 120,
+          "top": 134,
+          "width": 389,
+          "height": 342,
+          "margin": 118,
+          "opaque": 41186
+        },
+        {
+          "frame": 3,
+          "left": 111,
+          "top": 137,
+          "width": 397,
+          "height": 327,
+          "margin": 111,
+          "opaque": 38120
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-cosmic-starfish.png",
+    "storage_path": "fish/normal/galaxy-cosmic-starfish_v1_sprite.png",
+    "patch": [
+      349,
+      285,
+      30,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.428858075138822
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 19.305957629705915
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 13.885063917749893
+      }
+    ],
+    "id": "galaxy-cosmic-starfish",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.367392,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 125,
+        "top": 110,
+        "width": 371,
+        "height": 392,
+        "margin": 110,
+        "opaque": 64511
+      },
+      {
+        "frame": 1,
+        "left": 124,
+        "top": 114,
+        "width": 377,
+        "height": 390,
+        "margin": 114,
+        "opaque": 62201
+      },
+      {
+        "frame": 2,
+        "left": 124,
+        "top": 108,
+        "width": 377,
+        "height": 387,
+        "margin": 108,
+        "opaque": 64897
+      },
+      {
+        "frame": 3,
+        "left": 122,
+        "top": 105,
+        "width": 376,
+        "height": 395,
+        "margin": 105,
+        "opaque": 64558
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 125,
+          "top": 110,
+          "width": 371,
+          "height": 392,
+          "margin": 110,
+          "opaque": 64511
+        },
+        {
+          "frame": 1,
+          "left": 124,
+          "top": 114,
+          "width": 377,
+          "height": 390,
+          "margin": 114,
+          "opaque": 62201
+        },
+        {
+          "frame": 2,
+          "left": 124,
+          "top": 108,
+          "width": 377,
+          "height": 387,
+          "margin": 108,
+          "opaque": 64897
+        },
+        {
+          "frame": 3,
+          "left": 122,
+          "top": 105,
+          "width": 376,
+          "height": 395,
+          "margin": 105,
+          "opaque": 64558
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-moonlight-seahorse.png",
+    "storage_path": "fish/normal/galaxy-moonlight-seahorse_v1_sprite.png",
+    "patch": [
+      340,
+      210,
+      25,
+      25
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.954560447544116
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 2.922876986214646
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.533483112994077
+      }
+    ],
+    "id": "galaxy-moonlight-seahorse",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.432679,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 201,
+        "top": 121,
+        "width": 217,
+        "height": 377,
+        "margin": 121,
+        "opaque": 45396
+      },
+      {
+        "frame": 1,
+        "left": 182,
+        "top": 121,
+        "width": 236,
+        "height": 372,
+        "margin": 121,
+        "opaque": 46132
+      },
+      {
+        "frame": 2,
+        "left": 201,
+        "top": 121,
+        "width": 217,
+        "height": 377,
+        "margin": 121,
+        "opaque": 45382
+      },
+      {
+        "frame": 3,
+        "left": 195,
+        "top": 121,
+        "width": 223,
+        "height": 375,
+        "margin": 121,
+        "opaque": 46498
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 201,
+          "top": 121,
+          "width": 217,
+          "height": 377,
+          "margin": 121,
+          "opaque": 45396
+        },
+        {
+          "frame": 1,
+          "left": 182,
+          "top": 121,
+          "width": 236,
+          "height": 372,
+          "margin": 121,
+          "opaque": 46132
+        },
+        {
+          "frame": 2,
+          "left": 201,
+          "top": 121,
+          "width": 217,
+          "height": 377,
+          "margin": 121,
+          "opaque": 45382
+        },
+        {
+          "frame": 3,
+          "left": 195,
+          "top": 121,
+          "width": 223,
+          "height": 375,
+          "margin": 121,
+          "opaque": 46498
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-nebula-ray.png",
+    "storage_path": "fish/normal/galaxy-nebula-ray_v1_sprite.png",
+    "patch": [
+      435,
+      305,
+      28,
+      25
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -3,
+        "dy": 1,
+        "rmse": 16.614919667442138
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 12.428685458334773
+      },
+      {
+        "frame": 3,
+        "dx": -2,
+        "dy": 1,
+        "rmse": 11.317268025259256
+      }
+    ],
+    "id": "galaxy-nebula-ray",
+    "sourceCell": 627,
+    "cell": 649,
+    "padding": 11,
+    "scale": 1.112571,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 95,
+        "top": 175,
+        "width": 457,
+        "height": 273,
+        "margin": 75,
+        "opaque": 59402
+      },
+      {
+        "frame": 1,
+        "left": 104,
+        "top": 166,
+        "width": 447,
+        "height": 282,
+        "margin": 76,
+        "opaque": 61437
+      },
+      {
+        "frame": 2,
+        "left": 96,
+        "top": 165,
+        "width": 456,
+        "height": 281,
+        "margin": 75,
+        "opaque": 61211
+      },
+      {
+        "frame": 3,
+        "left": 61,
+        "top": 171,
+        "width": 490,
+        "height": 271,
+        "margin": 61,
+        "opaque": 60534
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 95,
+          "top": 175,
+          "width": 457,
+          "height": 273,
+          "margin": 75,
+          "opaque": 59402
+        },
+        {
+          "frame": 1,
+          "left": 104,
+          "top": 166,
+          "width": 447,
+          "height": 282,
+          "margin": 76,
+          "opaque": 61437
+        },
+        {
+          "frame": 2,
+          "left": 96,
+          "top": 165,
+          "width": 456,
+          "height": 281,
+          "margin": 75,
+          "opaque": 61211
+        },
+        {
+          "frame": 3,
+          "left": 61,
+          "top": 171,
+          "width": 490,
+          "height": 271,
+          "margin": 61,
+          "opaque": 60534
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-shooting-star-squid.png",
+    "storage_path": "fish/normal/galaxy-shooting-star-squid_v1_sprite.png",
+    "patch": [
+      406,
+      280,
+      25,
+      25
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.7139526728915175
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.522401070209128
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.537679737999193
+      }
+    ],
+    "id": "galaxy-shooting-star-squid",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.292153,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 129,
+        "width": 362,
+        "height": 366,
+        "margin": 129,
+        "opaque": 73266
+      },
+      {
+        "frame": 1,
+        "left": 75,
+        "top": 129,
+        "width": 418,
+        "height": 370,
+        "margin": 75,
+        "opaque": 74897
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 129,
+        "width": 361,
+        "height": 366,
+        "margin": 129,
+        "opaque": 73191
+      },
+      {
+        "frame": 3,
+        "left": 141,
+        "top": 129,
+        "width": 352,
+        "height": 361,
+        "margin": 129,
+        "opaque": 71622
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 131,
+          "top": 129,
+          "width": 362,
+          "height": 366,
+          "margin": 129,
+          "opaque": 73266
+        },
+        {
+          "frame": 1,
+          "left": 75,
+          "top": 129,
+          "width": 418,
+          "height": 370,
+          "margin": 75,
+          "opaque": 74897
+        },
+        {
+          "frame": 2,
+          "left": 131,
+          "top": 129,
+          "width": 361,
+          "height": 366,
+          "margin": 129,
+          "opaque": 73191
+        },
+        {
+          "frame": 3,
+          "left": 141,
+          "top": 129,
+          "width": 352,
+          "height": 361,
+          "margin": 129,
+          "opaque": 71622
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-orbital-snail.png",
+    "storage_path": "fish/normal/galaxy-orbital-snail_v1_sprite.png",
+    "patch": [
+      220,
+      300,
+      32,
+      32
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 4.790874590181105
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 4.556350576778788
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 7.646367905663468
+      }
+    ],
+    "id": "galaxy-orbital-snail",
+    "sourceCell": 627,
+    "cell": 645,
+    "padding": 9,
+    "scale": 1.460377,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 177,
+        "width": 365,
+        "height": 266,
+        "margin": 131,
+        "opaque": 64964
+      },
+      {
+        "frame": 1,
+        "left": 129,
+        "top": 175,
+        "width": 369,
+        "height": 268,
+        "margin": 129,
+        "opaque": 64185
+      },
+      {
+        "frame": 2,
+        "left": 128,
+        "top": 180,
+        "width": 371,
+        "height": 265,
+        "margin": 128,
+        "opaque": 64496
+      },
+      {
+        "frame": 3,
+        "left": 131,
+        "top": 180,
+        "width": 368,
+        "height": 261,
+        "margin": 128,
+        "opaque": 65030
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 131,
+          "top": 177,
+          "width": 365,
+          "height": 266,
+          "margin": 131,
+          "opaque": 64964
+        },
+        {
+          "frame": 1,
+          "left": 129,
+          "top": 175,
+          "width": 369,
+          "height": 268,
+          "margin": 129,
+          "opaque": 64185
+        },
+        {
+          "frame": 2,
+          "left": 128,
+          "top": 180,
+          "width": 371,
+          "height": 265,
+          "margin": 128,
+          "opaque": 64496
+        },
+        {
+          "frame": 3,
+          "left": 131,
+          "top": 180,
+          "width": 368,
+          "height": 261,
+          "margin": 128,
+          "opaque": 65030
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-cosmic-dust.png",
+    "storage_path": "fish/normal/galaxy-cosmic-dust_v1_sprite.png",
+    "patch": [
+      400,
+      300,
+      32,
+      32
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.0529081109467247
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 2.2649868187819986
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 2.8812589075891784
+      }
+    ],
+    "id": "galaxy-cosmic-dust",
+    "sourceCell": 627,
+    "cell": 645,
+    "padding": 9,
+    "scale": 1.448663,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 125,
+        "top": 128,
+        "width": 374,
+        "height": 366,
+        "margin": 125,
+        "opaque": 94655
+      },
+      {
+        "frame": 1,
+        "left": 132,
+        "top": 145,
+        "width": 367,
+        "height": 334,
+        "margin": 128,
+        "opaque": 85168
+      },
+      {
+        "frame": 2,
+        "left": 144,
+        "top": 144,
+        "width": 355,
+        "height": 323,
+        "margin": 128,
+        "opaque": 79215
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 127,
+        "width": 371,
+        "height": 363,
+        "margin": 127,
+        "opaque": 92851
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 125,
+          "top": 128,
+          "width": 374,
+          "height": 366,
+          "margin": 125,
+          "opaque": 94655
+        },
+        {
+          "frame": 1,
+          "left": 132,
+          "top": 145,
+          "width": 367,
+          "height": 334,
+          "margin": 128,
+          "opaque": 85168
+        },
+        {
+          "frame": 2,
+          "left": 144,
+          "top": 144,
+          "width": 355,
+          "height": 323,
+          "margin": 128,
+          "opaque": 79215
+        },
+        {
+          "frame": 3,
+          "left": 128,
+          "top": 127,
+          "width": 371,
+          "height": 363,
+          "margin": 127,
+          "opaque": 92851
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-antenna-goby.png",
+    "storage_path": "fish/normal/galaxy-antenna-goby_v1_sprite.png",
+    "patch": [
+      439,
+      292,
+      28,
+      27
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -3,
+        "dy": 0,
+        "rmse": 11.64283279771532
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 13.045007559301077
+      },
+      {
+        "frame": 3,
+        "dx": -2,
+        "dy": 0,
+        "rmse": 7.269609495854796
+      }
+    ],
+    "id": "galaxy-antenna-goby",
+    "sourceCell": 627,
+    "cell": 649,
+    "padding": 11,
+    "scale": 1.273738,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 107,
+        "top": 135,
+        "width": 418,
+        "height": 307,
+        "margin": 102,
+        "opaque": 59657
+      },
+      {
+        "frame": 1,
+        "left": 99,
+        "top": 143,
+        "width": 423,
+        "height": 296,
+        "margin": 99,
+        "opaque": 59794
+      },
+      {
+        "frame": 2,
+        "left": 107,
+        "top": 135,
+        "width": 418,
+        "height": 307,
+        "margin": 102,
+        "opaque": 59659
+      },
+      {
+        "frame": 3,
+        "left": 98,
+        "top": 134,
+        "width": 428,
+        "height": 306,
+        "margin": 98,
+        "opaque": 60102
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 107,
+          "top": 135,
+          "width": 418,
+          "height": 307,
+          "margin": 102,
+          "opaque": 59657
+        },
+        {
+          "frame": 1,
+          "left": 99,
+          "top": 143,
+          "width": 423,
+          "height": 296,
+          "margin": 99,
+          "opaque": 59794
+        },
+        {
+          "frame": 2,
+          "left": 107,
+          "top": 135,
+          "width": 418,
+          "height": 307,
+          "margin": 102,
+          "opaque": 59659
+        },
+        {
+          "frame": 3,
+          "left": 98,
+          "top": 134,
+          "width": 428,
+          "height": 306,
+          "margin": 98,
+          "opaque": 60102
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-alien-slime.png",
+    "storage_path": "fish/normal/galaxy-alien-slime_v1_sprite.png",
+    "patch": [
+      366,
+      299,
+      30,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 7.0251334506897445
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 6.9469417731833625
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 2.6086394921491163
+      }
+    ],
+    "id": "galaxy-alien-slime",
+    "sourceCell": 627,
+    "cell": 645,
+    "padding": 9,
+    "scale": 1.452547,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 149,
+        "top": 126,
+        "width": 331,
+        "height": 373,
+        "margin": 126,
+        "opaque": 73871
+      },
+      {
+        "frame": 1,
+        "left": 161,
+        "top": 140,
+        "width": 314,
+        "height": 336,
+        "margin": 140,
+        "opaque": 65309
+      },
+      {
+        "frame": 2,
+        "left": 165,
+        "top": 148,
+        "width": 313,
+        "height": 300,
+        "margin": 148,
+        "opaque": 60241
+      },
+      {
+        "frame": 3,
+        "left": 151,
+        "top": 128,
+        "width": 329,
+        "height": 355,
+        "margin": 128,
+        "opaque": 70659
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 149,
+          "top": 126,
+          "width": 331,
+          "height": 373,
+          "margin": 126,
+          "opaque": 73871
+        },
+        {
+          "frame": 1,
+          "left": 161,
+          "top": 140,
+          "width": 314,
+          "height": 336,
+          "margin": 140,
+          "opaque": 65309
+        },
+        {
+          "frame": 2,
+          "left": 165,
+          "top": 148,
+          "width": 313,
+          "height": 300,
+          "margin": 148,
+          "opaque": 60241
+        },
+        {
+          "frame": 3,
+          "left": 151,
+          "top": 128,
+          "width": 329,
+          "height": 355,
+          "margin": 128,
+          "opaque": 70659
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-helmet-hermit.png",
+    "storage_path": "fish/normal/galaxy-helmet-hermit_v1_sprite.png",
+    "patch": [
+      160,
+      290,
+      30,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.3211443810831227
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.3136083051561784
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.719639816765682
+      }
+    ],
+    "id": "galaxy-helmet-hermit",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.421368,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 128,
+        "top": 116,
+        "width": 372,
+        "height": 380,
+        "margin": 116,
+        "opaque": 91687
+      },
+      {
+        "frame": 1,
+        "left": 128,
+        "top": 116,
+        "width": 377,
+        "height": 379,
+        "margin": 116,
+        "opaque": 89577
+      },
+      {
+        "frame": 2,
+        "left": 128,
+        "top": 115,
+        "width": 377,
+        "height": 375,
+        "margin": 115,
+        "opaque": 91464
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 115,
+        "width": 372,
+        "height": 379,
+        "margin": 115,
+        "opaque": 91174
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 128,
+          "top": 116,
+          "width": 372,
+          "height": 380,
+          "margin": 116,
+          "opaque": 91687
+        },
+        {
+          "frame": 1,
+          "left": 128,
+          "top": 116,
+          "width": 377,
+          "height": 379,
+          "margin": 116,
+          "opaque": 89577
+        },
+        {
+          "frame": 2,
+          "left": 128,
+          "top": 115,
+          "width": 377,
+          "height": 375,
+          "margin": 115,
+          "opaque": 91464
+        },
+        {
+          "frame": 3,
+          "left": 128,
+          "top": 115,
+          "width": 372,
+          "height": 379,
+          "margin": 115,
+          "opaque": 91174
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-crescent-dragon.png",
+    "storage_path": "fish/rare/galaxy-crescent-dragon_v1_sprite.png",
+    "patch": [
+      380,
+      180,
+      24,
+      24
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -17,
+        "dy": 0,
+        "rmse": 23.74662805010429
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 15.989132051177762
+      },
+      {
+        "frame": 3,
+        "dx": -16,
+        "dy": -1,
+        "rmse": 12.749693623769945
+      }
+    ],
+    "id": "galaxy-crescent-dragon",
+    "sourceCell": 627,
+    "cell": 677,
+    "padding": 25,
+    "scale": 1.280811,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 173,
+        "top": 88,
+        "width": 287,
+        "height": 444,
+        "margin": 88,
+        "opaque": 60797
+      },
+      {
+        "frame": 1,
+        "left": 127,
+        "top": 88,
+        "width": 317,
+        "height": 435,
+        "margin": 88,
+        "opaque": 58845
+      },
+      {
+        "frame": 2,
+        "left": 175,
+        "top": 87,
+        "width": 285,
+        "height": 443,
+        "margin": 87,
+        "opaque": 60432
+      },
+      {
+        "frame": 3,
+        "left": 159,
+        "top": 87,
+        "width": 286,
+        "height": 410,
+        "margin": 87,
+        "opaque": 58741
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 173,
+          "top": 88,
+          "width": 287,
+          "height": 444,
+          "margin": 88,
+          "opaque": 60797
+        },
+        {
+          "frame": 1,
+          "left": 127,
+          "top": 88,
+          "width": 317,
+          "height": 435,
+          "margin": 88,
+          "opaque": 58845
+        },
+        {
+          "frame": 2,
+          "left": 175,
+          "top": 87,
+          "width": 285,
+          "height": 443,
+          "margin": 87,
+          "opaque": 60432
+        },
+        {
+          "frame": 3,
+          "left": 159,
+          "top": 87,
+          "width": 286,
+          "height": 410,
+          "margin": 87,
+          "opaque": 58741
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-comet-thresher.png",
+    "storage_path": "fish/rare/galaxy-comet-thresher_v1_sprite.png",
+    "patch": [
+      471,
+      382,
+      25,
+      23
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 7.644896627453143
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 8.93883537032525
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 11.225590803556349
+      }
+    ],
+    "id": "galaxy-comet-thresher",
+    "sourceCell": 627,
+    "cell": 695,
+    "padding": 34,
+    "scale": 1.360839,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 112,
+        "top": 162,
+        "width": 424,
+        "height": 321,
+        "margin": 91,
+        "opaque": 41996
+      },
+      {
+        "frame": 1,
+        "left": 118,
+        "top": 111,
+        "width": 419,
+        "height": 373,
+        "margin": 90,
+        "opaque": 40864
+      },
+      {
+        "frame": 2,
+        "left": 112,
+        "top": 136,
+        "width": 424,
+        "height": 321,
+        "margin": 91,
+        "opaque": 42063
+      },
+      {
+        "frame": 3,
+        "left": 108,
+        "top": 165,
+        "width": 429,
+        "height": 274,
+        "margin": 90,
+        "opaque": 41551
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 112,
+          "top": 162,
+          "width": 424,
+          "height": 321,
+          "margin": 91,
+          "opaque": 41996
+        },
+        {
+          "frame": 1,
+          "left": 118,
+          "top": 111,
+          "width": 419,
+          "height": 373,
+          "margin": 90,
+          "opaque": 40864
+        },
+        {
+          "frame": 2,
+          "left": 112,
+          "top": 136,
+          "width": 424,
+          "height": 321,
+          "margin": 91,
+          "opaque": 42063
+        },
+        {
+          "frame": 3,
+          "left": 108,
+          "top": 165,
+          "width": 429,
+          "height": 274,
+          "margin": 90,
+          "opaque": 41551
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-planet-turtle.png",
+    "storage_path": "fish/rare/galaxy-planet-turtle_v1_sprite.png",
+    "patch": [
+      472,
+      270,
+      28,
+      28
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.194418251968255
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.331041174104736
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 13.880832107622368
+      }
+    ],
+    "id": "galaxy-planet-turtle",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.067431,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 67,
+        "top": 95,
+        "width": 493,
+        "height": 437,
+        "margin": 67,
+        "opaque": 121013
+      },
+      {
+        "frame": 1,
+        "left": 54,
+        "top": 95,
+        "width": 506,
+        "height": 398,
+        "margin": 54,
+        "opaque": 112488
+      },
+      {
+        "frame": 2,
+        "left": 67,
+        "top": 95,
+        "width": 493,
+        "height": 437,
+        "margin": 67,
+        "opaque": 121208
+      },
+      {
+        "frame": 3,
+        "left": 75,
+        "top": 95,
+        "width": 485,
+        "height": 406,
+        "margin": 67,
+        "opaque": 114278
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 67,
+          "top": 95,
+          "width": 493,
+          "height": 437,
+          "margin": 67,
+          "opaque": 121013
+        },
+        {
+          "frame": 1,
+          "left": 54,
+          "top": 95,
+          "width": 506,
+          "height": 398,
+          "margin": 54,
+          "opaque": 112488
+        },
+        {
+          "frame": 2,
+          "left": 67,
+          "top": 95,
+          "width": 493,
+          "height": 437,
+          "margin": 67,
+          "opaque": 121208
+        },
+        {
+          "frame": 3,
+          "left": 75,
+          "top": 95,
+          "width": 485,
+          "height": 406,
+          "margin": 67,
+          "opaque": 114278
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-aurora-seahorse.png",
+    "storage_path": "fish/rare/galaxy-aurora-seahorse_v1_sprite.png",
+    "patch": [
+      362,
+      214,
+      30,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 22.726196338146867
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.691494137765567
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 26.727467145242176
+      }
+    ],
+    "id": "galaxy-aurora-seahorse",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.24739,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 173,
+        "top": 99,
+        "width": 287,
+        "height": 433,
+        "margin": 95,
+        "opaque": 62617
+      },
+      {
+        "frame": 1,
+        "left": 161,
+        "top": 99,
+        "width": 298,
+        "height": 406,
+        "margin": 99,
+        "opaque": 64783
+      },
+      {
+        "frame": 2,
+        "left": 173,
+        "top": 99,
+        "width": 287,
+        "height": 432,
+        "margin": 96,
+        "opaque": 62530
+      },
+      {
+        "frame": 3,
+        "left": 160,
+        "top": 99,
+        "width": 299,
+        "height": 433,
+        "margin": 95,
+        "opaque": 63769
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 173,
+          "top": 99,
+          "width": 287,
+          "height": 433,
+          "margin": 95,
+          "opaque": 62617
+        },
+        {
+          "frame": 1,
+          "left": 161,
+          "top": 99,
+          "width": 298,
+          "height": 406,
+          "margin": 99,
+          "opaque": 64783
+        },
+        {
+          "frame": 2,
+          "left": 173,
+          "top": 99,
+          "width": 287,
+          "height": 432,
+          "margin": 96,
+          "opaque": 62530
+        },
+        {
+          "frame": 3,
+          "left": 160,
+          "top": 99,
+          "width": 299,
+          "height": 433,
+          "margin": 95,
+          "opaque": 63769
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-gravity-octopus.png",
+    "storage_path": "fish/rare/galaxy-gravity-octopus_v1_sprite.png",
+    "patch": [
+      380,
+      226,
+      24,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.647712076170232
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.706151400014322
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.988954266392302
+      }
+    ],
+    "id": "galaxy-gravity-octopus",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.146752,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 110,
+        "top": 107,
+        "width": 440,
+        "height": 439,
+        "margin": 77,
+        "opaque": 101866
+      },
+      {
+        "frame": 1,
+        "left": 66,
+        "top": 107,
+        "width": 471,
+        "height": 411,
+        "margin": 66,
+        "opaque": 98570
+      },
+      {
+        "frame": 2,
+        "left": 108,
+        "top": 106,
+        "width": 453,
+        "height": 440,
+        "margin": 66,
+        "opaque": 102620
+      },
+      {
+        "frame": 3,
+        "left": 102,
+        "top": 106,
+        "width": 463,
+        "height": 438,
+        "margin": 62,
+        "opaque": 103136
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 110,
+          "top": 107,
+          "width": 440,
+          "height": 439,
+          "margin": 77,
+          "opaque": 101866
+        },
+        {
+          "frame": 1,
+          "left": 66,
+          "top": 107,
+          "width": 471,
+          "height": 411,
+          "margin": 66,
+          "opaque": 98570
+        },
+        {
+          "frame": 2,
+          "left": 108,
+          "top": 106,
+          "width": 453,
+          "height": 440,
+          "margin": 66,
+          "opaque": 102620
+        },
+        {
+          "frame": 3,
+          "left": 102,
+          "top": 106,
+          "width": 463,
+          "height": 438,
+          "margin": 62,
+          "opaque": 103136
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-eclipse-jellyfish.png",
+    "storage_path": "fish/rare/galaxy-eclipse-jellyfish_v1_sprite.png",
+    "patch": [
+      403,
+      204,
+      24,
+      27
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -11,
+        "dy": 5,
+        "rmse": 17.110953282100393
+      },
+      {
+        "frame": 2,
+        "dx": -10,
+        "dy": 2,
+        "rmse": 18.612831595434372
+      },
+      {
+        "frame": 3,
+        "dx": -4,
+        "dy": 0,
+        "rmse": 14.89395384413122
+      }
+    ],
+    "id": "galaxy-eclipse-jellyfish",
+    "sourceCell": 627,
+    "cell": 665,
+    "padding": 19,
+    "scale": 1.36577,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 141,
+        "top": 118,
+        "width": 353,
+        "height": 409,
+        "margin": 100,
+        "opaque": 78469
+      },
+      {
+        "frame": 1,
+        "left": 155,
+        "top": 126,
+        "width": 314,
+        "height": 360,
+        "margin": 126,
+        "opaque": 62022
+      },
+      {
+        "frame": 2,
+        "left": 171,
+        "top": 125,
+        "width": 293,
+        "height": 321,
+        "margin": 125,
+        "opaque": 52774
+      },
+      {
+        "frame": 3,
+        "left": 144,
+        "top": 116,
+        "width": 340,
+        "height": 391,
+        "margin": 116,
+        "opaque": 71935
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 141,
+          "top": 118,
+          "width": 353,
+          "height": 409,
+          "margin": 100,
+          "opaque": 78469
+        },
+        {
+          "frame": 1,
+          "left": 155,
+          "top": 126,
+          "width": 314,
+          "height": 360,
+          "margin": 126,
+          "opaque": 62022
+        },
+        {
+          "frame": 2,
+          "left": 171,
+          "top": 125,
+          "width": 293,
+          "height": 321,
+          "margin": 125,
+          "opaque": 52774
+        },
+        {
+          "frame": 3,
+          "left": 144,
+          "top": 116,
+          "width": 340,
+          "height": 391,
+          "margin": 116,
+          "opaque": 71935
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-constellation-dragon.png",
+    "storage_path": "fish/rare/galaxy-constellation-dragon_v1_sprite.png",
+    "patch": [
+      386,
+      200,
+      26,
+      27
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.48173172601956
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.007197329294787
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.997877804937761
+      }
+    ],
+    "id": "galaxy-constellation-dragon",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.176732,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 158,
+        "top": 86,
+        "width": 304,
+        "height": 459,
+        "margin": 82,
+        "opaque": 74823
+      },
+      {
+        "frame": 1,
+        "left": 146,
+        "top": 86,
+        "width": 316,
+        "height": 447,
+        "margin": 86,
+        "opaque": 73080
+      },
+      {
+        "frame": 2,
+        "left": 158,
+        "top": 86,
+        "width": 304,
+        "height": 459,
+        "margin": 82,
+        "opaque": 74835
+      },
+      {
+        "frame": 3,
+        "left": 163,
+        "top": 86,
+        "width": 297,
+        "height": 453,
+        "margin": 86,
+        "opaque": 72495
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 158,
+          "top": 86,
+          "width": 304,
+          "height": 459,
+          "margin": 82,
+          "opaque": 74823
+        },
+        {
+          "frame": 1,
+          "left": 146,
+          "top": 86,
+          "width": 316,
+          "height": 447,
+          "margin": 86,
+          "opaque": 73080
+        },
+        {
+          "frame": 2,
+          "left": 158,
+          "top": 86,
+          "width": 304,
+          "height": 459,
+          "margin": 82,
+          "opaque": 74835
+        },
+        {
+          "frame": 3,
+          "left": 163,
+          "top": 86,
+          "width": 297,
+          "height": 453,
+          "margin": 86,
+          "opaque": 72495
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-astronaut-puffer.png",
+    "storage_path": "fish/rare/galaxy-astronaut-puffer_v1_sprite.png",
+    "patch": [
+      377,
+      274,
+      28,
+      29
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.033918690305991
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.9179076048319463
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.20267771783657
+      }
+    ],
+    "id": "galaxy-astronaut-puffer",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.320587,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 120,
+        "top": 123,
+        "width": 390,
+        "height": 378,
+        "margin": 117,
+        "opaque": 104482
+      },
+      {
+        "frame": 1,
+        "left": 101,
+        "top": 123,
+        "width": 409,
+        "height": 378,
+        "margin": 101,
+        "opaque": 106407
+      },
+      {
+        "frame": 2,
+        "left": 120,
+        "top": 124,
+        "width": 390,
+        "height": 378,
+        "margin": 117,
+        "opaque": 104639
+      },
+      {
+        "frame": 3,
+        "left": 129,
+        "top": 124,
+        "width": 381,
+        "height": 378,
+        "margin": 117,
+        "opaque": 103006
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 120,
+          "top": 123,
+          "width": 390,
+          "height": 378,
+          "margin": 117,
+          "opaque": 104482
+        },
+        {
+          "frame": 1,
+          "left": 101,
+          "top": 123,
+          "width": 409,
+          "height": 378,
+          "margin": 101,
+          "opaque": 106407
+        },
+        {
+          "frame": 2,
+          "left": 120,
+          "top": 124,
+          "width": 390,
+          "height": 378,
+          "margin": 117,
+          "opaque": 104639
+        },
+        {
+          "frame": 3,
+          "left": 129,
+          "top": 124,
+          "width": 381,
+          "height": 378,
+          "margin": 117,
+          "opaque": 103006
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-binary-nautilus.png",
+    "storage_path": "fish/rare/galaxy-binary-nautilus_v1_sprite.png",
+    "patch": [
+      362,
+      322,
+      27,
+      28
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -27,
+        "dy": 0,
+        "rmse": 8.227156927585076
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 14.773286702694158
+      },
+      {
+        "frame": 3,
+        "dx": -27,
+        "dy": -26,
+        "rmse": 13.197537649122278
+      }
+    ],
+    "id": "galaxy-binary-nautilus",
+    "sourceCell": 627,
+    "cell": 697,
+    "padding": 35,
+    "scale": 1.387393,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 141,
+        "width": 419,
+        "height": 365,
+        "margin": 77,
+        "opaque": 90393
+      },
+      {
+        "frame": 1,
+        "left": 105,
+        "top": 141,
+        "width": 372,
+        "height": 350,
+        "margin": 105,
+        "opaque": 86302
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 114,
+        "width": 419,
+        "height": 359,
+        "margin": 77,
+        "opaque": 90462
+      },
+      {
+        "frame": 3,
+        "left": 105,
+        "top": 114,
+        "width": 422,
+        "height": 348,
+        "margin": 100,
+        "opaque": 89706
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 131,
+          "top": 141,
+          "width": 419,
+          "height": 365,
+          "margin": 77,
+          "opaque": 90393
+        },
+        {
+          "frame": 1,
+          "left": 105,
+          "top": 141,
+          "width": 372,
+          "height": 350,
+          "margin": 105,
+          "opaque": 86302
+        },
+        {
+          "frame": 2,
+          "left": 131,
+          "top": 114,
+          "width": 419,
+          "height": 359,
+          "margin": 77,
+          "opaque": 90462
+        },
+        {
+          "frame": 3,
+          "left": 105,
+          "top": 114,
+          "width": 422,
+          "height": 348,
+          "margin": 100,
+          "opaque": 89706
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-meteor-angler.png",
+    "storage_path": "fish/rare/galaxy-meteor-angler_v1_sprite.png",
+    "patch": [
+      353,
+      217,
+      29,
+      26
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.688274345985578
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.998105897532236
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 17.141891507195012
+      }
+    ],
+    "id": "galaxy-meteor-angler",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.238807,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 103,
+        "top": 113,
+        "width": 414,
+        "height": 369,
+        "margin": 103,
+        "opaque": 90933
+      },
+      {
+        "frame": 1,
+        "left": 81,
+        "top": 113,
+        "width": 436,
+        "height": 362,
+        "margin": 81,
+        "opaque": 90659
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 113,
+        "width": 414,
+        "height": 369,
+        "margin": 103,
+        "opaque": 90653
+      },
+      {
+        "frame": 3,
+        "left": 116,
+        "top": 113,
+        "width": 401,
+        "height": 369,
+        "margin": 110,
+        "opaque": 87280
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 103,
+          "top": 113,
+          "width": 414,
+          "height": 369,
+          "margin": 103,
+          "opaque": 90933
+        },
+        {
+          "frame": 1,
+          "left": 81,
+          "top": 113,
+          "width": 436,
+          "height": 362,
+          "margin": 81,
+          "opaque": 90659
+        },
+        {
+          "frame": 2,
+          "left": 103,
+          "top": 113,
+          "width": 414,
+          "height": 369,
+          "margin": 103,
+          "opaque": 90653
+        },
+        {
+          "frame": 3,
+          "left": 116,
+          "top": 113,
+          "width": 401,
+          "height": 369,
+          "margin": 110,
+          "opaque": 87280
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-plasma-jellyfish.png",
+    "storage_path": "fish/rare/galaxy-plasma-jellyfish_v1_sprite.png",
+    "patch": [
+      418,
+      205,
+      26,
+      27
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -12,
+        "dy": 7,
+        "rmse": 19.44817424545249
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -7,
+        "rmse": 27.885734660052695
+      },
+      {
+        "frame": 3,
+        "dx": -2,
+        "dy": -5,
+        "rmse": 21.95112415918264
+      }
+    ],
+    "id": "galaxy-plasma-jellyfish",
+    "sourceCell": 627,
+    "cell": 667,
+    "padding": 20,
+    "scale": 1.2075,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 144,
+        "top": 81,
+        "width": 352,
+        "height": 464,
+        "margin": 81,
+        "opaque": 86848
+      },
+      {
+        "frame": 1,
+        "left": 140,
+        "top": 101,
+        "width": 343,
+        "height": 411,
+        "margin": 101,
+        "opaque": 76787
+      },
+      {
+        "frame": 2,
+        "left": 145,
+        "top": 99,
+        "width": 350,
+        "height": 359,
+        "margin": 99,
+        "opaque": 66273
+      },
+      {
+        "frame": 3,
+        "left": 140,
+        "top": 80,
+        "width": 353,
+        "height": 446,
+        "margin": 80,
+        "opaque": 84078
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 144,
+          "top": 81,
+          "width": 352,
+          "height": 464,
+          "margin": 81,
+          "opaque": 86848
+        },
+        {
+          "frame": 1,
+          "left": 140,
+          "top": 101,
+          "width": 343,
+          "height": 411,
+          "margin": 101,
+          "opaque": 76787
+        },
+        {
+          "frame": 2,
+          "left": 145,
+          "top": 99,
+          "width": 350,
+          "height": 359,
+          "margin": 99,
+          "opaque": 66273
+        },
+        {
+          "frame": 3,
+          "left": 140,
+          "top": 80,
+          "width": 353,
+          "height": 446,
+          "margin": 80,
+          "opaque": 84078
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-black-hole-urchin.png",
+    "storage_path": "fish/rare/galaxy-black-hole-urchin_v1_sprite.png",
+    "patch": [
+      384,
+      287,
+      27,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 8.464304132322068
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -2,
+        "rmse": 4.220979349234804
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": 1,
+        "rmse": 11.083897228762895
+      }
+    ],
+    "id": "galaxy-black-hole-urchin",
+    "sourceCell": 627,
+    "cell": 647,
+    "padding": 10,
+    "scale": 1.484918,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 134,
+        "top": 128,
+        "width": 366,
+        "height": 363,
+        "margin": 127,
+        "opaque": 82928
+      },
+      {
+        "frame": 1,
+        "left": 135,
+        "top": 126,
+        "width": 363,
+        "height": 365,
+        "margin": 126,
+        "opaque": 82393
+      },
+      {
+        "frame": 2,
+        "left": 134,
+        "top": 127,
+        "width": 362,
+        "height": 361,
+        "margin": 127,
+        "opaque": 81325
+      },
+      {
+        "frame": 3,
+        "left": 134,
+        "top": 127,
+        "width": 365,
+        "height": 356,
+        "margin": 127,
+        "opaque": 82196
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 134,
+          "top": 128,
+          "width": 366,
+          "height": 363,
+          "margin": 127,
+          "opaque": 82928
+        },
+        {
+          "frame": 1,
+          "left": 135,
+          "top": 126,
+          "width": 363,
+          "height": 365,
+          "margin": 126,
+          "opaque": 82393
+        },
+        {
+          "frame": 2,
+          "left": 134,
+          "top": 127,
+          "width": 362,
+          "height": 361,
+          "margin": 127,
+          "opaque": 81325
+        },
+        {
+          "frame": 3,
+          "left": 134,
+          "top": 127,
+          "width": 365,
+          "height": 356,
+          "margin": 127,
+          "opaque": 82196
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-solaris.png",
+    "storage_path": "fish/epic/galaxy-solaris_v1_sprite.png",
+    "patch": [
+      474,
+      220,
+      27,
+      26
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -4,
+        "dy": 2,
+        "rmse": 18.524674902597173
+      },
+      {
+        "frame": 2,
+        "dx": -7,
+        "dy": -6,
+        "rmse": 20.027065020450035
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 15.535204942085334
+      }
+    ],
+    "id": "galaxy-solaris",
+    "sourceCell": 627,
+    "cell": 657,
+    "padding": 15,
+    "scale": 1.135556,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 75,
+        "top": 89,
+        "width": 486,
+        "height": 442,
+        "margin": 66,
+        "opaque": 108276
+      },
+      {
+        "frame": 1,
+        "left": 92,
+        "top": 96,
+        "width": 465,
+        "height": 407,
+        "margin": 70,
+        "opaque": 93639
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 98,
+        "width": 449,
+        "height": 371,
+        "margin": 75,
+        "opaque": 82024
+      },
+      {
+        "frame": 3,
+        "left": 79,
+        "top": 88,
+        "width": 481,
+        "height": 427,
+        "margin": 67,
+        "opaque": 103271
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 75,
+          "top": 89,
+          "width": 486,
+          "height": 442,
+          "margin": 66,
+          "opaque": 108276
+        },
+        {
+          "frame": 1,
+          "left": 92,
+          "top": 96,
+          "width": 465,
+          "height": 407,
+          "margin": 70,
+          "opaque": 93639
+        },
+        {
+          "frame": 2,
+          "left": 103,
+          "top": 98,
+          "width": 449,
+          "height": 371,
+          "margin": 75,
+          "opaque": 82024
+        },
+        {
+          "frame": 3,
+          "left": 79,
+          "top": 88,
+          "width": 481,
+          "height": 427,
+          "margin": 67,
+          "opaque": 103271
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-nebula.png",
+    "storage_path": "fish/epic/galaxy-nebula_v1_sprite.png",
+    "patch": [
+      443,
+      211,
+      27,
+      23
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.268917704270613
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.957959071771294
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.724644903740812
+      }
+    ],
+    "id": "galaxy-nebula",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.388483,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 131,
+        "top": 126,
+        "width": 365,
+        "height": 373,
+        "margin": 126,
+        "opaque": 70642
+      },
+      {
+        "frame": 1,
+        "left": 107,
+        "top": 125,
+        "width": 389,
+        "height": 373,
+        "margin": 107,
+        "opaque": 70480
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 126,
+        "width": 365,
+        "height": 373,
+        "margin": 126,
+        "opaque": 70413
+      },
+      {
+        "frame": 3,
+        "left": 136,
+        "top": 126,
+        "width": 360,
+        "height": 376,
+        "margin": 125,
+        "opaque": 71795
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 131,
+          "top": 126,
+          "width": 365,
+          "height": 373,
+          "margin": 126,
+          "opaque": 70642
+        },
+        {
+          "frame": 1,
+          "left": 107,
+          "top": 125,
+          "width": 389,
+          "height": 373,
+          "margin": 107,
+          "opaque": 70480
+        },
+        {
+          "frame": 2,
+          "left": 131,
+          "top": 126,
+          "width": 365,
+          "height": 373,
+          "margin": 126,
+          "opaque": 70413
+        },
+        {
+          "frame": 3,
+          "left": 136,
+          "top": 126,
+          "width": 360,
+          "height": 376,
+          "margin": 125,
+          "opaque": 71795
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-nova.png",
+    "storage_path": "fish/epic/galaxy-nova_v1_sprite.png",
+    "patch": [
+      496,
+      242,
+      28,
+      25
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -3,
+        "dy": 0,
+        "rmse": 15.673934484430584
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.218037872683222
+      },
+      {
+        "frame": 3,
+        "dx": -3,
+        "dy": 0,
+        "rmse": 16.524056537195836
+      }
+    ],
+    "id": "galaxy-nova",
+    "sourceCell": 627,
+    "cell": 649,
+    "padding": 11,
+    "scale": 1.117131,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 104,
+        "top": 114,
+        "width": 450,
+        "height": 380,
+        "margin": 73,
+        "opaque": 89380
+      },
+      {
+        "frame": 1,
+        "left": 63,
+        "top": 114,
+        "width": 488,
+        "height": 374,
+        "margin": 63,
+        "opaque": 90049
+      },
+      {
+        "frame": 2,
+        "left": 104,
+        "top": 113,
+        "width": 450,
+        "height": 380,
+        "margin": 73,
+        "opaque": 89351
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 113,
+        "width": 422,
+        "height": 383,
+        "margin": 77,
+        "opaque": 86496
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 104,
+          "top": 114,
+          "width": 450,
+          "height": 380,
+          "margin": 73,
+          "opaque": 89380
+        },
+        {
+          "frame": 1,
+          "left": 63,
+          "top": 114,
+          "width": 488,
+          "height": 374,
+          "margin": 63,
+          "opaque": 90049
+        },
+        {
+          "frame": 2,
+          "left": 104,
+          "top": 113,
+          "width": 450,
+          "height": 380,
+          "margin": 73,
+          "opaque": 89351
+        },
+        {
+          "frame": 3,
+          "left": 128,
+          "top": 113,
+          "width": 422,
+          "height": 383,
+          "margin": 77,
+          "opaque": 86496
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-orbis.png",
+    "storage_path": "fish/epic/galaxy-orbis_v1_sprite.png",
+    "patch": [
+      384,
+      253,
+      29,
+      24
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 2,
+        "dy": 0,
+        "rmse": 13.549331164304753
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 11.740022359433564
+      },
+      {
+        "frame": 3,
+        "dx": 6,
+        "dy": -1,
+        "rmse": 17.120619877796482
+      }
+    ],
+    "id": "galaxy-orbis",
+    "sourceCell": 627,
+    "cell": 655,
+    "padding": 14,
+    "scale": 1.038113,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 81,
+        "top": 112,
+        "width": 484,
+        "height": 408,
+        "margin": 62,
+        "opaque": 123490
+      },
+      {
+        "frame": 1,
+        "left": 40,
+        "top": 112,
+        "width": 530,
+        "height": 396,
+        "margin": 40,
+        "opaque": 131164
+      },
+      {
+        "frame": 2,
+        "left": 74,
+        "top": 112,
+        "width": 495,
+        "height": 409,
+        "margin": 58,
+        "opaque": 125241
+      },
+      {
+        "frame": 3,
+        "left": 69,
+        "top": 111,
+        "width": 513,
+        "height": 402,
+        "margin": 45,
+        "opaque": 125422
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 81,
+          "top": 112,
+          "width": 484,
+          "height": 408,
+          "margin": 62,
+          "opaque": 123490
+        },
+        {
+          "frame": 1,
+          "left": 40,
+          "top": 112,
+          "width": 530,
+          "height": 396,
+          "margin": 40,
+          "opaque": 131164
+        },
+        {
+          "frame": 2,
+          "left": 74,
+          "top": 112,
+          "width": 495,
+          "height": 409,
+          "margin": 58,
+          "opaque": 125241
+        },
+        {
+          "frame": 3,
+          "left": 69,
+          "top": 111,
+          "width": 513,
+          "height": 402,
+          "margin": 45,
+          "opaque": 125422
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-entropy.png",
+    "storage_path": "fish/epic/galaxy-entropy_v1_sprite.png",
+    "patch": [
+      377,
+      244,
+      26,
+      27
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.470724757013989
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.87620622997444
+      },
+      {
+        "frame": 3,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 7.299374233284033
+      }
+    ],
+    "id": "galaxy-entropy",
+    "sourceCell": 627,
+    "cell": 645,
+    "padding": 9,
+    "scale": 1.344417,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 109,
+        "top": 146,
+        "width": 396,
+        "height": 319,
+        "margin": 109,
+        "opaque": 73750
+      },
+      {
+        "frame": 1,
+        "left": 108,
+        "top": 146,
+        "width": 397,
+        "height": 318,
+        "margin": 108,
+        "opaque": 72410
+      },
+      {
+        "frame": 2,
+        "left": 109,
+        "top": 146,
+        "width": 403,
+        "height": 319,
+        "margin": 109,
+        "opaque": 73854
+      },
+      {
+        "frame": 3,
+        "left": 107,
+        "top": 146,
+        "width": 398,
+        "height": 319,
+        "margin": 107,
+        "opaque": 74149
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 109,
+          "top": 146,
+          "width": 396,
+          "height": 319,
+          "margin": 109,
+          "opaque": 73750
+        },
+        {
+          "frame": 1,
+          "left": 108,
+          "top": 146,
+          "width": 397,
+          "height": 318,
+          "margin": 108,
+          "opaque": 72410
+        },
+        {
+          "frame": 2,
+          "left": 109,
+          "top": 146,
+          "width": 403,
+          "height": 319,
+          "margin": 109,
+          "opaque": 73854
+        },
+        {
+          "frame": 3,
+          "left": 107,
+          "top": 146,
+          "width": 398,
+          "height": 319,
+          "margin": 107,
+          "opaque": 74149
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-station-hermit.png",
+    "storage_path": "fish/epic/galaxy-station-hermit_v1_sprite.png",
+    "patch": [
+      204,
+      254,
+      29,
+      32
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -26,
+        "dy": 0,
+        "rmse": 6.711252423423596
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 8.378815277504657
+      },
+      {
+        "frame": 3,
+        "dx": -26,
+        "dy": -26,
+        "rmse": 9.552962415350063
+      }
+    ],
+    "id": "galaxy-station-hermit",
+    "sourceCell": 627,
+    "cell": 695,
+    "padding": 34,
+    "scale": 1.162948,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 76,
+        "top": 100,
+        "width": 495,
+        "height": 411,
+        "margin": 56,
+        "opaque": 105253
+      },
+      {
+        "frame": 1,
+        "left": 50,
+        "top": 99,
+        "width": 502,
+        "height": 396,
+        "margin": 50,
+        "opaque": 101158
+      },
+      {
+        "frame": 2,
+        "left": 76,
+        "top": 73,
+        "width": 499,
+        "height": 410,
+        "margin": 52,
+        "opaque": 103154
+      },
+      {
+        "frame": 3,
+        "left": 50,
+        "top": 73,
+        "width": 498,
+        "height": 409,
+        "margin": 50,
+        "opaque": 104372
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 76,
+          "top": 100,
+          "width": 495,
+          "height": 411,
+          "margin": 56,
+          "opaque": 105253
+        },
+        {
+          "frame": 1,
+          "left": 50,
+          "top": 99,
+          "width": 502,
+          "height": 396,
+          "margin": 50,
+          "opaque": 101158
+        },
+        {
+          "frame": 2,
+          "left": 76,
+          "top": 73,
+          "width": 499,
+          "height": 410,
+          "margin": 52,
+          "opaque": 103154
+        },
+        {
+          "frame": 3,
+          "left": 50,
+          "top": 73,
+          "width": 498,
+          "height": 409,
+          "margin": 50,
+          "opaque": 104372
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-ufo-pongi.png",
+    "storage_path": "fish/epic/galaxy-ufo-pongi_v1_sprite.png",
+    "patch": [
+      346,
+      239,
+      29,
+      28
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.761926307302846
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.940821277053602
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.024688360270398
+      }
+    ],
+    "id": "galaxy-ufo-pongi",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.139494,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120539
+      },
+      {
+        "frame": 1,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120407
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120521
+      },
+      {
+        "frame": 3,
+        "left": 103,
+        "top": 81,
+        "width": 452,
+        "height": 474,
+        "margin": 72,
+        "opaque": 120413
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 103,
+          "top": 81,
+          "width": 452,
+          "height": 474,
+          "margin": 72,
+          "opaque": 120539
+        },
+        {
+          "frame": 1,
+          "left": 103,
+          "top": 81,
+          "width": 452,
+          "height": 474,
+          "margin": 72,
+          "opaque": 120407
+        },
+        {
+          "frame": 2,
+          "left": 103,
+          "top": 81,
+          "width": 452,
+          "height": 474,
+          "margin": 72,
+          "opaque": 120521
+        },
+        {
+          "frame": 3,
+          "left": 103,
+          "top": 81,
+          "width": 452,
+          "height": 474,
+          "margin": 72,
+          "opaque": 120413
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-astronaut-pongi.png",
+    "storage_path": "fish/epic/galaxy-astronaut-pongi_v1_sprite.png",
+    "patch": [
+      380,
+      219,
+      28,
+      30
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.191658383026938
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.058877783880444
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.294640577507186
+      }
+    ],
+    "id": "galaxy-astronaut-pongi",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.129958,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 124,
+        "top": 71,
+        "width": 393,
+        "height": 478,
+        "margin": 71,
+        "opaque": 116707
+      },
+      {
+        "frame": 1,
+        "left": 120,
+        "top": 71,
+        "width": 397,
+        "height": 478,
+        "margin": 71,
+        "opaque": 117410
+      },
+      {
+        "frame": 2,
+        "left": 124,
+        "top": 70,
+        "width": 393,
+        "height": 478,
+        "margin": 70,
+        "opaque": 116800
+      },
+      {
+        "frame": 3,
+        "left": 108,
+        "top": 70,
+        "width": 409,
+        "height": 477,
+        "margin": 70,
+        "opaque": 116023
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 124,
+          "top": 71,
+          "width": 393,
+          "height": 478,
+          "margin": 71,
+          "opaque": 116707
+        },
+        {
+          "frame": 1,
+          "left": 120,
+          "top": 71,
+          "width": 397,
+          "height": 478,
+          "margin": 71,
+          "opaque": 117410
+        },
+        {
+          "frame": 2,
+          "left": 124,
+          "top": 70,
+          "width": 393,
+          "height": 478,
+          "margin": 70,
+          "opaque": 116800
+        },
+        {
+          "frame": 3,
+          "left": 108,
+          "top": 70,
+          "width": 409,
+          "height": 477,
+          "margin": 70,
+          "opaque": 116023
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-necropolis.png",
+    "storage_path": "fish/mythic/galaxy-necropolis_swim8_v1_sprite.png",
+    "patch": [
+      328,
+      205,
+      22,
+      20
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 15.730311768472147
+      },
+      {
+        "frame": 2,
+        "dx": 3,
+        "dy": 0,
+        "rmse": 18.837849753444083
+      },
+      {
+        "frame": 3,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 13.705990174615867
+      },
+      {
+        "frame": 4,
+        "dx": -3,
+        "dy": -2,
+        "rmse": 18.56463932677749
+      },
+      {
+        "frame": 5,
+        "dx": 2,
+        "dy": -6,
+        "rmse": 19.513350130957352
+      },
+      {
+        "frame": 6,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 13.966104801745308
+      },
+      {
+        "frame": 7,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 18.552010223513065
+      }
+    ],
+    "id": "galaxy-necropolis",
+    "sourceCell": 444,
+    "cell": 472,
+    "padding": 14,
+    "scale": 1.287273,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 78,
+        "top": 106,
+        "width": 294,
+        "height": 237,
+        "margin": 72,
+        "opaque": 28512
+      },
+      {
+        "frame": 1,
+        "left": 76,
+        "top": 105,
+        "width": 297,
+        "height": 238,
+        "margin": 71,
+        "opaque": 29290
+      },
+      {
+        "frame": 2,
+        "left": 72,
+        "top": 100,
+        "width": 302,
+        "height": 244,
+        "margin": 70,
+        "opaque": 30982
+      },
+      {
+        "frame": 3,
+        "left": 77,
+        "top": 105,
+        "width": 296,
+        "height": 238,
+        "margin": 71,
+        "opaque": 29173
+      },
+      {
+        "frame": 4,
+        "left": 77,
+        "top": 107,
+        "width": 294,
+        "height": 230,
+        "margin": 73,
+        "opaque": 27984
+      },
+      {
+        "frame": 5,
+        "left": 68,
+        "top": 103,
+        "width": 308,
+        "height": 243,
+        "margin": 68,
+        "opaque": 37226
+      },
+      {
+        "frame": 6,
+        "left": 75,
+        "top": 105,
+        "width": 296,
+        "height": 239,
+        "margin": 73,
+        "opaque": 30034
+      },
+      {
+        "frame": 7,
+        "left": 77,
+        "top": 106,
+        "width": 296,
+        "height": 234,
+        "margin": 71,
+        "opaque": 28547
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 78,
+          "top": 106,
+          "width": 294,
+          "height": 237,
+          "margin": 72,
+          "opaque": 28512
+        },
+        {
+          "frame": 1,
+          "left": 76,
+          "top": 105,
+          "width": 297,
+          "height": 238,
+          "margin": 71,
+          "opaque": 29290
+        },
+        {
+          "frame": 2,
+          "left": 72,
+          "top": 100,
+          "width": 302,
+          "height": 244,
+          "margin": 70,
+          "opaque": 30982
+        },
+        {
+          "frame": 3,
+          "left": 77,
+          "top": 105,
+          "width": 296,
+          "height": 238,
+          "margin": 71,
+          "opaque": 29173
+        },
+        {
+          "frame": 4,
+          "left": 77,
+          "top": 107,
+          "width": 294,
+          "height": 230,
+          "margin": 73,
+          "opaque": 27984
+        },
+        {
+          "frame": 5,
+          "left": 68,
+          "top": 103,
+          "width": 308,
+          "height": 243,
+          "margin": 68,
+          "opaque": 37226
+        },
+        {
+          "frame": 6,
+          "left": 75,
+          "top": 105,
+          "width": 296,
+          "height": 239,
+          "margin": 73,
+          "opaque": 30034
+        },
+        {
+          "frame": 7,
+          "left": 77,
+          "top": 106,
+          "width": 296,
+          "height": 234,
+          "margin": 71,
+          "opaque": 28547
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-genesis.png",
+    "storage_path": "fish/mythic/galaxy-genesis_swim8_v1_sprite.png",
+    "patch": [
+      310,
+      215,
+      22,
+      20
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 11.07643895843786
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.7476703355111
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 11.985296050935554
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 13.24376537955016
+      },
+      {
+        "frame": 5,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 17.22319345699696
+      },
+      {
+        "frame": 6,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.71727966966492
+      },
+      {
+        "frame": 7,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 14.228680794186689
+      }
+    ],
+    "id": "galaxy-genesis",
+    "sourceCell": 444,
+    "cell": 462,
+    "padding": 9,
+    "scale": 1.352195,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 78,
+        "top": 106,
+        "width": 287,
+        "height": 224,
+        "margin": 78,
+        "opaque": 31321
+      },
+      {
+        "frame": 1,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 224,
+        "margin": 78,
+        "opaque": 32260
+      },
+      {
+        "frame": 2,
+        "left": 79,
+        "top": 106,
+        "width": 286,
+        "height": 225,
+        "margin": 79,
+        "opaque": 32842
+      },
+      {
+        "frame": 3,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 215,
+        "margin": 78,
+        "opaque": 31060
+      },
+      {
+        "frame": 4,
+        "left": 79,
+        "top": 105,
+        "width": 286,
+        "height": 216,
+        "margin": 79,
+        "opaque": 31109
+      },
+      {
+        "frame": 5,
+        "left": 78,
+        "top": 106,
+        "width": 286,
+        "height": 228,
+        "margin": 78,
+        "opaque": 32424
+      },
+      {
+        "frame": 6,
+        "left": 79,
+        "top": 105,
+        "width": 286,
+        "height": 219,
+        "margin": 79,
+        "opaque": 31411
+      },
+      {
+        "frame": 7,
+        "left": 78,
+        "top": 105,
+        "width": 286,
+        "height": 225,
+        "margin": 78,
+        "opaque": 31243
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 78,
+          "top": 106,
+          "width": 287,
+          "height": 224,
+          "margin": 78,
+          "opaque": 31321
+        },
+        {
+          "frame": 1,
+          "left": 78,
+          "top": 106,
+          "width": 286,
+          "height": 224,
+          "margin": 78,
+          "opaque": 32260
+        },
+        {
+          "frame": 2,
+          "left": 79,
+          "top": 106,
+          "width": 286,
+          "height": 225,
+          "margin": 79,
+          "opaque": 32842
+        },
+        {
+          "frame": 3,
+          "left": 78,
+          "top": 106,
+          "width": 286,
+          "height": 215,
+          "margin": 78,
+          "opaque": 31060
+        },
+        {
+          "frame": 4,
+          "left": 79,
+          "top": 105,
+          "width": 286,
+          "height": 216,
+          "margin": 79,
+          "opaque": 31109
+        },
+        {
+          "frame": 5,
+          "left": 78,
+          "top": 106,
+          "width": 286,
+          "height": 228,
+          "margin": 78,
+          "opaque": 32424
+        },
+        {
+          "frame": 6,
+          "left": 79,
+          "top": 105,
+          "width": 286,
+          "height": 219,
+          "margin": 79,
+          "opaque": 31411
+        },
+        {
+          "frame": 7,
+          "left": 78,
+          "top": 105,
+          "width": 286,
+          "height": 225,
+          "margin": 78,
+          "opaque": 31243
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-ananke.png",
+    "storage_path": "fish/mythic/galaxy-ananke_swim8_v1_sprite.png",
+    "patch": [
+      225,
+      145,
+      22,
+      23
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 3,
+        "dy": 0,
+        "rmse": 12.353832907239761
+      },
+      {
+        "frame": 2,
+        "dx": 4,
+        "dy": -1,
+        "rmse": 15.736849668850498
+      },
+      {
+        "frame": 3,
+        "dx": 2,
+        "dy": -1,
+        "rmse": 12.467300980966169
+      },
+      {
+        "frame": 4,
+        "dx": 5,
+        "dy": -2,
+        "rmse": 14.38247088472631
+      },
+      {
+        "frame": 5,
+        "dx": 4,
+        "dy": -3,
+        "rmse": 14.135366770975558
+      },
+      {
+        "frame": 6,
+        "dx": 3,
+        "dy": -2,
+        "rmse": 15.841746668218123
+      },
+      {
+        "frame": 7,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 13.4375
+      }
+    ],
+    "id": "galaxy-ananke",
+    "sourceCell": 444,
+    "cell": 470,
+    "padding": 13,
+    "scale": 1.68,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 126,
+        "top": 112,
+        "width": 193,
+        "height": 232,
+        "margin": 100,
+        "opaque": 27004
+      },
+      {
+        "frame": 1,
+        "left": 126,
+        "top": 112,
+        "width": 197,
+        "height": 232,
+        "margin": 100,
+        "opaque": 27535
+      },
+      {
+        "frame": 2,
+        "left": 126,
+        "top": 111,
+        "width": 198,
+        "height": 232,
+        "margin": 101,
+        "opaque": 27692
+      },
+      {
+        "frame": 3,
+        "left": 125,
+        "top": 111,
+        "width": 197,
+        "height": 232,
+        "margin": 101,
+        "opaque": 27652
+      },
+      {
+        "frame": 4,
+        "left": 118,
+        "top": 110,
+        "width": 201,
+        "height": 234,
+        "margin": 100,
+        "opaque": 27841
+      },
+      {
+        "frame": 5,
+        "left": 117,
+        "top": 109,
+        "width": 214,
+        "height": 235,
+        "margin": 100,
+        "opaque": 29024
+      },
+      {
+        "frame": 6,
+        "left": 125,
+        "top": 110,
+        "width": 200,
+        "height": 232,
+        "margin": 102,
+        "opaque": 27949
+      },
+      {
+        "frame": 7,
+        "left": 125,
+        "top": 111,
+        "width": 193,
+        "height": 233,
+        "margin": 100,
+        "opaque": 27095
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 126,
+          "top": 112,
+          "width": 193,
+          "height": 232,
+          "margin": 100,
+          "opaque": 27004
+        },
+        {
+          "frame": 1,
+          "left": 126,
+          "top": 112,
+          "width": 197,
+          "height": 232,
+          "margin": 100,
+          "opaque": 27535
+        },
+        {
+          "frame": 2,
+          "left": 126,
+          "top": 111,
+          "width": 198,
+          "height": 232,
+          "margin": 101,
+          "opaque": 27692
+        },
+        {
+          "frame": 3,
+          "left": 125,
+          "top": 111,
+          "width": 197,
+          "height": 232,
+          "margin": 101,
+          "opaque": 27652
+        },
+        {
+          "frame": 4,
+          "left": 118,
+          "top": 110,
+          "width": 201,
+          "height": 234,
+          "margin": 100,
+          "opaque": 27841
+        },
+        {
+          "frame": 5,
+          "left": 117,
+          "top": 109,
+          "width": 214,
+          "height": 235,
+          "margin": 100,
+          "opaque": 29024
+        },
+        {
+          "frame": 6,
+          "left": 125,
+          "top": 110,
+          "width": 200,
+          "height": 232,
+          "margin": 102,
+          "opaque": 27949
+        },
+        {
+          "frame": 7,
+          "left": 125,
+          "top": 111,
+          "width": 193,
+          "height": 233,
+          "margin": 100,
+          "opaque": 27095
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-apocalypsis.png",
+    "storage_path": "fish/mythic/galaxy-apocalypsis_swim8_v1_sprite.png",
+    "patch": [
+      230,
+      128,
+      22,
+      23
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.663166743514799
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -1,
+        "rmse": 12.17034048414423
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.270558650823235
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 11.81266534275817
+      },
+      {
+        "frame": 5,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 18.22301086538665
+      },
+      {
+        "frame": 6,
+        "dx": 1,
+        "dy": -1,
+        "rmse": 11.786015282952928
+      },
+      {
+        "frame": 7,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 14.099396042029602
+      }
+    ],
+    "id": "galaxy-apocalypsis",
+    "sourceCell": 444,
+    "cell": 462,
+    "padding": 9,
+    "scale": 1.081003,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 73,
+        "top": 93,
+        "width": 291,
+        "height": 290,
+        "margin": 61,
+        "opaque": 44808
+      },
+      {
+        "frame": 1,
+        "left": 70,
+        "top": 93,
+        "width": 291,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45564
+      },
+      {
+        "frame": 2,
+        "left": 68,
+        "top": 92,
+        "width": 298,
+        "height": 291,
+        "margin": 61,
+        "opaque": 46265
+      },
+      {
+        "frame": 3,
+        "left": 73,
+        "top": 93,
+        "width": 292,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45246
+      },
+      {
+        "frame": 4,
+        "left": 76,
+        "top": 93,
+        "width": 288,
+        "height": 290,
+        "margin": 61,
+        "opaque": 44758
+      },
+      {
+        "frame": 5,
+        "left": 41,
+        "top": 92,
+        "width": 359,
+        "height": 291,
+        "margin": 41,
+        "opaque": 51495
+      },
+      {
+        "frame": 6,
+        "left": 73,
+        "top": 93,
+        "width": 293,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45683
+      },
+      {
+        "frame": 7,
+        "left": 73,
+        "top": 93,
+        "width": 292,
+        "height": 290,
+        "margin": 61,
+        "opaque": 45007
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 73,
+          "top": 93,
+          "width": 291,
+          "height": 290,
+          "margin": 61,
+          "opaque": 44808
+        },
+        {
+          "frame": 1,
+          "left": 70,
+          "top": 93,
+          "width": 291,
+          "height": 290,
+          "margin": 61,
+          "opaque": 45564
+        },
+        {
+          "frame": 2,
+          "left": 68,
+          "top": 92,
+          "width": 298,
+          "height": 291,
+          "margin": 61,
+          "opaque": 46265
+        },
+        {
+          "frame": 3,
+          "left": 73,
+          "top": 93,
+          "width": 292,
+          "height": 290,
+          "margin": 61,
+          "opaque": 45246
+        },
+        {
+          "frame": 4,
+          "left": 76,
+          "top": 93,
+          "width": 288,
+          "height": 290,
+          "margin": 61,
+          "opaque": 44758
+        },
+        {
+          "frame": 5,
+          "left": 41,
+          "top": 92,
+          "width": 359,
+          "height": 291,
+          "margin": 41,
+          "opaque": 51495
+        },
+        {
+          "frame": 6,
+          "left": 73,
+          "top": 93,
+          "width": 293,
+          "height": 290,
+          "margin": 61,
+          "opaque": 45683
+        },
+        {
+          "frame": 7,
+          "left": 73,
+          "top": 93,
+          "width": 292,
+          "height": 290,
+          "margin": 61,
+          "opaque": 45007
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-eos.png",
+    "storage_path": "fish/mythic/galaxy-eos_swim8_v1_sprite.png",
+    "patch": [
+      246,
+      147,
+      19,
+      21
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.81616742202082
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.20985497016259
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.098747143955581
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.639350918153399
+      },
+      {
+        "frame": 5,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 12.238072077057943
+      },
+      {
+        "frame": 6,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.742127193162581
+      },
+      {
+        "frame": 7,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.271464783573913
+      }
+    ],
+    "id": "galaxy-eos",
+    "sourceCell": 444,
+    "cell": 460,
+    "padding": 8,
+    "scale": 1.884878,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 134,
+        "top": 119,
+        "width": 176,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22179
+      },
+      {
+        "frame": 1,
+        "left": 130,
+        "top": 119,
+        "width": 180,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22253
+      },
+      {
+        "frame": 2,
+        "left": 131,
+        "top": 119,
+        "width": 178,
+        "height": 205,
+        "margin": 119,
+        "opaque": 22600
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 119,
+        "width": 179,
+        "height": 205,
+        "margin": 119,
+        "opaque": 21858
+      },
+      {
+        "frame": 4,
+        "left": 136,
+        "top": 119,
+        "width": 166,
+        "height": 204,
+        "margin": 119,
+        "opaque": 22041
+      },
+      {
+        "frame": 5,
+        "left": 137,
+        "top": 120,
+        "width": 175,
+        "height": 203,
+        "margin": 120,
+        "opaque": 22127
+      },
+      {
+        "frame": 6,
+        "left": 133,
+        "top": 119,
+        "width": 175,
+        "height": 204,
+        "margin": 119,
+        "opaque": 22192
+      },
+      {
+        "frame": 7,
+        "left": 132,
+        "top": 120,
+        "width": 177,
+        "height": 203,
+        "margin": 120,
+        "opaque": 22059
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 134,
+          "top": 119,
+          "width": 176,
+          "height": 205,
+          "margin": 119,
+          "opaque": 22179
+        },
+        {
+          "frame": 1,
+          "left": 130,
+          "top": 119,
+          "width": 180,
+          "height": 205,
+          "margin": 119,
+          "opaque": 22253
+        },
+        {
+          "frame": 2,
+          "left": 131,
+          "top": 119,
+          "width": 178,
+          "height": 205,
+          "margin": 119,
+          "opaque": 22600
+        },
+        {
+          "frame": 3,
+          "left": 130,
+          "top": 119,
+          "width": 179,
+          "height": 205,
+          "margin": 119,
+          "opaque": 21858
+        },
+        {
+          "frame": 4,
+          "left": 136,
+          "top": 119,
+          "width": 166,
+          "height": 204,
+          "margin": 119,
+          "opaque": 22041
+        },
+        {
+          "frame": 5,
+          "left": 137,
+          "top": 120,
+          "width": 175,
+          "height": 203,
+          "margin": 120,
+          "opaque": 22127
+        },
+        {
+          "frame": 6,
+          "left": 133,
+          "top": 119,
+          "width": 175,
+          "height": 204,
+          "margin": 119,
+          "opaque": 22192
+        },
+        {
+          "frame": 7,
+          "left": 132,
+          "top": 120,
+          "width": 177,
+          "height": 203,
+          "margin": 120,
+          "opaque": 22059
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-pongi-control-tower.png",
+    "storage_path": "fish/mythic/galaxy-pongi-control-tower_swim8_v1_sprite.png",
+    "patch": [
+      222,
+      260,
+      24,
+      24
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 11.371737169403803
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.343279670436928
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": -1,
+        "rmse": 11.538488581699077
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 6.524592899177695
+      },
+      {
+        "frame": 5,
+        "dx": -1,
+        "dy": -1,
+        "rmse": 7.477309425856335
+      },
+      {
+        "frame": 6,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 6.8911741561217275
+      },
+      {
+        "frame": 7,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 7.2313877471755035
+      }
+    ],
+    "id": "galaxy-pongi-control-tower",
+    "sourceCell": 444,
+    "cell": 462,
+    "padding": 9,
+    "scale": 1.289302,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 132,
+        "top": 85,
+        "width": 178,
+        "height": 273,
+        "margin": 85,
+        "opaque": 31575
+      },
+      {
+        "frame": 1,
+        "left": 128,
+        "top": 80,
+        "width": 182,
+        "height": 278,
+        "margin": 80,
+        "opaque": 32237
+      },
+      {
+        "frame": 2,
+        "left": 130,
+        "top": 77,
+        "width": 179,
+        "height": 281,
+        "margin": 77,
+        "opaque": 31796
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 76,
+        "width": 179,
+        "height": 282,
+        "margin": 76,
+        "opaque": 31457
+      },
+      {
+        "frame": 4,
+        "left": 132,
+        "top": 80,
+        "width": 176,
+        "height": 277,
+        "margin": 80,
+        "opaque": 31606
+      },
+      {
+        "frame": 5,
+        "left": 114,
+        "top": 57,
+        "width": 212,
+        "height": 301,
+        "margin": 57,
+        "opaque": 36374
+      },
+      {
+        "frame": 6,
+        "left": 128,
+        "top": 76,
+        "width": 186,
+        "height": 282,
+        "margin": 76,
+        "opaque": 32866
+      },
+      {
+        "frame": 7,
+        "left": 131,
+        "top": 85,
+        "width": 178,
+        "height": 272,
+        "margin": 85,
+        "opaque": 31633
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 132,
+          "top": 85,
+          "width": 178,
+          "height": 273,
+          "margin": 85,
+          "opaque": 31575
+        },
+        {
+          "frame": 1,
+          "left": 128,
+          "top": 80,
+          "width": 182,
+          "height": 278,
+          "margin": 80,
+          "opaque": 32237
+        },
+        {
+          "frame": 2,
+          "left": 130,
+          "top": 77,
+          "width": 179,
+          "height": 281,
+          "margin": 77,
+          "opaque": 31796
+        },
+        {
+          "frame": 3,
+          "left": 130,
+          "top": 76,
+          "width": 179,
+          "height": 282,
+          "margin": 76,
+          "opaque": 31457
+        },
+        {
+          "frame": 4,
+          "left": 132,
+          "top": 80,
+          "width": 176,
+          "height": 277,
+          "margin": 80,
+          "opaque": 31606
+        },
+        {
+          "frame": 5,
+          "left": 114,
+          "top": 57,
+          "width": 212,
+          "height": 301,
+          "margin": 57,
+          "opaque": 36374
+        },
+        {
+          "frame": 6,
+          "left": 128,
+          "top": 76,
+          "width": 186,
+          "height": 282,
+          "margin": 76,
+          "opaque": 32866
+        },
+        {
+          "frame": 7,
+          "left": 131,
+          "top": 85,
+          "width": 178,
+          "height": 272,
+          "margin": 85,
+          "opaque": 31633
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  },
+  {
+    "file": "assets/storage-upload/new/20261105-033000/normalized/galaxy-pongi-moon-base.png",
+    "storage_path": "fish/mythic/galaxy-pongi-moon-base_swim8_v1_sprite.png",
+    "patch": [
+      151,
+      270,
+      24,
+      24
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 11.908997386430144
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 11.179641094418013
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.263081965523138
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 12.15572781654805
+      },
+      {
+        "frame": 5,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 13.84963898446454
+      },
+      {
+        "frame": 6,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 10.49441815919301
+      },
+      {
+        "frame": 7,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.391471590624278
+      }
+    ],
+    "id": "galaxy-pongi-moon-base",
+    "sourceCell": 444,
+    "cell": 462,
+    "padding": 9,
+    "scale": 1.571174,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35058
+      },
+      {
+        "frame": 1,
+        "left": 98,
+        "top": 119,
+        "width": 247,
+        "height": 206,
+        "margin": 98,
+        "opaque": 35500
+      },
+      {
+        "frame": 2,
+        "left": 99,
+        "top": 119,
+        "width": 246,
+        "height": 206,
+        "margin": 99,
+        "opaque": 35611
+      },
+      {
+        "frame": 3,
+        "left": 99,
+        "top": 119,
+        "width": 245,
+        "height": 206,
+        "margin": 99,
+        "opaque": 35257
+      },
+      {
+        "frame": 4,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35104
+      },
+      {
+        "frame": 5,
+        "left": 98,
+        "top": 119,
+        "width": 247,
+        "height": 206,
+        "margin": 98,
+        "opaque": 35550
+      },
+      {
+        "frame": 6,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35116
+      },
+      {
+        "frame": 7,
+        "left": 99,
+        "top": 120,
+        "width": 246,
+        "height": 205,
+        "margin": 99,
+        "opaque": 35028
+      }
+    ],
+    "rgbaPreserved": true,
+    "rawAudit": {
+      "bounds": [
+        {
+          "frame": 0,
+          "left": 99,
+          "top": 120,
+          "width": 246,
+          "height": 205,
+          "margin": 99,
+          "opaque": 35058
+        },
+        {
+          "frame": 1,
+          "left": 98,
+          "top": 119,
+          "width": 247,
+          "height": 206,
+          "margin": 98,
+          "opaque": 35500
+        },
+        {
+          "frame": 2,
+          "left": 99,
+          "top": 119,
+          "width": 246,
+          "height": 206,
+          "margin": 99,
+          "opaque": 35611
+        },
+        {
+          "frame": 3,
+          "left": 99,
+          "top": 119,
+          "width": 245,
+          "height": 206,
+          "margin": 99,
+          "opaque": 35257
+        },
+        {
+          "frame": 4,
+          "left": 99,
+          "top": 120,
+          "width": 246,
+          "height": 205,
+          "margin": 99,
+          "opaque": 35104
+        },
+        {
+          "frame": 5,
+          "left": 98,
+          "top": 119,
+          "width": 247,
+          "height": 206,
+          "margin": 98,
+          "opaque": 35550
+        },
+        {
+          "frame": 6,
+          "left": 99,
+          "top": 120,
+          "width": 246,
+          "height": 205,
+          "margin": 99,
+          "opaque": 35116
+        },
+        {
+          "frame": 7,
+          "left": 99,
+          "top": 120,
+          "width": 246,
+          "height": 205,
+          "margin": 99,
+          "opaque": 35028
+        }
+      ],
+      "alphaThreshold": 32,
+      "source": "Original generated sheet before padding or alignment"
+    }
+  }
+]

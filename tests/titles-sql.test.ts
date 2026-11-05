@@ -405,7 +405,6 @@ it('requires a completed mythic delivery and queues the delivering player only',
  const order=(await db.query("select id from app_private.merchant_orders order by day desc,slot limit 1")).rows[0]
  await db.query("update app_private.merchant_orders set items=jsonb_build_array(jsonb_build_object('speciesId','muk-hyeonmu','rarity','mythic','quantity',1,'unitGold',300)) where id=$1",[order.id])
  expect(await earned()).not.toContain('challenge-mythic-parcel')
- await db.query('update app_private.merchant_orders set completed_by=$1,completed_at=clock_timestamp() where id=$2',[uid,order.id])
  await db.exec('delete from app_private.title_dirty')
  await db.query('insert into app_private.merchant_deliveries(user_id,operation_id,order_id,day,gold,collectible_ids) select $1,gen_random_uuid(),id,day,reward_gold,\'{}\'::uuid[] from app_private.merchant_orders where id=$2',[uid,order.id])
  expect((await db.query('select user_id from app_private.title_dirty')).rows).toEqual([{user_id:uid}])

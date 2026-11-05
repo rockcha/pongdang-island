@@ -1,0 +1,1009 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "expected": 167,
+  "count": 167,
+  "files": [
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-stardust-anchovy_v1_thumbnail.png",
+      "sha256": "7f9f81f700b4021f10ace6249b164fda7075233af078c112e168b9d126fea810",
+      "verified_at": "2026-11-04T19:41:36.372Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-stardust-anchovy_v1_sprite.png",
+      "sha256": "2bebb74c267d92f7c651e1e7464cb0057da69d991c0bbbb2153e43e1fdc6c204",
+      "verified_at": "2026-11-04T19:41:37.570Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-moon-crab_v1_thumbnail.png",
+      "sha256": "57a11fc089925a78db712d289adfef1bc5a8515661c44ca111454096a199eb6d",
+      "verified_at": "2026-11-04T19:41:38.682Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-moon-crab_v1_sprite.png",
+      "sha256": "52a3b3fc13bc3a5ed678adfcfe565a6eeab8dda02d0b1515aecb53d80b01cdbf",
+      "verified_at": "2026-11-04T19:41:40.606Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-meteor-puffer_v1_thumbnail.png",
+      "sha256": "336f7fa7b7fa28af08843dc5d720f0202f09cf79f629e4cb180f4a6826104b34",
+      "verified_at": "2026-11-04T19:41:42.085Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-meteor-puffer_v1_sprite.png",
+      "sha256": "96144c6c32f4bca11551b05b25a66cb4f916b3e83a61c552cc672824b5f89f77",
+      "verified_at": "2026-11-04T19:41:43.728Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-galactic-jellyfish_v1_thumbnail.png",
+      "sha256": "945dc826af12a2648cbac54d0da9da7e142de59bf3e8e00f7308f4f52c866b46",
+      "verified_at": "2026-11-04T19:41:44.991Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-galactic-jellyfish_v1_sprite.png",
+      "sha256": "8939148cf95f5480404672d982e1770a739d2e2ebdd5677c97a3063bd7691b38",
+      "verified_at": "2026-11-04T19:41:47.746Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-saturn-whelk_v1_thumbnail.png",
+      "sha256": "46d41e1240595441a281058d93edbe69edca85e26ec17863fa99f85698281e8e",
+      "verified_at": "2026-11-04T19:41:48.968Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-saturn-whelk_v1_sprite.png",
+      "sha256": "613a22c6f69c4d6e028b5115b37edeb814b187e4d48d41e3da374fe48131a93c",
+      "verified_at": "2026-11-04T19:41:50.632Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-comet-shrimp_v1_thumbnail.png",
+      "sha256": "1a2f207ad16f28f78c5ca7cf9459b51373b821f5af88468ee1d9a822e30724d2",
+      "verified_at": "2026-11-04T19:41:51.931Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-comet-shrimp_v1_sprite.png",
+      "sha256": "52e28c1f4c0e631f041227a53037b9b684d8939ebbc65d9c335ac920534c7dcd",
+      "verified_at": "2026-11-04T19:41:53.594Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-cosmic-starfish_v1_thumbnail.png",
+      "sha256": "ed733678b409675e6d15b7303a28205aaf1ee4e606be5ac2d4f44fa965eda4d2",
+      "verified_at": "2026-11-04T19:41:54.614Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-cosmic-starfish_v1_sprite.png",
+      "sha256": "c0fcf2e848002b68dd97a7ebfdfdc3a0abe944e1ec1499441133b1e91cecbe91",
+      "verified_at": "2026-11-04T19:41:56.040Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-moonlight-seahorse_v1_thumbnail.png",
+      "sha256": "b9c563aeecc67368f7a3dfd5cd9e03ca506c11afc1aa60867337048fde0440f5",
+      "verified_at": "2026-11-04T19:41:57.121Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-moonlight-seahorse_v1_sprite.png",
+      "sha256": "01300678a79830d174b80b83b3c54c3f06ba80869106c160b93884d84ac7d324",
+      "verified_at": "2026-11-04T19:41:58.592Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-nebula-ray_v1_thumbnail.png",
+      "sha256": "1dc4d553c9bbbe631c6badd9f25dd94c5aae1bd7062f67114e286f13864e38f4",
+      "verified_at": "2026-11-04T19:42:00.049Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-nebula-ray_v1_sprite.png",
+      "sha256": "5fcf74f6097aa7a56b5ad135e18a2a6a861cebcf6c3bc7bbffb3be8b7e9ab013",
+      "verified_at": "2026-11-04T19:42:02.001Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-shooting-star-squid_v1_thumbnail.png",
+      "sha256": "c90dcb4e5d2df7db1fadbbb6c93f5fad56776ac13cfdd1444c0f8171a422b363",
+      "verified_at": "2026-11-04T19:42:03.777Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-shooting-star-squid_v1_sprite.png",
+      "sha256": "84293051d565d689e186e18e80d5067739cf83b2b4a85dc20e3d920f163d8e3f",
+      "verified_at": "2026-11-04T19:42:05.657Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-orbital-snail_v1_thumbnail.png",
+      "sha256": "a8f74b7efd77fae8962f0e3b4d91f9654bdb8403e45b7a87ecd2b89b65ecaa18",
+      "verified_at": "2026-11-04T19:42:07.505Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-orbital-snail_v1_sprite.png",
+      "sha256": "d2d752b2d9d6aa23f12d8dda778f1072e5662adf92d1431728aabf1694174d0b",
+      "verified_at": "2026-11-04T19:42:08.889Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-cosmic-dust_v1_thumbnail.png",
+      "sha256": "a03fa44f6205b81d2e9568cadd15b20cd03cc5f5060aa56b5111b8d96b4c48f7",
+      "verified_at": "2026-11-04T19:42:10.352Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-cosmic-dust_v1_sprite.png",
+      "sha256": "d36deb55fc3a45d722e58c8ab71b5614c6f675b0106aa10158687e1a9cd5d168",
+      "verified_at": "2026-11-04T19:42:11.795Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-antenna-goby_v1_thumbnail.png",
+      "sha256": "443d896f0bf2a189f033aaff464c37b18eb7f040684e99559c7201c4eaa526ee",
+      "verified_at": "2026-11-04T19:42:13.133Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-antenna-goby_v1_sprite.png",
+      "sha256": "12b1268c2b9f4c48676fa49996c987a19ecd89f558bcf0fea7129d16affabee6",
+      "verified_at": "2026-11-04T19:42:15.229Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-alien-slime_v1_thumbnail.png",
+      "sha256": "c252bf9c52aa4d0ffbb211ddfa4ae4cfd461da86b4095ddcb07a5934bea72069",
+      "verified_at": "2026-11-04T19:42:17.035Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-alien-slime_v1_sprite.png",
+      "sha256": "82a0f2031449340f1ea92dc9ddd69dc89e98af4834339c0c1c6c1f0665c8d26d",
+      "verified_at": "2026-11-04T19:42:18.732Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-helmet-hermit_v1_thumbnail.png",
+      "sha256": "4f39e8551ac078379a30d37e996de9fecd54b936d9385cf2af9291a5d048a283",
+      "verified_at": "2026-11-04T19:42:20.263Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/galaxy-helmet-hermit_v1_sprite.png",
+      "sha256": "c67bd6d50209b46b9e5c6d3152e0dd09285bfa5e985f12c7c79ab2653291d234",
+      "verified_at": "2026-11-04T19:42:22.281Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-crescent-dragon_v1_thumbnail.png",
+      "sha256": "abb84e9f3c68a489e6a2fa0c51ecfb37c21f818df7114cbec2df1522a54da966",
+      "verified_at": "2026-11-04T19:42:23.959Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-crescent-dragon_v1_sprite.png",
+      "sha256": "026730a9b8d65c21198ca2e5a2b1cfe88f8d34ce3763fb6d165323b43b32f98e",
+      "verified_at": "2026-11-04T19:42:25.405Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-comet-thresher_v1_thumbnail.png",
+      "sha256": "bc0c88849d740f482e32f0c80aa926d1b6508b49319fa27cd97e271962951fe2",
+      "verified_at": "2026-11-04T19:42:26.233Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-comet-thresher_v1_sprite.png",
+      "sha256": "ffca0161a1cbc1471d7852ea2d927ff0bb949486ce4ce34129688a583aaba046",
+      "verified_at": "2026-11-04T19:42:28.442Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-planet-turtle_v1_thumbnail.png",
+      "sha256": "fc6df4e259052ef274064f4aaf3ae7b3fd26a7becf133ab2e8289132a4fcab77",
+      "verified_at": "2026-11-04T19:42:30.076Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-planet-turtle_v1_sprite.png",
+      "sha256": "096fbf00d267fecaee39c245d2add0188ae01b537bc439cf04afc14da170f0f1",
+      "verified_at": "2026-11-04T19:42:32.157Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-aurora-seahorse_v1_thumbnail.png",
+      "sha256": "278702de6c1114db65e76038af7c7ce60eeb1eeaa514562edf14803db04054ae",
+      "verified_at": "2026-11-04T19:42:33.528Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-aurora-seahorse_v1_sprite.png",
+      "sha256": "122247ff454b074cc177dff5797a5e5aabb5821eb4275c88f16fcdec8a7265ac",
+      "verified_at": "2026-11-04T19:42:35.755Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-gravity-octopus_v1_thumbnail.png",
+      "sha256": "b71c00612cf76d86d6cd8d39901f823acf1888c900dce94822fdc1389b01bbb3",
+      "verified_at": "2026-11-04T19:42:36.972Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-gravity-octopus_v1_sprite.png",
+      "sha256": "dd24b7923cca7510ff96e7ad4aae0392bc05ac294264da64c7822888299fb154",
+      "verified_at": "2026-11-04T19:42:39.002Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-eclipse-jellyfish_v1_thumbnail.png",
+      "sha256": "3302a5fe188cd27436d5a7a02e7ae2d2979e37d55ad89189900e160677fd5e9b",
+      "verified_at": "2026-11-04T19:42:40.359Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-eclipse-jellyfish_v1_sprite.png",
+      "sha256": "5ecf4a7a16dd1c105157da3a25b1a1b4e682aeb6a42c3d48ce888d6d01aaee22",
+      "verified_at": "2026-11-04T19:42:41.866Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-constellation-dragon_v1_thumbnail.png",
+      "sha256": "a0cf8040cd5f65686ccaedbe4e75a30f3bc23e3818b93555417e689ba3e20001",
+      "verified_at": "2026-11-04T19:42:43.122Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-constellation-dragon_v1_sprite.png",
+      "sha256": "b07093d7539f68eab1070e22ab8eefd1665cf6506103293bff83a13b11bfe440",
+      "verified_at": "2026-11-04T19:42:44.604Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-astronaut-puffer_v1_thumbnail.png",
+      "sha256": "73a6a335b405454e213b58f712979b374b8aecbb134247692d88ddafdba3dbc8",
+      "verified_at": "2026-11-04T19:42:46.181Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-astronaut-puffer_v1_sprite.png",
+      "sha256": "0cb4d99ad273a7ec5efb6416c8581cf6511eed471ec2b0bad314c424a2b53369",
+      "verified_at": "2026-11-04T19:42:48.343Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-binary-nautilus_v1_thumbnail.png",
+      "sha256": "6e1a3de49746a9c5439f02a2e345e64747255de7ae145932ec07d213f0d1547c",
+      "verified_at": "2026-11-04T19:42:49.972Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-binary-nautilus_v1_sprite.png",
+      "sha256": "a78ad8cd23342155dfcf2c39ec35f5296f20eb5ebd90258a450178695dd8ed16",
+      "verified_at": "2026-11-04T19:42:52.065Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-meteor-angler_v1_thumbnail.png",
+      "sha256": "67bed9656a18c734e2817dc6dcbd2c4f1413e493fc98bc56eb7515539ff7db1a",
+      "verified_at": "2026-11-04T19:42:53.342Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-meteor-angler_v1_sprite.png",
+      "sha256": "87a487ca777bc4c194d9f4b8c2329cbedd3b9d9336a49e12d2b76d9deccab7ae",
+      "verified_at": "2026-11-04T19:42:54.843Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-plasma-jellyfish_v1_thumbnail.png",
+      "sha256": "1fed785a8415aa1d7dd05de4ee6d4e1a3b7fcaecb272e9edfa354056cf0168e8",
+      "verified_at": "2026-11-04T19:42:56.095Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-plasma-jellyfish_v1_sprite.png",
+      "sha256": "73f32eaa51b7025768a40f7dc62dd9af1d7e98ae1d00945cddf7ced57481acce",
+      "verified_at": "2026-11-04T19:42:57.694Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-black-hole-urchin_v1_thumbnail.png",
+      "sha256": "0fbe35acbb6e7b60b30a45e9387d1059eb4610fb14fed521b5035a3be44655a1",
+      "verified_at": "2026-11-04T19:42:59.117Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/galaxy-black-hole-urchin_v1_sprite.png",
+      "sha256": "6e496287d8cc4bbc035f1e55078e99aee8563d532500939f60af9a39d80e926b",
+      "verified_at": "2026-11-04T19:43:01.304Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-solaris_v1_thumbnail.png",
+      "sha256": "de70467d4750ea55e4bae87616d04e8ed6ae25b739e2f0af72abd257f0854100",
+      "verified_at": "2026-11-04T19:43:03.088Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-solaris_v1_sprite.png",
+      "sha256": "028db0eb7838dcee87e5f2b712361f86898e3d1641f43f07223c8c4f4b2fcca5",
+      "verified_at": "2026-11-04T19:43:04.903Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-nebula_v1_thumbnail.png",
+      "sha256": "374d42c6be4fe114c279e9a68d4f200c178024e59eadba75834f5d3d4ec6697c",
+      "verified_at": "2026-11-04T19:43:06.204Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-nebula_v1_sprite.png",
+      "sha256": "0d593f3facd6259a15c617daae9341223c4236876169b8826befc0503506680e",
+      "verified_at": "2026-11-04T19:43:08.155Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-nova_v1_thumbnail.png",
+      "sha256": "feb8cda775a042405050f25fd7f7343e9a8a85d502fce4f568817b0fee6c8e22",
+      "verified_at": "2026-11-04T19:43:09.512Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-nova_v1_sprite.png",
+      "sha256": "0fe2ef39ae8c88c8a79b4836c2b471df0546298ffa80bb15085c27fccd0b6dd2",
+      "verified_at": "2026-11-04T19:43:11.863Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-orbis_v1_thumbnail.png",
+      "sha256": "ec0d614638c89b1232b9cc002b0cfe0f02a9f7965a8d6398405c5d2499383fd0",
+      "verified_at": "2026-11-04T19:43:13.552Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-orbis_v1_sprite.png",
+      "sha256": "a6db6194859febd58a0a655bfbb7c5dc44b47ebf2a5845d439d0d967610c972c",
+      "verified_at": "2026-11-04T19:43:15.907Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-entropy_v1_thumbnail.png",
+      "sha256": "41da4203e8c4cbc31ec731d22404bae18ed23a2c82f17cebe854eb99c3708031",
+      "verified_at": "2026-11-04T19:43:17.917Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-entropy_v1_sprite.png",
+      "sha256": "39a79013a136c9426d2a1bb22c48b70f8fa1611d99cd050340abaeaaa944eec7",
+      "verified_at": "2026-11-04T19:43:19.675Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-station-hermit_v1_thumbnail.png",
+      "sha256": "b3b7e532df2d4a721920690a5a580b47e2525454464ed5074f0becc79696e42c",
+      "verified_at": "2026-11-04T19:43:21.208Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-station-hermit_v1_sprite.png",
+      "sha256": "b5d83110ffaddc55d38e9508be09a2d49dffc7e35db1c2c2ff3e9788c4c41e97",
+      "verified_at": "2026-11-04T19:43:23.440Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-ufo-pongi_v1_thumbnail.png",
+      "sha256": "db2361b86c28f9684592de7965f851cea6fb83a2e7a2075ed8a8f373467d62b5",
+      "verified_at": "2026-11-04T19:43:25.113Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-ufo-pongi_v1_sprite.png",
+      "sha256": "57a59d3ba05bae53da7a75d539e1171b801605eb07281c0aea8dc09ccb5a10c6",
+      "verified_at": "2026-11-04T19:43:27.098Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-astronaut-pongi_v1_thumbnail.png",
+      "sha256": "1dade62bfda9a0218f4a01a4fe8e27f838b5da05acbecdacddcbd2c64b02d9cb",
+      "verified_at": "2026-11-04T19:43:28.342Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/galaxy-astronaut-pongi_v1_sprite.png",
+      "sha256": "655881e352b0e9fe4cebaa1237d0dfe0da780dbdca823ac27381d0b0979f51ff",
+      "verified_at": "2026-11-04T19:43:31.105Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-necropolis_v1_thumbnail.png",
+      "sha256": "a596990b433b0f5273c384b822a5058a889bd5cad1563e537008705bd881ee1a",
+      "verified_at": "2026-11-04T19:43:32.375Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-necropolis_swim8_v1_sprite.png",
+      "sha256": "38175f63e134f0d106bef820a956a8358f84bec30597af6b576834d923663c54",
+      "verified_at": "2026-11-04T19:43:34.286Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-genesis_v1_thumbnail.png",
+      "sha256": "6a43652d33b8f0bf13512302456659a0481f6526fa31431e37b9c88019f56bb5",
+      "verified_at": "2026-11-04T19:43:35.893Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-genesis_swim8_v1_sprite.png",
+      "sha256": "c35ecb54f20775538c063333f6721be0775150f12c717d3c8b975877a096ef46",
+      "verified_at": "2026-11-04T19:43:38.680Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-ananke_v1_thumbnail.png",
+      "sha256": "605a5c60b3e97c9464edc6dcc8e728ba5d80de3e9e1acd498a97d9873c6f1b10",
+      "verified_at": "2026-11-04T19:43:40.469Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-ananke_swim8_v1_sprite.png",
+      "sha256": "5f9e25da54db45378d9f19c8e676602cadefa088ed2a609c537f45b795f0ecf3",
+      "verified_at": "2026-11-04T19:43:42.858Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-apocalypsis_v1_thumbnail.png",
+      "sha256": "1e6261b128bafc4211b7d0f19385271d923fd209bf5a59223b055a50e2c07413",
+      "verified_at": "2026-11-04T19:43:44.500Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-apocalypsis_swim8_v1_sprite.png",
+      "sha256": "9685048ecf2077422eba59f40f93168ac82faaab88c5980cec014b16fd9bb4da",
+      "verified_at": "2026-11-04T19:43:47.403Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-eos_v1_thumbnail.png",
+      "sha256": "1aeccb2b74f98bdf3c9436f3d93620f0873ea28fcbad6d0f0669ff742aa61f36",
+      "verified_at": "2026-11-04T19:43:49.432Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-eos_swim8_v1_sprite.png",
+      "sha256": "bc9f874ab103ccda774c2a32640281f6a35d6e313d4d0ffde0b9695f3396ca25",
+      "verified_at": "2026-11-04T19:43:50.732Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-pongi-control-tower_v1_thumbnail.png",
+      "sha256": "daaad62fbbf62243a56128986d0cb10d63e09dd05057a5bef4a476e5aabf642f",
+      "verified_at": "2026-11-04T19:43:52.232Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-pongi-control-tower_swim8_v1_sprite.png",
+      "sha256": "a314a6a2bf742d93579ae812bc791fccc0e531ff82f84b285a1264f8e7c622b9",
+      "verified_at": "2026-11-04T19:43:53.825Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-pongi-moon-base_v1_thumbnail.png",
+      "sha256": "9e6556f0146644ffd27a73b5d60cf07b80565d6b8c188d8527f184c28323b7f6",
+      "verified_at": "2026-11-04T19:43:55.620Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/galaxy-pongi-moon-base_swim8_v1_sprite.png",
+      "sha256": "151318ebd5fe60cb879d02a087db1fef38c34744590da5c71e0d7da6fb351d87",
+      "verified_at": "2026-11-04T19:43:57.778Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-dented-helmet_v1_thumbnail.png",
+      "sha256": "5d3d9337c1c3d34e0046cf0160d7b7304e498ac46cdb8ae60e961c1be5234717",
+      "verified_at": "2026-11-04T19:43:59.656Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-fuel-canister_v1_thumbnail.png",
+      "sha256": "6850c58fffefc38d6364f30b8dcb167bf89e667cb5e47661cd4cae27c214e911",
+      "verified_at": "2026-11-04T19:44:01.253Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-broken-solar-panel_v1_thumbnail.png",
+      "sha256": "c329ad019655a88154ae599f9b344c58050d30c1a398b3e1793bf8f058f84f97",
+      "verified_at": "2026-11-04T19:44:02.546Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-food-pouch_v1_thumbnail.png",
+      "sha256": "19186d12cf16286f34ddfebab16228946b6fce6acadc3e8fd38948c198bd8db7",
+      "verified_at": "2026-11-04T19:44:03.919Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-oxygen-tank_v1_thumbnail.png",
+      "sha256": "bad280a4f69ffdee9f7c874f245d9cd2b5d201400d336a800cc6203e5255ac43",
+      "verified_at": "2026-11-04T19:44:05.486Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-meteor-gravel_v1_thumbnail.png",
+      "sha256": "10848b04ca26800102e4c0139f03af811cc3479b4a4975f1031eb62716f9a471",
+      "verified_at": "2026-11-04T19:44:06.815Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-severed-cable_v1_thumbnail.png",
+      "sha256": "b8a03899e7a79c67186b33d011c0054e4649d401942e8f074ebca2bc9d18fe84",
+      "verified_at": "2026-11-04T19:44:07.981Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-single-glove_v1_thumbnail.png",
+      "sha256": "a354accb8337a9720351e1be97c64f36b97bc8eada198b26e47198aa774de12e",
+      "verified_at": "2026-11-04T19:44:09.475Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-broken-radio_v1_thumbnail.png",
+      "sha256": "18aa30ed8c14ffc42bce4d7f6319a6b8c7765b82d88a092007f5f4a7fee8bd33",
+      "verified_at": "2026-11-04T19:44:10.945Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-dented-nozzle_v1_thumbnail.png",
+      "sha256": "8eedd8d038d8abce7d824ccb52101b96b91a36a29af95d0776ec4868965a72d2",
+      "verified_at": "2026-11-04T19:44:12.229Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-satellite-bolt_v1_thumbnail.png",
+      "sha256": "0fc252545010673d9f23a0073ffd1c3c82e360c2719fcf3ff7acaefd970f172b",
+      "verified_at": "2026-11-04T19:44:13.297Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-cracked-lens_v1_thumbnail.png",
+      "sha256": "74314b448b884ea62ef7e5e19bcf9056f52f84716e5ed54bee1de4f78189bdd7",
+      "verified_at": "2026-11-04T19:44:14.648Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-warning-sign_v1_thumbnail.png",
+      "sha256": "d866b70a1afe28c00ed7db522ea68dde9636deb712aff81a45bd0d1204a9f1b7",
+      "verified_at": "2026-11-04T19:44:15.746Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-alien-drink-can_v1_thumbnail.png",
+      "sha256": "506e2a69a5012d6a56bd64380cae42236cf8ae2b0eb7ade826984399137219d0",
+      "verified_at": "2026-11-04T19:44:17.206Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-faded-moon-flag_v1_thumbnail.png",
+      "sha256": "4efc906f876b1fdf9548cb5acb784222597bb5b3dabf708b58276680635cfe55",
+      "verified_at": "2026-11-04T19:44:18.356Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-broken-clock_v1_thumbnail.png",
+      "sha256": "076ed16cab98ad356a9782c401dab923e4e73531209203d87293ea9f8962e060",
+      "verified_at": "2026-11-04T19:44:19.917Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-broken-star-bulb_v1_thumbnail.png",
+      "sha256": "9f73442d11f6638812a06bb727d75f903dc37ef62e7e866b1f25c54189c7ac7a",
+      "verified_at": "2026-11-04T19:44:21.438Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-seatbelt_v1_thumbnail.png",
+      "sha256": "50ba245486d08c7ac1f594a696a85f676957208bf73403863440e763c3717c61",
+      "verified_at": "2026-11-04T19:44:22.936Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/galaxy-pongi-button_v1_thumbnail.png",
+      "sha256": "427b453c73959f36d425280f5e5063d13a1e70441f42a809b14d25ae1c70acea",
+      "verified_at": "2026-11-04T19:44:24.797Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-black-box_v1_thumbnail.png",
+      "sha256": "1f238dbb87a984622802648454412377ef8f47f850afb7546c6e2f5355f558a7",
+      "verified_at": "2026-11-04T19:44:26.667Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-alien-coin_v1_thumbnail.png",
+      "sha256": "a3ccf8f8875945b80c7e6b45eb7ead7cdee9b2ce0625fcd7a6dc439707a06de4",
+      "verified_at": "2026-11-04T19:44:28.213Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-broken-warp-engine_v1_thumbnail.png",
+      "sha256": "55704a3be96d58bf401247b592866c76619acfad665e3b5fc45ec0c5b56607e7",
+      "verified_at": "2026-11-04T19:44:29.696Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-broken-gravity-generator_v1_thumbnail.png",
+      "sha256": "37e2d20b7f8bfcb2235f3eaa902427740c6d304f21dee20ba6e4e267bf054017",
+      "verified_at": "2026-11-04T19:44:31.122Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-unknown-wreckage_v1_thumbnail.png",
+      "sha256": "e13eba1da3897f020304bf3e82b5a93a2d785de277764446d52c49038a8a44b8",
+      "verified_at": "2026-11-04T19:44:32.537Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-cracked-star-orb_v1_thumbnail.png",
+      "sha256": "87052447438aac55756a84bcde177bafedc4c04d5ff4bd9ef7f331445b603eee",
+      "verified_at": "2026-11-04T19:44:34.220Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-alien-wallet_v1_thumbnail.png",
+      "sha256": "87b495a91b1255cb5b49ef49b6229298bff9a185ef0d573504e4adfaf822d414",
+      "verified_at": "2026-11-04T19:44:35.721Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-broken-moon-crown_v1_thumbnail.png",
+      "sha256": "457c95db126f2a36bb5de83dad19a94880233265f89744b53a086f9779d9bc3e",
+      "verified_at": "2026-11-04T19:44:36.854Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-stopped-compass_v1_thumbnail.png",
+      "sha256": "a203a1424710c85d3246d2ece0bc1caddb8403e0ab62cc16a2918fdb55b4e63f",
+      "verified_at": "2026-11-04T19:44:38.147Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-supernova-film_v1_thumbnail.png",
+      "sha256": "96b36f285c8749830f717ca3bd55b26b2c58b5e03243198054def442efa8b64e",
+      "verified_at": "2026-11-04T19:44:39.741Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-discarded-ufo_v1_thumbnail.png",
+      "sha256": "cb49103bbf26eba3f2d235aea06d588b4579adf3962f95ca6081708f4c0f2c47",
+      "verified_at": "2026-11-04T19:44:40.962Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-faulty-hologram_v1_thumbnail.png",
+      "sha256": "6fd709633b9b711b517243bb302931e7f6753aadc521d14d1d4d562b71a7b456",
+      "verified_at": "2026-11-04T19:44:42.336Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-unfinished-sun_v1_thumbnail.png",
+      "sha256": "461108723f01e65ab32691e7a4f202c31116512ecfe9eed4f0d8b83b451ffe63",
+      "verified_at": "2026-11-04T19:44:43.650Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-forbidden-chart_v1_thumbnail.png",
+      "sha256": "75fbe1c9b826b31deb968f25b0a7b12f224ccd4fbc7467b775ffe0b39cd4adcd",
+      "verified_at": "2026-11-04T19:44:45.123Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-empty-culture-vessel_v1_thumbnail.png",
+      "sha256": "1bb2e2ddba184d0336c3a1191c11b0e6253e3bc6af77750478eed084a3cefcc4",
+      "verified_at": "2026-11-04T19:44:46.974Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-frozen-hourglass_v1_thumbnail.png",
+      "sha256": "cacf06047d3ace77d61d1a6a9262f6ce8c37b51c7c5bbcd47efb6025a0844762",
+      "verified_at": "2026-11-04T19:44:48.230Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-rift-shard_v1_thumbnail.png",
+      "sha256": "730aa07271de2e16fe883b8f395f4473a5e86a56e2c8ba9392072597aa2bd7dc",
+      "verified_at": "2026-11-04T19:44:49.810Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-pongi-lost-spaceship_v1_thumbnail.png",
+      "sha256": "26066d3c7c2107d1e73a09dfeaece4b6ce0407df44bb35b3048af0396522b1dc",
+      "verified_at": "2026-11-04T19:44:51.415Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/galaxy-broken-cosmic-rod_v1_thumbnail.png",
+      "sha256": "aa84b18d3af6c11499a5ac963f1bd3ee3e55a426b64d54d7e3a0356ff81ac976",
+      "verified_at": "2026-11-04T19:44:52.752Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-mini-rocket_v1_thumbnail.png",
+      "sha256": "c01e038af46405267775264c1368c661d4c31336740d9e10231986570c8a25e7",
+      "verified_at": "2026-11-04T19:44:54.548Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-moon-rock_v1_thumbnail.png",
+      "sha256": "e823b72add36b994da898fe57077bc034c6d28055cc86be662610e9c992af4da",
+      "verified_at": "2026-11-04T19:44:55.703Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-star-streetlamp_v1_thumbnail.png",
+      "sha256": "a89eed411c68f88329d442f0154e099da625252216afcdbcb1bba66a76566c3b",
+      "verified_at": "2026-11-04T19:44:56.753Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-exploration-flag_v1_thumbnail.png",
+      "sha256": "6532e18e58bbccb2257eadb5fa8c65173b355b3786c3c58426d7cfd339fc6359",
+      "verified_at": "2026-11-04T19:44:57.704Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-mini-ufo_v1_thumbnail.png",
+      "sha256": "bbaf174d98981324897ed8d01f2a2a92d859a9b16ca676741684c8cf693f2c5d",
+      "verified_at": "2026-11-04T19:45:00.076Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-alien-planter_v1_thumbnail.png",
+      "sha256": "ce5cf6faf0af98e4184efde62050ed077edb85c1b2a2212ad77e0f26214f3ede",
+      "verified_at": "2026-11-04T19:45:01.363Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-meteor-stone_v1_thumbnail.png",
+      "sha256": "ec547ae8e9d74e6ac81458abb7431857c4268c7c4afc10c3eab6ac47cff38c58",
+      "verified_at": "2026-11-04T19:45:02.682Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-space-signpost_v1_thumbnail.png",
+      "sha256": "46c24c00dab933b5f667fb98f135a1a5aaf82467388d6cd645b4c1ff366eea46",
+      "verified_at": "2026-11-04T19:45:04.562Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-constellation-frame_v1_thumbnail.png",
+      "sha256": "fe4973695c86121324ad0a3c3c414a297886ba9a0ac7d7fb5c04b5d21bab5587",
+      "verified_at": "2026-11-04T19:45:06.095Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-astronaut-footprints_v1_thumbnail.png",
+      "sha256": "bdb8a406f9124097372a36b844d5fa075353d2ffbec4164dbe7e2045a9fc3789",
+      "verified_at": "2026-11-04T19:45:07.660Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-saturn-balloon_v1_thumbnail.png",
+      "sha256": "656d3f66dcd29393f4864d4dce3ad3d036ca422b03f32aee3501f530d2ca5715",
+      "verified_at": "2026-11-04T19:45:09.745Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-rocket-mailbox_v1_thumbnail.png",
+      "sha256": "19c35f2562112bb8c1026b196494f3ee9eeb0b9e6d87ee3057b613dd5b48e2af",
+      "verified_at": "2026-11-04T19:45:11.417Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-alien-scarecrow_v1_thumbnail.png",
+      "sha256": "1b92f2b32617e196fe5c878292d1af507c91f2e0446456622c72deeccb1ffe1d",
+      "verified_at": "2026-11-04T19:45:13.210Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/galaxy-star-candy-machine_v1_thumbnail.png",
+      "sha256": "d75de107868ff03f677a8b1179ed70a82ee40adc5ed6ae452a0d8a25ce81a1fa",
+      "verified_at": "2026-11-04T19:45:14.647Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-astronaut-pongi-statue_v1_thumbnail.png",
+      "sha256": "aacaa6d7a4e2d5435c288156eb164380720fdf4296e25656d5563d5b9b9feb38",
+      "verified_at": "2026-11-04T19:45:17.270Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-solar-system-model_v1_thumbnail.png",
+      "sha256": "1ba0b3a15dc06657ba655eb144e0d0794a5bb50ab59add11529bbecad519f7d4",
+      "verified_at": "2026-11-04T19:45:18.346Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-alien-abduction-device_v1_thumbnail.png",
+      "sha256": "85804add669caf63a903288a62977dcf36312baf6a830d899b47dd3a4ec0fe49",
+      "verified_at": "2026-11-04T19:45:20.187Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-moon-fountain_v1_thumbnail.png",
+      "sha256": "385c6412331cbf4a59260ea3710eab1faa3db19bfaaf44895e5a535ba54431f4",
+      "verified_at": "2026-11-04T19:45:21.403Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-meteor-sculpture_v1_thumbnail.png",
+      "sha256": "83d699ba00a43205c7c52113beda05fa9a776d84f264fd52bbc97fc32303effd",
+      "verified_at": "2026-11-04T19:45:22.307Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-capsule-house_v1_thumbnail.png",
+      "sha256": "c5520f3904bec061f70fec6441d22a35be1c67cabc07a34462a03f2ed5ecedc2",
+      "verified_at": "2026-11-04T19:45:23.956Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-galactic-streetlamp_v1_thumbnail.png",
+      "sha256": "6a358e62fb5845dbe054c5005a89a1de11b71b3f7072f6e92a3f9f2d4db9a11a",
+      "verified_at": "2026-11-04T19:45:25.096Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-hologram-globe_v1_thumbnail.png",
+      "sha256": "3657575109e1812d3750934a57564cdfae679d84b63c638864575e770d2fda1a",
+      "verified_at": "2026-11-04T19:45:26.779Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-alien-mushrooms_v1_thumbnail.png",
+      "sha256": "52e2e13be29e1cee96da8a7cbc79b84c94e554c9c6d44b12422bcd9f2e478e7a",
+      "verified_at": "2026-11-04T19:45:28.280Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-starlight-telescope_v1_thumbnail.png",
+      "sha256": "d41a8c05eda3381674dcdb4d114a4815d72f0b95c09e96cdab3f28072f78fd0f",
+      "verified_at": "2026-11-04T19:45:29.638Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-mini-space-station_v1_thumbnail.png",
+      "sha256": "1beaeaa49263d61265a37cbc62ced3b2dd4952a1321930415e047acb320368dc",
+      "verified_at": "2026-11-04T19:45:31.104Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-antigravity-rocks_v1_thumbnail.png",
+      "sha256": "d32dc8a7cff20e90ec73608f3fcb233f8be015edbe59d66763dc4bd93d889f23",
+      "verified_at": "2026-11-04T19:45:32.379Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-moon-crystal-tree_v1_thumbnail.png",
+      "sha256": "825328b44ec58c0598df9a153e428bab3b60a27640f7dc71e4a1b66645ee9df7",
+      "verified_at": "2026-11-04T19:45:33.437Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-impact-crater_v1_thumbnail.png",
+      "sha256": "cde23eece318dd805cf5d135949647a8ed0413b3028015400d699236fc7fdd99",
+      "verified_at": "2026-11-04T19:45:34.640Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-space-fishing-pier_v1_thumbnail.png",
+      "sha256": "ae61f4f02c8f68728753378080fba34c5645f3f42dc663db5f8a6075b55ff693",
+      "verified_at": "2026-11-04T19:45:36.215Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/galaxy-meteor-observatory_v1_thumbnail.png",
+      "sha256": "a1d91b17082969b5e510c1b93f7a146d27ec31f4aea82c65cf07cb4efcc17d4e",
+      "verified_at": "2026-11-04T19:45:37.806Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/galaxy-pongi-lunar-lander_v1_thumbnail.png",
+      "sha256": "b620dae0f07a4d8f4a20d01b8a058ffe609561b36b24b5a7c668061b6af2c7c4",
+      "verified_at": "2026-11-04T19:45:39.325Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/galaxy-pongi-space-lighthouse_v1_thumbnail.png",
+      "sha256": "78aebf90280ded2f401e468aa99d1cbbc349678b83821fe38aad9fd4942f7166",
+      "verified_at": "2026-11-04T19:45:40.950Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "equipment/rods/galaxy/reel-frame.png",
+      "sha256": "9b53f47a89428a078d747e11baf8ac6c4e0fc461a19a9a497320dc8bbba5f18c",
+      "verified_at": "2026-11-04T19:53:25.970Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "equipment/rods/galaxy/reel-rotor.png",
+      "sha256": "1d9da0204f764e2100eca176f45b8299b56ab4bb5cb09123ca5f0e2bcb3343e2",
+      "verified_at": "2026-11-04T19:53:27.172Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "equipment/rods/galaxy/float.png",
+      "sha256": "40d748ff4ac7dce31a79c6552a70412b433ee3620c6fa8ca7d4c2afcf3253d67",
+      "verified_at": "2026-11-04T19:53:28.099Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "equipment/rods/galaxy/thumbnail.png",
+      "sha256": "f3d6d38b6b25d0c680e435751bb7fc16a14408f718223d1f298f69a8a55bfaf5",
+      "verified_at": "2026-11-04T19:45:42.663Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "regions/galaxy/overview-v1.png",
+      "sha256": "e5cac485d11e7ee9372fc58abab48114c403c7fe2fee1235888885625081cc51",
+      "verified_at": "2026-11-04T19:45:47.716Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fishing/scenery/galaxy-v1.png",
+      "sha256": "c4760a779038d79e614e596e27aa7d2b9231834cde9722efcd5d18172f3e29b9",
+      "verified_at": "2026-11-04T19:45:51.753Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fishing/close-water/galaxy-v1.png",
+      "sha256": "62bd882a9e9655c64c0a503c07056abe3f4fe2b5aafac8785eb2517c47e1df19",
+      "verified_at": "2026-11-04T19:45:59.238Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fishing/platforms/galaxy-v1.png",
+      "sha256": "023b7dfa587bad8c091856c5003c3da6c014cdf230a18dcebb822fc021a8de62",
+      "verified_at": "2026-11-04T19:46:01.200Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "region-icons/galaxy-v1.png",
+      "sha256": "8934446195c655f1db52c0a655e2e21bc3618433bfae11d28a007968e3fb8481",
+      "verified_at": "2026-11-04T19:46:07.253Z"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "regions/galaxy/map-v1.png",
+      "sha256": "96ffb9b079c02f53416f0262bf776282b1437aaf90036262c52120c93969e266",
+      "verified_at": "2026-11-04T19:46:08.926Z"
+    },
+    {
+      "bucket": "aquarium-backgrounds",
+      "key": "galaxy-space-station-panorama-v1.png",
+      "sha256": "b6a3c4c91368e66b0aacef5cbc2e8eeda2c174730879ec1bd1469dbbb92a27a5",
+      "verified_at": "2026-11-04T19:46:11.279Z"
+    },
+    {
+      "bucket": "aquarium-backgrounds",
+      "key": "galaxy-lunar-base-panorama-v1.png",
+      "sha256": "57a2fd65fc960495359126df3419277bd444697a1a95855ca9bd7efc6744a835",
+      "verified_at": "2026-11-04T19:46:13.984Z"
+    },
+    {
+      "bucket": "aquarium-backgrounds",
+      "key": "galaxy-observation-palace-panorama-v1.png",
+      "sha256": "337454cdf7dd58850ff531b0b0b5859d278bfca6a06eb14c61e2a8dcbfdcae35",
+      "verified_at": "2026-11-04T19:46:16.398Z"
+    }
+  ]
+}

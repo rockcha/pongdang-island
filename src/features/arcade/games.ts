@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react'
 import { lazy } from 'react'
 import { Brain, Shell, Scan, Pickaxe, Blocks, Castle, Fish } from 'lucide-react'
-const CalculationGame = import.meta.env.DEV ? lazy(() => import('./calculation-game')) : undefined
+const CalculationGame = lazy(() => import('./calculation-game'))
 const ShadowGame = lazy(() => import('./shadow-game'))
 const MemoryGame = lazy(() => import('./memory-game'))
 const OddEvenGame = lazy(() => import('./odd-even-game'))
@@ -30,10 +30,10 @@ export const arcadeTagLabels = { luck: '운빨', brain: '뇌지컬', physical: '
 
 // Placeholder concepts: replace or extend these entries when games are approved.
 export const arcadeGames: ArcadeGame[] = [
-  ...(import.meta.env.DEV ? [{
+  {
     id: 'calculation',
-    title: '누가 더 많을까?',
-    description: '어항 속 친구들을 많은 순서대로 나열해보세요. 실전은 준비 중이에요.',
+    title: '어항 줄세우기',
+    description: '네 종류를 많은 순서대로! 무료 참가 · 일요일 24시 주간 정산.',
     thumbnail: new URL('./assets/calculation/counting-thumbnail.webp', import.meta.url).href,
     icon: Fish,
     entryFee: 0,
@@ -42,8 +42,7 @@ export const arcadeGames: ArcadeGame[] = [
     component: CalculationGame,
     tags: ['brain'],
     rewardMode: 'settlement',
-    practiceOnly: true,
-  } satisfies ArcadeGame] : []),
+  },
   {
     id: 'pongi-whack',
     title: '퐁이 잡기',

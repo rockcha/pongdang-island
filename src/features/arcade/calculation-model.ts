@@ -10,7 +10,7 @@
   { id: 'starfish', name: '불가사리' },
   { id: 'jellyfish', name: '해파리' },
 ] as const
-export const STAGE_COUNT = 15
+export const STAGE_COUNT = 20
 export const ROUND_COUNT = STAGE_COUNT * 2
 export type Swimmer = {
   kind: number
@@ -42,24 +42,30 @@ export type CountingState = {
 export type CountingAction =
   | { type: 'reset'; state: CountingState }
   | { type: 'tick'; elapsed: number }
+  | { type: 'remaining'; value: number }
   | { type: 'move' | 'swap'; from: number; to: number }
   | { type: 'start' | 'submit' | 'next' }
 const countsByStage = [
+  [9, 6, 3, 1],
   [10, 7, 4, 1],
   [11, 8, 5, 2],
   [12, 9, 6, 3],
-  [11, 8, 6, 3],
+  [13, 10, 7, 4],
   [12, 9, 7, 4],
   [13, 10, 8, 5],
-  [12, 10, 8, 6],
-  [13, 11, 9, 7],
+  [13, 11, 8, 5],
+  [14, 12, 9, 6],
+  [14, 12, 10, 7],
   [14, 12, 10, 8],
-  [14, 12, 11, 9],
+  [15, 13, 11, 9],
   [15, 13, 12, 10],
   [16, 14, 13, 11],
-  [15, 14, 13, 12],
-  [16, 15, 14, 13],
-  [17, 16, 15, 14],
+  [16, 15, 13, 11],
+  [16, 15, 13, 12],
+  [17, 16, 14, 13],
+  [17, 16, 15, 13],
+  [18, 17, 16, 14],
+  [18, 17, 16, 15],
 ]
 function shuffle<T>(items: T[], random: () => number) {
   const result = [...items]
@@ -77,15 +83,16 @@ export function createCountingGame(random = Math.random, startStage = 1): Counti
       const j = Math.floor(random() * (i + 1))
       ;[order[i], order[j]] = [order[j], order[i]]
     }
-    const targets = order.slice(0, 4)
+    const previous = rounds.at(-1)?.targets ?? []
+    const fresh = order.filter((k) => !previous.includes(k)).slice(0, 2)
+    const targets = [...fresh, ...order.filter((k) => !fresh.includes(k)).slice(0, 2)]
     for (let question = 1; question <= 2; question++) {
-      const ranked = shuffle(targets, random)
-      const offset = Math.floor(random() * 2)
+      let ranked = shuffle(targets, random)
+      if (question === 2 && ranked.every((k, i) => k === answerOrder(rounds.at(-1)!)[i]))
+        ranked = [...ranked.slice(1), ranked[0]]
       const kinds = ranked.flatMap((kind, i) =>
-        Array<number>(countsByStage[stage - 1][i] + offset).fill(kind),
+        Array<number>(countsByStage[stage - 1][i]).fill(kind),
       )
-      if (stage >= 10) kinds.push(...Array<number>(2).fill(order[4]))
-      if (stage >= 13) kinds.push(...Array<number>(2).fill(order[5]))
       const mixed = shuffle(kinds, random)
       let initialOrder = shuffle(targets, random)
       if (initialOrder.every((k, i) => k === ranked[i]))
@@ -168,6 +175,7 @@ function settle(state: CountingState, timeout: boolean): CountingState {
   }
 }
 export function countingReducer(state: CountingState, action: CountingAction): CountingState {
+  if (action.type === 'remaining') return { ...state, remaining: Math.max(0, action.value) }
   if (action.type === 'reset') return action.state
   if (action.type === 'start' && state.phase === 'briefing')
     return { ...state, phase: 'counting', remaining: state.rounds[state.round].duration }

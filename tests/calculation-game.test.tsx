@@ -12,12 +12,13 @@ function solve(state: CountingState) {
     state = reduce(state, { type: 'move', from: state.order.indexOf(k), to: i })
   return reduce(state, { type: 'submit' })
 }
-it('creates 30 rounds with four unique targets, no ties and shuffled starting answers', () => {
+it('creates 40 rounds with four unique targets, no ties and shuffled starting answers', () => {
   for (let n = 0; n < 25; n++) {
     const s = createCountingGame()
-    expect(s.rounds).toHaveLength(30)
+    expect(s.rounds).toHaveLength(40)
     for (const r of s.rounds) {
       expect(r.targets).toHaveLength(4)
+      expect(new Set(r.fish.map((f) => f.kind)).size).toBe(4)
       expect(new Set(r.targets.map((k) => countKind(r, k))).size).toBe(4)
       expect(r.duration).toBe(20000)
       expect([...r.initialOrder].sort()).toEqual([...r.targets].sort())
@@ -28,10 +29,10 @@ it('creates 30 rounds with four unique targets, no ties and shuffled starting an
 })
 it('preserves target species across two questions', () => {
   const s = createCountingGame()
-  for (let i = 0; i < 30; i += 2) expect(s.rounds[i].targets).toEqual(s.rounds[i + 1].targets)
+  for (let i = 0; i < 40; i += 2) expect(s.rounds[i].targets).toEqual(s.rounds[i + 1].targets)
 })
 it('late stages have one-creature gaps', () => {
-  for (const r of createCountingGame().rounds.filter((r) => r.stage >= 13)) {
+  for (const r of createCountingGame().rounds.filter((r) => r.stage === 20)) {
     const a = answerOrder(r).map((k) => countKind(r, k))
     expect(a[0] - a[1]).toBe(1)
     expect(a[1] - a[2]).toBe(1)
@@ -61,7 +62,7 @@ it('rejects sorting after timeout and deducts only one life', () => {
 })
 it('scores full ordered answers and waits for acknowledgement', () => {
   let s = createCountingGame()
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 40; i++) {
     s = reduce(s, { type: 'start' })
     s = solve(s)
     expect(s.outcome).toBe('correct')
@@ -69,11 +70,11 @@ it('scores full ordered answers and waits for acknowledgement', () => {
     s = reduce(s, { type: 'next' })
   }
   expect(s.phase).toBe('result')
-  expect(s.correct).toBe(30)
-  expect(s.score).toBe(4500)
+  expect(s.correct).toBe(40)
+  expect(s.score).toBe(6000)
 })
 it('a wrong permutation loses a life; last-stage practice ends after two rounds', () => {
-  let s = reduce(createCountingGame(Math.random, 15), { type: 'start' })
+  let s = reduce(createCountingGame(Math.random, 20), { type: 'start' })
   s = reduce(s, { type: 'submit' })
   expect(s.outcome).toBe('wrong')
   expect(s.lives).toBe(2)

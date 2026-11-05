@@ -27,6 +27,25 @@
   user-select: none;
   pointer-events: none;
 }
+.order-network-error,
+.order-network-status {
+  position: absolute;
+  inset: 48px 12px auto;
+  z-index: 30;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #fff4df;
+  box-shadow: 0 2px 10px #604d3c20;
+  text-align: center;
+  font-size: 12px;
+}
+.order-network-error button {
+  margin-left: 8px;
+  text-decoration: underline;
+}
+.order-network-status {
+  pointer-events: none;
+}
 .count-primary {
   display: flex;
   align-items: center;

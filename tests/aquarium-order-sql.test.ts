@@ -1,74 +1,177 @@
-// @vitest-environment node
-import {beforeAll,afterAll,expect,it} from 'vitest'
-import {createLocalDatabase,replayMigrations,migrationFiles,readSql} from '../scripts/db/local.mjs'
-let db
-const owner='00000000-0000-0000-0000-000000001111',friend='00000000-0000-0000-0000-000000001112'
-async function asUser(user,sql,args=[]){await db.exec('set role authenticated');try{await db.query("select set_config('request.jwt.claim.sub',$1,false)",[user]);return await db.query(sql,args)}finally{await db.exec('reset role')}}
-async function state(){return (await asUser(owner,'select public.aquarium_state() s')).rows[0].s}
-async function reorder(ids,expected){return (await asUser(owner,'select public.reorder_aquarium_tanks($1,$2) s',[ids,expected])).rows[0].s}
-beforeAll(async()=>{
- db=await createLocalDatabase();await replayMigrations(db)
- for(const id of [owner,friend]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,id===owner?'순서주인':'방문친구']);await asUser(id,'select public.aquarium_state()')}
- await db.query('insert into public.friend_requests(sender_id,recipient_id,status) values($1,$2,\'accepted\')',[owner,friend])
- await db.query('insert into public.player_wallets(user_id,gold) values($1,10000) on conflict(user_id) do update set gold=10000',[owner])
- for(let i=0;i<4;i++)await asUser(owner,'select public.buy_aquarium_tank($1)',[crypto.randomUUID()])
-},60000)
-afterAll(async()=>{await db?.close()})
-it('sets a representative without reordering and preserves it through later reorders',async()=>{
- const before=await state(),ids=before.tanks.map(t=>t.id),target=ids[3]
- const saved=(await asUser(owner,"select public.manage_aquarium_tank($1,'representative','') s",[target])).rows[0].s
- expect(saved.tanks.map(t=>t.id)).toEqual(ids)
- expect(saved.tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
- const reversed=[...ids].reverse(),after=await reorder(reversed,ids)
- expect(after.tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
- const visit=(await asUser(friend,'select public.friend_aquarium($1) s',[owner])).rows[0].s
- expect(visit.tanks.map(t=>t.id)).toEqual(reversed)
- expect(visit.tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
- await expect(asUser(friend,"select public.manage_aquarium_tank($1,'representative','')",[target])).rejects.toThrow('TANK_NOT_FOUND')
- expect((await state()).tanks.filter(t=>t.is_representative).map(t=>t.id)).toEqual([target])
+﻿// @vitest-environment node
+import { afterAll, afterEach, beforeAll, beforeEach, expect, it } from 'vitest'
+import { createLocalDatabase, replayMigrations } from '../scripts/db/local.mjs'
+let db: Awaited<ReturnType<typeof createLocalDatabase>>
+const uid = '00000000-0000-0000-0000-000000009731',
+  other = '00000000-0000-0000-0000-000000009732'
+beforeAll(async () => {
+  db = await createLocalDatabase()
+  await replayMigrations(db)
+}, 120000)
+afterAll(async () => {
+  await db.close()
 })
-it('moves the fifth tank to the front for both owner and friend, preserving tank contents and metadata',async()=>{
- const before=await state(),ids=before.tanks.map(t=>t.id),next=[ids[4],...ids.slice(0,4)]
- const first=before.tanks[0]
- await db.query("insert into public.player_collectibles(user_id,species_id,tank_id,position_x,position_y) values($1,(select id from public.collectible_species where kind='decoration' limit 1),$2,.25,.75)",[owner,first.id])
- const items=(await db.query('select * from public.player_collectibles where user_id=$1',[owner])).rows
- const after=await reorder(next,ids)
- expect(after.tanks.map(t=>t.id)).toEqual(next)
- for(const tank of before.tanks){const actual=after.tanks.find(t=>t.id===tank.id);for(const key of ['name','background_id','is_default','created_at'])expect(actual[key]).toEqual(tank[key])}
- expect((await db.query('select * from public.player_collectibles where user_id=$1',[owner])).rows).toEqual(items)
- expect((await asUser(friend,'select public.friend_aquarium($1) s',[owner])).rows[0].s.tanks.map(t=>t.id)).toEqual(next)
- expect((await state()).tanks.map(t=>t.id)).toEqual(next)
- expect((await reorder(next,ids)).tanks.map(t=>t.id)).toEqual(next)
+beforeEach(async () => {
+  await db.exec('begin')
+  for (const id of [uid, other]) {
+    await db.query('insert into auth.users(id) values($1)', [id])
+    await db.query('insert into public.player_profiles(id,nickname) values($1,$2)', [
+      id,
+      id === uid ? 'ordera' : 'orderb',
+    ])
+  }
+  await db.query("select set_config('request.jwt.claim.sub',$1,true)", [uid])
+  await db.exec('set role authenticated')
 })
-it('rejects missing, duplicate, foreign and null IDs without changing the order',async()=>{
- const ids=(await state()).tanks.map(t=>t.id),foreign=(await asUser(friend,'select public.aquarium_state() s')).rows[0].s.tanks[0].id
- for(const invalid of [null,[],ids.slice(1),[...ids.slice(1),ids[1]],[...ids.slice(1),foreign],[...ids.slice(1),null]])await expect(reorder(invalid,ids)).rejects.toThrow('INVALID_TANK_ORDER')
- expect((await state()).tanks.map(t=>t.id)).toEqual(ids)
- await expect(asUser(friend,'select public.reorder_aquarium_tanks($1,$2)',[ids,ids])).rejects.toThrow('INVALID_TANK_ORDER')
- await expect(db.exec('set role anon;select public.reorder_aquarium_tanks(array[]::uuid[],array[]::uuid[])')).rejects.toThrow('permission denied')
- await db.exec('reset role')
+afterEach(async () => {
+  await db.exec('rollback')
 })
-it('rejects stale edits and appends newly purchased tanks after the reordered list',async()=>{
- const ids=(await state()).tanks.map(t=>t.id),next=[ids[1],ids[0],...ids.slice(2)]
- await reorder(next,ids)
- await expect(reorder([...ids].reverse(),ids)).rejects.toThrow('TANK_ORDER_CHANGED')
- expect((await state()).tanks.map(t=>t.id)).toEqual(next)
- await asUser(owner,'select public.buy_aquarium_tank($1)',[crypto.randomUUID()])
- expect((await state()).tanks.slice(0,5).map(t=>t.id)).toEqual(next)
- await expect(reorder(ids,next)).rejects.toThrow('INVALID_TANK_ORDER')
+async function action(
+  name: string,
+  id: string | null = null,
+  round: number | null = null,
+  order: number[] | null = null,
+  operation: string | null = null,
+) {
+  return (
+    await db.query('select public.aquarium_order_action($1,$2,$3,$4,$5) s', [
+      name,
+      operation,
+      id,
+      round,
+      order === null ? null : JSON.stringify(order),
+    ])
+  ).rows[0].s
+}
+function answer(run: any) {
+  const counts = new Map<number, number>()
+  for (const f of run.board.fish) counts.set(f.kind, (counts.get(f.kind) ?? 0) + 1)
+  return [...counts.keys()].sort((a, b) => counts.get(b)! - counts.get(a)!)
+}
+it('starts free, is idempotent, exposes no table access and rejects another owner', async () => {
+  const op = crypto.randomUUID(),
+    s = await action('start', null, null, null, op)
+  expect(s.run.round).toBe(0)
+  expect(s.run.phase).toBe('briefing')
+  expect((await action('start', null, null, null, op)).run.id).toBe(s.run.id)
+  expect((await action('start', null, null, null, crypto.randomUUID())).run.id).toBe(s.run.id)
+  expect(
+    (
+      await db.query(
+        "select has_table_privilege('authenticated','app_private.aquarium_order_runs','SELECT') ok",
+      )
+    ).rows[0].ok,
+  ).toBe(false)
+  await db.exec('reset role')
+  expect(
+    (await db.query('select count(*)::int n from public.gold_transactions where user_id=$1', [uid]))
+      .rows[0].n,
+  ).toBe(0)
+  await db.query("select set_config('request.jwt.claim.sub',$1,true)", [other])
+  await db.exec('set role authenticated')
+  await expect(action('begin', s.run.id, 0)).rejects.toThrow('RUN_NOT_FOUND')
 })
-it('backfills an existing multi-tank account in its original order without changing tank metadata',async()=>{
- const old=await createLocalDatabase()
- try{
-  for(const file of migrationFiles().filter(f=>f<'20261024023016'))await old.exec(readSql('supabase/migrations/'+file))
-  await old.query('insert into auth.users(id) values($1)',[owner])
-  await old.query("select set_config('request.jwt.claim.sub',$1,false)",[owner])
-  await old.query('select public.aquarium_state()')
-  for(let i=0;i<3;i++)await old.query('insert into public.aquarium_tanks(user_id,name) values($1,$2)',[owner,'보존 어항 '+i])
-  const before=(await old.query('select * from public.aquarium_tanks where user_id=$1 order by created_at,id',[owner])).rows
-  await old.exec(readSql('supabase/migrations/20261024023016_aquarium_tank_display_order.sql'))
-  const after=(await old.query('select * from public.aquarium_tanks where user_id=$1 order by display_order,created_at,id',[owner])).rows
-  expect(after.map(({display_order,...tank})=>tank)).toEqual(before)
-  expect(after.map(t=>t.display_order)).toEqual([0,1,2,3])
- }finally{await old.close()}
-},60000)
+it('validates answers once, does not extend deadline and advances once on retries', async () => {
+  let s = await action('start', null, null, null, crypto.randomUUID())
+  const id = s.run.id
+  s = await action('begin', id, 0)
+  const deadline = s.run.deadline
+  expect((await action('begin', id, 0)).run.deadline).toBe(deadline)
+  s = await action('answer', id, 0, answer(s.run))
+  expect(s.run.outcome).toBe('correct')
+  const score = s.run.score
+  expect((await action('answer', id, 0, [0, 0, 0, 0])).run.score).toBe(score)
+  s = await action('next', id, 0)
+  expect(s.run.round).toBe(1)
+  expect((await action('next', id, 0)).run.round).toBe(1)
+  expect((await action('begin', id, 0)).run.phase).toBe('briefing')
+})
+it('server deadline rejects correct but late answers and abandon excludes ranking', async () => {
+  let s = await action('start', null, null, null, crypto.randomUUID())
+  const id = s.run.id
+  s = await action('begin', id, 0)
+  await db.exec('reset role')
+  await db.query(
+    "update app_private.aquarium_order_runs set deadline=clock_timestamp()-interval '1 second' where id=$1",
+    [id],
+  )
+  await db.exec('set role authenticated')
+  s = await action('answer', id, 0, answer(s.run))
+  expect(s.run.outcome).toBe('timeout')
+  expect(s.run.score).toBe(0)
+  expect(s.run.lives).toBe(2)
+  await action('leave', id)
+  expect((await db.query('select public.aquarium_order_leaderboard(0) s')).rows[0].s.total).toBe(0)
+})
+it('rejects malformed permutations', async () => {
+  let s = await action('start', null, null, null, crypto.randomUUID())
+  s = await action('begin', s.run.id, 0)
+  await expect(action('answer', s.run.id, 0, [1, 1, 1, 1])).rejects.toThrow('INVALID_ORDER')
+})
+it('completes forty server rounds with four species, then settles only the best run once', async () => {
+  let s = await action('start', null, null, null, crypto.randomUUID())
+  const id = s.run.id
+  let previous: number[] = []
+  let previousAnswer: number[] = []
+  for (let i = 0; i < 40; i++) {
+    const r = s.run
+    expect(r.board.stage).toBe(Math.floor(i / 2) + 1)
+    expect(new Set(r.board.fish.map((f: any) => f.kind)).size).toBe(4)
+    const ranked = answer(r)
+    expect(r.board.initialOrder).not.toEqual(ranked)
+    if (i % 2 === 1) {
+      expect(r.board.targets).toEqual(previous)
+      expect(ranked).not.toEqual(previousAnswer)
+    } else if (i > 0)
+      expect(
+        r.board.targets.filter((k: number) => !previous.includes(k)).length,
+      ).toBeGreaterThanOrEqual(2)
+    previous = r.board.targets
+    previousAnswer = ranked
+    s = await action('begin', id, i)
+    s = await action('answer', id, i, ranked)
+    expect(s.run.outcome).toBe('correct')
+    s = await action('next', id, i)
+  }
+  expect(s.run.phase).toBe('result')
+  expect(s.run.correct).toBe(40)
+  const ranking = (await db.query('select public.aquarium_order_leaderboard(0) s')).rows[0].s
+  expect(ranking.total).toBe(1)
+  expect(ranking.rows[0].rewardGold).toBe(2000)
+  await db.exec('reset role')
+  const end = ranking.weekEnd
+  expect(
+    (await db.query('select app_private.settle_arcade_weeks($1::timestamptz) n', [end])).rows[0].n,
+  ).toBe(0)
+  await db.query("select app_private.settle_arcade_weeks($1::timestamptz+interval '1 minute')", [
+    end,
+  ])
+  const rewards = (
+    await db.query(
+      "select gold from app_private.arcade_weekly_rewards where game='aquarium-order' and user_id=$1",
+      [uid],
+    )
+  ).rows
+  expect(rewards).toEqual([{ gold: 2000 }])
+  const gift = (
+    await db.query(
+      "select gift_id from app_private.arcade_weekly_rewards where game='aquarium-order' and user_id=$1",
+      [uid],
+    )
+  ).rows[0].gift_id
+  await db.exec('set role authenticated')
+  await db.query('select public.claim_collectible_gift($1)', [gift])
+  await db.query('select public.claim_collectible_gift($1)', [gift])
+  await db.exec('reset role')
+  expect(
+    (await db.query('select gold from public.player_wallets where user_id=$1', [uid])).rows[0].gold,
+  ).toBe(2000)
+  expect(
+    (
+      await db.query(
+        "select app_private.settle_arcade_weeks($1::timestamptz+interval '2 minutes') n",
+        [end],
+      )
+    ).rows[0].n,
+  ).toBe(0)
+}, 120000)

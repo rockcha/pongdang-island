@@ -14,10 +14,19 @@ import { GameModal } from './game-modal'
 import { GameStartOverlay } from './game-start-overlay'
 import { GameTabs, type GameTab } from './game-controls'
 import { GamePanel } from './game-layout'
+import { useAccountResource } from '@/lib/account-query'
+import { useAuth } from '@/components/auth-provider'
+import { randomId } from '@/lib/random-id'
+import {
+  readOrderState,
+  orderAction,
+  type OrderRequest,
+  type OrderState,
+} from './aquarium-order-api'
+import { AquariumOrderRanking } from './aquarium-order-ranking'
 import countingThumbnail from './assets/calculation/counting-thumbnail.webp'
 import {
   CREATURES,
-  STAGE_COUNT,
   answerOrder,
   countKind,
   countingReducer,
@@ -25,6 +34,7 @@ import {
   swimmerPosition,
   type CountingAction,
   type CountingRound,
+  type CountingState,
 } from './calculation-model'
 import './calculation-game.css'
 
@@ -307,13 +317,97 @@ function OrderCards({
 }
 
 export default function CalculationGame() {
+  const { session } = useAuth()
+  return <CountingGame key={session?.user.id ?? 'practice'} />
+}
+function CountingGame() {
   const [tab, setTab] = useState<GameTab>('game')
   const [open, setOpen] = useState(false),
     [paused, setPaused] = useState(false),
-    [startStage, setStartStage] = useState(1)
+    [live, setLive] = useState(false)
+  const { session } = useAuth()
+  const remote = useAccountResource('aquarium-order', readOrderState)
+  const [busy, setBusy] = useState(false),
+    [error, setError] = useState<string | null>(null)
+  const requestLock = useRef(false),
+    requestRetry = useRef<OrderRequest | null>(null),
+    operation = useRef<string | null>(null)
+  const runId = useRef<string | null>(null),
+    deadline = useRef(0),
+    latest = useRef<CountingState | null>(null)
+  const mounted = useRef(true)
+  useEffect(() => {
+    mounted.current = true
+    return () => {
+      mounted.current = false
+    }
+  }, [])
   const [state, dispatch] = useReducer(countingReducer, undefined, () => createCountingGame())
   const assets = useArtwork(),
     last = useRef(0)
+  useEffect(() => {
+    latest.current = state
+  }, [state])
+  function applyServer(data: OrderState) {
+    const run = data.run
+    if (!run) return
+    runId.current = run.id
+    deadline.current =
+      performance.now() +
+      Math.max(0, Date.parse(run.deadline ?? data.serverNow) - Date.parse(data.serverNow))
+    const rounds = Array.from({ length: 40 }, () => run.board)
+    dispatch({
+      type: 'reset',
+      state: {
+        phase: run.abandoned ? 'result' : run.phase,
+        rounds,
+        round: run.round,
+        firstRound: 0,
+        remaining: Math.max(0, deadline.current - performance.now()),
+        order: run.order.length === 4 ? run.order : run.board.initialOrder,
+        lives: run.lives,
+        correct: run.correct,
+        score: run.score,
+        outcome: run.outcome,
+      },
+    })
+  }
+  async function send(args: OrderRequest, enter = false) {
+    if (requestLock.current) return
+    requestLock.current = true
+    setBusy(true)
+    setError(null)
+    requestRetry.current = args
+    try {
+      const data = await orderAction(args)
+      if (!mounted.current) return
+      applyServer(data)
+      requestRetry.current = null
+      if (enter) {
+        setLive(true)
+        setPaused(false)
+        setOpen(true)
+      }
+      if (args.p_action === 'start') operation.current = null
+      if (args.p_action === 'leave') setOpen(false)
+      return data
+    } catch (cause) {
+      if (mounted.current) setError('연결을 확인해주세요. 같은 요청으로 다시 시도할 수 있어요.')
+      throw cause
+    } finally {
+      requestLock.current = false
+      if (mounted.current) setBusy(false)
+    }
+  }
+  function startLive() {
+    operation.current ??= randomId()
+    void send({ p_action: 'start', p_operation_id: operation.current }, true).catch(() => {})
+  }
+  async function leave() {
+    if (live && runId.current) await send({ p_action: 'leave', p_run_id: runId.current })
+    setOpen(false)
+    setError(null)
+  }
   const dialogRef = useRef<HTMLDialogElement | null>(null)
   const attachDialog = useCallback((node: HTMLDialogElement | null) => {
     dialogRef.current = node
@@ -326,16 +420,54 @@ export default function CalculationGame() {
   const prompt = '누가 더 많을까요? 많은 순서대로 정렬하세요!'
   useEffect(() => {
     last.current = performance.now()
-    if (paused || !timed) return
+    if ((!live && paused) || !timed) return
     const interval = window.setInterval(() => {
       const now = performance.now()
-      dispatch({ type: 'tick', elapsed: now - last.current })
+      if (live) {
+        const remaining = Math.max(0, deadline.current - now)
+        dispatch({ type: 'remaining', value: remaining })
+        if (
+          remaining === 0 &&
+          !requestLock.current &&
+          !requestRetry.current &&
+          runId.current &&
+          latest.current
+        )
+          void send({
+            p_action: 'answer',
+            p_run_id: runId.current,
+            p_round: latest.current.round,
+            p_order: latest.current.order,
+          }).catch(() => {})
+      } else dispatch({ type: 'tick', elapsed: now - last.current })
       last.current = now
     }, 50)
     return () => window.clearInterval(interval)
-  }, [phase, paused, timed, state.round])
+  }, [phase, paused, timed, state.round, live])
   function act(action: CountingAction) {
-    if (paused) return
+    if (paused || busy || error) return
+    if (live) {
+      if (action.type === 'move' || action.type === 'swap') {
+        if (state.remaining > 0) dispatch(action)
+        return
+      }
+      const name =
+        action.type === 'start'
+          ? 'begin'
+          : action.type === 'submit'
+            ? 'answer'
+            : action.type === 'next'
+              ? 'next'
+              : null
+      if (name && runId.current)
+        void send({
+          p_action: name,
+          p_run_id: runId.current,
+          p_round: state.round,
+          ...(name === 'answer' ? { p_order: state.order } : {}),
+        }).catch(() => {})
+      return
+    }
     if (timed) {
       const now = performance.now()
       dispatch({ type: 'tick', elapsed: now - last.current })
@@ -360,7 +492,10 @@ export default function CalculationGame() {
     }
   }, [open])
   function start() {
-    dispatch({ type: 'reset', state: createCountingGame(Math.random, startStage) })
+    setLive(false)
+    setError(null)
+    requestRetry.current = null
+    dispatch({ type: 'reset', state: createCountingGame() })
     setPaused(false)
     setOpen(true)
   }
@@ -368,26 +503,21 @@ export default function CalculationGame() {
   return (
     <div className="flex min-h-0 min-w-0 flex-1 flex-col">
       <GameTabs id="counting" value={tab} onChange={setTab} />
-      {tab === 'rank' && (
-        <section
-          role="tabpanel"
-          id="counting-rank-panel"
-          aria-labelledby="counting-rank-tab"
-          className="flex min-h-0 flex-1 flex-col items-center justify-center gap-2 px-4 py-12 text-center"
-        >
-          <h2 className="text-sm font-medium">랭킹 준비 중</h2>
-          <p className="text-xs text-muted-foreground">실전이 열리면 랭킹도 함께 시작돼요.</p>
-          <p className="text-xs text-muted-foreground">연습 기록은 랭킹에 반영되지 않아요.</p>
-        </section>
-      )}
+      {tab === 'rank' && <AquariumOrderRanking />}
       <GamePanel id="counting" hidden={tab !== 'game'}>
         <GameModal
           open={open}
-          title="누가 더 많을까?"
+          title="어항 줄세우기"
           active={phase !== 'result'}
-          practice
-          onExit={() => setOpen(false)}
+          practice={!live}
+          onExit={leave}
           onPause={setPaused}
+          busy={busy}
+          exitDescription={
+            live
+              ? '나가면 진행 중인 실전은 종료되고 랭킹에 반영되지 않아요. 확인 중에도 제한 시간은 계속 흘러요.'
+              : undefined
+          }
           showHeader={false}
           onContainer={attachDialog}
           layout="fullscreen"
@@ -396,43 +526,58 @@ export default function CalculationGame() {
             !open ? (
               <div className="count-start-menu">
                 <GameStartOverlay
-                  title="누가 더 많을까?"
-                  description="어항 속 친구들을 많은 순서대로 나열해주세요!"
+                  title="어항 줄세우기"
+                  description=""
                   poster={countingThumbnail}
-                  paidLabel="실전 · 준비 중"
-                  paidDisabled
-                  onPaid={() => {}}
+                  paidLabel={
+                    remote.data?.run && !remote.data.run.abandoned ? '실전 이어하기' : '실전 (무료)'
+                  }
+                  paidDisabled={busy || assets.status !== 'ready' || !session}
+                  onPaid={startLive}
                   onPractice={start}
-                  practiceDisabled={assets.status !== 'ready'}
+                  practiceDisabled={busy || assets.status !== 'ready'}
                   practiceLabel={assets.status === 'loading' ? '그림 로딩 중…' : '연습'}
                 >
-                  <label className="count-stage-select">
-                    시작 단계
-                    <select
-                      value={startStage}
-                      onChange={(e) => setStartStage(Number(e.target.value))}
-                    >
-                      {Array.from({ length: STAGE_COUNT }, (_, i) => (
-                        <option value={i + 1} key={i}>
-                          {i + 1}단계 · 4종 정렬
-                        </option>
-                      ))}
-                    </select>
-                  </label>
                   {assets.status === 'error' && (
                     <button className="count-text" onClick={assets.retry}>
                       그림 다시 불러오기
                     </button>
                   )}
-                  <small>
-                    {STAGE_COUNT}단계 · 단계마다 2문제 · 기회 3개
-                    <br />
-                    무료 연습 · 골드와 주간 순위에 반영되지 않아요.
-                  </small>
+                  {error && (
+                    <div role="alert">
+                      {error}
+                      <button
+                        onClick={() => {
+                          const args = requestRetry.current
+                          if (args) void send(args, true).catch(() => {})
+                        }}
+                      >
+                        다시 시도
+                      </button>
+                    </div>
+                  )}
                 </GameStartOverlay>
               </div>
             ) : (
               <div className={`count-game phase-${phase}`}>
+                {error && (
+                  <div role="alert" className="order-network-error">
+                    {error}
+                    <button
+                      onClick={() => {
+                        const args = requestRetry.current
+                        if (args) void send(args, args.p_action === 'start').catch(() => {})
+                      }}
+                    >
+                      다시 시도
+                    </button>
+                  </div>
+                )}
+                {busy && (
+                  <p role="status" className="order-network-status">
+                    서버에서 확인 중…
+                  </p>
+                )}
                 <header className="count-hud">
                   <button aria-label="게임 나가기" onClick={exit}>
                     <ArrowLeft size={20} />
@@ -452,10 +597,12 @@ export default function CalculationGame() {
                   </span>
                 </header>
                 {phase === 'result' ? (
-                  <section className="count-result" aria-label="연습 결과">
+                  <section className="count-result" aria-label={live ? '실전 결과' : '연습 결과'}>
                     <Fish size={36} />
                     <p className="count-eyebrow">오늘의 어항 관찰</p>
-                    <h2>{state.lives > 0 ? '모두 찾았어요!' : '연습 완료!'}</h2>
+                    <h2>
+                      {state.lives > 0 ? '모두 찾았어요!' : live ? '도전 완료!' : '연습 완료!'}
+                    </h2>
                     <strong>
                       {state.score.toLocaleString()}
                       <small>점</small>
@@ -464,11 +611,15 @@ export default function CalculationGame() {
                       정답 {state.correct} / {state.round - state.firstRound + 1}문제
                     </p>
                     <p>
-                      {state.rounds[state.firstRound].stage}~{round.stage}단계
+                      {live ? 1 : state.rounds[state.firstRound].stage}~{round.stage}단계
                     </p>
-                    <button className="count-primary" onClick={start}>
+                    <button
+                      className="count-primary"
+                      onClick={live ? startLive : start}
+                      disabled={busy}
+                    >
                       <RotateCcw size={16} />
-                      다시 연습
+                      {live ? '다시 도전' : '다시 연습'}
                     </button>
                     <button className="count-text" onClick={exit}>
                       시작 화면으로
@@ -486,7 +637,11 @@ export default function CalculationGame() {
                       ))}
                     </div>
 
-                    <button className="count-primary" onClick={() => act({ type: 'start' })}>
+                    <button
+                      className="count-primary"
+                      disabled={busy || !!error}
+                      onClick={() => act({ type: 'start' })}
+                    >
                       시작
                       <ChevronRight size={18} />
                     </button>
@@ -616,7 +771,11 @@ export default function CalculationGame() {
                             </div>
                           ))}
                         </div>
-                        <button className="count-primary" onClick={() => act({ type: 'next' })}>
+                        <button
+                          className="count-primary"
+                          disabled={busy || !!error}
+                          onClick={() => act({ type: 'next' })}
+                        >
                           {ending ? '결과 보기' : '다음 문제'}
                           <ChevronRight size={18} />
                         </button>
@@ -625,7 +784,7 @@ export default function CalculationGame() {
                       <OrderCards
                         key={state.round}
                         order={state.order}
-                        disabled={paused}
+                        disabled={paused || busy || !!error || state.remaining <= 0}
                         onAction={act}
                       />
                     )}

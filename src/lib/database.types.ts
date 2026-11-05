@@ -36,6 +36,9 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      aquarium_order_state:{Args:Record<string,never>;Returns:import('@/features/arcade/aquarium-order-api').OrderState}
+      aquarium_order_action:{Args:import('@/features/arcade/aquarium-order-api').OrderRequest;Returns:import('@/features/arcade/aquarium-order-api').OrderState}
+      aquarium_order_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/shadow-api').ShadowLeaderboard}
       relic_roulette_state: {Args:Record<string,never>;Returns:import('@/features/relic-roulette/api').RouletteState}
       relic_roulette_spin: {Args:{p_operation_id:string;p_expected_free:boolean};Returns:import('@/features/relic-roulette/api').RouletteState}
       relic_roulette_ticket_spin: {Args:{p_operation_id:string;p_expected_free:boolean};Returns:import('@/features/relic-roulette/api').RouletteState}

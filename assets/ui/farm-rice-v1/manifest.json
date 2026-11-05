@@ -1,0 +1,109 @@
+{
+  "tool": "image_gen.imagegen",
+  "files": [
+    {
+      "id": "paddy",
+      "source": "assets/ui/farm-rice-v1/source/paddy.png",
+      "runtime": "public/farm/art/v2/crops/paddy.png",
+      "crop": {
+        "left": 76,
+        "top": 20,
+        "width": 1023,
+        "height": 1202
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "One harvested bundle of ripe PADDY RICE stalks tied with twine. Three delicately drooping branched panicles with many SMALL slender golden rice grains, long narrow green leaves, distinct from upright large wheat ears. Centered inventory icon fills 90% of canvas, actual transparent background. Polished warm hand-painted cozy Korean farm game illustration, fine warm brown outlines, softly rounded forms, natural colors, clean readable silhouette. Match supplied reference for style only. No text, letters, numbers, interface, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v2/crops/wheat.png"
+      ],
+      "sha256": "bfea73afbb30a3ca72bc8923fb27af40ae8cd12bcf58234e89c12eb7799d36c4"
+    },
+    {
+      "id": "rice",
+      "source": "assets/ui/farm-rice-v1/source/rice.png",
+      "runtime": "public/farm/art/v2/goods/rice.png",
+      "crop": {
+        "left": 121,
+        "top": 57,
+        "width": 1033,
+        "height": 1166
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "One small open cream linen sack filled with WHITE UNCOOKED RICE, visible long oval ivory rice grains and a wooden scoop holding rice at its side. Simple rice-grain pictogram on sack without letters. Inventory icon centered fills 90% of canvas, actual transparent background. Polished warm hand-painted cozy Korean farm game illustration, fine warm brown outlines, softly rounded forms, natural colors, clean readable silhouette. Match supplied reference for style only. No text, letters, numbers, interface, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v2/goods/sugar.png"
+      ],
+      "sha256": "1877660fc746b303ce1c0b057e7b141ad2a2603288024b4b6edfe72a616c1efd"
+    },
+    {
+      "id": "ricePudding",
+      "source": "assets/ui/farm-rice-v1/source/ricePudding.png",
+      "runtime": "public/farm/art/v2/goods/ricePudding.png",
+      "crop": {
+        "left": 163,
+        "top": 118,
+        "width": 985,
+        "height": 1030
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "One small clear glass dessert bowl of creamy MILK RICE PUDDING, visible tender white rice grains in rich ivory pudding, small softly swirled creamy top, tiny wooden spoon at side. Appetizing homemade dessert, no fruit or cinnamon. Inventory icon centered fills 90% of canvas, actual transparent background. Polished warm hand-painted cozy Korean farm game illustration, fine warm brown outlines, softly rounded forms, natural colors, clean readable silhouette. Match supplied reference for style only. No text, letters, numbers, interface, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v1/goods/yogurt-v2.png",
+        "public/farm/art/v2/goods/milk.png"
+      ],
+      "sha256": "09260ea90bb1f9dd42cc5e07d0167b7aa324272be56cfdcfb689afbbc7bd9275"
+    },
+    {
+      "id": "grilledRiceBall",
+      "source": "assets/ui/farm-rice-v1/source/grilledRiceBall.png",
+      "runtime": "public/farm/art/v2/goods/grilledRiceBall.png",
+      "crop": {
+        "left": 45,
+        "top": 181,
+        "width": 1162,
+        "height": 999
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "Two small triangular GRILLED RICE BALLS on a little cream ceramic plate, individually visible white cooked rice grains, golden toasted crust and appetizing browned grill marks, one cut face reveals pale melted cheese with golden egg filling. No seaweed, no meat, no vegetables or sauce. Inventory icon centered fills 90% of canvas, actual transparent background. Polished warm hand-painted cozy Korean farm game illustration, fine warm brown outlines, softly rounded forms, natural colors, clean readable silhouette. Match supplied reference for style only. No text, letters, numbers, interface, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v2/goods/cake.png"
+      ],
+      "sha256": "bcc00a3f4e4fd37981857a84d0a68588b54fdca59eaad0a4cd5050fe60508660"
+    },
+    {
+      "id": "paddy-ready",
+      "source": "assets/ui/farm-rice-v1/source/paddy-ready.png",
+      "runtime": "public/farm/art/v11/plots/paddy-ready.png",
+      "crop": {
+        "left": 205,
+        "top": 18,
+        "width": 819,
+        "height": 1226
+      },
+      "width": 512,
+      "height": 512,
+      "prompt": "One ripe rice plant cluster for a crop overlay: slender upright green stalks with three gently drooping GOLDEN branched rice panicles bearing many tiny slender oval grains, long narrow green leaves, recognizable paddy rice rather than wheat. Roots anchored at bottom center around 92 percent of canvas. Entire plant centered, plant only with ACTUAL TRANSPARENT background, no soil or water or ground. Match reference crop overlay camera, scale and root location. Polished warm hand-painted cozy Korean farm game illustration, fine warm brown outlines, softly rounded forms, natural colors, clean readable silhouette. Match supplied reference for style only. No text, letters, numbers, interface, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v9/plots/wheat-ready.png"
+      ],
+      "sha256": "c7eff7aa3cc72f901b409566289d2a62b807532b46f64249a994fc7b4beb1ec0"
+    },
+    {
+      "id": "paddy-soil",
+      "source": "assets/ui/farm-rice-v1/source/paddy-soil.png",
+      "runtime": "public/farm/art/v11/plots/paddy-soil.png",
+      "crop": null,
+      "width": 512,
+      "height": 512,
+      "prompt": "A seamless square terrain texture for ONE flooded paddy farm tile. Flat overhead view, completely fills the entire square canvas edge to edge just like supplied soil reference, no perspective, no isometric diamond, no borders or frame, no plants. Shallow still water in subdued muted blue-green and olive reflecting warm daylight, faint soft soil texture visible beneath water, three very subtle horizontal submerged planting furrows aligning like the soil reference. Minimal gentle light ripples, no foam, no rocks or props. OPAQUE FULL CANVAS texture, no transparent margins. Polished warm hand-painted cozy Korean farm game illustration, fine warm brown outlines, softly rounded forms, natural colors, clean readable silhouette. Match supplied reference for style only. No text, letters, numbers, interface, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v9/plots/empty.png"
+      ],
+      "sha256": "16c0b0b082be5906a7f22b50f54cd7822f46efaa5acd1943baab5977e6e003cc"
+    }
+  ]
+}

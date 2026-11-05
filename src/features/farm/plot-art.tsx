@@ -10,14 +10,14 @@ export function plotGrowthImage(stage:PlotStage,crop:CropKind,progress=0){
 }
 export function FarmPlotArt({stage,crop,progress=0}:{stage:PlotStage;crop:CropKind;progress?:number}){
  const outline=useId(),soften=outline+'-soften'
- const image=plotGrowthImage(stage,crop,progress)
+ const image=plotGrowthImage(stage,crop,progress),soil=crop==='paddy'&&stage!=='empty'?farmPlotImages['paddy-soil']:farmPlotImages.empty
  const visibleStage=stage==='empty'?'empty':stage==='rotten'?'rotten':stage==='ready'||progress>=1?'ready':progress<.5?'sown':'stem'
  return <svg className={stage==='rotten'?'farm-crop-rotten':undefined} viewBox={farmPlotViewBox} aria-hidden="true" data-plot-stage={visibleStage}>
   <defs>
    <filter id={soften} x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="2"/></filter>
    <mask id={outline} maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect x="6" y="6" width="500" height="500" rx="28" fill="white" filter={`url(#${soften})`}/></mask>
   </defs>
-  <image data-plot-layer="soil" href={farmPlotImages.empty} x="0" y="0" width="512" height="512" mask={`url(#${outline})`}/>
+  <image data-plot-layer="soil" href={soil} x="0" y="0" width="512" height="512" mask={`url(#${outline})`}/>
   {image&&<image data-plot-layer="crop" href={image} x="0" y="0" width="512" height="512"/>}
  </svg>
 }

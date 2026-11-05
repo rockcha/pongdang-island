@@ -28,7 +28,7 @@ it('keeps animals idle until tapped, fills bubble backgrounds and shows remainin
  act(()=>vi.advanceTimersByTime(5000))
  expect(screen.getByRole('progressbar',{name:'우유 생산 (16,9)'}).getAttribute('aria-valuenow')).toBe('50')
  const bubble=container.querySelector('[data-status-bubble="우유 생산 (16,9)"]')!
- expect(bubble.querySelector('[data-bubble-fill]')?.getAttribute('height')).toBe('21.5')
+ expect(bubble.querySelector('[data-gauge-fill]')?.getAttribute('stroke-dasharray')).toBe('50 100')
  click('우유 생산 (16,9)');expect(bubble.textContent).toContain('5초')
  expect(container.querySelector('[data-farm-effect="harvest"]')).toBeNull()
  act(()=>vi.advanceTimersByTime(5000));click('우유 생산 (16,9)')

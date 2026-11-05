@@ -4,10 +4,11 @@ import {farmBuildingArtPath} from './building-art'
 import {FarmPlotArt} from './plot-art'
 import {farmAnimalArt} from './animal-art'
 import {farmDecorationArt} from './decoration-art'
+import {isFarmAnimal} from './animal-catalog'
 
 // Orthogonal ground footprints with a visible front face, shared by every test object.
 export function TopviewArt({kind,stage='empty',crop='wheat',progress}:{kind:FarmTool;stage?:'empty'|'growing'|'ready'|'rotten';crop?:CropKind;progress?:number}){
- if(kind==='cow'||kind==='chicken'){const art=farmAnimalArt[kind];return <svg viewBox={art.viewBox} aria-hidden="true"><image href={art.path} width="512" height="512"/></svg>}
+ if(isFarmAnimal(kind)){const art=farmAnimalArt[kind];return <svg viewBox={art.viewBox} aria-hidden="true"><image href={art.path} width="512" height="512"/></svg>}
  const building=farmBuildingArtPath(kind)
  if(building)return <svg viewBox="0 0 120 120" aria-hidden="true"><image href={building} width="120" height="120" preserveAspectRatio="xMidYMid meet"/></svg>
  const decoration=farmDecorationArt[kind as keyof typeof farmDecorationArt]

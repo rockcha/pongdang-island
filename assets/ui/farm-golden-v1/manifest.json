@@ -1,0 +1,138 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "public/farm/art/v1/goods/pancakes.png",
+    "public/farm/art/v1/goods/flour.png"
+  ],
+  "files": [
+    {
+      "id": "goldenEgg",
+      "source": "assets/ui/farm-golden-v1/source/goldenEgg.png",
+      "crop": {
+        "left": 232,
+        "top": 156,
+        "width": 763,
+        "height": 966
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "69d0a546256dd0b3908a2965f73c7bcf20027c4852c16f968b6f8fed7ec128d8",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: one rare golden chicken egg, a smooth metallic warm-gold eggshell with soft amber shading and a tiny bright star glint touching its upper rim, no nest, no pedestal. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenEgg.png"
+    },
+    {
+      "id": "goldenDuckEgg",
+      "source": "assets/ui/farm-golden-v1/source/goldenDuckEgg.png",
+      "crop": {
+        "left": 135,
+        "top": 109,
+        "width": 969,
+        "height": 1032
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "854891010bd27337e305d9b7b19d44bcd34a6eb173f291e7696f1594620d1483",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: two rare large golden duck eggs with a subtle green-gold sheen and a small warm-gold duck feather beside them, larger elongated egg silhouettes, minimal composition. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenDuckEgg.png"
+    },
+    {
+      "id": "goldenMilk",
+      "source": "assets/ui/farm-golden-v1/source/goldenMilk.png",
+      "crop": {
+        "left": 237,
+        "top": 87,
+        "width": 759,
+        "height": 1050
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "f610597b74530f34ecb6dd331856f13b77aaeabf9408f2112f1086259c79fe6e",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: one rounded clear glass bottle filled with rich pale-gold cow milk, cork cap, cream paper tag with a simple friendly cow-face emblem and no letters, a small glass of golden milk beside it. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenMilk.png"
+    },
+    {
+      "id": "goldenGoatMilk",
+      "source": "assets/ui/farm-golden-v1/source/goldenGoatMilk.png",
+      "crop": {
+        "left": 300,
+        "top": 62,
+        "width": 657,
+        "height": 1103
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "1bad1a86633fce81172127eeb18252429960aa7390bb8eada598b28c34eefc65",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: one slender clear glass bottle filled with rich warm-gold goat milk, cork cap, sage-green paper tag with a simple goat-face emblem and no letters, a small glass of golden milk beside it, visually distinct from cow milk bottle. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenGoatMilk.png"
+    },
+    {
+      "id": "goldenEggPudding",
+      "source": "assets/ui/farm-golden-v1/source/goldenEggPudding.png",
+      "crop": {
+        "left": 166,
+        "top": 182,
+        "width": 904,
+        "height": 860
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "9969f1c850c44e3ad9366f91ccea6d35bb39ed8dcfbfffcada16a19ea588a322",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: one luxurious small fluted egg custard pudding, glossy amber caramel top, creamy warm golden-yellow body, tiny dollop of cream and a delicate edible gold-leaf accent, simple small cream saucer. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenEggPudding.png"
+    },
+    {
+      "id": "goldenDuckEggTart",
+      "source": "assets/ui/farm-golden-v1/source/goldenDuckEggTart.png",
+      "crop": {
+        "left": 84,
+        "top": 185,
+        "width": 1081,
+        "height": 886
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "70f97db53c2cd2683af1e35792d2c9b3fb22b3299833e299ad1ee65a31f1359d",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: one luxurious duck egg custard tart and one cut half beside it, deeply golden flaky pastry shell, rich amber custard with caramelized spots and tiny edible gold-leaf accents, no plate. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenDuckEggTart.png"
+    },
+    {
+      "id": "goldenButter",
+      "source": "assets/ui/farm-golden-v1/source/goldenButter.png",
+      "crop": {
+        "left": 117,
+        "top": 218,
+        "width": 958,
+        "height": 836
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "8b5c97451a6162edd4f749bb46cba10d4d726710c0fbf82925263b36a9e14795",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: one premium golden butter block with two small neatly sliced pats leaning against it, rich yellow-gold creamy sheen, partially wrapped in ivory parchment with a small round gold seal without lettering. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenButter.png"
+    },
+    {
+      "id": "goldenGoatCheese",
+      "source": "assets/ui/farm-golden-v1/source/goldenGoatCheese.png",
+      "crop": {
+        "left": 114,
+        "top": 174,
+        "width": 1029,
+        "height": 909
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "aba1c767c738df09d99ab1503dc69a33b47fba7c5359cf5a4e6e67bb0f5a7a9f",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farm game. Subject: one premium goat cheese log with a golden rind, cut to show a creamy pale ivory-gold interior, two round slices and a tiny thyme sprig, a delicate edible gold-leaf fleck, no plate. Style must match supplied food references: polished hand-painted casual farm illustration, warm fine brown outlines, softly shaded rounded dimensional volumes, appetizing tactile food textures, controlled golden highlights, warm cream/amber palette. Rare premium food, NOT a jewel or fantasy weapon. Large clean readable shape at 64px, detailed at 128px, three-quarter front view, centered and fills 85% of canvas, transparent safe margins. Actual transparent alpha. No backdrop, no scenery, no UI, no text or lettering, no watermark, no checkerboard, no decorative frame, no aura or particle cloud. Only one or two tiny attached star glints if needed. Do not copy the pancake or flour subject of the style references.",
+      "archivedDerivative": "assets/ui/farm-golden-v1/archived/goldenGoatCheese.png"
+    }
+  ],
+  "status": "retired"
+}

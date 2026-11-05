@@ -50,8 +50,51 @@ it('preserves the current position and zoom when opening, closing and selecting 
  click('Close');unchanged()
  click('씨앗 심기');click('밀 4개');unchanged()
  click('완료');unchanged()
- click('편집하기');unchanged()
- click('편집하기');unchanged()
+ click('이동하기');unchanged()
+ click('이동하기');unchanged()
  click('보관함');unchanged()
  click('완료');unchanged()
+})
+
+it.each(['mouse','touch'])('pans while holding seeds with %s, spends no seeds on a drag, and plants on a tap',pointerType=>{
+ const {container,viewport,zoom}=setup()
+ click('농사');click('씨앗 심기');click('밀 4개')
+ const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:(x*40+100)*zoom(),clientY:(y*40+100)*zoom(),button:0}),{pointerId:1,pointerType}))
+ // Starting on an empty plot also pans instead of planting a stroke.
+ for(const [x,y] of [[9,13],[8,7],[0,0]]){
+  viewport.scrollLeft=100;viewport.scrollTop=100
+  pointer('pointerdown',x,y);pointer('pointermove',x-1,y-1);pointer('pointerup',x-1,y-1)
+  expect(viewport.scrollLeft).toBeCloseTo(100+40*zoom())
+  expect(viewport.scrollTop).toBeCloseTo(100+40*zoom())
+  fireEvent.click(container.querySelector('[data-farm-cell="9,13"]')!)
+  expect(screen.getByLabelText('보유 종자 4개')).toBeTruthy()
+  expect(container.querySelector('[data-crop-preview]')).toBeNull()
+  expect(screen.queryByRole('progressbar',{name:/밀 성장/})).toBeNull()
+ }
+ pointer('pointerdown',9,13);pointer('pointerup',9,13)
+ fireEvent.click(container.querySelector('[data-farm-cell="9,13"]')!)
+ expect(screen.getByLabelText('보유 종자 3개')).toBeTruthy()
+ expect(screen.getByRole('progressbar',{name:/밀 성장/})).toBeTruthy()
+})
+
+it.each(['mouse','touch'])('pans from occupied land and sea while placing land and tiles with %s',pointerType=>{
+ const {container,viewport,zoom}=setup()
+ const pointer=(type:string,x:number,y:number,button=0)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:(x*40+100)*zoom(),clientY:(y*40+100)*zoom(),button}),{pointerId:1,pointerType}))
+ const pan=(x:number,y:number,button=0)=>{
+  viewport.scrollLeft=100;viewport.scrollTop=100
+  pointer('pointerdown',x,y,button);pointer('pointermove',x-1,y-1,button);pointer('pointerup',x-1,y-1,button)
+  expect(viewport.scrollLeft).toBeCloseTo(100+40*zoom());expect(viewport.scrollTop).toBeCloseTo(100+40*zoom())
+  expect(container.querySelector('[data-land-preview],[data-tile-preview]')).toBeNull()
+ }
+ click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 250 G');click('땅 놓기')
+ pan(8,7)
+ expect(screen.getByRole('button',{name:'땅 5칸 보유'})).toBeTruthy()
+ // A pan that ends over a placement target must not place land through its click.
+ pointer('pointerdown',4,4);pointer('pointermove',3,4);pointer('pointerup',3,4)
+ fireEvent.click(container.querySelector('[data-farm-cell="3,4"]')!)
+ expect(screen.getByRole('button',{name:'땅 5칸 보유'})).toBeTruthy()
+ click('완료');click('타일');click('구매하기');click('흙길 5개 구매 · 50 G');click('Close');click('타일 깔기');click('흙길 5개 선택')
+ pan(0,0)
+ pan(8,7,1)
+ expect(screen.getAllByLabelText('보유 타일 5개')).toHaveLength(2)
 })

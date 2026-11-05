@@ -2,6 +2,23 @@ import {expect,it} from 'vitest'
 import {applyTileStroke,buyFarmItem,buyFarmTiles} from '@/features/farm/farm-stock'
 import {initialTopview} from '@/features/farm/topview-model'
 import {applyLandStroke} from '@/features/farm/land-tools'
+import {tileCount,totalTiles,pathTile} from '@/features/farm/tile-catalog'
+
+it('keeps mixed tile purchases, placement and both recovery routes in their original material',()=>{
+ const initial=initialTopview(),bought=buyFarmTiles(buyFarmTiles(initial,2,'stone'),3,'deck')
+ expect(bought.gold).toBe(initial.gold-115);expect(totalTiles(bought)).toBe(5)
+ const stone=applyTileStroke(bought,'place',[{x:4,y:7}],[],'stone').state
+ const mixed=applyTileStroke(stone,'place',[{x:5,y:7}],[],'deck').state
+ expect(pathTile(mixed,'4,7')).toBe('stone');expect(pathTile(mixed,'5,7')).toBe('deck')
+ expect(tileCount(mixed,'stone')).toBe(1);expect(tileCount(mixed,'deck')).toBe(2)
+ expect(applyTileStroke(mixed,'place',[{x:4,y:7}],[],'deck').state).toBe(mixed)
+ const recovered=applyTileStroke(mixed,'recover',[{x:4,y:7},{x:5,y:7},{x:4,y:7}]).state
+ expect(tileCount(recovered,'stone')).toBe(2);expect(tileCount(recovered,'deck')).toBe(3)
+ expect(recovered.pathTiles).toEqual({})
+ const land=applyLandStroke(mixed,'recover',[{x:4,y:7}]).state
+ expect(land.paths).not.toContain('4,7');expect(tileCount(land,'stone')).toBe(2)
+ expect(tileCount(land,'deck')).toBe(2);expect(land.gold).toBe(mixed.gold)
+})
 
 it('buys objects into storage, respects building ownership, and rejects animals and plots',()=>{
  const before=initialTopview(),bought=buyFarmItem(before,'fence')

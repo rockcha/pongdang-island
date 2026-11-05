@@ -9,8 +9,8 @@ const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact
 it('keeps a fulfilled order fulfilled after the sales building is stored and placed again',()=>{
  vi.useFakeTimers();const store=initialTopview().objects.find(o=>o.kind==='store')!
  let now=Date.UTC(2026,10,4)
- while(!dailyFarmOrders(store,now).some(o=>o.good==='wheat'))now+=86400000
- vi.setSystemTime(now);const quantity=dailyFarmOrders(store,now).find(o=>o.good==='wheat')!.quantity
+ while(!dailyFarmOrders(store,now,initialTopview()).some(o=>o.good==='wheat'))now+=86400000
+ vi.setSystemTime(now);const quantity=dailyFarmOrders(store,now,initialTopview()).find(o=>o.good==='wheat')!.quantity
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  click('농작물 판매소 (11,5)');click(`밀 ${quantity}개 납품`);click('보관하기')
  click('보관함');click('건물');click('농작물 판매소 보관 1개 배치하기')
@@ -24,17 +24,18 @@ it('refreshes an open order panel at Korean midnight',()=>{
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('가공품 판매소 (12,12)')
  const source=initialTopview().objects.find(o=>o.kind==='processed')!
  const goods=()=>Array.from(document.querySelectorAll('[data-order-good]')).map(row=>row.getAttribute('data-order-good'))
- expect(goods()).toEqual(dailyFarmOrders(source,now).map(order=>order.good))
+ expect(goods()).toEqual(dailyFarmOrders(source,now,initialTopview()).map(order=>order.good))
  act(()=>vi.advanceTimersByTime(200))
- expect(goods()).toEqual(dailyFarmOrders(source,now+200).map(order=>order.good))
+ expect(goods()).toEqual(dailyFarmOrders(source,now+200,initialTopview()).map(order=>order.good))
 })
 it('allows repeated production and housing buildings in the shop and explains their effects in their details',()=>{
- render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('외양간 (15,5)')
- expect(screen.getByRole('region',{name:'외양간 용도와 효과'}).textContent).toContain('한 채당 소 2마리 수용')
- click('Close');click('닭장 (10,8)')
- expect(screen.getByRole('region',{name:'닭장 용도와 효과'}).textContent).toContain('한 채당 닭 2마리 수용')
+ render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('축사 (15,5)')
+ expect(screen.getByRole('heading',{name:'축사',exact:true})).toBeTruthy();expect(screen.getByText('젖소·염소를 키우는 사육 시설')).toBeTruthy();expect(screen.getByLabelText('사육 정원 2 / 4마리 · 보관·준비 중 포함')).toBeTruthy();expect(screen.getByLabelText('젖소 1회 생산 시간 10초')).toBeTruthy()
+ click('Close');click('가금사 (10,8)')
+ expect(screen.getByRole('heading',{name:'가금사',exact:true})).toBeTruthy();expect(screen.getByText('닭·오리를 키우는 사육 시설')).toBeTruthy();expect(screen.getByLabelText('사육 정원 2 / 4마리 · 보관·준비 중 포함')).toBeTruthy();expect(screen.getByLabelText('닭 1회 생산 시간 10초')).toBeTruthy()
  click('Close');click('상점')
  const shop=screen.getByRole('dialog',{name:'상점'})
- expect(within(shop).queryByText('축산 관리소')).toBeNull()
- for(const name of ['제분소','작은 빵집','외양간','닭장','농작물 판매소','가공품 판매소'])expect(within(shop).getByRole('button',{name:new RegExp(name+' 구매 ·')})).toHaveProperty('disabled',false)
+ expect(within(shop).getByRole('article',{name:'축산 관리소'})).toBeTruthy()
+ expect(within(shop).queryByRole('button',{name:'축산 관리소 구매 · 1,000 G'})).toBeNull()
+ for(const name of ['제분소','작은 빵집','축사','가금사','농작물 판매소','가공품 판매소'])expect(within(shop).getByRole('button',{name:new RegExp(name+' 구매 ·')})).toHaveProperty('disabled',false)
 })

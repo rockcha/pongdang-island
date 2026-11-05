@@ -8,7 +8,7 @@ import {FarmWarehouse} from '@/features/farm/warehouse'
 
 afterEach(()=>{cleanup();vi.restoreAllMocks();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
-it('drags seeds across plots once, grows for ten seconds, then harvests concurrently for three seconds into the warehouse',()=>{
+it('taps three plots to plant seeds, grows for ten seconds, then harvests concurrently for three seconds into the warehouse',()=>{
  vi.useFakeTimers()
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const map=container.querySelector('.top-farm-map')!,viewport=container.querySelector('.top-farm-viewport')!
@@ -20,7 +20,7 @@ it('drags seeds across plots once, grows for ten seconds, then harvests concurre
  expect(viewport.getAttribute('data-seed-cursor')).toBe('true')
  expect(container.querySelector<HTMLDivElement>('.farm-seed-cursor')?.style.display).toBe('block')
  expect(container.querySelector('.farm-seed-cursor img')?.getAttribute('src')).toContain('/crops/wheat.png')
- pointer('pointerdown',9,13);pointer('pointermove',11,13);pointer('pointermove',9,13);pointer('pointerup',9,13)
+ for(const x of [9,10,11]){pointer('pointerdown',x,13);pointer('pointerup',x,13)}
  expect(container.querySelector('.farm-plant-bar')).toBeNull()
  expect(screen.getByLabelText('보유 종자 1개')).toBeTruthy()
  expect(screen.queryByRole('dialog',{name:'씨앗 심기'})).toBeNull()
@@ -44,7 +44,7 @@ it('drags seeds across plots once, grows for ten seconds, then harvests concurre
  click('창고 (18,5)')
  const warehouse=screen.getByRole('dialog')
  expect(warehouse.querySelectorAll('.farm-warehouse-slot')).toHaveLength(1)
- expect(within(warehouse).getByText('×15')).toBeTruthy()
+ expect(within(warehouse).getByText('×21')).toBeTruthy()
  expect(within(warehouse).getByText('1 / 10칸')).toBeTruthy()
  click('가공품');expect(within(warehouse).queryByText('밀')).toBeNull()
 })
@@ -70,7 +70,7 @@ it('keeps incoming new goods at their producer when all ten warehouse slots are 
  expect(rejected.state).toBe(state);expect(rejected.message).toContain('창고 10칸')
  state.simulation.cropJobs[10]={crop:'wheat',readyAt:1000}
  const accepted=simulateFarm(state,10,{type:'harvest'},10000)
- expect(accepted.state.simulation.inventory.wheat).toBe(2)
+ expect(accepted.state.simulation.inventory.wheat).toBe(4)
  expect(storedFarmGoods(accepted.state.simulation.inventory)).toHaveLength(10)
 })
 it('separates raw goods and processed goods without counting seeds as warehouse slots',()=>{

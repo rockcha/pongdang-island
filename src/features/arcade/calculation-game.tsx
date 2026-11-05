@@ -499,6 +499,9 @@ function CountingGame() {
     setPaused(false)
     setOpen(true)
   }
+  useEffect(() => {
+    if (open && phase === 'briefing' && !paused && !busy && !error && !requestLock.current && !requestRetry.current) act({type:'start'})
+  }, [open, phase, state.round, paused, busy, error, live])
   const ending = state.lives === 0 || state.round === state.rounds.length - 1
   return (
     <div className="flex min-h-0 min-w-0 flex-1 flex-col">
@@ -626,26 +629,7 @@ function CountingGame() {
                     </button>
                   </section>
                 ) : phase === 'briefing' ? (
-                  <section className="count-briefing" aria-live="polite">
-                    <p className="count-eyebrow">이번에 찾을 친구</p>
-                    <div className="count-targets" aria-label="셀 개체">
-                      {round.targets.map((kind) => (
-                        <div key={kind}>
-                          <Creature kind={kind} />
-                          <strong>{CREATURES[kind].name}</strong>
-                        </div>
-                      ))}
-                    </div>
-
-                    <button
-                      className="count-primary"
-                      disabled={busy || !!error}
-                      onClick={() => act({ type: 'start' })}
-                    >
-                      시작
-                      <ChevronRight size={18} />
-                    </button>
-                  </section>
+                  <p role="status" className="count-briefing">다음 단계를 준비하고 있어요…</p>
                 ) : (
                   <>
                     <div

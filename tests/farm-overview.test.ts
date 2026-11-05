@@ -31,7 +31,7 @@ it('distinguishes mature, rotten and already harvesting crops and ignores jobs f
 it('computes remaining orders and shortages per store from partial deliveries and current stock, and rolls over at Korean midnight',()=>{
  const state=initialTopview(),store=state.objects.find(object=>object.kind==='store')!
  state.objects.push({...store,id:50,x:5,y:7})
- const order=dailyFarmOrders(store,now)[0]
+ const order=dailyFarmOrders(store,now,state)[0]
  state.simulation.inventory[order.good]=2
  state.simulation.orderDeliveries[farmOrderKey(store,now)]={[order.good]:1}
  const overview=farmOverview(state,now),item=overview.orders[0].items.find(item=>item.good===order.good)!
@@ -46,19 +46,22 @@ it('computes remaining orders and shortages per store from partial deliveries an
 })
 it('handles empty farms and completed daily orders',()=>{
  const state=initialTopview(),store=state.objects.find(object=>object.kind==='store')!
- state.simulation.orderDeliveries[farmOrderKey(store,now)]=Object.fromEntries(dailyFarmOrders(store,now).map(order=>[order.good,order.quantity]))
+ state.simulation.orderDeliveries[farmOrderKey(store,now)]=Object.fromEntries(dailyFarmOrders(store,now,state).map(order=>[order.good,order.quantity]))
  expect(farmOverview(state,now).orders[0].complete).toBe(true)
  expect(farmOverview({...state,objects:[]},now)).toMatchObject({tasks:[],orders:[],ready:0,working:0,attention:0})
 })
 it('shows crafting ingredients only for the unfilled quantity after subtracting existing finished products',()=>{
- const state=initialTopview()
- Object.assign(state.simulation.inventory,{cake:1,flour:2,egg:1,butter:1})
- const cake=farmOverview(state,now).orders.find(order=>order.object.kind==='processed')!.items.find(item=>item.good==='cake')!
+ const state=initialTopview();state.simulation.unlockedCrops.push('strawberry','sugarcane');
+ Object.assign(state.simulation.inventory,{cake:1,flour:2,egg:1,cream:1})
+ const processed=state.objects.find(object=>object.kind==='processed')!
+ let at=now
+ while(!dailyFarmOrders(processed,at,state).some(order=>order.good==='cake'))at+=86400000
+ const cake=farmOverview(state,at).orders.find(order=>order.object.kind==='processed')!.items.find(item=>item.good==='cake')!
  const needed=cake.quantity-1
  expect(cake.ingredients.find(item=>item.good==='flour')).toMatchObject({required:needed*2,missing:needed*2-2})
- expect(cake.ingredients.find(item=>item.good==='egg')).toMatchObject({required:needed*2,missing:needed*2-1})
+ expect(cake.ingredients.find(item=>item.good==='egg')).toMatchObject({required:needed,missing:needed-1})
  state.simulation.inventory.cake=100
- expect(farmOverview(state,now).orders.find(order=>order.object.kind==='processed')!.items.find(item=>item.good==='cake')!.ingredients).toEqual([])
+ expect(farmOverview(state,at).orders.find(order=>order.object.kind==='processed')!.items.find(item=>item.good==='cake')!.ingredients).toEqual([])
 })
 it('does not advertise ready products as collectible while the warehouse is unavailable or full',()=>{
  const state=initialTopview()
@@ -71,4 +74,14 @@ it('does not advertise ready products as collectible while the warehouse is unav
  expect(farmOverview(state,now)).toMatchObject({ready:0,blocked:1})
  state.simulation.inventory.butter=0;state.simulation.inventory.milk=1
  expect(farmOverview(state,now)).toMatchObject({ready:1,blocked:0})
+})
+it('counts the rice needed for remaining pudding orders after subtracting finished food stock',()=>{
+ const state=initialTopview(),store=state.objects.find(object=>object.kind==='processed')!
+ state.simulation.unlockedCrops.push('paddy','sugarcane')
+ state.simulation.inventory.ricePudding=1;state.simulation.inventory.rice=1
+ const at=Array.from({length:90},(_,day)=>now+day*86400000).find(at=>dailyFarmOrders(store,at,state).some(order=>order.good==='ricePudding'))!
+ expect(at).toBeDefined()
+ const pudding=farmOverview(state,at).orders.find(order=>order.object.id===store.id)!.items.find(item=>item.good==='ricePudding')!
+ const rawNeeded=(pudding.quantity-1)*2
+ expect(pudding.ingredients.find(item=>item.good==='rice')).toEqual({good:'rice',required:rawNeeded,missing:rawNeeded-1})
 })

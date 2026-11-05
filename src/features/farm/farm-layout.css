@@ -19,7 +19,7 @@
 .top-farm-bottom>*{max-width:520px}
 .top-farm-message{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:min(440px,calc(100vw - 40px));margin:0;padding:7px 12px;font-size:11px;pointer-events:none}
 .top-farm-message button{pointer-events:auto;min-height:32px}
-.farm-crop-tools{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:4px;min-height:64px;gap:2px;border-radius:17px;box-shadow:0 3px 15px #35596516}
+.farm-crop-tools{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin:0;padding:4px;min-height:64px;gap:2px;border-radius:17px;box-shadow:0 3px 15px #35596516}
 .farm-crop-tools button{flex-direction:column;gap:4px;min-height:54px;padding:6px 2px;font-size:11px;border-radius:12px}
 .farm-crop-tools button span{display:flex;align-items:center;gap:5px;white-space:nowrap}
 .farm-crop-tools .farm-land-icon{width:24px;height:21px;margin:0}
@@ -28,6 +28,7 @@
 .farm-shop-categories button{flex:1;min-height:40px;border-radius:8px;font-size:11px}
 .farm-shop-categories button[aria-pressed=true]{background:#fff9ee;color:#825431}
 @media(max-width:420px){.farm-crop-tools button{font-size:10px}}
+@media(max-width:360px){.farm-crop-tools button{font-size:9px;padding-inline:0}}
 .farm-crop-tools button b{display:grid;place-items:center;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:#a27548;color:#fff8e9;font-size:9px;font-weight:500}
 .farm-seed-tray{display:block;margin:0;padding:8px 12px;max-height:240px;overflow:auto;box-shadow:0 4px 14px #35596518}
 .farm-seed-tray>header{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}

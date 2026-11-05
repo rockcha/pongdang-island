@@ -17,7 +17,7 @@ it('unlocks potato seeds once through research and purchases the requested quant
  expect(bought.gold).toBe(start.gold-46)
 })
 it('only delivers goods requested by that store within its daily quota',()=>{
- const state=initialTopview(),store=state.objects.find(o=>o.id===2)!,order=dailyFarmOrders(store,0)[0]
+ const state=initialTopview(),store=state.objects.find(o=>o.id===2)!,order=dailyFarmOrders(store,0,state)[0]
  state.simulation.inventory[order.good]=100
  const sold=simulateFarm(state,2,{type:'sell',good:order.good,quantity:4,orderDay:farmOrderDay(0)},0).state
  expect(sold.simulation.inventory[order.good]).toBe(96)
@@ -26,7 +26,7 @@ it('only delivers goods requested by that store within its daily quota',()=>{
 })
 it('mills up to two items in exactly ten seconds and never claims them twice',()=>{
  const start=initialTopview(),milling=simulateFarm(start,21,{type:'mill',quantity:2},100).state
- expect(milling.simulation.inventory.wheat).toBe(10)
+ expect(milling.simulation.inventory.wheat).toBe(8)
  expect(simulateFarm(milling,21,{type:'collectFlour'},10099).state).toBe(milling)
  expect(simulateFarm(milling,21,{type:'mill',quantity:1},10100).state).toBe(milling)
  const finished=simulateFarm(milling,21,{type:'collectFlour'},10100).state
@@ -40,7 +40,7 @@ it('consumes one seed and only grants the harvest after maturity once',()=>{
  expect(simulateFarm(planted,10,{type:'plant',crop:'wheat'},0).state).toBe(planted)
  expect(simulateFarm(planted,10,{type:'harvest'},9999).state).toBe(planted)
  const harvested=simulateFarm(planted,10,{type:'harvest'},10000).state
- expect(harvested.simulation.inventory.wheat).toBe(13)
+ expect(harvested.simulation.inventory.wheat).toBe(15)
  expect(simulateFarm(harvested,10,{type:'harvest'},10000).state).toBe(harvested)
 })
 it('keeps every non-wheat seed locked until its own timed research completes, then grows and harvests every crop',()=>{
@@ -66,7 +66,7 @@ it('keeps every non-wheat seed locked until its own timed research completes, th
   expect(ready-now).toBeLessThanOrEqual(10000)
   expect(simulateFarm(state,10,{type:'harvest'},ready-1).state).toBe(state)
   state=simulateFarm(state,10,{type:'harvest'},ready).state
-  expect(state.simulation.inventory[crop]).toBe(starting+1)
+  expect(state.simulation.inventory[crop]).toBe(starting+details.yield)
   expect(state.gold).toBe(balance-details.seedPrice)
  }
 })
@@ -77,13 +77,13 @@ it('serializes research without charging rejected or unaffordable requests',()=>
  expect(simulateFarm(poor,20,{type:'research',crop:'potato'},0).state).toBe(poor)
  expect(researching.simulation.unlockedCrops).toEqual(['wheat'])
 })
-it('adds four plots per office and two animal slots per matching house',()=>{
- const state=initialTopview(),base={...state,objects:state.objects.filter(o=>!['office','barn','coop'].includes(o.kind))}
- expect(farmLimits(base)).toMatchObject({plots:4,animals:0})
+it('adds plot slots through the farm office and animal slots through the livestock office',()=>{
+ const state=initialTopview(),base={...state,objects:state.objects.filter(o=>!['office','livestockOffice','barn','coop'].includes(o.kind))}
+ expect(farmLimits(base)).toMatchObject({plots:4,animals:2})
  expect(farmLimits(state)).toMatchObject({plots:8,animals:4})
  expect(farmPlacementError(base,'plot')).toContain('한도')
  expect(farmPlacementError(base,'cow')).toContain('먼저')
- expect(farmLimits({...state,objects:[...state.objects,{id:99,kind:'office',x:0,y:0},{id:100,kind:'barn',x:0,y:0}]})).toMatchObject({plots:12,animals:6})
+ expect(farmLimits({...state,objects:[...state.objects,{id:99,kind:'office',x:0,y:0},{id:100,kind:'barn',x:0,y:0}]})).toMatchObject({plots:12,animals:4})
 })
 it('buys animals at their correct facilities and counts stored animals against capacity',()=>{
  const state=initialTopview()

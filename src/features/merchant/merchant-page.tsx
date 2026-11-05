@@ -9,6 +9,9 @@ import {
 import { toast } from 'sonner'
 import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
+import {ConfirmDialog} from '@/components/confirm-dialog'
+import {merchantDeliveryPlan} from './delivery-plan'
+import type {MerchantState} from './api'
 import {
   Dialog,
   DialogContent,
@@ -86,10 +89,11 @@ function AccountMerchant({ owner }: { owner: string }) {
   const data = query.data
   const loading = query.isFetching
   const [error, setError] = useState(''),
-    [busy, setBusy] = useState(false)
+    [submitting, setBusy] = useState(false)
   const [filter, setFilter] = useState<'open' | 'ready' | 'done'>('open'),
     [selected, setSelected] = useState<MerchantOrder | null>(null)
-  const [message, setMessage] = useState('')
+  const [batchBusy,setBatchBusy]=useState(false),[batch,setBatch]=useState<MerchantOrder[]|null>(null)
+  const batchLock=useRef(false),busy=submitting||batchBusy
   const [dialogOpen,setDialogOpen]=useState(false)
   const [itemCount, setItemCount] = useState<0 | 1 | 2 | 3>(0)
   const [pending, setPending] = useState<Pending | null>(() => readPending(key))
@@ -116,12 +120,12 @@ function AccountMerchant({ owner }: { owner: string }) {
       /* The same operation stays available in memory. */
     }
   }
-  async function submit(order?: MerchantOrder) {
-    if (lock.current) return
+  async function submit(order?: MerchantOrder, batching=false):Promise<MerchantState|null> {
+    if (lock.current || (batchLock.current&&!batching)) return null
     const request =
       pending ??
-      (order ? { order: order.id, operation: randomId(), message: message.trim() } : null)
-    if (!request) return
+      (order ? { order: order.id, operation: randomId(), message: '' } : null)
+    if (!request) return null
     lock.current = true
     setBusy(true)
     setError('')
@@ -135,10 +139,11 @@ function AccountMerchant({ owner }: { owner: string }) {
       if (alive.current) {
         remember(null)
         setDialogOpen(false)
-        setMessage('')
+
         setFilter('done')
-        toast.success(`납품 완료 · ${next.receipt?.gold.toLocaleString('ko-KR') ?? ''}골드`)
+        if(!batching)toast.success(`납품 완료 · ${next.receipt?.gold.toLocaleString('ko-KR') ?? ''}골드`)
       }
+      return next
     } catch (cause) {
       if (alive.current) {
         const code = String((cause as { code?: string })?.code ?? '')
@@ -151,6 +156,7 @@ function AccountMerchant({ owner }: { owner: string }) {
         setError(merchantError(cause))
         toast.error(merchantError(cause))
       }
+      return null
     } finally {
       lock.current = false
       if (alive.current) {
@@ -158,6 +164,25 @@ function AccountMerchant({ owner }: { owner: string }) {
       }
     }
   }
+  async function submitAll(){
+    if(batchLock.current||lock.current||pending||!batch?.length||expired)return
+    batchLock.current=true;setBatchBusy(true)
+    let latest=data,completed=0,gold=0
+    const batchStarted=performance.now()
+    const planned=batch;setBatch(null)
+    try{
+      for(const target of planned){
+        if(!alive.current||!latest||latest.day!==data?.day||now+performance.now()-batchStarted>=Date.parse(latest.resetsAt))break
+        const order=latest.orders.find(order=>order.id===target.id)
+        if(!order||!canDeliver(order))continue
+        const next=await submit(order,true)
+        if(!next)break
+        latest=next;completed++;gold+=next.receipt?.gold??0
+      }
+      if(alive.current&&completed)toast.success(`주문 ${completed}개 납품 완료 · ${gold.toLocaleString('ko-KR')}골드`)
+    }finally{batchLock.current=false;if(alive.current)setBatchBusy(false)}
+  }
+  const deliveryPlan=merchantDeliveryPlan(data?.orders??[])
   const orders =
     data?.orders.filter((order) =>
       filter === 'done'
@@ -244,6 +269,7 @@ function AccountMerchant({ owner }: { owner: string }) {
             <RefreshCw className={`size-3.5 ${loading ? 'animate-spin' : ''}`} />
           </Button>
         </div>
+        {filter!=='done'&&<Button className="w-full" disabled={busy||!!pending||expired||!deliveryPlan.length} onClick={()=>setBatch(deliveryPlan)}>한 번에 납품하기{deliveryPlan.length?` · ${deliveryPlan.length}건`:''}</Button>}
         {(error || query.error) && (
           <div
             role="alert"
@@ -287,7 +313,7 @@ function AccountMerchant({ owner }: { owner: string }) {
                   aria-label={`주문 ${String(order.number).padStart(2, '0')} 상세 보기`}
                   disabled={busy}
                   onClick={() => {
-                    setMessage('')
+
                     setSelected(order);setDialogOpen(true)
                   }}
                   className="absolute inset-0 flex w-full items-center justify-end rounded-t-xl pr-3 text-muted-foreground outline-none transition-colors hover:bg-secondary/20 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
@@ -313,13 +339,13 @@ function AccountMerchant({ owner }: { owner: string }) {
                       className="min-h-11 shrink-0 rounded-md px-4 text-xs"
                       disabled={busy || !!pending || expired}
                       onClick={() => {
-                        setMessage('')
+
                         setSelected(order);setDialogOpen(true)
                       }}
                     >
                       납품하기
                     </Button>
-                  ):<Button variant="ghost" className="min-h-11 shrink-0 rounded-md px-2 text-[11px] text-muted-foreground" disabled={busy} onClick={()=>{setMessage('');setSelected(order);setDialogOpen(true)}}>{order.items.reduce((total,item)=>total+Math.max(0,item.quantity-item.owned),0)}개 부족</Button>}
+                  ):<Button variant="ghost" className="min-h-11 shrink-0 rounded-md px-2 text-[11px] text-muted-foreground" disabled={busy} onClick={()=>{;setSelected(order);setDialogOpen(true)}}>{order.items.reduce((total,item)=>total+Math.max(0,item.quantity-item.owned),0)}개 부족</Button>}
                 </div>
                 {order.completed && order.delivery && (
                   <div className="mx-4 flex items-start gap-2 border-t border-border/40 py-3">
@@ -362,6 +388,7 @@ function AccountMerchant({ owner }: { owner: string }) {
           </div>
         )}
       </div>
+      <ConfirmDialog open={!!batch} onOpenChange={open=>{if(!open)setBatch(null)}} title={`주문 ${batch?.length??0}건을 한 번에 납품할까요?`} description={<span className="block space-y-2"><span className="block">선택한 주문의 개체를 보관함에서 사용해요. 완료한 납품은 되돌릴 수 없어요.</span>{batch?.map(order=><span key={order.id} className="block">주문 {String(order.number).padStart(2,'0')} · {order.items.map(item=>`${item.name} ×${item.quantity}`).join(', ')}</span>)}<span className="block font-medium">총 {(batch??[]).reduce((sum,order)=>sum+order.rewardGold,0).toLocaleString('ko-KR')}골드</span></span>} busy={busy} confirmDisabled={expired||!!pending} confirmLabel="모두 납품하기" onConfirm={()=>void submitAll()}/>
       <Dialog
         open={dialogOpen}
         onOpenChangeComplete={open=>{if(!open&&!dialogOpen)setSelected(null)}}
@@ -422,29 +449,6 @@ function AccountMerchant({ owner }: { owner: string }) {
               <p className="text-[11px] leading-5 text-muted-foreground">
                 다른 모험가의 납품과 관계없이 각 주문을 한 번씩 완료할 수 있어요.
               </p>
-              {canDeliver(active) && (
-                <label className="space-y-2 text-xs">
-                  <span className="flex items-center justify-between text-muted-foreground">
-                    <span>
-                      납품하며 한마디 <span className="text-[10px]">· 선택</span>
-                    </span>
-                    <span className="text-[10px] tabular-nums">{message.length} / 80</span>
-                  </span>
-                  <textarea
-                    aria-label="납품 한마디"
-                    value={message}
-                    maxLength={80}
-                    rows={2}
-                    disabled={busy}
-                    onChange={(event) => setMessage(event.target.value)}
-                    placeholder="잘 모아왔어요. 다음 의뢰도 기대할게요!"
-                    className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2.5 text-sm leading-6 outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/10"
-                  />
-                  <span className="block text-[10px] leading-4 text-muted-foreground">
-                    완료 카드에 내 아바타·이름과 함께 모두에게 보여요.
-                  </span>
-                </label>
-              )}
               {error && (
                 <p role="alert" className="text-xs text-destructive">
                   {error}

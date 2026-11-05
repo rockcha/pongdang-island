@@ -10,7 +10,7 @@
 .farm-tool-panel button:focus-visible{outline:2px solid #ad7144;outline-offset:2px}
 .farm-tool-panel>.farm-storage-shelf{min-width:0;padding:0;border:0;border-top:1px solid #ebddc7;border-radius:0;background:none;box-shadow:none}
 .farm-tool-panel>.farm-storage-shelf>div{padding:12px 2px 3px;max-height:150px}.farm-tool-panel>.farm-storage-shelf>p{padding:20px 8px;line-height:1.6}
-.farm-crop-tools>button:first-child{position:relative;margin-right:3px}.farm-crop-tools>button:first-child::after{content:'';position:absolute;right:-3px;top:12px;bottom:12px;width:1px;background:#e4d4ba}
+.farm-crop-tools>button:nth-child(2){position:relative;margin-right:3px}.farm-crop-tools>button:nth-child(2)::after{content:'';position:absolute;right:-3px;top:12px;bottom:12px;width:1px;background:#e4d4ba}
 .farm-crop-tools>button[aria-pressed=true]{box-shadow:inset 0 0 0 1px #d4b994}
 @media(max-height:600px){.farm-tool-panel{max-height:calc(100dvh - 210px);gap:8px;padding:10px}.farm-tool-menu>button{min-height:60px;padding-block:8px;gap:5px}.farm-tool-panel>header p{margin-top:3px}.farm-tool-panel>.farm-storage-shelf>div{max-height:120px}}
 @media(max-width:380px){.farm-tool-panel{padding:12px}.farm-tool-panel>header{gap:8px}.farm-tool-panel>header p{font-size:10px}.farm-tool-menu{gap:6px}.farm-tool-menu>button{font-size:10px}}

@@ -1,0 +1,78 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "public/farm/art/v3/buildings/dairy.png",
+    "public/farm/art/v3/buildings/mill.png",
+    "public/farm/art/v9/plots/corn-ready.png",
+    "public/farm/art/v2/crops/corn.png",
+    "public/farm/art/v1/goods/flour.png",
+    "public/farm/art/v1/goods/pancakes.png"
+  ],
+  "files": [
+    {
+      "id": "sugarcane",
+      "source": "assets/ui/farm-sugar-v1/source/sugarcane.png",
+      "runtime": "public/farm/art/v2/crops/sugarcane.png",
+      "crop": {
+        "left": 86,
+        "top": 152,
+        "width": 1080,
+        "height": 995
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "77e30b929da51236d5d025656405f555b0975c214a84241e7e39ca346001a81c",
+      "prompt": "Create ONE square transparent-background game asset for a cozy Korean farming game. Subject: one harvested bundle of 3 fresh green sugarcane stalks with clearly visible jointed segments, two cut ends showing pale ivory interiors, a few long ribbon-like green leaves, simple readable crop inventory icon. Match supplied references ONLY for polished hand-painted farm illustration style: warm fine brown outlines, soft dimensional shading, charming rounded forms, warm natural earth colors, subtle highlights, clean sharp alpha edges, readable at small scale. Large centered subject fills 88-92 percent of canvas with safe transparent margins. Actual transparent alpha, NO scenery or backdrop, NO UI, NO text or lettering, NO watermark, NO checkerboard, no extra props beyond described. Preserve the exact type of subject: sugarcane."
+    },
+    {
+      "id": "sugar",
+      "source": "assets/ui/farm-sugar-v1/source/sugar.png",
+      "runtime": "public/farm/art/v2/goods/sugar.png",
+      "crop": {
+        "left": 122,
+        "top": 81,
+        "width": 987,
+        "height": 1105
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "725669abecf6aecf5b678ca204cd66da7e54516486107c7f7357dcce69d74a4f",
+      "prompt": "Create ONE square transparent-background game asset for a cozy Korean farming game. Subject: a small open cream-colored linen sack filled with fine sparkling white granulated sugar, a tiny wooden scoop resting beside it holding sugar, a simple sugar-cube emblem without text on the sack, no sugarcane plant. Match supplied references ONLY for polished hand-painted farm illustration style: warm fine brown outlines, soft dimensional shading, charming rounded forms, warm natural earth colors, subtle highlights, clean sharp alpha edges, readable at small scale. Large centered subject fills 88-92 percent of canvas with safe transparent margins. Actual transparent alpha, NO scenery or backdrop, NO UI, NO text or lettering, NO watermark, NO checkerboard, no extra props beyond described. Preserve the exact type of subject: sugar."
+    },
+    {
+      "id": "sugarMill",
+      "source": "assets/ui/farm-sugar-v1/source/sugarMill.png",
+      "crop": {
+        "left": 44,
+        "top": 188,
+        "width": 1165,
+        "height": 900
+      },
+      "width": 512,
+      "height": 512,
+      "alpha": true,
+      "sha256": "cf618d650ed33ac0bd78c85f72285989b3a459913d2e473015d9047aa26e3894",
+      "prompt": "Create ONE square transparent-background game asset for a cozy Korean farming game. Subject: a small cozy sugar-making workshop building for a square top-view farming map, one compact rectangular timber workshop, front-facing door on left and open production window on right, warm terracotta tile roof, visible small metal sugarcane roller press, a sugarcane bundle beside the press, one cream sack with white sugar near the doorway, plain small sign bearing a simple white sugar-cube icon only, no letters. Match reference dairy workshop camera and footprint, a visible roof and full front facade, nearly orthographic slightly elevated front view, NOT isometric diamond. No ground tile or yard, building alone. Match supplied references ONLY for polished hand-painted farm illustration style: warm fine brown outlines, soft dimensional shading, charming rounded forms, warm natural earth colors, subtle highlights, clean sharp alpha edges, readable at small scale. Large centered subject fills 88-92 percent of canvas with safe transparent margins. Actual transparent alpha, NO scenery or backdrop, NO UI, NO text or lettering, NO watermark, NO checkerboard, no extra props beyond described. Preserve the exact type of subject: sugarMill.",
+      "archivedDerivative": "assets/ui/farm-sugar-v1/archived/sugarMill.png",
+      "status": "retired"
+    },
+    {
+      "id": "sugarcane-ready",
+      "source": "assets/ui/farm-sugar-v1/source/sugarcane-ready.png",
+      "runtime": "public/farm/art/v10/plots/sugarcane-ready.png",
+      "crop": {
+        "left": 180,
+        "top": 33,
+        "width": 893,
+        "height": 1188
+      },
+      "width": 512,
+      "height": 512,
+      "alpha": true,
+      "sha256": "aa511ab8a85658d505c7469f114f91834c9dcef5c99a2eb95150f125d3acaae6",
+      "prompt": "Create ONE square transparent-background game asset for a cozy Korean farming game. Subject: one fully mature living sugarcane plant for a farm crop overlay, a small cluster of 3 upright green segmented cane stems growing from one root point, lush long arching narrow leaves at the top, recognizable sugarcane nodes, roots at bottom center around 92 percent of canvas height. Plant only, NO soil tile or ground plane. Centered upright full plant, same elevated front view and placement scale as the supplied mature corn crop overlay. No harvested cut stalks. Match supplied references ONLY for polished hand-painted farm illustration style: warm fine brown outlines, soft dimensional shading, charming rounded forms, warm natural earth colors, subtle highlights, clean sharp alpha edges, readable at small scale. Large centered subject fills 88-92 percent of canvas with safe transparent margins. Actual transparent alpha, NO scenery or backdrop, NO UI, NO text or lettering, NO watermark, NO checkerboard, no extra props beyond described. Preserve the exact type of subject: sugarcane-ready."
+    }
+  ]
+}

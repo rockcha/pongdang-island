@@ -8,8 +8,8 @@ import {TopviewFarm} from '@/features/farm/topview-farm'
 
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
-it('upgrades both upgradeable building types through ten levels for 50G and exactly ten seconds per level',()=>{
- for(const [id,step] of [[26,10],[1,4]]){
+it('upgrades all upgradeable building types through ten levels for 50G and exactly ten seconds per level',()=>{
+ for(const [id,step] of [[26,10],[1,4],[27,2]]){
   let state=initialTopview(),now=0
   for(let level=1;level<10;level++){
    expect(buildingCapacity(state.objects.find(o=>o.id===id)!)).toBe(step*level)
@@ -43,7 +43,7 @@ it('suspends only the upgrading management building capacity while keeping all e
  expect(state.objects).toEqual(before.objects)
  const completed=simulateFarm(state,1,{type:'completeUpgrade'},10000).state
  expect(farmLimits(completed).plots).toBe(12)
- expect(farmLimits({...completed,objects:[...completed.objects,{id:90,kind:'barn',x:4,y:7}]}).animals).toBe(6)
+ expect(farmLimits({...completed,objects:[...completed.objects,{id:90,kind:'barn',x:4,y:7}]}).animals).toBe(4)
 })
 it('keeps another warehouse usable and combines its capacity with completed building levels',()=>{
  const before=initialTopview();before.objects.push({id:50,kind:'warehouse',x:4,y:7,level:2})
@@ -69,8 +69,27 @@ it('shows the warehouse hammer and progress, hides inventory while upgrading, an
 it('preserves an upgraded building level after recovery and placement',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  click('농지 관리소 (6,5)');click('업그레이드 · 50 G');act(()=>vi.advanceTimersByTime(10000));click('Close');act(()=>vi.advanceTimersByTime(200))
- click('편집하기');click('농지 관리소 (6,5)');click('회수');click('보관함')
+ click('회수하기');click('농지 관리소 (6,5)');click('보관함')
  fireEvent.click(screen.getByRole('button',{name:/농지 관리소.*보관 1개/}))
  fireEvent.click(document.querySelector('[data-farm-cell="6,5"]')!);click('완료');click('농지 관리소 (6,5)')
+ expect(screen.getByText('Lv. 2')).toBeTruthy()
+})
+it('reveals remaining time from the map gauge and keeps the original upgrade timer and cost',()=>{
+ vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ click('축산 관리소 (4,8)');click('업그레이드 · 50 G');click('Close')
+ act(()=>vi.advanceTimersByTime(4000))
+ const badge=screen.getByRole('button',{name:'축산 관리소 업그레이드'})
+ expect(badge.querySelector('[role=progressbar]')?.getAttribute('aria-valuenow')).toBe('40')
+ expect(badge.textContent).not.toContain('6초')
+ expect(badge.querySelector('image')?.getAttribute('href')).toContain('/effects/upgrade-tools.png')
+ click('축산 관리소 업그레이드')
+ expect(badge.textContent).toContain('6초')
+ expect(screen.queryByRole('dialog')).toBeNull()
+ click('축산 관리소 (4,8)')
+ expect(screen.getByRole('heading',{name:'축산 관리소',exact:true})).toBeTruthy()
+ expect(document.querySelector('.farm-upgrade-work img')?.getAttribute('src')).toContain('/effects/upgrade-tools.png')
+ expect(document.querySelector('.top-farm-gold')?.textContent).toContain('14,950')
+ act(()=>vi.advanceTimersByTime(6000))
+ expect(container.querySelector('[data-building-upgrade="27"]')).toBeNull()
  expect(screen.getByText('Lv. 2')).toBeTruthy()
 })

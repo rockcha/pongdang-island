@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "public/farm/art/v3/buildings/office.png"
+  ],
+  "files": [
+    {
+      "id": "livestockOffice",
+      "source": "assets/ui/farm-livestock-office-v1/source/livestockOffice.png",
+      "runtime": "public/farm/art/v4/buildings/livestockOffice.png",
+      "crop": {
+        "left": 21,
+        "top": 240,
+        "width": 1214,
+        "height": 838
+      },
+      "width": 512,
+      "height": 512,
+      "prompt": "Create one transparent PNG game building asset: a cozy LIVESTOCK MANAGEMENT OFFICE, a small rectangular warm timber farm administration cabin for managing animal capacity, green muted gabled roof matching the supplied farm office style reference, front door on left, small window center, a simple sign on right with a clear cow head and chicken silhouette pictogram, no letters, no numbers. One small hay bale and clipboard leaning near front. Same slightly elevated front-facing near-orthographic camera as reference, visible roof and full front wall, NOT an isometric diamond. Warm hand-painted cozy farm game illustration, fine brown outlines, rounded detailed wood, soft dimensional shading, clear readable silhouette. Building only, no ground tile, no landscape, no UI, actual transparent alpha. Centered large fills 90 percent canvas with transparent safe margins. Reference is style and building-camera reference only, make a distinct animal management facility.",
+      "sha256": "38ea912d3035fde7cbfa0111ff975ddb85fa7e3b08b395d2292d5398d5dbdab4"
+    }
+  ]
+}

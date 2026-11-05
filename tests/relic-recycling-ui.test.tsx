@@ -28,6 +28,16 @@ async function chooseGrade(grade:'rare'|'epic'|'mythic'){
  await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
 }
 async function recombine(){fireEvent.click(await screen.findByRole('tab',{name:'재조합'}));for(let i=0;i<6;i++)fireEvent.click(screen.getByRole('button',{name:a.name+' 1개 넣기'}));fireEvent.click(screen.getByRole('button',{name:'무료로 재조합하기'}))}
+it('opens a material information dialog without adding or consuming it',async()=>{
+ render(<RelicPage/>);fireEvent.click(await screen.findByRole('tab',{name:'재조합'}))
+ fireEvent.click(screen.getByRole('button',{name:a.name+' 정보와 효과'}))
+ const dialog=screen.getByRole('dialog',{name:a.name})
+ expect(within(dialog).getByText(a.description)).toBeTruthy()
+ expect(within(dialog).getByText('보유 7개 · 재조합 사용 가능 6개')).toBeTruthy()
+ expect(mock.recycle).not.toHaveBeenCalled()
+ fireEvent.click(within(dialog).getByRole('button',{name:'닫기'}))
+ expect(screen.getByLabelText('선택한 재조합 재료').textContent).toContain('0 / 6')
+})
 it.each(['rare','epic'] as const)('auto fills only the selected %s grade and protects equipped and crafted copies',async grade=>{
  const first={...a,rarity:grade,quantity:3},second={...b,rarity:grade,quantity:4}
  const opposite={...epic,rarity:grade==='rare'?'epic' as const:'rare' as const,quantity:6,owned:true}

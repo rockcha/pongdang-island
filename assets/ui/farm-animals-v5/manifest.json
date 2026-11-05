@@ -1,0 +1,107 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "public/farm/art/v4/animals/chicken.png",
+    "public/farm/art/v4/animals/cow.png",
+    "public/farm/art/v1/goods/pancakes.png",
+    "public/farm/art/v1/goods/flour.png"
+  ],
+  "files": [
+    {
+      "id": "duck",
+      "source": "assets/ui/farm-animals-v5/source/duck.png",
+      "runtime": "public/farm/art/v5/animals/duck.png",
+      "crop": {
+        "left": 211,
+        "top": 129,
+        "width": 766,
+        "height": 1026
+      },
+      "width": 512,
+      "height": 512,
+      "alpha": true,
+      "sha256": "5a7300de63d605c3e6771cc2eb023a2cec50fbaa561e088d345113f9487eb5b4",
+      "prompt": "Create ONE square transparent-background farm animal sprite for a cozy Korean farming game. Subject: one cute adult domestic white duck, full body, standing with BOTH orange webbed feet visible, plump ivory body, small folded wings, long graceful duck neck, flat orange duck bill, rounded tail, expressive friendly eyes, three-quarter side view facing RIGHT. Distinctly a duck, not a chicken, NO rooster comb, no accessories, no eggs. Match supplied references ONLY for art style: polished hand-painted casual farm-game illustration, warm fine brown outlines, softly shaded rounded volumes, warm cream and amber earth colors, clean readable silhouette and highlights. Full animal fits entirely in frame, all legs and horns intact; slightly elevated three-quarter camera, ground contact at bottom; proportions close to reference farm animals. Center composition, occupy about 85% of canvas with transparent safe margins. Actual transparent alpha background. NO scenery, NO UI, NO text, no labels, NO watermark, NO checkerboard, no decorative frame, no extra creatures or props beyond specified. Avoid flat vector art."
+    },
+    {
+      "id": "goat",
+      "source": "assets/ui/farm-animals-v5/source/goat.png",
+      "runtime": "public/farm/art/v5/animals/goat.png",
+      "crop": {
+        "left": 180,
+        "top": 145,
+        "width": 945,
+        "height": 966
+      },
+      "width": 512,
+      "height": 512,
+      "alpha": true,
+      "sha256": "d395434b7d2112ad6584675396fdf74d724ff6937cb1ab7f6407dc22b6bf1983",
+      "prompt": "Create ONE square transparent-background farm animal sprite for a cozy Korean farming game. Subject: one cute adult miniature dairy goat, full body, standing on FOUR short legs with cloven hooves visible, warm cream coat with caramel patches, small curved horns, floppy ears, tiny beard, friendly eyes, short upright tail, three-quarter side view facing RIGHT. Clearly a goat, not a sheep or calf. No accessories, no grass or terrain. Match supplied references ONLY for art style: polished hand-painted casual farm-game illustration, warm fine brown outlines, softly shaded rounded volumes, warm cream and amber earth colors, clean readable silhouette and highlights. Full animal fits entirely in frame, all legs and horns intact; slightly elevated three-quarter camera, ground contact at bottom; proportions close to reference farm animals. Center composition, occupy about 85% of canvas with transparent safe margins. Actual transparent alpha background. NO scenery, NO UI, NO text, no labels, NO watermark, NO checkerboard, no decorative frame, no extra creatures or props beyond specified. Avoid flat vector art."
+    },
+    {
+      "id": "duckEgg",
+      "source": "assets/ui/farm-animals-v5/source/duckEgg.png",
+      "runtime": "public/farm/art/v2/goods/duckEgg.png",
+      "crop": {
+        "left": 159,
+        "top": 186,
+        "width": 931,
+        "height": 900
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "a825f067958d8b6ab9e734c0b8f426b4f799b646ac6580732a939f2b311fa060",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farming game. Subject: two whole large pale blue-green duck eggs next to each other with ONE small fluffy white duck feather, minimal simple silhouette, no nest. Match supplied references ONLY for art style: polished hand-painted casual farm-game illustration, warm fine brown outlines, softly shaded rounded volumes, warm cream and amber earth colors, clean readable silhouette and highlights. Three-quarter front view, visibly appetizing food texture, large simple readable shape at 64px. Center composition, occupy about 85% of canvas with transparent safe margins. Actual transparent alpha background. NO scenery, NO UI, NO text, no labels, NO watermark, NO checkerboard, no decorative frame, no extra creatures or props beyond specified. Avoid flat vector art."
+    },
+    {
+      "id": "goatMilk",
+      "source": "assets/ui/farm-animals-v5/source/goatMilk.png",
+      "runtime": "public/farm/art/v2/goods/goatMilk.png",
+      "crop": {
+        "left": 231,
+        "top": 104,
+        "width": 775,
+        "height": 1034
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "edfb57a84b40754f4f5da2f69981ec2808c1d120b8bf5f0c66ed5bc4bc29e9a5",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farming game. Subject: one small clear glass milk bottle filled with ivory-white goat milk, cork cap, small sage-green paper tag with a tiny simple goat face emblem and NO lettering, one glass of milk next to it, no animals. Match supplied references ONLY for art style: polished hand-painted casual farm-game illustration, warm fine brown outlines, softly shaded rounded volumes, warm cream and amber earth colors, clean readable silhouette and highlights. Three-quarter front view, visibly appetizing food texture, large simple readable shape at 64px. Center composition, occupy about 85% of canvas with transparent safe margins. Actual transparent alpha background. NO scenery, NO UI, NO text, no labels, NO watermark, NO checkerboard, no decorative frame, no extra creatures or props beyond specified. Avoid flat vector art."
+    },
+    {
+      "id": "goatCheese",
+      "source": "assets/ui/farm-animals-v5/source/goatCheese.png",
+      "runtime": "public/farm/art/v2/goods/goatCheese.png",
+      "crop": {
+        "left": 183,
+        "top": 210,
+        "width": 878,
+        "height": 816
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "c8a1bd2f3a5d3224d2836aa3fe8dabcec0fc8f0f051d29fcc00abca014608c8d",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farming game. Subject: one small round white goat cheese log cut into two rounds showing smooth creamy white interiors, a tiny thyme sprig alongside, no plate, visually distinct from yellow holey cow cheese. Match supplied references ONLY for art style: polished hand-painted casual farm-game illustration, warm fine brown outlines, softly shaded rounded volumes, warm cream and amber earth colors, clean readable silhouette and highlights. Three-quarter front view, visibly appetizing food texture, large simple readable shape at 64px. Center composition, occupy about 85% of canvas with transparent safe margins. Actual transparent alpha background. NO scenery, NO UI, NO text, no labels, NO watermark, NO checkerboard, no decorative frame, no extra creatures or props beyond specified. Avoid flat vector art."
+    },
+    {
+      "id": "duckEggTart",
+      "source": "assets/ui/farm-animals-v5/source/duckEggTart.png",
+      "runtime": "public/farm/art/v2/goods/duckEggTart.png",
+      "crop": {
+        "left": 115,
+        "top": 265,
+        "width": 1013,
+        "height": 765
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "a7782c91c2fa98cd7a55162861e2a6b3bcfcf14a6d64f23f0e044aec9e2aba84",
+      "prompt": "Create ONE square transparent-background inventory food icon for a cozy Korean farming game. Subject: one golden Portuguese-style egg custard tart in a crisp flaky pastry shell with rich amber yellow duck-egg custard and small caramelized brown spots, one whole tart with one cut half beside it, no plate. Match supplied references ONLY for art style: polished hand-painted casual farm-game illustration, warm fine brown outlines, softly shaded rounded volumes, warm cream and amber earth colors, clean readable silhouette and highlights. Three-quarter front view, visibly appetizing food texture, large simple readable shape at 64px. Center composition, occupy about 85% of canvas with transparent safe margins. Actual transparent alpha background. NO scenery, NO UI, NO text, no labels, NO watermark, NO checkerboard, no decorative frame, no extra creatures or props beyond specified. Avoid flat vector art."
+    }
+  ]
+}

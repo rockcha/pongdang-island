@@ -9,7 +9,7 @@ afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 it('leaves a prepared animal waiting over the coop until tapped, then stores it exactly once',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('닭장 (10,8)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull()
+ click('가금사 (10,8)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull()
  act(()=>vi.advanceTimersByTime(30000))
  click('보관함');expect(screen.getByText('보관 중인 개체가 없어요.')).toBeTruthy();click('완료');act(()=>vi.advanceTimersByTime(200))
  expect(screen.getByRole('button',{name:'닭 보관함으로 받기'})).toBeTruthy()
@@ -41,7 +41,7 @@ it('reserves the last warehouse slot before harvesting and preserves a crop cut 
  expect(cropIsRotten(cutting.simulation.cropJobs[10],12999)).toBe(false)
  expect(simulateFarm(cutting,10,{type:'harvest'},12998).state).toBe(cutting)
  const collected=simulateFarm(cutting,10,{type:'harvest'},12999).state
- expect(collected.simulation.inventory.potato).toBe(1)
+ expect(collected.simulation.inventory.potato).toBe(3)
  expect(collected.simulation.cropJobs[10]).toBeUndefined()
 })
 it('prepares animals once, reserves capacity while preparing, then produces only one waiting product per placed animal',()=>{

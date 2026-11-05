@@ -2,7 +2,7 @@ import {useEffect,useState} from 'react'
 import {Check,FlaskConical,LockKeyhole,ShoppingBag,Move} from 'lucide-react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import {cropKinds,farmCrops,seedGood} from './crop-catalog'
-import {farmGoods,farmAnimalHousing,cropIsRotten,type FarmGood,type FarmSimAction} from './farm-simulation'
+import {farmGoods,cropIsRotten,type FarmGood,type FarmSimAction} from './farm-simulation'
 import {FarmGoodIcon} from './farm-good-icon'
 import {TopviewArt} from './topview-art'
 import {topviewItems,type TopviewObject,type TopviewState} from './topview-model'
@@ -11,25 +11,27 @@ import {BuildingInfo} from './building-info'
 import {ProcessingWorkshop} from './processing-workshop'
 import {BuildingUpgradePanel} from './building-upgrade-panel'
 import {FarmItemPicker} from './item-picker'
+import {FarmAnimalPurchase} from './animal-purchase'
+import {MillWorkshop} from './mill-workshop'
 import {BuildingStoreButton} from './building-store-button'
 
-export function FarmProductionDialog({object,state,message,onAction,onClose,onResearch,onStore,onNavigate,onPlant,onMove,pendingPlots=0,lastPurchasedSeed='wheat'}:{object:TopviewObject;state:TopviewState;message:string;onAction:(action:FarmSimAction)=>void;onClose:()=>void;onResearch:()=>void;onStore?:()=>void;pendingPlots?:number;lastPurchasedSeed?:typeof cropKinds[number];onNavigate?:(kind:'seedShop'|'store'|'processed')=>void;onPlant?:(crop:typeof cropKinds[number])=>void;onMove?:()=>void}){
+export function FarmProductionDialog({object,state,message,onAction,onClose,onResearch,onStore,onNavigate,onMove,pendingPlots=0,lastPurchasedSeed='wheat'}:{object:TopviewObject;state:TopviewState;message:string;onAction:(action:FarmSimAction)=>void;onClose:()=>void;onResearch:()=>void;onStore?:()=>void;pendingPlots?:number;lastPurchasedSeed?:typeof cropKinds[number];onNavigate?:(kind:'seedShop'|'store'|'processed'|'livestockOffice')=>void;onMove?:()=>void}){
  const [now,setNow]=useState(Date.now),[selectedCrop,setSelectedCrop]=useState<typeof cropKinds[number]>(object.kind==='lab'?'potato':object.kind==='seedShop'?lastPurchasedSeed:'wheat')
- const sim=state.simulation,kind=object.kind,job=sim.researchJob,millJob=sim.millJobs[object.id],housing=farmAnimalHousing(state,kind==='barn'?'cow':'chicken')
+ const sim=state.simulation,kind=object.kind,job=sim.researchJob
  useEffect(()=>{const timer=window.setInterval(()=>setNow(Date.now()),100);return()=>window.clearInterval(timer)},[])
- const crop=sim.cropJobs[object.id]
- return <Dialog open onOpenChange={open=>{if(!open)onClose()}}><DialogContent className="farm-sim-dialog farm-compact-dialog"><DialogHeader className="farm-compact-header"><div className="farm-sim-title-art"><TopviewArt kind={kind}/></div><DialogTitle>{topviewItems[kind].name}</DialogTitle><DialogDescription className="sr-only">건물 기능과 관리</DialogDescription></DialogHeader>
-  <BuildingInfo object={object} state={state}/>
+ const crop=sim.cropJobs[object.id],animalHouse=kind==='coop'||kind==='barn'
+ return <Dialog open onOpenChange={open=>{if(!open)onClose()}}><DialogContent className={`farm-sim-dialog farm-compact-dialog ${animalHouse?'farm-animal-dialog':''}`}><DialogHeader className="farm-compact-header"><div className="farm-sim-title-art"><TopviewArt kind={kind}/></div><DialogTitle>{topviewItems[kind].name}</DialogTitle><DialogDescription className={animalHouse?'farm-building-subtitle':'sr-only'}>{kind==='barn'?'젖소·염소를 키우는 사육 시설':kind==='coop'?'닭·오리를 키우는 사육 시설':'건물 기능과 관리'}</DialogDescription></DialogHeader>
+  {!animalHouse&&<BuildingInfo object={object} state={state}/>}
   <div className="farm-sim-body">
-   {kind==='office'&&<BuildingUpgradePanel object={object} state={state} now={now} onAction={onAction}/>}
+   {(kind==='office'||kind==='livestockOffice')&&<BuildingUpgradePanel object={object} state={state} now={now} onAction={onAction}/>}
    {kind==='seedShop'&&<><FarmItemPicker items={cropKinds} value={selectedCrop} onChange={setSelectedCrop} label="구매할 종자" isLocked={c=>!sim.unlockedCrops.includes(c)}/>{cropKinds.filter(c=>c===selectedCrop).map(cropKind=>{
     const details=farmCrops[cropKind],good=seedGood(cropKind),unlocked=sim.unlockedCrops.includes(cropKind)
-    return unlocked?<QuantityRow key={good} good={good} max={Math.floor(state.gold/details.seedPrice)} owned={sim.inventory[good]} action="구매" note={`소요 시간 ${details.growSeconds}초`} onSubmit={quantity=>onAction({type:'seed',good,quantity})}/>:<div className="farm-seed-locked" key={good}>
+    return unlocked?<QuantityRow key={good} good={good} max={Math.floor(state.gold/details.seedPrice)} owned={sim.inventory[good]} action="구매" note={`재배 ${details.growSeconds}초 · 한 칸 수확 ${details.yield}개`} onSubmit={quantity=>onAction({type:'seed',good,quantity})}/>:<div className="farm-seed-locked" key={good}>
      <FarmGoodIcon good={good}/><div><strong>{details.name} 종자</strong><small>{job?.crop===cropKind?'연구 중이에요':'종자 연구소에서 해금'}</small></div><button onClick={onResearch} aria-label={`${details.name} 연구소로 이동`}><LockKeyhole size={14}/><span>{job?.crop===cropKind?'연구 중':'연구하기'}</span></button>
     </div>
    })}</>}
-   {(kind==='store'||kind==='processed')&&<DailyOrderPanel object={object} simulation={sim} now={now} onAction={onAction}/>}
-   {(kind==='dairy'||kind==='bakery')&&<ProcessingWorkshop buildingId={object.id} kind={kind} simulation={sim} now={now} onAction={onAction}/>}
+   {(kind==='store'||kind==='processed')&&<DailyOrderPanel object={object} state={state} simulation={sim} now={now} onAction={onAction}/>}
+   {(kind==='dairy'||kind==='bakery'||kind==='kitchen')&&<ProcessingWorkshop buildingId={object.id} kind={kind} simulation={sim} now={now} onAction={onAction}/>}
    {kind==='lab'&&<><FarmItemPicker items={cropKinds} value={selectedCrop} onChange={setSelectedCrop} label="연구할 종자" isLocked={c=>!sim.unlockedCrops.includes(c)}/>{cropKinds.filter(c=>c===selectedCrop).map(cropKind=>{
     const details=farmCrops[cropKind],unlocked=sim.unlockedCrops.includes(cropKind),researching=job?.crop===cropKind
     const remaining=researching?Math.max(0,Math.ceil((job.readyAt-now)/1000)):0,progress=researching?Math.min(100,Math.max(0,(now-job.startedAt)/(job.readyAt-job.startedAt)*100)):0
@@ -38,16 +40,15 @@ export function FarmProductionDialog({object,state,message,onAction,onClose,onRe
      {!unlocked&&(researching?<div className="farm-research-running"><div className="farm-sim-progress" role="progressbar" aria-label={`${details.name} 연구 진행`} aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{width:`${progress}%`}}/></div><span>{remaining?`${remaining}초 남았어요`:'연구를 마무리하고 있어요'}</span></div>:<button className="farm-research-start" disabled={!!job||state.gold<details.researchPrice} onClick={()=>onAction({type:'research',crop:cropKind})} aria-label={`${details.name} 연구 · ${details.researchPrice} G`}><FlaskConical size={14}/><span>{job?'다른 종자 연구 중':'연구하기'}</span><strong>{details.researchPrice} G</strong></button>)}
     </article>
    })}</>}
-   {kind==='mill'&&<>{millJob?<JobProgress readyAt={millJob.readyAt} now={now} label={`밀 ${millJob.quantity}개 → 밀가루 ${millJob.quantity}개`} seconds={10} onCollect={()=>onAction({type:'collectFlour'})}/>:<><div className="farm-sim-recipe"><FarmGoodIcon good="wheat"/><span>밀 1개 → 밀가루 1개</span><FarmGoodIcon good="flour"/></div><p className="farm-sim-caption">같은 제품을 최대 2개까지 10초 동안 제분해요.</p><QuantityRow good="wheat" max={Math.min(2,sim.inventory.wheat)} owned={sim.inventory.wheat} action="제분 시작" onSubmit={quantity=>onAction({type:'mill',quantity})}/></>}</>}
-   {(kind==='coop'||kind==='barn')&&<div className="farm-sim-feature">{sim.animalPurchaseJobs[object.id]?<><div className="farm-animal-preparing"><TopviewArt kind={kind==='coop'?'chicken':'cow'}/></div><h3>{sim.animalPurchaseJobs[object.id].readyAt<=now?'동물 준비 완료!':'동물을 준비하고 있어요'}</h3><div className="farm-sim-progress" role="progressbar" aria-label="동물 준비 진행" aria-valuenow={Math.round(Math.min(100,(now-sim.animalPurchaseJobs[object.id].startedAt)/100))} aria-valuemin={0} aria-valuemax={100}><i style={{width:Math.min(100,(now-sim.animalPurchaseJobs[object.id].startedAt)/100)+'%'}}/></div>{sim.animalPurchaseJobs[object.id].readyAt<=now?<><p>건물 위 말풍선을 누르거나 여기서 받아주세요.</p><button className="farm-sim-primary" onClick={()=>onAction({type:'completeAnimalPurchase'})}>보관함으로 받기</button></>:<p>{Math.max(0,Math.ceil((sim.animalPurchaseJobs[object.id].readyAt-now)/1000))}초 후 건물 위에 동물 말풍선이 떠요.</p>}</>:<><div className="farm-animal-preparing"><TopviewArt kind={kind==='coop'?'chicken':'cow'}/></div><h3>{kind==='coop'?'닭':'젖소'} 구매</h3><p>준비 10초 · 배치 후 {kind==='coop'?'달걀':'우유'} 생산</p><div className="farm-sim-detail">{kind==='barn'?'소':'닭'} {housing.total} / {housing.capacity}마리</div><button className="farm-sim-primary" disabled={housing.total>=housing.capacity||state.gold<(kind==='coop'?300:800)} onClick={()=>onAction({type:'animal',animal:kind==='coop'?'chicken':'cow'})}>{kind==='coop'?'닭 구매 · 300 G':'젖소 구매 · 800 G'}</button></>}</div>}
+   {kind==='mill'&&<MillWorkshop buildingId={object.id} simulation={sim} now={now} onAction={onAction}/>}
+   {(kind==='coop'||kind==='barn')&&<FarmAnimalPurchase buildingId={object.id} kind={kind} state={state} now={now} onAction={onAction} onManage={onNavigate?()=>onNavigate('livestockOffice'):undefined}/>}
    {kind==='plot'&&<>{crop&&cropIsRotten(crop,now)?<div className="farm-sim-feature"><FarmGoodIcon good={crop.crop} className="farm-crop-rotten farm-crop-hero"/><h3>작물이 썩었어요</h3><p>수확 가능 시간 60초가 지났어요.<br/>폐기한 뒤 새 종자를 심어주세요.</p><button className="farm-sim-primary" onClick={()=>onAction({type:'discardCrop'})}>폐기하기</button></div>:crop?<><FarmGoodIcon good={crop.crop} className="farm-crop-hero"/><JobProgress readyAt={crop.readyAt} now={now} label={`${farmCrops[crop.crop].name} 재배`} seconds={farmCrops[crop.crop].growSeconds} onCollect={()=>onAction({type:'harvest'})}/><p className="farm-sim-caption">다 자란 뒤 60초 안에 수확해주세요. 이후에는 썩어요.</p></>:<><FarmItemPicker items={cropKinds} value={selectedCrop} onChange={setSelectedCrop} label="심을 작물" owned={c=>sim.inventory[seedGood(c)]}/>{cropKinds.filter(c=>c===selectedCrop).map(cropKind=>{
     const seed=seedGood(cropKind),details=farmCrops[cropKind],locked=!sim.unlockedCrops.includes(cropKind)
-    return <div className="farm-sim-crop" key={cropKind}><FarmGoodIcon good={cropKind}/><div><strong>{details.name}</strong><small>{`소요 시간 ${details.growSeconds}초`}</small></div><button aria-label={`${details.name} 심기`} disabled={locked||sim.inventory[seed]<1} onClick={()=>onAction({type:'plant',crop:cropKind})}>{`${details.name} 심기`}</button></div>
+    return <div className="farm-sim-crop" key={cropKind}><FarmGoodIcon good={cropKind}/><div><strong>{details.name}</strong><small>{`재배 ${details.growSeconds}초 · 한 칸 수확 ${details.yield}개`}</small></div><button aria-label={`${details.name} 심기`} disabled={locked||sim.inventory[seed]<1} onClick={()=>onAction({type:'plant',crop:cropKind})}>{`${details.name} 심기`}</button></div>
    })}</>}</>}
    {message&&<p className="farm-sim-feedback" role="status">{message}</p>}
-   {kind==='seedShop'&&onPlant&&<button className="farm-next-action" disabled={!cropKinds.some(c=>sim.inventory[seedGood(c)]>0)} onClick={()=>onPlant(sim.inventory[seedGood(lastPurchasedSeed)]>0?lastPurchasedSeed:cropKinds.find(c=>sim.inventory[seedGood(c)]>0)??'wheat')}>심으러 가기 →</button>}
    {kind==='lab'&&onNavigate&&<button className="farm-next-action" onClick={()=>onNavigate('seedShop')}>종자 구매하기 →</button>}
-   {['mill','dairy','bakery'].includes(kind)&&onNavigate&&<button className="farm-next-action" onClick={()=>onNavigate('processed')}>가공품 판매소로 →</button>}
+   {['mill','dairy','bakery','kitchen'].includes(kind)&&onNavigate&&<button className="farm-next-action" onClick={()=>onNavigate('processed')}>가공품 판매소로 →</button>}
   </div>
   {kind==='plot'&&onMove&&<div className="farm-building-store"><div className="farm-building-actions" role="group" aria-label="밭 배치 관리"><button onClick={onMove}><Move size={15}/>이동하기</button></div></div>}
   {onStore&&<BuildingStoreButton object={object} state={state} onStore={onStore} pendingPlots={pendingPlots} onMove={onMove}/>}

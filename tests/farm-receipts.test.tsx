@@ -14,10 +14,10 @@ it('claims flour directly from the ready bubble once and keeps the storage copy 
 it('shows animal products and prepared animals in the same receipt with the correct destination',()=>{
  start();click('젖소 (16,9)');act(()=>vi.advanceTimersByTime(10000));click('젖소 (16,9)')
  expect(screen.getByRole('status').textContent).toContain('우유 ×1창고에 보관했습니다.');expect(document.querySelector('.top-farm-message')).toBeNull()
- click('닭장 (10,8)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(10000));click('닭 보관함으로 받기')
+ click('가금사 (10,8)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(10000));click('닭 보관함으로 받기')
  expect(screen.getByRole('status').textContent).toContain('닭 ×1보관함에 보관했습니다.');expect(document.querySelector('.top-farm-message')).toBeNull()
 })
 it('includes all concurrently harvested crops in one warehouse receipt',()=>{
  start();click('농사');click('씨앗 심기');click('밀 4개');click('밭 (9,13)');click('밭 (10,13)');act(()=>vi.advanceTimersByTime(10000));click('밭 (9,13)');click('밭 (10,13)');act(()=>vi.advanceTimersByTime(3000))
- expect(screen.getByRole('status').textContent).toContain('밀 ×2창고에 보관했습니다.');expect(document.querySelector('.top-farm-message')).toBeNull()
+ expect(screen.getByRole('status').textContent).toContain('밀 ×6창고에 보관했습니다.');expect(document.querySelector('.top-farm-message')).toBeNull()
 })

@@ -1,7 +1,8 @@
+import {farmAnimals,isFarmAnimal,ANIMAL_PURCHASE_SECONDS,type FarmAnimal} from './animal-catalog'
 import {topviewItems,type FarmTool,type TopviewState} from './topview-model'
 import {cropKinds,farmCrops,isCropKind,seedGood,type CropKind,type SeedGood} from './crop-catalog'
-import {farmProducts,farmRecipes,isRecipeId,recipeBatchLimit,type ProductGood,type RecipeId} from './food-catalog'
-import {activeBuildings,buildingCapacity,buildingLevel,isUpgradeable,upgradeBuilding,warehouseAvailable,warehouseCapacity,type BuildingUpgradeAction} from './building-upgrades'
+import {farmProducts,farmRecipes,millRecipes,isRecipeId,recipeUnlocked,recipeBatchLimit,recipeOutput,type ProductGood,type RecipeId,type MillProduct} from './food-catalog'
+import {activeBuildings,livestockCapacity,buildingCapacity,buildingLevel,isUpgradeable,upgradeBuilding,warehouseAvailable,warehouseCapacity,type BuildingUpgradeAction} from './building-upgrades'
 import {dailyFarmOrders,farmOrderDay,farmOrderKey} from './daily-orders'
 export {type CropKind} from './crop-catalog'
 
@@ -24,21 +25,22 @@ export const farmGoods:Record<FarmGood,GoodDetails>={
  ...Object.fromEntries(cropKinds.flatMap(crop=>[[crop,{name:farmCrops[crop].name,price:farmCrops[crop].sellPrice,crop}],[seedGood(crop),{name:`${farmCrops[crop].name} 종자`,price:farmCrops[crop].seedPrice,crop}]])) as Record<CropKind|SeedGood,GoodDetails>,
  ...farmProducts,
 }
-export type FarmSimulation={animalPurchaseJobs:Record<number,{animal:'cow'|'chicken';startedAt:number;readyAt:number}>;upgradeJobs:Record<number,{startedAt:number;readyAt:number;fromLevel:number}>;inventory:Record<FarmGood,number>;unlockedCrops:CropKind[];researchJob:{crop:CropKind;labId:number;startedAt:number;readyAt:number}|null;cropJobs:Record<number,{crop:CropKind;readyAt:number;harvestingAt?:number}>;animalJobs:Record<number,number>;millJobs:Record<number,{quantity:number;startedAt:number;readyAt:number}>;processingJobs:Record<number,{recipe:RecipeId;quantity:number;startedAt:number;readyAt:number}>;orderDeliveries:Record<string,Partial<Record<FarmGood,number>>>}
-export type FarmEffect={type:'buy'|'sell'|'research'|'unlock'|'harvest'|'craft'|'crafted'|'received'|'discarded';good:FarmGood;quantity?:number;gold?:number;animal?:'cow'|'chicken';items?:{good:FarmGood;quantity:number}[]}
+export type FarmSimulation={animalPurchaseJobs:Record<number,{animal:FarmAnimal;startedAt:number;readyAt:number}>;upgradeJobs:Record<number,{startedAt:number;readyAt:number;fromLevel:number}>;inventory:Record<FarmGood,number>;unlockedCrops:CropKind[];unlockedAnimals?:FarmAnimal[];researchJob:{crop:CropKind;labId:number;startedAt:number;readyAt:number}|null;cropJobs:Record<number,{crop:CropKind;readyAt:number;harvestingAt?:number}>;animalJobs:Record<number,number>;millJobs:Record<number,{product?:MillProduct;quantity:number;startedAt:number;readyAt:number}>;processingJobs:Record<number,{recipe:RecipeId;quantity:number;startedAt:number;readyAt:number}>;orderDeliveries:Record<string,Partial<Record<FarmGood,number>>>}
+export type FarmEffect={type:'buy'|'sell'|'research'|'unlock'|'harvest'|'craft'|'crafted'|'received'|'discarded';good:FarmGood;quantity?:number;gold?:number;animal?:FarmAnimal;items?:{good:FarmGood;quantity:number}[]}
 export function initialFarmSimulation():FarmSimulation{
  const inventory=Object.fromEntries(Object.keys(farmGoods).map(good=>[good,0])) as Record<FarmGood,number>
  inventory.wheatSeed=4;inventory.wheat=12
- return {inventory,unlockedCrops:['wheat'],researchJob:null,cropJobs:{},animalJobs:{},animalPurchaseJobs:{},millJobs:{},processingJobs:{},upgradeJobs:{},orderDeliveries:{}}
+ return {inventory,unlockedCrops:['wheat'],unlockedAnimals:['cow','chicken'],researchJob:null,cropJobs:{},animalJobs:{},animalPurchaseJobs:{},millJobs:{},processingJobs:{},upgradeJobs:{},orderDeliveries:{}}
 }
-export function farmAnimalHousing(state:TopviewState,animal:'cow'|'chicken'){
- const placed=state.objects.filter(o=>o.kind===animal).length,stored=state.stored.filter(kind=>kind===animal).length,pending=Object.values(state.simulation.animalPurchaseJobs).filter(job=>job.animal===animal).length
- return {capacity:activeBuildings(state,animal==='cow'?'barn':'coop').length*2,placed,stored,pending,total:placed+stored+pending}
+export function farmAnimalHousing(state:TopviewState,animal:FarmAnimal){
+ const isAnimal=(kind:FarmTool)=>topviewItems[kind].group==='동물'
+ const placed=state.objects.filter(o=>isAnimal(o.kind)).length,stored=state.stored.filter(isAnimal).length,pending=Object.values(state.simulation.animalPurchaseJobs).length
+ return {capacity:livestockCapacity(state),placed,stored,pending,total:placed+stored+pending,hasHousing:activeBuildings(state,farmAnimals[animal].housing).length>0}
 }
 export function farmLimits(state:TopviewState){
  const count=(kind:FarmTool)=>state.objects.filter(o=>o.kind===kind).length
- const usedAnimals=count('chicken')+count('cow')+count('sheep'),storedAnimals=state.stored.filter(kind=>topviewItems[kind].group==='동물').length,pendingAnimals=Object.keys(state.simulation.animalPurchaseJobs).length
- return {plots:4+activeBuildings(state,'office').reduce((sum,o)=>sum+buildingCapacity(o),0),animals:farmAnimalHousing(state,'cow').capacity+farmAnimalHousing(state,'chicken').capacity,usedPlots:count('plot'),usedAnimals,storedAnimals,pendingAnimals,totalAnimals:usedAnimals+storedAnimals+pendingAnimals}
+ const usedAnimals=state.objects.filter(object=>topviewItems[object.kind].group==='동물').length,storedAnimals=state.stored.filter(kind=>topviewItems[kind].group==='동물').length,pendingAnimals=Object.keys(state.simulation.animalPurchaseJobs).length
+ return {plots:4+activeBuildings(state,'office').reduce((sum,o)=>sum+buildingCapacity(o),0),animals:livestockCapacity(state),usedPlots:count('plot'),usedAnimals,storedAnimals,pendingAnimals,totalAnimals:usedAnimals+storedAnimals+pendingAnimals}
 }
 export const farmPurchaseLimit=(kind:FarmTool)=>topviewItems[kind].group==='건물'?(topviewItems[kind].purchaseLimit??1):Infinity
 export const farmOwnedCount=(state:TopviewState,kind:FarmTool)=>state.objects.filter(o=>o.kind===kind).length+state.stored.filter(k=>k===kind).length
@@ -50,12 +52,13 @@ export function farmBuildingStorageError(state:TopviewState,id:number,pendingPlo
  if(sim.researchJob?.labId===id)return '연구가 끝난 뒤 보관할 수 있어요.'
  if(sim.animalPurchaseJobs[id])return '준비한 동물을 먼저 받은 뒤 보관할 수 있어요.'
  if(sim.processingJobs[id])return '가공품을 먼저 받은 뒤 건물을 보관할 수 있어요.'
- if(object.kind==='mill'&&sim.millJobs[id])return '제분이 끝나고 밀가루를 받은 뒤 보관할 수 있어요.'
+ if(object.kind==='mill'&&sim.millJobs[id])return `제분이 끝나고 ${farmGoods[sim.millJobs[id].product??'flour'].name}를 받은 뒤 보관할 수 있어요.`
  const after={...state,objects:state.objects.filter(o=>o.id!==id)},limits=farmLimits(after)
  if(object.kind==='office'&&limits.usedPlots+pendingPlots>limits.plots)return '보관하면 밭 한도를 초과해요. 밭을 먼저 정리해주세요.'
+ if(object.kind==='livestockOffice'&&limits.totalAnimals>limits.animals)return '보관하면 동물 정원을 초과해요. 보관·준비 중인 동물까지 먼저 정리해주세요.'
  if(object.kind==='barn'||object.kind==='coop'){
   const housing=farmAnimalHousing(after,object.kind==='barn'?'cow':'chicken')
-  if(housing.total>housing.capacity)return '보관하면 동물의 거처가 부족해요. 보관·준비·대기 중인 동물도 포함해요.'
+  if(!housing.hasHousing&&[...after.objects.map(o=>o.kind),...after.stored,...Object.values(sim.animalPurchaseJobs).map(job=>job.animal)].some(kind=>isFarmAnimal(kind)&&farmAnimals[kind].housing===object.kind))return '보관하면 동물의 거처가 부족해요. 보관·준비·대기 중인 동물도 포함해요.'
  }
  if(object.kind==='warehouse'){
   const goods=new Set(storedFarmGoods(sim.inventory));for(const job of Object.values(sim.cropJobs))if(job.harvestingAt!==undefined)goods.add(job.crop)
@@ -68,10 +71,10 @@ export function farmPlacementError(state:TopviewState,kind:FarmTool,{fromStorage
  const reusing=fromStorage&&state.stored.includes(kind)
  if(!reusing&&!farmCanPurchase(state,kind))return '이미 보유 중인 건물이에요. 보관함에서 꺼내 배치해주세요.'
  if(kind==='plot'&&limits.usedPlots>=limits.plots)return '텃밭 한도가 찼어요. 농지 관리소를 추가해주세요.'
- if(kind==='cow'||kind==='chicken'){
-  const housing=farmAnimalHousing(state,kind),name=kind==='cow'?'외양간':'닭장'
-  if(housing.capacity===0)return `${name}을 먼저 배치해주세요.`
-  if(reusing?housing.placed>=housing.capacity:housing.total>=housing.capacity)return `${name}의 동물 한도가 찼어요. 건물 한 채당 2마리를 키울 수 있어요.`
+ if(isFarmAnimal(kind)){
+  const housing=farmAnimalHousing(state,kind),name=topviewItems[farmAnimals[kind].housing].name
+  if(!housing.hasHousing)return `${name}를 먼저 배치해주세요.`
+  if(reusing?housing.placed>=housing.capacity:housing.total>=housing.capacity)return '전체 동물 정원이 찼어요. 축산 관리소를 업그레이드해주세요.'
  }
  if(kind==='sheep')return '양을 키울 수 있는 시설이 아직 없어요.'
  return null
@@ -81,9 +84,9 @@ export type FarmSimAction=
  |BuildingUpgradeAction
  |{type:'seed';good:SeedGood;quantity:number}
  |{type:'sell';good:FarmGood;quantity:number;orderDay:string}
- |{type:'research';crop:CropKind}|{type:'completeResearch'}|{type:'mill';quantity:number}|{type:'collectFlour'}
+ |{type:'research';crop:CropKind}|{type:'completeResearch'}|{type:'mill';quantity:number;product?:MillProduct}|{type:'collectFlour'}
  |{type:'plant';crop:CropKind}|{type:'harvest'}|{type:'beginHarvest'}|{type:'cancelHarvest'}|{type:'discardCrop'}
- |{type:'animal';animal:'cow'|'chicken'}|{type:'completeAnimalPurchase'}|{type:'startAnimal'}|{type:'feed'}|{type:'collectAnimal'}
+ |{type:'animal';animal:FarmAnimal}|{type:'completeAnimalPurchase'}|{type:'startAnimal'}|{type:'feed'}|{type:'collectAnimal'}
  |{type:'craft';recipe:RecipeId;quantity:number}|{type:'collectCraft'}
 export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAction,now:number):{state:TopviewState;message:string;place?:FarmTool;effect?:FarmEffect}{
  const source=state.objects.find(o=>o.id===sourceId),sim=state.simulation
@@ -113,7 +116,7 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
   }
   case 'sell':{
    if(action.orderDay!==farmOrderDay(now))return reject('주문이 새로 바뀌었어요. 오늘의 주문을 다시 확인해주세요.')
-   const order=dailyFarmOrders(source,now).find(order=>order.good===action.good),key=farmOrderKey(source,now),delivered=sim.orderDeliveries[key]??{}
+   const order=dailyFarmOrders(source,now,state).find(order=>order.good===action.good),key=farmOrderKey(source,now),delivered=sim.orderDeliveries[key]??{}
    if(!order)return reject('오늘 이 판매소에서 주문하지 않은 물품이에요.')
    if(action.quantity>order.quantity-(delivered[action.good]??0))return reject('남은 주문 수량을 확인해주세요.')
    if(inventory[action.good]<action.quantity)return reject('보유 수량이 부족해요.')
@@ -170,24 +173,30 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
   case 'mill':{
    if(source.kind!=='mill')return reject('제분소를 이용해주세요.')
    if(sim.millJobs[sourceId])return reject('진행 중인 제분을 먼저 수령해주세요.')
-   if(action.quantity>2)return reject('제분소 한 채에서 한 번에 최대 2개까지 만들 수 있어요.')
-   if(inventory.wheat<action.quantity)return reject('밀이 부족해요.')
-   inventory.wheat-=action.quantity;next.millJobs[sourceId]={quantity:action.quantity,startedAt:now,readyAt:now+10000};message='제분을 시작했어요. 10초 후 수령할 수 있어요.';break
+   const product=action.product??'flour'
+   if(!Object.hasOwn(millRecipes,product))return reject('제분할 재료를 확인해주세요.')
+   const recipe=millRecipes[product]
+   if(action.quantity*recipe.output>2)return reject('제분소 한 채에서 한 번에 최대 2개까지 만들 수 있어요.')
+   if(!sim.unlockedCrops.includes(recipe.crop))return reject('먼저 해당 작물을 연구해주세요.')
+   if(inventory[recipe.crop]<action.quantity*recipe.input)return reject(farmGoods[recipe.crop].name+'이 부족해요.')
+   inventory[recipe.crop]-=action.quantity*recipe.input;next.millJobs[sourceId]={product,quantity:action.quantity,startedAt:now,readyAt:now+recipe.seconds*1000};message=`가공을 시작했어요. ${recipe.seconds}초 후 수령할 수 있어요.`;break
   }
   case 'collectFlour':{
    const job=sim.millJobs[sourceId]
    if(source.kind!=='mill'||!job||job.readyAt>now)return reject('아직 제분이 끝나지 않았어요.')
-   inventory.flour+=job.quantity;delete next.millJobs[sourceId];message='밀가루를 수령했어요.';effect={type:'crafted',good:'flour',quantity:job.quantity};break
+   const product=job.product??'flour',output=job.quantity*millRecipes[product].output
+   inventory[product]+=output;delete next.millJobs[sourceId];message=farmGoods[product].name+'를 수령했어요.';effect={type:'crafted',good:product,quantity:output};break
   }
   case 'craft':{
    if(!isRecipeId(action.recipe))return reject('만들 가공품을 확인해주세요.')
+   if(!recipeUnlocked(action.recipe,sim.unlockedAnimals))return reject('해당 동물을 먼저 구매해주세요.')
    const recipe=farmRecipes[action.recipe]
    if(source.kind!==recipe.building)return reject('이 가공품을 만드는 건물을 이용해주세요.')
    if(sim.processingJobs[sourceId])return reject('만든 가공품을 먼저 받아주세요.')
    if(action.quantity>recipeBatchLimit(inventory,action.recipe))return reject('재료가 부족하거나 한 번에 만들 수 있는 수량을 넘었어요.')
    for(const item of recipe.ingredients)inventory[item.good]-=item.quantity*action.quantity
-   next.processingJobs[sourceId]={recipe:action.recipe,quantity:action.quantity,startedAt:now,readyAt:now+recipe.seconds*1000}
-   message=`${farmGoods[action.recipe].name} ${action.quantity}개를 만들고 있어요.`;effect={type:'craft',good:action.recipe,quantity:action.quantity};break
+   next.processingJobs[sourceId]={recipe:action.recipe,quantity:action.quantity*recipeOutput(action.recipe),startedAt:now,readyAt:now+recipe.seconds*1000}
+   message=`${farmGoods[action.recipe].name} ${action.quantity*recipeOutput(action.recipe)}개를 만들고 있어요.`;effect={type:'craft',good:action.recipe,quantity:action.quantity*recipeOutput(action.recipe)};break
   }
   case 'collectCraft':{
    const job=sim.processingJobs[sourceId]
@@ -196,32 +205,32 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
    message=`${farmGoods[job.recipe].name} ${job.quantity}개를 받았어요.`;effect={type:'crafted',good:job.recipe,quantity:job.quantity};break
   }
   case 'animal':{
-   if(source.kind!==(action.animal==='cow'?'barn':'coop'))return reject('해당 동물의 시설을 이용해주세요.')
+   if(!isFarmAnimal(action.animal)||source.kind!==farmAnimals[action.animal].housing)return reject('해당 동물의 시설을 이용해주세요.')
    const error=farmPlacementError(state,action.animal)
    if(error)return reject(error)
    if(sim.animalPurchaseJobs[sourceId])return reject('이미 동물을 준비하고 있어요.')
-   const price=action.animal==='cow'?800:300
+   const price=farmAnimals[action.animal].price
    if(gold<price)return reject('테스트 골드가 부족해요.')
-   gold-=price;next.animalPurchaseJobs[sourceId]={animal:action.animal,startedAt:now,readyAt:now+10000};message='동물을 준비하고 있어요. 10초 후 건물 위 말풍선을 눌러 받아주세요.';break
+   gold-=price;next.animalPurchaseJobs[sourceId]={animal:action.animal,startedAt:now,readyAt:now+ANIMAL_PURCHASE_SECONDS*1000};message='동물을 준비하고 있어요. 10초 후 건물 위 말풍선을 눌러 받아주세요.';break
   }
   case 'completeAnimalPurchase':{
    const job=sim.animalPurchaseJobs[sourceId]
-   if(!job||job.readyAt>now||source.kind!==(job.animal==='cow'?'barn':'coop'))return reject('아직 동물을 준비하고 있어요.')
+   if(!job||job.readyAt>now||source.kind!==farmAnimals[job.animal].housing)return reject('아직 동물을 준비하고 있어요.')
    delete next.animalPurchaseJobs[sourceId]
-   return {state:{...state,simulation:next,stored:[...state.stored,job.animal]},message:'새 동물이 보관함에 도착했어요. 원하는 곳에 배치해주세요.',effect:{type:'received',good:job.animal==='cow'?'milk':'egg',animal:job.animal,quantity:1}}
+   return {state:{...state,simulation:{...next,unlockedAnimals:[...new Set([...(sim.unlockedAnimals??['cow','chicken'] as FarmAnimal[]),job.animal])]},stored:[...state.stored,job.animal]},message:'새 동물이 보관함에 도착했어요. 원하는 곳에 배치해주세요.',effect:{type:'received',good:farmAnimals[job.animal].product,animal:job.animal,quantity:1}}
   }
   case 'startAnimal':{
-   if(!['cow','chicken'].includes(source.kind)||sim.animalJobs[sourceId])return reject('이미 생산 중이에요.')
-   next.animalJobs[sourceId]=now+10000;message='생산을 시작했어요. 10초 후 받을 수 있어요.';break
+   if(!isFarmAnimal(source.kind)||sim.animalJobs[sourceId])return reject('이미 생산 중이에요.')
+   next.animalJobs[sourceId]=now+farmAnimals[source.kind].seconds*1000;message='생산을 시작했어요. 10초 후 받을 수 있어요.';break
   }
   case 'feed':{
-   if(!['cow','chicken'].includes(source.kind)||sim.animalJobs[sourceId])return reject('지금은 먹이를 줄 수 없어요.')
+   if(!isFarmAnimal(source.kind)||sim.animalJobs[sourceId])return reject('지금은 먹이를 줄 수 없어요.')
    if(inventory.wheat<1)return reject('먹이로 줄 밀 1개가 필요해요.')
-   inventory.wheat--;next.animalJobs[sourceId]=now+10000;message='먹이를 줬어요. 10초 후 생산물을 받을 수 있어요.';break
+   inventory.wheat--;next.animalJobs[sourceId]=now+farmAnimals[source.kind].seconds*1000;message='먹이를 줬어요. 10초 후 생산물을 받을 수 있어요.';break
   }
   case 'collectAnimal':{
-   if(!['cow','chicken'].includes(source.kind)||!sim.animalJobs[sourceId]||sim.animalJobs[sourceId]>now)return reject('아직 생산물이 준비되지 않았어요.')
-   const good=source.kind==='cow'?'milk':'egg'
+   if(!isFarmAnimal(source.kind)||sim.animalJobs[sourceId]===undefined||sim.animalJobs[sourceId]>now)return reject('아직 생산물이 준비되지 않았어요.')
+   const good=farmAnimals[source.kind].product
    inventory[good]++;delete next.animalJobs[sourceId];message=`${farmGoods[good].name} 1개를 창고에 보관했어요.`;effect={type:'harvest',good,quantity:1};break
   }
  }

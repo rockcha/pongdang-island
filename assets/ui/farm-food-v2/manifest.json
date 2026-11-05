@@ -1,0 +1,137 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "public/farm/art/v1/goods/pancakes.png",
+    "public/farm/art/v1/goods/flour.png"
+  ],
+  "files": [
+    {
+      "id": "cornFlour",
+      "source": "assets/ui/farm-food-v2/source/cornFlour.png",
+      "runtime": "public/farm/art/v1/goods/cornFlour-v2.png",
+      "crop": {
+        "left": 204,
+        "top": 166,
+        "width": 825,
+        "height": 913
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "871395339aff50520b46e528aa7cb43ad75b17a53bd3f5e5c27fd920ff9a4b30",
+      "prompt": "Create ONE transparent-background inventory icon for a cozy Korean farming game: corn flour in an open small linen sack, visibly golden yellow fine cornmeal, a small corn-cob emblem (no lettering) on the sack and a short ear of corn tucked at its base. Match the two supplied reference images ONLY for art style: polished hand-painted casual farm-game item illustration, warm brown fine outlines, soft dimensional shading, warm cream and amber palette, subtle highlights, charming rounded silhouette, clean readable large shapes. Three-quarter front view, centered, fills 85% of square canvas, generous 6% transparent edge margins, NO scenery, NO text, NO watermark, NO UI, NO checkerboard, no cast shadow beyond the object. This is not a redesign of the reference pancake or wheat flour; depict corn flour distinctly. Final single object icon on actual transparent alpha, suitable down to 64px."
+    },
+    {
+      "id": "cornBread",
+      "source": "assets/ui/farm-food-v2/source/cornBread.png",
+      "runtime": "public/farm/art/v1/goods/cornBread-v2.png",
+      "crop": {
+        "left": 147,
+        "top": 183,
+        "width": 946,
+        "height": 910
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "ee53d2b1bf0bc6226523fd9b6297e57be0963ea35bf996943af281f4e3771551",
+      "prompt": "Create ONE single square transparent-background inventory icon for a cozy Korean farming game: one thick square slice of golden cornbread, visible soft crumb and a few corn kernels, gently browned top, a small melting butter pat on top, no plate. Match the supplied reference images ONLY for illustration style: polished hand-painted casual farm-game item art, warm fine brown outlines, soft dimensional shading with tactile food texture, warm cream/amber earth palette, subtle highlights, charming rounded silhouette. NOT a flat vector icon. Three-quarter front view, visually substantial, centered, fills 85% of square canvas, 6% transparent margins. NO scenery, no decorative frame, NO text or letters, NO watermark, NO UI, NO checkerboard, no background, minimal tight contact shadow only. Real transparent alpha. Readable at 64px and detailed at 160px. Do not copy the subject of the reference images; depict only the specified food."
+    },
+    {
+      "id": "potatoBread",
+      "source": "assets/ui/farm-food-v2/source/potatoBread.png",
+      "runtime": "public/farm/art/v1/goods/potatoBread-v2.png",
+      "crop": {
+        "left": 90,
+        "top": 180,
+        "width": 1044,
+        "height": 913
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "f129d3f04817d0fc8a9d4a1a1cca1a7b8be9e0efea68921da5ff13e830a42245",
+      "prompt": "Create ONE single square transparent-background inventory icon for a cozy Korean farming game: two rustic round potato bread rolls, one whole lightly floured golden-brown roll and one cut half revealing soft pale-yellow potato filling, natural potato-brown skin-like baked crust, no plate. Match the supplied reference images ONLY for illustration style: polished hand-painted casual farm-game item art, warm fine brown outlines, soft dimensional shading with tactile food texture, warm cream/amber earth palette, subtle highlights, charming rounded silhouette. NOT a flat vector icon. Three-quarter front view, visually substantial, centered, fills 85% of square canvas, 6% transparent margins. NO scenery, no decorative frame, NO text or letters, NO watermark, NO UI, NO checkerboard, no background, minimal tight contact shadow only. Real transparent alpha. Readable at 64px and detailed at 160px. Do not copy the subject of the reference images; depict only the specified food."
+    },
+    {
+      "id": "sweetPotatoPie",
+      "source": "assets/ui/farm-food-v2/source/sweetPotatoPie.png",
+      "runtime": "public/farm/art/v1/goods/sweetPotatoPie-v2.png",
+      "crop": {
+        "left": 135,
+        "top": 151,
+        "width": 1023,
+        "height": 966
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "0d312a33e3e75fc7963eec4d0db558b6f5288b79d2f208644909534f7f7c7de3",
+      "prompt": "Create ONE single square transparent-background inventory icon for a cozy Korean farming game: one generous wedge of sweet potato pie with golden-brown lattice crust and creamy muted purple sweet-potato filling clearly visible on the cut side, no plate. Match the supplied reference images ONLY for illustration style: polished hand-painted casual farm-game item art, warm fine brown outlines, soft dimensional shading with tactile food texture, warm cream/amber earth palette, subtle highlights, charming rounded silhouette. NOT a flat vector icon. Three-quarter front view, visually substantial, centered, fills 85% of square canvas, 6% transparent margins. NO scenery, no decorative frame, NO text or letters, NO watermark, NO UI, NO checkerboard, no background, minimal tight contact shadow only. Real transparent alpha. Readable at 64px and detailed at 160px. Do not copy the subject of the reference images; depict only the specified food."
+    },
+    {
+      "id": "butterCookies",
+      "source": "assets/ui/farm-food-v2/source/butterCookies.png",
+      "runtime": "public/farm/art/v1/goods/butterCookies-v2.png",
+      "crop": {
+        "left": 124,
+        "top": 160,
+        "width": 954,
+        "height": 927
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "fd50e6888add1de5160ffdefac8e48be802e46c410fe22165b6988d9597550b2",
+      "prompt": "Create ONE single square transparent-background inventory icon for a cozy Korean farming game: three round scalloped butter cookies slightly stacked, golden crisp ridged edges, one cookie with a subtle piped cream swirl, simple cream-colored crumbs, no plate. Match the supplied reference images ONLY for illustration style: polished hand-painted casual farm-game item art, warm fine brown outlines, soft dimensional shading with tactile food texture, warm cream/amber earth palette, subtle highlights, charming rounded silhouette. NOT a flat vector icon. Three-quarter front view, visually substantial, centered, fills 85% of square canvas, 6% transparent margins. NO scenery, no decorative frame, NO text or letters, NO watermark, NO UI, NO checkerboard, no background, minimal tight contact shadow only. Real transparent alpha. Readable at 64px and detailed at 160px. Do not copy the subject of the reference images; depict only the specified food."
+    },
+    {
+      "id": "cheese",
+      "source": "assets/ui/farm-food-v2/source/cheese.png",
+      "runtime": "public/farm/art/v1/goods/cheese-v2.png",
+      "crop": {
+        "left": 182,
+        "top": 187,
+        "width": 862,
+        "height": 905
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "1f914206451f3a21bcf66baefd81dc46feff7a7af695672f6b44de7fd0a488f6",
+      "prompt": "Create ONE single square transparent-background inventory icon for a cozy Korean farming game: one appetizing wedge of pale golden semi-hard cheese with a few round holes and a small rectangular cheese slice leaning against it. Match the supplied reference images ONLY for illustration style: polished hand-painted casual farm-game item art, warm fine brown outlines, soft dimensional shading with tactile food texture, warm cream/amber earth palette, subtle highlights, charming rounded silhouette. NOT a flat vector icon. Three-quarter front view, visually substantial, centered, fills 85% of square canvas, 6% transparent margins. NO scenery, no decorative frame, NO text or letters, NO watermark, NO UI, NO checkerboard, no background, minimal tight contact shadow only. Real transparent alpha. Readable at 64px and detailed at 160px. Do not copy the subject of the reference images; depict only the specified food."
+    },
+    {
+      "id": "cream",
+      "source": "assets/ui/farm-food-v2/source/cream.png",
+      "runtime": "public/farm/art/v1/goods/cream-v2.png",
+      "crop": {
+        "left": 187,
+        "top": 161,
+        "width": 873,
+        "height": 950
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "ce9f3e7f55daa863a8ea42072df3a2b0cb1ad5d1ca8ccd6c6b2be73ead0d091f",
+      "prompt": "Create ONE single square transparent-background inventory icon for a cozy Korean farming game: one small cream-colored ceramic bowl filled with a tall soft spiral of fresh whipped cream, ivory cream with warm highlights, no spoon. Match the supplied reference images ONLY for illustration style: polished hand-painted casual farm-game item art, warm fine brown outlines, soft dimensional shading with tactile food texture, warm cream/amber earth palette, subtle highlights, charming rounded silhouette. NOT a flat vector icon. Three-quarter front view, visually substantial, centered, fills 85% of square canvas, 6% transparent margins. NO scenery, no decorative frame, NO text or letters, NO watermark, NO UI, NO checkerboard, no background, minimal tight contact shadow only. Real transparent alpha. Readable at 64px and detailed at 160px. Do not copy the subject of the reference images; depict only the specified food."
+    },
+    {
+      "id": "yogurt",
+      "source": "assets/ui/farm-food-v2/source/yogurt.png",
+      "runtime": "public/farm/art/v1/goods/yogurt-v2.png",
+      "crop": {
+        "left": 233,
+        "top": 98,
+        "width": 799,
+        "height": 1038
+      },
+      "width": 256,
+      "height": 256,
+      "alpha": true,
+      "sha256": "765db3ca7a37bcf248623a818a1b4186398ec996f21edb7c0010e5dd2f213fbf",
+      "prompt": "Create ONE single square transparent-background inventory icon for a cozy Korean farming game: one small open glass pot of plain white yogurt, a folded sage-green paper band without lettering, short wooden spoon resting diagonally in the pot, creamy surface visible. Match the supplied reference images ONLY for illustration style: polished hand-painted casual farm-game item art, warm fine brown outlines, soft dimensional shading with tactile food texture, warm cream/amber earth palette, subtle highlights, charming rounded silhouette. NOT a flat vector icon. Three-quarter front view, visually substantial, centered, fills 85% of square canvas, 6% transparent margins. NO scenery, no decorative frame, NO text or letters, NO watermark, NO UI, NO checkerboard, no background, minimal tight contact shadow only. Real transparent alpha. Readable at 64px and detailed at 160px. Do not copy the subject of the reference images; depict only the specified food."
+    }
+  ]
+}

@@ -8,8 +8,8 @@ afterEach(()=>{cleanup();vi.useRealTimers()})
 it('fulfills only the daily order quantity and cannot deliver a completed order twice',()=>{
  vi.useFakeTimers();const store=initialTopview().objects.find(o=>o.kind==='store')!
  let now=Date.UTC(2026,10,4)
- while(!dailyFarmOrders(store,now).some(o=>o.good==='wheat'))now+=86400000
- vi.setSystemTime(now);const quantity=dailyFarmOrders(store,now).find(o=>o.good==='wheat')!.quantity
+ while(!dailyFarmOrders(store,now,initialTopview()).some(o=>o.good==='wheat'))now+=86400000
+ vi.setSystemTime(now);const quantity=dailyFarmOrders(store,now,initialTopview()).find(o=>o.good==='wheat')!.quantity
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'농작물 판매소 (11,5)'}))
  fireEvent.click(screen.getByRole('button',{name:`밀 ${quantity}개 납품`}))
@@ -17,7 +17,7 @@ it('fulfills only the daily order quantity and cannot deliver a completed order 
  expect(document.querySelector('.top-farm-gold')?.textContent).toContain((15000+quantity*7).toLocaleString())
  expect(document.querySelector('[data-farm-effect="sell"]')).toBeTruthy()
  expect(within(dialog).getByRole('status').textContent).toContain(`밀 ${quantity}개를 납품했어요.`)
- expect(within(dialog).getAllByRole('article')).toHaveLength(5)
+ expect(within(dialog).getAllByRole('article')).toHaveLength(3)
  expect(screen.getByRole('button',{name:'밀 주문 완료'})).toHaveProperty('disabled',true)
 })
 it('shows potato research and prevents paying twice',()=>{
@@ -65,7 +65,7 @@ it('enables flour collection after ten seconds and keeps processed sales separat
 })
 it('prepares a purchased chicken for ten seconds and delivers it to object storage for placement',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- fireEvent.click(screen.getByRole('button',{name:'닭장 (10,8)'}));fireEvent.click(screen.getByRole('button',{name:'닭 구매 · 300 G'}))
+ fireEvent.click(screen.getByRole('button',{name:'가금사 (10,8)'}));fireEvent.click(screen.getByRole('button',{name:'닭 구매 · 300 G'}))
  expect(screen.getByRole('progressbar',{name:'동물 준비 진행'})).toBeTruthy()
  expect(screen.queryByRole('navigation',{name:'농장 편집 도구'})).toBeNull()
  expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(10000))
@@ -100,5 +100,5 @@ it('finishes research after leaving the laboratory and unlocks buying and planti
  fireEvent.click(screen.getByRole('button',{name:'밭 (9,13)'}))
  expect(document.querySelector('[data-harvesting]')).toBeTruthy()
  act(()=>vi.advanceTimersByTime(3000))
- expect(screen.getByRole('status').textContent).toContain('감자 ×1창고에 보관했습니다.')
+ expect(screen.getByRole('status').textContent).toContain('감자 ×3창고에 보관했습니다.')
 })

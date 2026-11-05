@@ -39,7 +39,7 @@ it('clears multiple selected tiles concurrently in three seconds and charges onc
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
 })
 it('removes a plot without putting it into storage or refunding gold',()=>{
- setup();click('완료');click('편집하기');click('밭 (9,13)');click('제거하기')
+ setup();click('완료');click('회수하기');click('밭 (9,13)')
  expect(screen.queryByRole('button',{name:'밭 (9,13)'})).toBeNull()
  click('보관함')
  expect(screen.queryByRole('button',{name:/밭.*보관/})).toBeNull()

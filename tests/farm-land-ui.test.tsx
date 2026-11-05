@@ -13,7 +13,7 @@ function setup(){
  const owned=(x:number,y:number)=>result.container.querySelector(`[data-farm-cell="${x},${y}"]`)?.getAttribute('data-farm-owned')==='true'
  return {...result,pointer,owned}
 }
-function buyFive(){click('편집하기');click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 250 G');click('땅 놓기')}
+function buyFive(){click('이동하기');click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 250 G');click('땅 놓기')}
 it('offers three land actions and hides placement targets and previews when no land is in stock',()=>{
  const {container,pointer,owned}=setup()
  click('땅 0칸 보유')
@@ -52,12 +52,12 @@ it('previews an entire drag and commits it once on release, with one undo and no
  expect(screen.getByRole('button',{name:'땅 놓기'}).getAttribute('aria-pressed')).toBe('true')
 })
 it('recovers a stroke and restores all recovered cells with a single undo',()=>{
- const {pointer,owned}=setup();click('편집하기');click('땅 0칸 보유');click('땅 회수하기')
- pointer('pointerdown',4,7);pointer('pointermove',4,10);pointer('pointerup',4,10)
+ const {pointer,owned}=setup();click('이동하기');click('땅 0칸 보유');click('땅 회수하기')
+ pointer('pointerdown',6,7);pointer('pointermove',6,10);pointer('pointerup',6,10)
  expect(screen.getByRole('button',{name:'땅 4칸 보유'})).toBeTruthy()
- for(let y=7;y<=10;y++)expect(owned(4,y)).toBe(false)
+ for(let y=7;y<=10;y++)expect(owned(6,y)).toBe(false)
  click('한 단계 되돌리기')
- for(let y=7;y<=10;y++)expect(owned(4,y)).toBe(true)
+ for(let y=7;y<=10;y++)expect(owned(6,y)).toBe(true)
  expect(screen.getByRole('button',{name:'땅 0칸 보유'})).toBeTruthy()
 })
 it('cancels a draft on Escape, pointer cancellation, or a second finger without consuming inventory',()=>{

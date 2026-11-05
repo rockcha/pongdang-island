@@ -1,16 +1,17 @@
+import {cropKinds} from '@/features/farm/crop-catalog'
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
-it('shows seed ownership without research labels and keeps only growth time in the plot detail',()=>{
+it('shows seed ownership without research labels and shows growth time and per-plot yield',()=>{
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('밭 (9,13)')
  expect(screen.getByRole('button',{name:'이동하기'})).toBeTruthy()
  const picker=screen.getByRole('group',{name:'심을 작물'})
- expect(picker.textContent).toContain('× 4개');expect(picker.querySelectorAll('.farm-picker-owned')).toHaveLength(7)
+ expect(picker.textContent).toContain('× 4개');expect(picker.querySelectorAll('.farm-picker-owned')).toHaveLength(cropKinds.length)
  expect(picker.querySelectorAll('svg')).toHaveLength(0)
- click('토마토 선택');expect(screen.getByText('소요 시간 8초')).toBeTruthy()
+ click('토마토 선택');expect(screen.getByText('재배 8초 · 한 칸 수확 3개')).toBeTruthy()
  expect(screen.queryByText('종자 연구 필요')).toBeNull()
  expect(screen.getByRole('button',{name:'토마토 심기'})).toHaveProperty('disabled',true)
  expect(screen.getByRole('button',{name:'토마토 선택'}).getAttribute('data-locked')).toBe('true')
@@ -27,12 +28,12 @@ it('moves a growing plot from its detail while preserving the crop and growth de
  act(()=>vi.advanceTimersByTime(7000))
  expect(screen.getByRole('progressbar',{name:'밀 성장 (8,13)'}).getAttribute('aria-valuenow')).toBe('100')
 })
-it('shows five daily orders with stock counts and disables delivery when inventory is empty',()=>{
+it('shows only producible daily orders with stock counts and disables delivery when inventory is empty',()=>{
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('농작물 판매소 (11,5)')
  const rows=document.querySelectorAll('[data-order-good]')
- expect(rows).toHaveLength(5)
+ expect(rows).toHaveLength(3)
  for(const row of rows){expect(row.textContent).toContain('보유');if(row.getAttribute('data-order-good')!=='wheat')expect(row.querySelector('button')).toHaveProperty('disabled',true)}
- expect(screen.getByRole('region',{name:'농작물 판매소 용도와 효과'}).textContent).toContain('매일 무작위 5종')
+ expect(screen.getByRole('region',{name:'농작물 판매소 용도와 효과'}).textContent).toContain('생산 가능한 상품 중 매일 최대 5종')
  expect(screen.queryByRole('spinbutton',{name:'밀 수량'})).toBeNull()
 })
 it('links warehouse stock to processing and separates building management from the main action',()=>{
@@ -48,7 +49,9 @@ it('links warehouse stock to processing and separates building management from t
 it('connects completed research to purchase and planting the purchased crop',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  click('종자 연구소 (12,8)');click('감자 연구 · 30 G');act(()=>vi.advanceTimersByTime(3000))
- click('종자 연구소 (12,8)');click('종자 구매하기 →');click('감자 선택');click('감자 종자 구매');click('심으러 가기 →')
+ click('종자 연구소 (12,8)');click('종자 구매하기 →');click('감자 선택');click('감자 종자 구매')
+ expect(screen.queryByRole('button',{name:'심으러 가기 →'})).toBeNull()
+ click('Close');click('농사');click('씨앗 심기');click('감자 1개')
  expect(document.querySelector('.farm-seed-cursor img')?.getAttribute('src')).toContain('/crops/potato.png')
  click('밭 (9,13)');expect(screen.getByRole('progressbar',{name:'감자 성장 (9,13)'})).toBeTruthy()
 })
@@ -60,5 +63,5 @@ it('reopens the seed shop on the last purchased crop instead of the last browsed
  expect(screen.getByRole('button',{name:'감자 선택'}).getAttribute('aria-pressed')).toBe('true')
  click('밀 선택');click('Close');act(()=>vi.advanceTimersByTime(200));click('종자 상점 (8,5)')
  expect(screen.getByRole('button',{name:'감자 선택'}).getAttribute('aria-pressed')).toBe('true')
- click('심으러 가기 →');expect(document.querySelector('.farm-seed-cursor img')?.getAttribute('src')).toContain('/crops/potato.png')
+ expect(screen.queryByRole('button',{name:'심으러 가기 →'})).toBeNull()
 })

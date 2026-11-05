@@ -1,0 +1,154 @@
+/* All building dialogs share the same artwork scale and action hierarchy. */
+.farm-compact-dialog{
+ --farm-choice-art:56px;--farm-detail-art:96px;--farm-material-art:44px;
+ width:calc(100vw - 24px);max-width:460px;max-height:calc(100dvh - 24px);
+ padding:22px;gap:18px;scroll-padding-block:20px;
+}
+.farm-compact-dialog .farm-compact-header,.farm-warehouse .farm-compact-header:has(.farm-sim-title-art){display:grid;grid-template-columns:76px minmax(0,1fr);gap:0 14px;min-height:70px;padding-right:22px;align-items:center;text-align:left}
+.farm-compact-dialog .farm-compact-header .farm-sim-title-art{width:76px;height:70px;margin:0}
+.farm-compact-dialog .farm-compact-header [data-slot=dialog-title]{font-size:19px;line-height:1.5}
+.farm-compact-dialog .farm-compact-header [data-slot=dialog-title] small{display:block;font-size:12px;color:#967b5c}
+.farm-compact-dialog .farm-building-info{padding:10px 12px;border:0;border-radius:12px;background:#f4ecde}
+.farm-building-info details>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;list-style:none;cursor:pointer;font-size:12px;line-height:1.6}
+.farm-building-info details>summary::-webkit-details-marker{display:none}
+.farm-building-info details>summary>svg{width:15px;height:15px;flex:none;color:#a68965;transition:transform .15s}
+.farm-building-info details[open]>summary>svg{transform:rotate(180deg)}
+.farm-building-info details>ul{margin:8px 0 0;padding:8px 0 0;border-top:1px solid #e6d9c5;list-style:none;display:flex;flex-wrap:wrap;gap:5px 12px}
+.farm-compact-dialog .farm-sim-body{gap:18px;min-width:0}
+.farm-item-selector{min-width:0}
+.farm-item-selector-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:12px;color:#7d5c3d}
+.farm-item-selector-heading small{font-size:10px;color:#a08465}
+.farm-compact-dialog .farm-item-picker{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#cfb693 #f3e9d8;padding:1px 1px 6px}
+.farm-compact-dialog .farm-item-picker>button{flex:0 0 96px;min-width:0;scroll-snap-align:start}
+.farm-compact-dialog .farm-item-picker>button,.farm-compact-dialog .farm-item-picker>button:has(.farm-picker-owned){min-height:104px;padding:12px 4px 9px;gap:7px;font-size:12px;line-height:1.4;border-radius:13px}
+.farm-compact-dialog .farm-item-picker .farm-good-icon{width:var(--farm-choice-art);height:var(--farm-choice-art)}
+.farm-compact-dialog .farm-item-picker>button[aria-pressed=true]{border-color:#ac7f4a;background:#eee3cc;box-shadow:inset 0 0 0 1px #ac7f4a33}
+.farm-compact-dialog .farm-picker-owned{font-size:10px;top:5px;right:5px}
+.farm-compact-dialog .farm-sim-item,.farm-compact-dialog .farm-recipe-card>header,.farm-compact-dialog .farm-research-heading,.farm-production-heading{display:flex;align-items:center;gap:14px;min-width:0}
+.farm-compact-dialog .farm-sim-item>.farm-good-icon,.farm-compact-dialog .farm-recipe-card>header>.farm-good-icon,.farm-compact-dialog .farm-research-heading>.farm-good-icon,.farm-production-heading>.farm-good-icon{width:var(--farm-detail-art);height:var(--farm-detail-art)}
+.farm-production-heading>div,.farm-compact-dialog .farm-research-heading>div{flex:1;min-width:0}
+.farm-compact-dialog .farm-sim-item strong,.farm-compact-dialog .farm-recipe-card h3,.farm-compact-dialog .farm-research-heading h3,.farm-production-heading h3{font-size:17px;line-height:1.5;font-weight:500}
+.farm-compact-dialog .farm-sim-item small,.farm-compact-dialog .farm-recipe-card header p,.farm-compact-dialog .farm-research-heading p,.farm-production-heading p{margin-top:5px;font-size:12px;line-height:1.5;color:#947555}
+.farm-production-heading>span,.farm-compact-dialog .farm-recipe-card header>span{display:flex;align-items:center;gap:4px;flex:none;font-size:12px;color:#947555}
+.farm-compact-dialog .farm-recipe-ingredients{gap:8px;padding:12px;margin:14px 0;border-radius:13px}
+.farm-compact-dialog .farm-recipe-ingredients>div{gap:8px;padding:4px 0;min-width:0}
+.farm-compact-dialog .farm-recipe-ingredients .farm-good-icon{width:var(--farm-material-art);height:var(--farm-material-art)}
+.farm-compact-dialog .farm-recipe-ingredients strong{font-size:12px;line-height:1.5;word-break:keep-all}
+.farm-compact-dialog .farm-recipe-ingredients small{font-size:11px;line-height:1.5;margin-top:3px}
+.farm-compact-dialog .farm-recipe-ingredients [data-enough=false] small{color:#a76b48}
+.farm-compact-dialog .farm-recipe-controls{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+.farm-compact-dialog .farm-recipe-controls>div{display:grid;grid-template-columns:44px minmax(44px,1fr) 44px 64px;gap:6px}
+.farm-compact-dialog .farm-recipe-controls button,.farm-compact-dialog .farm-recipe-controls input{width:100%;min-width:0;min-height:44px;height:44px;font-size:13px}
+.farm-compact-dialog .farm-recipe-controls .farm-recipe-submit,.farm-compact-dialog .farm-sim-submit,.farm-compact-dialog .farm-sim-primary,.farm-compact-dialog .farm-research-start{min-height:48px;border-radius:12px;font-size:14px}
+.farm-compact-dialog .farm-sim-quantity-controls{grid-template-columns:44px minmax(44px,1fr) 44px 64px;gap:6px;margin-top:14px}
+.farm-compact-dialog .farm-sim-quantity-controls button,.farm-compact-dialog .farm-sim-quantity-controls input{min-height:44px;height:44px;font-size:13px}
+.farm-compact-dialog .farm-sim-quantity-controls button:last-child{min-height:48px}
+.farm-compact-dialog .farm-cooking-art>.farm-good-icon,.farm-compact-dialog .farm-sim-feature>.farm-good-icon,.farm-compact-dialog .farm-crop-hero{width:var(--farm-detail-art);height:var(--farm-detail-art)}
+.farm-compact-dialog .farm-animal-preparing{width:112px;height:100px}
+.farm-compact-dialog .farm-sim-feature h3,.farm-compact-dialog .farm-cooking-job h3{font-size:17px;line-height:1.5}
+.farm-compact-dialog .farm-sim-caption,.farm-compact-dialog .farm-sim-feature p,.farm-compact-dialog .farm-cooking-job>p{font-size:12px;line-height:1.7}
+.farm-compact-dialog .farm-sim-crop{display:flex;align-items:center;gap:14px}
+.farm-compact-dialog .farm-sim-crop>.farm-good-icon,.farm-compact-dialog .farm-seed-locked>.farm-good-icon{width:var(--farm-detail-art);height:var(--farm-detail-art)}
+.farm-compact-dialog .farm-next-action{min-height:44px;font-size:12px}
+.farm-compact-dialog .farm-building-store{padding-top:12px;position:sticky;bottom:-22px;margin-bottom:-22px;padding-bottom:12px;background:#fff9ee;z-index:1}
+.farm-compact-dialog .farm-building-actions>button{font-size:12px;min-height:44px}
+.farm-compact-dialog .farm-daily-orders article{gap:12px;padding:12px 10px}
+.farm-compact-dialog .farm-daily-orders article>.farm-good-icon{width:var(--farm-choice-art);height:var(--farm-choice-art)}
+.farm-compact-dialog .farm-daily-orders article strong{flex-wrap:wrap;font-size:13px}
+.farm-compact-dialog .farm-daily-orders article>div>span{font-size:11px;line-height:1.5}
+.farm-compact-dialog .farm-daily-orders article>button{min-height:44px;min-width:72px;font-size:11px}
+.farm-compact-dialog .farm-warehouse-grid{gap:8px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.farm-compact-dialog button.farm-warehouse-slot{min-height:112px;padding:10px 4px}
+.farm-compact-dialog .farm-warehouse-slot .farm-good-icon{width:var(--farm-choice-art);height:var(--farm-choice-art)}
+.farm-compact-dialog .farm-warehouse-slot>span:not(.farm-good-icon){font-size:12px}
+.farm-overview .farm-overview-art{width:64px;height:64px}.farm-overview .farm-overview-art>.farm-good-icon,.farm-overview .farm-overview-art>svg{width:56px;height:56px}
+.farm-overview .farm-overview-order-main>.farm-good-icon{width:48px;height:48px}
+.farm-animal-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.farm-animal-choices>button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px;border:1px solid #dfc9a9;border-radius:13px;background:#f5ecdd;color:#886643}
+.farm-animal-choices>button>svg{width:72px;height:64px}
+.farm-animal-choices>button[aria-pressed=true]{border-color:#ac7f4a;background:#eee3cc;box-shadow:inset 0 0 0 1px #ac7f4a33}
+.farm-animal-choices strong{font-size:14px;font-weight:500}.farm-animal-choices small{font-size:11px}
+.farm-animal-purchase-detail{display:flex;align-items:center;gap:14px}.farm-animal-purchase-art{width:112px;height:100px;flex:none}.farm-animal-purchase-art>svg{width:100%;height:100%}
+.farm-animal-purchase-detail h3{font-size:17px;font-weight:500}.farm-animal-purchase-detail p{font-size:12px;line-height:1.7;margin-top:6px;color:#947555}.farm-animal-purchase-detail small{display:block;font-size:11px;line-height:1.6;margin-top:6px;color:#a08465}
+.farm-animal-unlocks{padding:12px;border-radius:13px;background:#f4ecde}.farm-animal-unlocks>strong{font-size:12px;font-weight:500;color:#7d5c3d}.farm-animal-unlocks>div{display:flex;gap:16px;margin-top:8px}.farm-animal-unlocks>div>span{display:flex;align-items:center;gap:7px;font-size:12px;color:#947555}.farm-animal-unlocks .farm-good-icon{width:44px;height:44px}
+.farm-animal-unlocks>.farm-animal-products{display:flex;flex-direction:column;gap:8px;margin:10px 0 14px}
+.farm-animal-products>div{display:flex;align-items:center;gap:10px;min-width:0;padding:8px;border-radius:11px;background:#fff9ee}
+.farm-animal-products>div>div{flex:1;min-width:0}.farm-animal-products strong{display:block;font-size:13px;font-weight:500;color:#805c39}.farm-animal-products small{display:block;font-size:10px;line-height:1.5;color:#a08465;margin-top:4px}
+.farm-unlocks-heading{display:block;padding-top:12px;border-top:1px solid #e1d3bb}.farm-animal-unlocks>.farm-animal-recipes{flex-wrap:wrap;gap:10px 14px}.farm-animal-recipes .farm-good-icon{width:36px;height:36px}.farm-animal-recipes>span{max-width:100%}
+@media(max-width:359px){.farm-animal-products>div{gap:6px;padding:6px}.farm-animal-products strong{font-size:12px}.farm-animal-products b{font-size:9px;padding:4px}.farm-animal-products .farm-good-icon{width:36px;height:36px}}
+@media(max-width:359px){.farm-compact-dialog{--farm-choice-art:48px;--farm-detail-art:80px;--farm-material-art:36px;padding:16px;gap:14px}.farm-compact-dialog .farm-item-picker>button{font-size:11px;min-height:92px}.farm-compact-dialog .farm-recipe-ingredients{grid-template-columns:1fr}.farm-compact-dialog .farm-building-store{bottom:-16px;margin-bottom:-16px}.farm-compact-dialog .farm-compact-header{grid-template-columns:64px minmax(0,1fr)}.farm-compact-dialog .farm-compact-header .farm-sim-title-art{width:64px;height:60px}}
+@media(prefers-reduced-motion:reduce){.farm-building-info details>summary>svg{transition:none}}
+
+.farm-compact-dialog.farm-animal-dialog{display:flex;flex-direction:column;height:min(650px,calc(100dvh - 24px));max-height:calc(100dvh - 24px);gap:12px;padding:18px;overflow:hidden}
+.farm-animal-dialog .farm-compact-header{flex:none;grid-template-columns:64px minmax(0,1fr);min-height:60px}
+.farm-animal-dialog .farm-compact-header .farm-sim-title-art{width:64px;height:60px}
+.farm-animal-dialog .farm-compact-header [data-slot=dialog-title]{font-size:20px;font-weight:500;line-height:1.4;color:#7c5939}
+.farm-animal-dialog .farm-compact-header .farm-building-subtitle{grid-column:2;margin:0;font-size:11px;line-height:1.5;color:#a08465}
+.farm-animal-dialog .farm-sim-body{flex:1;min-height:0;gap:8px;overflow:hidden}
+.farm-animal-purchase{display:flex;flex-direction:column;flex:1;min-height:0;gap:12px}
+.farm-animal-purchase-content{display:flex;flex-direction:column;gap:12px;min-height:0;flex:1}
+.farm-animal-summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;flex:none;align-items:center;padding:9px 11px;border:1px solid #e1d1b9;border-radius:12px;background:#f4ecde}
+.farm-animal-summary>div{min-width:0;padding:9px 11px;border:1px solid #e1d1b9;border-radius:12px;background:#f4ecde}
+.farm-animal-summary>div>span{display:flex;align-items:center;gap:6px;font-size:11px;line-height:1.4;color:#9a7957}
+.farm-animal-summary strong{display:block;margin-top:4px;font-size:23px;font-weight:500;line-height:1.2;color:#785332;font-variant-numeric:tabular-nums}
+.farm-animal-summary strong i{font-size:17px;font-style:normal;color:#b69b7d}.farm-animal-summary strong small{margin-left:4px;font-size:12px;font-weight:400;color:#9b7a56}
+.farm-animal-summary>div>small{display:none}
+.farm-animal-summary [data-full=true]{border-color:#c68e5e;background:#f8ead9}.farm-animal-summary [data-full=true] strong{color:#a36531}
+.farm-animal-summary>div{padding:0;border:0;background:none}
+.farm-animal-summary .farm-animal-capacity-action{display:flex;flex-direction:column;align-items:flex-end;gap:2px;text-align:right}
+.farm-animal-capacity-action>span{font-size:10px!important;line-height:1.4}.farm-animal-capacity-action>button{padding:7px 0;font-size:11px;color:#8d603c;text-decoration:underline;text-underline-offset:3px}
+.farm-animal-card-meta{display:flex;flex-direction:column;align-items:center;gap:5px}
+.farm-animal-card-meta .farm-animal-price{font-size:12px;color:#8f6847}
+.farm-animal-card-meta .farm-animal-time{display:flex;align-items:center;gap:4px;padding:3px 7px;border-radius:20px;background:#fff9ee;color:#967b5c;font-size:10px;line-height:1.3;white-space:nowrap}
+.farm-animal-purchase-content.farm-sim-feature{justify-content:center}
+.farm-animal-dialog .farm-animal-choices{flex:none;gap:10px}
+.farm-animal-dialog .farm-animal-choices>button{padding:10px 8px;gap:4px}
+.farm-animal-dialog .farm-animal-choices>button>svg{width:64px;height:56px}
+.farm-animal-dialog .farm-animal-unlocks{padding:12px;flex:none}
+.farm-animal-dialog .farm-animal-products{margin:8px 0 0;gap:8px}
+.farm-animal-dialog .farm-animal-products>div{padding:8px;min-height:58px}
+.farm-animal-purchase-footer{display:flex;flex-direction:column;gap:8px;flex:none;margin-top:auto;padding-top:10px;border-top:1px solid #eadbc5;background:#fff9ee}
+.farm-animal-purchase-footer>p{margin:0;font-size:11px;line-height:1.5;text-align:center;color:#967b5c}
+.farm-animal-dialog .farm-animal-purchase-footer>.farm-sim-primary{width:100%;min-height:48px;flex:none}
+.farm-animal-dialog .farm-building-store{position:static;flex:none;padding:0;margin:0;background:none}
+.farm-animal-dialog .farm-building-actions>button{min-height:40px;padding:6px}
+@media(max-height:650px){
+ .farm-compact-dialog.farm-animal-dialog{padding:14px;gap:8px}
+ .farm-animal-dialog .farm-compact-header{grid-template-columns:48px minmax(0,1fr);min-height:44px;gap:10px}
+ .farm-animal-dialog .farm-compact-header .farm-sim-title-art{width:48px;height:44px}
+ .farm-animal-purchase-content{gap:10px}.farm-animal-purchase{gap:8px}
+ .farm-animal-summary{gap:4px;padding:7px 9px}.farm-animal-summary>div{padding:0}.farm-animal-summary strong{font-size:20px;margin-top:3px}.farm-animal-summary>div>small{display:none}.farm-animal-capacity-action>span{display:none!important}.farm-animal-summary>div>span{white-space:nowrap}
+ .farm-animal-dialog .farm-animal-choices>button{padding:7px 6px;gap:3px}
+ .farm-animal-dialog .farm-animal-choices>button>svg{width:52px;height:44px}
+ .farm-animal-dialog .farm-animal-unlocks{padding:10px}.farm-animal-dialog .farm-animal-products>div{padding:6px;min-height:50px}
+ .farm-animal-dialog .farm-animal-products .farm-good-icon{width:36px;height:36px}
+ .farm-animal-purchase-footer{padding-top:8px;gap:6px}
+}
+@media(max-height:450px){
+ .farm-compact-dialog.farm-animal-dialog{padding:10px;gap:6px}
+ .farm-animal-dialog .farm-compact-header{grid-template-columns:40px minmax(0,1fr);min-height:34px}
+ .farm-animal-dialog .farm-compact-header .farm-sim-title-art{width:40px;height:34px}
+ .farm-animal-dialog .farm-animal-purchase-content{gap:4px}
+ .farm-animal-dialog .farm-animal-purchase-content:not(.farm-sim-feature){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;align-content:start;gap:2px 8px}
+ .farm-animal-dialog .farm-animal-purchase-content>.farm-animal-unlocks{grid-column:1/-1}
+ .farm-animal-dialog .farm-animal-summary{grid-template-columns:1fr;gap:2px;padding:4px 6px}.farm-animal-dialog .farm-animal-summary>div{padding:0}.farm-animal-dialog .farm-animal-summary strong{font-size:17px}.farm-animal-dialog .farm-animal-summary>div>span{font-size:10px;gap:3px}.farm-animal-dialog .farm-animal-summary>div>span>svg{width:12px;height:12px}.farm-animal-dialog .farm-animal-capacity-action{align-items:flex-start}.farm-animal-dialog .farm-animal-capacity-action button{font-size:9px;padding:2px 0}
+ .farm-animal-dialog .farm-compact-header [data-slot=dialog-title]{font-size:15px}.farm-animal-dialog .farm-compact-header .farm-building-subtitle{font-size:10px}
+ .farm-animal-dialog .farm-animal-choices>button{display:grid;grid-template-columns:44px 1fr;gap:2px 8px;text-align:left;padding:4px 6px}
+ .farm-animal-dialog .farm-animal-choices>button>svg{grid-row:1/3;width:44px;height:40px}
+ .farm-animal-dialog .farm-animal-choices small{font-size:10px;letter-spacing:-.2px;white-space:nowrap}
+ .farm-animal-dialog .farm-animal-card-meta{flex-direction:row;gap:5px;flex-wrap:wrap}.farm-animal-dialog .farm-animal-card-meta .farm-animal-time{font-size:9px;padding:2px 4px}.farm-animal-dialog .farm-animal-card-meta .farm-animal-time svg{width:10px;height:10px}.farm-animal-dialog .farm-animal-capacity-action>span{display:none}
+ .farm-animal-dialog .farm-animal-products>div{min-height:40px;padding:4px 6px}.farm-animal-dialog .farm-animal-products .farm-good-icon{width:32px;height:32px}
+ .farm-animal-dialog .farm-animal-unlocks{padding:4px 6px}.farm-animal-dialog .farm-animal-products{gap:5px;margin-top:5px}
+ .farm-animal-dialog .farm-animal-products small{display:none}
+ .farm-animal-purchase-footer{padding-top:6px;gap:4px}.farm-animal-dialog .farm-animal-purchase-footer>.farm-sim-primary{min-height:40px}
+ .farm-animal-dialog .farm-building-actions>button{min-height:28px;padding:4px}
+ .farm-animal-dialog .farm-sim-feature .farm-animal-preparing{width:64px;height:56px}
+ .farm-animal-dialog .farm-animal-purchase-content.farm-sim-feature{gap:6px}
+}
+@media(min-height:451px) and (max-height:600px){
+ .farm-animal-dialog .farm-animal-purchase-content{gap:8px}
+ .farm-animal-dialog .farm-animal-choices>button{padding:6px;gap:2px}
+ .farm-animal-dialog .farm-animal-choices>button>svg{width:44px;height:36px}
+ .farm-animal-dialog .farm-animal-choices strong{font-size:12px;line-height:1.3}
+ .farm-animal-dialog .farm-animal-choices small{font-size:10px;line-height:1.3}
+}

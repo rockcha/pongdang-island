@@ -1,0 +1,39 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "public/farm/art/v2/goods/cake.png",
+    "public/farm/art/v2/goods/milk.png"
+  ],
+  "files": [
+    {
+      "id": "carrotCake",
+      "source": "assets/ui/farm-carrot-tomato-v1/source/carrotCake.png",
+      "runtime": "public/farm/art/v2/goods/carrotCake.png",
+      "crop": {
+        "left": 90,
+        "top": 85,
+        "width": 1067,
+        "height": 1112
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "Create one square transparent PNG food icon for a cozy farming game. ONE small round carrot cake with one wedge removed showing moist orange-brown cake layers flecked with carrot, creamy ivory frosting between layers and on top, two tiny piped carrot decorations with fresh green tops. On a tiny cream plate. Clear carrot cake identity, distinct from strawberry cake; NO strawberries. Match reference ONLY for illustration style: warm hand-painted polished soft dimensional shading, fine warm brown outlines, charming rounded forms and rich natural food colors. Large centered subject fills 90 percent of canvas, full subject visible with safe transparent margin. Genuine transparent alpha background, no scene or background, no UI or frame, no lettering, no watermark, no checkerboard, no sparkles or glow.",
+      "sha256": "35023f5bdc2dabbd3aa83028f9cbdd2c5aa9f1023262d79242579b91de9c88a5"
+    },
+    {
+      "id": "tomatoKetchup",
+      "source": "assets/ui/farm-carrot-tomato-v1/source/tomatoKetchup.png",
+      "runtime": "public/farm/art/v2/goods/tomatoKetchup.png",
+      "crop": {
+        "left": 134,
+        "top": 65,
+        "width": 993,
+        "height": 1142
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "Create one square transparent PNG food icon for a cozy farming game. ONE small squat clear glass jar filled with rich red tomato ketchup, warm cream paper cap tied simply, simple tiny tomato pictogram on a cream label WITHOUT lettering, one small ripe red tomato with green calyx beside the jar. Cozy handmade ketchup condiment, clean readable silhouette. Match reference ONLY for illustration style: warm hand-painted polished soft dimensional shading, fine warm brown outlines, charming rounded forms and rich natural food colors. Large centered subject fills 90 percent of canvas, full subject visible with safe transparent margin. Genuine transparent alpha background, no scene or background, no UI or frame, no lettering, no watermark, no checkerboard, no sparkles or glow.",
+      "sha256": "8275d1b2e6d738af01cf0c876289038b18c27671d78f5edacd1e5a6feea04bd4"
+    }
+  ]
+}

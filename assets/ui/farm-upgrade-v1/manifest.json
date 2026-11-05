@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen.imagegen",
+  "references": [
+    "public/farm/art/v3/buildings/office.png"
+  ],
+  "files": [
+    {
+      "id": "upgrade-tools",
+      "source": "assets/ui/farm-upgrade-v1/source/upgrade-tools.png",
+      "runtime": "public/farm/art/v1/effects/upgrade-tools.png",
+      "crop": {
+        "left": 52,
+        "top": 127,
+        "width": 1139,
+        "height": 1003
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "Create ONE transparent PNG inventory/UI illustration asset for a cozy farm game, warm hand-painted fine brown outline style matching reference. Subject: an upgrade/carpentry kit: ONE compact wooden handled carpenter hammer resting diagonally across a neatly rolled pale sage green building blueprint and two short golden wood planks, one small brass nail. Rounded charming forms, polished gentle dimensional shading, uncluttered clean silhouette readable at 32px. Entire subject fills 90 percent of square canvas with safe transparent margin, not a building, no background or scene, no circular badge or border, no letters or numbers, no sparkle particles, no magical glow, no motion lines, no watermark. Actual transparent alpha. Reference used only for warm timber texture, gentle coloring and farm illustration style.",
+      "sha256": "c677c32c3be6844139052bd299917eb5f209d303090589122c5acbd5eeef3915"
+    }
+  ]
+}

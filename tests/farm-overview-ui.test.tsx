@@ -24,7 +24,7 @@ it('filters production, updates completion from time, and navigates to an exact 
  expect(onVisit).toHaveBeenLastCalledWith(50)
 })
 it('shows actual shortages and completed orders without allowing inventory from another store to be reserved',()=>{
- const state=initialTopview(),now=Date.parse('2026-11-04T03:00:00Z'),store=state.objects.find(object=>object.kind==='store')!,orders=dailyFarmOrders(store,now),first=orders[0]
+ const state=initialTopview(),now=Date.parse('2026-11-04T03:00:00Z'),store=state.objects.find(object=>object.kind==='store')!,orders=dailyFarmOrders(store,now,state),first=orders[0]
  state.simulation.inventory[first.good]=2
  state.simulation.orderDeliveries[farmOrderKey(store,now)]={[first.good]:1,[orders[1].good]:orders[1].quantity}
  const visit=vi.fn()
@@ -49,7 +49,7 @@ it('moves from the overview to the highlighted facility and leaves ready produce
  expect(screen.queryByRole('dialog')).toBeNull()
  expect(container.querySelector('[aria-label="젖소 (16,9)"] [data-object-art]')?.getAttribute('filter')).toBe('url(#farm-selection-outline)')
  expect(container.querySelector('[data-animal-status="ready"]')).toBeTruthy()
- expect(screen.getByRole('button',{name:'편집하기'}).getAttribute('aria-pressed')).toBe('false')
+ expect(screen.getByRole('button',{name:'이동하기'}).getAttribute('aria-pressed')).toBe('false')
 })
 it('uses one panel and completion location across tools and clears the previous placement mode when switching',()=>{
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
@@ -62,11 +62,11 @@ it('uses one panel and completion location across tools and clears the previous 
  click('완료')
  expect(container.querySelector('.farm-tool-panel')).toBeNull()
  expect(container.querySelector('.top-farm-viewport')?.getAttribute('data-land-tool')).toBe('false')
- click('편집하기')
- expect(screen.getByRole('region',{name:'배치 편집 메뉴'})).toBeTruthy()
+ click('이동하기')
+ expect(screen.getByRole('region',{name:'이동 메뉴'})).toBeTruthy()
  click('완료')
- expect(screen.getByRole('button',{name:'편집하기'}).getAttribute('aria-pressed')).toBe('false')
- click('타일');click('회수하기')
+ expect(screen.getByRole('button',{name:'이동하기'}).getAttribute('aria-pressed')).toBe('false')
+ click('타일');click('타일 회수하기')
  fireEvent.keyDown(container.querySelector('.top-farm')!,{key:'Escape'})
  expect(container.querySelector('.farm-tool-panel')).toBeNull()
  expect(container.querySelector('.top-farm-viewport')?.getAttribute('data-land-tool')).toBe('false')

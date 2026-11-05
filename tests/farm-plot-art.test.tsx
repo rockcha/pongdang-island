@@ -17,14 +17,14 @@ it('keeps the sown image until 50 percent, uses one shared stem, then distinct m
   const mature=plotGrowthImage('ready',crop,1);expect(mature).toContain(`/${crop}-ready.png`);ready.add(mature)
   expect(plotGrowthImage('rotten',crop,1)).toBe(mature)
  }
- expect(ready.size).toBe(7)
+ expect(ready.size).toBe(cropKinds.length)
 })
-it('keeps the exact same square soil beneath a separate foreground for every crop and stage',()=>{
+it('uses a flooded base for planted rice while keeping all plot layers aligned',()=>{
  const {container,rerender}=render(<FarmPlotArt stage="growing" crop="wheat" progress={0}/>)
  for(const crop of cropKinds)for(const stage of ['empty','growing','ready','rotten'] as PlotStage[])for(const progress of [0,.25,.5,1]){
   rerender(<FarmPlotArt stage={stage} crop={crop} progress={progress}/>)
   const soil=container.querySelector('[data-plot-layer="soil"]')!,foreground=container.querySelector('[data-plot-layer="crop"]')
-  expect(soil.getAttribute('href')).toBe(farmPlotImages.empty)
+  expect(soil.getAttribute('href')).toBe(crop==='paddy'&&stage!=='empty'?farmPlotImages['paddy-soil']:farmPlotImages.empty)
   expect(soil.getAttribute('class')).toBeNull()
   expect(container.querySelector('svg')?.classList.contains('farm-crop-rotten')).toBe(stage==='rotten')
   expect(container.querySelectorAll('image')).toHaveLength(stage==='empty'?1:2)

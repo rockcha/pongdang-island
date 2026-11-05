@@ -13,7 +13,9 @@ it('reserves each species capacity while its next animal is preparing or waiting
  expect(simulateFarm(pending,18,{type:'animal',animal:'chicken'},30000).state).toBe(pending)
  const claimed=simulateFarm(pending,18,{type:'completeAnimalPurchase'},11000).state
  expect(farmLimits(claimed)).toMatchObject({totalAnimals:3,storedAnimals:1,pendingAnimals:0})
- expect(simulateFarm(claimed,18,{type:'animal',animal:'chicken'},11000).state).toBe(claimed)
+ const full=simulateFarm(claimed,18,{type:'animal',animal:'chicken'},11000).state
+ expect(farmLimits(full).totalAnimals).toBe(4)
+ expect(simulateFarm(full,3,{type:'animal',animal:'cow'},11000).state).toBe(full)
  expect(simulateFarm(claimed,3,{type:'animal',animal:'cow'},11000).state).not.toBe(claimed)
  expect(farmPlacementError(claimed,'chicken',{fromStorage:true})).toBeNull()
 })
@@ -41,13 +43,14 @@ it('hides purchase buttons for owned buildings while keeping their information a
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  click('상점');click('건물')
  const palette=screen.getByRole('dialog',{name:'상점'}),cards=within(palette).getAllByRole('article')
- expect(cards.length).toBe(11)
+ expect(cards.length).toBe(Object.values(topviewItems).filter(item=>item.group==='건물').length)
+ expect(within(palette).queryByRole('button',{name:/제당소/})).toBeNull()
  for(const card of cards){const owned=card.getAttribute('data-owned')==='true',buy=within(card).queryByRole('button',{name:/구매/});if(owned){expect(buy).toBeNull();expect(card.textContent).toContain('보유 중')}else{expect(buy).toHaveProperty('disabled',false);expect(card.textContent).toContain('여러 채 건설 가능')}}
  click('종자 상점 설명')
  const info=screen.getByRole('dialog',{name:'종자 상점 설명'})
  expect(within(info).getByRole('region',{name:'종자 상점 용도와 효과'}).textContent).toContain('종자를 구매')
  click('Close');expect(screen.getByRole('dialog',{name:'상점'})).toBeTruthy()
- click('Close');click('편집하기');click('종자 상점 (8,5)');click('회수')
+ click('Close');click('회수하기');click('종자 상점 (8,5)')
  click('상점');expect(within(screen.getByRole('dialog',{name:'상점'})).queryByRole('button',{name:/종자 상점 구매/})).toBeNull()
  click('Close');click('보관함');fireEvent.click(screen.getByRole('button',{name:/종자 상점.*보관 1개/}));fireEvent.click(container.querySelector('[data-farm-cell="8,5"]')!)
  expect(screen.getByRole('button',{name:'종자 상점 (8,5)'})).toBeTruthy()

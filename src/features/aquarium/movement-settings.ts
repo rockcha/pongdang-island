@@ -21,8 +21,8 @@ export function shouldFlipSpecies(species:Species,direction:number){
 }
 
 export function canArrangeSpecies(species:Species){
- return species.kind==='decoration'||species.kind==='trash'||(species.kind==='fish'&&species.movement_type==='fixed')
+ return species.kind==='decoration'||species.kind==='trash'||species.kind==='fish'
 }
 export function isPositionFixed(item:OwnedCollectible){
- return item.species.kind==='trash'?item.position_locked===true:canArrangeSpecies(item.species)
+ return item.species.kind==='fish'?item.position_locked===true||item.species.movement_type==='fixed':item.species.kind==='trash'?item.position_locked===true:canArrangeSpecies(item.species)
 }

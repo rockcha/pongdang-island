@@ -199,7 +199,7 @@ export function AquariumPage() {
     if (!tank || locked.current) throw new Error('잠시 후 다시 시도해주세요.')
     const tankId = tank.id
     const previous = state?.inhabitants.find((item) => item.id === id)??testFish.find(item=>item.id===id)
-    const scaleOnly=previous?.species.kind==='fish'&&previous.species.movement_type!=='fixed'
+    const scaleOnly=previous?.species.kind==='fish'&&previous.species.movement_type!=='fixed'&&value.position_locked===undefined
     const changes=scaleOnly?{scale:value.scale}:value
     if (id.startsWith('test-')) {
       setTestFish((current) =>

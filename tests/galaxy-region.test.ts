@@ -33,10 +33,10 @@ describe('은하수의 끝자락 content contract',()=>{
  it('uses dedicated cosmic water, scenery and platform without falling back to the starter sea',()=>{
   const environment=fishingEnvironment('galaxy')
   expect(environment.id).toBe('galaxy')
-  expect(environment.src).toContain('/galaxy-v1.png')
+  expect(environment.src).toContain('/galaxy-v2.png')
   expect(environment.frontSrc).not.toBe(environment.src)
   expect(environment.platformSrc).not.toBe(environment.frontSrc)
-  expect(fishingBannerPath('galaxy')).toBe('/regions/galaxy/overview-v1.png')
+  expect(fishingBannerPath('galaxy')).toBe('/regions/galaxy/overview-v2.png')
  })
  it('provides regional rod skin and existing regional bonuses',()=>{
   expect(hasExtraRodSkin('galaxy')).toBe(true)

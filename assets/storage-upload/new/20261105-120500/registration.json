@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261105-120500/normalized.png",
+    "storage_path":  "fish/mythic/galaxy-ananke_swim8_v2_sprite.png",
+    "patch":  [
+                  278,
+                  130,
+                  19,
+                  25
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  11.147652725588584
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  1,
+                       "dy":  0,
+                       "rmse":  10.472698761772856
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  11.805548176257446
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  0,
+                       "dy":  -2,
+                       "rmse":  12.117203179910197
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  0,
+                       "dy":  -2,
+                       "rmse":  12.465759555290749
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  0,
+                       "dy":  -2,
+                       "rmse":  14.805458888640562
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  0,
+                       "dy":  -2,
+                       "rmse":  14.312750913422528
+                   }
+               ]
+}

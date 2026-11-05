@@ -1,0 +1,152 @@
+{
+  "results": [
+    {
+      "id": "galaxy-ananke",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261105-120500\\fish\\mythic\\galaxy-ananke_v2_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            54,
+            1135,
+            1164
+          ],
+          "margin": 36,
+          "occupancy": 0.9282296650717703,
+          "opaque": 573583,
+          "transparent": 948572,
+          "soft": 623319
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "galaxy-ananke",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261105-120500\\fish\\mythic\\galaxy-ananke_swim8_v2_sprite.png",
+      "width": 1856,
+      "height": 928,
+      "cell": 464,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            110,
+            111,
+            239,
+            244
+          ],
+          "margin": 109,
+          "occupancy": 0.5258620689655172,
+          "opaque": 26824,
+          "transparent": 177571,
+          "soft": 37631
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            107,
+            110,
+            241,
+            245
+          ],
+          "margin": 107,
+          "occupancy": 0.5280172413793104,
+          "opaque": 26927,
+          "transparent": 174281,
+          "soft": 40946
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            108,
+            111,
+            240,
+            244
+          ],
+          "margin": 108,
+          "occupancy": 0.5258620689655172,
+          "opaque": 27463,
+          "transparent": 175317,
+          "soft": 39884
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            106,
+            111,
+            243,
+            242
+          ],
+          "margin": 106,
+          "occupancy": 0.5237068965517241,
+          "opaque": 27499,
+          "transparent": 174417,
+          "soft": 40835
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            108,
+            111,
+            240,
+            244
+          ],
+          "margin": 108,
+          "occupancy": 0.5258620689655172,
+          "opaque": 27683,
+          "transparent": 176166,
+          "soft": 39057
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            107,
+            111,
+            241,
+            245
+          ],
+          "margin": 107,
+          "occupancy": 0.5280172413793104,
+          "opaque": 27664,
+          "transparent": 172166,
+          "soft": 43100
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            110,
+            112,
+            239,
+            244
+          ],
+          "margin": 108,
+          "occupancy": 0.5258620689655172,
+          "opaque": 26977,
+          "transparent": 174053,
+          "soft": 41159
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            110,
+            112,
+            239,
+            243
+          ],
+          "margin": 109,
+          "occupancy": 0.5237068965517241,
+          "opaque": 26962,
+          "transparent": 173595,
+          "soft": 41640
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

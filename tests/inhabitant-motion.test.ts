@@ -269,3 +269,13 @@ it('keeps the megalodon gliding during its jaw action and resumes afterward',()=
  const resumed=motion.update(5.8,.016,400,600)
  expect(resumed.x===held.x&&resumed.y===held.y).toBe(false)
 })
+it('keeps Apocalypsis near the floor without drifting and preserves manual placement',()=>{
+ const spec=catalog.collectible_species.find(s=>s.id==='galaxy-apocalypsis')!
+ const owned={...item(),species:{...spec,swim_y_min:Number(spec.swim_y_min),swim_y_max:Number(spec.swim_y_max),speed:Number(spec.speed)}} as OwnedCollectible
+ const motion=new InhabitantMotion(owned)
+ const first={...motion.update(0,0,400,600)}
+ expect(first.y).toBeGreaterThan(300)
+ for(const time of [1,10,60]){const pose=motion.update(time,.016,400,600);expect(pose.x).toBe(first.x);expect(pose.y).toBe(first.y)}
+ const placed={...owned,position_x:.3,position_y:.2}
+ expect(new InhabitantMotion(placed).update(0,0,400,600).y).toBeLessThan(first.y)
+})

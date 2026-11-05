@@ -1,5 +1,5 @@
 export const regionIcons:Record<string,{name:string;src:string}>={
- galaxy:{name:'은하수의 끝자락',src:'/region-icons/galaxy-v1.png'},
+ galaxy:{name:'은하수의 끝자락',src:'/region-icons/galaxy.svg'},
  hangang:{name:'한강의 불빛나루',src:'/region-icons/hangang.svg'},
  pharaoh:{name:'파라오의 황금해',src:'/region-icons/pharaoh-v2.png'},
  firefly:{name:'반딧불 요정여울',src:'/region-icons/firefly-v1.png'},

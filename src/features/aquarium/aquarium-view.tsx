@@ -12,7 +12,6 @@ import { TankInhabitants } from './tank-inhabitants'
 import { TankBubbles } from './tank-bubbles'
 import { canArrangeSpecies } from './movement-settings'
 import { DecorationEditor } from './decoration-editor'
-import { FishSizeEditor } from './fish-size-editor'
 import { decorationGeometry } from './decoration-geometry'
 import { FriendAquariumPicker } from '@/features/friends/friend-aquarium-picker'
 import { TooltipProvider } from '@/components/ui/tooltip'
@@ -160,7 +159,7 @@ export function AquariumView(props: Props) {
         rotation: Number(current.rotation ?? 0),
         scale: Number(current.scale ?? 1),
         flipped: current.flipped ?? false,
-        ...(item.species.kind==='trash'?{position_locked:current.position_locked??false}:{}),
+        ...(['fish','trash'].includes(item.species.kind)?{position_locked:current.position_locked??false}:{}),
       }
       const center=g.margin+value.position_x*g.w+g.size/2
       if(panorama&&x===undefined&&canArrangeSpecies(item.species))setViewRequest({position:clampTankCameraView(center/aquariumLayoutWidth-1/(2*zoom),3,zoom)})
@@ -293,14 +292,13 @@ export function AquariumView(props: Props) {
         {decorating && editing && decoration && (
           <SelectionToolbar wide={wide.active} anchor={selectionAnchor} bounds={dimensions} hidden={wide.active&&dragging} topOffset={56} name={decoration.species.name} rarity={decoration.species.rarity} busy={busy} panel={panel} onPanel={setPanel} onClose={()=>setEditing(null)}>
             {panel!=='more'&&<>
-            {props.onArrange&&decoration.species.kind==='fish'&&!canArrangeSpecies(decoration.species)&&<FishSizeEditor scale={editing.value.scale} busy={busy} onChange={scale=>changeDecoration({...editing.value,scale})}/>}
             {props.onArrange && canArrangeSpecies(decoration.species) && (
               <DecorationEditor
                 key={editing.id}
                 name={decoration.species.name}
                 value={editing.value}
                 busy={busy}
-                allowPositionLock={decoration.species.kind==='trash'}
+                allowPositionLock={['fish','trash'].includes(decoration.species.kind)}
                 onChange={changeDecoration}
               />
             )}

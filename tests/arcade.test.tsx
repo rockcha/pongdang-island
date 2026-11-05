@@ -48,6 +48,15 @@ it('lists hybrid rewards in both reward filters',()=>{
  expect(screen.getByRole('link',{name:/그림자 맞추기/})).toBeTruthy()
 })
 function Banner(){const {pathname}=useLocation();return <PlaceBanner pathname={pathname}/>}
+it('shows local calculation practice under brain and settlement without promising rewards',()=>{
+ setup()
+ fireEvent.click(screen.getByRole('button',{name:'뇌지컬'}))
+ fireEvent.click(screen.getByRole('button',{name:'주간 보상'}))
+ const card=screen.getByRole('link',{name:/누가 더 많을까?/})
+ expect(card.textContent).toContain('연습 전용')
+ expect(card.textContent).not.toContain('주간 보상')
+ expect(card.getAttribute('href')).toBe('/arcade/calculation')
+})
 function setup(path='/arcade') { render(<MemoryRouter initialEntries={[path]}><Banner/><Routes><Route path="/arcade" element={<ArcadePage />} /><Route path="/arcade/:gameId" element={<ArcadeGamePage />} /><Route path="/collection" element={<p>일반 도감</p>}/></Routes></MemoryRouter>) }
 it('opens a coming-soon game and returns to the lobby without charging admission', () => {
  setup()

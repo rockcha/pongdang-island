@@ -117,7 +117,10 @@ export function ArcadePage() {
                   ) : (
                     <game.icon className="size-10 opacity-50" />
                   )}
-                  {game.rewardMode && game.status === 'ready' && (
+                  {game.practiceOnly && (
+                    <span className="absolute left-2 top-2 rounded-full bg-background/95 px-2 py-1 text-[10px] text-primary">연습 전용</span>
+                  )}
+                  {game.rewardMode && !game.practiceOnly && game.status === 'ready' && (
                     <div className="absolute left-2 top-2 flex flex-wrap gap-1 pr-2">
                       {(game.rewardMode === 'both'
                         ? (['instant', 'settlement'] as const)

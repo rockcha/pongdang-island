@@ -1,0 +1,228 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "Local calculation practice UI only; not catalog species or production storage",
+  "style": "User requested simple cute dot-eye marine animals",
+  "referenceImages": [],
+  "items": [
+    {
+      "id": "mackerel",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a chubby blue mackerel fish facing right, dark blue three stripes on its back, silver cream belly, short tail",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-8340cefe-84c9-4c62-824e-0bdad9045d10.png",
+      "source": "originals/mackerel.png",
+      "output": "src/features/arcade/assets/calculation/mackerel.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 113,
+          "top": 69,
+          "width": 1235,
+          "height": 937
+        },
+        "rendered": {
+          "width": 219,
+          "height": 166
+        },
+        "alphaArea": 16000,
+        "bytes": 38520
+      }
+    },
+    {
+      "id": "clownfish",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a chubby orange clownfish facing right, three broad creamy white bands, rounded short fins",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-ec9ae376-5804-4ef3-a3e2-a5b533edffaa.png",
+      "source": "originals/clownfish.png",
+      "output": "src/features/arcade/assets/calculation/clownfish.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 0,
+          "top": 57,
+          "width": 1306,
+          "height": 942
+        },
+        "rendered": {
+          "width": 231,
+          "height": 167
+        },
+        "alphaArea": 16000,
+        "bytes": 35269
+      }
+    },
+    {
+      "id": "pufferfish",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a round sunny yellow pufferfish facing slightly right, tiny short rounded spikes, tiny fins, cream belly",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-e007a075-1a99-40f8-9be8-bc08fd429dd2.png",
+      "source": "originals/pufferfish.png",
+      "output": "src/features/arcade/assets/calculation/pufferfish.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 0,
+          "top": 71,
+          "width": 1498,
+          "height": 873
+        },
+        "rendered": {
+          "width": 232,
+          "height": 135
+        },
+        "alphaArea": 14296,
+        "bytes": 29552
+      }
+    },
+    {
+      "id": "shark",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a chubby friendly blue-gray baby shark facing right, clearly visible triangular dorsal fin, cream belly, short stout tail",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-f4761f33-b36f-4787-b204-8305942b32ae.png",
+      "source": "originals/shark.png",
+      "output": "src/features/arcade/assets/calculation/shark.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 0,
+          "top": 45,
+          "width": 1402,
+          "height": 915
+        },
+        "rendered": {
+          "width": 229,
+          "height": 150
+        },
+        "alphaArea": 16000,
+        "bytes": 32915
+      }
+    },
+    {
+      "id": "octopus",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a lilac purple baby octopus facing front, large round head and eight short chunky curled arms",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-83d800b0-d5bd-417c-a9f0-163ecb16ed71.png",
+      "source": "originals/octopus.png",
+      "output": "src/features/arcade/assets/calculation/octopus.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 63,
+          "top": 55,
+          "width": 1167,
+          "height": 1084
+        },
+        "rendered": {
+          "width": 189,
+          "height": 175
+        },
+        "alphaArea": 16000,
+        "bytes": 32971
+      }
+    },
+    {
+      "id": "squid",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a coral pink baby squid facing front, rounded triangular mantle and a short cluster of stubby tentacles",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-b0575198-c3e7-4474-a2e4-332f04db2854.png",
+      "source": "originals/squid.png",
+      "output": "src/features/arcade/assets/calculation/squid.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 0,
+          "top": 25,
+          "width": 1226,
+          "height": 1165
+        },
+        "rendered": {
+          "width": 201,
+          "height": 191
+        },
+        "alphaArea": 16000,
+        "bytes": 29454
+      }
+    },
+    {
+      "id": "crab",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a red-orange baby crab facing front, two big rounded raised claws, small compact legs, wide rounded body",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-a16f64e8-e153-4ed5-b230-72a7758deb21.png",
+      "source": "originals/crab.png",
+      "output": "src/features/arcade/assets/calculation/crab.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 71,
+          "top": 23,
+          "width": 1409,
+          "height": 979
+        },
+        "rendered": {
+          "width": 224,
+          "height": 156
+        },
+        "alphaArea": 16000,
+        "bytes": 36267
+      }
+    },
+    {
+      "id": "turtle",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a mint green baby sea turtle seen from slightly above and front right, large green patterned round shell and four broad short flippers",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-0ca0f77c-51ee-43f4-8c98-1ca5a3b1e66d.png",
+      "source": "originals/turtle.png",
+      "output": "src/features/arcade/assets/calculation/turtle.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 0,
+          "top": 4,
+          "width": 1294,
+          "height": 1151
+        },
+        "rendered": {
+          "width": 205,
+          "height": 182
+        },
+        "alphaArea": 16000,
+        "bytes": 38711
+      }
+    },
+    {
+      "id": "starfish",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a peach orange starfish facing front, five thick rounded arms, tiny gentle spots",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-d97f32ae-6189-4fa6-a915-cd4c77ddf1dd.png",
+      "source": "originals/starfish.png",
+      "output": "src/features/arcade/assets/calculation/starfish.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 0,
+          "top": 55,
+          "width": 1235,
+          "height": 1183
+        },
+        "rendered": {
+          "width": 206,
+          "height": 198
+        },
+        "alphaArea": 16000,
+        "bytes": 33390
+      }
+    },
+    {
+      "id": "jellyfish",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG marine animal for a mobile mental arithmetic minigame. Primary request: extremely cute simple dot-eye marine creature, recognizable silhouette at 64px. ONE creature only centered in square canvas, generous transparent margin, entire body visible. Flat pastel gouache-like clean cartoon, mostly solid colors with very subtle soft shading, thin warm dark outline, TWO TINY SOLID BLACK DOT EYES with absolutely no white eye circles, no glossy anime eyes, tiny simple smile. Compact chunky proportions, large body and short appendages. No accessories, no scene, no plate, no bubbles, no drop shadow, no text, no border, no checkerboard. Genuinely transparent alpha background. Subject: a sky blue baby jellyfish facing front, big domed scalloped bell and five short thick rounded tentacles",
+      "generatedSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a1860a-a71f-7bc3-9a10-4a9303535055\\exec-565fd844-8132-4bcb-9725-d897a4161079.png",
+      "source": "originals/jellyfish.png",
+      "output": "src/features/arcade/assets/calculation/jellyfish.png",
+      "normalization": {
+        "canvas": 256,
+        "bounds": {
+          "left": 0,
+          "top": 23,
+          "width": 1244,
+          "height": 1231
+        },
+        "rendered": {
+          "width": 196,
+          "height": 194
+        },
+        "alphaArea": 16000,
+        "bytes": 34071
+      }
+    }
+  ]
+}

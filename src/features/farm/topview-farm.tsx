@@ -36,7 +36,7 @@ import {CROP_FRESH_MS,farmLimits,farmPlacementError,farmBuildingStorageError,sim
 import {FarmActionEffect} from './action-effect'
 import './sale-effect.css'
 import {FarmGoodIcon} from './farm-good-icon'
-import {FARM_SEA_MARGIN,adjacentLand,cellKey,MAP_H,MAP_W,objectAt,objectArtHeight,placementValid,farmPlacementTerrain,TILE,topviewItems,objectFootprint,canFlipFarmObject,type FarmObjectTransform,type FarmTool,type TopviewState} from './topview-model'
+import {FARM_SEA_MARGIN,canPlaceLand,cellKey,MAP_H,MAP_W,objectAt,objectArtHeight,placementValid,farmPlacementTerrain,TILE,topviewItems,objectFootprint,canFlipFarmObject,type FarmObjectTransform,type FarmTool,type TopviewState} from './topview-model'
 import {applyLandStroke,buyLandStock,landBlockMessages,type LandCell,type LandTool} from './land-tools'
 import {useLandBrush} from './use-land-brush'
 import {useFarmCamera} from './use-farm-camera'
@@ -446,7 +446,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
   if(topviewItems[object.kind].group==='건물'){setPlacementDust(items=>[...items,{id:++effectId.current,...target,...objectFootprint({...object,...placementTransform}),expiresAt:farmNow()+600}]);playFarmPlacementSound()}
   cancelMove();setSelected(null);setMessage(object.x===target.x&&object.y===target.y?'원래 자리에 놓았어요.':'배치를 옮겼어요.')
  }
- function choose(next:Mode){setOrientationId(null);objectDrag.cancel();setPlacementTransform({});landBrush.cancel();setMoveTarget(null);setNotice(null);setMode(next);setSelected(null);setHover(null);setMessage(next==='land'?'여분 땅을 꺼내 섬과 이어서 놓아주세요.':next==='land-recover'?'빈 땅을 선택해 여분으로 회수하세요.':'원하는 위치를 눌러 배치해 보세요.')}
+ function choose(next:Mode){setOrientationId(null);objectDrag.cancel();setPlacementTransform({});landBrush.cancel();setMoveTarget(null);setNotice(null);setMode(next);setSelected(null);setHover(null);setMessage(next==='land'?'여분 땅을 꺼내 원하는 바다에 놓아주세요.':next==='land-recover'?'빈 땅을 선택해 여분으로 회수하세요.':'원하는 위치를 눌러 배치해 보세요.')}
  async function cellClick(x:number,y:number,keyboard=false){
   if(!keyboard&&(objectDrag.ignoresClick()||camera.ignoresClick()))return
   if(!keyboard&&landBrush.ignoresClick())return
@@ -522,7 +522,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
     <rect x={-seaMargin} y={-seaMargin} width={MAP_W*TILE+seaMargin*2} height={MAP_H*TILE+seaMargin*2} fill="url(#farm-water)" onClick={()=>{if(mode==='look'){setSelected(null);setOrientationId(null)}}}/>
     <g pointerEvents="none" strokeLinejoin="round" strokeLinecap="round" data-island-shore="true"><path className="farm-shore-foam" d={shore} fill="none" stroke="#fff8e5" strokeWidth="24" strokeDasharray="18 190"/><path d={shore} fill="url(#farm-grass)" fillRule="evenodd" stroke="#ead2a0" strokeWidth="16"/></g>
     {allCells.map(({x,y})=>{
-     const key=cellKey(x,y),owned=state.land.includes(key),seaPlacement=!!previewKind&&farmPlacementTerrain(previewKind)==='sea',buyable=mode==='land'&&state.landStock>0&&adjacentLand(state,x,y),interactive=(cropTool||fertilizerTool||clearingTool||tileTool!==null||mode==='land-recover')&&owned||!!previewKind&&(seaPlacement?!owned:owned)||buyable
+     const key=cellKey(x,y),owned=state.land.includes(key),seaPlacement=!!previewKind&&farmPlacementTerrain(previewKind)==='sea',buyable=mode==='land'&&state.landStock>0&&canPlaceLand(state,x,y),interactive=(cropTool||fertilizerTool||clearingTool||tileTool!==null||mode==='land-recover')&&owned||!!previewKind&&(seaPlacement?!owned:owned)||buyable
      const label=fertilizerTool?`비료 적용 ${x},${y}`:tileTool?`타일 ${x},${y} ${tileTool==='place'?'깔기':'회수'}`:cropTool?`심기 위치 ${x},${y}`:clearingTool?`개간 위치 ${x},${y}`:previewKind?`배치 위치 ${x},${y}`:`땅 ${x},${y} ${mode==='land'?'놓기':'회수'}`
      return <g key={key} data-farm-cell={key} data-farm-owned={owned} role={interactive?'button':undefined} tabIndex={interactive?0:undefined} aria-label={interactive?label:undefined} onKeyDown={event=>{if(interactive&&(event.key==='Enter'||event.key===' ')){event.preventDefault();cellClick(x,y,true)}}} onPointerEnter={()=>setHover({x,y})} onClick={()=>cellClick(x,y)}>
       <rect data-farm-tile={owned&&state.paths.includes(key)?pathTile(state,key):undefined} clipPath={owned?'url(#farm-island-clip)':undefined} shapeRendering="crispEdges" x={x*TILE} y={y*TILE} width={TILE} height={TILE} fill={owned?(state.paths.includes(key)?(pathTile(state,key)==='stone'?'url(#farm-grass)':pathTile(state,key)==='dirt'?'url(#farm-path)':`url(#farm-path-${pathTile(state,key)})`):'url(#farm-grass)'):buyable?'#b7ddd060':'transparent'} className={lastAdded===key?'top-farm-new-land':undefined} stroke={buyable?'#fff1c8':grid&&(owned||seaPlacement)?'#e4ebc447':'transparent'} strokeWidth={buyable?1.5:1}/>

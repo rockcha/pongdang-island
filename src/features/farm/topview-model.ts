@@ -14,16 +14,16 @@ export const topviewItems:Record<FarmTool,{name:string;w:number;h:number;group:'
  teacupCat:{name:'찻잔 고양이',w:1,h:1,group:'꾸미기',terrain:'land',price:600},
  bearPicnic:{name:'곰돌이 피크닉',w:2,h:1,group:'꾸미기',terrain:'land',price:1000},
  chickSandbox:{name:'병아리 모래놀이터',w:1,h:1,group:'꾸미기',terrain:'land',price:500},
- strawScarecrow:{name:'밀짚모자 허수아비',w:1,h:1,group:'꾸미기',terrain:'land',price:300},
+ strawScarecrow:{name:'밀짚모자 허수아비',w:1,h:1,group:'꾸미기',terrain:'land',price:500},
  hayBales:{name:'건초 더미',w:1,h:1,group:'꾸미기',terrain:'land',price:150},
  toolRack:{name:'농기구 거치대',w:1,h:1,group:'꾸미기',terrain:'land',price:300},
  fenceWhite:{name:'흰 울타리',w:1,h:1,group:'꾸미기',terrain:'land',price:150},
  fenceDark:{name:'짙은 원목 울타리',w:1,h:1,group:'꾸미기',terrain:'land',price:150},
- pongiTube:{name:'민트 튜브 탄 퐁이',w:1,h:1,group:'꾸미기',terrain:'sea',price:500},
- pongiTubeRed:{name:'빨간 튜브 탄 퐁이',w:1,h:1,group:'꾸미기',terrain:'sea',price:500},
+ pongiTube:{name:'민트 튜브 탄 퐁이',w:1,h:1,group:'꾸미기',terrain:'sea',price:1000},
+ pongiTubeRed:{name:'빨간 튜브 탄 퐁이',w:1,h:1,group:'꾸미기',terrain:'sea',price:1000},
  rabbitTopiary:{name:'토끼 토피어리',w:1,h:1,group:'꾸미기',terrain:'land',price:450},
- mushroomLamp:{name:'버섯 조명',w:1,h:1,group:'꾸미기',terrain:'land',price:350},
- sealFloat:{name:'아기 물범 튜브',w:1,h:1,group:'꾸미기',terrain:'sea',price:650},
+ mushroomLamp:{name:'버섯 조명',w:1,h:1,group:'꾸미기',terrain:'land',price:950},
+ sealFloat:{name:'아기 물범 튜브',w:1,h:1,group:'꾸미기',terrain:'sea',price:1150},
  waterLilies:{name:'수련 꽃송이',w:1,h:1,group:'꾸미기',terrain:'sea',price:250},
  duckBoat:{name:'오리배',w:1,h:1,group:'꾸미기',terrain:'sea',price:900},
  woodBridge1:{name:'나무다리 1×1',w:1,h:1,group:'꾸미기',terrain:'sea',price:200},
@@ -77,7 +77,7 @@ export function initialTopview():TopviewState{
  {id:23,kind:'seedShop',x:9,y:8},{id:2,kind:'store',x:12,y:8},
   ]}
 }
-export function adjacentLand(state:TopviewState,x:number,y:number){return x>=0&&y>=0&&x<MAP_W&&y<MAP_H&&!state.land.includes(cellKey(x,y))&&!objectAt(state,x,y)&&[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>state.land.includes(cellKey(x+dx,y+dy)))}
+export function canPlaceLand(state:TopviewState,x:number,y:number){return Number.isInteger(x)&&Number.isInteger(y)&&x>=0&&y>=0&&x<MAP_W&&y<MAP_H&&!state.land.includes(cellKey(x,y))&&!objectAt(state,x,y)}
 export function objectAt(state:TopviewState,x:number,y:number){return state.objects.find(o=>{const d=objectFootprint(o);return x>=o.x&&y>=o.y&&x<o.x+d.w&&y<o.y+d.h})}
 export function placementValid(state:TopviewState,kind:FarmTool,x:number,y:number,skip?:number,rotation?:FarmRotation){
  const d=objectFootprint({kind,rotation:rotation??state.objects.find(o=>o.id===skip)?.rotation}),terrain=farmPlacementTerrain(kind),others={...state,objects:state.objects.filter(o=>o.id!==skip)}

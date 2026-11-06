@@ -7,6 +7,7 @@ import {farmRecipes,recipesForBuilding,recipeBatchLimit,recipeOutput,type Proces
 import {farmGoods,type FarmSimAction,type FarmSimulation} from './farm-simulation'
 import {FarmItemPicker} from './item-picker'
 import {FarmGoodIcon} from './farm-good-icon'
+import {MaterialRequirements} from './material-requirements'
 import {FarmProductHeading} from './product-heading'
 
 export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction,maxOutput=2,waterwheelBonus=0}:{buildingId:number;maxOutput?:number;waterwheelBonus?:number;kind:ProcessingBuilding;simulation:FarmSimulation;now:number;onAction:(action:FarmSimAction)=>void}){
@@ -23,7 +24,7 @@ export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction,maxO
   </section>
  }
  if(!selected)return <p className="farm-sim-caption">사용 가능한 제작법이 없어요.</p>
- return <div className="farm-workbench"><FarmItemPicker items={choices} value={selected} onChange={setSelected} label={farmWorkshops[kind].pickerLabel} owned={id=>simulation.inventory[id]} detail={id=>`${farmDuration(farmRecipes[id].seconds)} · ${recipeBatchLimit(simulation.inventory,id)>0?'제작 가능':'재료 부족'}`}/><RecipeCard waterwheelBonus={waterwheelBonus} key={`${buildingId}-${selected}-${maxOutput}`} maxOutput={maxOutput} id={selected} inventory={simulation.inventory} onAction={onAction}/></div>
+ return <div className="farm-workbench"><FarmItemPicker items={choices} value={selected} onChange={setSelected} label={farmWorkshops[kind].pickerLabel} owned={id=>simulation.inventory[id]} detail={id=>farmDuration(farmRecipes[id].seconds)} status={id=>recipeBatchLimit(simulation.inventory,id,maxOutput)>0?'ready':'missing'}/><RecipeCard waterwheelBonus={waterwheelBonus} key={`${buildingId}-${selected}-${maxOutput}`} maxOutput={maxOutput} id={selected} inventory={simulation.inventory} onAction={onAction}/></div>
 }
 
 function RecipeCard({id,inventory,onAction,maxOutput,waterwheelBonus}:{waterwheelBonus:number;maxOutput:number;id:RecipeId;inventory:FarmSimulation['inventory'];onAction:(action:FarmSimAction)=>void}){
@@ -33,10 +34,7 @@ function RecipeCard({id,inventory,onAction,maxOutput,waterwheelBonus}:{waterwhee
   <FarmProductHeading good={id} seconds={waterwheelDuration(recipe.seconds*Math.ceil(amount*output/2),waterwheelBonus)}/>
   {id==='honey'&&<p className="farm-sim-caption">재료: 필요 없음. 벌들이 꿀을 모아요. 한 번에 최대 {maxOutput}개를 생산해요.</p>}
   {output>1&&<p className="farm-sim-caption">1회 제작으로 {item.name} {output}개를 만들어요.</p>}
-  <div className="farm-recipe-ingredients" role="group" aria-label="필요한 재료">{recipe.ingredients.map(ingredient=>{
-   const needed=ingredient.quantity*amount,enough=inventory[ingredient.good]>=needed
-   return <div key={ingredient.good} data-enough={enough}><FarmGoodIcon good={ingredient.good}/><div><strong>재료: {farmGoods[ingredient.good].name} ×{needed}</strong><small>보유 {inventory[ingredient.good]}개</small></div></div>
-  })}</div>
+  <MaterialRequirements items={recipe.ingredients.map(ingredient=>({id:ingredient.good,name:farmGoods[ingredient.good].name,owned:inventory[ingredient.good],required:ingredient.quantity*amount,icon:<FarmGoodIcon good={ingredient.good}/>}))}/>
   <p className="farm-sim-caption">생산: {item.name} {amount*output}개 · 소요 시간: {farmDuration(waterwheelDuration(recipe.seconds*Math.ceil(amount*output/2),waterwheelBonus))} · 최대 {maxOutput}개</p>
   <div className="farm-recipe-controls"><div><button aria-label={`${item.name} 제작 수량 줄이기`} disabled={amount<=1||!max} onClick={()=>setQuantity(amount-1)}>−</button><input type="number" inputMode="numeric" aria-label={`${item.name} 제작 수량`} min={1} max={Math.max(1,max)} value={amount} disabled={!max} onChange={event=>setQuantity(Math.min(max,Math.max(1,Math.floor(Number(event.target.value)||1))))}/><button aria-label={`${item.name} 제작 수량 늘리기`} disabled={!max||amount>=max} onClick={()=>setQuantity(amount+1)}>+</button><button disabled={!max} onClick={()=>setQuantity(max)}>최대</button></div><button className="farm-recipe-submit" aria-label={`${item.name} 만들기`} disabled={!enough} onClick={()=>onAction({type:'craft',recipe:id,quantity:amount})}>{enough?`${amount*output}개 만들기`:'재료 부족'}</button></div>
  </article>

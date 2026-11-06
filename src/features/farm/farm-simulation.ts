@@ -49,7 +49,7 @@ export function farmAnimalHousing(state:TopviewState,animal:FarmAnimal){
 export function farmLimits(state:TopviewState){
  const count=(kind:FarmTool)=>state.objects.filter(o=>o.kind===kind).length
  const usedAnimals=state.objects.filter(object=>topviewItems[object.kind].group==='동물').length,storedAnimals=state.stored.filter(kind=>topviewItems[kind].group==='동물').length,pendingAnimals=Object.keys(state.simulation.animalPurchaseJobs).length
- return {plots:4+activeBuildings(state,'office').reduce((sum,o)=>sum+buildingCapacity(o),0),animals:livestockCapacity(state),usedPlots:count('plot'),usedAnimals,storedAnimals,pendingAnimals,totalAnimals:usedAnimals+storedAnimals+pendingAnimals}
+ return {plots:activeBuildings(state,'office').reduce((sum,o)=>sum+buildingCapacity(o),0),animals:livestockCapacity(state),usedPlots:count('plot'),usedAnimals,storedAnimals,pendingAnimals,totalAnimals:usedAnimals+storedAnimals+pendingAnimals}
 }
 export const farmPurchaseLimit=(kind:FarmTool)=>isBasicFarmBuilding(kind)?1:Infinity
 export const farmOwnedCount=(state:TopviewState,kind:FarmTool)=>state.objects.filter(o=>o.kind===kind).length+state.stored.filter(k=>k===kind).length

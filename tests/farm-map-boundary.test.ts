@@ -1,11 +1,11 @@
 import {expect,it} from 'vitest'
-import {initialTopview,placementValid,adjacentLand} from '@/features/farm/topview-model'
+import {initialTopview,placementValid,canPlaceLand} from '@/features/farm/topview-model'
 import {applyLandStroke,landLine} from '@/features/farm/land-tools'
 
 it('extends connected land across the previous east and south boundaries',()=>{
  const state={...initialTopview(),objects:[],land:['23,19'],paths:[],landStock:4}
  const cells=[{x:24,y:19},{x:25,y:19},{x:25,y:20},{x:25,y:21}]
- expect(adjacentLand(state,24,19)).toBe(true)
+ expect(canPlaceLand(state,24,19)).toBe(true)
  const result=applyLandStroke(state,'place',cells)
  expect(result.changed).toEqual(cells)
  expect(result.state.landStock).toBe(0)

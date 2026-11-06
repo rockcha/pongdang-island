@@ -123,7 +123,7 @@ var buildingLevel = (object) => Math.max(1, Math.min(10, object.level ?? 1));
 var buildingCapacity = (object) => object.kind === "warehouse" ? 40 + (buildingLevel(object) - 1) * 20 : object.kind === "office" ? 4 : object.kind === "livestockOffice" ? 2 : 0;
 var activeBuildings = (state, kind) => state.objects.filter((o) => o.kind === kind && !o.constructionReadyAt && !state.simulation.upgradeJobs[o.id]);
 var warehouseCapacity = (state) => activeBuildings(state, "warehouse").reduce((sum, o) => sum + buildingCapacity(o), 0);
-var livestockCapacity = (state) => 2 + state.objects.filter((o) => o.kind === "livestockOffice" && !o.constructionReadyAt).reduce((sum, o) => sum + buildingCapacity(o), 0);
+var livestockCapacity = (state) => state.objects.filter((o) => o.kind === "livestockOffice" && !o.constructionReadyAt).reduce((sum, o) => sum + buildingCapacity(o), 0);
 var warehouseAvailable = (state) => activeBuildings(state, "warehouse").length > 0;
 function upgradeBuilding(state, id, action, now) {
 	const object = state.objects.find((o) => o.id === id), job = state.simulation.upgradeJobs[id];
@@ -1496,7 +1496,7 @@ function farmLimits(state) {
 	const count = (kind) => state.objects.filter((o) => o.kind === kind).length;
 	const usedAnimals = state.objects.filter((object) => topviewItems[object.kind].group === "동물").length, storedAnimals = state.stored.filter((kind) => topviewItems[kind].group === "동물").length, pendingAnimals = Object.keys(state.simulation.animalPurchaseJobs).length;
 	return {
-		plots: 4 + activeBuildings(state, "office").reduce((sum, o) => sum + buildingCapacity(o), 0),
+		plots: activeBuildings(state, "office").reduce((sum, o) => sum + buildingCapacity(o), 0),
 		animals: livestockCapacity(state),
 		usedPlots: count("plot"),
 		usedAnimals,
@@ -2082,7 +2082,7 @@ var topviewItems = {
 		h: 1,
 		group: "꾸미기",
 		terrain: "land",
-		price: 300
+		price: 500
 	},
 	hayBales: {
 		name: "건초 더미",
@@ -2122,7 +2122,7 @@ var topviewItems = {
 		h: 1,
 		group: "꾸미기",
 		terrain: "sea",
-		price: 500
+		price: 1e3
 	},
 	pongiTubeRed: {
 		name: "빨간 튜브 탄 퐁이",
@@ -2130,7 +2130,7 @@ var topviewItems = {
 		h: 1,
 		group: "꾸미기",
 		terrain: "sea",
-		price: 500
+		price: 1e3
 	},
 	rabbitTopiary: {
 		name: "토끼 토피어리",
@@ -2146,7 +2146,7 @@ var topviewItems = {
 		h: 1,
 		group: "꾸미기",
 		terrain: "land",
-		price: 350
+		price: 950
 	},
 	sealFloat: {
 		name: "아기 물범 튜브",
@@ -2154,7 +2154,7 @@ var topviewItems = {
 		h: 1,
 		group: "꾸미기",
 		terrain: "sea",
-		price: 650
+		price: 1150
 	},
 	waterLilies: {
 		name: "수련 꽃송이",
@@ -2598,15 +2598,6 @@ var fromKey = (key) => {
 		y
 	};
 };
-var neighbors = (key) => {
-	const { x, y } = fromKey(key);
-	return [
-		cellKey(x + 1, y),
-		cellKey(x - 1, y),
-		cellKey(x, y + 1),
-		cellKey(x, y - 1)
-	];
-};
 function buyLandStock(state, quantity) {
 	const cost = quantity * 100;
 	if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 1e3 || !Number.isSafeInteger(cost) || state.gold < cost || !Number.isSafeInteger(state.landStock + quantity)) return state;
@@ -2615,16 +2606,6 @@ function buyLandStock(state, quantity) {
 		gold: state.gold - cost,
 		landStock: state.landStock + quantity
 	};
-}
-function canRemove(land, key) {
-	if (land.size <= 1) return false;
-	const start = [...land].find((value) => value !== key);
-	const seen = /* @__PURE__ */ new Set([start]), queue = [start];
-	for (let i = 0; i < queue.length; i++) for (const neighbor of neighbors(queue[i])) if (neighbor !== key && land.has(neighbor) && !seen.has(neighbor)) {
-		seen.add(neighbor);
-		queue.push(neighbor);
-	}
-	return seen.size === land.size - 1;
 }
 function applyLandStroke(state, tool, cells) {
 	const unique = [...new Map(cells.map((cell) => [keyOf(cell), cell])).values()], blocked = [], land = new Set(state.land), changed = [];
@@ -2645,19 +2626,14 @@ function applyLandStroke(state, tool, cells) {
 			}
 			return true;
 		}).map(keyOf));
-		const reachable = [...candidates].filter((key) => neighbors(key).some((neighbor) => land.has(neighbor))), seen = new Set(reachable);
-		for (let i = 0; i < reachable.length; i++) for (const neighbor of neighbors(reachable[i])) if (candidates.has(neighbor) && !seen.has(neighbor)) {
-			seen.add(neighbor);
-			reachable.push(neighbor);
-		}
-		const added = reachable.slice(0, state.landStock);
+		const added = [...candidates].slice(0, state.landStock);
 		for (const key of added) {
 			land.add(key);
 			changed.push(fromKey(key));
 		}
 		for (const key of candidates) if (!land.has(key)) blocked.push({
 			cell: fromKey(key),
-			reason: seen.has(key) ? "out-of-stock" : "not-connected"
+			reason: "out-of-stock"
 		});
 		return {
 			state: changed.length ? {
@@ -2684,20 +2660,17 @@ function applyLandStroke(state, tool, cells) {
 		});
 		else pending.add(key);
 	}
-	let progress = true;
-	while (progress && pending.size) {
-		progress = false;
-		for (const key of pending) if (canRemove(land, key)) {
-			land.delete(key);
-			pending.delete(key);
-			changed.push(fromKey(key));
-			progress = true;
+	for (const key of pending) {
+		if (land.size <= 1) {
+			blocked.push({
+				cell: fromKey(key),
+				reason: "last-land"
+			});
+			continue;
 		}
+		land.delete(key);
+		changed.push(fromKey(key));
 	}
-	for (const key of pending) blocked.push({
-		cell: fromKey(key),
-		reason: land.size <= 1 ? "last-land" : "disconnected"
-	});
 	let recovered = state;
 	const pathTiles = { ...state.pathTiles };
 	for (const key of state.paths) if (!land.has(key)) {

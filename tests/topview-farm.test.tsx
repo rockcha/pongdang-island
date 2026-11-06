@@ -18,12 +18,12 @@ it('only draws shore against water and reconnects it when new land is purchased'
  const initial=developedFarmFixture(),bought=applyLandStroke(buyLandStock(initial,1),'place',[{x:3,y:4}]).state
  expect(coastline(bought.land)).toHaveLength(coastline(initial.land).length+2)
 })
-it('buys stored land and only places connected tiles without another gold charge',()=>{
+it('buys stored land and places free sea tiles without another gold charge',()=>{
  const original=developedFarmFixture()
  const bought=buyLandStock(original,1)
  expect(bought.gold).toBe(original.gold-100)
  expect(bought.land).toEqual(original.land)
- expect(applyLandStroke(bought,'place',[{x:0,y:0}]).state).toBe(bought)
+ expect(applyLandStroke(bought,'place',[{x:-1,y:0}]).state).toBe(bought)
  const placed=applyLandStroke(bought,'place',[{x:3,y:4}]).state
  expect(placed.gold).toBe(bought.gold)
  expect(placed.landStock).toBe(0)

@@ -12,7 +12,7 @@ export function LandBadge({count}:{count:number}){
  return <span className="farm-land-icon farm-toolbar-icon" data-land-stock={count}><LandPlot size={20}/><FarmCountBadge count={count} label="보유 땅" unit="칸"/></span>
 }
 export function LandToolPanel({tool,onTool,onBuy,onDone}:{tool:LandTool|null;onTool:(tool:LandTool)=>void;onBuy:()=>void;onDone:()=>void}){
- return <FarmToolPanel id="farm-land-menu" label="땅 도구" title="땅 관리" description={tool==='place'?'섬과 이어진 바다를 누르거나 드래그해 땅을 놓아요.':tool==='recover'?'시설이 없는 땅을 드래그해 보관함으로 회수해요.':'땅을 구매한 뒤 원하는 곳에 놓거나 다시 회수해요.'} onDone={onDone}>
+ return <FarmToolPanel id="farm-land-menu" label="땅 도구" title="땅 관리" description={tool==='place'?'원하는 바다를 누르거나 드래그해 땅을 놓아요.':tool==='recover'?'시설이 없는 땅을 드래그해 보관함으로 회수해요.':'땅을 구매한 뒤 원하는 곳에 놓거나 다시 회수해요.'} onDone={onDone}>
   <button aria-pressed={tool==='place'} onClick={()=>onTool('place')}><Plus size={17}/><span>땅 놓기</span></button>
   <button aria-pressed={tool==='recover'} onClick={()=>onTool('recover')}><Undo2 size={17}/><span>땅 회수하기</span></button>
   <button onClick={onBuy}><ShoppingBag size={17}/><span>땅 구매하기</span></button>

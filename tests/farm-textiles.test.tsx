@@ -15,6 +15,7 @@ import {ProcessingWorkshop} from '@/features/farm/processing-workshop'
 import {plotGrowthImage} from '@/features/farm/plot-art'
 import {farmShopCategory} from '@/features/farm/shop-categories'
 import {goodsForDelivery} from '@/features/farm/market-catalog'
+import {warehouseCapacity} from '@/features/farm/building-upgrades'
 
 afterEach(cleanup)
 function facilities(){const s=initialTopview();for(const [i,kind] of (['textileMill','sewingWorkshop','lab','sheep','barn'] as FarmTool[]).entries())s.objects.push({id:100+i,kind,x:5,y:8});return s}
@@ -85,9 +86,9 @@ it.each(Object.keys(textileRecipes) as (keyof typeof textileRecipes)[])('reserve
 it('keeps a finished textile job waiting when the warehouse is full',()=>{
  let s=facilities();s.simulation.inventory.cotton=4
  s=simulateFarm(s,100,{type:'craft',recipe:'cottonFabric',quantity:2},0).state
- s.simulation.inventory.wheat=120
+ s.simulation.inventory.wheat=warehouseCapacity(s)
  expect(simulateFarm(s,100,{type:'collectCraft'},2700000).state).toBe(s)
- s.simulation.inventory.wheat=118
+ s.simulation.inventory.wheat=warehouseCapacity(s)-2
  expect(collect(s,100).simulation.inventory.cottonFabric).toBe(2)
 })
 

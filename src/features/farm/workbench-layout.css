@@ -27,7 +27,7 @@
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients>div{gap:2px}.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients .farm-good-icon{width:20px;height:20px}
 }
 /* Keep long recipes reachable above the building actions on short screens. */
-@media(max-height:560px){
+@media(max-height:700px){
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog>.farm-sim-body{display:block;overflow-y:auto;overscroll-behavior:contain}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench{flex:none}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-item-selector{flex:none;max-height:180px}

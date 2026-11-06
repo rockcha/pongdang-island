@@ -11,7 +11,7 @@ export const buildingCapacity=(object:TopviewObject)=>object.kind==='warehouse'?
 export const activeBuildings=(state:TopviewState,kind:FarmTool)=>state.objects.filter(o=>o.kind===kind&&!o.constructionReadyAt&&!state.simulation.upgradeJobs[o.id])
 export const warehouseCapacity=(state:TopviewState)=>activeBuildings(state,'warehouse').reduce((sum,o)=>sum+buildingCapacity(o),0)
 // Each completed ranch adds two slots; capacity is independent of level.
-export const livestockCapacity=(state:TopviewState)=>2+state.objects.filter(o=>o.kind==='livestockOffice'&&!o.constructionReadyAt).reduce((sum,o)=>sum+buildingCapacity(o),0)
+export const livestockCapacity=(state:TopviewState)=>state.objects.filter(o=>o.kind==='livestockOffice'&&!o.constructionReadyAt).reduce((sum,o)=>sum+buildingCapacity(o),0)
 export const warehouseAvailable=(state:TopviewState)=>activeBuildings(state,'warehouse').length>0
 export type BuildingUpgradeAction={type:'upgrade'}|{type:'cancelUpgrade'}|{type:'completeUpgrade'}
 export function upgradeBuilding(state:TopviewState,id:number,action:BuildingUpgradeAction,now:number){

@@ -2,7 +2,7 @@ import {act,cleanup,fireEvent,render,screen,within} from '@testing-library/react
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
-import {initialTopview,topviewItems,placementValid,objectAt,adjacentLand,farmPlacementTerrain} from '@/features/farm/topview-model'
+import {initialTopview,topviewItems,placementValid,objectAt,canPlaceLand,farmPlacementTerrain} from '@/features/farm/topview-model'
 import {applyLandStroke,buyLandStock} from '@/features/farm/land-tools'
 
 afterEach(()=>{cleanup();vi.useRealTimers()})
@@ -28,7 +28,7 @@ it('cannot expand land under any part of a water decoration or consume land stoc
  const result=applyLandStroke(state,'place',[{x:3,y:5},{x:3,y:6},{x:3,y:7},{x:3,y:8}])
  expect(result.changed).toEqual([{x:3,y:8}]);expect(result.state.landStock).toBe(3)
  expect(result.blocked).toEqual([5,6,7].map(y=>({cell:{x:3,y},reason:'occupied'})))
- expect(adjacentLand(state,3,6)).toBe(false)
+ expect(canPlaceLand(state,3,6)).toBe(false)
 })
 it('separates shop and storage categories and places, moves and recovers a water bridge',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)

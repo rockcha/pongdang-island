@@ -35,7 +35,7 @@ export function FarmProductionDialog({object,state,message,onAction,onClose,onSt
   <div className="farm-sim-body">
    {waterwheelBonusMinutes(state,object)>0&&<p className="farm-sim-caption">물레방아 효과 · 총 제작 시간 {waterwheelBonusMinutes(state,object)}분 단축 (최소 1초)</p>}
    {kind==='waterwheel'&&<section className="farm-building-info"><h3>인접 생산 건물 시간 −{buildingLevel(object)}분</h3><p>변이 맞닿은 주방·공방·빵집·제분소·양봉장·정육점에 적용돼요. 대각선은 제외됩니다.</p><p>작업 시작 시 총 제작 시간을 {buildingLevel(object)}분 줄여요. 최소 1초이며, 여러 물레방아 중 가장 높은 레벨 하나만 적용돼요.</p><p>이미 시작한 작업의 시간은 바뀌지 않아요.</p></section>}
-   {(isProductionUpgradeable(kind)||kind==='waterwheel')&&<details open={sim.upgradeJobs[object.id]?true:undefined}><summary>{kind==='waterwheel'?`물레방아 Lv. ${buildingLevel(object)} · 효과 업그레이드`:`최대 제작량 ${buildingLevel(object)*2}개 · 생산량 업그레이드`}</summary><BuildingUpgradePanel object={object} state={state} now={now} onAction={onAction}/></details>}
+   {(isProductionUpgradeable(kind)||kind==='waterwheel')&&<BuildingUpgradePanel object={object} state={state} now={now} onAction={onAction}/>}
    {kind==='store'&&<FoodSalePanel state={state} onAction={onAction}/>}
    {kind==='agriShop'&&<FarmSupplyShop state={state} onAction={onAction}/>}
    {kind==='seedShop'&&<FarmTradePanel kind={kind} state={state} onAction={onAction} lastPurchasedSeed={lastPurchasedSeed}/>}

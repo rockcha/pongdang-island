@@ -1,6 +1,6 @@
 import {cropKinds} from './crop-catalog'
 import {animalGoods} from './animal-catalog'
-import {farmProducts,farmRecipes,isRecipeId,isFinishedFood,finishedFoods,type RecipeIngredient} from './food-catalog'
+import {farmProducts,farmRecipes,isRecipeId,isFinishedFood,deliverableGoods,type RecipeIngredient} from './food-catalog'
 import type {TopviewState} from './topview-model'
 
 export const isRetiredTradeBuilding=(kind:string)=>kind==='market'||kind==='processed'
@@ -15,7 +15,7 @@ export function farmSaleCategory(good:RecipeIngredient):SaleCategory{
  if(isRecipeId(good))return isFinishedFood(good)?'food':'products'
  return 'products'
 }
-export const goodsForDelivery=(inventory:Record<RecipeIngredient,number>)=>finishedFoods.filter(good=>inventory[good]>0)
+export const goodsForDelivery=(inventory:Record<RecipeIngredient,number>)=>deliverableGoods.filter(good=>inventory[good]>0)
 export function goodsForSale(category:SaleCategory,inventory:Record<RecipeIngredient,number>){
  const goods:RecipeIngredient[]=[...cropKinds,...Object.keys(farmProducts) as (keyof typeof farmProducts)[]]
  return goods.filter(good=>farmSaleCategory(good)===category&&(!isRecipeId(good)||!('retired' in farmRecipes[good])||inventory[good]>0))

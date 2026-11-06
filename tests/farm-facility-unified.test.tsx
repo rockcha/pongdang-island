@@ -9,11 +9,11 @@ function setup(kind:FarmTool,level=1){
  render(<FarmProductionDialog object={object} state={state} message="" onAction={onAction} onClose={()=>{}} onStore={()=>{}} onMove={onMove}/>)
  return {onAction,onMove}
 }
-it('keeps management collapsed and reveals move controls when requested',()=>{
+it('shows building actions directly without a management menu',()=>{
  const {onMove}=setup('office')
- expect(screen.getByLabelText('건물 관리').closest('details')?.open).toBe(false)
- fireEvent.click(screen.getByLabelText('건물 관리'))
- expect(screen.getByLabelText('건물 관리').closest('details')?.open).toBe(true)
+ expect(screen.queryByLabelText('건물 관리')).toBeNull()
+ expect(screen.getByRole('group',{name:'건물 배치 관리'}).closest('details')).toBeNull()
+ expect(screen.getByRole('button',{name:'보관하기'})).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'이동하기'}))
  expect(onMove).toHaveBeenCalledOnce()
 })

@@ -3,10 +3,12 @@ export type {ProcessingBuilding} from './workshop-catalog'
 import type {CropKind} from './crop-catalog'
 import type {FarmAnimal} from './animal-catalog'
 import {meatGoods} from './butcher-catalog'
+import {textileProducts,textileRecipes} from './textile-catalog'
 
 const goodArt=(id:string)=>`/farm/art/v2/goods/${id}.png`
 const newFoodArt=(id:string)=>`/farm/art/v21/goods/${id}.png`
 export const farmProducts={
+ ...textileProducts,
  wholeWheatPorridge:{name:'통밀죽',price:40,image:'/farm/art/starter-foods-v1/wholeWheatPorridge.png'},
  steamedPotato:{name:'찐감자',price:50,image:'/farm/art/starter-foods-v1/steamedPotato.png'},
  roastedCarrot:{name:'구운 당근',price:50,image:'/farm/art/starter-foods-v1/roastedCarrot.png'},
@@ -66,6 +68,7 @@ export const millProducts=Object.keys(millRecipes) as MillProduct[]
 
 // Trial recipes: ingredients are reserved once at start, collected once after completion.
 export const farmRecipes={
+ ...textileRecipes,
  wholeWheatPorridge:{building:'kitchen',seconds:600,food:true,ingredients:[{good:'wheat',quantity:3}]},
  steamedPotato:{building:'kitchen',seconds:600,food:true,ingredients:[{good:'potato',quantity:3}]},
  roastedCarrot:{building:'kitchen',seconds:600,food:true,ingredients:[{good:'carrot',quantity:3}]},
@@ -106,12 +109,17 @@ export const farmRecipes={
  meatStew:{building:'advancedKitchen',seconds:3600,food:true,ingredients:[{good:'redMeat',quantity:2},{good:'potato',quantity:3},{good:'carrot',quantity:2},{good:'tomatoKetchup',quantity:2}]},
  chickenGratin:{building:'advancedKitchen',seconds:2700,food:true,ingredients:[{good:'chickenMeat',quantity:2},{good:'potato',quantity:3},{good:'cheese',quantity:1},{good:'cream',quantity:1}]},
  duckFriedRice:{building:'advancedKitchen',seconds:2700,food:true,ingredients:[{good:'duckMeat',quantity:2},{good:'rice',quantity:3},{good:'egg',quantity:3},{good:'carrot',quantity:2}]},
-} as const satisfies Record<string,{building:ProcessingBuilding;seconds:number;retired?:boolean;food?:boolean;category?:'sauce';output?:number;animal?:FarmAnimal;ingredients:readonly {good:RecipeIngredient;quantity:number}[]}>
+} as const satisfies Record<string,{building:ProcessingBuilding;seconds:number;retired?:boolean;food?:boolean;household?:boolean;category?:'sauce';output?:number;animal?:FarmAnimal;ingredients:readonly {good:RecipeIngredient;quantity:number}[]}>
 export type RecipeId=keyof typeof farmRecipes
 export const recipeIds=(Object.keys(farmRecipes) as RecipeId[]).filter(id=>!('retired' in farmRecipes[id]))
 export type FinishedFood={[K in RecipeId]:typeof farmRecipes[K] extends {food:true}?K:never}[RecipeId]
 export const finishedFoods=recipeIds.filter(id=>'food' in farmRecipes[id]&&farmRecipes[id].food) as FinishedFood[]
 export const isFinishedFood=(id:unknown):id is FinishedFood=>finishedFoods.some(food=>food===id)
+export type FinishedHouseholdGood={[K in RecipeId]:typeof farmRecipes[K] extends {household:true}?K:never}[RecipeId]
+export const finishedHouseholdGoods=recipeIds.filter(id=>'household' in farmRecipes[id]&&farmRecipes[id].household) as FinishedHouseholdGood[]
+export const deliverableGoods=[...finishedFoods,...finishedHouseholdGoods]
+export type DeliverableGood=typeof deliverableGoods[number]
+export const isDeliverableGood=(id:unknown):id is DeliverableGood=>deliverableGoods.some(good=>good===id)
 export const processedGoods=[...millProducts,...meatGoods,...Object.keys(farmRecipes) as RecipeId[]] as const
 export const isRecipeId=(id:unknown):id is RecipeId=>typeof id==='string'&&Object.hasOwn(farmRecipes,id)
 export function recipeUnlocked(id:RecipeId,animals:readonly FarmAnimal[]=['cow','chicken']){const recipe=farmRecipes[id];return !('retired' in recipe)&&(!('animal' in recipe)||animals.includes(recipe.animal))}

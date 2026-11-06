@@ -1,0 +1,7 @@
+.farm-placement-dust{animation:farm-placement-dust-fade .6s ease-out both}
+.farm-placement-dust-puff{animation:farm-placement-dust-spread .6s cubic-bezier(.16,.7,.3,1) both}
+.farm-placement-dust-ring{transform-box:fill-box;transform-origin:center;animation:farm-placement-dust-ring .6s ease-out both}
+@keyframes farm-placement-dust-fade{0%{opacity:0}12%,35%{opacity:.8}100%{opacity:0}}
+@keyframes farm-placement-dust-spread{0%{transform:translate(-5px,2px) scale(.65)}100%{transform:translate(16px,-7px) scale(1.15)}}
+@keyframes farm-placement-dust-ring{from{transform:scale(.7);opacity:.7}to{transform:scale(1.35);opacity:0}}
+@media(prefers-reduced-motion:reduce){.farm-placement-dust,.farm-placement-dust-puff,.farm-placement-dust-ring{animation:none;opacity:0}}

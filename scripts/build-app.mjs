@@ -32,6 +32,7 @@ try{
  await run('Generate title tiers','scripts/build-title-tiers.mjs')
  await run('Generate voyage artwork references','scripts/build-voyage-bait-art.mjs')
  await run('Generate push presentation','scripts/build-push-presentation.mjs')
+ await run('Check farm server rules','scripts/build-farm-engine.mjs',['--check'])
  await run('TypeScript','node_modules/typescript/bin/tsc',['-b','--pretty','false'])
  await run('Vite + PWA','node_modules/vite/bin/vite.js',['build',...(args.length?['--outDir',output]:[])])
  const measureStart=performance.now()

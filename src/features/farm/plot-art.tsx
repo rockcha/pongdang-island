@@ -1,6 +1,8 @@
 import {useId} from 'react'
 import type {CropKind} from './crop-catalog'
-import {farmPlotImages,farmPlotViewBox} from './plot-art-assets'
+import {farmPlotImages as basePlotImages,farmPlotViewBox} from './plot-art-assets'
+import {textileCropArt} from './textile-catalog'
+const farmPlotImages={...basePlotImages,'cotton-ready':textileCropArt.ready}
 
 export type PlotStage='empty'|'growing'|'ready'|'rotten'
 export function plotGrowthImage(stage:PlotStage,crop:CropKind,progress=0){

@@ -16,17 +16,18 @@ import {RelicEffectText} from './relic-equipment-slot'
 function restore(key:string):RelicRecyclingRequest|null{
  try{
   const r=JSON.parse(localStorage.getItem(key)??'null') as RelicRecyclingRequest|null
-  if(!r||!['recombine','dismantle'].includes(r.action)||typeof r.operation!=='string'||!r.operation||!Array.isArray(r.inputs)||r.inputs.length<1||r.inputs.length>6)return null
-  if(r.inputs.some(i=>typeof i?.id!=='string'||!i.id||!Number.isInteger(i.quantity)||i.quantity<1||i.quantity>6))return null
+  if(!r||!['recombine','dismantle'].includes(r.action)||typeof r.operation!=='string'||!r.operation||!Array.isArray(r.inputs)||r.inputs.length<1||r.inputs.length>8)return null
+  if(r.inputs.some(i=>typeof i?.id!=='string'||!i.id||!Number.isInteger(i.quantity)||i.quantity<1||i.quantity>8))return null
   const total=r.inputs.reduce((n,i)=>n+i.quantity,0)
-  return (r.action==='recombine'?[3,6].includes(total):total===1)?r:null
+  // Keep old six-copy requests recoverable: their server receipt may predate the nerf.
+  return (r.action==='recombine'?[3,6,8].includes(total):total===1)?r:null
  }catch{return null}
 }
 function recyclingError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
  if(message.includes('RELIC_MATERIAL_UNAVAILABLE'))return '재료 수량이 바뀌었어요. 장착한 1개를 제외하고 다시 선택해주세요.'
  if(message.includes('RELIC_RECOMBINATION_GRADE'))return '세공하지 않은 희귀·특급·신화 유물만 같은 등급끼리 재조합할 수 있어요.'
- if(message.includes('RELIC_RECOMBINATION_COUNT'))return '희귀·특급은 6개, 신화는 3개를 선택해주세요.'
+ if(message.includes('RELIC_RECOMBINATION_COUNT'))return '희귀는 8개, 특급은 6개, 신화는 3개를 선택해주세요.'
  if(message.includes('RELIC_CRAFTED_NOT_OWNED'))return '이미 분해했거나 보유하지 않은 세공 유물이에요.'
  if(message.includes('RELIC_RECOMBINATION_EMPTY'))return '현재 받을 수 있는 결과 유물이 없어요. 재료는 소모되지 않았어요.'
  if(message.includes('OPERATION_CONFLICT'))return '이전 요청과 내용이 달라요. 보유 상태를 확인한 뒤 다시 선택해주세요.'
@@ -89,7 +90,7 @@ export function useRelicRecycling({storageKey,state,onState}:{storageKey:string;
 export function RelicRecombination({state,disabled,onRecombine,resetKey}:{state:RelicState;disabled:boolean;onRecombine:(inputs:RelicMaterial[])=>void;resetKey?:string}){
  const [grade,setGrade]=useState<'rare'|'epic'|'mythic'>('rare'),[counts,setCounts]=useState<Record<string,number>>({})
  const [inspected,setInspected]=useState<Relic|null>(null)
- const required=grade==='mythic'?3:6
+ const required=grade==='rare'?8:grade==='mythic'?3:6
  const candidates=state.relics.filter(r=>!r.crafted&&r.rarity===grade&&relicQuantity(r)>0)
  const available=(r:Relic)=>Math.max(0,relicQuantity(r)-(r.id===state.equippedId?1:0))
  const autoCandidates=candidates.filter(r=>available(r)>0)
@@ -107,8 +108,8 @@ export function RelicRecombination({state,disabled,onRecombine,resetKey}:{state:
  const slots=selected.flatMap(input=>Array.from({length:input.quantity},()=>candidates.find(r=>r.id===input.id)!))
  function change(r:Relic,delta:number){const current=selected.find(i=>i.id===r.id)?.quantity??0;setCounts({...counts,[r.id]:Math.max(0,Math.min(available(r),current+delta,required-total+current))})}
  return <section aria-label="유물 재조합" className="relic-recombine-panel">
-  <div className="relic-recombine-plan"><div><h3 className="flex items-center gap-2 text-sm font-semibold"><Recycle className="size-4"/>유물 재조합</h3><p className="mt-2 text-[11px] leading-5 text-muted-foreground">희귀·특급은 6개로 상위 등급 1개를, 신화는 3개로 무작위 신화 유물 1개를 얻어요.</p></div>
-  <div className="flex items-center gap-3 rounded-xl border border-border p-3"><IslandSelect label="재조합 재료 등급" disabled={disabled} value={grade} onChange={value=>{setGrade(value);setCounts({})}} className="flex-1" options={[{value:'rare',label:'희귀 6개'},{value:'epic',label:'특급 6개'},{value:'mythic',label:'신화 3개'}]}/><ArrowRight className="size-4 text-primary"/><span className="text-xs font-medium">무작위 {rarities[target].label} 1개</span></div>
+  <div className="relic-recombine-plan"><div><h3 className="flex items-center gap-2 text-sm font-semibold"><Recycle className="size-4"/>유물 재조합</h3><p className="mt-2 text-[11px] leading-5 text-muted-foreground">희귀 8개로 특급 1개를, 특급 6개로 신화 1개를 얻어요. 신화는 3개로 무작위 신화 유물 1개를 얻어요.</p></div>
+  <div className="flex items-center gap-3 rounded-xl border border-border p-3"><IslandSelect label="재조합 재료 등급" disabled={disabled} value={grade} onChange={value=>{setGrade(value);setCounts({})}} className="flex-1" options={[{value:'rare',label:'희귀 8개'},{value:'epic',label:'특급 6개'},{value:'mythic',label:'신화 3개'}]}/><ArrowRight className="size-4 text-primary"/><span className="text-xs font-medium">무작위 {rarities[target].label} 1개</span></div>
   <div className="relic-recombine-selection"><span role="status" aria-label="선택한 재조합 재료">선택 {total} / {required}개</span><div className="relic-recombine-actions"><button type="button" className="relic-recombine-auto" title={`${rarities[grade].label} 유물을 최대 ${required}개 채워요. 장착한 1개와 세공 유물은 제외돼요.`} disabled={disabled||!autoCandidates.length} onClick={autoFill}>자동 넣기</button><button type="button" disabled={disabled||!total} onClick={()=>setCounts({})}>초기화</button></div></div>
   <div className="relic-recombine-slots" data-count={required} aria-label={`선택한 유물 ${required}칸`}>{Array.from({length:required},(_,index)=>{const relic=slots[index];return relic?<button key={index} className="relic-recombine-slot" data-filled="true" style={{background:`color-mix(in srgb, ${rarities[relic.rarity].effectColor} 14%, var(--card))`,borderColor:`color-mix(in srgb, ${rarities[relic.rarity].effectColor} 30%, var(--border))`}} aria-label={`${relic.name} 1개 선택 해제`} title={`${relic.name} · 눌러서 1개 빼기`} disabled={disabled} onClick={()=>change(relic,-1)}><RelicArtwork relic={relic} className="size-8"/></button>:<span key={index} className="relic-recombine-slot" data-filled="false"><Plus size={13}/></span>})}</div>
   </div>

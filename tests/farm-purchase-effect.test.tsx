@@ -11,7 +11,8 @@ it('celebrates each confirmed batch once, replaces a recent receipt, and clears 
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  click('상점');click('장식')
  fireEvent.change(screen.getByRole('spinbutton',{name:'오리배 구매 수량'}),{target:{value:'3'}})
- click('오리배 3개 구매 · 750 G')
+ click('오리배 3개 구매 · 2,700 G')
+ expect(document.querySelector('[data-farm-gold-spent="2700"]')).toBeTruthy()
  const receipt=document.querySelector('.farm-purchase-effect')!
  expect(receipt.textContent).toContain('오리배');expect(receipt.textContent).toContain('× 3')
  expect(receipt.querySelector('svg')).toBeTruthy()
@@ -19,7 +20,7 @@ it('celebrates each confirmed batch once, replaces a recent receipt, and clears 
  expect(playPurchaseSound).toHaveBeenCalledTimes(1)
  act(()=>vi.advanceTimersByTime(1200))
  fireEvent.change(screen.getByRole('spinbutton',{name:'오리배 구매 수량'}),{target:{value:'1'}})
- click('오리배 구매 · 250 G')
+ click('오리배 구매 · 900 G')
  expect(document.querySelectorAll('.farm-purchase-effect')).toHaveLength(1)
  expect(document.querySelector('.farm-purchase-effect')?.textContent).toContain('× 1')
  expect(playPurchaseSound).toHaveBeenCalledTimes(2)

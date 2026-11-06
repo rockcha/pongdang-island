@@ -20,13 +20,14 @@ beforeEach(async()=>{
  await db.query("select set_config('request.jwt.claim.sub',$1,true)",[uid])
  await db.query('insert into public.player_wallets(user_id,gold) values($1,0) on conflict(user_id) do update set gold=0',[uid])
  await db.query('insert into app_private.player_fishing_relics(user_id,relic_id,quantity) select $1,id,6 from public.fishing_relics where enabled',[uid])
+ await db.query("update app_private.player_fishing_relics p set quantity=8 from public.fishing_relics r where p.user_id=$1 and p.relic_id=r.id and r.rarity='rare'",[uid])
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
-it('exchanges six mixed rare copies for one enabled epic, keeps discoveries, and replays without another roll',async()=>{
- const rare=relics.filter(r=>r.rarity==='rare').slice(0,2),op=crypto.randomUUID(),inputs=rare.map(r=>({id:r.id,quantity:3}))
+it('exchanges eight mixed rare copies for one enabled epic, keeps discoveries, and replays without another roll',async()=>{
+ const rare=relics.filter(r=>r.rarity==='rare').slice(0,2),op=crypto.randomUUID(),inputs=rare.map(r=>({id:r.id,quantity:4}))
  const first=await call('recombine',inputs,op),reward=first.relics.find(r=>r.id===first.recycling.receivedIds[0])
  expect(first.recycling).toMatchObject({action:'recombine',cost:0,unequipped:false});expect(reward.rarity).toBe('epic');expect(reward.quantity).toBe(7)
- for(const r of rare)expect(await quantity(r.id)).toBe(3)
+ for(const r of rare)expect(await quantity(r.id)).toBe(4)
  const repeat=await call('recombine',inputs.toReversed(),op)
  expect(repeat.replayed).toBe(true);expect(repeat.recycling).toEqual(first.recycling);expect(await quantity(reward.id)).toBe(7)
  expect((await db.query('select count(*)::int n from app_private.player_fishing_relic_discoveries where user_id=$1',[uid])).rows[0].n).toBe(3)
@@ -41,12 +42,35 @@ it('accepts duplicate copies and produces a mythic from exactly six epic origina
  expect(await quantity(material.id)).toBe(0)
  await reject('recombine',[{id:material.id,quantity:6}],'RELIC_MATERIAL_UNAVAILABLE')
 })
-it('protects the equipped copy while allowing six spare copies',async()=>{
+it('rejects new six-copy rare upgrades and eight-copy epic upgrades without consuming materials',async()=>{
+ const rare=relics.find(r=>r.rarity==='rare'),epic=relics.find(r=>r.rarity==='epic')
+ await reject('recombine',[{id:rare.id,quantity:6}],'RELIC_RECOMBINATION_COUNT')
+ await reject('recombine',[{id:epic.id,quantity:8}],'RELIC_RECOMBINATION_COUNT')
+ expect(await quantity(rare.id)).toBe(8);expect(await quantity(epic.id)).toBe(6)
+ expect(rare.sell_price*8).toBeGreaterThan(epic.sell_price)
+})
+it('accepts eight distinct rare originals and awards only one epic',async()=>{
+ const rare=relics.filter(r=>r.rarity==='rare').slice(0,8)
+ expect(rare).toHaveLength(8)
+ const result=await call('recombine',rare.map(r=>({id:r.id,quantity:1})))
+ expect(result.recycling.receivedIds).toHaveLength(1)
+ expect(result.relics.find(r=>r.id===result.recycling.receivedIds[0]).rarity).toBe('epic')
+ for(const r of rare)expect(await quantity(r.id)).toBe(7)
+})
+it('replays a historical six-rare receipt after the nerf without rerolling or consuming more copies',async()=>{
+ const rare=relics.find(r=>r.rarity==='rare'),epic=relics.find(r=>r.rarity==='epic'),op=crypto.randomUUID(),inputs=[{id:rare.id,quantity:6}]
+ const result={action:'recombine',cost:0,consumed:inputs,receivedIds:[epic.id],unequipped:false}
+ await db.query("insert into app_private.relic_recycling_operations(user_id,operation_id,action,inputs,result) values($1,$2,'recombine',$3,$4)",[uid,op,JSON.stringify(inputs),JSON.stringify(result)])
+ const replay=await call('recombine',inputs,op)
+ expect(replay.replayed).toBe(true);expect(replay.recycling).toEqual(result)
+ expect(await quantity(rare.id)).toBe(8);expect(await quantity(epic.id)).toBe(6)
+})
+it('protects the equipped copy while allowing eight spare rare copies',async()=>{
  const material=relics.find(r=>r.rarity==='rare')
  await db.query('insert into app_private.player_relic_loadouts(user_id,relic_id) values($1,$2)',[uid,material.id])
- await reject('recombine',[{id:material.id,quantity:6}],'RELIC_MATERIAL_UNAVAILABLE')
- await db.query('update app_private.player_fishing_relics set quantity=7 where user_id=$1 and relic_id=$2',[uid,material.id])
- const result=await call('recombine',[{id:material.id,quantity:6}])
+ await reject('recombine',[{id:material.id,quantity:8}],'RELIC_MATERIAL_UNAVAILABLE')
+ await db.query('update app_private.player_fishing_relics set quantity=9 where user_id=$1 and relic_id=$2',[uid,material.id])
+ const result=await call('recombine',[{id:material.id,quantity:8}])
  expect(await quantity(material.id)).toBe(1);expect(result.equippedId).toBe(material.id)
 })
 it('rejects wrong grades, disabled relics, fabricated counts and unowned crafted relics without losing materials',async()=>{
@@ -59,7 +83,7 @@ it('rejects wrong grades, disabled relics, fabricated counts and unowned crafted
  await reject('recombine',[{id:disabled,quantity:6}],'RELIC_RECOMBINATION_GRADE')
  await reject('recombine',[{id:'crafted-fake',quantity:6}],'RELIC_RECOMBINATION_GRADE')
  await reject('dismantle',[{id:'crafted-fake',quantity:1}],'RELIC_CRAFTED_NOT_OWNED')
- expect(await quantity(rare.id)).toBe(6)
+ expect(await quantity(rare.id)).toBe(8)
 })
 it('dismantles an equipped crafted relic for free, returns both originals exactly once and preserves existing discoveries',async()=>{
  const a=relics.find(r=>r.id==='shell-hourglass'),b=relics.find(r=>r.id==='fish-calling-bell'),op=crypto.randomUUID()
@@ -67,9 +91,9 @@ it('dismantles an equipped crafted relic for free, returns both originals exactl
  await db.query('insert into app_private.player_relic_loadouts(user_id,crafted_id) values($1,$2)',[uid,id])
  const input=[{id,quantity:1}],result=await call('dismantle',input,op)
  expect(result.recycling).toMatchObject({cost:0,receivedIds:[a.id,b.id],unequipped:true});expect(result.equippedId).toBeNull()
- expect(result.relics.some(r=>r.id===id)).toBe(false);expect(await quantity(a.id)).toBe(7);expect(await quantity(b.id)).toBe(7)
+ expect(result.relics.some(r=>r.id===id)).toBe(false);expect(await quantity(a.id)).toBe(9);expect(await quantity(b.id)).toBe(9)
  expect((await call('dismantle',input,op)).replayed).toBe(true)
- expect(await quantity(a.id)).toBe(7)
+ expect(await quantity(a.id)).toBe(9)
  await reject('dismantle',input,'RELIC_CRAFTED_NOT_OWNED')
  await db.exec('savepoint original_craft')
  await db.exec('set role authenticated');await expect(db.query('select public.craft_relic($1,$2,$3)',[a.id,b.id,op])).rejects.toThrow('OPERATION_CONFLICT');await db.exec('rollback to original_craft;reset role;release savepoint original_craft')

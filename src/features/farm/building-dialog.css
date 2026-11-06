@@ -37,10 +37,11 @@
 .farm-compact-dialog .farm-recipe-ingredients small{font-size:11px;line-height:1.5;margin-top:3px}
 .farm-compact-dialog .farm-recipe-ingredients [data-enough=false] small{color:#a76b48}
 .farm-compact-dialog .farm-recipe-controls{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
-.farm-compact-dialog .farm-recipe-controls>div{display:grid;grid-template-columns:44px minmax(44px,1fr) 44px 64px;gap:6px}
+.farm-compact-dialog .farm-recipe-controls>div{display:grid;grid-template-columns:40px 72px 40px 56px;justify-content:center;gap:6px}
 .farm-compact-dialog .farm-recipe-controls button,.farm-compact-dialog .farm-recipe-controls input{width:100%;min-width:0;min-height:44px;height:44px;font-size:13px}
 .farm-compact-dialog .farm-recipe-controls .farm-recipe-submit,.farm-compact-dialog .farm-sim-submit,.farm-compact-dialog .farm-sim-primary,.farm-compact-dialog .farm-research-start{min-height:48px;border-radius:12px;font-size:14px}
-.farm-compact-dialog .farm-sim-quantity-controls{grid-template-columns:44px minmax(44px,1fr) 44px 64px;gap:6px;margin-top:14px}
+.farm-compact-dialog .farm-sim-quantity-controls{grid-template-columns:40px 72px 40px minmax(56px,1fr);gap:6px;margin-top:14px}
+.farm-compact-dialog .farm-sim-quantity-controls>button:nth-child(4){width:56px;justify-self:start}
 .farm-compact-dialog .farm-sim-quantity-controls button,.farm-compact-dialog .farm-sim-quantity-controls input{min-height:44px;height:44px;font-size:13px}
 .farm-compact-dialog .farm-sim-quantity-controls button:last-child{min-height:48px}
 .farm-compact-dialog .farm-cooking-art>.farm-good-icon,.farm-compact-dialog .farm-sim-feature>.farm-good-icon,.farm-compact-dialog .farm-crop-hero{width:var(--farm-detail-art);height:var(--farm-detail-art)}

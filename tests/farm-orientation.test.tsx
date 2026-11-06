@@ -1,3 +1,4 @@
+import {farmMapWidth,farmMapHeight,farmCellCenter} from './helpers/farm-map'
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
@@ -40,8 +41,8 @@ it('offers rotation and mirroring only for a placed bridge and preserves both th
  bridge=screen.getByRole('button',{name:'나무다리 1×3 (20,3)'})
  expect(bridge.querySelector('[data-art-rotation="90"]')).toBeTruthy();expect(bridge.querySelector('[data-art-flipped]')).toBeNull()
  const map=container.querySelector('.top-farm-map')!,viewport=container.querySelector('.top-farm-viewport')!
- vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,width:1120,height:960,right:1120,bottom:960,x:0,y:0,toJSON:()=>({})})
- const pointer=(type:string,target:Element,x:number,y:number)=>fireEvent(target,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId:1,pointerType:'mouse'}))
+ vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,width:farmMapWidth,height:farmMapHeight,right:farmMapWidth,bottom:farmMapHeight,x:0,y:0,toJSON:()=>({})})
+ const pointer=(type:string,target:Element,x:number,y:number)=>fireEvent(target,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:farmCellCenter(x),clientY:farmCellCenter(y),button:0}),{pointerId:1,pointerType:'mouse'}))
  pointer('pointerdown',bridge,21,3);pointer('pointermove',viewport,21,5);pointer('pointerup',viewport,21,5)
  expect(screen.getByRole('button',{name:'나무다리 1×3 (20,5)'}).querySelector('[data-art-rotation="90"]')).toBeTruthy()
 })

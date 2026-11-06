@@ -1,7 +1,7 @@
 // A larger seamless repeat avoids placing the same grass mark on every tile.
 const tufts=[{x:23,y:29,r:-12},{x:98,y:18,r:8},{x:184,y:42,r:-6},{x:55,y:91,r:12},{x:142,y:107,r:-9},{x:218,y:124,r:5},{x:17,y:161,r:7},{x:89,y:179,r:-8},{x:177,y:169,r:10}]
-export function FarmGrassPattern(){
- return <pattern id="farm-grass" width="240" height="200" patternUnits="userSpaceOnUse">
+export function FarmGrassPattern({id='farm-grass'}:{id?:string}={}){
+ return <pattern id={id} width="240" height="200" patternUnits="userSpaceOnUse">
   <rect width="240" height="200" fill="#99a780"/>
   <ellipse cx="71" cy="44" rx="48" ry="25" fill="#c3c8a0" opacity=".13"/>
   <ellipse cx="180" cy="146" rx="41" ry="29" fill="#798f68" opacity=".09"/>

@@ -1,3 +1,4 @@
+import {farmMapWidth,farmMapHeight,farmCellCenter} from './helpers/farm-map'
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
@@ -8,12 +9,12 @@ const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact
 function setup(){
  const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const map=result.container.querySelector('.top-farm-map')!,viewport=result.container.querySelector('.top-farm-viewport')!
- vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:1120,bottom:960,width:1120,height:960,x:0,y:0,toJSON:()=>({})})
- const pointer=(type:string,x:number,y:number,id=1,touch=false)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId:id,pointerType:touch?'touch':'mouse'}))
+ vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:farmMapWidth,bottom:farmMapHeight,width:farmMapWidth,height:farmMapHeight,x:0,y:0,toJSON:()=>({})})
+ const pointer=(type:string,x:number,y:number,id=1,touch=false)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:farmCellCenter(x),clientY:farmCellCenter(y),button:0}),{pointerId:id,pointerType:touch?'touch':'mouse'}))
  const owned=(x:number,y:number)=>result.container.querySelector(`[data-farm-cell="${x},${y}"]`)?.getAttribute('data-farm-owned')==='true'
  return {...result,pointer,owned}
 }
-function buyFive(){click('이동하기');click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 250 G');click('땅 놓기')}
+function buyFive(){click('이동하기');click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 500골드');click('땅 놓기')}
 it('offers three land actions and hides placement targets and previews when no land is in stock',()=>{
  const {container,pointer,owned}=setup()
  click('땅 0칸 보유')
@@ -25,7 +26,7 @@ it('offers three land actions and hides placement targets and previews when no l
  pointer('pointerdown',3,4);pointer('pointermove',2,4)
  expect(container.querySelector('[data-land-preview]')).toBeNull()
  pointer('pointerup',2,4);expect(owned(3,4)).toBe(false)
- click('땅 구매하기');click('1칸');click('1칸 구매 · 50 G')
+ click('땅 구매하기');fireEvent.change(screen.getByRole('textbox',{name:'땅 구매 수량'}),{target:{value:'1'}});click('1칸 구매 · 100골드')
  expect(screen.getByRole('button',{name:'땅 3,4 놓기'})).toBeTruthy()
  pointer('pointerdown',3,4);pointer('pointerup',3,4)
  expect(owned(3,4)).toBe(true)
@@ -44,11 +45,11 @@ it('previews an entire drag and commits it once on release, with one undo and no
  pointer('pointerup',1,4)
  expect(owned(3,4)).toBe(true);expect(owned(2,4)).toBe(true);expect(owned(1,4)).toBe(true)
  expect(screen.getByRole('button',{name:'땅 2칸 보유'})).toBeTruthy()
- expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,750')
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,500')
  click('한 단계 되돌리기')
  expect(owned(3,4)).toBe(false);expect(owned(2,4)).toBe(false);expect(owned(1,4)).toBe(false)
  expect(screen.getByRole('button',{name:'땅 5칸 보유'})).toBeTruthy()
- expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,750')
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,500')
  expect(screen.getByRole('button',{name:'땅 놓기'}).getAttribute('aria-pressed')).toBe('true')
 })
 it('recovers a stroke and restores all recovered cells with a single undo',()=>{
@@ -74,7 +75,7 @@ it('cancels a draft on Escape, pointer cancellation, or a second finger without 
 })
 it('does not allow undo to cross a land purchase and refunds no gold when land is recovered',()=>{
  const {pointer}=setup();buyFive();pointer('pointerdown',3,4);pointer('pointerup',3,4)
- click('땅 구매하기');click('1칸');click('1칸 구매 · 50 G')
+ click('땅 구매하기');fireEvent.change(screen.getByRole('textbox',{name:'땅 구매 수량'}),{target:{value:'1'}});click('1칸 구매 · 100골드')
  expect(screen.getByRole('button',{name:'한 단계 되돌리기'})).toHaveProperty('disabled',true)
  click('땅 회수하기');pointer('pointerdown',3,4);pointer('pointerup',3,4)
  expect(screen.getByRole('button',{name:'땅 6칸 보유'})).toBeTruthy()

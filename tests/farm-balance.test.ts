@@ -22,7 +22,7 @@ it('keeps the proposed price and time bounds, starter crops and warehouse',()=>{
  expect(warehouseCapacity(state)).toBe(120)
  for(const id of finishedFoods)expect(farmProducts[id].price).toBeGreaterThan(0)
  expect(Math.max(...finishedFoods.map(id=>farmProducts[id].price))).toBe(1340)
- for(const id of recipeIds){expect(farmRecipes[id].seconds).toBeGreaterThanOrEqual(600);expect(farmRecipes[id].seconds).toBeLessThanOrEqual(3600)}
+ for(const id of recipeIds){expect(farmRecipes[id].seconds).toBeGreaterThanOrEqual(600);expect(farmRecipes[id].seconds).toBeLessThanOrEqual('household' in farmRecipes[id]?10800:3600)}
  for(const r of Object.values(millRecipes))expect(r.seconds).toBeGreaterThanOrEqual(600)
  for(const a of Object.values(farmAnimals)){expect(a.seconds).toBeGreaterThanOrEqual(600);expect(a.seconds).toBeLessThanOrEqual(3600)}
  expect(farmCrops.strawberry).toMatchObject({growSeconds:14400,yield:12,seedPrice:72})

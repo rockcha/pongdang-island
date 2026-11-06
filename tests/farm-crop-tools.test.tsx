@@ -1,3 +1,4 @@
+import {farmMapWidth,farmMapHeight,farmCellCenter} from './helpers/farm-map'
 import {act,cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
@@ -12,8 +13,8 @@ it('taps three plots to plant seeds, grows for ten seconds, then harvests concur
  vi.useFakeTimers()
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const map=container.querySelector('.top-farm-map')!,viewport=container.querySelector('.top-farm-viewport')!
- vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:1120,bottom:960,width:1120,height:960,x:0,y:0,toJSON:()=>({})})
- const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId:1,pointerType:'mouse'}))
+ vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:farmMapWidth,bottom:farmMapHeight,width:farmMapWidth,height:farmMapHeight,x:0,y:0,toJSON:()=>({})})
+ const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:farmCellCenter(x),clientY:farmCellCenter(y),button:0}),{pointerId:1,pointerType:'mouse'}))
  click('농사');expect(screen.getByLabelText('보유 종자 4개')).toBeTruthy();click('씨앗 심기');click('밀 4개')
  expect(screen.queryByRole('dialog',{name:'씨앗 심기'})).toBeNull()
  pointer('pointermove',9,13)

@@ -1,8 +1,9 @@
+import './product-categories.css'
 import {TopviewArt} from './topview-art'
 import {useState} from 'react'
 import {ArrowLeft,BookOpen,ChevronRight,Search} from 'lucide-react'
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
-import {finishedFoods,farmRecipes,isRecipeId,millRecipes,millProducts,type MillProduct} from './food-catalog'
+import {deliverableGoods,isFinishedFood,isDeliverableGood,farmRecipes,isRecipeId,millRecipes,millProducts,type MillProduct} from './food-catalog'
 import {farmGoods,type FarmGood} from './farm-simulation'
 import {farmCrops,isCropKind} from './crop-catalog'
 import {farmAnimals,farmAnimalKinds,ANIMAL_PRODUCTION_OUTPUT} from './animal-catalog'
@@ -15,19 +16,21 @@ import './cookbook.css'
 
 export function FarmCookbook({state,onClose,onNavigate}:{state:TopviewState;onClose:()=>void;onNavigate?:(kind:FarmTool)=>void}){
  const [query,setQuery]=useState(''),[path,setPath]=useState<FarmGood[]>([])
- const selected=path.at(-1),foods=finishedFoods.filter(id=>farmGoods[id].name.includes(query.trim())).sort((a,b)=>farmGoods[a].price-farmGoods[b].price)
+ const [category,setCategory]=useState<'food'|'household'>('food')
+ const selected=path.at(-1),foods=deliverableGoods.filter(id=>(category==='food'?isFinishedFood(id):!isFinishedFood(id))&&farmGoods[id].name.includes(query.trim())).sort((a,b)=>farmGoods[a].price-farmGoods[b].price)
  const open=(good:FarmGood)=>setPath(previous=>[...previous,good])
  return <Dialog open onOpenChange={open=>{if(!open)onClose()}}><DialogContent className="farm-cookbook">
-  <DialogHeader><DialogTitle><BookOpen size={20}/>요리 도감</DialogTitle><DialogDescription>요리부터 재료의 획득 방법까지 살펴보세요.</DialogDescription></DialogHeader>
+  <DialogHeader><DialogTitle><BookOpen size={20}/>제작 도감</DialogTitle><DialogDescription>식품과 생활용품의 제작법부터 재료의 획득 방법까지 살펴보세요.</DialogDescription></DialogHeader>
   {selected?<>
-   <nav className="farm-cookbook-nav"><button onClick={()=>setPath(p=>p.slice(0,-1))}><ArrowLeft size={16}/>{path.length>1?farmGoods[path[path.length-2]].name:'요리 목록'}</button>{path.length>1&&<button onClick={()=>setPath([])}>전체 요리</button>}</nav>
+   <nav className="farm-cookbook-nav"><button onClick={()=>setPath(p=>p.slice(0,-1))}><ArrowLeft size={16}/>{path.length>1?farmGoods[path[path.length-2]].name:'제작 목록'}</button>{path.length>1&&<button onClick={()=>setPath([])}>전체 제작품</button>}</nav>
    <div className="farm-cookbook-detail" key={selected}>
-    <header><FarmGoodIcon good={selected}/><div><h3>{farmGoods[selected].name}</h3><span>보유 {state.simulation.inventory[selected]}개</span>{finishedFoods.some(id=>id===selected)&&<p>개당 판매가 <FarmGold amount={farmGoods[selected].price}/></p>}</div></header>
+    <header><FarmGoodIcon good={selected}/><div><h3>{farmGoods[selected].name}</h3><span>보유 {state.simulation.inventory[selected]}개</span>{isDeliverableGood(selected)&&<p>개당 판매가 <FarmGold amount={farmGoods[selected].price}/></p>}</div></header>
     <Acquisition good={selected} state={state} onSelect={open} onNavigate={onNavigate}/>
    </div>
   </>:<>
-   <label className="farm-cookbook-search"><Search size={17}/><input aria-label="요리 이름 검색" placeholder="요리 이름 검색" value={query} onChange={e=>setQuery(e.target.value)}/><span>{foods.length}종</span></label>
-   <div className="farm-cookbook-grid">{foods.map(id=><button key={id} onClick={()=>open(id)} aria-label={`${farmGoods[id].name} 제작법`}><FarmGoodIcon good={id}/><strong>{farmGoods[id].name}</strong><FarmGold amount={farmGoods[id].price}/></button>)}{!foods.length&&<p>검색한 요리가 없어요.</p>}</div>
+   <nav className="farm-product-categories" aria-label="제작품 분류"><button aria-pressed={category==='food'} onClick={()=>{setCategory('food');setQuery('')}}>식품</button><button aria-pressed={category==='household'} onClick={()=>{setCategory('household');setQuery('')}}>생활용품</button></nav>
+   <label className="farm-cookbook-search"><Search size={17}/><input aria-label="제작품 이름 검색" placeholder="제작품 이름 검색" value={query} onChange={e=>setQuery(e.target.value)}/><span>{foods.length}종</span></label>
+   <div className="farm-cookbook-grid">{foods.map(id=><button key={id} onClick={()=>open(id)} aria-label={`${farmGoods[id].name} 제작법`}><FarmGoodIcon good={id}/><strong>{farmGoods[id].name}</strong><FarmGold amount={farmGoods[id].price}/></button>)}{!foods.length&&<p>검색한 제작품이 없어요.</p>}</div>
   </>}
  </DialogContent></Dialog>
 }

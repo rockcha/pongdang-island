@@ -1,5 +1,7 @@
 // Production facilities share one definition across shop, artwork, dialogs and status.
 export const farmWorkshops={
+ textileMill:{name:'방직 공방',price:3000,purchaseLimit:Infinity,purpose:'목화를 면직물로, 양털을 털실과 펠트로 가공해요. 재봉 공방에서 생활용품을 만들 때 사용해요.',pickerLabel:'만들 직물',maxOutput:2,nextFacilities:['sewingWorkshop'],image:'/farm/art/textiles-v1/textileMill.png'},
+ sewingWorkshop:{name:'재봉 공방',price:4000,purchaseLimit:Infinity,purpose:'면직물·털실·펠트로 수건과 목도리, 인형과 담요를 만들어요. 완성한 생활용품은 농장 납품소에 납품해요.',pickerLabel:'만들 생활용품',maxOutput:2,nextFacilities:['store'],image:'/farm/art/textiles-v1/sewingWorkshop.png'},
  apiary:{name:'양봉장',price:2000,purchaseLimit:Infinity,purpose:'벌들이 모은 꿀을 수확해 음료와 과자를 만들어요.',pickerLabel:'생산할 꿀',maxOutput:2,nextFacilities:['dairy','bakery','mediumBakery'],image:'/farm/art/honey-v1/apiary.png'},
  dairy:{name:'유제품 공방',price:2000,purchaseLimit:Infinity,purpose:'우유로 유제품과 음료를 만들어요.',pickerLabel:'만들 유제품',maxOutput:2,nextFacilities:['store'],image:'/farm/art/v19/buildings/dairy.png'},
  bakery:{name:'작은 빵집',price:3000,purchaseLimit:Infinity,purpose:'밀가루·달걀·우유 등으로 과자와 빵을 만들어요.',pickerLabel:'만들 빵과 과자',maxOutput:2,nextFacilities:['store'],image:'/farm/art/v19/buildings/bakery.png'},

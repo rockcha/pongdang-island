@@ -13,7 +13,7 @@ const purposes:Partial<Record<FarmTool,string>>={
  livestockOffice:'동물 정원을 늘리고 더 많은 동물을 키울 수 있게 해요.',
  office:'새 밭을 개간할 수 있는 한도를 늘려요.',
  seedShop:'연구한 작물의 종자를 구매하고 밭에 심어요.',
- store:'완성된 빵·요리·디저트·음료를 납품하고 골드를 받아요.',
+ store:'완성된 식품과 생활용품을 납품하고 골드를 받아요.',
  processed:'빵·디저트·음료 등 완성된 음식만 주문에 맞춰 납품해요.',
  barn:'젖소와 양을 구매하고 키울 수 있는 거처예요.',
  coop:'닭과 오리를 구매하고 키울 수 있는 거처예요.',
@@ -27,7 +27,7 @@ export function BuildingInfo({object,state}:{object:TopviewObject;state:TopviewS
  if(kind==='warehouse')effects=[`이 건물 ${buildingCapacity(object)}개 · 전체 ${warehouseCapacity(state)}개`,'모든 생산물의 총수량으로 계산 · 레벨마다 용량 60개 증가']
  else if(kind==='livestockOffice')effects=[`동물 정원 +${buildingCapacity(object)}마리`,'한 채당 2마리 증가 · 여러 채 건설 가능','보관·준비 중인 동물도 정원에 포함']
  else if(kind==='office')effects=[`밭 한도 +${buildingCapacity(object)}칸`,'한 채당 4칸 증가 · 여러 채 건설 가능']
- else if(kind==='store')effects=['기본 제공 · 농장 전체에 1개만 보유','보관함에 있어도 보유 수에 포함 · 완성 음식만 수량을 선택해 납품']
+ else if(kind==='store')effects=['기본 제공 · 농장 전체에 1개만 보유','보관함에 있어도 보유 수에 포함 · 완성된 식품과 생활용품만 수량을 선택해 납품']
  else if(kind==='processed')effects=['생산 가능한 상품 중 매일 최대 5종 · 종류마다 5~10개 주문','건물별 별도 주문']
  else if(kind==='barn'||kind==='coop'){
   const animal=kind==='barn'?'cow':'chicken',housing=farmAnimalHousing(state,animal)

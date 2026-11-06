@@ -1,6 +1,6 @@
 import {useLayoutEffect,useRef,useState,type RefObject} from 'react'
 import {Check,Move,Trash2,Undo2,X} from 'lucide-react'
-import {MAP_W,TILE,objectArtHeight,objectFootprint,topviewItems,type TopviewObject} from './topview-model'
+import {FARM_SEA_MARGIN,MAP_W,TILE,objectArtHeight,objectFootprint,topviewItems,type TopviewObject} from './topview-model'
 
 export function FarmObjectMenu({object,svgRef,viewportRef,moving,valid,onMove,onRecover,onConfirm,onCancel,onClose}:{object:TopviewObject;svgRef:RefObject<SVGSVGElement|null>;viewportRef:RefObject<HTMLDivElement|null>;moving:boolean;valid:boolean;onMove:()=>void;onRecover:()=>void;onConfirm:()=>void;onCancel:()=>void;onClose:()=>void}){
  const menu=useRef<HTMLDivElement>(null),[position,setPosition]=useState<{left:number;top:number;arrow:number;below:boolean}|null>(null)
@@ -10,9 +10,9 @@ export function FarmObjectMenu({object,svgRef,viewportRef,moving,valid,onMove,on
    const svg=svgRef.current,popup=menu.current,viewport=viewportRef.current
    if(!svg||!popup||!viewport)return
    const bounds=svg.getBoundingClientRect(),box=popup.getBoundingClientRect(),root=svg.closest('.top-farm')
-   const scale=bounds.width/((MAP_W+4)*TILE),anchorX=bounds.left+(object.x+item.w/2+2)*TILE*scale
+   const scale=bounds.width/(MAP_W*TILE+FARM_SEA_MARGIN*2),anchorX=bounds.left+((object.x+item.w/2)*TILE+FARM_SEA_MARGIN)*scale
    const height=objectArtHeight(object.kind,object.rotation)
-   const objectTop=bounds.top+((object.y+item.h+2)*TILE-height)*scale,objectBottom=bounds.top+(object.y+item.h+2)*TILE*scale
+   const objectTop=bounds.top+((object.y+item.h)*TILE+FARM_SEA_MARGIN-height)*scale,objectBottom=bounds.top+((object.y+item.h)*TILE+FARM_SEA_MARGIN)*scale
    const headerBottom=root?.querySelector('.top-farm-header')?.getBoundingClientRect().bottom??12
    const footerTop=root?.querySelector('.top-farm-bottom')?.getBoundingClientRect().top??window.innerHeight
    const minTop=headerBottom+10,maxTop=Math.max(minTop,footerTop-box.height-10)

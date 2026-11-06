@@ -3,7 +3,7 @@ import {farmAnimals,isFarmAnimal,ANIMAL_PURCHASE_SECONDS,ANIMAL_PRODUCTION_OUTPU
 import {farmDuration} from './farm-duration'
 import {topviewItems,type FarmTool,type TopviewState} from './topview-model'
 import {cropKinds,farmCrops,isCropKind,seedGood,type CropKind,type SeedGood} from './crop-catalog'
-import {finishedFoods,farmProducts,farmRecipes,millRecipes,isRecipeId,isFinishedFood,recipeUnlocked,recipeBatchLimit,recipeOutput,type ProductGood,type RecipeId,type MillProduct} from './food-catalog'
+import {deliverableGoods,farmProducts,farmRecipes,millRecipes,isRecipeId,isDeliverableGood,recipeUnlocked,recipeBatchLimit,recipeOutput,type ProductGood,type RecipeId,type MillProduct} from './food-catalog'
 import {isBasicFarmBuilding} from './building-rules'
 import {isProcessingBuilding} from './workshop-catalog'
 import {butcherRecipes,BUTCHER_SECONDS} from './butcher-catalog'
@@ -12,7 +12,8 @@ import {farmSupplies,isFarmSupply,type FarmSupply} from './supply-catalog'
 import {activeBuildings,livestockCapacity,buildingCapacity,buildingLevel,isUpgradeable,upgradeBuilding,warehouseAvailable,warehouseCapacity,WAREHOUSE_BASE_CAPACITY,type BuildingUpgradeAction} from './building-upgrades'
 export {type CropKind} from './crop-catalog'
 
-// Local farm prototype. This state never reads or writes a player's real inventory or wallet.
+// Pure farm rules. The production Edge Function executes these against a saved
+// farm and the real wallet; the standalone preview uses the same rules locally.
 
 export type FarmGood=CropKind|SeedGood|ProductGood|FarmSupply
 export const WAREHOUSE_CAPACITY=WAREHOUSE_BASE_CAPACITY
@@ -116,7 +117,7 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
  if(action.type==='upgrade'||action.type==='cancelUpgrade'||action.type==='completeUpgrade')return upgradeBuilding(state,sourceId,action,now)
  if(sim.upgradeJobs[sourceId])return reject('업그레이드 중에는 이 건물을 사용할 수 없어요.')
  if(action.type==='marketSellBatch'){
-  if(!action.items.length||action.items.length>finishedFoods.length)return reject('판매할 음식을 선택해주세요.')
+  if(!action.items.length||action.items.length>deliverableGoods.length)return reject('판매할 상품을 선택해주세요.')
   let nextState=state,total=0,quantity=0
   for(const item of action.items){
    const result=simulateFarm(nextState,sourceId,{type:'marketSell',...item},now)
@@ -166,16 +167,17 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
   }
   case 'seed':{
    if(source.kind!=='seedShop')return reject('종자는 종자 상점에서 구매해요.')
-   const crop=action.good.slice(0,-4)
-   if(!isCropKind(crop))return reject('구매할 종자를 확인해주세요.')
+   const crop=typeof action.good==='string'?action.good.slice(0,-4):''
+   if(!isCropKind(crop)||seedGood(crop)!==action.good)return reject('구매할 종자를 확인해주세요.')
    if(!sim.unlockedCrops.includes(crop))return reject(`종자 연구소에서 ${farmCrops[crop].name}를 먼저 연구해주세요.`)
    const cost=farmGoods[action.good].price*action.quantity
-   if(cost>gold)return reject('테스트 골드가 부족해요.')
+   if(action.quantity>1000||!Number.isSafeInteger(cost)||!Number.isSafeInteger(inventory[action.good]+action.quantity))return reject('수량과 보유 종자를 확인해주세요.')
+   if(cost>gold)return reject('골드가 부족해요.')
    gold-=cost;inventory[action.good]+=action.quantity;message=`${farmGoods[action.good].name} ${action.quantity}개를 구매했어요.`;effect={type:'buy',good:action.good,quantity:action.quantity,gold:cost};break
   }
   case 'sell':
   case 'marketSell':{
-   if(source.kind!=='store'||!isFinishedFood(action.good))return reject('요리 납품소에는 완성된 음식만 납품할 수 있어요.')
+   if(source.kind!=='store'||!isDeliverableGood(action.good))return reject('농장 납품소에는 완성된 식품과 생활용품만 납품할 수 있어요.')
    const proceeds=farmGoods[action.good].price*action.quantity
    if(inventory[action.good]<action.quantity)return reject('보유 수량이 부족해요.')
    if(proceeds<=0||!Number.isSafeInteger(proceeds)||!Number.isSafeInteger(gold+proceeds))return reject('판매 금액을 확인해주세요.')
@@ -188,7 +190,7 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
    if(sim.unlockedCrops.includes(action.crop))return reject('이미 연구한 작물이에요.')
    if(sim.researchJob)return reject('진행 중인 연구가 끝나면 다음 연구를 시작할 수 있어요.')
    const details=farmCrops[action.crop]
-   if(gold<details.researchPrice)return reject('테스트 골드가 부족해요.')
+   if(gold<details.researchPrice)return reject('골드가 부족해요.')
    gold-=details.researchPrice
    next.researchJob={crop:action.crop,labId:sourceId,startedAt:now,readyAt:now+details.researchSeconds*1000}
    message=`${details.name} 종자를 연구하고 있어요.`;effect={type:'research',good:action.crop};break
@@ -272,7 +274,7 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
    if(error)return reject(error)
    if(sim.animalPurchaseJobs[sourceId])return reject('이미 동물을 준비하고 있어요.')
    const price=farmAnimals[action.animal].price
-   if(gold<price)return reject('테스트 골드가 부족해요.')
+   if(gold<price)return reject('골드가 부족해요.')
    gold-=price;next.animalPurchaseJobs[sourceId]={animal:action.animal,startedAt:now,readyAt:now+ANIMAL_PURCHASE_SECONDS*1000};message='동물을 준비하고 있어요. 10초 후 건물 위 말풍선을 눌러 받아주세요.';break
   }
   case 'completeAnimalPurchase':{

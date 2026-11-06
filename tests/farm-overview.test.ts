@@ -2,6 +2,8 @@ import {expect,it} from 'vitest'
 import {farmOverview,farmProductionTasks} from '@/features/farm/farm-overview-model'
 import {legacyTradeFixture as initialTopview} from './helpers/legacy-trade-fixture'
 import {dailyFarmOrders,farmOrderKey} from '@/features/farm/daily-orders'
+import {farmRecipes} from '@/features/farm/food-catalog'
+import type {FarmTool} from '@/features/farm/topview-model'
 
 const now=Date.parse('2026-11-04T14:59:59Z')
 it('aggregates independent facilities and sorts ready work ahead of work in progress without changing farm state',()=>{
@@ -51,14 +53,19 @@ it('handles empty farms and completed daily orders',()=>{
 })
 it('shows crafting ingredients only for the unfilled quantity after subtracting existing finished products',()=>{
  const state=initialTopview();state.simulation.unlockedCrops.push('strawberry','sugarcane');
+ for(const [index,kind] of (['mill','dairy','mediumBakery','barn','coop'] as FarmTool[]).entries())state.objects.push({id:100+index,kind,x:4,y:4})
  Object.assign(state.simulation.inventory,{cake:1,flour:2,egg:1,cream:1})
  const processed=state.objects.find(object=>object.kind==='processed')!
  let at=now
- while(!dailyFarmOrders(processed,at,state).some(order=>order.good==='cake'))at+=86400000
+ for(let day=0;day<30&&!dailyFarmOrders(processed,at,state).some(order=>order.good==='cake');day++)at+=86400000
+ expect(dailyFarmOrders(processed,at,state).some(order=>order.good==='cake')).toBe(true)
  const cake=farmOverview(state,at).orders.find(order=>order.object.kind==='processed')!.items.find(item=>item.good==='cake')!
  const needed=cake.quantity-1
- expect(cake.ingredients.find(item=>item.good==='flour')).toMatchObject({required:needed*2,missing:needed*2-2})
- expect(cake.ingredients.find(item=>item.good==='egg')).toMatchObject({required:needed,missing:needed-1})
+ for(const good of ['flour','egg'] as const){
+  const perCake=farmRecipes.cake.ingredients.find(item=>item.good===good)!.quantity
+  const required=needed*perCake
+  expect(cake.ingredients.find(item=>item.good===good)).toMatchObject({required,missing:Math.max(0,required-state.simulation.inventory[good])})
+ }
  state.simulation.inventory.cake=100
  expect(farmOverview(state,at).orders.find(order=>order.object.kind==='processed')!.items.find(item=>item.good==='cake')!.ingredients).toEqual([])
 })

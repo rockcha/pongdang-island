@@ -25,7 +25,7 @@ export function upgradeBuilding(state:TopviewState,id:number,action:BuildingUpgr
   if(state.simulation.millJobs[id]||state.simulation.processingJobs[id])return reject('생산물을 수령한 뒤 업그레이드해주세요.')
   if(job)return reject('이미 업그레이드 중이에요.')
   if(buildingLevel(object)>=MAX_BUILDING_LEVEL)return reject('최고 레벨이에요.')
-  if(state.gold<cost)return reject('체험 골드가 부족해요.')
+  if(state.gold<cost)return reject('골드가 부족해요.')
   jobs[id]={startedAt:now,readyAt:now+UPGRADE_SECONDS*1000,fromLevel:buildingLevel(object)}
   return {state:{...state,gold:state.gold-cost,simulation:{...state.simulation,upgradeJobs:jobs}},message:'업그레이드를 시작했어요.'}
  }

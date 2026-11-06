@@ -1,3 +1,4 @@
+import {farmMapWidth,farmMapHeight,farmCellCenter} from './helpers/farm-map'
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
@@ -28,8 +29,8 @@ it('selects a shop quantity, charges the total once and adds every copy to stora
 })
 function setup(){
  const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>),map=result.container.querySelector('.top-farm-map')!,viewport=result.container.querySelector<HTMLDivElement>('.top-farm-viewport')!
- vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,width:1120,height:960,right:1120,bottom:960,x:0,y:0,toJSON:()=>({})})
- const pointer=(type:string,target:Element,x:number,y:number,pointerType='mouse',pointerId=1)=>fireEvent(target,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId,pointerType}))
+ vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,width:farmMapWidth,height:farmMapHeight,right:farmMapWidth,bottom:farmMapHeight,x:0,y:0,toJSON:()=>({})})
+ const pointer=(type:string,target:Element,x:number,y:number,pointerType='mouse',pointerId=1)=>fireEvent(target,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:farmCellCenter(x),clientY:farmCellCenter(y),button:0}),{pointerId,pointerType}))
  click('이동하기');return {...result,viewport,pointer}
 }
 it.each(['mouse','touch'])('confirms the original position on a second %s tap anywhere on the selected footprint',pointerType=>{

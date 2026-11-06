@@ -2,13 +2,13 @@ import {FarmGold,FarmGoldIcon} from './farm-gold'
 import {FlipHorizontal2,RotateCw} from 'lucide-react'
 import {farmResalePrice} from './resale'
 import {useLayoutEffect,useState,type RefObject} from 'react'
-import {canRotateFarmObject,canFlipFarmObject,objectFootprint,MAP_W,TILE,type TopviewObject} from './topview-model'
+import {FARM_SEA_MARGIN,canRotateFarmObject,canFlipFarmObject,objectFootprint,MAP_W,TILE,type TopviewObject} from './topview-model'
 export function FarmObjectOrientationControls({object,onRotate,onFlip,onSell,saleReason,viewport,map}:{object:TopviewObject;onRotate:()=>void;onFlip:()=>void;onSell?:()=>void;saleReason?:string|null;viewport:RefObject<HTMLDivElement|null>;map:RefObject<SVGSVGElement|null>}){
  const rotate=canRotateFarmObject(object.kind),flip=canFlipFarmObject(object.kind),size=objectFootprint(object),width=onSell?192:rotate&&flip?142:86
  const [left,setLeft]=useState<number|null>(null)
  useLayoutEffect(()=>{
   const container=viewport.current,svg=map.current;if(!container||!svg)return
-  const update=()=>{const bounds=svg.getBoundingClientRect(),view=container.getBoundingClientRect(),scale=bounds.width/((MAP_W+4)*TILE);if(!scale)return;const min=(view.left+8-bounds.left)/scale-2*TILE,max=(view.right-8-bounds.left)/scale-2*TILE-width;setLeft(Math.max(min,Math.min(max,(object.x+size.w/2)*TILE-width/2)))}
+  const update=()=>{const bounds=svg.getBoundingClientRect(),view=container.getBoundingClientRect(),scale=bounds.width/(MAP_W*TILE+FARM_SEA_MARGIN*2);if(!scale)return;const min=(view.left+8-bounds.left)/scale-FARM_SEA_MARGIN,max=(view.right-8-bounds.left)/scale-FARM_SEA_MARGIN-width;setLeft(Math.max(min,Math.min(max,(object.x+size.w/2)*TILE-width/2)))}
   update();container.addEventListener('scroll',update);window.addEventListener('resize',update)
   const observer=typeof ResizeObserver==='undefined'?undefined:new ResizeObserver(update);observer?.observe(svg)
   return()=>{container.removeEventListener('scroll',update);window.removeEventListener('resize',update);observer?.disconnect()}

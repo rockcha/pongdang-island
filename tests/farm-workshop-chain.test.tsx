@@ -7,14 +7,14 @@ import {farmBuildingArtPath} from '@/features/farm/building-art'
 import {simulateFarm,farmGoods} from '@/features/farm/farm-simulation'
 import {buyFarmItem} from '@/features/farm/farm-stock'
 
-it('registers every production facility with valid art, safe initial placement and independent purchased copies',()=>{
- const state=initialTopview()
+it('registers every production facility with valid art, placeable footprint and independent purchased copies',()=>{
+ const state=initialTopview();state.gold=100000
  for(const [kind,definition] of Object.entries(farmWorkshops)){
-  const key=kind as keyof typeof farmWorkshops,object=state.objects.find(o=>o.kind===kind)!
+  const key=kind as keyof typeof farmWorkshops
   expect(topviewItems[key].name).toBe(definition.name);expect(existsSync('public'+farmBuildingArtPath(key))).toBe(true)
-  expect(placementValid(state,key,object.x,object.y,object.id)).toBe(true)
+  expect(placementValid(state,key,5,12)).toBe(true)
  }
- for(const key of ['sauceWorkshop','advancedKitchen'] as const){
+ for(const key of Object.keys(farmWorkshops) as (keyof typeof farmWorkshops)[]){
   const purchased=buyFarmItem(state,key,2)
   expect(purchased.gold).toBe(state.gold-farmWorkshops[key].price*2)
   expect(purchased.stored.filter(kind=>kind===key)).toHaveLength(2)
@@ -23,23 +23,24 @@ it('registers every production facility with valid art, safe initial placement a
 })
 it('makes sauces and runs basic and intermediate kitchen jobs independently',()=>{
  let state=initialTopview()
+ state.objects.push({id:29,kind:'sauceWorkshop',x:5,y:12},{id:30,kind:'advancedKitchen',x:5,y:14})
  for(const good of Object.keys(state.simulation.inventory))state.simulation.inventory[good as keyof typeof state.simulation.inventory]=0
- Object.assign(state.simulation.inventory,{tomato:2,strawberry:2,sugar:2,rice:4,milk:2,egg:2,butter:2,potato:2})
+ Object.assign(state.simulation.inventory,{tomato:6,strawberry:3,sugar:6,rice:4,milk:2,egg:3,butter:2,potato:3})
  state=simulateFarm(state,29,{type:'craft',recipe:'strawberryJam',quantity:1},0).state
- state=simulateFarm(state,29,{type:'collectCraft'},8000).state
- state=simulateFarm(state,29,{type:'craft',recipe:'tomatoKetchup',quantity:1},8000).state
- state=simulateFarm(state,29,{type:'collectCraft'},16000).state
- expect(state.simulation.inventory.strawberryJam).toBe(1);expect(state.simulation.inventory.tomatoKetchup).toBe(1)
- expect(simulateFarm(state,28,{type:'craft',recipe:'omurice',quantity:1},16000).state).toBe(state)
- state=simulateFarm(state,28,{type:'craft',recipe:'butterPotato',quantity:1},16000).state
- state=simulateFarm(state,30,{type:'craft',recipe:'omurice',quantity:1},16000).state
+ state=simulateFarm(state,29,{type:'collectCraft'},1800000).state
+ state=simulateFarm(state,29,{type:'craft',recipe:'tomatoKetchup',quantity:2},1800000).state
+ state=simulateFarm(state,29,{type:'collectCraft'},3000000).state
+ expect(state.simulation.inventory.strawberryJam).toBe(1);expect(state.simulation.inventory.tomatoKetchup).toBe(2)
+ expect(simulateFarm(state,28,{type:'craft',recipe:'omurice',quantity:1},3000000).state).toBe(state)
+ state=simulateFarm(state,28,{type:'craft',recipe:'butterPotato',quantity:1},3000000).state
+ state=simulateFarm(state,30,{type:'craft',recipe:'omurice',quantity:1},3000000).state
  expect(state.simulation.inventory.strawberryJam).toBe(1);expect(state.simulation.inventory.tomatoKetchup).toBe(0)
  expect(state.simulation.processingJobs[28]).toBeTruthy();expect(state.simulation.processingJobs[30]).toBeTruthy()
- state=simulateFarm(state,28,{type:'collectCraft'},24000).state
- expect(simulateFarm(state,30,{type:'collectCraft'},24000).state).toBe(state)
- state=simulateFarm(state,30,{type:'collectCraft'},26000).state
+ state=simulateFarm(state,28,{type:'collectCraft'},4200000).state
+ expect(simulateFarm(state,30,{type:'collectCraft'},4200000).state).toBe(state)
+ state=simulateFarm(state,30,{type:'collectCraft'},5700000).state
  expect(state.simulation.inventory.butterPotato).toBe(1);expect(state.simulation.inventory.omurice).toBe(1)
- expect(simulateFarm(state,30,{type:'collectCraft'},26000).state).toBe(state)
+ expect(simulateFarm(state,30,{type:'collectCraft'},5700000).state).toBe(state)
 })
 it('keeps recipe dependencies acyclic and reserves higher ingredient variety for the intermediate kitchen',()=>{
  const visiting=new Set<string>(),done=new Set<string>()

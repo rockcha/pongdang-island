@@ -1,5 +1,5 @@
 import {useEffect,useLayoutEffect,useRef,type PointerEvent,type RefObject} from 'react'
-import {MAP_W,TILE} from './topview-model'
+import {FARM_SEA_MARGIN,MAP_W,TILE} from './topview-model'
 
 type Point={x:number;y:number}
 type Anchor=Point&{worldX:number;worldY:number}
@@ -13,7 +13,7 @@ export function useFarmCamera(options:Options){
  const multiTouch=useRef(false),single=useRef<{point:Point;left:number;top:number;moved:boolean}|null>(null)
  function anchorAt(point:Point):Anchor|null{
   const bounds=latest.current.svg.current?.getBoundingClientRect();if(!bounds?.width)return null
-  const scale=bounds.width/((MAP_W+4)*TILE)
+  const scale=bounds.width/(MAP_W*TILE+FARM_SEA_MARGIN*2)
   return {...point,worldX:(point.x-bounds.left)/scale,worldY:(point.y-bounds.top)/scale}
  }
  function adjust(anchor:Anchor,zoom:number){

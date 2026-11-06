@@ -1,3 +1,4 @@
+import {textileCropArt} from './textile-catalog'
 // Local farm economy: long crops trade plot throughput for fewer visits and larger harvests.
 export const farmCrops = {
   sugarcane: {name:'사탕수수', seedPrice:50, sellPrice:5, yield:10, growSeconds:7200, researchPrice:2000, researchSeconds:7200, color:'#8aa75c'},
@@ -9,10 +10,11 @@ export const farmCrops = {
   strawberry: {name:'딸기', seedPrice:72, sellPrice:6, yield:12, growSeconds:14400, researchPrice:5000, researchSeconds:14400, color:'#d78079'},
   paddy: {name:'벼', seedPrice:32, sellPrice:4, yield:8, growSeconds:3600, researchPrice:1400, researchSeconds:3600, color:'#c4af62'},
   tomato: {name:'토마토', seedPrice:60, sellPrice:5, yield:12, growSeconds:10800, researchPrice:3200, researchSeconds:10800, color:'#d57d61'},
+  cotton: {name:'목화', seedPrice:40, sellPrice:5, yield:8, growSeconds:3600, researchPrice:1800, researchSeconds:1800, color:'#ded8c5'},
 } as const
 export type CropKind = keyof typeof farmCrops
 export type SeedGood = `${CropKind}Seed`
 export const cropKinds = Object.keys(farmCrops) as CropKind[]
 export const seedGood = (crop:CropKind):SeedGood => `${crop}Seed`
 export const isCropKind = (value:unknown):value is CropKind => typeof value==='string' && Object.hasOwn(farmCrops,value)
-export const cropArt = (crop:CropKind) => `/farm/art/v2/crops/${crop}.png`
+export const cropArt = (crop:CropKind) => crop==='cotton'?textileCropArt.icon:`/farm/art/v2/crops/${crop}.png`

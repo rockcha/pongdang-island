@@ -1,6 +1,8 @@
+import {farmDuration} from './farm-duration'
+import {FarmGold} from './farm-gold'
 import {useState} from 'react'
 import {Clock3,PawPrint} from 'lucide-react'
-import {farmAnimals,farmAnimalKinds,ANIMAL_PURCHASE_SECONDS,type FarmAnimal} from './animal-catalog'
+import {farmAnimals,farmAnimalKinds,ANIMAL_PURCHASE_SECONDS,ANIMAL_PRODUCTION_OUTPUT,type FarmAnimal} from './animal-catalog'
 import {farmGoods,farmAnimalHousing,type FarmSimAction} from './farm-simulation'
 import type {TopviewState} from './topview-model'
 import {TopviewArt} from './topview-art'
@@ -16,14 +18,14 @@ export function FarmAnimalPurchase({buildingId,kind,state,now,onAction}:{buildin
  return <section className="farm-animal-purchase">
   <div className="farm-animal-purchase-content">
    <AnimalPurchaseSummary animal={selected} state={state}/>
-   <div className="farm-animal-choices" role="group" aria-label="구매할 동물">{choices.map(id=><button key={id} aria-label={`${farmAnimals[id].name} 선택`} aria-pressed={id===selected} onClick={()=>setSelected(id)}><TopviewArt kind={id}/><strong>{farmAnimals[id].name}</strong><span className="farm-animal-card-meta"><small className="farm-animal-price">{farmAnimals[id].price.toLocaleString()} G</small><small className="farm-animal-time" aria-label={`${farmAnimals[id].name} 1회 생산 시간 ${farmAnimals[id].seconds}초`}><Clock3 size={12} aria-hidden="true"/>생산 {farmAnimals[id].seconds}초</small></span></button>)}</div>
+   <div className="farm-animal-choices" role="group" aria-label="구매할 동물">{choices.map(id=><button key={id} aria-label={`${farmAnimals[id].name} 선택`} aria-pressed={id===selected} onClick={()=>setSelected(id)}><TopviewArt kind={id}/><strong>{farmAnimals[id].name}</strong><span className="farm-animal-card-meta"><small className="farm-animal-price"><FarmGold amount={farmAnimals[id].price.toLocaleString()}/></small><small className="farm-animal-time" aria-label={`${farmAnimals[id].name} 1회 생산 시간 ${farmDuration(farmAnimals[id].seconds)}`}><Clock3 size={12} aria-hidden="true"/>생산 {farmDuration(farmAnimals[id].seconds)}</small></span></button>)}</div>
    <section className="farm-animal-unlocks" aria-label="생산 가능한 상품">
     <strong>생산품</strong>
-    <div className="farm-animal-products"><div><FarmGoodIcon good={animal.product}/><div><strong>{farmGoods[animal.product].name}</strong><small>기본 생산 · 매번 1개</small></div></div></div>
+    <div className="farm-animal-products"><div><FarmGoodIcon good={animal.product}/><div><strong>{farmGoods[animal.product].name}</strong><small>먹이: 밀 1개 · 생산: {farmGoods[animal.product].name} {ANIMAL_PRODUCTION_OUTPUT}개</small><small>생산 시간: {farmDuration(animal.seconds)}</small></div></div></div>
     {animal.product==='wool'&&<p className="farm-sim-caption">양털은 창고에 보관해요. 활용처는 준비 중이에요.</p>}
    </section>
   </div>
-  <footer className="farm-animal-purchase-footer"><p>구매 후 준비 {ANIMAL_PURCHASE_SECONDS}초 · 보관함에서 배치</p><button className="farm-sim-primary" disabled={housing.total>=housing.capacity||state.gold<animal.price} onClick={()=>onAction({type:'animal',animal:selected})}>{animal.name} 구매 · {animal.price.toLocaleString()} G</button></footer>
+  <footer className="farm-animal-purchase-footer"><p>구매 후 준비 {ANIMAL_PURCHASE_SECONDS}초 · 보관함에서 배치</p><button className="farm-sim-primary" disabled={housing.total>=housing.capacity||state.gold<animal.price} onClick={()=>onAction({type:'animal',animal:selected})}>{animal.name} 구매 · <FarmGold amount={animal.price.toLocaleString()}/></button></footer>
  </section>
 }
 

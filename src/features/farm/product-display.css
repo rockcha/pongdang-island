@@ -8,7 +8,7 @@
 .farm-compact-dialog.farm-facility-dialog .farm-item-picker .farm-good-icon{width:76px;height:76px}
 .farm-compact-dialog.farm-facility-dialog .farm-item-picker .farm-picker-owned{top:0;right:8px;padding:0;background:none;border:0;font-size:10px;line-height:1.6;color:#9a7b5d;font-weight:400}
 .farm-compact-dialog.farm-facility-dialog .farm-item-picker>button>svg{left:7px;right:auto;top:3px}
-.farm-compact-dialog.farm-facility-dialog .farm-item-picker>button[data-locked=true] .farm-good-icon{filter:grayscale(.45);opacity:.55}
+.farm-compact-dialog.farm-facility-dialog .farm-item-picker>button[data-locked=true] .farm-good-icon{filter:grayscale(1) brightness(.78) contrast(1.1);opacity:.65}
 .farm-compact-dialog.farm-facility-dialog .farm-item-picker>button:not([data-locked]) .farm-good-icon{filter:none;opacity:1}
 .farm-compact-dialog.farm-facility-dialog .farm-sim-item>.farm-good-icon,.farm-compact-dialog.farm-facility-dialog .farm-recipe-card>header>.farm-good-icon,.farm-compact-dialog.farm-facility-dialog .farm-research-heading>.farm-good-icon,.farm-compact-dialog.farm-facility-dialog .farm-production-heading>.farm-good-icon{width:116px;height:116px}
 .farm-compact-dialog.farm-facility-dialog .farm-market-product{gap:20px;min-height:124px}
@@ -22,3 +22,5 @@
 .farm-market .farm-market-quantity{gap:8px}.farm-market .farm-market-quantity input{min-height:44px;font-size:15px;border-color:#e2cfb3;border-radius:10px}.farm-market .farm-market-quantity button{min-height:44px;min-width:34px;font-size:13px}
 .farm-compact-dialog.farm-facility-dialog .farm-recipe-ingredients{background:#f5eddf}.farm-compact-dialog.farm-facility-dialog .farm-recipe-ingredients .farm-good-icon{width:46px;height:46px}
 @media(max-width:359px){.farm-compact-dialog.farm-facility-dialog .farm-item-picker>button,.farm-compact-dialog.farm-facility-dialog .farm-item-picker>button:has(.farm-picker-owned){flex-basis:90px;min-height:118px}.farm-compact-dialog.farm-facility-dialog .farm-item-picker .farm-good-icon{width:66px;height:66px}.farm-compact-dialog.farm-facility-dialog .farm-market-product{gap:12px}.farm-compact-dialog.farm-facility-dialog .farm-market-product>.farm-good-icon{width:96px;height:96px}.farm-compact-dialog.farm-facility-dialog .farm-market-product strong{font-size:17px}.farm-product-facts>div{padding-inline:9px}.farm-product-facts dd{font-size:16px}}
+
+.farm-research-card[data-locked=true] .farm-research-heading .farm-good-icon{filter:grayscale(1) brightness(.78) contrast(1.1);opacity:.65}

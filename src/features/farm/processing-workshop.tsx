@@ -1,38 +1,43 @@
+import {waterwheelDuration} from './waterwheel'
+import {farmDuration} from './farm-duration'
 import {farmWorkshops} from './workshop-catalog'
 import {useState} from 'react'
-import {ChefHat} from 'lucide-react'
+import {ChefHat,Flower2} from 'lucide-react'
 import {farmRecipes,recipesForBuilding,recipeBatchLimit,recipeOutput,type ProcessingBuilding,type RecipeId} from './food-catalog'
 import {farmGoods,type FarmSimAction,type FarmSimulation} from './farm-simulation'
 import {FarmItemPicker} from './item-picker'
 import {FarmGoodIcon} from './farm-good-icon'
 import {FarmProductHeading} from './product-heading'
 
-export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction}:{buildingId:number;kind:ProcessingBuilding;simulation:FarmSimulation;now:number;onAction:(action:FarmSimAction)=>void}){
+export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction,maxOutput=2,waterwheelBonus=0}:{buildingId:number;maxOutput?:number;waterwheelBonus?:number;kind:ProcessingBuilding;simulation:FarmSimulation;now:number;onAction:(action:FarmSimAction)=>void}){
  const choices=recipesForBuilding(kind,simulation.unlockedAnimals),[choice,setSelected]=useState<RecipeId|undefined>(),selected=choice&&choices.includes(choice)?choice:choices[0]
- const job=simulation.processingJobs[buildingId]
+ const job=simulation.processingJobs[buildingId],isApiary=kind==='apiary'
  if(job){
   const remaining=Math.max(0,Math.ceil((job.readyAt-now)/1000)),progress=Math.min(100,Math.max(0,(now-job.startedAt)/(job.readyAt-job.startedAt)*100))
   return <section className="farm-cooking-job" aria-label="가공 진행">
-   <div className={`farm-cooking-art ${remaining?'is-cooking':''}`}><FarmGoodIcon good={job.recipe}/><span>{remaining?<ChefHat size={19}/>:<span>✓</span>}</span></div>
-   <h3>{farmGoods[job.recipe].name} <span>×{job.quantity}</span></h3><p>{remaining?`${remaining}초 후 맛있게 완성돼요`:'완성됐어요. 가공품을 받아주세요.'}</p>
+   <div className={`farm-cooking-art ${remaining?'is-cooking':''}`}><FarmGoodIcon good={job.recipe}/><span>{remaining?(isApiary?<Flower2 size={19}/>:<ChefHat size={19}/>):<span>✓</span>}</span></div>
+   <h3>{farmGoods[job.recipe].name} <span>×{job.quantity}</span></h3><p>{isApiary?(remaining?`벌들이 꿀을 모으고 있어요 · ${farmDuration(remaining)}`:'달콤한 꿀을 수확할 수 있어요.'):(remaining?`${farmDuration(remaining)} 후 맛있게 완성돼요`:'완성됐어요. 가공품을 받아주세요.')}</p>
    <div className="farm-sim-progress" role="progressbar" aria-label={`${farmGoods[job.recipe].name} 제작 진행`} aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{width:progress+'%'}}/></div>
-   <p className="farm-cooking-note">재료는 제작을 시작할 때 사용했어요. 이 건물의 작업이 끝나면 다음 생산을 시작할 수 있어요.</p>
-   <button className="farm-sim-primary" disabled={remaining>0} onClick={()=>onAction({type:'collectCraft'})}>{remaining?'만들고 있어요…':'가공품 받기'}</button>
+   <p className="farm-cooking-note">{isApiary?'꿀을 수확하면 다시 생산을 시작할 수 있어요. 수확한 꿀은 창고에 보관돼요.':'재료는 제작 시작 시 모두 사용해요. 제작이 끝나면 한 번에 받아주세요.'}</p>
+   <button className="farm-sim-primary" disabled={remaining>0} onClick={()=>onAction({type:'collectCraft'})}>{isApiary?(remaining?'꿀을 모으고 있어요…':'꿀 수확하기'):(remaining?'만들고 있어요…':'가공품 받기')}</button>
   </section>
  }
  if(!selected)return <p className="farm-sim-caption">사용 가능한 제작법이 없어요.</p>
- return <><FarmItemPicker items={choices} value={selected} onChange={setSelected} label={farmWorkshops[kind].pickerLabel}/><RecipeCard key={selected} id={selected} inventory={simulation.inventory} onAction={onAction}/></>
+ return <div className="farm-workbench"><FarmItemPicker items={choices} value={selected} onChange={setSelected} label={farmWorkshops[kind].pickerLabel} owned={id=>simulation.inventory[id]} detail={id=>`${farmDuration(farmRecipes[id].seconds)} · ${recipeBatchLimit(simulation.inventory,id)>0?'제작 가능':'재료 부족'}`}/><RecipeCard waterwheelBonus={waterwheelBonus} key={`${buildingId}-${selected}-${maxOutput}`} maxOutput={maxOutput} id={selected} inventory={simulation.inventory} onAction={onAction}/></div>
 }
 
-function RecipeCard({id,inventory,onAction}:{id:RecipeId;inventory:FarmSimulation['inventory'];onAction:(action:FarmSimAction)=>void}){
- const [quantity,setQuantity]=useState(1),recipe=farmRecipes[id],max=recipeBatchLimit(inventory,id),amount=max?Math.min(max,Math.max(1,quantity)):1,item=farmGoods[id],output=recipeOutput(id)
+function RecipeCard({id,inventory,onAction,maxOutput,waterwheelBonus}:{waterwheelBonus:number;maxOutput:number;id:RecipeId;inventory:FarmSimulation['inventory'];onAction:(action:FarmSimAction)=>void}){
+ const [quantity,setQuantity]=useState(1),recipe=farmRecipes[id],max=recipeBatchLimit(inventory,id,maxOutput),amount=max?Math.min(max,Math.max(1,quantity)):1,item=farmGoods[id],output=recipeOutput(id)
+ const enough=max>0&&recipe.ingredients.every(i=>inventory[i.good]>=i.quantity*amount)
  return <article className="farm-recipe-card" aria-label={`${item.name} 제작법`}>
-  <FarmProductHeading good={id} seconds={recipe.seconds}/>
+  <FarmProductHeading good={id} seconds={waterwheelDuration(recipe.seconds*Math.ceil(amount*output/2),waterwheelBonus)}/>
+  {id==='honey'&&<p className="farm-sim-caption">재료: 필요 없음. 벌들이 꿀을 모아요. 한 번에 최대 {maxOutput}개를 생산해요.</p>}
   {output>1&&<p className="farm-sim-caption">1회 제작으로 {item.name} {output}개를 만들어요.</p>}
-  <div className="farm-recipe-ingredients">{recipe.ingredients.map(ingredient=>{
+  <div className="farm-recipe-ingredients" role="group" aria-label="필요한 재료">{recipe.ingredients.map(ingredient=>{
    const needed=ingredient.quantity*amount,enough=inventory[ingredient.good]>=needed
-   return <div key={ingredient.good} data-enough={enough}><FarmGoodIcon good={ingredient.good}/><div><strong>{farmGoods[ingredient.good].name} ×{needed}</strong><small>보유 {inventory[ingredient.good]}개</small></div></div>
+   return <div key={ingredient.good} data-enough={enough}><FarmGoodIcon good={ingredient.good}/><div><strong>재료: {farmGoods[ingredient.good].name} ×{needed}</strong><small>보유 {inventory[ingredient.good]}개</small></div></div>
   })}</div>
-  <div className="farm-recipe-controls"><div><button aria-label={`${item.name} 제작 수량 줄이기`} disabled={amount<=1||!max} onClick={()=>setQuantity(amount-1)}>−</button><input type="number" inputMode="numeric" aria-label={`${item.name} 제작 수량`} min={1} max={Math.max(1,max)} value={amount} disabled={!max} onChange={event=>setQuantity(Math.min(max,Math.max(1,Math.floor(Number(event.target.value)||1))))}/><button aria-label={`${item.name} 제작 수량 늘리기`} disabled={!max||amount>=max} onClick={()=>setQuantity(amount+1)}>+</button><button disabled={!max} onClick={()=>setQuantity(max)}>최대</button></div><button className="farm-recipe-submit" aria-label={`${item.name} 만들기`} disabled={!max} onClick={()=>onAction({type:'craft',recipe:id,quantity:amount})}>{max?`${amount*output}개 만들기`:'재료 부족'}</button></div>
+  <p className="farm-sim-caption">생산: {item.name} {amount*output}개 · 소요 시간: {farmDuration(waterwheelDuration(recipe.seconds*Math.ceil(amount*output/2),waterwheelBonus))} · 최대 {maxOutput}개</p>
+  <div className="farm-recipe-controls"><div><button aria-label={`${item.name} 제작 수량 줄이기`} disabled={amount<=1||!max} onClick={()=>setQuantity(amount-1)}>−</button><input type="number" inputMode="numeric" aria-label={`${item.name} 제작 수량`} min={1} max={Math.max(1,max)} value={amount} disabled={!max} onChange={event=>setQuantity(Math.min(max,Math.max(1,Math.floor(Number(event.target.value)||1))))}/><button aria-label={`${item.name} 제작 수량 늘리기`} disabled={!max||amount>=max} onClick={()=>setQuantity(amount+1)}>+</button><button disabled={!max} onClick={()=>setQuantity(max)}>최대</button></div><button className="farm-recipe-submit" aria-label={`${item.name} 만들기`} disabled={!enough} onClick={()=>onAction({type:'craft',recipe:id,quantity:amount})}>{enough?`${amount*output}개 만들기`:'재료 부족'}</button></div>
  </article>
 }

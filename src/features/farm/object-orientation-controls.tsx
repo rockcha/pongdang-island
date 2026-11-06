@@ -1,4 +1,5 @@
-import {FlipHorizontal2,RotateCw,Coins} from 'lucide-react'
+import {FarmGold,FarmGoldIcon} from './farm-gold'
+import {FlipHorizontal2,RotateCw} from 'lucide-react'
 import {farmResalePrice} from './resale'
 import {useLayoutEffect,useState,type RefObject} from 'react'
 import {canRotateFarmObject,canFlipFarmObject,objectFootprint,MAP_W,TILE,type TopviewObject} from './topview-model'
@@ -17,7 +18,7 @@ export function FarmObjectOrientationControls({object,onRotate,onFlip,onSell,sal
  return <foreignObject x={x} y={y} width={width} height={42} overflow="visible" data-object-actions={object.id} onClick={e=>e.stopPropagation()} onPointerDown={e=>e.stopPropagation()} onKeyDown={e=>e.stopPropagation()}>
   <div className="farm-object-quick-actions" role="group" aria-label="개체 방향 조절">
    {rotate&&<button onClick={onRotate} aria-label={'다리 90도 회전'} title="회전"><RotateCw size={14}/><span>회전</span></button>}
-   {onSell&&<button onClick={onSell} disabled={!!saleReason} title={saleReason??'구매가의 절반으로 판매'} aria-label="동물 반값 판매"><Coins size={14}/><span>+{farmResalePrice(object.kind).toLocaleString()} G</span></button>}
+   {onSell&&<button onClick={onSell} disabled={!!saleReason} title={saleReason??'구매가의 절반으로 판매'} aria-label="동물 반값 판매"><FarmGoldIcon/><span>+<FarmGold amount={farmResalePrice(object.kind).toLocaleString()}/></span></button>}
    {flip&&<button onClick={onFlip} aria-label="좌우반전" aria-pressed={!!object.flipped} title="좌우반전"><FlipHorizontal2 size={14}/><span>좌우반전</span></button>}
   </div>
  </foreignObject>

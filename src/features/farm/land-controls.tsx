@@ -1,3 +1,4 @@
+import {FarmGold} from './farm-gold'
 import {useEffect,useState} from 'react'
 import {LandPlot,Minus,Plus,Undo2,ShoppingBag} from 'lucide-react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
@@ -21,12 +22,12 @@ export function LandPurchaseDialog({open,gold,onOpenChange,onBuy}:{open:boolean;
  useEffect(()=>{if(open){setQuantity(String(Math.max(1,Math.min(5,Math.floor(gold/TEST_LAND_PRICE)))));setError('')}},[open])
  const count=Number(quantity),valid=/^\d+$/.test(quantity)&&Number.isSafeInteger(count)&&count>=1&&count<=1000,total=count*TEST_LAND_PRICE,affordable=Math.min(1000,Math.floor(gold/TEST_LAND_PRICE))
  return <Dialog open={open} onOpenChange={onOpenChange}><DialogContent className="farm-sim-dialog farm-land-purchase"><DialogHeader><span className="farm-land-purchase-symbol"><LandPlot size={32} strokeWidth={1.4}/></span><DialogTitle>땅 구매</DialogTitle><DialogDescription>미리 구매해 두고, 원하는 곳에 한 칸씩 놓아요.</DialogDescription></DialogHeader>
-  <div className="farm-land-price"><span>땅 1칸</span><strong>{TEST_LAND_PRICE} G</strong></div>
+  <div className="farm-land-price"><span>땅 1칸</span><strong><FarmGold amount={TEST_LAND_PRICE}/></strong></div>
   <label htmlFor="farm-land-quantity">구매 수량</label><div className="farm-land-stepper"><button aria-label="땅 수량 줄이기" disabled={!valid||count<=1} onClick={()=>setQuantity(String(count-1))}><Minus size={17}/></button><div><input id="farm-land-quantity" aria-label="땅 구매 수량" type="text" inputMode="numeric" value={quantity} aria-invalid={!valid||total>gold} onChange={event=>{if(/^\d*$/.test(event.target.value)){setQuantity(event.target.value);setError('')}}}/><span>칸</span></div><button aria-label="땅 수량 늘리기" disabled={!valid||count>=affordable} onClick={()=>setQuantity(String(count+1))}><Plus size={17}/></button></div>
   <div className="farm-land-presets">{[1,5,10].map(amount=><button key={amount} aria-pressed={count===amount} disabled={amount>affordable} onClick={()=>{setQuantity(String(amount));setError('')}}>{amount}칸</button>)}</div>
-  <div className="farm-land-purchase-total"><p><span>총 구매 금액</span><strong>{valid?total.toLocaleString():'—'} G</strong></p><p><span>체험 골드</span><span>{gold.toLocaleString()} G</span></p></div>
+  <div className="farm-land-purchase-total"><p><span>총 구매 금액</span><strong><FarmGold amount={valid?total.toLocaleString():'—'}/></strong></p><p><span>체험 골드</span><span><FarmGold amount={gold.toLocaleString()}/></span></p></div>
   <p className="farm-sim-caption">구매한 땅은 여분으로 보관돼요.<br/>놓거나 회수할 때는 골드가 들지 않아요.</p>
   {(error||valid&&total>gold)&&<p className="farm-land-error" role="alert">{error||'체험 골드가 부족해요.'}</p>}
-  <button className="farm-sim-primary" disabled={!valid||total>gold} onClick={()=>{if(onBuy(count))onOpenChange(false);else setError('수량과 남은 골드를 다시 확인해주세요.')}}>{valid?`${count.toLocaleString()}칸 구매 · ${total.toLocaleString()} G`:'1~1,000칸을 입력해주세요'}</button>
+  <button className="farm-sim-primary" disabled={!valid||total>gold} onClick={()=>{if(onBuy(count))onOpenChange(false);else setError('수량과 남은 골드를 다시 확인해주세요.')}}>{valid?<>{count.toLocaleString()}칸 구매 · <FarmGold amount={total}/></>:'1~1,000칸을 입력해주세요'}</button>
  </DialogContent></Dialog>
 }

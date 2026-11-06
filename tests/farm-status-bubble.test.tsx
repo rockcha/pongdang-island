@@ -41,7 +41,7 @@ it('uses the same filling bubbles for research, processing and clearing, without
  click('제분소 (6,13)');click('밀 제분 시작');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(5000))
  expect(screen.getByRole('progressbar',{name:'제분 진행'}).getAttribute('aria-valuenow')).toBe('50')
  click('제분 진행');expect(container.querySelector('[data-status-bubble="제분 진행"]')?.textContent).toContain('5초')
- click('농사');click('개간하기');click('개간 위치 8,13');act(()=>vi.advanceTimersByTime(1500))
+ click('농사');click('개간하기');click('개간 위치 8,13');act(()=>vi.advanceTimersByTime(5000))
  expect(screen.getByRole('progressbar',{name:'개간 진행'}).getAttribute('aria-valuenow')).toBe('50')
  expect(container.querySelector('.farm-clearing-progress')).toBeNull()
 })

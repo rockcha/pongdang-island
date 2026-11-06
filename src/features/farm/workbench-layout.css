@@ -1,0 +1,28 @@
+/* Only the chooser scrolls: ingredients and controls stay together. */
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog{height:min(760px,calc(100dvh - 24px));max-width:800px}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog>.farm-sim-body{overflow:hidden;display:flex;flex-direction:column;min-height:0;scrollbar-gutter:auto;padding-right:0}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench{display:flex;flex-direction:column;gap:12px;flex:1 1 0;min-height:0}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-item-selector{display:flex;flex-direction:column;flex:1 1 0;min-height:70px;overflow:hidden}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench .farm-item-selector-heading{flex:none;margin-bottom:6px}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench .farm-item-picker{flex:1;min-height:0;max-height:none;overflow-y:auto;grid-auto-rows:max-content;grid-template-columns:repeat(3,minmax(0,1fr))}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-recipe-card,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench-details{flex:none;min-width:0;margin:0;padding:10px 0 0;border-top:1px solid #e6d5bf;display:flex;flex-direction:column;gap:6px}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-card>header>.farm-good-icon,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-production-heading>.farm-good-icon{width:40px;height:40px;flex:none}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-card h3{font-size:14px}.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-card header p{font-size:11px;margin-top:1px}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients{flex:none;margin:0;padding:6px;gap:4px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients>div{padding:2px;min-height:36px}.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients .farm-good-icon{width:26px;height:26px}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-controls,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-sim-quantity-controls{position:static;margin:0;padding:6px 0 0;gap:6px;flex:none}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-controls button,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-controls input{min-height:38px;height:38px}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-sim-feedback{flex:none;margin:0;font-size:11px}
+@media(min-width:640px){
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.9fr);gap:16px}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-recipe-card,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench-details{border-top:0;border-left:1px solid #e6d5bf;padding:0 0 0 16px;justify-content:flex-start}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-controls{margin-top:auto}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench-details>.farm-sim-quantity-row{margin-top:auto}
+}
+@media(max-height:560px) and (max-width:639px){
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog{padding:10px;gap:6px}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-building-subtitle{display:none}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-card header p{display:none}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients>div{gap:2px}.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-ingredients .farm-good-icon{width:20px;height:20px}
+}

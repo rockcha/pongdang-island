@@ -122,7 +122,7 @@
 .farm-sim-quantity-row { background:#fffcf6; }
 .farm-sim-quantity-controls .farm-sim-submit { display:flex; align-items:center; justify-content:center; gap:5px; }
 .farm-seed-locked { display:flex; align-items:center; gap:11px; padding:13px; border:1px dashed #e1d4bf; border-radius:13px; background:#f4eee3; }
-.farm-seed-locked>.farm-good-icon { opacity:.5; filter:saturate(.45); }
+.farm-seed-locked>.farm-good-icon { opacity:.65; filter:grayscale(1) brightness(.78) contrast(1.1); }
 .farm-seed-locked>div { flex:1; }
 .farm-seed-locked strong { font-size:12px; font-weight:500; color:#9c8975; }
 .farm-seed-locked small { display:block; margin-top:5px; font-size:10px; color:#a5917c; }

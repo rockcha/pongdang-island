@@ -12,7 +12,7 @@
 .farm-terrain-badge{display:inline-flex;align-items:center;justify-content:center;flex:none;width:26px;height:26px;border:1px solid #d4ddbe;border-radius:9px;background:#f4f8e9;box-shadow:0 1px 3px #64734418;color:#73864c;vertical-align:middle}
 .farm-terrain-badge[data-terrain=sea]{border-color:#b5d4d5;background:#dfefed;color:#558b93}
 .farm-terrain-badge>svg{width:21px;height:21px;flex:none}
-.farm-sim-dialog.farm-shop{top:calc(50% - 4px);display:flex;flex-direction:column;height:min(calc(45dvh + 228px),85dvh);overflow:hidden}
+.farm-sim-dialog.farm-shop{top:50%;display:flex;flex-direction:column;width:calc(100vw - 24px);max-width:760px;height:min(860px,calc(100dvh - 24px));max-height:calc(100dvh - 24px);overflow:hidden}
 .farm-shop>[data-slot=dialog-header],.farm-shop-tabs,.farm-shop-footer,.farm-shop-feedback{flex-shrink:0}
 .farm-shop-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
 .farm-shop-tabs{display:flex;gap:5px;padding:4px;border-radius:12px;background:#f0e4d2}

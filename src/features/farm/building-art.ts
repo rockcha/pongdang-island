@@ -7,6 +7,7 @@ const artworkVersions:Partial<Record<FarmTool,'v1'|'v2'|'v3'|'v4'|'v19'|'v20'>>=
  warehouse:'v19',office:'v19',seedShop:'v20',store:'v3',barn:'v19',coop:'v20',lab:'v3',mill:'v3',processed:'v19',
 }
 export function farmBuildingArtPath(kind:FarmTool){
+ if(kind==='office'||kind==='livestockOffice')return `/farm/art/worksites-v3/${kind}.png`
  if(kind==='agriShop')return '/farm/art/v27/buildings/agriShop.png'
  if(kind==='seedShop')return '/farm/art/v24/buildings/seedShop.png'
  if(kind==='store')return '/farm/art/v26/buildings/store.png'

@@ -1,0 +1,5 @@
+.farm-planting-shovel{transform-box:fill-box;transform-origin:25% 85%;animation:farm-planting-dig .9s ease-in-out both}
+.farm-planting-soil{transform-box:fill-box;transform-origin:50% 85%;animation:farm-planting-soil .9s ease-out both}
+@keyframes farm-planting-dig{0%{opacity:0;transform:translateY(-10px) rotate(-25deg)}15%{opacity:1}45%{transform:translateY(8px) rotate(12deg)}65%{opacity:1;transform:translateY(2px) rotate(-8deg)}100%{opacity:0;transform:translateY(-8px) rotate(-24deg)}}
+@keyframes farm-planting-soil{0%,30%{opacity:0;transform:scale(.65)}50%{opacity:.8;transform:scale(.9)}100%{opacity:0;transform:translateY(-7px) scale(1.2)}}
+@media(prefers-reduced-motion:reduce){.farm-planting-shovel{animation:none;opacity:.8}.farm-planting-soil{animation:none;opacity:0}}

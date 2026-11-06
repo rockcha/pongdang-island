@@ -21,10 +21,6 @@ export const farmDecorationArt = {
     "path": "/farm/art/v12/decor/flowers.png",
     "viewBox": "12 101 488 310"
   },
-  "pond": {
-    "path": "/farm/art/v12/decor/pond.png",
-    "viewBox": "12 156 488 200"
-  },
   "pongiTube": {
     "path": "/farm/art/v14/decor/pongiTube.png",
     "viewBox": "44 12 424 488"

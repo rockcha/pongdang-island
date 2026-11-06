@@ -10,7 +10,7 @@ const sea=['pongiTube','pongiTubeRed','duckBoat','woodBridge1','woodBridge2','wo
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 it('classifies all existing decorations as land and the new decorations as water-only',()=>{
  const state=initialTopview()
- for(const kind of ['flowers','bench','fence','pond','rabbitTopiary','mushroomLamp'] as const){expect(farmPlacementTerrain(kind)).toBe('land');expect(placementValid(state,kind,0,0)).toBe(false)}
+ for(const kind of ['flowers','bench','fence','rabbitTopiary','mushroomLamp'] as const){expect(farmPlacementTerrain(kind)).toBe('land');expect(placementValid(state,kind,0,0)).toBe(false)}
  for(const kind of sea){expect(farmPlacementTerrain(kind)).toBe('sea');expect(placementValid(state,kind,0,0)).toBe(true);expect(placementValid(state,kind,7,7)).toBe(false)}
  for(const [kind,h] of [['woodBridge1',1],['woodBridge2',2],['woodBridge3',3]] as const){expect(topviewItems[kind]).toMatchObject({w:1,h});expect(placementValid(state,kind,0,20-h)).toBe(true);expect(placementValid(state,kind,0,21-h)).toBe(false)}
  expect(placementValid(state,'woodBridge3',5,2)).toBe(false)

@@ -1,0 +1,9 @@
+.farm-shop-card>.farm-building-products{align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:4px;border-top:1px solid #eadbc9;padding-top:7px}
+.farm-shop-card>.farm-building-products>small{font-size:10px;color:#a08465}
+.farm-building-products>div{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;max-width:100%}
+.farm-building-products>div>span{display:flex;align-items:center;justify-content:center;width:27px;height:27px;background:transparent}
+.farm-building-products .farm-good-icon{width:25px;height:25px;flex:none;background:transparent;border:0;padding:0}
+
+.farm-building-products>div>span>svg,.farm-building-products>div>span>img{width:25px;height:25px;object-fit:contain}
+
+.farm-shop-capacity-benefit{align-self:stretch;display:grid;grid-template-columns:auto auto;justify-content:center;align-items:center;gap:5px 6px;padding:10px 5px;border-radius:10px;background:#eee8d3;color:#667344}.farm-shop-capacity-benefit strong{font-size:13px;font-weight:600}.farm-shop-capacity-benefit small{grid-column:1/-1;text-align:center;font-size:11px;color:#84755c;line-height:1.4}

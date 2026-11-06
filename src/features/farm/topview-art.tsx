@@ -1,3 +1,5 @@
+import {StarClamFountainArt} from './star-clam-fountain-art'
+import {WaterwheelArt} from './waterwheel-art'
 import {canRotateFarmObject,canFlipFarmArt,objectArtHeight,topviewItems,TILE,type FarmTool,type FarmRotation} from './topview-model'
 import {type CropKind} from './crop-catalog'
 import {farmBuildingArtPath} from './building-art'
@@ -21,8 +23,13 @@ export function TopviewArt({rotation=0,flipped=false,...props}:ArtProps){
 function FarmBaseArt({kind,compact=false,idle=false,idlePhase=0,stage='empty',crop='wheat',progress}:ArtProps){
  if(idle&&isFarmAnimal(kind))return <FarmAnimalIdle kind={kind} phase={idlePhase}/>
  if(isFarmAnimal(kind)){const art=farmAnimalArt[kind];return <svg viewBox={art.viewBox} aria-hidden="true"><image href={art.path} width="512" height="512"/></svg>}
+ if(kind==='starClamFountain')return <StarClamFountainArt compact={compact}/>
+ if(kind==='waterwheel')return <WaterwheelArt compact={compact}/>
  const building=farmBuildingArtPath(kind)
- if(building)return <svg viewBox={compact&&(kind==='seedShop'||kind==='store'||kind==='agriShop'||kind==='mediumBakery')?'0 60 120 60':'0 0 120 120'} aria-hidden="true"><image href={building} width="120" height="120" preserveAspectRatio="xMidYMid meet"/></svg>
+ const tallerBuilding=kind==='agriShop'||kind==='mediumBakery'
+ const heightScale=kind==='agriShop'?1.85:kind==='mediumBakery'?1.6:!compact&&(kind==='seedShop'||kind==='store')?1.5:1
+ const buildingViewBox=compact?(tallerBuilding?'0 18 120 102':kind==='seedShop'||kind==='store'?'0 60 120 60':'0 0 120 120'):'0 0 120 120'
+ if(building)return <svg preserveAspectRatio="xMidYMax meet" viewBox={buildingViewBox} aria-hidden="true"><image href={building} width="120" height="120" transform={heightScale!==1?`translate(0 ${120*(1-heightScale)}) scale(1 ${heightScale})`:undefined} preserveAspectRatio="xMidYMid meet"/></svg>
  const decoration=farmDecorationArt[kind as keyof typeof farmDecorationArt]
  if(decoration)return <svg viewBox={decoration.viewBox} preserveAspectRatio="xMidYMax meet" aria-hidden="true" data-farm-decoration={kind}><image href={decoration.path} width="512" height="512"/></svg>
  if(kind==='plot')return <FarmPlotArt stage={stage} crop={crop} progress={progress}/>

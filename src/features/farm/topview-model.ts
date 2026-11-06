@@ -4,8 +4,10 @@ import {initialFarmSimulation,type FarmSimulation} from './farm-simulation'
 import type {FarmTile} from './tile-catalog'
 import {farmAnimals} from './animal-catalog'
 export type FarmTerrain='land'|'sea'
-export type FarmTool='agriShop'|'butcher'|'warehouse'|'livestockOffice'|'office'|'seedShop'|'store'|'barn'|'coop'|'lab'|'mill'|'processed'|'chicken'|'cow'|'duck'|'sheep'|'plot'|'flowers'|'fence'|'fenceWhite'|'fenceDark'|'bench'|'pond'|'pongiTube'|'pongiTubeRed'|'duckBoat'|'woodBridge1'|'woodBridge2'|'woodBridge3'|'rabbitTopiary'|'mushroomLamp'|'sealFloat'|'waterLilies'|'pongiMailbox'|'teacupCat'|'bearPicnic'|'chickSandbox'|'strawScarecrow'|'hayBales'|'toolRack'|ProcessingBuilding
+export type FarmTool='starClamFountain'|'waterwheel'|'agriShop'|'butcher'|'warehouse'|'livestockOffice'|'office'|'seedShop'|'store'|'barn'|'coop'|'lab'|'mill'|'processed'|'chicken'|'cow'|'duck'|'sheep'|'plot'|'flowers'|'fence'|'fenceWhite'|'fenceDark'|'bench'|'pongiTube'|'pongiTubeRed'|'duckBoat'|'woodBridge1'|'woodBridge2'|'woodBridge3'|'rabbitTopiary'|'mushroomLamp'|'sealFloat'|'waterLilies'|'pongiMailbox'|'teacupCat'|'bearPicnic'|'chickSandbox'|'strawScarecrow'|'hayBales'|'toolRack'|ProcessingBuilding
 export const topviewItems:Record<FarmTool,{name:string;w:number;h:number;group:'건물'|'동물'|'꾸미기';price:number;purchaseLimit?:number;terrain?:FarmTerrain}>={
+ starClamFountain:{name:'별빛 조개 분수',w:2,h:2,group:'꾸미기',terrain:'land',price:3500},
+ waterwheel:{name:'퐁이 물레방아',w:2,h:2,group:'건물',price:5000,purchaseLimit:Infinity},
  agriShop:{name:'농업용품점',w:2,h:1,group:'건물',price:1500,purchaseLimit:Infinity},
  butcher:{name:'정육점',w:2,h:1,group:'건물',price:3000,purchaseLimit:Infinity},
  pongiMailbox:{name:'퐁이 우편함',w:1,h:1,group:'꾸미기',terrain:'land',price:400},
@@ -28,17 +30,17 @@ export const topviewItems:Record<FarmTool,{name:string;w:number;h:number;group:'
  woodBridge2:{name:'나무다리 1×2',w:1,h:2,group:'꾸미기',terrain:'sea',price:400},
  woodBridge3:{name:'나무다리 1×3',w:1,h:3,group:'꾸미기',terrain:'sea',price:600},
  ...farmWorkshopItems,
- livestockOffice:{name:'축산 관리소',w:2,h:1,group:'건물',price:0,purchaseLimit:1},
+ livestockOffice:{name:'퐁이 돌봄터',w:1,h:1,group:'건물',price:5000,purchaseLimit:Infinity},
  warehouse:{name:'창고',w:2,h:1,group:'건물',price:0,purchaseLimit:1},
- office:{name:'농지 관리소',w:2,h:1,group:'건물',price:0,purchaseLimit:1},seedShop:{name:'종자 상점',w:2,h:1,group:'건물',price:0,purchaseLimit:1},store:{name:'요리 납품소',w:2,h:1,group:'건물',price:0,purchaseLimit:1},barn:{name:'축사',w:2,h:1,group:'건물',price:4500,purchaseLimit:Infinity},
- coop:{name:'가금사',w:2,h:1,group:'건물',price:2500,purchaseLimit:Infinity},lab:{name:'종자 연구소',w:2,h:1,group:'건물',price:2500,purchaseLimit:Infinity},mill:{name:'제분소',w:2,h:1,group:'건물',price:2000,purchaseLimit:Infinity},processed:{name:'가공품 판매소',w:2,h:1,group:'건물',price:100,purchaseLimit:Infinity},
+ office:{name:'퐁이 개간터',w:1,h:1,group:'건물',price:5000,purchaseLimit:Infinity},seedShop:{name:'종자 상점',w:2,h:1,group:'건물',price:0,purchaseLimit:1},store:{name:'요리 납품소',w:2,h:1,group:'건물',price:0,purchaseLimit:1},barn:{name:'축사',w:2,h:1,group:'건물',price:2500,purchaseLimit:Infinity},
+ coop:{name:'가금사',w:2,h:1,group:'건물',price:2000,purchaseLimit:Infinity},lab:{name:'종자 연구소',w:2,h:1,group:'건물',price:1500,purchaseLimit:Infinity},mill:{name:'제분소',w:2,h:1,group:'건물',price:2000,purchaseLimit:Infinity},processed:{name:'가공품 판매소',w:2,h:1,group:'건물',price:100,purchaseLimit:Infinity},
  chicken:{name:farmAnimals.chicken.name,w:1,h:1,group:'동물',price:farmAnimals.chicken.price},cow:{name:farmAnimals.cow.name,w:2,h:1,group:'동물',price:farmAnimals.cow.price},duck:{name:farmAnimals.duck.name,w:1,h:1,group:'동물',price:farmAnimals.duck.price},sheep:{name:farmAnimals.sheep.name,w:1,h:1,group:'동물',price:farmAnimals.sheep.price},
- plot:{name:'밭',w:1,h:1,group:'꾸미기',price:10},flowers:{name:'꽃밭',w:1,h:1,group:'꾸미기',terrain:'land',price:100},fence:{name:'울타리',w:1,h:1,group:'꾸미기',terrain:'land',price:100},bench:{name:'벤치',w:1,h:1,group:'꾸미기',terrain:'land',price:300},pond:{name:'작은 연못',w:1,h:1,group:'꾸미기',terrain:'land',price:800},
+ plot:{name:'밭',w:1,h:1,group:'꾸미기',price:10},flowers:{name:'꽃밭',w:1,h:1,group:'꾸미기',terrain:'land',price:100},fence:{name:'울타리',w:1,h:1,group:'꾸미기',terrain:'land',price:100},bench:{name:'벤치',w:1,h:1,group:'꾸미기',terrain:'land',price:300},
 }
 export const farmPlacementTerrain=(kind:FarmTool):FarmTerrain=>topviewItems[kind].terrain??'land'
 export type FarmRotation=0|90|180|270
 export type FarmObjectTransform={rotation?:FarmRotation;flipped?:boolean}
-export type TopviewObject={id:number;kind:FarmTool;x:number;y:number;level?:number;orderKey?:number}&FarmObjectTransform
+export type TopviewObject={id:number;kind:FarmTool;x:number;y:number;level?:number;orderKey?:number;constructionReadyAt?:number}&FarmObjectTransform
 export type TopviewState={gold:number;landStock:number;tileStock:number;tileStocks?:Partial<Record<FarmTile,number>>;pathTiles?:Record<string,FarmTile>;land:string[];objects:TopviewObject[];paths:string[];nextId:number;stored:FarmTool[];storedTransforms?:Partial<Record<FarmTool,FarmObjectTransform[]>>;storedLevels?:Partial<Record<FarmTool,number[]>>;storedOrderKeys?:Partial<Record<'store'|'processed',(number|null)[]>>;simulation:FarmSimulation}
 export const MAP_W=24,MAP_H=20,TILE=40,TEST_LAND_PRICE=50
 export const canRotateFarmObject=(kind:FarmTool)=>kind==='woodBridge1'||kind==='woodBridge2'||kind==='woodBridge3'
@@ -62,9 +64,10 @@ export function coastline(land:string[]){
 }
 export function initialTopview():TopviewState{
  return {gold:15000,landStock:0,tileStock:0,simulation:initialFarmSimulation(),stored:[],land:Array.from({length:16*12},(_,i)=>cellKey(i%16+4,Math.floor(i/16)+4)),paths:Array.from({length:16},(_,i)=>cellKey(i+4,11)),nextId:31,objects:[
-   {id:27,kind:'livestockOffice',x:4,y:9},
- {id:26,kind:'warehouse',x:18,y:6},
- {id:1,kind:'office',x:6,y:6},  {id:9,kind:'pond',x:16,y:13},
+
+ {id:1,kind:'office',x:6,y:6},{id:27,kind:'livestockOffice',x:4,y:9},
+ {id:26,kind:'warehouse',x:18,y:6},{id:28,kind:'kitchen',x:14,y:6},
+
  {id:10,kind:'plot',x:9,y:13},{id:11,kind:'plot',x:10,y:13},{id:12,kind:'plot',x:11,y:13},
  {id:13,kind:'plot',x:9,y:14},
  {id:16,kind:'flowers',x:7,y:10},{id:17,kind:'bench',x:6,y:15},

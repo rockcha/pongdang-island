@@ -1,3 +1,4 @@
+import {FarmGold} from './farm-gold'
 import {useState} from 'react'
 import {ClipboardList,Clock3,PackageCheck,TriangleAlert} from 'lucide-react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
@@ -30,7 +31,7 @@ export function FarmOverview({state,now,onClose}:{state:TopviewState;now:number;
    <p className="farm-overview-note">완성한 음식을 요리 납품소에 납품하고 골드를 받을 수 있어요.</p>
    {state.objects.filter(o=>o.kind==='store').map(object=><section key={object.id} className="farm-overview-orders">
     <div className="farm-overview-store"><span><strong>요리 납품소</strong><small>{object.x}, {object.y} · 납품 가능한 음식 {goodsForDelivery(state.simulation.inventory).length}종</small></span></div>
-    <div>{goodsForDelivery(state.simulation.inventory).map(good=><article key={good} className="farm-overview-order"><div className="farm-overview-order-main"><FarmGoodIcon good={good}/><span><strong>{farmGoods[good].name}</strong><small>보유 {state.simulation.inventory[good]}개</small></span><span className="farm-overview-order-state">개당 {farmGoods[good].price} G</span></div></article>)}</div>
+    <div>{goodsForDelivery(state.simulation.inventory).map(good=><article key={good} className="farm-overview-order"><div className="farm-overview-order-main"><FarmGoodIcon good={good}/><span><strong>{farmGoods[good].name}</strong><small>보유 {state.simulation.inventory[good]}개</small></span><span className="farm-overview-order-state">개당 <FarmGold amount={farmGoods[good].price}/></span></div></article>)}</div>
    </section>)}
    {!state.objects.some(o=>o.kind==='store')&&<div className="farm-overview-empty"><ClipboardList size={25}/><strong>배치된 요리 납품소가 없어요</strong><p>보관함에서 기본 제공 요리 납품소를 꺼내 배치해주세요.</p></div>}
   </div>}

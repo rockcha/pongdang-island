@@ -1,0 +1,2 @@
+import './star-clam-fountain-art.css'
+export function StarClamFountainArt({compact=false}:{compact?:boolean}){if(compact)return <svg viewBox="0 0 256 256" aria-hidden="true"><image href="/farm/art/star-clam-fountain-v1/thumbnail.png" width="256" height="256"/></svg>;return <svg viewBox="0 0 443.5 443.5" overflow="hidden" aria-hidden="true"><image className="farm-star-clam-sprite" href="/farm/art/star-clam-fountain-v1/sprites.png" width="1774" height="887"/></svg>}

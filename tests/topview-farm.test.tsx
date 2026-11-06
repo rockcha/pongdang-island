@@ -36,7 +36,7 @@ it('checks the complete rectangular footprint and excludes the object being move
  expect(placementValid(state,'chicken',6,9)).toBe(true)
 })
 it('fits decorations on a single land cell and leaves the neighboring cell free for another object',()=>{
- for(const kind of ['flowers','fence','bench','pond'] as const){
+ for(const kind of ['flowers','fence','bench'] as const){
   const single={...initialTopview(),land:['0,0'],objects:[]}
   expect(placementValid(single,kind,0,0),kind).toBe(true)
   const placed={...single,objects:[{id:1,kind,x:0,y:0}]}

@@ -6,15 +6,15 @@ afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 const start=()=>{vi.useFakeTimers();return render(<MemoryRouter><TopviewFarm/></MemoryRouter>)}
 it('claims flour directly from the ready bubble once and keeps the storage copy inside the receipt',()=>{
- start();click('제분소 (6,12)');click('밀 제분 시작');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(10000));click('제분 진행')
+ start();click('제분소 (6,13)');click('밀 제분 시작');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(10000));click('제분 진행')
  expect(screen.queryByRole('dialog')).toBeNull();expect(screen.getByRole('status').textContent).toContain('밀가루 ×1창고에 보관했습니다.')
  expect(document.querySelector('.top-farm-message')).toBeNull()
- click('제분소 (6,12)');expect(screen.getByRole('button',{name:'밀 제분 시작'})).toBeTruthy();click('Close');click('창고 (18,5)');click('가공품');expect(screen.getByText('×1')).toBeTruthy()
+ click('제분소 (6,13)');expect(screen.getByRole('button',{name:'밀 제분 시작'})).toBeTruthy();click('Close');click('창고 (18,6)');click('가공품');expect(screen.getByText('×1')).toBeTruthy()
 })
 it('shows animal products and prepared animals in the same receipt with the correct destination',()=>{
- start();click('젖소 (16,9)');act(()=>vi.advanceTimersByTime(10000));click('젖소 (16,9)')
+ start();click('젖소 생산 시작');act(()=>vi.advanceTimersByTime(10000));click('우유 생산 (16,9)')
  expect(screen.getByRole('status').textContent).toContain('우유 ×1창고에 보관했습니다.');expect(document.querySelector('.top-farm-message')).toBeNull()
- click('가금사 (10,8)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(10000));click('닭 보관함으로 받기')
+ click('가금사 (10,9)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(10000));click('닭 보관함으로 받기')
  expect(screen.getByRole('status').textContent).toContain('닭 ×1보관함에 보관했습니다.');expect(document.querySelector('.top-farm-message')).toBeNull()
 })
 it('includes all concurrently harvested crops in one warehouse receipt',()=>{

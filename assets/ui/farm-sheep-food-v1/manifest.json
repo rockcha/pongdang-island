@@ -1,0 +1,77 @@
+{
+  "tool": "image_gen.imagegen",
+  "files": [
+    {
+      "id": "sheep",
+      "source": "assets/ui/farm-sheep-food-v1/source/sheep.png",
+      "runtime": "public/farm/art/v6/animals/sheep.png",
+      "crop": {
+        "left": 93,
+        "top": 116,
+        "width": 1081,
+        "height": 1040
+      },
+      "width": 512,
+      "height": 512,
+      "prompt": "ONE adorable adult sheep, standing on four short legs, facing right in three-quarter side view like reference. Thick round ivory fleece in soft curls, small beige face and ears, tiny dark hooves, friendly glossy eyes, little wool tail, no horns and no udder. Whole animal only, no ground or props. Polished cozy farm game hand-painted illustration, warm fine brown outlines, soft dimensional shading, clean readable silhouette. Match supplied reference only for style. Centered full subject with safe transparent margins, actual transparent alpha background. No letters, text, UI, watermark, glow or checkerboard.",
+      "references": [
+        "public/farm/art/v5/animals/goat.png"
+      ],
+      "sha256": "293a061848fa4b97e49e69aca3fc734e5cccf3935c72439acab2f631d1718397"
+    },
+    {
+      "id": "wool",
+      "source": "assets/ui/farm-sheep-food-v1/source/wool.png",
+      "runtime": "public/farm/art/v2/goods/wool.png",
+      "crop": {
+        "left": 196,
+        "top": 109,
+        "width": 828,
+        "height": 1028
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "ONE small fluffy bundle of freshly shorn raw sheep fleece, creamy ivory soft curly wool fibers loosely gathered and tied at middle with simple light brown twine. Recognizable raw wool, NOT a wound yarn ball, no sheep, no knitting needles, no sack, no ground. Polished cozy farm game hand-painted illustration, warm fine brown outlines, soft dimensional shading, clean readable silhouette. Match supplied reference only for style. Centered full subject with safe transparent margins, actual transparent alpha background. No letters, text, UI, watermark, glow or checkerboard.",
+      "references": [
+        "public/farm/art/v2/goods/rice.png"
+      ],
+      "sha256": "fd4cd4df95f71c9158b25849a09e6856c4ff6eb4cf54361cd0622e666dea8689"
+    },
+    {
+      "id": "omurice",
+      "source": "assets/ui/farm-sheep-food-v1/source/omurice.png",
+      "runtime": "public/farm/art/v2/goods/omurice.png",
+      "crop": {
+        "left": 188,
+        "top": 179,
+        "width": 1108,
+        "height": 717
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "ONE appetizing Japanese Korean OMURICE on a small cream ceramic plate: plump oval golden yellow omelette over tomato seasoned orange rice, red ketchup zigzag on top. A small neat cut at one end reveals individual rice grains inside. No meat, vegetables or side dishes, no cutlery. Polished cozy farm game hand-painted illustration, warm fine brown outlines, soft dimensional shading, clean readable silhouette. Match supplied reference only for style. Centered full subject with safe transparent margins, actual transparent alpha background. No letters, text, UI, watermark, glow or checkerboard.",
+      "references": [
+        "public/farm/art/v2/goods/grilledRiceBall.png"
+      ],
+      "sha256": "2f742e7a354e69cdecfa8f1f582d018cbecf7a651af1f30412e5f28a83800259"
+    },
+    {
+      "id": "strawberryJam",
+      "source": "assets/ui/farm-sheep-food-v1/source/strawberryJam.png",
+      "runtime": "public/farm/art/v2/goods/strawberryJam.png",
+      "crop": {
+        "left": 143,
+        "top": 64,
+        "width": 965,
+        "height": 1118
+      },
+      "width": 256,
+      "height": 256,
+      "prompt": "ONE small round glass jar of strawberry jam, rich ruby red jam with tiny visible fruit seeds and glossy fruit pieces, pale pink gingham cloth lid tied with twine, simple strawberry pictogram on a cream label WITHOUT lettering, one small ripe strawberry with green leaves next to jar. Distinct from smooth tomato ketchup. Polished cozy farm game hand-painted illustration, warm fine brown outlines, soft dimensional shading, clean readable silhouette. Match supplied reference only for style. Centered full subject with safe transparent margins, actual transparent alpha background. No letters, text, UI, watermark, glow or checkerboard.",
+      "references": [
+        "public/farm/art/v2/goods/tomatoKetchup.png"
+      ],
+      "sha256": "7cb88fb94ec51aa0e4a46fa02fceee0b82d8941b7a01b7204249edd1219006d9"
+    }
+  ]
+}

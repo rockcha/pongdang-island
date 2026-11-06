@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "prompt": "Edit this roofless wooden farm sales counter into a completed-food delivery counter. Preserve exactly the warm cozy cartoon style, low wide wooden counter shape, flowers, front cloth, front-facing gently elevated orthogonal view, layout and transparent background. Replace the left baskets of RAW carrots and tomatoes with a neatly wrapped takeaway meal box showing golden omurice and a small covered stew bowl. Replace the central weighing scale with a small upright wooden clipboard holding simple green checkmark pictograms and a tied food parcel. Keep the small open coin till. On the right show bread and two little sealed food packages, NOT jam jars or raw produce. The sign at far right should show a simple cooked plate plus a small checkmark, with no lettering. A friendly roofless food delivery/fulfillment station, no people, no roof, no backdrop, no floor, no watermark. True transparent alpha with clean edges.",
+  "reference": "public/farm/art/v24/buildings/store.png",
+  "files": [
+    {
+      "id": "store",
+      "source": "assets/ui/farm-delivery-v26/source/store.png",
+      "runtime": "public/farm/art/v26/buildings/store.png",
+      "crop": {
+        "left": 26,
+        "top": 717,
+        "width": 1203,
+        "height": 509
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "0abb8d9c60362fb8eeb685d1a89d591cef204f021b688724fefc35788a5f24d0"
+    }
+  ]
+}

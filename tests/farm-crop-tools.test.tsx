@@ -1,9 +1,10 @@
+import {farmMapWidth,farmMapHeight,farmCellCenter} from './helpers/farm-map'
 import {act,cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
 import {initialTopview} from '@/features/farm/topview-model'
-import {simulateFarm,storedFarmGoods,type FarmGood} from '@/features/farm/farm-simulation'
+import {simulateFarm,storedFarmGoods} from '@/features/farm/farm-simulation'
 import {FarmWarehouse} from '@/features/farm/warehouse'
 
 afterEach(()=>{cleanup();vi.restoreAllMocks();vi.useRealTimers()})
@@ -12,8 +13,8 @@ it('taps three plots to plant seeds, grows for ten seconds, then harvests concur
  vi.useFakeTimers()
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const map=container.querySelector('.top-farm-map')!,viewport=container.querySelector('.top-farm-viewport')!
- vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:1120,bottom:960,width:1120,height:960,x:0,y:0,toJSON:()=>({})})
- const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId:1,pointerType:'mouse'}))
+ vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:farmMapWidth,bottom:farmMapHeight,width:farmMapWidth,height:farmMapHeight,x:0,y:0,toJSON:()=>({})})
+ const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:farmCellCenter(x),clientY:farmCellCenter(y),button:0}),{pointerId:1,pointerType:'mouse'}))
  click('농사');expect(screen.getByLabelText('보유 종자 4개')).toBeTruthy();click('씨앗 심기');click('밀 4개')
  expect(screen.queryByRole('dialog',{name:'씨앗 심기'})).toBeNull()
  pointer('pointermove',9,13)
@@ -41,11 +42,11 @@ it('taps three plots to plant seeds, grows for ten seconds, then harvests concur
  act(()=>vi.advanceTimersByTime(1))
  expect(container.querySelectorAll('[data-harvesting]')).toHaveLength(0)
  expect(screen.queryByRole('progressbar',{name:/밀 성장/})).toBeNull()
- click('창고 (18,5)')
+ click('창고 (18,6)')
  const warehouse=screen.getByRole('dialog')
  expect(warehouse.querySelectorAll('.farm-warehouse-slot')).toHaveLength(1)
  expect(within(warehouse).getByText('×21')).toBeTruthy()
- expect(within(warehouse).getByText('1 / 10칸')).toBeTruthy()
+ expect(within(warehouse).getByText('21 / 30개')).toBeTruthy()
  click('가공품');expect(within(warehouse).queryByText('밀')).toBeNull()
 })
 it('harvests a mature plot with a tap while seeds remain selected, without consuming another seed',()=>{
@@ -60,22 +61,21 @@ it('harvests a mature plot with a tap while seeds remain selected, without consu
  expect(screen.queryByRole('progressbar',{name:'밀 성장 (9,13)'})).toBeNull()
  expect(screen.getByLabelText('보유 종자 3개')).toBeTruthy()
 })
-it('keeps incoming new goods at their producer when all ten warehouse slots are occupied, while existing stacks can grow',()=>{
- let state=initialTopview()
- const goods=(Object.keys(state.simulation.inventory) as FarmGood[]).filter(good=>!good.endsWith('Seed')&&good!=='potato')
- for(const good of goods.slice(0,10))state.simulation.inventory[good]=1
+it('blocks both new goods and existing stacks when total warehouse quantity is full',()=>{
+ let state=initialTopview();state.simulation.inventory.wheat=30
  state.simulation.cropJobs[10]={crop:'potato',readyAt:1000}
- expect(storedFarmGoods(state.simulation.inventory)).toHaveLength(10)
  const rejected=simulateFarm(state,10,{type:'harvest'},10000)
- expect(rejected.state).toBe(state);expect(rejected.message).toContain('창고 10칸')
+ expect(rejected.state).toBe(state);expect(rejected.message).toContain('창고 용량 30개')
  state.simulation.cropJobs[10]={crop:'wheat',readyAt:1000}
+ expect(simulateFarm(state,10,{type:'harvest'},10000).state).toBe(state)
+ state.simulation.inventory.wheat=27
  const accepted=simulateFarm(state,10,{type:'harvest'},10000)
- expect(accepted.state.simulation.inventory.wheat).toBe(4)
- expect(storedFarmGoods(accepted.state.simulation.inventory)).toHaveLength(10)
+ expect(accepted.state.simulation.inventory.wheat).toBe(30)
+ expect(storedFarmGoods(accepted.state.simulation.inventory)).toHaveLength(1)
 })
 it('separates raw goods and processed goods without counting seeds as warehouse slots',()=>{
  const sim=initialTopview().simulation;sim.inventory.flour=2;sim.inventory.wheatSeed=99
  render(<FarmWarehouse simulation={sim} onClose={()=>{}}/>)
- expect(screen.getByText('2 / 10칸')).toBeTruthy();expect(screen.getByText('×12')).toBeTruthy()
+ expect(screen.getByText('14 / 30개')).toBeTruthy();expect(screen.getByText('×12')).toBeTruthy()
  click('가공품');expect(screen.getByText('밀가루')).toBeTruthy();expect(screen.getByText('×2')).toBeTruthy()
 })

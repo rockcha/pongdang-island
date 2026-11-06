@@ -1,0 +1,5 @@
+.farm-object-quick-actions{display:flex;align-items:center;justify-content:center;gap:2px;width:100%;padding:3px;border:1px solid #dcc5a4;border-radius:11px;background:#fff9eef7;box-shadow:0 3px 9px #5d482a24;color:#88613e;pointer-events:auto}
+.farm-object-quick-actions button{display:flex;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;height:30px;padding:3px 5px;border:0;border-radius:7px;background:transparent;font-size:10px;white-space:nowrap;cursor:pointer}
+.farm-object-quick-actions button:hover,.farm-object-quick-actions button[aria-pressed=true]{background:#eddfc6;color:#79502e}
+.farm-object-quick-actions button:focus-visible{outline:2px solid #ad8150;outline-offset:1px}
+.farm-object-quick-actions svg{flex:none;width:14px;height:14px}

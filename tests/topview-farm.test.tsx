@@ -16,14 +16,14 @@ it('only draws shore against water and reconnects it when new land is purchased'
 it('buys stored land and only places connected tiles without another gold charge',()=>{
  const original=initialTopview()
  const bought=buyLandStock(original,1)
- expect(bought.gold).toBe(original.gold-50)
+ expect(bought.gold).toBe(original.gold-100)
  expect(bought.land).toEqual(original.land)
  expect(applyLandStroke(bought,'place',[{x:0,y:0}]).state).toBe(bought)
  const placed=applyLandStroke(bought,'place',[{x:3,y:4}]).state
  expect(placed.gold).toBe(bought.gold)
  expect(placed.landStock).toBe(0)
  expect(applyLandStroke(placed,'place',[{x:3,y:4}]).state).toBe(placed)
- const poor={...original,gold:49}
+ const poor={...original,gold:99}
  expect(buyLandStock(poor,1)).toBe(poor)
  expect(original.land).not.toContain('3,4')
 })
@@ -31,12 +31,12 @@ it('checks the complete rectangular footprint and excludes the object being move
  const state=initialTopview()
  expect(placementValid(state,'barn',16,13)).toBe(false)
  expect(placementValid(state,'barn',19,14)).toBe(false)
- expect(placementValid(state,'office',6,5)).toBe(false)
- expect(placementValid(state,'office',6,5,1)).toBe(true)
+ expect(placementValid(state,'office',6,6)).toBe(false)
+ expect(placementValid(state,'office',6,6,1)).toBe(true)
  expect(placementValid(state,'chicken',6,9)).toBe(true)
 })
 it('fits decorations on a single land cell and leaves the neighboring cell free for another object',()=>{
- for(const kind of ['tree','flowers','fence','bench','pond'] as const){
+ for(const kind of ['flowers','fence','bench'] as const){
   const single={...initialTopview(),land:['0,0'],objects:[]}
   expect(placementValid(single,kind,0,0),kind).toBe(true)
   const placed={...single,objects:[{id:1,kind,x:0,y:0}]}
@@ -55,14 +55,14 @@ it('offers land purchase in the current farm with an explicitly simulated balanc
  fireEvent.click(screen.getByRole('button',{name:'이동하기',exact:true}))
  fireEvent.click(screen.getByRole('button',{name:'땅 0칸 보유'}))
  fireEvent.click(screen.getByRole('button',{name:'땅 구매하기',exact:true}))
- fireEvent.click(screen.getByRole('button',{name:'5칸 구매 · 250 G'}))
+ fireEvent.click(screen.getByRole('button',{name:'5칸 구매 · 500골드'}))
  fireEvent.click(screen.getByRole('button',{name:'땅 놓기'}))
  fireEvent.click(screen.getByRole('button',{name:'땅 3,4 놓기'}))
- expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,750')
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,500')
  expect(screen.queryByRole('button',{name:'땅 3,4 놓기'})).toBeNull()
  expect(screen.getByRole('button',{name:'땅 2,4 놓기'})).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'한 단계 되돌리기'}))
- expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,750')
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,500')
  expect(screen.getByRole('button',{name:'땅 5칸 보유'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'땅 3,4 놓기'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'한 단계 되돌리기'})).toHaveProperty('disabled',true)
@@ -95,6 +95,8 @@ it('keeps move and recovery separate in the seven-button bottom toolbar',()=>{
  expect(screen.queryByRole('group',{name:'젖소 편집 메뉴'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'젖소 (16,9)'}))
  expect(screen.queryByRole('dialog')).toBeNull()
+ expect(screen.getByRole('button',{name:'좌우반전'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'젖소 생산 시작'}))
  expect(screen.getByRole('progressbar',{name:'우유 생산 (16,9)'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'젖소 (16,9)'})).toBeTruthy()
 })
@@ -131,9 +133,9 @@ it('places a moving object with one tap, returns invalid drops to the origin, an
  fireEvent.click(screen.getByRole('button',{name:'이동하기',exact:true}))
  const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
  click('젖소 생산 시작');expect(document.querySelector('[data-animal-status="producing"]')).toBeNull()
- expect(screen.queryByRole('button',{name:'배치',exact:true})).toBeNull()
+ expect(screen.getByRole('button',{name:'좌우반전',exact:true})).toBeTruthy()
  expect(screen.queryByRole('button',{name:'취소',exact:true})).toBeNull()
- click('축사 (15,5)')
+ click('축사 (15,6)')
  expect(screen.getByRole('button',{name:'젖소 (16,9)'})).toBeTruthy()
  expect(document.querySelector('[data-move-preview]')).toBeNull()
  click('젖소 (16,9)');click('배치 위치 6,9')

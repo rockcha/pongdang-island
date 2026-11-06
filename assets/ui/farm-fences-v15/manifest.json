@@ -1,0 +1,45 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Local farm decoration sprites, land placement; no aquarium collectible catalog registration.",
+  "processing": "Keep largest alpha>32 component with a 1px alpha fringe; crop and resize to 472x264 inside a transparent 512x512 canvas at (20,125). Matching geometry allows connected-fence rails and posts to reuse each sprite's own texture.",
+  "files": [
+    {
+      "id": "fenceWhite",
+      "source": "assets/ui/farm-fences-v15/source/fenceWhite.png",
+      "runtime": "public/farm/art/v15/decor/fenceWhite.png",
+      "crop": {
+        "left": 41,
+        "top": 297,
+        "width": 1172,
+        "height": 661
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 115 488 281",
+      "sha256": "2aced027b29ebab625b60ec2e92bcb2bd5cbb5e0a0eb94d88f34b04f1956c402",
+      "prompt": "Create a new WHITE PAINTED WOODEN FARM FENCE game sprite using the reference ONLY for art style, exact proportions, silhouette and layout. Same horizontal fence structure: two chunky rounded upright posts at left/right, two straight horizontal rails between them, no additional pickets. Paint all wood warm ivory WHITE with subtle pale beige wood grain, soft light gray shading, clean warm taupe outline. Front facing orthographic farm-game view with tiny visible top surfaces. Wide fence centered in a square canvas, full fence visible, no perspective skew, horizontal rails level. Cozy hand-painted cartoon art matching the reference. Exact two posts and two rails layout makes it reusable for connected fence rendering. TRUE TRANSPARENT alpha background. NO grass, flowers, ground, cast shadow, text, watermark or background. Keep large transparent padding around fence similar to reference.",
+      "references": [
+        "public/farm/art/v12/decor/fence.png"
+      ]
+    },
+    {
+      "id": "fenceDark",
+      "source": "assets/ui/farm-fences-v15/source/fenceDark.png",
+      "runtime": "public/farm/art/v15/decor/fenceDark.png",
+      "crop": {
+        "left": 44,
+        "top": 297,
+        "width": 1166,
+        "height": 660
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 115 488 281",
+      "sha256": "1efdca394f3ae2f79ca5668aa83b289e7045773cdf7cb9d75b01d7a486c6bdde",
+      "prompt": "Create a new DARK WALNUT WOODEN FARM FENCE game sprite. Reference is style/geometry reference only. Preserve exact structure and proportions: two thick rounded upright posts at left and right and exactly two straight level horizontal rails in between, no pickets, no caps, no extra objects. Rich cocoa brown walnut wood, subtle amber grain highlights, soft warm dark brown outlines, polished cozy farm cartoon illustration. Front facing orthographic view with tiny visible top surfaces, NO diagonal perspective. One fence wide centered on square canvas with transparent padding similar to reference. Full object fully visible. TRUE transparent alpha, exceptionally CLEAN edges and clean empty transparent gaps between rails; no detached pixels, no glow, no matte or white border, no ground, grass, foliage, text or shadow. The wood must look dark brown distinct from honey original but readable on muted green farm grass.",
+      "references": [
+        "public/farm/art/v12/decor/fence.png"
+      ]
+    }
+  ]
+}

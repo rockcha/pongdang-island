@@ -8,8 +8,8 @@ export const farmAnimalArt = {
     "path": "/farm/art/v5/animals/duck.png",
     "viewBox": "20 20 472 472"
   },
-  "goat": {
-    "path": "/farm/art/v5/animals/goat.png",
+  "sheep": {
+    "path": "/farm/art/v6/animals/sheep.png",
     "viewBox": "20 20 472 472"
   },
   "chicken": {

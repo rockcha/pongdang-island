@@ -1,9 +1,12 @@
+import {farmMapWidth,farmMapHeight,farmCellCenter} from './helpers/farm-map'
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
+import {playPurchaseSound} from '@/features/gold/purchase-sound'
+vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:vi.fn(),playSaleSound:vi.fn()}))
 
-afterEach(()=>{cleanup();vi.useRealTimers()})
+afterEach(()=>{cleanup();vi.useRealTimers();vi.clearAllMocks()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 function setup(){vi.useFakeTimers();const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>);click('농사');click('개간하기');return result}
 it('groups clearing and planting under farming and reserves the badge count for pending clearing',()=>{
@@ -15,24 +18,26 @@ it('groups clearing and planting under farming and reserves the badge count for 
  expect(screen.getByLabelText('개간 가능 4칸')).toBeTruthy()
  click('개간하기');click('개간 위치 8,13')
  expect(screen.getByLabelText('개간 가능 3칸')).toBeTruthy()
- act(()=>vi.advanceTimersByTime(3000))
+ act(()=>vi.advanceTimersByTime(10000))
  expect(screen.getByLabelText('개간 가능 3칸')).toBeTruthy()
  click('완료');expect(screen.queryByRole('region',{name:'농사 메뉴'})).toBeNull()
  expect(screen.getByRole('button',{name:'농사',exact:true}).getAttribute('aria-expanded')).toBe('false')
 })
-it('clears multiple selected tiles concurrently in three seconds and charges once per tile',()=>{
+it('clears multiple selected tiles concurrently in ten seconds for free',()=>{
  const {container}=setup()
  click('개간 위치 8,13')
  expect(container.querySelector('[data-clearing-cell="8,13"]')).toBeTruthy()
  expect(screen.queryByRole('button',{name:'밭 (8,13)'})).toBeNull()
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
  click('개간 위치 8,14')
- act(()=>vi.advanceTimersByTime(2999))
+ act(()=>vi.advanceTimersByTime(9999))
  expect(screen.queryByRole('button',{name:'밭 (8,13)'})).toBeNull()
  act(()=>vi.advanceTimersByTime(1))
  expect(screen.getByRole('button',{name:'밭 (8,13)'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'밭 (8,14)'})).toBeTruthy()
- expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,980')
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
+ expect(document.querySelector('.farm-gold-spend')).toBeNull()
+ expect(playPurchaseSound).not.toHaveBeenCalled()
  expect(container.querySelector('[data-clearing-cell]')).toBeNull()
  click('한 단계 되돌리기')
  expect(screen.queryByRole('button',{name:'밭 (8,13)'})).toBeNull()
@@ -49,25 +54,42 @@ it('removes a plot without putting it into storage or refunding gold',()=>{
 })
 it('starts a full drag together and reserves the remaining plot capacity for pending jobs',()=>{
  const {container}=setup(),map=container.querySelector('.top-farm-map')!,viewport=container.querySelector('.top-farm-viewport')!
- vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:1120,bottom:960,width:1120,height:960,x:0,y:0,toJSON:()=>({})})
- const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId:1,pointerType:'mouse'}))
+ vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:farmMapWidth,bottom:farmMapHeight,width:farmMapWidth,height:farmMapHeight,x:0,y:0,toJSON:()=>({})})
+ const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:farmCellCenter(x),clientY:farmCellCenter(y),button:0}),{pointerId:1,pointerType:'mouse'}))
  pointer('pointerdown',7,7);pointer('pointermove',12,7)
  expect(container.querySelectorAll('[data-clearing-preview]')).toHaveLength(6)
  pointer('pointerup',12,7)
  expect(container.querySelectorAll('[data-clearing-cell]')).toHaveLength(4)
  fireEvent.keyDown(screen.getByRole('button',{name:'개간 위치 13,7'}),{key:'Enter'})
  expect(container.querySelectorAll('[data-clearing-cell]')).toHaveLength(4)
- act(()=>vi.advanceTimersByTime(3000))
+ act(()=>vi.advanceTimersByTime(10000))
  for(let x=7;x<=10;x++)expect(screen.getByRole('button',{name:`밭 (${x},7)`})).toBeTruthy()
- expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,960')
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
 })
 it('rejects paths and cancels pending work when the trial is reset',()=>{
  const {container}=setup()
  click('개간 위치 8,11')
  expect(container.querySelector('[data-clearing-cell]')).toBeNull()
  click('개간 위치 8,13');click('농장 더보기');click('체험 초기화')
- act(()=>vi.advanceTimersByTime(3500))
+ act(()=>vi.advanceTimersByTime(10500))
  expect(screen.queryByRole('button',{name:'밭 (8,13)'})).toBeNull()
  expect(container.querySelector('[data-clearing-cell]')).toBeNull()
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
+})
+it('allows clearing with zero gold while preserving the plot capacity limit',()=>{
+ vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
+ click('상점')
+ fireEvent.change(screen.getByRole('spinbutton',{name:'퐁이 물레방아 구매 수량'}),{target:{value:'3'}})
+ click('퐁이 물레방아 3개 구매 · 15,000 G');click('Close')
+ act(()=>vi.advanceTimersByTime(1801));vi.mocked(playPurchaseSound).mockClear()
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent?.match(/[\d,]+/)?.[0]).toBe('0')
+ click('농사');click('개간하기')
+ expect(screen.getByLabelText('개간 가능 4칸')).toBeTruthy()
+ click('개간 위치 8,13')
+ act(()=>vi.advanceTimersByTime(10000))
+ expect(screen.getByRole('button',{name:'밭 (8,13)'})).toBeTruthy()
+ expect(screen.getByLabelText('개간 가능 3칸')).toBeTruthy()
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent?.match(/[\d,]+/)?.[0]).toBe('0')
+ expect(document.querySelector('.farm-gold-spend')).toBeNull()
+ expect(playPurchaseSound).not.toHaveBeenCalled()
 })

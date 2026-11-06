@@ -1,30 +1,31 @@
 import {animalGoods} from './animal-catalog'
 import {useState} from 'react'
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
-import {farmGoods,storedFarmGoods,WAREHOUSE_CAPACITY,type FarmSimulation,type FarmSimAction} from './farm-simulation'
-import {processedGoods,isFinishedFood,millRecipes,millProducts,farmRecipes,recipeIds} from './food-catalog'
+import {farmGoods,storedFarmGoods,farmStorageUsage,harvestReservedQuantity,WAREHOUSE_CAPACITY,type FarmSimulation,type FarmSimAction} from './farm-simulation'
+import {processedGoods,finishedHouseholdGoods,isDeliverableGood} from './food-catalog'
 import {FarmGoodIcon} from './farm-good-icon'
-import type {TopviewObject,TopviewState} from './topview-model'
+import {type TopviewObject,type TopviewState} from './topview-model'
 import {warehouseCapacity} from './building-upgrades'
 import {BuildingUpgradePanel} from './building-upgrade-panel'
-import {BuildingStoreButton} from './building-store-button'
-import {BuildingInfo} from './building-info'
-import {TopviewArt} from './topview-art'
+import {FacilityManagement} from './facility-management'
+import {farmBuildingSubtitle} from './building-subtitle'
+import './facility-dialog.css'
 
-export function FarmWarehouse({simulation,state,object,now=Date.now(),onAction,onClose,onStore,onNavigate,onMove}:{simulation:FarmSimulation;state?:TopviewState;object?:TopviewObject;now?:number;onAction?:(action:FarmSimAction)=>void;onClose:()=>void;onStore?:()=>void;onNavigate?:(kind:'store'|'processed'|'mill'|'dairy'|'bakery'|'kitchen')=>void;onMove?:()=>void}){
- const [tab,setTab]=useState<'raw'|'animal'|'processed'>('raw'),[expanded,setExpanded]=useState(false),[selectedGood,setSelectedGood]=useState<typeof all[number]|null>(null),all=storedFarmGoods(simulation.inventory)
- const processingBuilding=selectedGood?(millProducts.some(id=>millRecipes[id].crop===selectedGood)?'mill':selectedGood==='milk'?'dairy':recipeIds.find(id=>farmRecipes[id].ingredients.some(item=>item.good===selectedGood))):undefined
- const processingTarget=processingBuilding==='mill'||processingBuilding==='dairy'?processingBuilding:processingBuilding?farmRecipes[processingBuilding].building:null
- const saleTarget=selectedGood?(isFinishedFood(selectedGood)?'processed':processedGoods.includes(selectedGood as typeof processedGoods[number])?null:'store'):null
- const capacity=state?warehouseCapacity(state):WAREHOUSE_CAPACITY,locked=!!object&&!!simulation.upgradeJobs[object.id]
- const goods=all.filter(good=>tab==='animal'?animalGoods.some(item=>item===good):tab==='processed'?processedGoods.includes(good as typeof processedGoods[number]):!animalGoods.some(item=>item===good)&&!processedGoods.includes(good as typeof processedGoods[number]))
- return <Dialog open onOpenChange={open=>{if(!open)onClose()}}><DialogContent className="farm-sim-dialog farm-compact-dialog farm-warehouse"><DialogHeader className="farm-compact-header">{object&&<div className="farm-sim-title-art"><TopviewArt kind={object.kind}/></div>}<DialogTitle>창고 <small>{locked?'업그레이드 중':`${all.length} / ${capacity}칸`}</small></DialogTitle><DialogDescription>같은 품목은 수량에 관계없이 1칸을 사용해요.</DialogDescription></DialogHeader>
-  {object&&state&&<BuildingInfo object={object} state={state}/>}
-  {object&&state&&onAction&&<><button className="farm-warehouse-expand" aria-expanded={expanded||locked} onClick={()=>setExpanded(!expanded)}>창고 확장 <span>{all.length}종 / {capacity}칸</span></button>{(expanded||locked)&&<><BuildingUpgradePanel object={object} state={state} now={now} onAction={onAction}/>{!locked&&<p className="farm-upgrade-warning">확장하는 동안 수확·생산물 수령을 할 수 없어요.</p>}</>}</>}
+
+export function FarmWarehouse({simulation,state,object,now=Date.now(),onAction,onClose,onStore,onMove,onFlip}:{simulation:FarmSimulation;state?:TopviewState;object?:TopviewObject;now?:number;onAction?:(action:FarmSimAction)=>void;onClose:()=>void;onStore?:()=>void;onMove?:()=>void;onFlip?:()=>void}){
+ const [tab,setTab]=useState<'raw'|'animal'|'processed'|'household'>('raw'),[expanded,setExpanded]=useState(false),[selectedGood,setSelectedGood]=useState<typeof all[number]|null>(null),all=storedFarmGoods(simulation.inventory)
+ const used=farmStorageUsage(simulation),reserved=harvestReservedQuantity(simulation),capacity=state?warehouseCapacity(state):WAREHOUSE_CAPACITY,locked=!!object&&!!simulation.upgradeJobs[object.id]
+ const household=(good:typeof all[number])=>finishedHouseholdGoods.some(item=>item===good)
+ const goods=all.filter(good=>tab==='household'?household(good):tab==='animal'?animalGoods.some(item=>item===good):tab==='processed'?processedGoods.includes(good as typeof processedGoods[number])&&!household(good):!animalGoods.some(item=>item===good)&&!processedGoods.includes(good as typeof processedGoods[number]))
+ return <Dialog open onOpenChange={open=>{if(!open)onClose()}}><DialogContent className="farm-sim-dialog farm-compact-dialog farm-facility-dialog farm-warehouse"><DialogHeader className="farm-compact-header"><DialogTitle>창고 <small>{locked?'업그레이드 중':`${used} / ${capacity}개`}</small></DialogTitle><DialogDescription className="farm-building-subtitle">{farmBuildingSubtitle('warehouse')}</DialogDescription></DialogHeader>
+  <div className="farm-sim-body">
+  {object&&state&&onAction&&<><button className="farm-warehouse-expand" aria-expanded={expanded||locked} onClick={()=>setExpanded(!expanded)}>창고 확장 <span>{used}개 / {capacity}개</span></button>{(expanded||locked)&&<><BuildingUpgradePanel object={object} state={state} now={now} onAction={onAction}/>{!locked&&<p className="farm-upgrade-warning">확장하는 동안 수확·생산물 수령을 할 수 없어요.</p>}</>}</>}
+  {!locked&&reserved>0&&<p className="farm-sim-caption">수확 중 {reserved}개 포함 · 모든 생산물의 총수량으로 계산해요.</p>}
   {!locked&&capacity>0&&<>
-  <div className="farm-warehouse-tabs"><button aria-pressed={tab==='raw'} onClick={()=>setTab('raw')}>농작물</button><button aria-pressed={tab==='animal'} onClick={()=>setTab('animal')}>축산물</button><button aria-pressed={tab==='processed'} onClick={()=>setTab('processed')}>가공품</button></div>
-  <div className="farm-warehouse-grid">{goods.map(good=><button key={good} className="farm-warehouse-slot" aria-pressed={selectedGood===good} onClick={()=>setSelectedGood(selectedGood===good?null:good)}><FarmGoodIcon good={good}/><span>{farmGoods[good].name}</span><strong>×{simulation.inventory[good]}</strong></button>)}</div>{!goods.length&&<div className="farm-empty-state"><p>아직 보관한 생산물이 없어요</p></div>}{selectedGood&&goods.includes(selectedGood)&&onNavigate&&<div className="farm-warehouse-links"><strong>{farmGoods[selectedGood].name}</strong>{saleTarget?<button onClick={()=>onNavigate(saleTarget)}>판매소로 →</button>:<small>음식 제작에 사용하는 재료예요.</small>}{processingTarget&&<button onClick={()=>onNavigate(processingTarget)}>가공소로 →</button>}</div>}</>}
-  {!locked&&!capacity&&<p className="farm-sim-caption">꾸미기에서 창고를 먼저 배치해주세요.</p>}
-  {object&&state&&onStore&&<BuildingStoreButton object={object} state={state} onStore={onStore} onMove={onMove}/>}
+  <div className="farm-warehouse-tabs"><button aria-pressed={tab==='raw'} onClick={()=>setTab('raw')}>농작물</button><button aria-pressed={tab==='animal'} onClick={()=>setTab('animal')}>축산물</button><button aria-pressed={tab==='processed'} onClick={()=>setTab('processed')}>가공품</button><button aria-pressed={tab==='household'} onClick={()=>setTab('household')}>생활용품</button></div>
+  <div className="farm-warehouse-grid">{goods.map(good=><button key={good} className="farm-warehouse-slot" aria-pressed={selectedGood===good} onClick={()=>setSelectedGood(selectedGood===good?null:good)}><FarmGoodIcon good={good}/><span>{farmGoods[good].name}</span><strong>×{simulation.inventory[good]}</strong></button>)}</div>{!goods.length&&<div className="farm-empty-state"><p>아직 보관한 생산물이 없어요</p></div>}{selectedGood&&goods.includes(selectedGood)&&<div className="farm-warehouse-links"><strong>{farmGoods[selectedGood].name}</strong><small>{isDeliverableGood(selectedGood)?'농장 납품소에 납품할 수 있어요.':selectedGood==='wool'?'방직 공방에서 털실과 펠트로 가공해요.':'제작에 사용하는 재료예요.'}</small></div>}</>}
+  {!locked&&!capacity&&<p className="farm-sim-caption">보관함에서 창고를 먼저 배치해주세요.</p>}
+  </div>
+  {object&&state&&onStore&&<FacilityManagement object={object} state={state} onStore={onStore} onMove={onMove} onFlip={onFlip}/>}
  </DialogContent></Dialog>
 }

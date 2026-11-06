@@ -8,24 +8,46 @@
 .farm-storage-shelf button[aria-pressed=true]{border-color:#b38b5c;background:#efe0c5}
 .farm-storage-shelf button>svg{width:56px;height:56px}
 .farm-storage-shelf>p{padding:14px;text-align:center;font-size:12px;color:#9a8063}
-.farm-sim-dialog.farm-shop{top:calc(50% - 4px);display:flex;flex-direction:column;height:min(calc(45dvh + 228px),85dvh);overflow:hidden}
+.farm-decoration-meta{display:inline-flex;align-items:center;justify-content:center;gap:5px;color:#a6815b;font-size:10px;line-height:1.4}
+.farm-terrain-badge{display:inline-flex;align-items:center;justify-content:center;flex:none;width:26px;height:26px;border:1px solid #d4ddbe;border-radius:9px;background:#f4f8e9;box-shadow:0 1px 3px #64734418;color:#73864c;vertical-align:middle}
+.farm-terrain-badge[data-terrain=sea]{border-color:#b5d4d5;background:#dfefed;color:#558b93}
+.farm-terrain-badge>svg{width:21px;height:21px;flex:none}
+.farm-sim-dialog.farm-shop{top:50%;display:flex;flex-direction:column;width:calc(100vw - 24px);max-width:760px;height:min(860px,calc(100dvh - 24px));max-height:calc(100dvh - 24px);overflow:hidden}
 .farm-shop>[data-slot=dialog-header],.farm-shop-tabs,.farm-shop-footer,.farm-shop-feedback{flex-shrink:0}
 .farm-shop-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.farm-shop-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;flex-shrink:0}
+.farm-shop-filters nav{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.farm-shop-filters button{display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid transparent;border-radius:12px;background:transparent;color:#a18b73;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.farm-shop-filters button:hover{background:#f5ead9;color:#805b3c}
+.farm-shop-filters button[aria-pressed=true]{border-color:#a5764d;background:#ede0cb;color:#785335}
+.farm-shop-filters button:focus-visible{outline:2px solid #ad7144;outline-offset:2px}
+.farm-shop-filters>span{font-size:11px;color:#9a7c60;white-space:nowrap}
 .farm-shop-tabs{display:flex;gap:5px;padding:4px;border-radius:12px;background:#f0e4d2}
-.farm-shop-tabs>button{flex:1;min-height:42px;border-radius:9px;font-size:12px;color:#957452}
+.farm-shop-tabs>button{display:flex;align-items:center;justify-content:center;gap:7px;flex:1;min-height:42px;border-radius:9px;font-size:12px;color:#957452}
 .farm-shop-tabs>button[aria-pressed=true]{background:#fff9ee;color:#795436;box-shadow:0 1px 4px #805b3810}
 .farm-shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-content:start;padding:5px 2px}
 .farm-shop-card{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;min-height:182px;padding:12px 8px 8px;border:1px solid #e0caab;border-radius:13px;background:#fcf2e3;color:#7d5a3b}
-.farm-shop-card>svg{width:72px;height:72px;margin-top:4px}
+.farm-item-art{position:relative;display:grid;place-items:center;flex:none;width:72px;height:72px;margin:4px 0 0}
+.farm-item-art>svg{width:100%;height:100%}
+.farm-storage-shelf .farm-item-art{width:60px;height:60px;margin:2px 0 0}
+.farm-item-art>.farm-terrain-badge{position:absolute;top:-5px;left:-6px;z-index:1}
+.farm-storage-shelf .farm-item-art>.farm-terrain-badge{top:-6px;left:-9px}
+.farm-tool-menu>button>.farm-category-icon{width:28px;height:28px}
 .farm-shop-grid strong{font-size:11px;font-weight:500}.farm-shop-grid small{font-size:10px;color:#967450}
 .farm-shop-card[data-owned=true]{background:#f6f0e7;border-color:#e5d8c5}
-.farm-shop-card[data-owned=true]>svg{filter:saturate(.6)}
+.farm-shop-card[data-owned=true]>.farm-item-art>svg{filter:saturate(.6)}
 .farm-shop-info-button{position:absolute;top:3px;right:3px;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;color:#94704c;background:#fff9eee8}
 .farm-shop-info-button:hover{background:#edddc5;color:#745031}
 .farm-shop-info-button:focus-visible,.farm-shop-card-buy:focus-visible{outline:2px solid #ad7144;outline-offset:2px}
 .farm-shop-card>.farm-shop-card-buy{display:flex;align-items:center;justify-content:space-between;gap:5px;align-self:stretch;min-height:40px;margin-top:auto;padding:8px;border:1px solid #855331;border-radius:9px;background:#95613d;color:#fff8ed;font-size:11px}
 .farm-shop-card-buy>strong{color:#fff0d5;font-size:10px;white-space:nowrap}
 .farm-shop-card-buy:disabled{opacity:.4;cursor:default}
+.farm-shop-item-quantity{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:3px;width:100%;margin-top:auto}
+.farm-shop-item-quantity>button{min-height:32px;border:1px solid #e3cfaf;border-radius:7px;background:#fff8eb;color:#8f6543;font-size:16px}
+.farm-shop-item-quantity>button:disabled{opacity:.35}
+.farm-shop-item-quantity>input{width:100%;min-width:0;min-height:32px;border:1px solid #e3cfaf;border-radius:7px;background:#fffbf3;text-align:center;font-size:12px;color:#8f6543;appearance:textfield}
+.farm-shop-item-quantity>input::-webkit-inner-spin-button,.farm-shop-item-quantity>input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none}
+.farm-shop-item-quantity+.farm-shop-card-buy{margin-top:3px}
 .farm-shop-owned{display:flex;align-items:center;justify-content:center;align-self:stretch;min-height:40px;margin-top:auto;border-radius:9px;background:#eae0d1;color:#8d7963;font-size:11px}
 .farm-shop-info-art{width:88px;height:80px;margin:0 auto 8px}.farm-shop-info-art>svg{width:100%;height:100%}
 .farm-shop-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid #e5d6c0;font-size:12px;color:#937352}

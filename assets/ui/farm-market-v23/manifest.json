@@ -1,0 +1,25 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "prompt": "Create one isolated village marketplace building sprite for a cozy Korean farming game. Use reference image for warm painted cartoon wooden texture, crisp soft brown outlines and gently elevated orthogonal front view ONLY. A compact single unified market pavilion, footprint two cells wide and one deep, roofs extend upwards. Distinct cheerful sage green scalloped canvas roof with cream trim, timber posts, central service counter, left small sacks of seeds and wheat, colorful carrot and tomato baskets, right neat jam jars and bread on shelves. A small wooden hanging sign with simple wheat and coin pictograms, no lettering. One cohesive market building, not a strip of separate buildings. Charming detailed readable silhouette at 80px, centered complete silhouette with 6% transparent margin. True transparent background, no ground, no scene, no people, no text, no watermark.",
+  "references": [
+    "public/farm/art/v19/buildings/sauceWorkshop.png"
+  ],
+  "files": [
+    {
+      "id": "market",
+      "source": "assets/ui/farm-market-v23/source/market.png",
+      "runtime": "public/farm/art/v23/buildings/market.png",
+      "crop": {
+        "left": 33,
+        "top": 37,
+        "width": 1226,
+        "height": 1103
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "01726f42429d3084ee8b7f70313eee1a6a5ce46878954d86724a0dcaead0ee62"
+    }
+  ]
+}

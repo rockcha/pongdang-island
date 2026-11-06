@@ -1,0 +1,5 @@
+.farm-gold-amount{display:inline-flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;vertical-align:middle;font-variant-numeric:tabular-nums}
+.farm-gold-icon{display:inline-block;width:1.2em;height:1.2em;min-width:14px;min-height:14px;object-fit:contain;flex-shrink:0;vertical-align:middle}
+.farm-sale-coin .farm-gold-icon{width:36px;height:36px}
+.farm-gold-spend{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;pointer-events:none}
+body:has(.farm-purchase-effect,.farm-action-effect) .farm-gold-spend{top:max(48px,calc(50% - 150px))}

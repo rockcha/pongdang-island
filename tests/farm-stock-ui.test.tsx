@@ -1,3 +1,4 @@
+import {farmMapWidth,farmMapHeight,farmCellCenter} from './helpers/farm-map'
 import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
@@ -6,8 +7,8 @@ afterEach(()=>{cleanup();vi.restoreAllMocks()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 function setup(){
  const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>),map=result.container.querySelector('.top-farm-map')!,viewport=result.container.querySelector('.top-farm-viewport')!
- vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:1120,bottom:960,width:1120,height:960,x:0,y:0,toJSON:()=>({})})
- const pointer=(type:string,x:number,y:number,id=1)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x*40+100,clientY:y*40+100,button:0}),{pointerId:id,pointerType:'mouse'}))
+ vi.spyOn(map,'getBoundingClientRect').mockReturnValue({left:0,top:0,right:farmMapWidth,bottom:farmMapHeight,width:farmMapWidth,height:farmMapHeight,x:0,y:0,toJSON:()=>({})})
+ const pointer=(type:string,x:number,y:number,id=1)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:farmCellCenter(x),clientY:farmCellCenter(y),button:0}),{pointerId:id,pointerType:'mouse'}))
  return {...result,pointer}
 }
 it('buys, selects, lays and recovers every decorative tile material',()=>{
@@ -32,7 +33,7 @@ it('buys decorations in the three-category shop and keeps all storage counts in 
  setup();click('상점')
  const shop=screen.getByRole('dialog',{name:'상점'})
  expect(within(screen.getByRole('navigation',{name:'상점 분류'})).getAllByRole('button').map(b=>b.textContent)).toEqual(['건물','장식','타일'])
- click('장식');fireEvent.click(within(shop).getByRole('button',{name:/울타리.*구매/}));fireEvent.click(within(shop).getByRole('button',{name:/울타리.*구매/}))
+ click('장식');fireEvent.click(within(shop).getByRole('button',{name:'울타리 구매 · 40 G'}));fireEvent.click(within(shop).getByRole('button',{name:'울타리 구매 · 40 G'}))
  expect(shop.querySelector('.farm-count-badge')).toBeNull()
  click('Close');click('보관함')
  expect(screen.queryByRole('dialog')).toBeNull()

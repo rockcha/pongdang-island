@@ -3,13 +3,15 @@ import {Link} from 'react-router'
 import {ArrowLeft} from 'lucide-react'
 import {appArt} from '@/components/app-art'
 import {useOperator} from '@/features/notices/use-operator'
+import {useAuth} from '@/components/auth-provider'
 
-const FarmEditor=lazy(()=>import('@/features/farm/topview-farm').then(m=>({default:m.TopviewFarm})))
+const FarmEditor=lazy(()=>import('@/features/farm/account-farm').then(m=>({default:m.AccountFarm})))
 const loading=<p role="status" className="p-8 text-center text-xs text-muted-foreground">농장을 준비하고 있어요…</p>
 export function FarmPage(){
+ const {session}=useAuth()
  const {operator,loading:checking}=useOperator()
  if(checking)return loading
- if(operator)return <Suspense fallback={loading}><FarmEditor/></Suspense>
+ if(operator)return <Suspense fallback={loading}><FarmEditor key={session?.user.id}/></Suspense>
  return <section aria-labelledby="farm-title" className="flex min-h-dvh flex-col bg-background px-6">
   <Link to="/aquarium" className="mt-5 inline-flex min-h-11 w-fit items-center gap-2 text-sm text-muted-foreground"><ArrowLeft size={18}/>내 어항으로</Link>
   <div className="flex flex-1 flex-col items-center justify-center gap-4 pb-20 text-center">

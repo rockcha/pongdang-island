@@ -1,0 +1,139 @@
+{
+  "tool": "image_gen.imagegen",
+  "files": [
+    {
+      "id": "pongiTube",
+      "source": "assets/ui/farm-cute-decoration-v14/source/pongiTube.png",
+      "runtime": "public/farm/art/v14/decor/pongiTube.png",
+      "crop": {
+        "left": 197,
+        "top": 49,
+        "width": 880,
+        "height": 1018
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "44 12 424 488",
+      "prompt": "EDIT the provided mint swim-ring Pongi sprite. Preserve the exact mascot identity: orange brown baby otter, glossy round eyes, cream muzzle and chest, pink cheeks, small pink starfish hairclip, whiskers, two front paws resting on the ring. Keep the mint green ring and cream polka dots. REMOVE ALL LOWER BODY: NO hind legs, NO feet, NO paws below the ring, NO tail, NO bottom belly visible outside ring. Only head, upper chest and front paws ABOVE a complete swim ring. The LOWEST OUTLINE of the entire sprite must be the BOTTOM EDGE OF THE INFLATABLE RING with transparent empty space underneath. Pongi is floating in deep water with lower body hidden underwater, but draw NO water surface or water rectangle. Preserve the cute face and ring shape. Do not add any accessories. Cozy farm game cartoon illustration matching references: rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, clear silhouette. One isolated object centered and fully visible, genuine transparent alpha background, no cast shadow or background rectangle, no text, UI, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v13/decor/pongiTube.png"
+      ],
+      "sha256": "941d8b91d5570cb4cc2630e2db27492dbc5749f3ea04594361494ccbce11f2f8"
+    },
+    {
+      "id": "pongiTubeRed",
+      "source": "assets/ui/farm-cute-decoration-v14/source/pongiTubeRed.png",
+      "runtime": "public/farm/art/v14/decor/pongiTubeRed.png",
+      "crop": {
+        "left": 192,
+        "top": 47,
+        "width": 887,
+        "height": 1024
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "43 12 425 488",
+      "prompt": "EDIT the provided swim-ring Pongi sprite into a matching RED tube variation. Preserve the exact mascot identity: orange brown baby otter, glossy round eyes, cream muzzle and chest, pink cheeks, pink starfish hairclip, whiskers, two front paws resting on ring. Change ONLY the ring color to cheerful coral RED with warm ivory polka dots. REMOVE ALL LOWER BODY: NO hind legs, NO feet, NO paws below ring, NO tail, NO bottom belly outside ring. Only head, upper chest and front paws ABOVE a complete red inflatable ring. The LOWEST OUTLINE must be the BOTTOM EDGE OF THE RING, with transparent space underneath. Lower body hidden underwater; do not draw any water or a water rectangle. Keep same pose and proportions as reference and mint version. Cozy farm game cartoon illustration matching references: rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, clear silhouette. One isolated object centered and fully visible, genuine transparent alpha background, no cast shadow or background rectangle, no text, UI, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v13/decor/pongiTube.png"
+      ],
+      "sha256": "52e82b6dbb5b74c20ace4e7ff7825e33afdb023ffa5eba24e8373497cd405f3e"
+    },
+    {
+      "id": "fenceVertical",
+      "source": "assets/ui/farm-cute-decoration-v14/source/fenceVertical.png",
+      "runtime": "public/farm/art/v14/decor/fenceVertical.png",
+      "crop": {
+        "left": 209,
+        "top": 102,
+        "width": 369,
+        "height": 1594
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "193 12 125 488",
+      "prompt": "One VERTICAL ORIENTATION version of the reference wooden farm fence, running north-south ALONG THE IMAGE VERTICAL AXIS on a game grid. The fence has two short UPRIGHT rounded honey-brown wooden posts, one at the FAR end near TOP center and one at the NEAR end near BOTTOM center. TWO rails connect these posts along the front-to-back direction, almost vertical in the image. Camera sees the SIDE of this fence from slightly above and a little right, enough to show two connecting rails. Narrow tall silhouette about 1:2 width to height, occupies one square game cell. The posts are standing upright in world space. Do NOT rotate the flat horizontal fence image: do NOT lay its posts sideways. Same golden wood, soft grain and rounded corners as reference. No vines, ground or grass. Cozy farm game cartoon illustration matching references: rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, clear silhouette. One isolated object centered and fully visible, genuine transparent alpha background, no cast shadow or background rectangle, no text, UI, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v12/decor/fence.png",
+        "public/farm/art/v12/decor/bench.png"
+      ],
+      "sha256": "e69bf2b0de5e0ac87871f3fd72e6535354c357a0cf5b1105e85f7c4734a0647c"
+    },
+    {
+      "id": "rabbitTopiary",
+      "source": "assets/ui/farm-cute-decoration-v14/source/rabbitTopiary.png",
+      "runtime": "public/farm/art/v14/decor/rabbitTopiary.png",
+      "crop": {
+        "left": 270,
+        "top": 59,
+        "width": 718,
+        "height": 1151
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "101 12 310 488",
+      "prompt": "One adorable small rabbit-shaped garden topiary, round plump fresh green shrub shaped like a sitting bunny with two upright rounded leafy ears, tiny leafy front paws and a small round tail, simple tiny dark bead eyes, in a low cream terracotta flower pot with a small pink bow. Clear cute rabbit silhouette made of rounded leaf masses, not a real animal. Front three-quarter view slightly above like farm buildings, not overhead. No ground. Cozy farm game cartoon illustration matching references: rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, clear silhouette. One isolated object centered and fully visible, genuine transparent alpha background, no cast shadow or background rectangle, no text, UI, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v12/decor/flowers.png"
+      ],
+      "sha256": "5ae56a70551d46b6365e3359857c1f930b5a256682f396416e38ea81e732ea45"
+    },
+    {
+      "id": "mushroomLamp",
+      "source": "assets/ui/farm-cute-decoration-v14/source/mushroomLamp.png",
+      "runtime": "public/farm/art/v14/decor/mushroomLamp.png",
+      "crop": {
+        "left": 276,
+        "top": 234,
+        "width": 691,
+        "height": 823
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "50 12 412 488",
+      "prompt": "One tiny cute mushroom garden lamp: a rounded warm coral-red mushroom cap with ivory spots, short plump cream stem, soft warm golden light visible through two tiny arched window cutouts in stem. Low round wooden base with just two small leaves. Clearly a decorative lantern shaped like a mushroom, no face, no power cable, no light halo outside silhouette. Front view slightly above, not overhead. Cozy farm game cartoon illustration matching references: rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, clear silhouette. One isolated object centered and fully visible, genuine transparent alpha background, no cast shadow or background rectangle, no text, UI, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v12/decor/flowers.png"
+      ],
+      "sha256": "05119eceb123d4cee40d647d8232bd1962dd165a8486e828c0d6a20c5dc110e1"
+    },
+    {
+      "id": "sealFloat",
+      "source": "assets/ui/farm-cute-decoration-v14/source/sealFloat.png",
+      "runtime": "public/farm/art/v14/decor/sealFloat.png",
+      "crop": {
+        "left": 199,
+        "top": 205,
+        "width": 841,
+        "height": 868
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "19 12 473 488",
+      "prompt": "One adorable tiny round creamy WHITE BABY SEAL sitting IN a pale sky-blue inflatable swim ring with small yellow star motifs. Seal has tiny glossy black eyes, soft gray nose, pink cheeks, two little front flippers resting over ring. ONLY head and upper body above ring, NO tail or hind flippers below ring. Bottom silhouette ends at ring. Compact charming one-tile water decoration, three-quarter front view, no water or scenery. Cozy farm game cartoon illustration matching references: rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, clear silhouette. One isolated object centered and fully visible, genuine transparent alpha background, no cast shadow or background rectangle, no text, UI, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v13/decor/pongiTube.png"
+      ],
+      "sha256": "8d768b3289cf2d9eeaf4d2c10bd58d0c95be2b1a8806eabc74261767ccabc35f"
+    },
+    {
+      "id": "waterLilies",
+      "source": "assets/ui/farm-cute-decoration-v14/source/waterLilies.png",
+      "runtime": "public/farm/art/v14/decor/waterLilies.png",
+      "crop": {
+        "left": 112,
+        "top": 64,
+        "width": 1550,
+        "height": 748
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 134 488 244",
+      "prompt": "One small floating cluster of three plump green lily pads, one large pastel-pink water lily blossom, one tiny cream water lily and a small round pink bud. Rounded cute petal forms, clean simple readable design. Slightly elevated front view so front petals visible, horizontal oval cluster suitable for one water tile. Floating vegetation ONLY, no pond rim, stones, pot, earth or water patch. Cozy farm game cartoon illustration matching references: rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, clear silhouette. One isolated object centered and fully visible, genuine transparent alpha background, no cast shadow or background rectangle, no text, UI, watermark or checkerboard.",
+      "references": [
+        "public/farm/art/v12/decor/flowers.png"
+      ],
+      "sha256": "62b2e002d8b5b5f1b22ce7ea9fd81f6f3c90c15f688565432551ebdf85f518b2"
+    }
+  ]
+}

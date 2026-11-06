@@ -1,0 +1,141 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Local farm land decoration artwork. These are static decorative props, separate from aquarium collectibles.",
+  "processing": "Remove tiny detached alpha components, retain 1px alpha fringe, crop, and contain within a transparent 512x512 canvas. Picnic fits a 488x244 area for a 2x1 footprint; other props fit 488x488. Reproduce from repository root with prepare.cjs.",
+  "files": [
+    {
+      "id": "pongiMailbox",
+      "source": "assets/ui/farm-decoration-v16/source/pongiMailbox.png",
+      "runtime": "public/farm/art/v16/decor/pongiMailbox.png",
+      "crop": {
+        "left": 199,
+        "top": 54,
+        "width": 892,
+        "height": 1141
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "4b7b12db6343aeb4c1ed44232dbf7134468eebd31369da7c6b1ac4d723ae8cf6",
+      "prompt": "Production-ready cozy farm game decoration sprite. Match reference illustration style: chunky rounded forms, clean warm brown outlines, smooth soft dimensional shading, warm cheerful colors, cute but readable small silhouettes. Camera is slightly elevated FRONT THREE QUARTER orthographic, same angle as farm buildings, NOT overhead top-down and NOT isometric diamond. ONE cohesive standalone decoration fully visible centered, genuine transparent alpha background. Exceptionally clean transparent edges, NO ground rectangle, NO cast shadow, NO glow, NO text, UI, watermark or checkerboard. A functional-looking little PONGI OTTER MAILBOX on one short thick wooden post. The rounded mailbox itself resembles the orange brown otter mascot face from reference: rounded ears, cream muzzle, glossy dark eyes, tiny pink cheeks, little pink starfish motif above one ear. A simple side mail flag and a cream envelope partly visible in the mail opening clearly identify it as a mailbox. Small sage green base detail. No swimming ring. This is a cute crafted mailbox shaped like Pongi, not an actual live otter sitting on a box. Compact upright silhouette, 1x1 tile.",
+      "references": [
+        "public/farm/art/v14/decor/pongiTube.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "teacupCat",
+      "source": "assets/ui/farm-decoration-v16/source/teacupCat.png",
+      "runtime": "public/farm/art/v16/decor/teacupCat.png",
+      "crop": {
+        "left": 169,
+        "top": 135,
+        "width": 979,
+        "height": 1002
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "f449b58c6db78e9b0dd7de7ba95fe4f405f220c53e5bff11274ae001d9739909",
+      "prompt": "Production-ready cozy farm game decoration sprite. Match reference illustration style: chunky rounded forms, clean warm brown outlines, smooth soft dimensional shading, warm cheerful colors, cute but readable small silhouettes. Camera is slightly elevated FRONT THREE QUARTER orthographic, same angle as farm buildings, NOT overhead top-down and NOT isometric diamond. ONE cohesive standalone decoration fully visible centered, genuine transparent alpha background. Exceptionally clean transparent edges, NO ground rectangle, NO cast shadow, NO glow, NO text, UI, watermark or checkerboard. A tiny sleeping cream-and-caramel kitten curled inside a large ivory porcelain teacup with a rounded handle on the RIGHT. The cup has a few simple dusty rose flower motifs, sits on a matching rounded saucer, kitten's eyes closed, small pink nose, ears and one paw over rim. Peaceful cozy expression. One coherent teacup-and-kitten decoration, compact 1x1 tile, no steam or extra floating symbols.",
+      "references": [
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "bearPicnic",
+      "source": "assets/ui/farm-decoration-v16/source/bearPicnic.png",
+      "runtime": "public/farm/art/v16/decor/bearPicnic.png",
+      "crop": {
+        "left": 30,
+        "top": 42,
+        "width": 1714,
+        "height": 803
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 134 488 244",
+      "sha256": "797834b217427dced3b91bd8625cb793e64570e694b5e2223e0d284bdaabf1c9",
+      "prompt": "Production-ready cozy farm game decoration sprite. Match reference illustration style: chunky rounded forms, clean warm brown outlines, smooth soft dimensional shading, warm cheerful colors, cute but readable small silhouettes. Camera is slightly elevated FRONT THREE QUARTER orthographic, same angle as farm buildings, NOT overhead top-down and NOT isometric diamond. ONE cohesive standalone decoration fully visible centered, genuine transparent alpha background. Exceptionally clean transparent edges, NO ground rectangle, NO cast shadow, NO glow, NO text, UI, watermark or checkerboard. A teddy bear PICNIC DIORAMA on a low red-and-cream gingham picnic blanket: one small honey brown plush teddy sitting on the LEFT, one little woven picnic basket on the RIGHT, a tiny plate with two sandwiches and two strawberries between them. All objects sit ON the blanket forming one coherent decoration. Front three-quarter view, wide low 2x1 game footprint, entire checked blanket visible in a wide rectangular shape aligned horizontally (NOT diamond), no landscape or outside floor. Bear has round ears, tiny dot eyes and cream muzzle.",
+      "references": [
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "chickSandbox",
+      "source": "assets/ui/farm-decoration-v16/source/chickSandbox.png",
+      "runtime": "public/farm/art/v16/decor/chickSandbox.png",
+      "crop": {
+        "left": 105,
+        "top": 217,
+        "width": 1045,
+        "height": 858
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "a173d7e763410f8d7bf2b81a944fac48a53fce21301e35e674811d5d43712889",
+      "prompt": "Production-ready cozy farm game decoration sprite. Match reference illustration style: chunky rounded forms, clean warm brown outlines, smooth soft dimensional shading, warm cheerful colors, cute but readable small silhouettes. Camera is slightly elevated FRONT THREE QUARTER orthographic, same angle as farm buildings, NOT overhead top-down and NOT isometric diamond. ONE cohesive standalone decoration fully visible centered, genuine transparent alpha background. Exceptionally clean transparent edges, NO ground rectangle, NO cast shadow, NO glow, NO text, UI, watermark or checkerboard. A tiny CHICK SANDBOX decoration: low rounded square honey-colored wooden sandbox filled with pale golden sand, one fluffy little yellow baby chick sitting at the LEFT and a miniature sandcastle with a red shovel and small mint bucket at the RIGHT. Chick is visibly a baby chicken, tiny orange beak and feet, black shiny eyes. All elements sit within the compact sandbox. Front three-quarter view, square game footprint 1x1, cohesive small decoration. No adult chicken, no playground slide, no extra floor.",
+      "references": [
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "strawScarecrow",
+      "source": "assets/ui/farm-decoration-v16/source/strawScarecrow.png",
+      "runtime": "public/farm/art/v16/decor/strawScarecrow.png",
+      "crop": {
+        "left": 183,
+        "top": 10,
+        "width": 869,
+        "height": 1228
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "78ccf67358a382e13047c5409311929598cfdc4d488330de62f41a30f76fe824",
+      "prompt": "Production-ready cozy farm game decoration sprite. Match reference illustration style: chunky rounded forms, clean warm brown outlines, smooth soft dimensional shading, warm cheerful colors, cute but readable small silhouettes. Camera is slightly elevated FRONT THREE QUARTER orthographic, same angle as farm buildings, NOT overhead top-down and NOT isometric diamond. ONE cohesive standalone decoration fully visible centered, genuine transparent alpha background. Exceptionally clean transparent edges, NO ground rectangle, NO cast shadow, NO glow, NO text, UI, watermark or checkerboard. One traditional FARM SCARECROW on a short cross-shaped wooden stake. Round burlap face with embroidered friendly smile and dark stitched eyes, floppy golden straw hat with rust orange ribbon, muted red checked shirt with outstretched sleeves, patched denim blue overalls with straw tufts at cuffs and ankles. Cute farm prop, NOT a live person. Upright sturdy silhouette, clearly recognizable straw hat, no ground base or landscape. 1x1 tile, front three-quarter view, no birds.",
+      "references": [
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "hayBales",
+      "source": "assets/ui/farm-decoration-v16/source/hayBales.png",
+      "runtime": "public/farm/art/v16/decor/hayBales.png",
+      "crop": {
+        "left": 81,
+        "top": 219,
+        "width": 1088,
+        "height": 812
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "b641f9d6f2fd78ab47c5423f6a47ef7b0b6f5f87bade0e6faf903133fd7c8288",
+      "prompt": "Production-ready cozy farm game decoration sprite. Match reference illustration style: chunky rounded forms, clean warm brown outlines, smooth soft dimensional shading, warm cheerful colors, cute but readable small silhouettes. Camera is slightly elevated FRONT THREE QUARTER orthographic, same angle as farm buildings, NOT overhead top-down and NOT isometric diamond. ONE cohesive standalone decoration fully visible centered, genuine transparent alpha background. Exceptionally clean transparent edges, NO ground rectangle, NO cast shadow, NO glow, NO text, UI, watermark or checkerboard. A compact pile of THREE small rectangular GOLDEN HAY BALES, two at bottom and one on top, each tied neatly with two brown twine bands. Rounded compressed straw corners, warm golden yellow ochre fibers and gentle depth shading, a few tidy straw ends. Practical cozy farm decoration, not a hay house, no tools, no animals, no ground or stray scattered pieces. 1x1 tile front three-quarter view, clearly three stacked tied straw blocks.",
+      "references": [
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "toolRack",
+      "source": "assets/ui/farm-decoration-v16/source/toolRack.png",
+      "runtime": "public/farm/art/v16/decor/toolRack.png",
+      "crop": {
+        "left": 90,
+        "top": 155,
+        "width": 1040,
+        "height": 1003
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "4205fc94f06e7bcc634b7bd59a2f27a8b35ed8517c4339c068298eae4e378543",
+      "prompt": "Production-ready cozy farm game decoration sprite. Match reference illustration style: chunky rounded forms, clean warm brown outlines, smooth soft dimensional shading, warm cheerful colors, cute but readable small silhouettes. Camera is slightly elevated FRONT THREE QUARTER orthographic, same angle as farm buildings, NOT overhead top-down and NOT isometric diamond. ONE cohesive standalone decoration fully visible centered, genuine transparent alpha background. Exceptionally clean transparent edges, NO ground rectangle, NO cast shadow, NO glow, NO text, UI, watermark or checkerboard. One compact FARM TOOL RACK: freestanding warm wooden A-frame rack holding exactly three neatly arranged tools, a small spade with dark gray metal blade, a wooden-handled pitchfork with dark gray tines and a little hoe. Tool blades are safely visible and held tidily, a small pair of sage green gardening gloves hanging from side hook. Cozy useful farm decoration with rounded wood edges, simplified thick handles readable at small size. Upright compact 1x1 tile, slightly elevated front three-quarter view, no shed or surrounding ground.",
+      "references": [
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    }
+  ]
+}

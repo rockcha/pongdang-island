@@ -16,32 +16,27 @@ it('filters production, updates completion from time, and navigates to an exact 
  const {rerender}=render(<FarmOverview state={state} now={now} onClose={()=>{}} onVisit={onVisit}/>)
  click('수령 가능1')
  expect(screen.queryByRole('button',{name:'밀가루 수령 · 제분소 (4,7)으로 이동'})).toBeNull()
- click('밀가루 수령 · 제분소 (6,12)으로 이동')
+ click('밀가루 수령 · 제분소 (6,13)으로 이동')
  expect(onVisit).toHaveBeenCalledWith(21)
  expect(state.simulation.inventory.flour).toBe(0)
  rerender(<FarmOverview state={state} now={20000} onClose={()=>{}} onVisit={onVisit}/>)
  click('밀가루 수령 · 제분소 (4,7)으로 이동')
  expect(onVisit).toHaveBeenLastCalledWith(50)
 })
-it('shows actual shortages and completed orders without allowing inventory from another store to be reserved',()=>{
- const state=initialTopview(),now=Date.parse('2026-11-04T03:00:00Z'),store=state.objects.find(object=>object.kind==='store')!,orders=dailyFarmOrders(store,now,state),first=orders[0]
- state.simulation.inventory[first.good]=2
- state.simulation.orderDeliveries[farmOrderKey(store,now)]={[first.good]:1,[orders[1].good]:orders[1].quantity}
- const visit=vi.fn()
- render(<FarmOverview state={state} now={now} onClose={()=>{}} onVisit={visit}/>)
- fireEvent.click(screen.getByRole('button',{name:/^오늘의 주문/}))
- const panel=screen.getByRole('region',{name:'농작물 판매소 (11,5) 주문'})
- const row=within(panel).getByText(farmGoods[first.good].name).closest('.farm-overview-order')!
- expect(row.textContent).toContain(`${first.quantity-3}개 부족`)
- expect(within(panel).getByText('납품 완료')).toBeTruthy()
- click('농작물 판매소 (11,5)으로 이동')
- expect(visit).toHaveBeenCalledWith(store.id)
+it('shows owned stock and prices in market sales status and navigates to the market',()=>{
+ const state=initialTopview(),visit=vi.fn()
+ state.simulation.inventory.wool=2
+ render(<FarmOverview state={state} now={0} onClose={()=>{}} onVisit={visit}/>)
+ fireEvent.click(screen.getByRole('button',{name:/^판매 현황/}))
+ expect(screen.getByText('양털')).toBeTruthy();expect(screen.getByText('개당 30 G')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:/판매소로 이동/}));expect(visit).toHaveBeenCalledWith(2) 
 })
+
 it('moves from the overview to the highlighted facility and leaves ready produce untouched',()=>{
  let now=Date.parse('2026-11-04T03:00:00Z')
  vi.spyOn(Date,'now').mockImplementation(()=>now)
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('젖소 (16,9)')
+ click('젖소 생산 시작')
  now+=10000
  click('농장 현황')
  expect(screen.getByRole('dialog',{name:'농장 현황'})).toBeTruthy()

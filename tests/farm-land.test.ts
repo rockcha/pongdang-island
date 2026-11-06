@@ -4,9 +4,9 @@ import {applyLandStroke,buyLandStock,landLine} from '@/features/farm/land-tools'
 
 it('buys inventory once without altering the island and rejects invalid or unaffordable batches',()=>{
  const state=initialTopview(),bought=buyLandStock(state,10)
- expect(bought.gold).toBe(14500);expect(bought.landStock).toBe(10);expect(bought.land).toBe(state.land)
+ expect(bought.gold).toBe(14000);expect(bought.landStock).toBe(10);expect(bought.land).toBe(state.land)
  for(const quantity of [0,-1,1.5,1001,Number.MAX_SAFE_INTEGER,NaN])expect(buyLandStock(state,quantity)).toBe(state)
- const poor={...state,gold:49};expect(buyLandStock(poor,1)).toBe(poor)
+ const poor={...state,gold:99};expect(buyLandStock(poor,1)).toBe(poor)
 })
 it('fills a stroke from its connected shore even when drawn backwards and stops at available stock',()=>{
  const state=buyLandStock(initialTopview(),3),cells=[{x:0,y:4},{x:1,y:4},{x:2,y:4},{x:3,y:4},{x:3,y:4}]

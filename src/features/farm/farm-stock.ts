@@ -1,14 +1,18 @@
-import {farmCanPurchase} from './farm-simulation'
+import {farmPurchaseLimit,farmOwnedCount} from './farm-simulation'
+import {isRetiredTradeBuilding} from './market-catalog'
+import {isBasicFarmBuilding} from './building-rules'
 import {cellKey,objectAt,topviewItems,type FarmTool,type TopviewState} from './topview-model'
 import type {LandCell,LandTool} from './land-tools'
 import {farmTiles,tileCount,pathTile,addTileStock,type FarmTile} from './tile-catalog'
 
 export const dirtTile=farmTiles[0]
-export function buyFarmItem(state:TopviewState,kind:FarmTool):TopviewState{
- const item=topviewItems[kind]
- if(item.group==='동물'||kind==='plot'||!farmCanPurchase(state,kind)||state.gold<item.price)return state
- const orderKeys=kind==='store'||kind==='processed'?{...state.storedOrderKeys,[kind]:[...(state.storedOrderKeys?.[kind]??state.stored.filter(k=>k===kind).map(()=>null)),null]}:state.storedOrderKeys
- return {...state,gold:state.gold-item.price,stored:[...state.stored,kind],storedOrderKeys:orderKeys,storedLevels:{...state.storedLevels,[kind]:[...(state.storedLevels?.[kind]??state.stored.filter(k=>k===kind).map(()=>1)),1]}}
+export function buyFarmItem(state:TopviewState,kind:FarmTool,quantity=1):TopviewState{
+ const item=topviewItems[kind],cost=item.price*quantity
+ if(isRetiredTradeBuilding(kind)||isBasicFarmBuilding(kind))return state
+ if(!Number.isSafeInteger(quantity)||quantity<1||quantity>1000||!Number.isSafeInteger(cost)||item.group==='동물'||kind==='plot'||farmOwnedCount(state,kind)+quantity>farmPurchaseLimit(kind)||state.gold<cost)return state
+ const copies=Array.from({length:quantity},()=>kind),levels=copies.map(()=>1)
+ const orderKeys=state.storedOrderKeys
+ return {...state,gold:state.gold-cost,stored:[...state.stored,...copies],storedTransforms:{...state.storedTransforms,[kind]:[...(state.storedTransforms?.[kind]??state.stored.filter(k=>k===kind).map(()=>({}))),...copies.map(()=>({}))]},storedOrderKeys:orderKeys,storedLevels:{...state.storedLevels,[kind]:[...(state.storedLevels?.[kind]??state.stored.filter(k=>k===kind).map(()=>1)),...levels]}}
 }
 export function buyFarmTiles(state:TopviewState,quantity:number,tile:FarmTile='dirt'):TopviewState{
  const product=farmTiles.find(item=>item.id===tile)

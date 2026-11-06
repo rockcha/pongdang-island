@@ -1,0 +1,171 @@
+{
+  "tool": "image_gen",
+  "transparent_background": true,
+  "scope": "Local farm prototype artwork; no aquarium catalog or remote storage changes.",
+  "placement": {
+    "textileMill": {
+      "terrain": "land",
+      "movement": "fixed",
+      "footprint": {
+        "w": 2,
+        "h": 1
+      }
+    },
+    "sewingWorkshop": {
+      "terrain": "land",
+      "movement": "fixed",
+      "footprint": {
+        "w": 2,
+        "h": 1
+      }
+    }
+  },
+  "entries": [
+    {
+      "id": "textileMill",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-eaeaf813-8aa4-4454-b62e-d0b5cafa10c9.png",
+      "original": "textileMill-original.png",
+      "output": "public/farm/art/textiles-v1/textileMill.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster game asset for this cozy Korean farm game. Match reference style: soft dimensional hand-painted cartoon shading, warm brown delicate contours, cream and natural colors, readable at 48px. Clean true transparent alpha; full subject visible, centered, approximately 8% transparent margin. No text, letters, UI, watermark, border, checkerboard, ground scene, or floating sparkles. Primary request: a small charming weaving workshop building. The apiary reference is ONLY for building camera angle, rendering, scale and wooden construction, not its beehives. Orthographic front view with a slightly visible roof top, NOT a diagonal isometric view. Wooden cottage with a muted sage-green tiled roof, cream cloth awning, an open front displaying one wooden loom and a few ivory yarn spools, a simple woven-cloth emblem without lettering. Compact broad footprint, base near bottom. A stationary building for a 2-by-1 farm footprint.",
+      "references": [
+        "public/farm/art/honey-v1/apiary.png",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sha256": "96d6ffacef122cc0806777db2f35a1b6d8ae145d7d271c2525a37598b8ac4cbc",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "sewingWorkshop",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-9a333713-0900-48db-865e-7bb5dfb66535.png",
+      "original": "sewingWorkshop-original.png",
+      "output": "public/farm/art/textiles-v1/sewingWorkshop.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster game asset for this cozy Korean farm game. Match reference style: soft dimensional hand-painted cartoon shading, warm brown delicate contours, cream and natural colors, readable at 48px. Clean true transparent alpha; full subject visible, centered, approximately 8% transparent margin. No text, letters, UI, watermark, border, checkerboard, ground scene, or floating sparkles. Primary request: a small charming sewing workshop building. The apiary reference is ONLY for building camera angle, rendering, scale and wooden construction, not its beehives. Orthographic front view with a slightly visible roof top, NOT a diagonal isometric view. Warm wooden cottage with a muted dusty-rose tiled roof, ivory fabric awning, an open front displaying a tiny vintage sewing machine and folded teal and cream fabric, a spool-and-needle emblem without lettering. Compact broad footprint, base near bottom. Stationary building for a 2-by-1 farm footprint.",
+      "references": [
+        "public/farm/art/honey-v1/apiary.png",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "sha256": "39bdfdeb0ba77eb44fe43c083da45b690a53e107c3002bdb4fee87fa7336335a",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "cotton",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-fe2f8e2c-9674-4774-8ec6-b0d0742504bf.png",
+      "original": "cotton-original.png",
+      "output": "public/farm/art/textiles-v1/cotton.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster game asset for this cozy Korean farm game. Match reference style: soft dimensional hand-painted cartoon shading, warm brown delicate contours, cream and natural colors, readable at 48px. Clean true transparent alpha; full subject visible, centered, approximately 8% transparent margin. No text, letters, UI, watermark, border, checkerboard, ground scene, or floating sparkles. Primary request: one inventory icon of a small harvested cotton sprig, three fluffy white cotton bolls with light warm shadows, short brown stems and a few dry tan husks. The wheat reference is ONLY for camera, icon composition, thin brown edges and warm painterly game rendering; replace the subject completely with cotton. Not a growing rooted plant, not a field. No face.",
+      "references": [
+        "public/farm/art/v2/crops/wheat.png"
+      ],
+      "sha256": "12db1749692ed2dae6fd3022868ed314d8e4f760779a2c99fe4d8615085e647c",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "id": "cotton-ready",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-50a8e78a-099e-44a3-8a7f-3dfad845991f.png",
+      "original": "cotton-ready-original.png",
+      "output": "public/farm/art/textiles-v1/cotton-ready.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: one small mature cotton shrub, four fluffy white cotton bolls with tan husks among soft green leaves on short brown stems. This is a standing crop foreground layer for a square top-down farm plot, viewed from slightly above but facing front, NOT an inventory sprig. The carrot reference is only for crop rendering and centered full-canvas framing. Compact round shrub with base rooted at bottom center; no soil, no pot, no planter, no detached debris.",
+      "references": [
+        "public/farm/art/v9/plots/carrot-ready.png"
+      ],
+      "sha256": "53d426b036d0a123519ac4752f5a808f121c44023f42b8cf9ad6d1d6ff9eacd4",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "cottonFabric",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-6d0f2d02-1e3a-4237-b8fb-2527953cc3ec.png",
+      "original": "cottonFabric-original.png",
+      "output": "public/farm/art/textiles-v1/cottonFabric.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: one neatly folded bolt of soft ivory cotton fabric, a short rolled edge and one tidy draped corner showing fine woven texture. Cream linen color, no pattern, no face, no extra tools.",
+      "references": [
+        "public/farm/art/v2/goods/wool.png"
+      ],
+      "sha256": "876ed015ecf012d763984c204e2cf7f1eb5406ed03276e02097511e040c8fcfe",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "id": "woolYarn",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-ae44dd67-613f-4b56-8189-622d3d4d33d9.png",
+      "original": "woolYarn-original.png",
+      "output": "public/farm/art/textiles-v1/woolYarn.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: one plump warm oatmeal-colored ball of spun wool yarn with clearly readable curved winding strands and a tiny loose yarn end curled beside it. Not raw wool, not a cloud. No needles, no other tools, no face.",
+      "references": [
+        "public/farm/art/v2/goods/wool.png"
+      ],
+      "sha256": "f66f5a41bf982d77030c96e12d11e05f34eb57be28ab9b87fdd7272e2cb776c1",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "id": "felt",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-b06bb41d-28bb-442f-a675-26f7d48639e5.png",
+      "original": "felt-original.png",
+      "output": "public/farm/art/textiles-v1/felt.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: a neat small stack of three thick soft felt sheets in muted sage green, cream and warm beige, rounded square corners, slightly offset so all layers are readable. Matte compressed wool fibers, not a blanket, no face.",
+      "references": [
+        "public/farm/art/v2/goods/wool.png"
+      ],
+      "sha256": "80c20576931d3423c7ee61cedf67375f7d39b8fd0163c068bc58b21fab44f238",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "id": "towel",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-41d7b98a-5d52-40fe-8a2b-5cd0d4cda79c.png",
+      "original": "towel-original.png",
+      "output": "public/farm/art/textiles-v1/towel.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: one neatly folded soft ivory cotton bath towel, one narrow pale sage stripe near its edge, gently rounded plush corners, readable looped terry-cloth texture. Only the folded towel. No bathroom, no face.",
+      "references": [
+        "public/farm/art/v2/goods/wool.png"
+      ],
+      "sha256": "7407855407493a42ed6ce2c5462f352fb7086436ca337808d11d5272771276d5",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "id": "scarf",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-5d0d057a-da64-4289-949e-631804d511fd.png",
+      "original": "scarf-original.png",
+      "output": "public/farm/art/textiles-v1/scarf.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: one cozy knitted dusty-rose wool scarf folded into a compact loose loop with two short fringed ends draped forward. Soft clear knit stitches, rounded warm illustration, no wearer, no other objects.",
+      "references": [
+        "public/farm/art/v2/goods/wool.png"
+      ],
+      "sha256": "eaf0ca5067d14a258949d7cea2259f240ef91c8832338935200f12e35d0143f3",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "id": "pongiDoll",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-9f48b01c-e7ed-4522-8f9b-ca8f5896bbb7.png",
+      "original": "pongiDoll-original.png",
+      "output": "public/farm/art/textiles-v1/pongiDoll.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: a small handmade plush toy of the otter mascot in the mascot reference. Preserve its warm orange-brown fur, cream muzzle and belly, rounded little ears and pink starfish hair accessory. Make it visibly a sewn stuffed toy with subtle seam lines and small embroidered eyes, seated with little paws. Absolutely no fishing rod, no hook, no line, no tools. Entire plush toy visible.",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "public/farm/art/v2/goods/wool.png"
+      ],
+      "sha256": "6169c3d6d4ae3add65f4401ee16e9e98d76dd6d40f0068a3f9bb532dd3b56f12",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "id": "blanket",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1b113-3069-74e2-b794-702baefd6339\\exec-1258a38f-36c8-4cbe-a908-f0a49687ca77.png",
+      "original": "blanket-original.png",
+      "output": "public/farm/art/textiles-v1/blanket.png",
+      "prompt": "Use case: stylized-concept. Single transparent-background raster inventory asset for a cozy Korean farm game. Match references ONLY for soft hand-painted dimensional cartoon rendering, warm delicate brown contours and cream colors. Readable at 48px, one centered compact subject with about 8% transparent margin. Fully visible clean alpha edge. No labels, letters, watermark, frame, checkerboard, background, scene, or ground shadow. Primary request: one thick cozy folded cream blanket with a muted sage green wide border and short soft fringe, showing warm woolly knit texture. A compact folded rectangle with a little draped edge; distinguish from a small towel by thick knit and broad colored border. No bed, no face, no other items.",
+      "references": [
+        "public/farm/art/v2/goods/wool.png"
+      ],
+      "sha256": "f4a07695bb3ee50ba9708e3ce219e3c2b2ba8985e75d7264c0399ce23df6d3af",
+      "width": 256,
+      "height": 256
+    }
+  ]
+}

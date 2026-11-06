@@ -32,7 +32,7 @@ it('keeps completed production full and collectible with a short completion effe
 it('holds the full gauge briefly after automatic upgrade completion without delaying the capacity increase',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
- click('축산 관리소 (4,8)');click('업그레이드 · 50 G');click('Close')
+ click('축산 관리소 (4,9)');click('업그레이드 · 50 G');click('Close')
  act(()=>vi.advanceTimersByTime(10000))
  const completed=container.querySelector('[data-work-completed="27"]')!
  expect(completed.querySelector('[role=progressbar]')?.getAttribute('aria-valuenow')).toBe('100')
@@ -42,6 +42,6 @@ it('holds the full gauge briefly after automatic upgrade completion without dela
  expect(container.querySelector('[data-work-completed="27"]')).toBeNull()
 })
 it('anchors building and animal gauges at the roof and back rather than far above the object',()=>{
- expect(farmWorkPosition({id:1,kind:'office',x:4,y:8})).toEqual({x:200,y:311})
+ expect(farmWorkPosition({id:1,kind:'office',x:4,y:8})).toEqual({x:200,y:271})
  expect(farmWorkPosition({id:2,kind:'cow',x:4,y:8})).toEqual({x:200,y:303})
 })

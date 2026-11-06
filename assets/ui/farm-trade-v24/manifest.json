@@ -1,0 +1,48 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "normalization": "Clean detached alpha components; fit to 488px and bottom-align on a 512px transparent canvas.",
+  "files": [
+    {
+      "id": "seedShop",
+      "source": "assets/ui/farm-trade-v24/source/seedShop-clean.png",
+      "runtime": "public/farm/art/v24/buildings/seedShop.png",
+      "crop": {
+        "left": 27,
+        "top": 689,
+        "width": 1198,
+        "height": 539
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "fd36423556ce5cd86d8fd921b61715ac4dabec04634771bf6343bc78652c68b0",
+      "prompt": "Create one isolated building sprite for a cozy Korean farming game. A ROOFLESS seed shop display: low wide wooden seed counter, tiered open trays of seeds and grains, three burlap seed sacks each with a different simple sprout or wheat pictogram, a few small green seedlings in pots, small upright wooden sign with a large sprout pictogram. The instantly dominant read is seeds and seedlings, not vegetables or food. Footprint two cells horizontally and one deep, gently elevated orthogonal front view with visible front face and top of counter. Compact ground-level stall, NOT a house, absolutely no roof, awning, canopy, tall posts, enclosed room or walls. Match reference's warm painted cartoon wood grain, soft brown outlines, charming rounded shapes and polished level of detail only; do not copy its roof or house structure. Full cohesive silhouette with 6% transparent margin, no ground slab or floor, no scenery, no people, no readable lettering, no watermark. True transparent background.",
+      "styleReferences": [
+        "public/farm/art/v23/buildings/market.png"
+      ],
+      "cleanupPrompt": "Edit this seed shop sprite only to clean the background. Remove the entire irregular off-white/gray opaque backdrop behind and above the seedlings and seed sacks, including the faint detached streak at the top. Everything outside the actual wooden counter, seed sacks, sign and plants must have true transparent alpha. Preserve the seed shop objects, warm cartoon illustration style, color, composition and cream decorative cloth on the front of the counter exactly. No roof, no new objects, no text. Clean crisp natural outlines with no white matte, halo or haze. Full isolated transparent sprite.",
+      "cleanupReference": "public/farm/art/v24/buildings/seedShop.png",
+      "originalSource": "assets/ui/farm-trade-v24/source/seedShop.png"
+    },
+    {
+      "id": "store",
+      "source": "assets/ui/farm-trade-v24/source/store.png",
+      "runtime": "public/farm/art/v24/buildings/store.png",
+      "crop": {
+        "left": 53,
+        "top": 143,
+        "width": 1668,
+        "height": 662
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "76a7866153d54f0fb487d9feaa8f023f6b834101e9969b052f4ed4a4154a80f3",
+      "prompt": "Create one isolated building sprite for a cozy Korean farming game. A ROOFLESS produce sales counter: low wide rustic wooden merchant stall, large brass weighing scale at the center, an open coin till with gold coins, two shallow woven baskets displaying carrots and tomatoes on the left, bread and a jam jar in a crate on the right. Small upright wooden sign with a large gold coin pictogram. The instantly dominant read is a trading and selling counter, clearly different from a seed shop. Footprint two cells horizontally and one deep, gently elevated orthogonal front view with visible front face and top of counter. Compact ground-level stall, NOT a house, absolutely no roof, awning, canopy, tall posts, enclosed room or walls. Match reference's warm painted cartoon wood grain, soft brown outlines, charming rounded shapes and polished level of detail only; do not copy its roof or house structure. Full cohesive silhouette with 6% transparent margin, no ground slab or floor, no scenery, no people, no readable lettering, no watermark. True transparent background.",
+      "styleReferences": [
+        "public/farm/art/v23/buildings/market.png"
+      ]
+    }
+  ]
+}

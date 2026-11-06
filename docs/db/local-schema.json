@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "24f9a20972f0ccb3525a18778fabb42fa6bde92531db62dbc9dc2e9f9ee2b602",
+  "migrationHash": "d675d6b6911c46c5ccaeb5f24ad8a43bddd12d0657b6b73782260e1998674005",
   "structure": {
     "enums": [
       {
@@ -607,6 +607,18 @@
       {
         "rls": true,
         "name": "title_fishing_log",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "topview_farm_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "topview_farms",
         "schema": "app_private",
         "force_rls": false
       },
@@ -6823,6 +6835,116 @@
         "table": "title_fishing_log",
         "schema": "app_private",
         "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "command",
+        "type": "jsonb",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "delta",
+        "type": "integer",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "revision",
+        "type": "bigint",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "document",
+        "type": "jsonb",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "revision",
+        "type": "bigint",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "undo_document",
+        "type": "jsonb",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "default": "now()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -13782,6 +13904,18 @@
         "definition": "CREATE UNIQUE INDEX title_fishing_log_user_id_event_key_key ON app_private.title_fishing_log USING btree (user_id, event_key)"
       },
       {
+        "name": "topview_farm_operations_pkey",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX topview_farm_operations_pkey ON app_private.topview_farm_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "topview_farms_pkey",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX topview_farms_pkey ON app_private.topview_farms USING btree (user_id)"
+      },
+      {
         "name": "voyage_bet_models_period",
         "table": "voyage_bet_models",
         "schema": "app_private",
@@ -19317,7 +19451,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_inputs jsonb, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.recycle_relics(p_action text, p_inputs jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();previous app_private.relic_recycling_operations;inputs jsonb;\n total integer;material_count integer;distinct_grades integer;source_grade text;target_grade public.game_rarity;\n equipped text;composite app_private.crafted_relics;received text[];reward text;result jsonb;unequipped boolean:=false;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('recombine','dismantle') then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if jsonb_typeof(p_inputs) is distinct from 'array' then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if jsonb_array_length(p_inputs) not between 1 and 6 then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if exists(select 1 from jsonb_array_elements(p_inputs) e where jsonb_typeof(e) is distinct from 'object'\n  or jsonb_typeof(e->'id') is distinct from 'string' or length(e->>'id') not between 1 and 200\n  or jsonb_typeof(e->'quantity') is distinct from 'number' or coalesce(e->>'quantity','') !~ '^[1-6]$') then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n select jsonb_agg(jsonb_build_object('id',id,'quantity',quantity) order by id),sum(quantity)::integer into inputs,total\n from(select id,sum(quantity)::integer quantity from jsonb_to_recordset(p_inputs) as i(id text,quantity integer) group by id)i;\n material_count:=total;\n if (p_action='recombine' and total not in (3,6)) or (p_action='dismantle' and total<>1) then raise exception 'RELIC_RECOMBINATION_COUNT';end if;\n -- Match the wallet-first locking order used by crafting, selling and equipment.\n perform app_private.get_gold_wallet();perform 1 from public.player_wallets where user_id=u for update;\n select * into previous from app_private.relic_recycling_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>p_action or previous.inputs<>inputs then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('recycling',previous.result,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n if p_action='recombine' then\n  select count(*),count(distinct r.rarity),min(r.rarity::text) into total,distinct_grades,source_grade\n  from public.fishing_relics r join jsonb_to_recordset(inputs) as i(id text,quantity integer) on r.id=i.id\n  where r.enabled and r.rarity in ('rare','epic','mythic');\n  if total<>jsonb_array_length(inputs) or distinct_grades<>1 then raise exception 'RELIC_RECOMBINATION_GRADE';end if;\n  if material_count<>(case when source_grade='mythic' then 3 else 6 end) then raise exception 'RELIC_RECOMBINATION_COUNT';end if;\n  target_grade:=case source_grade when 'rare' then 'epic'::public.game_rarity else 'mythic'::public.game_rarity end;\n  perform 1 from app_private.player_fishing_relics r where r.user_id=u and r.relic_id in(select i->>'id' from jsonb_array_elements(inputs)i) order by relic_id for update;\n  select relic_id into equipped from app_private.player_relic_loadouts where user_id=u;\n  if exists(select 1 from jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   left join app_private.player_fishing_relics r on r.user_id=u and r.relic_id=i.id\n   where coalesce(r.quantity,0)-case when equipped=i.id then 1 else 0 end<i.quantity) then raise exception 'RELIC_MATERIAL_UNAVAILABLE';end if;\n  select id into reward from public.fishing_relics where enabled and rarity=target_grade order by random() limit 1;\n  if reward is null then raise exception 'RELIC_RECOMBINATION_EMPTY';end if;\n  delete from app_private.player_fishing_relics r using jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   where r.user_id=u and r.relic_id=i.id and r.quantity=i.quantity;\n  update app_private.player_fishing_relics r set quantity=r.quantity-i.quantity from jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   where r.user_id=u and r.relic_id=i.id;\n  insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) select u,i->>'id' from jsonb_array_elements(inputs)i on conflict do nothing;\n  received:=array[reward];\n else\n  select * into composite from app_private.crafted_relics where user_id=u and id=inputs->0->>'id' for update;\n  if not found then raise exception 'RELIC_CRAFTED_NOT_OWNED';end if;\n  if exists(select 1 from app_private.player_relic_loadouts where user_id=u and crafted_id=composite.id) then\n   if app_private.production_active_count()>4 then raise exception 'RELIC_FUEL_PRODUCTION_ACTIVE:4';end if;\n   if app_private.bait_production_active_count()>4 then raise exception 'RELIC_BAIT_PRODUCTION_ACTIVE:4';end if;\n   delete from app_private.player_relic_loadouts where user_id=u and crafted_id=composite.id;\n   unequipped:=true;\n  end if;\n  received:=array[composite.base_id,composite.attached_id];\n  delete from app_private.crafted_relics where user_id=u and id=composite.id;\n end if;\n insert into app_private.player_fishing_relics(user_id,relic_id,quantity)\n  select u,id,1 from unnest(received)id order by id\n  on conflict(user_id,relic_id) do update set quantity=app_private.player_fishing_relics.quantity+1;\n insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) select u,id from unnest(received)id on conflict do nothing;\n result:=jsonb_build_object('action',p_action,'cost',0,'consumed',inputs,'receivedIds',to_jsonb(received),'unequipped',unequipped);\n insert into app_private.relic_recycling_operations(user_id,operation_id,action,inputs,result) values(u,p_operation_id,p_action,inputs,result);\n -- A zero-value receipt shares the operation namespace with existing relic commands.\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','relic-recycle:'||p_action,0);\n return app_private.relic_state()||jsonb_build_object('recycling',result,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.recycle_relics(p_action text, p_inputs jsonb, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();previous app_private.relic_recycling_operations;inputs jsonb;\n total integer;material_count integer;distinct_grades integer;source_grade text;target_grade public.game_rarity;\n equipped text;composite app_private.crafted_relics;received text[];reward text;result jsonb;unequipped boolean:=false;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('recombine','dismantle') then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if jsonb_typeof(p_inputs) is distinct from 'array' then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if jsonb_array_length(p_inputs) not between 1 and 8 then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n if exists(select 1 from jsonb_array_elements(p_inputs) e where jsonb_typeof(e) is distinct from 'object'\n  or jsonb_typeof(e->'id') is distinct from 'string' or length(e->>'id') not between 1 and 200\n  or jsonb_typeof(e->'quantity') is distinct from 'number' or coalesce(e->>'quantity','') !~ '^[1-8]$') then raise exception 'INVALID_RECYCLING_REQUEST';end if;\n select jsonb_agg(jsonb_build_object('id',id,'quantity',quantity) order by id),sum(quantity)::integer into inputs,total\n from(select id,sum(quantity)::integer quantity from jsonb_to_recordset(p_inputs) as i(id text,quantity integer) group by id)i;\n material_count:=total;\n if (p_action='recombine' and total not in (3,6,8)) or (p_action='dismantle' and total<>1) then raise exception 'RELIC_RECOMBINATION_COUNT';end if;\n -- Match the wallet-first locking order used by crafting, selling and equipment.\n perform app_private.get_gold_wallet();perform 1 from public.player_wallets where user_id=u for update;\n select * into previous from app_private.relic_recycling_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>p_action or previous.inputs<>inputs then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('recycling',previous.result,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n if p_action='recombine' then\n  select count(*),count(distinct r.rarity),min(r.rarity::text) into total,distinct_grades,source_grade\n  from public.fishing_relics r join jsonb_to_recordset(inputs) as i(id text,quantity integer) on r.id=i.id\n  where r.enabled and r.rarity in ('rare','epic','mythic');\n  if total<>jsonb_array_length(inputs) or distinct_grades<>1 then raise exception 'RELIC_RECOMBINATION_GRADE';end if;\n  if material_count<>(case source_grade when 'rare' then 8 when 'mythic' then 3 else 6 end) then raise exception 'RELIC_RECOMBINATION_COUNT';end if;\n  target_grade:=case source_grade when 'rare' then 'epic'::public.game_rarity else 'mythic'::public.game_rarity end;\n  perform 1 from app_private.player_fishing_relics r where r.user_id=u and r.relic_id in(select i->>'id' from jsonb_array_elements(inputs)i) order by relic_id for update;\n  select relic_id into equipped from app_private.player_relic_loadouts where user_id=u;\n  if exists(select 1 from jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   left join app_private.player_fishing_relics r on r.user_id=u and r.relic_id=i.id\n   where coalesce(r.quantity,0)-case when equipped=i.id then 1 else 0 end<i.quantity) then raise exception 'RELIC_MATERIAL_UNAVAILABLE';end if;\n  select id into reward from public.fishing_relics where enabled and rarity=target_grade order by random() limit 1;\n  if reward is null then raise exception 'RELIC_RECOMBINATION_EMPTY';end if;\n  delete from app_private.player_fishing_relics r using jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   where r.user_id=u and r.relic_id=i.id and r.quantity=i.quantity;\n  update app_private.player_fishing_relics r set quantity=r.quantity-i.quantity from jsonb_to_recordset(inputs) as i(id text,quantity integer)\n   where r.user_id=u and r.relic_id=i.id;\n  insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) select u,i->>'id' from jsonb_array_elements(inputs)i on conflict do nothing;\n  received:=array[reward];\n else\n  select * into composite from app_private.crafted_relics where user_id=u and id=inputs->0->>'id' for update;\n  if not found then raise exception 'RELIC_CRAFTED_NOT_OWNED';end if;\n  if exists(select 1 from app_private.player_relic_loadouts where user_id=u and crafted_id=composite.id) then\n   if app_private.production_active_count()>4 then raise exception 'RELIC_FUEL_PRODUCTION_ACTIVE:4';end if;\n   if app_private.bait_production_active_count()>4 then raise exception 'RELIC_BAIT_PRODUCTION_ACTIVE:4';end if;\n   delete from app_private.player_relic_loadouts where user_id=u and crafted_id=composite.id;\n   unequipped:=true;\n  end if;\n  received:=array[composite.base_id,composite.attached_id];\n  delete from app_private.crafted_relics where user_id=u and id=composite.id;\n end if;\n insert into app_private.player_fishing_relics(user_id,relic_id,quantity)\n  select u,id,1 from unnest(received)id order by id\n  on conflict(user_id,relic_id) do update set quantity=app_private.player_fishing_relics.quantity+1;\n insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) select u,id from unnest(received)id on conflict do nothing;\n result:=jsonb_build_object('action',p_action,'cost',0,'consumed',inputs,'receivedIds',to_jsonb(received),'unequipped',unequipped);\n insert into app_private.relic_recycling_operations(user_id,operation_id,action,inputs,result) values(u,p_operation_id,p_action,inputs,result);\n -- A zero-value receipt shares the operation namespace with existing relic commands.\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','relic-recycle:'||p_action,0);\n return app_private.relic_state()||jsonb_build_object('recycling',result,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -20078,6 +20212,26 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.today_fishing_records()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v_now timestamptz:=statement_timestamp();v_day date;v_start timestamptz;v_end timestamptz;result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n v_day:=(v_now at time zone 'Asia/Seoul')::date;\n v_start:=v_day::timestamp at time zone 'Asia/Seoul';\n v_end:=(v_day+1)::timestamp at time zone 'Asia/Seoul';\n with records as materialized (\n  select p.bait_id,a.rarity,a.operation_id is not null completed\n  from app_private.prepared_fishing_casts p\n  left join public.fishing_attempts a on a.user_id=p.user_id and a.operation_id=p.operation_id\n  where p.user_id=u and p.created_at>=v_start and p.created_at<v_end and p.created_at<=v_now\n  union all\n  select a.bait_id,a.rarity,true\n  from public.fishing_attempts a\n  where a.user_id=u and a.created_at>=v_start and a.created_at<v_end and a.created_at<=v_now\n   and not exists(select 1 from app_private.prepared_fishing_casts p where p.user_id=u and p.operation_id=a.operation_id)\n ), bait_counts as (\n  select bait_id,count(*) used from records group by bait_id\n )\n select jsonb_build_object(\n  'serverNow',v_now,'day',v_day,'nextResetAt',v_end,\n  'totalCasts',count(*),'caughtCount',count(*) filter(where rarity is not null),\n  'failedCount',count(*) filter(where completed and rarity is null),'unfinishedCount',count(*) filter(where not completed),\n  'rarities',jsonb_build_object('mythic',count(*) filter(where rarity='mythic'),'epic',count(*) filter(where rarity='epic'),'rare',count(*) filter(where rarity='rare'),'common',count(*) filter(where rarity='common')),\n  'baits',(select coalesce(jsonb_agg(jsonb_build_object('id',bc.bait_id,'name',coalesce(b.name,bc.bait_id),'imagePath',b.image_path,'used',bc.used) order by bc.used desc,bc.bait_id),'[]'::jsonb)\n   from bait_counts bc left join public.fishing_baits b on b.id=bc.bait_id)\n ) into result from records;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "topview_farm_commit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.topview_farm_commit(p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare f app_private.topview_farms;w public.player_wallets;o app_private.topview_farm_operations;v_undo jsonb;v_result jsonb;v_layout boolean;\nbegin\n if p_user_id is null or p_operation_id is null or p_command is null then raise exception 'INVALID_FARM_COMMAND';end if;\n -- All financial operations lock the shared wallet before domain rows.\n select * into w from public.player_wallets where user_id=p_user_id for update;\n if not found then raise exception 'WALLET_NOT_FOUND';end if;\n select * into f from app_private.topview_farms where user_id=p_user_id for update;\n if not found then raise exception 'FARM_NOT_FOUND';end if;\n select * into o from app_private.topview_farm_operations where user_id=p_user_id and operation_id=p_operation_id;\n if found then\n  if o.command is distinct from p_command then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.topview_farm_snapshot(p_user_id,f.document,p_operation_id,p_command);\n end if;\n if p_expected_revision is distinct from f.revision or p_expected_gold is distinct from w.gold then raise exception 'FARM_STATE_CONFLICT';end if;\n if p_delta is null or w.gold::bigint+p_delta not between 0 and 1000000000 then raise exception 'INSUFFICIENT_GOLD';end if;\n if jsonb_typeof(p_state) is distinct from 'object' or (p_state->>'gold')::bigint is distinct from w.gold::bigint+p_delta\n  or octet_length(p_state::text)>1000000 or jsonb_typeof(p_state->'objects') is distinct from 'array' then raise exception 'INVALID_FARM_STATE';end if;\n v_layout:=(p_command->>'type') in ('place','move','recover','transform','land','tile','clear');\n if p_command->>'type'='undo' then\n  if f.undo_document is null or p_delta<>0 or (p_state-'gold'-'nextId') is distinct from (f.undo_document-'gold'-'nextId') then raise exception 'INVALID_FARM_UNDO';end if;\n elsif v_layout and p_delta=0 then v_undo:=f.document;\n end if;\n if p_delta<>0 then\n  update public.player_wallets set gold=gold+p_delta,updated_at=clock_timestamp() where user_id=p_user_id;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n   values(p_user_id,p_operation_id,case when p_delta<0 then 'buy' else 'sell' end,'farm:'||(p_command->>'type'),p_delta);\n end if;\n update app_private.topview_farms set document=p_state-'gold',revision=revision+1,undo_document=v_undo,updated_at=clock_timestamp() where user_id=p_user_id;\n insert into app_private.topview_farm_operations(user_id,operation_id,command,delta,revision) values(p_user_id,p_operation_id,p_command,p_delta,f.revision+1);\n v_result:=app_private.topview_farm_snapshot(p_user_id,p_state,p_operation_id,p_command);\n return jsonb_set(v_result,'{receipt,applied}','true');\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.topview_farm_snapshot(p_user_id uuid, p_initial jsonb, p_operation_id uuid DEFAULT NULL::uuid, p_command jsonb DEFAULT NULL::jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare o app_private.topview_farm_operations;v_result jsonb;\nbegin\n if p_user_id is null then raise exception 'AUTH_REQUIRED';end if;\n if jsonb_typeof(p_initial) is distinct from 'object' then raise exception 'INVALID_INITIAL_FARM';end if;\n insert into public.player_wallets(user_id) values(p_user_id) on conflict do nothing;\n -- A single statement samples the wallet and farm from the same MVCC snapshot.\n insert into app_private.topview_farms(user_id,document) values(p_user_id,p_initial-'gold') on conflict do nothing;\n select jsonb_build_object('state',farm.document||jsonb_build_object('gold',wallet.gold),'revision',farm.revision,'undo',farm.undo_document,\n  'serverNow',clock_timestamp(),'wallet',jsonb_build_object('gold',wallet.gold,'inventory',wallet.inventory,'testClaimed',wallet.test_claimed,'testEnabled',(select test_charge_enabled from app_private.gold_settings where id)))\n into v_result from app_private.topview_farms farm join public.player_wallets wallet using(user_id) where farm.user_id=p_user_id;\n if p_operation_id is not null then\n  select * into o from app_private.topview_farm_operations where user_id=p_user_id and operation_id=p_operation_id;\n  if found and o.command is distinct from p_command then raise exception 'OPERATION_CONFLICT';end if;\n end if;\n return v_result||jsonb_build_object('receipt',case when o.operation_id is null then null else jsonb_build_object('operationId',o.operation_id,'applied',false,'delta',o.delta) end);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -22288,6 +22442,26 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.today_fishing_records()\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select app_private.today_fishing_records()\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "topview_farm_commit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.topview_farm_commit(p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.topview_farm_commit(p_user_id,p_operation_id,p_command,p_expected_revision,p_expected_gold,p_state,p_delta)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.topview_farm_snapshot(p_user_id uuid, p_initial jsonb, p_operation_id uuid DEFAULT NULL::uuid, p_command jsonb DEFAULT NULL::jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.topview_farm_snapshot(p_user_id,p_initial,p_operation_id,p_command)$function$\n",
         "securityDefiner": false
       },
       {
@@ -27821,6 +27995,102 @@
       {
         "name": "title_fishing_log_user_id_not_null",
         "table": "title_fishing_log",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "topview_farm_operations_command_not_null",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL command"
+      },
+      {
+        "name": "topview_farm_operations_created_at_not_null",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "topview_farm_operations_delta_not_null",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL delta"
+      },
+      {
+        "name": "topview_farm_operations_operation_id_not_null",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "topview_farm_operations_pkey",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "topview_farm_operations_revision_not_null",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL revision"
+      },
+      {
+        "name": "topview_farm_operations_user_id_fkey",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "topview_farm_operations_user_id_not_null",
+        "table": "topview_farm_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "topview_farms_document_check",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_typeof(document) = 'object'::text))"
+      },
+      {
+        "name": "topview_farms_document_not_null",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "NOT NULL document"
+      },
+      {
+        "name": "topview_farms_pkey",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "topview_farms_revision_check",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "CHECK ((revision >= 0))"
+      },
+      {
+        "name": "topview_farms_revision_not_null",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "NOT NULL revision"
+      },
+      {
+        "name": "topview_farms_updated_at_not_null",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "topview_farms_user_id_fkey",
+        "table": "topview_farms",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "topview_farms_user_id_not_null",
+        "table": "topview_farms",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -47687,6 +47957,48 @@
         "arguments": ""
       },
       {
+        "name": "topview_farm_commit",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer"
+      },
+      {
+        "name": "topview_farm_commit",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer"
+      },
+      {
+        "name": "topview_farm_commit",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer"
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb"
+      },
+      {
         "name": "trade_fishing_rod",
         "role": "anon",
         "schema": "app_private",
@@ -52326,6 +52638,48 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "topview_farm_commit",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer"
+      },
+      {
+        "name": "topview_farm_commit",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer"
+      },
+      {
+        "name": "topview_farm_commit",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_user_id uuid, p_operation_id uuid, p_command jsonb, p_expected_revision bigint, p_expected_gold integer, p_state jsonb, p_delta integer"
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "topview_farm_snapshot",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_user_id uuid, p_initial jsonb, p_operation_id uuid, p_command jsonb"
       },
       {
         "name": "trade_fishing_rod",

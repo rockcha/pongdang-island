@@ -1,15 +1,18 @@
+import {farmMapWidth,farmCellCenter} from './helpers/farm-map'
 import {cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
+import {initialTopview} from '@/features/farm/topview-model'
 
 afterEach(()=>{cleanup();vi.restoreAllMocks()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
+const starterPlot=initialTopview().objects.find(o=>o.kind==='plot')!
 function setup(){
  const result=render(<MemoryRouter><TopviewFarm/></MemoryRouter>),map=result.container.querySelector<SVGSVGElement>('.top-farm-map')!,viewport=result.container.querySelector<HTMLDivElement>('.top-farm-viewport')!
  vi.spyOn(map,'getBoundingClientRect').mockImplementation(()=>{const width=parseFloat(map.style.width),height=parseFloat(map.style.height);return {left:0,top:0,right:width,bottom:height,width,height,x:0,y:0,toJSON:()=>({})}})
  const pointer=(type:string,x:number,y:number,id=1)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:x,clientY:y,button:0}),{pointerId:id,pointerType:'touch'}))
- return {...result,map,viewport,pointer,zoom:()=>parseFloat(map.style.width)/1120}
+ return {...result,map,viewport,pointer,zoom:()=>parseFloat(map.style.width)/farmMapWidth}
 }
 it('zooms the map with wheel input, clamps both ends, and does not handle wheel input over controls',()=>{
  const {map,viewport,zoom}=setup(),start=zoom()
@@ -22,7 +25,7 @@ it('zooms the map with wheel input, clamps both ends, and does not handle wheel 
 })
 it('supports pinch zoom in and out, and cancels a seed stroke without spending seeds',()=>{
  const {container,pointer,zoom}=setup();click('농사');click('씨앗 심기');click('밀 4개')
- const start=zoom(),x=(9*40+100)*start,y=(13*40+100)*start
+ const start=zoom(),x=(farmCellCenter(starterPlot.x))*start,y=(farmCellCenter(starterPlot.y))*start
  pointer('pointerdown',x,y,1)
  expect(container.querySelector('[data-crop-preview]')).toBeTruthy()
  pointer('pointerdown',x+50,y,2)
@@ -59,41 +62,41 @@ it('preserves the current position and zoom when opening, closing and selecting 
 it.each(['mouse','touch'])('pans while holding seeds with %s, spends no seeds on a drag, and plants on a tap',pointerType=>{
  const {container,viewport,zoom}=setup()
  click('농사');click('씨앗 심기');click('밀 4개')
- const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:(x*40+100)*zoom(),clientY:(y*40+100)*zoom(),button:0}),{pointerId:1,pointerType}))
+ const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:(farmCellCenter(x))*zoom(),clientY:(farmCellCenter(y))*zoom(),button:0}),{pointerId:1,pointerType}))
  // Starting on an empty plot also pans instead of planting a stroke.
- for(const [x,y] of [[9,13],[8,7],[0,0]]){
+ for(const [x,y] of [[starterPlot.x,starterPlot.y],[8,7],[0,0]]){
   viewport.scrollLeft=100;viewport.scrollTop=100
   pointer('pointerdown',x,y);pointer('pointermove',x-1,y-1);pointer('pointerup',x-1,y-1)
   expect(viewport.scrollLeft).toBeCloseTo(100+40*zoom())
   expect(viewport.scrollTop).toBeCloseTo(100+40*zoom())
-  fireEvent.click(container.querySelector('[data-farm-cell="9,13"]')!)
+  fireEvent.click(container.querySelector(`[data-farm-cell="${starterPlot.x},${starterPlot.y}"]`)!)
   expect(screen.getByLabelText('보유 종자 4개')).toBeTruthy()
   expect(container.querySelector('[data-crop-preview]')).toBeNull()
   expect(screen.queryByRole('progressbar',{name:/밀 성장/})).toBeNull()
  }
- pointer('pointerdown',9,13);pointer('pointerup',9,13)
- fireEvent.click(container.querySelector('[data-farm-cell="9,13"]')!)
+ pointer('pointerdown',starterPlot.x,starterPlot.y);pointer('pointerup',starterPlot.x,starterPlot.y)
+ fireEvent.click(container.querySelector(`[data-farm-cell="${starterPlot.x},${starterPlot.y}"]`)!)
  expect(screen.getByLabelText('보유 종자 3개')).toBeTruthy()
  expect(screen.getByRole('progressbar',{name:/밀 성장/})).toBeTruthy()
 })
 
 it.each(['mouse','touch'])('pans from occupied land and sea while placing land and tiles with %s',pointerType=>{
  const {container,viewport,zoom}=setup()
- const pointer=(type:string,x:number,y:number,button=0)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:(x*40+100)*zoom(),clientY:(y*40+100)*zoom(),button}),{pointerId:1,pointerType}))
+ const pointer=(type:string,x:number,y:number,button=0)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:(farmCellCenter(x))*zoom(),clientY:(farmCellCenter(y))*zoom(),button}),{pointerId:1,pointerType}))
  const pan=(x:number,y:number,button=0)=>{
   viewport.scrollLeft=100;viewport.scrollTop=100
   pointer('pointerdown',x,y,button);pointer('pointermove',x-1,y-1,button);pointer('pointerup',x-1,y-1,button)
   expect(viewport.scrollLeft).toBeCloseTo(100+40*zoom());expect(viewport.scrollTop).toBeCloseTo(100+40*zoom())
   expect(container.querySelector('[data-land-preview],[data-tile-preview]')).toBeNull()
  }
- click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 250 G');click('땅 놓기')
+ click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 500골드');click('땅 놓기')
  pan(8,7)
  expect(screen.getByRole('button',{name:'땅 5칸 보유'})).toBeTruthy()
  // A pan that ends over a placement target must not place land through its click.
- pointer('pointerdown',4,4);pointer('pointermove',3,4);pointer('pointerup',3,4)
- fireEvent.click(container.querySelector('[data-farm-cell="3,4"]')!)
+ pointer('pointerdown',6,8);pointer('pointermove',5,8);pointer('pointerup',5,8)
+ fireEvent.click(container.querySelector('[data-farm-cell="5,8"]')!)
  expect(screen.getByRole('button',{name:'땅 5칸 보유'})).toBeTruthy()
- click('완료');click('타일');click('구매하기');click('흙길 5개 구매 · 50 G');click('Close');click('타일 깔기');click('흙길 5개 선택')
+ click('완료');click('타일');click('구매하기');click('흙길 5개 구매 · 50골드');click('Close');click('타일 깔기');click('흙길 5개 선택')
  pan(0,0)
  pan(8,7,1)
  expect(screen.getAllByLabelText('보유 타일 5개')).toHaveLength(2)

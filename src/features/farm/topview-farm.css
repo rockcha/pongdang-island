@@ -17,6 +17,8 @@
 .top-farm-map [role=button] { cursor:pointer; outline:none; }
 .top-farm-map [role=button]:focus-visible { filter:drop-shadow(0 0 3px #fff1b9); }
 .top-farm-object { transition:filter .15s; }
+.top-farm-viewport[data-object-move=true]{touch-action:none}
+.top-farm-viewport[data-object-move=true] .top-farm-object{cursor:grab}
 .top-farm-object:hover { filter:brightness(1.04); }
 .top-farm-object-menu { position:fixed; z-index:6; width:184px; padding:9px; border:1px solid #ddc7a8; border-radius:13px; background:#fff9ee; box-shadow:0 5px 18px #385d5130; }
 .top-farm-object-menu header { display:flex; align-items:center; gap:6px; padding:0 2px 7px; }
@@ -114,13 +116,13 @@
 .farm-good-icon { display:inline-flex; flex-shrink:0; width:48px; height:48px; align-items:center; justify-content:center; vertical-align:middle; }
 .farm-good-icon img { width:100%; height:100%; object-fit:contain; }
 .farm-good-icon>span { font-size:30px; }
-.farm-good-seed { background:#f3ead8; border:1px solid #ead6b8; border-radius:10px; padding:3px; }
+.farm-good-seed { background:none; border:0; border-radius:0; padding:0; }
 .farm-crop-hero { width:80px; height:80px; margin:auto; }
 .farm-sim-title-art { width:92px; height:84px; }
 .farm-sim-quantity-row { background:#fffcf6; }
 .farm-sim-quantity-controls .farm-sim-submit { display:flex; align-items:center; justify-content:center; gap:5px; }
 .farm-seed-locked { display:flex; align-items:center; gap:11px; padding:13px; border:1px dashed #e1d4bf; border-radius:13px; background:#f4eee3; }
-.farm-seed-locked>.farm-good-icon { opacity:.5; filter:saturate(.45); }
+.farm-seed-locked>.farm-good-icon { opacity:.65; filter:grayscale(1) brightness(.78) contrast(1.1); }
 .farm-seed-locked>div { flex:1; }
 .farm-seed-locked strong { font-size:12px; font-weight:500; color:#9c8975; }
 .farm-seed-locked small { display:block; margin-top:5px; font-size:10px; color:#a5917c; }
@@ -213,24 +215,36 @@
 .farm-land-panel p small { display:block; font-size:9px; }
 .farm-land-preview-summary { color:#7c8b5b!important; }
 .farm-land-preview-summary span { color:#b28467; }
-.farm-land-purchase { gap:13px; }
-.farm-land-purchase-symbol { display:grid; place-items:center; width:58px; height:58px; margin:0 auto 5px; border:1px solid #e7d9c0; border-radius:17px; color:#8c9c69; background:#f4ecd9; }
+.farm-sim-dialog.farm-land-purchase { max-width:420px; gap:18px; padding:24px; }
+.farm-land-purchase-header { display:grid; grid-template-columns:72px minmax(0,1fr); align-items:center; column-gap:14px; row-gap:4px; padding-right:12px; text-align:left; }
+.farm-land-purchase-header [data-slot=dialog-title] { align-self:end; }
+.farm-land-purchase-header [data-slot=dialog-description] { align-self:start; font-size:12px; line-height:1.6; }
+.farm-land-purchase-symbol { grid-row:1/3; display:block; width:72px; height:68px; }
+.farm-land-purchase-symbol svg { width:100%; height:100%; }
 .farm-land-price { display:flex; align-items:center; justify-content:space-between; font-size:12px; padding:0 2px 10px; border-bottom:1px solid #eadbc5; }
 .farm-land-price strong { font-size:15px; font-weight:500; }
-.farm-land-purchase>label { color:#a18a70; font-size:11px; }
+.farm-land-quantity-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; }
+.farm-land-quantity-row>label { color:#947455; font-size:12px; }
 .farm-land-stepper { display:flex; align-items:center; gap:8px; padding:5px; border:1px solid #e4cfb1; border-radius:12px; background:#fffcf6; }
 .farm-land-stepper>button { display:grid; place-items:center; width:42px; height:42px; border-radius:8px; }
-.farm-land-stepper>div { display:flex; flex:1; align-items:center; justify-content:center; gap:8px; }
-.farm-land-stepper input { width:75px; height:40px; text-align:center; outline:none; font-size:22px; background:transparent; }
+.farm-land-stepper>div { display:flex; align-items:center; justify-content:center; gap:4px; }
+.farm-land-stepper input { width:52px; min-width:0; height:40px; text-align:center; border-radius:6px; font-size:17px; background:transparent; font-variant-numeric:tabular-nums; }
+.farm-land-stepper input:focus-visible,.farm-land-stepper>button:focus-visible { outline:2px solid #ab8152; outline-offset:1px; }
 .farm-land-stepper span { font-size:12px; color:#aa9279; }
-.farm-land-presets { display:flex; gap:7px; }
-.farm-land-presets button { flex:1; min-height:36px; border:1px solid #e4d3b9; border-radius:9px; font-size:11px; }
-.farm-land-presets [aria-pressed=true] { color:#8a5e37; background:#eee0c8; border-color:#c7a980; }
 .farm-land-purchase button:disabled { opacity:.35; cursor:default; }
 .farm-land-purchase-total { padding:12px; border-radius:11px; background:#f3eadb; }
 .farm-land-purchase-total p { display:flex; justify-content:space-between; gap:12px; font-size:12px; }
 .farm-land-purchase-total p+p { margin-top:9px; font-size:10px; color:#a38b70; }
 .farm-land-purchase-total strong { font-weight:500; }
+@media(max-height:560px){
+ .farm-sim-dialog.farm-land-purchase{max-height:calc(100dvh - 24px);gap:10px;padding:18px}
+ .farm-land-purchase-header{grid-template-columns:56px minmax(0,1fr);column-gap:10px}
+ .farm-land-purchase-symbol{width:56px;height:52px}
+ .farm-land-stepper>button{width:36px;height:36px}
+ .farm-land-stepper input{height:34px}
+ .farm-land-purchase-total{padding:8px 12px}
+ .farm-land-purchase .farm-sim-caption{margin:0;font-size:11px;line-height:1.5}
+}
 .farm-land-error { color:#b27056; font-size:11px; text-align:center; }
 @media(prefers-reduced-motion:no-preference) { .farm-land-badge { animation:farm-land-count .2s ease-out; } }
 @keyframes farm-land-count { from { transform:scale(.75); } to { transform:scale(1); } }

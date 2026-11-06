@@ -3,13 +3,13 @@ import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
 import {initialTopview} from '@/features/farm/topview-model'
-import {simulateFarm,cropIsRotten,type FarmGood} from '@/features/farm/farm-simulation'
+import {simulateFarm,cropIsRotten} from '@/features/farm/farm-simulation'
 
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 it('leaves a prepared animal waiting over the coop until tapped, then stores it exactly once',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('가금사 (10,8)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull()
+ click('가금사 (10,9)');click('닭 구매 · 300 G');expect(screen.queryByRole('dialog')).toBeNull()
  act(()=>vi.advanceTimersByTime(30000))
  click('보관함');expect(screen.getByText('보관 중인 개체가 없어요.')).toBeTruthy();click('완료');act(()=>vi.advanceTimersByTime(200))
  expect(screen.getByRole('button',{name:'닭 보관함으로 받기'})).toBeTruthy()
@@ -31,8 +31,7 @@ it('rots exactly sixty seconds after maturity, forbids harvesting and only disca
 })
 it('reserves the last warehouse slot before harvesting and preserves a crop cut just before it would rot',()=>{
  const state=initialTopview(),inventory=state.simulation.inventory
- const goods=(Object.keys(inventory) as FarmGood[]).filter(g=>!g.endsWith('Seed')&&!['potato','carrot','egg'].includes(g))
- for(const g of goods.slice(0,9))inventory[g]=1
+ inventory.wheat=27
  state.simulation.cropJobs[10]={crop:'potato',readyAt:0};state.simulation.cropJobs[11]={crop:'carrot',readyAt:0};state.simulation.animalJobs[5]=1000
  const cutting=simulateFarm(state,10,{type:'beginHarvest'},9999).state
  expect(cutting).not.toBe(state)
@@ -72,12 +71,12 @@ it('shows rotten crops with a discard action and resets the plot without adding 
 })
 it('collects ready animal products immediately into the livestock tab and keeps only one waiting product',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('젖소 (16,9)');click('닭 (14,10)');act(()=>vi.advanceTimersByTime(40000))
+ click('젖소 생산 시작');click('닭 생산 시작');act(()=>vi.advanceTimersByTime(40000))
  expect(container.querySelectorAll('[data-animal-status="ready"]')).toHaveLength(2)
- click('젖소 (16,9)');click('닭 (14,10)')
+ click('우유 생산 (16,9)');click('달걀 생산 (14,10)')
  expect(screen.queryByRole('dialog')).toBeNull()
  expect(container.querySelectorAll('[data-animal-status="idle"]')).toHaveLength(2)
- click('창고 (18,5)');click('축산물')
+ click('창고 (18,6)');click('축산물')
  expect(screen.getByText('우유')).toBeTruthy();expect(screen.getByText('달걀')).toBeTruthy()
  expect(screen.getAllByText('×1')).toHaveLength(2)
 })

@@ -187,7 +187,6 @@ export function HeaderPlaceNavigation() {
                             운영자
                           </span>
                         )}
-                        {to === '/farm' && !operator && <span className="shrink-0 text-[10px] text-muted-foreground">준비 중</span>}
                         {to === '/savings' && savings && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             {savings}

@@ -115,12 +115,12 @@ var farmFenceKinds = [
 var isFarmFence = (kind) => farmFenceKinds.includes(kind);
 //#endregion
 //#region src/features/farm/building-upgrades.ts
-var UPGRADE_COST = 2500;
+var UPGRADE_COST = 3e3;
 var isProductionUpgradeable = (kind) => kind === "mill" || isProcessingBuilding(kind);
 var isUpgradeable = (kind) => kind === "waterwheel" || kind === "warehouse" || isProductionUpgradeable(kind);
 var buildingUpgradeCost = (kind) => kind === "waterwheel" || isProductionUpgradeable(kind) ? 3e3 : UPGRADE_COST;
 var buildingLevel = (object) => Math.max(1, Math.min(10, object.level ?? 1));
-var buildingCapacity = (object) => object.kind === "warehouse" ? 120 + (buildingLevel(object) - 1) * 60 : object.kind === "office" ? 4 : object.kind === "livestockOffice" ? 2 : 0;
+var buildingCapacity = (object) => object.kind === "warehouse" ? 40 + (buildingLevel(object) - 1) * 20 : object.kind === "office" ? 4 : object.kind === "livestockOffice" ? 2 : 0;
 var activeBuildings = (state, kind) => state.objects.filter((o) => o.kind === kind && !o.constructionReadyAt && !state.simulation.upgradeJobs[o.id]);
 var warehouseCapacity = (state) => activeBuildings(state, "warehouse").reduce((sum, o) => sum + buildingCapacity(o), 0);
 var livestockCapacity = (state) => 2 + state.objects.filter((o) => o.kind === "livestockOffice" && !o.constructionReadyAt).reduce((sum, o) => sum + buildingCapacity(o), 0);

@@ -1,10 +1,18 @@
 import {expect,it} from 'vitest'
 import {farmOverview,farmProductionTasks} from '@/features/farm/farm-overview-model'
-import {legacyTradeFixture as initialTopview} from './helpers/legacy-trade-fixture'
+import {developedFarmFixture} from './helpers/developed-farm-fixture'
+import {CROP_FRESH_MS,farmStorageUsage} from '@/features/farm/farm-simulation'
+import {warehouseCapacity} from '@/features/farm/building-upgrades'
 import {dailyFarmOrders,farmOrderKey} from '@/features/farm/daily-orders'
 import {farmRecipes} from '@/features/farm/food-catalog'
 import type {FarmTool} from '@/features/farm/topview-model'
 
+function initialTopview(){
+ const state=developedFarmFixture()
+ state.objects.push({id:20,kind:'lab',x:4,y:4},{id:22,kind:'processed',x:12,y:13},{id:25,kind:'mediumBakery',x:4,y:5})
+ for(const [i,kind] of [...new Set(Object.values(farmRecipes).map(recipe=>recipe.building))].entries())if(!state.objects.some(o=>o.kind===kind))state.objects.push({id:1000+i,kind,x:4,y:4})
+ return state
+}
 const now=Date.parse('2026-11-04T14:59:59Z')
 it('aggregates independent facilities and sorts ready work ahead of work in progress without changing farm state',()=>{
  const state=initialTopview()
@@ -24,7 +32,7 @@ it('aggregates independent facilities and sorts ready work ahead of work in prog
 })
 it('distinguishes mature, rotten and already harvesting crops and ignores jobs for absent facilities',()=>{
  const state=initialTopview()
- state.simulation.cropJobs={10:{crop:'wheat',readyAt:now},11:{crop:'potato',readyAt:now-60000},12:{crop:'carrot',readyAt:now-60000,harvestingAt:now},99:{crop:'corn',readyAt:now}}
+ state.simulation.cropJobs={10:{crop:'wheat',readyAt:now},11:{crop:'potato',readyAt:now-CROP_FRESH_MS},12:{crop:'carrot',readyAt:now-CROP_FRESH_MS,harvestingAt:now},99:{crop:'corn',readyAt:now}}
  expect(farmOverview(state,now)).toMatchObject({ready:1,attention:1,working:1})
  expect(farmProductionTasks(state,now).find(task=>task.objectId===12)).toMatchObject({status:'working',readyAt:now+3000})
  expect(farmProductionTasks(state,now+3000).find(task=>task.objectId===12)?.status).toBe('ready')
@@ -76,9 +84,10 @@ it('does not advertise ready products as collectible while the warehouse is unav
  expect(farmOverview(state,now)).toMatchObject({ready:0,blocked:1})
  expect(farmOverview(state,now).orders.every(order=>!order.warehouseReady)).toBe(true)
  state.simulation.upgradeJobs={}
- state.simulation.inventory.wheat=30
+ state.simulation.inventory.wheat=0
+ state.simulation.inventory.wheat=warehouseCapacity(state)-farmStorageUsage(state.simulation)
  expect(farmOverview(state,now)).toMatchObject({ready:0,blocked:1})
- state.simulation.inventory.wheat=29;state.simulation.inventory.milk=0
+ state.simulation.inventory.wheat-=2;state.simulation.inventory.milk=0
  expect(farmOverview(state,now)).toMatchObject({ready:1,blocked:0})
 })
 it('counts the rice needed for remaining omurice orders after subtracting finished food stock',()=>{
@@ -88,6 +97,6 @@ it('counts the rice needed for remaining omurice orders after subtracting finish
  const at=Array.from({length:90},(_,day)=>now+day*86400000).find(at=>dailyFarmOrders(store,at,state).some(order=>order.good==='omurice'))!
  expect(at).toBeDefined()
  const pudding=farmOverview(state,at).orders.find(order=>order.object.id===store.id)!.items.find(item=>item.good==='omurice')!
- const rawNeeded=(pudding.quantity-1)*2
+ const rawNeeded=(pudding.quantity-1)*farmRecipes.omurice.ingredients.find(item=>item.good==='rice')!.quantity
  expect(pudding.ingredients.find(item=>item.good==='rice')).toEqual({good:'rice',required:rawNeeded,missing:rawNeeded-1})
 })

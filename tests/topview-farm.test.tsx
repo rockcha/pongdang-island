@@ -1,20 +1,25 @@
 import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
-import {afterEach,expect,it} from 'vitest'
+import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
 import {coastline,initialTopview,objectAt,objectArtHeight,placementValid,TILE} from '@/features/farm/topview-model'
 import {applyLandStroke,buyLandStock} from '@/features/farm/land-tools'
+vi.mock('@/features/farm/trial-inventory',async importOriginal=>({
+ ...await importOriginal<typeof import('@/features/farm/trial-inventory')>(),
+ initialFarmTrial:()=>developedFarmFixture(),
+}))
+import {developedFarmFixture} from './helpers/developed-farm-fixture'
 afterEach(cleanup)
 it('only draws shore against water and reconnects it when new land is purchased',()=>{
  expect(coastline(['4,4'])).toHaveLength(4)
  const shore=coastline(['4,4','5,4'])
  expect(shore).toHaveLength(6)
  expect(shore.filter(edge=>edge.path==='M200 160V200')).toHaveLength(0)
- const initial=initialTopview(),bought=applyLandStroke(buyLandStock(initial,1),'place',[{x:3,y:4}]).state
+ const initial=developedFarmFixture(),bought=applyLandStroke(buyLandStock(initial,1),'place',[{x:3,y:4}]).state
  expect(coastline(bought.land)).toHaveLength(coastline(initial.land).length+2)
 })
 it('buys stored land and only places connected tiles without another gold charge',()=>{
- const original=initialTopview()
+ const original=developedFarmFixture()
  const bought=buyLandStock(original,1)
  expect(bought.gold).toBe(original.gold-100)
  expect(bought.land).toEqual(original.land)
@@ -28,8 +33,8 @@ it('buys stored land and only places connected tiles without another gold charge
  expect(original.land).not.toContain('3,4')
 })
 it('checks the complete rectangular footprint and excludes the object being moved',()=>{
- const state=initialTopview()
- expect(placementValid(state,'barn',16,13)).toBe(false)
+ const state=developedFarmFixture()
+ expect(placementValid(state,'barn',15,6)).toBe(false)
  expect(placementValid(state,'barn',19,14)).toBe(false)
  expect(placementValid(state,'office',6,6)).toBe(false)
  expect(placementValid(state,'office',6,6,1)).toBe(true)
@@ -75,16 +80,16 @@ it('recovers placed objects locally and resets to the original test layout',()=>
  fireEvent.click(screen.getByRole('button',{name:'농장 더보기'}));fireEvent.click(screen.getByRole('button',{name:'체험 초기화'}))
  expect(screen.getByRole('button',{name:'젖소 (16,9)'})).toBeTruthy()
 })
-it('keeps move and recovery separate in the seven-button bottom toolbar',()=>{
+it('keeps move and recovery separate in the eight-button bottom toolbar',()=>{
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const toolbar=screen.getByRole('navigation',{name:'농사 도구'})
- expect(within(toolbar).getAllByRole('button').map(button=>button.textContent)).toEqual(['이동하기','회수하기','0땅','농사','0타일','상점','0보관함'])
+ expect(within(toolbar).getAllByRole('button').map(button=>button.textContent)).toEqual(['이동하기','회수하기','0땅','농사','0타일','상점','0보관함','도감'])
  expect(screen.queryByRole('navigation',{name:'농장 편집 도구'})).toBeNull()
  expect(screen.queryByRole('button',{name:'격자 표시'})).toBeNull()
  expect(screen.queryByRole('button',{name:'테스트 초기화'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'이동하기',exact:true}))
  expect(screen.getByRole('button',{name:'이동하기',exact:true}).getAttribute('aria-pressed')).toBe('true')
- expect(within(toolbar).getAllByRole('button')).toHaveLength(7)
+ expect(within(toolbar).getAllByRole('button')).toHaveLength(8)
  expect(document.querySelector('.top-farm-palette')).toBeNull()
  expect(document.querySelector('.top-farm-edit-actions')).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'젖소 (16,9)'}))

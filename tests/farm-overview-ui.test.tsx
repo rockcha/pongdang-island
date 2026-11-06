@@ -3,48 +3,47 @@ import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {FarmOverview} from '@/features/farm/farm-overview'
 import {TopviewFarm} from '@/features/farm/topview-farm'
-import {initialTopview} from '@/features/farm/topview-model'
+import {developedFarmFixture as initialTopview} from './helpers/developed-farm-fixture'
 import {dailyFarmOrders,farmOrderKey} from '@/features/farm/daily-orders'
 import {farmGoods} from '@/features/farm/farm-simulation'
+vi.mock('@/features/farm/trial-inventory',async importOriginal=>({
+ ...await importOriginal<typeof import('@/features/farm/trial-inventory')>(),
+ initialFarmTrial:()=>initialTopview(),
+}))
 
 afterEach(()=>{cleanup();vi.restoreAllMocks()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
-it('filters production, updates completion from time, and navigates to an exact facility without collecting',()=>{
- const state=initialTopview(),onVisit=vi.fn(),now=10000
+it('filters production and updates completion without collecting or navigating',()=>{
+ const state=initialTopview(),now=10000
  state.objects.push({id:50,kind:'mill',x:4,y:7})
  state.simulation.millJobs={21:{quantity:2,startedAt:0,readyAt:10000},50:{quantity:1,startedAt:10000,readyAt:20000}}
- const {rerender}=render(<FarmOverview state={state} now={now} onClose={()=>{}} onVisit={onVisit}/>)
+ const {rerender}=render(<FarmOverview state={state} now={now} onClose={()=>{}}/>)
  click('수령 가능1')
- expect(screen.queryByRole('button',{name:'밀가루 수령 · 제분소 (4,7)으로 이동'})).toBeNull()
- click('밀가루 수령 · 제분소 (6,13)으로 이동')
- expect(onVisit).toHaveBeenCalledWith(21)
+ expect(screen.queryByLabelText('밀가루 수령 · 제분소 (4,7)')).toBeNull()
+ expect(screen.getByLabelText('밀가루 수령 · 제분소 (6,13)')).toBeTruthy()
  expect(state.simulation.inventory.flour).toBe(0)
- rerender(<FarmOverview state={state} now={20000} onClose={()=>{}} onVisit={onVisit}/>)
- click('밀가루 수령 · 제분소 (4,7)으로 이동')
- expect(onVisit).toHaveBeenLastCalledWith(50)
+ rerender(<FarmOverview state={state} now={20000} onClose={()=>{}}/>)
+ expect(screen.getByLabelText('밀가루 수령 · 제분소 (4,7)')).toBeTruthy()
+ expect(state.simulation.inventory.flour).toBe(0)
 })
-it('shows owned stock and prices in market sales status and navigates to the market',()=>{
- const state=initialTopview(),visit=vi.fn()
- state.simulation.inventory.wool=2
- render(<FarmOverview state={state} now={0} onClose={()=>{}} onVisit={visit}/>)
- fireEvent.click(screen.getByRole('button',{name:/^판매 현황/}))
- expect(screen.getByText('양털')).toBeTruthy();expect(screen.getByText('개당 30 G')).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:/판매소로 이동/}));expect(visit).toHaveBeenCalledWith(2) 
+it('shows owned stock and current prices in delivery status',()=>{
+ const state=initialTopview()
+ state.simulation.inventory.butterPotato=2
+ render(<FarmOverview state={state} now={0} onClose={()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:/^납품 현황/}))
+ const item=screen.getByText('버터감자').closest('article')!
+ expect(within(item).getByText('보유 2개')).toBeTruthy()
+ expect(item.textContent).toContain('개당 230 골드')
+ expect(screen.queryByRole('button',{name:/이동/})).toBeNull()
 })
-
-it('moves from the overview to the highlighted facility and leaves ready produce untouched',()=>{
- let now=Date.parse('2026-11-04T03:00:00Z')
- vi.spyOn(Date,'now').mockImplementation(()=>now)
- const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('젖소 생산 시작')
- now+=10000
- click('농장 현황')
- expect(screen.getByRole('dialog',{name:'농장 현황'})).toBeTruthy()
- click('우유 수령 · 젖소 (16,9)으로 이동')
- expect(screen.queryByRole('dialog')).toBeNull()
- expect(container.querySelector('[aria-label="젖소 (16,9)"] [data-object-art]')?.getAttribute('filter')).toBe('url(#farm-selection-outline)')
- expect(container.querySelector('[data-animal-status="ready"]')).toBeTruthy()
- expect(screen.getByRole('button',{name:'이동하기'}).getAttribute('aria-pressed')).toBe('false')
+it('shows ready animal production without consuming the output',()=>{
+ const state=initialTopview(),before=structuredClone(state)
+ state.simulation.animalJobs[4]=10000
+ render(<FarmOverview state={state} now={10000} onClose={()=>{}}/>)
+ const task=screen.getByLabelText('우유 수령 · 젖소 (16,9)')
+ expect(within(task).getByText('수령 가능')).toBeTruthy()
+ expect(state.simulation.inventory.milk).toBe(before.simulation.inventory.milk)
+ expect(state.simulation.animalJobs[4]).toBe(10000)
 })
 it('uses one panel and completion location across tools and clears the previous placement mode when switching',()=>{
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)

@@ -25,9 +25,10 @@ beforeEach(()=>{
  })
 })
 const request=(body:unknown,auth='Bearer user-jwt')=>new Request('https://example.invalid/farm-game',{method:'POST',headers:{Authorization:auth},body:JSON.stringify(body)})
-it('checks actual authentication and the existing operator boundary',async()=>{
+it('requires authentication and opens the farm to nonoperators',async()=>{
  expect((await handler(request({},''))).status).toBe(401)
- operator=false;expect((await handler(request({}))).status).toBe(403)
+ operator=false;expect((await handler(request({}))).status).toBe(200)
+ expect(fetcher.mock.calls.some(([url])=>String(url).endsWith('/notice_is_operator'))).toBe(false)
  expect(fetcher.mock.calls.some(([url])=>String(url).endsWith('/topview_farm_commit'))).toBe(false)
 })
 it('ignores forged user, gold, price and time fields and uses the authenticated owner and server catalog',async()=>{

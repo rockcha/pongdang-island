@@ -9,10 +9,7 @@ Deno.serve(async(req:Request)=>{
  const auth=await fetch(url+'/auth/v1/user',{headers:{apikey:key,Authorization:authorization}})
  if(!authorization.startsWith('Bearer ')||!auth.ok)return json({error:'AUTH_REQUIRED'},401)
  const user=await auth.json()
- // Preserve the existing operator-only release boundary. Use the established RPC,
- // not user-editable metadata, to authorize access to this unreleased farm.
- const operator=await fetch(url+'/rest/v1/rpc/notice_is_operator',{method:'POST',headers:{...headers,Authorization:authorization},body:'{}'})
- if(!operator.ok||await operator.json()!==true)return json({error:'FARM_NOT_RELEASED'},403)
+ // All authenticated players own an independent farm; identity comes from Auth.
  const rpc=async(name:string,args:unknown)=>{
   const result=await fetch(url+'/rest/v1/rpc/'+name,{method:'POST',headers,body:JSON.stringify(args)})
   const body=await result.json()

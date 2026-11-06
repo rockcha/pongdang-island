@@ -1,6 +1,7 @@
 import {cropKinds,isCropKind,type CropKind} from './crop-catalog'
 import {finishedFoods,farmRecipes,millRecipes,isRecipeId,recipeUnlocked,type ProductGood,type MillProduct} from './food-catalog'
 import {animalGoods,farmAnimals,farmAnimalKinds} from './animal-catalog'
+import {butcherRecipes} from './butcher-catalog'
 import type {TopviewObject,TopviewState} from './topview-model'
 
 export type OrderGood=CropKind|ProductGood
@@ -9,6 +10,8 @@ export const farmOrderKey=(object:TopviewObject,now:number)=>`${farmOrderDay(now
 export function canProduceOrderGood(state:TopviewState,good:OrderGood):boolean{
  const has=(kind:TopviewObject['kind'])=>state.objects.some(object=>object.kind===kind)
  if(isCropKind(good))return state.simulation.unlockedCrops.includes(good)&&has('plot')&&has('seedShop')
+ const meatAnimals=farmAnimalKinds.filter(animal=>butcherRecipes[animal].good===good)
+ if(meatAnimals.length)return has('butcher')&&meatAnimals.some(animal=>(state.simulation.unlockedAnimals??['cow','chicken']).includes(animal)&&(has(animal)||state.stored.includes(animal)||has(farmAnimals[animal].housing)))
  if(good==='egg')return (has('chicken')||has('coop'))&&canProduceOrderGood(state,'wheat')
  if(good==='milk')return (has('cow')||has('barn'))&&canProduceOrderGood(state,'wheat')
  const animal=farmAnimalKinds.find(animal=>farmAnimals[animal].product===good)
@@ -18,7 +21,7 @@ export function canProduceOrderGood(state:TopviewState,good:OrderGood):boolean{
  return false
 }
 export function dailyFarmOrders(object:TopviewObject,now:number,state:TopviewState){
- const pool:OrderGood[]=object.kind==='store'?[...cropKinds,...animalGoods]:object.kind==='processed'?[...finishedFoods]:[]
+ const pool:OrderGood[]=object.kind==='store'?[...cropKinds,...animalGoods.filter(good=>good!=='wool')]:object.kind==='processed'?[...finishedFoods]:[]
  let seed=2166136261
  for(const char of farmOrderKey(object,now))seed=Math.imul(seed^char.charCodeAt(0),16777619)>>>0
  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}

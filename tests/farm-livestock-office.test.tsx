@@ -8,7 +8,7 @@ import {TopviewFarm} from '@/features/farm/topview-farm'
 afterEach(()=>{cleanup();vi.useRealTimers()})
 it('shares slots across animals, reserves pending and stored animals, and unlocks new slots only after an upgrade completes',()=>{
  let state=initialTopview()
- state=simulateFarm(state,3,{type:'animal',animal:'goat'},0).state
+ state=simulateFarm(state,3,{type:'animal',animal:'sheep'},0).state
  state=simulateFarm(state,18,{type:'animal',animal:'duck'},0).state
  expect(farmLimits(state)).toMatchObject({animals:4,totalAnimals:4,pendingAnimals:2})
  state=simulateFarm(state,3,{type:'completeAnimalPurchase'},10000).state
@@ -40,13 +40,13 @@ it('still requires the matching housing and does not expand capacity by adding h
  const state=initialTopview();state.objects.push({id:50,kind:'barn',x:4,y:9},{id:51,kind:'coop',x:6,y:9})
  expect(farmLimits(state).animals).toBe(4)
  state.objects=state.objects.filter(o=>o.kind!=='barn')
- expect(farmPlacementError(state,'goat')).toContain('축사')
+ expect(farmPlacementError(state,'sheep')).toContain('축사')
 })
 it('shows production time and price inside each card and links the shared capacity to office upgrades',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
- click('축사 (15,5)')
- for(const [animal,price] of [['젖소','800 G'],['염소','1,000 G']]){
+ click('축사 (15,6)')
+ for(const [animal,price] of [['젖소','800 G'],['양','600 G']]){
   const card=screen.getByRole('button',{name:`${animal} 선택`})
   expect(within(card).getByText(price)).toBeTruthy()
   expect(within(card).getByLabelText(`${animal} 1회 생산 시간 10초`)).toBeTruthy()
@@ -57,6 +57,6 @@ it('shows production time and price inside each card and links the shared capaci
  expect(screen.getByText('2 / 4마리')).toBeTruthy()
  click('업그레이드 · 50 G');act(()=>vi.advanceTimersByTime(10000))
  expect(screen.getByText('Lv. 2')).toBeTruthy()
- click('Close');click('축사 (15,5)')
+ click('Close');click('축사 (15,6)')
  expect(screen.getByLabelText('사육 정원 2 / 6마리 · 보관·준비 중 포함')).toBeTruthy()
 })

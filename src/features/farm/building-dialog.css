@@ -51,7 +51,9 @@
 .farm-compact-dialog .farm-sim-crop>.farm-good-icon,.farm-compact-dialog .farm-seed-locked>.farm-good-icon{width:var(--farm-detail-art);height:var(--farm-detail-art)}
 .farm-compact-dialog .farm-next-action{min-height:44px;font-size:12px}
 .farm-compact-dialog .farm-building-store{padding-top:12px;position:sticky;bottom:-22px;margin-bottom:-22px;padding-bottom:12px;background:#fff9ee;z-index:1}
-.farm-compact-dialog .farm-building-actions>button{font-size:12px;min-height:44px}
+.farm-compact-dialog .farm-building-actions>button{font-size:12px;min-height:44px;padding:8px 6px;gap:5px;white-space:nowrap}
+.farm-building-actions>button>svg{flex:none}
+.farm-building-actions>button[aria-pressed=true]{color:#79502f;background:#f0e3cd}
 .farm-compact-dialog .farm-daily-orders article{gap:12px;padding:12px 10px}
 .farm-compact-dialog .farm-daily-orders article>.farm-good-icon{width:var(--farm-choice-art);height:var(--farm-choice-art)}
 .farm-compact-dialog .farm-daily-orders article strong{flex-wrap:wrap;font-size:13px}

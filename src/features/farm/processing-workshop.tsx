@@ -1,13 +1,14 @@
+import {farmWorkshops} from './workshop-catalog'
 import {useState} from 'react'
 import {ChefHat} from 'lucide-react'
-import {farmRecipes,recipeIds,recipeBatchLimit,recipeUnlocked,recipeOutput,type ProcessingBuilding,type RecipeId} from './food-catalog'
+import {farmRecipes,recipesForBuilding,recipeBatchLimit,recipeOutput,type ProcessingBuilding,type RecipeId} from './food-catalog'
 import {farmGoods,type FarmSimAction,type FarmSimulation} from './farm-simulation'
 import {FarmItemPicker} from './item-picker'
 import {FarmGoodIcon} from './farm-good-icon'
 import {FarmProductHeading} from './product-heading'
 
 export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction}:{buildingId:number;kind:ProcessingBuilding;simulation:FarmSimulation;now:number;onAction:(action:FarmSimAction)=>void}){
- const choices=recipeIds.filter(id=>farmRecipes[id].building===kind&&recipeUnlocked(id,simulation.unlockedAnimals)),[selected,setSelected]=useState<RecipeId>(choices[0])
+ const choices=recipesForBuilding(kind,simulation.unlockedAnimals),[choice,setSelected]=useState<RecipeId|undefined>(),selected=choice&&choices.includes(choice)?choice:choices[0]
  const job=simulation.processingJobs[buildingId]
  if(job){
   const remaining=Math.max(0,Math.ceil((job.readyAt-now)/1000)),progress=Math.min(100,Math.max(0,(now-job.startedAt)/(job.readyAt-job.startedAt)*100))
@@ -19,7 +20,8 @@ export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction}:{bu
    <button className="farm-sim-primary" disabled={remaining>0} onClick={()=>onAction({type:'collectCraft'})}>{remaining?'만들고 있어요…':'가공품 받기'}</button>
   </section>
  }
- return <><FarmItemPicker items={choices} value={selected} onChange={setSelected} label={kind==='kitchen'?'만들 요리':'만들 가공품'}/><RecipeCard key={selected} id={selected} inventory={simulation.inventory} onAction={onAction}/></>
+ if(!selected)return <p className="farm-sim-caption">사용 가능한 제작법이 없어요.</p>
+ return <><FarmItemPicker items={choices} value={selected} onChange={setSelected} label={farmWorkshops[kind].pickerLabel}/><RecipeCard key={selected} id={selected} inventory={simulation.inventory} onAction={onAction}/></>
 }
 
 function RecipeCard({id,inventory,onAction}:{id:RecipeId;inventory:FarmSimulation['inventory'];onAction:(action:FarmSimAction)=>void}){

@@ -1,0 +1,45 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Straighten only the chicken coop and seed shop roof assemblies: level front eaves, fascia and supporting beams while retaining single-pitch roofs and existing building contents.",
+  "processing": "Remove tiny detached alpha components and retain a 1px alpha fringe; crop and contain to 488x488 aligned to the bottom within a transparent 512x512 canvas with 12px padding. Reproduce from repository root with prepare.cjs.",
+  "files": [
+    {
+      "id": "coop",
+      "source": "assets/ui/farm-roof-fix-v20/source/coop.png",
+      "runtime": "public/farm/art/v20/buildings/coop.png",
+      "crop": {
+        "left": 27,
+        "top": 471,
+        "width": 1198,
+        "height": 754
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "6063b3faf8271dbe0b4081a6f69ee9708510cfc334f58c326eba05d5eba95ff7",
+      "prompt": "EDIT ONLY THE ROOF ASSEMBLY of this exact chicken coop sprite. The roof currently looks crooked and droops diagonally from left to right. Straighten it: the main FRONT EAVE/FASCIA must be perfectly HORIZONTAL left-to-right, aligned with the coop front, with equal-height left and right corners. Keep the single-pitch lean-to design sloping only FRONT TO BACK; do NOT tilt the whole roof sideways. Keep roof a neat rectangular plane with straight parallel edges, olive green metal/wood boards, same thickness and soft shading. Correct the supporting top beam immediately below roof if needed so it sits securely. Preserve the exact rest of the image below the roof: warm wooden coop, round sleeping-hen doorway, ramp, nesting box at left, wire run at right, feed bowl and drinker, all positions, proportions and art style. Do not rotate, skew or redraw the entire building. Same compact square footprint and camera. True transparent alpha background with clean edges, no shadow, text, UI or extra objects.",
+      "references": [
+        "public/farm/art/v19/buildings/coop.png"
+      ]
+    },
+    {
+      "id": "seedShop",
+      "source": "assets/ui/farm-roof-fix-v20/source/seedShop.png",
+      "runtime": "public/farm/art/v20/buildings/seedShop.png",
+      "crop": {
+        "left": 39,
+        "top": 128,
+        "width": 1176,
+        "height": 1098
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "c2e2be309b67fd34743df95c2dcf8ea8e3e8de57437fa18b539b3f27633212b7",
+      "prompt": "EDIT ONLY THE ROOF ASSEMBLY of this exact seed shop sprite. Its entire green roof is visibly crooked, sloping DOWN from LEFT to RIGHT. Make it neat and LEVEL: both the long TOP/BACK roof edge and the long FRONT EAVE/FASCIA must be perfectly HORIZONTAL left-to-right, both ends equal height, parallel to the horizontal shelves. Keep a simple SINGLE-PITCH roof sloping only front-to-back with a little visible top surface, NOT sideways. Make its corners square and edges straight with a consistent overhang above two upright posts. Level the wooden supporting beam directly beneath roof as part of the roof assembly. Preserve every other detail and position: seed packet pictograms, drawers, seedlings, watering can, hanging herbs, shelf counter, baskets, pots, warm wooden frame and original cozy shading. Do not rotate or skew the entire shop. Do not change colors, footprint, contents or turn it into a gabled-roof house. Full sprite on genuinely transparent alpha background, clean edges, no shadow, lettering or UI.",
+      "references": [
+        "public/farm/art/v19/buildings/seedShop.png"
+      ]
+    }
+  ]
+}

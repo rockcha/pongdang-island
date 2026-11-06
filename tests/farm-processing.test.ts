@@ -4,9 +4,11 @@ import {simulateFarm,farmGoods} from '@/features/farm/farm-simulation'
 import {farmRecipes,recipeIds,recipeOutput,millProducts,millRecipes} from '@/features/farm/food-catalog'
 
 const stocked=()=>{
- const state=initialTopview();state.objects.find(object=>object.kind==='warehouse')!.level=2
- state.simulation.unlockedAnimals=['cow','chicken','duck','goat']
- Object.assign(state.simulation.inventory,{tomato:10,tomatoKetchup:10,rice:20,cheese:10,carrot:10,sugar:20,sugarcane:20,goatMilk:10,duckEgg:10,milk:10,egg:10,flour:20,butter:5,strawberry:10,cornFlour:10,potato:10,sweetPotato:10,cream:10})
+ const state=initialTopview();state.objects.find(object=>object.kind==='warehouse')!.level=10
+ state.simulation.unlockedAnimals=['cow','chicken','duck','sheep']
+ state.simulation.inventory.corn=10
+ Object.assign(state.simulation.inventory,{redMeat:5,chickenMeat:5,duckMeat:5})
+ Object.assign(state.simulation.inventory,{tomato:10,tomatoKetchup:10,rice:20,strawberryJam:4,cheese:10,carrot:10,sugar:20,sugarcane:20,duckEgg:10,milk:10,egg:10,flour:20,butter:5,strawberry:10,cornFlour:10,potato:10,sweetPotato:10,cream:10})
  return state
 }
 it.each(millProducts)('reserves multiple raw crops for %s and collects the batch once',product=>{
@@ -27,7 +29,7 @@ it.each(millProducts)('reserves multiple raw crops for %s and collects the batch
 })
 it('requires more than one livestock product for every dairy recipe without consuming insufficient stock',()=>{
  for(const id of recipeIds.filter(id=>farmRecipes[id].building==='dairy')){
-  const state=stocked(),recipe=farmRecipes[id],animalIngredient=recipe.ingredients.find(item=>item.good==='milk'||item.good==='goatMilk')!
+  const state=stocked(),recipe=farmRecipes[id],animalIngredient=recipe.ingredients.find(item=>item.good==='milk')!
   expect(animalIngredient.quantity).toBeGreaterThan(1)
   state.simulation.inventory[animalIngredient.good]=1
   const before={...state.simulation.inventory}

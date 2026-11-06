@@ -32,7 +32,7 @@ it('buys decorations in the three-category shop and keeps all storage counts in 
  setup();click('상점')
  const shop=screen.getByRole('dialog',{name:'상점'})
  expect(within(screen.getByRole('navigation',{name:'상점 분류'})).getAllByRole('button').map(b=>b.textContent)).toEqual(['건물','장식','타일'])
- click('장식');fireEvent.click(within(shop).getByRole('button',{name:/울타리.*구매/}));fireEvent.click(within(shop).getByRole('button',{name:/울타리.*구매/}))
+ click('장식');fireEvent.click(within(shop).getByRole('button',{name:'울타리 구매 · 40 G'}));fireEvent.click(within(shop).getByRole('button',{name:'울타리 구매 · 40 G'}))
  expect(shop.querySelector('.farm-count-badge')).toBeNull()
  click('Close');click('보관함')
  expect(screen.queryByRole('dialog')).toBeNull()

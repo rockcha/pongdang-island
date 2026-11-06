@@ -1,0 +1,24 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "files": [
+    {
+      "id": "mediumBakery",
+      "prompt": "Create one cozy farming game building sprite for a medium patisserie bakery specialized in strawberry cake and carrot cake. Use the reference only for warm hand painted cartoon material shading, delicate brown outlines, straight-on elevated orthogonal camera angle, NO isometric diamond base. Distinct from the reference small brick oven: a cream plaster boutique with a low sage-green curved metal roof, a small strawberry cake pictogram sign, a blush pink scalloped shop awning, broad clear front display window with two whole cakes (one strawberry cream cake and one carrot cake) on stands, pale honey wooden counter base, a narrow side baking room with a copper mixing bowl. Friendly compact horizontal silhouette, two farm cells wide and one cell deep, footprint is lower half of square canvas, modest height, full building entirely inside frame with margin. No huge chimney, no domed brick oven, no lettering, no words, no people, no scenery, no ground tile or baseplate, no cast shadow outside object. Clean truly transparent background. Polished cute painted game art matching reference quality.",
+      "source": "assets/ui/farm-medium-bakery-v29/source/mediumBakery.png",
+      "runtime": "public/farm/art/v29/buildings/mediumBakery.png",
+      "references": [
+        "public/farm/art/v19/buildings/bakery.png"
+      ],
+      "crop": {
+        "left": 168,
+        "top": 149,
+        "width": 1443,
+        "height": 710
+      },
+      "width": 512,
+      "height": 512,
+      "sha256": "de8fb5ce521c45479293273fdea2621a2376c9b4addd28d1f06fad862ef255df"
+    }
+  ]
+}

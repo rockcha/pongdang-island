@@ -1,5 +1,6 @@
 import {expect,it} from 'vitest'
-import {initialTopview,topviewItems} from '@/features/farm/topview-model'
+import {legacyTradeFixture as initialTopview} from './helpers/legacy-trade-fixture'
+import {topviewItems} from '@/features/farm/topview-model'
 import {dailyFarmOrders,farmOrderDay,farmOrderKey} from '@/features/farm/daily-orders'
 import {farmAnimalHousing,farmBuildingStorageError,farmPlacementError,simulateFarm} from '@/features/farm/farm-simulation'
 import {canProduceOrderGood} from '@/features/farm/daily-orders'
@@ -12,7 +13,10 @@ it('requires the entire production chain before ordering a product and includes 
  expect(canProduceOrderGood(state,'cornBread')).toBe(false)
  expect(canProduceOrderGood(state,'cheese')).toBe(true)
  state.simulation.unlockedCrops=[...cropKinds]
- state.simulation.unlockedAnimals=['cow','chicken','duck','goat'];state.objects.push({id:100,kind:'duck',x:7,y:7},{id:101,kind:'goat',x:8,y:7})
+ state.simulation.unlockedAnimals=['cow','chicken','duck','sheep'];state.objects.push({id:100,kind:'duck',x:7,y:7},{id:101,kind:'sheep',x:8,y:7})
+ expect(canProduceOrderGood(state,'meatStew')).toBe(false)
+ state.objects.push({id:102,kind:'butcher',x:8,y:15})
+ expect(canProduceOrderGood(state,'meatStew')).toBe(true)
  const seen=new Set<string>()
  for(let day=0;day<60;day++)for(const order of dailyFarmOrders(store,now+day*86400000,state))seen.add(order.good)
  for(const good of finishedFoods)expect(seen.has(good)).toBe(true)
@@ -27,7 +31,7 @@ it('preserves delivered orders and their quantities when the production chain ch
  const store=state.objects.find(object=>object.kind==='processed')!,order=dailyFarmOrders(store,now,state)[0]
  state.simulation.inventory[order.good]=order.quantity
  state=simulateFarm(state,store.id,{type:'sell',good:order.good,quantity:1,orderDay:farmOrderDay(now)},now).state
- state.objects=state.objects.filter(object=>!['bakery','dairy','mill'].includes(object.kind))
+ state.objects=state.objects.filter(object=>!['bakery','dairy','mill','kitchen','advancedKitchen'].includes(object.kind))
  expect(dailyFarmOrders(store,now,state)).toEqual([order])
  const finished=simulateFarm(state,store.id,{type:'sell',good:order.good,quantity:order.quantity-1,orderDay:farmOrderDay(now)},now)
  expect(finished.state).not.toBe(state)

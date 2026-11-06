@@ -27,7 +27,7 @@ it('makes sugar in the mill, shows the two-item yield and requires cane research
 it('shows only each animal’s regular product while keeping its capacity and production time visible',()=>{
  render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
- for(const [house,animal,product] of [['가금사 (10,8)','오리','오리알'],['축사 (15,5)','염소','염소젖']]){
+ for(const [house,animal,product] of [['가금사 (10,9)','오리','오리알'],['축사 (15,6)','양','양털']]){
   click(house);click(`${animal} 선택`)
   const products=screen.getByRole('region',{name:'생산 가능한 상품'})
   expect(products.textContent).toContain(product)

@@ -1,0 +1,45 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Local farm sauce workshop and intermediate kitchen building sprites.",
+  "processing": "Remove tiny detached alpha components, retain a 1px alpha fringe, crop and contain within a transparent 512x512 canvas with 12px padding. Reproduce from repository root with prepare.cjs.",
+  "files": [
+    {
+      "id": "sauceWorkshop",
+      "source": "assets/ui/farm-workshops-v18/source/sauceWorkshop.png",
+      "runtime": "public/farm/art/v18/buildings/sauceWorkshop.png",
+      "crop": {
+        "left": 52,
+        "top": 110,
+        "width": 1150,
+        "height": 1030
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "6b9f62e8981fc907a13b70fbfcde8ddb615f97d7bd1c1c439717f399820a3ccc",
+      "prompt": "Cozy farm game BUILDING SPRITE matching supplied existing kitchen reference exactly in art style and viewing angle. Upright FRONT THREE QUARTER ORTHOGRAPHIC with shallow visible roof top, never overhead or isometric diamond. Compact square 2x2 footprint, same scale as reference. Chunky warm timber frame, cream plaster, clean warm brown outlines, soft hand-painted dimensional shading, cheerful readable details. FULL building centered, no perspective floor tile, no ground or cast shadow, true transparent alpha with exceptionally clean edges, no text, UI, labels or watermark. A small dedicated SAUCE AND JAM WORKSHOP. Distinct coral red tiled gabled roof with small chimney, sage green door at left, open shopfront/work window at right. Large clean display jars of RED tomato ketchup and PINK strawberry jam with gingham cloth lids on window shelf, copper stirring pot visible inside, one small basket of tomatoes and strawberries. A modest wooden hanging sign with a simple pictogram of a jam jar, NO lettering. Functional charming preserves workshop, not a restaurant, no outdoor tables or extra objects.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png"
+      ]
+    },
+    {
+      "id": "advancedKitchen",
+      "source": "assets/ui/farm-workshops-v18/source/advancedKitchen.png",
+      "runtime": "public/farm/art/v18/buildings/advancedKitchen.png",
+      "crop": {
+        "left": 43,
+        "top": 91,
+        "width": 1169,
+        "height": 1063
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "357e7f66ac050f5e6dee772fb13d480a0190c0719a651ff16483332d8f2f5d8a",
+      "prompt": "Cozy farm game BUILDING SPRITE matching supplied existing kitchen reference exactly in art style and viewing angle. Upright FRONT THREE QUARTER ORTHOGRAPHIC with shallow visible roof top, never overhead or isometric diamond. Compact square 2x2 footprint, same scale as reference. Chunky warm timber frame, cream plaster, clean warm brown outlines, soft hand-painted dimensional shading, cheerful readable details. FULL building centered, no perspective floor tile, no ground or cast shadow, true transparent alpha with exceptionally clean edges, no text, UI, labels or watermark. An INTERMEDIATE CHEF'S KITCHEN, clearly more equipped than the simple wooden kitchen in reference, but still a compact farm workshop. Slate BLUE double-pitched roof, sturdy warm timber frame, tasteful brick chimney, cream plaster walls, warm wooden door on left. Wide open cooking window on right reveals TWO cooking stations: a dark stove with a copper saucepan and a clean prep counter with frying pan, small cutting board, rice bowl, red ketchup bottle and yellow cheese wedge. A simple small chef-hat pictogram on a hanging wooden sign, no letters. Slightly richer brick base and larger hood than basic kitchen. No giant size, no people or animals.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png"
+      ]
+    }
+  ]
+}

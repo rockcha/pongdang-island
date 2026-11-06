@@ -1,6 +1,7 @@
 import {dailyFarmOrders,farmOrderDay} from '@/features/farm/daily-orders'
 import {expect,it} from 'vitest'
-import {initialTopview} from '@/features/farm/topview-model'
+import {legacyTradeFixture as initialTopview} from './helpers/legacy-trade-fixture'
+import {} from '@/features/farm/topview-model'
 import {farmLimits,farmPlacementError,simulateFarm} from '@/features/farm/farm-simulation'
 import {cropKinds,farmCrops,seedGood} from '@/features/farm/crop-catalog'
 it('unlocks potato seeds once through research and purchases the requested quantity',()=>{

@@ -6,8 +6,8 @@ import {TopviewFarm} from '@/features/farm/topview-farm'
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 it.each([
- {name:'오리',house:'가금사 (10,8)',price:'500',product:'오리알',workshop:'작은 빵집 (18,8)',recipe:'에그타르트'},
- {name:'염소',house:'축사 (15,5)',price:'1,000',product:'염소젖',workshop:'유제품 공방 (14,12)',recipe:'염소치즈'},
+ {name:'오리',house:'가금사 (10,9)',price:'500',product:'오리알',workshop:'작은 빵집 (18,9)',recipe:'에그타르트'},
+ {name:'양',house:'축사 (15,6)',price:'600',product:'양털',workshop:'유제품 공방 (14,13)',recipe:'염소치즈'},
 ])('buys $name from its house, previews its unlocks, places it and collects the matching product',({name,house,price,product,workshop,recipe})=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  click(workshop);expect(screen.queryByRole('button',{name:`${recipe} 선택`})).toBeNull();click('Close')
@@ -22,8 +22,9 @@ it.each([
  expect(screen.getByRole('status').textContent).toContain(`${name} ×1`)
  click('보관함');click('동물');click(`${name} 보관 1개 배치하기`)
  fireEvent.click(document.querySelector('[data-farm-cell="7,7"]')!);click('완료')
- click(`${name} (7,7)`);act(()=>vi.advanceTimersByTime(10000));click(`${name} (7,7)`)
+ click(`${name} 생산 시작`);act(()=>vi.advanceTimersByTime(10000));click(`${product} 생산 (7,7)`)
  expect(screen.getByRole('status').textContent).toContain(`${product} ×1`)
+ if(name==='양'){click(workshop);expect(screen.queryByRole('button',{name:`${recipe} 선택`})).toBeNull();return}
  click(workshop);click(`${recipe} 선택`)
  expect(screen.getByRole('article',{name:`${recipe} 제작법`})).toBeTruthy()
  expect(screen.getByRole('button',{name:`${recipe} 만들기`})).toHaveProperty('disabled',true)

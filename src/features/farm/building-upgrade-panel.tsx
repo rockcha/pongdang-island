@@ -5,7 +5,7 @@ import type {TopviewObject,TopviewState} from './topview-model'
 import {farmLimits,type FarmSimAction} from './farm-simulation'
 
 export function BuildingUpgradePanel({object,state,now,onAction}:{object:TopviewObject;state:TopviewState;now:number;onAction:(action:FarmSimAction)=>void}){
- const level=buildingLevel(object),job=state.simulation.upgradeJobs[object.id],capacity=buildingCapacity(object),livestock=object.kind==='livestockOffice',unit=livestock?'마리':'칸'
+ const level=buildingLevel(object),job=state.simulation.upgradeJobs[object.id],capacity=buildingCapacity(object),livestock=object.kind==='livestockOffice',unit=livestock?'마리':object.kind==='warehouse'?'개':'칸'
  const progress=job?Math.min(100,Math.max(0,(now-job.startedAt)/(job.readyAt-job.startedAt)*100)):0
  const limits=farmLimits(state),used=object.kind==='office'?limits.usedPlots:livestock?limits.totalAnimals:0
  const total=object.kind==='office'?limits.plots:livestock?limits.animals:warehouseCapacity(state)

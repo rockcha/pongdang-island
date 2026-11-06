@@ -1,8 +1,7 @@
 import {expect,it} from 'vitest'
 import {farmOverview,farmProductionTasks} from '@/features/farm/farm-overview-model'
-import {initialTopview} from '@/features/farm/topview-model'
+import {legacyTradeFixture as initialTopview} from './helpers/legacy-trade-fixture'
 import {dailyFarmOrders,farmOrderKey} from '@/features/farm/daily-orders'
-import {farmGoods} from '@/features/farm/farm-simulation'
 
 const now=Date.parse('2026-11-04T14:59:59Z')
 it('aggregates independent facilities and sorts ready work ahead of work in progress without changing farm state',()=>{
@@ -70,18 +69,18 @@ it('does not advertise ready products as collectible while the warehouse is unav
  expect(farmOverview(state,now)).toMatchObject({ready:0,blocked:1})
  expect(farmOverview(state,now).orders.every(order=>!order.warehouseReady)).toBe(true)
  state.simulation.upgradeJobs={}
- for(const good of Object.keys(farmGoods).filter(good=>!good.endsWith('Seed')&&good!=='milk').slice(0,10))state.simulation.inventory[good as keyof typeof farmGoods]=1
+ state.simulation.inventory.wheat=30
  expect(farmOverview(state,now)).toMatchObject({ready:0,blocked:1})
- state.simulation.inventory.butter=0;state.simulation.inventory.milk=1
+ state.simulation.inventory.wheat=29;state.simulation.inventory.milk=0
  expect(farmOverview(state,now)).toMatchObject({ready:1,blocked:0})
 })
-it('counts the rice needed for remaining pudding orders after subtracting finished food stock',()=>{
+it('counts the rice needed for remaining omurice orders after subtracting finished food stock',()=>{
  const state=initialTopview(),store=state.objects.find(object=>object.kind==='processed')!
- state.simulation.unlockedCrops.push('paddy','sugarcane')
- state.simulation.inventory.ricePudding=1;state.simulation.inventory.rice=1
- const at=Array.from({length:90},(_,day)=>now+day*86400000).find(at=>dailyFarmOrders(store,at,state).some(order=>order.good==='ricePudding'))!
+ state.simulation.unlockedCrops.push('paddy','sugarcane','tomato')
+ state.simulation.inventory.omurice=1;state.simulation.inventory.rice=1
+ const at=Array.from({length:90},(_,day)=>now+day*86400000).find(at=>dailyFarmOrders(store,at,state).some(order=>order.good==='omurice'))!
  expect(at).toBeDefined()
- const pudding=farmOverview(state,at).orders.find(order=>order.object.id===store.id)!.items.find(item=>item.good==='ricePudding')!
+ const pudding=farmOverview(state,at).orders.find(order=>order.object.id===store.id)!.items.find(item=>item.good==='omurice')!
  const rawNeeded=(pudding.quantity-1)*2
  expect(pudding.ingredients.find(item=>item.good==='rice')).toEqual({good:'rice',required:rawNeeded,missing:rawNeeded-1})
 })

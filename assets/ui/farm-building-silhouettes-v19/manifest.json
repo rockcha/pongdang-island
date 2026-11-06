@@ -1,0 +1,259 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Differentiate twelve existing farm buildings by architecture and roof silhouette. Farm produce stall, glass greenhouse laboratory and stone windmill retain their existing sprites.",
+  "processing": "Remove tiny detached alpha components and retain a 1px alpha fringe; crop and contain to 488x488 aligned to the bottom within a transparent 512x512 canvas with 12px padding. Source originals are retained. Reproduce from repository root with prepare.cjs.",
+  "files": [
+    {
+      "id": "warehouse",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/warehouse.png",
+      "runtime": "public/farm/art/v19/buildings/warehouse.png",
+      "crop": {
+        "left": 65,
+        "top": 188,
+        "width": 1128,
+        "height": 909
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "24ce7a0e8dab21f1b17e6f3e4c8b9b41c1b02aa22dc0e33950f881646f30dd41",
+      "name": "창고",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A practical farm STORAGE WAREHOUSE distinguished by ONE BIG CONTINUOUS ROUND BARREL-VAULTED corrugated metal roof, muted olive green curved roof with rounded arch profile, absolutely NO triangular gable and no roof tiles. Broad squat warm wooden walls, extra wide sliding double wooden doors partly open with neat crates and grain sacks visible. A short stack of crates tightly beside the doorway. No chimney, awning, windmill, greenhouse or animal pen. Clear wide arched-roof storage shed silhouette.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "office",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/office.png",
+      "runtime": "public/farm/art/v19/buildings/office.png",
+      "crop": {
+        "left": 92,
+        "top": 263,
+        "width": 1076,
+        "height": 766
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "5ef06318a1b18f54aff7260d76f0649a01de0ee5aab46af0baa1f79909835813",
+      "name": "농지 관리소",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A tiny LAND MANAGEMENT OFFICE distinguished by a LOW FLAT ROOF and simple cream plaster rectangular walls with warm wood trim. Sage green FABRIC WINDOW AWNING over a small square office window, wooden front door, LARGE OUTDOOR FARM MAP NOTICEBOARD attached to one side showing a simple grid of green/brown field squares with colored pins (no writing). One small spade leaning against the wall. Flat shallow roof slab with a little wooden rim, absolutely NO triangular gable, tiled roof, tower or chimney. Compact calm administrative hut.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "livestockOffice",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/livestockOffice.png",
+      "runtime": "public/farm/art/v19/buildings/livestockOffice.png",
+      "crop": {
+        "left": 49,
+        "top": 151,
+        "width": 1158,
+        "height": 943
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "8f71f64ce1fe702930aa840b19b264a7d4061a332ca714844432ad7f97b199bd",
+      "name": "축산 관리소",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A LIVESTOCK MANAGEMENT STATION distinguished by an asymmetrical small RAISED LOOKOUT LOFT on one side: a short square timber watch-room with wraparound wooden balcony railing and a shallow flat overhanging roof, connected to a lower single-story office wing. Small animal pictogram plaque with cow and chicken silhouettes, attached grain/feed bin and a low water trough under the balcony. Simple sage green roof caps, no roof tiles and no central triangular gable. Cozy sturdy low watchtower plus side wing silhouette, NOT a barn or castle, not tall military tower, no ladder outside footprint.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "seedShop",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/seedShop.png",
+      "runtime": "public/farm/art/v19/buildings/seedShop.png",
+      "crop": {
+        "left": 23,
+        "top": 48,
+        "width": 1191,
+        "height": 1156
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "8ad2f4dbf152a9228b5242b9dca758439b53b6331dbd76d369797d6c92bd48ba",
+      "name": "종자 상점",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A SEED SHOP as a clearly open wooden SEED CABINET STALL with a SINGLE SLOPING LEAN-TO ROOF, shallow sage green plank roof inclining one way, no gable. The front is mostly open rows of small seed drawers and hanging illustrated seed packets, little trays of sprouts on the counter, warm honey timber, one small watering can. Packet illustrations are tiny crop pictograms without any text. No door/window house layout, tiled roof or chimney. Compact open seed-library kiosk silhouette.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "processed",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/processed.png",
+      "runtime": "public/farm/art/v19/buildings/processed.png",
+      "crop": {
+        "left": 47,
+        "top": 179,
+        "width": 1146,
+        "height": 980
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "11d421949eb2883d35846836a0ac6b8d41211aeab272086355ed91fbe5cd4ddf",
+      "name": "가공품 판매소",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A FINISHED FOOD DISPLAY SHOP distinguished by a broad ROUNDED CREAM CANVAS CANOPY with a curved barrel profile and soft scalloped edge. Dominant FRONT GLASS SHOWCASE containing neat cakes, bread, jam-colored dessert cups and milk drinks on two shelves. Rounded short mint-and-cream storefront base, warm wooden side posts. No house roof, triangular gable, chimney or orange striped market tent. The curved cream canopy and wide reflective glass counter define its silhouette.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "barn",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/barn.png",
+      "runtime": "public/farm/art/v19/buildings/barn.png",
+      "crop": {
+        "left": 113,
+        "top": 21,
+        "width": 1028,
+        "height": 1177
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "b497726cb0df81f3a9a717caa31a7ca8f822a591c77d1a419f33ad56d66eed60",
+      "name": "축사",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A classic animal BARN with a VERY HIGH STEEP RED A-FRAME GABLED ROOF, roof is RED PAINTED WOODEN BOARDS or standing-seam sheets, NOT clay roof tiles. Tall red timber facade, large central cross-braced double barn doors, little hay loft hatch high above doors, a modest pile of hay tucked at one side. Building looks taller and sturdier than other workshops, simple clean triangular barn outline. No cow sticking out, no chimney, side shop counter or fabric awning.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "coop",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/coop.png",
+      "runtime": "public/farm/art/v19/buildings/coop.png",
+      "crop": {
+        "left": 29,
+        "top": 290,
+        "width": 1195,
+        "height": 788
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "60f4e714d838c1a37f6c9b17397480c4cc63b2baa82e7e483e8b6a8950201ee8",
+      "name": "가금사",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A low CHICKEN COOP with a SINGLE SHALLOW SLOPING LEAN-TO WOODEN ROOF, low honey wood hen house raised slightly on short legs, distinctive ROUND SMALL HEN ENTRANCE and a short slatted ramp facing front. A low attached WIRE-MESH RUN enclosure on the RIGHT with its own simple flat top rail, nesting box bump-out on left. No central triangular gable, clay tiles, tall barn doors or chimney. Low asymmetrical coop-and-run silhouette, a small sleepy hen may be barely visible inside the circular entrance.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "dairy",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/dairy.png",
+      "runtime": "public/farm/art/v19/buildings/dairy.png",
+      "crop": {
+        "left": 76,
+        "top": 152,
+        "width": 1121,
+        "height": 934
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "a7bc874884852a58526fb96e43eb0eccd237929a657a7d36b62b865dcda4e8ca",
+      "name": "유제품 공방",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A DAIRY WORKSHOP distinguished by TWO LARGE EXTERIOR SILVER CYLINDRICAL MILK PROCESSING TANKS with rounded tops attached on the LEFT of a small WHITE PLASTER processing room. Room has a very low shallow LIGHT BLUE METAL ROOF with rounded edge, small blue door and a square window displaying butter and a milk bottle. Tank domes, pipes and a small milk can are bold readable shapes. No triangular gable, clay tiles, central chimney, outdoor copper cooking pot or shop awning. Combined rounded tanks plus low clean white room silhouette.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "bakery",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/bakery.png",
+      "runtime": "public/farm/art/v19/buildings/bakery.png",
+      "crop": {
+        "left": 68,
+        "top": 133,
+        "width": 1132,
+        "height": 996
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "024e406e97714d3b1917828430b998127c3cf53d8b0578311583ee6c2dbeaced",
+      "name": "작은 빵집",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A small BAKERY distinguished by a BIG BULGING HALF-ROUND RED BRICK OVEN DOME projecting from the front/right of a tiny timber lean-to shelter. Large arched dark oven mouth with three golden bread loaves visible, short stout square brick chimney directly on the dome, low flat/sloping wooden cover on left over a bread rack and flour sack. Oven architecture is main building mass, cozy squat curved brick silhouette, NOT a rectangular shop with an oven drawn inside. No standard triangular house roof, clay tiles, greenhouse or fabric market canopy.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "kitchen",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/kitchen.png",
+      "runtime": "public/farm/art/v19/buildings/kitchen.png",
+      "crop": {
+        "left": 51,
+        "top": 139,
+        "width": 1152,
+        "height": 1019
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "0f5788fcbcad6b29ce49fee61cda765411da427bd06f7ccf3138032d2e8df98a",
+      "name": "작은 주방",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A BASIC SMALL FARM KITCHEN distinguished by a LOW ROUNDED GOLDEN THATCHED ROOF on a rustic partially open cooking hut. Thick soft straw eaves, simple low timber supports, one small enclosed cream wall and a SINGLE OPEN SERVING/COOKING WINDOW, a modest copper pot on a little brick stove attached at the front side. Simple humble cooking tools and a small rice bowl, no fancy equipment. No tiled/metal gabled roof, long brick chimney, large glass display, multiple stations or signboard dominating roof. Cozy thatched cooking-hut silhouette.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "sauceWorkshop",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/sauceWorkshop.png",
+      "runtime": "public/farm/art/v19/buildings/sauceWorkshop.png",
+      "crop": {
+        "left": 31,
+        "top": 126,
+        "width": 1193,
+        "height": 1015
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "c31190e69ae3f3ef7b0063135a3e35749ac337b1910cb974d987249ea76c9548",
+      "name": "소스 공방",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. A SAUCE AND JAM BOTTLING WORKSHOP distinguished by a BROAD CORAL RED FABRIC AWNING extending from a low flat-backed wooden workroom, with tiered jar shelves strongly visible on the open front. Three tidy rows of ketchup and strawberry jam jars with gingham cloth lids; a LARGE COPPER STIRRING CAULDRON attached visibly at the RIGHT side, small basket of tomatoes and strawberries beneath shelf. The red cloth canopy and projecting round copper kettle define a wide asymmetric silhouette. No triangular gable, clay tiles, roof chimney, blue roof or restaurant tables. No words on jars.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    },
+    {
+      "id": "advancedKitchen",
+      "source": "assets/ui/farm-building-silhouettes-v19/source/advancedKitchen.png",
+      "runtime": "public/farm/art/v19/buildings/advancedKitchen.png",
+      "crop": {
+        "left": 51,
+        "top": 40,
+        "width": 1128,
+        "height": 1160
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "13b89554176e711db5e23036360d0856ee4be486d135e77be6bf8354ed5538ee",
+      "name": "중급 주방",
+      "prompt": "Create ONE production-ready cozy farm-game BUILDING sprite. References are ART STYLE ONLY: warm hand-painted wooden textures, rounded chunky edges, clean warm brown outlines, soft dimensional shading, friendly readable proportions. DO NOT COPY the reference house silhouette or gabled roof; use the architecture specified below. Slightly elevated FRONT THREE QUARTER ORTHOGRAPHIC camera with a shallow visible roof top, matching existing farm buildings, NOT top-down, NOT isometric diamond. Entire building and attached features fully visible as one cohesive compact structure fitting a square 2x2 game footprint, centered in a square canvas. TRUE TRANSPARENT ALPHA background, clean silhouette and edges, NO ground rectangle, cast shadow, glow, scattered pixels, text, UI, labels or watermark. Structural silhouette must be readable when shrunk to 80 pixels. An INTERMEDIATE FARM KITCHEN distinguished by a RED BRICK WORKROOM WITH STEPPED FLAT PARAPET ROOF, clearly stair-step roofline rather than pitched gable. A large external silver ventilation hood and TWO SHORT UNEQUAL CHIMNEYS (one brick, one small metal flue) rise from roof. Wide open cooking window shows two cooking stations, copper saucepan, frying pan, cutting board, rice bowl and tiny red sauce bottle. Dark slate blue roof rim, warm timber door and brick base. Compact richly equipped chef workshop silhouette. Absolutely NO triangular gable, clay tiles, thatch, market tent or rounded warehouse barrel roof.",
+      "references": [
+        "public/farm/art/v4/buildings/kitchen.png",
+        "public/farm/art/v14/decor/rabbitTopiary.png"
+      ]
+    }
+  ]
+}

@@ -28,7 +28,7 @@ export function farmProductionTasks(state:TopviewState,now:number){
  for(const task of tasks){
   if(task.status!=='ready'||!task.good||!['crop:','animal:','mill:','processing:'].some(prefix=>task.id.startsWith(prefix)))continue
   if(!warehouseAvailable(state)){task.status='blocked';task.detail='사용 가능한 창고가 생기면 받을 수 있어요.'}
-  else if(!canStoreFarmGoods(state,[task.good])){task.status='blocked';task.detail='창고에 새 품목을 보관할 공간이 필요해요.'}
+  else if(!canStoreFarmGoods(state,[{good:task.good,quantity:task.id.startsWith('crop:')&&sim.cropJobs[task.objectId]?.harvestingAt!==undefined?0:task.quantity??1}])){task.status='blocked';task.detail='생산물 수량만큼 창고 공간이 필요해요.'}
  }
  const priority={ready:0,attention:1,blocked:2,working:3}
  tasks.sort((a,b)=>priority[a.status]-priority[b.status]||a.readyAt-b.readyAt||a.objectId-b.objectId)

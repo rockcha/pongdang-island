@@ -1,0 +1,105 @@
+{
+  "tool": "image_gen.imagegen",
+  "files": [
+    {
+      "id": "tree",
+      "source": "assets/ui/farm-decoration-v12/source/tree.png",
+      "runtime": "public/farm/art/v12/decor/tree.png",
+      "crop": {
+        "left": 65,
+        "top": 137,
+        "width": 895,
+        "height": 1227
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "76 12 360 488",
+      "prompt": "One charming compact mature broadleaf tree. Rounded softly lobed fresh green canopy, clearly visible warm brown trunk occupying the lower third of the tree height, two short branching limbs visible under the foliage, small root flare at base. View the FRONT AND SIDE of the canopy, not its crown from above. Trunk and ground-contact roots MUST be prominent. No fruit, no face, no flowers, no other objects. Taller than wide silhouette. Match the sheep reference for STYLE ONLY: adorable cozy farm game illustration, rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, no photorealistic grain or distressed textures. Match the bakery reference for CAMERA ONLY: front-facing with a small amount of top surface visible, camera about 15 degrees above horizontal, vertical sides readable, straight front edges horizontal. NOT an overhead top-down view, NOT an isometric diamond. Single isolated game decoration centered, whole object fully visible, actual transparent alpha background, no surrounding scene, no ground patch or cast shadow, no UI, lettering, border or watermark.",
+      "references": [
+        "public/farm/art/v6/animals/sheep.png",
+        "public/farm/art/v3/buildings/bakery.png"
+      ],
+      "sha256": "5e2c1f9a2779cc99c18b5409981983d9f750f866211cc61a56e08d7b449d287b"
+    },
+    {
+      "id": "bench",
+      "source": "assets/ui/farm-decoration-v12/source/bench.png",
+      "runtime": "public/farm/art/v12/decor/bench.png",
+      "crop": {
+        "left": 130,
+        "top": 78,
+        "width": 1275,
+        "height": 872
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 86 488 339",
+      "prompt": "One cozy honey-brown wooden garden bench with two rounded armrests, two broad smooth backrest boards, a simple seat and four short sturdy legs. Straight-on front view, a little seat top visible. Chunky rounded friendly proportions, gentle wood lines, no weathering, moss or ground. Match the sheep reference for STYLE ONLY: adorable cozy farm game illustration, rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, no photorealistic grain or distressed textures. Match the bakery reference for CAMERA ONLY: front-facing with a small amount of top surface visible, camera about 15 degrees above horizontal, vertical sides readable, straight front edges horizontal. NOT an overhead top-down view, NOT an isometric diamond. Single isolated game decoration centered, whole object fully visible, actual transparent alpha background, no surrounding scene, no ground patch or cast shadow, no UI, lettering, border or watermark.",
+      "references": [
+        "public/farm/art/v6/animals/sheep.png",
+        "public/farm/art/v3/buildings/bakery.png"
+      ],
+      "sha256": "4e38b246f3e3287003a3eca9a4c3a9c670b120eec23d9a54385d40e4fdfa27dd"
+    },
+    {
+      "id": "fence",
+      "source": "assets/ui/farm-decoration-v12/source/fence.png",
+      "runtime": "public/farm/art/v12/decor/fence.png",
+      "crop": {
+        "left": 191,
+        "top": 188,
+        "width": 1154,
+        "height": 649
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 115 488 281",
+      "prompt": "One short section of a farm wooden fence: TWO rounded honey-brown upright posts connected by two horizontal rails. Front view with only a little top surface of posts visible. Softly rounded corners, chunky proportions. No vines, moss, flowers or ground. Match the sheep reference for STYLE ONLY: adorable cozy farm game illustration, rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, no photorealistic grain or distressed textures. Match the bakery reference for CAMERA ONLY: front-facing with a small amount of top surface visible, camera about 15 degrees above horizontal, vertical sides readable, straight front edges horizontal. NOT an overhead top-down view, NOT an isometric diamond. Single isolated game decoration centered, whole object fully visible, actual transparent alpha background, no surrounding scene, no ground patch or cast shadow, no UI, lettering, border or watermark.",
+      "references": [
+        "public/farm/art/v6/animals/sheep.png",
+        "public/farm/art/v3/buildings/bakery.png"
+      ],
+      "sha256": "861b1774b911cb245b3e22cde92a55095f2a39ebd73c2b07fdf7c849605844ff"
+    },
+    {
+      "id": "flowers",
+      "source": "assets/ui/farm-decoration-v12/source/flowers.png",
+      "runtime": "public/farm/art/v12/decor/flowers.png",
+      "crop": {
+        "left": 146,
+        "top": 118,
+        "width": 1230,
+        "height": 766
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 101 488 310",
+      "prompt": "One small low flower bed with friendly rounded pink, apricot and ivory daisylike flowers, fresh chunky green leaves, surrounded by a low oval border of smooth cream stones. View from front slightly above: visible flower faces and front stones, rear flowers stand a little higher. No surrounding soil square, no pot, no realistic foliage noise. Match the sheep reference for STYLE ONLY: adorable cozy farm game illustration, rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, no photorealistic grain or distressed textures. Match the bakery reference for CAMERA ONLY: front-facing with a small amount of top surface visible, camera about 15 degrees above horizontal, vertical sides readable, straight front edges horizontal. NOT an overhead top-down view, NOT an isometric diamond. Single isolated game decoration centered, whole object fully visible, actual transparent alpha background, no surrounding scene, no ground patch or cast shadow, no UI, lettering, border or watermark.",
+      "references": [
+        "public/farm/art/v6/animals/sheep.png",
+        "public/farm/art/v3/buildings/bakery.png"
+      ],
+      "sha256": "45890d830e3024c6d75e25f0a48555ac387338bd17770cc654c69b5c70255831"
+    },
+    {
+      "id": "pond",
+      "source": "assets/ui/farm-decoration-v12/source/pond.png",
+      "runtime": "public/farm/art/v12/decor/pond.png",
+      "crop": {
+        "left": 120,
+        "top": 161,
+        "width": 1530,
+        "height": 596
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 156 488 200",
+      "prompt": "One small cozy oval garden pond with clear gentle turquoise water, low rim of smooth rounded cream stones, one small green lily pad and one pale pink water lily, two simple grass shoots at the back. Camera is lower and front stones show visible vertical sides. Wider than tall oval water surface, NOT a circle viewed directly from above. No fish or surrounding ground. Match the sheep reference for STYLE ONLY: adorable cozy farm game illustration, rounded chunky forms, clean fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, no photorealistic grain or distressed textures. Match the bakery reference for CAMERA ONLY: front-facing with a small amount of top surface visible, camera about 15 degrees above horizontal, vertical sides readable, straight front edges horizontal. NOT an overhead top-down view, NOT an isometric diamond. Single isolated game decoration centered, whole object fully visible, actual transparent alpha background, no surrounding scene, no ground patch or cast shadow, no UI, lettering, border or watermark.",
+      "references": [
+        "public/farm/art/v6/animals/sheep.png",
+        "public/farm/art/v3/buildings/bakery.png"
+      ],
+      "sha256": "647ff22a1bc10f5b23e1fd2d05dedf06324ec7869d3067130c805e8170cda666"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import {TopviewFarm} from '@/features/farm/topview-farm'
 afterEach(()=>{cleanup();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
 it('upgrades all upgradeable building types through ten levels for 50G and exactly ten seconds per level',()=>{
- for(const [id,step] of [[26,10],[1,4],[27,2]]){
+ for(const [id,step] of [[26,30],[1,4],[27,2]]){
   let state=initialTopview(),now=0
   for(let level=1;level<10;level++){
    expect(buildingCapacity(state.objects.find(o=>o.id===id)!)).toBe(step*level)
@@ -32,7 +32,7 @@ it('locks warehouse inventory transactions during upgrade, preserves stock, and 
  for(const [id,action] of [[2,{type:'sell',good:'wheat',quantity:1,orderDay:'1970-01-01'}],[21,{type:'mill',quantity:1}],[4,{type:'feed'}]] as const)expect(simulateFarm(state,id,action,1000).state).toBe(state)
  expect(state.simulation.inventory.wheat).toBe(12)
  const cancelled=simulateFarm(state,26,{type:'cancelUpgrade'},9999).state
- expect(cancelled.gold).toBe(before.gold);expect(warehouseCapacity(cancelled)).toBe(10)
+ expect(cancelled.gold).toBe(before.gold);expect(warehouseCapacity(cancelled)).toBe(30)
  expect(simulateFarm(cancelled,26,{type:'cancelUpgrade'},10000).state).toBe(cancelled)
  expect(simulateFarm(state,26,{type:'cancelUpgrade'},10000).state).toBe(state)
  expect(simulateFarm({...before,gold:49},26,{type:'upgrade'},0).state.gold).toBe(49)
@@ -47,36 +47,36 @@ it('suspends only the upgrading management building capacity while keeping all e
 })
 it('keeps another warehouse usable and combines its capacity with completed building levels',()=>{
  const before=initialTopview();before.objects.push({id:50,kind:'warehouse',x:4,y:7,level:2})
- expect(warehouseCapacity(before)).toBe(30)
+ expect(warehouseCapacity(before)).toBe(90)
  const state=simulateFarm(before,26,{type:'upgrade'},0).state
- expect(warehouseAvailable(state)).toBe(true);expect(warehouseCapacity(state)).toBe(20)
+ expect(warehouseAvailable(state)).toBe(true);expect(warehouseCapacity(state)).toBe(60)
  expect(simulateFarm(state,4,{type:'feed'},1000).state.simulation.inventory.wheat).toBe(11)
 })
 it('shows the warehouse hammer and progress, hides inventory while upgrading, and completes after leaving the dialog',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('창고 (18,5)');expect(screen.getByText('1 / 10칸')).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:/창고 확장/}));click('업그레이드 · 50 G')
+ click('창고 (18,6)');expect(screen.getByText('12 / 30개')).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:/창고 확장/}));click('업그레이드 · 50 G')
  expect(screen.getByRole('progressbar',{name:'건물 업그레이드 진행'})).toBeTruthy()
  expect(container.querySelector('[data-building-upgrade="26"]')).toBeTruthy()
  expect(document.querySelector('.farm-warehouse-grid')).toBeNull()
  act(()=>vi.advanceTimersByTime(5000))
  expect(screen.getByRole('progressbar',{name:'건물 업그레이드 진행'}).getAttribute('aria-valuenow')).toBe('50')
- click('업그레이드 취소');expect(screen.getByText('1 / 10칸')).toBeTruthy()
+ click('업그레이드 취소');expect(screen.getByText('12 / 30개')).toBeTruthy()
  click('업그레이드 · 50 G');click('Close');act(()=>vi.advanceTimersByTime(10000))
  expect(container.querySelector('[data-building-upgrade="26"]')).toBeNull()
- click('창고 (18,5)');expect(screen.getByText('1 / 20칸')).toBeTruthy()
+ click('창고 (18,6)');expect(screen.getByText('12 / 60개')).toBeTruthy()
  expect(document.querySelectorAll('.farm-warehouse-slot')).toHaveLength(1)
 })
 it('preserves an upgraded building level after recovery and placement',()=>{
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('농지 관리소 (6,5)');click('업그레이드 · 50 G');act(()=>vi.advanceTimersByTime(10000));click('Close');act(()=>vi.advanceTimersByTime(200))
- click('회수하기');click('농지 관리소 (6,5)');click('보관함')
+ click('농지 관리소 (6,6)');click('업그레이드 · 50 G');act(()=>vi.advanceTimersByTime(10000));click('Close');act(()=>vi.advanceTimersByTime(200))
+ click('회수하기');click('농지 관리소 (6,6)');click('보관함')
  fireEvent.click(screen.getByRole('button',{name:/농지 관리소.*보관 1개/}))
- fireEvent.click(document.querySelector('[data-farm-cell="6,5"]')!);click('완료');click('농지 관리소 (6,5)')
+ fireEvent.click(document.querySelector('[data-farm-cell="6,6"]')!);click('완료');click('농지 관리소 (6,6)')
  expect(screen.getByText('Lv. 2')).toBeTruthy()
 })
 it('reveals remaining time from the map gauge and keeps the original upgrade timer and cost',()=>{
  vi.useFakeTimers();const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
- click('축산 관리소 (4,8)');click('업그레이드 · 50 G');click('Close')
+ click('축산 관리소 (4,9)');click('업그레이드 · 50 G');click('Close')
  act(()=>vi.advanceTimersByTime(4000))
  const badge=screen.getByRole('button',{name:'축산 관리소 업그레이드'})
  expect(badge.querySelector('[role=progressbar]')?.getAttribute('aria-valuenow')).toBe('40')
@@ -85,7 +85,7 @@ it('reveals remaining time from the map gauge and keeps the original upgrade tim
  click('축산 관리소 업그레이드')
  expect(badge.textContent).toContain('6초')
  expect(screen.queryByRole('dialog')).toBeNull()
- click('축산 관리소 (4,8)')
+ click('축산 관리소 (4,9)')
  expect(screen.getByRole('heading',{name:'축산 관리소',exact:true})).toBeTruthy()
  expect(document.querySelector('.farm-upgrade-work img')?.getAttribute('src')).toContain('/effects/upgrade-tools.png')
  expect(document.querySelector('.top-farm-gold')?.textContent).toContain('14,950')

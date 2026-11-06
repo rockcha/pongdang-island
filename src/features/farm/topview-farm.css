@@ -17,6 +17,8 @@
 .top-farm-map [role=button] { cursor:pointer; outline:none; }
 .top-farm-map [role=button]:focus-visible { filter:drop-shadow(0 0 3px #fff1b9); }
 .top-farm-object { transition:filter .15s; }
+.top-farm-viewport[data-object-move=true]{touch-action:none}
+.top-farm-viewport[data-object-move=true] .top-farm-object{cursor:grab}
 .top-farm-object:hover { filter:brightness(1.04); }
 .top-farm-object-menu { position:fixed; z-index:6; width:184px; padding:9px; border:1px solid #ddc7a8; border-radius:13px; background:#fff9ee; box-shadow:0 5px 18px #385d5130; }
 .top-farm-object-menu header { display:flex; align-items:center; gap:6px; padding:0 2px 7px; }
@@ -114,7 +116,7 @@
 .farm-good-icon { display:inline-flex; flex-shrink:0; width:48px; height:48px; align-items:center; justify-content:center; vertical-align:middle; }
 .farm-good-icon img { width:100%; height:100%; object-fit:contain; }
 .farm-good-icon>span { font-size:30px; }
-.farm-good-seed { background:#f3ead8; border:1px solid #ead6b8; border-radius:10px; padding:3px; }
+.farm-good-seed { background:none; border:0; border-radius:0; padding:0; }
 .farm-crop-hero { width:80px; height:80px; margin:auto; }
 .farm-sim-title-art { width:92px; height:84px; }
 .farm-sim-quantity-row { background:#fffcf6; }

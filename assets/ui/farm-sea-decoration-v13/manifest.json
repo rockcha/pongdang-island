@@ -1,0 +1,120 @@
+{
+  "tool": "image_gen.imagegen",
+  "files": [
+    {
+      "id": "pongiTube",
+      "source": "assets/ui/farm-sea-decoration-v13/source/pongiTube.png",
+      "runtime": "public/farm/art/v13/decor/pongiTube.png",
+      "crop": {
+        "left": 171,
+        "top": 71,
+        "width": 872,
+        "height": 1115
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "63 12 385 488",
+      "prompt": "Pongi the EXACT orange-brown baby otter mascot from reference: cream muzzle and belly, glossy dark eyes, rosy cheeks, short whiskers, small pink starfish hair ornament, small rounded ears. Sitting happily IN one mint-green polka-dot inflatable swim ring, paws resting on ring, feet together visible. No purse, gifts, fishing rod or other accessories. Three-quarter front view slightly from above, friendly recognizable mascot. Fits one square water tile. Cozy Korean farm game decoration, rounded chunky shapes, fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, same polished cartoon style as supplied reference. Single complete isolated object, centered with safe transparent margins, genuine transparent alpha background. No water rectangle, no surrounding scene, no ground, no text, UI, watermark, glow or checkerboard. Not a sprite sheet, ONLY ONE object.",
+      "references": [
+        "public/branding/confirm/pongi-purchase.png",
+        "public/farm/art/v12/decor/bench.png"
+      ],
+      "sha256": "1dccdac90cceff67a58c8617fc725e3b4674df75caee04d2c19c991f1fe5d890"
+    },
+    {
+      "id": "duckBoat",
+      "source": "assets/ui/farm-sea-decoration-v13/source/duckBoat.png",
+      "runtime": "public/farm/art/v13/decor/duckBoat.png",
+      "crop": {
+        "left": 117,
+        "top": 250,
+        "width": 1099,
+        "height": 734
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 90 488 331",
+      "prompt": "One tiny adorable yellow DUCK PEDAL BOAT, glossy rounded duck-shaped hull, duck head with orange beak facing right, small cream two-person seat visible in center, simple foot pedals. No roof, flags, fishing rods, ropes, equipment or passengers. Three-quarter front side view slightly above, compact square silhouette for ONE square water tile. Only one boat, do NOT copy the four-frame sprite layout of reference; reference is style and subject only. Cozy Korean farm game decoration, rounded chunky shapes, fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, same polished cartoon style as supplied reference. Single complete isolated object, centered with safe transparent margins, genuine transparent alpha background. No water rectangle, no surrounding scene, no ground, no text, UI, watermark, glow or checkerboard. Not a sprite sheet, ONLY ONE object.",
+      "references": [
+        "assets/vessels/source/20261024-expansion/duck-float.png",
+        "public/farm/art/v12/decor/bench.png"
+      ],
+      "sha256": "1337690b9ec4a6b21dc353bf9cf46e06d86918028bb488bf374d627e60dd98e4"
+    },
+    {
+      "id": "woodBridge1",
+      "source": "assets/ui/farm-sea-decoration-v13/source/woodBridge1.png",
+      "runtime": "public/farm/art/v13/decor/woodBridge1.png",
+      "crop": {
+        "left": 212,
+        "top": 220,
+        "width": 830,
+        "height": 823
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "prompt": "One straight modular wooden footbridge deck measuring ONE tile wide and ONE tile long (square). Length runs vertically from bottom to top of image, exactly parallel straight side edges, NO perspective narrowing, NO isometric diamond or diagonal direction. Honey-brown wooden planks run HORIZONTALLY across the narrow width, 4 evenly spaced chunky planks. Two neat narrow darker brown side beams and small rounded bolt heads. Flat deck with only a small visible front thickness, no rails, no arch, no tall posts or steps. Camera views deck from above enough to show the full rectangular walking surface, front edge visible. Compact SQUARE module. Must match matching bridge modules: warm golden wood, softly rounded corners and simple subtle grain. No background or water. Cozy Korean farm game decoration, rounded chunky shapes, fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, same polished cartoon style as supplied reference. Single complete isolated object, centered with safe transparent margins, genuine transparent alpha background. No water rectangle, no surrounding scene, no ground, no text, UI, watermark, glow or checkerboard. Not a sprite sheet, ONLY ONE object.",
+      "references": [
+        "public/farm/art/v12/decor/bench.png"
+      ],
+      "sha256": "c9971a0ee6e7a3f9da39e05daac9f9409d0592296857defa7cbae5b8429e00cc",
+      "normalization": {
+        "width": 472,
+        "height": 472,
+        "fit": "fill",
+        "reason": "Match one-tile width and exact bridge footprint aspect ratio"
+      }
+    },
+    {
+      "id": "woodBridge2",
+      "source": "assets/ui/farm-sea-decoration-v13/source/woodBridge2.png",
+      "runtime": "public/farm/art/v13/decor/woodBridge2.png",
+      "crop": {
+        "left": 81,
+        "top": 91,
+        "width": 726,
+        "height": 1611
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "134 12 244 488",
+      "prompt": "One straight modular wooden footbridge deck measuring ONE tile wide and TWO tiles long (tall rectangle, width to length 1:2). Length runs vertically from bottom to top of image, exactly parallel straight side edges, NO perspective narrowing, NO isometric diamond or diagonal direction. Honey-brown wooden planks run HORIZONTALLY across the narrow width, 8 evenly spaced chunky planks. Two neat narrow darker brown side beams and small rounded bolt heads. Flat deck with only a small visible front thickness, no rails, no arch, no tall posts or steps. Camera views deck from above enough to show the full rectangular walking surface, front edge visible. Tall portrait composition; do not make a short square platform. Must match matching bridge modules: warm golden wood, softly rounded corners and simple subtle grain. No background or water. Cozy Korean farm game decoration, rounded chunky shapes, fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, same polished cartoon style as supplied reference. Single complete isolated object, centered with safe transparent margins, genuine transparent alpha background. No water rectangle, no surrounding scene, no ground, no text, UI, watermark, glow or checkerboard. Not a sprite sheet, ONLY ONE object.",
+      "references": [
+        "public/farm/art/v12/decor/bench.png"
+      ],
+      "sha256": "e6edccc0c1dcf03111dc6c35bf67e852de87403e1e699964c1c8afb6ee9a9629",
+      "normalization": {
+        "width": 236,
+        "height": 472,
+        "fit": "fill",
+        "reason": "Match one-tile width and exact bridge footprint aspect ratio"
+      }
+    },
+    {
+      "id": "woodBridge3",
+      "source": "assets/ui/farm-sea-decoration-v13/source/woodBridge3.png",
+      "runtime": "public/farm/art/v13/decor/woodBridge3.png",
+      "crop": {
+        "left": 114,
+        "top": 116,
+        "width": 496,
+        "height": 1975
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "174.33333333333334 12 162.33333333333334 488",
+      "prompt": "One straight modular wooden footbridge deck measuring ONE tile wide and THREE tiles long (tall narrow rectangle, width to length 1:3). Length runs vertically from bottom to top of image, exactly parallel straight side edges, NO perspective narrowing, NO isometric diamond or diagonal direction. Honey-brown wooden planks run HORIZONTALLY across the narrow width, 12 evenly spaced chunky planks. Two neat narrow darker brown side beams and small rounded bolt heads. Flat deck with only a small visible front thickness, no rails, no arch, no tall posts or steps. Camera views deck from above enough to show the full rectangular walking surface, front edge visible. Tall portrait composition; do not make a short square platform. Must match matching bridge modules: warm golden wood, softly rounded corners and simple subtle grain. No background or water. Cozy Korean farm game decoration, rounded chunky shapes, fine warm brown outlines, smooth soft dimensional shading, warm cheerful colors, same polished cartoon style as supplied reference. Single complete isolated object, centered with safe transparent margins, genuine transparent alpha background. No water rectangle, no surrounding scene, no ground, no text, UI, watermark, glow or checkerboard. Not a sprite sheet, ONLY ONE object.",
+      "references": [
+        "public/farm/art/v12/decor/bench.png"
+      ],
+      "sha256": "ebc23736ed64d073edb2e37141568e773bcef1e00bd1411fdc986e302173608b",
+      "normalization": {
+        "width": 157,
+        "height": 472,
+        "fit": "fill",
+        "reason": "Match one-tile width and exact bridge footprint aspect ratio"
+      }
+    }
+  ]
+}

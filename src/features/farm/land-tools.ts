@@ -1,4 +1,4 @@
-import {MAP_W,MAP_H,TEST_LAND_PRICE,cellKey,topviewItems,type TopviewState} from './topview-model'
+import {MAP_W,MAP_H,TEST_LAND_PRICE,cellKey,objectAt,objectFootprint,type TopviewState} from './topview-model'
 import {addTileStock,pathTile} from './tile-catalog'
 
 export type LandCell={x:number;y:number}
@@ -41,7 +41,11 @@ export function applyLandStroke(state:TopviewState,tool:LandTool,cells:readonly 
  for(const cell of unique)if(!inside(cell))blocked.push({cell,reason:'outside'})
  const valid=unique.filter(inside)
  if(tool==='place'){
-  const candidates=new Set(valid.map(keyOf).filter(key=>!land.has(key)))
+  const candidates=new Set(valid.filter(cell=>{
+   if(land.has(keyOf(cell)))return false
+   if(objectAt(state,cell.x,cell.y)){blocked.push({cell,reason:'occupied'});return false}
+   return true
+  }).map(keyOf))
   const reachable=[...candidates].filter(key=>neighbors(key).some(neighbor=>land.has(neighbor))),seen=new Set(reachable)
   for(let i=0;i<reachable.length;i++)for(const neighbor of neighbors(reachable[i]))if(candidates.has(neighbor)&&!seen.has(neighbor)){seen.add(neighbor);reachable.push(neighbor)}
   const added=reachable.slice(0,state.landStock)
@@ -50,7 +54,7 @@ export function applyLandStroke(state:TopviewState,tool:LandTool,cells:readonly 
   return {state:changed.length?{...state,land:[...land],landStock:state.landStock-changed.length}:state,changed,blocked}
  }
  const occupied=new Set<string>()
- for(const object of state.objects){const size=topviewItems[object.kind];for(let y=0;y<size.h;y++)for(let x=0;x<size.w;x++)occupied.add(cellKey(object.x+x,object.y+y))}
+ for(const object of state.objects){const size=objectFootprint(object);for(let y=0;y<size.h;y++)for(let x=0;x<size.w;x++)occupied.add(cellKey(object.x+x,object.y+y))}
  const pending=new Set<string>()
  for(const cell of valid){const key=keyOf(cell);if(!land.has(key))continue;if(occupied.has(key))blocked.push({cell,reason:'occupied'});else pending.add(key)}
  // An inner cell may become removable after the selected outer branch is removed.
@@ -63,4 +67,4 @@ export function applyLandStroke(state:TopviewState,tool:LandTool,cells:readonly 
  return {state:changed.length?{...recovered,pathTiles,land:state.land.filter(key=>land.has(key)),paths:state.paths.filter(key=>land.has(key)),landStock:state.landStock+changed.length}:state,changed,blocked}
 }
 
-export const landBlockMessages:Record<LandBlock,string>={outside:'섬을 넓힐 수 있는 영역을 골라주세요.',occupied:'건물·동물·작물이 있는 칸은 먼저 비워주세요.',disconnected:'섬이 둘로 나뉘는 칸은 회수할 수 없어요.','last-land':'마지막 땅 한 칸은 남겨주세요.','not-connected':'기존 섬과 이어지도록 땅을 선택해주세요.','out-of-stock':'여분 땅이 없어요. 땅 구매에서 먼저 준비해주세요.'}
+export const landBlockMessages:Record<LandBlock,string>={outside:'섬을 넓힐 수 있는 영역을 골라주세요.',occupied:'장식물·건물·동물·작물이 있는 칸은 먼저 비워주세요.',disconnected:'섬이 둘로 나뉘는 칸은 회수할 수 없어요.','last-land':'마지막 땅 한 칸은 남겨주세요.','not-connected':'기존 섬과 이어지도록 땅을 선택해주세요.','out-of-stock':'여분 땅이 없어요. 땅 구매에서 먼저 준비해주세요.'}

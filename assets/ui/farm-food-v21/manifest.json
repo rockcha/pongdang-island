@@ -1,0 +1,52 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "normalization": "Trim transparent margins, fit 472px inside a 512px transparent square; preserve alpha.",
+  "files": [
+    {
+      "id": "butterPotato",
+      "source": "assets/ui/farm-food-v21/source/butterPotato.png",
+      "runtime": "public/farm/art/v21/goods/butterPotato.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "844e66987ba531212b1a2164cb6285ef300136cabbc2df7a912e6eb536b64140",
+      "prompt": "Create one isolated inventory food sprite for a cozy Korean farming game. Butter potatoes: two tender golden potato halves with a clearly visible square pat of butter melting on top, in a small cream ceramic plate. Style: cute polished hand-painted cartoon food, warm golden palette, soft brown outlines, appetizing rounded shapes, clear silhouette readable at 48px, gently elevated front three-quarter view. Center a single cohesive serving, large within square canvas with 8% transparent padding. True transparent background. No text, lettering, watermark, people, utensils, table, ground, background or decorative props. Match an illustrated golden omurice game icon on an ivory plate, not a photograph."
+    },
+    {
+      "id": "roastedSweetPotato",
+      "source": "assets/ui/farm-food-v21/source/roastedSweetPotato.png",
+      "runtime": "public/farm/art/v21/goods/roastedSweetPotato.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "b354d4c04ec710e6b90cd749f785a9affd4322696b5cf94b267e0304cc7d295b",
+      "prompt": "Create one isolated inventory food sprite for a cozy Korean farming game. Roasted sweet potatoes: two plump purple-red skinned roasted sweet potatoes, one split open to reveal steaming golden yellow flesh, on a small cream ceramic plate. Style: cute polished hand-painted cartoon food, warm golden palette, soft brown outlines, appetizing rounded shapes, clear silhouette readable at 48px, gently elevated front three-quarter view. Center a single cohesive serving, large within square canvas with 8% transparent padding. True transparent background. No text, lettering, watermark, people, utensils, table, ground, background or decorative props. Match an illustrated golden omurice game icon on an ivory plate, not a photograph."
+    },
+    {
+      "id": "cornCheese",
+      "source": "assets/ui/farm-food-v21/source/cornCheese.png",
+      "runtime": "public/farm/art/v21/goods/cornCheese.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "2a26212a2e6e3dcad274ae9e901f00168dacae44399d979db8667b440a7b2d56",
+      "prompt": "Create one isolated inventory food sprite for a cozy Korean farming game. Korean corn cheese: a small oval cream ceramic baking dish filled with bright yellow sweet corn kernels under stretchy melted golden cheese, a few kernels visible at the front. Style: cute polished hand-painted cartoon food, warm golden palette, soft brown outlines, appetizing rounded shapes, clear silhouette readable at 48px, gently elevated front three-quarter view. Center a single cohesive serving, large within square canvas with 8% transparent padding. True transparent background. No text, lettering, watermark, people, utensils, table, ground, background or decorative props. Match an illustrated golden omurice game icon on an ivory plate, not a photograph."
+    },
+    {
+      "id": "potatoGratin",
+      "source": "assets/ui/farm-food-v21/source/potatoGratin.png",
+      "runtime": "public/farm/art/v21/goods/potatoGratin.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "f03e49583be25ae4001664807be4ad983685805dd12910ebcea29621b0dfed67",
+      "prompt": "Create one isolated inventory food sprite for a cozy Korean farming game. Potato gratin: a small cream ceramic casserole showing overlapping pale potato slices in creamy sauce topped with bubbly browned cheese. Clearly layered potato slices rather than corn. Style: cute polished hand-painted cartoon food, warm golden palette, soft brown outlines, appetizing rounded shapes, clear silhouette readable at 48px, gently elevated front three-quarter view. Center a single cohesive serving, large within square canvas with 8% transparent padding. True transparent background. No text, lettering, watermark, people, utensils, table, ground, background or decorative props. Match an illustrated golden omurice game icon on an ivory plate, not a photograph."
+    },
+    {
+      "id": "cornCookies",
+      "source": "assets/ui/farm-food-v21/source/cornCookies.png",
+      "runtime": "public/farm/art/v21/goods/cornCookies.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "e97c457151244219c4bbdf8ca01b9f2e88b801b3e1f437a49bbd69fe3e91e820",
+      "prompt": "Create one isolated inventory food sprite for a cozy Korean farming game. Corn cookies: three small round golden yellow cookies with delicate cornmeal crumb and recognizable yellow corn kernels baked into them, arranged overlapping on a small cream ceramic plate. Style: cute polished hand-painted cartoon food, warm golden palette, soft brown outlines, appetizing rounded shapes, clear silhouette readable at 48px, gently elevated front three-quarter view. Center a single cohesive serving, large within square canvas with 8% transparent padding. True transparent background. No text, lettering, watermark, people, utensils, table, ground, background or decorative props. Match an illustrated golden omurice game icon on an ivory plate, not a photograph."
+    }
+  ]
+}

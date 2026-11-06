@@ -1,3 +1,5 @@
+import {farmClearingArt} from './clearing-art'
+import {isProcessingBuilding} from './workshop-catalog'
 import {FarmSleepGlyph,FarmStatusBubble,StatusGlyph} from './status-bubble'
 import {cropArt,farmCrops,seedGood} from './crop-catalog'
 import {farmProducts} from './food-catalog'
@@ -20,10 +22,10 @@ export function FarmJobStatus({object,simulation,now,onActivate,completed}:{obje
  const job=research??craft??(mill)
  if(!job){
   if(completed){
-   const label={upgrade:'건물 업그레이드 진행',research:'종자 연구 진행',harvest:'수확 진행',clearing:'개간 진행'}[completed.kind],good=completed.good?farmGoods[completed.good]:null,image=completed.kind==='upgrade'?farmUpgradeArt:good?.crop?cropArt(good.crop):good?.image
+   const label={upgrade:'건물 업그레이드 진행',research:'종자 연구 진행',harvest:'수확 진행',clearing:'개간 진행'}[completed.kind],good=completed.good?farmGoods[completed.good]:null,image=completed.kind==='upgrade'?farmUpgradeArt:completed.kind==='clearing'?farmClearingArt.pickaxe:good?.crop?cropArt(good.crop):good?.image
    return <g data-work-completed={object.id}><FarmStatusBubble x={x} y={y} compact={object.kind==='plot'} label={label} progress={1} ready onActivate={onActivate}>{image?<image href={image} x="-13" y="-13" width="26" height="26"/>:<StatusGlyph kind="pickaxe"/>}</FarmStatusBubble></g>
   }
-  if(!['mill','bakery','dairy','kitchen','barn','coop'].includes(object.kind)||simulation.upgradeJobs[object.id]||simulation.animalPurchaseJobs[object.id])return null
+  if(!isProcessingBuilding(object.kind)&&!['mill','barn','coop'].includes(object.kind)||simulation.upgradeJobs[object.id]||simulation.animalPurchaseJobs[object.id])return null
   return <FarmStatusBubble x={x} y={y-9} label={`${item.name} 쉬는 중`} resting onActivate={onActivate}><FarmSleepGlyph/></FarmStatusBubble>
  }
  const good=research?seedGood(research.crop):craft?craft.recipe:mill?.product??'flour'

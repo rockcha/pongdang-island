@@ -1,4 +1,5 @@
 .farm-compact-dialog{width:calc(100vw - 32px);max-width:400px;max-height:calc(100dvh - 32px);padding:20px;gap:16px;border-radius:20px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.farm-next-facilities{display:flex;flex-wrap:wrap;gap:6px;width:100%}.farm-next-facilities>.farm-next-action{flex:1;min-width:0;width:auto}
 .farm-compact-dialog .farm-compact-header{position:relative;display:grid;grid-template-columns:52px 1fr;align-items:center;gap:0 12px;min-height:52px;padding-right:24px;text-align:left}
 .farm-compact-header .farm-sim-title-art{grid-row:1/3;width:52px;height:50px;margin:0}.farm-compact-header [data-slot=dialog-title]{font-size:16px;line-height:1.4;font-weight:500}.farm-compact-header [data-slot=dialog-description]:not(.sr-only){grid-column:1/-1;margin-top:8px;font-size:10px;line-height:1.5}.farm-warehouse .farm-compact-header{display:block;min-height:0}
 .farm-compact-dialog .farm-sim-body{gap:12px}.farm-compact-dialog .farm-sim-caption{margin:0;font-size:10px;line-height:1.5}.farm-compact-dialog .farm-sim-feedback{margin:0;padding:6px 0;border:0;background:none;line-height:1.5;font-size:11px}

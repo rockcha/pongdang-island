@@ -1,0 +1,9 @@
+.farm-butcher{display:grid;gap:16px}
+.farm-butcher-animals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.farm-butcher-animals button{display:grid;justify-items:center;gap:5px;min-width:0;padding:12px 6px;border:1px solid #e4c8a2;border-radius:14px;background:#f5eddd;color:#90633e}
+.farm-butcher-animals button[aria-pressed=true]{border-color:#b8884e;background:#eee3cb;box-shadow:inset 0 0 0 1px #b8884e}
+.farm-butcher-animals svg{width:70px;height:64px}
+.farm-butcher-animals small,.farm-butcher-animals span{font-size:11px}
+.farm-butcher-quantity{display:flex;align-items:center;justify-content:center;gap:24px}
+.farm-butcher-quantity button{width:36px;height:36px;border:1px solid #e4c8a2;border-radius:8px}
+.farm-butcher button:disabled{opacity:.45}

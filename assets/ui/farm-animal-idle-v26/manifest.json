@@ -1,0 +1,168 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "normalization": "Four cells; detached alpha cleanup; one common scale per animal; center alignment and fixed foot baseline; 512px frames.",
+  "motion": "Four-frame calm idle, 5.6s loop. Frozen during editing and with prefers-reduced-motion.",
+  "files": [
+    {
+      "id": "cow",
+      "source": "assets/ui/farm-animal-idle-v26/source/cow.png",
+      "runtime": "public/farm/art/v26/animals/cow-idle.png",
+      "frameSize": 512,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "scale": 0.8421052631578947,
+      "placements": [
+        {
+          "left": 48,
+          "top": 200,
+          "width": 417,
+          "height": 288
+        },
+        {
+          "left": 32,
+          "top": 212,
+          "width": 448,
+          "height": 276
+        },
+        {
+          "left": 47,
+          "top": 200,
+          "width": 419,
+          "height": 288
+        },
+        {
+          "left": 48,
+          "top": 200,
+          "width": 416,
+          "height": 288
+        }
+      ],
+      "viewBox": "24 192 464 304",
+      "sha256": "309d889e6d82e195f0561c56848e54b4c3fb1c6fa3d085dfe01f8473434d6a3b",
+      "prompt": "Create a clean 2 by 2 four-frame IDLE ANIMATION sprite sheet of exactly the same cow in the reference. Reference is the identity and style target: preserve its face, colors, markings, body proportions, right-facing direction and cute warm cartoon illustration. Exactly one full-body animal in each of four equal cells on a square transparent canvas. Frames read top-left, top-right, bottom-left, bottom-right. Frame 1 neutral, frame 2 gentle ear twitch, a slight tail-tip swish and a tiny head nod, frame 3 gently returns toward neutral, frame 4 neutral with a slight ear/tail settling motion. Movement extremely small and calm. NOT a walk cycle. Feet stay planted at identical baseline and center in each cell, same body scale and alignment, no body stretching, no squash-and-stretch, no vertical bouncing and no camera movement. Leave at least 10% clear margin inside every cell. Four clearly separated complete animals, no clipping or crossing cell boundaries. True transparent background with no floor, shadows, grid lines, borders, numbers, text, props or scenery.",
+      "reference": "public/farm/art/v4/animals/cow.png"
+    },
+    {
+      "id": "chicken",
+      "source": "assets/ui/farm-animal-idle-v26/source/chicken.png",
+      "runtime": "public/farm/art/v26/animals/chicken-idle.png",
+      "frameSize": 512,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "scale": 0.8421052631578947,
+      "placements": [
+        {
+          "left": 85,
+          "top": 40,
+          "width": 343,
+          "height": 448
+        },
+        {
+          "left": 85,
+          "top": 41,
+          "width": 343,
+          "height": 447
+        },
+        {
+          "left": 83,
+          "top": 41,
+          "width": 347,
+          "height": 447
+        },
+        {
+          "left": 79,
+          "top": 41,
+          "width": 355,
+          "height": 447
+        }
+      ],
+      "viewBox": "71 32 371 464",
+      "sha256": "5ac49ab980a996c3cfcb8c4ffe58fd7e582bda402ce90d721b3fb7a26179d2bf",
+      "prompt": "Create a clean 2 by 2 four-frame IDLE ANIMATION sprite sheet of exactly the same chicken in the reference. Reference is the identity and style target: preserve its face, colors, markings, body proportions, right-facing direction and cute warm cartoon illustration. Exactly one full-body animal in each of four equal cells on a square transparent canvas. Frames read top-left, top-right, bottom-left, bottom-right. Frame 1 neutral, frame 2 a tiny head tilt and subtle wing-feather settling, frame 3 gently returns toward neutral, frame 4 neutral with a slight ear/tail settling motion. Movement extremely small and calm. NOT a walk cycle. Feet stay planted at identical baseline and center in each cell, same body scale and alignment, no body stretching, no squash-and-stretch, no vertical bouncing and no camera movement. Leave at least 10% clear margin inside every cell. Four clearly separated complete animals, no clipping or crossing cell boundaries. True transparent background with no floor, shadows, grid lines, borders, numbers, text, props or scenery.",
+      "reference": "public/farm/art/v4/animals/chicken.png"
+    },
+    {
+      "id": "duck",
+      "source": "assets/ui/farm-animal-idle-v26/source/duck.png",
+      "runtime": "public/farm/art/v26/animals/duck-idle.png",
+      "frameSize": 512,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "scale": 0.8565965583173997,
+      "placements": [
+        {
+          "left": 93,
+          "top": 40,
+          "width": 326,
+          "height": 448
+        },
+        {
+          "left": 95,
+          "top": 40,
+          "width": 322,
+          "height": 448
+        },
+        {
+          "left": 91,
+          "top": 41,
+          "width": 331,
+          "height": 447
+        },
+        {
+          "left": 91,
+          "top": 40,
+          "width": 331,
+          "height": 448
+        }
+      ],
+      "viewBox": "83 32 347 464",
+      "sha256": "b903401096facd46deffa4dc3156bc0b7b2012e851dae48396d8358e81cc71d1",
+      "prompt": "Create a clean 2 by 2 four-frame IDLE ANIMATION sprite sheet of exactly the same duck in the reference. Reference is the identity and style target: preserve its face, colors, markings, body proportions, right-facing direction and cute warm cartoon illustration. Exactly one full-body animal in each of four equal cells on a square transparent canvas. Frames read top-left, top-right, bottom-left, bottom-right. Frame 1 neutral, frame 2 a tiny head tilt and subtle tail-feather wiggle, frame 3 gently returns toward neutral, frame 4 neutral with a slight ear/tail settling motion. Movement extremely small and calm. NOT a walk cycle. Feet stay planted at identical baseline and center in each cell, same body scale and alignment, no body stretching, no squash-and-stretch, no vertical bouncing and no camera movement. Leave at least 10% clear margin inside every cell. Four clearly separated complete animals, no clipping or crossing cell boundaries. True transparent background with no floor, shadows, grid lines, borders, numbers, text, props or scenery.",
+      "reference": "public/farm/art/v5/animals/duck.png"
+    },
+    {
+      "id": "sheep",
+      "source": "assets/ui/farm-animal-idle-v26/source/sheep.png",
+      "runtime": "public/farm/art/v26/animals/sheep-idle.png",
+      "frameSize": 512,
+      "columns": 2,
+      "rows": 2,
+      "frames": 4,
+      "scale": 0.8311688311688312,
+      "placements": [
+        {
+          "left": 34,
+          "top": 58,
+          "width": 445,
+          "height": 430
+        },
+        {
+          "left": 34,
+          "top": 55,
+          "width": 445,
+          "height": 433
+        },
+        {
+          "left": 32,
+          "top": 57,
+          "width": 448,
+          "height": 431
+        },
+        {
+          "left": 33,
+          "top": 58,
+          "width": 447,
+          "height": 430
+        }
+      ],
+      "viewBox": "24 47 464 449",
+      "sha256": "74eb87f33c4f3a99ca4529e6b3eaa1f5b218cc62e4c28b9dfc598a5e014280d6",
+      "prompt": "Create a clean 2 by 2 four-frame IDLE ANIMATION sprite sheet of exactly the same sheep in the reference. Reference is the identity and style target: preserve its face, colors, markings, body proportions, right-facing direction and cute warm cartoon illustration. Exactly one full-body animal in each of four equal cells on a square transparent canvas. Frames read top-left, top-right, bottom-left, bottom-right. Frame 1 neutral, frame 2 gentle ear twitch and subtle head bob, with the wool silhouette nearly unchanged, frame 3 gently returns toward neutral, frame 4 neutral with a slight ear/tail settling motion. Movement extremely small and calm. NOT a walk cycle. Feet stay planted at identical baseline and center in each cell, same body scale and alignment, no body stretching, no squash-and-stretch, no vertical bouncing and no camera movement. Leave at least 10% clear margin inside every cell. Four clearly separated complete animals, no clipping or crossing cell boundaries. True transparent background with no floor, shadows, grid lines, borders, numbers, text, props or scenery.",
+      "reference": "public/farm/art/v6/animals/sheep.png"
+    }
+  ]
+}

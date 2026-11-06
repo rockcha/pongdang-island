@@ -83,9 +83,9 @@ it('does not allow undo to cross a land purchase and refunds no gold when land i
 it('preserves research completion that occurs during a land gesture',()=>{
  vi.useFakeTimers()
  const {pointer}=setup()
- click('종자 연구소 (12,8)');click('감자 연구 · 30 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(200))
+ click('종자 연구소 (12,9)');click('감자 연구 · 30 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(200))
  buyFive();pointer('pointerdown',3,4);act(()=>vi.advanceTimersByTime(3000));pointer('pointerup',3,4)
- click('완료');click('종자 상점 (8,5)')
+ click('완료');click('종자 상점 (8,6)')
  click('감자 선택')
  expect(screen.getByRole('button',{name:'감자 종자 구매'})).toBeTruthy()
  expect(document.querySelector('.top-farm-gold')?.textContent).toContain('14,720')

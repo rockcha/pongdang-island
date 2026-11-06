@@ -1,0 +1,42 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "files": [
+    {
+      "id": "pickaxe",
+      "prompt": "Create one isolated hand-painted farming pickaxe game sprite. Reference image is only for warm cozy cartoon painted material style, clean brown outlines and gentle watercolor shading. One short curved steel pickaxe head with slightly rounded tips, polished muted teal-gray metal, warm honey wooden handle, leather grip at bottom, oriented diagonally from lower left handle to upper right head. Chunky readable silhouette at 24 pixels. Full object entirely visible with generous clear margins. No soil, leaves, badge, circle, UI, text, sparkles, background, shadow or extra tools. True transparent background. Cozy farming game illustration, not a flat vector icon.",
+      "source": "assets/ui/farm-clearing-v28/source/pickaxe.png",
+      "runtime": "public/farm/art/v28/effects/pickaxe.png",
+      "references": [
+        "public/farm/art/v27/supplies/fertilizer.png"
+      ],
+      "crop": {
+        "left": 200,
+        "top": 142,
+        "width": 874,
+        "height": 1032
+      },
+      "width": 512,
+      "height": 512,
+      "sha256": "a4a751c966a6b9dc911c95ffff1af6e9474d696ecdfe03e0d0651dc917518558"
+    },
+    {
+      "id": "soilPuff",
+      "prompt": "Create one isolated cozy farming game VFX sprite: a small low wide burst of warm tan soil dust from gently digging a garden bed, three rounded soft painted earth puffs with a few clearly visible terracotta soil clods and tiny golden straw flecks. Reference image is style only: warm hand painted cartoon shading with clean controlled outlines. Compact earth hugging shape, not smoke or explosion, 3:2 wide silhouette, center airy enough to see the tile under it, discrete soft translucent dust puffs but no broad glow, no floor, no square patch, no tools, no plants, no text, no UI, no stars. Entire shape inside generous transparent margins. Real transparent background, clean alpha edges.",
+      "source": "assets/ui/farm-clearing-v28/source/soilPuff.png",
+      "runtime": "public/farm/art/v28/effects/soilPuff.png",
+      "references": [
+        "public/farm/art/v27/supplies/fertilizer.png"
+      ],
+      "crop": {
+        "left": 194,
+        "top": 318,
+        "width": 1134,
+        "height": 379
+      },
+      "width": 512,
+      "height": 512,
+      "sha256": "cb3deb9e0fd55ea855e93f680f18644cab25a52db7d01e0a849df55083fc9fa1"
+    }
+  ]
+}

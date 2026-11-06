@@ -1,0 +1,13 @@
+.farm-supply-shop{display:flex;flex-direction:column;gap:18px}
+.farm-supply-shop .farm-sim-item>.farm-good-icon{width:88px;height:88px}
+.farm-fertilizer-tool>.farm-good-icon{width:24px;height:24px}
+.farm-object-sale-button{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:38px;margin-top:9px;border:1px solid #dfc9a7;border-radius:10px;background:#f5ead8;color:#91633d;font-size:12px}
+.farm-object-sale-button:disabled{opacity:.45;cursor:default}
+.farm-sale-reason{margin-top:5px;font-size:10px;color:#a48361;line-height:1.5;text-align:center}
+.farm-object-quick-actions button:disabled{opacity:.4;cursor:default}
+.farm-storage-shelf .farm-storage-item{display:flex;flex:none;flex-direction:column;gap:4px;width:98px}
+.farm-storage-shelf .farm-storage-item>.farm-object-sale-button{min-height:28px;height:28px;padding:3px;margin-top:0;flex:none;font-size:10px}
+.farm-tool-panel>.farm-storage-shelf>div{max-height:195px}
+.farm-fertilizer-burst{animation:farm-fertilizer-burst .85s ease-out forwards;transform-box:fill-box;transform-origin:center}
+@keyframes farm-fertilizer-burst{0%{opacity:0;transform:translateY(4px) scale(.8)}25%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-13px) scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.farm-fertilizer-burst{animation:none}}

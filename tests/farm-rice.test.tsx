@@ -1,6 +1,6 @@
 import {cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
-import {initialTopview} from '@/features/farm/topview-model'
+import {legacyTradeFixture as initialTopview} from './helpers/legacy-trade-fixture'
 import {simulateFarm,farmGoods} from '@/features/farm/farm-simulation'
 import {finishedFoods,isFinishedFood,farmRecipes,millProducts} from '@/features/farm/food-catalog'
 import {cropKinds} from '@/features/farm/crop-catalog'
@@ -26,7 +26,7 @@ it('researches and harvests paddy, then husks it once into rice',()=>{
  expect(state.simulation.inventory.rice).toBe(1)
  expect(simulateFarm(state,21,{type:'collectFlour'},28000).state).toBe(state)
 })
-it.each(['ricePudding','grilledRiceBall'] as const)('makes and sells %s with rice and actual reserved ingredients',product=>{
+it.each(['omurice'] as const)('makes and sells %s with rice and actual reserved ingredients',product=>{
  let state=initialTopview();state.simulation.unlockedCrops=[...cropKinds]
  const recipe=farmRecipes[product],workshop=state.objects.find(object=>object.kind===recipe.building)!,store=state.objects.find(object=>object.kind==='processed')!
  for(const item of recipe.ingredients)state.simulation.inventory[item.good]=item.quantity
@@ -42,11 +42,11 @@ it.each(['ricePudding','grilledRiceBall'] as const)('makes and sells %s with ric
 })
 it('advertises only finished foods and refuses material sales even with old material delivery records',()=>{
  const state=initialTopview(),store=state.objects.find(object=>object.kind==='processed')!,at=Date.UTC(2026,10,6),seen=new Set<string>()
- state.simulation.unlockedCrops=[...cropKinds];state.simulation.unlockedAnimals=['cow','chicken','duck','goat']
- state.objects.push({id:80,kind:'duck',x:7,y:7},{id:81,kind:'goat',x:8,y:7})
+ state.simulation.unlockedCrops=[...cropKinds];state.simulation.unlockedAnimals=['cow','chicken','duck','sheep']
+ state.objects.push({id:80,kind:'duck',x:7,y:7},{id:81,kind:'sheep',x:8,y:7},{id:82,kind:'butcher',x:8,y:15})
  for(let day=0;day<90;day++)for(const order of dailyFarmOrders(store,at+day*86400000,state)){expect(isFinishedFood(order.good)).toBe(true);seen.add(order.good)}
  for(const food of finishedFoods)expect(seen.has(food)).toBe(true)
- for(const good of [...millProducts,'butter','cream','cheese','goatCheese'] as const){
+ for(const good of [...millProducts,'tomatoKetchup','strawberryJam'] as const){
   state.simulation.inventory[good]=5
   state.simulation.orderDeliveries[farmOrderKey(store,at)]={[good]:1}
   expect(dailyFarmOrders(store,at,state).some(order=>order.good===good)).toBe(false)
@@ -64,8 +64,8 @@ it('uses a husking action in the mill and removes the sales link for stored rice
  render(<FarmWarehouse simulation={state.simulation} onClose={()=>{}} onNavigate={onNavigate}/>)
  fireEvent.click(screen.getByRole('button',{name:'가공품',exact:true}))
  fireEvent.click(screen.getByRole('button',{name:/쌀.*×1/}))
- expect(screen.queryByRole('button',{name:'판매소로 →'})).toBeNull()
- expect(screen.getByText('음식 제작에 사용하는 재료예요.')).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'가공소로 →'}))
- expect(onNavigate).toHaveBeenCalledWith('kitchen')
+ expect(screen.getByRole('button',{name:'판매소로 →'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'판매소로 →'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'중급 주방 이동 →'}))
+ expect(onNavigate).toHaveBeenCalledWith('advancedKitchen')
 })

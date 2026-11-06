@@ -1,0 +1,49 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "note": "Cow and sheep produce the same redMeat ingredient using the archived beef sprite. The unused mutton source is retained as generation history.",
+  "files": [
+    {
+      "id": "butcher",
+      "source": "assets/ui/farm-butcher-v22/source/butcher.png",
+      "runtime": "public/farm/art/v22/buildings/butcher.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "bcf95108c338b37207a88039fbc134f2b1340a10fe81215a21e6c3a1dc82af4a",
+      "prompt": "Create one cozy farming game butcher shop building sprite. The supplied image is a STYLE REFERENCE ONLY: match its warm hand-painted cartoon wood textures and orthogonal gently elevated front view, but give this NEW building a distinct silhouette: a compact cream brick shop with a curved burgundy metal roof, dark red and cream striped small awning, a front chilled glass display with neatly packaged meat cuts, and a small steak-shaped wooden hanging sign. Friendly clean grocery shop, no animals, no carcasses, no blood, no gore, no people, no lettering. Ground footprint two cells horizontally by one deep, upper roof extends above footprint. Single isolated building, true transparent background, no floor, no scenery, no cast shadow, full silhouette inside square with 6% padding.",
+      "references": [
+        "C:/Users/user/Desktop/pongdang-island/public/farm/art/v19/buildings/sauceWorkshop.png"
+      ]
+    },
+    {
+      "id": "redMeat",
+      "source": "assets/ui/farm-butcher-v22/source/beef.png",
+      "runtime": "public/farm/art/v22/goods/redMeat.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "840618a69fb6952381dc24022fc37d3152c96a1b6e3d996f62007b4ceee7a22c",
+      "prompt": "Create one isolated ingredient inventory sprite for a cozy farming game: a neatly trimmed rounded red beef steak with delicate creamy marbling, neatly placed on a small ivory ceramic plate. Cute warm polished hand-painted cartoon, soft brown outlines, gently elevated front three-quarter view, readable silhouette at 48 pixels, consistent with golden illustrated food sprites. Non-graphic clean grocery food presentation, no blood, no gore, no animals or faces, no text, no utensils, no background, no floor. Center a single cohesive serving in a square with 8% transparent padding. True transparent background.",
+      "references": []
+    },
+    {
+      "id": "chickenMeat",
+      "source": "assets/ui/farm-butcher-v22/source/chickenMeat.png",
+      "runtime": "public/farm/art/v22/goods/chickenMeat.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "d388306fe476b838c8a585b3af4ac27e66fd062206de181d5aea54b2eedc6a3d",
+      "prompt": "Create one isolated ingredient inventory sprite for a cozy farming game: two pale pink boneless chicken breast fillets, no skin or bones, neatly placed on a small ivory ceramic plate. Cute warm polished hand-painted cartoon, soft brown outlines, gently elevated front three-quarter view, readable silhouette at 48 pixels, consistent with golden illustrated food sprites. Non-graphic clean grocery food presentation, no blood, no gore, no animals or faces, no text, no utensils, no background, no floor. Center a single cohesive serving in a square with 8% transparent padding. True transparent background.",
+      "references": []
+    },
+    {
+      "id": "duckMeat",
+      "source": "assets/ui/farm-butcher-v22/source/duckMeat.png",
+      "runtime": "public/farm/art/v22/goods/duckMeat.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "d247c5a4f3aadf598a0d608cfde2a7cbded7532aa24075e13120e1bb08ae102d",
+      "prompt": "Create one isolated ingredient inventory sprite for a cozy farming game: a rich reddish-pink duck breast with a neat cream fat cap, different from pale chicken, neatly placed on a small ivory ceramic plate. Cute warm polished hand-painted cartoon, soft brown outlines, gently elevated front three-quarter view, readable silhouette at 48 pixels, consistent with golden illustrated food sprites. Non-graphic clean grocery food presentation, no blood, no gore, no animals or faces, no text, no utensils, no background, no floor. Center a single cohesive serving in a square with 8% transparent padding. True transparent background.",
+      "references": []
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import {expect,it} from 'vitest'
-import {initialTopview} from '@/features/farm/topview-model'
+import {legacyTradeFixture as initialTopview} from './helpers/legacy-trade-fixture'
+import {} from '@/features/farm/topview-model'
 import {farmGoods,simulateFarm} from '@/features/farm/farm-simulation'
 import {canProduceOrderGood,dailyFarmOrders,farmOrderDay} from '@/features/farm/daily-orders'
 import {farmRecipes} from '@/features/farm/food-catalog'

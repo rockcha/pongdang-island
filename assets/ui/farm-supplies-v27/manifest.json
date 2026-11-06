@@ -1,0 +1,59 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "files": [
+    {
+      "id": "agriShop",
+      "source": "assets/ui/farm-supplies-v27/source/agriShop.png",
+      "runtime": "public/farm/art/v27/buildings/agriShop.png",
+      "crop": {
+        "left": 45,
+        "top": 48,
+        "width": 1682,
+        "height": 781
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "1ec4f53493e0d4fb37f2f2733b7e9efa81c96d15c3c9d406a8e7f897ea652d6a",
+      "prompt": "Create one roofless agricultural supplies shop sprite for a cozy farming game. Reference is style only: warm painted cartoon wooden textures, gentle front elevated orthogonal view, two cells wide by one deep. Distinguish from a seed shop: two prominent sealed fertilizer sacks, one with sage green band and simple leaf icon, one with lavender band and three-leaf icon, a small copper watering can, a hand trowel on hooks and a few potting soil scoops. Low wooden counter with one compact tool rack at the back and a wooden sprout-and-sack pictogram sign. No seeds or produce displays. No roof, awning, tall walls, people, floor, text or lettering. True transparent background, full silhouette with clean edges and margin.",
+      "references": [
+        "public/farm/art/v24/buildings/seedShop.png"
+      ]
+    },
+    {
+      "id": "fertilizer",
+      "source": "assets/ui/farm-supplies-v27/source/fertilizer.png",
+      "runtime": "public/farm/art/v27/supplies/fertilizer.png",
+      "crop": {
+        "left": 258,
+        "top": 94,
+        "width": 770,
+        "height": 1012
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "b590580360a92b2fcb7295a6471dd26e1f6e9d3ed31325c2b4e83c2832d72e68",
+      "prompt": "Create a single inventory sprite for a cozy farming game: one small plump beige paper fertilizer sack, tied neatly at the top, sage green band across the front with a simple green leaf pictogram. A few brown compost granules near its base, attached tightly to the sack silhouette. Cute warm painted cartoon, thin soft brown outlines, gentle front three-quarter view, rounded shapes, readable at 40 pixels. One object centered with 8% margin. True transparent alpha background. No lettering, numbers, floor, backdrop, shadows, people, tools or watermark.",
+      "references": []
+    },
+    {
+      "id": "premiumFertilizer",
+      "source": "assets/ui/farm-supplies-v27/source/premiumFertilizer.png",
+      "runtime": "public/farm/art/v27/supplies/premiumFertilizer.png",
+      "crop": {
+        "left": 225,
+        "top": 141,
+        "width": 817,
+        "height": 995
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "037c4112c47831b5a7ae1933b01195b261b70dbd877abb67297ebebbb9e0503a",
+      "prompt": "Create a single inventory sprite for a cozy farming game: one small plump cream paper premium fertilizer sack, tied neatly with a lavender ribbon, broad soft purple band across the front with a simple three-leaf sprout pictogram. A tiny restrained lavender sparkle close to the sack suggests rapid growth. Cute warm painted cartoon, thin soft brown outlines, gentle front three-quarter view, rounded shapes, readable at 40 pixels. One object centered with 8% margin. True transparent alpha background. No lettering, numbers, gold colors, floor, backdrop, shadow, people, tools or watermark.",
+      "references": []
+    }
+  ]
+}

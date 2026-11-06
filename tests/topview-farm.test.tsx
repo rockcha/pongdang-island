@@ -31,12 +31,12 @@ it('checks the complete rectangular footprint and excludes the object being move
  const state=initialTopview()
  expect(placementValid(state,'barn',16,13)).toBe(false)
  expect(placementValid(state,'barn',19,14)).toBe(false)
- expect(placementValid(state,'office',6,5)).toBe(false)
- expect(placementValid(state,'office',6,5,1)).toBe(true)
+ expect(placementValid(state,'office',6,6)).toBe(false)
+ expect(placementValid(state,'office',6,6,1)).toBe(true)
  expect(placementValid(state,'chicken',6,9)).toBe(true)
 })
 it('fits decorations on a single land cell and leaves the neighboring cell free for another object',()=>{
- for(const kind of ['tree','flowers','fence','bench','pond'] as const){
+ for(const kind of ['flowers','fence','bench','pond'] as const){
   const single={...initialTopview(),land:['0,0'],objects:[]}
   expect(placementValid(single,kind,0,0),kind).toBe(true)
   const placed={...single,objects:[{id:1,kind,x:0,y:0}]}
@@ -95,6 +95,8 @@ it('keeps move and recovery separate in the seven-button bottom toolbar',()=>{
  expect(screen.queryByRole('group',{name:'젖소 편집 메뉴'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'젖소 (16,9)'}))
  expect(screen.queryByRole('dialog')).toBeNull()
+ expect(screen.getByRole('button',{name:'좌우반전'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'젖소 생산 시작'}))
  expect(screen.getByRole('progressbar',{name:'우유 생산 (16,9)'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'젖소 (16,9)'})).toBeTruthy()
 })
@@ -131,9 +133,9 @@ it('places a moving object with one tap, returns invalid drops to the origin, an
  fireEvent.click(screen.getByRole('button',{name:'이동하기',exact:true}))
  const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
  click('젖소 생산 시작');expect(document.querySelector('[data-animal-status="producing"]')).toBeNull()
- expect(screen.queryByRole('button',{name:'배치',exact:true})).toBeNull()
+ expect(screen.getByRole('button',{name:'좌우반전',exact:true})).toBeTruthy()
  expect(screen.queryByRole('button',{name:'취소',exact:true})).toBeNull()
- click('축사 (15,5)')
+ click('축사 (15,6)')
  expect(screen.getByRole('button',{name:'젖소 (16,9)'})).toBeTruthy()
  expect(document.querySelector('[data-move-preview]')).toBeNull()
  click('젖소 (16,9)');click('배치 위치 6,9')

@@ -1,0 +1,27 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Replace the otter-shaped mailbox artwork with a conventional red mailbox topped by a small Pongi plush. Same farm decoration identity and footprint.",
+  "processing": "Remove tiny detached alpha components and retain 1px alpha fringe; crop and contain within a transparent 512x512 canvas, 12px padding. Reproduce from repository root with prepare.cjs.",
+  "files": [
+    {
+      "id": "pongiMailbox",
+      "source": "assets/ui/farm-mailbox-v17/source/pongiMailbox.png",
+      "runtime": "public/farm/art/v17/decor/pongiMailbox.png",
+      "crop": {
+        "left": 256,
+        "top": 57,
+        "width": 733,
+        "height": 1162
+      },
+      "width": 512,
+      "height": 512,
+      "viewBox": "12 12 488 488",
+      "sha256": "ca9df43b181e646d4c1969e8aa62b4c4ea7668aa2645f089ee8d17a650b31acd",
+      "prompt": "REDESIGN the first reference farm mailbox sprite. Replace the giant otter-face mailbox with a NORMAL PLAIN RED RURAL MAILBOX mounted on one short sturdy warm wooden post. Main subject is a conventional red metal mailbox: rectangular body with a rounded arched roof, small simple cream mail slot or door on the front, small brass knob, red side flag. NO face, NO eyes, NO animal ears on the mailbox body. A SMALL PONGI OTTER PLUSH DOLL sits lightly ON TOP OF THE MAILBOX ROOF, a cute secondary ornament only about 20-25 percent of total sprite height and narrower than half of mailbox width. Doll identity from second reference: orange brown baby otter, cream muzzle and belly, round shiny eyes, pink cheeks, tiny pink starfish hairclip, small stubby paws. No swim ring. Doll must remain SMALL, the ordinary RED MAILBOX is clearly dominant and readable. Slightly elevated front three-quarter view matching existing cozy farm sprites, chunky rounded shapes, clean fine warm outlines, soft dimensional shading, warm colors, gentle simplified details. Compact upright 1x1 farm decoration, whole mailbox, post and small doll visible. A few small leaves at foot of post are okay, no ground rectangle, no shadow. Clean TRUE TRANSPARENT ALPHA background, no stray pixels, glow, matte, text or UI.",
+      "references": [
+        "public/farm/art/v16/decor/pongiMailbox.png",
+        "public/farm/art/v14/decor/pongiTube.png"
+      ]
+    }
+  ]
+}

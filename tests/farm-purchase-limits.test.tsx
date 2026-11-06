@@ -1,3 +1,4 @@
+import {isRetiredTradeBuilding} from '@/features/farm/market-catalog'
 import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it} from 'vitest'
@@ -22,7 +23,7 @@ it('reserves each species capacity while its next animal is preparing or waiting
 it('limits each building to one placed or stored copy while allowing existing storage to be placed',()=>{
  const state=initialTopview()
  for(const kind of Object.keys(topviewItems) as FarmTool[]){
-  if(topviewItems[kind].group!=='건물')continue
+  if(topviewItems[kind].group!=='건물'||isRetiredTradeBuilding(kind))continue
   if(topviewItems[kind].purchaseLimit===Infinity){expect(farmCanPurchase(state,kind)).toBe(true);continue}
   expect(farmCanPurchase(state,kind)).toBe(false)
   expect(farmPlacementError(state,kind)).toContain('이미 보유')
@@ -32,7 +33,7 @@ it('limits each building to one placed or stored copy while allowing existing st
   expect(farmPlacementError(stored,kind,{fromStorage:true})).toBeNull()
   expect(farmCanPurchase({...stored,stored:[]},kind)).toBe(true)
  }
- expect(farmCanPurchase(state,'tree')).toBe(true)
+ expect(farmCanPurchase(state,'flowers')).toBe(true)
 })
 it('supports configuring a future building to allow multiple purchases',()=>{
  const state=initialTopview(),previous=topviewItems.office.purchaseLimit
@@ -43,16 +44,16 @@ it('hides purchase buttons for owned buildings while keeping their information a
  const {container}=render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  click('상점');click('건물')
  const palette=screen.getByRole('dialog',{name:'상점'}),cards=within(palette).getAllByRole('article')
- expect(cards.length).toBe(Object.values(topviewItems).filter(item=>item.group==='건물').length)
+ expect(cards.length).toBe(Object.entries(topviewItems).filter(([kind,item])=>item.group==='건물'&&!isRetiredTradeBuilding(kind)).length)
  expect(within(palette).queryByRole('button',{name:/제당소/})).toBeNull()
- for(const card of cards){const owned=card.getAttribute('data-owned')==='true',buy=within(card).queryByRole('button',{name:/구매/});if(owned){expect(buy).toBeNull();expect(card.textContent).toContain('보유 중')}else{expect(buy).toHaveProperty('disabled',false);expect(card.textContent).toContain('여러 채 건설 가능')}}
+ for(const card of cards){const owned=card.getAttribute('data-owned')==='true',buy=within(card).queryByRole('button',{name:/구매 ·/});if(owned){expect(buy).toBeNull();expect(card.textContent).toContain('보유 중')}else{expect(buy).toHaveProperty('disabled',false);expect(card.textContent).toContain('여러 채 건설 가능')}}
  click('종자 상점 설명')
  const info=screen.getByRole('dialog',{name:'종자 상점 설명'})
  expect(within(info).getByRole('region',{name:'종자 상점 용도와 효과'}).textContent).toContain('종자를 구매')
  click('Close');expect(screen.getByRole('dialog',{name:'상점'})).toBeTruthy()
- click('Close');click('회수하기');click('종자 상점 (8,5)')
- click('상점');expect(within(screen.getByRole('dialog',{name:'상점'})).queryByRole('button',{name:/종자 상점 구매/})).toBeNull()
- click('Close');click('보관함');fireEvent.click(screen.getByRole('button',{name:/종자 상점.*보관 1개/}));fireEvent.click(container.querySelector('[data-farm-cell="8,5"]')!)
- expect(screen.getByRole('button',{name:'종자 상점 (8,5)'})).toBeTruthy()
+ click('Close');click('회수하기');click('종자 상점 (8,6)')
+ click('상점');expect(within(screen.getByRole('dialog',{name:'상점'})).queryByRole('button',{name:/종자 상점 구매 ·/})).toBeNull()
+ click('Close');click('보관함');fireEvent.click(screen.getByRole('button',{name:/종자 상점.*보관 1개/}));fireEvent.click(container.querySelector('[data-farm-cell="8,6"]')!)
+ expect(screen.getByRole('button',{name:'종자 상점 (8,6)'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('15,000')
 })

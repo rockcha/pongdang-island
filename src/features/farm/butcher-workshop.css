@@ -6,4 +6,6 @@
 .farm-butcher-animals small,.farm-butcher-animals span{font-size:11px}
 .farm-butcher-quantity{display:flex;align-items:center;justify-content:center;gap:24px}
 .farm-butcher-quantity button{width:36px;height:36px;border:1px solid #e4c8a2;border-radius:8px}
+.farm-butcher-quantity label{display:flex;align-items:center;gap:6px;font-size:12px}
+.farm-butcher-quantity input{width:56px;min-height:36px;border:1px solid #e4c8a2;border-radius:8px;background:#fffaf2;text-align:center}
 .farm-butcher button:disabled{opacity:.45}

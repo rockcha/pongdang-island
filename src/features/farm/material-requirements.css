@@ -19,3 +19,13 @@
 .farm-upgrade-compact>.farm-upgrade-unavailable{flex-basis:100%;font-size:10px;line-height:1.5;color:#a15c43}
 @media(max-width:639px){.farm-material-list{gap:5px}.farm-material{padding:7px;gap:5px}.farm-material-result{flex-basis:100%;justify-content:flex-end}.farm-material>.farm-good-icon,.farm-material>svg{width:25px;height:25px}.farm-compact-dialog .farm-upgrade-panel.farm-upgrade-compact{padding:8px;gap:7px}.farm-upgrade-overview strong>small{display:block;margin-left:0}.farm-upgrade-symbol{display:none}.farm-compact-dialog .farm-upgrade-compact>.farm-upgrade-start{max-width:145px}.farm-upgrade-compact>.farm-upgrade-start small{display:none}}
 @media(max-width:359px){.farm-compact-dialog .farm-upgrade-compact>.farm-upgrade-start{flex-direction:column;gap:3px;padding:6px 8px}}
+@media(max-width:639px){
+ .farm-workbench-dialog .farm-materials{margin:5px 0}
+ .farm-workbench-dialog .farm-materials>header{margin-bottom:5px}
+ .farm-workbench-dialog .farm-material{display:grid;grid-template-columns:22px minmax(0,1fr) auto;column-gap:5px;row-gap:0;padding:6px;align-items:center}
+ .farm-workbench-dialog .farm-material>.farm-good-icon{grid-column:1;grid-row:1/3;width:22px;height:22px}
+ .farm-workbench-dialog .farm-material-copy{display:contents}
+ .farm-workbench-dialog .farm-material-copy>strong{grid-column:2;grid-row:1;font-size:10px}
+ .farm-workbench-dialog .farm-material-copy>span{grid-column:2/4;grid-row:2;font-size:10px;line-height:1.5}
+ .farm-workbench-dialog .farm-material-result{grid-column:3;grid-row:1;font-size:10px;gap:2px}
+}

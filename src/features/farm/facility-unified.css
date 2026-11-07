@@ -1,4 +1,7 @@
 /* Scoped to facilities so editor tool palettes keep their own layout. */
+.farm-facility-dialog .farm-building-store>.farm-object-sale-button{justify-content:space-between;min-height:40px;margin-top:12px;padding:9px 12px;gap:14px;background:#fbf3e6;font-size:11px}
+.farm-removal-label,.farm-removal-refund{display:inline-flex;align-items:center;gap:6px}
+.farm-removal-label{color:#98644b}.farm-removal-refund{font-size:11px;color:#9a7b58;white-space:nowrap}
 .farm-compact-dialog.farm-facility-dialog .farm-compact-header:not(:has(.farm-sim-title-art)){display:flex;flex-direction:column;align-items:flex-start;min-height:0;gap:3px;padding-right:26px;text-align:left}
 .farm-picker-detail{font-size:10px;line-height:1.4;color:#96775b}
 .farm-facility-dialog .farm-warehouse-tabs button{min-width:0;padding:9px 6px;font-size:12px;white-space:nowrap}

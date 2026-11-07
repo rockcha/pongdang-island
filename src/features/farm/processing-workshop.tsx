@@ -1,3 +1,4 @@
+import {useFarmQuantity} from './use-farm-quantity'
 import {waterwheelDuration} from './waterwheel'
 import {farmDuration} from './farm-duration'
 import {farmWorkshops} from './workshop-catalog'
@@ -28,14 +29,14 @@ export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction,maxO
 }
 
 function RecipeCard({id,inventory,onAction,maxOutput,waterwheelBonus}:{waterwheelBonus:number;maxOutput:number;id:RecipeId;inventory:FarmSimulation['inventory'];onAction:(action:FarmSimAction)=>void}){
- const [quantity,setQuantity]=useState(1),recipe=farmRecipes[id],max=recipeBatchLimit(inventory,id,maxOutput),amount=max?Math.min(max,Math.max(1,quantity)):1,item=farmGoods[id],output=recipeOutput(id)
- const enough=max>0&&recipe.ingredients.every(i=>inventory[i.good]>=i.quantity*amount)
+ const {quantity,setQuantity,quantityInput,quantityValid}=useFarmQuantity(1),recipe=farmRecipes[id],max=recipeBatchLimit(inventory,id,maxOutput),amount=max?Math.min(max,Math.max(1,quantity)):1,item=farmGoods[id],output=recipeOutput(id)
+ const enough=quantityValid&&max>0&&recipe.ingredients.every(i=>inventory[i.good]>=i.quantity*amount)
  return <article className="farm-recipe-card" aria-label={`${item.name} 제작법`}>
   <FarmProductHeading good={id} seconds={waterwheelDuration(recipe.seconds*Math.ceil(amount*output/2),waterwheelBonus)}/>
   {id==='honey'&&<p className="farm-sim-caption">재료: 필요 없음. 벌들이 꿀을 모아요. 한 번에 최대 {maxOutput}개를 생산해요.</p>}
   {output>1&&<p className="farm-sim-caption">1회 제작으로 {item.name} {output}개를 만들어요.</p>}
   <MaterialRequirements items={recipe.ingredients.map(ingredient=>({id:ingredient.good,name:farmGoods[ingredient.good].name,owned:inventory[ingredient.good],required:ingredient.quantity*amount,icon:<FarmGoodIcon good={ingredient.good}/>}))}/>
-  <p className="farm-sim-caption">생산: {item.name} {amount*output}개 · 소요 시간: {farmDuration(waterwheelDuration(recipe.seconds*Math.ceil(amount*output/2),waterwheelBonus))} · 최대 {maxOutput}개</p>
-  <div className="farm-recipe-controls"><div><button aria-label={`${item.name} 제작 수량 줄이기`} disabled={amount<=1||!max} onClick={()=>setQuantity(amount-1)}>−</button><input type="number" inputMode="numeric" aria-label={`${item.name} 제작 수량`} min={1} max={Math.max(1,max)} value={amount} disabled={!max} onChange={event=>setQuantity(Math.min(max,Math.max(1,Math.floor(Number(event.target.value)||1))))}/><button aria-label={`${item.name} 제작 수량 늘리기`} disabled={!max||amount>=max} onClick={()=>setQuantity(amount+1)}>+</button><button disabled={!max} onClick={()=>setQuantity(max)}>최대</button></div><button className="farm-recipe-submit" aria-label={`${item.name} 만들기`} disabled={!enough} onClick={()=>onAction({type:'craft',recipe:id,quantity:amount})}>{enough?`${amount*output}개 만들기`:'재료 부족'}</button></div>
+  <p className="farm-sim-caption farm-recipe-summary">생산: {item.name} {amount*output}개 · 소요 시간: {farmDuration(waterwheelDuration(recipe.seconds*Math.ceil(amount*output/2),waterwheelBonus))} · 최대 {maxOutput}개</p>
+  <div className="farm-recipe-controls"><div><button aria-label={`${item.name} 제작 수량 줄이기`} disabled={!quantityValid||amount<=1||!max} onClick={()=>setQuantity(amount-1)}>−</button><input {...quantityInput(max)} aria-label={`${item.name} 제작 수량`} disabled={!max} /><button aria-label={`${item.name} 제작 수량 늘리기`} disabled={!quantityValid||!max||amount>=max} onClick={()=>setQuantity(amount+1)}>+</button><button disabled={!max} onClick={()=>setQuantity(max)}>최대</button></div><button className="farm-recipe-submit" aria-label={`${item.name} 만들기`} disabled={!quantityValid||!enough} onClick={()=>onAction({type:'craft',recipe:id,quantity:amount})}>{!quantityValid?'수량을 입력해주세요':enough?`${amount*output}개 만들기`:'재료 부족'}</button></div>
  </article>
 }

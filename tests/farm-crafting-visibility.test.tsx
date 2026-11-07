@@ -52,6 +52,15 @@ it('shows warehouse expansion immediately with the correct next capacity',()=>{
  expect(screen.getByRole('button',{name:'업그레이드 · 3,000 G'})).toBeTruthy()
  expect(within(screen.getByRole('region',{name:'건물 업그레이드'})).getByText('60개')).toBeTruthy()
 })
+it('labels removal clearly and shows only one gold icon for the refund',()=>{
+ const state=initialTopview(),object=state.objects.find(o=>o.kind==='kitchen')!,onSell=vi.fn()
+ render(<FarmProductionDialog object={object} state={state} message="" onAction={vi.fn()} onClose={vi.fn()} onStore={vi.fn()} onSell={onSell}/>)
+ const remove=screen.getByRole('button',{name:'작은 주방 건물 제거'})
+ expect(remove.textContent).toContain('건물 제거')
+ expect(remove.querySelectorAll('.farm-gold-icon')).toHaveLength(1)
+ expect(remove.textContent).not.toContain('판매')
+ fireEvent.click(remove);expect(onSell).toHaveBeenCalledOnce()
+})
 it('explains why an upgrade is unavailable and preserves the running upgrade cancellation',()=>{
  const state=initialTopview(),object=state.objects.find(o=>o.kind==='kitchen')!,onAction=vi.fn()
  state.simulation.processingJobs[object.id]={recipe:'chickenSoup',quantity:1,startedAt:0,readyAt:10000}

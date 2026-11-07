@@ -14,16 +14,16 @@ const balance=()=>document.querySelector('.top-farm-gold')!.textContent!.replace
 
 it('keeps the placed building and gold on cancel, then sells once after a Pongi confirmation',()=>{
  setup();const name=topviewItems.kitchen.name,object=document.querySelector('[data-object-id="28"]')!
- fireEvent.click(object);click(`${name} 반값 판매`)
+ fireEvent.click(object);click(`${name} 건물 제거`)
  const dialog=screen.getByRole('alertdialog')
- expect(within(dialog).getByRole('heading',{name:`${name} 1개를 판매하시겠습니까?`})).toBeTruthy()
+ expect(within(dialog).getByRole('heading',{name:`${name} 1개를 제거하시겠습니까?`})).toBeTruthy()
  expect(dialog.querySelector('img')?.getAttribute('src')).toBe('/branding/confirm/pongi-sale.png')
  expect(balance()).toBe('15000');expect(document.querySelector('[data-object-id="28"]')).toBeTruthy()
  expect(playSaleSound).not.toHaveBeenCalled()
  click('취소')
  expect(screen.queryByRole('alertdialog')).toBeNull()
  expect(screen.getByRole('dialog')).toBeTruthy();expect(balance()).toBe('15000')
- click(`${name} 반값 판매`);click('판매하기')
+ click(`${name} 건물 제거`);click('제거하기')
  expect(screen.queryByRole('alertdialog')).toBeNull()
  expect(document.querySelector('[data-object-id="28"]')).toBeNull()
  expect(balance()).toBe(String(15000+farmResalePrice('kitchen')))
@@ -39,7 +39,7 @@ it('requires confirmation for stored copies and prevents duplicate confirmation 
  expect(balance()).toBe(String(original));expect(playSaleSound).not.toHaveBeenCalled()
  click('취소');expect(screen.getByRole('button',{name:`${name} 보관 2개 배치하기`})).toBeTruthy()
  click(`${name} 보관 개체 반값 판매`)
- const confirm=screen.getByRole('button',{name:'판매하기',exact:true})
+ const confirm=screen.getByRole('button',{name:'제거하기',exact:true})
  act(()=>{fireEvent.click(confirm);fireEvent.click(confirm)})
  expect(balance()).toBe(String(original+farmResalePrice('mill')))
  expect(playSaleSound).toHaveBeenCalledTimes(1)

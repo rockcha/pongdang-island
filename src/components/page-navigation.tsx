@@ -6,6 +6,7 @@ import {HeaderPlaceNavigation,headerPlaces,menuIcons} from './header-place-navig
 import {arcadeGames} from '@/features/arcade/games'
 import {placeSections} from '@/lib/place-sections'
 import {regionIcons} from '@/features/regions/region-icons'
+import {OwnAquariumLikeCount} from '@/features/friends/own-aquarium-like-count'
 
 export function pageNavigation(pathname:string,noticeCategory?:string){
  const path=pathname.replace(/\/+$/,'')||'/'
@@ -50,6 +51,8 @@ export function pageNavigation(pathname:string,noticeCategory?:string){
 export function PageNavigation({noticeCategory}:{noticeCategory?:string}){
  const {pathname,search}=useLocation(),navigate=useNavigate()
  const page=pageNavigation(pathname,noticeCategory)
+ const ownAquarium=/^\/aquarium(?:\/|$)/.test(pathname)
+ const heading=ownAquarium?'내 어항':page.label
  function back(){
   if(/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)){const params=new URLSearchParams(search);if(params.has('tank')){params.delete('tank');navigate({pathname,search:params.toString()},{replace:true});return}}
   if(/^\/aquarium\/[^/]+\/?$/.test(pathname)){navigate('/aquarium');return}
@@ -58,11 +61,12 @@ export function PageNavigation({noticeCategory}:{noticeCategory?:string}){
   else navigate(page.fallback)
  }
  return <div className="flex min-h-12 min-w-0 items-center gap-2 border-t border-border/60 py-1" data-page-navigation>
-  <h1 className="min-w-0 flex-1 text-xs font-medium text-primary">
-   <button type="button" onClick={back} aria-label="뒤로 가기" title={`${page.label} · 뒤로 가기`} className="inline-flex min-h-11 max-w-full items-center gap-1 rounded-lg px-2 py-2 text-left transition-colors hover:bg-secondary active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+  <h1 className="flex min-w-0 flex-1 flex-wrap items-center gap-x-1 text-xs font-medium text-primary">
+   <button type="button" onClick={back} aria-label="뒤로 가기" title={`${heading} · 뒤로 가기`} className={`inline-flex ${ownAquarium?'min-h-7 max-[359px]:px-1 max-[359px]:gap-0.5 max-[359px]:text-[11px]':'min-h-11'} min-w-0 max-w-full items-center gap-1 rounded-lg px-2 py-2 text-left transition-colors hover:bg-secondary active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}>
     <ChevronLeft aria-hidden="true" className="size-4 shrink-0"/>
-    <span className="min-w-0 truncate">{page.label}</span>
+    <span className="min-w-0 truncate">{heading}</span>
    </button>
+   {ownAquarium&&<OwnAquariumLikeCount/>}
   </h1>
   <HeaderPlaceNavigation/>
  </div>

@@ -1,3 +1,4 @@
+import {useFarmQuantity} from './use-farm-quantity'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { PointerEvent as ReactPointerEvent } from 'react'
 import { useNavigate } from 'react-router'
@@ -175,7 +176,7 @@ export function FarmView({
     [floor, setFloor] = useState<FloorKind>('stone'),
     [stroke, setStroke] = useState<Cell[]>([]),
     [rotation, setRotation] = useState(0),
-    [quantity, setQuantity] = useState(1),
+    {quantity,setQuantity,quantityInput,quantityValid} = useFarmQuantity(1),
     [storage, setStorage] = useState(false),
     [removalOpen, setRemovalOpen] = useState(false)
   const [message, setMessage] = useState(''),
@@ -994,20 +995,7 @@ export function FarmView({
                     >
                       <Minus size={14} />
                     </button>
-                    <input
-                      id="farm-purchase-quantity"
-                      type="number"
-                      inputMode="numeric"
-                      min={1}
-                      max={100}
-                      value={quantity}
-                      disabled={blocked}
-                      onChange={(e) =>
-                        setQuantity(
-                          Math.min(100, Math.max(1, Math.trunc(Number(e.target.value) || 1))),
-                        )
-                      }
-                    />
+                    <input id="farm-purchase-quantity" {...quantityInput(100)} disabled={blocked}/>
                     <button
                       type="button"
                       aria-label="구매 수량 늘리기"
@@ -1049,7 +1037,7 @@ export function FarmView({
                           (!storage &&
                             !b &&
                             !(panel === 'animal' && animalLimit === 0) &&
-                            wallet.gold < product.price * quantity)
+                            (!quantityValid || wallet.gold < product.price * quantity))
                         }
                         onClick={() => {
                           if (storage) {
@@ -1071,6 +1059,7 @@ export function FarmView({
                             setBuilding('farm-barn')
                             return
                           }
+                          if (!quantityValid) return
                           buy(product.id, product.price, quantity)
                         }}
                       >

@@ -1,3 +1,4 @@
+import {useFarmQuantity} from './use-farm-quantity'
 import './product-categories.css'
 import {FarmGold} from './farm-gold'
 import {useState} from 'react'
@@ -13,6 +14,9 @@ const goodsByPrice=[...deliverableGoods].sort((a,b)=>farmGoods[a].price-farmGood
 
 export function FoodSalePanel({state,onAction}:{state:TopviewState;onAction:(action:FarmSimAction)=>void}){
  const [ownedOnly,setOwnedOnly]=useState(true),[selected,setSelected]=useState<Partial<Record<DeliverableGood,number>>>({}),[editing,setEditing]=useState<DeliverableGood|null>(null)
+ const {setQuantity:setEditedQuantity,quantityInput,quantityValid}=useFarmQuantity(1)
+ const inputReady=editing===null||!(selected[editing]??0)||quantityValid
+ function updateQuantity(id:DeliverableGood,count:number){setEditedQuantity(count);setSelected(old=>({...old,[id]:count}))}
  const [category,setCategory]=useState<'food'|'household'>(()=>finishedFoods.some(id=>state.simulation.inventory[id]>0)||!finishedHouseholdGoods.some(id=>state.simulation.inventory[id]>0)?'food':'household')
  const inventory=state.simulation.inventory,goods=goodsByPrice.filter(id=>category==='food'?isFinishedFood(id):!isFinishedFood(id)),available=goods.filter(id=>inventory[id]>0),visible=ownedOnly?available:goods
  const items=deliverableGoods.flatMap(good=>{const quantity=Math.min(inventory[good],selected[good]??0);return quantity>0?[{good,quantity}]:[]})
@@ -27,9 +31,9 @@ export function FoodSalePanel({state,onAction}:{state:TopviewState;onAction:(act
     <button className="farm-food-select" aria-label={`${item.name} 선택`} aria-pressed={count>0} disabled={!owned} onClick={()=>{setSelected(old=>({...old,[id]:count?0:owned}));setEditing(null)}}>
      <span className="farm-food-check">{count>0&&<Check size={13}/>}</span><FarmGoodIcon good={id}/><strong>{item.name}</strong><span className="farm-food-owned">보유 <b>{owned.toLocaleString()}</b>개</span><small><FarmGold amount={item.price.toLocaleString()}/> / 개</small>
     </button>
-    {count>0&&<div className="farm-food-quantity">{editing===id?<><button aria-label={`${item.name} 수량 줄이기`} onClick={()=>setSelected(old=>({...old,[id]:Math.max(1,count-1)}))}>−</button><input autoFocus aria-label={`${item.name} 판매 수량`} type="number" inputMode="numeric" min={1} max={owned} value={count} onChange={e=>setSelected(old=>({...old,[id]:Math.min(owned,Math.max(1,Math.floor(Number(e.target.value)||1)))}))}/><button aria-label={`${item.name} 수량 늘리기`} disabled={count>=owned} onClick={()=>setSelected(old=>({...old,[id]:count+1}))}>+</button></>:<button onClick={()=>setEditing(id)} aria-label={`${item.name} 수량 변경`}>{count.toLocaleString()}개 판매 ▾</button>}</div>}
+    {count>0&&<div className="farm-food-quantity">{editing===id?<><button aria-label={`${item.name} 수량 줄이기`} onClick={()=>updateQuantity(id,Math.max(1,count-1))}>−</button><input autoFocus {...quantityInput(owned,next=>setSelected(old=>({...old,[id]:next})))} aria-label={`${item.name} 판매 수량`} /><button aria-label={`${item.name} 수량 늘리기`} disabled={count>=owned} onClick={()=>updateQuantity(id,count+1)}>+</button></>:<button onClick={()=>{setEditedQuantity(count);setEditing(id)}} aria-label={`${item.name} 수량 변경`}>{count.toLocaleString()}개 판매 ▾</button>}</div>}
    </article>})}
   </div>
-  <footer className="farm-food-summary"><div><span>선택 {items.length}종 · {quantity.toLocaleString()}개</span><strong><FarmGold amount={total.toLocaleString()}/></strong></div><button className="farm-sim-primary" disabled={!items.length||!warehouseAvailable(state)} onClick={()=>{onAction({type:'marketSellBatch',items});setSelected({});setEditing(null)}}>{!warehouseAvailable(state)?'창고 이용 가능 후 판매':items.length?<><FarmGold amount={total}/>에 판매</>:'판매할 상품을 선택하세요'}</button></footer>
+  <footer className="farm-food-summary"><div><span>선택 {items.length}종 · {quantity.toLocaleString()}개</span><strong><FarmGold amount={inputReady?total.toLocaleString():'—'}/></strong></div><button className="farm-sim-primary" disabled={!inputReady||!items.length||!warehouseAvailable(state)} onClick={()=>{onAction({type:'marketSellBatch',items});setSelected({});setEditing(null)}}>{!inputReady?'수량을 입력해주세요':!warehouseAvailable(state)?'창고 이용 가능 후 판매':items.length?<><FarmGold amount={total}/>에 판매</>:'판매할 상품을 선택하세요'}</button></footer>
  </section>
 }

@@ -129,7 +129,7 @@ it('buys supplies, applies them to one planted tile through the farming menu and
  click('고급 비료 사용');click('밭 (9,13)')
  expect(screen.getByRole('progressbar',{name:'밀 성장 (9,13)'})).toHaveProperty('ariaValueNow','100')
  expect(document.querySelector('[data-fertilizer-effect="premiumFertilizer"]')).toBeTruthy()
- click('완료');click('농업용품점 (8,9)');click('농업용품점 반값 판매');click('판매하기')
+ click('완료');click('농업용품점 (8,9)');click('농업용품점 건물 제거');click('제거하기')
  expect(screen.queryByRole('button',{name:'농업용품점 (8,9)'})).toBeNull()
  expect(document.querySelector('.top-farm-gold')?.textContent).toContain('13,920')
  expect(document.querySelector('[data-farm-resale]')?.textContent).toContain('+ 750 G')

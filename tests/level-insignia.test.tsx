@@ -2,12 +2,15 @@ import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {afterEach,expect,it} from 'vitest'
 import {LevelInsignia,LevelInsigniaGallery,LevelTag,levelInsigniaTier} from '@/features/experience/level-insignia'
 afterEach(cleanup)
-it('changes insignia exactly after each ten-level boundary and keeps the final insignia above 100',()=>{
- for(let tier=0;tier<10;tier++){
+it('changes insignia exactly after each ten-level boundary through 150 and keeps the final tier above it',()=>{
+ for(let tier=0;tier<15;tier++){
   expect(levelInsigniaTier(tier*10+1)).toBe(tier)
   expect(levelInsigniaTier((tier+1)*10)).toBe(tier)
  }
- expect(levelInsigniaTier(101)).toBe(9)
+ expect(levelInsigniaTier(100)).toBe(9)
+ expect(levelInsigniaTier(101)).toBe(10)
+ expect(levelInsigniaTier(150)).toBe(14)
+ expect(levelInsigniaTier(151)).toBe(14)
  expect(levelInsigniaTier(0)).toBeNull();expect(levelInsigniaTier(Number.NaN)).toBeNull()
 })
 
@@ -32,11 +35,21 @@ it('uses unique gradient IDs for many badges on one page',()=>{
   expect(ids).toContain(id)
  }
 })
-it('lists ten exact ranges and marks the current tier',()=>{
- const {container}=render(<LevelInsigniaGallery level={42}/>)
- expect(screen.getAllByRole('listitem')).toHaveLength(10)
+it('lists fifteen exact ranges and marks the current tier',()=>{
+ const {container}=render(<LevelInsigniaGallery level={150}/>)
+ expect(screen.getAllByRole('listitem')).toHaveLength(15)
  expect(screen.getByText('1–10')).toBeTruthy();expect(screen.getByText('91–100')).toBeTruthy()
- expect(container.querySelector('[aria-current="step"]')?.textContent).toContain('41–50')
+ expect(screen.getByText('101–110')).toBeTruthy();expect(screen.getByText('141–150')).toBeTruthy()
+ expect(container.querySelector('[aria-current="step"]')?.textContent).toContain('141–150')
+})
+it('renders five different motifs for the new ranks and identifies the final badge in its popover',async()=>{
+ const {container}=render(<>{[101,111,121,131,141].map(level=><LevelInsignia key={level} level={level}/>)}<LevelTag level={150}/></>)
+ const crests=[...container.querySelectorAll('svg[data-level-insignia]')].slice(0,5)
+ expect(crests.map(c=>c.getAttribute('data-level-insignia'))).toEqual(['11','12','13','14','15'])
+ expect(new Set(crests.map(c=>c.querySelector('g[stroke-width="2"]')?.innerHTML)).size).toBe(5)
+ fireEvent.click(screen.getByRole('button',{name:'레벨 150'}))
+ expect(await screen.findByRole('dialog',{name:'Lv.150'})).toBeTruthy()
+ expect(screen.getByText('퐁당섬의 전설')).toBeTruthy()
 })
 it('does not invent a badge while a level is loading or unavailable',()=>{
  const view=render(<LevelTag loading/>)

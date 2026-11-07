@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "badabbf4df9cc65bc3cee0c85296b2818a153277c51c0c6503e6459c21c9511a",
+  "migrationHash": "ea9f95ebdd17ffbf349fd365bee6ddae4898892dd1a2e2fa67767752cccbf7a3",
   "structure": {
     "enums": [
       {
@@ -16771,7 +16771,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_owner uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_like_state(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_day date := (statement_timestamp() at time zone 'Asia/Seoul')::date;\nbegin\n  perform app_private.require_aquarium_friend(p_owner);\n  return jsonb_build_object(\n    'count', (select count(*) from app_private.aquarium_likes where owner_id = p_owner),\n    'liked', exists (select 1 from app_private.aquarium_likes\n      where owner_id = p_owner and visitor_id = auth.uid() and like_day = v_day),\n    'nextLikeAt', ((v_day + 1)::timestamp at time zone 'Asia/Seoul'),\n    'serverNow', statement_timestamp()\n  );\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_like_state(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_day date := (statement_timestamp() at time zone 'Asia/Seoul')::date;\nbegin\n  if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n  -- A player may read their own cumulative total; other owners remain friend-only.\n  if p_owner is distinct from auth.uid() then\n    perform app_private.require_aquarium_friend(p_owner);\n  end if;\n  return jsonb_build_object(\n    'count', (select count(*) from app_private.aquarium_likes where owner_id = p_owner),\n    'liked', exists (select 1 from app_private.aquarium_likes\n      where owner_id = p_owner and visitor_id = auth.uid() and like_day = v_day),\n    'nextLikeAt', ((v_day + 1)::timestamp at time zone 'Asia/Seoul'),\n    'serverNow', statement_timestamp()\n  );\nend $function$\n",
         "securityDefiner": true
       },
       {

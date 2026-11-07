@@ -13,10 +13,15 @@ export const levelInsignias=[
  {name:'대양의 수호자',color:'#d6ae5d',deep:'#967039',light:'#fff1c4'},
  {name:'해류의 지배자',color:'#a6bac4',deep:'#657f98',light:'#eef8ff'},
  {name:'바다가 기억하는 자',color:'#d4b46d',deep:'#8a6c40',light:'#fff5d6'},
+ {name:'달빛 항해자',color:'#acbbdd',deep:'#596d9e',light:'#f4f6ff'},
+ {name:'별바다 수호자',color:'#9c8ed2',deep:'#4f3f87',light:'#f3ecff'},
+ {name:'은하를 잇는 자',color:'#77a7cf',deep:'#3f5d91',light:'#e3f4ff'},
+ {name:'영원의 등대',color:'#86cbb6',deep:'#287c75',light:'#ebfff6'},
+ {name:'퐁당섬의 전설',color:'#e0bb62',deep:'#8c6032',light:'#fff7dc'},
 ] as const
 
 export function levelInsigniaTier(level:number){
- return Number.isFinite(level)&&level>=1?Math.min(9,Math.floor((level-1)/10)):null
+ return Number.isFinite(level)&&level>=1?Math.min(levelInsignias.length-1,Math.floor((level-1)/10)):null
 }
 
 /** Shared vector crests remain legible at avatar size; silhouette and motif mark each rank. */
@@ -31,7 +36,12 @@ function RankMotif({tier}:{tier:number}){
   case 6:return <><path d="m24 15 3 7 7 2-7 3-3 8-3-8-7-3 7-2 3-7Z"/><path d="M24 20v9M19 24h10M17 35l2-2M31 17l2-2"/></>
   case 7:return <><path d="M24 16v17M20 19h8M17 26c-2 7 3 10 7 10s9-3 7-10M16 26l1 5 4-2M32 26l-1 5-4-2"/><circle cx="24" cy="15" r="2"/></>
   case 8:return <><path d="M24 34V17M19 22v-5l-3 3M29 22v-5l3 3M19 19v6c0 3 2 4 5 4s5-1 5-4v-6M21 19l3-5 3 5M17 35c2-2 4 2 7 0s5 2 7 0"/></>
-  default:return <><path d="m24 15 3 6 6 1-4 5 1 7-6-3-6 3 1-7-4-5 6-1 3-6Z"/><path d="M15 37c3-4 6 2 9 0s6-4 9 0M24 20v7M21 24h6"/></>
+  case 9:return <><path d="m24 15 3 6 6 1-4 5 1 7-6-3-6 3 1-7-4-5 6-1 3-6Z"/><path d="M15 37c3-4 6 2 9 0s6-4 9 0M24 20v7M21 24h6"/></>
+  case 10:return <><path d="M29 15a8 8 0 1 0 5 13 7 7 0 0 1-5-13Z"/><path d="M22 23v10m0-9-6 7h6m2 0h7l-4 5h-9l-3-3h7"/></>
+  case 11:return <><path d="M24 16 33 20v6c0 5-4 8-9 11-5-3-9-6-9-11v-6l9-4Z"/><path d="m24 21 1.5 4.5 4.5 1.5-4.5 1.5L24 33l-1.5-4.5L18 27l4.5-1.5L24 21Z"/></>
+  case 12:return <><ellipse cx="24" cy="26" rx="12" ry="5" transform="rotate(-30 24 26)"/><path d="m28 17-2 11-7 7 2-11 7-7Z"/><circle cx="15" cy="21" r="1.5"/><path d="m31 33 2 2m-1-17 2-2"/></>
+  case 13:return <><path d="M19 35h10l-2-13h-6l-2 13Zm1-16 4-4 4 4v3h-8v-3ZM17 35h14M24 25v3M14 28l-3 2m23-2 3 2M15 20l-4-1m22 1 4-1"/><path d="M17 39c3-2 4 2 7 0s4-2 7 0"/></>
+  default:return <><path d="m16 20 4 4 4-8 4 8 4-4-2 11H18l-2-11ZM18 34h12"/><path d="m24 23 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3ZM15 38c3-3 6 2 9 0s6-3 9 0"/></>
  }
 }
 
@@ -51,7 +61,8 @@ export function LevelInsignia({level,className='size-5'}:{level:number;className
   {tier>=4&&<path d={shape} transform="translate(2.4 2.4) scale(.9)" stroke={palette.light} strokeWidth=".7"/>}
   {tier>=8&&<path d="m16 11-2-7 6 3 4-6 4 6 6-3-2 7H16Z" fill={palette.light} stroke={palette.deep} strokeWidth="1.2" strokeLinejoin="round"/>}
   <g stroke={palette.deep} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><RankMotif tier={tier}/></g>
-  {tier===9&&<g fill="#fff5d6" stroke={palette.deep} strokeWidth=".8"><path d="m6 3 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3ZM42 3l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z"/><circle cx="24" cy="7" r="1.5"/></g>}
+  {(tier===9||tier===14)&&<g fill={palette.light} stroke={palette.deep} strokeWidth=".8"><path d="m6 3 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3ZM42 3l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z"/><circle cx="24" cy="7" r="1.5"/></g>}
+  {tier===14&&<g fill="#76b9a2" stroke={palette.deep} strokeWidth=".7"><path d="m7 22 2 3-2 3-2-3 2-3Zm34 0 2 3-2 3-2-3 2-3Z"/></g>}
  </svg>
 }
 

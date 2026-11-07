@@ -195,7 +195,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
  },[state,clock,productionId])
  function completeResale(result:FarmResaleResult){
   if(result.state===currentState.current){setMessage(result.message);setProductionMessage(result.message);return}
-  setState(result.state);setHistory([]);setClock(farmNow());finishTool();setProductionId(null);setWarehouseOpen(false);setOrientationId(null);setSelected(null);setMessage(result.message);setProductionMessage('');setEffect(null);setPurchaseReceipt(null)
+  setState(result.state);setHistory([]);setClock(farmNow());finishTool();setProductionId(null);setWarehouseOpen(false);setOrientationId(null);setSelected(null);setMessage(result.receipt&&topviewItems[result.receipt.kind].group==='건물'?`${topviewItems[result.receipt.kind].name} 건물을 제거했어요.`:result.message);setProductionMessage('');setEffect(null);setPurchaseReceipt(null)
   if(result.receipt){const id=++effectId.current;setResaleReceipt({...result.receipt,id});playSaleSound('farm-resale-'+crypto.randomUUID())}
  }
  function openSaleConfirmation(target:FarmSaleTarget){saleTargetRef.current=target;setSaleTarget(target)}
@@ -572,14 +572,14 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
    </svg></div>
   </div>
   {productionObject&&!editing&&<FarmProductionDialog key={productionObject.id} object={productionObject} state={state} message={productionMessage} onAction={act} onStore={()=>storeBuilding(productionObject.id)} onSell={()=>sellObject(productionObject.id)} lastPurchasedSeed={lastPurchasedSeed} pendingPlots={clearing.length} onClose={()=>{setProductionId(null);setSelected(null)}} onMove={()=>moveFromDialog(productionObject.id)} onFlip={()=>orientObject('flip',productionObject.id)}/>}
-  <ConfirmDialog open={!!saleTarget} onOpenChange={open=>{if(!open)closeSaleConfirmation()}} illustration="sale" title={saleTarget?`${topviewItems[saleTarget.kind].name} 1개를 판매하시겠습니까?`:''} description={<span className="block space-y-2"><span className="block">구매가의 50%인 <FarmGold amount={saleTarget?farmResalePrice(saleTarget.kind):0}/>를 받아요.</span><span className="block">판매하면 보유 목록에서 사라지며 되돌릴 수 없어요.</span></span>} confirmLabel="판매하기" onConfirm={confirmSale}/>
+  <ConfirmDialog open={!!saleTarget} onOpenChange={open=>{if(!open)closeSaleConfirmation()}} illustration="sale" title={saleTarget?`${topviewItems[saleTarget.kind].name} 1개를 ${topviewItems[saleTarget.kind].group==='건물'?'제거':'판매'}하시겠습니까?`:''} description={<span className="block space-y-2"><span className="block">구매가의 50%인 <FarmGold amount={saleTarget?farmResalePrice(saleTarget.kind):0}/>를 받아요.</span><span className="block">{saleTarget&&topviewItems[saleTarget.kind].group==='건물'?'제거':'판매'}하면 보유 목록에서 사라지며 되돌릴 수 없어요.</span></span>} confirmLabel={saleTarget&&topviewItems[saleTarget.kind].group==='건물'?'제거하기':'판매하기'} onConfirm={confirmSale}/>
   {effect&&<FarmActionEffect effect={effect}/>}
   {cookbookOpen&&<FarmCookbook state={state} onClose={()=>setCookbookOpen(false)} onNavigate={navigateCookbook}/>}
   {warehouseOpen&&<FarmWarehouse onMove={warehouseObject?()=>moveFromDialog(warehouseObject.id):undefined} onFlip={warehouseObject?()=>orientObject('flip',warehouseObject.id):undefined} simulation={state.simulation} state={state} object={warehouseObject} now={clock} onAction={warehouseAction} onStore={warehouseObject?()=>storeBuilding(warehouseObject.id):undefined} onClose={()=>setWarehouseOpen(false)}/>}
   <LandPurchaseDialog open={landBuyOpen} gold={state.gold} onOpenChange={setLandBuyOpen} onBuy={buyLand}/>
   <FarmSeedPicker open={seedMenu} simulation={state.simulation} onClose={()=>setSeedMenu(false)} onSelect={startPlanting}/>
   {goldSpend.effect}
-  {resaleReceipt&&<FarmGoldEffect id={resaleReceipt.id} amount={resaleReceipt.gold} label={topviewItems[resaleReceipt.kind].name+' ×'+resaleReceipt.quantity+' 판매'}/>}
+  {resaleReceipt&&<FarmGoldEffect id={resaleReceipt.id} amount={resaleReceipt.gold} label={topviewItems[resaleReceipt.kind].name+' ×'+resaleReceipt.quantity+(topviewItems[resaleReceipt.kind].group==='건물'?' 제거':' 판매')}/>}
   <FarmPurchaseEffect receipt={purchaseReceipt} onDismiss={dismissPurchase}/>
   {shopOpen&&<FarmShop focusKind={shopFocus} state={state} initialTab={shopTab} onClose={()=>setShopOpen(false)} onBuy={purchaseItem} onBuyTiles={purchaseTiles}/>}
   {tilePickerOpen&&<FarmTilePicker state={state} onClose={()=>setTilePickerOpen(false)} onSelect={tile=>{setSelectedTile(tile);setTilePickerOpen(false);setGrid(true);choose('tile-place')}} onBuy={()=>openFarmShop('타일')}/>}

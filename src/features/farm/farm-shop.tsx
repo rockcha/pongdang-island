@@ -6,7 +6,7 @@ import {FarmTerrainBadge} from './terrain-badge'
 import {useState,useEffect,useRef} from 'react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import {TopviewArt} from './topview-art'
-import {farmCanPurchase} from './farm-simulation'
+import {farmCanPurchase,farmOwnedCount} from './farm-simulation'
 import {FarmShopItemPurchase} from './shop-item-purchase'
 import {FarmBuildingProducts} from './building-products'
 import {Info} from 'lucide-react'
@@ -33,6 +33,7 @@ export function FarmShop({state,initialTab='건물',focusKind,onClose,onBuy,onBu
   <div className="farm-shop-body">{tab==='타일'?<TileShopPanel state={state} onBuy={(quantity,tile)=>showFeedback(onBuyTiles(quantity,tile))}/>:<div className="farm-shop-grid">{(Object.entries(topviewItems) as [FarmTool,typeof topviewItems[FarmTool]][]).filter(([kind,item])=>kind!=='plot'&&!isRetiredTradeBuilding(kind)&&!isBasicFarmBuilding(kind)&&item.group===tab&&(categories[tab]==='전체'||farmShopCategory(kind,tab)===categories[tab])).sort((a,b)=>a[1].price-b[1].price||a[1].name.localeCompare(b[1].name,'ko')).map(([kind,item])=>{
    const owned=!farmCanPurchase(state,kind)
    return <article ref={kind===focusKind?focusRef:undefined} data-highlighted={kind===focusKind||undefined} key={kind} className="farm-shop-card" aria-label={item.name} data-owned={owned}>
+    {item.group==='건물'&&<span className="farm-shop-owned-count" aria-label={`${item.name} 보유 ${farmOwnedCount(state,kind)}개`} title="배치한 건물과 보관함의 건물을 합한 수량">보유 {farmOwnedCount(state,kind)}</span>}
     {item.group==='건물'&&<button className="farm-shop-info-button" aria-label={`${item.name} 설명`} onClick={()=>setInfoKind(kind)}><Info size={18}/></button>}
     <span className="farm-item-art"><TopviewArt kind={kind} compact/>{item.group==='꾸미기'&&<FarmTerrainBadge terrain={farmPlacementTerrain(kind)}/>}</span><strong>{item.name}</strong>
     {item.group==='꾸미기'&&<small className="farm-decoration-meta">{item.w}×{item.h}</small>}

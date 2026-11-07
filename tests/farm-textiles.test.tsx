@@ -6,7 +6,7 @@ import sharp from 'sharp'
 import {initialTopview,type FarmTool,type TopviewState} from '@/features/farm/topview-model'
 import {simulateFarm,farmBuildingStorageError,farmGoods} from '@/features/farm/farm-simulation'
 import {farmCrops,cropArt} from '@/features/farm/crop-catalog'
-import {farmRecipes,finishedHouseholdGoods,finishedFoods,isDeliverableGood,isFinishedFood,deliverableGoods} from '@/features/farm/food-catalog'
+import {farmRecipes,finishedHouseholdGoods,finishedFoods,isDeliverableGood,isFinishedFood,deliverableGoods,primaryGoods} from '@/features/farm/food-catalog'
 import {textileProducts,textileRecipes} from '@/features/farm/textile-catalog'
 import {FoodSalePanel} from '@/features/farm/food-sale-panel'
 import {FarmCookbook} from '@/features/farm/cookbook'
@@ -92,24 +92,25 @@ it('keeps a finished textile job waiting when the warehouse is full',()=>{
  expect(collect(s,100).simulation.inventory.cottonFabric).toBe(2)
 })
 
-it('accepts only finished household goods, preserves food categories and rolls back mixed failed sales',()=>{
+it('accepts household goods and primary materials, excludes intermediate fibers and rolls back failed sales',()=>{
  const s=facilities()
  expect(finishedHouseholdGoods).toEqual(['towel','scarf','pongiDoll','blanket'])
  expect(finishedFoods).not.toContain('towel')
  for(const id of finishedHouseholdGoods){expect(isDeliverableGood(id)).toBe(true);expect(isFinishedFood(id)).toBe(false);s.simulation.inventory[id]=1}
- for(const id of ['cotton','wool','cottonFabric','woolYarn','felt'] as const){s.simulation.inventory[id]=1;expect(simulateFarm(s,2,{type:'marketSell',good:id,quantity:1},0).state).toBe(s)}
- expect(goodsForDelivery(s.simulation.inventory)).toEqual(finishedHouseholdGoods)
+ for(const id of ['cotton','wool'] as const){s.simulation.inventory[id]=1;expect(simulateFarm(s,2,{type:'marketSell',good:id,quantity:1},0).state).not.toBe(s)}
+ for(const id of ['cottonFabric','woolYarn','felt'] as const){s.simulation.inventory[id]=1;expect(simulateFarm(s,2,{type:'marketSell',good:id,quantity:1},0).state).toBe(s)}
+ expect(goodsForDelivery(s.simulation.inventory)).toEqual([...finishedHouseholdGoods,...primaryGoods.filter(good=>s.simulation.inventory[good]>0)])
  const failed=simulateFarm(s,2,{type:'marketSellBatch',items:[{good:'towel',quantity:1},{good:'scarf',quantity:2}]},0)
  expect(failed.state).toBe(s)
  const done=simulateFarm(s,2,{type:'marketSellBatch',items:finishedHouseholdGoods.map(good=>({good,quantity:1}))},0).state
  expect(done.gold-s.gold).toBe(1300)
- expect(deliverableGoods.length).toBe(finishedFoods.length+4)
+ expect(deliverableGoods.length).toBe(finishedFoods.length+4+primaryGoods.length)
 })
 
 it('keeps household goods profitable, with long final production times and no zero-cost ingredient loop',()=>{
  const costs={cotton:5,wool:2,cottonFabric:10,woolYarn:4,felt:4}
  for(const id of finishedHouseholdGoods){const r=textileRecipes[id],cost=r.ingredients.reduce((sum,i)=>sum+costs[i.good]*i.quantity,0);expect(textileProducts[id].price).toBeGreaterThan(cost);expect(r.seconds).toBeGreaterThanOrEqual(3600);expect(r.seconds).toBeLessThanOrEqual(10800)}
- expect(farmCrops.cotton.seedPrice).toBe(farmCrops.cotton.yield*farmCrops.cotton.sellPrice)
+ expect(farmCrops.cotton.seedPrice).toBeLessThan(farmCrops.cotton.yield*farmCrops.cotton.sellPrice)
  expect(farmShopCategory('textileMill','건물')).toBe('생활용품')
  expect(farmShopCategory('sewingWorkshop','건물')).toBe('생활용품')
 })

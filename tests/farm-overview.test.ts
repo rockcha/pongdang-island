@@ -81,8 +81,13 @@ it('does not advertise ready products as collectible while the warehouse is unav
  const state=initialTopview()
  state.simulation.animalJobs[4]=now
  state.simulation.upgradeJobs[26]={startedAt:now,readyAt:now+10000,fromLevel:1}
+ expect(farmOverview(state,now)).toMatchObject({ready:1,blocked:0})
+ expect(farmOverview(state,now).orders.every(order=>order.warehouseReady)).toBe(true)
+ const objects=state.objects
+ state.objects=objects.filter(object=>object.kind!=='warehouse')
  expect(farmOverview(state,now)).toMatchObject({ready:0,blocked:1})
  expect(farmOverview(state,now).orders.every(order=>!order.warehouseReady)).toBe(true)
+ state.objects=objects
  state.simulation.upgradeJobs={}
  state.simulation.inventory.wheat=0
  state.simulation.inventory.wheat=warehouseCapacity(state)-farmStorageUsage(state.simulation)

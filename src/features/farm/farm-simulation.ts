@@ -177,7 +177,8 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
   }
   case 'sell':
   case 'marketSell':{
-   if(source.kind!=='store'||!isDeliverableGood(action.good))return reject('농장 납품소에는 완성된 식품과 생활용품만 납품할 수 있어요.')
+   if(source.kind!=='store'||!isDeliverableGood(action.good))return reject('농장 납품소에는 1차 생산물·식품·생활용품을 납품할 수 있어요.')
+   if(!Number.isSafeInteger(action.quantity)||action.quantity<1)return reject('판매 수량을 확인해주세요.')
    const proceeds=farmGoods[action.good].price*action.quantity
    if(inventory[action.good]<action.quantity)return reject('보유 수량이 부족해요.')
    if(proceeds<=0||!Number.isSafeInteger(proceeds)||!Number.isSafeInteger(gold+proceeds))return reject('판매 금액을 확인해주세요.')

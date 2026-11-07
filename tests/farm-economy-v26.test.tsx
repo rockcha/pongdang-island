@@ -8,7 +8,7 @@ import {farmPurchaseLimit,farmGoods,simulateFarm,type FarmGood} from '@/features
 import {farmTiles} from '@/features/farm/tile-catalog'
 import {farmCrops,cropKinds} from '@/features/farm/crop-catalog'
 import {farmAnimals,ANIMAL_PURCHASE_SECONDS} from '@/features/farm/animal-catalog'
-import {farmRecipes,farmProducts,recipeIds,millProducts,millRecipes,isFinishedFood,finishedFoods} from '@/features/farm/food-catalog'
+import {farmRecipes,farmProducts,recipeIds,millProducts,millRecipes,isFinishedFood,isDeliverableGood,finishedFoods} from '@/features/farm/food-catalog'
 import {FarmShop} from '@/features/farm/farm-shop'
 import {FarmTradePanel} from '@/features/farm/market-panel'
 import {TopviewArt} from '@/features/farm/topview-art'
@@ -58,7 +58,7 @@ it('charges a full harvest for milling and rewards additional ingredients and pr
  expect(farmProducts.duckFriedRice.price).toBeGreaterThan(farmProducts.duckPotatoStirFry.price)
  expect(farmProducts.cornCookies.price).toBeGreaterThan(farmProducts.butterCookies.price)
 })
-it.each(Object.keys(farmGoods).filter(good=>!isFinishedFood(good)) as FarmGood[])('refuses %s at the finished-food delivery counter without changing stock or gold',good=>{
+it.each(Object.keys(farmGoods).filter(good=>!isDeliverableGood(good)) as FarmGood[])('refuses %s at the delivery counter without changing stock or gold',good=>{
  const state=initialTopview();state.simulation.inventory[good]=10
  const result=simulateFarm(state,2,{type:'marketSell',good,quantity:1},0)
  expect(result.state).toBe(state);expect(result.effect).toBeUndefined()

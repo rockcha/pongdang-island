@@ -16,3 +16,4 @@
 .farm-food-card[data-empty=true]{opacity:1;background:#fcf7ef}
 .farm-sim-body .farm-food-card .farm-food-select:disabled{opacity:1;color:#927456}
 .farm-food-card[data-empty=true] .farm-good-icon{opacity:.6}
+.farm-food-sale .farm-product-categories>button{min-width:0;padding-inline:6px;white-space:nowrap}

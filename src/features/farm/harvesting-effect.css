@@ -1,0 +1,5 @@
+.farm-harvesting-sickle{transform-box:fill-box;transform-origin:75% 85%;animation:farm-harvesting-cut 1s ease-in-out infinite}
+.farm-harvesting-puff{transform-box:fill-box;transform-origin:50% 85%;animation:farm-harvesting-puff 1s ease-out infinite}
+@keyframes farm-harvesting-cut{0%{opacity:0;transform:translate(7px,-6px) rotate(28deg)}15%{opacity:1}50%{transform:translate(-7px,5px) rotate(-45deg)}70%{opacity:1}100%{opacity:0;transform:translate(3px,-7px) rotate(20deg)}}
+@keyframes farm-harvesting-puff{0%,30%{opacity:0;transform:scale(.65)}55%{opacity:.4;transform:scale(.9)}100%{opacity:0;transform:translateY(-5px) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.farm-harvesting-sickle{animation:none;opacity:.8}.farm-harvesting-puff{animation:none;opacity:0}}

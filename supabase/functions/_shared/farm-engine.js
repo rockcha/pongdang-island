@@ -238,7 +238,7 @@ var farmAnimals = {
 		description: "양털을 생산해요. 방직 공방에서 털실과 펠트로 가공하고 재봉 공방에서 생활용품을 만들어요."
 	}
 };
-Object.keys(farmAnimals).map((animal) => farmAnimals[animal].product);
+var animalGoods = Object.keys(farmAnimals).map((animal) => farmAnimals[animal].product);
 var isFarmAnimal = (kind) => Object.hasOwn(farmAnimals, kind);
 //#endregion
 //#region src/features/farm/farm-duration.ts
@@ -363,7 +363,7 @@ var farmCrops = {
 	sugarcane: {
 		name: "사탕수수",
 		seedPrice: 50,
-		sellPrice: 5,
+		sellPrice: 10,
 		yield: 10,
 		growSeconds: 7200,
 		researchPrice: 2e3,
@@ -373,7 +373,7 @@ var farmCrops = {
 	wheat: {
 		name: "밀",
 		seedPrice: 12,
-		sellPrice: 4,
+		sellPrice: 5,
 		yield: 3,
 		growSeconds: 600,
 		researchPrice: 0,
@@ -383,7 +383,7 @@ var farmCrops = {
 	potato: {
 		name: "감자",
 		seedPrice: 20,
-		sellPrice: 4,
+		sellPrice: 6,
 		yield: 5,
 		growSeconds: 1800,
 		researchPrice: 0,
@@ -393,7 +393,7 @@ var farmCrops = {
 	sweetPotato: {
 		name: "고구마",
 		seedPrice: 45,
-		sellPrice: 5,
+		sellPrice: 9,
 		yield: 9,
 		growSeconds: 5400,
 		researchPrice: 2400,
@@ -403,7 +403,7 @@ var farmCrops = {
 	carrot: {
 		name: "당근",
 		seedPrice: 16,
-		sellPrice: 4,
+		sellPrice: 6,
 		yield: 4,
 		growSeconds: 1200,
 		researchPrice: 0,
@@ -413,7 +413,7 @@ var farmCrops = {
 	corn: {
 		name: "옥수수",
 		seedPrice: 24,
-		sellPrice: 4,
+		sellPrice: 7,
 		yield: 6,
 		growSeconds: 2700,
 		researchPrice: 1800,
@@ -423,7 +423,7 @@ var farmCrops = {
 	strawberry: {
 		name: "딸기",
 		seedPrice: 72,
-		sellPrice: 6,
+		sellPrice: 14,
 		yield: 12,
 		growSeconds: 14400,
 		researchPrice: 5e3,
@@ -433,7 +433,7 @@ var farmCrops = {
 	paddy: {
 		name: "벼",
 		seedPrice: 32,
-		sellPrice: 4,
+		sellPrice: 7,
 		yield: 8,
 		growSeconds: 3600,
 		researchPrice: 1400,
@@ -443,7 +443,7 @@ var farmCrops = {
 	tomato: {
 		name: "토마토",
 		seedPrice: 60,
-		sellPrice: 5,
+		sellPrice: 11,
 		yield: 12,
 		growSeconds: 10800,
 		researchPrice: 3200,
@@ -453,7 +453,7 @@ var farmCrops = {
 	cotton: {
 		name: "목화",
 		seedPrice: 40,
-		sellPrice: 5,
+		sellPrice: 8,
 		yield: 8,
 		growSeconds: 3600,
 		researchPrice: 1800,
@@ -522,7 +522,7 @@ var farmProducts = {
 	},
 	honey: {
 		name: "꿀",
-		price: 50,
+		price: 15,
 		image: "/farm/art/honey-v1/honey.png"
 	},
 	honeyMilk: {
@@ -627,12 +627,12 @@ var farmProducts = {
 	},
 	egg: {
 		name: "달걀",
-		price: 2,
+		price: 8,
 		image: goodArt("egg")
 	},
 	milk: {
 		name: "우유",
-		price: 2,
+		price: 12,
 		image: goodArt("milk")
 	},
 	butter: {
@@ -697,12 +697,12 @@ var farmProducts = {
 	},
 	duckEgg: {
 		name: "오리알",
-		price: 2,
+		price: 12,
 		image: "/farm/art/v2/goods/duckEgg.png"
 	},
 	wool: {
 		name: "양털",
-		price: 2,
+		price: 16,
 		image: goodArt("wool")
 	},
 	duckEggTart: {
@@ -1385,7 +1385,16 @@ var farmRecipes = {
 var recipeIds = Object.keys(farmRecipes).filter((id) => !("retired" in farmRecipes[id]));
 var finishedFoods = recipeIds.filter((id) => "food" in farmRecipes[id] && farmRecipes[id].food);
 var finishedHouseholdGoods = recipeIds.filter((id) => "household" in farmRecipes[id] && farmRecipes[id].household);
-var deliverableGoods = [...finishedFoods, ...finishedHouseholdGoods];
+var primaryGoods = [
+	...cropKinds,
+	...animalGoods,
+	"honey"
+];
+var deliverableGoods = [
+	...finishedFoods,
+	...finishedHouseholdGoods,
+	...primaryGoods
+];
 var isDeliverableGood = (id) => deliverableGoods.some((good) => good === id);
 [
 	...millProducts,
@@ -1749,7 +1758,8 @@ function simulateFarm(state, sourceId, action, now) {
 		}
 		case "sell":
 		case "marketSell": {
-			if (source.kind !== "store" || !isDeliverableGood(action.good)) return reject("농장 납품소에는 완성된 식품과 생활용품만 납품할 수 있어요.");
+			if (source.kind !== "store" || !isDeliverableGood(action.good)) return reject("농장 납품소에는 1차 생산물·식품·생활용품을 납품할 수 있어요.");
+			if (!Number.isSafeInteger(action.quantity) || action.quantity < 1) return reject("판매 수량을 확인해주세요.");
 			const proceeds = farmGoods[action.good].price * action.quantity;
 			if (inventory[action.good] < action.quantity) return reject("보유 수량이 부족해요.");
 			if (proceeds <= 0 || !Number.isSafeInteger(proceeds) || !Number.isSafeInteger(gold + proceeds)) return reject("판매 금액을 확인해주세요.");

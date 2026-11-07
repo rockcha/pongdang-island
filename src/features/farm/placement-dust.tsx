@@ -1,8 +1,8 @@
 import {TILE} from './topview-model'
 import './placement-dust.css'
 
-export function FarmPlacementDust({x,y,w,h}:{x:number;y:number;w:number;h:number}){
- return <g pointerEvents="none" aria-hidden="true" data-placement-dust="true" transform={`translate(${(x+w/2)*TILE} ${(y+h)*TILE-4})`}>
+export function FarmPlacementDust({x,y,w,h,soft=false}:{x:number;y:number;w:number;h:number;soft?:boolean}){
+ return <g pointerEvents="none" aria-hidden="true" data-placement-dust="true" opacity={soft ? .6 : 1} transform={`translate(${(x+w/2)*TILE} ${(y+h)*TILE-4})`}>
   <g className="farm-placement-dust">
    <ellipse className="farm-placement-dust-ring" rx={w*TILE*.48} ry="7" fill="none" stroke="#e7d1a6" strokeWidth="3"/>
    {[-1,1].map(side=><g key={side} transform={`scale(${side} 1)`}>

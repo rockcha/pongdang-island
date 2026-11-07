@@ -3,6 +3,7 @@ import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
+import * as trialInventory from '@/features/farm/trial-inventory'
 
 afterEach(()=>{cleanup();vi.restoreAllMocks();vi.useRealTimers()})
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
@@ -79,15 +80,18 @@ it('does not allow undo to cross a land purchase and refunds no gold when land i
  expect(screen.getByRole('button',{name:'한 단계 되돌리기'})).toHaveProperty('disabled',true)
  click('땅 회수하기');pointer('pointerdown',3,4);pointer('pointerup',3,4)
  expect(screen.getByRole('button',{name:'땅 6칸 보유'})).toBeTruthy()
- expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,700')
+ expect(screen.getByRole('button',{name:'테스트 골드 안내'}).textContent).toContain('14,400')
 })
 it('preserves research completion that occurs during a land gesture',()=>{
  vi.useFakeTimers()
+ const state=trialInventory.initialFarmTrial(),now=Date.now()
+ state.objects.push({id:100,kind:'lab',x:14,y:6})
+ state.simulation.researchJob={crop:'corn',labId:100,startedAt:now,readyAt:now+3000}
+ vi.spyOn(trialInventory,'initialFarmTrial').mockImplementation(()=>structuredClone(state))
  const {pointer}=setup()
- click('종자 연구소 (12,9)');click('감자 연구 · 30 G');expect(screen.queryByRole('dialog')).toBeNull();act(()=>vi.advanceTimersByTime(200))
- buyFive();pointer('pointerdown',3,4);act(()=>vi.advanceTimersByTime(3000));pointer('pointerup',3,4)
- click('완료');click('종자 상점 (8,6)')
- click('감자 선택')
- expect(screen.getByRole('button',{name:'감자 종자 구매'})).toBeTruthy()
- expect(document.querySelector('.top-farm-gold')?.textContent).toContain('14,720')
+ buyFive();pointer('pointerdown',3,4);act(()=>vi.advanceTimersByTime(3001));pointer('pointerup',3,4)
+ click('완료');click('종자 상점 (9,8)')
+ click('옥수수 종자 선택')
+ expect(screen.getByRole('button',{name:'옥수수 종자 구매'})).toBeTruthy()
+ expect(document.querySelector('.top-farm-gold')?.textContent).toContain('14,500')
 })

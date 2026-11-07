@@ -8,7 +8,7 @@ const subtitles:Partial<Record<FarmTool,string>>={
  barn:'젖소·양을 키우는 사육 시설',
  coop:'닭·오리를 키우는 사육 시설',
  seedShop:'밭에 심을 종자를 구매하는 상점',
- store:'완성된 식품과 생활용품을 납품하고 골드를 받는 곳',
+ store:'1차 생산물·식품·생활용품을 납품하고 골드를 받는 곳',
  butcher:'보관한 동물을 고기로 바꾸는 곳',
  waterwheel:'인접 생산 건물의 제작 시간을 레벨당 1분 단축',
  warehouse:'수확물과 생산품을 보관하는 창고',

@@ -29,5 +29,5 @@ it('sells atomically, rejects insufficient stock and cannot repeat the same sale
  expect(done.state.simulation.inventory.yogurt).toBe(0)
  expect(simulateFarm(done.state,id,action,0).state).toBe(done.state)
  expect(simulateFarm(state,id,{...action,items:[action.items[0],{good:'yogurt',quantity:3}]},0).state).toBe(state)
- expect(simulateFarm(state,id,{type:'marketSellBatch',items:[{good:'wheat',quantity:1}]},0).state).toBe(state)
+ expect(simulateFarm(state,id,{type:'marketSellBatch',items:[{good:'wheatSeed',quantity:1}]},0).state).toBe(state)
 })

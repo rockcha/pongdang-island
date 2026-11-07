@@ -3,7 +3,7 @@ import './product-categories.css'
 import {FarmGold} from './farm-gold'
 import {useState} from 'react'
 import {Check} from 'lucide-react'
-import {deliverableGoods,finishedFoods,finishedHouseholdGoods,isFinishedFood,type DeliverableGood} from './food-catalog'
+import {deliverableGoods,primaryGoods,isPrimaryGood,finishedFoods,finishedHouseholdGoods,isFinishedFood,type DeliverableGood} from './food-catalog'
 import {farmGoods,type FarmSimAction} from './farm-simulation'
 import {warehouseAvailable} from './building-upgrades'
 import {FarmGoodIcon} from './farm-good-icon'
@@ -17,13 +17,14 @@ export function FoodSalePanel({state,onAction}:{state:TopviewState;onAction:(act
  const {setQuantity:setEditedQuantity,quantityInput,quantityValid}=useFarmQuantity(1)
  const inputReady=editing===null||!(selected[editing]??0)||quantityValid
  function updateQuantity(id:DeliverableGood,count:number){setEditedQuantity(count);setSelected(old=>({...old,[id]:count}))}
- const [category,setCategory]=useState<'food'|'household'>(()=>finishedFoods.some(id=>state.simulation.inventory[id]>0)||!finishedHouseholdGoods.some(id=>state.simulation.inventory[id]>0)?'food':'household')
- const inventory=state.simulation.inventory,goods=goodsByPrice.filter(id=>category==='food'?isFinishedFood(id):!isFinishedFood(id)),available=goods.filter(id=>inventory[id]>0),visible=ownedOnly?available:goods
+ const [category,setCategory]=useState<'primary'|'food'|'household'>(()=>finishedFoods.some(id=>state.simulation.inventory[id]>0)?'food':finishedHouseholdGoods.some(id=>state.simulation.inventory[id]>0)?'household':primaryGoods.some(id=>state.simulation.inventory[id]>0)?'primary':'food')
+ const inventory=state.simulation.inventory,goods=goodsByPrice.filter(id=>category==='primary'?isPrimaryGood(id):category==='food'?isFinishedFood(id):finishedHouseholdGoods.some(good=>good===id)),available=goods.filter(id=>inventory[id]>0),visible=ownedOnly?available:goods
  const items=deliverableGoods.flatMap(good=>{const quantity=Math.min(inventory[good],selected[good]??0);return quantity>0?[{good,quantity}]:[]})
  const quantity=items.reduce((sum,item)=>sum+item.quantity,0),total=items.reduce((sum,item)=>sum+item.quantity*farmGoods[item.good].price,0)
  const all=available.length>0&&available.every(id=>(selected[id]??0)===inventory[id])
  return <section className="farm-food-sale" aria-label="상품 판매">
-  <nav className="farm-product-categories" aria-label="납품 상품 분류"><button aria-pressed={category==='food'} onClick={()=>setCategory('food')}>식품</button><button aria-pressed={category==='household'} onClick={()=>setCategory('household')}>생활용품</button></nav>
+  <nav className="farm-product-categories" aria-label="납품 상품 분류"><button aria-pressed={category==='primary'} onClick={()=>setCategory('primary')}>1차 생산물</button><button aria-pressed={category==='food'} onClick={()=>setCategory('food')}>식품</button><button aria-pressed={category==='household'} onClick={()=>setCategory('household')}>생활용품</button></nav>
+  {category==='primary'&&<p className="farm-sim-caption">여분은 바로 팔고, 재료는 남겨두세요. 식품·생활용품으로 만들면 더 높은 값에 판매할 수 있어요.</p>}
   <div className="farm-food-filters"><label><input type="checkbox" checked={ownedOnly} onChange={e=>setOwnedOnly(e.target.checked)}/>보유한 상품만 <span>{available.length}</span></label><button disabled={!available.length} onClick={()=>setSelected(previous=>{const next={...previous};for(const id of available){if(all)delete next[id];else next[id]=inventory[id]}return next})}>{all?'선택 해제':'전체 선택'}</button></div>
   <div className="farm-food-grid">
    {!visible.length&&<p className="farm-food-empty">보유한 상품이 없어요.<br/>필터를 끄면 판매할 수 있는 상품을 볼 수 있어요.</p>}

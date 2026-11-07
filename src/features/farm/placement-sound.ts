@@ -2,11 +2,11 @@ import {createGameAudio} from '@/features/fishing/game-audio'
 import {readFishingSound,fishingSoundChanged,fishingSoundKey} from '@/features/fishing/sound-preference'
 
 let stopPrevious:(()=>void)|undefined
-export function playFarmPlacementSound(){
+export function playFarmPlacementSound(volume=.4){
  if(typeof window==='undefined'||!readFishingSound()||document.hidden)return
  stopPrevious?.()
  try{
-  const audio=createGameAudio('/sounds/farm-place.wav');audio.volume=.4
+  const audio=createGameAudio('/sounds/farm-place.wav');audio.volume=Math.max(0,Math.min(1,volume))
   let stopped=false
   const mute=()=>{if(!readFishingSound()||document.hidden)stop()}
   const storage=(event:StorageEvent)=>{if(event.key===fishingSoundKey||event.key===null)mute()}

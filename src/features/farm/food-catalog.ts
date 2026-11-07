@@ -1,7 +1,7 @@
 import {farmWorkshops,type ProcessingBuilding} from './workshop-catalog'
 export type {ProcessingBuilding} from './workshop-catalog'
-import type {CropKind} from './crop-catalog'
-import type {FarmAnimal} from './animal-catalog'
+import {cropKinds,type CropKind} from './crop-catalog'
+import {animalGoods,type FarmAnimal} from './animal-catalog'
 import {meatGoods} from './butcher-catalog'
 import {textileProducts,textileRecipes} from './textile-catalog'
 
@@ -14,7 +14,7 @@ export const farmProducts={
  roastedCarrot:{name:'구운 당근',price:50,image:'/farm/art/starter-foods-v1/roastedCarrot.png'},
  steamedCorn:{name:'찐옥수수',price:60,image:'/farm/art/starter-foods-v1/steamedCorn.png'},
  tomatoSalad:{name:'토마토 샐러드',price:100,image:'/farm/art/starter-foods-v1/tomatoSalad.png'},
- honey:{name:'꿀',price:50,image:'/farm/art/honey-v1/honey.png'},
+ honey:{name:'꿀',price:15,image:'/farm/art/honey-v1/honey.png'},
  honeyMilk:{name:'꿀우유',price:280,image:'/farm/art/honey-v1/honeyMilk.png'},
  honeyCookies:{name:'꿀버터쿠키',price:400,image:'/farm/art/honey-v1/honeyCookies.png'},
  honeyCake:{name:'벌꿀 케이크',price:840,image:'/farm/art/honey-v1/honeyCake.png'},
@@ -35,8 +35,8 @@ export const farmProducts={
  sugar:{name:'설탕',price:15,image:goodArt('sugar')},
  flour:{name:'밀가루',price:12,image:goodArt('flour')},
  cornFlour:{name:'옥수수가루',price:12,image:'/farm/art/v1/goods/cornFlour-v2.png'},
- egg:{name:'달걀',price:2,image:goodArt('egg')},
- milk:{name:'우유',price:2,image:goodArt('milk')},
+ egg:{name:'달걀',price:8,image:goodArt('egg')},
+ milk:{name:'우유',price:12,image:goodArt('milk')},
  butter:{name:'버터',price:6,image:goodArt('butter')},
  strawberryMilk:{name:'딸기우유',price:540,image:goodArt('strawberryMilk')},
  eggCookies:{name:'달걀과자',price:150,image:goodArt('eggCookies')},
@@ -49,8 +49,8 @@ export const farmProducts={
  cheese:{name:'치즈',price:8,image:'/farm/art/v1/goods/cheese-v2.png'},
  cream:{name:'생크림',price:6,image:'/farm/art/v1/goods/cream-v2.png'},
  yogurt:{name:'요구르트',price:160,image:'/farm/art/v1/goods/yogurt-v2.png'},
- duckEgg:{name:'오리알',price:2,image:'/farm/art/v2/goods/duckEgg.png'},
- wool:{name:'양털',price:2,image:goodArt('wool')},
+ duckEgg:{name:'오리알',price:12,image:'/farm/art/v2/goods/duckEgg.png'},
+ wool:{name:'양털',price:16,image:goodArt('wool')},
  duckEggTart:{name:'에그타르트',price:570,image:'/farm/art/v2/goods/duckEggTart.png'},
  carrotCake:{name:'당근케이크',price:680,image:goodArt('carrotCake')},
  rice:{name:'쌀',price:12,image:goodArt('rice')},
@@ -117,7 +117,9 @@ export const finishedFoods=recipeIds.filter(id=>'food' in farmRecipes[id]&&farmR
 export const isFinishedFood=(id:unknown):id is FinishedFood=>finishedFoods.some(food=>food===id)
 export type FinishedHouseholdGood={[K in RecipeId]:typeof farmRecipes[K] extends {household:true}?K:never}[RecipeId]
 export const finishedHouseholdGoods=recipeIds.filter(id=>'household' in farmRecipes[id]&&farmRecipes[id].household) as FinishedHouseholdGood[]
-export const deliverableGoods=[...finishedFoods,...finishedHouseholdGoods]
+export const primaryGoods=[...cropKinds,...animalGoods,'honey'] as const
+export const isPrimaryGood=(id:unknown):id is typeof primaryGoods[number]=>primaryGoods.some(good=>good===id)
+export const deliverableGoods=[...finishedFoods,...finishedHouseholdGoods,...primaryGoods]
 export type DeliverableGood=typeof deliverableGoods[number]
 export const isDeliverableGood=(id:unknown):id is DeliverableGood=>deliverableGoods.some(good=>good===id)
 export const processedGoods=[...millProducts,...meatGoods,...Object.keys(farmRecipes) as RecipeId[]] as const

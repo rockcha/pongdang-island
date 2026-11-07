@@ -20,6 +20,10 @@ it('uses one short sound, interrupts repeated impacts and releases finished audi
  expect(bytes.toString('ascii',0,4)).toBe('RIFF')
  expect(bytes.readUInt32LE(40)/bytes.readUInt32LE(28)).toBeLessThan(.2)
 })
+it('supports a softer land placement impact',()=>{
+ playFarmPlacementSound(.22)
+ expect(players[0].volume).toBe(.22)
+})
 it('respects mute and immediately stops when sound is disabled',()=>{
  saveFishingSound(false);playFarmPlacementSound();expect(players).toHaveLength(0)
  saveFishingSound(true);playFarmPlacementSound();expect(players).toHaveLength(1)

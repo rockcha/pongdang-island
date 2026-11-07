@@ -319,7 +319,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
   setMessage(count?`${farmCrops[selectedSeed].name} ${count}칸을 심었어요.`:'빈 밭과 보유 종자를 확인해주세요.')
  }
  async function startHarvest(cells:LandCell[]){
-  if(!warehouseAvailable(currentState.current)){setMessage('창고 업그레이드 중에는 수확물을 보관할 수 없어요. 완료되거나 취소한 뒤 수확해주세요.');return}
+  if(!warehouseAvailable(currentState.current)){setMessage('수확물을 보관할 창고를 먼저 배치해주세요.');return}
   setProductionId(null);setSelected(null)
   const before=currentState.current,jobs=[...harvestingRef.current],now=farmNow();let next=before,rejected=''
   for(const cell of cells){const plot=objectAt(before,cell.x,cell.y),crop=plot&&before.simulation.cropJobs[plot.id]

@@ -8,7 +8,8 @@ export const isUpgradeable=(kind:FarmTool)=>kind==='waterwheel'||kind==='warehou
 export const buildingUpgradeCost=(kind:FarmTool)=>kind==='waterwheel'||isProductionUpgradeable(kind)?3000:UPGRADE_COST
 export const buildingLevel=(object:TopviewObject)=>Math.max(1,Math.min(MAX_BUILDING_LEVEL,object.level??1))
 export const buildingCapacity=(object:TopviewObject)=>object.kind==='warehouse'?WAREHOUSE_BASE_CAPACITY+(buildingLevel(object)-1)*WAREHOUSE_CAPACITY_PER_LEVEL:object.kind==='office'?4:object.kind==='livestockOffice'?2:0
-export const activeBuildings=(state:TopviewState,kind:FarmTool)=>state.objects.filter(o=>o.kind===kind&&!o.constructionReadyAt&&!state.simulation.upgradeJobs[o.id])
+// Warehouse expansion keeps the completed level usable until the new level is ready.
+export const activeBuildings=(state:TopviewState,kind:FarmTool)=>state.objects.filter(o=>o.kind===kind&&!o.constructionReadyAt&&(kind==='warehouse'||!state.simulation.upgradeJobs[o.id]))
 export const warehouseCapacity=(state:TopviewState)=>activeBuildings(state,'warehouse').reduce((sum,o)=>sum+buildingCapacity(o),0)
 // Each completed ranch adds two slots; capacity is independent of level.
 export const livestockCapacity=(state:TopviewState)=>state.objects.filter(o=>o.kind==='livestockOffice'&&!o.constructionReadyAt).reduce((sum,o)=>sum+buildingCapacity(o),0)

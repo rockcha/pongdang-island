@@ -143,7 +143,7 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
   const jobs={...sim.butcherJobs};delete jobs[sourceId]
   return {state:{...state,simulation:{...sim,butcherJobs:jobs,inventory:{...sim.inventory,[job.good]:sim.inventory[job.good]+job.quantity}}},message:'가공한 고기를 받았어요.',effect:{type:'crafted',good:job.good,quantity:job.quantity}}
  }
- if(['marketSell','sell','beginHarvest','harvest','mill','collectFlour','craft','collectCraft','startAnimal','feed','collectAnimal'].includes(action.type)&&!warehouseAvailable(state))return reject('사용 가능한 창고가 없어요. 업그레이드가 끝나거나 취소한 뒤 이용해주세요.')
+ if(['marketSell','sell','beginHarvest','harvest','mill','collectFlour','craft','collectCraft','startAnimal','feed','collectAnimal'].includes(action.type)&&!warehouseAvailable(state))return reject('사용 가능한 창고가 없어요. 창고를 배치한 뒤 이용해주세요.')
  const inventory={...sim.inventory},next:FarmSimulation={...sim,inventory,animalPurchaseJobs:{...sim.animalPurchaseJobs},cropJobs:{...sim.cropJobs},animalJobs:{...sim.animalJobs},millJobs:{...sim.millJobs},processingJobs:{...sim.processingJobs}}
  let gold=state.gold,message='',place:FarmTool|undefined,effect:FarmEffect|undefined
  if('quantity'in action&&(!Number.isSafeInteger(action.quantity)||action.quantity<1))return reject('수량을 확인해주세요.')

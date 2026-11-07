@@ -121,7 +121,7 @@ var isUpgradeable = (kind) => kind === "waterwheel" || kind === "warehouse" || i
 var buildingUpgradeCost = (kind) => kind === "waterwheel" || isProductionUpgradeable(kind) ? 3e3 : UPGRADE_COST;
 var buildingLevel = (object) => Math.max(1, Math.min(10, object.level ?? 1));
 var buildingCapacity = (object) => object.kind === "warehouse" ? 40 + (buildingLevel(object) - 1) * 20 : object.kind === "office" ? 4 : object.kind === "livestockOffice" ? 2 : 0;
-var activeBuildings = (state, kind) => state.objects.filter((o) => o.kind === kind && !o.constructionReadyAt && !state.simulation.upgradeJobs[o.id]);
+var activeBuildings = (state, kind) => state.objects.filter((o) => o.kind === kind && !o.constructionReadyAt && (kind === "warehouse" || !state.simulation.upgradeJobs[o.id]));
 var warehouseCapacity = (state) => activeBuildings(state, "warehouse").reduce((sum, o) => sum + buildingCapacity(o), 0);
 var livestockCapacity = (state) => state.objects.filter((o) => o.kind === "livestockOffice" && !o.constructionReadyAt).reduce((sum, o) => sum + buildingCapacity(o), 0);
 var warehouseAvailable = (state) => activeBuildings(state, "warehouse").length > 0;
@@ -1685,7 +1685,7 @@ function simulateFarm(state, sourceId, action, now) {
 		"startAnimal",
 		"feed",
 		"collectAnimal"
-	].includes(action.type) && !warehouseAvailable(state)) return reject("사용 가능한 창고가 없어요. 업그레이드가 끝나거나 취소한 뒤 이용해주세요.");
+	].includes(action.type) && !warehouseAvailable(state)) return reject("사용 가능한 창고가 없어요. 창고를 배치한 뒤 이용해주세요.");
 	const inventory = { ...sim.inventory }, next = {
 		...sim,
 		inventory,

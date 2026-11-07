@@ -24,7 +24,7 @@ export function BuildingUpgradePanel({object,state,now,onAction}:{object:Topview
  }
  return <section className="farm-upgrade-panel" aria-label="건물 업그레이드">
   <header><span>Lv. {level} <small>/ {MAX_BUILDING_LEVEL}</small></span></header>
-  <div className="farm-upgrade-work"><span className="farm-upgrade-art" aria-hidden="true"><img src={farmUpgradeArt} alt="" draggable={false}/></span><div><strong>업그레이드 중</strong><small>완료될 때까지 건물 기능을 사용할 수 없어요.</small></div></div>
+  <div className="farm-upgrade-work"><span className="farm-upgrade-art" aria-hidden="true"><img src={farmUpgradeArt} alt="" draggable={false}/></span><div><strong>업그레이드 중</strong><small>{object.kind==='warehouse'?`기존 용량 ${total}개까지 계속 이용할 수 있어요.`:'완료될 때까지 건물 기능을 사용할 수 없어요.'}</small></div></div>
   <div className="farm-sim-progress farm-upgrade-progress" role="progressbar" aria-label="건물 업그레이드 진행" aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{width:progress+'%'}}/></div>
   <div className="farm-upgrade-running"><span>{farmDuration(Math.max(0,Math.ceil((job.readyAt-now)/1000)))} 남음</span><button onClick={()=>onAction({type:'cancelUpgrade'})}>업그레이드 취소</button></div><p>취소하면 {cost.toLocaleString()}골드를 돌려받아요.</p>
  </section>

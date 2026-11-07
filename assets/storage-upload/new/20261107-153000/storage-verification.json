@@ -1,0 +1,676 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "checkedAt": "2026-11-07T08:10:17.247Z",
+  "files": [
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-neon-guppy_v1_thumbnail.png",
+      "sha256": "e993acf54b3250cb490c2a22059d3fd84b16a12fa5dad4702860950d777f281a"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-neon-guppy_v1_sprite.png",
+      "sha256": "be10d0a383d4f25aae5fd0722d73830abc2f9afef9371a5ed1389e35f843ac5f"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-pixel-jellyfish_v1_thumbnail.png",
+      "sha256": "89bbbc03d643cc3c7e16232930c7d6a28db574406170dfa5978d2f5b63aca0c5"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-pixel-jellyfish_v1_sprite.png",
+      "sha256": "4ee76d0ea9d8598972eeaaa3ac2cdacb87207af05321586d33e1b5f54dad5ac8"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-holo-shrimp_v1_thumbnail.png",
+      "sha256": "67cd845cdf95ea0c03b3acdec5acb55129acec56faf7e548042a97e4fe36cded"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-holo-shrimp_v1_sprite.png",
+      "sha256": "d6a7122b8d3812585fdf97a10209c7fc6c4808fec468750b1b889302dfd30489"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-glitch-crab_v1_thumbnail.png",
+      "sha256": "8569f21b8d26b6bf0f1dc85a0e12e03cf0a016810f1b188649a8e36b8a8972e6"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-glitch-crab_v1_sprite.png",
+      "sha256": "8cef1b07603e461a32caeb734c7a7cfdd8a54312d8f6a5447d371d51f51d92e1"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-led-puffer_v1_thumbnail.png",
+      "sha256": "bd8ea9c1ead387023f0522f06aeedcd8777fb319601e1c688cf74d62d8a8a9f5"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-led-puffer_v1_sprite.png",
+      "sha256": "ae5f055fb220898d31bae4f6b46d8973c4cfede006d9a49d92cb9a7b5c319ccc"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-data-anchovy_v1_thumbnail.png",
+      "sha256": "232d475a56e01236956ce15e8ec4f1e7d984eff16891925bf0b6b4b8bf3bd425"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-data-anchovy_v1_sprite.png",
+      "sha256": "80c5b007b6913299198baa7118dc2780dd4d82be6f5be0b81bbd3dbbbe23e963"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-wifi-ray_v1_thumbnail.png",
+      "sha256": "9a5105aa184187e2ff52aa10bf0576aa9936f640b04d990076c1b940547bb955"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-wifi-ray_v1_sprite.png",
+      "sha256": "16708696b269a689a5fd5e3f1b00d14c77ddb6e4e2c602fde1c8f6b967297276"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-fiber-seahorse_v1_thumbnail.png",
+      "sha256": "04879e244ddb064be516e4bf06b3a1dd885916e1e750a4f1e891a4fbd6890b9e"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-fiber-seahorse_v1_sprite.png",
+      "sha256": "3fdd9e939f6dd30a875bfcf833de57a88f3cc5522f2a878517bce50a9b5eac21"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-cable-eel_v1_thumbnail.png",
+      "sha256": "a51263102b22e0d7a490d56127fc5723f0c137100260e68f363385e09869ab6a"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-cable-eel_v1_sprite.png",
+      "sha256": "ce9e7bedfe4f519e1d7c6d3d515eb241edb684b08df33de08a38590598f1fe57"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-battery-seahorse_v1_thumbnail.png",
+      "sha256": "fd4f992ad416fea0120b29efda7f6fd78b1a00a2bd71bbcee1e8b96ff50b3232"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/normal/hologram-battery-seahorse_v1_sprite.png",
+      "sha256": "0e2ac429f66def2d8defa73b6a544bf5967676824ccba93f4d397a4bebc6d6af"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-holo-butterflyfish_v1_thumbnail.png",
+      "sha256": "fa80254424fb02a450964e9a34dc53a0362396ed3e1897cce9601063a32c04c3"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-holo-butterflyfish_v1_sprite.png",
+      "sha256": "e610a1081a2710b6004001648962452d50d1caa0131d31b3c6d600d218f60ee1"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-error-octopus_v1_thumbnail.png",
+      "sha256": "52e684d280d52dd0dc1cf2002b794cd23e43b511365e6cced021874ce5f00254"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-error-octopus_v1_sprite.png",
+      "sha256": "6fb9503ddf15d22cd7336206a69a74e8b1c96d2c2de538e8e1f0f9988d3515e7"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-neon-ghost-ray_v1_thumbnail.png",
+      "sha256": "5f879d8e503793695d9916966ccf7401d3d15b4b5ab0a566199c00967f8a556b"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-neon-ghost-ray_v1_sprite.png",
+      "sha256": "ab8f4d5d0510719411a62d2a9ae1391008161cab72908c16fc6b5fa6bbd1aa94"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-disco-jellyfish_v1_thumbnail.png",
+      "sha256": "14b264e5a3dcfd95703ea187d72a7fd8c9ec24ec437b9930fb061a03b8d75de6"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-disco-jellyfish_v1_sprite.png",
+      "sha256": "34c2910fc67dfee931da9fb97c966b1d3648210d0698c2814bdb4416281e4cf9"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-laser-marlin_v1_thumbnail.png",
+      "sha256": "80bdb725c9776c527eda762c43404998891fbdd729167ae01480fa9cd809238a"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-laser-marlin_v1_sprite.png",
+      "sha256": "c0e7a53f6475c620f9839c0107b95e939854fbe19155eaed8e247f0f41eec95c"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-digital-chameleon_v1_thumbnail.png",
+      "sha256": "6e956e101d12ca02dd7aa3e47a5b9c3a91fad2921d665d9f01c0df83cd870650"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-digital-chameleon_v1_sprite.png",
+      "sha256": "f319f968c9089009b6f142686fa6f7d94caf9db9495898feb86d58ed74ac3f34"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-photon-seadragon_v1_thumbnail.png",
+      "sha256": "85bfb666e1ea7f5c50993cccf1a5beb8aadd089b2aab8c5823e17b1adb47c57f"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-photon-seadragon_v1_sprite.png",
+      "sha256": "a2fdd606bb5909c406c5d0e8dcd64fd3394d41d912f2f956d6f41d913e416910"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-billboard-angler_v1_thumbnail.png",
+      "sha256": "0e3cc8378ebf92f79dc5c788a117b709c821b90c4beab76108d5aa451f9fbe6e"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-billboard-angler_v1_sprite.png",
+      "sha256": "928b9fcb77486fe4bb5b8d6e886ab9e729efba8c7613f90b4a1ad6025c3c2143"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-laser-swordfish_v1_thumbnail.png",
+      "sha256": "99f4cb89ea0dca2d70830d482fede1b6874a10b56c8cad62487315e52abd3725"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/rare/hologram-laser-swordfish_v1_sprite.png",
+      "sha256": "72101b643263a5331bd5cc84a563a9db655f3f4bf0039ece087dda8915a657dc"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-zero-shark_v1_thumbnail.png",
+      "sha256": "d58b27d07bf0c1bb1fafba66dd3bc563cba00aad34ed2506cbe6851463ead027"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-zero-shark_v1_sprite.png",
+      "sha256": "8b3af6cedaa5de74024179f94308c3984180eaf81be2ae50a02419b28677f3e0"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-glitch-hunter_v1_thumbnail.png",
+      "sha256": "5032539bbd32186700b84b470b4e09ba432ee90c2c52f690ea4334b0c45d1900"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-glitch-hunter_v1_sprite.png",
+      "sha256": "1eb5aa866b10d3b45e8f57813055fb4e15620d23fd93bfdee50c93eabf116949"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-memoria_v1_thumbnail.png",
+      "sha256": "932dfefa648e1a3ab851de15dd355b0ffaf4510cfdd91a155ebdfb9a520e0795"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-memoria_v1_sprite.png",
+      "sha256": "5aba73495dd80406629ccdce29caedaa04a0e63a8524cd9c51314700e8047b0b"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-volteon_v1_thumbnail.png",
+      "sha256": "25abbddcb16c4286b703a688ad7e88855b2a9b7e02f88d852e2053d5d9f91500"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-volteon_v1_sprite.png",
+      "sha256": "f39a6cf8ed94970aaa0361d9065cffc6bc0b761a51c3b0b7ebc6f1799b8ca754"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-sos_v1_thumbnail.png",
+      "sha256": "da0c9a9f5921dd681a0c7ae432c019c637ec1aab691685b9ed47572a4adacf7f"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-sos_v1_sprite.png",
+      "sha256": "ae4b9b80726b97914b3cafd4b138056e7bb3cca25123d13141eeed9651e95ce4"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-sweeper_v1_thumbnail.png",
+      "sha256": "2cbe644894474eb505698252f3e05a34bc0847098647580dc589ad4bb17faed4"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-sweeper_v1_sprite.png",
+      "sha256": "f37d0a51a83f1cfc81eb504e0a4becff07ae7209222d94a41da3a74bdc8ff326"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-prism_v1_thumbnail.png",
+      "sha256": "1f9ad0da54ada622367fb9724e89857c6c4b2b1695ae835cf5b4ff9c45fa2192"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-prism_v1_sprite.png",
+      "sha256": "2525798fa54204035ba3db8767d39c64553e84c1798d64e92f33acc5e6d8b9ea"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-mirage_v1_thumbnail.png",
+      "sha256": "a6a26d5570a51fc1448c346d6eeec7b8270d68fe15e103f7c80a5c09429cabae"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-mirage_v1_sprite.png",
+      "sha256": "68a7f2da36b167e98d35d4c7e3b39a6cea88fa60e75567358a24ee29ec6eed13"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-hologram-pongi_v1_thumbnail.png",
+      "sha256": "8cb1ad37a7fd644ac13032b1e91e1e72dd6109d73365aa0f900a1252d0a7f2c2"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/epic/hologram-hologram-pongi_v1_sprite.png",
+      "sha256": "3e3da3ac14013af68145c3b9b06d5b9d3c38f428d1c5f4f20cc949e78a8d44d2"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-seraphim_v1_thumbnail.png",
+      "sha256": "18806ea2704c5db9c29bbdd71923534a7dfc1df67c2884981935cdc9ba192cf9"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-seraphim_swim8_v1_sprite.png",
+      "sha256": "64dea3d8e4c7531e3ac106a09a45e0dcd95baaa2a4f23f753da4fc94fb839c09"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-archive_v1_thumbnail.png",
+      "sha256": "c7433ab1cef563322d5e37d86884185aea9ac00afc73c9cd6501c005c86b72f7"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-archive_swim8_v1_sprite.png",
+      "sha256": "220ab5522903ffdb08f2df7b49c66c62ab1c7ddd74c4a68436b008f778c67fa8"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-eve_v1_thumbnail.png",
+      "sha256": "ac8cecab11e556b2c0efa6f975774bd913251662be62f30fc04a6e95c847fbd0"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-eve_swim8_v1_sprite.png",
+      "sha256": "fab0e068524f16ec3e562543b4b1de6544a250fa4bbe8e3091be1aba0ed4e71c"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-simula_v1_thumbnail.png",
+      "sha256": "eacfaa9c90a81a3ee658d04fb8503335cf438432098b5e7bbad1fb5dd0752cee"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-simula_swim8_v1_sprite.png",
+      "sha256": "eb06f7c4def6cde854103d553643da96b5f27b0fd973c43516f04be2e466aca6"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-masquerade_v1_thumbnail.png",
+      "sha256": "2695ef6647b920698a7d6129f9ce690385a0fb5b275311a9b33620c3a76d2feb"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fish/mythic/hologram-masquerade_swim8_v1_sprite.png",
+      "sha256": "19cc027ef31be905ba93a683aaad07e0e4a5e8bc6b040475af203b95c2e00fd1"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-broken-neon-sign_v1_thumbnail.png",
+      "sha256": "ba5accf80ef1a87b0e66171236fd2df21dad7740e589edbd85ef9a58115dbda9"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-empty-battery_v1_thumbnail.png",
+      "sha256": "2a8e9043e9e229eff58a539c3f0773f59777fe56dd7ce047dcc9afd522bc7be3"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-broken-drone_v1_thumbnail.png",
+      "sha256": "ea944743125813a999c9dbbfe68e122749fa2be9372bd99aab27f6649241558c"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-old-chip_v1_thumbnail.png",
+      "sha256": "ced104ba9f57e105631aa9bb3d7ae28af34b009ea1f44dfba1fb7a2600c2b15a"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-broken-panel_v1_thumbnail.png",
+      "sha256": "0b1c7d5ffa9804954b5555daaf2b4091ce32a59157b5b69ae1243866bee67987"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-rusty-robot-arm_v1_thumbnail.png",
+      "sha256": "2deae28e7d2ec9f6c0a0bdd4198f620451e313ab99d680046399e69afd64df46"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-discarded-billboard_v1_thumbnail.png",
+      "sha256": "f3adc3e788d4e9f938438b215ee2bae1715d9889401a6b07a2df379dd57880b9"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-broken-watch_v1_thumbnail.png",
+      "sha256": "4bb93a2e749691d3d9017d521933a9d5995af67a4598e71c68fb1d8e8dc265ab"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-empty-energy-can_v1_thumbnail.png",
+      "sha256": "1bf5ecf684ba450a022d9a949d561cf6a058f8c6ec759bdae4f2978a2f27ae1a"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-broken-keyboard_v1_thumbnail.png",
+      "sha256": "d3ebde227c723e2fe1bf1d73583ad8562b4dd60d2ce62ae81881dac5b9c21655"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-broken-lens_v1_thumbnail.png",
+      "sha256": "1a26a01b066901966a4f1fa0d1bc2e8d7d70732183ffda2d00e19bd9ee5e6c1b"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/normal/hologram-charging-cable_v1_thumbnail.png",
+      "sha256": "4909514241b93a5fdededf99e18c632f03e69c8a3f3ce830df927a0359d0689a"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-memory-chip_v1_thumbnail.png",
+      "sha256": "ff38eb3922f7dd865589eb733eb12c8ddab35a5affa27c539789fae9e4162396"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-damaged-ai-core_v1_thumbnail.png",
+      "sha256": "0616c1258252985f05f936d3751198341b423ee28f7f14e2031d7c0539e40e93"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-black-box_v1_thumbnail.png",
+      "sha256": "4b4a467c3d1b38f83642e7d5a117a5f78753df040c8d8030327a259ddf7918a8"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-forbidden-disk_v1_thumbnail.png",
+      "sha256": "886cf970cc112da2e2979bb2f0f81e3446c709ca51dca1f149106e586ad9a202"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-holo-heart_v1_thumbnail.png",
+      "sha256": "4c612b9234e2a814ff07aea970fbbc8b0a0ff2f90e3f823acaae444964caf1f3"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-reverse-clock_v1_thumbnail.png",
+      "sha256": "e40418cd2452b3347c15eeeeefe4491e7af68c978aadfd3999e86f842dd4633b"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-sealed-cell_v1_thumbnail.png",
+      "sha256": "eaf519f116dec7407d025d010902439613ab1166ba71e1972b51c8008c4b83e7"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-robot-skull_v1_thumbnail.png",
+      "sha256": "a1d4eccc85f54ba84f5c2fce6ca68a2cb6e7e7f180c26ff44abf71a8b89263ee"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-deleted-id_v1_thumbnail.png",
+      "sha256": "b1e5fb9f7028ad452684dbff5c6455cfeb257c9dd2a8daf38b1452883a10af95"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-emergency-stop_v1_thumbnail.png",
+      "sha256": "ca7906783f8305281fdace0b1d55c7edf647c8457ba3fd6c69e1631f2974d3af"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-dimension-chip_v1_thumbnail.png",
+      "sha256": "f5e38bfd3385b47132fdcfc1fa7245a0f8896f007cabc3a54a23b208a0f197bf"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-infected-cube_v1_thumbnail.png",
+      "sha256": "a527aace1b4c871a12c83e96119dbbad10d38f85224b8bc6498dd83ba80a949a"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-experiment-tag_v1_thumbnail.png",
+      "sha256": "061e06ae352d50bcad9513da4d5be4b6851783d21745affb733903b267e87ab3"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "trash/rare/hologram-last-voice_v1_thumbnail.png",
+      "sha256": "e219930aaa46f4061fe66c700a31f6b9281c2f735b46869ae38ca98045110607"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-neon-lamp_v1_thumbnail.png",
+      "sha256": "59b5e62aa77aab254083d5eb45f990c3e5a2d532d505bd5c19d4b74bb867a6f7"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-holo-sign_v1_thumbnail.png",
+      "sha256": "3b4b50dbf5a609a7c2769452e21b1320d9dccd788265a77718e38ead6323bbf9"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-cyber-vending_v1_thumbnail.png",
+      "sha256": "c5c547c9ba8b0ecfcc25464501c19c61d3882b9a0e72a738dda3e1204b5ff128"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-neon-bench_v1_thumbnail.png",
+      "sha256": "3d78234c2d6aee2a081a057716558b2b9812ca83615a386b5d4a6939a5e03d2e"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-digital-traffic_v1_thumbnail.png",
+      "sha256": "8a78007a8f0e542743d55e2bd5e60dd5672eaf5a95ad44d8e44a1d283bbd2b17"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-charging-station_v1_thumbnail.png",
+      "sha256": "714d3a63d35fef409c83f96f5180ec17187a860148c946b14f66bb575a56c13b"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-neon-postbox_v1_thumbnail.png",
+      "sha256": "774989968b92b7676425ae19949e53fda5f4ff8a5066163da572963bfc44c57c"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-advert-hologram_v1_thumbnail.png",
+      "sha256": "a19d8b6f1624bb8c5a3ac5c004e8b3111d05cee35d18951742030158b6e4bf5e"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-abyss-cctv_v1_thumbnail.png",
+      "sha256": "2b873b127537d6849b59e4b110beda17be1d821e923600a546566187ca0f3d86"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-cyber-phone_v1_thumbnail.png",
+      "sha256": "ee77c4b70dd694694c8592e336d33198aff8e261cfdd529c65369735e608902e"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-road-sign_v1_thumbnail.png",
+      "sha256": "6ec8eda5526cec7e2fffc6ead8ddbf242fee4aaa0a10599ed10108c01e5a4e98"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-neon-bin_v1_thumbnail.png",
+      "sha256": "e387c3a99135c97a4a7d78ed5acec9b1dd81b7221bafbe3c039cf7fe2923e163"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-pixel-pot_v1_thumbnail.png",
+      "sha256": "5edfafc4fd7acfdcc13c3dce998a357d3c23a369f914ff33d818dc5442aaf772"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-digital-clock_v1_thumbnail.png",
+      "sha256": "b0ea0ab0eaf4009e33e2003cc4c1f984b2cc6587f41efcdc4410978d3e6ae78c"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/normal/hologram-robot-guide_v1_thumbnail.png",
+      "sha256": "fb75ef5cbc9b9d77672e053f3f01c60529ff07b2896a4a63efdc4cdf254d8d72"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-holo-aquarium_v1_thumbnail.png",
+      "sha256": "76820d9614de3bdde177cfa2ac5689aef3429321366eb5c8467e1465c0800d87"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-cyber-cherry_v1_thumbnail.png",
+      "sha256": "2ea16d553a4ab0f18ae1de022e50bfca75fc4e1ffbdcf679ef0e6c141ef32180"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-neon-fountain_v1_thumbnail.png",
+      "sha256": "ff2cb5d13e42344d0abb8d4337d5568e99ed0a34c38c7e46eaf1106a75f08c14"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-sunken-robot_v1_thumbnail.png",
+      "sha256": "01f83b751cb6e304d156a715cbe126733f76245c2ea0d05b0cb003af43a93d8b"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-holo-whale-statue_v1_thumbnail.png",
+      "sha256": "60ecf2381efc524218a3a77da5f79d8c1733edd32cd5059fa71b2a6b4c0ceff6"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-abyss-arcade_v1_thumbnail.png",
+      "sha256": "0ffa1851f091ea2340b9acf86645a4fea35bdfe515c53124e893801061fd863c"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-future-bus-stop_v1_thumbnail.png",
+      "sha256": "bfe9ab41c2138581c4f6d69cbc073a9edfc34630be4a6768366e30a9500e8f7c"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-neon-coral-garden_v1_thumbnail.png",
+      "sha256": "c1a48cb6a9ed62f2dd7df0c80aa46d3fddc8ad07d6f132626157d69b274d0f05"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-broken-portal_v1_thumbnail.png",
+      "sha256": "ef0420a7127a211973ef6d0982d5006e4a152927ad5b5b165c697da8761144c9"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-drone-workshop_v1_thumbnail.png",
+      "sha256": "9401c050eb25c81a2d65f2e272deb21527ec3a4bfc1b182632722e64fc712fc4"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-advert-tower_v1_thumbnail.png",
+      "sha256": "3e8a58f7248da772dd4456d00f0eec030da1b3aec2ca378d6c830c376393116d"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-music-fountain_v1_thumbnail.png",
+      "sha256": "0fbb534cd1478e2ab78a96b3de46b52590595be24f8970e8f3890a94141c27c1"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-cyber-taxi_v1_thumbnail.png",
+      "sha256": "46128d4b4a13dd124a8811049cd8125bd5f73600fc1ebba1359ce2fffc30c955"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-artificial-moon_v1_thumbnail.png",
+      "sha256": "896ecb82a47a56750bc93f4be7d3f0cc7b07c979bee69b44c4326808e2d3c511"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/rare/hologram-data-cabinet_v1_thumbnail.png",
+      "sha256": "13f8db0d52145fc7b267378d6ad4f51a7e48f924a8a4e9b33a9fe8a82f427380"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/hologram-whale-fountain_v1_thumbnail.png",
+      "sha256": "570b7606bfad799915b05bdf049c6bb3f710f023f799acfb1817d97fd00b7401"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/hologram-glass-dome-tower_v1_thumbnail.png",
+      "sha256": "112cff30bfafd0db27ddc80702a6b529665f5a2e2039d73529ecb2d110fd05d6"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/hologram-sunken-subway_v1_thumbnail.png",
+      "sha256": "85e1cf144a9be5bb5df42597c46c6e4ad39374be5bb3db6961a4265762808d55"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/hologram-neon-clocktower_v1_thumbnail.png",
+      "sha256": "61d926c5f94d72d95973134c1e61ec8b71a0ac94c9d271443075a00460403b82"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/hologram-giant-robot-wreck_v1_thumbnail.png",
+      "sha256": "46c624a66037f710bd964c7aa638e02c3219a3d0cec12586ed2584c700246226"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "decorations/epic/hologram-data-waterfall_v1_thumbnail.png",
+      "sha256": "517332060fee9b89dea0f54c741bc95ed85a9f039916ecc87418b69049b444d5"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "regions/hologram/map-v1.png",
+      "sha256": "fc43cca788331697d5ad5113dd80787a42a1b94b5050832394d5cbf4fbc1f250"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "regions/hologram/overview-v1.png",
+      "sha256": "a0a7174bf58308fd2a79a4851de4decb5f507e4e9c9d59527719c2cca875e0b4"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fishing/scenery/hologram-v1.png",
+      "sha256": "28f388ff455db8c91676cc0ece54d4e2bd5a0adf5bfdbedede731edbe0e2018f"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fishing/close-water/hologram-v1.png",
+      "sha256": "02365bc2ccda103bcacccda5db93f5126491aadb62669612805eab9318fc1b5d"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "fishing/platforms/hologram-v1.png",
+      "sha256": "1ca90595b00b47e18931b58fd2bc203b06700c27adc5dfc645a38efe173501d0"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "equipment/rods/hologram/thumbnail.png",
+      "sha256": "9dde4a2b005c45d0617356c1b19f18d4fd7f8fc3c2222510eaa6b7b1bbf1b7e8"
+    }
+  ]
+}

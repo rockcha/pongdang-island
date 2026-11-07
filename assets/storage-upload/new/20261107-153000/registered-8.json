@@ -1,0 +1,307 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261107-153000/normalized/hologram-seraphim.png",
+        "storage_path":  "fish/mythic/hologram-seraphim_swim8_v1_sprite.png",
+        "patch":  [
+                      312,
+                      221,
+                      24,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  19.474233302285985
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  14.115143928971934
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  16.703039406758545
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  17.434623646494789
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -2,
+                           "dy":  -1,
+                           "rmse":  19.104640486949584
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  16.150116754576132
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  20.671256552460161
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261107-153000/normalized/hologram-archive.png",
+        "storage_path":  "fish/mythic/hologram-archive_swim8_v1_sprite.png",
+        "patch":  [
+                      307,
+                      229,
+                      24,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  11.136230286771193
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  5.79904356338181
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  10.551399492484398
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.1197098162434358
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  14.287642169021451
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.6669136103515481
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  13.414952012586552
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261107-153000/normalized/hologram-eve.png",
+        "storage_path":  "fish/mythic/hologram-eve_swim8_v1_sprite.png",
+        "patch":  [
+                      268,
+                      175,
+                      24,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  22.186179538171956
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  27.460696344958187
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  26.054330254297462
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  20.573135547358842
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -4,
+                           "dy":  -1,
+                           "rmse":  37.35466629150902
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  21.294255387310447
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  21.902839427800224
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261107-153000/normalized/hologram-simula.png",
+        "storage_path":  "fish/mythic/hologram-simula_swim8_v1_sprite.png",
+        "patch":  [
+                      241,
+                      185,
+                      24,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  5,
+                           "rmse":  27.448816003609338
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  0,
+                           "rmse":  17.503571064214295
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -2,
+                           "dy":  -6,
+                           "rmse":  27.217655689827513
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  -3,
+                           "rmse":  18.729467924903794
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  1,
+                           "dy":  -8,
+                           "rmse":  25.316512027726095
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  2,
+                           "dy":  -8,
+                           "rmse":  23.094067149378432
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -2,
+                           "dy":  -3,
+                           "rmse":  22.399951171821783
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261107-153000/normalized/hologram-masquerade.png",
+        "storage_path":  "fish/mythic/hologram-masquerade_swim8_v1_sprite.png",
+        "patch":  [
+                      330,
+                      175,
+                      24,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  16.578176543275198
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -3,
+                           "dy":  0,
+                           "rmse":  13.457398058317217
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  14.305948282095809
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  14.991273503275163
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  16.206311463439175
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  15.199198169640397
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  16.13977036701576
+                       }
+                   ]
+    }
+]

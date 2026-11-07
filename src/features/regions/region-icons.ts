@@ -1,4 +1,5 @@
 export const regionIcons:Record<string,{name:string;src:string}>={
+ hologram:{name:'홀로그램 심해도시',src:'/region-icons/hologram.svg'},
  galaxy:{name:'은하수의 끝자락',src:'/region-icons/galaxy.svg'},
  hangang:{name:'한강의 불빛나루',src:'/region-icons/hangang.svg'},
  pharaoh:{name:'파라오의 황금해',src:'/region-icons/pharaoh-v2.png'},

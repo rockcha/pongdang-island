@@ -135,6 +135,9 @@ export type Database = {
       confirm_bug_report:{Args:{p_id:string};Returns:import('@/features/bugs/api').BugReport}
       adopt_suggestion:{Args:{p_id:string};Returns:import('@/features/suggestions/api').Suggestion}
       friend_aquarium:{Args:{p_owner:string};Returns:import('@/features/friends/aquarium-api').FriendAquarium}
+      farm_friends:{Args:Record<string,never>;Returns:import('@/features/farm/visits-api').FarmFriends}
+      friend_farm:{Args:{p_owner:string};Returns:import('@/features/farm/visits-api').FriendFarm}
+      set_farm_like:{Args:{p_owner:string;p_liked:boolean};Returns:import('@/features/farm/visits-api').FriendFarm}
       feed_friend_aquarium:{Args:{p_tank:string;p_operation:string;p_step:number};Returns:import('@/features/friends/aquarium-api').FeedingResult}
       clean_friend_aquarium:{Args:{p_tank:string;p_operation:string;p_step:number};Returns:import('@/features/friends/aquarium-api').CleaningResult}
       map_shop_state:{Args:Record<string,never>;Returns:import('@/features/regions/map-shop-api').MapShopState}

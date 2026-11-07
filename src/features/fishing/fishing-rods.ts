@@ -1,6 +1,7 @@
 export type FishingRod={id:string;name:string;description:string;effect:string;price:number;color:string;accent:string;region?:string;failureReductionBp:number;nativeBonusBp:number;waitReductionSeconds?:number}
 export const fishingRods:FishingRod[]=[
  {id:'basic',name:'입문용 낚싯대',description:'소박한 대나무 대와 작은 릴, 빨간 찌를 갖춘 첫 낚시 장비예요.',effect:'추가 효과 없음',price:0,color:'#c69857',accent:'#e7d6b6',failureReductionBp:0,nativeBonusBp:0,waitReductionSeconds:0},
+ {id:'hologram',name:'홀로그램 회로 낚싯대',description:'남빛 금속 대와 청록빛 회로 릴, 작은 데이터 큐브 찌에 심해도시의 빛을 담았어요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:2800,color:'#0c1d30',accent:'#65e0eb',region:'hologram',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'galaxy',name:'은하 궤도 낚싯대',description:'검은 별빛 대와 은빛 궤도 릴, 작은 행성 찌에 은하수의 끝자락을 담았어요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:2800,color:'#24283e',accent:'#d9c9a0',region:'galaxy',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'hangang',name:'태극 물결 낚싯대',description:'남빛 대나무 대와 태극 릴, 색동 매듭 찌에 한강의 빛을 담았어요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:2500,color:'#263953',accent:'#f4e5c4',region:'hangang',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'pharaoh',name:'황금 태양 낚싯대',description:'황금 스카라베 릴과 오벨리스크 찌에 태양의 빛을 담은 낚싯대예요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:1800,color:'#bd8b3e',accent:'#f6df9e',region:'pharaoh',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},

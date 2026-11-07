@@ -1,12 +1,13 @@
 import {useState,type ReactNode} from 'react'
 import {collectibleUrl} from '@/features/collection/api'
 import artwork from './rod-artwork.json'
+import {hologramArt} from '@/features/regions/hologram-art'
 
 // Origins are the artwork's axle/body center, independent of the game's transforms.
 const partArtwork=artwork as Record<string,{frame:number;rotor:number;float:number;rotorWidth:number;rotorX?:number}>
 export function hasRodImages(id?:string){return !!id&&Object.hasOwn(partArtwork,id)}
 export function rodImagePath(id:string,file:string){return `equipment/rods/${id==='basic'?'starter':id==='swift'?'swift-v2':id}/${file}.png`}
-export function rodThumbnailUrl(id:string){return collectibleUrl(rodImagePath(id,'thumbnail'))}
+export function rodThumbnailUrl(id:string){return id==='hologram'?hologramArt.rodThumbnail:collectibleUrl(rodImagePath(id,'thumbnail'))}
 export function RodPartImage({id,part,fallback}:{id:string;part:'frame'|'rotor'|'float';fallback:ReactNode}){
  const [failed,setFailed]=useState(false)
  const spec=partArtwork[id]

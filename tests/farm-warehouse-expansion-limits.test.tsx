@@ -41,7 +41,7 @@ it('adds capacity only after construction and preserves the shared limit after r
 it('upgrades a warehouse through all thirty levels for the unchanged price and duration',()=>{
  let state={...initialTopview(),gold:200000},now=0
  for(let level=1;level<30;level++){
-  const gold=state.gold,oldCapacity=40+(level-1)*20
+  const gold=state.gold,oldCapacity=40+(level-1)*40
   state=upgradeBuilding(state,26,{type:'upgrade'},now).state
   expect(state.gold).toBe(gold-3000)
   expect(warehouseCapacity(state)).toBe(oldCapacity)
@@ -50,7 +50,7 @@ it('upgrades a warehouse through all thirty levels for the unchanged price and d
   state=upgradeBuilding(state,26,{type:'completeUpgrade'},now).state
   expect(buildingLevel(state.objects.find(o=>o.id===26)!)).toBe(level+1)
  }
- expect(warehouseCapacity(state)).toBe(620)
+ expect(warehouseCapacity(state)).toBe(1200)
  expect(state.gold).toBe(200000-29*3000)
  expect(upgradeBuilding(state,26,{type:'upgrade'},now).state).toBe(state)
  expect(buildingMaxLevel('mill')).toBe(10)
@@ -60,13 +60,13 @@ it('upgrades a warehouse through all thirty levels for the unchanged price and d
 it('combines two max-level warehouses and preserves level thirty through storage and placement',()=>{
  let state=initialTopview();state.objects=state.objects.map(o=>o.kind==='warehouse'?{...o,level:30}:o)
  state.objects.push({id:50,kind:'warehouse',x:8,y:6,level:30})
- expect(warehouseCapacity(state)).toBe(1240)
+ expect(warehouseCapacity(state)).toBe(2400)
  state=simulateFarm(state,26,{type:'storeBuilding'},0).state
  expect(state.storedLevels?.warehouse).toEqual([30])
- expect(warehouseCapacity(state)).toBe(620)
+ expect(warehouseCapacity(state)).toBe(1200)
  state=applyFarmCommand(state,{type:'place',kind:'warehouse',x:14,y:13,transform:{}},0)
  state=applyFarmCommand(state,{type:'tick'},10000)
- expect(warehouseCapacity(state)).toBe(1240)
+ expect(warehouseCapacity(state)).toBe(2400)
  expect(state.objects.find(o=>o.id===31)?.level).toBe(30)
 })
 it('shows the thirty-level ceiling and the second warehouse in the shop',()=>{

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "ea9f95ebdd17ffbf349fd365bee6ddae4898892dd1a2e2fa67767752cccbf7a3",
+  "migrationHash": "edacd2db0899cc6d53aa4c4050cd68385bc01cb1f94b997a9b26c4da3873ff78",
   "structure": {
     "enums": [
       {
@@ -199,6 +199,12 @@
       {
         "rls": true,
         "name": "farm_crop_jobs",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "farm_likes",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2615,6 +2621,36 @@
         "table": "farm_crop_jobs",
         "schema": "app_private",
         "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "owner_id",
+        "type": "uuid",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "visitor_id",
+        "type": "uuid",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "default": "now()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -13070,6 +13106,18 @@
         "definition": "CREATE UNIQUE INDEX farm_crop_jobs_pkey ON app_private.farm_crop_jobs USING btree (user_id, item_id)"
       },
       {
+        "name": "farm_likes_pkey",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX farm_likes_pkey ON app_private.farm_likes USING btree (owner_id, visitor_id)"
+      },
+      {
+        "name": "farm_likes_visitor_idx",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "CREATE INDEX farm_likes_visitor_idx ON app_private.farm_likes USING btree (visitor_id)"
+      },
+      {
         "name": "feedback_bug_votes_pkey",
         "table": "feedback_bug_votes",
         "schema": "app_private",
@@ -18005,6 +18053,16 @@
         "securityDefiner": true
       },
       {
+        "name": "farm_friends",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.farm_friends()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('self',(select jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path) from public.player_profiles where id=u),\n 'likeCount',(select count(*) from app_private.farm_likes where owner_id=u),\n 'friends',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'nickname',p.nickname,'avatar_path',p.avatar_path) order by p.nickname,p.id)\n from public.player_profiles p join app_private.topview_farms f on f.user_id=p.id where p.id<>u and exists(\n select 1 from public.friend_requests r where r.status='accepted' and ((r.sender_id=u and r.recipient_id=p.id) or(r.recipient_id=u and r.sender_id=p.id)))),'[]'::jsonb));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "feed_friend_aquarium",
         "config": [
           "search_path=\"\""
@@ -18342,6 +18400,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.friend_expedition_status()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',clock_timestamp(),'friends',coalesce((\n  select jsonb_agg(jsonb_build_object('friend_id',f.friend_id,'expedition_id',e.id,'returns_at',e.returns_at,\n   'boosted',exists(select 1 from app_private.expedition_boosts b where b.expedition_id=e.id and b.helper_id=u)))\n  from (select case when sender_id=u then recipient_id else sender_id end friend_id\n   from public.friend_requests where status='accepted' and (sender_id=u or recipient_id=u)) f\n  left join public.fishing_expeditions e on e.user_id=f.friend_id and e.claimed_at is null and e.returns_at>clock_timestamp()\n ),'[]'::jsonb));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "friend_farm",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_owner uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_farm(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();doc jsonb;profile jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_owner is null or (p_owner<>u and not exists(\n  select 1 from public.friend_requests where status='accepted' and\n  ((sender_id=u and recipient_id=p_owner) or(sender_id=p_owner and recipient_id=u))\n )) then raise exception 'FRIENDSHIP_REQUIRED';end if;\n select f.document,jsonb_build_object('id',p.id,'nickname',p.nickname,'avatar_path',p.avatar_path)\n into doc,profile from app_private.topview_farms f join public.player_profiles p on p.id=f.user_id where f.user_id=p_owner;\n if not found then raise exception 'FARM_NOT_FOUND';end if;\n return jsonb_build_object('owner',profile,'serverNow',clock_timestamp(),\n 'likeCount',(select count(*) from app_private.farm_likes where owner_id=p_owner),\n 'liked',exists(select 1 from app_private.farm_likes where owner_id=p_owner and visitor_id=u),\n 'layout',jsonb_build_object('land',coalesce(doc->'land','[]'::jsonb),'paths',coalesce(doc->'paths','[]'::jsonb),'pathTiles',coalesce(doc->'pathTiles','{}'::jsonb),\n 'objects',coalesce((select jsonb_agg(jsonb_strip_nulls(jsonb_build_object('id',o->'id','kind',o->'kind','x',o->'x','y',o->'y','level',o->'level','rotation',o->'rotation','flipped',o->'flipped','constructionReadyAt',o->'constructionReadyAt')) order by n)\n from jsonb_array_elements(coalesce(doc->'objects','[]'::jsonb)) with ordinality a(o,n)),'[]'::jsonb),\n 'cropJobs',coalesce((select jsonb_object_agg(k,jsonb_build_object('crop',v->'crop','readyAt',v->'readyAt')) from jsonb_each(coalesce(doc#>'{simulation,cropJobs}','{}'::jsonb)) a(k,v)),'{}'::jsonb)));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -19812,6 +19880,16 @@
         "schema": "app_private",
         "arguments": "p_listing_id uuid, p_liked boolean",
         "definition": "CREATE OR REPLACE FUNCTION app_private.set_exchange_listing_like(p_listing_id uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_liked is null then raise exception 'INVALID_EXCHANGE';end if;\n select * into l from public.exchange_listings where id=p_listing_id and side='sell' and status in ('active','completed') for share;\n if not found then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n perform pg_advisory_xact_lock(hashtextextended('exchange-like:'||p_listing_id::text||':'||u::text,0));\n if p_liked then insert into public.exchange_listing_likes(listing_id,user_id) values(l.id,u) on conflict do nothing;\n else delete from public.exchange_listing_likes where listing_id=l.id and user_id=u;end if;\n return jsonb_build_object('liked',p_liked,'like_count',(select count(*) from public.exchange_listing_likes where listing_id=l.id));\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "set_farm_like",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_owner uuid, p_liked boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.set_farm_like(p_owner uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n -- Reuse the read authorization, including farms that have not been started.\n perform app_private.friend_farm(p_owner);\n if p_owner=u then raise exception 'OWN_FARM';end if;\n if p_liked is null then raise exception 'INVALID_LIKE';end if;\n if p_liked then insert into app_private.farm_likes(owner_id,visitor_id) values(p_owner,u) on conflict do nothing;\n else delete from app_private.farm_likes where owner_id=p_owner and visitor_id=u;end if;\n return app_private.friend_farm(p_owner);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -21295,6 +21373,16 @@
         "securityDefiner": false
       },
       {
+        "name": "farm_friends",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.farm_friends()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.farm_friends()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "feed_friend_aquarium",
         "config": [
           "search_path=\"\""
@@ -21482,6 +21570,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.friend_expedition_status()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.friend_expedition_status(); $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "friend_farm",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_owner uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.friend_farm(p_owner uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.friend_farm(p_owner)$function$\n",
         "securityDefiner": false
       },
       {
@@ -22262,6 +22360,16 @@
         "schema": "public",
         "arguments": "p_listing_id uuid, p_liked boolean",
         "definition": "CREATE OR REPLACE FUNCTION public.set_exchange_listing_like(p_listing_id uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.set_exchange_listing_like(p_listing_id,p_liked)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "set_farm_like",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_owner uuid, p_liked boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.set_farm_like(p_owner uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.set_farm_like(p_owner,p_liked)$function$\n",
         "securityDefiner": false
       },
       {
@@ -24025,6 +24133,48 @@
         "table": "farm_crop_jobs",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "farm_likes_check",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "CHECK ((owner_id <> visitor_id))"
+      },
+      {
+        "name": "farm_likes_created_at_not_null",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "farm_likes_owner_id_fkey",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (owner_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "farm_likes_owner_id_not_null",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "NOT NULL owner_id"
+      },
+      {
+        "name": "farm_likes_pkey",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (owner_id, visitor_id)"
+      },
+      {
+        "name": "farm_likes_visitor_id_fkey",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (visitor_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "farm_likes_visitor_id_not_null",
+        "table": "farm_likes",
+        "schema": "app_private",
+        "definition": "NOT NULL visitor_id"
       },
       {
         "name": "feedback_bug_votes_pkey",
@@ -43316,6 +43466,27 @@
         "arguments": "p_action text, p_item_id text, p_kind text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
       },
       {
+        "name": "farm_friends",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "farm_friends",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "farm_friends",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "feed_friend_aquarium",
         "role": "anon",
         "schema": "app_private",
@@ -44028,6 +44199,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "friend_farm",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_farm",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_farm",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
       },
       {
         "name": "friend_help_experience_event",
@@ -47115,6 +47307,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
+        "name": "set_farm_like",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_farm_like",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_farm_like",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
       },
       {
         "name": "set_map_piece_test_count",
@@ -50225,6 +50438,27 @@
         "arguments": "p_action text, p_item_id text, p_kind text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
       },
       {
+        "name": "farm_friends",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "farm_friends",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "farm_friends",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "feed_friend_aquarium",
         "role": "anon",
         "schema": "public",
@@ -50622,6 +50856,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "friend_farm",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_farm",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_farm",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid"
       },
       {
         "name": "friend_levels",
@@ -52260,6 +52515,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
+        "name": "set_farm_like",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_farm_like",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_farm_like",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
       },
       {
         "name": "set_feedback_reaction",

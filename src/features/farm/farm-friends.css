@@ -1,0 +1,20 @@
+.farm-friend-strip{display:flex;align-items:center;gap:9px;min-width:0;padding:10px 3px 0;margin-top:5px;border-top:1px solid #e9ddcc80}
+.farm-friend-avatar{display:flex;flex:none;flex-direction:column;align-items:center;gap:5px;width:48px;min-height:60px;padding:2px;border:0;background:none;color:#a18a72}
+.farm-friend-avatar>span:last-child{max-width:48px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;line-height:14px}
+.farm-friend-picture{width:34px;height:34px;border:2px solid transparent;outline:1px solid #d7c6af66;outline-offset:2px}
+.farm-friend-avatar[aria-current=page]{color:#79583b}.farm-friend-avatar[aria-current=page] .farm-friend-picture{outline:1.5px solid #ab805b;outline-offset:2px}
+.farm-friend-scroll{display:flex;align-items:center;gap:9px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}.farm-friend-scroll::-webkit-scrollbar{display:none}
+.farm-friend-all{display:flex;align-items:center;gap:2px;flex:none;min-height:44px;padding:0 4px;font-size:10px;color:#96785e;background:none;border:0}
+.farm-friend-note,.farm-friend-empty{display:flex;align-items:center;gap:6px;min-height:44px;font-size:10px;white-space:nowrap;color:#a18a72}.farm-friend-empty{padding-left:8px}
+.farm-friend-strip button:disabled{opacity:.45;cursor:default}.top-farm:has(.farm-friend-strip) .top-farm-camera{top:max(190px,calc(env(safe-area-inset-top) + 180px))}
+.farm-visit-heading{position:relative;display:flex;align-items:center;gap:10px;min-width:0;padding:2px}
+.farm-visit-return{display:flex;align-items:center;justify-content:center;gap:4px;flex:none;min-height:44px;color:#96785e;font-size:10px;background:none;border:0}
+.farm-visit-owner{display:flex;align-items:center;gap:8px;flex:1;min-width:0}.farm-visit-picture{width:30px;height:30px;flex:none}
+.top-farm-header .farm-visit-owner h1{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:500}
+.farm-visit-like{display:flex;align-items:center;justify-content:center;gap:5px;flex:none;min-width:44px;min-height:44px;font-size:11px;color:#a18a72;background:none;border:0}.farm-visit-like[aria-pressed=true]{color:#bf8078}.farm-visit-like:disabled{opacity:.5}
+.farm-visit-error{position:absolute;top:100%;left:0;right:0;z-index:9;padding:10px;border:1px solid #e9daca;border-radius:10px;background:#fff9ee;font-size:11px}
+.farm-visit-object{position:absolute;left:50%;bottom:30px;z-index:5;display:flex;align-items:center;gap:18px;max-width:calc(100% - 100px);padding:4px 6px 4px 16px;border:1px solid #e9ddcc;border-radius:14px;background:#fff9eef5;font-size:12px;transform:translateX(-50%)}.farm-visit-object button{min-width:36px;min-height:36px;font-size:18px;color:#a18a72}
+.farm-friends-dialog{max-width:360px;border:1px solid #eadac4;background:#fff9ef;color:#79583b;border-radius:20px;padding:24px}.farm-friends-dialog h2{font-size:16px;font-weight:500}.farm-friends-dialog input{width:100%;min-height:44px;padding:10px 12px;border:1px solid #e7d6bf;border-radius:11px;background:#fffcf6;font-size:12px;outline-color:#b18a64}
+.farm-friends-list{max-height:min(55dvh,420px);overflow-y:auto;overscroll-behavior:contain}.farm-friends-list>button{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:8px 3px;border-bottom:1px solid #ebdfd080;text-align:left;font-size:13px}.farm-friends-list>button>span:nth-child(2){flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.farm-friends-list>button>svg{color:#aa9277}.farm-friends-list>p{padding:25px 0;text-align:center;font-size:12px;color:#a18a72}
+.farm-visit-loading{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:30px;background:#80b8bf;color:#fff9ef;text-align:center;font-size:13px}.farm-visit-loading button{display:flex;align-items:center;gap:7px;min-height:44px;padding:9px 16px;border-radius:12px;background:#fff9ef;color:#79583b;font-size:12px}
+@media(prefers-reduced-motion:reduce){.farm-friend-strip *{animation:none!important;transition:none!important}}

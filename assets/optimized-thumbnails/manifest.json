@@ -5,11 +5,11 @@
     640
   ],
   "summary": {
-    "count": 1059,
-    "sourceBytes": 1210805194,
-    "smallBytes": 27718500,
-    "largeBytes": 75305850,
-    "smallReductionPercent": 97.71
+    "count": 1205,
+    "sourceBytes": 1316792580,
+    "smallBytes": 31138324,
+    "largeBytes": 84161790,
+    "smallReductionPercent": 97.64
   },
   "items": [
     {
@@ -293,6 +293,126 @@
       }
     },
     {
+      "key": "decorations/epic/hologram-data-waterfall_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/epic/hologram-data-waterfall_v1_thumbnail.png",
+      "sourceHash": "517332060fee9b89dea0f54c741bc95ed85a9f039916ecc87418b69049b444d5",
+      "sourceBytes": 1383934,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/c7ecebc8077068ecf4646167-320.webp",
+        "bytes": 35408,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/dca2df3e2e646ec4c8f9fea1-640.webp",
+        "bytes": 104954,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hologram-giant-robot-wreck_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/epic/hologram-giant-robot-wreck_v1_thumbnail.png",
+      "sourceHash": "46c624a66037f710bd964c7aa638e02c3219a3d0cec12586ed2584c700246226",
+      "sourceBytes": 1780269,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d4ace0596032b81a3eb9bf42-320.webp",
+        "bytes": 40458,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/50e1396e15034bd1121f8021-640.webp",
+        "bytes": 125158,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hologram-glass-dome-tower_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/epic/hologram-glass-dome-tower_v1_thumbnail.png",
+      "sourceHash": "112cff30bfafd0db27ddc80702a6b529665f5a2e2039d73529ecb2d110fd05d6",
+      "sourceBytes": 1694840,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4c9f85da28e874866c2c8160-320.webp",
+        "bytes": 38244,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/153d582ca8a5e45d40ed4674-640.webp",
+        "bytes": 125356,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hologram-neon-clocktower_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/epic/hologram-neon-clocktower_v1_thumbnail.png",
+      "sourceHash": "61d926c5f94d72d95973134c1e61ec8b71a0ac94c9d271443075a00460403b82",
+      "sourceBytes": 1115142,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/591e31d4658dbc979b523731-320.webp",
+        "bytes": 27218,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/db550b4de9f93d64af57d783-640.webp",
+        "bytes": 83466,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hologram-sunken-subway_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/epic/hologram-sunken-subway_v1_thumbnail.png",
+      "sourceHash": "85e1cf144a9be5bb5df42597c46c6e4ad39374be5bb3db6961a4265762808d55",
+      "sourceBytes": 1475729,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5c6ecbdade6f644c93f666bd-320.webp",
+        "bytes": 34436,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/10704df839ac2766accf2b22-640.webp",
+        "bytes": 110986,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/hologram-whale-fountain_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/epic/hologram-whale-fountain_v1_thumbnail.png",
+      "sourceHash": "570b7606bfad799915b05bdf049c6bb3f710f023f799acfb1817d97fd00b7401",
+      "sourceBytes": 1367285,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/452bcb323a36eac9fc4cf21f-320.webp",
+        "bytes": 36090,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/988835678187526b591cbba6-640.webp",
+        "bytes": 108774,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "decorations/epic/levitating-stone-spire_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/decorations/epic/levitating-stone-spire_thumbnail.png",
       "sourceHash": "b37e312ddabcef2adfce565c23a0a1a6aa91150e9757973a6a32f45f3527cc73",
@@ -530,6 +650,166 @@
         "bytes": 133208,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-coral-flower-greenhouse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-coral-flower-greenhouse_v1_thumbnail.png",
+      "sourceHash": "99b6534fcb26b39eac20ce8ad8ddf1f0bb0e38d9d9906c2d48ad085200bc2c7d",
+      "sourceBytes": 372897,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/deb461ed5e695046728cc466-320.webp",
+        "bytes": 31666,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7e86c37ac7315ffdfcc4834c-640.webp",
+        "bytes": 67190,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-coral-palace-miniature_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-coral-palace-miniature_v1_thumbnail.png",
+      "sourceHash": "980d05c93d97d71cbf05b1d0e500459be2c68c4288c6b3c339d65f10cd2cfbd9",
+      "sourceBytes": 324428,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/5c85082f3b2e6e10f1921448-320.webp",
+        "bytes": 33496,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4a819741f2b2c33b2ac95481-640.webp",
+        "bytes": 70200,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-diving-bell-lookout_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-diving-bell-lookout_v1_thumbnail.png",
+      "sourceHash": "f04b1daa679df9d3d7fe9f60aaa25eb6fd93c2d817f6ce4074ce4e20201c2b84",
+      "sourceBytes": 343717,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/95ed837ed652e4d7d95c5d32-320.webp",
+        "bytes": 31344,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/df67c00e16bf57abc24c4829-640.webp",
+        "bytes": 64728,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-island-guardian-pongi-statue_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-island-guardian-pongi-statue_v1_thumbnail.png",
+      "sourceHash": "4b0da4f4cc5a64badb68bd4c27c7f507e5598484233280faf0fdd96b602137d8",
+      "sourceBytes": 262214,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/dd70c6c0d11f9bfe02e706c7-320.webp",
+        "bytes": 22268,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b742dcec5b1b96d8ba9e6cf8-640.webp",
+        "bytes": 45512,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-moon-fishing-pongi-statue_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-moon-fishing-pongi-statue_v1_thumbnail.png",
+      "sourceHash": "40da628083ada31bedae8255d564703d90d8f65d33c4f85795d9900a15a0a39e",
+      "sourceBytes": 253937,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/73474bda3aa63caa25bca803-320.webp",
+        "bytes": 35902,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/800f218ea64dbc33a4163da0-640.webp",
+        "bytes": 70364,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-ocean-treasure-chest_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-ocean-treasure-chest_v1_thumbnail.png",
+      "sourceHash": "709f458babf3b7453e6a3dd7c59915d0c3eba31261c2cd0c2d9a4d981059dbd1",
+      "sourceBytes": 349772,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/4c2d3170dce8ab0ebff5bb0d-320.webp",
+        "bytes": 30596,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/48a0d097fcd1a7b3292653a0-640.webp",
+        "bytes": 64952,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-rainbow-current-fountain_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-rainbow-current-fountain_v1_thumbnail.png",
+      "sourceHash": "77f42165dd03bf59dc7faf3888bb46b83ffaca0fd9486a212a54dc5978a1785c",
+      "sourceBytes": 238748,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/f4b9543b02902cf363ce7daf-320.webp",
+        "bytes": 26074,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bb121e3e896c52131c5a37e5-640.webp",
+        "bytes": 51040,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/epic/shared-decor-star-whale-lighthouse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/epic/shared-decor-star-whale-lighthouse_v1_thumbnail.png",
+      "sourceHash": "3ed05cf9bb269e327ce1e55c52110e7c56e5514191784807583c05607428fc2b",
+      "sourceBytes": 232382,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/053c8be45d48628b0137f4ed-320.webp",
+        "bytes": 23522,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/04a274678993acba2d07296c-640.webp",
+        "bytes": 44444,
+        "width": 512,
+        "height": 512
       }
     },
     {
@@ -1673,6 +1953,306 @@
       }
     },
     {
+      "key": "decorations/normal/hologram-abyss-cctv_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-abyss-cctv_v1_thumbnail.png",
+      "sourceHash": "2b873b127537d6849b59e4b110beda17be1d821e923600a546566187ca0f3d86",
+      "sourceBytes": 690929,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6751dc468ce7cf9ed21fbddd-320.webp",
+        "bytes": 17098,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/253941a853ab9e3f3d3211e7-640.webp",
+        "bytes": 47524,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-advert-hologram_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-advert-hologram_v1_thumbnail.png",
+      "sourceHash": "a19d8b6f1624bb8c5a3ac5c004e8b3111d05cee35d18951742030158b6e4bf5e",
+      "sourceBytes": 813303,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0bad900ca395ad582a6ea4ae-320.webp",
+        "bytes": 23954,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6828c2378ac068a533b7a8a6-640.webp",
+        "bytes": 66202,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-charging-station_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-charging-station_v1_thumbnail.png",
+      "sourceHash": "714d3a63d35fef409c83f96f5180ec17187a860148c946b14f66bb575a56c13b",
+      "sourceBytes": 841513,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7948666dd0c24118b7c3750d-320.webp",
+        "bytes": 23168,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/aa73e3982df2ea32c34d746d-640.webp",
+        "bytes": 63336,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-cyber-phone_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-cyber-phone_v1_thumbnail.png",
+      "sourceHash": "ee77c4b70dd694694c8592e336d33198aff8e261cfdd529c65369735e608902e",
+      "sourceBytes": 894811,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/75c4232f01b25d0fba908784-320.webp",
+        "bytes": 21884,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/149d1f4f5c8d3424fa0b3bf5-640.webp",
+        "bytes": 57956,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-cyber-vending_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-cyber-vending_v1_thumbnail.png",
+      "sourceHash": "c5c547c9ba8b0ecfcc25464501c19c61d3882b9a0e72a738dda3e1204b5ff128",
+      "sourceBytes": 907841,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/750c4857e4876c512bc647e9-320.webp",
+        "bytes": 21026,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1a2e11c2a1dde0111a942100-640.webp",
+        "bytes": 55844,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-digital-clock_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-digital-clock_v1_thumbnail.png",
+      "sourceHash": "b0ea0ab0eaf4009e33e2003cc4c1f984b2cc6587f41efcdc4410978d3e6ae78c",
+      "sourceBytes": 726842,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/71f059e9e0e4ad1a0b4b57a1-320.webp",
+        "bytes": 20404,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6307cac3767e82e53705edc9-640.webp",
+        "bytes": 57890,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-digital-traffic_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-digital-traffic_v1_thumbnail.png",
+      "sourceHash": "8a78007a8f0e542743d55e2bd5e60dd5672eaf5a95ad44d8e44a1d283bbd2b17",
+      "sourceBytes": 630642,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f345ebb7204b631d3225d5e0-320.webp",
+        "bytes": 15616,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bd4581c40c11a59629791b84-640.webp",
+        "bytes": 41366,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-holo-sign_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-holo-sign_v1_thumbnail.png",
+      "sourceHash": "3b4b50dbf5a609a7c2769452e21b1320d9dccd788265a77718e38ead6323bbf9",
+      "sourceBytes": 829993,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5c7e1fb91c85934da5956a99-320.webp",
+        "bytes": 26742,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/430da569d7c8b862e0900ef2-640.webp",
+        "bytes": 79876,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-neon-bench_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-neon-bench_v1_thumbnail.png",
+      "sourceHash": "3d78234c2d6aee2a081a057716558b2b9812ca83615a386b5d4a6939a5e03d2e",
+      "sourceBytes": 805312,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4583097eaf632f744469505f-320.webp",
+        "bytes": 22586,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/49a90a4ab54762c554a29d8d-640.webp",
+        "bytes": 63238,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-neon-bin_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-neon-bin_v1_thumbnail.png",
+      "sourceHash": "e387c3a99135c97a4a7d78ed5acec9b1dd81b7221bafbe3c039cf7fe2923e163",
+      "sourceBytes": 698697,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/16a817feb60f43c56f621c78-320.webp",
+        "bytes": 16342,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6b0d4a5ac44900857858ad4d-640.webp",
+        "bytes": 44072,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-neon-lamp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-neon-lamp_v1_thumbnail.png",
+      "sourceHash": "59b5e62aa77aab254083d5eb45f990c3e5a2d532d505bd5c19d4b74bb867a6f7",
+      "sourceBytes": 380059,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a12d4f193a1fdce7ff40c64f-320.webp",
+        "bytes": 13324,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e6695d372efcf2dfb8959e93-640.webp",
+        "bytes": 37276,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-neon-postbox_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-neon-postbox_v1_thumbnail.png",
+      "sourceHash": "774989968b92b7676425ae19949e53fda5f4ff8a5066163da572963bfc44c57c",
+      "sourceBytes": 738774,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/32b42e3328587b0b864eaa30-320.webp",
+        "bytes": 17934,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f5994994224160c9161e9309-640.webp",
+        "bytes": 47190,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-pixel-pot_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-pixel-pot_v1_thumbnail.png",
+      "sourceHash": "5edfafc4fd7acfdcc13c3dce998a357d3c23a369f914ff33d818dc5442aaf772",
+      "sourceBytes": 562666,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7fa2c7b10587b8273c36ee72-320.webp",
+        "bytes": 17046,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/48e1cc0c5429bf68cd783e63-640.webp",
+        "bytes": 45756,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-road-sign_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-road-sign_v1_thumbnail.png",
+      "sourceHash": "6ec8eda5526cec7e2fffc6ead8ddbf242fee4aaa0a10599ed10108c01e5a4e98",
+      "sourceBytes": 827911,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6e43c1c979164456ddec5415-320.webp",
+        "bytes": 27282,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/c9768f00325f262abe2af3d9-640.webp",
+        "bytes": 77174,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/hologram-robot-guide_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/normal/hologram-robot-guide_v1_thumbnail.png",
+      "sourceHash": "fb75ef5cbc9b9d77672e053f3f01c60529ff07b2896a4a63efdc4cdf254d8d72",
+      "sourceBytes": 865485,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/33e65d13f36ca724d617ab6f-320.webp",
+        "bytes": 21028,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d60bf92ade42893b8c4e4feb-640.webp",
+        "bytes": 57348,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "decorations/normal/lavender-starfish_thumbnail.png",
       "source": "assets/storage-upload/new/decorations/normal/lavender-starfish_thumbnail.png",
       "sourceHash": "c234a6cc2b602d272a9c336c7385013f7a4f67f6319dd32889fb9bc3f77f804c",
@@ -2470,6 +3050,266 @@
         "bytes": 39564,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-fish-bread-sign_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-fish-bread-sign_v1_thumbnail.png",
+      "sourceHash": "9db853cb75ab91071332f672cad3c7386c2bfaf1646af802db66d790f21dd183",
+      "sourceBytes": 242074,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/3309e17dbde0962d69679ff6-320.webp",
+        "bytes": 20220,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/73dfa81bec3fd2a9f4c4191e-640.webp",
+        "bytes": 36002,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-fish-towel-clothesline_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-fish-towel-clothesline_v1_thumbnail.png",
+      "sourceHash": "4f3ad824b9ecc8f9d2e945e59bcb2e5b5523235fa320ded9efaf68146e786984",
+      "sourceBytes": 276740,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/3fe50aea24423fc150f12bb2-320.webp",
+        "bytes": 29428,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d22bdc1052ffdcaa0b20f475-640.webp",
+        "bytes": 56800,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-floating-bubble-balloons_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-floating-bubble-balloons_v1_thumbnail.png",
+      "sourceHash": "715c84e5218fb8afc3a53c6cfc5f88387cef6528685dc8e264148420b072729c",
+      "sourceBytes": 187948,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/88f734dbcff9fe4887c09004-320.webp",
+        "bytes": 21132,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4cf5ae815d2187f441469642-640.webp",
+        "bytes": 40196,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-little-crab-umbrella-stand_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-little-crab-umbrella-stand_v1_thumbnail.png",
+      "sourceHash": "0a0fb842182b6716eb52e808a542c61758a53896d936c4ac3caa8a2c3172900b",
+      "sourceBytes": 181922,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/20904418cbb0ec417df93be6-320.webp",
+        "bytes": 18648,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0e4be853d3f96045556cadf9-640.webp",
+        "bytes": 34032,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-little-log-shelter_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-little-log-shelter_v1_thumbnail.png",
+      "sourceHash": "e0a1419879f67f9b784fda4924fd7375a8396760690f7a1745de584376aa47eb",
+      "sourceBytes": 178767,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/7d83ae0e820946df913cb56d-320.webp",
+        "bytes": 14162,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7facdaf6e7428d61db2d197a-640.webp",
+        "bytes": 25490,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-mini-fishing-rod-rack_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-mini-fishing-rod-rack_v1_thumbnail.png",
+      "sourceHash": "4f620c54840cf2edd53b6a7286f4b1898b9336dd73e1ff09d737f733f55e5c1a",
+      "sourceBytes": 168659,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/6829b0ff094dff3b6243e875-320.webp",
+        "bytes": 22152,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e7ad9c3149a2afa813872782-640.webp",
+        "bytes": 40768,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-pongi-footprint-sandcastle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-pongi-footprint-sandcastle_v1_thumbnail.png",
+      "sourceHash": "2a4e20e25a03b22fd0cca6a43c60865990cc8c56d1c3922f169da9934f97911e",
+      "sourceBytes": 284291,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/4f85a30997e56c7e9c8cda96-320.webp",
+        "bytes": 22808,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/05eb078a6b1d502d81c78a85-640.webp",
+        "bytes": 42548,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-pongi-nap-basket_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-pongi-nap-basket_v1_thumbnail.png",
+      "sourceHash": "032c56a1ace0773a7f80263b61da2bcf9097a0900d37cab51f535eaa1a6d2f3e",
+      "sourceBytes": 296205,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/270084957b2ddfa70b2368d9-320.webp",
+        "bytes": 23976,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/46f701b989ef46f13cbe33fa-640.webp",
+        "bytes": 45826,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-pongi-paw-bench_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-pongi-paw-bench_v1_thumbnail.png",
+      "sourceHash": "9e19cc4e2189a766e92db989584127dc2a732b1a29ab017aaabb8a20abd0eb45",
+      "sourceBytes": 202439,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/8a773817cf36f58621910f38-320.webp",
+        "bytes": 17026,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f2835f2897db17b451d56169-640.webp",
+        "bytes": 30176,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-seashell-chair_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-seashell-chair_v1_thumbnail.png",
+      "sourceHash": "0ac19b5e770aaae31f189ae94cf1f806afad26aa68a99606ae43ebc8170f9a3a",
+      "sourceBytes": 209415,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/fe88bcbeeba0f33ab584ad27-320.webp",
+        "bytes": 17814,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ff58c7a2a27b1ddafb5c2d3a-640.webp",
+        "bytes": 32010,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-seashell-footwash_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-seashell-footwash_v1_thumbnail.png",
+      "sourceHash": "a05c23c70cf4db5207c0b5a8787c500089f954a10bbb592f664db9c180d8ca8d",
+      "sourceBytes": 252645,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/8ffb30d3ab609407ecf10b1f-320.webp",
+        "bytes": 19262,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8f0bb8f300bf1da1a6db69bd-640.webp",
+        "bytes": 35196,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-seaweed-flowerpot_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-seaweed-flowerpot_v1_thumbnail.png",
+      "sourceHash": "4aa626e0054bec29839d1235fb78ca64bb04cabc8cd6d4db4220b0308ecb8625",
+      "sourceBytes": 185665,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/24d49393ac8e119239c4365a-320.webp",
+        "bytes": 17270,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/03c789e013af0ab7fd76798c-640.webp",
+        "bytes": 32132,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/normal/shared-decor-sleepy-octopus-planter_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/normal/shared-decor-sleepy-octopus-planter_v1_thumbnail.png",
+      "sourceHash": "93724e712c913e731f951c378b684cbd6d6ea62b554f4e19c59c548a23ce3d26",
+      "sourceBytes": 224360,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/a89cc322de3de4401dfeeedd-320.webp",
+        "bytes": 17962,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d69922a834be0c03aabcf1c0-640.webp",
+        "bytes": 32510,
+        "width": 512,
+        "height": 512
       }
     },
     {
@@ -3613,6 +4453,306 @@
       }
     },
     {
+      "key": "decorations/rare/hologram-abyss-arcade_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-abyss-arcade_v1_thumbnail.png",
+      "sourceHash": "0ffa1851f091ea2340b9acf86645a4fea35bdfe515c53124e893801061fd863c",
+      "sourceBytes": 1425731,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6c5c20ee48adefc7150fc9b2-320.webp",
+        "bytes": 33600,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e8d309aa3a1eb2154453a5d1-640.webp",
+        "bytes": 100516,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-advert-tower_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-advert-tower_v1_thumbnail.png",
+      "sourceHash": "3e8a58f7248da772dd4456d00f0eec030da1b3aec2ca378d6c830c376393116d",
+      "sourceBytes": 712494,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b03959c6b8d12a9d633a7f35-320.webp",
+        "bytes": 21028,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f673ac022f5cec7c875624ee-640.webp",
+        "bytes": 59926,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-artificial-moon_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-artificial-moon_v1_thumbnail.png",
+      "sourceHash": "896ecb82a47a56750bc93f4be7d3f0cc7b07c979bee69b44c4326808e2d3c511",
+      "sourceBytes": 707354,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d1eeed9826d785cb05d9ef9f-320.webp",
+        "bytes": 18914,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/26a099d1b57acd923becd62f-640.webp",
+        "bytes": 51870,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-broken-portal_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-broken-portal_v1_thumbnail.png",
+      "sourceHash": "ef0420a7127a211973ef6d0982d5006e4a152927ad5b5b165c697da8761144c9",
+      "sourceBytes": 1065189,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/885dae7a4848ba425a15c5ba-320.webp",
+        "bytes": 29276,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4267adedcdd3264181ab31b6-640.webp",
+        "bytes": 82798,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-cyber-cherry_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-cyber-cherry_v1_thumbnail.png",
+      "sourceHash": "2ea16d553a4ab0f18ae1de022e50bfca75fc4e1ffbdcf679ef0e6c141ef32180",
+      "sourceBytes": 1342135,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e8a232c99f326a521edaab9f-320.webp",
+        "bytes": 30602,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8af6f36d76546eae2e94c9c8-640.webp",
+        "bytes": 87984,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-cyber-taxi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-cyber-taxi_v1_thumbnail.png",
+      "sourceHash": "46128d4b4a13dd124a8811049cd8125bd5f73600fc1ebba1359ce2fffc30c955",
+      "sourceBytes": 970417,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a730a886b925a077c5bc6157-320.webp",
+        "bytes": 21104,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/83caa7f54a75d6c183a41454-640.webp",
+        "bytes": 60368,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-data-cabinet_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-data-cabinet_v1_thumbnail.png",
+      "sourceHash": "13f8db0d52145fc7b267378d6ad4f51a7e48f924a8a4e9b33a9fe8a82f427380",
+      "sourceBytes": 1051478,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e448cf80fd9b4a0bbac7a013-320.webp",
+        "bytes": 21886,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ac5fe2ee3bc2b31bb9794466-640.webp",
+        "bytes": 61852,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-drone-workshop_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-drone-workshop_v1_thumbnail.png",
+      "sourceHash": "9401c050eb25c81a2d65f2e272deb21527ec3a4bfc1b182632722e64fc712fc4",
+      "sourceBytes": 1397338,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/718d1cb7f00c9217b2267a0d-320.webp",
+        "bytes": 31814,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3d3e1c7a84ae5c7e1e0bce4e-640.webp",
+        "bytes": 90930,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-future-bus-stop_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-future-bus-stop_v1_thumbnail.png",
+      "sourceHash": "bfe9ab41c2138581c4f6d69cbc073a9edfc34630be4a6768366e30a9500e8f7c",
+      "sourceBytes": 1149577,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d2d8a9aeab83de62bf49a561-320.webp",
+        "bytes": 27224,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d455781b3c137f85b4ae9b62-640.webp",
+        "bytes": 77222,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-holo-aquarium_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-holo-aquarium_v1_thumbnail.png",
+      "sourceHash": "76820d9614de3bdde177cfa2ac5689aef3429321366eb5c8467e1465c0800d87",
+      "sourceBytes": 1013517,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3e875bdef4d6129a7550d580-320.webp",
+        "bytes": 23560,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/dcd6e0142df777cc23c5b6ec-640.webp",
+        "bytes": 65698,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-holo-whale-statue_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-holo-whale-statue_v1_thumbnail.png",
+      "sourceHash": "60ecf2381efc524218a3a77da5f79d8c1733edd32cd5059fa71b2a6b4c0ceff6",
+      "sourceBytes": 721847,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7c9a8d73a457a28c0881e57d-320.webp",
+        "bytes": 19442,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0bb6d828765fe5c5fd3cf6e6-640.webp",
+        "bytes": 51658,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-music-fountain_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-music-fountain_v1_thumbnail.png",
+      "sourceHash": "0fbb534cd1478e2ab78a96b3de46b52590595be24f8970e8f3890a94141c27c1",
+      "sourceBytes": 905752,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/44491041b8602bc96b66a832-320.webp",
+        "bytes": 26728,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9bd76fbc49430baa8ba982aa-640.webp",
+        "bytes": 74466,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-neon-coral-garden_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-neon-coral-garden_v1_thumbnail.png",
+      "sourceHash": "c1a48cb6a9ed62f2dd7df0c80aa46d3fddc8ad07d6f132626157d69b274d0f05",
+      "sourceBytes": 1121453,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/42e4db2de1dfdd84063bc96b-320.webp",
+        "bytes": 31852,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2d6afb720f13281a54a2d84e-640.webp",
+        "bytes": 88922,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-neon-fountain_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-neon-fountain_v1_thumbnail.png",
+      "sourceHash": "ff2cb5d13e42344d0abb8d4337d5568e99ed0a34c38c7e46eaf1106a75f08c14",
+      "sourceBytes": 892443,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5357efefea9a7b79a6fc026d-320.webp",
+        "bytes": 24208,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3adbabc1bd9da055c97956e9-640.webp",
+        "bytes": 66092,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/hologram-sunken-robot_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/decorations/rare/hologram-sunken-robot_v1_thumbnail.png",
+      "sourceHash": "01f83b751cb6e304d156a715cbe126733f76245c2ea0d05b0cb003af43a93d8b",
+      "sourceBytes": 1284913,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ac016514038fc5492a8b8428-320.webp",
+        "bytes": 31164,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cd78c28839e96be9b2bd1290-640.webp",
+        "bytes": 94638,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "decorations/rare/longneck-ceramic-vase_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/decorations/rare/longneck-ceramic-vase_thumbnail.png",
       "sourceHash": "137494fdea23e0acd841dd8a1d25ae8a35e0c7a34be7e63e4ecba2e0126ef7c5",
@@ -4510,6 +5650,206 @@
         "bytes": 126536,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-bread-hat-gull-postman_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-bread-hat-gull-postman_v1_thumbnail.png",
+      "sourceHash": "c53ec0d981ce39cf402ff78a16ebd7a17cd29c8d73256293b57ef072cfcef2ed",
+      "sourceBytes": 227920,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/35720e4e305f7e097ecb4aaa-320.webp",
+        "bytes": 21250,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/15c67e9435e42c12b63268d6-640.webp",
+        "bytes": 38420,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-conch-shell-bathhouse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-conch-shell-bathhouse_v1_thumbnail.png",
+      "sourceHash": "1983f728551825e4fc62868b331866e3c507b5cdea49f9c932c1b89d17206fe5",
+      "sourceBytes": 308237,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/6b096e1523695e64b00e94f0-320.webp",
+        "bytes": 22310,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3cd5e764f16adb31300c9f99-640.webp",
+        "bytes": 40856,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-fish-milk-vending-machine_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-fish-milk-vending-machine_v1_thumbnail.png",
+      "sourceHash": "a4e2493f82fbe43a0458b8815a1206e551dbed527859f7ea9065b77e7f858d40",
+      "sourceBytes": 270365,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/89a9c5c652872609c35e5eaf-320.webp",
+        "bytes": 20958,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/96da1eca2e6205f80bff464e-640.webp",
+        "bytes": 38122,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-fishing-king-pongi-sign_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-fishing-king-pongi-sign_v1_thumbnail.png",
+      "sourceHash": "a17befb5fdf5e7ace1e7a98981437c41991a4c7df07eed817bc39a96ace5ed30",
+      "sourceBytes": 271894,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/af4e1fe3eafe819db8797f67-320.webp",
+        "bytes": 22264,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0881fa226042ed392d8705b0-640.webp",
+        "bytes": 41968,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-little-jellyfish-lamp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-little-jellyfish-lamp_v1_thumbnail.png",
+      "sourceHash": "3c3aaee2ce39ec05f34fd90c1a9e28e053ba1e6d3b2d74b08ff18c26827790b9",
+      "sourceBytes": 166666,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/d208c9b949fec151e02b7528-320.webp",
+        "bytes": 17666,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/77344c74ce35e296f47242c1-640.webp",
+        "bytes": 31572,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-otter-family-hourglass_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-otter-family-hourglass_v1_thumbnail.png",
+      "sourceHash": "76eb3dd3aa48f8b9b563b740afad125eddc2693886e77cf3c3f92daa4e77acd4",
+      "sourceBytes": 371918,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/454b1399f20c1030459926b2-320.webp",
+        "bytes": 33534,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/151943f4a138fadecad606b0-640.webp",
+        "bytes": 64462,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-pearl-clamshell-lamp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-pearl-clamshell-lamp_v1_thumbnail.png",
+      "sourceHash": "1b9de4d4fe90a0cbbbd11a5ad64205ab74401ea47fa9c933bbb0f3130b5b1fc9",
+      "sourceBytes": 227460,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/075827bdca2027b45586a361-320.webp",
+        "bytes": 15334,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d191a8ee4fcfb752ebed69c1-640.webp",
+        "bytes": 27908,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-pearl-clamshell-music-box_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-pearl-clamshell-music-box_v1_thumbnail.png",
+      "sourceHash": "ccb1622d0c463b5573f226a7c81efd6edd2b61a963d838db60a7cb96d625db92",
+      "sourceBytes": 283178,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/cc1208890c6a3509a798139f-320.webp",
+        "bytes": 23408,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/18720489f3769c07008520d0-640.webp",
+        "bytes": 44648,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-pongi-shell-icecream-stall_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-pongi-shell-icecream-stall_v1_thumbnail.png",
+      "sourceHash": "71534b2801e756c65d2c0b645320d9e4f605907ca76298ac66c25600d87f8e28",
+      "sourceBytes": 349974,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/fc656b184efcd01446837097-320.webp",
+        "bytes": 32920,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ff27acedc3e1bd4574167566-640.webp",
+        "bytes": 62510,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "decorations/rare/shared-decor-wave-wall-clock_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-200313/decorations/rare/shared-decor-wave-wall-clock_v1_thumbnail.png",
+      "sourceHash": "bf1dbd245bf0e74e44368c19a85bc7fe0b3907d70a30853dff1d263870f55ad4",
+      "sourceBytes": 220081,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/80b52aba131c36df4a25bca1-320.webp",
+        "bytes": 20740,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6a6306d1e43055e45b803580-640.webp",
+        "bytes": 38472,
+        "width": 512,
+        "height": 512
       }
     },
     {
@@ -6013,6 +7353,186 @@
       }
     },
     {
+      "key": "fish/epic/hologram-glitch-hunter_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-glitch-hunter_v1_thumbnail.png",
+      "sourceHash": "5032539bbd32186700b84b470b4e09ba432ee90c2c52f690ea4334b0c45d1900",
+      "sourceBytes": 817856,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/379840b9ebd337136765a0fe-320.webp",
+        "bytes": 28146,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/88252e4ad178fdf94ca688d4-640.webp",
+        "bytes": 84484,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-hologram-pongi_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-hologram-pongi_v1_thumbnail.png",
+      "sourceHash": "8cb1ad37a7fd644ac13032b1e91e1e72dd6109d73365aa0f900a1252d0a7f2c2",
+      "sourceBytes": 1030688,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fb62a07b53bce18b5fe979f2-320.webp",
+        "bytes": 25210,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/30706f29e26b963f8702a70f-640.webp",
+        "bytes": 74508,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-memoria_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-memoria_v1_thumbnail.png",
+      "sourceHash": "932dfefa648e1a3ab851de15dd355b0ffaf4510cfdd91a155ebdfb9a520e0795",
+      "sourceBytes": 1135066,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/082d48e3fd8f661f43fdbe50-320.webp",
+        "bytes": 31536,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1da4d841bc270cb1d3ca7219-640.webp",
+        "bytes": 89826,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-mirage_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-mirage_v1_thumbnail.png",
+      "sourceHash": "a6a26d5570a51fc1448c346d6eeec7b8270d68fe15e103f7c80a5c09429cabae",
+      "sourceBytes": 1040371,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/eb902522246b704d1f731fd1-320.webp",
+        "bytes": 30204,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b76ef2744ee6f3ae73af4828-640.webp",
+        "bytes": 90666,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-prism_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-prism_v1_thumbnail.png",
+      "sourceHash": "1f9ad0da54ada622367fb9724e89857c6c4b2b1695ae835cf5b4ff9c45fa2192",
+      "sourceBytes": 1645761,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/32c9889ac160caf4ef6cfcdd-320.webp",
+        "bytes": 54354,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/10c4626b28788370d40aed9b-640.webp",
+        "bytes": 174242,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-sos_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-sos_v1_thumbnail.png",
+      "sourceHash": "da0c9a9f5921dd681a0c7ae432c019c637ec1aab691685b9ed47572a4adacf7f",
+      "sourceBytes": 819786,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/30e14c507f9dbcc625233653-320.webp",
+        "bytes": 23334,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5fd2db993902312c70c51dae-640.webp",
+        "bytes": 71034,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-sweeper_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-sweeper_v1_thumbnail.png",
+      "sourceHash": "2cbe644894474eb505698252f3e05a34bc0847098647580dc589ad4bb17faed4",
+      "sourceBytes": 1007142,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/dcdf185dd11cb2154a712e73-320.webp",
+        "bytes": 24594,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3bb3b8d313e87b797af016c7-640.webp",
+        "bytes": 75832,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-volteon_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-volteon_v1_thumbnail.png",
+      "sourceHash": "25abbddcb16c4286b703a688ad7e88855b2a9b7e02f88d852e2053d5d9f91500",
+      "sourceBytes": 877432,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d18a7053b92367426f85f661-320.webp",
+        "bytes": 23022,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/aa1a202ed729bb3291a99281-640.webp",
+        "bytes": 70594,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/hologram-zero-shark_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/epic/hologram-zero-shark_v1_thumbnail.png",
+      "sourceHash": "d58b27d07bf0c1bb1fafba66dd3bc563cba00aad34ed2506cbe6851463ead027",
+      "sourceBytes": 685704,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2a114390aa294351ee54b5e0-320.webp",
+        "bytes": 19232,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6826365e637e20a8d1e30f43-640.webp",
+        "bytes": 56396,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/epic/hourglass-sea-cucumber_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/fish/epic/hourglass-sea-cucumber_thumbnail.png",
       "sourceHash": "7181cb0c0fbfab37c60f4875738ca3f7333148e9ceb753bb858d16b124be2f32",
@@ -7173,6 +8693,26 @@
       }
     },
     {
+      "key": "fish/epic/shared-amber-sperm-whale_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-141330/fish/epic/shared-amber-sperm-whale_v1_thumbnail.png",
+      "sourceHash": "4eda26bb0c33836b24e3e0eee4c4186eb10691dd77f70253eaf480a07187d0e5",
+      "sourceBytes": 474218,
+      "sourceWidth": 1024,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/9b7975c3251f78f57b59cfdf-320.webp",
+        "bytes": 12782,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ffe919fef7f057311976c692-640.webp",
+        "bytes": 31820,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/epic/shared-crimson-vampire-squid_thumbnail.png",
       "source": "assets/storage-upload/new/20261022-041530/fish/epic/shared-crimson-vampire-squid_thumbnail.png",
       "sourceHash": "c880ccc7a1905b09d499c083aa8d1895922efa31afe348afa77c8b2ef2c46c72",
@@ -7253,6 +8793,26 @@
       }
     },
     {
+      "key": "fish/epic/shared-jadeback-humpback_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-141330/fish/epic/shared-jadeback-humpback_v1_thumbnail.png",
+      "sourceHash": "8b027d331304de7b035c9a987e7852d43be5083508ccc2e2bf0fc43b84195f51",
+      "sourceBytes": 464999,
+      "sourceWidth": 1024,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/d6c3084df80d3538b2f190a1-320.webp",
+        "bytes": 14616,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4426304985e8e813a9b37121-640.webp",
+        "bytes": 37610,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/epic/shared-lapis-crown-jelly_thumbnail.png",
       "source": "assets/storage-upload/new/20261022-041530/fish/epic/shared-lapis-crown-jelly_thumbnail.png",
       "sourceHash": "969db1e9ee32dc9080e6b941933412ba751f024b850a555bc4838cf0e354677a",
@@ -7310,6 +8870,46 @@
         "bytes": 97850,
         "width": 627,
         "height": 627
+      }
+    },
+    {
+      "key": "fish/epic/shared-silkback-fin-whale_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-141330/fish/epic/shared-silkback-fin-whale_v1_thumbnail.png",
+      "sourceHash": "112153031d69ce683fe50724b3579a41304507851e295d8b3f5f075771e097fe",
+      "sourceBytes": 410071,
+      "sourceWidth": 1024,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/c8c2d54ab1097d5a6505dc45-320.webp",
+        "bytes": 12152,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/306a3e5d698a801f11a11fce-640.webp",
+        "bytes": 30864,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/shared-sunset-belly-blue-whale_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-141330/fish/epic/shared-sunset-belly-blue-whale_v1_thumbnail.png",
+      "sourceHash": "5c7633cad93bc599b076b129ecc56ee112e02e0d4776e9df2ac1bfebcf64f72a",
+      "sourceBytes": 446716,
+      "sourceWidth": 1024,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/5dc48428af834214bf3dca7d-320.webp",
+        "bytes": 13528,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/66694d55857f501842027cbd-640.webp",
+        "bytes": 34024,
+        "width": 640,
+        "height": 640
       }
     },
     {
@@ -7774,20 +9374,20 @@
     },
     {
       "key": "fish/mythic/galaxy-ananke_v1_thumbnail.png",
-      "source": "assets/storage-upload/new/20261105-120500/fish/mythic/galaxy-ananke_v2_thumbnail.png",
-      "sourceHash": "b674fadfcb97f60fc41a52dd64fa241f1aedc8d8fc63fcc7fcb6ccc5230c52c0",
-      "sourceBytes": 1471265,
+      "source": "assets/storage-upload/new/20261105-033000/fish/mythic/galaxy-ananke_v1_thumbnail.png",
+      "sourceHash": "605a5c60b3e97c9464edc6dcc8e728ba5d80de3e9e1acd498a97d9873c6f1b10",
+      "sourceBytes": 1650999,
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "small": {
-        "url": "/game-art/thumbnails/c3054372e82dcc5a143b77e0-320.webp",
-        "bytes": 37474,
+        "url": "/game-art/thumbnails/150db2f669310a66ebf7fb8f-320.webp",
+        "bytes": 38216,
         "width": 320,
         "height": 320
       },
       "large": {
-        "url": "/game-art/thumbnails/a8d38e9767ce2ad9db87affd-640.webp",
-        "bytes": 114408,
+        "url": "/game-art/thumbnails/5d516066ca69ff6c8dfb6c02-640.webp",
+        "bytes": 115582,
         "width": 640,
         "height": 640
       }
@@ -8128,6 +9728,106 @@
       "large": {
         "url": "/game-art/thumbnails/83d4f77fc3f681214bee92a7-640.webp",
         "bytes": 118404,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hologram-archive_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/mythic/hologram-archive_v1_thumbnail.png",
+      "sourceHash": "c7433ab1cef563322d5e37d86884185aea9ac00afc73c9cd6501c005c86b72f7",
+      "sourceBytes": 916911,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/29c3fb3862f781b2238fbe5c-320.webp",
+        "bytes": 23258,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b8b6d47562016b805996f208-640.webp",
+        "bytes": 68188,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hologram-eve_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/mythic/hologram-eve_v1_thumbnail.png",
+      "sourceHash": "ac8cecab11e556b2c0efa6f975774bd913251662be62f30fc04a6e95c847fbd0",
+      "sourceBytes": 1469892,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0f6392d6e0f55441b004b729-320.webp",
+        "bytes": 43638,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/beedc57473a3983083cf836f-640.webp",
+        "bytes": 130036,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hologram-masquerade_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/mythic/hologram-masquerade_v1_thumbnail.png",
+      "sourceHash": "2695ef6647b920698a7d6129f9ce690385a0fb5b275311a9b33620c3a76d2feb",
+      "sourceBytes": 1156171,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6153122fde4a2e80b1e1095a-320.webp",
+        "bytes": 38336,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b5f44d06cac3be6b52b71161-640.webp",
+        "bytes": 117946,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hologram-seraphim_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/mythic/hologram-seraphim_v1_thumbnail.png",
+      "sourceHash": "18806ea2704c5db9c29bbdd71923534a7dfc1df67c2884981935cdc9ba192cf9",
+      "sourceBytes": 1032822,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/703d439f7d02a757e2a9c166-320.webp",
+        "bytes": 28470,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cb429b9cb94fd0589f5c5a05-640.webp",
+        "bytes": 80972,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/hologram-simula_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/mythic/hologram-simula_v1_thumbnail.png",
+      "sourceHash": "eacfaa9c90a81a3ee658d04fb8503335cf438432098b5e7bbad1fb5dd0752cee",
+      "sourceBytes": 1349241,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/bd52e872313f78ff8e4bb21f-320.webp",
+        "bytes": 39898,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6acdf4efa8611e6435604130-640.webp",
+        "bytes": 125128,
         "width": 640,
         "height": 640
       }
@@ -10813,6 +12513,206 @@
       }
     },
     {
+      "key": "fish/normal/hologram-battery-seahorse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-battery-seahorse_v1_thumbnail.png",
+      "sourceHash": "fd4f992ad416fea0120b29efda7f6fd78b1a00a2bd71bbcee1e8b96ff50b3232",
+      "sourceBytes": 720920,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5edaad532d5ebbd1c8379cdd-320.webp",
+        "bytes": 20028,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3dd1bb9bdb2ee5ab94c16139-640.webp",
+        "bytes": 52652,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-cable-eel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-cable-eel_v1_thumbnail.png",
+      "sourceHash": "a51263102b22e0d7a490d56127fc5723f0c137100260e68f363385e09869ab6a",
+      "sourceBytes": 633259,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/bb8632b87d6928b902bb96c2-320.webp",
+        "bytes": 21738,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2d2b569484a8f139b9b35911-640.webp",
+        "bytes": 65024,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-data-anchovy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-data-anchovy_v1_thumbnail.png",
+      "sourceHash": "232d475a56e01236956ce15e8ec4f1e7d984eff16891925bf0b6b4b8bf3bd425",
+      "sourceBytes": 456988,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3d3d44a1288cfe3aeadcc1e9-320.webp",
+        "bytes": 14100,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/50f7f1f7c4bced263b1d44fc-640.webp",
+        "bytes": 40498,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-fiber-seahorse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-fiber-seahorse_v1_thumbnail.png",
+      "sourceHash": "04879e244ddb064be516e4bf06b3a1dd885916e1e750a4f1e891a4fbd6890b9e",
+      "sourceBytes": 745048,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/74c8778cac51332b3b458869-320.webp",
+        "bytes": 22292,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/005cb5ed204a36392d209a45-640.webp",
+        "bytes": 62442,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-glitch-crab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-glitch-crab_v1_thumbnail.png",
+      "sourceHash": "8569f21b8d26b6bf0f1dc85a0e12e03cf0a016810f1b188649a8e36b8a8972e6",
+      "sourceBytes": 743899,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ced000067d5ef523902ed8ed-320.webp",
+        "bytes": 22324,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f11e9674da0cf67550e22ad5-640.webp",
+        "bytes": 63064,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-holo-shrimp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-holo-shrimp_v1_thumbnail.png",
+      "sourceHash": "67cd845cdf95ea0c03b3acdec5acb55129acec56faf7e548042a97e4fe36cded",
+      "sourceBytes": 868226,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/33f6843d21474177437d75ea-320.webp",
+        "bytes": 31268,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/18a0fcf93496cebd7f266d32-640.webp",
+        "bytes": 90370,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-led-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-led-puffer_v1_thumbnail.png",
+      "sourceHash": "bd8ea9c1ead387023f0522f06aeedcd8777fb319601e1c688cf74d62d8a8a9f5",
+      "sourceBytes": 915167,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/10c584d7f04312b0d6c190c5-320.webp",
+        "bytes": 25354,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d87312336fe3b3b701d77b82-640.webp",
+        "bytes": 71000,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-neon-guppy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-neon-guppy_v1_thumbnail.png",
+      "sourceHash": "e993acf54b3250cb490c2a22059d3fd84b16a12fa5dad4702860950d777f281a",
+      "sourceBytes": 361414,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/95f26be88d2d2181cad5739e-320.webp",
+        "bytes": 11450,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ff3f4c37f981435dac0e80ef-640.webp",
+        "bytes": 31598,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-pixel-jellyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-pixel-jellyfish_v1_thumbnail.png",
+      "sourceHash": "89bbbc03d643cc3c7e16232930c7d6a28db574406170dfa5978d2f5b63aca0c5",
+      "sourceBytes": 712155,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5d0759bbe117d79f9b486669-320.webp",
+        "bytes": 21438,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bbb787d12498f181c2ec942e-640.webp",
+        "bytes": 57906,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/hologram-wifi-ray_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/normal/hologram-wifi-ray_v1_thumbnail.png",
+      "sourceHash": "9a5105aa184187e2ff52aa10bf0576aa9936f640b04d990076c1b940547bb955",
+      "sourceBytes": 531593,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8ec7a22206fc27d4383f615b-320.webp",
+        "bytes": 15426,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7260c4c2ca4198d0786fe64f-640.webp",
+        "bytes": 40788,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/normal/icefloe-lumpsucker_thumbnail.png",
       "source": "assets/storage-upload/new/20261017-153200/fish/normal/icefloe-lumpsucker_thumbnail.png",
       "sourceHash": "385d9094918fc454fab349e4c1d17679c8639832084d46e4dc7c1fbc20542304",
@@ -12433,6 +14333,26 @@
       }
     },
     {
+      "key": "fish/normal/round-sandfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261103-151800/fish/normal/round-sandfish_v1_thumbnail.png",
+      "sourceHash": "695edc6d590f91ee5ce2f9a5af2d8e12c32763efc12ed00f70b9056a19063c2e",
+      "sourceBytes": 594942,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1dfcd14cd7d8ceac3c2f19b7-320.webp",
+        "bytes": 13194,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1fd0eb1dc7aab9184f1c3c1f-640.webp",
+        "bytes": 32088,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/normal/round-triassurus_thumbnail.png",
       "source": "assets/storage-upload/new/20261017-135100/fish/normal/round-triassurus_thumbnail.png",
       "sourceHash": "be21dfbff7de0b2b667d56e2612147ecaf51d79c59339b413a8503448366a551",
@@ -13253,6 +15173,206 @@
       }
     },
     {
+      "key": "fish/normal/weather-pongi-cherry-cape_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-cherry-cape_v1_thumbnail.png",
+      "sourceHash": "19725918fc3d95bf32aadb1c6abb48a3ee3f64da17473d9e19478acb96800c66",
+      "sourceBytes": 173070,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/b669e57dec8ef4408e1c4b29-320.webp",
+        "bytes": 17746,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9059be389c92b20c72541324-640.webp",
+        "bytes": 32904,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-comet-tail_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-comet-tail_v1_thumbnail.png",
+      "sourceHash": "ef6f3b3e4eb008b692ace7c0051b6d2982dc2503c293b3082cd71b6991b09aeb",
+      "sourceBytes": 151909,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/f6d17ff6274897a82cddd918-320.webp",
+        "bytes": 16772,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6ea87161251477bee745b896-640.webp",
+        "bytes": 30932,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-desert-traveler_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-desert-traveler_v1_thumbnail.png",
+      "sourceHash": "f20b1ce5276cb033e42a08c45dd88c48be0433c409c6107a7cd657157a70b628",
+      "sourceBytes": 194301,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/8951443f29c5b9cd5c4ff126-320.webp",
+        "bytes": 21510,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8deb0ce274a28e39f5ffb65a-640.webp",
+        "bytes": 40100,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-flower-bouquet_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-flower-bouquet_v1_thumbnail.png",
+      "sourceHash": "0b30f6c901a451a14b0eae22e98fa230db55a098fb7cdb910fe68b8b1e75d2e6",
+      "sourceBytes": 177447,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/9ec874efc4ee3472c2cfc336-320.webp",
+        "bytes": 19794,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a73e587db0918d3de4d0e5d0-640.webp",
+        "bytes": 37292,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-leaf-umbrella_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-leaf-umbrella_v1_thumbnail.png",
+      "sourceHash": "39c6ccfd7961d8845f0bac621f49d06aa9064bea234d697919803e53f9c29f2f",
+      "sourceBytes": 249134,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/1481426bc4d91a2ad0491df3-320.webp",
+        "bytes": 24960,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ffc716717419008cb3c12811-640.webp",
+        "bytes": 46172,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-raincoat_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-raincoat_v1_thumbnail.png",
+      "sourceHash": "a5205f6454082ac563452343475f9de33ee93ea6f954b1bfb8075296709fb084",
+      "sourceBytes": 171789,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/2fb1a81af7cc0505e0476239-320.webp",
+        "bytes": 17362,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2098b87ae6dcf0c771fb4091-640.webp",
+        "bytes": 32060,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-red-scarf_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-red-scarf_v1_thumbnail.png",
+      "sourceHash": "e973d2beff11474929051a4e23f1df4ba173780891ea2f518efc7bbbdd4f6eeb",
+      "sourceBytes": 188746,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/95668ee2089a01745d4d67f1-320.webp",
+        "bytes": 20890,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2ae5fa24fb5c131cd474f382-640.webp",
+        "bytes": 40132,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-sand-goggles_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-sand-goggles_v1_thumbnail.png",
+      "sourceHash": "d9ed7855c54962564d954de531750dc59d38d06bcc106468327b099ba54d54ef",
+      "sourceBytes": 205909,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/3b6bb19e093c1f34e635b998-320.webp",
+        "bytes": 20386,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6e83d0e2f9e598cad3941407-640.webp",
+        "bytes": 37682,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-snowflake-cape_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-snowflake-cape_v1_thumbnail.png",
+      "sourceHash": "b26a54eccf6454f3a586eb2f8f4fcfaf74ac2ff29323c8313498f3d22e5e9dfb",
+      "sourceBytes": 170176,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/5cb1b7344dea4ed919e61585-320.webp",
+        "bytes": 18684,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/686f71e8d0822b90cecc9264-640.webp",
+        "bytes": 34986,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/weather-pongi-star-collector_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261104-170551/fish/normal/weather-pongi-star-collector_v1_thumbnail.png",
+      "sourceHash": "82c93e2e32288b783300ec37dbc6954bf55f47cbe6765ab1d0a007b8218271ba",
+      "sourceBytes": 186296,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/8dfa8dbbb19ad1746159adb0-320.webp",
+        "bytes": 18168,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/77bbd5fc9f15a174a04a0f6d-640.webp",
+        "bytes": 34012,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
       "key": "fish/normal/whorl-tetragonites_thumbnail.png",
       "source": "assets/storage-upload/new/20261017-135100/fish/normal/whorl-tetragonites_thumbnail.png",
       "sourceHash": "71d8925e464b7042db6c0947f9de9e1f353546919a7406467c8ad84ac6303834",
@@ -13308,6 +15428,26 @@
       "large": {
         "url": "/game-art/thumbnails/5d6e7c99d7952fce6a039eea-640.webp",
         "bytes": 69656,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/baby-blenny_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261103-151800/fish/rare/baby-blenny_v1_thumbnail.png",
+      "sourceHash": "ac39232baf970654d5859e6e638d2414869182c9070487985cb875c735e4e9f0",
+      "sourceBytes": 575552,
+      "sourceWidth": 1336,
+      "sourceHeight": 1336,
+      "small": {
+        "url": "/game-art/thumbnails/c01e228874d5a5bba7762283-320.webp",
+        "bytes": 11066,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bde68a2cf1105e7448f863d9-640.webp",
+        "bytes": 25674,
         "width": 640,
         "height": 640
       }
@@ -14893,6 +17033,186 @@
       }
     },
     {
+      "key": "fish/rare/hologram-billboard-angler_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-billboard-angler_v1_thumbnail.png",
+      "sourceHash": "0e3cc8378ebf92f79dc5c788a117b709c821b90c4beab76108d5aa451f9fbe6e",
+      "sourceBytes": 922950,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/58f459e367be1ad5b6015ec8-320.webp",
+        "bytes": 27010,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/36f0d8011c77295166f66a6e-640.webp",
+        "bytes": 76454,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-digital-chameleon_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-digital-chameleon_v1_thumbnail.png",
+      "sourceHash": "6e956e101d12ca02dd7aa3e47a5b9c3a91fad2921d665d9f01c0df83cd870650",
+      "sourceBytes": 839636,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/bded1aedbae8d57bed5cbabb-320.webp",
+        "bytes": 24548,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ad58ce2b98638b141f3e0f8b-640.webp",
+        "bytes": 71560,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-disco-jellyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-disco-jellyfish_v1_thumbnail.png",
+      "sourceHash": "14b264e5a3dcfd95703ea187d72a7fd8c9ec24ec437b9930fb061a03b8d75de6",
+      "sourceBytes": 789585,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/63e866c4ba8beaffc30778b5-320.webp",
+        "bytes": 23780,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8901920e01c59afa3be223d0-640.webp",
+        "bytes": 62806,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-error-octopus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-error-octopus_v1_thumbnail.png",
+      "sourceHash": "52e684d280d52dd0dc1cf2002b794cd23e43b511365e6cced021874ce5f00254",
+      "sourceBytes": 1404372,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ed20bba3174460a6cd177432-320.webp",
+        "bytes": 41886,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2f7fa1dd2bfe943329b70e07-640.webp",
+        "bytes": 112580,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-holo-butterflyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-holo-butterflyfish_v1_thumbnail.png",
+      "sourceHash": "fa80254424fb02a450964e9a34dc53a0362396ed3e1897cce9601063a32c04c3",
+      "sourceBytes": 1042970,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1c28ecc37c588c5d305b28bc-320.webp",
+        "bytes": 31572,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a3dbd238e20806e61ea3e490-640.webp",
+        "bytes": 93212,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-laser-marlin_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-laser-marlin_v1_thumbnail.png",
+      "sourceHash": "80bdb725c9776c527eda762c43404998891fbdd729167ae01480fa9cd809238a",
+      "sourceBytes": 514796,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f1169f7d66f7f4cd7b69556f-320.webp",
+        "bytes": 17688,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/262a03b4806e3b1098e8cead-640.webp",
+        "bytes": 50328,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-laser-swordfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-laser-swordfish_v1_thumbnail.png",
+      "sourceHash": "99f4cb89ea0dca2d70830d482fede1b6874a10b56c8cad62487315e52abd3725",
+      "sourceBytes": 482778,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/33a5f694e686fd04ffc0aafb-320.webp",
+        "bytes": 16284,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/89a73690b3d6c29e760b25e5-640.webp",
+        "bytes": 45762,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-neon-ghost-ray_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-neon-ghost-ray_v1_thumbnail.png",
+      "sourceHash": "5f879d8e503793695d9916966ccf7401d3d15b4b5ab0a566199c00967f8a556b",
+      "sourceBytes": 492158,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e83cbcc2bf57bee4a69cfdbf-320.webp",
+        "bytes": 16024,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/02bd2e8ba7565b2d71ed87b4-640.webp",
+        "bytes": 41740,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/hologram-photon-seadragon_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/fish/rare/hologram-photon-seadragon_v1_thumbnail.png",
+      "sourceHash": "85bfb666e1ea7f5c50993cccf1a5beb8aadd089b2aab8c5823e17b1adb47c57f",
+      "sourceBytes": 645948,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a4be620b851725eb76e8fe5c-320.webp",
+        "bytes": 22858,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/04a652c2edc7bd44751ab8a0-640.webp",
+        "bytes": 63724,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/rare/icearmor-king-crab_thumbnail.png",
       "source": "assets/storage-upload/new/20261017-153200/fish/rare/icearmor-king-crab_thumbnail.png",
       "sourceHash": "d69811946fca700ed96bdb1d72558eff4be26f95a6ad24cb6ce9cbeff86b3cce",
@@ -15828,6 +18148,26 @@
       "large": {
         "url": "/game-art/thumbnails/f189b7a4372405b46221718e-640.webp",
         "bytes": 64286,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/pearlspot-wrasse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261103-151800/fish/rare/pearlspot-wrasse_v1_thumbnail.png",
+      "sourceHash": "8161632fcdfbc3dcd28abb1603766fbcfdb72b850a405f3b6219906709d153b4",
+      "sourceBytes": 927769,
+      "sourceWidth": 1380,
+      "sourceHeight": 1380,
+      "small": {
+        "url": "/game-art/thumbnails/8ef3ae091e729cf8a8b61304-320.webp",
+        "bytes": 12484,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a011478fac4ce010cec494b4-640.webp",
+        "bytes": 30196,
         "width": 640,
         "height": 640
       }
@@ -18693,6 +21033,246 @@
       }
     },
     {
+      "key": "trash/normal/hologram-broken-drone_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-broken-drone_v1_thumbnail.png",
+      "sourceHash": "ea944743125813a999c9dbbfe68e122749fa2be9372bd99aab27f6649241558c",
+      "sourceBytes": 929076,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ce965e2b55c4d87d4ee4788e-320.webp",
+        "bytes": 28252,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1640c3f3cb4b16c59e430201-640.webp",
+        "bytes": 76278,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-broken-keyboard_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-broken-keyboard_v1_thumbnail.png",
+      "sourceHash": "d3ebde227c723e2fe1bf1d73583ad8562b4dd60d2ce62ae81881dac5b9c21655",
+      "sourceBytes": 936706,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/70ed334b560755b4f7fc56c9-320.webp",
+        "bytes": 19970,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/90fd1e4facba832ff6959918-640.webp",
+        "bytes": 53990,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-broken-lens_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-broken-lens_v1_thumbnail.png",
+      "sourceHash": "1a26a01b066901966a4f1fa0d1bc2e8d7d70732183ffda2d00e19bd9ee5e6c1b",
+      "sourceBytes": 986535,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/954a039d85e735d2bdce2bd5-320.webp",
+        "bytes": 22302,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ea5e144e0794b393c0f3980d-640.webp",
+        "bytes": 63484,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-broken-neon-sign_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-broken-neon-sign_v1_thumbnail.png",
+      "sourceHash": "ba5accf80ef1a87b0e66171236fd2df21dad7740e589edbd85ef9a58115dbda9",
+      "sourceBytes": 1152837,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a5d87e8897ea2966e3288cf9-320.webp",
+        "bytes": 27404,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f6289536bb4ec38ac855f13e-640.webp",
+        "bytes": 78582,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-broken-panel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-broken-panel_v1_thumbnail.png",
+      "sourceHash": "0b1c7d5ffa9804954b5555daaf2b4091ce32a59157b5b69ae1243866bee67987",
+      "sourceBytes": 877789,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/73c3a1e8afc78e5d983a1f34-320.webp",
+        "bytes": 19506,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2bb8a94c26905d8ba2a37e87-640.webp",
+        "bytes": 49612,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-broken-watch_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-broken-watch_v1_thumbnail.png",
+      "sourceHash": "4bb93a2e749691d3d9017d521933a9d5995af67a4598e71c68fb1d8e8dc265ab",
+      "sourceBytes": 1059535,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d1bf3195d440c71d8fabf9f6-320.webp",
+        "bytes": 27296,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5dc95249f501cda79e408b2b-640.webp",
+        "bytes": 78310,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-charging-cable_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-charging-cable_v1_thumbnail.png",
+      "sourceHash": "4909514241b93a5fdededf99e18c632f03e69c8a3f3ce830df927a0359d0689a",
+      "sourceBytes": 903085,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/55b24ba01a8eb46914b8345c-320.webp",
+        "bytes": 23972,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b9a541fb4fdd0ac2cdb5e0d2-640.webp",
+        "bytes": 67860,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-discarded-billboard_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-discarded-billboard_v1_thumbnail.png",
+      "sourceHash": "f3adc3e788d4e9f938438b215ee2bae1715d9889401a6b07a2df379dd57880b9",
+      "sourceBytes": 1268595,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e4a654b87f5bae15c6c49c6f-320.webp",
+        "bytes": 30870,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/206c210ead2d155cd66a37ba-640.webp",
+        "bytes": 88244,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-empty-battery_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-empty-battery_v1_thumbnail.png",
+      "sourceHash": "2a8e9043e9e229eff58a539c3f0773f59777fe56dd7ce047dcc9afd522bc7be3",
+      "sourceBytes": 648992,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/737be5419f0644060a9b8a5d-320.webp",
+        "bytes": 15770,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/793a8d074c2dd88408b427dd-640.webp",
+        "bytes": 41390,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-empty-energy-can_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-empty-energy-can_v1_thumbnail.png",
+      "sourceHash": "1bf5ecf684ba450a022d9a949d561cf6a058f8c6ec759bdae4f2978a2f27ae1a",
+      "sourceBytes": 761208,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/878836091b5d0f95240d2c7a-320.webp",
+        "bytes": 17304,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/06cbf32800771ff4e755386e-640.webp",
+        "bytes": 47730,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-old-chip_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-old-chip_v1_thumbnail.png",
+      "sourceHash": "ced104ba9f57e105631aa9bb3d7ae28af34b009ea1f44dfba1fb7a2600c2b15a",
+      "sourceBytes": 934484,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fd91c6e6dc079c188dc48162-320.webp",
+        "bytes": 21892,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9febba9a56ad8db987bb1a6b-640.webp",
+        "bytes": 61596,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/hologram-rusty-robot-arm_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/normal/hologram-rusty-robot-arm_v1_thumbnail.png",
+      "sourceHash": "2deae28e7d2ec9f6c0a0bdd4198f620451e313ab99d680046399e69afd64df46",
+      "sourceBytes": 741286,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d28f69713e7f470c5695f9c9-320.webp",
+        "bytes": 17968,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f3fae6f130a3a0d7bff21b34-640.webp",
+        "bytes": 52702,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "trash/normal/lost-swimming-goggles_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/trash/normal/lost-swimming-goggles_thumbnail.png",
       "sourceHash": "13e0eb2ec66e995a1a987946b898a4e64523c47395a46857aa00850ba54ba6d5",
@@ -19973,6 +22553,26 @@
       }
     },
     {
+      "key": "trash/rare/flattened-otter-plush_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261103-151800/trash/rare/flattened-otter-plush_v1_thumbnail.png",
+      "sourceHash": "b78ea7d0c047cba96aacdf8fa43293e6f99cb14ecc64ed38ff002ab38cd1b0d2",
+      "sourceBytes": 917348,
+      "sourceWidth": 1346,
+      "sourceHeight": 1346,
+      "small": {
+        "url": "/game-art/thumbnails/c982757fd1e61ce22dfc681a-320.webp",
+        "bytes": 12558,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/adc2ce15490cb9c702bc1a4f-640.webp",
+        "bytes": 30316,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "trash/rare/flower-crab-plush_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-122411/trash/rare/flower-crab-plush_thumbnail.png",
       "sourceHash": "4c463dc6c5e7d131e9c9532aefbba0e8d12d461d41e995933fffe4f38d6e7a90",
@@ -20693,6 +23293,286 @@
       }
     },
     {
+      "key": "trash/rare/hologram-black-box_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-black-box_v1_thumbnail.png",
+      "sourceHash": "4b4a467c3d1b38f83642e7d5a117a5f78753df040c8d8030327a259ddf7918a8",
+      "sourceBytes": 1221238,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e15af446bd574064361e2ad4-320.webp",
+        "bytes": 28290,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/17c5c0e4ec86ba4cf9bee24b-640.webp",
+        "bytes": 81556,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-damaged-ai-core_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-damaged-ai-core_v1_thumbnail.png",
+      "sourceHash": "0616c1258252985f05f936d3751198341b423ee28f7f14e2031d7c0539e40e93",
+      "sourceBytes": 1262395,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/42154e790fb264053e4d0a99-320.webp",
+        "bytes": 25508,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1dd4ab1a8b242228a4ea691d-640.webp",
+        "bytes": 70000,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-deleted-id_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-deleted-id_v1_thumbnail.png",
+      "sourceHash": "b1e5fb9f7028ad452684dbff5c6455cfeb257c9dd2a8daf38b1452883a10af95",
+      "sourceBytes": 1018383,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5af4fe2769af50d45678b71a-320.webp",
+        "bytes": 22912,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1fe92b17e6ba614a8397e07d-640.webp",
+        "bytes": 63862,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-dimension-chip_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-dimension-chip_v1_thumbnail.png",
+      "sourceHash": "f5e38bfd3385b47132fdcfc1fa7245a0f8896f007cabc3a54a23b208a0f197bf",
+      "sourceBytes": 946423,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/49829fe81207754a9caf9c15-320.webp",
+        "bytes": 21274,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a1a543924a7e677cf7282233-640.webp",
+        "bytes": 58224,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-emergency-stop_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-emergency-stop_v1_thumbnail.png",
+      "sourceHash": "ca7906783f8305281fdace0b1d55c7edf647c8457ba3fd6c69e1631f2974d3af",
+      "sourceBytes": 794089,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/56b2044c272c53002e63b39a-320.webp",
+        "bytes": 20378,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/49fb363a5d4a9e82eb966519-640.webp",
+        "bytes": 53360,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-experiment-tag_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-experiment-tag_v1_thumbnail.png",
+      "sourceHash": "061e06ae352d50bcad9513da4d5be4b6851783d21745affb733903b267e87ab3",
+      "sourceBytes": 859771,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3e6545dacb4b51c7ffeaf9be-320.webp",
+        "bytes": 19556,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9675732057365bf18f2b7893-640.webp",
+        "bytes": 53046,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-forbidden-disk_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-forbidden-disk_v1_thumbnail.png",
+      "sourceHash": "886cf970cc112da2e2979bb2f0f81e3446c709ca51dca1f149106e586ad9a202",
+      "sourceBytes": 1065082,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3e6b2e14f3f195780d95c4b6-320.webp",
+        "bytes": 24482,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d0c030da40a9fac5d711a58c-640.webp",
+        "bytes": 66740,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-holo-heart_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-holo-heart_v1_thumbnail.png",
+      "sourceHash": "4c612b9234e2a814ff07aea970fbbc8b0a0ff2f90e3f823acaae444964caf1f3",
+      "sourceBytes": 952379,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/781062d412822ae9abe30da7-320.webp",
+        "bytes": 27890,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5540322443f2279955292e3a-640.webp",
+        "bytes": 80392,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-infected-cube_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-infected-cube_v1_thumbnail.png",
+      "sourceHash": "a527aace1b4c871a12c83e96119dbbad10d38f85224b8bc6498dd83ba80a949a",
+      "sourceBytes": 852495,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0086f064a2c366f393d92aa4-320.webp",
+        "bytes": 22558,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1e538a011e95ef945638a21b-640.webp",
+        "bytes": 60960,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-last-voice_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-last-voice_v1_thumbnail.png",
+      "sourceHash": "e219930aaa46f4061fe66c700a31f6b9281c2f735b46869ae38ca98045110607",
+      "sourceBytes": 937142,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/16fd1facbbdb89965ce13a02-320.webp",
+        "bytes": 21106,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f61efc1f955a4a82093252cf-640.webp",
+        "bytes": 61524,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-memory-chip_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-memory-chip_v1_thumbnail.png",
+      "sourceHash": "ff38eb3922f7dd865589eb733eb12c8ddab35a5affa27c539789fae9e4162396",
+      "sourceBytes": 803814,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8eca8a13e3f69784148dfab1-320.webp",
+        "bytes": 21090,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/32f279c246c4a1de261f4f86-640.webp",
+        "bytes": 58230,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-reverse-clock_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-reverse-clock_v1_thumbnail.png",
+      "sourceHash": "e40418cd2452b3347c15eeeeefe4491e7af68c978aadfd3999e86f842dd4633b",
+      "sourceBytes": 1063804,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ab3d2680614e583c95444b13-320.webp",
+        "bytes": 22938,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/035ec5b4fdabafbb52e1a34e-640.webp",
+        "bytes": 64622,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-robot-skull_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-robot-skull_v1_thumbnail.png",
+      "sourceHash": "a1d4eccc85f54ba84f5c2fce6ca68a2cb6e7e7f180c26ff44abf71a8b89263ee",
+      "sourceBytes": 1002850,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/126d46d128e49a51c1565916-320.webp",
+        "bytes": 23396,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6f38bca163bd23475886b69c-640.webp",
+        "bytes": 64090,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/hologram-sealed-cell_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261107-153000/trash/rare/hologram-sealed-cell_v1_thumbnail.png",
+      "sourceHash": "eaf519f116dec7407d025d010902439613ab1166ba71e1972b51c8008c4b83e7",
+      "sourceBytes": 773535,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ae815a53d0e48d9a9f5e2094-320.webp",
+        "bytes": 18400,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/68a85e1fbb423208ba5c9687-640.webp",
+        "bytes": 48404,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "trash/rare/jellyfish-plush_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-122411/trash/rare/jellyfish-plush_thumbnail.png",
       "sourceHash": "f6210f349e32d76ef93abcb2c8bb1720188caac62ab0ba6e3804b3a44472dfbe",
@@ -21173,6 +24053,26 @@
       }
     },
     {
+      "key": "trash/rare/unstuffed-seahorse-plush_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261103-151800/trash/rare/unstuffed-seahorse-plush_v1_thumbnail.png",
+      "sourceHash": "3a3ae0552c1f43ec07c188a3104e8d561319a4f4e20622eada822d7a9a00b925",
+      "sourceBytes": 839770,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/76d0caf75a9daaa4e2fa581f-320.webp",
+        "bytes": 15574,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/21b3b188bd78ae2296e30cc8-640.webp",
+        "bytes": 38698,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "trash/rare/whale-plush_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/trash/rare/whale-plush_thumbnail.png",
       "sourceHash": "8532b93ffcac93103c98e27c1013c5f4d669c88958b153ef35527d3116e4682b",
@@ -21188,6 +24088,26 @@
       "large": {
         "url": "/game-art/thumbnails/0e22a7bce4ec1e4b7f73b8e4-640.webp",
         "bytes": 42848,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/worn-seal-plush_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261103-151800/trash/rare/worn-seal-plush_v1_thumbnail.png",
+      "sourceHash": "f06e2690142e5ced68a8412dc852e668d655e99f06b6da71398854309c3a512a",
+      "sourceBytes": 964724,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/c6e1f9a44fd0954846080c00-320.webp",
+        "bytes": 15470,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/41c26f5cc9d9f7e40669b793-640.webp",
+        "bytes": 42320,
         "width": 640,
         "height": 640
       }

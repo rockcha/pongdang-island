@@ -1,0 +1,62 @@
+{
+  "status": "local-concept-only",
+  "tool": "built-in image_gen",
+  "region": "neon-abyss-city",
+  "userReference": "User-attached Neon Abyss City cyberpunk concept sheet, used as visual direction in conversation.",
+  "items": [
+    {
+      "file": "regions/neon-abyss-city/map-v1.png",
+      "references": [
+        "public/regions/mechsanctum/map-v1.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "source": "C:/Users/user/.codex/generated_images/01a1b113-3069-74e2-b794-702baefd6339/exec-be7495f1-5864-45c0-b3fc-ff39969c3ee2.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "preserved_source": "sources/map-v1.png",
+      "sha256": "9876f21e4949289e4397e97cc736f8ef0fa55572d777a476a81bcc9d5c66793b"
+    },
+    {
+      "file": "fishing/scenery/neon-abyss-city-v1.png",
+      "references": [
+        "public/fishing/scenery/mechsanctum-v1.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "source": "C:/Users/user/.codex/generated_images/01a1b113-3069-74e2-b794-702baefd6339/exec-ac5d795f-f8e4-4ef2-8b0c-c9fb7d20b25e.png",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "preserved_source": "sources/neon-abyss-city-v1.png",
+      "sha256": "a51f9dbe79b6176705dca4165f0e9832eed069952eb8f6cc6b4a967c319f0f0a"
+    },
+    {
+      "file": "fishing/scenery/neon-abyss-city-v2.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1b113-3069-74e2-b794-702baefd6339/exec-444ca1d6-a2e5-4760-8c97-450fe36c46a4.png",
+      "prompt": "Edit this fishing scenery into a substantially DARKER cyberpunk holographic abyss city. Preserve portrait 2:3 composition, city architecture, enclosed underwater dome, central pavilion, elevated railway, abandoned carriage at left, and open lower-half fishing water. Replace bright sunny turquoise ambience with midnight navy, ink blue, black teal and deep indigo shadows. Eliminate daylight beams and the bright ceiling opening: above the glass dome is a dark deep ocean with only faint distant blue light. Buildings should be dark metal silhouettes picked out by razor-thin electric cyan and magenta luminous edges. Add clearly holographic translucent cyan wireframe panels, a few floating geometric hologram rings near the pavilion, delicate horizontal scan lines within the holograms, and a large luminous transparent jellyfish projection on the right. Colorful light concentrated around holographic signage and structures, not washing the entire scene bright. No legible text. Pavilion is a mysterious glowing holographic beacon. Water in lower 55 percent is DARK navy-teal with scattered narrow cyan and hot-pink reflections, calm open playable space, bottom foreground very dark but with visible subtle ripples. Strong moody contrast, darker mature cyberpunk atmosphere with beautiful restrained bloom, not horror, soft premium game illustration. Keep all architecture readable in shadow. No UI, lettering, people, rods, watermarks. This must feel like midnight deep underwater holographic city, not brightly lit fantasy palace.",
+      "references": [
+        "sources/neon-abyss-city-v1.png"
+      ],
+      "revision": "Darker navy palette and cyan/magenta holographic projections.",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "preserved_source": "sources/neon-abyss-city-v2.png",
+      "sha256": "11d811a5a806dfc80a30b0859f2b2535cd4c2ff9513297cb87a300960025c640"
+    },
+    {
+      "file": "regions/neon-abyss-city/map-v2.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1b113-3069-74e2-b794-702baefd6339/exec-c4b1b143-e268-4bba-82ec-fe6e9e183417.png",
+      "prompt": "Edit this region map into a DARK holographic cyberpunk nautical chart. Preserve the square map composition, irregular torn parchment silhouette, compass roses, central domed underwater city, lower-left abandoned railway district, upper-right circular data shrine, connecting elevated bridges, dotted navigation routes and all district positions. Preserve TRUE transparency outside the map. Dramatically change palette: the chart sheet is aged midnight-blue and dark desaturated indigo parchment instead of yellow tan, subtle tangible paper fibers and folded edges; chart symbols and compass roses are fine cyan luminous etched lines, navigation paths a restrained violet glow. Sea areas are almost-black deep navy with subtle underwater contours. City buildings are dark steel and obsidian, edges traced in cyan and magenta, window strips glow. Central glass dome has translucent holographic cyan wireframe ribs and magenta projection geometry within it. Add subtle scan-line motifs only inside holographic elements and delicate data-grid contour lines on ocean. Upper-right data shrine projects several holographic concentric rings. Jellyfish are small translucent light projections. Mood is an old explorer chart reimagined as a mysterious holographic deep-sea navigation artifact. Beautiful polished painterly premium fantasy game asset with readable landmarks at thumbnail size and strong selective neon contrast. NOT a bright purple wash, not yellow parchment, no daylight, no photorealistic screen, no rectangular device casing. No text, letters, numbers, UI, logos or watermark. Clean alpha silhouette with generous clear margin and no stray pixels.",
+      "references": [
+        "sources/map-v1.png"
+      ],
+      "revision": "Midnight chart with cyan/magenta holographic city and navigation.",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "preserved_source": "sources/map-v2.png",
+      "sha256": "b3dab43b078939473131c8af87973d930daeb032f1ec04989c30b6d652911672"
+    }
+  ]
+}

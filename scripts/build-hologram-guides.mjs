@@ -1,0 +1,29 @@
+import fs from 'node:fs'
+import sharp from 'sharp'
+import {batch,items} from './prepare-hologram-assets.mjs'
+
+const actions={
+ sos:'Basic motion: long flat oarfish ribbon body forms a small traveling wave while the red dorsal fin ripples and rescue-beacon aerial flexes slightly. Small blunt head and attached beacon housing stay rigid. No dragon limbs, wings or jet engines.',
+ sweeper:'Basic motion: low crawler tracks roll and soft sea-cucumber tube feet step alternately; rear organic body flexes slightly while the rigid front vacuum housing stays fixed. Stay low in every pose, never float or sprout eyes.',
+ seraphim:'Basic motion: SIX server-rack wings hinge slightly through a slow mechanical propulsion cycle, three pairs remain distinct and the compact front data-core stays fixed. Special: racks unfold into a compact sixfold fan to expose inner circuitry, paired server trays slide out slightly, retract, and racks recover. No humanoid face, feathers, extra wings, duplicate racks or giant light halo.',
+ masquerade:'Basic motion: serpentine composite dragon body undulates gently as its many individual mask plates shift subtly along the spine; layered mask head remains fixed facing right. Special: a few masks lift slightly from the shoulders into a close contained orbit, show different slit expressions, then rejoin exactly. Whole head never detaches and all masks remain inside the safe cell boundary.',
+ archive:'Basic motion: whale-shark tail sweeps left-neutral-right-neutral, short pectoral fins flex subtly. Special: mouth opens slightly and internal archive layers physically fan outward inside torso, settle back as tail recovers; no whole body inflation. Keep blunt head and eye stable.',
+ eve:'Basic motion: robe and circuit-ribbon aquatic lower body flow through a gentle left-right wave. Special: forearms lift gracefully and sleeves spread to reveal small hologram rings between hands, arms lower and ribbons settle. Face and upper torso fixed in right profile.',
+ simula:'Basic motion: jellyfish bell relaxes, compresses, relaxes, expands, with trailing tentacle phase delay and internal city fixed. Special: long tentacles spread into a luminous data canopy then gather back under bell. No overall scale change.',
+}
+export function spritePrompt(i){
+ const orientation=i.movement_type==='fixed'?'The rooted sea anemone has NO head, eyes, face or fish-like body. Maintain its right-biased side-three-quarter view and stable stalk/base in every cell.':'Head faces SCREEN RIGHT in EVERY cell, never left or front.'
+ const motion=actions[i.id.replace('hologram-','')]??(i.movement_type==='crawl'?'Small alternating leg steps and gentle antenna or tail motion; rigid shell/head fixed.':i.movement_type==='pulse'?'Bell or soft mantle compresses and relaxes through four continuous propulsion phases, tentacles trail with gentle phase delay; do not bob or scale entire character.':i.movement_type==='fixed'?'Rooted base stays absolutely fixed while individual fiberoptic tentacles sway with different small phase offsets.':'Species-appropriate gentle tail, fin, arm or robe propulsion through four continuous phases; rigid face and torso stay stable. Shrimp use swimmerets and slight abdomen flex; octopus arms curl in phase; seahorse dorsal fin ripples and curled tail flexes slightly. No single front fin waving like an arm.')
+ return `Production animation sprite sheet of ${i.name}: ${i.visual}. Input1 is the exact approved identity thumbnail, preserve anatomy, proportions, palette, materials, attached equipment and number of arms. Input2 is ONLY a placement guide, NOT finished motion. ${i.frames===8?'EXACTLY EIGHT distinct full poses in FOUR columns and TWO rows of equal SQUARE cells, overall canvas ratio 2:1 landscape. Row1 four basic-motion poses. Row2 anticipation, special action, return, recovered pose matching frame0.':'EXACTLY FOUR distinct full poses in TWO columns and TWO rows of equal SQUARE cells, overall square canvas.'} ${motion} ${orientation} Head/eye/rigid torso or rooted stalk stays at the same per-cell coordinates and exact size; NO whole-character shifts, rotations, zoom, per-frame rescaling, opacity pulsing or anatomy changes. Each entire pose including fins, projections and glow must fit inside central 60 percent of cell, at least 12 percent TRUE transparent margin on every side of EVERY cell. Never touch cell boundaries. Gentle visible physical appendage motion, not identical stills, eye changes or light flicker alone. Retain dark navy and ink teal body, cyan main light and sparse magenta accents. Clean detailed soft game illustration from thumbnail, no detached particles or hazy glow. TRUE transparent alpha background and gutters, no painted checkerboard, grid lines, labels, numbers, scene, shadow or watermark. Smooth loop including row2-to-row1 boundary.`
+}
+const dir=`${batch}/guides`;fs.mkdirSync(dir,{recursive:true})
+const tasks=[]
+for(const i of items.filter(i=>i.frames&&fs.existsSync(`${batch}/${i.thumbnail_path}`))){
+ const wideAction=['hologram-eve','hologram-simula','hologram-seraphim','hologram-masquerade'].includes(i.id),bodySize=wideAction?220:300
+ const columns=i.frames/2,cell=512,thumb=await sharp(`${batch}/${i.thumbnail_path}`).trim().resize(bodySize,bodySize,{fit:'inside'}).png().toBuffer({resolveWithObject:true})
+ const guide=`${dir}/${i.id}${wideAction?'-wide-action':''}.png`
+ await sharp({create:{width:columns*cell,height:cell*2,channels:4,background:'#00000000'}}).composite(Array.from({length:i.frames},(_,n)=>({input:thumb.data,left:n%columns*cell+Math.floor((cell-thumb.info.width)/2),top:Math.floor(n/columns)*cell+Math.floor((cell-thumb.info.height)/2)}))).png().toFile(guide)
+ tasks.push({id:i.id,file:i.sprite_sheet_path,frames:i.frames,prompt:spritePrompt(i),refs:[`${batch}/${i.thumbnail_path}`,guide]})
+}
+fs.writeFileSync(`${dir}/tasks.json`,JSON.stringify(tasks,null,2)+'\n')
+console.log(JSON.stringify({guides:tasks.length}))

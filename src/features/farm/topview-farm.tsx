@@ -23,7 +23,7 @@ import {removeRetiredMarket} from './market-catalog'
 import {FarmObjectOrientationControls} from './object-orientation-controls'
 import {useFarmObjectDrag} from './use-object-drag'
 import {isFarmAnimal} from './animal-catalog'
-import {useCallback,useEffect,useLayoutEffect,useMemo,useRef,useState} from 'react'
+import {useCallback,useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode} from 'react'
 import {Link} from 'react-router'
 import {ArrowLeft,Plus,Minus,RotateCcw,Undo2,MoreHorizontal,Scan} from 'lucide-react'
 import {FarmToolbar} from './farm-toolbar'
@@ -85,7 +85,7 @@ type ToolMenu='land'|'farm'|'tile'|'storage'|'move'|'recover'
 type FarmSaleTarget={source:'placed';id:number;kind:FarmTool}|{source:'stored';kind:FarmTool}
 const seaMargin=FARM_SEA_MARGIN
 const allCells=Array.from({length:MAP_W*MAP_H},(_,i)=>({x:i%MAP_W,y:Math.floor(i/MAP_W)}))
-export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail?:string;trialOperator?:boolean;account?:FarmAccountConnection}={}){
+export function TopviewFarm({trialEmail,trialOperator=false,account,visit,headerExtra}:{trialEmail?:string;trialOperator?:boolean;account?:FarmAccountConnection;visit?:{state:TopviewState;header:ReactNode};headerExtra?:ReactNode}={}){
  const farmNow=()=>account?.now()??Date.now()
  const createTrial=()=>initialFarmTrial(canUseFarmTrialStock(trialOperator,trialEmail))
  useEffect(()=>{for(const path of Object.values(farmPlotImages)){if(path){const image=new Image();image.src=path}}},[])
@@ -93,7 +93,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
  const dismissPurchase=useCallback(()=>setPurchaseReceipt(null),[])
  function celebratePurchase(receipt:Omit<FarmPurchaseReceipt,'id'>){const id=++purchaseSequence.current;setPurchaseReceipt({...receipt,id} as FarmPurchaseReceipt)}
  const [selectedTile,setSelectedTile]=useState<FarmTile>('dirt')
- const [previewState,setPreviewState]=useState(createTrial),state=account?.snapshot.state??previewState
+ const [previewState,setPreviewState]=useState(createTrial),state=visit?.state??account?.snapshot.state??previewState
  const researchJobs=useMemo(()=>farmResearchJobs(state.simulation),[state.simulation.researchJob,state.simulation.researchJobs])
  const sortedObjects=useMemo(()=>state.objects.toSorted((a,b)=>(a.y+objectFootprint(a).h)-(b.y+objectFootprint(b).h)||a.x-b.x),[state.objects])
  const ownedLand=useMemo(()=>new Set(state.land),[state.land]),pathCells=useMemo(()=>new Set(state.paths),[state.paths])
@@ -132,11 +132,12 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
  const clearingRef=useRef(clearing);clearingRef.current=clearing
  const currentState=useRef(state);currentState.current=state
  function setState(action:TopviewState|((s:TopviewState)=>TopviewState)){
-  if(account)return
+  if(account||visit)return
   const next=typeof action==='function'?action(currentState.current):action
   currentState.current=next;setPreviewState(next)
  }
  async function confirmCommand(command:FarmCommand){
+  if(visit)return false
   if(!account)return true
   if(commandLock.current){setMessage('이전 작업을 저장하고 있어요. 잠시 후 다시 눌러주세요.');return false}
   commandLock.current=true;setCommandBusy(true)
@@ -171,7 +172,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
  const tileTool:LandTool|null=mode==='tile-place'?'place':mode==='tile-recover'?'recover':null
  const clearingTool=mode==='plot',fertilizerTool=isFarmSupply(mode)?mode:null
  const cropTool=mode==='seed',availableLandTool=landTool==='place'&&!state.landStock?null:landTool,availableTileTool=tileTool==='place'&&!tileCount(state,selectedTile)?null:tileTool,brushActive=!!availableLandTool||!!availableTileTool||clearingTool||cropTool||!!fertilizerTool
- const harvestEnabled=(mode==='look'||cropTool)&&!editing&&!landBuyOpen&&!seedMenu&&!warehouseOpen&&!shopOpen&&!tilePickerOpen&&!productionId
+ const harvestEnabled=!visit&&(mode==='look'||cropTool)&&!editing&&!landBuyOpen&&!seedMenu&&!warehouseOpen&&!shopOpen&&!tilePickerOpen&&!productionId
  const harvestOffset=useRef<LandCell>({x:0,y:0})
  function readyHarvestPlot(cell:LandCell,source=currentState.current){
   const plot=objectAt(source,cell.x,cell.y),job=plot&&source.simulation.cropJobs[plot.id]
@@ -201,6 +202,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
  const constructing=state.objects.filter(o=>o.constructionReadyAt!==undefined)
  useEffect(()=>{
   const before=currentState.current,next=finishFarmConstruction(before,clock)
+  if(visit)return
   if(next===before)return
   if(account){void confirmCommand({type:'tick'});return}
   setState(next);setHistory([]);setMessage('건설 완료! 건물을 사용할 수 있어요.')
@@ -536,6 +538,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
   if(!keyboard&&landBrush.ignoresClick())return
   if(!keyboard&&harvestBrush.ignoresClick())return
   if(drag.current?.moved)return
+  if(visit){const object=objectAt(state,x,y);setSelected(object&&selected!==object.id?object.id:null);return}
   setEffect(null)
   setOrientationId(null)
   const construction=objectAt(currentState.current,x,y)
@@ -589,10 +592,13 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
   if(mode==='move'&&selected===objectId)setPlacementTransform({rotation:object.rotation,flipped:object.flipped})
  }
  const shore=useMemo(()=>islandShorePath(state.land),[state.land])
- return <section className="top-farm" aria-label={account?'내 농장':'탑뷰 농장 테스트'} onKeyDown={event=>{if(event.key==='Escape')setOrientationId(null);if(event.key==='Escape'&&!shopOpen&&!tilePickerOpen&&!seedMenu&&!landBuyOpen&&!productionId){setHelp(false);objectDrag.cancel();if(harvestBrush.draft){harvestBrush.cancel()}else if(landBrush.draft){landBrush.cancel();harvestBrush.cancel();setMessage('땅 선택을 취소했어요.')}else if(mode==='move')cancelMove();else if(landTool||clearingTool||cropTool||toolMenu||editing)finishTool();else setSelected(null)}}}>
+ return <section className="top-farm" aria-label={visit?'친구 농장':account?'내 농장':'탑뷰 농장 테스트'} onKeyDown={event=>{if(event.key==='Escape')setOrientationId(null);if(event.key==='Escape'&&!shopOpen&&!tilePickerOpen&&!seedMenu&&!landBuyOpen&&!productionId){setHelp(false);objectDrag.cancel();if(harvestBrush.draft){harvestBrush.cancel()}else if(landBrush.draft){landBrush.cancel();harvestBrush.cancel();setMessage('땅 선택을 취소했어요.')}else if(mode==='move')cancelMove();else if(landTool||clearingTool||cropTool||toolMenu||editing)finishTool();else setSelected(null)}}}>
   <header className="top-farm-header">
+   {visit?visit.header:<>
    <div className="farm-header-main"><Link to="/aquarium" aria-label="농장 나가기"><ArrowLeft size={18}/></Link><h1>내 농장</h1><button className="top-farm-gold" aria-label={account?'보유 골드 안내':'테스트 골드 안내'} onClick={()=>setHelp(v=>!v)}><FarmGold amount={state.gold}/></button><button aria-label="농장 더보기" aria-expanded={help} onClick={()=>setHelp(v=>!v)}><MoreHorizontal size={20}/></button></div>
    <FarmCapacitySummary state={state} clearingCount={clearing.length}/>
+   </>}
+   {headerExtra}
   </header>
   {help&&<div className="top-farm-help"><strong>{account?'내 농장이에요':'체험 중인 농장이에요'}</strong><p>{account?'실제 보유 골드를 사용하며 농장은 계정에 저장돼요.':'실제 골드 사용 없음 · 새로고침 시 초기화'}</p><p>텃밭 {limits.usedPlots}/{limits.plots} · 전체 동물 {limits.totalAnimals}/{limits.animals} · 창고 {farmStorageUsage(state.simulation)}/{warehouseCapacity(state)}</p><p>도구를 쓸 때 휠 또는 두 손가락으로 확대·축소할 수 있어요.</p>{!account&&<button onClick={()=>{setHelp(false);resetTrial()}}><RotateCcw size={14}/>체험 초기화</button>}</div>}
   <div className="top-farm-viewport" data-object-move={toolMenu==='move'||mode==='move'||undefined} data-seed-cursor={seedCursorActive||undefined} data-land-tool={brushActive} ref={viewport} onClickCapture={event=>{if(!(event.target as Element).closest('[data-object-actions]')&&(objectDrag.ignoresClick()||harvestBrush.ignoresClick()))event.stopPropagation()}} onClick={event=>{if(objectDrag.ignoresClick())return;if(mode==='move'&&!(event.target as Element).closest('[data-farm-cell],.top-farm-object,[data-status-bubble]'))confirmMove(null)}} onPointerDownCapture={event=>{landBrush.beginPointer();harvestBrush.beginPointer();if((event.target as Element).closest('[data-object-actions]'))return;if(!objectDrag.down(event))camera.onPointerDownCapture(event)}} onPointerMoveCapture={event=>{if(objectDrag.move(event))return;camera.onPointerMoveCapture(event);const cursor=seedCursor.current;if(cursor){cursor.style.display=seedCursorActive&&event.pointerType!=='touch'?'block':'none';cursor.style.transform=`translate(${event.clientX}px, ${event.clientY}px)`}}} onPointerUpCapture={event=>{if((event.target as Element).closest('[data-object-actions]'))return;if(!objectDrag.up(event))camera.onPointerUpCapture(event)}} onPointerCancelCapture={event=>{if(!objectDrag.abort(event))camera.onPointerCancelCapture(event)}} onPointerDown={e=>{
@@ -641,7 +647,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
     {editing&&previewKind&&previewCell&&previewSize&&<g pointerEvents="none" data-move-preview={mode==='move'||undefined}><rect data-placement-valid={valid} x={previewCell.x*TILE+1} y={previewCell.y*TILE+1} width={previewSize.w*TILE-2} height={previewSize.h*TILE-2} rx="4" fill={valid?'#b7dc8e66':'#e2a38b66'} stroke={valid?'#69934b':'#d8755b'} strokeWidth="2" strokeDasharray="5 3"/><svg x={previewCell.x*TILE} y={(previewCell.y+previewSize.h)*TILE-objectArtHeight(previewKind,placementTransform.rotation)} width={previewSize.w*TILE} height={objectArtHeight(previewKind,placementTransform.rotation)} opacity=".7"><TopviewArt kind={previewKind} {...placementTransform} fenceConnections={isFarmFence(previewKind)?fenceConnections(state.objects,{id:mode==='move'?selected??-1:-1,...previewCell}):undefined}/></svg></g>}
     {mode==='move'&&previewCell&&(moveSaving||deferredMove.current)&&<g pointerEvents="none" role="status" data-move-save-state={deferredMove.current?'queued':'saving'} transform={`translate(${(previewCell.x+(previewSize?.w??1)/2)*TILE} ${previewCell.y*TILE-24})`}><rect x="-33" width="66" height="20" rx="8" fill="#fff8e9" stroke="#d9c7aa" strokeWidth=".8"/><text y="14" textAnchor="middle" fill="#7e5e3d" fontSize="10">{deferredMove.current?'배치 대기':'저장 중'}</text></g>}
     {/* Draw gauges last so neighboring plots, buildings and placement previews cannot cover them. */}
-    <g data-farm-status-layer="true" pointerEvents={fertilizerTool?'none':undefined}>
+    {!visit&&<g data-farm-status-layer="true" pointerEvents={fertilizerTool?'none':undefined}>
      {state.objects.map(o=><g key={o.id}>
       {o.constructionReadyAt&&<FarmConstructionStatus object={o} now={clock}/>}
       {isFarmAnimal(o.kind)&&<FarmAnimalStatus object={o} readyAt={state.simulation.animalJobs[o.id]} now={clock} onActivate={()=>editing?cellClick(o.x,o.y,true):collectAnimal(o.id)} revealTime={inspectedAnimal===o.id}/>}
@@ -651,12 +657,13 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
      </g>)}
      {harvesting.map(job=>{const plot=state.objects.find(o=>o.id===job.id);return plot&&<FarmStatusBubble key={job.id} x={plot.x*TILE+31} y={plot.y*TILE+6} compact label="수확 진행" progress={1-(job.readyAt-clock)/3000} remaining={Math.max(0,(job.readyAt-clock)/1000)}><FarmHarvestGlyph/></FarmStatusBubble>})}
      {clearing.map(job=><FarmStatusBubble key={cellKey(job.x,job.y)} x={job.x*TILE+31} y={job.y*TILE+6} compact label="개간 진행" progress={1-(job.readyAt-clock)/FARM_CLEARING_MS} remaining={Math.max(0,(job.readyAt-clock)/1000)}><FarmClearingGlyph/></FarmStatusBubble>)}
-    </g>
+    </g>}
     {harvestReceipts.map(receipt=><FarmHarvestReceipt key={receipt.id} {...receipt}/>)}
     {orientationObject&&<FarmObjectOrientationControls viewport={viewport} map={svgRef} object={orientationObject} onRotate={()=>orientObject('rotate')} onFlip={()=>orientObject('flip')} onSell={isFarmAnimal(orientationObject.kind)?()=>sellObject(orientationObject.id):undefined} saleReason={farmObjectResaleError(state,orientationObject.id)}/>}
    </svg></div>
   </div>
-  {productionObject&&!editing&&<FarmProductionDialog key={productionObject.id} object={productionObject} state={state} message={productionMessage} onAction={act} onStore={()=>storeBuilding(productionObject.id)} onSell={()=>sellObject(productionObject.id)} lastPurchasedSeed={lastPurchasedSeed} pendingPlots={clearing.length} onClose={()=>{setProductionId(null);setSelected(null)}} onMove={()=>moveFromDialog(productionObject.id)} onFlip={()=>orientObject('flip',productionObject.id)}/>}
+  {visit&&selected!==null&&<div className="farm-visit-object" role="status">{(()=>{const o=state.objects.find(o=>o.id===selected);return o?`${topviewItems[o.kind].name}${isUpgradeable(o.kind)?` · Lv. ${buildingLevel(o)}`:''}`:''})()}<button aria-label="건물 정보 닫기" onClick={()=>setSelected(null)}>×</button></div>}
+  {!visit&&productionObject&&!editing&&<FarmProductionDialog key={productionObject.id} object={productionObject} state={state} message={productionMessage} onAction={act} onStore={()=>storeBuilding(productionObject.id)} onSell={()=>sellObject(productionObject.id)} lastPurchasedSeed={lastPurchasedSeed} pendingPlots={clearing.length} onClose={()=>{setProductionId(null);setSelected(null)}} onMove={()=>moveFromDialog(productionObject.id)} onFlip={()=>orientObject('flip',productionObject.id)}/>}
   <ConfirmDialog open={!!saleTarget} onOpenChange={open=>{if(!open)closeSaleConfirmation()}} illustration="sale" title={saleTarget?`${topviewItems[saleTarget.kind].name} 1개를 ${topviewItems[saleTarget.kind].group==='건물'?'제거':'판매'}하시겠습니까?`:''} description={<span className="block space-y-2"><span className="block">구매가의 50%인 <FarmGold amount={saleTarget?farmResalePrice(saleTarget.kind):0}/>를 받아요.</span><span className="block">{saleTarget&&topviewItems[saleTarget.kind].group==='건물'?'제거':'판매'}하면 보유 목록에서 사라지며 되돌릴 수 없어요.</span></span>} confirmLabel={saleTarget&&topviewItems[saleTarget.kind].group==='건물'?'제거하기':'판매하기'} onConfirm={confirmSale}/>
   {effect&&<FarmActionEffect effect={effect}/>}
   {cookbookOpen&&<FarmCookbook state={state} onClose={()=>setCookbookOpen(false)} onNavigate={navigateCookbook}/>}
@@ -670,7 +677,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
   {tilePickerOpen&&<FarmTilePicker state={state} onClose={()=>setTilePickerOpen(false)} onSelect={tile=>{setSelectedTile(tile);setTilePickerOpen(false);setGrid(true);choose('tile-place')}} onBuy={()=>openFarmShop('타일')}/>}
   <div ref={seedCursor} className="farm-seed-cursor" aria-hidden="true"><FarmGoodIcon good={seedGood(selectedSeed)}/></div>
   <aside className="top-farm-camera"><button aria-label="농장 확대" onClick={()=>{landBrush.cancel();harvestBrush.cancel();manualCamera.current=true;setCameraTarget(null);setZoom(z=>Math.min(1.8,z+.2))}}><Plus size={17}/></button><button aria-label="농장 축소" onClick={()=>{landBrush.cancel();harvestBrush.cancel();manualCamera.current=true;setCameraTarget(null);setZoom(z=>Math.max(.25,z-.2))}}><Minus size={17}/></button><button aria-label="섬 전체 보기" onClick={()=>{landBrush.cancel();harvestBrush.cancel();manualCamera.current=false;setCameraTarget(null);const el=viewport.current;if(el)setZoom(Math.max(.25,Math.min(1,(el.clientWidth-32)/800,(el.clientHeight-32)/640)))}}><Scan size={16}/></button></aside>
-  <div className="top-farm-bottom" data-editing={editing}>
+  {!visit&&<div className="top-farm-bottom" data-editing={editing}>
    {(editing||feedback)&&message&&<p className="top-farm-message" role="status">{notice?<>{notice.name} 회수 완료<button onClick={undo}>되돌리기</button></>:message}</p>}
 
    {toolMenu==='storage'&&<FarmObjectStorage onSell={sellStored} state={state} category={storageCategory} selected={tool} onCategory={category=>{choose('look');setEditing(false);setGrid(false);setStorageCategory(category)}} onPlace={kind=>{setEditing(true);setGrid(true);choose(kind);setPlacementTransform(state.storedTransforms?.[kind]?.[0]??{});setGroup('보관함')}} onDone={finishTool}/>}
@@ -687,6 +694,6 @@ export function TopviewFarm({trialEmail,trialOperator=false,account}:{trialEmail
     onLand={()=>toggleToolMenu('land')} onFarm={()=>toggleToolMenu('farm')} onTile={()=>toggleToolMenu('tile')}
     onShop={()=>{setToolMenu(null);openFarmShop()}}
     onStorage={()=>toggleToolMenu('storage')} onMove={()=>toggleToolMenu('move')} onRecover={()=>toggleToolMenu('recover')}/>
-  </div>
+  </div>}
  </section>
 }

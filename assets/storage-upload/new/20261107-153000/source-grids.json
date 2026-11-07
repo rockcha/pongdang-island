@@ -1,0 +1,1667 @@
+[
+  {
+    "id": "hologram-neon-guppy",
+    "storage_path": "fish/normal/hologram-neon-guppy_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-neon-guppy.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 118,
+        "top": 221,
+        "width": 410,
+        "height": 179,
+        "margin": 99,
+        "opaque": 42346
+      },
+      {
+        "frame": 1,
+        "left": 118,
+        "top": 215,
+        "width": 410,
+        "height": 179,
+        "margin": 99,
+        "opaque": 40822
+      },
+      {
+        "frame": 2,
+        "left": 120,
+        "top": 200,
+        "width": 408,
+        "height": 194,
+        "margin": 99,
+        "opaque": 40006
+      },
+      {
+        "frame": 3,
+        "left": 99,
+        "top": 215,
+        "width": 429,
+        "height": 182,
+        "margin": 99,
+        "opaque": 44654
+      }
+    ]
+  },
+  {
+    "id": "hologram-pixel-jellyfish",
+    "storage_path": "fish/normal/hologram-pixel-jellyfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-pixel-jellyfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 130,
+        "top": 162,
+        "width": 368,
+        "height": 297,
+        "margin": 129,
+        "opaque": 54326
+      },
+      {
+        "frame": 1,
+        "left": 151,
+        "top": 183,
+        "width": 347,
+        "height": 269,
+        "margin": 129,
+        "opaque": 48928
+      },
+      {
+        "frame": 2,
+        "left": 166,
+        "top": 185,
+        "width": 339,
+        "height": 257,
+        "margin": 122,
+        "opaque": 47156
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 161,
+        "width": 368,
+        "height": 298,
+        "margin": 129,
+        "opaque": 54674
+      }
+    ]
+  },
+  {
+    "id": "hologram-holo-shrimp",
+    "storage_path": "fish/normal/hologram-holo-shrimp_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-holo-shrimp.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 64,
+        "top": 157,
+        "width": 482,
+        "height": 371,
+        "margin": 64,
+        "opaque": 68836
+      },
+      {
+        "frame": 1,
+        "left": 79,
+        "top": 157,
+        "width": 467,
+        "height": 330,
+        "margin": 79,
+        "opaque": 63638
+      },
+      {
+        "frame": 2,
+        "left": 80,
+        "top": 157,
+        "width": 466,
+        "height": 326,
+        "margin": 80,
+        "opaque": 61375
+      },
+      {
+        "frame": 3,
+        "left": 61,
+        "top": 157,
+        "width": 485,
+        "height": 351,
+        "margin": 61,
+        "opaque": 65870
+      }
+    ]
+  },
+  {
+    "id": "hologram-glitch-crab",
+    "storage_path": "fish/normal/hologram-glitch-crab_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-glitch-crab.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 89,
+        "top": 169,
+        "width": 484,
+        "height": 288,
+        "margin": 54,
+        "opaque": 84990
+      },
+      {
+        "frame": 1,
+        "left": 83,
+        "top": 169,
+        "width": 491,
+        "height": 285,
+        "margin": 53,
+        "opaque": 82773
+      },
+      {
+        "frame": 2,
+        "left": 85,
+        "top": 169,
+        "width": 488,
+        "height": 285,
+        "margin": 54,
+        "opaque": 84780
+      },
+      {
+        "frame": 3,
+        "left": 75,
+        "top": 168,
+        "width": 499,
+        "height": 296,
+        "margin": 53,
+        "opaque": 86885
+      }
+    ]
+  },
+  {
+    "id": "hologram-led-puffer",
+    "storage_path": "fish/normal/hologram-led-puffer_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-led-puffer.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 95,
+        "top": 132,
+        "width": 456,
+        "height": 389,
+        "margin": 76,
+        "opaque": 106851
+      },
+      {
+        "frame": 1,
+        "left": 96,
+        "top": 148,
+        "width": 455,
+        "height": 367,
+        "margin": 76,
+        "opaque": 106166
+      },
+      {
+        "frame": 2,
+        "left": 107,
+        "top": 128,
+        "width": 444,
+        "height": 362,
+        "margin": 76,
+        "opaque": 101436
+      },
+      {
+        "frame": 3,
+        "left": 94,
+        "top": 109,
+        "width": 457,
+        "height": 385,
+        "margin": 76,
+        "opaque": 106002
+      }
+    ]
+  },
+  {
+    "id": "hologram-data-anchovy",
+    "storage_path": "fish/normal/hologram-data-anchovy_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-data-anchovy.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 104,
+        "top": 238,
+        "width": 442,
+        "height": 138,
+        "margin": 81,
+        "opaque": 33159
+      },
+      {
+        "frame": 1,
+        "left": 88,
+        "top": 239,
+        "width": 441,
+        "height": 146,
+        "margin": 88,
+        "opaque": 32311
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 241,
+        "width": 443,
+        "height": 144,
+        "margin": 81,
+        "opaque": 32465
+      },
+      {
+        "frame": 3,
+        "left": 88,
+        "top": 240,
+        "width": 441,
+        "height": 138,
+        "margin": 88,
+        "opaque": 32741
+      }
+    ]
+  },
+  {
+    "id": "hologram-wifi-ray",
+    "storage_path": "fish/normal/hologram-wifi-ray_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-wifi-ray.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 96,
+        "top": 174,
+        "width": 437,
+        "height": 289,
+        "margin": 94,
+        "opaque": 44288
+      },
+      {
+        "frame": 1,
+        "left": 95,
+        "top": 160,
+        "width": 437,
+        "height": 293,
+        "margin": 95,
+        "opaque": 45892
+      },
+      {
+        "frame": 2,
+        "left": 96,
+        "top": 177,
+        "width": 437,
+        "height": 289,
+        "margin": 94,
+        "opaque": 45150
+      },
+      {
+        "frame": 3,
+        "left": 95,
+        "top": 166,
+        "width": 438,
+        "height": 290,
+        "margin": 94,
+        "opaque": 44368
+      }
+    ]
+  },
+  {
+    "id": "hologram-fiber-seahorse",
+    "storage_path": "fish/normal/hologram-fiber-seahorse_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-fiber-seahorse.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 128,
+        "top": 129,
+        "width": 371,
+        "height": 371,
+        "margin": 127,
+        "opaque": 48528
+      },
+      {
+        "frame": 1,
+        "left": 124,
+        "top": 129,
+        "width": 375,
+        "height": 375,
+        "margin": 123,
+        "opaque": 50273
+      },
+      {
+        "frame": 2,
+        "left": 118,
+        "top": 129,
+        "width": 381,
+        "height": 382,
+        "margin": 116,
+        "opaque": 51238
+      },
+      {
+        "frame": 3,
+        "left": 130,
+        "top": 129,
+        "width": 369,
+        "height": 371,
+        "margin": 127,
+        "opaque": 48461
+      }
+    ]
+  },
+  {
+    "id": "hologram-cable-eel",
+    "storage_path": "fish/normal/hologram-cable-eel_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-cable-eel.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 82,
+        "top": 187,
+        "width": 492,
+        "height": 251,
+        "margin": 53,
+        "opaque": 51627
+      },
+      {
+        "frame": 1,
+        "left": 60,
+        "top": 174,
+        "width": 488,
+        "height": 256,
+        "margin": 60,
+        "opaque": 55592
+      },
+      {
+        "frame": 2,
+        "left": 91,
+        "top": 153,
+        "width": 483,
+        "height": 247,
+        "margin": 53,
+        "opaque": 53106
+      },
+      {
+        "frame": 3,
+        "left": 53,
+        "top": 170,
+        "width": 495,
+        "height": 231,
+        "margin": 53,
+        "opaque": 50806
+      }
+    ]
+  },
+  {
+    "id": "hologram-battery-seahorse",
+    "storage_path": "fish/normal/hologram-battery-seahorse_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-battery-seahorse.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 164,
+        "top": 129,
+        "width": 336,
+        "height": 378,
+        "margin": 120,
+        "opaque": 57905
+      },
+      {
+        "frame": 1,
+        "left": 146,
+        "top": 119,
+        "width": 339,
+        "height": 393,
+        "margin": 115,
+        "opaque": 61450
+      },
+      {
+        "frame": 2,
+        "left": 147,
+        "top": 109,
+        "width": 353,
+        "height": 404,
+        "margin": 109,
+        "opaque": 65073
+      },
+      {
+        "frame": 3,
+        "left": 151,
+        "top": 127,
+        "width": 334,
+        "height": 379,
+        "margin": 121,
+        "opaque": 57694
+      }
+    ]
+  },
+  {
+    "id": "hologram-holo-butterflyfish",
+    "storage_path": "fish/rare/hologram-holo-butterflyfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-holo-butterflyfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 112,
+        "top": 190,
+        "width": 421,
+        "height": 267,
+        "margin": 94,
+        "opaque": 72568
+      },
+      {
+        "frame": 1,
+        "left": 111,
+        "top": 193,
+        "width": 421,
+        "height": 262,
+        "margin": 95,
+        "opaque": 70712
+      },
+      {
+        "frame": 2,
+        "left": 111,
+        "top": 184,
+        "width": 421,
+        "height": 282,
+        "margin": 95,
+        "opaque": 75238
+      },
+      {
+        "frame": 3,
+        "left": 112,
+        "top": 191,
+        "width": 420,
+        "height": 259,
+        "margin": 95,
+        "opaque": 71792
+      }
+    ]
+  },
+  {
+    "id": "hologram-error-octopus",
+    "storage_path": "fish/rare/hologram-error-octopus_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-error-octopus.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 103,
+        "top": 134,
+        "width": 437,
+        "height": 373,
+        "margin": 87,
+        "opaque": 100130
+      },
+      {
+        "frame": 1,
+        "left": 102,
+        "top": 130,
+        "width": 424,
+        "height": 376,
+        "margin": 101,
+        "opaque": 96578
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 125,
+        "width": 425,
+        "height": 375,
+        "margin": 99,
+        "opaque": 98531
+      },
+      {
+        "frame": 3,
+        "left": 100,
+        "top": 130,
+        "width": 434,
+        "height": 375,
+        "margin": 93,
+        "opaque": 100284
+      }
+    ]
+  },
+  {
+    "id": "hologram-neon-ghost-ray",
+    "storage_path": "fish/rare/hologram-neon-ghost-ray_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-neon-ghost-ray.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 91,
+        "top": 188,
+        "width": 476,
+        "height": 249,
+        "margin": 60,
+        "opaque": 44850
+      },
+      {
+        "frame": 1,
+        "left": 63,
+        "top": 171,
+        "width": 477,
+        "height": 257,
+        "margin": 63,
+        "opaque": 45532
+      },
+      {
+        "frame": 2,
+        "left": 89,
+        "top": 184,
+        "width": 478,
+        "height": 231,
+        "margin": 60,
+        "opaque": 43451
+      },
+      {
+        "frame": 3,
+        "left": 63,
+        "top": 166,
+        "width": 478,
+        "height": 243,
+        "margin": 63,
+        "opaque": 43967
+      }
+    ]
+  },
+  {
+    "id": "hologram-disco-jellyfish",
+    "storage_path": "fish/rare/hologram-disco-jellyfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-disco-jellyfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 121,
+        "top": 162,
+        "width": 381,
+        "height": 306,
+        "margin": 121,
+        "opaque": 54813
+      },
+      {
+        "frame": 1,
+        "left": 121,
+        "top": 174,
+        "width": 385,
+        "height": 292,
+        "margin": 121,
+        "opaque": 53957
+      },
+      {
+        "frame": 2,
+        "left": 121,
+        "top": 177,
+        "width": 389,
+        "height": 275,
+        "margin": 117,
+        "opaque": 51572
+      },
+      {
+        "frame": 3,
+        "left": 107,
+        "top": 157,
+        "width": 401,
+        "height": 311,
+        "margin": 107,
+        "opaque": 58489
+      }
+    ]
+  },
+  {
+    "id": "hologram-laser-marlin",
+    "storage_path": "fish/rare/hologram-laser-marlin_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-laser-marlin.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 89,
+        "top": 202,
+        "width": 474,
+        "height": 212,
+        "margin": 64,
+        "opaque": 35613
+      },
+      {
+        "frame": 1,
+        "left": 66,
+        "top": 201,
+        "width": 471,
+        "height": 220,
+        "margin": 66,
+        "opaque": 34712
+      },
+      {
+        "frame": 2,
+        "left": 91,
+        "top": 175,
+        "width": 472,
+        "height": 218,
+        "margin": 64,
+        "opaque": 34659
+      },
+      {
+        "frame": 3,
+        "left": 63,
+        "top": 175,
+        "width": 475,
+        "height": 207,
+        "margin": 63,
+        "opaque": 35773
+      }
+    ]
+  },
+  {
+    "id": "hologram-digital-chameleon",
+    "storage_path": "fish/rare/hologram-digital-chameleon_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-digital-chameleon.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 102,
+        "top": 200,
+        "width": 431,
+        "height": 236,
+        "margin": 94,
+        "opaque": 60410
+      },
+      {
+        "frame": 1,
+        "left": 72,
+        "top": 199,
+        "width": 435,
+        "height": 242,
+        "margin": 72,
+        "opaque": 59865
+      },
+      {
+        "frame": 2,
+        "left": 91,
+        "top": 169,
+        "width": 443,
+        "height": 249,
+        "margin": 91,
+        "opaque": 60977
+      },
+      {
+        "frame": 3,
+        "left": 95,
+        "top": 173,
+        "width": 412,
+        "height": 239,
+        "margin": 95,
+        "opaque": 56980
+      }
+    ]
+  },
+  {
+    "id": "hologram-photon-seadragon",
+    "storage_path": "fish/rare/hologram-photon-seadragon_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-photon-seadragon.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 76,
+        "top": 177,
+        "width": 472,
+        "height": 290,
+        "margin": 76,
+        "opaque": 46297
+      },
+      {
+        "frame": 1,
+        "left": 76,
+        "top": 175,
+        "width": 472,
+        "height": 262,
+        "margin": 76,
+        "opaque": 45405
+      },
+      {
+        "frame": 2,
+        "left": 82,
+        "top": 148,
+        "width": 466,
+        "height": 240,
+        "margin": 79,
+        "opaque": 44444
+      },
+      {
+        "frame": 3,
+        "left": 70,
+        "top": 150,
+        "width": 478,
+        "height": 279,
+        "margin": 70,
+        "opaque": 46119
+      }
+    ]
+  },
+  {
+    "id": "hologram-billboard-angler",
+    "storage_path": "fish/rare/hologram-billboard-angler_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-billboard-angler.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 104,
+        "top": 156,
+        "width": 473,
+        "height": 313,
+        "margin": 50,
+        "opaque": 85334
+      },
+      {
+        "frame": 1,
+        "left": 80,
+        "top": 156,
+        "width": 467,
+        "height": 308,
+        "margin": 80,
+        "opaque": 82016
+      },
+      {
+        "frame": 2,
+        "left": 108,
+        "top": 129,
+        "width": 468,
+        "height": 298,
+        "margin": 51,
+        "opaque": 79534
+      },
+      {
+        "frame": 3,
+        "left": 70,
+        "top": 129,
+        "width": 478,
+        "height": 314,
+        "margin": 70,
+        "opaque": 84565
+      }
+    ]
+  },
+  {
+    "id": "hologram-laser-swordfish",
+    "storage_path": "fish/rare/hologram-laser-swordfish_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-laser-swordfish.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 103,
+        "top": 198,
+        "width": 441,
+        "height": 217,
+        "margin": 83,
+        "opaque": 32725
+      },
+      {
+        "frame": 1,
+        "left": 83,
+        "top": 196,
+        "width": 461,
+        "height": 226,
+        "margin": 83,
+        "opaque": 33532
+      },
+      {
+        "frame": 2,
+        "left": 82,
+        "top": 199,
+        "width": 462,
+        "height": 236,
+        "margin": 82,
+        "opaque": 33218
+      },
+      {
+        "frame": 3,
+        "left": 88,
+        "top": 199,
+        "width": 456,
+        "height": 216,
+        "margin": 83,
+        "opaque": 33034
+      }
+    ]
+  },
+  {
+    "id": "hologram-zero-shark",
+    "storage_path": "fish/epic/hologram-zero-shark_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-zero-shark.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 81,
+        "top": 202,
+        "width": 481,
+        "height": 239,
+        "margin": 65,
+        "opaque": 49981
+      },
+      {
+        "frame": 1,
+        "left": 64,
+        "top": 200,
+        "width": 482,
+        "height": 216,
+        "margin": 64,
+        "opaque": 48485
+      },
+      {
+        "frame": 2,
+        "left": 88,
+        "top": 174,
+        "width": 475,
+        "height": 207,
+        "margin": 64,
+        "opaque": 47478
+      },
+      {
+        "frame": 3,
+        "left": 65,
+        "top": 183,
+        "width": 482,
+        "height": 213,
+        "margin": 65,
+        "opaque": 48168
+      }
+    ]
+  },
+  {
+    "id": "hologram-glitch-hunter",
+    "storage_path": "fish/epic/hologram-glitch-hunter_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-glitch-hunter.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 80,
+        "top": 186,
+        "width": 492,
+        "height": 233,
+        "margin": 55,
+        "opaque": 61428
+      },
+      {
+        "frame": 1,
+        "left": 52,
+        "top": 196,
+        "width": 494,
+        "height": 222,
+        "margin": 52,
+        "opaque": 60753
+      },
+      {
+        "frame": 2,
+        "left": 70,
+        "top": 195,
+        "width": 503,
+        "height": 224,
+        "margin": 54,
+        "opaque": 62355
+      },
+      {
+        "frame": 3,
+        "left": 57,
+        "top": 180,
+        "width": 491,
+        "height": 240,
+        "margin": 57,
+        "opaque": 62883
+      }
+    ]
+  },
+  {
+    "id": "hologram-memoria",
+    "storage_path": "fish/epic/hologram-memoria_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-memoria.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 110,
+        "top": 126,
+        "width": 432,
+        "height": 390,
+        "margin": 85,
+        "opaque": 99125
+      },
+      {
+        "frame": 1,
+        "left": 98,
+        "top": 126,
+        "width": 450,
+        "height": 386,
+        "margin": 79,
+        "opaque": 95711
+      },
+      {
+        "frame": 2,
+        "left": 92,
+        "top": 126,
+        "width": 468,
+        "height": 386,
+        "margin": 67,
+        "opaque": 92687
+      },
+      {
+        "frame": 3,
+        "left": 102,
+        "top": 125,
+        "width": 445,
+        "height": 388,
+        "margin": 80,
+        "opaque": 99763
+      }
+    ]
+  },
+  {
+    "id": "hologram-volteon",
+    "storage_path": "fish/epic/hologram-volteon_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-volteon.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 103,
+        "top": 196,
+        "width": 454,
+        "height": 242,
+        "margin": 70,
+        "opaque": 56593
+      },
+      {
+        "frame": 1,
+        "left": 76,
+        "top": 198,
+        "width": 455,
+        "height": 230,
+        "margin": 76,
+        "opaque": 56098
+      },
+      {
+        "frame": 2,
+        "left": 100,
+        "top": 203,
+        "width": 457,
+        "height": 205,
+        "margin": 70,
+        "opaque": 54448
+      },
+      {
+        "frame": 3,
+        "left": 79,
+        "top": 194,
+        "width": 452,
+        "height": 239,
+        "margin": 79,
+        "opaque": 58530
+      }
+    ]
+  },
+  {
+    "id": "hologram-sos",
+    "storage_path": "fish/epic/hologram-sos_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-sos.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 64,
+        "top": 190,
+        "width": 517,
+        "height": 259,
+        "margin": 46,
+        "opaque": 65859
+      },
+      {
+        "frame": 1,
+        "left": 61,
+        "top": 164,
+        "width": 520,
+        "height": 272,
+        "margin": 46,
+        "opaque": 66895
+      },
+      {
+        "frame": 2,
+        "left": 66,
+        "top": 147,
+        "width": 515,
+        "height": 273,
+        "margin": 46,
+        "opaque": 66218
+      },
+      {
+        "frame": 3,
+        "left": 58,
+        "top": 155,
+        "width": 523,
+        "height": 265,
+        "margin": 46,
+        "opaque": 67660
+      }
+    ]
+  },
+  {
+    "id": "hologram-sweeper",
+    "storage_path": "fish/epic/hologram-sweeper_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-sweeper.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 53,
+        "top": 219,
+        "width": 526,
+        "height": 217,
+        "margin": 48,
+        "opaque": 79349
+      },
+      {
+        "frame": 1,
+        "left": 42,
+        "top": 220,
+        "width": 531,
+        "height": 216,
+        "margin": 42,
+        "opaque": 79235
+      },
+      {
+        "frame": 2,
+        "left": 50,
+        "top": 199,
+        "width": 529,
+        "height": 217,
+        "margin": 48,
+        "opaque": 77363
+      },
+      {
+        "frame": 3,
+        "left": 42,
+        "top": 199,
+        "width": 535,
+        "height": 217,
+        "margin": 42,
+        "opaque": 79140
+      }
+    ]
+  },
+  {
+    "id": "hologram-prism",
+    "storage_path": "fish/epic/hologram-prism_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-prism.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 100,
+        "top": 111,
+        "width": 438,
+        "height": 419,
+        "margin": 89,
+        "opaque": 112185
+      },
+      {
+        "frame": 1,
+        "left": 87,
+        "top": 117,
+        "width": 461,
+        "height": 412,
+        "margin": 79,
+        "opaque": 112905
+      },
+      {
+        "frame": 2,
+        "left": 96,
+        "top": 114,
+        "width": 440,
+        "height": 415,
+        "margin": 91,
+        "opaque": 114332
+      },
+      {
+        "frame": 3,
+        "left": 81,
+        "top": 97,
+        "width": 452,
+        "height": 432,
+        "margin": 81,
+        "opaque": 117291
+      }
+    ]
+  },
+  {
+    "id": "hologram-mirage",
+    "storage_path": "fish/epic/hologram-mirage_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-mirage.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 77,
+        "top": 164,
+        "width": 492,
+        "height": 320,
+        "margin": 58,
+        "opaque": 78702
+      },
+      {
+        "frame": 1,
+        "left": 80,
+        "top": 185,
+        "width": 488,
+        "height": 298,
+        "margin": 59,
+        "opaque": 73820
+      },
+      {
+        "frame": 2,
+        "left": 93,
+        "top": 175,
+        "width": 476,
+        "height": 287,
+        "margin": 58,
+        "opaque": 68846
+      },
+      {
+        "frame": 3,
+        "left": 75,
+        "top": 149,
+        "width": 493,
+        "height": 305,
+        "margin": 59,
+        "opaque": 76484
+      }
+    ]
+  },
+  {
+    "id": "hologram-hologram-pongi",
+    "storage_path": "fish/epic/hologram-hologram-pongi_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-hologram-pongi.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 57,
+        "top": 147,
+        "width": 508,
+        "height": 373,
+        "margin": 57,
+        "opaque": 101632
+      },
+      {
+        "frame": 1,
+        "left": 63,
+        "top": 147,
+        "width": 492,
+        "height": 337,
+        "margin": 63,
+        "opaque": 96433
+      },
+      {
+        "frame": 2,
+        "left": 57,
+        "top": 117,
+        "width": 507,
+        "height": 342,
+        "margin": 57,
+        "opaque": 97723
+      },
+      {
+        "frame": 3,
+        "left": 42,
+        "top": 117,
+        "width": 513,
+        "height": 379,
+        "margin": 42,
+        "opaque": 103172
+      }
+    ]
+  },
+  {
+    "id": "hologram-seraphim",
+    "storage_path": "fish/mythic/hologram-seraphim_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-seraphim.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 86,
+        "top": 112,
+        "width": 282,
+        "height": 247,
+        "margin": 76,
+        "opaque": 33229
+      },
+      {
+        "frame": 1,
+        "left": 80,
+        "top": 102,
+        "width": 288,
+        "height": 263,
+        "margin": 76,
+        "opaque": 35200
+      },
+      {
+        "frame": 2,
+        "left": 79,
+        "top": 97,
+        "width": 290,
+        "height": 271,
+        "margin": 75,
+        "opaque": 35873
+      },
+      {
+        "frame": 3,
+        "left": 85,
+        "top": 109,
+        "width": 283,
+        "height": 253,
+        "margin": 76,
+        "opaque": 34044
+      },
+      {
+        "frame": 4,
+        "left": 92,
+        "top": 121,
+        "width": 276,
+        "height": 231,
+        "margin": 76,
+        "opaque": 31304
+      },
+      {
+        "frame": 5,
+        "left": 70,
+        "top": 97,
+        "width": 298,
+        "height": 271,
+        "margin": 70,
+        "opaque": 38591
+      },
+      {
+        "frame": 6,
+        "left": 86,
+        "top": 109,
+        "width": 283,
+        "height": 249,
+        "margin": 75,
+        "opaque": 33990
+      },
+      {
+        "frame": 7,
+        "left": 87,
+        "top": 112,
+        "width": 281,
+        "height": 246,
+        "margin": 76,
+        "opaque": 33082
+      }
+    ]
+  },
+  {
+    "id": "hologram-archive",
+    "storage_path": "fish/mythic/hologram-archive_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-archive.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 69,
+        "top": 167,
+        "width": 312,
+        "height": 141,
+        "margin": 63,
+        "opaque": 22748
+      },
+      {
+        "frame": 1,
+        "left": 86,
+        "top": 152,
+        "width": 294,
+        "height": 154,
+        "margin": 64,
+        "opaque": 23159
+      },
+      {
+        "frame": 2,
+        "left": 89,
+        "top": 147,
+        "width": 292,
+        "height": 150,
+        "margin": 63,
+        "opaque": 22206
+      },
+      {
+        "frame": 3,
+        "left": 87,
+        "top": 151,
+        "width": 293,
+        "height": 155,
+        "margin": 64,
+        "opaque": 23002
+      },
+      {
+        "frame": 4,
+        "left": 84,
+        "top": 150,
+        "width": 297,
+        "height": 157,
+        "margin": 63,
+        "opaque": 23100
+      },
+      {
+        "frame": 5,
+        "left": 87,
+        "top": 150,
+        "width": 293,
+        "height": 157,
+        "margin": 64,
+        "opaque": 23615
+      },
+      {
+        "frame": 6,
+        "left": 87,
+        "top": 150,
+        "width": 294,
+        "height": 155,
+        "margin": 63,
+        "opaque": 22936
+      },
+      {
+        "frame": 7,
+        "left": 71,
+        "top": 167,
+        "width": 309,
+        "height": 141,
+        "margin": 64,
+        "opaque": 22650
+      }
+    ]
+  },
+  {
+    "id": "hologram-eve",
+    "storage_path": "fish/mythic/hologram-eve_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-eve.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 123,
+        "top": 133,
+        "width": 198,
+        "height": 185,
+        "margin": 123,
+        "opaque": 19469
+      },
+      {
+        "frame": 1,
+        "left": 121,
+        "top": 133,
+        "width": 201,
+        "height": 181,
+        "margin": 121,
+        "opaque": 19812
+      },
+      {
+        "frame": 2,
+        "left": 120,
+        "top": 133,
+        "width": 206,
+        "height": 178,
+        "margin": 118,
+        "opaque": 19736
+      },
+      {
+        "frame": 3,
+        "left": 123,
+        "top": 133,
+        "width": 200,
+        "height": 184,
+        "margin": 121,
+        "opaque": 19876
+      },
+      {
+        "frame": 4,
+        "left": 123,
+        "top": 133,
+        "width": 207,
+        "height": 183,
+        "margin": 114,
+        "opaque": 19950
+      },
+      {
+        "frame": 5,
+        "left": 117,
+        "top": 133,
+        "width": 238,
+        "height": 176,
+        "margin": 89,
+        "opaque": 22976
+      },
+      {
+        "frame": 6,
+        "left": 121,
+        "top": 133,
+        "width": 203,
+        "height": 182,
+        "margin": 120,
+        "opaque": 20167
+      },
+      {
+        "frame": 7,
+        "left": 123,
+        "top": 133,
+        "width": 199,
+        "height": 183,
+        "margin": 122,
+        "opaque": 19663
+      }
+    ]
+  },
+  {
+    "id": "hologram-simula",
+    "storage_path": "fish/mythic/hologram-simula_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-simula.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 97,
+        "top": 138,
+        "width": 255,
+        "height": 198,
+        "margin": 92,
+        "opaque": 27230
+      },
+      {
+        "frame": 1,
+        "left": 96,
+        "top": 145,
+        "width": 257,
+        "height": 184,
+        "margin": 91,
+        "opaque": 25711
+      },
+      {
+        "frame": 2,
+        "left": 94,
+        "top": 137,
+        "width": 261,
+        "height": 199,
+        "margin": 89,
+        "opaque": 28159
+      },
+      {
+        "frame": 3,
+        "left": 89,
+        "top": 125,
+        "width": 271,
+        "height": 220,
+        "margin": 84,
+        "opaque": 32237
+      },
+      {
+        "frame": 4,
+        "left": 109,
+        "top": 138,
+        "width": 245,
+        "height": 187,
+        "margin": 90,
+        "opaque": 25628
+      },
+      {
+        "frame": 5,
+        "left": 54,
+        "top": 126,
+        "width": 308,
+        "height": 215,
+        "margin": 54,
+        "opaque": 34077
+      },
+      {
+        "frame": 6,
+        "left": 94,
+        "top": 128,
+        "width": 265,
+        "height": 206,
+        "margin": 85,
+        "opaque": 29453
+      },
+      {
+        "frame": 7,
+        "left": 92,
+        "top": 132,
+        "width": 260,
+        "height": 203,
+        "margin": 92,
+        "opaque": 28715
+      }
+    ]
+  },
+  {
+    "id": "hologram-masquerade",
+    "storage_path": "fish/mythic/hologram-masquerade_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261107-153000/normalized/hologram-masquerade.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 55,
+        "top": 125,
+        "width": 344,
+        "height": 233,
+        "margin": 45,
+        "opaque": 52874
+      },
+      {
+        "frame": 1,
+        "left": 56,
+        "top": 116,
+        "width": 337,
+        "height": 249,
+        "margin": 51,
+        "opaque": 55428
+      },
+      {
+        "frame": 2,
+        "left": 51,
+        "top": 110,
+        "width": 344,
+        "height": 249,
+        "margin": 49,
+        "opaque": 54819
+      },
+      {
+        "frame": 3,
+        "left": 56,
+        "top": 118,
+        "width": 337,
+        "height": 238,
+        "margin": 51,
+        "opaque": 53210
+      },
+      {
+        "frame": 4,
+        "left": 60,
+        "top": 119,
+        "width": 340,
+        "height": 245,
+        "margin": 44,
+        "opaque": 52290
+      },
+      {
+        "frame": 5,
+        "left": 56,
+        "top": 114,
+        "width": 337,
+        "height": 249,
+        "margin": 51,
+        "opaque": 57981
+      },
+      {
+        "frame": 6,
+        "left": 60,
+        "top": 120,
+        "width": 335,
+        "height": 237,
+        "margin": 49,
+        "opaque": 52507
+      },
+      {
+        "frame": 7,
+        "left": 57,
+        "top": 123,
+        "width": 337,
+        "height": 238,
+        "margin": 50,
+        "opaque": 52016
+      }
+    ]
+  }
+]

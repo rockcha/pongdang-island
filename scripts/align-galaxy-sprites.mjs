@@ -1,12 +1,20 @@
 import fs from 'node:fs'
 import sharp from 'sharp'
-import {batch,items} from './prepare-galaxy-assets.mjs'
+const option=name=>process.argv[process.argv.indexOf(name)+1]
+const specPath=process.argv.includes('--spec')?option('--spec'):'./prepare-galaxy-assets.mjs'
+const {batch,items}=await import(new URL(specPath,import.meta.url))
+const layoutPrefix=process.argv.includes('--layout-prefix')?option('--layout-prefix'):'galaxy'
+if(!/^[a-z][a-z-]*$/.test(layoutPrefix))throw Error('Invalid frame layout prefix')
+const minimumMargin=process.argv.includes('--min-margin')?Number(option('--min-margin')):null
+if(minimumMargin!==null&&(!Number.isFinite(minimumMargin)||minimumMargin<0||minimumMargin>.3))throw Error('Invalid raw margin fraction')
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''))
 const prepare=process.argv.includes('--prepare'),partial=process.argv.includes('--partial')
 const selected=items.filter(i=>i.frames>1),four={},eight=[],records=[]
 fs.mkdirSync(`${batch}/normalized`,{recursive:true})
 assetLoop: for(const item of selected){
- const source=`${batch}/sources/${item.id}-sprite.source`
+ const recorded=fs.existsSync(`${batch}/manifest.json`)?read(`${batch}/manifest.json`).items?.find(a=>a.file===item.sprite_sheet_path):null
+ const legacySource=`${batch}/sources/${item.id}-sprite.source`
+ const source=fs.existsSync(legacySource)?legacySource:recorded?.preserved_source?`${batch}/${recorded.preserved_source}`:legacySource
  if(!fs.existsSync(source)){if(partial)continue;throw Error('Missing raw sprite '+item.id)}
  const raw=await sharp(source).ensureAlpha().raw().toBuffer({resolveWithObject:true}),columns=item.frames/2
  if(Math.abs(raw.info.width/columns-raw.info.height/2)>1)throw Error('Incorrect grid '+item.id)
@@ -22,7 +30,8 @@ assetLoop: for(const item of selected){
   let left=cell,top=cell,right=-1,bottom=-1,opaque=0
   for(let y=0;y<cell;y++)for(let x=0;x<cell;x++)if(data[((y+oy)*width+x+ox)*4+3]>=32){left=Math.min(left,x);top=Math.min(top,y);right=Math.max(right,x);bottom=Math.max(bottom,y);opaque++}
   const margin=Math.min(left,top,cell-right-1,cell-bottom-1)
-  if(!opaque||margin<(item.frames===8?cell*.08:2)){
+  const requiredMargin=item.frames===8?cell*Math.max(.08,minimumMargin??.08):minimumMargin===null?2:cell*minimumMargin
+  if(!opaque||margin<requiredMargin){
    if(partial){console.warn(`Excluded unsafe original ${item.id} frame ${frame}, margin ${margin}`);continue assetLoop}
    throw Error(`Unsafe original ${item.id} frame ${frame}, margin ${margin}`)
   }
@@ -40,7 +49,7 @@ assetLoop: for(const item of selected){
   const ox=f.frame%columns*cell,oy=Math.floor(f.frame/columns)*cell,nx=f.frame%columns*newCell+padding-f.dx,ny=Math.floor(f.frame/columns)*newCell+padding-f.dy
   for(let y=0;y<cell;y++)data.copy(out,((ny+y)*outWidth+nx)*4,((oy+y)*width+ox)*4,((oy+y)*width+ox+cell)*4)
  }
- const bytes=await sharp(out,{raw:{width:outWidth,height:outHeight,channels:4}}).png().toBuffer()
+ const bytes=await sharp(out,{raw:{width:outWidth,height:outHeight,channels:4}}).png({compressionLevel:9,adaptiveFiltering:true}).toBuffer()
  if(!(await sharp(bytes).raw().toBuffer()).equals(out))throw Error('RGBA preservation failed '+item.id)
  fs.writeFileSync(`${batch}/${item.sprite_sheet_path}`,bytes)
  const scale=Number((.84/Math.max(...bounds.map(b=>Math.max(b.width,b.height)/newCell))).toFixed(6)),shifts=Array.from({length:item.frames},()=>[0,0])
@@ -54,7 +63,7 @@ assetLoop: for(const item of selected){
 if(prepare)fs.writeFileSync(`${batch}/source-grids.json`,JSON.stringify(records,null,2)+'\n')
 else{
  fs.writeFileSync(`${batch}/registration.json`,JSON.stringify(records,null,2)+'\n')
- fs.writeFileSync('src/features/aquarium/galaxy-frame-layouts.json',JSON.stringify(four,null,2)+'\n')
- fs.writeFileSync('src/features/aquarium/galaxy-mythic-action-layouts.json',JSON.stringify(eight,null,2)+'\n')
+ fs.writeFileSync(`src/features/aquarium/${layoutPrefix}-frame-layouts.json`,JSON.stringify(four,null,2)+'\n')
+ fs.writeFileSync(`src/features/aquarium/${layoutPrefix}-mythic-action-layouts.json`,JSON.stringify(eight,null,2)+'\n')
 }
 console.log(JSON.stringify({mode:prepare?'prepare':'bake-alignment',processed:records.length,expected:selected.length}))

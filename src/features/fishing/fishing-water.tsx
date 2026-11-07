@@ -2,7 +2,7 @@ import {hasRodImages} from './rod-image-assets'
 import {FloatingRodGauge} from './rod-gauge'
 import {hasRodSkin,RodSkinFloat,RodSkinFrame,RodSkinRotor,RodSkinGrip,RodSkinShaft,rodShaftOutlineWidth} from './rod-skin-art'
 import type {FishingRod} from './fishing-rods'
-import { FishingSea,FishingPlatform } from './fishing-environment'
+import { FishingSea,FishingPlatform,fishingPlatformSize } from './fishing-environment'
 import { collectibleUrl } from '@/features/collection/api'
 import {optimizedThumbnailUrl} from '@/features/collection/thumbnail-art'
 import type { Species } from '@/features/collection/api'
@@ -12,6 +12,7 @@ import {waitingFloatRipples} from './waiting-float-ripples'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
+ hologram:{top:'#0a2032',bottom:'#030a14',light:'#5cdaef'},
  galaxy:{top:'#11182e',bottom:'#050916',light:'#d9d7f1'},
  hangang:{top:'#153b59',bottom:'#091d36',light:'#f4d89c'},
  pharaoh:{top:'#d7a750',bottom:'#93662b',light:'#fff0be'},
@@ -70,7 +71,8 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const approach=waiting?0:!canBite?.35:scouting?.12+behavior.progress*.38:Math.max(.5,Math.min(1,(game.progress-.12)/.75))
  const shadowOpacity=!canBite?.22*Math.min(1,game.time/.6)*(1-escapeProgress):scouting?(reduced?.16:(.07+.13*(.5+.5*Math.sin(t*3.2))))*Math.min(1,behavior.progress*5):approach*(lost?(1-end)*.4:.6)
  const bobScale=active?.62+game.progress*.38:1
- const platformHeight=Math.max(160,Math.min(220,sceneHeight*.32))
+ const platform=fishingPlatformSize(regionId)
+ const platformHeight=Math.max(platform.min,Math.min(platform.max,sceneHeight*platform.ratio))
  const platformY=sceneHeight-platformHeight+10
  const nearWater=Math.min(sceneHeight*(sceneryOverlay?.58:.42),platformY-(sceneryOverlay?70:117))-fishingLift
  const bobY=nearWater+(active?(game.progress-.5)*28:0)+(waiting?Math.sin(t*2)*1.4:0)+motionTug*5+(won?-lift*138:0)

@@ -1,0 +1,45 @@
+{
+  "status": "thumbnail-concepts-only",
+  "tool": "built-in image_gen",
+  "palette": {
+    "base": "midnight navy and ink teal",
+    "emission": "electric cyan",
+    "accent": "sparse magenta-violet"
+  },
+  "items": [
+    {
+      "file": "fish/mythic/neon-archive_v1_thumbnail.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1b113-3069-74e2-b794-702baefd6339/exec-50807cd5-4d84-4874-9c0e-ac3fc42b74b6.png",
+      "name": "데이터의 신, 아카이브",
+      "rarity": "mythic",
+      "prompt": "Create ONE MYTHIC fish collectible thumbnail: Archive, God of Data, a colossal transparent WHALE SHARK containing all the memories of a drowned neon city. Reference1 is ONLY for polished soft fantasy shading, subtle luminous material and premium game illustration; do NOT borrow its manta shape, face, wings, stars or ribbon tail. Reference2 is ONLY the shared region COLOR PALETTE: midnight navy / ink teal base, electric cyan main emission, sparse magenta-violet accents. Precisely whale shark anatomy: massive long thick barrel-shaped body, broad flattened blunt rectangular head, wide terminal mouth facing screen RIGHT, tiny calm lateral eye, visible five gill slits, short broad pectoral fins, one modest dorsal fin, sturdy asymmetrical crescent tail at LEFT. No manta wings, no whale mammal fins. Clear right-facing side-three-quarter forward-swimming pose, entire animal fully visible. Dark translucent blue glasslike living skin with recognizable whale-shark rows of tiny cyan spots, transparent abdomen reveals a deeply dimensional miniature archive of holographic city buildings, stacked record blocks, delicate flowing streams of memory tiles and circuitlike routes traveling along the body toward its head. A suspended central cyan archive core inside the torso; two or three tiny magenta archive symbols WITHOUT readable text. It should be a living immense serene ocean deity, not a mechanical vehicle or an actual building on its back. Tiny restrained cyan rim light defines the broad snout and fins, internal holography produces exquisite layered transparency. Navy dominates opaque body areas, cyan dominates luminous areas, magenta only around 10 percent of accents; no rainbow, yellow or gold. Serene small natural eye, no giant cartoon eyes. Elegant clean silhouette, richly rendered fantasy hand-painted illustration with fine color edges, soft depth, game thumbnail readable at small size. ONE isolated creature on TRUE transparent background, square canvas, full body occupies about 78 percent width with generous 10 percent clear padding on EVERY side including glow and tail. No seascape, ground shadow, mist, particles outside creature, text, labels, frames, watermark, checkerboard or collage. Static thumbnail only, not sprite sheet.",
+      "references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/storage-upload/new/20261107-151834/regions/neon-abyss-city/map-v2.png"
+      ],
+      "facing_direction": "right",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "preserved_source": "sources/neon-archive_v1_thumbnail.png",
+      "sha256": "ba27b5cb9903bc8447a7f11829c2082f0074f89bd28eba8509067c21dd7b8524"
+    },
+    {
+      "file": "fish/rare/neon-error-octopus_v1_thumbnail.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1b113-3069-74e2-b794-702baefd6339/exec-160beab6-f8a6-429a-a9fd-0c160ef369aa.png",
+      "name": "오류의 문어",
+      "rarity": "rare",
+      "prompt": "Create ONE RARE fish collectible thumbnail: Error Octopus, a living octopus whose eight arms each project a different small holographic screen. Reference1 ONLY supplies friendly polished cartoon game illustration, thin soft outlines, clean soft cel shading; do NOT copy the otter, orange colors, hook, starfish, fur, giant eye proportions. Reference2 ONLY supplies shared region palette midnight navy / ink teal body, electric cyan main light and sparse magenta-violet accents, so this creature belongs with the region's transparent archive whale shark. A believable octopus: oval bulbous mantle, ONE small natural expressive lateral eye visible, exactly EIGHT flexible tapering arms with tidy cyan-teal suction cups; organic anatomy, no clothing or robot armor. Face SCREEN RIGHT in an unmistakable side-three-quarter profile, mantle behind at upper LEFT, face and short arm crown toward RIGHT, arms curl down and fan gracefully behind/below with clear distinct separation. Swimming gently toward RIGHT, never front-on. Each arm-tip supports one small translucent cyan hologram panel, eight panels TOTAL, arranged tidily around the octopus like a little workstation, all staying close to its body silhouette. Each screen has a DIFFERENT simple visual: waveform, broken fish outline, map route, spiral, little bar chart, warning triangle, grid puzzle, fragmented circle. No words or numbers. Most panels cyan, two have small magenta glitch fragments and offset duplicate edges to convey errors; very restrained scan lines only on panels. Body primarily deep navy and dark teal with cyan rim highlights and small magenta freckles. Readable playful slightly confused expression, small eye, NOT giant chibi eyes, not a horror creature. Rare-tier restrained detailing, readable simple bold silhouette, beautiful soft cartoon fantasy game collectible, NO thick black outlines, NO photorealism. ONE isolated whole octopus with all eight arms and screens fully inside square canvas, about 76 percent canvas occupancy, at least 10 percent transparent padding on EVERY side including projections. TRUE transparent background. No background scenery, floor shadow, external fog or scattered pixels, text, watermark, UI frame, labels, checkerboard or collage. Static thumbnail only, not a sprite sheet.",
+      "references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "assets/storage-upload/new/20261107-151834/regions/neon-abyss-city/map-v2.png"
+      ],
+      "facing_direction": "right",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "preserved_source": "sources/neon-error-octopus_v1_thumbnail.png",
+      "sha256": "c9b69dbb9c5f9e202f5e029c19b20fc01c4542428fd754cbeab78a2f94059c12"
+    }
+  ]
+}

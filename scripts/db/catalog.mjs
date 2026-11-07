@@ -1,8 +1,9 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 
-export function catalogSql(catalog, {tables,ids,pricesOnly=false} = {}) {
+export function catalogSql(catalog, {tables,ids,pricesOnly=false,habitatRegion} = {}) {
   if (catalog.formatVersion !== 1) throw new Error('Unsupported catalog format')
+  if(habitatRegion&&(pricesOnly||!ids?.length||!tables?.includes('collectible_species')||!catalog.regions.some(r=>r.id===habitatRegion)))throw new Error('Habitat region requires a known region and explicitly scoped species catalog generation')
   if(catalog.collectible_species.some(s=>s.kind==='trash'&&(!Number.isSafeInteger(s.sell_price)||s.sell_price<=0)))throw new Error('Trash must have a positive sell price')
   const literal = value => value === null ? 'null' : typeof value === 'boolean' || typeof value === 'number' ? String(value) : typeof value === 'object' ? `'${JSON.stringify(value).replaceAll("'", "''")}'::jsonb` : `'${String(value).replaceAll("'", "''")}'`
   const identifier = value => {
@@ -56,6 +57,12 @@ export function catalogSql(catalog, {tables,ids,pricesOnly=false} = {}) {
     if(species.length)statements.push(`delete from public.collectible_habitats where species_id in (${species.map(r => literal(r.id)).join(',')});`)
     if (habitats.length) statements.push(`insert into public.collectible_habitats(species_id,region_id) values\n${habitats.map(r => `(${literal(r.species_id)},${literal(r.region_id)})`).join(',\n')};`)
   }
+  if(habitatRegion){
+    // New regions may reuse shared decorations without rewriting those species or
+    // deleting habitats that exist only in the remote database.
+    const additions=catalog.collectible_habitats.filter(h=>h.region_id===habitatRegion&&!ids.includes(h.species_id))
+    if(additions.length)statements.push(`insert into public.collectible_habitats(species_id,region_id) values\n${additions.map(h=>`(${literal(h.species_id)},${literal(h.region_id)})`).join(',\n')}\non conflict do nothing;`)
+  }
   statements.push("notify pgrst, 'reload schema';", 'commit;', '')
   return statements.join('\n')
 }
@@ -63,7 +70,8 @@ export function catalogSql(catalog, {tables,ids,pricesOnly=false} = {}) {
 if (process.argv[1]?.replaceAll('\\', '/').endsWith('/scripts/db/catalog.mjs')) {
   const tables=process.argv.flatMap((arg,i)=>arg==='--table'?[process.argv[i+1]]:[])
   const ids=process.argv.flatMap((arg,i)=>arg==='--id'?[process.argv[i+1]]:[])
-  const sql = catalogSql(JSON.parse(readFileSync('supabase/catalog/catalog.json', 'utf8')),{tables:tables.length?tables:undefined,ids:ids.length?ids:undefined,pricesOnly:process.argv.includes('--prices-only')})
+  const habitatRegion=process.argv.includes('--habitat-region')?process.argv[process.argv.indexOf('--habitat-region')+1]:undefined
+  const sql = catalogSql(JSON.parse(readFileSync('supabase/catalog/catalog.json', 'utf8')),{tables:tables.length?tables:undefined,ids:ids.length?ids:undefined,pricesOnly:process.argv.includes('--prices-only'),habitatRegion})
   const output = process.argv[2]
   if (output) {
     if (dirname(resolve(output)) !== resolve('supabase/migrations') || !/^\d{14}_.+\.sql$/.test(output.replaceAll('\\', '/').split('/').at(-1))) throw new Error('Output must be a CLI-created file in supabase/migrations')

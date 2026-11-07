@@ -15,7 +15,7 @@ it('provides crops and completed foods with spare storage and fresh reset state'
  const state=initialFarmTrial(true)
  for(const good of [...cropKinds,...finishedFoods])expect(state.simulation.inventory[good]).toBeGreaterThanOrEqual(2)
  expect(state.simulation.inventory.wheat).toBe(12)
- expect(state.simulation.inventory.honey).toBe(0)
+ expect(state.simulation.inventory.honey).toBe(2)
  expect(warehouseCapacity(state)-farmStorageUsage(state.simulation)).toBeGreaterThanOrEqual(30)
  state.simulation.inventory.honeyCake=0
  expect(initialFarmTrial(true).simulation.inventory.honeyCake).toBe(2)

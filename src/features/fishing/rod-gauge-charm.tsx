@@ -2,6 +2,7 @@ import type {ComponentProps,ReactNode} from 'react'
 import {memo} from 'react'
 
 const charms:Record<string,ReactNode>={
+ hologram:<image href="/region-icons/hologram.svg" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  galaxy:<image href="/region-icons/galaxy-v1.png" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  hangang:<image href="/region-icons/hangang.svg" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  pharaoh:<image href="/region-icons/pharaoh-v2.png" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,

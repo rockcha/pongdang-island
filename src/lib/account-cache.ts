@@ -166,7 +166,7 @@ export const resourceEvents: Record<string, string[]> = {
   ],
   'aquarium-changed': ['aquarium', 'storage', 'collection', 'merchant', 'menu-status','flea-inventory','flea'],
   'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox', 'merchant', 'menu-status','flea-inventory','flea'],
-  'friends-changed': ['friend-aquarium', 'aquarium-likes', 'friend-expedition'],
+  'friends-changed': ['friend-aquarium', 'aquarium-likes', 'friend-expedition', 'farm-friends', 'friend-farm'],
 }
 let subscribers = 0
 function onResourceEvent(event: Event) {

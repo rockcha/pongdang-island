@@ -9,6 +9,7 @@ import {topviewItems} from './topview-model'
 import {isFarmSupply} from './supply-catalog'
 
 export function FarmActionEffect({effect}:{effect:FarmEffect&{id:number}}){
+ if(effect.type==='harvest')return null
  if(effect.type==='sell')return createPortal(<div key={effect.id} className="farm-sale-effect" role="status" aria-live="polite" data-farm-effect="sell"><div className="farm-sale-card"><span className="farm-sale-coin"><FarmGoldIcon/></span><strong>+ <FarmGold amount={(effect.gold??0).toLocaleString()}/></strong><span>{effect.items?`${effect.items.length}종 · ${effect.quantity}개 판매`:`${farmGoods[effect.good].name} ×${effect.quantity} 납품`}</span></div></div>,document.body)
  const titles={buy:isFarmSupply(effect.good)?'비료를 담았어요':'종자를 담았어요',sell:'판매했어요',research:'새로운 씨앗을 연구해요',unlock:'새 종자 발견!',harvest:'수확했어요',craft:'제작을 시작했어요',crafted:'수령했어요',received:'수령했어요',discarded:'폐기했어요'}
  const destination=effect.animal?'보관함':['harvest','crafted'].includes(effect.type)?'창고':null

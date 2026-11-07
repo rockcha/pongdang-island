@@ -3,6 +3,7 @@ import {isFarmFence} from './fence-kinds'
 import {initialFarmSimulation,type FarmSimulation} from './farm-simulation'
 import type {FarmTile} from './tile-catalog'
 import {farmAnimals} from './animal-catalog'
+import {WAREHOUSE_PURCHASE_LIMIT} from './building-rules'
 export type FarmTerrain='land'|'sea'
 export type FarmTool='starClamFountain'|'waterwheel'|'agriShop'|'butcher'|'warehouse'|'livestockOffice'|'office'|'seedShop'|'store'|'barn'|'coop'|'lab'|'mill'|'processed'|'chicken'|'cow'|'duck'|'sheep'|'plot'|'flowers'|'fence'|'fenceWhite'|'fenceDark'|'bench'|'pongiTube'|'pongiTubeRed'|'duckBoat'|'woodBridge1'|'woodBridge2'|'woodBridge3'|'rabbitTopiary'|'mushroomLamp'|'sealFloat'|'waterLilies'|'pongiMailbox'|'teacupCat'|'bearPicnic'|'chickSandbox'|'strawScarecrow'|'hayBales'|'toolRack'|ProcessingBuilding
 export const topviewItems:Record<FarmTool,{name:string;w:number;h:number;group:'건물'|'동물'|'꾸미기';price:number;purchaseLimit?:number;terrain?:FarmTerrain}>={
@@ -31,7 +32,7 @@ export const topviewItems:Record<FarmTool,{name:string;w:number;h:number;group:'
  woodBridge3:{name:'나무다리 1×3',w:1,h:3,group:'꾸미기',terrain:'sea',price:600},
  ...farmWorkshopItems,
  livestockOffice:{name:'퐁이 돌봄터',w:1,h:1,group:'건물',price:5000,purchaseLimit:Infinity},
- warehouse:{name:'창고',w:2,h:1,group:'건물',price:0,purchaseLimit:1},
+ warehouse:{name:'창고',w:2,h:1,group:'건물',price:3000,purchaseLimit:WAREHOUSE_PURCHASE_LIMIT},
  office:{name:'퐁이 개간터',w:1,h:1,group:'건물',price:5000,purchaseLimit:Infinity},seedShop:{name:'종자 상점',w:2,h:1,group:'건물',price:0,purchaseLimit:1},store:{name:'농장 납품소',w:2,h:1,group:'건물',price:0,purchaseLimit:1},barn:{name:'축사',w:2,h:1,group:'건물',price:2500,purchaseLimit:Infinity},
  coop:{name:'가금사',w:2,h:1,group:'건물',price:2000,purchaseLimit:Infinity},lab:{name:'종자 연구소',w:2,h:1,group:'건물',price:1500,purchaseLimit:Infinity},mill:{name:'제분소',w:2,h:1,group:'건물',price:2000,purchaseLimit:Infinity},processed:{name:'가공품 판매소',w:2,h:1,group:'건물',price:100,purchaseLimit:Infinity},
  chicken:{name:farmAnimals.chicken.name,w:1,h:1,group:'동물',price:farmAnimals.chicken.price},cow:{name:farmAnimals.cow.name,w:2,h:1,group:'동물',price:farmAnimals.cow.price},duck:{name:farmAnimals.duck.name,w:1,h:1,group:'동물',price:farmAnimals.duck.price},sheep:{name:farmAnimals.sheep.name,w:1,h:1,group:'동물',price:farmAnimals.sheep.price},

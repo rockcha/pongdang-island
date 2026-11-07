@@ -5,6 +5,7 @@ import {farmCrops} from './crop-catalog'
 import {dailyFarmOrders,farmOrderKey} from './daily-orders'
 import {farmRecipes,millRecipes,isRecipeId,recipeOutput,type MillProduct} from './food-catalog'
 import {topviewItems,type TopviewState} from './topview-model'
+import {farmResearchJobs} from './research-jobs'
 
 export type FarmTask={id:string;objectId:number;title:string;detail:string;status:'ready'|'working'|'attention'|'blocked';readyAt:number;good?:FarmGood;quantity?:number}
 export function farmProductionTasks(state:TopviewState,now:number){
@@ -26,7 +27,8 @@ export function farmProductionTasks(state:TopviewState,now:number){
   if(mill){const good=mill.product??'flour';add('mill',`${farmGoods[good].name} 수령`,mill.readyAt,good,mill.quantity*millRecipes[good].output)}
   if(processing)add('processing',`${farmGoods[processing.recipe].name} 수령`,processing.readyAt,processing.recipe,processing.quantity)
   if(purchase)add('purchase',`${farmAnimals[purchase.animal].name} 맞이하기`,purchase.readyAt,undefined,1,'준비된 동물은 보관함으로 받을 수 있어요')
-  if(sim.researchJob?.labId===id)add('research',`${farmGoods[sim.researchJob.crop].name} 종자 연구`,sim.researchJob.readyAt,sim.researchJob.crop,undefined,'연구가 끝나면 새 종자를 구매할 수 있어요')
+  const research=farmResearchJobs(sim)[id]
+  if(research)add('research',`${farmGoods[research.crop].name} 종자 연구`,research.readyAt,research.crop,undefined,'연구가 끝나면 새 종자를 구매할 수 있어요')
  }
  for(const task of tasks){
   if(task.status!=='ready'||!task.good||!['crop:','animal:','mill:','processing:','butcher:'].some(prefix=>task.id.startsWith(prefix)))continue

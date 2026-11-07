@@ -116,10 +116,11 @@ var isFarmFence = (kind) => farmFenceKinds.includes(kind);
 //#endregion
 //#region src/features/farm/building-upgrades.ts
 var UPGRADE_COST = 3e3;
+var buildingMaxLevel = (kind) => kind === "warehouse" ? 30 : 10;
 var isProductionUpgradeable = (kind) => kind === "mill" || isProcessingBuilding(kind);
 var isUpgradeable = (kind) => kind === "waterwheel" || kind === "warehouse" || isProductionUpgradeable(kind);
 var buildingUpgradeCost = (kind) => kind === "waterwheel" || isProductionUpgradeable(kind) ? 3e3 : UPGRADE_COST;
-var buildingLevel = (object) => Math.max(1, Math.min(10, object.level ?? 1));
+var buildingLevel = (object) => Math.max(1, Math.min(buildingMaxLevel(object.kind), object.level ?? 1));
 var buildingCapacity = (object) => object.kind === "warehouse" ? 40 + (buildingLevel(object) - 1) * 20 : object.kind === "office" ? 4 : object.kind === "livestockOffice" ? 2 : 0;
 var activeBuildings = (state, kind) => state.objects.filter((o) => o.kind === kind && !o.constructionReadyAt && (kind === "warehouse" || !state.simulation.upgradeJobs[o.id]));
 var warehouseCapacity = (state) => activeBuildings(state, "warehouse").reduce((sum, o) => sum + buildingCapacity(o), 0);
@@ -138,7 +139,7 @@ function upgradeBuilding(state, id, action, now) {
 	if (action.type === "upgrade") {
 		if (state.simulation.millJobs[id] || state.simulation.processingJobs[id]) return reject("생산물을 수령한 뒤 업그레이드해주세요.");
 		if (job) return reject("이미 업그레이드 중이에요.");
-		if (buildingLevel(object) >= 10) return reject("최고 레벨이에요.");
+		if (buildingLevel(object) >= buildingMaxLevel(object.kind)) return reject("최고 레벨이에요.");
 		if (state.gold < cost) return reject("골드가 부족해요.");
 		jobs[id] = {
 			startedAt: now,
@@ -180,7 +181,7 @@ function upgradeBuilding(state, id, action, now) {
 			...state,
 			objects: state.objects.map((o) => o.id === id ? {
 				...o,
-				level: Math.min(10, job.fromLevel + 1)
+				level: Math.min(buildingMaxLevel(object.kind), job.fromLevel + 1)
 			} : o),
 			simulation: {
 				...state.simulation,
@@ -202,6 +203,14 @@ function waterwheelBonusMinutes(state, source) {
 	}, 0);
 }
 var waterwheelDuration = (seconds, bonus) => Math.max(1, seconds - bonus * 60);
+//#endregion
+//#region src/features/farm/research-jobs.ts
+function farmResearchJobs(simulation) {
+	const jobs = { ...simulation.researchJobs };
+	const legacy = simulation.researchJob;
+	if (legacy && !jobs[legacy.labId]) jobs[legacy.labId] = legacy;
+	return jobs;
+}
 //#endregion
 //#region src/features/farm/animal-catalog.ts
 var farmAnimals = {
@@ -1420,6 +1429,7 @@ var basicFarmBuildings = [
 	"store"
 ];
 var isBasicFarmBuilding = (kind) => basicFarmBuildings.some((building) => building === kind);
+var isFarmShopKind = (kind) => kind === "warehouse" || !isBasicFarmBuilding(kind);
 //#endregion
 //#region src/features/farm/market-catalog.ts
 var isRetiredTradeBuilding = (kind) => kind === "market" || kind === "processed";
@@ -1514,15 +1524,15 @@ function farmLimits(state) {
 		totalAnimals: usedAnimals + storedAnimals + pendingAnimals
 	};
 }
-var farmPurchaseLimit = (kind) => isBasicFarmBuilding(kind) ? 1 : Infinity;
+var farmPurchaseLimit = (kind) => kind === "warehouse" ? 2 : isBasicFarmBuilding(kind) ? 1 : Infinity;
 var farmOwnedCount = (state, kind) => state.objects.filter((o) => o.kind === kind).length + state.stored.filter((k) => k === kind).length;
-var farmCanPurchase = (state, kind) => !isBasicFarmBuilding(kind) && !isRetiredTradeBuilding(kind) && farmOwnedCount(state, kind) < farmPurchaseLimit(kind);
+var farmCanPurchase = (state, kind) => isFarmShopKind(kind) && !isRetiredTradeBuilding(kind) && farmOwnedCount(state, kind) < farmPurchaseLimit(kind);
 function farmBuildingStorageError(state, id, pendingPlots = 0) {
 	const object = state.objects.find((o) => o.id === id), sim = state.simulation;
 	if (!object || topviewItems[object.kind].group !== "건물") return "보관할 건물을 선택해주세요.";
 	if (object.constructionReadyAt) return "건설이 끝난 뒤 보관할 수 있어요.";
 	if (sim.upgradeJobs[id]) return "업그레이드를 완료하거나 취소한 뒤 보관할 수 있어요.";
-	if (sim.researchJob?.labId === id) return "연구가 끝난 뒤 보관할 수 있어요.";
+	if (farmResearchJobs(sim)[id]) return "연구가 끝난 뒤 보관할 수 있어요.";
 	if (sim.animalPurchaseJobs[id]) return "준비한 동물을 먼저 받은 뒤 보관할 수 있어요.";
 	if (sim.processingJobs[id]) return "가공품을 먼저 받은 뒤 건물을 보관할 수 있어요.";
 	if (sim.butcherJobs?.[id]) return "가공한 고기를 먼저 받은 뒤 건물을 보관할 수 있어요.";
@@ -1778,16 +1788,22 @@ function simulateFarm(state, sourceId, action, now) {
 			if (source.kind !== "lab") return reject("종자 연구소를 이용해주세요.");
 			if (!isCropKind(action.crop)) return reject("연구할 작물을 확인해주세요.");
 			if (sim.unlockedCrops.includes(action.crop)) return reject("이미 연구한 작물이에요.");
-			if (sim.researchJob) return reject("진행 중인 연구가 끝나면 다음 연구를 시작할 수 있어요.");
+			const jobs = farmResearchJobs(sim);
+			if (jobs[sourceId]) return reject("이 연구소의 연구가 끝나면 다음 연구를 시작할 수 있어요.");
+			if (Object.values(jobs).some((job) => job.crop === action.crop)) return reject("다른 연구소에서 이미 연구 중인 종자예요.");
 			const details = farmCrops[action.crop];
 			if (gold < details.researchPrice) return reject("골드가 부족해요.");
 			gold -= details.researchPrice;
-			next.researchJob = {
-				crop: action.crop,
-				labId: sourceId,
-				startedAt: now,
-				readyAt: now + details.researchSeconds * 1e3
+			next.researchJobs = {
+				...jobs,
+				[sourceId]: {
+					crop: action.crop,
+					labId: sourceId,
+					startedAt: now,
+					readyAt: now + details.researchSeconds * 1e3
+				}
 			};
+			next.researchJob = null;
 			message = `${details.name} 종자를 연구하고 있어요.`;
 			effect = {
 				type: "research",
@@ -1796,9 +1812,11 @@ function simulateFarm(state, sourceId, action, now) {
 			break;
 		}
 		case "completeResearch": {
-			const job = sim.researchJob;
+			const jobs = farmResearchJobs(sim), job = jobs[sourceId];
 			if (source.kind !== "lab" || !job || job.labId !== sourceId || job.readyAt > now) return reject("아직 연구가 끝나지 않았어요.");
 			next.unlockedCrops = Array.from(/* @__PURE__ */ new Set([...sim.unlockedCrops, job.crop]));
+			delete jobs[sourceId];
+			next.researchJobs = jobs;
 			next.researchJob = null;
 			message = `${farmCrops[job.crop].name} 연구 완료! 종자 상점에서 구매할 수 있어요.`;
 			effect = {
@@ -2220,8 +2238,8 @@ var topviewItems = {
 		w: 2,
 		h: 1,
 		group: "건물",
-		price: 0,
-		purchaseLimit: 1
+		price: 3e3,
+		purchaseLimit: 2
 	},
 	office: {
 		name: "퐁이 개간터",
@@ -2541,7 +2559,7 @@ function addTileStock(state, tile, quantity) {
 farmTiles[0];
 function buyFarmItem(state, kind, quantity = 1) {
 	const item = topviewItems[kind], cost = item.price * quantity;
-	if (isRetiredTradeBuilding(kind) || isBasicFarmBuilding(kind)) return state;
+	if (isRetiredTradeBuilding(kind) || !isFarmShopKind(kind)) return state;
 	if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 1e3 || !Number.isSafeInteger(cost) || item.group === "동물" || kind === "plot" || farmOwnedCount(state, kind) + quantity > farmPurchaseLimit(kind) || state.gold < cost) return state;
 	const copies = Array.from({ length: quantity }, () => kind), levels = copies.map(() => 1);
 	const orderKeys = state.storedOrderKeys;
@@ -2948,8 +2966,7 @@ function applyFarmCommand(state, command, now) {
 		case "tick": {
 			let next = finishFarmConstruction(state, now);
 			for (const [id, job] of Object.entries(next.simulation.upgradeJobs)) if (job.readyAt <= now) next = simulateFarm(next, Number(id), { type: "completeUpgrade" }, now).state;
-			const job = next.simulation.researchJob;
-			if (job && job.readyAt <= now) next = simulateFarm(next, job.labId, { type: "completeResearch" }, now).state;
+			for (const job of Object.values(farmResearchJobs(next.simulation))) if (job.readyAt <= now) next = simulateFarm(next, job.labId, { type: "completeResearch" }, now).state;
 			return next;
 		}
 		default: return fail();

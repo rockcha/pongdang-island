@@ -1,6 +1,6 @@
 import {farmPurchaseLimit,farmOwnedCount} from './farm-simulation'
 import {isRetiredTradeBuilding} from './market-catalog'
-import {isBasicFarmBuilding} from './building-rules'
+import {isFarmShopKind} from './building-rules'
 import {cellKey,objectAt,topviewItems,type FarmTool,type TopviewState} from './topview-model'
 import type {LandCell,LandTool} from './land-tools'
 import {farmTiles,tileCount,pathTile,addTileStock,type FarmTile} from './tile-catalog'
@@ -8,7 +8,7 @@ import {farmTiles,tileCount,pathTile,addTileStock,type FarmTile} from './tile-ca
 export const dirtTile=farmTiles[0]
 export function buyFarmItem(state:TopviewState,kind:FarmTool,quantity=1):TopviewState{
  const item=topviewItems[kind],cost=item.price*quantity
- if(isRetiredTradeBuilding(kind)||isBasicFarmBuilding(kind))return state
+ if(isRetiredTradeBuilding(kind)||!isFarmShopKind(kind))return state
  if(!Number.isSafeInteger(quantity)||quantity<1||quantity>1000||!Number.isSafeInteger(cost)||item.group==='동물'||kind==='plot'||farmOwnedCount(state,kind)+quantity>farmPurchaseLimit(kind)||state.gold<cost)return state
  const copies=Array.from({length:quantity},()=>kind),levels=copies.map(()=>1)
  const orderKeys=state.storedOrderKeys

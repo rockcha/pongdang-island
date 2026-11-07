@@ -126,11 +126,12 @@ it.each(millProducts)('reserves six crops to mill a two-unit batch of %s',id=>{
  expect(collected.simulation.inventory[id]).toBe(2)
  expect(simulateFarm(collected,91,{type:'collectFlour'},recipe.seconds*1000).state).toBe(collected)
 })
-it('hides basic buildings and construction-count details in the shop and accepts a quantity for repeatable facilities',()=>{
+it('offers an extra warehouse, hides singleton starter buildings, and accepts quantities for repeatable facilities',()=>{
  const state=initialTopview(),onBuy=vi.fn(()=>'' )
  render(<FarmShop state={state} onBuy={onBuy} onBuyTiles={()=>''} onClose={()=>{}}/>)
  const shop=screen.getByRole('dialog',{name:'상점'})
- for(const kind of basicFarmBuildings)expect(within(shop).queryByRole('article',{name:topviewItems[kind].name})).toBeNull()
+ for(const kind of basicFarmBuildings.filter(kind=>kind!=='warehouse'))expect(within(shop).queryByRole('article',{name:topviewItems[kind].name})).toBeNull()
+ expect(within(shop).getByRole('article',{name:'창고'})).toBeTruthy()
  expect(shop.textContent).not.toContain('여러 채 건설 가능')
  fireEvent.change(screen.getByRole('spinbutton',{name:'유제품 공방 구매 수량'}),{target:{value:'2'}})
  fireEvent.click(screen.getByRole('button',{name:'유제품 공방 2개 구매 · 4,000 G'}))

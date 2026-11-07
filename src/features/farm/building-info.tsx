@@ -1,5 +1,6 @@
 import {farmWorkshops,isProcessingBuilding} from './workshop-catalog'
-import {buildingCapacity,buildingLevel,warehouseCapacity,WAREHOUSE_CAPACITY_PER_LEVEL} from './building-upgrades'
+import {buildingCapacity,buildingLevel,buildingMaxLevel,warehouseCapacity,WAREHOUSE_CAPACITY_PER_LEVEL} from './building-upgrades'
+import {WAREHOUSE_PURCHASE_LIMIT} from './building-rules'
 import {farmAnimalHousing} from './farm-simulation'
 import {topviewItems,type FarmTool,type TopviewObject,type TopviewState} from './topview-model'
 import './building-info.css'
@@ -24,7 +25,7 @@ export function BuildingInfo({object,state}:{object:TopviewObject;state:TopviewS
  const kind=object.kind,purpose=isProcessingBuilding(kind)?farmWorkshops[kind].purpose:purposes[kind]
  if(!purpose)return null
  let effects:string[]=[]
- if(kind==='warehouse')effects=[`이 건물 ${buildingCapacity(object)}개 · 전체 ${warehouseCapacity(state)}개`,`모든 생산물의 총수량으로 계산 · 레벨마다 용량 ${WAREHOUSE_CAPACITY_PER_LEVEL}개 증가`]
+ if(kind==='warehouse')effects=[`이 건물 ${buildingCapacity(object)}개 · 전체 ${warehouseCapacity(state)}개`,`모든 생산물의 총수량으로 계산 · 레벨마다 용량 ${WAREHOUSE_CAPACITY_PER_LEVEL}개 증가`,`최대 ${WAREHOUSE_PURCHASE_LIMIT}개 보유 · 창고당 최대 ${buildingMaxLevel(kind)}레벨`]
  else if(kind==='livestockOffice')effects=[`동물 정원 +${buildingCapacity(object)}마리`,'한 채당 2마리 증가 · 여러 채 건설 가능','보관·준비 중인 동물도 정원에 포함']
  else if(kind==='office')effects=[`밭 한도 +${buildingCapacity(object)}칸`,'한 채당 4칸 증가 · 여러 채 건설 가능']
  else if(kind==='store')effects=['기본 제공 · 농장 전체에 1개만 보유','보관함에 있어도 보유 수에 포함 · 1차 생산물·식품·생활용품을 수량을 선택해 납품']

@@ -1,5 +1,5 @@
 import {FarmGold} from './farm-gold'
-import {isBasicFarmBuilding} from './building-rules'
+import {isFarmShopKind} from './building-rules'
 import {isRetiredTradeBuilding} from './market-catalog'
 import {FarmCategoryIcon} from './category-icon'
 import {FarmTerrainBadge} from './terrain-badge'
@@ -30,7 +30,7 @@ export function FarmShop({state,initialTab='건물',focusKind,onClose,onBuy,onBu
  return <Dialog open onOpenChange={open=>{if(!open)onClose()}}><DialogContent className={`farm-sim-dialog farm-shop ${tab==='타일'?'farm-shop-tiles':''}`}><DialogHeader><DialogTitle>상점</DialogTitle><DialogDescription>구매한 물건은 보관함에, 타일은 타일 메뉴에 보관돼요.</DialogDescription></DialogHeader>
   <nav className="farm-shop-tabs" aria-label="상점 분류">{(['건물','꾸미기','타일'] as const).map(category=><button key={category} aria-pressed={tab===category} onClick={()=>{setTab(category);setFeedback('')}}><FarmCategoryIcon kind={category==='건물'?'building':category==='꾸미기'?'decoration':'tile'}/><span>{category==='꾸미기'?'장식':category}</span></button>)}</nav>
   {tab!=='타일'&&<div className="farm-shop-filters"><nav aria-label={`${tab==='건물'?'건물':'장식물'} 카테고리`}>{(tab==='건물'?buildingShopCategories:decorationShopCategories).map(category=><button key={category} aria-label={category} title={category} aria-pressed={categories[tab]===category} onClick={()=>{setCategories(previous=>({...previous,[tab]:category}));setFeedback('')}}><ShopCategoryIcon category={category}/></button>)}</nav><span>낮은 가격순</span></div>}
-  <div className="farm-shop-body">{tab==='타일'?<TileShopPanel state={state} onBuy={(quantity,tile)=>showFeedback(onBuyTiles(quantity,tile))}/>:<div className="farm-shop-grid">{(Object.entries(topviewItems) as [FarmTool,typeof topviewItems[FarmTool]][]).filter(([kind,item])=>kind!=='plot'&&!isRetiredTradeBuilding(kind)&&!isBasicFarmBuilding(kind)&&item.group===tab&&(categories[tab]==='전체'||farmShopCategory(kind,tab)===categories[tab])).sort((a,b)=>a[1].price-b[1].price||a[1].name.localeCompare(b[1].name,'ko')).map(([kind,item])=>{
+  <div className="farm-shop-body">{tab==='타일'?<TileShopPanel state={state} onBuy={(quantity,tile)=>showFeedback(onBuyTiles(quantity,tile))}/>:<div className="farm-shop-grid">{(Object.entries(topviewItems) as [FarmTool,typeof topviewItems[FarmTool]][]).filter(([kind,item])=>kind!=='plot'&&!isRetiredTradeBuilding(kind)&&isFarmShopKind(kind)&&item.group===tab&&(categories[tab]==='전체'||farmShopCategory(kind,tab)===categories[tab])).sort((a,b)=>a[1].price-b[1].price||a[1].name.localeCompare(b[1].name,'ko')).map(([kind,item])=>{
    const owned=!farmCanPurchase(state,kind)
    return <article ref={kind===focusKind?focusRef:undefined} data-highlighted={kind===focusKind||undefined} key={kind} className="farm-shop-card" aria-label={item.name} data-owned={owned}>
     {item.group==='건물'&&<span className="farm-shop-owned-count" aria-label={`${item.name} 보유 ${farmOwnedCount(state,kind)}개`} title="배치한 건물과 보관함의 건물을 합한 수량">보유 {farmOwnedCount(state,kind)}</span>}

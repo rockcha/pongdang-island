@@ -11,7 +11,7 @@ import {resellFarmObject} from '@/features/farm/resale'
 it.each([['corn',3600],['paddy',3600],['sweetPotato',5400],['sugarcane',7200],['tomato',10800],['strawberry',14400]] as const)('unlocks %s only after the full research time', (crop,seconds)=>{
  const state=initialTopview();state.objects.push({id:100,kind:'lab',x:5,y:8})
  const started=simulateFarm(state,100,{type:'research',crop},0).state
- expect(started.simulation.researchJob?.readyAt).toBe(seconds*1000)
+ expect(started.simulation.researchJobs?.[100]?.readyAt).toBe(seconds*1000)
  expect(simulateFarm(started,100,{type:'completeResearch'},seconds*1000-1).state).toBe(started)
  expect(simulateFarm(started,100,{type:'completeResearch'},seconds*1000).state.simulation.unlockedCrops).toContain(crop)
 })

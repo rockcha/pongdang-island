@@ -44,6 +44,7 @@ export function useFarmCamera(options:Options){
  useEffect(()=>{const blur=()=>{reset();ignoreUntil.current=Date.now()+500;latest.current.cancelTool()};window.addEventListener('blur',blur);return()=>window.removeEventListener('blur',blur)},[])
  function pair(){const [a,b]=[...points.current.values()];return {center:{x:(a.x+b.x)/2,y:(a.y+b.y)/2},distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y))}}
  function onPointerDownCapture(event:PointerEvent<HTMLDivElement>){
+  if(!points.current.size)ignoreUntil.current=0
   if(event.pointerType!=='touch'||event.button!==0)return
   points.current.set(event.pointerId,{x:event.clientX,y:event.clientY})
   if(points.current.size===1){const el=event.currentTarget;single.current={point:{x:event.clientX,y:event.clientY},left:el.scrollLeft,top:el.scrollTop,moved:false};return}

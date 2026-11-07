@@ -1,0 +1,3 @@
+.farm-harvest-receipt{animation:farm-harvest-receipt-rise 1.2s ease-out both}
+@keyframes farm-harvest-receipt-rise{0%{opacity:0;transform:translateY(5px)}18%,65%{opacity:1}100%{opacity:0;transform:translateY(-28px)}}
+@media(prefers-reduced-motion:reduce){.farm-harvest-receipt{animation:none}}

@@ -1,4 +1,5 @@
 import {waterwheelBonusMinutes} from './waterwheel'
+import {farmResearchJobs} from './research-jobs'
 import {buildingLevel,isProductionUpgradeable} from './building-upgrades'
 import {BuildingUpgradePanel} from './building-upgrade-panel'
 import {farmDuration} from './farm-duration'
@@ -27,9 +28,9 @@ import {FarmTradePanel} from './market-panel'
 import {FoodSalePanel} from './food-sale-panel'
 
 export function FarmProductionDialog({object,state,message,onAction,onClose,onStore,onMove,onFlip,onSell,pendingPlots=0,lastPurchasedSeed='wheat'}:{object:TopviewObject;state:TopviewState;message:string;onAction:(action:FarmSimAction)=>void;onClose:()=>void;onStore?:()=>void;pendingPlots?:number;lastPurchasedSeed?:typeof cropKinds[number];onMove?:()=>void;onFlip?:()=>void;onSell?:()=>void}){
- const [now,setNow]=useState(Date.now),[selectedCrop,setSelectedCrop]=useState<typeof cropKinds[number]>(object.kind==='lab'?'potato':object.kind==='seedShop'?lastPurchasedSeed:'wheat')
- const sim=state.simulation,kind=object.kind,job=sim.researchJob
- useEffect(()=>{const timer=window.setInterval(()=>setNow(Date.now()),100);return()=>window.clearInterval(timer)},[])
+ const [now,setNow]=useState(Date.now),[selectedCrop,setSelectedCrop]=useState<typeof cropKinds[number]>(object.kind==='lab'?(farmResearchJobs(state.simulation)[object.id]?.crop??cropKinds.find(crop=>!state.simulation.unlockedCrops.includes(crop))??'wheat'):object.kind==='seedShop'?lastPurchasedSeed:'wheat')
+ const sim=state.simulation,kind=object.kind,researchJobs=farmResearchJobs(sim),job=researchJobs[object.id]
+ useEffect(()=>{const timer=window.setInterval(()=>{if(!document.hidden)setNow(Date.now())},1000);return()=>window.clearInterval(timer)},[])
  const crop=sim.cropJobs[object.id],animalHouse=kind==='coop'||kind==='barn'
  return <Dialog open onOpenChange={open=>{if(!open)onClose()}}><DialogContent className={`farm-sim-dialog farm-compact-dialog farm-facility-dialog ${isProcessingBuilding(kind)||kind==='mill'?'farm-workbench-dialog':''} ${kind==='store'?'farm-food-dialog':''} ${animalHouse?'farm-animal-dialog':''}`}><DialogHeader className="farm-compact-header"><DialogTitle>{topviewItems[kind].name}</DialogTitle><DialogDescription className="farm-building-subtitle">{farmBuildingSubtitle(kind)}</DialogDescription></DialogHeader>
   <div className="farm-sim-body">
@@ -43,11 +44,11 @@ export function FarmProductionDialog({object,state,message,onAction,onClose,onSt
    {(kind==='office'||kind==='livestockOffice')&&<section className="farm-building-info"><strong>{kind==='office'?'밭 한도 +4칸':'동물 정원 +2마리'}</strong><p>{kind==='office'?`전체 밭 ${farmLimits(state).usedPlots} / ${farmLimits(state).plots}칸`:`전체 동물 ${farmLimits(state).totalAnimals} / ${farmLimits(state).animals}마리`}</p><p>상점에서 5,000골드에 구매해 여러 채 지을 수 있어요.</p></section>}
    {!sim.upgradeJobs[object.id]&&isProcessingBuilding(kind)&&<ProcessingWorkshop waterwheelBonus={waterwheelBonusMinutes(state,object)} maxOutput={buildingLevel(object)*2} buildingId={object.id} kind={kind} simulation={sim} now={now} onAction={onAction}/>}
    {kind==='lab'&&<><FarmItemPicker items={cropKinds} value={selectedCrop} onChange={setSelectedCrop} label="연구할 종자" isLocked={c=>!sim.unlockedCrops.includes(c)}/>{cropKinds.filter(c=>c===selectedCrop).map(cropKind=>{
-    const details=farmCrops[cropKind],unlocked=sim.unlockedCrops.includes(cropKind),researching=job?.crop===cropKind
+    const details=farmCrops[cropKind],unlocked=sim.unlockedCrops.includes(cropKind),researching=job?.crop===cropKind,elsewhere=Object.values(researchJobs).some(other=>other.labId!==object.id&&other.crop===cropKind)
     const remaining=researching?Math.max(0,Math.ceil((job.readyAt-now)/1000)):0,progress=researching?Math.min(100,Math.max(0,(now-job.startedAt)/(job.readyAt-job.startedAt)*100)):0
     return <article className="farm-research-card" key={cropKind} data-locked={!unlocked||undefined} data-researching={researching}>
      <div className="farm-research-heading"><FarmGoodIcon good={cropKind}/><div><h3>{details.name}</h3><p>{farmDuration(details.growSeconds)} 재배 · 수확 {details.yield}개</p></div>{unlocked?<span className="farm-researched"><Check size={13}/>{details.researchPrice===0?'기본 종자':'연구 완료'}</span>:<span className="farm-research-time">{farmDuration(details.researchSeconds)}</span>}</div>
-     {!unlocked&&(researching?<div className="farm-research-running"><div className="farm-sim-progress" role="progressbar" aria-label={`${details.name} 연구 진행`} aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{width:`${progress}%`}}/></div><span>{remaining?`${farmDuration(remaining)} 남았어요`:'연구를 마무리하고 있어요'}</span></div>:<button className="farm-research-start" disabled={!!job||state.gold<details.researchPrice} onClick={()=>onAction({type:'research',crop:cropKind})} aria-label={`${details.name} 연구 · ${details.researchPrice.toLocaleString()} G`}><FlaskConical size={14}/><span>{job?'다른 종자 연구 중':'연구하기'}</span><strong><FarmGold amount={details.researchPrice.toLocaleString()}/></strong></button>)}
+     {!unlocked&&(researching?<div className="farm-research-running"><div className="farm-sim-progress" role="progressbar" aria-label={`${details.name} 연구 진행`} aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}><i style={{width:`${progress}%`}}/></div><span>{remaining?`${farmDuration(remaining)} 남았어요`:'연구를 마무리하고 있어요'}</span></div>:<button className="farm-research-start" disabled={!!job||elsewhere||state.gold<details.researchPrice} onClick={()=>onAction({type:'research',crop:cropKind})} aria-label={`${details.name} 연구 · ${details.researchPrice.toLocaleString()} G`}><FlaskConical size={14}/><span>{job?'이 연구소는 연구 중':elsewhere?'다른 연구소에서 연구 중':'연구하기'}</span><strong><FarmGold amount={details.researchPrice.toLocaleString()}/></strong></button>)}
     </article>
    })}</>}
    {!sim.upgradeJobs[object.id]&&kind==='mill'&&<MillWorkshop waterwheelBonus={waterwheelBonusMinutes(state,object)} key={object.id} maxOutput={buildingLevel(object)*2} buildingId={object.id} simulation={sim} now={now} onAction={onAction}/>}

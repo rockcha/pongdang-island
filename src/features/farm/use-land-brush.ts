@@ -55,5 +55,5 @@ export function useLandBrush({tool,readCell,canStart,tapOnly=false,onCommit}:{to
  }
  function onPointerCancel(event:PointerEvent<HTMLDivElement>){if(points.current.has(event.pointerId)){cancel();release(event)}}
  function onLostPointerCapture(event:PointerEvent<HTMLDivElement>){if(points.current.has(event.pointerId))cancel()}
- return {draft,cancel,ignoresClick:()=>Date.now()<ignoreUntil.current,onPointerDown,onPointerMove,onPointerUp,onPointerCancel,onLostPointerCapture}
+ return {draft,cancel,beginPointer:()=>{if(!brush.current&&!pan.current)ignoreUntil.current=0},isActive:()=>!!brush.current||!!pan.current,ignoresClick:()=>Date.now()<ignoreUntil.current,onPointerDown,onPointerMove,onPointerUp,onPointerCancel,onLostPointerCapture}
 }

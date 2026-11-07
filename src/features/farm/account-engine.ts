@@ -6,6 +6,7 @@ import {finishFarmConstruction,FARM_CONSTRUCTION_MS} from './construction-model'
 import {transformFarmObject} from './object-transform'
 import {resellFarmObject,resellStoredFarmItem} from './resale'
 import type {FarmTile} from './tile-catalog'
+import {farmResearchJobs} from './research-jobs'
 
 // The trusted server executes these intentions with its own clock and wallet.
 // No command accepts client inventory, gold, prices, deadlines or replacement saves.
@@ -84,8 +85,7 @@ export function applyFarmCommand(state:TopviewState,command:FarmCommand,now:numb
   case 'tick':{
    let next=finishFarmConstruction(state,now)
    for(const [id,job] of Object.entries(next.simulation.upgradeJobs))if(job.readyAt<=now)next=simulateFarm(next,Number(id),{type:'completeUpgrade'},now).state
-   const job=next.simulation.researchJob
-   if(job&&job.readyAt<=now)next=simulateFarm(next,job.labId,{type:'completeResearch'},now).state
+   for(const job of Object.values(farmResearchJobs(next.simulation)))if(job.readyAt<=now)next=simulateFarm(next,job.labId,{type:'completeResearch'},now).state
    return next
   }
   default:return fail()

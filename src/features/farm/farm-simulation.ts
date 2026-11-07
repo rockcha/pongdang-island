@@ -1,10 +1,11 @@
 import {waterwheelBonusMinutes,waterwheelDuration} from './waterwheel'
+import {farmResearchJobs} from './research-jobs'
 import {farmAnimals,isFarmAnimal,ANIMAL_PURCHASE_SECONDS,ANIMAL_PRODUCTION_OUTPUT,type FarmAnimal} from './animal-catalog'
 import {farmDuration} from './farm-duration'
 import {topviewItems,type FarmTool,type TopviewState} from './topview-model'
 import {cropKinds,farmCrops,isCropKind,seedGood,type CropKind,type SeedGood} from './crop-catalog'
 import {deliverableGoods,farmProducts,farmRecipes,millRecipes,isRecipeId,isDeliverableGood,recipeUnlocked,recipeBatchLimit,recipeOutput,type ProductGood,type RecipeId,type MillProduct} from './food-catalog'
-import {isBasicFarmBuilding} from './building-rules'
+import {isBasicFarmBuilding,isFarmShopKind,WAREHOUSE_PURCHASE_LIMIT} from './building-rules'
 import {isProcessingBuilding} from './workshop-catalog'
 import {butcherRecipes,BUTCHER_SECONDS} from './butcher-catalog'
 import {isRetiredTradeBuilding} from './market-catalog'
@@ -34,7 +35,8 @@ export const farmGoods:Record<FarmGood,GoodDetails>={
  ...farmProducts,
  ...farmSupplies,
 }
-export type FarmSimulation={butcherJobs?:Record<number,{good:ProductGood;quantity:number;startedAt:number;readyAt:number}>;animalPurchaseJobs:Record<number,{animal:FarmAnimal;startedAt:number;readyAt:number}>;upgradeJobs:Record<number,{startedAt:number;readyAt:number;fromLevel:number}>;inventory:Record<FarmGood,number>;unlockedCrops:CropKind[];unlockedAnimals?:FarmAnimal[];researchJob:{crop:CropKind;labId:number;startedAt:number;readyAt:number}|null;cropJobs:Record<number,{crop:CropKind;readyAt:number;harvestingAt?:number;fertilized?:boolean}>;animalJobs:Record<number,number>;millJobs:Record<number,{product?:MillProduct;quantity:number;startedAt:number;readyAt:number}>;processingJobs:Record<number,{recipe:RecipeId;quantity:number;startedAt:number;readyAt:number}>;orderDeliveries:Record<string,Partial<Record<FarmGood,number>>>}
+export type FarmResearchJob={crop:CropKind;labId:number;startedAt:number;readyAt:number}
+export type FarmSimulation={butcherJobs?:Record<number,{good:ProductGood;quantity:number;startedAt:number;readyAt:number}>;animalPurchaseJobs:Record<number,{animal:FarmAnimal;startedAt:number;readyAt:number}>;upgradeJobs:Record<number,{startedAt:number;readyAt:number;fromLevel:number}>;inventory:Record<FarmGood,number>;unlockedCrops:CropKind[];unlockedAnimals?:FarmAnimal[];researchJobs?:Record<number,FarmResearchJob>;researchJob:FarmResearchJob|null;cropJobs:Record<number,{crop:CropKind;readyAt:number;harvestingAt?:number;fertilized?:boolean}>;animalJobs:Record<number,number>;millJobs:Record<number,{product?:MillProduct;quantity:number;startedAt:number;readyAt:number}>;processingJobs:Record<number,{recipe:RecipeId;quantity:number;startedAt:number;readyAt:number}>;orderDeliveries:Record<string,Partial<Record<FarmGood,number>>>}
 export type FarmEffect={type:'buy'|'sell'|'research'|'unlock'|'harvest'|'craft'|'crafted'|'received'|'discarded';good:FarmGood;quantity?:number;gold?:number;animal?:FarmAnimal;items?:{good:FarmGood;quantity:number}[]}
 export function initialFarmSimulation():FarmSimulation{
  const inventory=Object.fromEntries(Object.keys(farmGoods).map(good=>[good,0])) as Record<FarmGood,number>
@@ -51,15 +53,15 @@ export function farmLimits(state:TopviewState){
  const usedAnimals=state.objects.filter(object=>topviewItems[object.kind].group==='동물').length,storedAnimals=state.stored.filter(kind=>topviewItems[kind].group==='동물').length,pendingAnimals=Object.keys(state.simulation.animalPurchaseJobs).length
  return {plots:activeBuildings(state,'office').reduce((sum,o)=>sum+buildingCapacity(o),0),animals:livestockCapacity(state),usedPlots:count('plot'),usedAnimals,storedAnimals,pendingAnimals,totalAnimals:usedAnimals+storedAnimals+pendingAnimals}
 }
-export const farmPurchaseLimit=(kind:FarmTool)=>isBasicFarmBuilding(kind)?1:Infinity
+export const farmPurchaseLimit=(kind:FarmTool)=>kind==='warehouse'?WAREHOUSE_PURCHASE_LIMIT:isBasicFarmBuilding(kind)?1:Infinity
 export const farmOwnedCount=(state:TopviewState,kind:FarmTool)=>state.objects.filter(o=>o.kind===kind).length+state.stored.filter(k=>k===kind).length
-export const farmCanPurchase=(state:TopviewState,kind:FarmTool)=>!isBasicFarmBuilding(kind)&&!isRetiredTradeBuilding(kind)&&farmOwnedCount(state,kind)<farmPurchaseLimit(kind)
+export const farmCanPurchase=(state:TopviewState,kind:FarmTool)=>isFarmShopKind(kind)&&!isRetiredTradeBuilding(kind)&&farmOwnedCount(state,kind)<farmPurchaseLimit(kind)
 export function farmBuildingStorageError(state:TopviewState,id:number,pendingPlots=0){
  const object=state.objects.find(o=>o.id===id),sim=state.simulation
  if(!object||topviewItems[object.kind].group!=='건물')return '보관할 건물을 선택해주세요.'
  if(object.constructionReadyAt)return '건설이 끝난 뒤 보관할 수 있어요.'
  if(sim.upgradeJobs[id])return '업그레이드를 완료하거나 취소한 뒤 보관할 수 있어요.'
- if(sim.researchJob?.labId===id)return '연구가 끝난 뒤 보관할 수 있어요.'
+ if(farmResearchJobs(sim)[id])return '연구가 끝난 뒤 보관할 수 있어요.'
  if(sim.animalPurchaseJobs[id])return '준비한 동물을 먼저 받은 뒤 보관할 수 있어요.'
  if(sim.processingJobs[id])return '가공품을 먼저 받은 뒤 건물을 보관할 수 있어요.'
  if(sim.butcherJobs?.[id])return '가공한 고기를 먼저 받은 뒤 건물을 보관할 수 있어요.'
@@ -189,17 +191,19 @@ export function simulateFarm(state:TopviewState,sourceId:number,action:FarmSimAc
    if(source.kind!=='lab')return reject('종자 연구소를 이용해주세요.')
    if(!isCropKind(action.crop))return reject('연구할 작물을 확인해주세요.')
    if(sim.unlockedCrops.includes(action.crop))return reject('이미 연구한 작물이에요.')
-   if(sim.researchJob)return reject('진행 중인 연구가 끝나면 다음 연구를 시작할 수 있어요.')
+   const jobs=farmResearchJobs(sim)
+   if(jobs[sourceId])return reject('이 연구소의 연구가 끝나면 다음 연구를 시작할 수 있어요.')
+   if(Object.values(jobs).some(job=>job.crop===action.crop))return reject('다른 연구소에서 이미 연구 중인 종자예요.')
    const details=farmCrops[action.crop]
    if(gold<details.researchPrice)return reject('골드가 부족해요.')
    gold-=details.researchPrice
-   next.researchJob={crop:action.crop,labId:sourceId,startedAt:now,readyAt:now+details.researchSeconds*1000}
+   next.researchJobs={...jobs,[sourceId]:{crop:action.crop,labId:sourceId,startedAt:now,readyAt:now+details.researchSeconds*1000}};next.researchJob=null
    message=`${details.name} 종자를 연구하고 있어요.`;effect={type:'research',good:action.crop};break
   }
   case 'completeResearch':{
-   const job=sim.researchJob
+   const jobs=farmResearchJobs(sim),job=jobs[sourceId]
    if(source.kind!=='lab'||!job||job.labId!==sourceId||job.readyAt>now)return reject('아직 연구가 끝나지 않았어요.')
-   next.unlockedCrops=Array.from(new Set([...sim.unlockedCrops,job.crop]));next.researchJob=null
+   next.unlockedCrops=Array.from(new Set([...sim.unlockedCrops,job.crop]));delete jobs[sourceId];next.researchJobs=jobs;next.researchJob=null
    message=`${farmCrops[job.crop].name} 연구 완료! 종자 상점에서 구매할 수 있어요.`;effect={type:'unlock',good:job.crop};break
   }
   case 'plant':{

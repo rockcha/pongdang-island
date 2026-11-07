@@ -5,11 +5,7 @@ import {initialTopview,type TopviewState} from './topview-model'
 export type FarmOwner={id:string;nickname:string;avatar_path:string|null}
 export type FarmFriends={self:FarmOwner;likeCount:number;friends:FarmOwner[]}
 export type FriendFarm={owner:FarmOwner;serverNow:string;likeCount:number;liked:boolean;layout:Pick<TopviewState,'land'|'paths'|'pathTiles'|'objects'>&{cropJobs:TopviewState['simulation']['cropJobs']}}
-export async function readFarmFriends(signal:AbortSignal):Promise<FarmFriends>{
- const {data,error}=await createClient().rpc('farm_friends').abortSignal(signal)
- if(error)throw error
- return data
-}
+export {readFarmFriends} from './friend-directory-api'
 export async function readFriendFarm(owner:string,signal:AbortSignal):Promise<FriendFarm>{
  const {data,error}=await createClient().rpc('friend_farm',{p_owner:owner}).abortSignal(signal)
  if(error)throw error

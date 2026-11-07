@@ -15,7 +15,8 @@ export async function prepareDeployment({root=process.cwd(),out='.cache/deploy-s
  root=await realpath(root)
  const target=path.resolve(root,out),allowed=path.join(root,'.cache')+path.sep
  if(!target.startsWith(allowed))throw Error('Deployment staging must be inside the workspace .cache directory')
- const paths=execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{cwd:root,maxBuffer:20_000_000}).toString().split('\0').filter(Boolean)
+ const deleted=new Set(execFileSync('git',['ls-files','--deleted','-z'],{cwd:root,maxBuffer:20_000_000}).toString().split('\0').filter(Boolean))
+ const paths=execFileSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{cwd:root,maxBuffer:20_000_000}).toString().split('\0').filter(file=>file&&!deleted.has(file))
  const files=[...new Set(paths)].filter(isDeploymentSource).sort()
  let bytes=0,totalBytes=0
  for(const file of paths){

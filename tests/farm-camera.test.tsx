@@ -63,8 +63,8 @@ it.each(['mouse','touch'])('pans while holding seeds with %s, spends no seeds on
  const {container,viewport,zoom}=setup()
  click('농사');click('씨앗 심기');click('밀 4개')
  const pointer=(type:string,x:number,y:number)=>fireEvent(viewport,Object.assign(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:(farmCellCenter(x))*zoom(),clientY:(farmCellCenter(y))*zoom(),button:0}),{pointerId:1,pointerType}))
- // Starting on an empty plot also pans instead of planting a stroke.
- for(const [x,y] of [[starterPlot.x,starterPlot.y],[8,7],[0,0]]){
+ // Empty ground and sea pan; starting on a plot paints a planting stroke.
+ for(const [x,y] of [[8,7],[0,0]]){
   viewport.scrollLeft=100;viewport.scrollTop=100
   pointer('pointerdown',x,y);pointer('pointermove',x-1,y-1);pointer('pointerup',x-1,y-1)
   expect(viewport.scrollLeft).toBeCloseTo(100+40*zoom())

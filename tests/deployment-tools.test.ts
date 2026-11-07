@@ -1,5 +1,5 @@
 // @vitest-environment node
-import {mkdtemp,readFile,mkdir,writeFile,rm} from 'node:fs/promises'
+import {mkdtemp,readFile,mkdir,writeFile,rm,unlink} from 'node:fs/promises'
 import {tmpdir} from 'node:os'
 import path from 'node:path'
 import {execFileSync} from 'node:child_process'
@@ -19,6 +19,9 @@ it('copies exactly the selected bytes, leaves originals intact and refuses overw
  for(const [file,text] of Object.entries({'src/main.tsx':'app','public/image.png':'same image bytes','package.json':'{}','assets/raw.png':'raw','.env.storage.local':'private'})){
   await mkdir(path.dirname(path.join(root,file)),{recursive:true});await writeFile(path.join(root,file),text)
  }
+ await writeFile(path.join(root,'public/removed.png'),'removed')
+ execFileSync('git',['add','public/removed.png'],{cwd:root})
+ await unlink(path.join(root,'public/removed.png'))
  const preview=await prepareDeployment({root,dryRun:true})
  expect(preview.files).toBe(3)
  expect(preview.omittedBytes).toBe(10)

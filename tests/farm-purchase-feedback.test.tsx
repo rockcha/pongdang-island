@@ -38,7 +38,7 @@ it.each(['땅','종자','건물'])('plays purchase feedback once through the act
  vi.useFakeTimers();render(<MemoryRouter><TopviewFarm/></MemoryRouter>)
  const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name,exact:true}))
  if(kind==='땅'){click('땅 0칸 보유');click('땅 구매하기');click('5칸 구매 · 500골드')}
- else if(kind==='종자'){click('종자 상점 (8,6)');click('밀 종자 구매')}
+ else if(kind==='종자'){fireEvent.click(screen.getByRole('button',{name:/^종자 상점 \(/}));click('밀 종자 구매')}
  else {click('상점');click('종자 연구소 구매 · 1500 G')}
  expect(document.querySelector(`[data-farm-gold-spent="${kind==='땅'?500:kind==='종자'?12:1500}"]`)).toBeTruthy()
  expect(playPurchaseSound).toHaveBeenCalledTimes(1)

@@ -36,10 +36,12 @@ export function FarmVisit({data,onReturn,strip}:{data:FriendFarm;onReturn:()=>vo
 
 export function FarmWithFriends(){
  const {session}=useAuth(),[params,setParams]=useSearchParams(),target=params.get('visit'),owner=target===session?.user.id?null:target
- const directory=useAccountResource('farm-friends',readFarmFriends),valid=!!owner&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(owner)
+ // Read tracked query fields during this render. Reading them only inside the
+ // deferred header callback can miss a response that arrives before the farm.
+ const {data:directory,isLoading:directoryLoading,isError:directoryError,refetch:refetchDirectory}=useAccountResource('farm-friends',readFarmFriends),valid=!!owner&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(owner)
  const visit=useAccountResource(['friend-farm',owner],signal=>readFriendFarm(owner??'',signal),{enabled:valid})
  function choose(id:string|null){const next=new URLSearchParams(params);if(id)next.set('visit',id);else next.delete('visit');setParams(next)}
- const strip=(disabled=false)=><FarmFriendStrip data={directory.data} selected={owner} onVisit={choose} disabled={disabled} loading={directory.isLoading} error={directory.isError} onRetry={()=>void directory.refetch()}/>
+ const strip=(disabled=false)=><FarmFriendStrip data={directory} selected={owner} onVisit={choose} disabled={disabled} loading={directoryLoading} error={directoryError} onRetry={()=>void refetchDirectory()}/>
  if(!owner)return <AccountFarm headerExtra={strip}/>
  if(!visit.data||!valid||visit.isError)return <section className="farm-visit-loading"><p role={visit.isError||!valid?'alert':'status'}>{visit.isError||!valid?'친구의 농장을 방문할 수 없어요. 친구 관계와 농장 개설 여부를 확인해주세요.':'친구 농장으로 가고 있어요…'}</p><button type="button" onClick={()=>choose(null)}><ArrowLeft size={16}/>내 농장으로</button>{visit.isError&&<button type="button" onClick={()=>void visit.refetch()}>다시 불러오기</button>}</section>
  return <FarmVisit key={owner} data={visit.data} onReturn={()=>choose(null)} strip={strip()}/>

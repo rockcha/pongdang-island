@@ -1,3 +1,4 @@
+import {memo} from 'react'
 import {StarClamFountainArt} from './star-clam-fountain-art'
 import {WaterwheelArt} from './waterwheel-art'
 import {canRotateFarmObject,canFlipFarmArt,objectArtHeight,topviewItems,TILE,type FarmTool,type FarmRotation} from './topview-model'
@@ -12,14 +13,14 @@ import {ConnectedFenceArt,isFarmFence,type FenceConnections} from './fence-art'
 
 // Orthogonal ground footprints with a visible front face, shared by every test object.
 type ArtProps={kind:FarmTool;compact?:boolean;idle?:boolean;idlePhase?:number;stage?:'empty'|'growing'|'ready'|'rotten';crop?:CropKind;progress?:number;rotation?:FarmRotation;flipped?:boolean;fenceConnections?:FenceConnections;fenceNetwork?:boolean}
-export function TopviewArt({rotation=0,flipped=false,...props}:ArtProps){
+export const TopviewArt=memo(function TopviewArt({rotation=0,flipped=false,...props}:ArtProps){
  if(isFarmFence(props.kind)&&props.fenceConnections&&Object.values(props.fenceConnections).some(Boolean))return <ConnectedFenceArt kind={props.kind} connections={props.fenceConnections} postsOnly={props.fenceNetwork}/>
  const angle=canRotateFarmObject(props.kind)?rotation:0,mirror=canFlipFarmArt(props.kind)&&flipped
  if(!angle&&!mirror)return <FarmBaseArt {...props}/>
  const width=topviewItems[props.kind].w*TILE,height=objectArtHeight(props.kind),sideways=angle===90||angle===270,outWidth=sideways?height:width,outHeight=sideways?width:height
  const turn=angle===90?`translate(${height} 0) rotate(90)`:angle===180?`translate(${width} ${height}) rotate(180)`:angle===270?`translate(0 ${width}) rotate(270)`:undefined
  return <svg viewBox={`0 0 ${outWidth} ${outHeight}`} aria-hidden="true" data-art-rotation={angle} data-art-flipped={mirror||undefined}><g transform={mirror?`translate(${outWidth} 0) scale(-1 1)`:undefined}><g transform={turn}><svg width={width} height={height}><FarmBaseArt {...props}/></svg></g></g></svg>
-}
+})
 function FarmBaseArt({kind,compact=false,idle=false,idlePhase=0,stage='empty',crop='wheat',progress}:ArtProps){
  if(idle&&isFarmAnimal(kind))return <FarmAnimalIdle kind={kind} phase={idlePhase}/>
  if(isFarmAnimal(kind)){const art=farmAnimalArt[kind];return <svg viewBox={art.viewBox} aria-hidden="true"><image href={art.path} width="512" height="512"/></svg>}

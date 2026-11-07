@@ -50,7 +50,7 @@ it('shows warehouse expansion immediately with the correct next capacity',()=>{
  const state=initialTopview(),object=state.objects.find(o=>o.kind==='warehouse')!
  render(<FarmWarehouse simulation={state.simulation} state={state} object={object} onAction={vi.fn()} onClose={vi.fn()}/>)
  expect(screen.getByRole('button',{name:'업그레이드 · 3,000 G'})).toBeTruthy()
- expect(within(screen.getByRole('region',{name:'건물 업그레이드'})).getByText('60개')).toBeTruthy()
+ expect(within(screen.getByRole('region',{name:'건물 업그레이드'})).getByText('80개')).toBeTruthy()
 })
 it('labels removal clearly and shows only one gold icon for the refund',()=>{
  const state=initialTopview(),object=state.objects.find(o=>o.kind==='kitchen')!,onSell=vi.fn()

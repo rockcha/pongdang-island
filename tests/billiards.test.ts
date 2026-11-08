@@ -2,6 +2,7 @@
 import {
   createBilliards,
   cueDrag,
+  canGrabCue,
   shoot,
   stepBilliards,
   SHOT,
@@ -16,14 +17,29 @@ function stop(s: Billiards) {
   }
   stepBilliards(s, 1 / 240)
 }
-function contact(s: Billiards, id: number) {
+function contact(s: Billiards, id: number, onContact?: Parameters<typeof stepBilliards>[2]) {
   s.phase = 'moving'
   s.balls.forEach((b, i) => Object.assign(b, { x: 60 + i * 65, y: 100, vx: 0, vy: 0 }))
   Object.assign(s.balls[0], { x: 150, y: 350, vx: 100, vy: 0 })
   Object.assign(s.balls[id], { x: 173, y: 350 })
-  stepBilliards(s, 1 / 240)
+  stepBilliards(s, 1 / 240, onContact)
 }
 describe('four-ball practice', () => {
+  it('only allows grabbing the existing cue, with a forgiving touch margin', () => {
+    const start = { x: 100, y: 100 },
+      end = { x: 100, y: 230 }
+    expect(canGrabCue({ x: 115, y: 170 }, start, end)).toBe(true)
+    expect(canGrabCue({ x: 200, y: 170 }, start, end)).toBe(false)
+    expect(canGrabCue({ x: 100, y: 60 }, start, end)).toBe(false)
+    expect(canGrabCue(start, start, start)).toBe(false)
+  })
+  it('rotates around the white ball without adding power at the same radius', () => {
+    const ball = { x: 200, y: 200 },
+      start = { x: 200, y: 300 }
+    const aim = cueDrag(ball, start, { x: 300, y: 200 })
+    expect(aim.nx).toBe(-1)
+    expect(Math.hypot(aim.dx, aim.dy)).toBe(0)
+  })
   it('places the cue on click without firing and measures only added pull', () => {
     const s = createBilliards(),
       ball = s.balls[0]
@@ -113,24 +129,24 @@ describe('four-ball practice', () => {
       expect(s.balls[0].x).toBeCloseTo(80 + 200 ** 2 / (2 * SHOT.rollingDeceleration), 5)
     }
   })
-  it('counts each red ball once and awards a point after stopping', () => {
+  it('awards ten points immediately per distinct red, without extra settlement points', () => {
     const s = createBilliards()
     contact(s, 1)
     contact(s, 1)
     expect(s.hits).toEqual([1])
     contact(s, 2)
-    expect(s.score).toBe(0)
+    expect(s.score).toBe(20)
     stop(s)
     expect(s.phase).toBe('aim')
-    expect(s.score).toBe(1)
+    expect(s.score).toBe(20)
     expect(s.lives).toBe(5)
     const positions = s.balls.map((b) => [b.x, b.y])
     stepBilliards(s, 0.05)
-    expect(s.score).toBe(1)
+    expect(s.score).toBe(20)
     expect(shoot(s, 0, -50)).toBe(true)
     expect(s.balls.map((b) => [b.x, b.y])).toEqual(positions)
   })
-  it('subtracts exactly one point and life even after hitting both red balls', () => {
+  it('subtracts ten points only once for yellow, preserving earned red points', () => {
     const s = createBilliards()
     contact(s, 1)
     contact(s, 2)
@@ -138,10 +154,10 @@ describe('four-ball practice', () => {
     contact(s, 3)
     stop(s)
     expect(s.foul).toBe(true)
-    expect(s.score).toBe(-1)
+    expect(s.score).toBe(10)
     expect(s.lives).toBe(4)
     stepBilliards(s, 0.05)
-    expect(s.score).toBe(-1)
+    expect(s.score).toBe(10)
     expect(s.lives).toBe(4)
     expect(s.phase).toBe('aim')
   })
@@ -169,7 +185,7 @@ describe('four-ball practice', () => {
     stop(t)
     expect(t.phase).toBe('aim')
     expect(t.lives).toBe(1)
-    expect(t.score).toBe(1)
+    expect(t.score).toBe(20)
     const u = createBilliards()
     contact(u, 3)
     stop(u)
@@ -208,4 +224,23 @@ it('ends after five misses, without spending life for starting or cancelling a s
   expect(shoot(s, 20, 0)).toBe(false)
   stepBilliards(s, 0.05)
   expect(s.lives).toBe(0)
+})
+
+it('emits contact feedback once per target per shot and preserves a single red score', () => {
+  const s = createBilliards(),
+    events: number[] = []
+  const feedback: NonNullable<Parameters<typeof stepBilliards>[2]> = (ball) => events.push(ball.id)
+  contact(s, 1, feedback)
+  contact(s, 1, feedback)
+  expect(s.score).toBe(10)
+  stop(s)
+  expect(s.score).toBe(10)
+  expect(s.lives).toBe(4)
+  shoot(s, 20, 0)
+  contact(s, 3, feedback)
+  contact(s, 3, feedback)
+  expect(s.score).toBe(0)
+  contact(s, 1, feedback)
+  expect(s.score).toBe(10)
+  expect(events).toEqual([1, 3, 1])
 })

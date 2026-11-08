@@ -1,5 +1,20 @@
 ﻿export const TABLE = { width: 360, height: 520, radius: 12, inset: 28 }
 export const CUE_GRAB_DISTANCE = 30
+export function canGrabCue(
+  pointer: { x: number; y: number },
+  start: { x: number; y: number },
+  end: { x: number; y: number },
+) {
+  const dx = end.x - start.x,
+    dy = end.y - start.y,
+    length = dx * dx + dy * dy
+  if (length < 1) return false
+  const t = Math.max(
+    0,
+    Math.min(1, ((pointer.x - start.x) * dx + (pointer.y - start.y) * dy) / length),
+  )
+  return Math.hypot(pointer.x - start.x - t * dx, pointer.y - start.y - t * dy) <= 18
+}
 /** Clicking selects a side; only additional outward dragging adds shot power. */
 export function cueDrag(
   ball: { x: number; y: number },
@@ -68,7 +83,7 @@ export function createBilliards(): Billiards {
       vy: 0,
     })),
     phase: 'aim',
-    message: '흰 공에서 떨어진 곳을 누르고 뒤로 당겨 시작하세요.',
+    message: '큐대를 잡아 돌리고 뒤로 당겨서 놓으세요.',
     hits: [],
     foul: false,
     score: 0,
@@ -92,7 +107,7 @@ export function shoot(state: Billiards, dx: number, dy: number) {
   state.message = '큐를 밀어 넣어요.'
   return true
 }
-export function stepBilliards(state: Billiards, dt: number) {
+export function stepBilliards(state: Billiards, dt: number, onContact?: (ball: Ball) => void) {
   if (dt <= 0 || !Number.isFinite(dt)) return
   const time = Math.min(dt, 0.05)
   let movementTime = time
@@ -159,35 +174,29 @@ export function stepBilliards(state: Billiards, dt: number) {
           b.vx += impulse * nx
           b.vy += impulse * ny
           const other = a.kind === 'cue' ? b : b.kind === 'cue' ? a : null
-          if (other?.kind === 'yellow') {
+          if (other?.kind === 'yellow' && !state.foul) {
             state.foul = true
-            state.message = '상대 공 접촉! 이번 샷은 −1점이에요.'
+            state.score -= 10
+            state.message = '노란 공 −10점'
+            onContact?.(other)
           }
           if (other?.kind === 'red' && !state.hits.includes(other.id)) {
             state.hits.push(other.id)
-            if (!state.foul)
-              state.message =
-                state.hits.length === 2
-                  ? '빨간 공 두 개 접촉! 공이 멈추면 득점해요.'
-                  : '첫 번째 빨간 공에 맞았어요!'
+            state.score += 10
+            state.message = '빨간 공 +10점'
+            onContact?.(other)
           }
         }
       }
   }
   if (state.balls.every((b) => b.vx === 0 && b.vy === 0)) {
     const success = state.hits.length === 2 && !state.foul
-    if (success) state.score++
-    else {
+    if (!success) {
       state.lives--
-      if (state.foul) state.score--
     }
     state.phase = state.lives <= 0 ? 'lost' : 'aim'
     state.stroke = null
-    state.message = success
-      ? '득점! +1 · 목숨 유지! 같은 자리에서 계속 쳐보세요.'
-      : state.foul
-        ? '노란 공 접촉 · −1점 / 목숨 −1'
-        : '득점 실패 · 목숨 −1'
+    state.message = success ? '목숨 유지' : '목숨 −1'
     if (state.phase === 'lost') state.message += ' · 도전 종료'
   }
 }

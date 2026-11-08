@@ -36,6 +36,7 @@ export const arcadeGames: ArcadeGame[] = [
   {
     id: 'pongi-billiards',
     title: '퐁이 당구',
+    thumbnail: '/arcade/billiards/thumbnail.webp',
     description: '탑뷰 4구! 목숨 5개로 최고 기록 도전 · 즉시 지급 + 정산 예정.',
     icon: Fish,
     entryFee: 0,

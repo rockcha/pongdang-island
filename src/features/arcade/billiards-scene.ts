@@ -1,6 +1,8 @@
 ﻿import Phaser from 'phaser'
+import { createBilliardsAudio } from './billiards-audio'
 import {
   CUE_GRAB_DISTANCE,
+  canGrabCue,
   cueDrag,
   shotStrength,
   shoot,
@@ -8,7 +10,7 @@ import {
   TABLE,
   type Billiards,
 } from './billiards-model'
-const MARGIN = 70,
+const MARGIN = 54,
   WIDTH = TABLE.width + MARGIN * 2,
   HEIGHT = TABLE.height + MARGIN * 2
 export function mountBilliards(
@@ -18,6 +20,7 @@ export function mountBilliards(
   paused: () => boolean,
 ) {
   class BilliardsScene extends Phaser.Scene {
+    private audio!: ReturnType<typeof createBilliardsAudio>
     private g!: Phaser.GameObjects.Graphics
     private cueGraphics!: Phaser.GameObjects.Graphics
     private label!: Phaser.GameObjects.Text
@@ -25,7 +28,11 @@ export function mountBilliards(
     private origin = { x: 0, y: 0 }
     private pointerId: number | null = null
     private direction = { x: 0, y: -1 }
+    private cueSegment: { start: { x: number; y: number }; end: { x: number; y: number } } | null =
+      null
     create() {
+      this.audio = createBilliardsAudio()
+      this.events.once('shutdown', () => this.audio.dispose())
       this.g = this.add.graphics()
       this.cueGraphics = this.add.graphics()
       this.label = this.add
@@ -43,12 +50,15 @@ export function mountBilliards(
           paused() ||
           state.phase !== 'aim' ||
           this.drag ||
+          !this.cueSegment ||
+          !canGrabCue(p, this.cueSegment.start, this.cueSegment.end) ||
           p.y < 54 ||
           p.y > HEIGHT - 4 ||
           Math.hypot(x - ball.x, y - ball.y) < CUE_GRAB_DISTANCE
         )
           return
         this.origin = { x, y }
+        this.audio.unlock()
         this.pointerId = p.id
         this.updateDrag(p)
       })
@@ -64,13 +74,60 @@ export function mountBilliards(
         changed()
       })
       this.input.on('pointerupoutside', (p: Phaser.Input.Pointer) => {
-        if (p.id === this.pointerId) this.cancelDrag()
+        if (p.id !== this.pointerId) return
+        this.updateDrag(p)
+        this.releaseShot()
       })
-      this.game.events.on('blur', this.cancelDrag, this)
-      this.events.once('shutdown', () => this.game.events.off('blur', this.cancelDrag, this))
+      // Pointer capture keeps a touch/mouse drag alive beyond the canvas boundary.
+      const canvas = this.game.canvas
+      let captured: number | null = null
+      const point = (event: PointerEvent) => {
+        const rect = canvas.getBoundingClientRect()
+        return {
+          x: ((event.clientX - rect.left) * WIDTH) / rect.width,
+          y: ((event.clientY - rect.top) * HEIGHT) / rect.height,
+        }
+      }
+      const capture = (event: PointerEvent) => {
+        if (paused() || state.phase !== 'aim' || captured !== null || !this.cueSegment) return
+        const p = point(event)
+        if (!canGrabCue(p, this.cueSegment.start, this.cueSegment.end)) return
+        captured = event.pointerId
+        canvas.setPointerCapture?.(event.pointerId)
+      }
+      const release = (event: PointerEvent) => {
+        if (captured !== event.pointerId) return
+        captured = null
+        if (this.drag) {
+          this.updateDrag(point(event))
+          this.releaseShot()
+        }
+        if (canvas.hasPointerCapture?.(event.pointerId))
+          canvas.releasePointerCapture(event.pointerId)
+      }
+      const cancel = () => {
+        captured = null
+        this.cancelDrag()
+      }
+      canvas.addEventListener('pointerdown', capture)
+      window.addEventListener('pointerup', release)
+      window.addEventListener('pointercancel', cancel)
+      this.events.once('shutdown', () => {
+        canvas.removeEventListener('pointerdown', capture)
+        window.removeEventListener('pointerup', release)
+        window.removeEventListener('pointercancel', cancel)
+      })
+      this.game.events.on('blur', cancel)
+      this.events.once('shutdown', () => this.game.events.off('blur', cancel))
       changed()
     }
-    private updateDrag(p: Phaser.Input.Pointer) {
+    private releaseShot() {
+      if (this.drag && !paused())
+        shoot(state, state.balls[0].x - this.drag.x, state.balls[0].y - this.drag.y)
+      this.cancelDrag()
+      changed()
+    }
+    private updateDrag(p: { x: number; y: number }) {
       const ball = state.balls[0],
         aim = cueDrag(ball, this.origin, { x: p.x - MARGIN, y: p.y - MARGIN })
       this.direction = { x: aim.nx, y: aim.ny }
@@ -82,7 +139,40 @@ export function mountBilliards(
     }
     update(time: number, delta: number) {
       const before = JSON.stringify([state.phase, state.hits, state.foul, state.message])
-      if (!paused()) stepBilliards(state, delta / 1000)
+      if (!paused())
+        stepBilliards(state, delta / 1000, (ball) => {
+          if (ball.kind === 'cue') return
+          this.audio.play(ball.kind)
+          const ring = this.add
+            .circle(ball.x + MARGIN, ball.y + MARGIN, 15)
+            .setStrokeStyle(2, ball.kind === 'red' ? 0xffa59c : 0xffd265)
+            .setDepth(4)
+          const label = this.add
+            .text(ball.x + MARGIN, ball.y + MARGIN - 22, ball.kind === 'red' ? '+10' : '−10', {
+              fontFamily: 'sans-serif',
+              fontSize: '16px',
+              fontStyle: 'bold',
+              color: ball.kind === 'red' ? '#ffe3df' : '#ffe49b',
+              stroke: '#163f42',
+              strokeThickness: 3,
+            })
+            .setOrigin(0.5)
+            .setDepth(4)
+          this.tweens.add({
+            targets: ring,
+            scale: 2,
+            alpha: 0,
+            duration: 350,
+            onComplete: () => ring.destroy(),
+          })
+          this.tweens.add({
+            targets: label,
+            y: label.y - 20,
+            alpha: 0,
+            duration: 650,
+            onComplete: () => label.destroy(),
+          })
+        })
       else this.cancelDrag()
       if (before !== JSON.stringify([state.phase, state.hits, state.foul, state.message])) changed()
       const g = this.g
@@ -110,14 +200,6 @@ export function mountBilliards(
         g.fillCircle(x, y, 12)
         g.fillStyle(0xffffff, 0.65)
         g.fillCircle(x - 4, y - 4, 3)
-        if (b.kind === 'red' && state.hits.includes(b.id)) {
-          g.lineStyle(2, 0xc9ffca)
-          g.strokeCircle(x, y, 16)
-        }
-        if (b.kind === 'yellow' && state.foul) {
-          g.lineStyle(3, 0xff7664)
-          g.strokeCircle(x, y, 17)
-        }
       }
       const b = state.balls[0],
         stroke = state.stroke
@@ -155,6 +237,7 @@ export function mountBilliards(
         }
       }
       const visible = state.phase === 'aim' || !!(stroke && cueAlpha > 0)
+      this.cueSegment = null
       if (visible) {
         const { x: nx, y: ny } = this.direction
         const c = this.cueGraphics
@@ -169,6 +252,11 @@ export function mountBilliards(
         const edgeX = nx > 0 ? (tipX - 4) / nx : nx < 0 ? (WIDTH - 4 - tipX) / -nx : Infinity
         const edgeY = ny > 0 ? (tipY - 54) / ny : ny < 0 ? (HEIGHT - 4 - tipY) / -ny : Infinity
         const length = Math.max(0, Math.min(160, edgeX, edgeY))
+        if (state.phase === 'aim')
+          this.cueSegment = {
+            start: { x: tipX - nx * length * 0.18, y: tipY - ny * length * 0.18 },
+            end: { x: tipX - nx * length, y: tipY - ny * length },
+          }
         const segment = (from: number, to: number, width: number, color: number) => {
           c.lineStyle(width, color, cueAlpha)
           c.lineBetween(
@@ -179,6 +267,15 @@ export function mountBilliards(
           )
         }
         segment(0, 1, 6, 0x583829)
+        if (state.phase === 'aim' && !this.drag) {
+          c.lineStyle(16, 0xd9bc82, 0.18)
+          c.lineBetween(
+            tipX - nx * length * 0.6,
+            tipY - ny * length * 0.6,
+            tipX - nx * length * 0.97,
+            tipY - ny * length * 0.97,
+          )
+        }
         segment(0, 0.72, 4, 0xc79a5a)
         segment(0, 0.35, 3, 0xf1dfb3)
         segment(0.73, 0.96, 6, 0x412c28)
@@ -228,7 +325,7 @@ export function mountBilliards(
             ? '취소 구간 · 더 당겨주세요'
             : `약하게 ━ ${Math.round(power * 100)}% ━ 세게`
           : state.phase === 'aim'
-            ? '흰 공에서 떨어진 곳을 누르고 뒤로 당겨주세요'
+            ? '큐대를 잡아 돌리고 · 뒤로 당겨서 놓으세요'
             : '',
       )
     }

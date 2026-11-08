@@ -12,7 +12,9 @@ import {MaterialRequirements} from './material-requirements'
 import {FarmProductHeading} from './product-heading'
 
 export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction,maxOutput=2,waterwheelBonus=0}:{buildingId:number;maxOutput?:number;waterwheelBonus?:number;kind:ProcessingBuilding;simulation:FarmSimulation;now:number;onAction:(action:FarmSimAction)=>void}){
- const choices=recipesForBuilding(kind,simulation.unlockedAnimals),[choice,setSelected]=useState<RecipeId|undefined>(),selected=choice&&choices.includes(choice)?choice:choices[0]
+ const [readyOnly,setReadyOnly]=useState(true),[choice,setSelected]=useState<RecipeId|undefined>()
+ const filterRecipes=kind==='kitchen'||kind==='advancedKitchen'
+ const allChoices=recipesForBuilding(kind,simulation.unlockedAnimals),choices=filterRecipes&&readyOnly?allChoices.filter(id=>recipeBatchLimit(simulation.inventory,id,maxOutput)>0):allChoices,selected=choice&&choices.includes(choice)?choice:choices[0]
  const job=simulation.processingJobs[buildingId],isApiary=kind==='apiary',isTextile=kind==='textileMill'||kind==='sewingWorkshop'
  if(job){
   const remaining=Math.max(0,Math.ceil((job.readyAt-now)/1000)),progress=Math.min(100,Math.max(0,(now-job.startedAt)/(job.readyAt-job.startedAt)*100))
@@ -24,8 +26,13 @@ export function ProcessingWorkshop({buildingId,kind,simulation,now,onAction,maxO
    <button className="farm-sim-primary" disabled={remaining>0} onClick={()=>onAction({type:'collectCraft'})}>{isApiary?(remaining?'꿀을 모으고 있어요…':'꿀 수확하기'):(remaining?'만들고 있어요…':'가공품 받기')}</button>
   </section>
  }
- if(!selected)return <p className="farm-sim-caption">사용 가능한 제작법이 없어요.</p>
- return <div className="farm-workbench"><FarmItemPicker items={choices} value={selected} onChange={setSelected} label={farmWorkshops[kind].pickerLabel} owned={id=>simulation.inventory[id]} detail={id=>farmDuration(farmRecipes[id].seconds)} status={id=>recipeBatchLimit(simulation.inventory,id,maxOutput)>0?'ready':'missing'}/><RecipeCard waterwheelBonus={waterwheelBonus} key={`${buildingId}-${selected}-${maxOutput}`} maxOutput={maxOutput} id={selected} inventory={simulation.inventory} onAction={onAction}/></div>
+ return <div className="farm-workbench">
+  <div className="farm-recipe-chooser">
+   {filterRecipes&&<label className="farm-recipe-filter"><input type="checkbox" checked={readyOnly} onChange={event=>setReadyOnly(event.target.checked)}/>제작 가능한 요리만</label>}
+   {selected?<FarmItemPicker items={choices} value={selected} onChange={setSelected} label={farmWorkshops[kind].pickerLabel} owned={id=>simulation.inventory[id]} detail={id=>farmDuration(farmRecipes[id].seconds)} status={id=>recipeBatchLimit(simulation.inventory,id,maxOutput)>0?'ready':'missing'}/>:<p className="farm-sim-caption">지금 제작 가능한 상품이 없어요. 체크를 해제하면 전체 제작법을 볼 수 있어요.</p>}
+  </div>
+  {selected&&<RecipeCard waterwheelBonus={waterwheelBonus} key={`${buildingId}-${selected}-${maxOutput}`} maxOutput={maxOutput} id={selected} inventory={simulation.inventory} onAction={onAction}/>}
+ </div>
 }
 
 function RecipeCard({id,inventory,onAction,maxOutput,waterwheelBonus}:{waterwheelBonus:number;maxOutput:number;id:RecipeId;inventory:FarmSimulation['inventory'];onAction:(action:FarmSimAction)=>void}){

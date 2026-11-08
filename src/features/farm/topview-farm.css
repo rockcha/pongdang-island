@@ -32,9 +32,6 @@
 .top-farm-object-menu[data-below=true]>i { top:-5px; bottom:auto; transform:translateX(-50%) rotate(225deg); }
 .top-farm-message>button { margin-left:10px; text-decoration:underline; text-underline-offset:3px; }
 .top-farm-storage-empty { padding:16px 8px; font-size:11px; color:#aa9276; }
-.top-farm-camera { position:absolute; z-index:2; right:16px; top:110px; display:flex; flex-direction:column; gap:2px; padding:4px; background:#fff9edf0; border:1px solid #e4d7bd; border-radius:12px; }
-.top-farm-camera button { display:grid; place-items:center; width:32px; height:34px; border-radius:7px; }
-.top-farm-camera button[aria-pressed=true] { background:#e9dcc4; }
 .top-farm-bottom { position:absolute; z-index:3; bottom:0; left:0; right:0; display:flex; flex-direction:column; align-items:center; padding:0 14px max(9px,env(safe-area-inset-bottom)); background:linear-gradient(transparent,#fff9ec55 50%,#fff9ecaa); pointer-events:none; }
 .top-farm-bottom>* { pointer-events:auto; max-width:650px; width:100%; }
 .top-farm-message { width:auto; max-width:90%; margin:0 0 10px; padding:8px 13px; border:1px solid #e1eee350; border-radius:20px; background:#4e7b7ce6; color:#fff4d9; text-align:center; font-size:10px; line-height:1.7; }

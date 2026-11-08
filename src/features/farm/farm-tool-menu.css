@@ -35,3 +35,8 @@
 .farm-seed-cursor{position:fixed;top:0;left:0;display:none;z-index:10;pointer-events:none;will-change:transform}
 .farm-seed-cursor .farm-good-icon{position:absolute;top:-12px;left:-12px;width:32px;height:32px;filter:drop-shadow(1px 2px 2px #584b3866)}
 .top-farm-viewport[data-seed-cursor=true],.top-farm-viewport[data-seed-cursor=true] *{cursor:none!important}
+.farm-active-tool{display:flex;align-items:center;gap:10px;min-height:52px;padding:6px 10px;border:1px solid #e3d2b9;border-radius:16px;background:#fff9eef5;color:#79583b;box-shadow:0 4px 20px #314e4312;pointer-events:auto}
+.farm-active-tool>strong{flex:1;min-width:0;font-size:13px;font-weight:500}
+.farm-active-tool>.farm-count-badge{position:static;flex:none}
+.farm-active-tool>button{flex:none;min-height:44px;padding:0 12px;border-radius:10px;font-size:12px}
+.farm-active-tool>button:last-child{background:#916341;color:#fff9ee}

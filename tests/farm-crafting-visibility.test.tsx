@@ -11,6 +11,9 @@ it('distinguishes available recipes and shows exactly which ingredient is short'
  const simulation=initialTopview().simulation
  Object.assign(simulation.inventory,{chickenMeat:1,carrot:3})
  render(<ProcessingWorkshop buildingId={28} kind="kitchen" simulation={simulation} now={0} onAction={vi.fn()}/>)
+ expect(screen.getByRole('checkbox',{name:'제작 가능한 요리만'})).toHaveProperty('checked',true)
+ expect(screen.queryByRole('button',{name:'닭고기수프 선택'})).toBeNull()
+ fireEvent.click(screen.getByRole('checkbox',{name:'제작 가능한 요리만'}))
  const ready=screen.getByRole('button',{name:'구운 당근 선택'}),missing=screen.getByRole('button',{name:'닭고기수프 선택'})
  expect(ready.dataset.craftStatus).toBe('ready');expect(missing.dataset.craftStatus).toBe('missing')
  fireEvent.click(missing)

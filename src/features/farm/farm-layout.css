@@ -16,8 +16,6 @@
 /* A full viewport of space lets zoom keep an edge tile under any cursor position. */
 .farm-map-canvas{display:grid;place-items:center;min-width:100%;min-height:100%;width:max-content;height:max-content;padding:100dvh 100vw;overflow-anchor:none}
 .top-farm-map{margin:0;flex:none}
-.top-farm-camera{top:max(118px,calc(env(safe-area-inset-top) + 110px));right:12px;padding:3px;border-radius:12px}
-.top-farm-camera button{width:44px;height:44px}
 .top-farm-bottom{position:absolute;inset:auto 0 0;min-width:0;background:none;padding:8px 12px max(10px,env(safe-area-inset-bottom));gap:7px;pointer-events:none}
 .top-farm-bottom>*{max-width:520px}
 .top-farm-message{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:min(440px,calc(100vw - 40px));margin:0;padding:7px 12px;font-size:11px;pointer-events:none}
@@ -60,8 +58,8 @@
 .farm-land-switch>button,.farm-land-panel>header>button,.farm-land-presets button,.farm-warehouse-tabs button{min-height:44px}
 .top-farm-object-menu>div button,.top-farm-object-menu header button{min-height:44px}
 @media(max-width:380px){.farm-plant-bar{gap:5px;padding:7px}.farm-plant-bar>button{padding:0 6px}.farm-plant-bar small{font-size:9px}.top-farm-header{gap:4px}.top-farm-header h1{font-size:14px}}
-@media(max-height:600px){.top-farm-header{margin-top:5px;min-height:48px}.top-farm-bottom{padding-top:4px;padding-bottom:5px}.farm-seed-tray{max-height:170px}.farm-seed-tray>div>button{min-height:68px}.farm-seed-tray .farm-good-icon{width:25px;height:25px}.top-farm-palette>div{max-height:115px}.top-farm-camera{top:66px}}
-@media(max-height:600px){.farm-seed-tray{max-height:min(150px,calc(100dvh - 250px))}.farm-land-tools{max-height:max(64px,calc(100dvh - 330px));overflow-y:auto}.top-farm-palette{max-height:max(80px,calc(100dvh - 330px));overflow-y:auto}.top-farm-camera button{width:44px;height:44px}}
+@media(max-height:600px){.top-farm-header{margin-top:5px;min-height:48px}.top-farm-bottom{padding-top:4px;padding-bottom:5px}.farm-seed-tray{max-height:170px}.farm-seed-tray>div>button{min-height:68px}.farm-seed-tray .farm-good-icon{width:25px;height:25px}.top-farm-palette>div{max-height:115px}}
+@media(max-height:600px){.farm-seed-tray{max-height:min(150px,calc(100dvh - 250px))}.farm-land-tools{max-height:max(64px,calc(100dvh - 330px));overflow-y:auto}.top-farm-palette{max-height:max(80px,calc(100dvh - 330px));overflow-y:auto}}
 @media(max-height:600px) and (min-width:600px){
  .farm-land-tools{max-height:none;overflow:visible;flex-direction:row;align-items:center;gap:6px;padding:5px 8px;border:1px solid #e5d2b3;border-radius:13px;background:#fff9ee}
  .farm-land-tools .farm-land-panel{display:flex;align-items:center;gap:8px;flex:1;min-width:0;padding:0;border:0;background:none}
@@ -71,6 +69,6 @@
  .farm-path-tool{margin:0;align-self:center;padding:0 6px;font-size:10px;white-space:nowrap}
 }
 @media(max-width:380px){.top-farm-header>.farm-capacity-summary{gap:4px;margin-inline:0}.farm-capacity-item{gap:4px;font-size:9px}.farm-capacity-item strong{font-size:10px}.farm-capacity-item i{font-size:9px}}
-@media(max-height:600px){.top-farm-camera{top:104px}.top-farm-help{top:104px}.top-farm-header>.farm-capacity-summary{padding:5px 0 4px}}
+@media(max-height:600px){.top-farm-help{top:104px}.top-farm-header>.farm-capacity-summary{padding:5px 0 4px}}
 
 .top-farm-palette>div>button[data-owned=true]{cursor:default;color:#aa9983;filter:grayscale(1)}.top-farm-palette>div>button[data-owned=true]>svg{filter:grayscale(1);opacity:.45}.top-farm-palette>div>button[data-owned=true]>small{color:#a7957c}

@@ -107,12 +107,11 @@ it('initializes supplies for a farm opened before this feature without changing 
  expect(migrated.simulation.inventory.fertilizer).toBe(0);expect(migrated.gold).toBe(state.gold);expect(migrated.simulation.cropJobs).toBe(state.simulation.cropJobs)
  expect(withFarmSupplyInventory(migrated)).toBe(migrated)
 })
-it('offers a separate storage sale button without triggering placement, and hides it for basic buildings',()=>{
- const state=initialTopview();state.stored=['dairy','warehouse'];const onSell=vi.fn(),onPlace=vi.fn()
- render(<FarmObjectStorage state={state} category="건물" selected={null} onCategory={()=>{}} onPlace={onPlace} onSell={onSell} onDone={()=>{}}/>)
- click('유제품 공방 보관 개체 반값 판매')
- expect(onSell).toHaveBeenCalledWith('dairy');expect(onPlace).not.toHaveBeenCalled()
- expect(screen.queryByRole('button',{name:'창고 보관 개체 반값 판매'})).toBeNull()
+it('offers placement without sale actions in storage',()=>{
+ const state=initialTopview();state.stored=['dairy','warehouse'];const onPlace=vi.fn()
+ render(<FarmObjectStorage state={state} category="건물" selected={null} onCategory={()=>{}} onPlace={onPlace} onDone={()=>{}}/>)
+ expect(screen.queryByRole('button',{name:/보관 개체 반값 판매/})).toBeNull()
+ click('유제품 공방 보관 1개 배치하기');expect(onPlace).toHaveBeenCalledWith('dairy')
 })
 
 function buyPlace(name:string,price:number,x:number,y:number){

@@ -1,4 +1,4 @@
-import {act,cleanup,fireEvent,render,screen,within} from '@testing-library/react'
+import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {TopviewFarm} from '@/features/farm/topview-farm'
@@ -30,18 +30,15 @@ it('keeps the placed building and gold on cancel, then sells once after a Pongi 
  expect(playSaleSound).toHaveBeenCalledTimes(1)
 })
 
-it('requires confirmation for stored copies and prevents duplicate confirmation from selling two',()=>{
+it('keeps stored copies and gold when selecting placement without offering storage sales',()=>{
  setup();const name=topviewItems.mill.name
  click('상점');fireEvent.change(screen.getByRole('spinbutton',{name:`${name} 구매 수량`}),{target:{value:'2'}})
  click(`${name} 2개 구매 · ${(topviewItems.mill.price*2).toLocaleString()} G`);click('Close');click('보관함')
  const original=Number(balance())
- click(`${name} 보관 개체 반값 판매`)
+ expect(screen.queryByRole('button',{name:/보관 개체 반값 판매/})).toBeNull()
+ click(`${name} 보관 2개 배치하기`)
+ expect(screen.queryByRole('region',{name:'보관함 메뉴'})).toBeNull()
+ expect(screen.queryByRole('alertdialog')).toBeNull()
  expect(balance()).toBe(String(original));expect(playSaleSound).not.toHaveBeenCalled()
- click('취소');expect(screen.getByRole('button',{name:`${name} 보관 2개 배치하기`})).toBeTruthy()
- click(`${name} 보관 개체 반값 판매`)
- const confirm=screen.getByRole('button',{name:'제거하기',exact:true})
- act(()=>{fireEvent.click(confirm);fireEvent.click(confirm)})
- expect(balance()).toBe(String(original+farmResalePrice('mill')))
- expect(playSaleSound).toHaveBeenCalledTimes(1)
- click('보관함');expect(screen.getByRole('button',{name:`${name} 보관 1개 배치하기`})).toBeTruthy()
+ click('변경');expect(screen.getByRole('button',{name:`${name} 보관 2개 배치하기`})).toBeTruthy()
 })

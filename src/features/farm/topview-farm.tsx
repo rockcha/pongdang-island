@@ -26,7 +26,7 @@ import {useFarmObjectDrag} from './use-object-drag'
 import {isFarmAnimal} from './animal-catalog'
 import {useCallback,useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode} from 'react'
 import {Link} from 'react-router'
-import {ArrowLeft,Plus,Minus,RotateCcw,Undo2,MoreHorizontal,Scan} from 'lucide-react'
+import {ArrowLeft,RotateCcw,Undo2,MoreHorizontal} from 'lucide-react'
 import {FarmToolbar} from './farm-toolbar'
 import {FarmSeedPicker} from './seed-picker'
 import {FarmGrassPattern} from './grass-pattern'
@@ -63,7 +63,7 @@ import {FarmCookbook} from './cookbook'
 
 import {farmOrderDay} from './daily-orders'
 import {farmSupplies,farmSupplyKinds,isFarmSupply,withFarmSupplyInventory,type FarmSupply} from './supply-catalog'
-import {resellFarmObject,resellStoredFarmItem,farmObjectResaleError,farmResalePrice,isResellableFarmKind,type FarmResaleResult,type FarmResaleReceipt} from './resale'
+import {resellFarmObject,resellStoredFarmItem,farmObjectResaleError,farmResalePrice,type FarmResaleResult,type FarmResaleReceipt} from './resale'
 import {FarmGoldEffect} from './gold-effect'
 import './supply-effects.css'
 import {FarmToolPanel} from './farm-tool-panel'
@@ -261,10 +261,6 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
   if(!object||reason){setMessage(reason??'판매할 개체를 선택해주세요.');return}
   openSaleConfirmation({source:'placed',id,kind:object.kind})
  }
- function sellStored(kind:FarmTool){
-  if(!currentState.current.stored.includes(kind)||!isResellableFarmKind(kind)){setMessage('판매할 건물이나 동물을 확인해주세요.');return}
-  openSaleConfirmation({source:'stored',kind})
- }
  async function confirmSale(){
   const target=saleTargetRef.current;if(!target)return
   // Consume the request before selling, so a second click cannot sell another copy.
@@ -282,7 +278,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
   if(account&&!await confirmCommand({type:'simulate',id:plot.id,action:{type:'fertilize',supply}}))return
   setState(result.state);setHistory([]);setClock(farmNow());setFertilizerEffects(previous=>[...previous,{id:++effectId.current,x,y,supply,expiresAt:farmNow()+900}])
  }
- function selectFertilizer(supply:FarmSupply){landBrush.cancel();harvestBrush.cancel();setSeedMenu(false);setEditing(false);setGrid(true);setGroup(null);setToolMenu('farm');choose(fertilizerTool===supply?'look':supply);setMessage(fertilizerTool===supply?'':farmSupplies[supply].description+' · 자라고 있는 밭을 눌러주세요.')}
+ function selectFertilizer(supply:FarmSupply){landBrush.cancel();harvestBrush.cancel();setSeedMenu(false);setEditing(false);setGrid(true);setGroup(null);setToolMenu(null);choose(fertilizerTool===supply?'look':supply);setMessage(fertilizerTool===supply?'':farmSupplies[supply].description+' · 자라고 있는 밭을 눌러주세요.')}
  async function act(action:FarmSimAction){
   if(!productionObject)return
   if(action.type==='collectFlour'||action.type==='collectCraft'||action.type==='collectMeat'||action.type==='completeAnimalPurchase'||action.type==='discardCrop'){receiveProduction(productionObject.id,action);return}
@@ -327,7 +323,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
  }
  const warehouseObject=(state.objects.find(o=>o.id===selected&&o.kind==='warehouse')??activeBuildings(state,'warehouse')[0]??state.objects.find(o=>o.kind==='warehouse'))
 
- function startPlanting(crop:CropKind){setProductionId(null);setWarehouseOpen(false);setSeedMenu(false);setEditing(false);setGroup(null);setToolMenu('farm');choose('seed');setSelectedSeed(crop);setMessage('빈 밭을 누르거나 드래그해 연속으로 심어요. 빈 곳을 드래그하면 지도를 이동해요.')}
+ function startPlanting(crop:CropKind){setProductionId(null);setWarehouseOpen(false);setSeedMenu(false);setEditing(false);setGroup(null);setToolMenu(null);choose('seed');setSelectedSeed(crop);setMessage('빈 밭을 누르거나 드래그해 연속으로 심어요. 빈 곳을 드래그하면 지도를 이동해요.')}
  function toggleToolMenu(next:ToolMenu){const active=toolMenu!==next;finishTool();setProductionId(null);setWarehouseOpen(false);setToolMenu(active?next:null);if(active&&(next==='move'||next==='recover')){setEditing(true);setGrid(true);setMessage(next==='move'?'건물·동물·장식물을 드래그해 옮겨요.':'보관함으로 회수할 대상을 선택해주세요. 밭은 제거돼요.')}}
  function finishTool(){choose('look');setToolMenu(null);setSeedMenu(false);setTilePickerOpen(false);setEditing(false);setGrid(false);setGroup(null);setMessage('')}
  function navigateCookbook(kind:FarmTool){
@@ -598,7 +594,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
   if(mode==='move'&&selected===objectId)setPlacementTransform({rotation:object.rotation,flipped:object.flipped})
  }
  const shore=useMemo(()=>islandShorePath(state.land),[state.land])
- return <section className="top-farm" aria-label={visit?'친구 농장':account?'내 농장':'탑뷰 농장 테스트'} onKeyDown={event=>{if(event.key==='Escape')setOrientationId(null);if(event.key==='Escape'&&!shopOpen&&!tilePickerOpen&&!seedMenu&&!landBuyOpen&&!productionId){setHelp(false);objectDrag.cancel();if(harvestBrush.draft){harvestBrush.cancel()}else if(landBrush.draft){landBrush.cancel();harvestBrush.cancel();setMessage('땅 선택을 취소했어요.')}else if(mode==='move')cancelMove();else if(landTool||clearingTool||cropTool||toolMenu||editing)finishTool();else setSelected(null)}}}>
+ return <section className="top-farm" aria-label={visit?'친구 농장':account?'내 농장':'탑뷰 농장 테스트'} onKeyDown={event=>{if(event.key==='Escape')setOrientationId(null);if(event.key==='Escape'&&!shopOpen&&!tilePickerOpen&&!seedMenu&&!landBuyOpen&&!productionId){setHelp(false);objectDrag.cancel();if(harvestBrush.draft){harvestBrush.cancel()}else if(landBrush.draft){landBrush.cancel();harvestBrush.cancel();setMessage('땅 선택을 취소했어요.')}else if(mode==='move')cancelMove();else if(landTool||clearingTool||cropTool||fertilizerTool||toolMenu||editing)finishTool();else setSelected(null)}}}>
   <header className="top-farm-header">
    {visit?visit.header:<>
    <div className="farm-header-main"><Link to="/aquarium" aria-label="농장 나가기"><ArrowLeft size={18}/></Link><h1>내 농장</h1><button className="top-farm-gold" aria-label={account?'보유 골드 안내':'테스트 골드 안내'} onClick={()=>setHelp(v=>!v)}><FarmGold amount={state.gold}/></button><button aria-label="농장 더보기" aria-expanded={help} onClick={()=>setHelp(v=>!v)}><MoreHorizontal size={20}/></button></div>
@@ -682,24 +678,23 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
   {shopOpen&&<FarmShop focusKind={shopFocus} state={state} initialTab={shopTab} onClose={()=>setShopOpen(false)} onBuy={purchaseItem} onBuyTiles={purchaseTiles}/>}
   {tilePickerOpen&&<FarmTilePicker state={state} onClose={()=>setTilePickerOpen(false)} onSelect={tile=>{setSelectedTile(tile);setTilePickerOpen(false);setGrid(true);choose('tile-place')}} onBuy={()=>openFarmShop('타일')}/>}
   <div ref={seedCursor} className="farm-seed-cursor" aria-hidden="true"><FarmGoodIcon good={seedGood(selectedSeed)}/></div>
-  <aside className="top-farm-camera"><button aria-label="농장 확대" onClick={()=>{landBrush.cancel();harvestBrush.cancel();manualCamera.current=true;setCameraTarget(null);setZoom(z=>Math.min(1.8,z+.2))}}><Plus size={17}/></button><button aria-label="농장 축소" onClick={()=>{landBrush.cancel();harvestBrush.cancel();manualCamera.current=true;setCameraTarget(null);setZoom(z=>Math.max(.25,z-.2))}}><Minus size={17}/></button><button aria-label="섬 전체 보기" onClick={()=>{landBrush.cancel();harvestBrush.cancel();manualCamera.current=false;setCameraTarget(null);const el=viewport.current;if(el)setZoom(Math.max(.25,Math.min(1,(el.clientWidth-32)/800,(el.clientHeight-32)/640)))}}><Scan size={16}/></button></aside>
   {!visit&&<div className="top-farm-bottom" data-editing={editing}>
    {(editing||feedback)&&message&&<p className="top-farm-message" role="status">{notice?<>{notice.name} 회수 완료<button onClick={undo}>되돌리기</button></>:message}</p>}
 
-   {toolMenu==='storage'&&<FarmObjectStorage onSell={sellStored} state={state} category={storageCategory} selected={tool} onCategory={category=>{choose('look');setEditing(false);setGrid(false);setStorageCategory(category)}} onPlace={kind=>{setEditing(true);setGrid(true);choose(kind);setPlacementTransform(state.storedTransforms?.[kind]?.[0]??{});setGroup('보관함')}} onDone={finishTool}/>}
+   {toolMenu==='storage'&&<FarmObjectStorage state={state} category={storageCategory} selected={tool} onCategory={category=>{choose('look');setEditing(false);setGrid(false);setStorageCategory(category)}} onPlace={kind=>{setToolMenu(null);setEditing(true);setGrid(true);choose(kind);setPlacementTransform(state.storedTransforms?.[kind]?.[0]??{});setGroup('보관함')}} onDone={finishTool}/>}
    {toolMenu==='tile'&&<FarmTileMenu tool={tileTool} count={totalTiles(state)} onPick={()=>{choose('look');setTilePickerOpen(true)}} onRecover={()=>{setGrid(true);choose('tile-recover')}} onBuy={()=>openFarmShop('타일')} onDone={finishTool}/>}
    {toolMenu==='land'&&<LandToolPanel tool={landTool} onTool={next=>{setGrid(true);choose(next==='place'?'land':'land-recover')}} onBuy={openLandShop} onDone={finishTool}/>}
    {(toolMenu==='move'||toolMenu==='recover')&&<FarmToolPanel id={toolMenu==='move'?'farm-move-menu':'farm-recover-menu'} label={toolMenu==='move'?'이동 메뉴':'회수 메뉴'} title={toolMenu==='move'?'이동하기':'회수하기'} description={toolMenu==='recover'?'회수할 건물이나 동물을 누르면 보관함에 넣어요. 밭은 제거돼요.':mode==='move'?'배치 가능한 곳에 놓거나 눌러 옮겨요.':'건물·동물·장식물을 드래그해 옮겨요.'} onDone={finishTool}/>}
     {toolMenu==='farm'&&<FarmToolPanel id="farm-work-menu" label="농사 메뉴" title="농사" description={fertilizerTool?farmSupplies[fertilizerTool].description+' · 밭 한 칸을 누르세요.':clearingTool?'빈 땅을 누르거나 드래그해 밭을 개간해요.':cropTool?`${farmCrops[selectedSeed].name} 선택 중 · 빈 밭을 누르거나 드래그해 연속으로 심어요. 빈 곳을 드래그하면 지도를 이동해요.`:'밭을 개간하고 씨앗을 심거나 비료를 사용해요.'} onDone={finishTool}>
-    <button aria-label="개간하기" aria-pressed={clearingTool} onClick={()=>{const active=clearingTool;setEditing(false);setGrid(true);setSeedMenu(false);choose(active?'look':'plot');setMessage(active?'':'빈 땅을 드래그해 개간하세요.')}}><img className="farm-clearing-tool-image" src={farmClearingArt.pickaxe} alt=""/><span>개간하기</span><FarmCountBadge count={clearingCapacity} label="개간 가능" unit="칸"/></button>
+    <button aria-label="개간하기" aria-pressed={clearingTool} onClick={()=>{const active=clearingTool;setToolMenu(null);setEditing(false);setGrid(true);setSeedMenu(false);choose(active?'look':'plot');setMessage(active?'':'빈 땅을 드래그해 개간하세요.')}}><img className="farm-clearing-tool-image" src={farmClearingArt.pickaxe} alt=""/><span>개간하기</span><FarmCountBadge count={clearingCapacity} label="개간 가능" unit="칸"/></button>
     <button aria-label="씨앗 심기" aria-pressed={seedMenu||cropTool} onClick={openSeedPicker}><img className="farm-clearing-tool-image" src={farmPlantingArt} alt=""/><span>씨앗 심기</span><FarmCountBadge count={seedTotal} label="보유 종자"/></button>
     {farmSupplyKinds.map(supply=><button key={supply} className="farm-fertilizer-tool" aria-label={farmSupplies[supply].name+' 사용'} aria-pressed={fertilizerTool===supply} disabled={state.simulation.inventory[supply]<1} onClick={()=>selectFertilizer(supply)}><FarmGoodIcon good={supply}/><span>{farmSupplies[supply].name}</span><FarmCountBadge count={state.simulation.inventory[supply]} label={farmSupplies[supply].name+' 보유'}/></button>)}
    </FarmToolPanel>}
    {(editing||landTool||tileTool||clearingTool||orientationId!==null)&&<button className="farm-edit-undo" aria-label="한 단계 되돌리기" disabled={!history.length||!!account&&!account.snapshot.undo||!!landBrush.draft||!!clearing.length||!!harvesting.length||!!constructing.length} onClick={undo}><Undo2 size={16}/><span>되돌리기</span></button>}
-   <FarmToolbar onCookbook={openCookbook} landStock={state.landStock} tileStock={totalTiles(state)} storageCount={state.stored.length} landActive={toolMenu==='land'} farmActive={toolMenu==='farm'} tileActive={toolMenu==='tile'} storageActive={toolMenu==='storage'} shopOpen={shopOpen} moveActive={toolMenu==='move'} recoverActive={toolMenu==='recover'}
+   {!toolMenu&&(cropTool||clearingTool||fertilizerTool||group==='보관함')?<div className="farm-active-tool" aria-label="선택한 농장 도구"><strong>{cropTool?farmCrops[selectedSeed].name+' 심기':fertilizerTool?farmSupplies[fertilizerTool].name:clearingTool?'개간하기':tool?topviewItems[tool].name+' 배치':'배치 완료'}</strong>{cropTool&&<FarmCountBadge count={state.simulation.inventory[seedGood(selectedSeed)]} label="보유 종자"/>}{fertilizerTool&&<FarmCountBadge count={state.simulation.inventory[fertilizerTool]} label={farmSupplies[fertilizerTool].name+' 보유'}/>}{group==='보관함'&&tool&&<FarmCountBadge count={state.stored.filter(kind=>kind===tool).length} label={topviewItems[tool].name+' 보관'}/>}<button onClick={()=>cropTool?openSeedPicker():toggleToolMenu(group==='보관함'?'storage':'farm')}>변경</button><button onClick={finishTool}>완료</button></div>:<FarmToolbar onCookbook={openCookbook} landStock={state.landStock} tileStock={totalTiles(state)} storageCount={state.stored.length} landActive={toolMenu==='land'} farmActive={toolMenu==='farm'} tileActive={toolMenu==='tile'} storageActive={toolMenu==='storage'} shopOpen={shopOpen} moveActive={toolMenu==='move'} recoverActive={toolMenu==='recover'}
     onLand={()=>toggleToolMenu('land')} onFarm={()=>toggleToolMenu('farm')} onTile={()=>toggleToolMenu('tile')}
     onShop={()=>{setToolMenu(null);openFarmShop()}}
-    onStorage={()=>toggleToolMenu('storage')} onMove={()=>toggleToolMenu('move')} onRecover={()=>toggleToolMenu('recover')}/>
+    onStorage={()=>toggleToolMenu('storage')} onMove={()=>toggleToolMenu('move')} onRecover={()=>toggleToolMenu('recover')}/>}
   </div>}
  </section>
 }

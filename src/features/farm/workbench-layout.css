@@ -2,7 +2,7 @@
 .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog{height:min(760px,calc(100dvh - 24px));max-width:800px}
 .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog>.farm-sim-body{overflow:hidden;display:flex;flex-direction:column;min-height:0;scrollbar-gutter:auto;padding-right:0}
 .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench{display:flex;flex-direction:column;gap:12px;flex:1 1 0;min-height:0}
-.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-item-selector{display:flex;flex-direction:column;flex:1 1 0;min-height:70px;overflow:hidden}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>:is(.farm-item-selector,.farm-recipe-chooser){display:flex;flex-direction:column;flex:1 1 0;min-height:70px;overflow:hidden}
 .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench .farm-item-selector-heading{flex:none;margin-bottom:6px}
 .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench .farm-item-picker{flex:1;min-height:0;max-height:none;overflow-y:auto;grid-auto-rows:max-content;grid-template-columns:repeat(3,minmax(0,1fr))}
 .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-recipe-card,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench-details{flex:none;min-width:0;margin:0;padding:10px 0 0;border-top:1px solid #e6d5bf;display:flex;flex-direction:column;gap:6px}
@@ -31,7 +31,7 @@
 @media(max-height:700px){
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog>.farm-sim-body{display:block;overflow-y:auto;overscroll-behavior:contain}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench{flex:none}
- .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-item-selector{flex:none;max-height:180px}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>:is(.farm-item-selector,.farm-recipe-chooser){flex:none;max-height:180px}
 }
 .farm-picker-swipe-hint{display:none}
 /* Phones keep one horizontal recipe row, leaving room for materials and actions. */
@@ -45,7 +45,7 @@
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-recipe-card,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench-details{padding-top:14px;gap:8px}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-materials>header{margin-bottom:7px}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-material-list{gap:6px}
- .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>.farm-item-selector{flex:none;min-height:0;max-height:none;overflow:visible}
+ .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench>:is(.farm-item-selector,.farm-recipe-chooser){flex:none;min-height:0;max-height:none;overflow:visible}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench .farm-item-picker{display:flex;flex-direction:row;flex-wrap:nowrap;flex:none;gap:8px;min-height:0;max-height:none;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;overscroll-behavior-x:contain;align-items:stretch;padding:2px 2px 7px;scrollbar-width:thin}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench .farm-item-picker>button{flex:0 0 clamp(92px,27vw,112px);min-height:120px;padding:17px 5px 7px;gap:3px;scroll-snap-align:start;font-size:11px}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-workbench .farm-item-picker .farm-good-icon{width:40px;height:40px}
@@ -59,3 +59,7 @@
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-sim-quantity-controls>button,.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-sim-quantity-controls>input{min-width:0;width:100%;padding:0}
  .farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-sim-quantity-controls>button:last-child{grid-column:auto;font-size:11px}
 }
+.farm-recipe-chooser{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}
+.farm-recipe-filter{display:flex;align-items:center;gap:8px;min-height:44px;flex:none;font-size:12px;color:#79583b;cursor:pointer}
+.farm-recipe-filter input{width:18px;height:18px;accent-color:#99704a;flex:none}
+.farm-compact-dialog.farm-facility-dialog.farm-workbench-dialog .farm-recipe-chooser>.farm-item-selector{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}

@@ -6,7 +6,7 @@
 .farm-friend-scroll{display:flex;align-items:center;gap:9px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}.farm-friend-scroll::-webkit-scrollbar{display:none}
 .farm-friend-all{display:flex;align-items:center;gap:2px;flex:none;min-height:44px;padding:0 4px;font-size:10px;color:#96785e;background:none;border:0}
 .farm-friend-note,.farm-friend-empty{display:flex;align-items:center;gap:6px;min-height:44px;font-size:10px;white-space:nowrap;color:#a18a72}.farm-friend-empty{padding-left:8px}
-.farm-friend-strip button:disabled{opacity:.45;cursor:default}.top-farm:has(.farm-friend-strip) .top-farm-camera{top:max(190px,calc(env(safe-area-inset-top) + 180px))}
+.farm-friend-strip button:disabled{opacity:.45;cursor:default}
 .farm-visit-heading{position:relative;display:flex;align-items:center;gap:10px;min-width:0;padding:2px}
 .farm-visit-return{display:flex;align-items:center;justify-content:center;gap:4px;flex:none;min-height:44px;color:#96785e;font-size:10px;background:none;border:0}
 .farm-visit-owner{display:flex;align-items:center;gap:8px;flex:1;min-width:0}.farm-visit-picture{width:30px;height:30px;flex:none}
@@ -18,3 +18,6 @@
 .farm-friends-list{max-height:min(55dvh,420px);overflow-y:auto;overscroll-behavior:contain}.farm-friends-list>button{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:8px 3px;border-bottom:1px solid #ebdfd080;text-align:left;font-size:13px}.farm-friends-list>button>span:nth-child(2){flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.farm-friends-list>button>svg{color:#aa9277}.farm-friends-list>p{padding:25px 0;text-align:center;font-size:12px;color:#a18a72}
 .farm-visit-loading{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:30px;background:#80b8bf;color:#fff9ef;text-align:center;font-size:13px}.farm-visit-loading button{display:flex;align-items:center;gap:7px;min-height:44px;padding:9px 16px;border-radius:12px;background:#fff9ef;color:#79583b;font-size:12px}
 @media(prefers-reduced-motion:reduce){.farm-friend-strip *{animation:none!important;transition:none!important}}
+
+.farm-friend-toggle{display:flex;align-items:center;justify-content:flex-end;gap:5px;width:100%;min-height:36px;color:#96785e;font-size:11px}
+.farm-friend-section .farm-friend-strip{margin-top:0;padding-top:6px}

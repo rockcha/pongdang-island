@@ -31,7 +31,7 @@ it.each([false,true])('previews a mouse/touch stroke and plants each visited plo
  await act(async()=>{pointer('pointerup',10,11)})
  expect(container.querySelectorAll('[data-planting-effect]')).toHaveLength(4)
  expect(container.querySelector('[data-crop-preview]')).toBeNull()
- click('씨앗 심기');expect(screen.getByRole('button',{name:'밀 0개'})).toHaveProperty('disabled',true)
+ click('변경');expect(screen.getByRole('button',{name:'밀 0개'})).toHaveProperty('disabled',true)
 })
 it('skips occupied plots and limits preview and seed spending to available stock',async()=>{
  fixture.seeds=1;fixture.occupied=true
@@ -42,7 +42,7 @@ it('skips occupied plots and limits preview and seed spending to available stock
  expect(container.querySelectorAll('[data-planting-effect]')).toHaveLength(1)
  expect(container.querySelector('[data-planting-effect="10,11"]')).toBeTruthy()
  expect(container.querySelector('[data-planting-effect="11,11"]')).toBeNull()
- click('씨앗 심기');expect(screen.getByRole('button',{name:'밀 0개'})).toHaveProperty('disabled',true)
+ click('변경');expect(screen.getByRole('button',{name:'밀 0개'})).toHaveProperty('disabled',true)
 })
 it('pans from empty land and cancels a planting stroke without spending seeds',async()=>{
  const {container,viewport,pointer}=setup()
@@ -54,7 +54,7 @@ it('pans from empty land and cancels a planting stroke without spending seeds',a
  await act(async()=>{pointer('pointercancel',11,11)})
  expect(container.querySelector('[data-crop-preview]')).toBeNull()
  expect(container.querySelector('[data-planting-effect]')).toBeNull()
- click('씨앗 심기');expect(screen.getByRole('button',{name:'밀 4개'})).toBeTruthy()
+ click('변경');expect(screen.getByRole('button',{name:'밀 4개'})).toBeTruthy()
 })
 it('cancels planting when a second finger starts camera control',async()=>{
  const {container,pointer}=setup(true)
@@ -63,5 +63,5 @@ it('cancels planting when a second finger starts camera control',async()=>{
  await act(async()=>{pointer('pointerup',11,11);pointer('pointerup',11,12,2)})
  expect(container.querySelector('[data-crop-preview]')).toBeNull()
  expect(container.querySelector('[data-planting-effect]')).toBeNull()
- click('씨앗 심기');expect(screen.getByRole('button',{name:'밀 4개'})).toBeTruthy()
+ click('변경');expect(screen.getByRole('button',{name:'밀 4개'})).toBeTruthy()
 })

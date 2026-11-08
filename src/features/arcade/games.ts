@@ -2,13 +2,16 @@ import type { ComponentType } from 'react'
 import { lazy } from 'react'
 import { Brain, Shell, Scan, Pickaxe, Blocks, Castle, Fish } from 'lucide-react'
 const CalculationGame = lazy(() => import('./calculation-game'))
+const BilliardsGame = lazy(() => import('./billiards-game'))
 const ShadowGame = lazy(() => import('./shadow-game'))
 const MemoryGame = lazy(() => import('./memory-game'))
 const OddEvenGame = lazy(() => import('./odd-even-game'))
 const BrickBreakerGame = lazy(() => import('./brick-breaker-game'))
 const LadderGame = lazy(() => import('./ladder-game'))
 const PongiWhackGame = lazy(() => import('./pongi-whack-game'))
-const ExplorationGame = lazy(() => import('../exploration/exploration-page').then(module=>({default:module.ExplorationPage})))
+const ExplorationGame = lazy(() =>
+  import('../exploration/exploration-page').then((module) => ({ default: module.ExplorationPage })),
+)
 
 export type ArcadeGame = {
   id: string
@@ -30,6 +33,19 @@ export const arcadeTagLabels = { luck: '운빨', brain: '뇌지컬', physical: '
 
 // Placeholder concepts: replace or extend these entries when games are approved.
 export const arcadeGames: ArcadeGame[] = [
+  {
+    id: 'pongi-billiards',
+    title: '퐁이 당구',
+    description: '탑뷰 4구! 목숨 5개로 최고 기록 도전 · 즉시 지급 + 정산 예정.',
+    icon: Fish,
+    entryFee: 0,
+    dailyLimit: null,
+    status: 'ready',
+    component: BilliardsGame,
+    tags: ['physical', 'brain'],
+    rewardMode: 'both',
+    practiceOnly: true,
+  },
   {
     id: 'calculation',
     title: '어항 줄세우기',

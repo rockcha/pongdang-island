@@ -1,0 +1,10 @@
+﻿{
+  "asset": "pongi-stroke-sheet.png",
+  "generator": "built-in image_gen",
+  "reference": "/arcade/brick-breaker/pongi-dash-icon.png",
+  "frameWidth": 512,
+  "frameHeight": 512,
+  "frames": ["ready", "backswing", "strike", "recovery"],
+  "processing": "Resize generated square PNG to 1024x1024, preserve alpha; 2x2 frame layout.",
+  "prompt": "Create a game animation sprite sheet, transparent PNG, 1024x1024 square, exactly 2 columns x 2 rows of equal 512px cells, no margins between cells. Reference image is character identity ONLY: cute brown sea otter Pongi, cream muzzle, coral orange starfish hairclip. STRICT TOP-DOWN overhead view of whole otter leaning forward aiming a billiards cue, head toward TOP of image, tail toward bottom, small paws extend upward. NO cue stick in image, it will be drawn by game between hands; NO balls/table/background/effects/text/grid. Four frames with identical body scale and center anchor: top-left ready aiming pose; top-right backswing with right paw retracted; bottom-left forward striking pose with right paw extended; bottom-right relaxed recovery pose. Left bridge paw stable reaching ahead near top center, right paw along centerline. Clean charming cartoon shaded art, readable small silhouette. Whole body entirely inside each cell with 15 percent transparent padding. Actual alpha transparency."
+}

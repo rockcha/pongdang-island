@@ -4,7 +4,7 @@ import {isProcessingBuilding} from './workshop-catalog'
 export const UPGRADE_COST=3000,UPGRADE_SECONDS=5*60,MAX_BUILDING_LEVEL=10
 export const WAREHOUSE_MAX_LEVEL=30
 export const buildingMaxLevel=(kind:FarmTool)=>kind==='warehouse'?WAREHOUSE_MAX_LEVEL:MAX_BUILDING_LEVEL
-export const WAREHOUSE_BASE_CAPACITY=40,WAREHOUSE_CAPACITY_PER_LEVEL=40
+export const WAREHOUSE_BASE_CAPACITY=60,WAREHOUSE_CAPACITY_PER_LEVEL=60
 export const isProductionUpgradeable=(kind:FarmTool)=>kind==='mill'||isProcessingBuilding(kind)
 export const isUpgradeable=(kind:FarmTool)=>kind==='waterwheel'||kind==='warehouse'||isProductionUpgradeable(kind)
 export const buildingUpgradeCost=(kind:FarmTool)=>kind==='waterwheel'||isProductionUpgradeable(kind)?3000:UPGRADE_COST

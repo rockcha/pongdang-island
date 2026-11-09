@@ -31,18 +31,18 @@ it.each([false,true])('previews and harvests each visited ripe plot once (touch=
  expect(s.container.querySelector('[data-harvest-preview]')).toBeNull()
  await act(async()=>{vi.advanceTimersByTime(3001)})
  expect(s.container.querySelectorAll('[data-harvest-receipt]')).toHaveLength(4)
- expect(screen.getByRole('img',{name:/창고 30 \/ 40/})).toBeTruthy()
+ expect(screen.getByRole('img',{name:/창고 30 \/ 60/})).toBeTruthy()
  expect(s.container.querySelector('[data-farm-effect="harvest"]')).toBeNull()
 })
 it('reserves only the available warehouse space and leaves other crops intact',async()=>{
- config.stock=37
+ config.stock=57
  const s=setup();s.stroke()
  expect(s.container.querySelectorAll('[data-harvest-preview="ready"]')).toHaveLength(1)
  expect(s.container.querySelectorAll('[data-harvest-preview="blocked"]')).toHaveLength(3)
  await act(async()=>{s.pointer('pointerup',10,11)})
  expect(s.container.querySelectorAll('[data-harvesting-effect]')).toHaveLength(1)
  await act(async()=>{vi.advanceTimersByTime(3001)})
- expect(screen.getByRole('img',{name:/창고 40 \/ 40/})).toBeTruthy()
+ expect(screen.getByRole('img',{name:/창고 60 \/ 60/})).toBeTruthy()
  expect(screen.getByRole('button',{name:'당근 성장 (11,11)'})).toBeTruthy()
 })
 it('skips growing and rotten crops without discarding or planting them',async()=>{
@@ -67,7 +67,7 @@ it('cancels a two-finger camera gesture without harvesting',async()=>{
  await act(async()=>{s.pointer('pointerup',11,11);s.pointer('pointerup',11,12,2)})
  expect(s.container.querySelector('[data-harvest-preview]')).toBeNull()
  expect(s.container.querySelector('[data-harvesting-effect]')).toBeNull()
- expect(screen.getByRole('img',{name:/창고 12 \/ 40/})).toBeTruthy()
+ expect(screen.getByRole('img',{name:/창고 12 \/ 60/})).toBeTruthy()
 })
 it('harvests ripe plots in planting mode without spending seeds',async()=>{
  const s=setup()
@@ -75,6 +75,6 @@ it('harvests ripe plots in planting mode without spending seeds',async()=>{
  s.stroke();await act(async()=>{s.pointer('pointerup',10,11)})
  expect(s.container.querySelectorAll('[data-harvesting-effect]')).toHaveLength(4)
  expect(s.container.querySelector('[data-planting-effect]')).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'씨앗 심기',exact:true}))
+ fireEvent.click(screen.getByRole('button',{name:'변경',exact:true}))
  expect(screen.getByRole('button',{name:'밀 4개',exact:true})).toBeTruthy()
 })

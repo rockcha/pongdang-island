@@ -97,12 +97,13 @@ describe('four-ball practice', () => {
     expect(shoot(s, SHOT.deadZone, 0)).toBe(false)
     expect(s.lives).toBe(5)
     expect(shotStrength(SHOT.deadZone).power).toBe(0)
-    expect(shotStrength(35).power).toBeLessThan(0.2)
-    expect(shotStrength(70).power).toBeGreaterThan(0.5)
+    expect(shotStrength(25).power).toBeLessThan(0.2)
+    expect(shotStrength(45).power).toBeGreaterThan(0.5)
+    expect(shotStrength(60).power).toBe(1)
     expect(shotStrength(1000).speed).toBe(SHOT.maxSpeed)
     expect(shotStrength(20).impactMs).toBeGreaterThan(shotStrength(100).impactMs)
     let last = 0
-    for (let distance = 11; distance <= 100; distance++) {
+    for (let distance = 11; distance <= SHOT.maxPull; distance++) {
       const power = shotStrength(distance).power
       expect(power).toBeGreaterThan(last)
       last = power

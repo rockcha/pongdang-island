@@ -36,6 +36,9 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+        billiards_state:{Args:Record<string,never>;Returns:import('@/features/arcade/billiards-api').BilliardsAccountState}
+        billiards_start:{Args:{p_operation_id:string;p_engine_version?:number};Returns:import('@/features/arcade/billiards-api').BilliardsAccountState}
+        billiards_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/shadow-api').ShadowLeaderboard}
       aquarium_order_state:{Args:Record<string,never>;Returns:import('@/features/arcade/aquarium-order-api').OrderState}
       aquarium_order_action:{Args:import('@/features/arcade/aquarium-order-api').OrderRequest;Returns:import('@/features/arcade/aquarium-order-api').OrderState}
       aquarium_order_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/shadow-api').ShadowLeaderboard}

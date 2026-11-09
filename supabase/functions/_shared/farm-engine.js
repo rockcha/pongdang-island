@@ -121,7 +121,7 @@ var isProductionUpgradeable = (kind) => kind === "mill" || isProcessingBuilding(
 var isUpgradeable = (kind) => kind === "waterwheel" || kind === "warehouse" || isProductionUpgradeable(kind);
 var buildingUpgradeCost = (kind) => kind === "waterwheel" || isProductionUpgradeable(kind) ? 3e3 : UPGRADE_COST;
 var buildingLevel = (object) => Math.max(1, Math.min(buildingMaxLevel(object.kind), object.level ?? 1));
-var buildingCapacity = (object) => object.kind === "warehouse" ? 40 + (buildingLevel(object) - 1) * 40 : object.kind === "office" ? 4 : object.kind === "livestockOffice" ? 2 : 0;
+var buildingCapacity = (object) => object.kind === "warehouse" ? 60 + (buildingLevel(object) - 1) * 60 : object.kind === "office" ? 4 : object.kind === "livestockOffice" ? 2 : 0;
 var activeBuildings = (state, kind) => state.objects.filter((o) => o.kind === kind && !o.constructionReadyAt && (kind === "warehouse" || !state.simulation.upgradeJobs[o.id]));
 var warehouseCapacity = (state) => activeBuildings(state, "warehouse").reduce((sum, o) => sum + buildingCapacity(o), 0);
 var livestockCapacity = (state) => state.objects.filter((o) => o.kind === "livestockOffice" && !o.constructionReadyAt).reduce((sum, o) => sum + buildingCapacity(o), 0);
@@ -1524,7 +1524,7 @@ function farmLimits(state) {
 		totalAnimals: usedAnimals + storedAnimals + pendingAnimals
 	};
 }
-var farmPurchaseLimit = (kind) => kind === "warehouse" ? 2 : isBasicFarmBuilding(kind) ? 1 : Infinity;
+var farmPurchaseLimit = (kind) => kind === "warehouse" ? 3 : isBasicFarmBuilding(kind) ? 1 : Infinity;
 var farmOwnedCount = (state, kind) => state.objects.filter((o) => o.kind === kind).length + state.stored.filter((k) => k === kind).length;
 var farmCanPurchase = (state, kind) => isFarmShopKind(kind) && !isRetiredTradeBuilding(kind) && farmOwnedCount(state, kind) < farmPurchaseLimit(kind);
 function farmBuildingStorageError(state, id, pendingPlots = 0) {
@@ -2239,7 +2239,7 @@ var topviewItems = {
 		h: 1,
 		group: "건물",
 		price: 3e3,
-		purchaseLimit: 2
+		purchaseLimit: 3
 	},
 	office: {
 		name: "퐁이 개간터",

@@ -98,6 +98,8 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
  const ownedLand=useMemo(()=>new Set(state.land),[state.land]),pathCells=useMemo(()=>new Set(state.paths),[state.paths])
  const [mode,setMode]=useState<Mode>('look'),[group,setGroup]=useState<'보관함'|null>(null)
  const commandLock=useRef(false),[commandBusy,setCommandBusy]=useState(false)
+ const commandCount=useRef(0),pendingCommands=useRef(new Set<string>()),pendingObjects=useRef(new Set<number>()),[pendingObjectIds,setPendingObjectIds]=useState<number[]>([])
+ const pendingCropActions=useRef(new Map<number,FarmSimAction>())
  const goldSpend=useFarmGoldSpend(state.gold)
  const [editing,setEditing]=useState(false),[history,setHistory]=useState<TopviewState[]>([])
  useEffect(()=>{if(account)return;setState(previous=>withFarmSupplyInventory(removeRetiredMarket(previous)));setHistory(previous=>previous.map(item=>withFarmSupplyInventory(removeRetiredMarket(item))))},[])
@@ -125,8 +127,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
  const [selectedSeed,setSelectedSeed]=useState<CropKind>('wheat'),[seedMenu,setSeedMenu]=useState(false),[warehouseOpen,setWarehouseOpen]=useState(false)
  const [harvesting,setHarvesting]=useState<{id:number;readyAt:number}[]>([])
  const [harvestStarting,setHarvestStarting]=useState<{id:number;x:number;y:number}[]>([])
- const harvestStartingIds=useRef(new Set<number>()),queuedHarvest=useRef<LandCell[]>([])
- useEffect(()=>{if(account?.busy||commandBusy||commandLock.current||!queuedHarvest.current.length)return;const cells=queuedHarvest.current;queuedHarvest.current=[];void startHarvest(cells,true)},[account?.busy,commandBusy])
+ const harvestStartingIds=useRef(new Set<number>())
  const harvestingRef=useRef(harvesting);harvestingRef.current=harvesting
  const clearingRef=useRef(clearing);clearingRef.current=clearing
  const currentState=useRef(state);currentState.current=state
@@ -135,19 +136,43 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
   const next=typeof action==='function'?action(currentState.current):action
   currentState.current=next;setPreviewState(next)
  }
+ function cropValidationState(){
+  // Reserve pending seeds and harvest space for input validation only. The rendered
+  // inventory and shared cache remain the last server-confirmed snapshot.
+  let next=currentState.current
+  for(const [id,action] of pendingCropActions.current)next=simulateFarm(next,id,action,farmNow()).state
+  return next
+ }
  async function confirmCommand(command:FarmCommand){
   if(visit)return false
   if(!account)return true
-  if(commandLock.current){setMessage('이전 작업을 저장하고 있어요. 잠시 후 다시 눌러주세요.');return false}
-  commandLock.current=true;setCommandBusy(true)
+  // Timed completion can wait for the next clock tick; player input enters the account queue.
+  if(command.type==='tick'&&commandLock.current)return false
+  const key=JSON.stringify(command)
+  if(pendingCommands.current.has(key))return false
+  const intents=command.type==='batch'?command.commands:[command]
+  const ids=intents.flatMap(intent=>intent.type==='simulate'?[intent.id]:[])
+  if(ids.some(id=>pendingObjects.current.has(id)))return false
+  pendingCommands.current.add(key)
+  for(const id of ids)pendingObjects.current.add(id)
+  for(const intent of intents)if(intent.type==='simulate'&&['plant','beginHarvest'].includes(intent.action.type))pendingCropActions.current.set(intent.id,intent.action)
+  setPendingObjectIds([...pendingObjects.current])
+  commandCount.current++;commandLock.current=true;setCommandBusy(true)
   try{
    const saved=await account.execute(command)
    if(!saved)return false
    currentState.current=saved.state
    return true
-  }finally{commandLock.current=false;setCommandBusy(false)}
+  }finally{
+   pendingCommands.current.delete(key)
+   for(const id of ids)pendingObjects.current.delete(id)
+   for(const id of ids)pendingCropActions.current.delete(id)
+   setPendingObjectIds([...pendingObjects.current])
+   commandCount.current--;commandLock.current=commandCount.current>0;setCommandBusy(commandLock.current)
+  }
  }
  const [productionId,setProductionId]=useState<number|null>(null),[productionMessage,setProductionMessage]=useState(''),[clock,setClock]=useState(farmNow)
+ const productionIdRef=useRef(productionId);productionIdRef.current=productionId
  const [effect,setEffect]=useState<(FarmEffect&{id:number})|null>(null),effectId=useRef(0)
  const svgRef=useRef<SVGSVGElement>(null)
  const [orientationId,setOrientationId]=useState<number|null>(null)
@@ -182,14 +207,15 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
  const harvestBrush=useLandBrush({tool:harvestEnabled?'place':null,readCell:(x,y)=>{const cell=readLandCell(x,y),offset=harvestOffset.current;return cell?{x:cell.x+offset.x,y:cell.y+offset.y}:null},onCommit:(_,cells)=>startHarvest(cells)})
  const harvestPreview=useMemo(()=>{
   if(!harvestBrush.draft)return []
-  let space=warehouseAvailable(state)?warehouseCapacity(state)-farmStorageUsage(state.simulation):0
+  const source=cropValidationState()
+  let space=warehouseAvailable(source)?warehouseCapacity(source)-farmStorageUsage(source.simulation):0
   return harvestBrush.draft.cells.flatMap(cell=>{
-   const plot=readyHarvestPlot(cell,state);if(!plot)return []
-   const job=state.simulation.cropJobs[plot.id],quantity=farmCrops[job.crop].yield,blocked=quantity>space
+   const plot=readyHarvestPlot(cell,source);if(!plot)return []
+   const job=source.simulation.cropJobs[plot.id],quantity=farmCrops[job.crop].yield,blocked=quantity>space
    if(!blocked)space-=quantity
    return [{...cell,blocked}]
   })
- },[state,harvestBrush.draft,clock])
+ },[state,harvestBrush.draft,clock,pendingObjectIds])
  const landBrush=useLandBrush({tool:landBuyOpen||seedMenu||warehouseOpen||shopOpen||tilePickerOpen?null:clearingTool||cropTool||fertilizerTool?'place':availableTileTool??availableLandTool,readCell:readLandCell,tapOnly:!!fertilizerTool,canStart:cropTool?cell=>{const object=objectAt(state,cell.x,cell.y);return !!object&&(object.kind==='plot'||isFarmAnimal(object.kind))}:landTool?cell=>applyLandStroke(state,landTool,[cell]).changed.length>0:tileTool?cell=>applyTileStroke(state,tileTool,[cell],clearing,selectedTile).changed.length>0:undefined,onCommit:(active,cells)=>fertilizerTool?(cells[0]&&applyFertilizer(cells[0].x,cells[0].y,fertilizerTool)):clearingTool?startClearing(cells):cropTool?plantCells(cells):tileTool?commitTileStroke(active,cells):commitLandStroke(active,cells)})
  const objectDrag=useFarmObjectDrag({movingId:mode==='move'?selected:null,enabled:toolMenu==='move'&&!shopOpen&&!productionId&&!warehouseOpen,readCell:readLandCell,find:id=>currentState.current.objects.find(o=>o.id===id&&!o.constructionReadyAt),onSelect:moveFromDialog,onPreview:setMoveTarget,onDrop:(id,target)=>confirmMove(target,id),onCancel:()=>{cancelMove();setSelected(null)}})
  const camera=useFarmCamera({viewport,svg:svgRef,zoom,setZoom,brushActive:brushActive||mode==='move'||!!harvestBrush.draft,manual:()=>{manualCamera.current=true;setCameraTarget(null)},cancelTool:()=>{objectDrag.cancel();landBrush.cancel();harvestBrush.cancel();drag.current=null}})
@@ -281,28 +307,32 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
  function selectFertilizer(supply:FarmSupply){landBrush.cancel();harvestBrush.cancel();setSeedMenu(false);setEditing(false);setGrid(true);setGroup(null);setToolMenu(null);choose(fertilizerTool===supply?'look':supply);setMessage(fertilizerTool===supply?'':farmSupplies[supply].description+' · 자라고 있는 밭을 눌러주세요.')}
  async function act(action:FarmSimAction){
   if(!productionObject)return
+  if(pendingObjects.current.has(productionObject.id))return
   if(action.type==='collectFlour'||action.type==='collectCraft'||action.type==='collectMeat'||action.type==='completeAnimalPurchase'||action.type==='discardCrop'){receiveProduction(productionObject.id,action);return}
   if(action.type==='harvest'){setProductionId(null);startHarvest([{x:productionObject.x,y:productionObject.y}]);return}
   const result=simulateFarm(state,productionObject.id,action,farmNow())
+  if(result.state!==state&&['plant','mill','craft','research','animal','startAnimal','feed'].includes(action.type)){setProductionId(null);setSelected(null);setProductionMessage('')}
   if(result.state!==state&&account&&!await confirmCommand({type:'simulate',id:productionObject.id,action}))return
-  setProductionMessage(result.state!==state&&result.effect?.type==='buy'?'':result.message)
+  if(productionIdRef.current===productionObject.id)setProductionMessage(result.state!==state&&result.effect?.type==='buy'?'':result.message)
   if(result.state!==state){
    if(action.type==='plant')setPlantingEffects(items=>[...items,{id:++effectId.current,x:productionObject.x,y:productionObject.y,expiresAt:farmNow()+900}])
    if(action.type==='seed'){const purchased=cropKinds.find(c=>seedGood(c)===action.good);if(purchased)setLastPurchasedSeed(purchased)}
    if(action.type==='animal')celebratePurchase({kind:action.animal,name:topviewItems[action.animal].name,quantity:1})
-   if(['plant','mill','craft','research','animal','startAnimal','feed'].includes(action.type)){setProductionId(null);setSelected(null);setProductionMessage('');}
   }
   if(result.state!==state){setState(result.state);setHistory([]);setClock(farmNow());if(result.effect)presentFarmEffect(result.effect,productionObject.id)}
   if(result.place){setProductionId(null);setEditing(true);setGrid(true);choose(result.place);setGroup('보관함');setMessage(result.message)}
  }
  async function receiveProduction(id:number,action:FarmSimAction){
+  if(pendingObjects.current.has(id))return
   const before=currentState.current,result=simulateFarm(before,id,action,farmNow())
   if(result.state===before){setMessage(result.message);setProductionMessage(result.message);return}
+  if(productionId===id){setProductionId(null);setProductionMessage('');setSelected(null)}
   if(account&&!await confirmCommand({type:'simulate',id,action}))return
-  setState(result.state);setHistory([]);setClock(farmNow());setProductionId(null);setProductionMessage('');setMessage('');setNotice(null)
+  setState(result.state);setHistory([]);setClock(farmNow());setMessage('');setNotice(null)
   if(result.effect)presentFarmEffect(result.effect,id)
  }
  async function collectAnimal(id:number){
+  if(pendingObjects.current.has(id))return
   const before=currentState.current,readyAt=before.simulation.animalJobs[id],now=farmNow()
   if(readyAt!==undefined&&readyAt>now){setInspectedAnimal(id);return}
   setInspectedAnimal(null)
@@ -363,8 +393,9 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
  async function plantCells(cells:LandCell[]){
   if(cells.length===1){const animal=objectAt(currentState.current,cells[0].x,cells[0].y);if(animal&&isFarmAnimal(animal.kind)){collectAnimal(animal.id);return}}
   if(cells.length===1){const plot=objectAt(currentState.current,cells[0].x,cells[0].y),job=plot&&currentState.current.simulation.cropJobs[plot.id];if(plot?.kind==='plot'&&job&&job.readyAt<=farmNow()){if(cropIsRotten(job,farmNow())){receiveProduction(plot.id,{type:'discardCrop'});return}startHarvest(cells);return}}
-  const before=currentState.current,planted:TopviewObject[]=[];let next=before
+  const before=cropValidationState(),planted:TopviewObject[]=[];let next=before
   for(const cell of cells){const plot=objectAt(next,cell.x,cell.y);if(plot?.kind!=='plot')continue
+   if(pendingObjects.current.has(plot.id))continue
    const result=simulateFarm(next,plot.id,{type:'plant',crop:selectedSeed},farmNow())
    if(result.state!==next){next=result.state;planted.push(plot)}
   }
@@ -376,13 +407,12 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
   }
   setMessage(planted.length?`${farmCrops[selectedSeed].name} ${planted.length}칸을 심었어요.`:'빈 밭과 보유 종자를 확인해주세요.')
  }
- async function startHarvest(cells:LandCell[],fromQueue=false){
-  if(fromQueue){const ids=new Set(cells.map(cell=>objectAt(currentState.current,cell.x,cell.y)?.id));for(const id of ids)if(id!==undefined)harvestStartingIds.current.delete(id);setHarvestStarting(items=>items.filter(item=>!ids.has(item.id)))}
+ async function startHarvest(cells:LandCell[]){
   if(!warehouseAvailable(currentState.current)){setMessage('수확물을 보관할 창고를 먼저 배치해주세요.');return}
-  if(!fromQueue){setProductionId(null);setSelected(null)}
-  const before=currentState.current,jobs=[...harvestingRef.current],now=farmNow();let next=before,rejected=''
+  setProductionId(null);setSelected(null)
+  const before=cropValidationState(),jobs=[...harvestingRef.current],now=farmNow();let next=before,rejected=''
   for(const cell of cells){const plot=objectAt(before,cell.x,cell.y),crop=plot&&before.simulation.cropJobs[plot.id]
-   if(plot?.kind!=='plot'||!crop||crop.readyAt>now||harvestStartingIds.current.has(plot.id)||jobs.some(job=>job.id===plot.id))continue
+   if(plot?.kind!=='plot'||!crop||crop.readyAt>now||harvestStartingIds.current.has(plot.id)||pendingObjects.current.has(plot.id)||jobs.some(job=>job.id===plot.id))continue
    const result=simulateFarm(next,plot.id,{type:'beginHarvest'},now)
    if(result.state===next){rejected=result.message;continue}
    next=result.state;jobs.push({id:plot.id,readyAt:now+3000})
@@ -393,7 +423,6 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
     const starting=added.flatMap(job=>{const plot=before.objects.find(object=>object.id===job.id);return plot?[{id:plot.id,x:plot.x,y:plot.y}]:[]})
     for(const item of starting)harvestStartingIds.current.add(item.id)
     setHarvestStarting(items=>[...items.filter(item=>!addedIds.has(item.id)),...starting]);setMessage('수확 요청을 확인하고 있어요…')
-    if(account.busy||commandLock.current){queuedHarvest.current.push(...starting.map(({x,y})=>({x,y})));return}
     let saved=false
     try{saved=await confirmCommand({type:'batch',commands:added.map(job=>({type:'simulate',id:job.id,action:{type:'beginHarvest'}}))})}catch{saved=false}
     finally{for(const id of addedIds)harvestStartingIds.current.delete(id);setHarvestStarting(items=>items.filter(item=>!addedIds.has(item.id)))}
@@ -401,7 +430,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
    }
    setState(next);setHistory([])
   }
-  const confirmedJobs=account?jobs.map(job=>({...job,readyAt:(currentState.current.simulation.cropJobs[job.id]?.harvestingAt??now)+3000})):jobs
+  const confirmedJobs=account?Object.entries(currentState.current.simulation.cropJobs).flatMap(([id,job])=>job.harvestingAt===undefined?[]:[{id:Number(id),readyAt:job.harvestingAt+3000}]):jobs
   harvestingRef.current=confirmedJobs;setHarvesting(confirmedJobs);setClock(farmNow());setMessage(rejected||(jobs.length?'낫으로 수확하고 있어요…':'다 자란 작물을 선택해주세요.'))
  }
  useEffect(()=>{
@@ -661,6 +690,7 @@ export function TopviewFarm({trialEmail,trialOperator=false,account,visit,header
      {clearing.map(job=><FarmStatusBubble key={cellKey(job.x,job.y)} x={job.x*TILE+31} y={job.y*TILE+6} compact label="개간 진행" progress={1-(job.readyAt-clock)/FARM_CLEARING_MS} remaining={Math.max(0,(job.readyAt-clock)/1000)}><FarmClearingGlyph/></FarmStatusBubble>)}
     </g>}
     {harvestReceipts.map(receipt=><FarmHarvestReceipt key={receipt.id} {...receipt}/>)}
+    {pendingObjectIds.map(id=>{const object=state.objects.find(item=>item.id===id);return object&&!harvestStartingIds.current.has(id)&&<g key={id} data-farm-pending={id} pointerEvents="none" role="status" aria-label={`${topviewItems[object.kind].name} 처리 중`} transform={`translate(${(object.x+objectFootprint(object).w/2)*TILE} ${object.y*TILE-12})`}><rect x="-31" y="-13" width="62" height="21" rx="9" fill="#fff8e9" stroke="#d9c7aa"/><text textAnchor="middle" y="1" fontSize="10" fill="#7e5e3d">처리 중…</text></g>})}
     {orientationObject&&<FarmObjectOrientationControls viewport={viewport} map={svgRef} object={orientationObject} onRotate={()=>orientObject('rotate')} onFlip={()=>orientObject('flip')} onSell={isFarmAnimal(orientationObject.kind)?()=>sellObject(orientationObject.id):undefined} saleReason={farmObjectResaleError(state,orientationObject.id)}/>}
    </svg></div>
   </div>

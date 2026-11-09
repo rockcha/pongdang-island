@@ -7,6 +7,20 @@ const engine = vi.hoisted(() => ({
   state: null as Billiards | null,
   changed: null as (() => void) | null,
 }))
+const server = vi.hoisted(() => ({ start: vi.fn(), save: vi.fn(), state: null as any }))
+vi.mock('@/components/auth-provider', () => ({
+  useAuth: () => ({ session: { user: { id: 'billiards-player' } } }),
+}))
+vi.mock('@/lib/account-query', () => ({
+  useAccountResource: () => ({ data: server.state, isFetching: false, refetch: vi.fn() }),
+}))
+vi.mock('@/features/arcade/billiards-api', () => ({
+  readBilliards: vi.fn(),
+  readBilliardsRanking: vi.fn(),
+  startBilliards: server.start,
+  saveBilliards: server.save,
+  billiardsError: () => '다시 확인해주세요.',
+}))
 vi.mock('@/features/arcade/billiards-scene', () => ({
   mountBilliards: (_host: HTMLElement, state: Billiards, changed: () => void) => {
     engine.state = state
@@ -16,7 +30,24 @@ vi.mock('@/features/arcade/billiards-scene', () => ({
   },
 }))
 beforeEach(() => {
+  server.start.mockReset()
+  server.save.mockReset()
+  server.state = { run: null, wallet: { gold: 100 } }
   vi.spyOn(window.history, 'back').mockImplementation(() => {})
+})
+const accountRun = (score = 0, finished = false) => ({
+  serverNow: new Date().toISOString(),
+  wallet: { gold: 90 + (finished ? Math.max(0, score) : 0) },
+  run: {
+    id: '00000000-0000-4000-8000-000000000001',
+    engine_version: 1,
+    started_at: new Date().toISOString(),
+    finished_at: finished ? new Date().toISOString() : null,
+    score,
+    reward: finished ? Math.max(0, score) : 0,
+    abandoned: false,
+    replay: { version: 1, shots: [] },
+  },
 })
 afterEach(() => {
   cleanup()
@@ -79,4 +110,75 @@ it('keeps the table and reserved text rows mounted across shot and result update
     expect(container.querySelector('.billiards-message')).toBe(message)
     expect(container.querySelector('.billiards-contact')).toBeNull()
   }
+})
+it('starts paid play once and shows a reward only after the verified result arrives', async () => {
+  let resolve!: (value: any) => void
+  server.start.mockResolvedValue(accountRun())
+  server.save.mockImplementation(
+    () =>
+      new Promise((done) => {
+        resolve = done
+      }),
+  )
+  render(<BilliardsGame />)
+  const start = screen.getByRole('button', { name: '실전 (골드 10)' })
+  fireEvent.click(start)
+  fireEvent.click(start)
+  await waitFor(() => expect(engine.state).not.toBeNull())
+  expect(server.start).toHaveBeenCalledTimes(1)
+  act(() => {
+    Object.assign(engine.state!, { phase: 'lost', lives: 0, score: 40 })
+    engine.changed!()
+  })
+  expect(server.save).toHaveBeenCalledExactlyOnceWith(
+    accountRun().run.id,
+    { version: 1, shots: [] },
+    true,
+  )
+  expect(screen.queryByText('40골드 지급 완료')).toBeNull()
+  await act(async () => {
+    resolve(accountRun(40, true))
+  })
+  expect(screen.getByText('40골드 지급 완료')).toBeTruthy()
+  act(() => engine.changed!())
+  expect(server.save).toHaveBeenCalledTimes(1)
+})
+it('retains exactly the failed settlement for explicit retry and never charges a new entry', async () => {
+  server.start.mockResolvedValue(accountRun())
+  server.save
+    .mockRejectedValueOnce(new Error('lost response'))
+    .mockResolvedValueOnce(accountRun(20, true))
+  render(<BilliardsGame />)
+  fireEvent.click(screen.getByRole('button', { name: '실전 (골드 10)' }))
+  await waitFor(() => expect(engine.state).not.toBeNull())
+  act(() => {
+    Object.assign(engine.state!, { phase: 'lost', lives: 0, score: 20 })
+    engine.changed!()
+  })
+  await screen.findByRole('button', { name: '저장 결과 다시 확인' })
+  fireEvent.click(screen.getByRole('button', { name: '저장 결과 다시 확인' }))
+  await screen.findByText('20골드 지급 완료')
+  expect(server.save.mock.calls[1]).toEqual(server.save.mock.calls[0])
+  expect(server.start).toHaveBeenCalledTimes(1)
+})
+it('restores a saved shot when continuing and never saves practice scores', async () => {
+  const saved = accountRun()
+  saved.run.replay.shots = [{ dx: 0, dy: -60 }] as never[]
+  server.state = saved
+  server.start.mockResolvedValue(saved)
+  const view = render(<BilliardsGame />)
+  fireEvent.click(screen.getByRole('button', { name: '실전 이어하기' }))
+  await waitFor(() => expect(engine.state?.shotCount).toBe(1))
+  expect(engine.state?.score).toBe(10)
+  expect(engine.state?.lives).toBe(4)
+  view.unmount()
+  engine.state = null
+  render(<BilliardsGame />)
+  fireEvent.click(screen.getByRole('button', { name: '연습 시작' }))
+  await waitFor(() => expect(engine.state).not.toBeNull())
+  act(() => {
+    Object.assign(engine.state!, { phase: 'lost', lives: 0, score: 100 })
+    engine.changed!()
+  })
+  expect(server.save).not.toHaveBeenCalled()
 })

@@ -1,5 +1,7 @@
 ﻿export const TABLE = { width: 360, height: 520, radius: 12, inset: 28 }
 export const CUE_GRAB_DISTANCE = 30
+export const BILLIARDS_STEP = 1 / 120
+export type BilliardsShot = { dx: number; dy: number }
 export function canGrabCue(
   pointer: { x: number; y: number },
   start: { x: number; y: number },
@@ -29,7 +31,7 @@ export function cueDrag(
   return { nx, ny, dx: nx * pull, dy: ny * pull }
 }
 export const SHOT = {
-  maxPull: 100,
+  maxPull: 60,
   deadZone: 10,
   maxSpeed: 920,
   rollingDeceleration: 105,
@@ -63,6 +65,7 @@ export type Billiards = {
   hits: number[]
   foul: boolean
   score: number
+  shots: BilliardsShot[]
   stroke: { dx: number; dy: number; elapsed: number; x: number; y: number } | null
 }
 export function createBilliards(): Billiards {
@@ -87,6 +90,7 @@ export function createBilliards(): Billiards {
     hits: [],
     foul: false,
     score: 0,
+    shots: [],
     stroke: null,
   }
 }
@@ -100,6 +104,7 @@ export function shoot(state: Billiards, dx: number, dy: number) {
   )
     return false
   state.shotCount++
+  state.shots.push({ dx, dy })
   state.hits = []
   state.foul = false
   state.stroke = { dx, dy, elapsed: 0, x: state.balls[0].x, y: state.balls[0].y }

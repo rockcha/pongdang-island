@@ -2,6 +2,7 @@
 import { createBilliardsAudio } from './billiards-audio'
 import {
   CUE_GRAB_DISTANCE,
+  BILLIARDS_STEP,
   canGrabCue,
   cueDrag,
   shotStrength,
@@ -27,6 +28,7 @@ export function mountBilliards(
     private drag: { x: number; y: number } | null = null
     private origin = { x: 0, y: 0 }
     private pointerId: number | null = null
+    private elapsed = 0
     private direction = { x: 0, y: -1 }
     private cueSegment: { start: { x: number; y: number }; end: { x: number; y: number } } | null =
       null
@@ -139,41 +141,45 @@ export function mountBilliards(
     }
     update(time: number, delta: number) {
       const before = JSON.stringify([state.phase, state.hits, state.foul, state.message])
-      if (!paused())
-        stepBilliards(state, delta / 1000, (ball) => {
-          if (ball.kind === 'cue') return
-          this.audio.play(ball.kind)
-          const ring = this.add
-            .circle(ball.x + MARGIN, ball.y + MARGIN, 15)
-            .setStrokeStyle(2, ball.kind === 'red' ? 0xffa59c : 0xffd265)
-            .setDepth(4)
-          const label = this.add
-            .text(ball.x + MARGIN, ball.y + MARGIN - 22, ball.kind === 'red' ? '+10' : '−10', {
-              fontFamily: 'sans-serif',
-              fontSize: '16px',
-              fontStyle: 'bold',
-              color: ball.kind === 'red' ? '#ffe3df' : '#ffe49b',
-              stroke: '#163f42',
-              strokeThickness: 3,
+      if (!paused()) {
+        this.elapsed += Math.min(delta / 1000, 0.05)
+        while (this.elapsed >= BILLIARDS_STEP) {
+          this.elapsed -= BILLIARDS_STEP
+          stepBilliards(state, BILLIARDS_STEP, (ball) => {
+            if (ball.kind === 'cue') return
+            this.audio.play(ball.kind)
+            const ring = this.add
+              .circle(ball.x + MARGIN, ball.y + MARGIN, 15)
+              .setStrokeStyle(2, ball.kind === 'red' ? 0xffa59c : 0xffd265)
+              .setDepth(4)
+            const label = this.add
+              .text(ball.x + MARGIN, ball.y + MARGIN - 22, ball.kind === 'red' ? '+10' : '−10', {
+                fontFamily: 'sans-serif',
+                fontSize: '16px',
+                fontStyle: 'bold',
+                color: ball.kind === 'red' ? '#ffe3df' : '#ffe49b',
+                stroke: '#163f42',
+                strokeThickness: 3,
+              })
+              .setOrigin(0.5)
+              .setDepth(4)
+            this.tweens.add({
+              targets: ring,
+              scale: 2,
+              alpha: 0,
+              duration: 350,
+              onComplete: () => ring.destroy(),
             })
-            .setOrigin(0.5)
-            .setDepth(4)
-          this.tweens.add({
-            targets: ring,
-            scale: 2,
-            alpha: 0,
-            duration: 350,
-            onComplete: () => ring.destroy(),
+            this.tweens.add({
+              targets: label,
+              y: label.y - 20,
+              alpha: 0,
+              duration: 650,
+              onComplete: () => label.destroy(),
+            })
           })
-          this.tweens.add({
-            targets: label,
-            y: label.y - 20,
-            alpha: 0,
-            duration: 650,
-            onComplete: () => label.destroy(),
-          })
-        })
-      else this.cancelDrag()
+        }
+      } else this.cancelDrag()
       if (before !== JSON.stringify([state.phase, state.hits, state.foul, state.message])) changed()
       const g = this.g
       g.clear()

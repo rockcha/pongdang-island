@@ -10,7 +10,7 @@ import {isDeploymentSource,prepareDeployment} from '../scripts/prepare-deploy-so
 const temporary:string[]=[]
 afterEach(async()=>{for(const root of temporary.splice(0))await rm(root,{recursive:true,force:true})})
 it('keeps production inputs while excluding raw art, review data and credentials',()=>{
- for(const file of ['src/main.tsx','src/features/exploration/assets/door.png','public/music/theme.mp3','build/image-cache.ts','scripts/build-app.mjs','supabase/catalog/catalog.json','supabase/voyage-bets/companies.json','supabase/functions/_shared/push-presentation.ts','supabase/functions/_shared/farm-engine.js','tsconfig.app.json','.vercelignore'])expect(isDeploymentSource(file),file).toBe(true)
+ for(const file of ['src/main.tsx','src/features/exploration/assets/door.png','public/music/theme.mp3','build/image-cache.ts','scripts/build-app.mjs','supabase/catalog/catalog.json','supabase/voyage-bets/companies.json','supabase/functions/_shared/push-presentation.ts','supabase/functions/_shared/farm-engine.js','supabase/functions/_shared/billiards-replay.js','tsconfig.app.json','.vercelignore'])expect(isDeploymentSource(file),file).toBe(true)
  for(const file of ['assets/source.png','artifacts/preview.png','tests/check.test.ts','.env','.env.storage.local','src/.env.local','../public/file','public/../../secret','C:/secret','public\\file','.git/config'])expect(isDeploymentSource(file),file).toBe(false)
 })
 it('copies exactly the selected bytes, leaves originals intact and refuses overwrites or outside targets',async()=>{

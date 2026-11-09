@@ -31,9 +31,12 @@ jobs:
       - run: npm ci
       - run: npm run db:verify
       - run: npm run arcade:engine:check
+      - run: npm run billiards:engine:check
       - run: npm run exploration:engine:check
       - name: Database and server regressions (one test runner)
         run: npm test -- --maxWorkers=2 --testTimeout=20000 tests/relic-roulette-sql.test.ts tests/exploration-reward-sql.test.ts tests/exploration-server-engine.test.ts tests/exploration-edge.test.ts tests/brick-game-sql.test.ts tests/brick-breaker-replay.test.ts tests/brick-edge.test.ts tests/social-sql.test.ts tests/aquarium-social-sql.test.ts tests/native-collectibles-sql.test.ts tests/regional-fishing-sql.test.ts tests/collectible-movement-sql.test.ts tests/shared-decorations-sql.test.ts tests/rare-plush-prices-sql.test.ts tests/fishing-discovery-rewards-sql.test.ts tests/merchant-orders-sql.test.ts tests/merchant-personal-transition-sql.test.ts tests/titles-sql.test.ts
       - run: npm test -- tests/relic-recycling-sql.test.ts tests/cozy-aquarium-themes-sql.test.ts tests/galaxy-region-sql.test.ts
+      - name: Billiards verification and weekly rewards
+        run: npm test -- --maxWorkers=1 --testTimeout=20000 tests/billiards-sql.test.ts tests/billiards-edge.test.ts tests/billiards-replay.test.ts tests/arcade-weekly-rewards.test.ts
       - name: Farm visits and hologram database regressions
         run: npm test -- --maxWorkers=1 --testTimeout=20000 tests/farm-visits-sql.test.ts tests/hologram-region-sql.test.ts tests/catalog-region-habitats.test.ts

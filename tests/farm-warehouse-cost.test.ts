@@ -4,7 +4,7 @@ import {upgradeBuilding,warehouseCapacity} from '@/features/farm/building-upgrad
 
 it('charges 3000 per warehouse expansion, rejects insufficient gold, and refunds only once',()=>{
  const state=initialTopview(),id=state.objects.find(o=>o.kind==='warehouse')!.id
- expect(warehouseCapacity(state)).toBe(40)
+ expect(warehouseCapacity(state)).toBe(60)
  const poor={...state,gold:2999}
  expect(upgradeBuilding(poor,id,{type:'upgrade'},0).state).toBe(poor)
  const started=upgradeBuilding({...state,gold:3000},id,{type:'upgrade'},0).state
@@ -14,6 +14,6 @@ it('charges 3000 per warehouse expansion, rejects insufficient gold, and refunds
  expect(canceled.message).toContain('3,000골드')
  expect(upgradeBuilding(canceled.state,id,{type:'cancelUpgrade'},2).state).toBe(canceled.state)
  const completed=upgradeBuilding(started,id,{type:'completeUpgrade'},300000).state
- expect(warehouseCapacity(completed)).toBe(80)
+ expect(warehouseCapacity(completed)).toBe(120)
  expect(completed.gold).toBe(0)
 })

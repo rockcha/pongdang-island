@@ -39,6 +39,8 @@ jobs:
         run: npm run test:client-data -- tests/relic-recycling-ui.test.tsx tests/relic-recycling-api.test.ts tests/relic-roulette-api.test.ts tests/relic-roulette-ui.test.tsx tests/relic-roulette-model.test.ts tests/header-place-navigation.test.tsx tests/deployment-tools.test.ts tests/merchant-orders-ui.test.tsx tests/port-page.test.tsx tests/expedition-tailwind-ui.test.tsx tests/farm-overview.test.ts tests/farm-overview-ui.test.tsx tests/topview-farm.test.tsx tests/farm-starter-presentation.test.tsx tests/farm-starting-limits.test.ts tests/farm-crafting-visibility.test.tsx tests/farm-land.test.ts tests/farm-map-boundary.test.ts tests/theme-panorama.test.ts
       - name: Farm and hologram region regressions
         run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/farm-visits.test.tsx tests/farm-visits-api.test.ts tests/farm-friends-loading.test.tsx tests/farm-access.test.tsx tests/farm-camera.test.tsx tests/farm-seed-drag.test.tsx tests/farm-warehouse-cost.test.ts tests/farm-warehouse-expansion.test.tsx tests/farm-warehouse-expansion-limits.test.tsx tests/farm-receipts.test.tsx tests/farm-purchase-effect.test.tsx tests/farm-purchase-feedback.test.tsx tests/farm-harvesting-effect.test.tsx tests/hologram-region.test.ts
+      - name: Farm queue and paid billiards regressions
+        run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/farm-command-queue.test.ts tests/farm-account-retry.test.tsx tests/farm-interaction-feedback.test.tsx tests/billiards-ui.test.tsx tests/billiards-api.test.ts tests/billiards.test.ts
       - run: npm run build
       - uses: actions/upload-artifact@v4
         if: always()

@@ -1,0 +1,338 @@
+.pet-care-fx {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  animation: pet-fx-lifetime 3s ease both;
+}
+.pet-fx-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.pet-fx-art
+  :is(
+    .pet-fx-hand,
+    .pet-fx-heart,
+    .pet-fx-clean,
+    .pet-fx-star,
+    .pet-fx-camera,
+    .pet-fx-shutter,
+    .pet-fx-photo-print,
+    .pet-fx-ball
+  ) {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.pet-fx-hand {
+  animation: pet-fx-stroke 1.1s ease-in-out 2;
+}
+.pet-fx-heart {
+  animation: pet-fx-heart-rise 1.8s ease-out both;
+  animation-delay: calc(0.3s + var(--i) * 0.25s);
+}
+.pet-fx-foam {
+  animation: pet-fx-foam 1.2s ease-in-out 2 alternate;
+}
+.pet-fx-bubble {
+  animation: pet-fx-bubble-rise 2s ease-out both;
+  animation-delay: calc(var(--i) * 0.16s);
+}
+.pet-fx-clean {
+  animation: pet-fx-twinkle 0.8s ease both;
+  animation-delay: 1.8s;
+}
+.pet-fx-ball {
+  animation: pet-fx-ball-bounce 2.5s ease-in-out both;
+}
+.pet-fx-star {
+  animation: pet-fx-twinkle 0.65s ease both;
+  animation-delay: calc(0.5s + var(--i) * 0.55s);
+}
+.pet-fx-photo-frame {
+  animation: pet-fx-frame 3s ease both;
+}
+.pet-fx-camera {
+  animation: pet-fx-camera-press 3s ease both;
+}
+.pet-fx-shutter {
+  animation: pet-fx-shutter-ring 3s ease both;
+}
+.pet-fx-photo-print {
+  animation: pet-fx-photo-print 3s ease both;
+}
+.pet-gauge.affection {
+  position: relative;
+}
+.pet-affection-pop {
+  position: absolute;
+  right: 0;
+  top: -22px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #b7798c;
+  font-size: 12px;
+  pointer-events: none;
+  animation: pet-fx-gain 1s ease-out both;
+}
+.pet-affection-pop svg {
+  width: 12px;
+  height: 12px;
+  fill: #edccd580;
+}
+.pet-gauge.fullness {
+  position: relative;
+}
+.pet-fullness-pop {
+  color: #b18b5f;
+}
+.pet-fullness-pop svg {
+  fill: none;
+}
+.pet-fx-food-bowl {
+  animation: pet-fx-bowl-appear 0.35s ease-out both;
+}
+.pet-fx-kibble {
+  animation: pet-fx-kibble-eaten 0.3s ease both;
+  animation-delay: calc(0.8s + var(--i) * 0.23s);
+}
+.pet-fx-bite {
+  animation: pet-fx-bite 0.8s ease-in both;
+  animation-delay: calc(0.6s + var(--i) * 0.55s);
+}
+@keyframes pet-fx-bowl-appear {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pet-fx-kibble-eaten {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes pet-fx-bite {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--bite-x), var(--bite-y));
+  }
+}
+@keyframes pet-fx-lifetime {
+  0% {
+    opacity: 0;
+  }
+  8%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pet-fx-stroke {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-12deg);
+  }
+  50% {
+    transform: translate(-12px, 7px) rotate(-24deg);
+  }
+}
+@keyframes pet-fx-heart-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.85);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-26px) scale(1);
+  }
+}
+@keyframes pet-fx-foam {
+  from {
+    transform: translateY(2px);
+  }
+  to {
+    transform: translateY(-1px);
+  }
+}
+@keyframes pet-fx-bubble-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-42px);
+  }
+}
+@keyframes pet-fx-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  45% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+@keyframes pet-fx-ball-bounce {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0);
+  }
+  12% {
+    opacity: 1;
+  }
+  28% {
+    transform: translate(20px, -20px) rotate(75deg);
+  }
+  48% {
+    transform: translate(40px, 0) rotate(145deg);
+  }
+  68% {
+    transform: translate(20px, -14px) rotate(75deg);
+  }
+  88% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pet-fx-frame {
+  0% {
+    opacity: 0;
+  }
+  18%,
+  78% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pet-fx-camera-press {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  18%,
+  34% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  38% {
+    transform: translateY(2px);
+  }
+  44%,
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pet-fx-shutter-ring {
+  0%,
+  35% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  56%,
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes pet-fx-photo-print {
+  0%,
+  43% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  61%,
+  84% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+}
+@keyframes pet-fx-gain {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  20%,
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-9px);
+  }
+}
+@media (max-width: 380px) {
+  .pet-care-fx {
+    width: 280px;
+    height: 280px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pet-care-fx,
+  .pet-care-fx *,
+  .pet-affection-pop {
+    animation: none !important;
+  }
+  .pet-fx-heart,
+  .pet-fx-bubble,
+  .pet-fx-photo-frame {
+    opacity: 0.65;
+  }
+  .pet-fx-shutter {
+    opacity: 0;
+  }
+  .pet-fx-clean,
+  .pet-fx-star {
+    opacity: 0.7;
+  }
+}

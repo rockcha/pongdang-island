@@ -1,3 +1,4 @@
+import {weatherDecorationFrame} from './weather-decoration-animation'
 const rates:Record<string,number>={
  'surface-seeking-beanstalk':1.25,
  'upward-sinking-waterfall':3,
@@ -18,6 +19,8 @@ export function sharedDecorationColumns(path:string){return path===platformWorkS
 
 // Animate local details while registered solid anchors and editing stay still.
 export function sharedDecorationFrame(id:string,time:number,reduced=false,editing=false){
+ const weather=weatherDecorationFrame(id,time,reduced,editing)
+ if(weather!==null)return weather
  if(id==='mechsanctum-deus-zero')return reduced||editing?0:Math.floor(Math.max(0,time))%8
  if(id==='pongi-subsea-drilling-platform')return reduced||editing?0:Math.floor(Math.max(0,time)*3)%8
  const rate=rates[id]

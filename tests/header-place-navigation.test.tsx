@@ -72,6 +72,13 @@ it('keeps sellable request counts without a market dot when no actual NEW remain
  expect(screen.getByRole('button',{name:'장터'}).querySelector('[data-category-activity]')).toBeNull()
 })
 async function open(name:string){fireEvent.click(screen.getByRole('button',{name,exact:true}));return screen.findByRole('menu',{name:name+' 메뉴'})}
+it.each([false,true])('shows pet preview only for operators: %s',async operator=>{
+ mock.operator=operator
+ render(<MemoryRouter initialEntries={['/pet-house-test']}><View/></MemoryRouter>)
+ const menu=await open('수집'),item=within(menu).queryByRole('menuitem',{name:/펫 하우스 테스트/})
+ expect(!!item).toBe(operator)
+ if(item){expect(item.getAttribute('href')).toBe('/pet-house-test');expect(item.textContent).toContain('운영자')}
+})
 async function close(menu:HTMLElement){fireEvent.keyDown(menu,{key:'Escape'});await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())}
 it('shows seven representative icons with visible labels and an active category',()=>{
  render(<MemoryRouter initialEntries={['/region/nyamnyam']}><View/></MemoryRouter>)

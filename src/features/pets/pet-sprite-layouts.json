@@ -1,0 +1,62 @@
+{
+  "sand-golem-idle": {
+    "cell": 480,
+    "anchor": [266, 228],
+    "scale": 1.5
+  },
+  "sand-golem-hungry": {
+    "cell": 799,
+    "anchor": [466, 386],
+    "scale": 1.1111111111111112
+  },
+  "sand-golem-happy": {
+    "cell": 468,
+    "anchor": [260, 216],
+    "scale": 1.6666666666666667
+  },
+  "wave-cat-idle": {
+    "cell": 468,
+    "anchor": [297, 217],
+    "scale": 1.5789473684210527
+  },
+  "wave-cat-hungry": {
+    "cell": 741,
+    "anchor": [457, 335],
+    "scale": 1.1111111111111112
+  },
+  "wave-cat-happy": {
+    "cell": 480,
+    "anchor": [295, 221],
+    "scale": 1.5789473684210527
+  },
+  "mochi-dragon-idle": {
+    "cell": 588,
+    "anchor": [264, 274],
+    "scale": 1.6666666666666667
+  },
+  "mochi-dragon-hungry": {
+    "cell": 683,
+    "anchor": [304, 306],
+    "scale": 1.1627906976744187
+  },
+  "mochi-dragon-happy": {
+    "cell": 520,
+    "anchor": [249, 246],
+    "scale": 1.6666666666666667
+  },
+  "jelly-seal-idle": {
+    "cell": 482,
+    "anchor": [218, 219],
+    "scale": 1.6853932584269662
+  },
+  "jelly-seal-hungry": {
+    "cell": 803,
+    "anchor": [380, 353],
+    "scale": 1.171875
+  },
+  "jelly-seal-happy": {
+    "cell": 462,
+    "anchor": [215, 205],
+    "scale": 1.6853932584269662
+  }
+}

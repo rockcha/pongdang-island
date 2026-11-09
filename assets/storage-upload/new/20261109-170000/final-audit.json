@@ -1,0 +1,744 @@
+{
+  "results": [
+    {
+      "id": "weather-spirit-bio",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-bio_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            301,
+            153,
+            754,
+            991
+          ],
+          "margin": 110,
+          "occupancy": 0.7902711323763956,
+          "opaque": 403543,
+          "transparent": 1015769,
+          "soft": 556365
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-bio",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-bio_swim8_v1_sprite.png",
+      "width": 1848,
+      "height": 924,
+      "cell": 462,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            104,
+            61,
+            249,
+            354
+          ],
+          "margin": 47,
+          "occupancy": 0.7662337662337663,
+          "opaque": 49867,
+          "transparent": 151819,
+          "soft": 61197
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            99,
+            61,
+            267,
+            354
+          ],
+          "margin": 47,
+          "occupancy": 0.7662337662337663,
+          "opaque": 50208,
+          "transparent": 147749,
+          "soft": 65280
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            101,
+            59,
+            294,
+            356
+          ],
+          "margin": 47,
+          "occupancy": 0.7705627705627706,
+          "opaque": 52530,
+          "transparent": 140731,
+          "soft": 72259
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            99,
+            58,
+            303,
+            357
+          ],
+          "margin": 47,
+          "occupancy": 0.7727272727272727,
+          "opaque": 52651,
+          "transparent": 144931,
+          "soft": 68073
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            98,
+            58,
+            310,
+            357
+          ],
+          "margin": 47,
+          "occupancy": 0.7727272727272727,
+          "opaque": 52976,
+          "transparent": 145027,
+          "soft": 68180
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            101,
+            60,
+            281,
+            356
+          ],
+          "margin": 46,
+          "occupancy": 0.7705627705627706,
+          "opaque": 51271,
+          "transparent": 143427,
+          "soft": 69760
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            99,
+            61,
+            254,
+            355
+          ],
+          "margin": 46,
+          "occupancy": 0.7683982683982684,
+          "opaque": 50858,
+          "transparent": 142371,
+          "soft": 70820
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            100,
+            61,
+            253,
+            355
+          ],
+          "margin": 46,
+          "occupancy": 0.7683982683982684,
+          "opaque": 50129,
+          "transparent": 149037,
+          "soft": 64132
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-seollu",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-seollu_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            199,
+            102,
+            971,
+            1051
+          ],
+          "margin": 84,
+          "occupancy": 0.8381180223285486,
+          "opaque": 456575,
+          "transparent": 1055314,
+          "soft": 516746
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-seollu",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-seollu_swim8_v1_sprite.png",
+      "width": 1848,
+      "height": 924,
+      "cell": 462,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            119,
+            95,
+            255,
+            277
+          ],
+          "margin": 88,
+          "occupancy": 0.5995670995670995,
+          "opaque": 34183,
+          "transparent": 165348,
+          "soft": 47853
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            120,
+            85,
+            253,
+            287
+          ],
+          "margin": 85,
+          "occupancy": 0.6212121212121212,
+          "opaque": 34956,
+          "transparent": 160648,
+          "soft": 52511
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            121,
+            82,
+            255,
+            290
+          ],
+          "margin": 82,
+          "occupancy": 0.6277056277056277,
+          "opaque": 36571,
+          "transparent": 158751,
+          "soft": 54415
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            119,
+            85,
+            256,
+            287
+          ],
+          "margin": 85,
+          "occupancy": 0.6212121212121212,
+          "opaque": 36409,
+          "transparent": 158986,
+          "soft": 54128
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            119,
+            91,
+            255,
+            281
+          ],
+          "margin": 88,
+          "occupancy": 0.6082251082251082,
+          "opaque": 34723,
+          "transparent": 166089,
+          "soft": 47197
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            120,
+            93,
+            254,
+            279
+          ],
+          "margin": 88,
+          "occupancy": 0.6038961038961039,
+          "opaque": 34849,
+          "transparent": 160651,
+          "soft": 52626
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            120,
+            93,
+            254,
+            279
+          ],
+          "margin": 88,
+          "occupancy": 0.6038961038961039,
+          "opaque": 34655,
+          "transparent": 158724,
+          "soft": 54531
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            120,
+            94,
+            255,
+            278
+          ],
+          "margin": 87,
+          "occupancy": 0.6017316017316018,
+          "opaque": 34602,
+          "transparent": 162746,
+          "soft": 50534
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-saha",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-saha_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            175,
+            77,
+            974,
+            1098
+          ],
+          "margin": 77,
+          "occupancy": 0.8755980861244019,
+          "opaque": 550389,
+          "transparent": 861177,
+          "soft": 710941
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-saha",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-saha_swim8_v1_sprite.png",
+      "width": 1848,
+      "height": 924,
+      "cell": 462,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            120,
+            92,
+            250,
+            289
+          ],
+          "margin": 81,
+          "occupancy": 0.6255411255411255,
+          "opaque": 36543,
+          "transparent": 160384,
+          "soft": 52919
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            121,
+            92,
+            248,
+            289
+          ],
+          "margin": 81,
+          "occupancy": 0.6255411255411255,
+          "opaque": 36442,
+          "transparent": 155224,
+          "soft": 58101
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            119,
+            90,
+            260,
+            291
+          ],
+          "margin": 81,
+          "occupancy": 0.6298701298701299,
+          "opaque": 37623,
+          "transparent": 151794,
+          "soft": 61548
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            117,
+            91,
+            252,
+            291
+          ],
+          "margin": 80,
+          "occupancy": 0.6298701298701299,
+          "opaque": 37177,
+          "transparent": 153958,
+          "soft": 59381
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            120,
+            93,
+            249,
+            288
+          ],
+          "margin": 81,
+          "occupancy": 0.6233766233766234,
+          "opaque": 36422,
+          "transparent": 154692,
+          "soft": 58568
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            121,
+            93,
+            268,
+            288
+          ],
+          "margin": 73,
+          "occupancy": 0.6233766233766234,
+          "opaque": 36985,
+          "transparent": 149097,
+          "soft": 64221
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            119,
+            93,
+            257,
+            288
+          ],
+          "margin": 81,
+          "occupancy": 0.6233766233766234,
+          "opaque": 36859,
+          "transparent": 149656,
+          "soft": 63640
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            120,
+            93,
+            249,
+            288
+          ],
+          "margin": 81,
+          "occupancy": 0.6233766233766234,
+          "opaque": 36525,
+          "transparent": 148998,
+          "soft": 64287
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-luon",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-luon_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            275,
+            86,
+            829,
+            1099
+          ],
+          "margin": 69,
+          "occupancy": 0.8763955342902712,
+          "opaque": 408079,
+          "transparent": 1098288,
+          "soft": 473798
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-luon",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-luon_swim8_v1_sprite.png",
+      "width": 1848,
+      "height": 924,
+      "cell": 462,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            150,
+            107,
+            193,
+            248
+          ],
+          "margin": 107,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22729,
+          "transparent": 176235,
+          "soft": 37124
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            150,
+            107,
+            191,
+            248
+          ],
+          "margin": 107,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22610,
+          "transparent": 173663,
+          "soft": 39710
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            150,
+            107,
+            192,
+            248
+          ],
+          "margin": 107,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22660,
+          "transparent": 168514,
+          "soft": 44854
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            149,
+            107,
+            197,
+            248
+          ],
+          "margin": 107,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22652,
+          "transparent": 173345,
+          "soft": 40023
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            150,
+            107,
+            192,
+            248
+          ],
+          "margin": 107,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22622,
+          "transparent": 177776,
+          "soft": 35552
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            151,
+            106,
+            191,
+            248
+          ],
+          "margin": 106,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22458,
+          "transparent": 171812,
+          "soft": 41512
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            150,
+            106,
+            192,
+            248
+          ],
+          "margin": 106,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22610,
+          "transparent": 163789,
+          "soft": 49547
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            150,
+            106,
+            192,
+            248
+          ],
+          "margin": 106,
+          "occupancy": 0.5367965367965368,
+          "opaque": 22509,
+          "transparent": 173725,
+          "soft": 39601
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-hwarin",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-hwarin_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            188,
+            76,
+            880,
+            1122
+          ],
+          "margin": 56,
+          "occupancy": 0.8947368421052632,
+          "opaque": 519756,
+          "transparent": 1022357,
+          "soft": 549363
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-spirit-hwarin",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-170000\\fish\\mythic\\weather-spirit-hwarin_swim8_v1_sprite.png",
+      "width": 1976,
+      "height": 988,
+      "cell": 494,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            146,
+            118,
+            220,
+            285
+          ],
+          "margin": 91,
+          "occupancy": 0.5769230769230769,
+          "opaque": 33760,
+          "transparent": 186632,
+          "soft": 57273
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            144,
+            117,
+            223,
+            285
+          ],
+          "margin": 92,
+          "occupancy": 0.5769230769230769,
+          "opaque": 34478,
+          "transparent": 184712,
+          "soft": 59216
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            142,
+            118,
+            225,
+            285
+          ],
+          "margin": 91,
+          "occupancy": 0.5769230769230769,
+          "opaque": 35038,
+          "transparent": 185397,
+          "soft": 58501
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            145,
+            118,
+            222,
+            285
+          ],
+          "margin": 91,
+          "occupancy": 0.5769230769230769,
+          "opaque": 34244,
+          "transparent": 185004,
+          "soft": 58940
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            143,
+            117,
+            223,
+            290
+          ],
+          "margin": 87,
+          "occupancy": 0.5870445344129555,
+          "opaque": 35175,
+          "transparent": 179754,
+          "soft": 64147
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            144,
+            117,
+            227,
+            289
+          ],
+          "margin": 88,
+          "occupancy": 0.5850202429149798,
+          "opaque": 36392,
+          "transparent": 178430,
+          "soft": 65494
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            141,
+            117,
+            227,
+            290
+          ],
+          "margin": 87,
+          "occupancy": 0.5870445344129555,
+          "opaque": 35647,
+          "transparent": 179035,
+          "soft": 64904
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            145,
+            117,
+            224,
+            289
+          ],
+          "margin": 88,
+          "occupancy": 0.5850202429149798,
+          "opaque": 35838,
+          "transparent": 177777,
+          "soft": 66191
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+.pet-preview {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 22px 16px 48px;
+  color: var(--foreground);
+  font-size: 13px;
+}
+.pet-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.pet-heading h2 {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+  font-weight: 700;
+}
+.pet-heading p,
+.pet-note,
+.pet-tools p {
+  color: var(--muted-foreground);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.pet-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+}
+.pet-wallet {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  flex-shrink: 0;
+}
+.pet-wallet small {
+  font-size: 10px;
+  color: var(--muted-foreground);
+}
+.pet-wallet strong {
+  font-size: 15px;
+}
+.pet-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 18px;
+}
+.pet-preview button {
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+  min-height: 40px;
+  transition: background 0.15s;
+}
+.pet-preview button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pet-preview button:focus-visible,
+.pet-preview summary:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+.pet-tabs button {
+  flex: 1;
+  border-radius: 0;
+  padding: 12px 3px;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  font-size: 12px;
+}
+.pet-tabs button[aria-current] {
+  color: var(--foreground);
+  border-bottom: 2px solid var(--primary);
+  font-weight: 700;
+}
+.pet-tabs small {
+  font-size: 9px;
+}
+.pet-stage {
+  height: 300px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 50% 90%, #d5cab72b 0%, transparent 53%),
+    linear-gradient(145deg, #e9dfca30, #e6eee230);
+  overflow: hidden;
+}
+.pet-stage:before {
+  content: '';
+  position: absolute;
+  width: 190px;
+  height: 27px;
+  border-radius: 50%;
+  bottom: 32px;
+  background: #a89a8317;
+  filter: blur(4px);
+}
+.pet-art {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  position: relative;
+}
+.pet-grade {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  border: 1px solid #c6b69b66;
+  border-radius: 8px;
+  padding: 3px 9px;
+  color: var(--muted-foreground);
+  font-size: 10px;
+}
+.pet-stage-caption {
+  position: absolute;
+  bottom: 12px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.pet-care-panel {
+  padding: 20px 6px 0;
+}
+.pet-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pet-name h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.pet-name p {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  margin-top: 3px;
+}
+.pet-name button {
+  color: var(--muted-foreground);
+}
+.pet-gauges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 22px 0;
+}
+.pet-gauge > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.pet-gauge small {
+  font-size: 9px;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+.pet-gauge progress {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 7px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pet-gauge progress::-webkit-progress-bar {
+  background: var(--secondary);
+}
+.pet-gauge progress::-webkit-progress-value {
+  background: #dda976;
+  border-radius: 8px;
+}
+.pet-gauge.affection progress::-webkit-progress-value {
+  background: #d997a6;
+}
+.pet-gauge progress::-moz-progress-bar {
+  background: #dda976;
+}
+.pet-gauge.affection progress::-moz-progress-bar {
+  background: #d997a6;
+}
+.pet-care-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.pet-care-buttons button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  padding: 16px 2px;
+  background: var(--secondary);
+  font-size: 11px;
+}
+.pet-care-buttons svg {
+  stroke-width: 1.5;
+  color: var(--muted-foreground);
+}
+.pet-feed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  border: 1px solid var(--border);
+  margin: 15px 0 9px;
+}
+.pet-feed span {
+  font-size: 10px;
+  color: var(--muted-foreground);
+}
+.pet-care-panel > .pet-note {
+  text-align: center;
+}
+.pet-away {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 20px;
+}
+.pet-away svg {
+  color: var(--muted-foreground);
+  stroke-width: 1.2;
+}
+.pet-away p {
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.pet-away button,
+.pet-job button,
+.pet-shop-card button {
+  background: var(--secondary);
+}
+.pet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pet-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0 16px;
+}
+.pet-row > img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+.pet-row-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-wrap: anywhere;
+}
+.pet-row-copy small {
+  font-size: 10px;
+  color: var(--muted-foreground);
+}
+.pet-inline-grade {
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+.pet-row-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.pet-row-actions button {
+  font-size: 10px;
+  padding: 5px 9px;
+  min-height: 33px;
+}
+.pet-row-actions button:first-child {
+  background: var(--secondary);
+}
+.pet-job {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.pet-job p,
+.pet-shop-card p {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  margin: 7px 0;
+  line-height: 1.7;
+}
+.pet-job small {
+  font-size: 11px;
+}
+.pet-job button {
+  flex-shrink: 0;
+  font-size: 11px;
+}
+.pet-shop-card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+.pet-shop-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.pet-shop-card > strong {
+  display: block;
+  font-size: 20px;
+  margin: 15px 0 8px;
+}
+.pet-shop-card button {
+  width: 100%;
+  margin-top: 8px;
+}
+.pet-feedback {
+  min-height: 45px;
+  padding: 16px 0;
+  font-size: 11px;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+.pet-catch {
+  padding: 15px;
+  background: var(--secondary);
+  border-radius: 10px;
+}
+.pet-tools {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.pet-tools summary {
+  cursor: pointer;
+  padding: 6px 0;
+}
+.pet-tools p {
+  margin: 12px 0;
+}
+.pet-tool-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 12px 0;
+}
+.pet-tools button {
+  font-size: 10px;
+  border: 1px solid var(--border);
+  padding: 6px 9px;
+  min-height: 34px;
+}
+.pet-tools label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pet-tools select {
+  padding: 7px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.pet-modal {
+  width: 100%;
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pet-modal h3 {
+  font-size: 17px;
+  font-weight: 700;
+}
+.pet-modal input {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 100%;
+}
+.pet-modal small {
+  color: var(--muted-foreground);
+}
+.pet-modal > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.pet-modal button:last-child {
+  background: var(--secondary);
+}
+.pet-modal button {
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-height: 40px;
+  cursor: pointer;
+}
+@media (max-width: 380px) {
+  .pet-preview {
+    padding: 16px 10px 40px;
+  }
+  .pet-heading h2 {
+    font-size: 19px;
+  }
+  .pet-heading p {
+    font-size: 10px;
+  }
+  .pet-wallet strong {
+    font-size: 12px;
+  }
+  .pet-gauges {
+    gap: 16px;
+  }
+  .pet-feed {
+    font-size: 11px !important;
+  }
+  .pet-stage {
+    height: 280px;
+  }
+  .pet-art {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* Reserve the controls first; the portrait takes the remaining viewport. */
+.app-shell.pet-preview-shell { max-width: 1000px; }
+.pet-preview {
+  max-width: 940px;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px 8px;
+  gap: 8px;
+}
+.pet-heading { margin: 0; flex-shrink: 0; }
+.pet-heading h2 { font-size: 19px; margin: 2px 0; }
+.pet-tabs { margin: 0; flex-shrink: 0; }
+.pet-preview button { min-height: 44px; }
+.pet-home { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.pet-stage { height: 100%; min-height: 0; container-type: size; }
+.pet-stage .pet-art, .pet-stage .pet-care-fx { width: min(100cqw, 100cqh, 420px); height: min(100cqw, 100cqh, 420px); }
+.pet-care-panel { padding: 0; min-width: 0; }
+.pet-gauges { margin: 18px 0; }
+.pet-care-buttons button { padding: 12px 2px; gap: 6px; }
+.pet-feed { margin: 12px 0 0; }
+.pet-feedback { min-height: 18px; padding: 0; font-size: 10px; line-height: 18px; flex-shrink: 0; }
+.pet-tools-trigger { align-self: flex-end; color: var(--muted-foreground); font-size: 10px !important; padding: 0 8px !important; flex-shrink: 0; }
+.pet-tools-dialog { max-height: calc(100dvh - 48px); overflow-y: auto; }
+.pet-roster-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.pet-row { display: grid; grid-template-columns: 36px minmax(0,1fr); border: 1px solid var(--border); border-radius: 16px; padding: 8px; gap: 6px; }
+.pet-row > img { width: 36px; height: 44px; }
+.pet-row-copy { min-width: 0; gap: 2px; }
+.pet-row-copy > strong { font-size: 12px; }
+.pet-row-copy > small { font-size: 9px; }
+.pet-row-copy > small:first-of-type { display: none; }
+.pet-row-actions { grid-column: 1 / -1; }
+.pet-row-actions { width: 100%; flex-direction: row; justify-content: space-between; }
+.pet-row-actions button { min-height: 44px; }
+.pet-pagination { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 11px; }
+.pet-list { gap: 8px; min-height: 0; }
+.pet-shop-card { padding: 12px 16px; position: relative; }
+.pet-shop-card h3 { font-size: 14px; margin: 2px 0; }
+.pet-shop-card > strong { font-size: 14px; margin: 3px 0; }
+.pet-shop-card p { margin: 2px 0; font-size: 10px; }
+.pet-shop-card > .pet-eyebrow { display: none; }
+.pet-shop-card button { width: auto; position: absolute; right: 12px; top: 8px; margin: 0; }
+.pet-shop-card > p:not(.pet-note) { display: none; }
+.pet-catch { padding: 8px; font-size: 11px; }
+@media (max-width: 639px) {
+  .pet-preview { padding: 10px 12px 4px; gap: 6px; }
+  .pet-home { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+  .pet-stage { flex: 1; width: 100%; }
+  .pet-care-panel { flex-shrink: 0; }
+  .pet-name h3 { font-size: 17px; }
+  .pet-name p { display: none; }
+  .pet-gauges { margin: 8px 0 12px; gap: 18px; }
+  .pet-gauge > div { margin-bottom: 5px; }
+  .pet-care-buttons button { padding: 9px 1px; font-size: 10px; }
+  .pet-feed { margin-top: 8px; }
+  .pet-stage-caption { bottom: 6px; font-size: 10px; }
+  .pet-heading h2 { font-size: 17px; }
+  .pet-list > .pet-note { font-size: 10px; line-height: 1.5; }
+}
+.pet-preview .pet-jobs-panel { gap: 8px; min-height: 0; }
+.pet-preview .pet-job-option { padding: 6px 0; }
+.pet-preview .pet-job-option > button { min-height: 44px !important; }
+.pet-preview .pet-job-intro > p { margin-top: 2px; }
+.pet-preview .pet-job-conditions { margin-top: 6px; }
+.pet-preview .pet-job-intro h3 { font-size: 14px; }
+.pet-preview .pet-job-guide { padding: 4px; border: 0; min-height: 44px; }
+.pet-preview .pet-job-option-meta { margin-top: 2px; }
+@media (max-height: 740px) {
+  .pet-preview .pet-job-intro > p:not(.pet-job-needs) { display: none; }
+  .pet-preview .pet-job-option { padding: 2px 0; }
+  .pet-preview .pet-job-thumb { width: 36px; height: 36px; }
+  .pet-preview .pet-job-options > h4 { display: none; }
+  .pet-preview .pet-work-countdown { padding: 14px 0; }
+  .pet-preview .pet-work-card { padding: 14px; }
+}

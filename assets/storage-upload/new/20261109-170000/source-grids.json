@@ -1,0 +1,407 @@
+[
+  {
+    "id": "weather-spirit-bio",
+    "storage_path": "fish/mythic/weather-spirit-bio_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-170000/normalized/weather-spirit-bio.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 95,
+        "top": 52,
+        "width": 249,
+        "height": 354,
+        "margin": 38,
+        "opaque": 49867
+      },
+      {
+        "frame": 1,
+        "left": 90,
+        "top": 52,
+        "width": 267,
+        "height": 354,
+        "margin": 38,
+        "opaque": 50208
+      },
+      {
+        "frame": 2,
+        "left": 92,
+        "top": 50,
+        "width": 294,
+        "height": 356,
+        "margin": 38,
+        "opaque": 52530
+      },
+      {
+        "frame": 3,
+        "left": 90,
+        "top": 49,
+        "width": 303,
+        "height": 357,
+        "margin": 38,
+        "opaque": 52651
+      },
+      {
+        "frame": 4,
+        "left": 89,
+        "top": 49,
+        "width": 310,
+        "height": 357,
+        "margin": 38,
+        "opaque": 52976
+      },
+      {
+        "frame": 5,
+        "left": 92,
+        "top": 50,
+        "width": 281,
+        "height": 356,
+        "margin": 38,
+        "opaque": 51271
+      },
+      {
+        "frame": 6,
+        "left": 90,
+        "top": 51,
+        "width": 254,
+        "height": 355,
+        "margin": 38,
+        "opaque": 50858
+      },
+      {
+        "frame": 7,
+        "left": 91,
+        "top": 51,
+        "width": 253,
+        "height": 355,
+        "margin": 38,
+        "opaque": 50129
+      }
+    ]
+  },
+  {
+    "id": "weather-spirit-seollu",
+    "storage_path": "fish/mythic/weather-spirit-seollu_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-170000/normalized/weather-spirit-seollu.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 110,
+        "top": 86,
+        "width": 255,
+        "height": 277,
+        "margin": 79,
+        "opaque": 34183
+      },
+      {
+        "frame": 1,
+        "left": 110,
+        "top": 76,
+        "width": 253,
+        "height": 287,
+        "margin": 76,
+        "opaque": 34956
+      },
+      {
+        "frame": 2,
+        "left": 111,
+        "top": 73,
+        "width": 255,
+        "height": 290,
+        "margin": 73,
+        "opaque": 36571
+      },
+      {
+        "frame": 3,
+        "left": 109,
+        "top": 76,
+        "width": 256,
+        "height": 287,
+        "margin": 76,
+        "opaque": 36409
+      },
+      {
+        "frame": 4,
+        "left": 110,
+        "top": 81,
+        "width": 255,
+        "height": 281,
+        "margin": 79,
+        "opaque": 34723
+      },
+      {
+        "frame": 5,
+        "left": 110,
+        "top": 83,
+        "width": 254,
+        "height": 279,
+        "margin": 80,
+        "opaque": 34849
+      },
+      {
+        "frame": 6,
+        "left": 111,
+        "top": 83,
+        "width": 254,
+        "height": 279,
+        "margin": 79,
+        "opaque": 34655
+      },
+      {
+        "frame": 7,
+        "left": 110,
+        "top": 84,
+        "width": 255,
+        "height": 278,
+        "margin": 79,
+        "opaque": 34602
+      }
+    ]
+  },
+  {
+    "id": "weather-spirit-saha",
+    "storage_path": "fish/mythic/weather-spirit-saha_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-170000/normalized/weather-spirit-saha.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 111,
+        "top": 83,
+        "width": 250,
+        "height": 289,
+        "margin": 72,
+        "opaque": 36543
+      },
+      {
+        "frame": 1,
+        "left": 111,
+        "top": 83,
+        "width": 248,
+        "height": 289,
+        "margin": 72,
+        "opaque": 36442
+      },
+      {
+        "frame": 2,
+        "left": 110,
+        "top": 81,
+        "width": 260,
+        "height": 291,
+        "margin": 72,
+        "opaque": 37623
+      },
+      {
+        "frame": 3,
+        "left": 108,
+        "top": 82,
+        "width": 252,
+        "height": 291,
+        "margin": 71,
+        "opaque": 37177
+      },
+      {
+        "frame": 4,
+        "left": 111,
+        "top": 84,
+        "width": 249,
+        "height": 288,
+        "margin": 72,
+        "opaque": 36422
+      },
+      {
+        "frame": 5,
+        "left": 111,
+        "top": 84,
+        "width": 268,
+        "height": 288,
+        "margin": 65,
+        "opaque": 36985
+      },
+      {
+        "frame": 6,
+        "left": 110,
+        "top": 84,
+        "width": 257,
+        "height": 288,
+        "margin": 72,
+        "opaque": 36859
+      },
+      {
+        "frame": 7,
+        "left": 110,
+        "top": 84,
+        "width": 249,
+        "height": 288,
+        "margin": 72,
+        "opaque": 36525
+      }
+    ]
+  },
+  {
+    "id": "weather-spirit-luon",
+    "storage_path": "fish/mythic/weather-spirit-luon_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-170000/normalized/weather-spirit-luon.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 141,
+        "top": 98,
+        "width": 193,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22729
+      },
+      {
+        "frame": 1,
+        "left": 141,
+        "top": 98,
+        "width": 191,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22610
+      },
+      {
+        "frame": 2,
+        "left": 141,
+        "top": 98,
+        "width": 192,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22660
+      },
+      {
+        "frame": 3,
+        "left": 140,
+        "top": 98,
+        "width": 197,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22652
+      },
+      {
+        "frame": 4,
+        "left": 141,
+        "top": 98,
+        "width": 192,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22622
+      },
+      {
+        "frame": 5,
+        "left": 141,
+        "top": 98,
+        "width": 191,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22458
+      },
+      {
+        "frame": 6,
+        "left": 141,
+        "top": 98,
+        "width": 192,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22610
+      },
+      {
+        "frame": 7,
+        "left": 140,
+        "top": 98,
+        "width": 192,
+        "height": 248,
+        "margin": 98,
+        "opaque": 22509
+      }
+    ]
+  },
+  {
+    "id": "weather-spirit-hwarin",
+    "storage_path": "fish/mythic/weather-spirit-hwarin_swim8_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-170000/normalized/weather-spirit-hwarin.png",
+    "cell": 444,
+    "frames": 8,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 121,
+        "top": 93,
+        "width": 220,
+        "height": 285,
+        "margin": 66,
+        "opaque": 33760
+      },
+      {
+        "frame": 1,
+        "left": 112,
+        "top": 93,
+        "width": 223,
+        "height": 285,
+        "margin": 66,
+        "opaque": 34478
+      },
+      {
+        "frame": 2,
+        "left": 103,
+        "top": 93,
+        "width": 225,
+        "height": 285,
+        "margin": 66,
+        "opaque": 35038
+      },
+      {
+        "frame": 3,
+        "left": 103,
+        "top": 93,
+        "width": 222,
+        "height": 285,
+        "margin": 66,
+        "opaque": 34244
+      },
+      {
+        "frame": 4,
+        "left": 116,
+        "top": 88,
+        "width": 223,
+        "height": 290,
+        "margin": 66,
+        "opaque": 35175
+      },
+      {
+        "frame": 5,
+        "left": 111,
+        "top": 89,
+        "width": 227,
+        "height": 289,
+        "margin": 66,
+        "opaque": 36392
+      },
+      {
+        "frame": 6,
+        "left": 104,
+        "top": 88,
+        "width": 227,
+        "height": 290,
+        "margin": 66,
+        "opaque": 35647
+      },
+      {
+        "frame": 7,
+        "left": 103,
+        "top": 89,
+        "width": 224,
+        "height": 289,
+        "margin": 66,
+        "opaque": 35838
+      }
+    ]
+  }
+]

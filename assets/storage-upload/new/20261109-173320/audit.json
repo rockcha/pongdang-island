@@ -1,0 +1,464 @@
+{
+  "results": [
+    {
+      "id": "weather-deco-rain-window",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-rain-window-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            205,
+            136,
+            826,
+            931
+          ],
+          "margin": 136,
+          "occupancy": 0.7424242424242424,
+          "opaque": 547438,
+          "transparent": 1009294,
+          "soft": 563029
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-rain-window",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-rain-window-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            114,
+            78,
+            411,
+            458
+          ],
+          "margin": 78,
+          "occupancy": 0.7304625199362041,
+          "opaque": 134269,
+          "transparent": 242750,
+          "soft": 149889
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            114,
+            78,
+            411,
+            458
+          ],
+          "margin": 78,
+          "occupancy": 0.7304625199362041,
+          "opaque": 134222,
+          "transparent": 245819,
+          "soft": 146792
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            114,
+            78,
+            411,
+            458
+          ],
+          "margin": 78,
+          "occupancy": 0.7304625199362041,
+          "opaque": 134203,
+          "transparent": 241873,
+          "soft": 150768
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            114,
+            78,
+            411,
+            458
+          ],
+          "margin": 78,
+          "occupancy": 0.7304625199362041,
+          "opaque": 134232,
+          "transparent": 240622,
+          "soft": 152001
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-snow-frame",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-snow-frame-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            286,
+            84,
+            653,
+            1032
+          ],
+          "margin": 84,
+          "occupancy": 0.8229665071770335,
+          "opaque": 515916,
+          "transparent": 1024212,
+          "soft": 547853
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-snow-frame",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-snow-frame-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            174,
+            59,
+            305,
+            476
+          ],
+          "margin": 59,
+          "occupancy": 0.759170653907496,
+          "opaque": 109919,
+          "transparent": 277480,
+          "soft": 115301
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            174,
+            59,
+            305,
+            476
+          ],
+          "margin": 59,
+          "occupancy": 0.759170653907496,
+          "opaque": 109828,
+          "transparent": 275843,
+          "soft": 116950
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            174,
+            59,
+            305,
+            475
+          ],
+          "margin": 59,
+          "occupancy": 0.7575757575757576,
+          "opaque": 109940,
+          "transparent": 276770,
+          "soft": 116045
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            174,
+            59,
+            305,
+            476
+          ],
+          "margin": 59,
+          "occupancy": 0.759170653907496,
+          "opaque": 109922,
+          "transparent": 275626,
+          "soft": 117160
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-sand-scales",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-sand-scales-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            172,
+            84,
+            916,
+            1055
+          ],
+          "margin": 84,
+          "occupancy": 0.8413078149920256,
+          "opaque": 396619,
+          "transparent": 1099263,
+          "soft": 473072
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-sand-scales",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-sand-scales-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            135,
+            89,
+            364,
+            428
+          ],
+          "margin": 89,
+          "occupancy": 0.682615629984051,
+          "opaque": 68339,
+          "transparent": 307588,
+          "soft": 84806
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            133,
+            89,
+            362,
+            428
+          ],
+          "margin": 89,
+          "occupancy": 0.682615629984051,
+          "opaque": 67976,
+          "transparent": 309106,
+          "soft": 83206
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            133,
+            90,
+            361,
+            427
+          ],
+          "margin": 90,
+          "occupancy": 0.6810207336523126,
+          "opaque": 67619,
+          "transparent": 308183,
+          "soft": 84206
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            134,
+            90,
+            361,
+            427
+          ],
+          "margin": 90,
+          "occupancy": 0.6810207336523126,
+          "opaque": 67730,
+          "transparent": 309784,
+          "soft": 82508
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-night-winder",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-night-winder-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            270,
+            72,
+            772,
+            1087
+          ],
+          "margin": 72,
+          "occupancy": 0.8668261562998405,
+          "opaque": 446960,
+          "transparent": 1072264,
+          "soft": 499877
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-night-winder",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-night-winder-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            153,
+            78,
+            360,
+            501
+          ],
+          "margin": 48,
+          "occupancy": 0.7990430622009569,
+          "opaque": 97396,
+          "transparent": 276094,
+          "soft": 116827
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            128,
+            78,
+            343,
+            501
+          ],
+          "margin": 48,
+          "occupancy": 0.7990430622009569,
+          "opaque": 97320,
+          "transparent": 276794,
+          "soft": 116166
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            153,
+            57,
+            360,
+            500
+          ],
+          "margin": 57,
+          "occupancy": 0.7974481658692185,
+          "opaque": 95934,
+          "transparent": 277940,
+          "soft": 115061
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            128,
+            57,
+            352,
+            500
+          ],
+          "margin": 57,
+          "occupancy": 0.7974481658692185,
+          "opaque": 96877,
+          "transparent": 275401,
+          "soft": 117580
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-spring-perfume",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-spring-perfume-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            297,
+            75,
+            684,
+            1078
+          ],
+          "margin": 75,
+          "occupancy": 0.8596491228070176,
+          "opaque": 383227,
+          "transparent": 1174696,
+          "soft": 397357
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-spring-perfume",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\sources\\weather-deco-spring-perfume-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            178,
+            90,
+            292,
+            470
+          ],
+          "margin": 67,
+          "occupancy": 0.7496012759170654,
+          "opaque": 75017,
+          "transparent": 304677,
+          "soft": 88249
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            126,
+            90,
+            300,
+            470
+          ],
+          "margin": 67,
+          "occupancy": 0.7496012759170654,
+          "opaque": 75733,
+          "transparent": 300879,
+          "soft": 92013
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            178,
+            64,
+            310,
+            470
+          ],
+          "margin": 64,
+          "occupancy": 0.7496012759170654,
+          "opaque": 77248,
+          "transparent": 298052,
+          "soft": 94871
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            126,
+            64,
+            321,
+            470
+          ],
+          "margin": 64,
+          "occupancy": 0.7496012759170654,
+          "opaque": 78836,
+          "transparent": 291466,
+          "soft": 101389
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

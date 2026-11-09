@@ -1,0 +1,77 @@
+{
+  "tool": "image_gen.imagegen",
+  "status": "locally-verified",
+  "purpose": "Quiet seated idle; slow breathing and occasional blink only",
+  "items": [
+    {
+      "id": "sand-golem-idle",
+      "pet_id": "sand-golem",
+      "frames": 8,
+      "columns": 4,
+      "sprite_sheet_path": "pets/sand-golem_idle8_v2_sprite.png",
+      "reference": "public/pets/sand-golem_v1_thumbnail.png",
+      "prompt": "Use case: identity-preserve. Redraw the approved pet in reference image into ONE CALM IDLE GAME SPRITE SHEET: FOUR columns, TWO rows, EIGHT equally sized SQUARE cells, landscape canvas aspect 2:1. A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes. Exact same rendering, identity, seated pose and colors as reference. The pet is resting peacefully, not performing. All paws, feet, hands, wings, tail, sprout, ears and flippers rest in exactly the SAME position across all eight frames. LOCK face, nose, head size, feet, baseline and overall silhouette. NO waving, licking, clapping, yawning, bouncing, head tilting, wing spreading or changing mouth. NO full-body translation or zoom. Upper row frames0,1,2,3: eyes fully open in ALL FOUR; the ONLY motion is an extremely subtle 1 percent lower chest/belly breathing expansion, progressively neutral, tiny inhale, halfway inhale, full tiny inhale. Breathing should be almost imperceptible, never big squashing or changing head size. Lower row frame4: original neutral eyes fully open, frame5: neutral body same but eyes HALF CLOSED, frame6: neutral body same but BOTH eyes fully CLOSED in a gentle blink, frame7: neutral body same but eyes HALF OPEN recovering. Lower row all limbs, head and chest identical to frame0, change ONLY eyelids. Eyes closed are simple relaxed lids, no huge smile. Tiny micro breathing plus a restrained blink, suitable for quiet slow 6-second breathing and occasional blinking, NOT a cartoon action loop. Entire complete pet must occupy central 60% of EACH cell with at least 15% true transparent margin on EVERY side. Keep all eight faces and feet at identical x/y cell coordinates. Clean thin warm colored outlines and soft refined cartoon shading. Actual transparent background, no shadow, no floor, no checkerboard, no grid, no text, no effects, no detached particles or halo.",
+      "source_sprite": "sources/sand-golem-idle-sprite.source",
+      "source_sha256": "55a1d57d009a37cc9b7e1e76f7a7b7ba2077a77b3f7ae62f601fa011a870e6fd",
+      "sprite_sha256": "3a3c29bd06ded3aea3f8913d378a71ed8faef736a342e0beac6c59df9446919c",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "wave-cat-idle",
+      "pet_id": "wave-cat",
+      "frames": 8,
+      "columns": 4,
+      "sprite_sheet_path": "pets/wave-cat_idle8_v2_sprite.png",
+      "reference": "public/pets/wave-cat_v1_thumbnail.png",
+      "prompt": "Use case: identity-preserve. Redraw the approved pet in reference image into ONE CALM IDLE GAME SPRITE SHEET: FOUR columns, TWO rows, EIGHT equally sized SQUARE cells, landscape canvas aspect 2:1. A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body. Exact same rendering, identity, seated pose and colors as reference. The pet is resting peacefully, not performing. All paws, feet, hands, wings, tail, sprout, ears and flippers rest in exactly the SAME position across all eight frames. LOCK face, nose, head size, feet, baseline and overall silhouette. NO waving, licking, clapping, yawning, bouncing, head tilting, wing spreading or changing mouth. NO full-body translation or zoom. Upper row frames0,1,2,3: eyes fully open in ALL FOUR; the ONLY motion is an extremely subtle 1 percent lower chest/belly breathing expansion, progressively neutral, tiny inhale, halfway inhale, full tiny inhale. Breathing should be almost imperceptible, never big squashing or changing head size. Lower row frame4: original neutral eyes fully open, frame5: neutral body same but eyes HALF CLOSED, frame6: neutral body same but BOTH eyes fully CLOSED in a gentle blink, frame7: neutral body same but eyes HALF OPEN recovering. Lower row all limbs, head and chest identical to frame0, change ONLY eyelids. Eyes closed are simple relaxed lids, no huge smile. Tiny micro breathing plus a restrained blink, suitable for quiet slow 6-second breathing and occasional blinking, NOT a cartoon action loop. Entire complete pet must occupy central 60% of EACH cell with at least 15% true transparent margin on EVERY side. Keep all eight faces and feet at identical x/y cell coordinates. Clean thin warm colored outlines and soft refined cartoon shading. Actual transparent background, no shadow, no floor, no checkerboard, no grid, no text, no effects, no detached particles or halo.",
+      "source_sprite": "sources/wave-cat-idle-sprite.source",
+      "source_sha256": "9cf828a67bb651f669d076657503df7d289f191476824370844fdea8deeb8638",
+      "sprite_sha256": "4035e0f64195f55b986bf5467f5bbeffa23f0fd7a60378652cb280641a3f8836",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "mochi-dragon-idle",
+      "pet_id": "mochi-dragon",
+      "frames": 8,
+      "columns": 4,
+      "sprite_sheet_path": "pets/mochi-dragon_idle8_v2_sprite.png",
+      "reference": "public/pets/mochi-dragon_v1_thumbnail.png",
+      "prompt": "Use case: identity-preserve. Redraw the approved pet in reference image into ONE CALM IDLE GAME SPRITE SHEET: FOUR columns, TWO rows, EIGHT equally sized SQUARE cells, landscape canvas aspect 2:1. A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes. Exact same rendering, identity, seated pose and colors as reference. The pet is resting peacefully, not performing. All paws, feet, hands, wings, tail, sprout, ears and flippers rest in exactly the SAME position across all eight frames. LOCK face, nose, head size, feet, baseline and overall silhouette. NO waving, licking, clapping, yawning, bouncing, head tilting, wing spreading or changing mouth. NO full-body translation or zoom. Upper row frames0,1,2,3: eyes fully open in ALL FOUR; the ONLY motion is an extremely subtle 1 percent lower chest/belly breathing expansion, progressively neutral, tiny inhale, halfway inhale, full tiny inhale. Breathing should be almost imperceptible, never big squashing or changing head size. Lower row frame4: original neutral eyes fully open, frame5: neutral body same but eyes HALF CLOSED, frame6: neutral body same but BOTH eyes fully CLOSED in a gentle blink, frame7: neutral body same but eyes HALF OPEN recovering. Lower row all limbs, head and chest identical to frame0, change ONLY eyelids. Eyes closed are simple relaxed lids, no huge smile. Tiny micro breathing plus a restrained blink, suitable for quiet slow 6-second breathing and occasional blinking, NOT a cartoon action loop. Entire complete pet must occupy central 60% of EACH cell with at least 15% true transparent margin on EVERY side. Keep all eight faces and feet at identical x/y cell coordinates. Clean thin warm colored outlines and soft refined cartoon shading. Actual transparent background, no shadow, no floor, no checkerboard, no grid, no text, no effects, no detached particles or halo.",
+      "source_sprite": "sources/mochi-dragon-idle-sprite.source",
+      "source_sha256": "51b55d011c859bbcfe8a4ed0ef37d961e6f2c2dc37792e01e6d4c490ad266b52",
+      "sprite_sha256": "94348142a913c96da45bd78548f3f766bc53f83d601fb2ac5fc58429334b23a8",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "jelly-seal-idle",
+      "pet_id": "jelly-seal",
+      "frames": 8,
+      "columns": 4,
+      "sprite_sheet_path": "pets/jelly-seal_idle8_v2_sprite.png",
+      "reference": "public/pets/jelly-seal_v1_thumbnail.png",
+      "prompt": "Use case: identity-preserve. Redraw the approved pet in reference image into ONE CALM IDLE GAME SPRITE SHEET: FOUR columns, TWO rows, EIGHT equally sized SQUARE cells, landscape canvas aspect 2:1. A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes. Exact same rendering, identity, seated pose and colors as reference. The pet is resting peacefully, not performing. All paws, feet, hands, wings, tail, sprout, ears and flippers rest in exactly the SAME position across all eight frames. LOCK face, nose, head size, feet, baseline and overall silhouette. NO waving, licking, clapping, yawning, bouncing, head tilting, wing spreading or changing mouth. NO full-body translation or zoom. Upper row frames0,1,2,3: eyes fully open in ALL FOUR; the ONLY motion is an extremely subtle 1 percent lower chest/belly breathing expansion, progressively neutral, tiny inhale, halfway inhale, full tiny inhale. Breathing should be almost imperceptible, never big squashing or changing head size. Lower row frame4: original neutral eyes fully open, frame5: neutral body same but eyes HALF CLOSED, frame6: neutral body same but BOTH eyes fully CLOSED in a gentle blink, frame7: neutral body same but eyes HALF OPEN recovering. Lower row all limbs, head and chest identical to frame0, change ONLY eyelids. Eyes closed are simple relaxed lids, no huge smile. Tiny micro breathing plus a restrained blink, suitable for quiet slow 6-second breathing and occasional blinking, NOT a cartoon action loop. Entire complete pet must occupy central 60% of EACH cell with at least 15% true transparent margin on EVERY side. Keep all eight faces and feet at identical x/y cell coordinates. Clean thin warm colored outlines and soft refined cartoon shading. Actual transparent background, no shadow, no floor, no checkerboard, no grid, no text, no effects, no detached particles or halo.",
+      "source_sprite": "sources/jelly-seal-idle-sprite.source",
+      "source_sha256": "c3f6c4f5cf261e4772c04e46dc2d2c62facca21f05632bdf2f86650e17381550",
+      "sprite_sha256": "231c49034b2ae9f78838d167ccd086d520bb249ad696d239d07c34e5b1668281",
+      "rgbaPreserved": true
+    }
+  ],
+  "timing": {
+    "breathMs": 6000,
+    "blinkIntervalMs": [
+      7000,
+      12000
+    ],
+    "blinkDurationMs": 300,
+    "automaticActionPoses": false
+  },
+  "verification": {
+    "sourceGrids": "source-grids.json",
+    "registration": "registration.json",
+    "finalAnchors": "registered-final-8.json",
+    "headAndFeet": "Fixed authored pose; only integer translation baked into PNG, no per-frame scaling",
+    "runtimeReview": "review/browser-check.json",
+    "remoteDeployed": false
+  },
+  "repair_prompts": "repair-prompts.json"
+}

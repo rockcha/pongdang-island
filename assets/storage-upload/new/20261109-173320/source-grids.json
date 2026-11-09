@@ -1,0 +1,227 @@
+[
+  {
+    "id": "weather-deco-rain-window",
+    "storage_path": "decorations/epic/weather-deco-rain-window_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-rain-window.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134269
+      },
+      {
+        "frame": 1,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134222
+      },
+      {
+        "frame": 2,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134203
+      },
+      {
+        "frame": 3,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134232
+      }
+    ]
+  },
+  {
+    "id": "weather-deco-snow-frame",
+    "storage_path": "decorations/epic/weather-deco-snow-frame_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-snow-frame.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 476,
+        "margin": 59,
+        "opaque": 109919
+      },
+      {
+        "frame": 1,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 476,
+        "margin": 59,
+        "opaque": 109828
+      },
+      {
+        "frame": 2,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 475,
+        "margin": 59,
+        "opaque": 109940
+      },
+      {
+        "frame": 3,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 476,
+        "margin": 59,
+        "opaque": 109922
+      }
+    ]
+  },
+  {
+    "id": "weather-deco-sand-scales",
+    "storage_path": "decorations/epic/weather-deco-sand-scales_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-sand-scales.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 135,
+        "top": 89,
+        "width": 364,
+        "height": 428,
+        "margin": 89,
+        "opaque": 68339
+      },
+      {
+        "frame": 1,
+        "left": 133,
+        "top": 89,
+        "width": 362,
+        "height": 428,
+        "margin": 89,
+        "opaque": 67976
+      },
+      {
+        "frame": 2,
+        "left": 133,
+        "top": 90,
+        "width": 361,
+        "height": 427,
+        "margin": 90,
+        "opaque": 67619
+      },
+      {
+        "frame": 3,
+        "left": 134,
+        "top": 90,
+        "width": 361,
+        "height": 427,
+        "margin": 90,
+        "opaque": 67730
+      }
+    ]
+  },
+  {
+    "id": "weather-deco-night-winder",
+    "storage_path": "decorations/epic/weather-deco-night-winder_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-night-winder.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 153,
+        "top": 78,
+        "width": 360,
+        "height": 501,
+        "margin": 48,
+        "opaque": 97396
+      },
+      {
+        "frame": 1,
+        "left": 128,
+        "top": 78,
+        "width": 343,
+        "height": 501,
+        "margin": 48,
+        "opaque": 97320
+      },
+      {
+        "frame": 2,
+        "left": 153,
+        "top": 57,
+        "width": 360,
+        "height": 500,
+        "margin": 57,
+        "opaque": 95934
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 57,
+        "width": 352,
+        "height": 500,
+        "margin": 57,
+        "opaque": 96877
+      }
+    ]
+  },
+  {
+    "id": "weather-deco-spring-perfume",
+    "storage_path": "decorations/epic/weather-deco-spring-perfume_v1_sprite.png",
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-spring-perfume.png",
+    "cell": 627,
+    "frames": 4,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 178,
+        "top": 90,
+        "width": 292,
+        "height": 470,
+        "margin": 67,
+        "opaque": 75017
+      },
+      {
+        "frame": 1,
+        "left": 126,
+        "top": 90,
+        "width": 300,
+        "height": 470,
+        "margin": 67,
+        "opaque": 75733
+      },
+      {
+        "frame": 2,
+        "left": 178,
+        "top": 64,
+        "width": 310,
+        "height": 470,
+        "margin": 64,
+        "opaque": 77248
+      },
+      {
+        "frame": 3,
+        "left": 126,
+        "top": 64,
+        "width": 321,
+        "height": 470,
+        "margin": 64,
+        "opaque": 78836
+      }
+    ]
+  }
+]

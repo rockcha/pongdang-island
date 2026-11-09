@@ -1,0 +1,187 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261109-173320/decorations/epic/weather-deco-rain-window_v1_sprite.png",
+        "storage_path":  "decorations/epic/weather-deco-rain-window_v1_sprite.png",
+        "patch":  [
+                      188,
+                      508,
+                      30,
+                      26
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.5551082709932746
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.2919701913541273
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  7.4779304920843206
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-173320/decorations/epic/weather-deco-snow-frame_v1_sprite.png",
+        "storage_path":  "decorations/epic/weather-deco-snow-frame_v1_sprite.png",
+        "patch":  [
+                      278,
+                      480,
+                      30,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  5.0482051265771677
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.1950823668832022
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  7.536162816712495
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-173320/decorations/epic/weather-deco-sand-scales_v1_sprite.png",
+        "storage_path":  "decorations/epic/weather-deco-sand-scales_v1_sprite.png",
+        "patch":  [
+                      286,
+                      452,
+                      32,
+                      32
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  7.4984846954083144
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.89761637553989
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.6522168052835582
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-173320/decorations/epic/weather-deco-night-winder_v1_sprite.png",
+        "storage_path":  "decorations/epic/weather-deco-night-winder_v1_sprite.png",
+        "patch":  [
+                      336,
+                      584,
+                      26,
+                      22
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.7036985065428709
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.767145334803704
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.42092636499814
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-173320/decorations/epic/weather-deco-spring-perfume_v1_sprite.png",
+        "storage_path":  "decorations/epic/weather-deco-spring-perfume_v1_sprite.png",
+        "patch":  [
+                      340,
+                      583,
+                      30,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.1256457837506719
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.094068604842645
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.758769353823466
+                       }
+                   ]
+    }
+]

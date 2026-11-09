@@ -22,7 +22,7 @@ async function rejected(action:()=>Promise<unknown>,message:string){
 }
 it('shares a completed weather catch once while rejecting pending, foreign and ordinary common catches',async()=>{
  await db.exec(`create or replace function app_private.fishing_weather_at(p_at timestamptz) returns jsonb language sql security definer set search_path='' as $$select '{"kind":"rain"}'::jsonb$$;
-  create or replace function app_private.pick_weather_collectible(p_kind text,p_at timestamptz,p_roll double precision default null) returns text language sql set search_path='' as $$select id from public.collectible_species where weather_type=p_kind order by id limit 1$$;`)
+  create or replace function app_private.pick_weather_collectible(p_kind text,p_at timestamptz,p_roll double precision default null) returns text language sql set search_path='' as $$select id from public.collectible_species where weather_type=p_kind and kind='fish' order by id limit 1$$;`)
  const op=crypto.randomUUID()
  await db.query("select public.prepare_discovery_fishing('pongdang','bait',$1,false)",[op])
  await rejected(()=>db.query("select public.publish_fishing_showcase($1,'pending')",[op]),'CATCH_NOT_SHAREABLE')
@@ -111,18 +111,43 @@ it('uses an exact 3% independent weather draw and excludes weather creatures fro
  expect(p.species.weather_type).toBe('rain')
  expect((await db.query('select bait_snapshot->\'weather\' w from app_private.prepared_fishing_casts where operation_id=$1',[op])).rows[0].w.kind).toBe('rain')
 })
-it('registers exactly two swimming Pongi per weather with requested prices and only weather access',async()=>{
+it('registers two Pongi, one fairy and one animated decoration per weather',async()=>{
  for(const kind of ['rain','snow','dust','meteor','blossom']){
-  const rows=(await db.query('select id,sell_price,movement_type,swim_y_min,swim_y_max,flip_with_direction,travel_direction from public.collectible_species where weather_type=$1',[kind])).rows
-  expect(rows).toHaveLength(2)
+  const rows=(await db.query('select id,kind,sell_price,weather_weight,movement_type,speed,swim_y_min,swim_y_max,flip_with_direction,travel_direction,sprite_sheet_path from public.collectible_species where weather_type=$1',[kind])).rows
+  expect(rows).toHaveLength(4)
+  expect(rows.filter(s=>s.id.startsWith('weather-pongi-'))).toHaveLength(2)
+  expect(rows.filter(s=>s.id.startsWith('weather-spirit-'))).toHaveLength(1)
+  expect(rows.filter(s=>s.kind==='decoration')).toHaveLength(1)
   for(const s of rows){
-   expect(s.id.startsWith('weather-pongi-')).toBe(true)
-   expect(s.sell_price).toBeGreaterThanOrEqual(2000);expect(s.sell_price).toBeLessThanOrEqual(2500)
-   expect(s.movement_type).toBe('swim');expect(Number(s.swim_y_min)).toBeLessThan(Number(s.swim_y_max))
-   expect(s.flip_with_direction).toBe(true);expect(s.travel_direction).toBe('both')
+   expect(s.weather_weight).toBe(s.id.startsWith('weather-spirit-')?1:2)
+   if(s.id.startsWith('weather-spirit-'))expect(s.sell_price).toBe(2500)
+   if(s.kind==='decoration'){
+    expect(s.sell_price).toBe(1200);expect(s.movement_type).toBe('fixed');expect(Number(s.speed)).toBe(0)
+    expect(s.swim_y_min).toBeNull();expect(s.swim_y_max).toBeNull();expect(s.flip_with_direction).toBe(false)
+    expect(s.sprite_sheet_path).toMatch(/_v1_sprite\.png$/)
+   }else{
+    expect(s.sell_price).toBeGreaterThanOrEqual(2000);expect(s.sell_price).toBeLessThanOrEqual(2500)
+    expect(s.movement_type).toBe('swim');expect(Number(s.swim_y_min)).toBeLessThan(Number(s.swim_y_max))
+    expect(s.flip_with_direction).toBe(true)
+   }
+   expect(s.travel_direction).toBe('both')
    expect((await db.query('select app_private.collectible_available_at($1,clock_timestamp()) p',[s.id])).rows[0].p).toBe(false)
   }
   const picked=(await db.query('select app_private.pick_weather_collectible($1,clock_timestamp(),0) id',[kind])).rows[0].id
   expect(rows.map(s=>s.id)).toContain(picked)
  }
+})
+it('keeps the outer 3% draw and selects fairies at half the weight of each same-weather Pongi',async()=>{
+ for(const kind of ['rain','snow','dust','meteor','blossom']){
+  const counts=new Map<string,number>()
+  for(let i=0;i<105;i++){
+   const id=(await db.query('select app_private.pick_weather_collectible($1,clock_timestamp(),$2) id',[kind,(i+.5)/105*.03])).rows[0].id
+   counts.set(id,(counts.get(id)??0)+1)
+  }
+  expect(counts.size).toBe(4)
+  for(const [id,count] of counts)expect(count,id).toBe(id.startsWith('weather-spirit-')?15:30)
+  for(const roll of [.03,.5,.999999])expect((await db.query('select app_private.pick_weather_collectible($1,clock_timestamp(),$2) id',[kind,roll])).rows[0].id).toBeNull()
+ }
+ await rejected(()=>db.exec('update public.collectible_species set weather_weight=0'), 'collectible_species_weather_weight_check')
+ expect((await db.query("select has_table_privilege('authenticated','public.collectible_species','UPDATE') p")).rows[0].p).toBe(false)
 })

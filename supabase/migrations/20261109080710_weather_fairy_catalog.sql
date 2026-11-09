@@ -1,0 +1,13 @@
+-- Generated from supabase/catalog/catalog.json. Review before migration deployment.
+begin;
+set constraints all deferred;
+insert into public.collectible_species ("id","kind","name","description","swim_y_min","swim_y_max","speed","size","rarity","thumbnail_path","sell_price","sprite_sheet_path","native_region_id","movement_type","flip_with_direction","travel_direction","weather_type","weather_weight") values
+('weather-spirit-bio','fish','비의 정령 비오','푸른 비를 모아 작은 물구슬로 빚는 요정. 물결 날개와 우비처럼 포근한 옷자락이 물살에 살랑여요.','0.16','0.58','0.026',150,'mythic','fish/mythic/weather-spirit-bio_v1_thumbnail.png',2500,'fish/mythic/weather-spirit-bio_swim8_v1_sprite.png',null,'swim',true,'both','rain',1),
+('weather-spirit-hwarin','fish','꽃의 정령 화린','꽃잠을 깨우며 봄을 전하는 요정. 두 손에 품은 봉오리가 피어나면 잎사귀 날개도 함께 펴져요.','0.2','0.64','0.024',150,'mythic','fish/mythic/weather-spirit-hwarin_v1_thumbnail.png',2500,'fish/mythic/weather-spirit-hwarin_swim8_v1_sprite.png',null,'swim',true,'both','blossom',1),
+('weather-spirit-luon','fish','유성의 정령 루온','별이 지나간 길을 따라 헤엄치는 요정. 손안의 작은 유성이 밤하늘의 잃어버린 별을 찾아줘요.','0.12','0.52','0.028',150,'mythic','fish/mythic/weather-spirit-luon_v1_thumbnail.png',2500,'fish/mythic/weather-spirit-luon_swim8_v1_sprite.png',null,'swim',true,'both','meteor',1),
+('weather-spirit-saha','fish','모래의 정령 사하','황금 모래 속에 잠든 이야기를 듣는 요정. 작은 모래시계를 돌리면 잊힌 사막의 바람이 깨어나요.','0.5','0.82','0.023',150,'mythic','fish/mythic/weather-spirit-saha_v1_thumbnail.png',2500,'fish/mythic/weather-spirit-saha_swim8_v1_sprite.png',null,'swim',true,'both','dust',1),
+('weather-spirit-seollu','fish','눈의 정령 설루','첫눈이 내려앉은 곳을 지키는 요정. 눈꽃을 손끝에 피우고 서리 날개를 조용히 펼쳐요.','0.14','0.56','0.022',150,'mythic','fish/mythic/weather-spirit-seollu_v1_thumbnail.png',2500,'fish/mythic/weather-spirit-seollu_swim8_v1_sprite.png',null,'swim',true,'both','snow',1)
+on conflict(id) do update set "kind"=excluded."kind","name"=excluded."name","description"=excluded."description","swim_y_min"=excluded."swim_y_min","swim_y_max"=excluded."swim_y_max","speed"=excluded."speed","size"=excluded."size","rarity"=excluded."rarity","thumbnail_path"=excluded."thumbnail_path","sell_price"=excluded."sell_price","sprite_sheet_path"=excluded."sprite_sheet_path","native_region_id"=excluded."native_region_id","movement_type"=excluded."movement_type","flip_with_direction"=excluded."flip_with_direction","travel_direction"=excluded."travel_direction","weather_type"=excluded."weather_type","weather_weight"=excluded."weather_weight";
+delete from public.collectible_habitats where species_id in ('weather-spirit-bio','weather-spirit-hwarin','weather-spirit-luon','weather-spirit-saha','weather-spirit-seollu');
+notify pgrst, 'reload schema';
+commit;

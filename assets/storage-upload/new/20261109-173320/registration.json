@@ -1,0 +1,407 @@
+[
+  {
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-rain-window.png",
+    "storage_path": "decorations/epic/weather-deco-rain-window_v1_sprite.png",
+    "patch": [
+      180,
+      500,
+      30,
+      26
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.555108270993275
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.291970191354127
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.477930492084321
+      }
+    ],
+    "id": "weather-deco-rain-window",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.179301,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134269
+      },
+      {
+        "frame": 1,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134222
+      },
+      {
+        "frame": 2,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134203
+      },
+      {
+        "frame": 3,
+        "left": 114,
+        "top": 78,
+        "width": 411,
+        "height": 458,
+        "margin": 78,
+        "opaque": 134232
+      }
+    ],
+    "rgbaPreserved": true
+  },
+  {
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-snow-frame.png",
+    "storage_path": "decorations/epic/weather-deco-snow-frame_v1_sprite.png",
+    "patch": [
+      270,
+      472,
+      30,
+      24
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.048205126577168
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.195082366883202
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.536162816712495
+      }
+    ],
+    "id": "weather-deco-snow-frame",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.134706,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 476,
+        "margin": 59,
+        "opaque": 109919
+      },
+      {
+        "frame": 1,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 476,
+        "margin": 59,
+        "opaque": 109828
+      },
+      {
+        "frame": 2,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 475,
+        "margin": 59,
+        "opaque": 109940
+      },
+      {
+        "frame": 3,
+        "left": 174,
+        "top": 59,
+        "width": 305,
+        "height": 476,
+        "margin": 59,
+        "opaque": 109922
+      }
+    ],
+    "rgbaPreserved": true
+  },
+  {
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-sand-scales.png",
+    "storage_path": "decorations/epic/weather-deco-sand-scales_v1_sprite.png",
+    "patch": [
+      278,
+      444,
+      32,
+      32
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 7.498484695408314
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.89761637553989
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.652216805283558
+      }
+    ],
+    "id": "weather-deco-sand-scales",
+    "sourceCell": 627,
+    "cell": 643,
+    "padding": 8,
+    "scale": 1.261963,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 135,
+        "top": 89,
+        "width": 364,
+        "height": 428,
+        "margin": 89,
+        "opaque": 68339
+      },
+      {
+        "frame": 1,
+        "left": 133,
+        "top": 89,
+        "width": 362,
+        "height": 428,
+        "margin": 89,
+        "opaque": 67976
+      },
+      {
+        "frame": 2,
+        "left": 133,
+        "top": 90,
+        "width": 361,
+        "height": 427,
+        "margin": 90,
+        "opaque": 67619
+      },
+      {
+        "frame": 3,
+        "left": 134,
+        "top": 90,
+        "width": 361,
+        "height": 427,
+        "margin": 90,
+        "opaque": 67730
+      }
+    ],
+    "rgbaPreserved": true
+  },
+  {
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-night-winder.png",
+    "storage_path": "decorations/epic/weather-deco-night-winder_v1_sprite.png",
+    "patch": [
+      302,
+      550,
+      26,
+      22
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -26,
+        "dy": 0,
+        "rmse": 9.703698506542871
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -22,
+        "rmse": 12.767145334803704
+      },
+      {
+        "frame": 3,
+        "dx": -26,
+        "dy": -22,
+        "rmse": 12.42092636499814
+      }
+    ],
+    "id": "weather-deco-night-winder",
+    "sourceCell": 627,
+    "cell": 695,
+    "padding": 34,
+    "scale": 1.165269,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 153,
+        "top": 78,
+        "width": 360,
+        "height": 501,
+        "margin": 48,
+        "opaque": 97396
+      },
+      {
+        "frame": 1,
+        "left": 128,
+        "top": 78,
+        "width": 343,
+        "height": 501,
+        "margin": 48,
+        "opaque": 97320
+      },
+      {
+        "frame": 2,
+        "left": 153,
+        "top": 57,
+        "width": 360,
+        "height": 500,
+        "margin": 57,
+        "opaque": 95934
+      },
+      {
+        "frame": 3,
+        "left": 128,
+        "top": 57,
+        "width": 352,
+        "height": 500,
+        "margin": 57,
+        "opaque": 96877
+      }
+    ],
+    "rgbaPreserved": true
+  },
+  {
+    "file": "assets/storage-upload/new/20261109-173320/normalized/weather-deco-spring-perfume.png",
+    "storage_path": "decorations/epic/weather-deco-spring-perfume_v1_sprite.png",
+    "patch": [
+      280,
+      523,
+      30,
+      24
+    ],
+    "method": "Visually reviewed opaque rigid patch; inverse integer translation baked into PNG with uniform padding, no per-frame scaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -52,
+        "dy": 0,
+        "rmse": 8.125645783750672
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "rmse": 11.094068604842645
+      },
+      {
+        "frame": 3,
+        "dx": -52,
+        "dy": -26,
+        "rmse": 11.758769353823466
+      }
+    ],
+    "id": "weather-deco-spring-perfume",
+    "sourceCell": 627,
+    "cell": 747,
+    "padding": 60,
+    "scale": 1.335064,
+    "rawBounds": [
+      {
+        "frame": 0,
+        "left": 178,
+        "top": 90,
+        "width": 292,
+        "height": 470,
+        "margin": 67,
+        "opaque": 75017
+      },
+      {
+        "frame": 1,
+        "left": 126,
+        "top": 90,
+        "width": 300,
+        "height": 470,
+        "margin": 67,
+        "opaque": 75733
+      },
+      {
+        "frame": 2,
+        "left": 178,
+        "top": 64,
+        "width": 310,
+        "height": 470,
+        "margin": 64,
+        "opaque": 77248
+      },
+      {
+        "frame": 3,
+        "left": 126,
+        "top": 64,
+        "width": 321,
+        "height": 470,
+        "margin": 64,
+        "opaque": 78836
+      }
+    ],
+    "rgbaPreserved": true
+  }
+]

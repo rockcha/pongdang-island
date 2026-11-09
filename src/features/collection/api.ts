@@ -1,6 +1,7 @@
 import {readAccountResource} from '@/lib/account-cache'
 import {starruinsArtUrl} from '@/features/aquarium/starruins-art'
 import {localWeatherArtUrl} from '@/features/fishing/weather-creatures'
+import {weatherDecorationArtUrl} from '@/features/aquarium/weather-decoration-animation'
 import { createClient } from '@/lib/client'
 import type { Rarity } from '@/lib/game/rarity'
 export type CollectibleKind = 'fish'|'trash'|'decoration'|'map'|'relic'
@@ -13,6 +14,8 @@ export type CollectionState = {items:OwnedCollectible[];catalog:CatalogEntry[]}
 export const kindLabels:Record<CollectibleKind,string>={fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도 조각',relic:'유물'}
 const refreshedCloudArt=new Set(['map/routes/map-cloudferry_thumbnail.png','equipment/rods/cloudferry/thumbnail.png'])
 export function collectibleUrl(path:string){
+  const weatherDecoration=weatherDecorationArtUrl(path)
+  if(weatherDecoration)return weatherDecoration
   const localWeather=localWeatherArtUrl(path)
   if(localWeather)return localWeather
   const reviewed=starruinsArtUrl(path)

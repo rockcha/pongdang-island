@@ -1,0 +1,326 @@
+[
+  {
+    "id": "sand-golem-idle",
+    "file": "assets/storage-upload/new/20261109-190000/normalized/sand-golem-idle.png",
+    "storage_path": "pets/sand-golem_idle8_v2_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 82,
+        "top": 40,
+        "width": 279,
+        "height": 349,
+        "margin": 40,
+        "opaque": 65413
+      },
+      {
+        "frame": 1,
+        "left": 82,
+        "top": 40,
+        "width": 279,
+        "height": 348,
+        "margin": 40,
+        "opaque": 65349
+      },
+      {
+        "frame": 2,
+        "left": 82,
+        "top": 40,
+        "width": 279,
+        "height": 348,
+        "margin": 40,
+        "opaque": 65327
+      },
+      {
+        "frame": 3,
+        "left": 82,
+        "top": 40,
+        "width": 279,
+        "height": 349,
+        "margin": 40,
+        "opaque": 65324
+      },
+      {
+        "frame": 4,
+        "left": 82,
+        "top": 40,
+        "width": 279,
+        "height": 348,
+        "margin": 40,
+        "opaque": 65275
+      },
+      {
+        "frame": 5,
+        "left": 82,
+        "top": 39,
+        "width": 279,
+        "height": 349,
+        "margin": 39,
+        "opaque": 65193
+      },
+      {
+        "frame": 6,
+        "left": 82,
+        "top": 40,
+        "width": 280,
+        "height": 348,
+        "margin": 40,
+        "opaque": 65158
+      },
+      {
+        "frame": 7,
+        "left": 83,
+        "top": 40,
+        "width": 278,
+        "height": 348,
+        "margin": 40,
+        "opaque": 65102
+      }
+    ]
+  },
+  {
+    "id": "wave-cat-idle",
+    "file": "assets/storage-upload/new/20261109-190000/normalized/wave-cat-idle.png",
+    "storage_path": "pets/wave-cat_idle8_v2_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 75,
+        "top": 59,
+        "width": 292,
+        "height": 312,
+        "margin": 59,
+        "opaque": 58282
+      },
+      {
+        "frame": 1,
+        "left": 74,
+        "top": 59,
+        "width": 292,
+        "height": 312,
+        "margin": 59,
+        "opaque": 58274
+      },
+      {
+        "frame": 2,
+        "left": 75,
+        "top": 59,
+        "width": 292,
+        "height": 312,
+        "margin": 59,
+        "opaque": 58185
+      },
+      {
+        "frame": 3,
+        "left": 74,
+        "top": 59,
+        "width": 292,
+        "height": 312,
+        "margin": 59,
+        "opaque": 58359
+      },
+      {
+        "frame": 4,
+        "left": 75,
+        "top": 58,
+        "width": 292,
+        "height": 313,
+        "margin": 58,
+        "opaque": 58332
+      },
+      {
+        "frame": 5,
+        "left": 74,
+        "top": 58,
+        "width": 293,
+        "height": 313,
+        "margin": 58,
+        "opaque": 58298
+      },
+      {
+        "frame": 6,
+        "left": 75,
+        "top": 58,
+        "width": 292,
+        "height": 313,
+        "margin": 58,
+        "opaque": 58194
+      },
+      {
+        "frame": 7,
+        "left": 74,
+        "top": 58,
+        "width": 293,
+        "height": 313,
+        "margin": 58,
+        "opaque": 58246
+      }
+    ]
+  },
+  {
+    "id": "mochi-dragon-idle",
+    "file": "assets/storage-upload/new/20261109-190000/normalized/mochi-dragon-idle.png",
+    "storage_path": "pets/mochi-dragon_idle8_v2_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 88,
+        "top": 56,
+        "width": 295,
+        "height": 342,
+        "margin": 46,
+        "opaque": 70143
+      },
+      {
+        "frame": 1,
+        "left": 88,
+        "top": 56,
+        "width": 295,
+        "height": 342,
+        "margin": 46,
+        "opaque": 70081
+      },
+      {
+        "frame": 2,
+        "left": 88,
+        "top": 56,
+        "width": 295,
+        "height": 342,
+        "margin": 46,
+        "opaque": 70133
+      },
+      {
+        "frame": 3,
+        "left": 88,
+        "top": 56,
+        "width": 295,
+        "height": 342,
+        "margin": 46,
+        "opaque": 70129
+      },
+      {
+        "frame": 4,
+        "left": 89,
+        "top": 56,
+        "width": 294,
+        "height": 341,
+        "margin": 47,
+        "opaque": 70023
+      },
+      {
+        "frame": 5,
+        "left": 88,
+        "top": 56,
+        "width": 294,
+        "height": 341,
+        "margin": 47,
+        "opaque": 70044
+      },
+      {
+        "frame": 6,
+        "left": 89,
+        "top": 56,
+        "width": 294,
+        "height": 341,
+        "margin": 47,
+        "opaque": 70087
+      },
+      {
+        "frame": 7,
+        "left": 88,
+        "top": 56,
+        "width": 294,
+        "height": 341,
+        "margin": 47,
+        "opaque": 70013
+      }
+    ]
+  },
+  {
+    "id": "jelly-seal-idle",
+    "file": "assets/storage-upload/new/20261109-190000/normalized/jelly-seal-idle.png",
+    "storage_path": "pets/jelly-seal_idle8_v2_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 84,
+        "top": 86,
+        "width": 308,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61504
+      },
+      {
+        "frame": 1,
+        "left": 83,
+        "top": 86,
+        "width": 309,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61533
+      },
+      {
+        "frame": 2,
+        "left": 84,
+        "top": 86,
+        "width": 308,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61501
+      },
+      {
+        "frame": 3,
+        "left": 83,
+        "top": 86,
+        "width": 309,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61514
+      },
+      {
+        "frame": 4,
+        "left": 83,
+        "top": 86,
+        "width": 309,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61295
+      },
+      {
+        "frame": 5,
+        "left": 83,
+        "top": 86,
+        "width": 309,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61269
+      },
+      {
+        "frame": 6,
+        "left": 84,
+        "top": 86,
+        "width": 308,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61249
+      },
+      {
+        "frame": 7,
+        "left": 83,
+        "top": 86,
+        "width": 309,
+        "height": 288,
+        "margin": 52,
+        "opaque": 61269
+      }
+    ]
+  }
+]

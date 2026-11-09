@@ -25,6 +25,7 @@ export function AppLayout() {
   const tankScreen=aquarium||friendAquarium
   const home=pathname==='/island-news'||/^\/development-fund\/?$/.test(pathname)
   const profile=/^\/relic-roulette\/?$/.test(pathname)||(pathname==='/exploration'||pathname==='/exploration-stat-test')||/^\/voyage-bets(?:-test)?\/?$/.test(pathname)||pathname==='/my-bait-production'||pathname==='/bait-production'||pathname==='/bait-production-shop'||pathname==='/production-shop'||pathname==='/production'||pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||/^\/relics\/?$/.test(pathname)||/^\/(?:collection|item-collection|collection-animation)\/?$/.test(pathname)
+  const petPreview=/^\/pet-house-test\/?$/.test(pathname)
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
   const showcase=pathname==='/showcase'||pathname.startsWith('/showcase/')
@@ -44,7 +45,7 @@ export function AppLayout() {
   if(/^\/(?:my-island|farm)\/?$/.test(pathname))return <main className="h-dvh w-full overflow-hidden"><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">섬을 준비하고 있어요…</p>}><Outlet/></Suspense></main>
   if(pathname==='/login'||pathname==='/nickname')return <main className="auth-shell"><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet/></Suspense></main>
   if(pathname==='/first-fishing')return <main className="mx-auto flex h-dvh w-full max-w-md flex-col overflow-hidden bg-background"><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">첫 낚시를 준비하고 있어요.</p>}><Outlet/></Suspense></main>
-  return <div style={port||expedition||memory||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full max-w-md sm:max-w-[390px] flex-col ${shipyard?'shipyard-shell ':''}${baitProductionShop?'bait-production-shop-shell ':''}${tankScreen||fishing||port?'aquarium-shell':harbor?'aquarium-shell px-4':warehouse?'warehouse-shell px-6':'px-6'}`}>
+  return <div style={petPreview||port||expedition||memory||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full max-w-md sm:max-w-[390px] flex-col ${petPreview?'pet-preview-shell ':''}${shipyard?'shipyard-shell ':''}${baitProductionShop?'bait-production-shop-shell ':''}${tankScreen||fishing||port?'aquarium-shell':harbor?'aquarium-shell px-4':warehouse?'warehouse-shell px-6':'px-6'}`}>
     <IslandNewsPopup/>
     <header className={`pongi-header sticky top-0 z-40 shrink-0 px-3 py-2 ${tankScreen||harbor||fishing||port?'':'-mx-6'}`}>
       {session && <div className="flex min-h-10 items-center justify-between gap-2">
@@ -58,6 +59,6 @@ export function AppLayout() {
       </div>}
       {session && <PageNavigation noticeCategory={noticeBanner?.pathname===routePathname?noticeBanner.category:undefined}/>}
     </header>
-    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||showcase||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet context={{setNoticeBanner}}/></Suspense></main>
+    <main className={`flex min-w-0 flex-1 flex-col ${petPreview||shop||warehouse||memory||friends||exchange||showcase||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${petPreview||port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet context={{setNoticeBanner}}/></Suspense></main>
   </div>
 }

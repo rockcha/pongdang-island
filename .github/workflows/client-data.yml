@@ -41,6 +41,10 @@ jobs:
         run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/farm-visits.test.tsx tests/farm-visits-api.test.ts tests/farm-friends-loading.test.tsx tests/farm-access.test.tsx tests/farm-camera.test.tsx tests/farm-seed-drag.test.tsx tests/farm-warehouse-cost.test.ts tests/farm-warehouse-expansion.test.tsx tests/farm-warehouse-expansion-limits.test.tsx tests/farm-receipts.test.tsx tests/farm-purchase-effect.test.tsx tests/farm-purchase-feedback.test.tsx tests/farm-harvesting-effect.test.tsx tests/hologram-region.test.ts
       - name: Farm queue and paid billiards regressions
         run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/farm-command-queue.test.ts tests/farm-account-retry.test.tsx tests/farm-interaction-feedback.test.tsx tests/billiards-ui.test.tsx tests/billiards-api.test.ts tests/billiards.test.ts
+      - name: Operator pet sandbox regressions
+        run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/pet-preview-model.test.ts tests/pet-preview-ui.test.tsx tests/pet-preview-assets.test.ts tests/pet-idle-animation.test.ts tests/pet-sprite-transition.test.tsx tests/pet-sprite-images.test.ts tests/pet-draw-layout.test.ts tests/pet-jobs-panel.test.tsx tests/operator-guard.test.tsx tests/header-place-navigation.test.tsx tests/page-navigation.test.tsx
+      - name: Weather artwork, decorations and preview regressions
+        run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/weather-decorations.test.ts tests/shared-decoration-animation.test.ts tests/weather-pongi-assets.test.ts tests/weather-pongi-picker.test.tsx tests/development-weather-catalog.test.ts tests/fishing-weather.test.tsx tests/mythic-swim.test.ts
       - run: npm run build
       - uses: actions/upload-artifact@v4
         if: always()

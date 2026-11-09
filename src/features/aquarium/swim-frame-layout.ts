@@ -24,7 +24,9 @@ import pharaohLayouts from './pharaoh-frame-layouts.json'
 import hangangLayouts from './hangang-frame-layouts.json'
 import galaxyLayouts from './galaxy-frame-layouts.json'
 import hologramLayouts from './hologram-frame-layouts.json'
+import weatherDecorationLayouts from './weather-decoration-frame-layouts.json'
 const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={
+ ...weatherDecorationLayouts,
  ...hologramLayouts,
  ...galaxyLayouts,
  ...hangangLayouts,

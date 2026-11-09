@@ -1,0 +1,150 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/sand-golem-hungry.png",
+        "storage_path":  "pets/sand-golem_hungry4_v1_sprite.png",
+        "patch":  [
+                      245,
+                      235,
+                      190,
+                      110
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -78,
+                           "dy":  0,
+                           "rmse":  10.422203766034054
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -37,
+                           "rmse":  14.394059228584666
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -78,
+                           "dy":  -39,
+                           "rmse":  9.07153231533953
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/wave-cat-hungry.png",
+        "storage_path":  "pets/wave-cat_hungry4_v1_sprite.png",
+        "patch":  [
+                      280,
+                      210,
+                      180,
+                      140
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -49,
+                           "dy":  2,
+                           "rmse":  26.411088437131394
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  -9,
+                           "rmse":  28.913726305673087
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -19,
+                           "dy":  -9,
+                           "rmse":  14.214462555898255
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/mochi-dragon-hungry.png",
+        "storage_path":  "pets/mochi-dragon_hungry4_v1_sprite.png",
+        "patch":  [
+                      200,
+                      185,
+                      200,
+                      150
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -20,
+                           "dy":  -2,
+                           "rmse":  32.732902665601166
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -6,
+                           "dy":  -5,
+                           "rmse":  35.095233769747963
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  1,
+                           "rmse":  21.366030222286341
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/jelly-seal-hungry.png",
+        "storage_path":  "pets/jelly-seal_hungry4_v1_sprite.png",
+        "patch":  [
+                      225,
+                      210,
+                      150,
+                      120
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -63,
+                           "dy":  -1,
+                           "rmse":  12.553853989910827
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -9,
+                           "dy":  -1,
+                           "rmse":  25.78442116860489
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -80,
+                           "dy":  -2,
+                           "rmse":  18.73512076288808
+                       }
+                   ]
+    }
+]

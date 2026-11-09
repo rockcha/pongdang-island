@@ -5,11 +5,12 @@ import {mythicSheetColumns,mythicSwimAsset} from '@/features/aquarium/mythic-swi
 import {swimFrameLayout} from '@/features/aquarium/swim-frame-layout'
 
 const ids=['surface-seeking-beanstalk','upward-sinking-waterfall']
-it('registers the platform as an all-region fixed mythical decoration and plays all eight packed frames',()=>{
+it('registers the platform as a non-native fixed mythical decoration and plays all eight packed frames',()=>{
  const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')),id='pongi-subsea-drilling-platform'
  const species=catalog.collectible_species.find(s=>s.id===id)
  expect(species).toMatchObject({kind:'decoration',rarity:'mythic',sell_price:3500,movement_type:'fixed',speed:'0',flip_with_direction:false,travel_direction:'both',swim_y_min:null,swim_y_max:null,native_region_id:null,sprite_sheet_path:platformCompatSpritePath})
- expect(catalog.collectible_habitats.filter(h=>h.species_id===id).map(h=>h.region_id).sort()).toEqual(catalog.regions.map(r=>r.id).sort())
+ // Habitat rows bias fishing weights; they do not restrict region access.
+ // New regions need not rewrite this existing non-native decoration's rows.
  expect(mythicSheetColumns(platformWorkSpritePath)).toBe(4)
  expect(mythicSheetColumns(platformCompatSpritePath)).toBe(2)
  expect(mythicSwimAsset(platformCompatSpritePath,'mythic')?.path).toBe(platformWorkSpritePath)

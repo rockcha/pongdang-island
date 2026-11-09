@@ -1,0 +1,874 @@
+[
+  {
+    "id": "sand-golem-idle",
+    "cell": 480,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          122,
+          95,
+          367,
+          396
+        ],
+        "sha256": "2dd78578bab9ba2fd6269246d265d70b5539a55bc9d6edd9f2e5a080b1ade36e"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          120,
+          93,
+          374,
+          406
+        ],
+        "sha256": "9dd7bd6adfb66370ac8d694fc645ce92725f3654d85c1088f0419c7572934f55"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          123,
+          98,
+          369,
+          398
+        ],
+        "sha256": "a112c4c97564176b6917410018319b86fd090ffdd30572eeb916e29130f683c4"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          127,
+          98,
+          367,
+          397
+        ],
+        "sha256": "95fd7d863ca82a26903de0132f32d51bb47172b74a3d9d84cbabee29a369f30d"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          124,
+          95,
+          368,
+          398
+        ],
+        "sha256": "bf943b248fce59b853a44f20df04d4fc6773e9dba6c62e33b8120ba48bda79b5"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          125,
+          99,
+          379,
+          403
+        ],
+        "sha256": "3a0667c829dca8956fe05f7283302fffc5b03ee512e0ae144a2168a4c4a2e259"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          129,
+          97,
+          382,
+          401
+        ],
+        "sha256": "c61bc61a14b2fac78230fcb9f006aa95c474bb0732327947ec212f0f26876be5"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          124,
+          97,
+          370,
+          398
+        ],
+        "sha256": "3f5e99ea4fe3e3cafa90a2f624532ad1b35f205c57a3d0c512eba9cd87848716"
+      }
+    ]
+  },
+  {
+    "id": "sand-golem-hungry",
+    "cell": 799,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          274,
+          207,
+          605,
+          622
+        ],
+        "sha256": "adf9bbec7447f24d863f32bfd7e9f3df97d721c87f7cf1967ab731ee37bd1493"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          285,
+          242,
+          601,
+          622
+        ],
+        "sha256": "7b1075a9abe41ebaf041a5bac97b892d3fe9742294b141e021425cc774a4f881"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          288,
+          261,
+          599,
+          620
+        ],
+        "sha256": "213f5dcb7087a1e854e330719c7fcdd5890526c33cc36c5db96428b5f6160ac1"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          276,
+          211,
+          603,
+          622
+        ],
+        "sha256": "28255155b3d89a8f6d6eaba0baab76aa3e8c120289856397ef923cb7d43b9e22"
+      }
+    ]
+  },
+  {
+    "id": "sand-golem-happy",
+    "cell": 468,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          129,
+          103,
+          348,
+          369
+        ],
+        "sha256": "5c19fcde5ca935f026e60be389ceca1f5ce547c295a0f001e00d1a6ab26a4ace"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          130,
+          102,
+          356,
+          370
+        ],
+        "sha256": "b69645f4e42488039c731a3cdb75876d86e3c7f79dd554953ff9189ae78a9f76"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          130,
+          99,
+          361,
+          371
+        ],
+        "sha256": "4be8a21b50bb6fa090e21b30fcc212bc06f8b60dd54fa75b75e90bfab4fd2810"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          122,
+          97,
+          372,
+          372
+        ],
+        "sha256": "29bc8ca6f80e085473a14b8ace1451e3e601a034f5f5ba0c76403643df945188"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          117,
+          92,
+          376,
+          373
+        ],
+        "sha256": "a66d4004b4453a07ad9b76e9c21b4f10050d3559db334686a7bdcf43b3a1cfa4"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          128,
+          98,
+          358,
+          371
+        ],
+        "sha256": "5cb3f9b2faabdaaad069c3e27ca581d05dadcf5b098574d5daf96549e75a6463"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          128,
+          102,
+          352,
+          369
+        ],
+        "sha256": "beff1f0c6923ff8430722fbef619c1952225a02b06c39f852d8416ccd801f72b"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          128,
+          102,
+          349,
+          370
+        ],
+        "sha256": "15a662c7f5d87fb725f4102d18ec463ee404c5b4b4ea6d103c3a7964d19dd432"
+      }
+    ]
+  },
+  {
+    "id": "wave-cat-idle",
+    "cell": 468,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          90,
+          88,
+          378,
+          386
+        ],
+        "sha256": "d991ac57fcabbef638398a39cd9cc6313818834fce05d80412b85393fce4cf7e"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          87,
+          88,
+          378,
+          388
+        ],
+        "sha256": "6941e57080acaf67aec3acf195ac2b5e7a17555b68e773e5fbde8520e4a7d42b"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          83,
+          88,
+          378,
+          389
+        ],
+        "sha256": "122e8024054e0c067790d6aeb4cb356c8cfe4e4c0a11122f5b7dd4c7feb28aa1"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          90,
+          88,
+          377,
+          386
+        ],
+        "sha256": "3cea0d0fc86e47b411acd9a636dce554aa9d277db894c8ea406c36f874f49fec"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          90,
+          88,
+          378,
+          386
+        ],
+        "sha256": "294584ccddb335983a9a469c0a9d1eee882cf3daba360ad2ba4045f673b54782"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          87,
+          93,
+          377,
+          385
+        ],
+        "sha256": "b0d64c8991360df0828570de4f9cfb7b1962d106df61245740867512735d6d35"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          83,
+          101,
+          377,
+          382
+        ],
+        "sha256": "ab4b42672ab065352f0ee4859535e247bc22cd50f834dcdaccfa88421d0a6465"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          90,
+          88,
+          377,
+          386
+        ],
+        "sha256": "3523228698b1b21ecce964c6bb876ee853c3e30477094866db6372f7ac34fa2b"
+      }
+    ]
+  },
+  {
+    "id": "wave-cat-hungry",
+    "cell": 741,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          171,
+          161,
+          564,
+          565
+        ],
+        "sha256": "822dafdfc045409d85a10da96872f0b1cfc998f6ac2bedc9f3c8ccee9bfcbb9b"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          186,
+          195,
+          571,
+          560
+        ],
+        "sha256": "33c8f352f9a0fc9f5b7623ef191fc26d4d74ca103e2fbc8751bcbf9151646d9b"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          215,
+          191,
+          575,
+          560
+        ],
+        "sha256": "db0998c5e71c7a8db433df646e722c24c6d3ead41fa2edbb0d9174e4ffa62321"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          173,
+          161,
+          564,
+          562
+        ],
+        "sha256": "e5baac590f13ed390f865bcb4e6b7c742b99b300b7aa1f790f40e44f76d3101d"
+      }
+    ]
+  },
+  {
+    "id": "wave-cat-happy",
+    "cell": 480,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          95,
+          93,
+          376,
+          394
+        ],
+        "sha256": "f3248ce4a7203079f6ac9bbda82bc97e1e90d241c5969b58d7b7acaa9ebfa49a"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          94,
+          99,
+          376,
+          396
+        ],
+        "sha256": "1bc4eb7c678daa2751b5a3f33f6ec98e4cd649b3b3ce709853dc99f56f21f399"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          88,
+          115,
+          377,
+          396
+        ],
+        "sha256": "d53884222f4aff9bbc5788962f48c52a654534f398afebe10811b1cabfbd2cd0"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          88,
+          120,
+          382,
+          397
+        ],
+        "sha256": "fd413ac578c570a4fd1bb66d2612465f56a617836476dc5d92bca5caffd37153"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          77,
+          125,
+          381,
+          404
+        ],
+        "sha256": "70a295bc06f253136c5466d4c4ecf8c314f28e232c0698e791ab6cbeeb3cb72f"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          84,
+          106,
+          378,
+          397
+        ],
+        "sha256": "545210e3473cdcd3a3d77a2e6d0afec32d4973fa51b7468fd7c688ec923970d8"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          95,
+          94,
+          375,
+          394
+        ],
+        "sha256": "b51ccacb8e40a51c92482674e6e3654ead8d4ae0d495623a6f41585e4dc3e494"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          91,
+          91,
+          375,
+          391
+        ],
+        "sha256": "b0f1e9ca046939b2971be9bcd4726446dc5203b489acea551b48d8089dfabc34"
+      }
+    ]
+  },
+  {
+    "id": "mochi-dragon-idle",
+    "cell": 588,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          176,
+          159,
+          428,
+          447
+        ],
+        "sha256": "e18e65ca7a0b8931ac09ea583ff6a4688b5aca8ad1edffbe2b3ebe65b1b3416b"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          176,
+          160,
+          427,
+          448
+        ],
+        "sha256": "2b7931c0ae4481c946e30c5f48322c45e8a4c2ff79a475fc0636454cdf235387"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          167,
+          162,
+          428,
+          450
+        ],
+        "sha256": "51f3ca2fcf82d805e44c10b55fd5165ba9852a630629dd04e4cb59a1913a893b"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          175,
+          159,
+          429,
+          447
+        ],
+        "sha256": "600d5db368378c9010a9130fa8df3c162331e3a95bc638aef79f278fe0f060ae"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          175,
+          160,
+          427,
+          447
+        ],
+        "sha256": "8468c30df9d8075f43cfcd199af1099e284f6a63fc62ff90883625611a219ff0"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          161,
+          223,
+          414,
+          510
+        ],
+        "sha256": "9868319b80ce63a37ea1c98dd559f11582ab6fd9bf96e3181d3c4337c3111cf7"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          145,
+          180,
+          422,
+          469
+        ],
+        "sha256": "15c9d85d37966796b2994c78e49aeb4724c9bd561eac880fcad02156ac919b58"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          176,
+          160,
+          428,
+          447
+        ],
+        "sha256": "49d90867375a8ae9555b6cce6b30dd9b9096fe09dd4eaa72863aea18a38adf85"
+      }
+    ]
+  },
+  {
+    "id": "mochi-dragon-hungry",
+    "cell": 683,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          175,
+          139,
+          547,
+          549
+        ],
+        "sha256": "fb6ad66bd1b4a535496ecef28add191415dd9a8fce322ab7b54cd4011b562e8f"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          166,
+          141,
+          540,
+          550
+        ],
+        "sha256": "c4ab5ecfa89928350652287b1b5a4982dd06fd2538ccc534825a1c291de1bd75"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          169,
+          141,
+          526,
+          551
+        ],
+        "sha256": "78dff08574dcbe97352fdc7c20a58860fd471ca7ce0433d7e450a08230ebf3c5"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          176,
+          136,
+          547,
+          547
+        ],
+        "sha256": "e4d5f94ff1f4fe51a06405e7b83313a3b3ddf70a939201e873254039c5dd3752"
+      }
+    ]
+  },
+  {
+    "id": "mochi-dragon-happy",
+    "cell": 520,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          164,
+          139,
+          398,
+          410
+        ],
+        "sha256": "22b1798269edca565609aa7b34e20d4f956363c0a5625ee9c610ef20f908f430"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          163,
+          139,
+          402,
+          412
+        ],
+        "sha256": "7179bebae855a912f9d9752322f99df6e00011ec81549b375e378c06bbc7bf11"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          150,
+          140,
+          406,
+          413
+        ],
+        "sha256": "87d3351566c549febc90fb5ae093e8cf7e0a13a4765d2d30c0e3a2e48fe0649b"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          122,
+          140,
+          414,
+          415
+        ],
+        "sha256": "0af905bf5baa0e854feae7f64421e009863b963c6a1fb12e7342808c954389ed"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          120,
+          139,
+          405,
+          416
+        ],
+        "sha256": "89dc0c7a00eb84a534cace9d24414ab2cb1b3d88a26fc747f348fc9979fdef80"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          161,
+          136,
+          401,
+          413
+        ],
+        "sha256": "5244cd2374672511ecdf547a010997283c2655a9d33aad1af24157adcdde4e4b"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          164,
+          136,
+          405,
+          412
+        ],
+        "sha256": "b23e0d797757b2fa3f18888d1604bb794a7675d36fa4f1a743563b53192a1eed"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          165,
+          136,
+          409,
+          412
+        ],
+        "sha256": "fc8b86c7e154b654142cf95bc8ec96dd5c032c58480625411ae1d60433a4f228"
+      }
+    ]
+  },
+  {
+    "id": "jelly-seal-idle",
+    "cell": 482,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          131,
+          139,
+          396,
+          373
+        ],
+        "sha256": "b87d1d600a2ddc783fa703571e97c2e62731387c98debe7732c4ac6633d1e772"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          116,
+          138,
+          405,
+          362
+        ],
+        "sha256": "71bf4fa907a14cec6276f03c16c735808f0f71aecb402b06d5961681cd76c129"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          100,
+          138,
+          406,
+          358
+        ],
+        "sha256": "991fdc43bce77360e1a4003829bc1d0fb7645fcca22e5a1cff6a2af4ded3b305"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          131,
+          139,
+          396,
+          373
+        ],
+        "sha256": "67f7521840ed63befb42d6f2d9932d609aae32e5140bffd6d837edfe9b109df2"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          131,
+          140,
+          396,
+          374
+        ],
+        "sha256": "23590f81052f779161047522554a4339078123414a82bb60c73465713a92ee83"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          132,
+          140,
+          399,
+          376
+        ],
+        "sha256": "c69f2b7f8d52c5934b347b06f77e11513445ab3a50b47874c742651a3e972405"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          134,
+          141,
+          397,
+          377
+        ],
+        "sha256": "6d1b8db8ca81ec1ad06cf141f0f92ae7fdf741bcf0e767552098de7badcdf773"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          131,
+          140,
+          396,
+          374
+        ],
+        "sha256": "a9fc4f2d610c0473b34c08d2ea84c1a64324778719dd6cb63c86d0c19a36522a"
+      }
+    ]
+  },
+  {
+    "id": "jelly-seal-hungry",
+    "cell": 803,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          261,
+          240,
+          649,
+          572
+        ],
+        "sha256": "fc501936e606d86809e07c58bcbe59ab0ceacbc52ab4693d77391441699159e2"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          261,
+          240,
+          635,
+          571
+        ],
+        "sha256": "81978f124c0549db6c9034aef71a10b235369be7a04da1874a53c524d002c7ad"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          257,
+          238,
+          642,
+          546
+        ],
+        "sha256": "3cb85c632fe7438845a2b0f582e38581807253875f86a54d4b469ba98cf8db20"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          259,
+          238,
+          650,
+          550
+        ],
+        "sha256": "705a00c9e7da9bc015db2b2de7ddc21dcbc356bed385ab611f4a8b7b98263537"
+      }
+    ]
+  },
+  {
+    "id": "jelly-seal-happy",
+    "cell": 462,
+    "frames": [
+      {
+        "frame": 0,
+        "bounds": [
+          130,
+          127,
+          388,
+          357
+        ],
+        "sha256": "532fb29291f445938a97e12a783606db623b18b93b18de633b9f8ee57e229317"
+      },
+      {
+        "frame": 1,
+        "bounds": [
+          131,
+          127,
+          388,
+          360
+        ],
+        "sha256": "8a2d2f742e2a40b6b39611ded7f17005ed10574f2577c1a65907946b11db92a0"
+      },
+      {
+        "frame": 2,
+        "bounds": [
+          132,
+          127,
+          388,
+          360
+        ],
+        "sha256": "842e3d7758e863ad04895533133146110ec0036f4c5d591e0156d8a030542d34"
+      },
+      {
+        "frame": 3,
+        "bounds": [
+          132,
+          127,
+          389,
+          360
+        ],
+        "sha256": "e73c72fc36fe4072f4721bc5834d524068c93bdb4b96ec9f9e8a7c88efa0fc71"
+      },
+      {
+        "frame": 4,
+        "bounds": [
+          132,
+          127,
+          388,
+          359
+        ],
+        "sha256": "2197366f3057dced36bcb710eb02e4f41b3c36bc666f96d2e9029fad8c1b8232"
+      },
+      {
+        "frame": 5,
+        "bounds": [
+          132,
+          127,
+          389,
+          359
+        ],
+        "sha256": "beea0befd47899b19074ce829bf13b8e185481808e6d8e2832ccc5d97bc8e9d3"
+      },
+      {
+        "frame": 6,
+        "bounds": [
+          124,
+          127,
+          388,
+          360
+        ],
+        "sha256": "0353c02ee123e63709def89c75a9775ed10170ad3187ee9d97ab16a8271c4bd2"
+      },
+      {
+        "frame": 7,
+        "bounds": [
+          131,
+          126,
+          388,
+          357
+        ],
+        "sha256": "042a85f957762a74b4921a10889b6b79f75b4e0f2a2b2994ae11560fdba97551"
+      }
+    ]
+  }
+]

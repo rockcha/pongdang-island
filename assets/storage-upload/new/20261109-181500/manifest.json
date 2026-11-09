@@ -1,0 +1,317 @@
+{
+  "tool": "image_gen.imagegen",
+  "status": "operator-sandbox-locally-verified",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "pets": [
+    {
+      "id": "sand-golem",
+      "name": "모래뭉",
+      "appearance": "A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes.",
+      "actions": "idleA: soft breathing through tiny chest-stone shifts, relaxed short stone arms; idleB: small stone hand lifts into a shy wave then returns, sprout leaves sway; hungry: both stone hands gently cradle its belly, sprout droops and face looks quietly hungry; happy: arms open slightly, eyes close happily, little head sprout opens its two leaves widely, arms return and leaves settle.",
+      "thumbnail_path": "pets/sand-golem_v1_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Use case: stylized-concept. ONE isolated beautiful cute game PET thumbnail. A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes. Sitting comfortably, three-quarter FRONT view looking gently toward the player, body slightly toward screen right, face fully readable. Warm thin colored outlines, soft dimensional hand-painted cartoon shading, friendly modest eyes, refined clean detail. Reference image is drawing STYLE only; do NOT copy otter anatomy, starfish hair ornament, fishing hook or string, brown fur, pose or checkerboard. Keep this species distinct. Whole pet centered in central 65% of square canvas, complete head, sprout, ears, wings, paws, flippers and tail inside generous transparent margins. No background, no floor, no shadow outside body, no halo, no floating particles, no fog, no text or watermark. True clean alpha transparency and finished antialiased edges.",
+      "source_thumbnail": "sources/sand-golem-thumbnail.source",
+      "thumbnail_sha256": "7465be0f56959d685d7b1a3843c011a652169f9ec07a42b711f9600adfd9fc4d",
+      "movement": {
+        "type": "fixed",
+        "surface": "pet-house",
+        "flipWithDirection": false,
+        "reason": "Pet-house seated preview; not an aquarium species or catalog registration."
+      }
+    },
+    {
+      "id": "wave-cat",
+      "name": "파도냥",
+      "appearance": "A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body.",
+      "actions": "idleA: gentle breathing and a small flowing tail-tip wave; idleB: slowly raises one forepaw, gives it a tiny lick, lowers it while ear tips turn; hungry: lowers ears and rests both forepaws near belly, tail curls close and eyes look softly pleading; happy: closes eyes and rubs cheek against a raised forepaw, tail sways, paw returns and face relaxes.",
+      "thumbnail_path": "pets/wave-cat_v1_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Use case: stylized-concept. ONE isolated beautiful cute game PET thumbnail. A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body. Sitting comfortably, three-quarter FRONT view looking gently toward the player, body slightly toward screen right, face fully readable. Warm thin colored outlines, soft dimensional hand-painted cartoon shading, friendly modest eyes, refined clean detail. Reference image is drawing STYLE only; do NOT copy otter anatomy, starfish hair ornament, fishing hook or string, brown fur, pose or checkerboard. Keep this species distinct. Whole pet centered in central 65% of square canvas, complete head, sprout, ears, wings, paws, flippers and tail inside generous transparent margins. No background, no floor, no shadow outside body, no halo, no floating particles, no fog, no text or watermark. True clean alpha transparency and finished antialiased edges.",
+      "source_thumbnail": "sources/wave-cat-thumbnail.source",
+      "thumbnail_sha256": "b78893466e524539a2fe662662010e4527c9ea8f6187adc0ba35ca395d3f97d1",
+      "movement": {
+        "type": "fixed",
+        "surface": "pet-house",
+        "flipWithDirection": false,
+        "reason": "Pet-house seated preview; not an aquarium species or catalog registration."
+      }
+    },
+    {
+      "id": "mochi-dragon",
+      "name": "모찌룽",
+      "appearance": "A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes.",
+      "actions": "idleA: soft belly breathing, tail tip and small wing membranes flex; idleB: little yawn with tiny rounded dragon teeth, mouth closes and wings tuck back; hungry: short forepaws hold belly, wing tips droop, tiny snout pouts gently; happy: eyes close with a big content smile, wings open and softly flap, a tiny flower-shaped warm breath stays directly by mouth and disappears as wings fold and smile settles.",
+      "thumbnail_path": "pets/mochi-dragon_v1_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Use case: stylized-concept. ONE isolated beautiful cute game PET thumbnail. A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes. Sitting comfortably, three-quarter FRONT view looking gently toward the player, body slightly toward screen right, face fully readable. Warm thin colored outlines, soft dimensional hand-painted cartoon shading, friendly modest eyes, refined clean detail. Reference image is drawing STYLE only; do NOT copy otter anatomy, starfish hair ornament, fishing hook or string, brown fur, pose or checkerboard. Keep this species distinct. Whole pet centered in central 65% of square canvas, complete head, sprout, ears, wings, paws, flippers and tail inside generous transparent margins. No background, no floor, no shadow outside body, no halo, no floating particles, no fog, no text or watermark. True clean alpha transparency and finished antialiased edges.",
+      "source_thumbnail": "sources/mochi-dragon-thumbnail.source",
+      "thumbnail_sha256": "243c496b1223f5ef5aded0127aaaf97a95895d054bd5a3636010a345dcfdff0a",
+      "movement": {
+        "type": "fixed",
+        "surface": "pet-house",
+        "flipWithDirection": false,
+        "reason": "Pet-house seated preview; not an aquarium species or catalog registration."
+      }
+    },
+    {
+      "id": "jelly-seal",
+      "name": "젤리코",
+      "appearance": "A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes.",
+      "actions": "idleA: body softly squishes and relaxes without translating the face, front flipper tips flex; idleB: raises its two short front flippers for a tiny gentle clap then returns; hungry: flippers tuck close to its tummy, body looks a little deflated, eyes softly pleading; happy: gives two small excited flipper claps while jelly sides squash and recover, head anchor remains fixed, returns to rounded neutral pose.",
+      "thumbnail_path": "pets/jelly-seal_v1_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Use case: stylized-concept. ONE isolated beautiful cute game PET thumbnail. A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes. Sitting comfortably, three-quarter FRONT view looking gently toward the player, body slightly toward screen right, face fully readable. Warm thin colored outlines, soft dimensional hand-painted cartoon shading, friendly modest eyes, refined clean detail. Reference image is drawing STYLE only; do NOT copy otter anatomy, starfish hair ornament, fishing hook or string, brown fur, pose or checkerboard. Keep this species distinct. Whole pet centered in central 65% of square canvas, complete head, sprout, ears, wings, paws, flippers and tail inside generous transparent margins. No background, no floor, no shadow outside body, no halo, no floating particles, no fog, no text or watermark. True clean alpha transparency and finished antialiased edges.",
+      "source_thumbnail": "sources/jelly-seal-thumbnail.source",
+      "thumbnail_sha256": "75f9386164b7b6d9f964d00543aa7375dff7312d045618b688c3a8897f39a5a4",
+      "movement": {
+        "type": "fixed",
+        "surface": "pet-house",
+        "flipWithDirection": false,
+        "reason": "Pet-house seated preview; not an aquarium species or catalog registration."
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "sand-golem-idle",
+      "pet_id": "sand-golem",
+      "name": "모래뭉",
+      "frames": 8,
+      "thumbnail_path": "pets/sand-golem_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/sand-golem_idle8_v1_sprite.png",
+      "action": "ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: soft breathing through tiny chest-stone shifts, relaxed short stone arms; idleB: small stone hand lifts into a shy wave then returns, sprout leaves sway; hungry: both stone hands gently cradle its belly, sprout droops and face looks quietly hungry; happy: arms open slightly, eyes close happily, little head sprout opens its two leaves widely, arms return and leaves settle. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes. ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: soft breathing through tiny chest-stone shifts, relaxed short stone arms; idleB: small stone hand lifts into a shy wave then returns, sprout leaves sway; hungry: both stone hands gently cradle its belly, sprout droops and face looks quietly hungry; happy: arms open slightly, eyes close happily, little head sprout opens its two leaves widely, arms return and leaves settle. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/sand-golem-idle-sprite.source",
+      "source_sha256": "c61d5be2c153f33a5945ae58388f588fb0436273a51ea79fa9ae9e76269f80f8",
+      "sprite_sha256": "849c43c723c17dda197306124592c1865b7dbf63840cd621a7cca89260602481",
+      "references": {
+        "identity": "pets/sand-golem_v1_thumbnail.png",
+        "placement": "sources/sand-golem-idle-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "sand-golem-hungry",
+      "pet_id": "sand-golem",
+      "name": "모래뭉",
+      "frames": 4,
+      "thumbnail_path": "pets/sand-golem_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/sand-golem_hungry4_v1_sprite.png",
+      "action": "Four gently connected hungry poses ONLY. idleA: soft breathing through tiny chest-stone shifts, relaxed short stone arms; idleB: small stone hand lifts into a shy wave then returns, sprout leaves sway; hungry: both stone hands gently cradle its belly, sprout droops and face looks quietly hungry; happy: arms open slightly, eyes close happily, little head sprout opens its two leaves widely, arms return and leaves settle. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes.",
+      "columns": 2,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 2 COLUMNS by TWO ROWS, 4 equal SQUARE cells, total canvas SQUARE 1:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes. Four gently connected hungry poses ONLY. idleA: soft breathing through tiny chest-stone shifts, relaxed short stone arms; idleB: small stone hand lifts into a shy wave then returns, sprout leaves sway; hungry: both stone hands gently cradle its belly, sprout droops and face looks quietly hungry; happy: arms open slightly, eyes close happily, little head sprout opens its two leaves widely, arms return and leaves settle. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/sand-golem-hungry-sprite.source",
+      "source_sha256": "a6e6cadc8789d28d83cdfc2b31ca7d508276ea68b3e518df5efb0af71960971f",
+      "sprite_sha256": "28da436f7fa995237b7987e2d263903b8d294f86f6477cf1ecd9a9eca38e2957",
+      "references": {
+        "identity": "pets/sand-golem_v1_thumbnail.png",
+        "placement": "sources/sand-golem-hungry-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "sand-golem-happy",
+      "pet_id": "sand-golem",
+      "name": "모래뭉",
+      "frames": 8,
+      "thumbnail_path": "pets/sand-golem_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/sand-golem_happy8_v1_sprite.png",
+      "action": "Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: soft breathing through tiny chest-stone shifts, relaxed short stone arms; idleB: small stone hand lifts into a shy wave then returns, sprout leaves sway; hungry: both stone hands gently cradle its belly, sprout droops and face looks quietly hungry; happy: arms open slightly, eyes close happily, little head sprout opens its two leaves widely, arms return and leaves settle. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes. Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: soft breathing through tiny chest-stone shifts, relaxed short stone arms; idleB: small stone hand lifts into a shy wave then returns, sprout leaves sway; hungry: both stone hands gently cradle its belly, sprout droops and face looks quietly hungry; happy: arms open slightly, eyes close happily, little head sprout opens its two leaves widely, arms return and leaves settle. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/sand-golem-happy-sprite.source",
+      "source_sha256": "5ae6039ba2af84346f2590961ddc4879bc7664aa4a61058c7562dded834489d4",
+      "sprite_sha256": "3033f19bb3c29cfd92abe7f21e7e8899bfc9e22e4ec091697a18584bd5128168",
+      "references": {
+        "identity": "pets/sand-golem_v1_thumbnail.png",
+        "placement": "sources/sand-golem-happy-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "wave-cat-idle",
+      "pet_id": "wave-cat",
+      "name": "파도냥",
+      "frames": 8,
+      "thumbnail_path": "pets/wave-cat_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/wave-cat_idle8_v1_sprite.png",
+      "action": "ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: gentle breathing and a small flowing tail-tip wave; idleB: slowly raises one forepaw, gives it a tiny lick, lowers it while ear tips turn; hungry: lowers ears and rests both forepaws near belly, tail curls close and eyes look softly pleading; happy: closes eyes and rubs cheek against a raised forepaw, tail sways, paw returns and face relaxes. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body. ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: gentle breathing and a small flowing tail-tip wave; idleB: slowly raises one forepaw, gives it a tiny lick, lowers it while ear tips turn; hungry: lowers ears and rests both forepaws near belly, tail curls close and eyes look softly pleading; happy: closes eyes and rubs cheek against a raised forepaw, tail sways, paw returns and face relaxes. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/wave-cat-idle-sprite.source",
+      "source_sha256": "9477797d6b372224a1ddabb794b48d041f2348bb15cde8956d3aa0124dea940a",
+      "sprite_sha256": "9ac935c4e811fb1818163004cedf6498236c4282926167d5e4853d29c4f1fe0a",
+      "references": {
+        "identity": "pets/wave-cat_v1_thumbnail.png",
+        "placement": "sources/wave-cat-idle-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "wave-cat-hungry",
+      "pet_id": "wave-cat",
+      "name": "파도냥",
+      "frames": 4,
+      "thumbnail_path": "pets/wave-cat_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/wave-cat_hungry4_v1_sprite.png",
+      "action": "Four gently connected hungry poses ONLY. idleA: gentle breathing and a small flowing tail-tip wave; idleB: slowly raises one forepaw, gives it a tiny lick, lowers it while ear tips turn; hungry: lowers ears and rests both forepaws near belly, tail curls close and eyes look softly pleading; happy: closes eyes and rubs cheek against a raised forepaw, tail sways, paw returns and face relaxes. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes.",
+      "columns": 2,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 2 COLUMNS by TWO ROWS, 4 equal SQUARE cells, total canvas SQUARE 1:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body. Four gently connected hungry poses ONLY. idleA: gentle breathing and a small flowing tail-tip wave; idleB: slowly raises one forepaw, gives it a tiny lick, lowers it while ear tips turn; hungry: lowers ears and rests both forepaws near belly, tail curls close and eyes look softly pleading; happy: closes eyes and rubs cheek against a raised forepaw, tail sways, paw returns and face relaxes. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/wave-cat-hungry-sprite.source",
+      "source_sha256": "333a0361283249debde56d7950cb2387ab2d2ec562cb1b4f4de61cefaf04f205",
+      "sprite_sha256": "139cdbcb19ebce9210414f4d17c54be93d3dab14a5b0d8c9d079a05561c37fb8",
+      "references": {
+        "identity": "pets/wave-cat_v1_thumbnail.png",
+        "placement": "sources/wave-cat-hungry-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "wave-cat-happy",
+      "pet_id": "wave-cat",
+      "name": "파도냥",
+      "frames": 8,
+      "thumbnail_path": "pets/wave-cat_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/wave-cat_happy8_v1_sprite.png",
+      "action": "Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: gentle breathing and a small flowing tail-tip wave; idleB: slowly raises one forepaw, gives it a tiny lick, lowers it while ear tips turn; hungry: lowers ears and rests both forepaws near belly, tail curls close and eyes look softly pleading; happy: closes eyes and rubs cheek against a raised forepaw, tail sways, paw returns and face relaxes. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body. Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: gentle breathing and a small flowing tail-tip wave; idleB: slowly raises one forepaw, gives it a tiny lick, lowers it while ear tips turn; hungry: lowers ears and rests both forepaws near belly, tail curls close and eyes look softly pleading; happy: closes eyes and rubs cheek against a raised forepaw, tail sways, paw returns and face relaxes. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/wave-cat-happy-sprite.source",
+      "source_sha256": "f08366a955aa24470f70b49824871dd7133d10d1697479080a38712a785c375a",
+      "sprite_sha256": "d2978e5cf5d65d3153030a72431c3c1ca6ef3ab11463aa7fa7392d278c15399c",
+      "references": {
+        "identity": "pets/wave-cat_v1_thumbnail.png",
+        "placement": "sources/wave-cat-happy-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "mochi-dragon-idle",
+      "pet_id": "mochi-dragon",
+      "name": "모찌룽",
+      "frames": 8,
+      "thumbnail_path": "pets/mochi-dragon_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/mochi-dragon_idle8_v1_sprite.png",
+      "action": "ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: soft belly breathing, tail tip and small wing membranes flex; idleB: little yawn with tiny rounded dragon teeth, mouth closes and wings tuck back; hungry: short forepaws hold belly, wing tips droop, tiny snout pouts gently; happy: eyes close with a big content smile, wings open and softly flap, a tiny flower-shaped warm breath stays directly by mouth and disappears as wings fold and smile settles. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes. ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: soft belly breathing, tail tip and small wing membranes flex; idleB: little yawn with tiny rounded dragon teeth, mouth closes and wings tuck back; hungry: short forepaws hold belly, wing tips droop, tiny snout pouts gently; happy: eyes close with a big content smile, wings open and softly flap, a tiny flower-shaped warm breath stays directly by mouth and disappears as wings fold and smile settles. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/mochi-dragon-idle-sprite.source",
+      "source_sha256": "27e08cdb0da2f682b048b02a4482cb18e6ab78895c650f458a7ec44a48b56054",
+      "sprite_sha256": "acfc8e04e54689b5570ab815bc228989616e6f7e4f82015f98c573c7f9a66c26",
+      "references": {
+        "identity": "pets/mochi-dragon_v1_thumbnail.png",
+        "placement": "sources/mochi-dragon-idle-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "mochi-dragon-hungry",
+      "pet_id": "mochi-dragon",
+      "name": "모찌룽",
+      "frames": 4,
+      "thumbnail_path": "pets/mochi-dragon_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/mochi-dragon_hungry4_v1_sprite.png",
+      "action": "Four gently connected hungry poses ONLY. idleA: soft belly breathing, tail tip and small wing membranes flex; idleB: little yawn with tiny rounded dragon teeth, mouth closes and wings tuck back; hungry: short forepaws hold belly, wing tips droop, tiny snout pouts gently; happy: eyes close with a big content smile, wings open and softly flap, a tiny flower-shaped warm breath stays directly by mouth and disappears as wings fold and smile settles. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes.",
+      "columns": 2,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 2 COLUMNS by TWO ROWS, 4 equal SQUARE cells, total canvas SQUARE 1:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes. Four gently connected hungry poses ONLY. idleA: soft belly breathing, tail tip and small wing membranes flex; idleB: little yawn with tiny rounded dragon teeth, mouth closes and wings tuck back; hungry: short forepaws hold belly, wing tips droop, tiny snout pouts gently; happy: eyes close with a big content smile, wings open and softly flap, a tiny flower-shaped warm breath stays directly by mouth and disappears as wings fold and smile settles. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/mochi-dragon-hungry-sprite.source",
+      "source_sha256": "ff820ddf60010deae92ac6691bc38a75b9745813bf9b79e4f573f98edd3067db",
+      "sprite_sha256": "f59e39f57d44e29d00e1c778e37d284a62a31dd71858e3fb5ba7d052c375f54b",
+      "references": {
+        "identity": "pets/mochi-dragon_v1_thumbnail.png",
+        "placement": "sources/mochi-dragon-hungry-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "mochi-dragon-happy",
+      "pet_id": "mochi-dragon",
+      "name": "모찌룽",
+      "frames": 8,
+      "thumbnail_path": "pets/mochi-dragon_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/mochi-dragon_happy8_v1_sprite.png",
+      "action": "Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: soft belly breathing, tail tip and small wing membranes flex; idleB: little yawn with tiny rounded dragon teeth, mouth closes and wings tuck back; hungry: short forepaws hold belly, wing tips droop, tiny snout pouts gently; happy: eyes close with a big content smile, wings open and softly flap, a tiny flower-shaped warm breath stays directly by mouth and disappears as wings fold and smile settles. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes. Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: soft belly breathing, tail tip and small wing membranes flex; idleB: little yawn with tiny rounded dragon teeth, mouth closes and wings tuck back; hungry: short forepaws hold belly, wing tips droop, tiny snout pouts gently; happy: eyes close with a big content smile, wings open and softly flap, a tiny flower-shaped warm breath stays directly by mouth and disappears as wings fold and smile settles. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/mochi-dragon-happy-sprite.source",
+      "source_sha256": "9df0aafa523ce4ae3b4167e10d32367b7f4f6e7b7095b65b07892a59f0485835",
+      "sprite_sha256": "fd9ba570d81349e2ca677da039d741ac24047a49df67f9ddac886564238bb3ec",
+      "references": {
+        "identity": "pets/mochi-dragon_v1_thumbnail.png",
+        "placement": "sources/mochi-dragon-happy-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "jelly-seal-idle",
+      "pet_id": "jelly-seal",
+      "name": "젤리코",
+      "frames": 8,
+      "thumbnail_path": "pets/jelly-seal_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/jelly-seal_idle8_v1_sprite.png",
+      "action": "ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: body softly squishes and relaxes without translating the face, front flipper tips flex; idleB: raises its two short front flippers for a tiny gentle clap then returns; hungry: flippers tuck close to its tummy, body looks a little deflated, eyes softly pleading; happy: gives two small excited flipper claps while jelly sides squash and recover, head anchor remains fixed, returns to rounded neutral pose. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes. ROW 1 / frames0-3 is idleA, ROW 2 / frames4-7 is idleB. idleA: body softly squishes and relaxes without translating the face, front flipper tips flex; idleB: raises its two short front flippers for a tiny gentle clap then returns; hungry: flippers tuck close to its tummy, body looks a little deflated, eyes softly pleading; happy: gives two small excited flipper claps while jelly sides squash and recover, head anchor remains fixed, returns to rounded neutral pose. Draw ONLY idleA and idleB here, not hungry or happy. Four connected poses per row, each final pose recovers to the first. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/jelly-seal-idle-sprite.source",
+      "source_sha256": "63e4ed73ef046a46e9c49adf5698f029cfef6fdde49c594ece47d360b253845e",
+      "sprite_sha256": "3b5bd253b3225bb5326eda5c2ba38326bb43727c315f9e086867c3a880ecd687",
+      "references": {
+        "identity": "pets/jelly-seal_v1_thumbnail.png",
+        "placement": "sources/jelly-seal-idle-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "jelly-seal-hungry",
+      "pet_id": "jelly-seal",
+      "name": "젤리코",
+      "frames": 4,
+      "thumbnail_path": "pets/jelly-seal_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/jelly-seal_hungry4_v1_sprite.png",
+      "action": "Four gently connected hungry poses ONLY. idleA: body softly squishes and relaxes without translating the face, front flipper tips flex; idleB: raises its two short front flippers for a tiny gentle clap then returns; hungry: flippers tuck close to its tummy, body looks a little deflated, eyes softly pleading; happy: gives two small excited flipper claps while jelly sides squash and recover, head anchor remains fixed, returns to rounded neutral pose. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes.",
+      "columns": 2,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 2 COLUMNS by TWO ROWS, 4 equal SQUARE cells, total canvas SQUARE 1:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes. Four gently connected hungry poses ONLY. idleA: body softly squishes and relaxes without translating the face, front flipper tips flex; idleB: raises its two short front flippers for a tiny gentle clap then returns; hungry: flippers tuck close to its tummy, body looks a little deflated, eyes softly pleading; happy: gives two small excited flipper claps while jelly sides squash and recover, head anchor remains fixed, returns to rounded neutral pose. Draw ONLY the hungry behavior, with small connected movements of ears/wings/sprout/flippers and paws, quietly pleading expression. Frame3 returns naturally to frame0. Do not just duplicate stills or blink eyes. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/jelly-seal-hungry-sprite.source",
+      "source_sha256": "dc88906045a955e19f18ae17f2b17f6a9471d45fa73bc154f87aa573b309884e",
+      "sprite_sha256": "6bbda2de7fd1f1af1dccb1ca57578fbb112b0f92a3ea9536b70e73df6193f6b4",
+      "references": {
+        "identity": "pets/jelly-seal_v1_thumbnail.png",
+        "placement": "sources/jelly-seal-hungry-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    },
+    {
+      "id": "jelly-seal-happy",
+      "pet_id": "jelly-seal",
+      "name": "젤리코",
+      "frames": 8,
+      "thumbnail_path": "pets/jelly-seal_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/jelly-seal_happy8_v1_sprite.png",
+      "action": "Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: body softly squishes and relaxes without translating the face, front flipper tips flex; idleB: raises its two short front flippers for a tiny gentle clap then returns; hungry: flippers tuck close to its tummy, body looks a little deflated, eyes softly pleading; happy: gives two small excited flipper claps while jelly sides squash and recover, head anchor remains fixed, returns to rounded neutral pose. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle.",
+      "columns": 4,
+      "prompt": "Use case: stylized-concept. A genuine production GAME PET SPRITE SHEET, 4 COLUMNS by TWO ROWS, 8 equal SQUARE cells, total canvas LANDSCAPE 2:1. Input image1 is APPROVED PET IDENTITY, image2 is PLACEMENT ONLY, do not duplicate its still poses. A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes. Eight consecutive poses for ONE 3-second SATISFIED reaction: notice care, anticipate, begin happy action, expand action, happy peak, start recovering, relax, neutral recovery. idleA: body softly squishes and relaxes without translating the face, front flipper tips flex; idleB: raises its two short front flippers for a tiny gentle clap then returns; hungry: flippers tuck close to its tummy, body looks a little deflated, eyes softly pleading; happy: gives two small excited flipper claps while jelly sides squash and recover, head anchor remains fixed, returns to rounded neutral pose. Draw ONLY the happy behavior here. Last pose recovers naturally to neutral idle. Read cells left-to-right then next row. Keep the exact same three-quarter front orientation and consistent face/body anatomy in ALL cells. Fixed rigid face/head and central torso position, constant head/body size and scale across all poses, no whole-pet bobbing or jumping, no per-cell recentering or zoom. Small paws, tail, wing membranes, sprout and flippers move naturally as specified. Complete motion inside central 60% of EACH cell, at least 15% true transparent margin on EVERY side, no cut-off parts. Distinct physical motion in every frame, not only light or blinking. Same warm refined cartoon rendering and colors as thumbnail. Actual transparent alpha background, no floor, no cast shadow, no text, no labels, no grid, no checkerboard, no halo, no mist or detached sparkles.",
+      "source_sprite": "sources/jelly-seal-happy-sprite.source",
+      "source_sha256": "1526d44b698471ea2cca9a1a3a1e19c4ccf124582cf5ae49bb2906957a034352",
+      "sprite_sha256": "e66790a39121aa285346d48dc1288f6dd9a5c392720714a1b875cddaf1f0e1fd",
+      "references": {
+        "identity": "pets/jelly-seal_v1_thumbnail.png",
+        "placement": "sources/jelly-seal-happy-placement-guide.png"
+      },
+      "rgbaPreserved": true
+    }
+  ],
+  "verification": {
+    "originalGrids": "source-grids.json",
+    "registration": "registration.json",
+    "finalAnchors": [
+      "registered-final-4.json",
+      "registered-final-8.json"
+    ],
+    "finalAudit": "final-audit.json",
+    "browser": "review/browser-check.json",
+    "remoteDatabaseChanged": false,
+    "rewards": "sandbox-only"
+  }
+}

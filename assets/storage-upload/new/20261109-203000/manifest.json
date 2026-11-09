@@ -1,0 +1,69 @@
+{
+  "tool": "image_gen.imagegen",
+  "status": "locally-verified",
+  "purpose": "Dedicated 3-second feeding poses; fixed seated head anchor",
+  "items": [
+    {
+      "id": "sand-golem-eat",
+      "pet_id": "sand-golem",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/sand-golem_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/sand-golem_eat8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve. Make ONE beautiful game companion EATING animation sprite sheet, FOUR columns and TWO rows, EIGHT equal SQUARE cells on a 2:1 LANDSCAPE canvas. Input image is the approved identity and art style. A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes. Preserve its exact front three-quarter seated orientation, anatomy, colors, body proportions and warm thin cartoon outlines. Eight consecutive poses for a gentle 3-second feeding reaction: frame0 neutral notices food; frame1 mouth opens a LITTLE anticipating a bite; frame2 mouth gently closes and cheeks puff subtly chewing; frame3 tiny mouth opens again; frame4 closes and chews softly; frame5 eyes gently close contentedly with a SMALL chewing smile; frame6 tiny tongue licks lips (for golem a small content mouth motion instead of tongue); frame7 returns to original neutral with eyes open. Head, forehead and nose position FIXED in all eight frames, head size identical; jaw and cheeks move by only 1-2 percent, no whole-head bouncing, no growing or shrinking. Hands/paws/flippers rest quietly close to belly in ALL frames; no waving, clapping, large wing spreading or lifting arms. Mouth and cheeks must visibly change across frames, not only eyes. No bowl, food, props or effects inside the sheet (added by game UI). ENTIRE complete pet including ears/sprout, tail, feet/wings/flippers fits central 60% of EVERY cell with at least 15% TRUE transparent margin on all sides. Preserve full clean antialiased edges, actual alpha transparency, no white background, no floor/shadow, no checkerboard, no labels, no halo, no stray particles. Refined cute warm cartoon illustration, exactly same individual as input.",
+      "source_sprite": "sources/sand-golem-eat-sprite.source",
+      "source_sha256": "1600382bda3fa9234af916c19374b11ecabb16679bfa84f61e4a83dcc25e040a",
+      "sprite_sha256": "1dba5696dc9365ad5ac4465c1796b81f9f37a80cc4f9b6dffdf329cb1f6e8e1c",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "wave-cat-eat",
+      "pet_id": "wave-cat",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/wave-cat_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/wave-cat_eat8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve. Make ONE beautiful game companion EATING animation sprite sheet, FOUR columns and TWO rows, EIGHT equal SQUARE cells on a 2:1 LANDSCAPE canvas. Input image is the approved identity and art style. A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body. Preserve its exact front three-quarter seated orientation, anatomy, colors, body proportions and warm thin cartoon outlines. Eight consecutive poses for a gentle 3-second feeding reaction: frame0 neutral notices food; frame1 mouth opens a LITTLE anticipating a bite; frame2 mouth gently closes and cheeks puff subtly chewing; frame3 tiny mouth opens again; frame4 closes and chews softly; frame5 eyes gently close contentedly with a SMALL chewing smile; frame6 tiny tongue licks lips (for golem a small content mouth motion instead of tongue); frame7 returns to original neutral with eyes open. Head, forehead and nose position FIXED in all eight frames, head size identical; jaw and cheeks move by only 1-2 percent, no whole-head bouncing, no growing or shrinking. Hands/paws/flippers rest quietly close to belly in ALL frames; no waving, clapping, large wing spreading or lifting arms. Mouth and cheeks must visibly change across frames, not only eyes. No bowl, food, props or effects inside the sheet (added by game UI). ENTIRE complete pet including ears/sprout, tail, feet/wings/flippers fits central 60% of EVERY cell with at least 15% TRUE transparent margin on all sides. Preserve full clean antialiased edges, actual alpha transparency, no white background, no floor/shadow, no checkerboard, no labels, no halo, no stray particles. Refined cute warm cartoon illustration, exactly same individual as input.",
+      "source_sprite": "sources/wave-cat-eat-sprite.source",
+      "source_sha256": "0cb48e231c1e70f04cfc87b912e70b2eb92f3442b43c177f13f45509c796f3fa",
+      "sprite_sha256": "3a2b643ae70f53c55b1f4155cca24ff3ee2ad012be03bec8942832b360c47799",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "mochi-dragon-eat",
+      "pet_id": "mochi-dragon",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/mochi-dragon_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/mochi-dragon_eat8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve. Make ONE beautiful game companion EATING animation sprite sheet, FOUR columns and TWO rows, EIGHT equal SQUARE cells on a 2:1 LANDSCAPE canvas. Input image is the approved identity and art style. A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes. Preserve its exact front three-quarter seated orientation, anatomy, colors, body proportions and warm thin cartoon outlines. Eight consecutive poses for a gentle 3-second feeding reaction: frame0 neutral notices food; frame1 mouth opens a LITTLE anticipating a bite; frame2 mouth gently closes and cheeks puff subtly chewing; frame3 tiny mouth opens again; frame4 closes and chews softly; frame5 eyes gently close contentedly with a SMALL chewing smile; frame6 tiny tongue licks lips (for golem a small content mouth motion instead of tongue); frame7 returns to original neutral with eyes open. Head, forehead and nose position FIXED in all eight frames, head size identical; jaw and cheeks move by only 1-2 percent, no whole-head bouncing, no growing or shrinking. Hands/paws/flippers rest quietly close to belly in ALL frames; no waving, clapping, large wing spreading or lifting arms. Mouth and cheeks must visibly change across frames, not only eyes. No bowl, food, props or effects inside the sheet (added by game UI). ENTIRE complete pet including ears/sprout, tail, feet/wings/flippers fits central 60% of EVERY cell with at least 15% TRUE transparent margin on all sides. Preserve full clean antialiased edges, actual alpha transparency, no white background, no floor/shadow, no checkerboard, no labels, no halo, no stray particles. Refined cute warm cartoon illustration, exactly same individual as input.",
+      "source_sprite": "sources/mochi-dragon-eat-sprite.source",
+      "source_sha256": "ea24036cdbee39e22496f5a0929e39ed3399711397834e450eb517d9df89a73e",
+      "sprite_sha256": "181c4a70341fcbea1116bdcafe1aa32067d621938b139bc9187b77f53f3b7d86",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "jelly-seal-eat",
+      "pet_id": "jelly-seal",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/jelly-seal_v1_thumbnail.png",
+      "sprite_sheet_path": "pets/jelly-seal_eat8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve. Make ONE beautiful game companion EATING animation sprite sheet, FOUR columns and TWO rows, EIGHT equal SQUARE cells on a 2:1 LANDSCAPE canvas. Input image is the approved identity and art style. A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes. Preserve its exact front three-quarter seated orientation, anatomy, colors, body proportions and warm thin cartoon outlines. Eight consecutive poses for a gentle 3-second feeding reaction: frame0 neutral notices food; frame1 mouth opens a LITTLE anticipating a bite; frame2 mouth gently closes and cheeks puff subtly chewing; frame3 tiny mouth opens again; frame4 closes and chews softly; frame5 eyes gently close contentedly with a SMALL chewing smile; frame6 tiny tongue licks lips (for golem a small content mouth motion instead of tongue); frame7 returns to original neutral with eyes open. Head, forehead and nose position FIXED in all eight frames, head size identical; jaw and cheeks move by only 1-2 percent, no whole-head bouncing, no growing or shrinking. Hands/paws/flippers rest quietly close to belly in ALL frames; no waving, clapping, large wing spreading or lifting arms. Mouth and cheeks must visibly change across frames, not only eyes. No bowl, food, props or effects inside the sheet (added by game UI). ENTIRE complete pet including ears/sprout, tail, feet/wings/flippers fits central 60% of EVERY cell with at least 15% TRUE transparent margin on all sides. Preserve full clean antialiased edges, actual alpha transparency, no white background, no floor/shadow, no checkerboard, no labels, no halo, no stray particles. Refined cute warm cartoon illustration, exactly same individual as input.",
+      "source_sprite": "sources/jelly-seal-eat-sprite.source",
+      "source_sha256": "33f4b3583bfe431648c4492e6600dea73029781b16ffd3cc56435f1639fa13c7",
+      "sprite_sha256": "9252c74ad4932a0ca7b269d0261c361b9b2143a0cfac2951bb6da57303f97c0f",
+      "rgbaPreserved": true
+    }
+  ],
+  "repair_prompts": "repair-prompts.json",
+  "verification": {
+    "registration": "registration.json",
+    "finalAnchors": "registered-final-8.json",
+    "browser": "review/browser-check.json",
+    "durationMs": 3000,
+    "rgbaPreserved": true,
+    "rewards": "operator sandbox only; ration and fullness commit together at completion",
+    "remoteDeployed": false
+  }
+}

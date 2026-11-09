@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "5d52961622269a60169a2d8ffaf0e78f104febdbb3954e775695659044f8ad05",
+  "migrationHash": "4c0c676f9527fe274cea90bc76b2565c01d2795a563a9f1b2d7f648e0b8b1130",
   "structure": {
     "enums": [
       {
@@ -9149,6 +9149,16 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "weather_weight",
+        "type": "smallint",
+        "table": "collectible_species",
+        "schema": "public",
+        "default": "2",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -19309,7 +19319,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_kind text, p_at timestamp with time zone, p_roll double precision",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_weather_collectible(p_kind text, p_at timestamp with time zone, p_roll double precision DEFAULT NULL::double precision)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_ids text[];v_roll double precision;\nbegin\n if p_kind is null or p_at is null then return null;end if;\n select array_agg(s.id order by s.id) into v_ids from public.collectible_species s\n where s.weather_type=p_kind and s.kind in ('fish','trash','decoration') and not exists (\n  select 1 from app_private.collectible_event_windows e where starts_with(s.id,e.species_prefix)\n   and (p_at<e.starts_at or p_at>=e.ends_at));\n if v_ids is null then return null;end if;\n v_roll:=coalesce(p_roll,random());\n if v_roll<0 or v_roll>=1 then raise exception 'INVALID_WEATHER_ROLL';end if;\n if v_roll>=0.03 then return null;end if;\n return v_ids[1+floor(random()*cardinality(v_ids))::integer];\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_weather_collectible(p_kind text, p_at timestamp with time zone, p_roll double precision DEFAULT NULL::double precision)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_roll double precision;v_id text;\nbegin\n if p_kind is null or p_at is null then return null;end if;\n v_roll:=coalesce(p_roll,random());\n if v_roll<0 or v_roll>=1 then raise exception 'INVALID_WEATHER_ROLL';end if;\n if v_roll>=0.03 then return null;end if;\n -- Conditional on a successful draw, roll / .03 is uniform in [0,1).\n -- One ordered cumulative draw preserves the outer probability exactly.\n with eligible as (\n  select s.id,s.weather_weight from public.collectible_species s\n  where s.weather_type=p_kind and s.kind in ('fish','trash','decoration')\n   and not exists (select 1 from app_private.collectible_event_windows e\n    where starts_with(s.id,e.species_prefix) and (p_at<e.starts_at or p_at>=e.ends_at))\n ), weighted as (\n  select id,sum(weather_weight) over(order by id rows unbounded preceding) as upper_weight,\n   sum(weather_weight) over() as total_weight from eligible\n )\n select id into v_id from weighted\n where upper_weight::double precision>(v_roll/0.03)*total_weight::double precision\n order by id limit 1;\n return v_id;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -30603,6 +30613,18 @@
         "definition": "CHECK ((weather_type = ANY (ARRAY['rain'::text, 'snow'::text, 'dust'::text, 'meteor'::text, 'blossom'::text])))"
       },
       {
+        "name": "collectible_species_weather_weight_check",
+        "table": "collectible_species",
+        "schema": "public",
+        "definition": "CHECK (((weather_weight >= 1) AND (weather_weight <= 10000)))"
+      },
+      {
+        "name": "collectible_species_weather_weight_not_null",
+        "table": "collectible_species",
+        "schema": "public",
+        "definition": "NOT NULL weather_weight"
+      },
+      {
         "name": "collectible_travel_direction",
         "table": "collectible_species",
         "schema": "public",
@@ -37652,6 +37674,13 @@
         "role": "authenticated",
         "table": "collectible_species",
         "column": "weather_type",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "collectible_species",
+        "column": "weather_weight",
         "schema": "public",
         "privilege": "SELECT"
       },

@@ -1,0 +1,464 @@
+{
+  "results": [
+    {
+      "id": "weather-deco-rain-window",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-rain-window_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            205,
+            136,
+            826,
+            931
+          ],
+          "margin": 136,
+          "occupancy": 0.7424242424242424,
+          "opaque": 547438,
+          "transparent": 1009294,
+          "soft": 563029
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-rain-window",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-rain-window_v1_sprite.png",
+      "width": 1286,
+      "height": 1286,
+      "cell": 643,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            122,
+            86,
+            411,
+            458
+          ],
+          "margin": 86,
+          "occupancy": 0.7122861586314152,
+          "opaque": 134269,
+          "transparent": 263070,
+          "soft": 149889
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            122,
+            86,
+            411,
+            458
+          ],
+          "margin": 86,
+          "occupancy": 0.7122861586314152,
+          "opaque": 134222,
+          "transparent": 266139,
+          "soft": 146792
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            122,
+            86,
+            411,
+            458
+          ],
+          "margin": 86,
+          "occupancy": 0.7122861586314152,
+          "opaque": 134203,
+          "transparent": 262193,
+          "soft": 150768
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            122,
+            86,
+            411,
+            458
+          ],
+          "margin": 86,
+          "occupancy": 0.7122861586314152,
+          "opaque": 134232,
+          "transparent": 260942,
+          "soft": 152001
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-snow-frame",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-snow-frame_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            286,
+            84,
+            653,
+            1032
+          ],
+          "margin": 84,
+          "occupancy": 0.8229665071770335,
+          "opaque": 515916,
+          "transparent": 1024212,
+          "soft": 547853
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-snow-frame",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-snow-frame_v1_sprite.png",
+      "width": 1286,
+      "height": 1286,
+      "cell": 643,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            182,
+            67,
+            305,
+            476
+          ],
+          "margin": 67,
+          "occupancy": 0.7402799377916018,
+          "opaque": 109919,
+          "transparent": 297800,
+          "soft": 115301
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            182,
+            67,
+            305,
+            476
+          ],
+          "margin": 67,
+          "occupancy": 0.7402799377916018,
+          "opaque": 109828,
+          "transparent": 296163,
+          "soft": 116950
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            182,
+            67,
+            305,
+            475
+          ],
+          "margin": 67,
+          "occupancy": 0.7387247278382582,
+          "opaque": 109940,
+          "transparent": 297090,
+          "soft": 116045
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            182,
+            67,
+            305,
+            476
+          ],
+          "margin": 67,
+          "occupancy": 0.7402799377916018,
+          "opaque": 109922,
+          "transparent": 295946,
+          "soft": 117160
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-sand-scales",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-sand-scales_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            172,
+            84,
+            916,
+            1055
+          ],
+          "margin": 84,
+          "occupancy": 0.8413078149920256,
+          "opaque": 396619,
+          "transparent": 1099263,
+          "soft": 473072
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-sand-scales",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-sand-scales_v1_sprite.png",
+      "width": 1286,
+      "height": 1286,
+      "cell": 643,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            143,
+            97,
+            364,
+            428
+          ],
+          "margin": 97,
+          "occupancy": 0.6656298600311042,
+          "opaque": 68339,
+          "transparent": 327908,
+          "soft": 84806
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            141,
+            97,
+            362,
+            428
+          ],
+          "margin": 97,
+          "occupancy": 0.6656298600311042,
+          "opaque": 67976,
+          "transparent": 329426,
+          "soft": 83206
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            141,
+            98,
+            361,
+            427
+          ],
+          "margin": 98,
+          "occupancy": 0.6640746500777605,
+          "opaque": 67619,
+          "transparent": 328503,
+          "soft": 84206
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            142,
+            98,
+            361,
+            427
+          ],
+          "margin": 98,
+          "occupancy": 0.6640746500777605,
+          "opaque": 67730,
+          "transparent": 330104,
+          "soft": 82508
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-night-winder",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-night-winder_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            270,
+            72,
+            772,
+            1087
+          ],
+          "margin": 72,
+          "occupancy": 0.8668261562998405,
+          "opaque": 446960,
+          "transparent": 1072264,
+          "soft": 499877
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-night-winder",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-night-winder_v1_sprite.png",
+      "width": 1390,
+      "height": 1390,
+      "cell": 695,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            187,
+            112,
+            360,
+            501
+          ],
+          "margin": 82,
+          "occupancy": 0.720863309352518,
+          "opaque": 97396,
+          "transparent": 365990,
+          "soft": 116827
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            188,
+            112,
+            343,
+            501
+          ],
+          "margin": 82,
+          "occupancy": 0.720863309352518,
+          "opaque": 97320,
+          "transparent": 366690,
+          "soft": 116166
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            187,
+            113,
+            360,
+            500
+          ],
+          "margin": 82,
+          "occupancy": 0.7194244604316546,
+          "opaque": 95934,
+          "transparent": 367836,
+          "soft": 115061
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            188,
+            113,
+            352,
+            500
+          ],
+          "margin": 82,
+          "occupancy": 0.7194244604316546,
+          "opaque": 96877,
+          "transparent": 365297,
+          "soft": 117580
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-spring-perfume",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-spring-perfume_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            297,
+            75,
+            684,
+            1078
+          ],
+          "margin": 75,
+          "occupancy": 0.8596491228070176,
+          "opaque": 383227,
+          "transparent": 1174696,
+          "soft": 397357
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "weather-deco-spring-perfume",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261109-173320\\decorations\\epic\\weather-deco-spring-perfume_v1_sprite.png",
+      "width": 1494,
+      "height": 1494,
+      "cell": 747,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            238,
+            150,
+            292,
+            470
+          ],
+          "margin": 127,
+          "occupancy": 0.6291834002677377,
+          "opaque": 75017,
+          "transparent": 469557,
+          "soft": 88249
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            238,
+            150,
+            300,
+            470
+          ],
+          "margin": 127,
+          "occupancy": 0.6291834002677377,
+          "opaque": 75733,
+          "transparent": 465759,
+          "soft": 92013
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            238,
+            150,
+            310,
+            470
+          ],
+          "margin": 127,
+          "occupancy": 0.6291834002677377,
+          "opaque": 77248,
+          "transparent": 462932,
+          "soft": 94871
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            238,
+            150,
+            321,
+            470
+          ],
+          "margin": 127,
+          "occupancy": 0.6291834002677377,
+          "opaque": 78836,
+          "transparent": 456346,
+          "soft": 101389
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

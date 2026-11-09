@@ -1,0 +1,490 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/sand-golem-idle.png",
+        "storage_path":  "pets/sand-golem_idle8_v1_sprite.png",
+        "patch":  [
+                      160,
+                      150,
+                      145,
+                      95
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  -10,
+                           "rmse":  26.655346368286335
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  12.042230396239388
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  11.316871088704195
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  9.2871684599054785
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  -6,
+                           "rmse":  29.197160839116641
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -1,
+                           "dy":  -5,
+                           "rmse":  33.657019179955512
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  14.391190297855186
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/sand-golem-happy.png",
+        "storage_path":  "pets/sand-golem_happy8_v1_sprite.png",
+        "patch":  [
+                      160,
+                      150,
+                      140,
+                      90
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  18.464059347914418
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  22.410913878208959
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -3,
+                           "rmse":  18.817812508852672
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -2,
+                           "dy":  -4,
+                           "rmse":  37.834054301827067
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  -2,
+                           "rmse":  19.403835392749304
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.21776995603662
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  10.875343807444789
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/wave-cat-idle.png",
+        "storage_path":  "pets/wave-cat_idle8_v1_sprite.png",
+        "patch":  [
+                      205,
+                      150,
+                      130,
+                      105
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  16.984835388637546
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -3,
+                           "rmse":  14.186033830824808
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.877834305371325
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  12.953645302995712
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  15.472717605059623
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  4,
+                           "rmse":  26.55947073625191
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  13.524652529398978
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/wave-cat-happy.png",
+        "storage_path":  "pets/wave-cat_happy8_v1_sprite.png",
+        "patch":  [
+                      263,
+                      192,
+                      29,
+                      23
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -7,
+                           "dy":  -2,
+                           "rmse":  13.007089413085465
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -7,
+                           "dy":  -2,
+                           "rmse":  10.396964701296239
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -9,
+                           "dy":  -3,
+                           "rmse":  24.599034533899903
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -3,
+                           "dy":  -10,
+                           "rmse":  27.859693106708839
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -6,
+                           "dy":  -3,
+                           "rmse":  23.03699470417094
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -5,
+                           "dy":  0,
+                           "rmse":  18.890804641412181
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -3,
+                           "dy":  3,
+                           "rmse":  15.47215240359272
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/mochi-dragon-idle.png",
+        "storage_path":  "pets/mochi-dragon_idle8_v1_sprite.png",
+        "patch":  [
+                      171,
+                      187,
+                      43,
+                      22
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  7.1767854921266805
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -3,
+                           "rmse":  8.9091479203494348
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.4772981151622435
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  1,
+                           "dy":  -1,
+                           "rmse":  9.6103243094774555
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  14,
+                           "dy":  -64,
+                           "rmse":  15.681996046422151
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  4,
+                           "dy":  -22,
+                           "rmse":  13.054533056886152
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  9.0167667893393659
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/mochi-dragon-happy.png",
+        "storage_path":  "pets/mochi-dragon_happy8_v1_sprite.png",
+        "patch":  [
+                      194,
+                      196,
+                      35,
+                      18
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -21,
+                           "dy":  0,
+                           "rmse":  7.4979163772344117
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -28,
+                           "dy":  -1,
+                           "rmse":  12.890295660776065
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -30,
+                           "dy":  -2,
+                           "rmse":  12.037845414451136
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -3,
+                           "dy":  -8,
+                           "rmse":  12.040008536357254
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -19,
+                           "dy":  -5,
+                           "rmse":  7.4516963020360523
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -22,
+                           "dy":  -4,
+                           "rmse":  5.7975090436420293
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -25,
+                           "dy":  -4,
+                           "rmse":  6.6752548848547928
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/jelly-seal-idle.png",
+        "storage_path":  "pets/jelly-seal_idle8_v1_sprite.png",
+        "patch":  [
+                      150,
+                      155,
+                      105,
+                      85
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -2,
+                           "dy":  8,
+                           "rmse":  25.118173900554996
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  11,
+                           "rmse":  31.700394707803589
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  10.09058723459226
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  6.1439024199455519
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  -3,
+                           "rmse":  13.933869145345305
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -4,
+                           "rmse":  13.626790116054297
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  11.326382732929693
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261109-181500/normalized/jelly-seal-happy.png",
+        "storage_path":  "pets/jelly-seal_happy8_v1_sprite.png",
+        "patch":  [
+                      155,
+                      150,
+                      105,
+                      85
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  8.828915771179453
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.5778165036277612
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  7.1204797259098767
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  7.484960289932868
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  11.262005088823644
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.5241849269198617
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  1,
+                           "rmse":  15.449966920110617
+                       }
+                   ]
+    }
+]

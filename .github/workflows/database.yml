@@ -38,5 +38,7 @@ jobs:
       - run: npm test -- tests/relic-recycling-sql.test.ts tests/cozy-aquarium-themes-sql.test.ts tests/galaxy-region-sql.test.ts
       - name: Billiards verification and weekly rewards
         run: npm test -- --maxWorkers=1 --testTimeout=20000 tests/billiards-sql.test.ts tests/billiards-edge.test.ts tests/billiards-replay.test.ts tests/arcade-weekly-rewards.test.ts
+      - name: Weather fairy weights and reservation regressions
+        run: npm test -- --maxWorkers=1 --testTimeout=20000 tests/fishing-weather-sql.test.ts
       - name: Farm visits and hologram database regressions
         run: npm test -- --maxWorkers=1 --testTimeout=20000 tests/farm-visits-sql.test.ts tests/hologram-region-sql.test.ts tests/catalog-region-habitats.test.ts

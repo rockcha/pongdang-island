@@ -22,7 +22,7 @@ beforeEach(()=>{mock.rouletteReady=false;mock.fleaReady=0;mock.relic=null;mock.n
 afterEach(cleanup)
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 const groups=['내 섬','낚시','생산','장터','수집','소식','광장']
-it.each([{operator:true,email:'0@0.com',visible:true},{operator:false,email:'0@0.com',visible:false},{operator:true,email:'other@example.com',visible:false}])('shows local training only for the target operator: $email / $operator',async value=>{
+it.each([{operator:true,email:'0@0.com',visible:false},{operator:false,email:'0@0.com',visible:false},{operator:true,email:'other@example.com',visible:false}])('omits training from the island menu: $email / $operator',async value=>{
  mock.operator=value.operator;trainingAuth.email=value.email
  render(<MemoryRouter><View/></MemoryRouter>)
  const menu=await open('내 섬'),item=within(menu).queryByRole('menuitem',{name:/훈련장/})
@@ -75,9 +75,17 @@ async function open(name:string){fireEvent.click(screen.getByRole('button',{name
 it.each([false,true])('shows pet preview only for operators: %s',async operator=>{
  mock.operator=operator
  render(<MemoryRouter initialEntries={['/pet-house-test']}><View/></MemoryRouter>)
- const menu=await open('수집'),item=within(menu).queryByRole('menuitem',{name:/펫 하우스 테스트/})
+ const menu=await open('내 섬'),item=within(menu).queryByRole('menuitem',{name:/펫 하우스 테스트/})
  expect(!!item).toBe(operator)
- if(item){expect(item.getAttribute('href')).toBe('/pet-house-test');expect(item.textContent).toContain('운영자')}
+ if(item){
+  expect(item.getAttribute('href')).toBe('/pet-house-test');expect(item.textContent).toContain('운영자')
+  const paths=Array.from(menu.querySelectorAll('a')).map(link=>link.getAttribute('href'))
+  expect(paths[paths.indexOf('/farm')+1]).toBe('/pet-house-test')
+  expect(screen.getByRole('button',{name:'내 섬'}).getAttribute('aria-current')).toBe('location')
+ }
+ await close(menu)
+ const collection=await open('수집')
+ expect(within(collection).queryByRole('menuitem',{name:/펫 하우스 테스트/})).toBeNull()
 })
 async function close(menu:HTMLElement){fireEvent.keyDown(menu,{key:'Escape'});await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())}
 it('shows seven representative icons with visible labels and an active category',()=>{

@@ -42,7 +42,7 @@ jobs:
       - name: Farm queue and paid billiards regressions
         run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/farm-command-queue.test.ts tests/farm-account-retry.test.tsx tests/farm-interaction-feedback.test.tsx tests/billiards-ui.test.tsx tests/billiards-api.test.ts tests/billiards.test.ts
       - name: Operator pet sandbox regressions
-        run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/pet-preview-model.test.ts tests/pet-preview-ui.test.tsx tests/pet-preview-assets.test.ts tests/pet-idle-animation.test.ts tests/pet-sprite-transition.test.tsx tests/pet-sprite-images.test.ts tests/pet-draw-layout.test.ts tests/pet-jobs-panel.test.tsx tests/operator-guard.test.tsx tests/header-place-navigation.test.tsx tests/page-navigation.test.tsx
+        run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/pet-preview-model.test.ts tests/pet-enhancement.test.ts tests/pet-preview-ui.test.tsx tests/pet-preview-assets.test.ts tests/pet-idle-animation.test.ts tests/pet-needs-animation.test.ts tests/pet-sprite-transition.test.tsx tests/pet-sprite-images.test.ts tests/pet-draw-layout.test.ts tests/pet-jobs-panel.test.tsx tests/operator-guard.test.tsx tests/header-place-navigation.test.tsx tests/page-navigation.test.tsx
       - name: Weather artwork, decorations and preview regressions
         run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/weather-decorations.test.ts tests/shared-decoration-animation.test.ts tests/weather-pongi-assets.test.ts tests/weather-pongi-picker.test.tsx tests/development-weather-catalog.test.ts tests/fishing-weather.test.tsx tests/mythic-swim.test.ts
       - run: npm run build

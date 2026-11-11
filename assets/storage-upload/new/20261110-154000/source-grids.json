@@ -1,0 +1,326 @@
+[
+  {
+    "id": "sand-golem-needs",
+    "file": "assets/storage-upload/new/20261110-154000/normalized/sand-golem-needs.png",
+    "storage_path": "pets/sand-golem_needs8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 84,
+        "top": 44,
+        "width": 279,
+        "height": 358,
+        "margin": 42,
+        "opaque": 73584
+      },
+      {
+        "frame": 1,
+        "left": 85,
+        "top": 44,
+        "width": 275,
+        "height": 358,
+        "margin": 42,
+        "opaque": 72476
+      },
+      {
+        "frame": 2,
+        "left": 86,
+        "top": 44,
+        "width": 274,
+        "height": 358,
+        "margin": 42,
+        "opaque": 71435
+      },
+      {
+        "frame": 3,
+        "left": 86,
+        "top": 43,
+        "width": 274,
+        "height": 359,
+        "margin": 42,
+        "opaque": 72726
+      },
+      {
+        "frame": 4,
+        "left": 85,
+        "top": 31,
+        "width": 275,
+        "height": 370,
+        "margin": 31,
+        "opaque": 72139
+      },
+      {
+        "frame": 5,
+        "left": 85,
+        "top": 31,
+        "width": 275,
+        "height": 370,
+        "margin": 31,
+        "opaque": 71658
+      },
+      {
+        "frame": 6,
+        "left": 86,
+        "top": 31,
+        "width": 274,
+        "height": 370,
+        "margin": 31,
+        "opaque": 71847
+      },
+      {
+        "frame": 7,
+        "left": 86,
+        "top": 31,
+        "width": 274,
+        "height": 370,
+        "margin": 31,
+        "opaque": 71885
+      }
+    ]
+  },
+  {
+    "id": "wave-cat-needs",
+    "file": "assets/storage-upload/new/20261110-154000/normalized/wave-cat-needs.png",
+    "storage_path": "pets/wave-cat_needs8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 53,
+        "top": 67,
+        "width": 331,
+        "height": 319,
+        "margin": 53,
+        "opaque": 71843
+      },
+      {
+        "frame": 1,
+        "left": 53,
+        "top": 67,
+        "width": 330,
+        "height": 319,
+        "margin": 53,
+        "opaque": 71906
+      },
+      {
+        "frame": 2,
+        "left": 54,
+        "top": 67,
+        "width": 330,
+        "height": 319,
+        "margin": 54,
+        "opaque": 71766
+      },
+      {
+        "frame": 3,
+        "left": 53,
+        "top": 67,
+        "width": 330,
+        "height": 319,
+        "margin": 53,
+        "opaque": 71798
+      },
+      {
+        "frame": 4,
+        "left": 53,
+        "top": 64,
+        "width": 334,
+        "height": 322,
+        "margin": 53,
+        "opaque": 73183
+      },
+      {
+        "frame": 5,
+        "left": 53,
+        "top": 65,
+        "width": 334,
+        "height": 321,
+        "margin": 53,
+        "opaque": 72870
+      },
+      {
+        "frame": 6,
+        "left": 54,
+        "top": 64,
+        "width": 334,
+        "height": 322,
+        "margin": 54,
+        "opaque": 72820
+      },
+      {
+        "frame": 7,
+        "left": 53,
+        "top": 65,
+        "width": 334,
+        "height": 321,
+        "margin": 53,
+        "opaque": 73057
+      }
+    ]
+  },
+  {
+    "id": "mochi-dragon-needs",
+    "file": "assets/storage-upload/new/20261110-154000/normalized/mochi-dragon-needs.png",
+    "storage_path": "pets/mochi-dragon_needs8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 68,
+        "top": 32,
+        "width": 319,
+        "height": 364,
+        "margin": 32,
+        "opaque": 80608
+      },
+      {
+        "frame": 1,
+        "left": 68,
+        "top": 32,
+        "width": 318,
+        "height": 363,
+        "margin": 32,
+        "opaque": 80492
+      },
+      {
+        "frame": 2,
+        "left": 68,
+        "top": 32,
+        "width": 319,
+        "height": 364,
+        "margin": 32,
+        "opaque": 80484
+      },
+      {
+        "frame": 3,
+        "left": 68,
+        "top": 32,
+        "width": 318,
+        "height": 363,
+        "margin": 32,
+        "opaque": 80536
+      },
+      {
+        "frame": 4,
+        "left": 68,
+        "top": 32,
+        "width": 319,
+        "height": 363,
+        "margin": 32,
+        "opaque": 79970
+      },
+      {
+        "frame": 5,
+        "left": 68,
+        "top": 32,
+        "width": 318,
+        "height": 363,
+        "margin": 32,
+        "opaque": 79820
+      },
+      {
+        "frame": 6,
+        "left": 68,
+        "top": 32,
+        "width": 319,
+        "height": 363,
+        "margin": 32,
+        "opaque": 79132
+      },
+      {
+        "frame": 7,
+        "left": 68,
+        "top": 32,
+        "width": 318,
+        "height": 363,
+        "margin": 32,
+        "opaque": 79849
+      }
+    ]
+  },
+  {
+    "id": "jelly-seal-needs",
+    "file": "assets/storage-upload/new/20261110-154000/normalized/jelly-seal-needs.png",
+    "storage_path": "pets/jelly-seal_needs8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 81,
+        "top": 76,
+        "width": 329,
+        "height": 306,
+        "margin": 34,
+        "opaque": 69409
+      },
+      {
+        "frame": 1,
+        "left": 80,
+        "top": 76,
+        "width": 330,
+        "height": 306,
+        "margin": 34,
+        "opaque": 69373
+      },
+      {
+        "frame": 2,
+        "left": 81,
+        "top": 76,
+        "width": 330,
+        "height": 306,
+        "margin": 33,
+        "opaque": 69259
+      },
+      {
+        "frame": 3,
+        "left": 80,
+        "top": 76,
+        "width": 330,
+        "height": 306,
+        "margin": 34,
+        "opaque": 69328
+      },
+      {
+        "frame": 4,
+        "left": 81,
+        "top": 76,
+        "width": 330,
+        "height": 307,
+        "margin": 33,
+        "opaque": 69323
+      },
+      {
+        "frame": 5,
+        "left": 80,
+        "top": 76,
+        "width": 330,
+        "height": 307,
+        "margin": 34,
+        "opaque": 69341
+      },
+      {
+        "frame": 6,
+        "left": 82,
+        "top": 76,
+        "width": 329,
+        "height": 307,
+        "margin": 33,
+        "opaque": 69169
+      },
+      {
+        "frame": 7,
+        "left": 80,
+        "top": 76,
+        "width": 330,
+        "height": 307,
+        "margin": 34,
+        "opaque": 69246
+      }
+    ]
+  }
+]

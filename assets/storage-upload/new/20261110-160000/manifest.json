@@ -1,0 +1,74 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Blink-only companion frames for hungry and lonely resting poses",
+  "status": "locally-verified",
+  "items": [
+    {
+      "id": "sand-golem-needs-blink",
+      "pet_id": "sand-golem",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/sand-golem_needs8_v1_sprite.png",
+      "sprite_sheet_path": "pets/sand-golem_needs_blink8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve precise animation edit. Input is the approved 4 by 2 pet sprite sheet. Create a companion EYE BLINK sheet, EXACTLY 4 columns and 2 rows of equal SQUARE cells on a 2:1 landscape canvas, actual transparent alpha background. Preserve this exact character, colors, rendering, thin outlines and face/body scale and position. TOP ROW: use the input TOP LEFT hungry resting pose in ALL FOUR cells. BOTTOM ROW: use the input BOTTOM LEFT lonely resting pose in ALL FOUR cells. Keep each row's face expression, mouth, eyebrow mood and hands as in that resting pose. The ONLY changed part between cells is the eyelids: column 0 eyes fully open exactly as input; column 1 eyes half closed, upper eyelid lowering; column 2 BOTH eyes fully closed, simple delicate curved closed-eye lines, no visible eyeballs, no smile, no sleepy facial change; column 3 eyes half opening. Complete BOTH eyes in every frame, preserve their asymmetric three-quarter perspective. No body/limb/ear/tail/sprout movement AT ALL. No head tilting or bobbing or rotation. No changing anatomy, face position or head size. Do NOT reproduce the arm gestures from the other input columns, just the first resting pose per row. Put each whole pet in central 60% of each cell with at least 15% transparent margin at every side. Entire outline intact, same orientation. No text, grid, white background, checkerboard, floor, shadows, halo or particles. High quality identical warm illustration. A tiny rounded SANDSTONE GOLEM companion, warm sand beige pebble body built from a broad round torso and short chunky stone arms and feet, gentle small dark oval eyes and smiling stone mouth, ONE tiny green sprout growing on top of its head, small turquoise heart-shaped stone inset in chest. Stubby friendly proportions, subtly textured sandstone, no fur, no animal ears, no clothes.",
+      "source_sprite": "sources/sand-golem-needs-blink-sprite.source",
+      "source_sha256": "f68823cc83a2cc0c4e36cec2e804473e5c7f2faae7a281e93ec8dc3ea4af69cc",
+      "sprite_sha256": "4113014e1c1e60630424ed7acce0f5571094ed117826bf1555cd90d834debb1c",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "wave-cat-needs-blink",
+      "pet_id": "wave-cat",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/wave-cat_needs8_v1_sprite.png",
+      "sprite_sheet_path": "pets/wave-cat_needs_blink8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve precise animation edit. Input is the approved 4 by 2 pet sprite sheet. Create a companion EYE BLINK sheet, EXACTLY 4 columns and 2 rows of equal SQUARE cells on a 2:1 landscape canvas, actual transparent alpha background. Preserve this exact character, colors, rendering, thin outlines and face/body scale and position. TOP ROW: use the input TOP LEFT hungry resting pose in ALL FOUR cells. BOTTOM ROW: use the input BOTTOM LEFT lonely resting pose in ALL FOUR cells. Keep each row's face expression, mouth, eyebrow mood and hands as in that resting pose. The ONLY changed part between cells is the eyelids: column 0 eyes fully open exactly as input; column 1 eyes half closed, upper eyelid lowering; column 2 BOTH eyes fully closed, simple delicate curved closed-eye lines, no visible eyeballs, no smile, no sleepy facial change; column 3 eyes half opening. Complete BOTH eyes in every frame, preserve their asymmetric three-quarter perspective. No body/limb/ear/tail/sprout movement AT ALL. No head tilting or bobbing or rotation. No changing anatomy, face position or head size. Do NOT reproduce the arm gestures from the other input columns, just the first resting pose per row. Put each whole pet in central 60% of each cell with at least 15% transparent margin at every side. Entire outline intact, same orientation. No text, grid, white background, checkerboard, floor, shadows, halo or particles. High quality identical warm illustration. A small fluffy KITTEN companion, creamy ivory face and belly with soft sea-blue fur on head and back, triangular cat ears with rounded wave-shaped tips, medium expressive teal eyes and tiny pink nose, short white paws, long fluffy tail curls into a rounded ocean-wave tip. Cute compact kitten anatomy, no clothes, no collar, no human body.",
+      "source_sprite": "sources/wave-cat-needs-blink-sprite.source",
+      "source_sha256": "66f90d376a177a88ce51ec31f10d23e56552bc932b3c578801f191afaf662998",
+      "sprite_sha256": "cbaff7541f74b94759857be957dbc4ffd02a062d7c46c6bd3b1cec1b87d2232b",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "mochi-dragon-needs-blink",
+      "pet_id": "mochi-dragon",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/mochi-dragon_needs8_v1_sprite.png",
+      "sprite_sheet_path": "pets/mochi-dragon_needs_blink8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve precise animation edit. Input is the approved 4 by 2 pet sprite sheet. Create a companion EYE BLINK sheet, EXACTLY 4 columns and 2 rows of equal SQUARE cells on a 2:1 landscape canvas, actual transparent alpha background. Preserve this exact character, colors, rendering, thin outlines and face/body scale and position. TOP ROW: use the input TOP LEFT hungry resting pose in ALL FOUR cells. BOTTOM ROW: use the input BOTTOM LEFT lonely resting pose in ALL FOUR cells. Keep each row's face expression, mouth, eyebrow mood and hands as in that resting pose. The ONLY changed part between cells is the eyelids: column 0 eyes fully open exactly as input; column 1 eyes half closed, upper eyelid lowering; column 2 BOTH eyes fully closed, simple delicate curved closed-eye lines, no visible eyeballs, no smile, no sleepy facial change; column 3 eyes half opening. Complete BOTH eyes in every frame, preserve their asymmetric three-quarter perspective. No body/limb/ear/tail/sprout movement AT ALL. No head tilting or bobbing or rotation. No changing anatomy, face position or head size. Do NOT reproduce the arm gestures from the other input columns, just the first resting pose per row. Put each whole pet in central 60% of each cell with at least 15% transparent margin at every side. Entire outline intact, same orientation. No text, grid, white background, checkerboard, floor, shadows, halo or particles. High quality identical warm illustration. A plump tiny BABY DRAGON companion, soft mochi ivory body with peach-pink little horns, short rounded snout, rosy cheek patches, small friendly amber eyes, two SMALL peach bat-like wings folded behind shoulders, four stubby dragon limbs with tiny rounded claws, short thick tail. Soft natural matte shading, no scales covering face, no humanoid proportions, no clothes.",
+      "source_sprite": "sources/mochi-dragon-needs-blink-sprite.source",
+      "source_sha256": "2723563cf3920c3724112ed47d96e8ad5af8608a6f7f370bb0c7e716b6ad213c",
+      "sprite_sha256": "0952639de0a59fb867192c718392e12f0493e8556efcf9df74253f8a7d62bfdf",
+      "rgbaPreserved": true
+    },
+    {
+      "id": "jelly-seal-needs-blink",
+      "pet_id": "jelly-seal",
+      "frames": 8,
+      "columns": 4,
+      "reference": "public/pets/jelly-seal_needs8_v1_sprite.png",
+      "sprite_sheet_path": "pets/jelly-seal_needs_blink8_v1_sprite.png",
+      "prompt": "Use case: identity-preserve precise animation edit. Input is the approved 4 by 2 pet sprite sheet. Create a companion EYE BLINK sheet, EXACTLY 4 columns and 2 rows of equal SQUARE cells on a 2:1 landscape canvas, actual transparent alpha background. Preserve this exact character, colors, rendering, thin outlines and face/body scale and position. TOP ROW: use the input TOP LEFT hungry resting pose in ALL FOUR cells. BOTTOM ROW: use the input BOTTOM LEFT lonely resting pose in ALL FOUR cells. Keep each row's face expression, mouth, eyebrow mood and hands as in that resting pose. The ONLY changed part between cells is the eyelids: column 0 eyes fully open exactly as input; column 1 eyes half closed, upper eyelid lowering; column 2 BOTH eyes fully closed, simple delicate curved closed-eye lines, no visible eyeballs, no smile, no sleepy facial change; column 3 eyes half opening. Complete BOTH eyes in every frame, preserve their asymmetric three-quarter perspective. No body/limb/ear/tail/sprout movement AT ALL. No head tilting or bobbing or rotation. No changing anatomy, face position or head size. Do NOT reproduce the arm gestures from the other input columns, just the first resting pose per row. Put each whole pet in central 60% of each cell with at least 15% transparent margin at every side. Entire outline intact, same orientation. No text, grid, white background, checkerboard, floor, shadows, halo or particles. High quality identical warm illustration. A tiny rounded BABY SEAL companion with milky-white semi-translucent jelly-like body, soft cool-blue shadowing, very short front flippers and small paired rear flippers, round seal head with a tiny dark nose, small dark round eyes, subtle pink cheeks and short fine whiskers. Cute smooth jelly material with restrained highlight, rounded seal silhouette, no ears, no human arms or legs, no clothes.",
+      "source_sprite": "sources/jelly-seal-needs-blink-sprite.source",
+      "source_sha256": "c95952e576b4e988534e028e4390f926576e31cb6e4fa80187f4d045c8642186",
+      "sprite_sha256": "20286f9cb6d03a89c3067966771529729483b37306e57e6344664ae86f4e5fd5",
+      "rgbaPreserved": true
+    }
+  ],
+  "verification": {
+    "registration": "registration.json",
+    "finalAnchors": "registered-final-8.json",
+    "rgbaPreserved": true,
+    "sourceMargins": "At least 6% on each side; maximum silhouette occupancy 90%; no clipped source parts. Uniform padding for integer registration only.",
+    "timing": "300ms blink, 7–12 second irregular schedule. Only two clipped eye patches render over the original needs pose; complete body is never swapped.",
+    "remoteDeployed": false,
+    "browser": "review/browser-blink-check.json",
+    "motionRegistration": {
+      "landmarks": "motion-landmarks.json",
+      "measurement": "motion-registration-review.json",
+      "transitions": "motion-transition-check.json",
+      "runtime": "src/features/pets/pet-motion-registration.json"
+    }
+  }
+}

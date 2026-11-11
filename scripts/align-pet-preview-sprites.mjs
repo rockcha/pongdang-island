@@ -1,7 +1,11 @@
 import fs from 'node:fs'
 import sharp from 'sharp'
 const spec = await import(
-  process.argv.includes('--eating')
+  process.argv.includes('--needs-blink')
+    ? './prepare-pet-needs-blink.mjs'
+    : process.argv.includes('--needs')
+    ? './prepare-pet-needs.mjs'
+    : process.argv.includes('--eating')
     ? './prepare-pet-eating.mjs'
     : process.argv.includes('--calm')
       ? './prepare-pet-calm-idle.mjs'
@@ -74,7 +78,7 @@ for (const s of sheets) {
           opaque++
         }
     const margin = Math.min(l, t, cell - r - 1, cell - b - 1)
-    if (!opaque || margin < cell * 0.08)
+    if (!opaque || margin < cell * (spec.minSourceMargin ?? 0.08) || Math.max(r - l + 1, b - t + 1) > cell * (spec.maxSourceOccupancy ?? 1))
       throw Error(`Unsafe original ${s.id} frame ${f}: margin ${margin}/${cell}`)
     bounds.push({ frame: f, left: l, top: t, width: r - l + 1, height: b - t + 1, margin, opaque })
   }
@@ -141,6 +145,7 @@ for (const s of sheets) {
   })
   const [x, y, headWidth] = faces[s.id]
   layouts[s.id] = { cell: newCell, anchor: [x + padding, y + padding], scale: 300 / headWidth }
+  if(spec.eyes?.[s.id]) layouts[s.id].eyes=spec.eyes[s.id].map(([x,y,w,h])=>[x+padding,y+padding,w,h])
 }
 if (!prepare)
   fs.writeFileSync(

@@ -18,14 +18,17 @@ export function petIdleFrame(
   reduced = false,
 ) {
   if (reduced) return 0
-  const at = Math.max(0, elapsed),
-    phase = at % schedule.period
-  const blink = schedule.starts.find(
-    (start, i) => (i !== 0 || at >= schedule.period) && phase >= start && phase < start + 300,
-  )
-  if (blink !== undefined) {
-    const step = Math.floor((phase - blink) / 100)
+  const at = Math.max(0, elapsed)
+  const step = petBlinkStep(at, schedule)
+  if (step !== null) {
     return step === 0 ? 5 : step === 1 ? 6 : 7
   }
   return sleepy ? 5 : breath[Math.floor(at / 1000) % breath.length]
+}
+
+export function petBlinkStep(elapsed: number, schedule: ReturnType<typeof createPetBlinkSchedule>, reduced = false) {
+  if (reduced) return null
+  const at = Math.max(0, elapsed), phase = at % schedule.period
+  const blink = schedule.starts.find((start,i) => (i !== 0 || at >= schedule.period) && phase >= start && phase < start + 300)
+  return blink === undefined ? null : Math.floor((phase - blink) / 100)
 }

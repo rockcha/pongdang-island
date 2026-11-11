@@ -4,6 +4,8 @@ const normal = JSON.parse(fs.readFileSync('src/features/pets/pet-sprite-layouts.
 const calm = JSON.parse(fs.readFileSync('src/features/pets/pet-calm-idle-layouts.json', 'utf8'))
 const out = {}
 const eating = JSON.parse(fs.readFileSync('src/features/pets/pet-eating-layouts.json', 'utf8'))
+const needs = JSON.parse(fs.readFileSync('src/features/pets/pet-needs-layouts.json', 'utf8'))
+const registration = JSON.parse(fs.readFileSync('src/features/pets/pet-motion-registration.json','utf8'))
 for (const id of ['sand-golem', 'wave-cat', 'mochi-dragon', 'jelly-seal']) {
   let left = Infinity,
     top = Infinity,
@@ -14,19 +16,21 @@ for (const id of ['sand-golem', 'wave-cat', 'mochi-dragon', 'jelly-seal']) {
     ['hungry', 'hungry4_v1', 2],
     ['happy', 'happy8_v1', 4],
     ['eat', 'eat8_v1', 4],
+    ['needs', 'needs8_v1', 4],
   ]) {
-    const layout = (kind === 'idle' ? calm : kind === 'eat' ? eating : normal)[`${id}-${kind}`],
+    const layout = (kind === 'idle' ? calm : kind === 'eat' ? eating : kind === 'needs' ? needs : normal)[`${id}-${kind}`],
       { data, info } = await sharp(`public/pets/${id}_${suffix}_sprite.png`)
         .ensureAlpha()
         .raw()
         .toBuffer({ resolveWithObject: true })
     if (info.width !== layout.cell * columns || info.height !== layout.cell * 2)
       throw Error('Layout mismatch ' + id)
+    const aligned=kind === 'hungry' ? layout : registration[id][kind]
     for (let y = 0; y < info.height; y++)
       for (let x = 0; x < info.width; x++)
         if (data[(y * info.width + x) * 4 + 3] >= 32) {
-          const dx = ((x % layout.cell) - layout.anchor[0]) * layout.scale,
-            dy = ((y % layout.cell) - layout.anchor[1]) * layout.scale
+          const dx = ((x % layout.cell) - aligned.anchor[0]) * aligned.scale,
+            dy = ((y % layout.cell) - aligned.anchor[1]) * aligned.scale
           left = Math.min(left, dx)
           right = Math.max(right, dx)
           top = Math.min(top, dy)
@@ -41,4 +45,4 @@ for (const id of ['sand-golem', 'wave-cat', 'mochi-dragon', 'jelly-seal']) {
   out[id] = { scale, anchor: [x, y], bounds: [left, top, right, bottom] }
 }
 fs.writeFileSync('src/features/pets/pet-render-layouts.json', JSON.stringify(out, null, 2) + '\n')
-console.log('Fitted all 16 pet sheets to a shared per-species stage envelope.')
+console.log('Fitted all 20 pet sheets to a shared per-species stage envelope.')

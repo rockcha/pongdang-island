@@ -1,0 +1,326 @@
+[
+  {
+    "id": "sand-golem-needs-blink",
+    "file": "assets/storage-upload/new/20261110-160000/normalized/sand-golem-needs-blink.png",
+    "storage_path": "pets/sand-golem_needs_blink8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 88,
+        "top": 48,
+        "width": 271,
+        "height": 347,
+        "margin": 48,
+        "opaque": 69164
+      },
+      {
+        "frame": 1,
+        "left": 88,
+        "top": 48,
+        "width": 269,
+        "height": 347,
+        "margin": 48,
+        "opaque": 68976
+      },
+      {
+        "frame": 2,
+        "left": 89,
+        "top": 48,
+        "width": 269,
+        "height": 347,
+        "margin": 48,
+        "opaque": 68946
+      },
+      {
+        "frame": 3,
+        "left": 88,
+        "top": 48,
+        "width": 269,
+        "height": 347,
+        "margin": 48,
+        "opaque": 69082
+      },
+      {
+        "frame": 4,
+        "left": 88,
+        "top": 36,
+        "width": 268,
+        "height": 358,
+        "margin": 36,
+        "opaque": 68187
+      },
+      {
+        "frame": 5,
+        "left": 88,
+        "top": 36,
+        "width": 268,
+        "height": 358,
+        "margin": 36,
+        "opaque": 68272
+      },
+      {
+        "frame": 6,
+        "left": 89,
+        "top": 36,
+        "width": 267,
+        "height": 358,
+        "margin": 36,
+        "opaque": 68090
+      },
+      {
+        "frame": 7,
+        "left": 88,
+        "top": 36,
+        "width": 268,
+        "height": 358,
+        "margin": 36,
+        "opaque": 68329
+      }
+    ]
+  },
+  {
+    "id": "wave-cat-needs-blink",
+    "file": "assets/storage-upload/new/20261110-160000/normalized/wave-cat-needs-blink.png",
+    "storage_path": "pets/wave-cat_needs_blink8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 58,
+        "top": 71,
+        "width": 320,
+        "height": 308,
+        "margin": 58,
+        "opaque": 67344
+      },
+      {
+        "frame": 1,
+        "left": 58,
+        "top": 71,
+        "width": 320,
+        "height": 308,
+        "margin": 58,
+        "opaque": 67291
+      },
+      {
+        "frame": 2,
+        "left": 59,
+        "top": 71,
+        "width": 319,
+        "height": 308,
+        "margin": 59,
+        "opaque": 67226
+      },
+      {
+        "frame": 3,
+        "left": 59,
+        "top": 71,
+        "width": 320,
+        "height": 308,
+        "margin": 59,
+        "opaque": 67294
+      },
+      {
+        "frame": 4,
+        "left": 58,
+        "top": 71,
+        "width": 322,
+        "height": 309,
+        "margin": 58,
+        "opaque": 68647
+      },
+      {
+        "frame": 5,
+        "left": 58,
+        "top": 70,
+        "width": 322,
+        "height": 311,
+        "margin": 58,
+        "opaque": 68569
+      },
+      {
+        "frame": 6,
+        "left": 59,
+        "top": 70,
+        "width": 322,
+        "height": 310,
+        "margin": 59,
+        "opaque": 68574
+      },
+      {
+        "frame": 7,
+        "left": 60,
+        "top": 71,
+        "width": 322,
+        "height": 309,
+        "margin": 60,
+        "opaque": 68495
+      }
+    ]
+  },
+  {
+    "id": "mochi-dragon-needs-blink",
+    "file": "assets/storage-upload/new/20261110-160000/normalized/mochi-dragon-needs-blink.png",
+    "storage_path": "pets/mochi-dragon_needs_blink8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 74,
+        "top": 40,
+        "width": 305,
+        "height": 347,
+        "margin": 40,
+        "opaque": 73739
+      },
+      {
+        "frame": 1,
+        "left": 74,
+        "top": 40,
+        "width": 305,
+        "height": 347,
+        "margin": 40,
+        "opaque": 73789
+      },
+      {
+        "frame": 2,
+        "left": 74,
+        "top": 40,
+        "width": 305,
+        "height": 347,
+        "margin": 40,
+        "opaque": 73729
+      },
+      {
+        "frame": 3,
+        "left": 73,
+        "top": 40,
+        "width": 306,
+        "height": 347,
+        "margin": 40,
+        "opaque": 73826
+      },
+      {
+        "frame": 4,
+        "left": 74,
+        "top": 39,
+        "width": 306,
+        "height": 348,
+        "margin": 39,
+        "opaque": 73286
+      },
+      {
+        "frame": 5,
+        "left": 74,
+        "top": 39,
+        "width": 305,
+        "height": 348,
+        "margin": 39,
+        "opaque": 73365
+      },
+      {
+        "frame": 6,
+        "left": 74,
+        "top": 39,
+        "width": 306,
+        "height": 348,
+        "margin": 39,
+        "opaque": 73151
+      },
+      {
+        "frame": 7,
+        "left": 73,
+        "top": 39,
+        "width": 306,
+        "height": 348,
+        "margin": 39,
+        "opaque": 73434
+      }
+    ]
+  },
+  {
+    "id": "jelly-seal-needs-blink",
+    "file": "assets/storage-upload/new/20261110-160000/normalized/jelly-seal-needs-blink.png",
+    "storage_path": "pets/jelly-seal_needs_blink8_v1_sprite.png",
+    "cell": 444,
+    "frames": 8,
+    "bounds": [
+      {
+        "frame": 0,
+        "left": 87,
+        "top": 80,
+        "width": 317,
+        "height": 296,
+        "margin": 40,
+        "opaque": 64964
+      },
+      {
+        "frame": 1,
+        "left": 86,
+        "top": 80,
+        "width": 317,
+        "height": 296,
+        "margin": 41,
+        "opaque": 64868
+      },
+      {
+        "frame": 2,
+        "left": 87,
+        "top": 80,
+        "width": 317,
+        "height": 296,
+        "margin": 40,
+        "opaque": 64796
+      },
+      {
+        "frame": 3,
+        "left": 86,
+        "top": 80,
+        "width": 317,
+        "height": 296,
+        "margin": 41,
+        "opaque": 64883
+      },
+      {
+        "frame": 4,
+        "left": 86,
+        "top": 80,
+        "width": 318,
+        "height": 297,
+        "margin": 40,
+        "opaque": 64927
+      },
+      {
+        "frame": 5,
+        "left": 86,
+        "top": 80,
+        "width": 317,
+        "height": 297,
+        "margin": 41,
+        "opaque": 64928
+      },
+      {
+        "frame": 6,
+        "left": 87,
+        "top": 79,
+        "width": 317,
+        "height": 298,
+        "margin": 40,
+        "opaque": 64905
+      },
+      {
+        "frame": 7,
+        "left": 86,
+        "top": 80,
+        "width": 317,
+        "height": 297,
+        "margin": 41,
+        "opaque": 64928
+      }
+    ]
+  }
+]

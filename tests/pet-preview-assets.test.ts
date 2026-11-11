@@ -6,8 +6,46 @@ import { petSpecies } from '@/features/pets/pet-catalog'
 import layouts from '@/features/pets/pet-sprite-layouts.json'
 import calmLayouts from '@/features/pets/pet-calm-idle-layouts.json'
 import eatingLayouts from '@/features/pets/pet-eating-layouts.json'
+import blinkLayouts from '@/features/pets/pet-needs-blink-layouts.json'
 const base = 'assets/storage-upload/new/20261109-181500'
 const manifest = JSON.parse(fs.readFileSync(`${base}/manifest.json`, 'utf8'))
+it('ships four blink companions with bounded opaque eye patches and verified alpha', async()=>{
+  const base='assets/storage-upload/new/20261110-160000'
+  const m=JSON.parse(fs.readFileSync(`${base}/manifest.json`,'utf8'))
+  expect(m.items).toHaveLength(4)
+  for(const pet of petSpecies){
+    const layout=blinkLayouts[`${pet.id}-needs-blink` as keyof typeof blinkLayouts]
+    const entry=m.items.find((e:{pet_id:string})=>e.pet_id===pet.id)
+    const bytes=fs.readFileSync(`public/${entry.sprite_sheet_path}`),meta=await sharp(bytes).metadata()
+    expect(meta.hasAlpha).toBe(true)
+    expect(meta.width).toBe(layout.cell*4)
+    expect(meta.height).toBe(layout.cell*2)
+    expect(createHash('sha256').update(bytes).digest('hex')).toBe(entry.sprite_sha256)
+    expect(entry.rgbaPreserved).toBe(true)
+    expect(layout.eyes).toHaveLength(2)
+    for(const [x,y,w,h] of layout.eyes){
+      expect(x).toBeGreaterThan(0);expect(y).toBeGreaterThan(0)
+      expect(x+w).toBeLessThan(layout.cell);expect(y+h).toBeLessThan(layout.cell)
+      const {data}=await sharp(bytes).extract({left:x+2*layout.cell,top:y,width:w,height:h}).raw().toBuffer({resolveWithObject:true})
+      expect(Array.from(data).filter((alpha,i)=>i%4===3&&alpha>=128).length).toBeGreaterThan(w*h*.9)
+    }
+  }
+})
+it('ships reviewed hungry and lonely poses with preserved alpha and zero anchor drift', async () => {
+  const path='assets/storage-upload/new/20261110-154000'
+  const m=JSON.parse(fs.readFileSync(`${path}/manifest.json`,'utf8'))
+  const anchors=JSON.parse(fs.readFileSync(`${path}/registered-final-8.json`,'utf8').replace(/^\uFEFF/,''))
+  expect(m.items).toHaveLength(4)
+  for(const entry of m.items){
+    const bytes=fs.readFileSync(`public/${entry.sprite_sheet_path}`)
+    expect((await sharp(bytes).metadata()).hasAlpha).toBe(true)
+    expect(createHash('sha256').update(bytes).digest('hex')).toBe(entry.sprite_sha256)
+    expect(entry.rgbaPreserved).toBe(true)
+    const r=anchors.find((r:{storage_path:string})=>r.storage_path===entry.sprite_sheet_path)
+    expect(r.frames).toHaveLength(8)
+    for(const f of r.frames){expect(f.dx).toBe(0);expect(f.dy).toBe(0);expect(f.rmse).toBeLessThan(40)}
+  }
+})
 it('ships all four dedicated eating sheets with the reviewed alpha and hash', async () => {
   const m = JSON.parse(
     fs.readFileSync('assets/storage-upload/new/20261109-203000/manifest.json', 'utf8'),

@@ -25,12 +25,16 @@ export const petSpecies = [
   },
 ] as const
 export type PetSpeciesId = (typeof petSpecies)[number]['id']
-export type PetClip = 'idleA' | 'idleB' | 'hungry' | 'happy' | 'eat'
+export type PetClip = 'idleA' | 'idleB' | 'hungry' | 'lonely' | 'happy' | 'eat'
 export const PET_CARE_MS = 3000
 export const PET_DECAY_MS = 10 * 60_000
 export const PET_SELL_PRICE = 1000
-export const PET_FOOD_PRICE = 100
-export const PET_FOOD_GAIN = 10
+export const PET_FOOD_PRICE = 50
+export const PET_FOOD_GAIN = 40
+export const PET_AFFECTION_GAIN = 40
+export const PET_MAX_LEVEL = 4
+export const PET_JOB_TIERS = [0, 2, 4] as const
+export const petJobDuration = (minutes: number) => minutes < 60 ? `${minutes}분` : `${minutes / 60}시간`
 export const petActions = [
   { id: 'stroke', label: '쓰다듬기' },
   { id: 'bath', label: '목욕하기' },
@@ -44,41 +48,82 @@ export const petJobs = [
   {
     id: 'bakery',
     name: '빵집 반죽 지킴이',
-    hours: 1,
-    min: 75,
+    minutes: 60,
+    requiredLevel: 0,
+    min: 100,
     max: 150,
     description: '따뜻한 반죽이 잘 부푸는지 살펴봐요.',
   },
   {
     id: 'florist',
     name: '꽃가게 꽃다발 도우미',
-    hours: 2,
-    min: 200,
-    max: 300,
+    minutes: 180,
+    requiredLevel: 0,
+    min: 330,
+    max: 450,
     description: '꽃다발에 어울리는 리본을 골라요.',
+  },
+  {
+    id: 'inn',
+    name: '여관 창가 화분 돌보미',
+    minutes: 480,
+    requiredLevel: 0,
+    min: 800,
+    max: 1120,
+    description: '창가의 화분에 물을 주고 햇살을 살펴봐요.',
   },
   {
     id: 'dock',
     name: '부두 표 검사원',
-    hours: 3,
-    min: 400,
-    max: 500,
+    minutes: 45,
+    requiredLevel: 2,
+    min: 150,
+    max: 210,
     description: '배에 오르는 손님들의 표를 확인해요.',
   },
   {
     id: 'post',
     name: '별빛 우체국 분류원',
-    hours: 6,
-    min: 550,
-    max: 725,
+    minutes: 300,
+    requiredLevel: 2,
+    min: 850,
+    max: 1150,
     description: '편지를 목적지별로 차곡차곡 나눠요.',
+  },
+  {
+    id: 'market',
+    name: '새벽 시장 물건 지킴이',
+    minutes: 720,
+    requiredLevel: 2,
+    min: 1920,
+    max: 2400,
+    description: '잠든 시장의 작은 가게들을 지켜요.',
+  },
+  {
+    id: 'teahouse',
+    name: '요정 찻집 찻잔 정리원',
+    minutes: 30,
+    requiredLevel: 4,
+    min: 160,
+    max: 200,
+    description: '요정 손님들의 작은 찻잔을 정리해요.',
+  },
+  {
+    id: 'observatory',
+    name: '별자리 관측소 기록원',
+    minutes: 240,
+    requiredLevel: 4,
+    min: 1040,
+    max: 1360,
+    description: '밤하늘에서 찾은 별자리를 기록해요.',
   },
   {
     id: 'lighthouse',
     name: '등대 야간 당직',
-    hours: 12,
-    min: 875,
-    max: 1100,
+    minutes: 600,
+    requiredLevel: 4,
+    min: 2200,
+    max: 2800,
     description: '밤바다의 배들을 위해 등불을 지켜요.',
   },
 ] as const

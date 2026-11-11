@@ -1,5 +1,3 @@
-import {useAuth} from '@/components/auth-provider'
-import {canUseTrainingLab} from '@/features/training/access'
 import {placeGroups} from '@/lib/place-groups'
 import {NavigationCategoryIcon} from './navigation-category-icon'
 import {useMenuActivity,MenuActivityLine} from './menu-activity'
@@ -14,7 +12,7 @@ import { appArt } from '@/components/app-art'
 import { useNewContent } from './use-new-content'
 
 import { Link, useLocation } from 'react-router'
-import { Compass, Target, Check, House, FishingRod, Factory, BookOpen, NotebookPen, NotebookTabs, Clapperboard, Container, Fuel, PackagePlus, Store as StoreOutline } from 'lucide-react'
+import { Compass, Check, House, FishingRod, Factory, BookOpen, NotebookPen, NotebookTabs, Clapperboard, Container, Fuel, PackagePlus, Store as StoreOutline } from 'lucide-react'
 
 import {UserRound,AudioLines,Fish,Shapes,Package,Warehouse as WarehouseOutline,Medal,Gem,Map as MapOutline,ShoppingBasket,ShoppingBag,Flame,Sprout,FlaskConical,Anchor,Ship as ShipOutline,Handshake as TradeIcon,ClipboardList,Landmark,Gamepad2 as GameIcon,TowerControl as LighthouseOutline,MessageSquare,Images,Trophy,Newspaper,Megaphone,Heart,Gift,Mail,Lightbulb,Bug} from 'lucide-react'
 
@@ -95,7 +93,6 @@ menuIcons['/voyage-bets-test']=FlaskConical
 menuIcons['/weather-fishing-test']=FlaskConical
 menuIcons['/pet-house-test']=FlaskConical
 menuIcons['/fishing-records']=NotebookPen
-const trainingPlace={to:'/training',label:'훈련장',icon:Target}
 const groups=placeGroups
 const explorationStatTestPlace={to:'/exploration-stat-test',label:'탐험 스탯 테스트',icon:FlaskConical}
 const voyageTestPlace={to:'/voyage-bets-test',label:'만선 승부장 테스트',icon:FlaskConical}
@@ -104,14 +101,12 @@ const petTestPlace={to:'/pet-house-test',label:'펫 하우스 테스트',icon:Fl
 // A record page belongs in the fishing menu without creating an island facility.
 const fishingRecordsPlace={to:'/fishing-records',label:'오늘의 낚시 기록',icon:NotebookPen}
 export function HeaderPlaceNavigation() {
-  const {session}=useAuth()
   const equippedRelic=useEquippedRelic()
   const newContent = useNewContent()
   const activity=useMenuActivity()
   const { pathname } = useLocation()
   const savings = useSavingsStatus(),
     { operator } = useOperator()
-  const trainingAllowed=canUseTrainingLab(operator,session?.user.email)
   const current = /^\/(region|sailing)\//.test(pathname) ? '/fishing' : pathname
   const merchantReady=(activity['/merchant-orders']?.ready??0)>0
   const rouletteReady=(activity['/relic-roulette']?.ready??0)>0
@@ -128,9 +123,9 @@ export function HeaderPlaceNavigation() {
     <nav aria-label="장소 바로가기" className="grid w-[224px] max-w-full shrink-0 grid-cols-7 gap-0.5 sm:w-[252px]">
       {groups.map((group) => {
         const items = group.sections.flatMap(section=>section.paths)
-          .flatMap(path=>operator&&path==='/collection'?[path,'/pet-house-test']:trainingAllowed&&path==='/farm'?[path,'/training']:operator&&path==='/fishing'?[path,'/weather-fishing-test']:operator&&path==='/exploration'?[path,'/exploration-stat-test']:operator&&path==='/voyage-bets'?[path,'/voyage-bets-test']:[path])
+          .flatMap(path=>operator&&path==='/farm'?[path,'/pet-house-test']:operator&&path==='/fishing'?[path,'/weather-fishing-test']:operator&&path==='/exploration'?[path,'/exploration-stat-test']:operator&&path==='/voyage-bets'?[path,'/voyage-bets-test']:[path])
           .filter((path) => path !== '/collection-animation' || operator)
-          .map((path) => path==='/pet-house-test'?petTestPlace:path==='/weather-fishing-test'?weatherTestPlace:path==='/training'?trainingPlace:path==='/exploration-stat-test'?explorationStatTestPlace:path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
+          .map((path) => path==='/pet-house-test'?petTestPlace:path==='/weather-fishing-test'?weatherTestPlace:path==='/exploration-stat-test'?explorationStatTestPlace:path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
@@ -184,7 +179,7 @@ export function HeaderPlaceNavigation() {
                             NEW
                           </span>
                         )}
-                        {(to === '/training'||to === '/collection-animation'||to==='/voyage-bets-test'||to==='/exploration-stat-test'||to==='/weather-fishing-test'||to==='/pet-house-test') && (
+                        {(to === '/collection-animation'||to==='/voyage-bets-test'||to==='/exploration-stat-test'||to==='/weather-fishing-test'||to==='/pet-house-test') && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             운영자
                           </span>

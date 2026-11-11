@@ -1,0 +1,101 @@
+{
+  "results": [
+    {
+      "id": "wave-cat",
+      "state": "idle-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "sand-golem",
+      "state": "idle-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "idle-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "idle-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "idle-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "sand-golem",
+      "state": "idle-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "idle-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "idle-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "sand-golem",
+      "state": "hungry-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "hungry-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "hungry-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "hungry-feed",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "sand-golem",
+      "state": "lonely-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "lonely-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "lonely-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "lonely-care",
+      "blankFrames": 0,
+      "sameCanvas": true
+    }
+  ],
+  "errors": []
+}

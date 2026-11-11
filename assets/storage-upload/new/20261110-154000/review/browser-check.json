@@ -1,0 +1,54 @@
+{
+  "results": [
+    {
+      "id": "sand-golem",
+      "state": "hungry",
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "sand-golem",
+      "state": "lonely",
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "hungry",
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "lonely",
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "hungry",
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "lonely",
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "hungry",
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "lonely",
+      "holdsRest": true,
+      "slowGesture": true
+    }
+  ],
+  "errors": [],
+  "reducedMotion": true
+}

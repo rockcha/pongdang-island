@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { createPetBlinkSchedule, petIdleFrame } from '@/features/pets/pet-idle-animation'
+import { createPetBlinkSchedule, petIdleFrame, petBlinkStep } from '@/features/pets/pet-idle-animation'
 it('breathes over six seconds without selecting an action or blink pose', () => {
   const schedule = createPetBlinkSchedule(42)
   expect(Array.from({ length: 7 }, (_, i) => petIdleFrame(i * 1000, false, schedule))).toEqual([
@@ -26,4 +26,10 @@ it('holds a sleepy gaze and keeps reduced motion at frame zero', () => {
   expect(petIdleFrame(4500, true, s)).toBe(5)
   for (const at of [0, 3000, s.starts[1] + 100, s.period + 100])
     expect(petIdleFrame(at, true, s, true)).toBe(0)
+})
+it('shares a 300ms eyelid cycle across idle moods and disables it for reduced motion', () => {
+  const s=createPetBlinkSchedule(42),at=s.starts[1]
+  expect(petBlinkStep(at-1,s)).toBeNull()
+  expect([0,100,200,300].map(t=>petBlinkStep(at+t,s))).toEqual([0,1,2,null])
+  expect(petBlinkStep(at+100,s,true)).toBeNull()
 })

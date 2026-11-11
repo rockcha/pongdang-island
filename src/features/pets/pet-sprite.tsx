@@ -1,8 +1,9 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { PetClip, PetSpeciesId } from './pet-catalog'
-import { petDrawLayout } from './pet-draw-layout'
+import { petDrawLayout, petBlinkEyes } from './pet-draw-layout'
 import { loadPetImage, readyPetImage } from './pet-sprite-images'
-import { createPetBlinkSchedule, petIdleFrame } from './pet-idle-animation'
+import { createPetBlinkSchedule, petIdleFrame, petBlinkStep } from './pet-idle-animation'
+import { petNeedsFrame } from './pet-needs-animation'
 
 export function usePetReactionReady(
   speciesId: PetSpeciesId | undefined,
@@ -44,42 +45,47 @@ export function PetSprite({
   const sheet =
     clip === 'idleA' || clip === 'idleB'
       ? 'idle8'
-      : clip === 'hungry'
-        ? 'hungry4'
+      : clip === 'hungry' || clip === 'lonely'
+        ? 'needs8'
         : clip === 'eat'
           ? 'eat8'
           : 'happy8'
   useLayoutEffect(() => {
     const node = canvas.current
     if (!node) return
-    let img: HTMLImageElement | undefined
+    let img: HTMLImageElement | undefined, blinkImg: HTMLImageElement | undefined
     let stopped = false,
       timer: ReturnType<typeof setTimeout> | undefined,
       start = 0,
-      lastFrame = -1
+      lastFrame = ''
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
     function paint() {
       if (stopped || !node || !img) return
-      const columns = sheet === 'hungry4' ? 2 : 4,
+      const columns = 4,
         cw = img.width / columns,
         ch = img.height / 2
       const elapsed = performance.now() - start
       const idle = sheet === 'idle8'
       const local = idle
         ? petIdleFrame(elapsed, clip === 'idleB', blinkSchedule, reduced)
-        : reduced
+        : clip === 'hungry' || clip === 'lonely'
+          ? petNeedsFrame(elapsed, speciesId, clip, reduced)
+          : reduced
           ? 0
           : clip === 'happy' || clip === 'eat'
             ? Math.min(7, Math.floor(elapsed / 375))
-            : Math.floor(elapsed / 300) % 4
+            : 0
       const f = local,
         ctx = node.getContext('2d')
-      if (ctx && !document.hidden && f !== lastFrame) {
+      const blink = sheet === 'needs8' && f % 4 === 0 && blinkImg
+        ? petBlinkStep(elapsed, blinkSchedule, reduced) : null
+      const frameKey = `${f}:${blink}`
+      if (ctx && !document.hidden && frameKey !== lastFrame) {
         const kind =
           sheet === 'idle8'
             ? 'idle'
-            : sheet === 'hungry4'
-              ? 'hungry'
+            : sheet === 'needs8'
+              ? 'needs'
               : sheet === 'eat8'
                 ? 'eat'
                 : 'happy'
@@ -96,9 +102,30 @@ export function PetSprite({
           layout.size,
           layout.size,
         )
-        lastFrame = f
+        if (blink !== null && blinkImg) {
+          // Replace only the eye regions: body, mouth and gesture pixels stay
+          // on the approved emotional pose throughout a blink.
+          const draw = petDrawLayout(speciesId, 'needsBlink')
+          const frame = (clip === 'lonely' ? 4 : 0) + [1,2,3][blink]
+          for (const [x,y,w,h] of petBlinkEyes(speciesId)) {
+            const dx = draw.x + x * draw.scale, dy = draw.y + y * draw.scale
+            // Feather the outer fur edge while keeping the eyelid itself
+            // opaque. This avoids a visible oval seam around a blink.
+            for (let ring=0;ring<8;ring++) {
+              const radius=1-ring*.025
+              ctx.save()
+              ctx.globalAlpha=ring===7 ? 1 : .18
+              ctx.beginPath()
+              ctx.ellipse(dx + w * draw.scale / 2, dy + h * draw.scale / 2, w * draw.scale * radius / 2, h * draw.scale * radius / 2, 0, 0, Math.PI * 2)
+              ctx.clip()
+              ctx.drawImage(blinkImg, frame % 4 * draw.cell + x, Math.floor(frame / 4) * draw.cell + y, w, h, dx, dy, w * draw.scale, h * draw.scale)
+              ctx.restore()
+            }
+          }
+        }
+        lastFrame = frameKey
       }
-      if (!reduced) timer = setTimeout(paint, idle ? 50 : 100)
+      if (!reduced) timer = setTimeout(paint, idle || sheet === 'needs8' ? 50 : 100)
     }
     const begin = (loaded: HTMLImageElement) => {
       if (!stopped) {
@@ -109,6 +136,11 @@ export function PetSprite({
       }
     }
     const url = `/pets/${speciesId}_${sheet}_v${sheet === 'idle8' ? 2 : 1}_sprite.png`
+    if (sheet === 'needs8' && !reduced) {
+      const blinkUrl = `/pets/${speciesId}_needs_blink8_v1_sprite.png`
+      blinkImg = readyPetImage(blinkUrl)
+      if (!blinkImg) loadPetImage(blinkUrl).then(loaded => { if (!stopped) blinkImg = loaded }).catch(() => {})
+    }
     const cached = readyPetImage(url)
     if (cached) begin(cached)
     else
@@ -120,7 +152,7 @@ export function PetSprite({
     const visible = () => {
       if (!document.hidden) {
         clearTimeout(timer)
-        lastFrame = -1
+        lastFrame = ''
         paint()
       }
     }

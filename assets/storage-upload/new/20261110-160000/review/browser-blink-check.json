@@ -1,0 +1,102 @@
+{
+  "results": [
+    {
+      "id": "sand-golem",
+      "state": "idle",
+      "inside": 6984,
+      "outside": 108603,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "sand-golem",
+      "state": "hungry",
+      "inside": 4696,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "sand-golem",
+      "state": "lonely",
+      "inside": 4708,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "idle",
+      "inside": 11727,
+      "outside": 158083,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "hungry",
+      "inside": 8374,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "wave-cat",
+      "state": "lonely",
+      "inside": 8377,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "idle",
+      "inside": 9775,
+      "outside": 171221,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "hungry",
+      "inside": 6815,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "mochi-dragon",
+      "state": "lonely",
+      "inside": 6840,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "idle",
+      "inside": 6662,
+      "outside": 159854,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "hungry",
+      "inside": 4557,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    },
+    {
+      "id": "jelly-seal",
+      "state": "lonely",
+      "inside": 4521,
+      "outside": 0,
+      "holdsRest": true,
+      "slowGesture": true
+    }
+  ],
+  "errors": [],
+  "reducedMotion": true
+}

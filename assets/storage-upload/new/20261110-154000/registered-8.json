@@ -1,0 +1,246 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261110-154000/normalized/sand-golem-needs.png",
+        "storage_path":  "pets/sand-golem_needs8_v1_sprite.png",
+        "patch":  [
+                      198,
+                      127,
+                      60,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.2344486719708341
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  0,
+                           "rmse":  4.0117881853912039
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  0,
+                           "rmse":  5.7312496213497992
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  1,
+                           "dy":  1,
+                           "rmse":  5.5127377751692288
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  1,
+                           "dy":  1,
+                           "rmse":  6.0909769331364245
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  1,
+                           "dy":  1,
+                           "rmse":  4.2455859430707559
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  1,
+                           "dy":  1,
+                           "rmse":  4.7338908122412606
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261110-154000/normalized/wave-cat-needs.png",
+        "storage_path":  "pets/wave-cat_needs8_v1_sprite.png",
+        "patch":  [
+                      240,
+                      130,
+                      40,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  3.9768676355237411
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  2.9824220475716161
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.5728234479054937
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  5.1685864328930125
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  5.3076016166094195
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -2,
+                           "rmse":  4.737556801183965
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  -2,
+                           "rmse":  4.8168849843421579
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261110-154000/normalized/mochi-dragon-needs.png",
+        "storage_path":  "pets/mochi-dragon_needs8_v1_sprite.png",
+        "patch":  [
+                      181,
+                      113,
+                      40,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -2,
+                           "dy":  0,
+                           "rmse":  1.0360563200968846
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0.9574271077563381
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  1.0360563200968846
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  1.0736748938937604
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  1.455013227453102
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  1.54752746981799
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  1.1469421042390022
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261110-154000/normalized/jelly-seal-needs.png",
+        "storage_path":  "pets/jelly-seal_needs8_v1_sprite.png",
+        "patch":  [
+                      162,
+                      100,
+                      55,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  1.1572300058975777
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  1.1438879019220995
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  1.1451652757449162
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  1.2431096642802277
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  1.4554796641078771
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  1,
+                           "rmse":  1.3722393871597311
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  1,
+                           "dy":  0,
+                           "rmse":  1.3442535266309139
+                       }
+                   ]
+    }
+]

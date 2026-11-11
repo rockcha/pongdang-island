@@ -11,6 +11,37 @@ export function PetJobArtwork({ jobId }: { jobId: PetJobId }) {
           <stop offset="1" stopColor="#e9d3b0" />
         </linearGradient>
       </defs>
+      {jobId === 'inn' && <>
+        <rect x="13" y="9" width="38" height="39" rx="8" fill="#e5eadf" stroke="#b7c1ab"/>
+        <path d="M32 10v36M14 28h36" stroke="#bac4b0"/>
+        <path d="M23 39h18l-3 16H26Z" fill="#dbbba0" stroke="#b6977c"/>
+        <path d="M32 39V23" stroke="#8f9f7e" strokeWidth="2"/>
+        <path d="M32 32c-13 0-15-10-8-12 6-1 8 7 8 12Zm0-5c12 0 14-11 7-12-6 0-7 7-7 12Z" fill="#a8ba95" stroke="#8f9f7e"/>
+      </>}
+      {jobId === 'market' && <>
+        <path d="M13 28h38v25H13Z" fill="#e6d3b8" stroke="#bfa98b"/>
+        <path d="M8 29 17 12h30l9 17Z" fill="#c3d1c2" stroke="#9daf9c"/>
+        <path d="m25 12-3 17m17-17 3 17" stroke="#f7f5e7" strokeWidth="5"/>
+        <rect x="20" y="36" width="24" height="12" rx="2" fill="#c7ac85"/>
+        <path d="M28 39h8m-8 5h8" stroke="#f8edda" strokeWidth="1.4"/>
+        <path d="M45 7c-3 1-3 5 1 6-6 4-11-3-5-7" fill="#e4c98e"/>
+      </>}
+      {jobId === 'teahouse' && <>
+        <ellipse cx="29" cy="50" rx="22" ry="4" fill="#ddd1b9"/>
+        <path d="M15 27h29v12c0 13-29 13-29 0Z" fill="#f2e0dc" stroke="#c8a5a4" strokeWidth="1.3"/>
+        <path d="M44 30h4c12 0 10 14-4 13" stroke="#c8a5a4" strokeWidth="3"/>
+        <ellipse cx="29" cy="27" rx="14.5" ry="4" fill="#e4d2b0" stroke="#c8a5a4"/>
+        <path d="M24 20c-5-5 4-5 0-11m10 11c-5-5 4-5 0-11" stroke="#b7c4b1" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="m29 33 1.5 3 3 .5-2.2 2.3.5 3.2-2.8-1.5-2.8 1.5.5-3.2-2.2-2.3 3-.5Z" fill="#c99e9b"/>
+      </>}
+      {jobId === 'observatory' && <>
+        <path d="m30 33-9 22m9-22 13 22m-13-22v22" stroke="#aa987e" strokeWidth="2.3" strokeLinecap="round"/>
+        <path d="m16 29 28-16 7 12-28 16Z" fill="#a9bbbf" stroke="#8c9fa5" strokeWidth="1.3"/>
+        <path d="m42 13 4-3 9 15-5 3Z" fill="#e0c79e" stroke="#bda783"/>
+        <path d="m17 30-4 2 5 9 5-2" fill="#c6ad89" stroke="#aa9474"/>
+        <path d="m18 9 1.5 4.5L24 15l-4.5 1.5L18 21l-1.5-4.5L12 15l4.5-1.5Z" fill="#d6be84"/>
+        <circle cx="32" cy="8" r="1.5" fill="#b9b8ad"/>
+      </>}
       {jobId === 'bakery' && (
         <>
           <ellipse cx="32" cy="49" rx="23" ry="4" fill="#c9b38e" opacity=".15" />

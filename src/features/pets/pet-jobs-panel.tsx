@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Check, Clock3, Heart, Utensils } from 'lucide-react'
+import { Check, Clock3, Heart, Utensils, LockKeyhole } from 'lucide-react'
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { petJobs, type PetJobId } from './pet-catalog'
+import { petJobs, PET_JOB_TIERS, petJobDuration, type PetJobId } from './pet-catalog'
 import type { PreviewPet } from './pet-preview-model'
 import { PetJobArtwork } from './pet-job-artwork'
 import './pet-jobs-panel.css'
@@ -38,6 +38,7 @@ type Props = {
   onClaim: (id: string) => void
   onChoosePet: () => void
   onCare: () => void
+  onEnhance?: () => void
 }
 export function PetJobsPanel({
   pets,
@@ -48,7 +49,9 @@ export function PetJobsPanel({
   onClaim,
   onChoosePet,
   onCare,
+  onEnhance,
 }: Props) {
+  const [tier, setTier] = useState<number>(() => active && active.level >= 4 ? 4 : active && active.level >= 2 ? 2 : 0)
   const [showOptions, setShowOptions] = useState(false)
   const [guideOpen, setGuideOpen] = useState(false)
   const employed = pets.find((p) => p.job),
@@ -77,7 +80,7 @@ export function PetJobsPanel({
                 />
               </div>
               <div className="pet-work-person">
-                <strong>{employed.name}</strong>
+                <strong>{employed.name} <span className="pet-level-badge">+{employed.level}</span></strong>
                 <p>{job.name}</p>
               </div>
               <span className="pet-work-status">
@@ -117,7 +120,7 @@ export function PetJobsPanel({
               <strong>
                 <PetGold
                   value={
-                    done ? run.reward : `${job.min.toLocaleString()}~${job.max.toLocaleString()}`
+                    done ? run.reward : `${(run.minReward ?? run.reward).toLocaleString()}~${(run.maxReward ?? run.reward).toLocaleString()}`
                   }
                 />
               </strong>
@@ -143,7 +146,7 @@ export function PetJobsPanel({
           <h3>오늘은 어디로 가볼까요?</h3>
           {active ? (
             <>
-              <p>{active.name}과 어울리는 일을 골라 주세요.</p>
+              <p>{active.name} <span className="pet-level-badge">+{active.level}</span> · 열려 있는 알바 {petJobs.filter(j => j.requiredLevel <= active.level).length}개</p>
               <div className="pet-job-conditions" aria-label="출발 조건">
                 <span className={active.fullness >= 80 ? 'is-met' : ''}>
                   <Utensils size={12} />
@@ -169,9 +172,12 @@ export function PetJobsPanel({
       )}
       {run && <button onClick={() => setShowOptions(!showOptions)}>{showOptions ? '근무 현황 보기' : '알바 목록 보기'}</button>}
       {(!run || showOptions) && <div className="pet-job-options">
-        <h4>{run ? '다른 아르바이트' : '보낼 아르바이트'}</h4>
+        <div className="pet-job-tiers" role="group" aria-label="알바 해금 단계">
+          {PET_JOB_TIERS.map(level => <button key={level} aria-pressed={tier === level} onClick={() => setTier(level)}>{level === 0 ? '기본' : `+${level}`}{(!active || active.level < level) && level > 0 && <LockKeyhole size={11}/>}</button>)}
+        </div>
+        {active && active.level < tier && !run && <p className="pet-job-tier-hint">+{tier} 강화하면 열려요. <button onClick={onEnhance ?? onCare}>강화하러 가기</button></p>}
         {petJobs
-          .filter((j) => !run || j.id !== run.id)
+          .filter((j) => j.requiredLevel === tier)
           .map((j) => (
             <article className="pet-job-option" key={j.id}>
               <div className="pet-job-thumb">
@@ -182,7 +188,7 @@ export function PetJobsPanel({
                 <div className="pet-job-option-meta">
                   <span>
                     <Clock3 size={11} />
-                    {j.hours}시간
+                    {petJobDuration(j.minutes)}
                   </span>
                   <span className="pet-job-meta-dot">·</span>
                   <PetGold value={`${j.min.toLocaleString()}~${j.max.toLocaleString()}`} />
@@ -190,11 +196,11 @@ export function PetJobsPanel({
               </div>
               {!run && (
                 <button
-                  disabled={busy || !eligible}
+                  disabled={busy || !eligible || !active || active.level < j.requiredLevel}
                   onClick={() => onStart(j.id)}
-                  aria-label={`${j.name} 보내기`}
+                  aria-label={active && active.level < j.requiredLevel ? `${j.name} +${j.requiredLevel} 강화 필요` : `${j.name} 보내기`}
                 >
-                  보내기
+                  {active && active.level < j.requiredLevel ? `+${j.requiredLevel} 필요` : '보내기'}
                 </button>
               )}
             </article>
@@ -204,6 +210,7 @@ export function PetJobsPanel({
       <Dialog open={guideOpen} onOpenChange={setGuideOpen}><DialogContent>
         <DialogTitle>알바 안내</DialogTitle>
         <DialogDescription>출발할 때 포만도와 애정이 모두 80 이상이어야 해요. 한 번에 한 마리만 보낼 수 있어요.
+          강화 +0, +2, +4에서 알바가 세 개씩 열려요. 이전 단계의 알바도 계속 보낼 수 있어요.
           근무 중과 미접속 중에도 10분마다 포만도·애정이 1씩 줄지만, 출발한 알바는 끝까지 마쳐요.
         </DialogDescription>
       </DialogContent></Dialog>

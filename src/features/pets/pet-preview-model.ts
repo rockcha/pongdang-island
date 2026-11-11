@@ -6,8 +6,10 @@ import {
   PET_DECAY_MS,
   PET_CARE_MS,
   PET_FOOD_GAIN,
+  PET_AFFECTION_GAIN,
   PET_FOOD_PRICE,
   PET_SELL_PRICE,
+  PET_MAX_LEVEL,
   type PetSpeciesId,
   type PetCareAction,
   type PetInteractionAction,
@@ -15,11 +17,12 @@ import {
   type PetBaitId,
 } from './pet-catalog'
 
-export type PreviewJob = { id: PetJobId; startedAt: number; endsAt: number; reward: number }
+export type PreviewJob = { id: PetJobId; startedAt: number; endsAt: number; reward: number; minReward?: number; maxReward?: number }
 export type PreviewPet = {
   id: string
   speciesId: PetSpeciesId
   name: string
+  level: number
   fullness: number
   affection: number
   decayAt: number
@@ -57,6 +60,7 @@ export type PetPreviewAction = Timed &
     | { type: 'start-job'; jobId: PetJobId; roll: number }
     | { type: 'claim-job'; id: string }
     | { type: 'sell'; id: string }
+    | { type: 'enhance'; targetId: string; materialId: string; expectedLevel: number }
     | { type: 'fish'; baitId: PetBaitId; roll: number; speciesRoll: number }
     | { type: 'add-pet'; speciesId: PetSpeciesId }
     | { type: 'advance'; milliseconds: number }
@@ -83,6 +87,7 @@ function makePet(speciesId: PetSpeciesId, id: number, now: number): PreviewPet {
     id: `preview-pet-${id}`,
     speciesId,
     name: petSpecies.find((s) => s.id === speciesId)!.name,
+    level: 0,
     fullness: 100,
     affection: 100,
     decayAt: now,
@@ -127,6 +132,15 @@ function hydrate(s: PetPreviewState, now: number) {
 function message(s: PetPreviewState, notice: string) {
   return { ...s, notice }
 }
+export function petEnhancementIssue(target: PreviewPet | undefined, material: PreviewPet | undefined) {
+  if (!target || !material) return '강화할 펫과 재료 펫을 선택해주세요.'
+  if (target.id === material.id) return '자기 자신을 재료로 사용할 수 없어요.'
+  if (target.level >= PET_MAX_LEVEL) return '이미 최고 강화 단계예요.'
+  if (target.speciesId !== material.speciesId) return '같은 종의 펫만 재료로 사용할 수 있어요.'
+  if (material.level !== 0) return '+0 펫만 재료로 사용할 수 있어요.'
+  if (target.job || material.job) return '알바 보상을 받은 뒤 강화할 수 있어요.'
+  return null
+}
 export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction): PetPreviewState {
   if (!Number.isFinite(a.now)) return before
   let s = hydrate(before, a.now)
@@ -151,13 +165,26 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
       }
     }
     return {
-      ...update(target.id, (p) => ({ ...p, affection: Math.min(100, p.affection + 1) })),
+      ...update(target.id, (p) => ({ ...p, affection: Math.min(100, p.affection + PET_AFFECTION_GAIN) })),
       care: null,
-      notice: `${target.name}의 애정이 1 올랐어요.`,
+      notice: `${target.name}의 애정이 ${Math.min(PET_AFFECTION_GAIN, 100 - target.affection)} 올랐어요.`,
     }
   }
   if (busy) return message(s, '돌봄 동작이 끝나면 다시 할 수 있어요.')
   switch (a.type) {
+    case 'enhance': {
+      const target = s.pets.find(p => p.id === a.targetId), material = s.pets.find(p => p.id === a.materialId)
+      if (target && !material && target.level > a.expectedLevel) return s
+      const issue = petEnhancementIssue(target, material)
+      if (issue) return message(s, issue)
+      if (!target || !material || target.level !== a.expectedLevel) return message(s, '강화 단계가 바뀌었어요. 다시 확인해주세요.')
+      return {
+        ...s,
+        pets: s.pets.filter(p => p.id !== material.id).map(p => p.id === target.id ? {...p, level: p.level + 1} : p),
+        activeId: s.activeId === material.id ? target.id : s.activeId,
+        notice: `${target.name} +${target.level + 1} 강화 완료!`,
+      }
+    }
     case 'reset':
       return createPetPreview(a.now - s.offset)
     case 'select':
@@ -212,6 +239,7 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
         return message(s, '포만도와 애정이 모두 80 이상이어야 해요.')
       const job = petJobs.find((j) => j.id === a.jobId)
       if (!job || !Number.isFinite(a.roll) || a.roll < 0 || a.roll >= 1) return s
+      if (active.level < job.requiredLevel) return message(s, `+${job.requiredLevel} 강화부터 보낼 수 있어요.`)
       const reward = job.min + Math.floor(a.roll * (job.max - job.min + 1))
       return {
         ...update(active.id, (p) => ({
@@ -219,8 +247,10 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
           job: {
             id: job.id,
             startedAt: s.lastNow,
-            endsAt: s.lastNow + job.hours * 3600000,
+            endsAt: s.lastNow + job.minutes * 60000,
             reward,
+            minReward: job.min,
+            maxReward: job.max,
           },
         })),
         notice: `${active.name}이 알바를 떠났어요.`,
@@ -340,6 +370,7 @@ export function restorePetPreview(raw: string | null, now: number): PetPreviewSt
           !petSpecies.some((k) => k.id === p.speciesId) ||
           typeof p.id !== 'string' ||
           typeof p.name !== 'string' ||
+          (p.level !== undefined && (!Number.isInteger(p.level) || p.level < 0 || p.level > PET_MAX_LEVEL)) ||
           !Number.isFinite(p.decayAt) ||
           !Number.isInteger(p.fullness) ||
           p.fullness < 0 ||
@@ -358,6 +389,9 @@ export function restorePetPreview(raw: string | null, now: number): PetPreviewSt
       throw Error('Invalid pet')
     if (new Set(s.pets.map((p) => p.id)).size !== s.pets.length)
       throw Error('Duplicate sandbox IDs')
+    // Old operator saves predate enhancement. Keep their pets and running-job
+    // receipts; only missing levels default to zero.
+    s.pets = s.pets.map(p => ({...p, level: p.level === undefined ? 0 : p.level}))
     // Leaving the page cancels an unfinished preview gesture; it never awards affection.
     return hydrate(
       {

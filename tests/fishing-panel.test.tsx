@@ -12,6 +12,7 @@ vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wa
 import { FishingPanel } from '@/features/fishing/fishing-panel'
 import { CatchReveal } from '@/features/fishing/catch-reveal'
 import { readFishingTrip } from '@/features/fishing/fishing-trip'
+import {weatherPracticePool} from '@/features/fishing/weather-creatures'
 const bait={id:'bait',name:'퐁당 지렁이',description:'퐁당섬의 선홍빛 지렁이',effect_kind:'fish',effect_description:'등급 확률',price:30,image_path:'/normal.png',common_bp:8500,rare_bp:1300,epic_bp:180,mythic_bp:20,failure_bp:0}
 const species={id:'sample',name:'달빛 퐁울복',kind:'fish',rarity:'rare',description:'푸른 바다의 친구',thumbnail_path:'fish/thumbnail.png'}
 const plan={operation_id:'prepared-id',region_id:'pongdang',bait_id:'bait',eligible:true,species,rarity:'rare',wait_seconds:3,failure_at:6,failure_reason:'escape',finished:false,expires_at:'2099-01-01'}
@@ -20,7 +21,7 @@ it('keeps weather practice separate from an existing real cast and never spends 
  render(<MemoryRouter><FishingPanel regionId="pongdang" weatherTest weatherPreview={{kind:'dust',startsAt:'2026-11-04T03:00:00Z',endsAt:'2026-11-04T03:30:00Z'}}/></MemoryRouter>)
  fireEvent.click(await screen.findByRole('button',{name:'날씨 낚시 테스트 시작'}))
  expect(screen.getByTestId('challenge').getAttribute('data-rarity')).toBe('common')
- expect(screen.getByTestId('challenge').getAttribute('data-outline')).toMatch(/고글|여행자/)
+ expect(weatherPracticePool('dust').map(species=>species.name)).toContain(screen.getByTestId('challenge').getAttribute('data-outline'))
  fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}))
  expect(prepare).not.toHaveBeenCalled()
  expect(begin).not.toHaveBeenCalled()

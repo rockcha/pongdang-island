@@ -47,7 +47,8 @@
   font-size: 15px;
 }
 .pet-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-bottom: 1px solid var(--border);
   margin-bottom: 18px;
 }
@@ -70,17 +71,21 @@
 }
 .pet-tabs button {
   flex: 1;
+  min-height: 48px;
   border-radius: 0;
   padding: 12px 3px;
   color: var(--muted-foreground);
   white-space: nowrap;
   font-size: 12px;
+  border-right: 1px solid var(--border);
 }
+.pet-tabs button:last-child { border-right: 0; }
 .pet-tabs button[aria-current] {
-  color: var(--foreground);
-  border-bottom: 2px solid var(--primary);
-  font-weight: 700;
+  color: var(--primary);
+  background: var(--secondary);
+  font-weight: 600;
 }
+.pet-preview .pet-shop-categories button { border-radius: 0; min-height: 44px; padding: 8px; }
 .pet-tabs small {
   font-size: 9px;
 }
@@ -513,7 +518,7 @@
 @media (min-width: 640px) {
   .pet-preview { position: relative; overflow: hidden; padding: 10px 16px 6px; gap: 6px; }
   .pet-preview > .pet-heading .pet-eyebrow { display: none; }
-  .pet-preview .pet-tabs button { min-height: 36px; padding: 6px 3px; }
+  .pet-preview .pet-tabs button { min-height: 48px; padding: 6px 3px; }
   .pet-home { flex: 1; gap: 8px; }
   .pet-stage { flex: 1; height: auto; aspect-ratio: auto; max-height: 394px; }
   .pet-stage.has-pet { grid-template-rows: 40px minmax(0, 1fr); }

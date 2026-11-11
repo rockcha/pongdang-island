@@ -1,0 +1,75 @@
+{
+  "source": "Existing production pet thumbnails; layout rendered from poster.html.",
+  "pets": [
+    {
+      "id": "sand-golem",
+      "path": "public/pets/sand-golem_v1_thumbnail.png",
+      "sha256": "7465be0f56959d685d7b1a3843c011a652169f9ec07a42b711f9600adfd9fc4d"
+    },
+    {
+      "id": "wave-cat",
+      "path": "public/pets/wave-cat_v1_thumbnail.png",
+      "sha256": "b78893466e524539a2fe662662010e4527c9ea8f6187adc0ba35ca395d3f97d1"
+    },
+    {
+      "id": "mochi-dragon",
+      "path": "public/pets/mochi-dragon_v1_thumbnail.png",
+      "sha256": "243c496b1223f5ef5aded0127aaaf97a95895d054bd5a3636010a345dcfdff0a"
+    },
+    {
+      "id": "jelly-seal",
+      "path": "public/pets/jelly-seal_v1_thumbnail.png",
+      "sha256": "75f9386164b7b6d9f964d00543aa7375dff7312d045618b688c3a8897f39a5a4"
+    },
+    {
+      "id": "maple-panda",
+      "path": "public/pets/maple-panda_v1_thumbnail.png",
+      "sha256": "66feaa01ece9b6909545eaf9ca2cce1faece367ee7ae5061c0061a8237243ba1"
+    },
+    {
+      "id": "poka-shark",
+      "path": "public/pets/poka-shark_v1_thumbnail.png",
+      "sha256": "6ac43635cf158a83404f817c1de8d8b8024e65f0c046f6b3acf8e5fa526d87bc"
+    },
+    {
+      "id": "acorn-squirrel",
+      "path": "public/pets/acorn-squirrel_v1_thumbnail.png",
+      "sha256": "dbab7cc4fb0b83db7bad0b315fbfba5d21d54a3931eec6a9679d26d44290caa2"
+    },
+    {
+      "id": "hedge-pin",
+      "path": "public/pets/hedge-pin_v1_thumbnail.png",
+      "sha256": "81758cabf5419eb25b5ccb3b2e76624ebc6ddcd8e42d8e8e3a0314b66ebf35c8"
+    },
+    {
+      "id": "bonbon-triceratops",
+      "path": "public/pets/bonbon-triceratops_v1_thumbnail.png",
+      "sha256": "8bfc2a758b82d98d7df21382d44ca477352565582a885a4c9f2be114800bea45"
+    },
+    {
+      "id": "nurung-fox",
+      "path": "public/pets/nurung-fox_v1_thumbnail.png",
+      "sha256": "ab95383d232950466169e3cfd64f2750d18301e5082f72df4d3484ccd7181493"
+    },
+    {
+      "id": "ppinu-penguin",
+      "path": "public/pets/ppinu-penguin_v1_thumbnail.png",
+      "sha256": "09768cf52043ac0f8801c5e8706301593f3c291f90bef80fcb1fec6dec901dee"
+    },
+    {
+      "id": "coco-capybara",
+      "path": "public/pets/coco-capybara_v1_thumbnail.png",
+      "sha256": "ebf6ef9026743c8aaed568bda6482079e5101aeed0d405a2860077c3d5904275"
+    },
+    {
+      "id": "peach-axolotl",
+      "path": "public/pets/peach-axolotl_v1_thumbnail.png",
+      "sha256": "884c04df0da1698c40628f085829e6fd145669adf2ca9dd1c030b1b0fb48a155"
+    },
+    {
+      "id": "cloud-alpaca",
+      "path": "public/pets/cloud-alpaca_v1_thumbnail.png",
+      "sha256": "7cd19efa4d9a53aa73f81148e726ec31e2158fddd14e9a6a0ed517ffb6ef5465"
+    }
+  ]
+}

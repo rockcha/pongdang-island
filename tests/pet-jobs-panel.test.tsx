@@ -55,6 +55,6 @@ it('shows no unrelated jobs in an empty house',()=>{
   const {props,rerender}=show()
   rerender(<PetJobsPanel {...props} active={undefined}/>)
   expect(screen.queryByRole('button',{name:/보내기$/})).toBeNull()
-  fireEvent.click(screen.getByRole('button',{name:'펫 고르기'}))
-  expect(props.onChoosePet).toHaveBeenCalledOnce()
+  expect(screen.queryByRole('button',{name:'펫 고르기'})).toBeNull()
+  expect(screen.queryByRole('button',{name:'알바 안내'})).toBeNull()
 })

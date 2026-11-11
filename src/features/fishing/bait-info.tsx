@@ -15,7 +15,10 @@ export function BaitTarget({bait}:{bait:FishingBait}){
  return <span aria-label="포획 대상" className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] leading-5 text-foreground/80">{entries.map(({icon:Icon,label})=><span key={label} className="inline-flex items-center gap-1"><Icon className="size-4"/>{label}</span>)}</span>
 }
 export function BaitOddsBars({bait,compact=false}:{bait:FishingBait;compact?:boolean}){
- if(bait.pet_bp)return <div className="space-y-2 text-xs"><p className="font-medium text-primary">펫 {bait.pet_bp/100}%</p><div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">{(['common','rare','epic','mythic'] as Rarity[]).map(k=><span key={k}>{rarities[k].label} {bait[`${k}_bp`]/100}%</span>)}</div><p className="text-[10px] leading-5 text-muted-foreground">전 해역에서 같은 확률 · 펫 14종은 동일한 확률로 만나요. 낚시 조작에 성공해야 획득해요.</p></div>
+ if(isPetFishingBait(bait))return <div className="space-y-3">
+  {[{label:'펫',bp:bait.pet_bp,color:'#db8fa9'},...(['common','rare','epic','mythic'] as Rarity[]).map(key=>({label:rarities[key].label,bp:bait[`${key}_bp`],color:rarities[key].effectColor}))].filter(g=>g.bp>0).map(g=><div key={g.label} className="flex items-center gap-2.5 text-xs"><span className="w-10 shrink-0 text-muted-foreground">{g.label}</span><span role="meter" aria-label={`${g.label} 등급 확률`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={g.bp/100} className="h-1.5 flex-1 overflow-hidden rounded-full bg-secondary"><span className="block h-full rounded-full" style={{width:`${g.bp/100}%`,backgroundColor:g.color}}/></span><span className="w-12 shrink-0 text-right font-medium tabular-nums">{g.bp/100}%</span></div>)}
+  <p className="text-[10px] leading-5 text-muted-foreground">전 해역에서 같은 확률 · 펫 14종은 동일한 확률로 만나요. 낚시 조작에 성공해야 획득해요.</p>
+ </div>
  const grades=(Object.keys(rarities) as Rarity[]).filter(key=>bait[`${key}_bp`]>0)
  const percent=(bp:number)=>`${Number((bp/100).toFixed(2))}%`
  if(compact)return <div className="space-y-1.5">

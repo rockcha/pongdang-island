@@ -14,7 +14,7 @@ import { useNewContent } from './use-new-content'
 import { Link, useLocation } from 'react-router'
 import { Compass, Check, House, FishingRod, Factory, BookOpen, NotebookPen, NotebookTabs, Clapperboard, Container, Fuel, PackagePlus, Store as StoreOutline } from 'lucide-react'
 
-import {UserRound,AudioLines,Fish,Shapes,Package,Warehouse as WarehouseOutline,Medal,Gem,Map as MapOutline,ShoppingBasket,ShoppingBag,Flame,Sprout,FlaskConical,Anchor,Ship as ShipOutline,Handshake as TradeIcon,ClipboardList,Landmark,Gamepad2 as GameIcon,TowerControl as LighthouseOutline,MessageSquare,Images,Trophy,Newspaper,Megaphone,Heart,Gift,Mail,Lightbulb,Bug} from 'lucide-react'
+import {UserRound,AudioLines,Fish,Shapes,Package,Warehouse as WarehouseOutline,Medal,Gem,Map as MapOutline,ShoppingBasket,ShoppingBag,Flame,Sprout,FlaskConical,Anchor,Ship as ShipOutline,Handshake as TradeIcon,ClipboardList,Landmark,Gamepad2 as GameIcon,TowerControl as LighthouseOutline,MessageSquare,Images,Trophy,Newspaper,Megaphone,Heart,PawPrint,Gift,Mail,Lightbulb,Bug} from 'lucide-react'
 
 import { Menu } from '@base-ui/react/menu'
 
@@ -33,7 +33,7 @@ const {
 } = appArt
 
 export const headerPlaces = [
-  {to:'/pet-house',label:'펫 하우스',icon:Heart},
+  {to:'/pet-house',label:'펫 하우스',icon:PawPrint},
   {to:'/relic-roulette',label:'유물 룰렛',icon:RouletteIcon},
   {to:'/exploration',label:'탐험',icon:Compass},
   { to: '/voyage-bets', label: '만선 승부장', icon: appArt.shipyard },

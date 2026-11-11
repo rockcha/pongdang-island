@@ -58,7 +58,6 @@ export function PetJobsPanel({
   onCancel,
 }: Props) {
   const [showOptions, setShowOptions] = useState(false)
-  const [guideOpen, setGuideOpen] = useState(false)
   const [cancelTarget, setCancelTarget] = useState<{id:string;key:string;name:string}|null>(null)
   const employed = pets.find((p) => p.job),
     run = employed?.job,
@@ -150,7 +149,7 @@ export function PetJobsPanel({
           {statusOnly && !done && <p className="pet-work-hint">취소하면 보상은 지급되지 않아요.</p>}
         </>
       )) : statusOnly ? (
-        <div className="pet-work-empty"><BriefcaseBusiness size={30}/><h3>진행 중인 알바가 없어요</h3><p>{active ? `${active.name}의 전용 알바를 골라보세요.` : '함께할 친구를 먼저 골라주세요.'}</p><button disabled={busy} onClick={active ? onOpenJobs : onChoosePet}>{active ? '알바 보내기' : '펫 고르기'}</button></div>
+        <div className="pet-work-empty"><BriefcaseBusiness size={30}/><h3>진행 중인 알바가 없어요</h3>{active&&<button disabled={busy} onClick={onOpenJobs}>알바 보내기</button>}</div>
       ) : (
         <div className="pet-job-intro">
           <h3>오늘은 어디로 가볼까요?</h3>
@@ -177,7 +176,7 @@ export function PetJobsPanel({
             </>
           ) : (
             <p>
-              함께할 친구를 먼저 꺼내 주세요. <button onClick={onChoosePet}>펫 고르기</button>
+              함께할 친구를 먼저 꺼내 주세요.
             </p>
           )}
         </div>
@@ -216,19 +215,12 @@ export function PetJobsPanel({
           )})}
         {onEnhance && !run && active.level < PET_MAX_LEVEL && <button className="pet-job-guide" onClick={onEnhance}>강화로 보상 높이기</button>}
       </div>}
-      <button className="pet-job-guide" onClick={() => setGuideOpen(true)}>알바 안내</button>
       <Dialog open={!!cancelTarget} onOpenChange={open => {if(!open)setCancelTarget(null)}}><DialogContent>
         <DialogTitle>알바를 취소할까요?</DialogTitle>
         <DialogDescription>{cancelTarget?.name}이 바로 돌아와요. 지금까지 일한 시간의 보상도 지급되지 않아요. 다시 출발할 때 포만도·애정 80 이상 조건을 확인해요.</DialogDescription>
         <div className="pet-work-cancel-actions"><button onClick={() => setCancelTarget(null)}>계속 근무하기</button><button disabled={busy || !run || !cancelTarget || employed?.id!==cancelTarget.id || petJobRunKey(run)!==cancelTarget.key || done} onClick={() => {if(cancelTarget){onCancel?.(cancelTarget.id,cancelTarget.key);setCancelTarget(null)}}}>취소하고 다시 고르기</button></div>
       </DialogContent></Dialog>
-      <Dialog open={guideOpen} onOpenChange={setGuideOpen}><DialogContent>
-        <DialogTitle>알바 안내</DialogTitle>
-        <DialogDescription>출발할 때 포만도와 애정이 모두 80 이상이어야 해요. 한 번에 한 마리만 보낼 수 있어요.
-          펫마다 전용 알바 2개가 처음부터 열려요. 같은 종을 합성해 +5까지 강화할 수 있고, 단계마다 기본 보상의 3%씩, 최대 15%가 더해져요. 근무 시간은 바뀌지 않아요.
-          근무 중과 미접속 중에도 10분마다 포만도·애정이 1씩 줄지만, 출발한 알바는 끝까지 마쳐요.
-        </DialogDescription>
-      </DialogContent></Dialog>
+
     </section>
   )
 }

@@ -1,4 +1,6 @@
 import { useEffect, useReducer, useState, type CSSProperties } from 'react'
+import {PetShopCategories,type PetShopCategory} from './pet-shop-categories'
+import {PetJobCompletionDialog,type PetJobCompletion} from './pet-job-completion-dialog'
 import {PetSnackShop} from './pet-snack-shop'
 import {PetPurchaseQuantity} from './pet-purchase-quantity'
 import {playPurchaseSound} from '@/features/gold/purchase-sound'
@@ -25,6 +27,7 @@ import {
   petBaits,
   petSpecies,
   petSpeciesById,
+  petJobById,
   type PetClip,
   type PetBaitId,
   PET_FOOD_GAIN,
@@ -92,7 +95,8 @@ function Gauge({
   )
 }
 
-export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:PetPreviewState;busy:boolean;error:string;send:(a:PetHouseCommand)=>Promise<boolean>} }) {
+export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:PetPreviewState;busy:boolean;error:string;send:(a:PetHouseCommand)=>Promise<boolean>;completion?:PetJobCompletion|null;onDismissCompletion?:()=>void} }) {
+  const [completion,setCompletion]=useState<PetJobCompletion|null>(null)
   const [choosing, setChoosing] = useState(false)
   const [jobsOpen, setJobsOpen] = useState(false)
   const [enhancing, setEnhancing] = useState<string|null>(null)
@@ -101,6 +105,7 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
   const [toolsOpen, setToolsOpen] = useState(false)
   const [page, setPage] = useState(0)
   const [purchase,setPurchase]=useState<'food'|PetBaitId|null>(null),[purchaseQuantity,setPurchaseQuantity]=useState(1)
+  const [shopCategory,setShopCategory]=useState<PetShopCategory>('food')
   const purchaseItem=petBaits.find(b=>b.id===purchase),purchasePrice=purchaseItem?.price??PET_FOOD_PRICE
   const key = `pet-house-preview:v1:${owner}`
   const [previewState, dispatch] = useReducer(petPreviewReducer, null, () => {
@@ -193,7 +198,10 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
   const renderJobs = (statusOnly = false) => <PetJobsPanel
     pets={pets} active={active} now={now} busy={busy} statusOnly={statusOnly}
     onStart={jobId => {send({type:'start-job',jobId,roll:Math.random()});setJobsOpen(false);setTab('jobs')}}
-    onClaim={id => {send({type:'claim-job',id});setJobsOpen(false);setTab('jobs')}}
+    onClaim={id => {
+      if(!live){const pet=pets.find(p=>p.id===id);if(pet?.job&&pet.job.endsAt<=now&&!busy){const result=petPreviewReducer(state,{type:'claim-job',id,now});const returned=result.pets.find(p=>p.id===id);if(returned&&!returned.job)setCompletion({pet:petNeedsAt(returned,now),reward:pet.job.reward,jobName:petJobById(pet.job.id)?.name??'펫 아르바이트'})}}
+      send({type:'claim-job',id});setJobsOpen(false);setTab('jobs')
+    }}
     onCancel={(id,runKey) => {send({type:'cancel-job',id,runKey});setTab('jobs');setJobsOpen(true)}}
     onOpenJobs={() => setJobsOpen(true)}
     onChoosePet={() => {setJobsOpen(false);openChooser()}}
@@ -219,11 +227,11 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
       })}
     </div>
     {pets.length > 4 && <div className="pet-pagination"><button disabled={petPage === 0} onClick={() => setPage(petPage - 1)}>이전</button><span>{petPage + 1} / {Math.ceil(pets.length / 4)}</span><button disabled={(petPage + 1) * 4 >= pets.length} onClick={() => setPage(petPage + 1)}>다음</button></div>}
-    {!pets.length && <div className="pet-no-friends"><PawPrint size={30}/><p>아직 함께할 친구가 없어요.</p><button onClick={() => { setChoosing(false); setTab('shop') }}>간식 상점 둘러보기</button></div>}
+    {!pets.length && <div className="pet-no-friends"><PawPrint size={30}/><p>아직 함께할 친구가 없어요.</p></div>}
   </>
   return (
     <main className="pet-preview">
-      <header className="pet-heading">
+      {!live&&<header className="pet-heading">
         <div>
           <span className="pet-eyebrow">{live?'펫 하우스':'운영자 미리보기'}</span>
           <h2>
@@ -236,8 +244,8 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
             <PetGold value={state.gold} />
           </strong>
         </div>
-      </header>
-      <nav className="pet-tabs" aria-label="펫 하우스">
+      </header>}
+      <nav className="pet-tabs segmented-control" aria-label="펫 하우스">
         <button aria-current={tab === 'home' ? 'page' : undefined} onClick={() => setTab('home')}>
           하우스
         </button>
@@ -248,14 +256,14 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
           아르바이트{employed && <span className={`pet-job-tab-dot ${employed.job!.endsAt<=now?'is-done':''}`} aria-label={employed.job!.endsAt<=now?'보상 수령 가능':'근무 중'}/>}
         </button>
         <button aria-current={tab === 'shop' ? 'page' : undefined} onClick={() => setTab('shop')}>
-          간식 상점
+          상점
         </button>
       </nav>
       {tab === 'home' && (
         <section className="pet-home">
-          <div className={`pet-stage ${active ? 'has-pet' : ''}`}>
-            <button className="pet-house-menu" aria-label="하우스 메뉴" disabled={busy} onClick={() => setOptions('home')}><Ellipsis size={18}/></button>
-            {active && <header className="pet-stage-toolbar">
+          <div className={`pet-stage ${active&&!working ? 'has-pet' : ''}`}>
+            {active&&!working&&<button className="pet-house-menu" aria-label="하우스 메뉴" disabled={busy} onClick={() => setOptions('home')}><Ellipsis size={18}/></button>}
+            {active && !working && <header className="pet-stage-toolbar">
               <div className="pet-stage-identity">
                 <h3 title={active.name}>{active.name}</h3>
                 <span className="pet-level-badge">+{active.level}{active.level === 5 && <small> MAX</small>}</span>
@@ -296,21 +304,7 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
                 </div>
               </>
             ) : (
-              <div className="pet-away">
-                {working ? <BriefcaseBusiness size={38} /> : <svg className="pet-empty-room" viewBox="0 0 160 120" aria-hidden="true"><path d="M24 88V32l56-21 56 21v56" fill="none" stroke="currentColor" strokeWidth="1.3"/><path d="M80 12v66M24 88l56-10 56 10" fill="none" stroke="currentColor" opacity=".45"/><rect x="43" y="37" width="20" height="25" rx="4" fill="none" stroke="currentColor"/><path d="M53 38v23M44 49h18" stroke="currentColor"/><ellipse cx="83" cy="93" rx="39" ry="12" fill="currentColor" opacity=".12"/><ellipse cx="83" cy="89" rx="34" ry="10" fill="none" stroke="currentColor" strokeWidth="1.3"/></svg>}
-                <strong>
-                  {working ? `${active?.name}의 알바 시간` : '잠시 비어 있는 집'}
-                </strong>
-                <p>
-                  {working && active?.job
-                    ? `${petJobCountdown(active.job.endsAt, now)} 후 돌아와요`
-                    : '함께할 친구를 데려와 주세요.'}
-                </p>
-                <button onClick={() => working ? setTab('jobs') : pets.length ? openChooser() : setTab('shop')}>
-                  {working ? '알바 확인' : pets.length ? '펫 데려오기' : '간식 상점 둘러보기'}
-                </button>
-                {working && <button className="pet-text-button" onClick={openChooser}>다른 펫 데려오기</button>}
-              </div>
+              <div className="pet-away"><button onClick={() => setTab('pets')}>펫 목록 가기</button></div>
             )}
             </div>
           </div>
@@ -367,7 +361,7 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
               </button>
             </div>
           )}
-          {!active && employed && <button className="pet-job-launch pet-job-launch-empty" disabled={busy} onClick={() => setTab('jobs')}><BriefcaseBusiness size={14}/><span>{employed.name} · {employed.job!.endsAt <= now ? '보상 받기' : petJobCountdown(employed.job!.endsAt,now)}</span></button>}
+
         </section>
       )}
       {tab === 'pets' && <section className="pet-list pet-roster-panel">{roster()}</section>}
@@ -380,7 +374,8 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
       {tab === 'shop' && live&&<PetSnackShop/>}
       {tab === 'shop' && !live&&(
         <section className="pet-list pet-shop-panel">
-          <article className="pet-shop-product">
+          <PetShopCategories value={shopCategory} onChange={setShopCategory}/>
+          {shopCategory==='food'&&<article className="pet-shop-product">
             <span className="pet-product-art food"><img src="/pets/items/food_v1.webp" alt=""/></span>
             <div>
               <strong>든든 사료</strong>
@@ -391,11 +386,11 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
                 <PetGold value={PET_FOOD_PRICE} /> 구매
               </span>
             </button>
-          </article>
-          {petBaits.map((b) => (
+          </article>}
+          {shopCategory==='bait'&&petBaits.map((b) => (
             <article className="pet-shop-product" key={b.id}>
               <span className={`pet-product-art ${b.id}`}><img src={`/pets/items/${b.id}_v1.webp`} alt=""/></span>
-              <div><h3>{b.name}</h3><p>펫 만남 확률 {b.petBp / 100}% · 보유 {state.baitInventory?.[b.id]??0}개</p><button className="pet-odds-link" onClick={() => setOdds(b.id)}>확률 보기</button>{!!state.baitInventory?.[b.id]&&<button className="pet-odds-link" disabled={busy} onClick={()=>send({type:'fish',baitId:b.id,roll:Math.random(),speciesRoll:Math.random()})}>1개 사용 · 낚시 테스트</button>}</div>
+              <div><h3>{b.name}</h3><p>보유 {state.baitInventory?.[b.id]??0}개</p><button className="pet-odds-link" onClick={() => setOdds(b.id)}>확률 보기</button>{!!state.baitInventory?.[b.id]&&<button className="pet-odds-link" disabled={busy} onClick={()=>send({type:'fish',baitId:b.id,roll:Math.random(),speciesRoll:Math.random()})}>1개 사용 · 낚시 테스트</button>}</div>
               <button
                 disabled={busy || state.gold < b.price}
                 onClick={() => {setPurchase(b.id);setPurchaseQuantity(1)}}
@@ -416,6 +411,7 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
           )}
         </section>
       )}
+      <PetJobCompletionDialog receipt={live?.completion??completion} onClose={()=>{if(live)live.onDismissCompletion?.();else setCompletion(null)}}/>
       <p className="pet-feedback" role="status">
         {live?.error||state.notice || ' '}
       </p>

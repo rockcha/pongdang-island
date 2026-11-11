@@ -16,9 +16,9 @@ it('shows all three pet baits in the pet filter and buys the server-priced start
  fireEvent.click(screen.getByRole('combobox',{name:'미끼 포획 대상'}));fireEvent.keyDown(await screen.findByRole('option',{name:'펫 미끼'}),{key:'Enter'})
  await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
  expect(screen.queryByRole('button',{name:'일반 미끼 상세 보기'})).toBeNull()
- for(const b of petItems){const card=screen.getByRole('button',{name:b.name+' 상세 보기'});expect(within(card).getByText(String(b.price))).toBeTruthy();expect(within(card).getByText('펫 '+b.pet_bp/100+'%')).toBeTruthy();expect(card.querySelector('img')?.getAttribute('src')).toBe(b.image_path)}
+ for(const b of petItems){const card=screen.getByRole('button',{name:b.name+' 상세 보기'});expect(within(card).getByText(String(b.price))).toBeTruthy();expect(within(card).queryByText('펫 '+b.pet_bp/100+'%')).toBeNull();expect(card.querySelector('img')?.getAttribute('src')).toBe(b.image_path)}
  fireEvent.click(screen.getByRole('button',{name:'포슬포슬 간식주머니 상세 보기'}))
- expect(within(screen.getByRole('dialog')).getByText('펫 2%')).toBeTruthy()
+ expect(within(screen.getByRole('dialog')).getByRole('meter',{name:'펫 등급 확률'}).getAttribute('aria-valuenow')).toBe('2')
  fireEvent.change(screen.getByRole('spinbutton',{name:'구매 수량'}),{target:{value:'3'}})
  fireEvent.click(screen.getByRole('button',{name:'포슬포슬 간식주머니 3개 구매'}))
  await waitFor(()=>expect(mock.transact).toHaveBeenCalledWith({type:'buy',id:'fishing:bait_pet_starter',name:'포슬포슬 간식주머니',quantity:3,expectedPrice:120}))

@@ -1,0 +1,17 @@
+{
+  "project": "ewafafphiovbpjwogwzn.supabase.co",
+  "id": "e58784dd-bb99-4413-8856-84ac72d433e4",
+  "title": "날씨가 데려온 새로운 정령과 장식물 10종",
+  "status": "published",
+  "published_at": "2026-11-11T06:32:18.473908+00:00",
+  "revision": 1,
+  "body_verified": true,
+  "images": [
+    "e58784dd-bb99-4413-8856-84ac72d433e4/weather-spirits.png",
+    "e58784dd-bb99-4413-8856-84ac72d433e4/weather-decorations.png"
+  ],
+  "verifiedAt": "2026-11-11T06:32:56.184Z",
+  "weatherSpecies": 10,
+  "weatherRegressionTests": 14,
+  "verificationScope": "Weather catalog, weighted picker, production collectible bytes, signed notice images and exact published notice; not a full remote schema comparison"
+}

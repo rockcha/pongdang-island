@@ -1,0 +1,23 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "frontendCommit": "cd4262d399669594d6b5630d567dff0ac3845fec",
+  "frontendProductionDeployment": "https://pongdang-island-mzqpalwuy-rokchas-projects.vercel.app",
+  "migrations": [
+    {"localVersion":"20261109080521","remoteVersion":"20261111063010","name":"weather_collectible_weights"},
+    {"localVersion":"20261109080710","remoteVersion":"20261111063016","name":"weather_fairy_catalog"},
+    {"localVersion":"20261109083800","remoteVersion":"20261111063021","name":"weather_animated_decorations"}
+  ],
+  "historyNote": "Existing reviewed SQL applied with MCP-generated remote versions. No baseline replay, history repair or reset. Local and remote version numbers differ; do not blindly push all local migrations.",
+  "verification": {
+    "newSpecies":10,
+    "weatherPoolWeightPerWeather":7,
+    "spiritWeight":1,
+    "otherWeatherSpeciesWeight":2,
+    "deterministicDrawsPerWeather":10000,
+    "weatherHitsPerWeather":300,
+    "weatherTestsPassed":14,
+    "localDbVerify":"passed",
+    "localClientDataCheck":"passed",
+    "fullRemoteSchemaComparison":false
+  }
+}

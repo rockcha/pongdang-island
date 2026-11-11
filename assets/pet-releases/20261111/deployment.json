@@ -1,0 +1,432 @@
+{
+  "verifiedAt": "2026-11-11T11:59:39.001Z",
+  "project": "ewafafphiovbpjwogwzn",
+  "applicationSourceCommit": "721243cea6483cf5012ccee1e7a5742ee6081847",
+  "verifiedFrontendCommit": "97dd775ce866aaeb5c5815e20a305c15d4f38e5a",
+  "productionUrl": "https://pongdang-island.vercel.app",
+  "verifiedImmutableUrl": "https://pongdang-island-c3vuywu8y-rokchas-projects.vercel.app",
+  "localMigrations": [
+    {
+      "name": "20261111101739_pet_house_runtime.sql",
+      "sha256": "61c54e3732d5ceb4729f72eb914d5fbce221cbe11f3dee5a53051cb50dacafb3"
+    },
+    {
+      "name": "20261111101748_pet_snack_bait_catalog.sql",
+      "sha256": "6b7ea23dc8bb370152b158a8646ff7ebe868099387004fc04063c491968eae1b"
+    },
+    {
+      "name": "20261111102542_pet_snack_bait_profiles.sql",
+      "sha256": "3bc3a079c05b987c2f83833f57f6333d7595ff0beba06dd680832049b2684296"
+    },
+    {
+      "name": "20261111105926_pet_starter_bait_catalog.sql",
+      "sha256": "b039468c44c98bfab236e02dff5a783c1ad1c03d263e4b1cd67d2fe550707762"
+    },
+    {
+      "name": "20261111105936_pet_bait_odds_profiles.sql",
+      "sha256": "a409302673468b2091ebb970f9cadc015c85497b8d8b5ca5148a4d738dc9ce10"
+    }
+  ],
+  "remoteApplications": [
+    {
+      "version": "20261111114309",
+      "name": "pet_house_runtime_release",
+      "localMigrationIndexes": [
+        0,
+        4
+      ],
+      "sqlSha256": "36ccc5915a194c9f5bd029d0ba84dcb02356411e3ee0f4e6cb39d70c7ae2b7c0"
+    },
+    {
+      "version": "20261111114842",
+      "name": "pet_snack_bait_catalog_release",
+      "localMigrationIndexes": [
+        1,
+        2,
+        3
+      ],
+      "sqlSha256": "2ae57fe2bf37d59248a6805fd305f7e1631fc017ce026178d61ed25779b45e3b"
+    }
+  ],
+  "deploymentOrder": "Runtime and final odds functions applied atomically first; bait catalog enabled atomically after frontend asset readiness.",
+  "remoteVerificationScope": "Pet catalog, RPC definitions and grants, private table access, authenticated purchase/catch/care/job/enhancement/sale flows, and production browser screens.",
+  "fullRemoteSchemaComparison": false,
+  "registered": {
+    "petSpecies": 14,
+    "speciesJobs": 28,
+    "petBaits": 3
+  },
+  "runtime": {
+    "runtimeFixture": true,
+    "foodPurchasedOnce": true,
+    "feedGain": 50,
+    "careGain": 40,
+    "foodConsumedOnce": true,
+    "jobId": "wave-cat-lost",
+    "cancelledWithoutPay": true,
+    "resentAfterCancel": true,
+    "jobReward": 143,
+    "claimedPayOnce": true,
+    "enhancedTo": 1,
+    "consumedMaterial": true,
+    "renamed": true,
+    "soldPetOnce": true,
+    "houseEmptyAfterSale": true
+  },
+  "purchaseAndCatch": {
+    "initiallyEmpty": true,
+    "foodQuantity": 3,
+    "foodCost": 150,
+    "petBaitProducts": 3,
+    "baitQuantityEach": 2,
+    "idempotentPurchases": true,
+    "goldAfterPurchases": 8610,
+    "caughtPet": "nurung-fox",
+    "catchReplayedOnce": true,
+    "cleanedUp": true
+  },
+  "browser": {
+    "emptyHouse": [
+      {
+        "page": "pet-house",
+        "mode": "empty",
+        "testToolsAbsent": true
+      },
+      {
+        "page": "fishing-shop",
+        "petBaits": 3,
+        "imagesLoaded": true
+      },
+      {
+        "page": "item-shop",
+        "foodTab": true,
+        "foodImage": true
+      }
+    ],
+    "ownedPet": [
+      {
+        "page": "pet-house",
+        "mode": "pet",
+        "testToolsAbsent": true
+      },
+      {
+        "page": "fishing-shop",
+        "petBaits": 3,
+        "imagesLoaded": true
+      },
+      {
+        "page": "item-shop",
+        "foodTab": true,
+        "foodImage": true
+      }
+    ]
+  },
+  "assets": {
+    "checkedAt": "2026-11-11T11:53:10.493Z",
+    "count": 59,
+    "files": [
+      {
+        "path": "app-icons/pet-food-v1.webp",
+        "sha256": "8736a95028ae03aaa0b61305f141f04acffebf7aaa6692581d50c35fd143e732",
+        "bytes": 16548
+      },
+      {
+        "path": "pets/acorn-squirrel_atlas16_v1_sprite.png",
+        "sha256": "eb7583197aa36ee8be9d01f955e21c3dc27a4ab01cb9f90d4d41edcd0e767bac",
+        "bytes": 1647114
+      },
+      {
+        "path": "pets/acorn-squirrel_v1_thumbnail.png",
+        "sha256": "dbab7cc4fb0b83db7bad0b315fbfba5d21d54a3931eec6a9679d26d44290caa2",
+        "bytes": 111137
+      },
+      {
+        "path": "pets/bonbon-triceratops_atlas16_v1_sprite.png",
+        "sha256": "3d4d0ddc2552824250a8ecccd17e4e810250bfa7ec6c18061a11d2d20dfa042d",
+        "bytes": 1593369
+      },
+      {
+        "path": "pets/bonbon-triceratops_v1_thumbnail.png",
+        "sha256": "8bfc2a758b82d98d7df21382d44ca477352565582a885a4c9f2be114800bea45",
+        "bytes": 104219
+      },
+      {
+        "path": "pets/cloud-alpaca_atlas16_v1_sprite.png",
+        "sha256": "92492fc43f032255d76019f54750b5ee45d42285473b98b3dd3a2d414599e75d",
+        "bytes": 1498869
+      },
+      {
+        "path": "pets/cloud-alpaca_v1_thumbnail.png",
+        "sha256": "7cd19efa4d9a53aa73f81148e726ec31e2158fddd14e9a6a0ed517ffb6ef5465",
+        "bytes": 100768
+      },
+      {
+        "path": "pets/coco-capybara_atlas16_v1_sprite.png",
+        "sha256": "bfe4c44959fb33ac641c8dd377abc0d96a60435c34ad3c1d657c28f10bf7c1c5",
+        "bytes": 1560933
+      },
+      {
+        "path": "pets/coco-capybara_v1_thumbnail.png",
+        "sha256": "ebf6ef9026743c8aaed568bda6482079e5101aeed0d405a2860077c3d5904275",
+        "bytes": 104256
+      },
+      {
+        "path": "pets/hedge-pin_atlas16_v1_sprite.png",
+        "sha256": "3a0f890881671c4922edbb2c8f6568bd930b21589cb482bdfbebedda063d3950",
+        "bytes": 1621482
+      },
+      {
+        "path": "pets/hedge-pin_v1_thumbnail.png",
+        "sha256": "81758cabf5419eb25b5ccb3b2e76624ebc6ddcd8e42d8e8e3a0314b66ebf35c8",
+        "bytes": 108671
+      },
+      {
+        "path": "pets/house/cozy-cushion_v1.webp",
+        "sha256": "61ed4d5bf8fe5c25359ac0e74df1e6a736ee8797e5affa3d2601ffdd9fa910ea",
+        "bytes": 350426
+      },
+      {
+        "path": "pets/house/cozy-room_v1.webp",
+        "sha256": "6754284d20f7de0a04a5155086b00f3613c086a4c829b93749ae0db5d9a451aa",
+        "bytes": 45942
+      },
+      {
+        "path": "pets/items/biscuit_v1.webp",
+        "sha256": "3eb83d3349f8298bbdfce26166c370fd6383a2a09da86cab91df8b40ac509bd8",
+        "bytes": 36664
+      },
+      {
+        "path": "pets/items/food_v1.webp",
+        "sha256": "caa6e1c64338a95af5ca40a12619e544bc29d1c23df909554fc6ff739117eb6a",
+        "bytes": 24850
+      },
+      {
+        "path": "pets/items/macaron_v1.webp",
+        "sha256": "63b765079b81dff527f62dc506fb175ff11f617f746bbe971ef1374718a39306",
+        "bytes": 38348
+      },
+      {
+        "path": "pets/items/starter_v1.webp",
+        "sha256": "59bb8eea1dd123daed3dca197a908aa8e4628b214e239b8269fa51433f3cd6d3",
+        "bytes": 37256
+      },
+      {
+        "path": "pets/jelly-seal_eat8_v1_sprite.png",
+        "sha256": "9252c74ad4932a0ca7b269d0261c361b9b2143a0cfac2951bb6da57303f97c0f",
+        "bytes": 1042910
+      },
+      {
+        "path": "pets/jelly-seal_happy8_v1_sprite.png",
+        "sha256": "e66790a39121aa285346d48dc1288f6dd9a5c392720714a1b875cddaf1f0e1fd",
+        "bytes": 706704
+      },
+      {
+        "path": "pets/jelly-seal_hungry4_v1_sprite.png",
+        "sha256": "6bbda2de7fd1f1af1dccb1ca57578fbb112b0f92a3ea9536b70e73df6193f6b4",
+        "bytes": 592702
+      },
+      {
+        "path": "pets/jelly-seal_idle8_v1_sprite.png",
+        "sha256": "3b5bd253b3225bb5326eda5c2ba38326bb43727c315f9e086867c3a880ecd687",
+        "bytes": 772518
+      },
+      {
+        "path": "pets/jelly-seal_idle8_v2_sprite.png",
+        "sha256": "231c49034b2ae9f78838d167ccd086d520bb249ad696d239d07c34e5b1668281",
+        "bytes": 927671
+      },
+      {
+        "path": "pets/jelly-seal_needs_blink8_v1_sprite.png",
+        "sha256": "20286f9cb6d03a89c3067966771529729483b37306e57e6344664ae86f4e5fd5",
+        "bytes": 888756
+      },
+      {
+        "path": "pets/jelly-seal_needs8_v1_sprite.png",
+        "sha256": "7a19ec2e65b7ece8992f13cf118f15dafd8beb43f7006bb4ea53904e6d2a31bc",
+        "bytes": 996833
+      },
+      {
+        "path": "pets/jelly-seal_v1_thumbnail.png",
+        "sha256": "75f9386164b7b6d9f964d00543aa7375dff7312d045618b688c3a8897f39a5a4",
+        "bytes": 516096
+      },
+      {
+        "path": "pets/maple-panda_atlas16_v1_sprite.png",
+        "sha256": "b91f7eb1a55d98e6fe6be7c5477062ff3058f9289cfe9409c764112dfec33c11",
+        "bytes": 1394392
+      },
+      {
+        "path": "pets/maple-panda_v1_thumbnail.png",
+        "sha256": "66feaa01ece9b6909545eaf9ca2cce1faece367ee7ae5061c0061a8237243ba1",
+        "bytes": 91883
+      },
+      {
+        "path": "pets/mochi-dragon_eat8_v1_sprite.png",
+        "sha256": "181c4a70341fcbea1116bdcafe1aa32067d621938b139bc9187b77f53f3b7d86",
+        "bytes": 1099680
+      },
+      {
+        "path": "pets/mochi-dragon_happy8_v1_sprite.png",
+        "sha256": "fd9ba570d81349e2ca677da039d741ac24047a49df67f9ddac886564238bb3ec",
+        "bytes": 1144349
+      },
+      {
+        "path": "pets/mochi-dragon_hungry4_v1_sprite.png",
+        "sha256": "f59e39f57d44e29d00e1c778e37d284a62a31dd71858e3fb5ba7d052c375f54b",
+        "bytes": 934744
+      },
+      {
+        "path": "pets/mochi-dragon_idle8_v1_sprite.png",
+        "sha256": "acfc8e04e54689b5570ab815bc228989616e6f7e4f82015f98c573c7f9a66c26",
+        "bytes": 1039100
+      },
+      {
+        "path": "pets/mochi-dragon_idle8_v2_sprite.png",
+        "sha256": "94348142a913c96da45bd78548f3f766bc53f83d601fb2ac5fc58429334b23a8",
+        "bytes": 1330986
+      },
+      {
+        "path": "pets/mochi-dragon_needs_blink8_v1_sprite.png",
+        "sha256": "0952639de0a59fb867192c718392e12f0493e8556efcf9df74253f8a7d62bfdf",
+        "bytes": 1379963
+      },
+      {
+        "path": "pets/mochi-dragon_needs8_v1_sprite.png",
+        "sha256": "f7f7dcf7371c7bc4429937c7520e13ba0e37d3f92efc6671adc1f8b64a8538ef",
+        "bytes": 1510630
+      },
+      {
+        "path": "pets/mochi-dragon_v1_thumbnail.png",
+        "sha256": "243c496b1223f5ef5aded0127aaaf97a95895d054bd5a3636010a345dcfdff0a",
+        "bytes": 840297
+      },
+      {
+        "path": "pets/nurung-fox_atlas16_v1_sprite.png",
+        "sha256": "3f9026a4c403a7f870d50b8c96338e76ccacc4e65c4cb75abf03024b966effed",
+        "bytes": 1766218
+      },
+      {
+        "path": "pets/nurung-fox_v1_thumbnail.png",
+        "sha256": "ab95383d232950466169e3cfd64f2750d18301e5082f72df4d3484ccd7181493",
+        "bytes": 118500
+      },
+      {
+        "path": "pets/peach-axolotl_atlas16_v1_sprite.png",
+        "sha256": "16fa8ac0180d8be88b68f180084a82f65a5b6b1c4a1c53b1c92c0529ec00f260",
+        "bytes": 1669926
+      },
+      {
+        "path": "pets/peach-axolotl_v1_thumbnail.png",
+        "sha256": "884c04df0da1698c40628f085829e6fd145669adf2ca9dd1c030b1b0fb48a155",
+        "bytes": 112818
+      },
+      {
+        "path": "pets/poka-shark_atlas16_v1_sprite.png",
+        "sha256": "9362041e18dbf6c3cdcb3bd31d16bea6a74ea8bc4052c0207dcc3ffb250fb1ca",
+        "bytes": 1384764
+      },
+      {
+        "path": "pets/poka-shark_v1_thumbnail.png",
+        "sha256": "6ac43635cf158a83404f817c1de8d8b8024e65f0c046f6b3acf8e5fa526d87bc",
+        "bytes": 90519
+      },
+      {
+        "path": "pets/ppinu-penguin_atlas16_v1_sprite.png",
+        "sha256": "e3683455437dbe424ebe05e07d729bbc6f45ba38bbb7e4e908995de5d064105d",
+        "bytes": 1427801
+      },
+      {
+        "path": "pets/ppinu-penguin_v1_thumbnail.png",
+        "sha256": "09768cf52043ac0f8801c5e8706301593f3c291f90bef80fcb1fec6dec901dee",
+        "bytes": 94999
+      },
+      {
+        "path": "pets/sand-golem_eat8_v1_sprite.png",
+        "sha256": "1dba5696dc9365ad5ac4465c1796b81f9f37a80cc4f9b6dffdf329cb1f6e8e1c",
+        "bytes": 1133427
+      },
+      {
+        "path": "pets/sand-golem_happy8_v1_sprite.png",
+        "sha256": "3033f19bb3c29cfd92abe7f21e7e8899bfc9e22e4ec091697a18584bd5128168",
+        "bytes": 842438
+      },
+      {
+        "path": "pets/sand-golem_hungry4_v1_sprite.png",
+        "sha256": "28da436f7fa995237b7987e2d263903b8d294f86f6477cf1ecd9a9eca38e2957",
+        "bytes": 873894
+      },
+      {
+        "path": "pets/sand-golem_idle8_v1_sprite.png",
+        "sha256": "849c43c723c17dda197306124592c1865b7dbf63840cd621a7cca89260602481",
+        "bytes": 1029921
+      },
+      {
+        "path": "pets/sand-golem_idle8_v2_sprite.png",
+        "sha256": "3a3c29bd06ded3aea3f8913d378a71ed8faef736a342e0beac6c59df9446919c",
+        "bytes": 1304782
+      },
+      {
+        "path": "pets/sand-golem_needs_blink8_v1_sprite.png",
+        "sha256": "4113014e1c1e60630424ed7acce0f5571094ed117826bf1555cd90d834debb1c",
+        "bytes": 1276465
+      },
+      {
+        "path": "pets/sand-golem_needs8_v1_sprite.png",
+        "sha256": "36051db4e18ba6c8d58b9fdcf6ce143bb521a08a0ab13c65eaf2165dd7d7824d",
+        "bytes": 1402238
+      },
+      {
+        "path": "pets/sand-golem_v1_thumbnail.png",
+        "sha256": "7465be0f56959d685d7b1a3843c011a652169f9ec07a42b711f9600adfd9fc4d",
+        "bytes": 1042329
+      },
+      {
+        "path": "pets/wave-cat_eat8_v1_sprite.png",
+        "sha256": "3a2b643ae70f53c55b1f4155cca24ff3ee2ad012be03bec8942832b360c47799",
+        "bytes": 1233564
+      },
+      {
+        "path": "pets/wave-cat_happy8_v1_sprite.png",
+        "sha256": "d2978e5cf5d65d3153030a72431c3c1ca6ef3ab11463aa7fa7392d278c15399c",
+        "bytes": 1139022
+      },
+      {
+        "path": "pets/wave-cat_hungry4_v1_sprite.png",
+        "sha256": "139cdbcb19ebce9210414f4d17c54be93d3dab14a5b0d8c9d079a05561c37fb8",
+        "bytes": 936866
+      },
+      {
+        "path": "pets/wave-cat_idle8_v1_sprite.png",
+        "sha256": "9ac935c4e811fb1818163004cedf6498236c4282926167d5e4853d29c4f1fe0a",
+        "bytes": 1113950
+      },
+      {
+        "path": "pets/wave-cat_idle8_v2_sprite.png",
+        "sha256": "4035e0f64195f55b986bf5467f5bbeffa23f0fd7a60378652cb280641a3f8836",
+        "bytes": 1221818
+      },
+      {
+        "path": "pets/wave-cat_needs_blink8_v1_sprite.png",
+        "sha256": "cbaff7541f74b94759857be957dbc4ffd02a062d7c46c6bd3b1cec1b87d2232b",
+        "bytes": 1264993
+      },
+      {
+        "path": "pets/wave-cat_needs8_v1_sprite.png",
+        "sha256": "56898a004cd03c09ed390e79cfad700bad51bb7ee7476d807226809b903f059c",
+        "bytes": 1422149
+      },
+      {
+        "path": "pets/wave-cat_v1_thumbnail.png",
+        "sha256": "b78893466e524539a2fe662662010e4527c9ea8f6187adc0ba35ca395d3f97d1",
+        "bytes": 799349
+      }
+    ]
+  },
+  "cleanup": {
+    "temporaryAuthAccountAbsent": true,
+    "petRowsAbsent": true,
+    "houseRowsAbsent": true,
+    "operationRowsAbsent": true,
+    "privateSessionFileRemoved": true
+  }
+}

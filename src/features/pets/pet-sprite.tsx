@@ -1,16 +1,18 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import type { PetClip, PetSpeciesId } from './pet-catalog'
-import { petDrawLayout, petBlinkEyes } from './pet-draw-layout'
+import { petUsesAtlas, type PetClip, type PetSpeciesId } from './pet-catalog'
+import { petAtlasFrame } from './pet-atlas'
+import { petDrawLayout, petFrameDrawLayout, petBlinkEyes } from './pet-draw-layout'
 import { loadPetImage, readyPetImage } from './pet-sprite-images'
 import { createPetBlinkSchedule, petIdleFrame, petBlinkStep } from './pet-idle-animation'
 import { petNeedsFrame } from './pet-needs-animation'
+import restingEyes from './pet-resting-eyes.json'
 
 export function usePetReactionReady(
   speciesId: PetSpeciesId | undefined,
   motion: 'happy' | 'eat' = 'happy',
 ) {
   const [ready, setReady] = useState<string | null>(null)
-  const url = speciesId ? `/pets/${speciesId}_${motion}8_v1_sprite.png` : null
+  const url = speciesId ? petUsesAtlas(speciesId) ? `/pets/${speciesId}_atlas16_v1_sprite.png` : `/pets/${speciesId}_${motion}8_v1_sprite.png` : null
   useEffect(() => {
     if (!url) return
     let alive = true
@@ -42,7 +44,8 @@ export function PetSprite({
   const [blinkSchedule] = useState(() =>
     createPetBlinkSchedule(Math.floor(Math.random() * 0xffffffff)),
   )
-  const sheet =
+  const atlas = petUsesAtlas(speciesId)
+  const sheet = atlas ? 'atlas16' :
     clip === 'idleA' || clip === 'idleB'
       ? 'idle8'
       : clip === 'hungry' || clip === 'lonely'
@@ -63,10 +66,10 @@ export function PetSprite({
       if (stopped || !node || !img) return
       const columns = 4,
         cw = img.width / columns,
-        ch = img.height / 2
+        ch = img.height / (atlas ? 4 : 2)
       const elapsed = performance.now() - start
       const idle = sheet === 'idle8'
-      const local = idle
+      const local = atlas ? petAtlasFrame(clip, elapsed, blinkSchedule, reduced) : idle
         ? petIdleFrame(elapsed, clip === 'idleB', blinkSchedule, reduced)
         : clip === 'hungry' || clip === 'lonely'
           ? petNeedsFrame(elapsed, speciesId, clip, reduced)
@@ -75,11 +78,15 @@ export function PetSprite({
           : clip === 'happy' || clip === 'eat'
             ? Math.min(7, Math.floor(elapsed / 375))
             : 0
-      const f = local,
+      const resting = clip === 'idleA' || clip === 'idleB' || clip === 'hungry' || clip === 'lonely'
+      // Resting animations must never replace the torso/tail silhouette.
+      // Hold the emotional base pose and composite only its eyelids.
+      const f = resting ? atlas ? clip === 'hungry' ? 4 : clip === 'lonely' ? 8 : 0 : sheet === 'needs8' && clip === 'lonely' ? 4 : 0 : local,
         ctx = node.getContext('2d')
       const blink = sheet === 'needs8' && f % 4 === 0 && blinkImg
         ? petBlinkStep(elapsed, blinkSchedule, reduced) : null
-      const frameKey = `${f}:${blink}`
+      const eyeFrame = resting && (atlas ? local !== f : idle && local >= 5) ? local : null
+      const frameKey = `${f}:${blink}:${eyeFrame}`
       if (ctx && !document.hidden && frameKey !== lastFrame) {
         const kind =
           sheet === 'idle8'
@@ -89,7 +96,7 @@ export function PetSprite({
               : sheet === 'eat8'
                 ? 'eat'
                 : 'happy'
-        const layout = petDrawLayout(speciesId, kind)
+        const layout = petFrameDrawLayout(speciesId, kind, f)
         ctx.clearRect(0, 0, 640, 640)
         ctx.drawImage(
           img,
@@ -102,13 +109,31 @@ export function PetSprite({
           layout.size,
           layout.size,
         )
+        if (eyeFrame !== null) {
+          const pose = petFrameDrawLayout(speciesId, kind, eyeFrame)
+          const allEyes = restingEyes[speciesId]
+          const regions = allEyes[String(atlas ? f : 0) as keyof typeof allEyes] as number[][]
+          for (const [x,y,w,h] of regions) {
+            const dx = layout.x + x * layout.scale, dy = layout.y + y * layout.scale
+            const sx = x + (layout.x-pose.x)/layout.scale, sy = y + (layout.y-pose.y)/layout.scale
+            for (let ring=0;ring<8;ring++) {
+              const radius=1-ring*.025
+              ctx.save();ctx.globalAlpha=ring===7?1:.18;ctx.beginPath()
+              ctx.ellipse(dx+w*layout.scale/2,dy+h*layout.scale/2,w*layout.scale*radius/2,h*layout.scale*radius/2,0,0,Math.PI*2)
+              ctx.clip()
+              ctx.drawImage(img,eyeFrame%4*cw+sx,Math.floor(eyeFrame/4)*ch+sy,w,h,dx,dy,w*layout.scale,h*layout.scale)
+              ctx.restore()
+            }
+          }
+        }
         if (blink !== null && blinkImg) {
           // Replace only the eye regions: body, mouth and gesture pixels stay
           // on the approved emotional pose throughout a blink.
           const draw = petDrawLayout(speciesId, 'needsBlink')
           const frame = (clip === 'lonely' ? 4 : 0) + [1,2,3][blink]
           for (const [x,y,w,h] of petBlinkEyes(speciesId)) {
-            const dx = draw.x + x * draw.scale, dy = draw.y + y * draw.scale
+            const base = petDrawLayout(speciesId, kind)
+            const dx = draw.x + x * draw.scale + layout.x - base.x, dy = draw.y + y * draw.scale + layout.y - base.y
             // Feather the outer fur edge while keeping the eyelid itself
             // opaque. This avoids a visible oval seam around a blink.
             for (let ring=0;ring<8;ring++) {
@@ -125,7 +150,7 @@ export function PetSprite({
         }
         lastFrame = frameKey
       }
-      if (!reduced) timer = setTimeout(paint, idle || sheet === 'needs8' ? 50 : 100)
+      if (!reduced) timer = setTimeout(paint, atlas || idle || sheet === 'needs8' ? 50 : 100)
     }
     const begin = (loaded: HTMLImageElement) => {
       if (!stopped) {
@@ -162,7 +187,7 @@ export function PetSprite({
       clearTimeout(timer)
       document.removeEventListener('visibilitychange', visible)
     }
-  }, [speciesId, sheet, clip, blinkSchedule])
+  }, [speciesId, sheet, clip, blinkSchedule, atlas])
   return (
     <>
       <canvas

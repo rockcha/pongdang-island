@@ -3,6 +3,8 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { PetSprite } from '@/features/pets/pet-sprite'
 import { createPetBlinkSchedule } from '@/features/pets/pet-idle-animation'
 import { petNeedsFrame } from '@/features/pets/pet-needs-animation'
+import {petSpecies,petUsesAtlas} from '@/features/pets/pet-catalog'
+import {petDrawLayout} from '@/features/pets/pet-draw-layout'
 const images = vi.hoisted(() => ({
   ready: new Map<string, HTMLImageElement>(),
   pending: new Map<string, (image: HTMLImageElement) => void>(),
@@ -23,6 +25,22 @@ afterEach(() => {
   vi.useRealTimers()
   images.ready.clear()
   images.pending.clear()
+})
+it.each(petSpecies.flatMap(p=>['idleA','idleB','hungry','lonely'].map(clip=>({id:p.id,clip:clip as 'idleA'|'idleB'|'hungry'|'lonely'}))))('keeps the complete $id $clip body image fixed while blinking',({id,clip})=>{
+  vi.useFakeTimers();vi.spyOn(Math,'random').mockReturnValue(0)
+  const draw=vi.fn()
+  vi.spyOn(HTMLCanvasElement.prototype,'getContext').mockReturnValue({clearRect:vi.fn(),drawImage:draw,save:vi.fn(),restore:vi.fn(),beginPath:vi.fn(),ellipse:vi.fn(),clip:vi.fn()} as unknown as CanvasRenderingContext2D)
+  const atlas=petUsesAtlas(id),needs=clip==='hungry'||clip==='lonely'
+  const cell=atlas?320:petDrawLayout(id,needs?'needs':'idle').cell
+  const main={width:cell*4,height:cell*(atlas?4:2)} as HTMLImageElement
+  images.ready.set(`/pets/${id}_${atlas?'atlas16_v1':needs?'needs8_v1':'idle8_v2'}_sprite.png`,main)
+  if(needs&&!atlas){const c=petDrawLayout(id,'needsBlink').cell;images.ready.set(`/pets/${id}_needs_blink8_v1_sprite.png`,{width:c*4,height:c*2} as HTMLImageElement)}
+  render(<PetSprite speciesId={id} clip={clip} label="대기"/>)
+  act(()=>vi.advanceTimersByTime(18000))
+  const bodies=draw.mock.calls.filter(args=>args[0]===main&&args[3]===cell&&args[4]===cell)
+  expect(bodies.length).toBeGreaterThan(2)
+  for(const body of bodies)expect(body.slice(1)).toEqual(bodies[0].slice(1))
+  expect(draw.mock.calls.some(args=>args[3]<cell/2)).toBe(true)
 })
 it.each(['hungry','lonely'] as const)('overlays only two eyes while retaining the %s body pose', clip=>{
   vi.useFakeTimers()

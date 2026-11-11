@@ -123,10 +123,23 @@
 }
 .pet-stage-caption {
   position: absolute;
-  bottom: 12px;
-  font-size: 11px;
-  color: var(--muted-foreground);
+  top: 8px;
+  right: clamp(-60px, calc((100% - 100cqw) / 2 + 12px), 8px);
+  z-index: 5;
+  width: max-content;
+  max-width: min(190px, calc(100cqw - 24px));
+  padding: 10px 13px;
+  border: 1px solid #d9c8ac80;
+  border-radius: 16px 16px 4px 16px;
+  background: #fffaf2;
+  box-shadow: 0 4px 16px #6e4d2910;
+  color: var(--foreground);
+  line-height: 1.5;
+  pointer-events: none;
+  text-align: left;
 }
+.pet-stage-caption strong { display: block; font-size: 16px; font-weight: 700; }
+.pet-stage-caption span { display: block; margin-top: 2px; font-size: 12px; color: #8b705a; }
 .pet-care-panel {
   padding: 20px 6px 0;
 }
@@ -147,6 +160,22 @@
 .pet-name button {
   color: var(--muted-foreground);
 }
+.pet-name { gap: 4px; }
+.pet-preview .pet-job-launch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid #d9c8ac80;
+  background: #f1e6d650;
+  color: #80674f;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.pet-preview .pet-job-launch-empty { align-self: center; }
 .pet-gauges {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -462,7 +491,55 @@
 .pet-preview button { min-height: 44px; }
 .pet-home { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
 .pet-stage { flex: 1; width: 100%; height: auto; min-height: 0; container-type: size; }
-.pet-stage .pet-art, .pet-stage .pet-care-fx { width: min(100cqw, 100cqh, 420px); height: min(100cqw, 100cqh, 420px); }
+.pet-stage { grid-template-rows: minmax(0, 1fr); }
+.pet-stage.has-pet { grid-template-rows: 48px minmax(0, 1fr); align-items: stretch; justify-items: stretch; }
+.pet-stage-body { position: relative; width: 100%; height: 100%; min-height: 0; display: grid; place-items: center; container-type: size; }
+.pet-stage-body { background: #f5e5cc url('/pets/house/cozy-room_v1.webp') center bottom / cover no-repeat; }
+.pet-stage::before { display: none; }
+.pet-house-cushion {
+  position: absolute;
+  left: 50%;
+  top: calc((100cqh - min(100cqw, 100cqh, 420px)) / 2 + var(--pet-floor, .78) * min(100cqw, 100cqh, 420px));
+  width: calc(min(100cqw, 100cqh, 420px) * .82);
+  height: auto;
+  transform: translate(-50%, -48%);
+  pointer-events: none;
+  z-index: 0;
+}
+.pet-stage-body .pet-visual { z-index: 1; }
+.pet-stage-body .pet-away { position: relative; z-index: 1; }
+/* Compact the desktop controls before allocating the remaining room height.
+   Keep the narrow column and the mobile layout; never add a nested scroll. */
+@media (min-width: 640px) {
+  .pet-preview { position: relative; overflow: hidden; padding: 10px 16px 6px; gap: 6px; }
+  .pet-preview > .pet-heading .pet-eyebrow { display: none; }
+  .pet-preview .pet-tabs button { min-height: 36px; padding: 6px 3px; }
+  .pet-home { flex: 1; gap: 8px; }
+  .pet-stage { flex: 1; height: auto; aspect-ratio: auto; max-height: 394px; }
+  .pet-stage.has-pet { grid-template-rows: 40px minmax(0, 1fr); }
+  .pet-stage-body { background-position: center 45%; }
+  .pet-stage-toolbar { padding-block: 3px; }
+  .pet-preview .pet-gauges { margin: 4px 0 6px; }
+  .pet-preview .pet-gauge > div { font-size: 11px; line-height: 14px; margin-bottom: 3px; }
+  .pet-preview .pet-gauge progress { height: 5px; }
+  .pet-preview .pet-care-buttons button { min-height: 44px; padding: 4px 1px; gap: 2px; font-size: 10px; }
+  .pet-preview .pet-care-buttons svg { width: 18px; height: 18px; }
+  .pet-preview .pet-feed { min-height: 36px; padding: 5px 8px; margin: 6px 0 0; font-size: 12px; }
+  .pet-preview .pet-feedback { position: absolute; left: 16px; right: 90px; bottom: 9px; height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pet-preview .pet-tools-trigger { min-height: 26px; padding: 0 4px; }
+}
+.pet-stage-toolbar { position: relative; z-index: 6; display: flex; align-items: center; gap: 7px; min-width: 0; padding: 5px 10px; }
+.pet-stage-identity { flex: 1; min-width: 0; display: flex; align-items: center; gap: 4px; }
+.pet-stage-identity h3 { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; font-weight: 700; }
+.pet-stage-identity .pet-level-badge { flex-shrink: 0; padding: 3px 5px; font-size: 10px; }
+.pet-stage-identity .pet-level-badge small { font-size: 8px; }
+.pet-preview .pet-stage-rename { display: grid; place-items: center; flex-shrink: 0; min-height: 32px; width: 24px; padding: 0; color: #a48c73; }
+.pet-stage-actions { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.pet-preview .pet-stage-actions button { display: inline-flex; align-items: center; gap: 4px; padding: 6px 7px; min-height: 34px; font-size: 11px; line-height: 1.4; white-space: nowrap; color: #80674f; }
+.pet-preview .pet-stage-enhance { border: 1px solid #d9c8ac80; background: #f1e6d650; }
+.pet-visual { position: relative; isolation: isolate; width: min(100cqw, 100cqh, 420px); height: min(100cqw, 100cqh, 420px); flex-shrink: 0; }
+.pet-stage .pet-visual .pet-art, .pet-stage .pet-visual .pet-care-fx { width: 100%; height: 100%; }
+.pet-stage .pet-visual .pet-art { position: absolute; inset: 0; z-index: 0; }
 .pet-care-panel { padding: 0; min-width: 0; flex-shrink: 0; }
 .pet-name h3 { font-size: 17px; }
 .pet-name p { display: none; }
@@ -533,7 +610,7 @@
   .pet-gauge > div { margin-bottom: 5px; }
   .pet-care-buttons button { padding: 9px 1px; font-size: 10px; }
   .pet-feed { margin-top: 8px; }
-  .pet-stage-caption { bottom: 6px; font-size: 10px; }
+  .pet-stage-caption { top: 6px; padding: 8px 11px; }
   .pet-heading h2 { font-size: 17px; }
   .pet-list > .pet-note { font-size: 10px; line-height: 1.5; }
 }
@@ -591,6 +668,8 @@
 .pet-shop-product p { font-size: 10px; color: var(--muted-foreground); margin-top: 5px; }
 .pet-product-art { display: grid; place-items: center; width: 48px; height: 54px; flex-shrink: 0; border-radius: 16px; background: #e9e2cf55; color: #b3956d; }
 .pet-product-art svg { stroke-width: 1.4; }
+.pet-product-art img { width: 100%; height: 100%; object-fit: contain; }
+.pet-snack-shop { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
 .pet-product-art.macaron { background: #eddee350; color: #bb92a4; }
 .pet-product-art.food { background: #e3e9db60; color: #8e9d7a; }
 .pet-shop-product > button { background: var(--secondary); font-size: 11px; flex-shrink: 0; }

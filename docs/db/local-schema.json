@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "4c0c676f9527fe274cea90bc76b2565c01d2795a563a9f1b2d7f648e0b8b1130",
+  "migrationHash": "db2899e29729916e325ecd2243790809c9d324e2c467750f0b6781498e622115",
   "structure": {
     "enums": [
       {
@@ -384,6 +384,12 @@
       },
       {
         "rls": true,
+        "name": "owned_pets",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "personal_bait_jobs",
         "schema": "app_private",
         "force_rls": false
@@ -391,6 +397,30 @@
       {
         "rls": true,
         "name": "personal_bait_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "pet_houses",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "pet_jobs",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "pet_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "pet_species",
         "schema": "app_private",
         "force_rls": false
       },
@@ -4424,6 +4454,106 @@
       {
         "name": "id",
         "type": "uuid",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "species_id",
+        "type": "text",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "level",
+        "type": "integer",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "fullness",
+        "type": "integer",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": "100",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "affection",
+        "type": "integer",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": "100",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "decay_at",
+        "type": "timestamp with time zone",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "job",
+        "type": "jsonb",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
         "table": "personal_bait_jobs",
         "schema": "app_private",
         "default": "gen_random_uuid()",
@@ -4587,6 +4717,106 @@
         "table": "personal_bait_operations",
         "schema": "app_private",
         "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "active_id",
+        "type": "uuid",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "care",
+        "type": "jsonb",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "pet_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "definition",
+        "type": "jsonb",
+        "table": "pet_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "signature",
+        "type": "jsonb",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "pet_species",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "definition",
+        "type": "jsonb",
+        "table": "pet_species",
+        "schema": "app_private",
+        "default": null,
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -5403,6 +5633,16 @@
       },
       {
         "name": "relic_id",
+        "type": "text",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "pet_species_id",
         "type": "text",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -13594,6 +13834,24 @@
         "definition": "CREATE UNIQUE INDEX notice_operators_pkey ON app_private.notice_operators USING btree (user_id)"
       },
       {
+        "name": "owned_pets_one_job",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX owned_pets_one_job ON app_private.owned_pets USING btree (user_id) WHERE (job IS NOT NULL)"
+      },
+      {
+        "name": "owned_pets_owner",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "CREATE INDEX owned_pets_owner ON app_private.owned_pets USING btree (user_id, created_at, id)"
+      },
+      {
+        "name": "owned_pets_pkey",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX owned_pets_pkey ON app_private.owned_pets USING btree (id)"
+      },
+      {
         "name": "personal_bait_jobs_owner",
         "table": "personal_bait_jobs",
         "schema": "app_private",
@@ -13616,6 +13874,30 @@
         "table": "personal_bait_operations",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX personal_bait_operations_pkey ON app_private.personal_bait_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "pet_houses_pkey",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX pet_houses_pkey ON app_private.pet_houses USING btree (user_id)"
+      },
+      {
+        "name": "pet_jobs_pkey",
+        "table": "pet_jobs",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX pet_jobs_pkey ON app_private.pet_jobs USING btree (id)"
+      },
+      {
+        "name": "pet_operations_pkey",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX pet_operations_pkey ON app_private.pet_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "pet_species_pkey",
+        "table": "pet_species",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX pet_species_pkey ON app_private.pet_species USING btree (id)"
       },
       {
         "name": "player_aquarium_capacity_pkey",
@@ -17503,6 +17785,16 @@
         "securityDefiner": true
       },
       {
+        "name": "buy_pet_food",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_quantity integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_pet_food(p_operation_id uuid, p_quantity integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r jsonb;\nbegin\n r:=app_private.pet_house_command(p_operation_id,jsonb_build_object('type','buy-food','quantity',p_quantity));\n return app_private.get_gold_wallet()||jsonb_build_object('delta',r->'delta','replayed',r->'replayed');\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "buy_region_map",
         "config": [
           "search_path=\"\""
@@ -17549,7 +17841,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_kind text, p_rarity text, p_automatic boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.catch_experience(p_kind text, p_rarity text, p_automatic boolean DEFAULT false)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare amount numeric;\nbegin\n if p_kind not in ('fish','trash','decoration','map','relic') or p_kind is null\n or p_rarity not in ('common','rare','epic','mythic') or p_rarity is null or p_automatic is null then raise exception 'INVALID_EXPERIENCE_CATCH';end if;\n -- Existing rare map pieces still grant 30; all discovery grades follow XP by grade.\n amount:=case p_rarity when 'common' then 10 when 'rare' then 30 when 'epic' then 100 else 400 end;\n if p_kind='trash' then amount:=amount/2;end if;\n if p_automatic then amount:=amount*0.3;end if;\n return round(amount)::integer;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.catch_experience(p_kind text, p_rarity text, p_automatic boolean DEFAULT false)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare amount numeric;\nbegin\n if p_kind not in ('fish','trash','decoration','map','relic','pet') or p_kind is null\n or p_rarity not in ('common','rare','epic','mythic') or p_rarity is null or p_automatic is null then raise exception 'INVALID_EXPERIENCE_CATCH';end if;\n if p_kind='pet' then return case when p_automatic then 3 else 10 end;end if;\n amount:=case p_rarity when 'common' then 10 when 'rare' then 30 when 'epic' then 100 else 400 end;\n if p_kind='trash' then amount:=amount/2;end if;\n if p_automatic then amount:=amount*0.3;end if;\n return round(amount)::integer;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -18149,7 +18441,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',clock_timestamp(),'testEnabled',(select instant_return_enabled from app_private.expedition_settings where id),\n 'minutesPerBait',(app_private.trap_minutes_per_bait()*60-app_private.relic_bonus('trap_seconds_per_bait'))/60,\n 'vessels',(select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',true)) from public.fishing_vessels v where id='dinghy'),\n 'active',(select (to_jsonb(e)-'result')||jsonb_build_object('boosts',app_private.expedition_boosts_payload(e.id)) from public.fishing_expeditions e where user_id=u and claimed_at is null),\n 'history',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('boosts',app_private.expedition_boosts_payload(h.id)) order by departed_at desc) from (select * from public.fishing_expeditions where user_id=u and claimed_at is not null order by departed_at desc limit 5) h),'[]'::jsonb),\n 'baits',(select jsonb_agg(to_jsonb(b) order by sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',clock_timestamp(),'testEnabled',(select instant_return_enabled from app_private.expedition_settings where id),\n 'minutesPerBait',(app_private.trap_minutes_per_bait()*60-app_private.relic_bonus('trap_seconds_per_bait'))/60,\n 'vessels',(select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',true)) from public.fishing_vessels v where id='dinghy'),\n 'active',(select (to_jsonb(e)-'result')||jsonb_build_object('boosts',app_private.expedition_boosts_payload(e.id)) from public.fishing_expeditions e where user_id=u and claimed_at is null),\n 'history',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('boosts',app_private.expedition_boosts_payload(h.id)) order by departed_at desc) from (select * from public.fishing_expeditions where user_id=u and claimed_at is not null order by departed_at desc limit 5) h),'[]'::jsonb),\n 'baits',(select jsonb_agg(to_jsonb(b) order by sort_order) from public.fishing_baits b where app_private.pet_bait_odds(b.id,statement_timestamp()) is null));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18329,7 +18621,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_won boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;v_first boolean:=false;v_refunded boolean:=false;v_refund_chance numeric;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and p.confirm_bite and p.fight_started_at is null then raise exception 'CAST_NOT_STARTED';end if;\n if p_won and clock_timestamp()<(case when p.fight_started_at is null\n  then p.created_at+make_interval(secs=>p.wait_seconds::double precision+3)\n  else p.fight_started_at+interval '3 seconds' end) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.map_piece_number is not null then\n   insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number)\n    values(v_uid,p.map_region_id,p.map_piece_number) on conflict do nothing;\n   v_first:=found;\n   if not exists(select 1 from public.fishing_map_blueprints b cross join lateral generate_series(1,b.piece_count) n(piece_number)\n    where b.region_id=p.map_region_id and not exists(select 1 from app_private.player_fishing_map_pieces f\n     where f.user_id=v_uid and f.region_id=b.region_id and f.piece_number=n.piece_number)) then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   -- Capture real collected count after success, not the random piece number.\n   p.snapshot:=p.snapshot||jsonb_build_object(\n    'name',app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'name',\n    'pieceFoundCount',(app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'pieceFoundCount')::integer);\n  elsif p.relic_id is not null then\n   -- Follow the same wallet -> ownership lock order as equipment and sales.\n   perform app_private.get_gold_wallet();\n   perform 1 from public.player_wallets where user_id=v_uid for update;\n   insert into app_private.player_fishing_relics as owned(user_id,relic_id) values(v_uid,p.relic_id)\n    on conflict(user_id,relic_id) do update set quantity=owned.quantity+1;\n   insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(v_uid,p.relic_id) on conflict do nothing;\n   v_first:=found;\n  else\n   if p.map_region_id is not null then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n   insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n   v_first:=coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence\n    where evidence.collectible_id=v_item and evidence.user_id=v_uid),false);\n  end if;\n end if;\n -- Refund only a successful consumed cast; the persisted result makes retries inert.\n v_refund_chance:=least(5,greatest(0,coalesce((p.bait_snapshot->>'relic_bait_refund_percent')::numeric,0)));\n if v_success and v_refund_chance>0 and random()*100<v_refund_chance then\n  perform app_private.get_gold_wallet();\n  perform 1 from public.player_wallets where user_id=v_uid for update;\n  update public.player_wallets set inventory=jsonb_set(inventory,array[p.bait_id],\n   to_jsonb(coalesce((inventory->>p.bait_id)::integer,0)+1)),updated_at=clock_timestamp() where user_id=v_uid;\n  v_refunded:=true;\n end if;\n -- Experience/title triggers read this immutable reward snapshot.\n update app_private.prepared_fishing_casts set snapshot=p.snapshot where user_id=v_uid and operation_id=p_operation_id;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end,\n 'firstDiscovery',v_first),'replayed',false,'baitRefunded',v_refunded,'refundedBaitId',case when v_refunded then p.bait_id end,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at\n  then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;v_first boolean:=false;v_refunded boolean:=false;v_refund_chance numeric;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and p.confirm_bite and p.fight_started_at is null then raise exception 'CAST_NOT_STARTED';end if;\n if p_won and clock_timestamp()<(case when p.fight_started_at is null\n  then p.created_at+make_interval(secs=>p.wait_seconds::double precision+3)\n  else p.fight_started_at+interval '3 seconds' end) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.pet_species_id is not null then\n   perform app_private.get_gold_wallet();\n   perform 1 from public.player_wallets where user_id=v_uid for update;\n   insert into app_private.owned_pets(user_id,species_id,name) select v_uid,id,definition->>'name' from app_private.pet_species where id=p.pet_species_id returning id into v_item;\n   if v_item is null then raise exception 'INVALID_PET';end if;\n   -- A pet ID never enters the aquarium collectible_id foreign key.\n   v_item:=null;\n  elsif p.map_piece_number is not null then\n   insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number)\n    values(v_uid,p.map_region_id,p.map_piece_number) on conflict do nothing;\n   v_first:=found;\n   if not exists(select 1 from public.fishing_map_blueprints b cross join lateral generate_series(1,b.piece_count) n(piece_number)\n    where b.region_id=p.map_region_id and not exists(select 1 from app_private.player_fishing_map_pieces f\n     where f.user_id=v_uid and f.region_id=b.region_id and f.piece_number=n.piece_number)) then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   -- Capture real collected count after success, not the random piece number.\n   p.snapshot:=p.snapshot||jsonb_build_object(\n    'name',app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'name',\n    'pieceFoundCount',(app_private.fishing_map_piece_payload(p.map_region_id,p.map_piece_number,v_uid)->>'pieceFoundCount')::integer);\n  elsif p.relic_id is not null then\n   -- Follow the same wallet -> ownership lock order as equipment and sales.\n   perform app_private.get_gold_wallet();\n   perform 1 from public.player_wallets where user_id=v_uid for update;\n   insert into app_private.player_fishing_relics as owned(user_id,relic_id) values(v_uid,p.relic_id)\n    on conflict(user_id,relic_id) do update set quantity=owned.quantity+1;\n   insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(v_uid,p.relic_id) on conflict do nothing;\n   v_first:=found;\n  else\n   if p.map_region_id is not null then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n   insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n   insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n   v_first:=coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence\n    where evidence.collectible_id=v_item and evidence.user_id=v_uid),false);\n  end if;\n end if;\n -- Refund only a successful consumed cast; the persisted result makes retries inert.\n v_refund_chance:=least(5,greatest(0,coalesce((p.bait_snapshot->>'relic_bait_refund_percent')::numeric,0)));\n if v_success and v_refund_chance>0 and random()*100<v_refund_chance then\n  perform app_private.get_gold_wallet();\n  perform 1 from public.player_wallets where user_id=v_uid for update;\n  update public.player_wallets set inventory=jsonb_set(inventory,array[p.bait_id],\n   to_jsonb(coalesce((inventory->>p.bait_id)::integer,0)+1)),updated_at=clock_timestamp() where user_id=v_uid;\n  v_refunded:=true;\n end if;\n -- Experience/title triggers read this immutable reward snapshot.\n update app_private.prepared_fishing_casts set snapshot=p.snapshot where user_id=v_uid and operation_id=p_operation_id;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end,\n 'firstDiscovery',v_first),'replayed',false,'baitRefunded',v_refunded,'refundedBaitId',case when v_refunded then p.bait_id end,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at\n  then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18439,7 +18731,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;v_discount integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n v_discount:=app_private.relic_bonus('bait_discount_gold')::integer;\n return jsonb_build_object('weather',app_private.fishing_weather_schedule(),'regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',10000,'mechanicsVersion',2,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('base_price',b.price,'price',case when b.price is null then null else (case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'priceDiscountGold',case when b.price is null then 0 else b.price-(case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'baseSuccessChanceBp',10000,'successChanceBp',10000,'mechanicsVersion',2) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;v_discount integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n v_discount:=app_private.relic_bonus('bait_discount_gold')::integer;\n return jsonb_build_object('weather',app_private.fishing_weather_schedule(),'regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',10000,'mechanicsVersion',2,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||coalesce(app_private.pet_bait_odds(b.id,statement_timestamp()),'{}'::jsonb)||jsonb_build_object('base_price',b.price,'price',case when b.price is null then null else (case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'priceDiscountGold',case when b.price is null then 0 else b.price-(case when b.price>=40 then greatest(1,b.price-v_discount) else b.price end) end,'baseSuccessChanceBp',10000,'successChanceBp',10000,'mechanicsVersion',2) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -19243,6 +19535,46 @@
         "securityDefiner": true
       },
       {
+        "name": "pet_bait_odds",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_bait_id text, p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pet_bait_odds(p_bait_id text, p_at timestamp with time zone DEFAULT statement_timestamp())\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('pet_bp',r.pet_bp,'common_bp',(b.profile->>'common_bp')::integer-r.pet_bp,\n 'rare_bp',b.profile->'rare_bp','epic_bp',b.profile->'epic_bp','mythic_bp',b.profile->'mythic_bp')\n from (values ('bait_pet_starter',200),('bait_pet_biscuit',300),('bait_pet_macaron',500)) as r(id,pet_bp)\n cross join lateral(select app_private.fishing_bait_balance_at(r.id,p_at) profile)b\n where r.id=p_bait_id and b.profile is not null\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "pet_catch_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pet_catch_payload(p_id text)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('id',id,'name',definition->>'name','description',definition->>'description','kind','pet','rarity','common',\n 'sell_price',1000,'thumbnail_path','/pets/'||id||'_v1_thumbnail.png','sprite_sheet_path',null,'movement_type','fixed','speed',0,'size',1,'swim_y_min',null,'swim_y_max',null)\n from app_private.pet_species where id=p_id\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "pet_house_command",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_command jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pet_house_command(p_operation_id uuid, p_command jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;h app_private.pet_houses;p app_private.owned_pets;m app_private.owned_pets;\n previous jsonb;a text:=p_command->>'type';target uuid;j jsonb;c jsonb;t timestamptz:=clock_timestamp();ms bigint:=floor(extract(epoch from t)*1000);\n quantity integer;stock bigint;amount integer;lo integer;hi integer;job_key text;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_command is null then raise exception 'INVALID_TRADE';end if;\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select signature into previous from app_private.pet_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous is distinct from p_command then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.pet_house_state()||jsonb_build_object('delta',0,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n insert into app_private.pet_houses(user_id) values(u) on conflict do nothing;\n select * into h from app_private.pet_houses where user_id=u for update;\n -- Lazy decay preserves fractional ten-minute intervals, including offline/stored/working pets.\n update app_private.owned_pets set fullness=greatest(0,fullness-floor(extract(epoch from(t-decay_at))/600)::integer),\n affection=greatest(0,affection-floor(extract(epoch from(t-decay_at))/600)::integer),\n decay_at=decay_at+floor(extract(epoch from(t-decay_at))/600)*interval '10 minutes' where user_id=u and decay_at<=t-interval '10 minutes';\n if h.care is not null and a not in ('complete-care','buy-food') then raise exception 'PET_BUSY';end if;\n if a='buy-food' then\n  quantity:=(p_command->>'quantity')::integer;\n  if quantity is null or quantity not between 1 and 99 then raise exception 'INVALID_QUANTITY';end if;\n  amount:=50*quantity;stock:=coalesce((w.inventory->>'pet_food')::bigint,0)+quantity;\n  if w.gold<amount then raise exception 'INSUFFICIENT_GOLD';end if;\n  if stock>1000000000 then raise exception 'INVENTORY_LIMIT';end if;\n  update public.player_wallets set gold=gold-amount,inventory=jsonb_set(inventory,'{pet_food}',to_jsonb(stock::integer)),updated_at=t where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','pet:food',-amount);\n elsif a='select' then\n  target:=(p_command->>'id')::uuid;\n  if target is not null and not exists(select 1 from app_private.owned_pets where id=target and user_id=u) then raise exception 'PET_NOT_FOUND';end if;\n  update app_private.pet_houses set active_id=target where user_id=u;\n elsif a='complete-care' then\n  c:=h.care;\n  if c is not null and c->>'id'=p_command->>'id' then\n   if ms<(c->>'endsAt')::bigint then raise exception 'PET_CARE_TOO_EARLY';end if;\n   target:=(c->>'petId')::uuid;\n   if c->>'action'='feed' then\n    if coalesce((w.inventory->>'pet_food')::integer,0)<1 then raise exception 'NO_PET_FOOD';end if;\n    update public.player_wallets set inventory=jsonb_set(inventory,'{pet_food}',to_jsonb((inventory->>'pet_food')::integer-1)),updated_at=t where user_id=u;\n    update app_private.owned_pets set fullness=least(100,fullness+50) where id=target and user_id=u;\n   else update app_private.owned_pets set affection=least(100,affection+40) where id=target and user_id=u;end if;\n   update app_private.pet_houses set care=null where user_id=u;\n  end if;\n else\n  target:=case when a='enhance' then (p_command->>'targetId')::uuid when a in ('care','feed','start-job') then h.active_id else (p_command->>'id')::uuid end;\n  select * into p from app_private.owned_pets where id=target and user_id=u for update;\n  if not found then raise exception 'PET_NOT_FOUND';end if;\n  if p.job is not null and a not in ('claim-job','cancel-job') then raise exception 'PET_WORKING';end if;\n  if a='rename' then\n   if char_length(trim(p_command->>'name')) not between 1 and 8 or p_command->>'name' is null then raise exception 'INVALID_PET_NAME';end if;\n   update app_private.owned_pets set name=trim(p_command->>'name') where id=p.id;\n  elsif a in ('care','feed') then\n   if a='care' and coalesce(p_command->>'action','') not in ('stroke','bath','sleep','play') then raise exception 'INVALID_PET_CARE';end if;\n   if a='feed' and coalesce((w.inventory->>'pet_food')::integer,0)<1 then raise exception 'NO_PET_FOOD';end if;\n   update app_private.pet_houses set care=jsonb_build_object('id',p_operation_id,'petId',p.id,'action',case when a='feed' then 'feed' else p_command->>'action' end,'endsAt',ms+3000) where user_id=u;\n  elsif a='sell' then\n   if w.gold>999999000 then raise exception 'GOLD_LIMIT';end if;\n   delete from app_private.owned_pets where id=p.id;\n   update public.player_wallets set gold=gold+1000,updated_at=t where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell','pet:'||p.id,1000);\n  elsif a='enhance' then\n   select * into m from app_private.owned_pets where id=(p_command->>'materialId')::uuid and user_id=u for update;\n   if not found or m.id=p.id or m.species_id<>p.species_id or m.level<>0 or m.job is not null or p.level>=5 or p.level is distinct from (p_command->>'expectedLevel')::integer then raise exception 'INVALID_PET_MATERIAL';end if;\n   delete from app_private.owned_pets where id=m.id;\n   update app_private.owned_pets set level=level+1 where id=p.id;\n  elsif a='start-job' then\n   if exists(select 1 from app_private.owned_pets where user_id=u and job is not null) then raise exception 'PET_JOB_ACTIVE';end if;\n   if p.fullness<80 or p.affection<80 then raise exception 'PET_NEEDS_LOW';end if;\n   select definition into j from app_private.pet_jobs where id=p_command->>'jobId';\n   if j is null or j->>'speciesId'<>p.species_id then raise exception 'INVALID_PET_JOB';end if;\n   lo:=round((j->>'min')::numeric*(100+3*p.level)/100);hi:=round((j->>'max')::numeric*(100+3*p.level)/100);\n   update app_private.owned_pets set job=jsonb_build_object('id',j->>'id','runId',p_operation_id,'startedAt',ms,'endsAt',ms+(j->>'minutes')::bigint*60000,'minReward',lo,'maxReward',hi,'reward',lo+floor(random()*(hi-lo+1))::integer) where id=p.id;\n  elsif a in ('claim-job','cancel-job') then\n   if p.job is null then raise exception 'PET_JOB_NOT_FOUND';end if;\n   if a='cancel-job' then\n    if p.job->>'runId' is distinct from p_command->>'runKey' then raise exception 'OPERATION_CONFLICT';end if;\n    if ms>=(p.job->>'endsAt')::bigint then raise exception 'PET_JOB_ALREADY_COMPLETE';end if;\n   else\n    if ms<(p.job->>'endsAt')::bigint then raise exception 'PET_JOB_NOT_COMPLETE';end if;\n    amount:=(p.job->>'reward')::integer;\n    if w.gold>1000000000-amount then raise exception 'GOLD_LIMIT';end if;\n    update public.player_wallets set gold=gold+amount,updated_at=t where user_id=u;\n    insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell','pet-job:'||p.id,amount);\n   end if;\n   update app_private.owned_pets set job=null where id=p.id;\n   update app_private.pet_houses set active_id=p.id where user_id=u;\n  else raise exception 'INVALID_PET_COMMAND';end if;\n end if;\n insert into app_private.pet_operations(user_id,operation_id,signature) values(u,p_operation_id,p_command);\n return app_private.pet_house_state()||jsonb_build_object('delta',(select gold-w.gold from public.player_wallets where user_id=u),'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "pet_house_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pet_house_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;t bigint:=floor(extract(epoch from clock_timestamp())*1000);\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n return jsonb_build_object('version',1,'catalogVersion',2,'gold',w->'gold','food',coalesce((w->'inventory'->>'pet_food')::integer,0),'offset',0,'nextId',1,'lastNow',t,'notice','','lastCatch',null,\n 'activeId',(select active_id from app_private.pet_houses where user_id=u),'care',(select care from app_private.pet_houses where user_id=u),\n 'pets',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'speciesId',p.species_id,'name',p.name,'level',p.level,'fullness',p.fullness,'affection',p.affection,'decayAt',floor(extract(epoch from p.decay_at)*1000),'job',p.job) order by p.created_at,p.id) from app_private.owned_pets p where p.user_id=u),'[]'::jsonb));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "pick_bait_fish",
         "config": [
           "search_path=\"\""
@@ -19439,7 +19771,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_discovery_cast(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;v_reduction integer;\n v_weather jsonb;v_roll double precision;v_category text;v_reward record;v_map text;v_piece integer;v_relic text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Keep the exhausted discovery bait refusal before every random draw. Moving\n -- it after the category roll would permit unlimited free map/relic rerolls.\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s\n  where app_private.collectible_available_at(s.id,statement_timestamp()) and s.kind in ('fish','trash','decoration')\n  and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then\n  raise exception 'ALL_COLLECTIBLES_DISCOVERED';\n end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_weather:=app_private.fishing_weather_at(v_started);\n v_species:=app_private.pick_weather_collectible(v_weather->>'kind',v_started);\n if v_species is not null then\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n else\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n -- Grade-specific disjoint category ranges; absent categories return to the ordinary\n -- pool without increasing the other discovery category's chance.\n v_category:='ordinary';\n if p_discovery then\n  v_roll:=random();\n  v_category:=app_private.fishing_reward_category(v_roll,v_rarity);\n end if;\n if v_category<>'ordinary' then\n  if v_category='map' then\n   select * into v_reward from app_private.pick_progress_map_piece(v_rarity);\n  else\n   select * into v_reward from app_private.fishing_discovery_candidates(v_rarity)\n   where category=v_category order by random() limit 1;\n  end if;\n  if found then\n   if v_category='map' then\n    v_map:=v_reward.region_id;v_piece:=v_reward.piece_number;\n    v_snapshot:=app_private.fishing_map_piece_payload(v_map,v_piece,v_uid);\n   else\n    v_relic:=v_reward.reward_id;v_snapshot:=app_private.fishing_relic_payload(v_relic);\n   end if;\n  end if;\n end if;\n if v_snapshot is null then\n  v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n end if;\n end if;\n select r.wait_reduction_seconds into v_reduction from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=v_uid;\n v_wait:=greatest(1,13+12*random()-coalesce(v_reduction,0)-app_private.relic_bonus('fishing_wait_seconds'));\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,\n  map_piece_number,relic_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,v_map,v_piece,v_relic,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile||jsonb_build_object('weather',v_weather,'discovery_version',1,'relic_bait_refund_percent',least(5,greatest(0,app_private.relic_bonus('bait_refund_percent')))),p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_discovery_cast(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean, p_discovery boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;v_reduction integer;\n v_pet text;v_weather jsonb;v_roll double precision;v_category text;v_reward record;v_map text;v_piece integer;v_relic text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Keep the exhausted discovery bait refusal before every random draw. Moving\n -- it after the category roll would permit unlimited free map/relic rerolls.\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s\n  where app_private.collectible_available_at(s.id,statement_timestamp()) and s.kind in ('fish','trash','decoration')\n  and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then\n  raise exception 'ALL_COLLECTIBLES_DISCOVERED';\n end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started)||coalesce(app_private.pet_bait_odds(p_bait_id,v_started),'{}'::jsonb);\n if v_profile ? 'pet_bp' then\n v_roll:=random()*10000;\n if v_roll < (v_profile->>'pet_bp')::integer then\n  select id into v_pet from app_private.pet_species order by random() limit 1;\n  v_rarity:='common';v_snapshot:=app_private.pet_catch_payload(v_pet);\n else\n  v_rarity:=case\n when v_roll<(v_profile->>'pet_bp')::integer+(v_profile->>'common_bp')::integer then 'common'::public.game_rarity\n when v_roll<(v_profile->>'pet_bp')::integer+(v_profile->>'common_bp')::integer+(v_profile->>'rare_bp')::integer then 'rare'::public.game_rarity\n when v_roll<10000-(v_profile->>'mythic_bp')::integer then 'epic'::public.game_rarity else 'mythic'::public.game_rarity end;\n  v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  v_snapshot:=app_private.species_payload(v_species,null);\n end if;\n -- Absolute pet odds: weather, discovery categories and relic rarity bonuses do not reroll these ranges.\n -- The disjoint pet/ordinary odds were snapshotted before the draw.\nelse\nv_weather:=app_private.fishing_weather_at(v_started);\n v_species:=app_private.pick_weather_collectible(v_weather->>'kind',v_started);\n if v_species is not null then\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n else\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n -- Grade-specific disjoint category ranges; absent categories return to the ordinary\n -- pool without increasing the other discovery category's chance.\n v_category:='ordinary';\n if p_discovery then\n  v_roll:=random();\n  v_category:=app_private.fishing_reward_category(v_roll,v_rarity);\n end if;\n if v_category<>'ordinary' then\n  if v_category='map' then\n   select * into v_reward from app_private.pick_progress_map_piece(v_rarity);\n  else\n   select * into v_reward from app_private.fishing_discovery_candidates(v_rarity)\n   where category=v_category order by random() limit 1;\n  end if;\n  if found then\n   if v_category='map' then\n    v_map:=v_reward.region_id;v_piece:=v_reward.piece_number;\n    v_snapshot:=app_private.fishing_map_piece_payload(v_map,v_piece,v_uid);\n   else\n    v_relic:=v_reward.reward_id;v_snapshot:=app_private.fishing_relic_payload(v_relic);\n   end if;\n  end if;\n end if;\n if v_snapshot is null then\n  v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,null);\n end if;\n end if;\n end if;\n select r.wait_reduction_seconds into v_reduction from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=v_uid;\n v_wait:=greatest(1,13+12*random()-coalesce(v_reduction,0)-app_private.relic_bonus('fishing_wait_seconds'));\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,\n  map_piece_number,relic_id,pet_species_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,v_map,v_piece,v_relic,v_pet,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile||jsonb_build_object('weather',v_weather,'discovery_version',1,'relic_bait_refund_percent',least(5,greatest(0,app_private.relic_bonus('bait_refund_percent')))),p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -20259,7 +20591,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.snapshot_trap_bait_rules()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n new.vessel_snapshot:=new.vessel_snapshot||jsonb_build_object('bait_rules_version',2,\n  'bait_rules',(select jsonb_object_agg(b.id,app_private.fishing_bait_balance_at(b.id,new.departed_at)) from app_private.fishing_bait_balance_profiles b));\n return new;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.snapshot_trap_bait_rules()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if exists(select 1 from jsonb_each_text(new.cargo) c where c.value::integer>0 and app_private.pet_bait_odds(c.key,new.departed_at) is not null) then raise exception 'PET_BAIT_MANUAL_ONLY';end if;\n new.vessel_snapshot:=new.vessel_snapshot||jsonb_build_object('bait_rules_version',2,\n  'bait_rules',(select jsonb_object_agg(b.id,app_private.fishing_bait_balance_at(b.id,new.departed_at)) from app_private.fishing_bait_balance_profiles b));\n return new;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -21160,6 +21492,16 @@
         "schema": "public",
         "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer",
         "definition": "CREATE OR REPLACE FUNCTION public.buy_fishing_bait_bulk(p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.buy_fishing_bait_bulk(p_bait_id,p_quantity,p_operation_id,p_expected_price)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "buy_pet_food",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_quantity integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.buy_pet_food(p_operation_id uuid, p_quantity integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.buy_pet_food(p_operation_id,p_quantity) $function$\n",
         "securityDefiner": false
       },
       {
@@ -22180,6 +22522,26 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.personal_bait_workshop_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.personal_bait_workshop_state();$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "pet_house_command",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_command jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.pet_house_command(p_operation_id uuid, p_command jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.pet_house_command(p_operation_id,p_command) $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "pet_house_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.pet_house_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.pet_house_state() $function$\n",
         "securityDefiner": false
       },
       {
@@ -26131,6 +26493,102 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "owned_pets_affection_check",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "CHECK (((affection >= 0) AND (affection <= 100)))"
+      },
+      {
+        "name": "owned_pets_affection_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL affection"
+      },
+      {
+        "name": "owned_pets_created_at_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "owned_pets_decay_at_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL decay_at"
+      },
+      {
+        "name": "owned_pets_fullness_check",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "CHECK (((fullness >= 0) AND (fullness <= 100)))"
+      },
+      {
+        "name": "owned_pets_fullness_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL fullness"
+      },
+      {
+        "name": "owned_pets_id_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "owned_pets_level_check",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "CHECK (((level >= 0) AND (level <= 5)))"
+      },
+      {
+        "name": "owned_pets_level_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL level"
+      },
+      {
+        "name": "owned_pets_name_check",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "CHECK (((char_length(name) >= 1) AND (char_length(name) <= 8)))"
+      },
+      {
+        "name": "owned_pets_name_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL name"
+      },
+      {
+        "name": "owned_pets_pkey",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "owned_pets_species_id_fkey",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (species_id) REFERENCES app_private.pet_species(id)"
+      },
+      {
+        "name": "owned_pets_species_id_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL species_id"
+      },
+      {
+        "name": "owned_pets_user_id_fkey",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "owned_pets_user_id_not_null",
+        "table": "owned_pets",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
         "name": "personal_bait_jobs_bait_id_fkey",
         "table": "personal_bait_jobs",
         "schema": "app_private",
@@ -26291,6 +26749,96 @@
         "table": "personal_bait_operations",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "pet_houses_active_id_fkey",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (active_id) REFERENCES app_private.owned_pets(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "pet_houses_pkey",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "pet_houses_user_id_fkey",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "pet_houses_user_id_not_null",
+        "table": "pet_houses",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "pet_jobs_definition_not_null",
+        "table": "pet_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL definition"
+      },
+      {
+        "name": "pet_jobs_id_not_null",
+        "table": "pet_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "pet_jobs_pkey",
+        "table": "pet_jobs",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "pet_operations_operation_id_not_null",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "pet_operations_pkey",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "pet_operations_signature_not_null",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL signature"
+      },
+      {
+        "name": "pet_operations_user_id_fkey",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "pet_operations_user_id_not_null",
+        "table": "pet_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "pet_species_definition_not_null",
+        "table": "pet_species",
+        "schema": "app_private",
+        "definition": "NOT NULL definition"
+      },
+      {
+        "name": "pet_species_id_not_null",
+        "table": "pet_species",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "pet_species_pkey",
+        "table": "pet_species",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
       },
       {
         "name": "player_aquarium_capacity_capacity_check",
@@ -27073,6 +27621,12 @@
         "definition": "NOT NULL operation_id"
       },
       {
+        "name": "prepared_fishing_casts_pet_species_id_fkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (pet_species_id) REFERENCES app_private.pet_species(id)"
+      },
+      {
         "name": "prepared_fishing_casts_pkey",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -27142,7 +27696,7 @@
         "name": "prepared_reward_shape",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
-        "definition": "CHECK (((eligible = (num_nonnulls(species_id, map_piece_number, relic_id) = 1)) AND (num_nonnulls(species_id, map_piece_number, relic_id) <= 1) AND ((map_piece_number IS NULL) OR ((map_region_id IS NOT NULL) AND (species_id IS NULL)))))"
+        "definition": "CHECK (((eligible = (num_nonnulls(species_id, map_piece_number, relic_id, pet_species_id) = 1)) AND (num_nonnulls(species_id, map_piece_number, relic_id, pet_species_id) <= 1) AND ((map_piece_number IS NULL) OR ((map_region_id IS NOT NULL) AND (species_id IS NULL)))))"
       },
       {
         "name": "production_auto_claims_amount_check",
@@ -42388,6 +42942,27 @@
         "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
       },
       {
+        "name": "buy_pet_food",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "buy_pet_food",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "buy_pet_food",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
         "name": "buy_region_map",
         "role": "anon",
         "schema": "app_private",
@@ -46036,6 +46611,90 @@
       },
       {
         "name": "personal_bait_workshop_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "pet_bait_odds",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "pet_bait_odds",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "pet_bait_odds",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "pet_catch_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id text"
+      },
+      {
+        "name": "pet_catch_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id text"
+      },
+      {
+        "name": "pet_catch_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id text"
+      },
+      {
+        "name": "pet_house_command",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "pet_house_command",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "pet_house_command",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "pet_house_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "pet_house_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "pet_house_state",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -50074,6 +50733,27 @@
         "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
       },
       {
+        "name": "buy_pet_food",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "buy_pet_food",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
+        "name": "buy_pet_food",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_quantity integer"
+      },
+      {
         "name": "buy_region_map",
         "role": "anon",
         "schema": "public",
@@ -52210,6 +52890,48 @@
       },
       {
         "name": "personal_bait_workshop_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "pet_house_command",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "pet_house_command",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "pet_house_command",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_command jsonb"
+      },
+      {
+        "name": "pet_house_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "pet_house_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "pet_house_state",
         "role": "service_role",
         "schema": "public",
         "execute": false,

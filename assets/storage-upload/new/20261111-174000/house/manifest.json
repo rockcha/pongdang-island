@@ -1,0 +1,37 @@
+{
+  "generator": "built-in image_gen",
+  "processing": "Image generation and background extraction performed by image_gen. Asset preparation crops transparent margins and encodes WebP only; no alpha threshold editing.",
+  "placement": "Room is a decorative cover background. Cushion is a separate decorative image anchored to each pet fixed ground; neither affects layout or interaction motion.",
+  "items": [
+    {
+      "kind": "composition",
+      "source": "sources/composition.png",
+      "prompt": "Use case: stylized-concept. Asset type: cozy pet-house room BACKGROUND for a minimalist cream-colored mobile pet game. Generate one square finished background illustration, no characters, no animals, no text, no logos, no UI. Soft warm ivory walls and pale honey-beige wooden floor, straight-on near-orthographic view, very gentle perspective, delicate warm brown outlines and soft painterly shading. Clean, airy, beautiful and restrained, not cluttered. A small rounded window with a sheer cream curtain high in the LEFT corner admits diffused morning light. A tiny sage-green plant at the far RIGHT edge, tucked out of the center. Wall/floor transition around 58% image height. Most important: a large low oval pet cushion centered horizontally at x=50%, centered vertically around y=78%, spanning 62% of image width and 16% of image height. Cushion is plush warm oatmeal fabric with a thin sage piping seam, softly compressed center, viewed slightly from above so a pet sprite can sit on it. Keep the entire middle from x=25%-75%, y=25%-65% open with no furniture or obstructions; the character will be composited there later. Subtle floor contact shadow only under cushion, no dramatic lighting, no sparkle particles. Low contrast edges with warm cream at all borders so it blends with a cream app card. Palette: ivory, oatmeal, pale wood, desaturated sage accents. Polished gentle storybook illustration matching cute baby animal game sprites, not photorealistic, not 3D, not pixel art. Full opaque square image, all corners filled.",
+      "source_sha256": "c83f3205b22bfd77a7a1133db11dd510ebfc11565e5ee53fb25954137d56bcb5"
+    },
+    {
+      "kind": "room",
+      "source": "sources/room.png",
+      "prompt": "Edit this exact room illustration. Remove ONLY the oval pet cushion and its shadow. Seamlessly continue the existing pale honey wooden floor underneath it. Preserve the room composition, cream walls, left window, curtain, right small plant, linework, lighting and soft painterly style. No new objects, no animals, no text. Full opaque background image.",
+      "source_sha256": "605781af2340577d6a3a281d25c84b7dae5f0b211673b96e7031bb304baef007",
+      "path": "pets/house/cozy-room_v1.webp",
+      "sha256": "6754284d20f7de0a04a5155086b00f3613c086a4c829b93749ae0db5d9a451aa",
+      "bytes": 45942
+    },
+    {
+      "kind": "cushion",
+      "source": "sources/cushion.png",
+      "prompt": "Extract only the exact oatmeal oval pet cushion from this reference room into a clean transparent PNG, no wall, floor, plant or window. Preserve its plush oatmeal fabric, sage piping, soft indentation and slightly elevated viewing angle. Center the complete cushion horizontally in a wide composition with generous transparent margins on every side. The cushion should be fully visible, not cropped; keep its original broad oval proportions. No floor shadow outside the cushion, no background texture, no backdrop, no text. All pixels outside cushion fully transparent alpha zero. Do not add any animals or objects.",
+      "source_sha256": "72a807573bbd7332e6839a82e20ba2f5b769fdabb68df8410d98f3de113bd76c",
+      "path": "pets/house/cozy-cushion_v1.webp",
+      "sha256": "61ed4d5bf8fe5c25359ac0e74df1e6a736ee8797e5affa3d2601ffdd9fa910ea",
+      "bytes": 350426,
+      "crop": {
+        "left": 107,
+        "top": 186,
+        "width": 1527,
+        "height": 563
+      }
+    }
+  ]
+}

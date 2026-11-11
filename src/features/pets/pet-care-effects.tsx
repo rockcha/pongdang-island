@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import type { CSSProperties } from 'react'
 import type { PetInteractionAction, PetSpeciesId } from './pet-catalog'
-import renderLayouts from './pet-render-layouts.json'
+import { petStageLayout, petGroundY } from './pet-draw-layout'
 import './pet-care-effects.css'
 const stagger = (i: number) => ({ '--i': i }) as CSSProperties
 // Decorative SVG only; existing pet motion and the care timer own completion.
@@ -13,11 +13,13 @@ export function PetCareEffects({
   speciesId: PetSpeciesId
 }) {
   const id = `pet-care-${useId().replaceAll(':', '')}`
+  const ground = petGroundY(speciesId) * 300 / 640
+  const head = petStageLayout(speciesId).anchor.map(n => n * 300 / 640)
   const biteStyle = (i: number) =>
     ({
       ...stagger(i),
-      '--bite-x': `${(renderLayouts[speciesId].anchor[0] * 300) / 640 - 150}px`,
-      '--bite-y': `${(renderLayouts[speciesId].anchor[1] * 300) / 640 + 13 - 238}px`,
+      '--bite-x': `${(petStageLayout(speciesId).anchor[0] * 300) / 640 - 150}px`,
+      '--bite-y': `${head[1] + 13 - ground + 6}px`,
     }) as CSSProperties
   return (
     <div
@@ -50,24 +52,25 @@ export function PetCareEffects({
           <symbol id={`${id}-heart`} viewBox="0 0 24 24">
             <path
               d="M12 20S3.5 15.1 3.5 8.9a4.6 4.6 0 0 1 8.5-2.4 4.6 4.6 0 0 1 8.5 2.4C20.5 15.1 12 20 12 20Z"
-              fill="#e7b6c1"
-              fillOpacity=".65"
-              stroke="#c992a2"
-              strokeWidth="1.2"
+              fill="#e58fa9"
+              fillOpacity=".95"
+              stroke="#bf6b89"
+              strokeWidth="1.4"
             />
           </symbol>
           <symbol id={`${id}-spark`} viewBox="0 0 24 24">
             <path
               d="m12 2 2.7 7.3L22 12l-7.3 2.7L12 22l-2.7-7.3L2 12l7.3-2.7L12 2Z"
-              fill="#f0deb4"
-              stroke="#d0ad6d"
-              strokeWidth="1"
+              fill="#ffe3a2"
+              stroke="#c5994b"
+              strokeWidth="1.3"
               strokeLinejoin="round"
             />
           </symbol>
         </defs>
         {action === 'feed' && (
           <>
+            <g transform={`translate(-30 ${ground - 290}) scale(1.2)`}>
             <g className="pet-fx-food-bowl">
               <ellipse cx="150" cy="262" rx="34" ry="4" fill="#c9b699" opacity=".12" />
               <path
@@ -111,29 +114,31 @@ export function PetCareEffects({
                 fill="#93ab96"
               />
             </g>
+            </g>
             {[0, 1, 2].map((i) => (
-              <g key={i} transform="translate(150 238)">
+              <g key={i} transform={`translate(150 ${ground - 6})`}>
                 <g className="pet-fx-bite" style={biteStyle(i)}>
-                  <ellipse rx="2.7" ry="2" fill="#bb9061" stroke="#e9d4aa" strokeWidth=".6" />
+                  <ellipse rx="4.2" ry="3" fill="#ad7746" stroke="#f3d8a5" strokeWidth="1" />
                 </g>
               </g>
             ))}
             <g
-              transform={`translate(${(renderLayouts[speciesId].anchor[0] * 300) / 640 + 26} ${(renderLayouts[speciesId].anchor[1] * 300) / 640 - 8})`}
+              transform={`translate(${(petStageLayout(speciesId).anchor[0] * 300) / 640 + 26} ${(petStageLayout(speciesId).anchor[1] * 300) / 640 - 8})`}
             >
-              <use className="pet-fx-clean" href={`#${id}-spark`} width="13" height="13" />
+              <use className="pet-fx-clean" href={`#${id}-spark`} width="20" height="20" />
             </g>
+            <g transform={`translate(${head[0] - 35} ${head[1] + 8})`}><use className="pet-fx-heart" style={stagger(4)} href={`#${id}-heart`} width="22" height="22"/></g>
           </>
         )}
         {action === 'stroke' && (
           <>
-            <g transform="translate(184 38)">
+            <g transform={`translate(${head[0] - 26} ${Math.max(24, head[1] - 75)}) scale(1.3)`}>
               <g className="pet-fx-hand">
                 <path
                   d="m5 23-3-8c-1-3 2-4 3-2l3 5-4-13c-.8-3 2.7-4 3.6-1l3.8 10-2-13c-.5-3 3-3.5 3.6-.5l2.7 13 .1-11c0-3 3.5-3 3.5 0l.8 12 2-6c1-2.5 4-.8 3.1 1.6l-2.6 11c-1 6-4.9 9-10 8.3C9 29 6.8 27 5 23Z"
                   fill={`url(#${id}-cream)`}
-                  stroke="#b4997c"
-                  strokeWidth="1.25"
+                  stroke="#a38461"
+                  strokeWidth="1.5"
                   strokeLinejoin="round"
                 />
                 <path
@@ -145,44 +150,52 @@ export function PetCareEffects({
               </g>
             </g>
             {[
-              [72, 110],
-              [140, speciesId === 'sand-golem' ? 35 : 65],
-              [224, 106],
+              [head[0] - 70, head[1] + 8],
+              [head[0] - 22, Math.max(30, head[1] - 65)],
+              [head[0] + 48, head[1] + 10],
             ].map(([x, y], i) => (
               <g key={i} transform={`translate(${x} ${y})`}>
                 <g className="pet-fx-heart" style={stagger(i)}>
-                  <use href={`#${id}-heart`} width={i === 1 ? 13 : 11} height={i === 1 ? 13 : 11} />
+                  <use href={`#${id}-heart`} width={i === 1 ? 25 : 21} height={i === 1 ? 25 : 21} />
                 </g>
               </g>
             ))}
+            <ellipse className="pet-fx-touch" cx={head[0] - 5} cy={Math.max(35,head[1] - 45)} rx="22" ry="9" stroke="#dcb16f" strokeWidth="2"/>
           </>
         )}
         {action === 'bath' && (
           <>
+            <g transform={`translate(0 ${ground - 240})`}>
             <g className="pet-fx-foam">
               <path
-                d="M86 240c-5-8 3-17 13-14 2-11 17-13 23-4 7-10 22-9 26 1 9-8 22-5 24 4 11-7 24 0 22 9 10-2 19 6 15 12H89c-8 0-11-6-3-8Z"
+                d="M72 235c-11-10-3-26 10-25-3-16 15-28 28-17 4-18 28-21 37-5 12-16 34-7 33 9 16-9 34 4 30 19 17-1 26 18 13 27-8 8-145 10-151-8Z"
                 fill="#fffdf5"
-                fillOpacity=".88"
-                stroke="#d2e4df"
-                strokeWidth="1"
+                fillOpacity=".96"
+                stroke="#90bdb9"
+                strokeWidth="1.7"
               />
               <path
-                d="M103 237c2-4 8-5 12-2m27-4c4-3 9-2 11 1m24 5c3-3 8-3 11 0"
-                stroke="#d2e4df"
+                d="M86 229c4-8 15-8 19-1m12-24c6-9 19-7 21 2m10 20c4-9 17-10 22-2m14-11c5-8 16-6 18 1"
+                stroke="#b1d4ce"
+                strokeWidth="1.6"
                 strokeLinecap="round"
               />
             </g>
+            </g>
+            <g className="pet-fx-shower" strokeLinecap="round">
+              <path d="m62 42 13-10 17 14-7 9Z" fill="#ccded4" stroke="#83a69b" strokeWidth="1.6"/>
+              <path d="m84 57 14 20m-4-26 16 22m-7-27 17 21" stroke="#8bc2cf" strokeWidth="2.8" strokeDasharray="5 7"/>
+            </g>
             {[
-              [72, 191, 7],
-              [218, 184, 10],
-              [85, 216, 5],
-              [236, 154, 5],
-              [203, 212, 7],
+              [72, ground - 35, 11],
+              [211, ground - 48, 15],
+              [101, ground - 9, 8],
+              [229, ground - 88, 9],
+              [185, ground - 22, 11],
             ].map(([x, y, r], i) => (
               <g key={i} transform={`translate(${x} ${y})`}>
                 <g className="pet-fx-bubble" style={stagger(i)}>
-                  <circle r={r} fill={`url(#${id}-bubble)`} stroke="#a8cbd1" strokeWidth=".9" />
+                  <circle r={r} fill={`url(#${id}-bubble)`} stroke="#79afbb" strokeWidth="1.5" />
                   <path
                     d={`M${-r * 0.5} ${-r * 0.2}q0 ${-r * 0.4} ${r * 0.5} ${-r * 0.4}`}
                     stroke="#fff"
@@ -192,22 +205,24 @@ export function PetCareEffects({
                 </g>
               </g>
             ))}
-            <g transform="translate(226 89)">
-              <use className="pet-fx-clean" href={`#${id}-spark`} width="18" height="18" />
+            <g transform={`translate(${head[0] + 45} ${head[1] - 8})`}>
+              <use className="pet-fx-clean" href={`#${id}-spark`} width="25" height="25" />
             </g>
+            <g transform={`translate(${head[0] - 60} ${head[1] + 15})`}><use className="pet-fx-clean" href={`#${id}-spark`} width="18" height="18"/></g>
           </>
         )}
         {action === 'sleep' && (
           <>
+            <ellipse className="pet-fx-flash" cx="150" cy="145" rx="105" ry="115" fill="#fff9e5"/>
             <g
               className="pet-fx-photo-frame"
-              stroke="#bcad98"
-              strokeWidth="1.25"
+              stroke="#a48963"
+              strokeWidth="2.3"
               strokeLinecap="round"
             >
               <path d="M71 66V53q0-7 7-7h15M207 46h15q7 0 7 7v13M71 222v15q0 7 7 7h15M207 244h15q7 0 7-7v-15" />
             </g>
-            <g transform="translate(222 57)">
+            <g transform="translate(62 52) scale(1.35)">
               <g className="pet-fx-camera">
                 <path
                   d="m5 6 3-4h9l3 4h6a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H2a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3Z"
@@ -234,7 +249,7 @@ export function PetCareEffects({
                 />
               </g>
             </g>
-            <g transform="translate(218 211) rotate(8 16 19)">
+            <g transform={`translate(210 ${ground - 30}) rotate(8 16 19) scale(1.25)`}>
               <g className="pet-fx-photo-print">
                 <rect
                   width="32"
@@ -253,11 +268,12 @@ export function PetCareEffects({
         )}
         {action === 'play' && (
           <>
-            <g transform="translate(67 238)">
+            <path className="pet-fx-trail" d={`M72 ${ground - 5}q45-76 90 0t70-8`} stroke="#a4c6b6" strokeWidth="2" strokeDasharray="4 7" strokeLinecap="round"/>
+            <g transform={`translate(72 ${ground - 5})`}>
               <g className="pet-fx-ball">
-                <circle r="11" fill={`url(#${id}-ball)`} stroke="#c4a67d" strokeWidth="1" />
-                <path d="M-9-6C-2-2 2 3 6 9" stroke="#fff9e8" strokeWidth="4" />
-                <path d="M-7 8c4-1 9-6 12-17" stroke="#adc2af" strokeWidth="3" />
+                <circle r="16" fill={`url(#${id}-ball)`} stroke="#b18a56" strokeWidth="1.5" />
+                <path d="M-13-9C-2-2 2 3 9 13" stroke="#fff9e8" strokeWidth="5" />
+                <path d="M-10 12c6-2 13-9 17-25" stroke="#88ad93" strokeWidth="4" />
                 <path
                   d="M-5-7a8 8 0 0 1 5-1"
                   stroke="#fff5dc"
@@ -276,8 +292,8 @@ export function PetCareEffects({
                   className="pet-fx-star"
                   style={stagger(i)}
                   href={`#${id}-spark`}
-                  width={i === 1 ? 15 : 11}
-                  height={i === 1 ? 15 : 11}
+                  width={i === 1 ? 23 : 19}
+                  height={i === 1 ? 23 : 19}
                 />
               </g>
             ))}

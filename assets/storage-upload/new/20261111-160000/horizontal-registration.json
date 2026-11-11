@@ -1,0 +1,4138 @@
+{
+  "sand-golem": {
+    "idle": {
+      "path": "public/pets/sand-golem_idle8_v2_sprite.png",
+      "sourceSha256": "3a3c29bd06ded3aea3f8913d378a71ed8faef736a342e0beac6c59df9446919c",
+      "cell": 462,
+      "patch": [
+        208,
+        116,
+        32,
+        14
+      ],
+      "samples": 112,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 20.226190476190474,
+          "rmse": 4.497,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 29.705357142857142,
+          "rmse": 5.45,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 17.851190476190474,
+          "rmse": 4.225,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 39.476190476190474,
+          "rmse": 6.283,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 43.270833333333336,
+          "rmse": 6.578,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 25.050595238095237,
+          "rmse": 5.005,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 35.401785714285715,
+          "rmse": 5.95,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            116,
+            32,
+            14
+          ]
+        }
+      ]
+    },
+    "happy": {
+      "path": "public/pets/sand-golem_happy8_v1_sprite.png",
+      "sourceSha256": "3033f19bb3c29cfd92abe7f21e7e8899bfc9e22e4ec091697a18584bd5128168",
+      "cell": 468,
+      "patch": [
+        204,
+        133,
+        32,
+        14
+      ],
+      "samples": 109,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": 0,
+          "error": 194.33333333333334,
+          "rmse": 13.94,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 1,
+          "error": 126.1651376146789,
+          "rmse": 11.232,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": 1,
+          "error": 205.55351681957185,
+          "rmse": 14.337,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 1,
+          "error": 62.73394495412844,
+          "rmse": 7.92,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 57.993883792048926,
+          "rmse": 7.615,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 54.80733944954128,
+          "rmse": 7.403,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 151.30886850152905,
+          "rmse": 12.301,
+          "templateFrame": 0,
+          "templatePatch": [
+            204,
+            133,
+            32,
+            14
+          ]
+        }
+      ]
+    },
+    "eat": {
+      "path": "public/pets/sand-golem_eat8_v1_sprite.png",
+      "sourceSha256": "1dba5696dc9365ad5ac4465c1796b81f9f37a80cc4f9b6dffdf329cb1f6e8e1c",
+      "cell": 462,
+      "patch": [
+        209,
+        128,
+        32,
+        14
+      ],
+      "samples": 112,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 19.62797619047619,
+          "rmse": 4.43,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 6.6726190476190474,
+          "rmse": 2.583,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 16.071428571428573,
+          "rmse": 4.009,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 29.854166666666668,
+          "rmse": 5.464,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 31.339285714285715,
+          "rmse": 5.598,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 36.270833333333336,
+          "rmse": 6.023,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 24.970238095238095,
+          "rmse": 4.997,
+          "templateFrame": 0,
+          "templatePatch": [
+            209,
+            128,
+            32,
+            14
+          ]
+        }
+      ]
+    },
+    "needs": {
+      "path": "public/pets/sand-golem_needs8_v1_sprite.png",
+      "sourceSha256": "36051db4e18ba6c8d58b9fdcf6ce143bb521a08a0ab13c65eaf2165dd7d7824d",
+      "cell": 462,
+      "patch": [
+        207,
+        127,
+        32,
+        14
+      ],
+      "samples": 112,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 10.75297619047619,
+          "rmse": 3.279,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 9.773809523809524,
+          "rmse": 3.126,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 8.93452380952381,
+          "rmse": 2.989,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 9.642857142857142,
+          "rmse": 3.105,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 12.854166666666666,
+          "rmse": 3.585,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 8.773809523809524,
+          "rmse": 2.962,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 11.235119047619047,
+          "rmse": 3.352,
+          "templateFrame": 0,
+          "templatePatch": [
+            207,
+            127,
+            32,
+            14
+          ]
+        }
+      ]
+    }
+  },
+  "wave-cat": {
+    "idle": {
+      "path": "public/pets/wave-cat_idle8_v2_sprite.png",
+      "sourceSha256": "4035e0f64195f55b986bf5467f5bbeffa23f0fd7a60378652cb280641a3f8836",
+      "cell": 462,
+      "patch": [
+        217,
+        118,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 155.7145061728395,
+          "rmse": 12.479,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 20.564814814814813,
+          "rmse": 4.535,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 144.69444444444446,
+          "rmse": 12.029,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 55.46296296296296,
+          "rmse": 7.447,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 77.45061728395062,
+          "rmse": 8.801,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 129.42592592592592,
+          "rmse": 11.377,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 86.53395061728395,
+          "rmse": 9.302,
+          "templateFrame": 0,
+          "templatePatch": [
+            217,
+            118,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "happy": {
+      "path": "public/pets/wave-cat_happy8_v1_sprite.png",
+      "sourceSha256": "d2978e5cf5d65d3153030a72431c3c1ca6ef3ab11463aa7fa7392d278c15399c",
+      "cell": 480,
+      "patch": [
+        212,
+        128,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 60.37191358024691,
+          "rmse": 7.77,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": 0,
+          "error": 159.6327160493827,
+          "rmse": 12.635,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -3,
+          "dy": 1,
+          "error": 216.71604938271605,
+          "rmse": 14.721,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -6,
+          "dy": 3,
+          "error": 191.04783950617283,
+          "rmse": 13.822,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": 2,
+          "error": 189.19444444444446,
+          "rmse": 13.755,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 75.24691358024691,
+          "rmse": 8.674,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -1,
+          "error": 133.0570987654321,
+          "rmse": 11.535,
+          "templateFrame": 0,
+          "templatePatch": [
+            212,
+            128,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "eat": {
+      "path": "public/pets/wave-cat_eat8_v1_sprite.png",
+      "sourceSha256": "3a2b643ae70f53c55b1f4155cca24ff3ee2ad012be03bec8942832b360c47799",
+      "cell": 462,
+      "patch": [
+        215,
+        120,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 72.66512345679013,
+          "rmse": 8.524,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 12.575617283950617,
+          "rmse": 3.546,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 52.72222222222222,
+          "rmse": 7.261,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 66.93518518518519,
+          "rmse": 8.181,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 70.5925925925926,
+          "rmse": 8.402,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 63.589506172839506,
+          "rmse": 7.974,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 81.92901234567901,
+          "rmse": 9.051,
+          "templateFrame": 0,
+          "templatePatch": [
+            215,
+            120,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "needs": {
+      "path": "public/pets/wave-cat_needs8_v1_sprite.png",
+      "sourceSha256": "56898a004cd03c09ed390e79cfad700bad51bb7ee7476d807226809b903f059c",
+      "cell": 464,
+      "patch": [
+        220,
+        122,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 38.35030864197531,
+          "rmse": 6.193,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 24.74537037037037,
+          "rmse": 4.974,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 34.48765432098765,
+          "rmse": 5.873,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 86.74845679012346,
+          "rmse": 9.314,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 73.52314814814815,
+          "rmse": 8.575,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 78.36111111111111,
+          "rmse": 8.852,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 61.257716049382715,
+          "rmse": 7.827,
+          "templateFrame": 0,
+          "templatePatch": [
+            220,
+            122,
+            48,
+            18
+          ]
+        }
+      ]
+    }
+  },
+  "mochi-dragon": {
+    "idle": {
+      "path": "public/pets/mochi-dragon_idle8_v2_sprite.png",
+      "sourceSha256": "94348142a913c96da45bd78548f3f766bc53f83d601fb2ac5fc58429334b23a8",
+      "cell": 460,
+      "patch": [
+        170,
+        118,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 11.155864197530864,
+          "rmse": 3.34,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 4.753086419753086,
+          "rmse": 2.18,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 9.25,
+          "rmse": 3.041,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 9.217592592592593,
+          "rmse": 3.036,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 28.242283950617285,
+          "rmse": 5.314,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "error": 22.442901234567902,
+          "rmse": 4.737,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 35.89969135802469,
+          "rmse": 5.992,
+          "templateFrame": 0,
+          "templatePatch": [
+            170,
+            118,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "happy": {
+      "path": "public/pets/mochi-dragon_happy8_v1_sprite.png",
+      "sourceSha256": "fd9ba570d81349e2ca677da039d741ac24047a49df67f9ddac886564238bb3ec",
+      "cell": 520,
+      "patch": [
+        172,
+        138,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 42.07561728395062,
+          "rmse": 6.487,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 156.21759259259258,
+          "rmse": 12.499,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 1,
+          "error": 69.72685185185185,
+          "rmse": 8.35,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 206.570987654321,
+          "rmse": 14.373,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": 0,
+          "error": 57.86882716049383,
+          "rmse": 7.607,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": 0,
+          "error": 54.782407407407405,
+          "rmse": 7.402,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 42.89043209876543,
+          "rmse": 6.549,
+          "templateFrame": 0,
+          "templatePatch": [
+            172,
+            138,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "eat": {
+      "path": "public/pets/mochi-dragon_eat8_v1_sprite.png",
+      "sourceSha256": "181c4a70341fcbea1116bdcafe1aa32067d621938b139bc9187b77f53f3b7d86",
+      "cell": 460,
+      "patch": [
+        164,
+        118,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 14.276234567901234,
+          "rmse": 3.778,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 6.924382716049383,
+          "rmse": 2.631,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 39.10493827160494,
+          "rmse": 6.253,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 18.305555555555557,
+          "rmse": 4.278,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 2,
+          "error": 50.766975308641975,
+          "rmse": 7.125,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 17.265432098765434,
+          "rmse": 4.155,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 22.02932098765432,
+          "rmse": 4.694,
+          "templateFrame": 0,
+          "templatePatch": [
+            164,
+            118,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "needs": {
+      "path": "public/pets/mochi-dragon_needs8_v1_sprite.png",
+      "sourceSha256": "f7f7dcf7371c7bc4429937c7520e13ba0e37d3f92efc6671adc1f8b64a8538ef",
+      "cell": 464,
+      "patch": [
+        158,
+        106,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 4.035493827160494,
+          "rmse": 2.009,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 3.5987654320987654,
+          "rmse": 1.897,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 8.74074074074074,
+          "rmse": 2.956,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 2,
+          "error": 13.101851851851851,
+          "rmse": 3.62,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 2,
+          "error": 7.438271604938271,
+          "rmse": 2.727,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 2,
+          "error": 9.641975308641975,
+          "rmse": 3.105,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 2,
+          "error": 6.353395061728395,
+          "rmse": 2.521,
+          "templateFrame": 0,
+          "templatePatch": [
+            158,
+            106,
+            48,
+            18
+          ]
+        }
+      ]
+    }
+  },
+  "jelly-seal": {
+    "idle": {
+      "path": "public/pets/jelly-seal_idle8_v2_sprite.png",
+      "sourceSha256": "231c49034b2ae9f78838d167ccd086d520bb249ad696d239d07c34e5b1668281",
+      "cell": 462,
+      "patch": [
+        153,
+        115,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 6.695987654320987,
+          "rmse": 2.588,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 2.5324074074074074,
+          "rmse": 1.591,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 22.02932098765432,
+          "rmse": 4.694,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 16.25925925925926,
+          "rmse": 4.032,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 9.251543209876543,
+          "rmse": 3.042,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 8.057098765432098,
+          "rmse": 2.839,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 6.554012345679013,
+          "rmse": 2.56,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            115,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "happy": {
+      "path": "public/pets/jelly-seal_happy8_v1_sprite.png",
+      "sourceSha256": "e66790a39121aa285346d48dc1288f6dd9a5c392720714a1b875cddaf1f0e1fd",
+      "cell": 462,
+      "patch": [
+        165,
+        125,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 6.770061728395062,
+          "rmse": 2.602,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 1.7947530864197532,
+          "rmse": 1.34,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 3.132716049382716,
+          "rmse": 1.77,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 3.1527777777777777,
+          "rmse": 1.776,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 3.9228395061728394,
+          "rmse": 1.981,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 5.848765432098766,
+          "rmse": 2.418,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -1,
+          "error": 9.753086419753087,
+          "rmse": 3.123,
+          "templateFrame": 0,
+          "templatePatch": [
+            165,
+            125,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "eat": {
+      "path": "public/pets/jelly-seal_eat8_v1_sprite.png",
+      "sourceSha256": "9252c74ad4932a0ca7b269d0261c361b9b2143a0cfac2951bb6da57303f97c0f",
+      "cell": 462,
+      "patch": [
+        152,
+        107,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 19.09722222222222,
+          "rmse": 4.37,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 2.4614197530864197,
+          "rmse": 1.569,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "error": 14.112654320987655,
+          "rmse": 3.757,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 13.978395061728396,
+          "rmse": 3.739,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 33.723765432098766,
+          "rmse": 5.807,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 4.507716049382716,
+          "rmse": 2.123,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 6.49537037037037,
+          "rmse": 2.549,
+          "templateFrame": 0,
+          "templatePatch": [
+            152,
+            107,
+            48,
+            18
+          ]
+        }
+      ]
+    },
+    "needs": {
+      "path": "public/pets/jelly-seal_needs8_v1_sprite.png",
+      "sourceSha256": "7a19ec2e65b7ece8992f13cf118f15dafd8beb43f7006bb4ea53904e6d2a31bc",
+      "cell": 462,
+      "patch": [
+        153,
+        120,
+        48,
+        18
+      ],
+      "samples": 216,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 22.887345679012345,
+          "rmse": 4.784,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 1.970679012345679,
+          "rmse": 1.404,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 10.617283950617283,
+          "rmse": 3.258,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -2,
+          "error": 24.03395061728395,
+          "rmse": 4.902,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -1,
+          "error": 8.320987654320987,
+          "rmse": 2.885,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -2,
+          "error": 6.737654320987654,
+          "rmse": 2.596,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 28.699074074074073,
+          "rmse": 5.357,
+          "templateFrame": 0,
+          "templatePatch": [
+            153,
+            120,
+            48,
+            18
+          ]
+        }
+      ]
+    }
+  },
+  "maple-panda": {
+    "atlas": {
+      "path": "public/pets/maple-panda_atlas16_v1_sprite.png",
+      "sourceSha256": "b91f7eb1a55d98e6fe6be7c5477062ff3058f9289cfe9409c764112dfec33c11",
+      "cell": 320,
+      "patch": [
+        214,
+        145,
+        64,
+        20
+      ],
+      "samples": 320,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -8,
+          "dy": 1,
+          "error": 112.871875,
+          "rmse": 10.624,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -15,
+          "dy": 1,
+          "error": 108.98854166666666,
+          "rmse": 10.44,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -23,
+          "dy": 0,
+          "error": 59.69166666666667,
+          "rmse": 7.726,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -17,
+          "error": 417.7604166666667,
+          "rmse": 20.439,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -7,
+          "dy": -14,
+          "error": 127.84270833333333,
+          "rmse": 11.307,
+          "templateFrame": 4,
+          "templatePatch": [
+            213,
+            128,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -15,
+          "dy": -14,
+          "error": 173.41458333333333,
+          "rmse": 13.169,
+          "templateFrame": 4,
+          "templatePatch": [
+            213,
+            128,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -22,
+          "dy": -15,
+          "error": 89.77291666666666,
+          "rmse": 9.475,
+          "templateFrame": 4,
+          "templatePatch": [
+            213,
+            128,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -20,
+          "error": 590.2625,
+          "rmse": 24.295,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -8,
+          "dy": -19,
+          "error": 90.84583333333333,
+          "rmse": 9.531,
+          "templateFrame": 8,
+          "templatePatch": [
+            213,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -15,
+          "dy": -20,
+          "error": 163.684375,
+          "rmse": 12.794,
+          "templateFrame": 8,
+          "templatePatch": [
+            213,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -24,
+          "dy": -19,
+          "error": 75.32395833333334,
+          "rmse": 8.679,
+          "templateFrame": 8,
+          "templatePatch": [
+            213,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": -35,
+          "error": 225.49166666666667,
+          "rmse": 15.016,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -10,
+          "dy": -35,
+          "error": 124.90625,
+          "rmse": 11.176,
+          "templateFrame": 12,
+          "templatePatch": [
+            212,
+            110,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -19,
+          "dy": -34,
+          "error": 252.56145833333332,
+          "rmse": 15.892,
+          "templateFrame": 0,
+          "templatePatch": [
+            214,
+            145,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -22,
+          "dy": -35,
+          "error": 90.56666666666666,
+          "rmse": 9.517,
+          "templateFrame": 14,
+          "templatePatch": [
+            195,
+            111,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  },
+  "poka-shark": {
+    "atlas": {
+      "path": "public/pets/poka-shark_atlas16_v1_sprite.png",
+      "sourceSha256": "9362041e18dbf6c3cdcb3bd31d16bea6a74ea8bc4052c0207dcc3ffb250fb1ca",
+      "cell": 320,
+      "patch": [
+        230,
+        125,
+        64,
+        20
+      ],
+      "samples": 318,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 50.34591194968554,
+          "rmse": 7.095,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "error": 81.8993710691824,
+          "rmse": 9.05,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 22.737945492662472,
+          "rmse": 4.768,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -8,
+          "dy": 14,
+          "error": 354.45807127882597,
+          "rmse": 18.827,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -6,
+          "dy": 16,
+          "error": 41.07083333333333,
+          "rmse": 6.409,
+          "templateFrame": 4,
+          "templatePatch": [
+            222,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -7,
+          "dy": 17,
+          "error": 33.84791666666667,
+          "rmse": 5.818,
+          "templateFrame": 4,
+          "templatePatch": [
+            222,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -8,
+          "dy": 14,
+          "error": 26.216666666666665,
+          "rmse": 5.12,
+          "templateFrame": 4,
+          "templatePatch": [
+            222,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 8,
+          "dy": 14,
+          "error": 335.47484276729557,
+          "rmse": 18.316,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 9,
+          "dy": 15,
+          "error": 26.570230607966458,
+          "rmse": 5.155,
+          "templateFrame": 8,
+          "templatePatch": [
+            238,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 8,
+          "dy": 14,
+          "error": 7.332285115303983,
+          "rmse": 2.708,
+          "templateFrame": 8,
+          "templatePatch": [
+            238,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 8,
+          "dy": 14,
+          "error": 8.540880503144654,
+          "rmse": 2.922,
+          "templateFrame": 8,
+          "templatePatch": [
+            238,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 4,
+          "dy": 4,
+          "error": 193.86477987421384,
+          "rmse": 13.924,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 3,
+          "dy": 1,
+          "error": 68.96770833333333,
+          "rmse": 8.305,
+          "templateFrame": 12,
+          "templatePatch": [
+            234,
+            129,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 2,
+          "dy": 0,
+          "error": 169.24947589098534,
+          "rmse": 13.01,
+          "templateFrame": 0,
+          "templatePatch": [
+            230,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -3,
+          "error": 110.25600835945663,
+          "rmse": 10.5,
+          "templateFrame": 14,
+          "templatePatch": [
+            232,
+            125,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  },
+  "acorn-squirrel": {
+    "atlas": {
+      "path": "public/pets/acorn-squirrel_atlas16_v1_sprite.png",
+      "sourceSha256": "eb7583197aa36ee8be9d01f955e21c3dc27a4ab01cb9f90d4d41edcd0e767bac",
+      "cell": 320,
+      "patch": [
+        236,
+        136,
+        32,
+        16
+      ],
+      "samples": 128,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "error": 27.3359375,
+          "rmse": 5.228,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "error": 34.369791666666664,
+          "rmse": 5.863,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 12.494791666666666,
+          "rmse": 3.535,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 66.3125,
+          "rmse": 8.143,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 62.744791666666664,
+          "rmse": 7.921,
+          "templateFrame": 4,
+          "templatePatch": [
+            235,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 2,
+          "error": 63.091145833333336,
+          "rmse": 7.943,
+          "templateFrame": 4,
+          "templatePatch": [
+            235,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 34.361979166666664,
+          "rmse": 5.862,
+          "templateFrame": 4,
+          "templatePatch": [
+            235,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 8,
+          "dy": 15,
+          "error": 131.92708333333334,
+          "rmse": 11.486,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 8,
+          "dy": 16,
+          "error": 34.7109375,
+          "rmse": 5.892,
+          "templateFrame": 8,
+          "templatePatch": [
+            244,
+            151,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 8,
+          "dy": 17,
+          "error": 37.526041666666664,
+          "rmse": 6.126,
+          "templateFrame": 8,
+          "templatePatch": [
+            244,
+            151,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 8,
+          "dy": 15,
+          "error": 37.8515625,
+          "rmse": 6.152,
+          "templateFrame": 8,
+          "templatePatch": [
+            244,
+            151,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 2,
+          "dy": 0,
+          "error": 37.229166666666664,
+          "rmse": 6.102,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 3,
+          "dy": 0,
+          "error": 42.125,
+          "rmse": 6.49,
+          "templateFrame": 12,
+          "templatePatch": [
+            238,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 2,
+          "dy": 1,
+          "error": 29.6015625,
+          "rmse": 5.441,
+          "templateFrame": 0,
+          "templatePatch": [
+            236,
+            136,
+            32,
+            16
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "error": 26.401041666666668,
+          "rmse": 5.138,
+          "templateFrame": 14,
+          "templatePatch": [
+            238,
+            137,
+            32,
+            16
+          ]
+        }
+      ]
+    }
+  },
+  "hedge-pin": {
+    "atlas": {
+      "path": "public/pets/hedge-pin_atlas16_v1_sprite.png",
+      "sourceSha256": "3a0f890881671c4922edbb2c8f6568bd930b21589cb482bdfbebedda063d3950",
+      "cell": 320,
+      "patch": [
+        213,
+        139,
+        64,
+        20
+      ],
+      "samples": 320,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 2,
+          "error": 265.3541666666667,
+          "rmse": 16.29,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 323.57395833333334,
+          "rmse": 17.988,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 45.389583333333334,
+          "rmse": 6.737,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 545.978125,
+          "rmse": 23.366,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 240.47083333333333,
+          "rmse": 15.507,
+          "templateFrame": 4,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 384.0260416666667,
+          "rmse": 19.597,
+          "templateFrame": 4,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 58.24583333333333,
+          "rmse": 7.632,
+          "templateFrame": 4,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 3,
+          "dy": 10,
+          "error": 457.496875,
+          "rmse": 21.389,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 3,
+          "dy": 10,
+          "error": 147.43125,
+          "rmse": 12.142,
+          "templateFrame": 8,
+          "templatePatch": [
+            216,
+            149,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 3,
+          "dy": 10,
+          "error": 150.31666666666666,
+          "rmse": 12.26,
+          "templateFrame": 8,
+          "templatePatch": [
+            216,
+            149,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 3,
+          "dy": 10,
+          "error": 58.922916666666666,
+          "rmse": 7.676,
+          "templateFrame": 8,
+          "templatePatch": [
+            216,
+            149,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 220.784375,
+          "rmse": 14.859,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 46.592708333333334,
+          "rmse": 6.826,
+          "templateFrame": 12,
+          "templatePatch": [
+            212,
+            138,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 133.29479166666667,
+          "rmse": 11.545,
+          "templateFrame": 0,
+          "templatePatch": [
+            213,
+            139,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 66.2875,
+          "rmse": 8.142,
+          "templateFrame": 14,
+          "templatePatch": [
+            212,
+            138,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  },
+  "bonbon-triceratops": {
+    "atlas": {
+      "path": "public/pets/bonbon-triceratops_atlas16_v1_sprite.png",
+      "sourceSha256": "3d4d0ddc2552824250a8ecccd17e4e810250bfa7ec6c18061a11d2d20dfa042d",
+      "cell": 320,
+      "patch": [
+        234,
+        151,
+        26,
+        16
+      ],
+      "samples": 104,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 1,
+          "error": 9.086538461538462,
+          "rmse": 3.014,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 6.644230769230769,
+          "rmse": 2.578,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 7.573717948717949,
+          "rmse": 2.752,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": -7,
+          "error": 8.775641025641026,
+          "rmse": 2.962,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": -7,
+          "error": 12.98397435897436,
+          "rmse": 3.603,
+          "templateFrame": 4,
+          "templatePatch": [
+            232,
+            144,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": -7,
+          "error": 6.660256410256411,
+          "rmse": 2.581,
+          "templateFrame": 4,
+          "templatePatch": [
+            232,
+            144,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": -7,
+          "error": 9.698717948717949,
+          "rmse": 3.114,
+          "templateFrame": 4,
+          "templatePatch": [
+            232,
+            144,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 7,
+          "dy": 7,
+          "error": 13.810897435897436,
+          "rmse": 3.716,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 7,
+          "dy": 8,
+          "error": 8.762820512820513,
+          "rmse": 2.96,
+          "templateFrame": 8,
+          "templatePatch": [
+            241,
+            158,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 6,
+          "dy": 7,
+          "error": 6.528846153846154,
+          "rmse": 2.555,
+          "templateFrame": 8,
+          "templatePatch": [
+            241,
+            158,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 6,
+          "dy": 7,
+          "error": 11.939102564102564,
+          "rmse": 3.455,
+          "templateFrame": 8,
+          "templatePatch": [
+            241,
+            158,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -4,
+          "error": 8.586538461538462,
+          "rmse": 2.93,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -4,
+          "error": 12,
+          "rmse": 3.464,
+          "templateFrame": 12,
+          "templatePatch": [
+            233,
+            147,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -2,
+          "error": 8.85897435897436,
+          "rmse": 2.976,
+          "templateFrame": 0,
+          "templatePatch": [
+            234,
+            151,
+            26,
+            16
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -2,
+          "error": 7.0256410256410255,
+          "rmse": 2.651,
+          "templateFrame": 14,
+          "templatePatch": [
+            233,
+            149,
+            26,
+            16
+          ]
+        }
+      ]
+    }
+  },
+  "nurung-fox": {
+    "atlas": {
+      "path": "public/pets/nurung-fox_atlas16_v1_sprite.png",
+      "sourceSha256": "3f9026a4c403a7f870d50b8c96338e76ccacc4e65c4cb75abf03024b966effed",
+      "cell": 320,
+      "patch": [
+        208,
+        135,
+        64,
+        20
+      ],
+      "samples": 320,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 108.32395833333334,
+          "rmse": 10.408,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 68.01666666666667,
+          "rmse": 8.247,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 59.315625,
+          "rmse": 7.702,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 93.46458333333334,
+          "rmse": 9.668,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 69.08020833333333,
+          "rmse": 8.311,
+          "templateFrame": 4,
+          "templatePatch": [
+            207,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 163.93333333333334,
+          "rmse": 12.804,
+          "templateFrame": 4,
+          "templatePatch": [
+            207,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 0,
+          "error": 57.87083333333333,
+          "rmse": 7.607,
+          "templateFrame": 4,
+          "templatePatch": [
+            207,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -16,
+          "error": 332.7885416666667,
+          "rmse": 18.242,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 2,
+          "dy": -16,
+          "error": 124.79479166666667,
+          "rmse": 11.171,
+          "templateFrame": 8,
+          "templatePatch": [
+            209,
+            119,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 2,
+          "dy": -16,
+          "error": 134.01666666666668,
+          "rmse": 11.577,
+          "templateFrame": 8,
+          "templatePatch": [
+            209,
+            119,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -16,
+          "error": 78.28020833333333,
+          "rmse": 8.848,
+          "templateFrame": 8,
+          "templatePatch": [
+            209,
+            119,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -4,
+          "dy": -2,
+          "error": 289.871875,
+          "rmse": 17.026,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -4,
+          "dy": -1,
+          "error": 106.42708333333333,
+          "rmse": 10.316,
+          "templateFrame": 12,
+          "templatePatch": [
+            204,
+            133,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -3,
+          "dy": -1,
+          "error": 172.43645833333332,
+          "rmse": 13.132,
+          "templateFrame": 0,
+          "templatePatch": [
+            208,
+            135,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -2,
+          "dy": -1,
+          "error": 96.84166666666667,
+          "rmse": 9.841,
+          "templateFrame": 14,
+          "templatePatch": [
+            205,
+            134,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  },
+  "ppinu-penguin": {
+    "atlas": {
+      "path": "public/pets/ppinu-penguin_atlas16_v1_sprite.png",
+      "sourceSha256": "e3683455437dbe424ebe05e07d729bbc6f45ba38bbb7e4e908995de5d064105d",
+      "cell": 320,
+      "patch": [
+        198,
+        125,
+        64,
+        20
+      ],
+      "samples": 320,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 16.885416666666668,
+          "rmse": 4.109,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 23.765625,
+          "rmse": 4.875,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 18.03125,
+          "rmse": 4.246,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -1,
+          "error": 116.928125,
+          "rmse": 10.813,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -1,
+          "error": 34.31875,
+          "rmse": 5.858,
+          "templateFrame": 4,
+          "templatePatch": [
+            199,
+            124,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 38.317708333333336,
+          "rmse": 6.19,
+          "templateFrame": 4,
+          "templatePatch": [
+            199,
+            124,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": -1,
+          "error": 31.55625,
+          "rmse": 5.617,
+          "templateFrame": 4,
+          "templatePatch": [
+            199,
+            124,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 19,
+          "error": 224.659375,
+          "rmse": 14.989,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 19,
+          "error": 61.8,
+          "rmse": 7.861,
+          "templateFrame": 8,
+          "templatePatch": [
+            197,
+            144,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 19,
+          "error": 47.390625,
+          "rmse": 6.884,
+          "templateFrame": 8,
+          "templatePatch": [
+            197,
+            144,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 19,
+          "error": 16.609375,
+          "rmse": 4.075,
+          "templateFrame": 8,
+          "templatePatch": [
+            197,
+            144,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 12,
+          "error": 60.963541666666664,
+          "rmse": 7.808,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 12,
+          "error": 18.176041666666666,
+          "rmse": 4.263,
+          "templateFrame": 12,
+          "templatePatch": [
+            199,
+            137,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 10,
+          "error": 37.39895833333333,
+          "rmse": 6.115,
+          "templateFrame": 0,
+          "templatePatch": [
+            198,
+            125,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": 10,
+          "error": 21.04375,
+          "rmse": 4.587,
+          "templateFrame": 14,
+          "templatePatch": [
+            197,
+            135,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  },
+  "coco-capybara": {
+    "atlas": {
+      "path": "public/pets/coco-capybara_atlas16_v1_sprite.png",
+      "sourceSha256": "bfe4c44959fb33ac641c8dd377abc0d96a60435c34ad3c1d657c28f10bf7c1c5",
+      "cell": 320,
+      "patch": [
+        246,
+        113,
+        64,
+        20
+      ],
+      "samples": 320,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 5,
+          "error": 818.3458333333333,
+          "rmse": 28.607,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 1,
+          "error": 958.1791666666667,
+          "rmse": 30.954,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 64.7875,
+          "rmse": 8.049,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 179.25625,
+          "rmse": 13.389,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 2,
+          "error": 882.9489583333333,
+          "rmse": 29.714,
+          "templateFrame": 4,
+          "templatePatch": [
+            245,
+            112,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -3,
+          "dy": -2,
+          "error": 1010.328125,
+          "rmse": 31.786,
+          "templateFrame": 4,
+          "templatePatch": [
+            245,
+            112,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 66.13125,
+          "rmse": 8.132,
+          "templateFrame": 4,
+          "templatePatch": [
+            245,
+            112,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 35,
+          "error": 483.95104166666664,
+          "rmse": 21.999,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 43,
+          "error": 580.68125,
+          "rmse": 24.097,
+          "templateFrame": 8,
+          "templatePatch": [
+            246,
+            148,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 40,
+          "error": 851.13125,
+          "rmse": 29.174,
+          "templateFrame": 8,
+          "templatePatch": [
+            246,
+            148,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 35,
+          "error": 60.13125,
+          "rmse": 7.754,
+          "templateFrame": 8,
+          "templatePatch": [
+            246,
+            148,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 7,
+          "dy": 8,
+          "error": 706.5072916666667,
+          "rmse": 26.58,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 7,
+          "dy": 8,
+          "error": 58.780208333333334,
+          "rmse": 7.667,
+          "templateFrame": 12,
+          "templatePatch": [
+            253,
+            121,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 290.15520833333335,
+          "rmse": 17.034,
+          "templateFrame": 0,
+          "templatePatch": [
+            246,
+            113,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 0,
+          "error": 56.15625,
+          "rmse": 7.494,
+          "templateFrame": 14,
+          "templatePatch": [
+            247,
+            113,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  },
+  "peach-axolotl": {
+    "atlas": {
+      "path": "public/pets/peach-axolotl_atlas16_v1_sprite.png",
+      "sourceSha256": "16fa8ac0180d8be88b68f180084a82f65a5b6b1c4a1c53b1c92c0529ec00f260",
+      "cell": 320,
+      "patch": [
+        205,
+        120,
+        64,
+        20
+      ],
+      "samples": 320,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 4,
+          "error": 75.34166666666667,
+          "rmse": 8.68,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 4,
+          "error": 81.64270833333333,
+          "rmse": 9.036,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 14.055208333333333,
+          "rmse": 3.749,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -3,
+          "dy": 2,
+          "error": 161.140625,
+          "rmse": 12.694,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -3,
+          "dy": 3,
+          "error": 37.87291666666667,
+          "rmse": 6.154,
+          "templateFrame": 4,
+          "templatePatch": [
+            202,
+            122,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -3,
+          "dy": 4,
+          "error": 39.21666666666667,
+          "rmse": 6.262,
+          "templateFrame": 4,
+          "templatePatch": [
+            202,
+            122,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -3,
+          "dy": 2,
+          "error": 23.482291666666665,
+          "rmse": 4.846,
+          "templateFrame": 4,
+          "templatePatch": [
+            202,
+            122,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -4,
+          "dy": 4,
+          "error": 136.25,
+          "rmse": 11.673,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -4,
+          "dy": 4,
+          "error": 13.179166666666667,
+          "rmse": 3.63,
+          "templateFrame": 8,
+          "templatePatch": [
+            201,
+            124,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -4,
+          "dy": 4,
+          "error": 9.816666666666666,
+          "rmse": 3.133,
+          "templateFrame": 8,
+          "templatePatch": [
+            201,
+            124,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -4,
+          "dy": 4,
+          "error": 12.732291666666667,
+          "rmse": 3.568,
+          "templateFrame": 8,
+          "templatePatch": [
+            201,
+            124,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 54.240625,
+          "rmse": 7.365,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -1,
+          "error": 22.225,
+          "rmse": 4.714,
+          "templateFrame": 12,
+          "templatePatch": [
+            204,
+            119,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -4,
+          "error": 51.438541666666666,
+          "rmse": 7.172,
+          "templateFrame": 0,
+          "templatePatch": [
+            205,
+            120,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": -1,
+          "dy": -4,
+          "error": 18.546875,
+          "rmse": 4.307,
+          "templateFrame": 14,
+          "templatePatch": [
+            204,
+            116,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  },
+  "cloud-alpaca": {
+    "atlas": {
+      "path": "public/pets/cloud-alpaca_atlas16_v1_sprite.png",
+      "sourceSha256": "92492fc43f032255d76019f54750b5ee45d42285473b98b3dd3a2d414599e75d",
+      "cell": 320,
+      "patch": [
+        206,
+        126,
+        64,
+        20
+      ],
+      "samples": 320,
+      "matches": [
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 0,
+          "rmse": 0,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 51.260416666666664,
+          "rmse": 7.16,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 86.23020833333334,
+          "rmse": 9.286,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": 0,
+          "error": 26.695833333333333,
+          "rmse": 5.167,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -3,
+          "error": 61.984375,
+          "rmse": 7.873,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -2,
+          "error": 128.59270833333332,
+          "rmse": 11.34,
+          "templateFrame": 4,
+          "templatePatch": [
+            206,
+            123,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -1,
+          "error": 115.353125,
+          "rmse": 10.74,
+          "templateFrame": 4,
+          "templatePatch": [
+            206,
+            123,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -3,
+          "error": 26.797916666666666,
+          "rmse": 5.177,
+          "templateFrame": 4,
+          "templatePatch": [
+            206,
+            123,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 3,
+          "error": 186.546875,
+          "rmse": 13.658,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 3,
+          "error": 87.19895833333334,
+          "rmse": 9.338,
+          "templateFrame": 8,
+          "templatePatch": [
+            207,
+            129,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 3,
+          "error": 76.90416666666667,
+          "rmse": 8.77,
+          "templateFrame": 8,
+          "templatePatch": [
+            207,
+            129,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 1,
+          "dy": 3,
+          "error": 30.895833333333332,
+          "rmse": 5.558,
+          "templateFrame": 8,
+          "templatePatch": [
+            207,
+            129,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -5,
+          "error": 93.66875,
+          "rmse": 9.678,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -5,
+          "error": 32.56979166666667,
+          "rmse": 5.707,
+          "templateFrame": 12,
+          "templatePatch": [
+            206,
+            121,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -5,
+          "error": 88.23645833333333,
+          "rmse": 9.393,
+          "templateFrame": 0,
+          "templatePatch": [
+            206,
+            126,
+            64,
+            20
+          ]
+        },
+        {
+          "dx": 0,
+          "dy": -5,
+          "error": 27.86875,
+          "rmse": 5.279,
+          "templateFrame": 14,
+          "templatePatch": [
+            206,
+            121,
+            64,
+            20
+          ]
+        }
+      ]
+    }
+  }
+}

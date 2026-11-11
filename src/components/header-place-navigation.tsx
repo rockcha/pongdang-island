@@ -33,6 +33,7 @@ const {
 } = appArt
 
 export const headerPlaces = [
+  {to:'/pet-house',label:'펫 하우스',icon:Heart},
   {to:'/relic-roulette',label:'유물 룰렛',icon:RouletteIcon},
   {to:'/exploration',label:'탐험',icon:Compass},
   { to: '/voyage-bets', label: '만선 승부장', icon: appArt.shipyard },

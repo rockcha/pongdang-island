@@ -5,7 +5,7 @@ export function createPetBlinkSchedule(seed: number) {
   let random = seed >>> 0
   const intervals = Array.from({ length: 16 }, () => {
     random = (Math.imul(random, 1664525) + 1013904223) >>> 0
-    return 7000 + (random % 5001)
+    return 3000 + (random % 2001)
   })
   const starts = [0]
   for (let i = 0; i < intervals.length - 1; i++) starts.push(starts[i] + intervals[i])

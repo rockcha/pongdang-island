@@ -1,14 +1,15 @@
-import {Search,X} from 'lucide-react'
+import {Search,X,PawPrint} from 'lucide-react'
 import {appArt} from '@/components/app-art'
 import {IslandSelect} from '@/components/island-select'
 import type {FishingBait} from './api'
-import {baitTargetKinds} from './bait-info'
+import {baitTargetKinds,isPetFishingBait} from './bait-info'
 
-type Target='all'|'fish'|'trash'|'decoration'
+type Target='all'|'fish'|'trash'|'decoration'|'pet'
 export type BaitShopFilter={search:string;target:Target}
 export const initialBaitShopFilter:BaitShopFilter={search:'',target:'all'}
 const targetOptions=[
  {value:'all',label:'전체 대상',icon:<appArt.all className="size-6"/>},
+ {value:'pet',label:'펫 미끼',icon:<PawPrint className="size-5"/>},
  {value:'fish',label:'물고기',icon:<appArt.fish className="size-6"/>},
  {value:'trash',label:'쓰레기',icon:<appArt.trash className="size-6"/>},
  {value:'decoration',label:'장식물',icon:<appArt.decoration className="size-6"/>},
@@ -17,7 +18,7 @@ const targetOptions=[
 export function filterBaitShop(items:FishingBait[],filter:BaitShopFilter){
  const search=filter.search.trim().toLocaleLowerCase()
  return items.filter(item=>(!search||`${item.name} ${item.description}`.toLocaleLowerCase().includes(search))
-  &&(filter.target==='all'||baitTargetKinds(item).includes(filter.target)))
+  &&(filter.target==='all'||(filter.target==='pet'?isPetFishingBait(item):baitTargetKinds(item).includes(filter.target))))
 }
 
 export function BaitShopFilters({value,onChange}:{value:BaitShopFilter;onChange:(value:BaitShopFilter)=>void}){

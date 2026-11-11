@@ -1,17 +1,17 @@
 import { expect, it } from 'vitest'
 import { createPetBlinkSchedule, petIdleFrame, petBlinkStep } from '@/features/pets/pet-idle-animation'
 it('breathes over six seconds without selecting an action or blink pose', () => {
-  const schedule = createPetBlinkSchedule(42)
+  const schedule = {starts:[0],period:100000}
   expect(Array.from({ length: 7 }, (_, i) => petIdleFrame(i * 1000, false, schedule))).toEqual([
     0, 1, 2, 3, 2, 1, 0,
   ])
 })
-it('spaces irregular blinks seven to twelve seconds apart, including wraparound', () => {
+it('spaces irregular blinks three to five seconds apart, including wraparound', () => {
   const s = createPetBlinkSchedule(42),
     starts = [...s.starts, s.period]
   for (let i = 1; i < starts.length; i++) {
-    expect(starts[i] - starts[i - 1]).toBeGreaterThanOrEqual(7000)
-    expect(starts[i] - starts[i - 1]).toBeLessThanOrEqual(12000)
+    expect(starts[i] - starts[i - 1]).toBeGreaterThanOrEqual(3000)
+    expect(starts[i] - starts[i - 1]).toBeLessThanOrEqual(5000)
   }
   expect(new Set(starts.slice(1).map((n, i) => n - starts[i])).size).toBeGreaterThan(1)
   const at = s.starts[1]

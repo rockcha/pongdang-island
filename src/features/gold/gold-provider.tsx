@@ -104,7 +104,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     } catch (cause) {
       // Keep the operation ID on transport failure; retry cannot charge twice.
       if (cause && typeof cause === 'object' && 'code' in cause && /^[0-9A-Z]{5}$/.test(String(cause.code))) pending.current = null
-      throw new Error(goldError(cause))
+      throw Object.assign(new Error(goldError(cause)),cause&&typeof cause==='object'&&'code' in cause?{code:String(cause.code)}:{})
     } finally { locked.current = false; if (active.current) setBusy(false) }
     if (!active.current) return
     if(purchaseKey){if(effectBatch.current)effectBatch.current.purchaseKey=purchaseKey;else playPurchaseSound(purchaseKey)}

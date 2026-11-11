@@ -152,6 +152,7 @@ export const resourceEvents: Record<string, string[]> = {
     'menu-status',
   ],
   'collectibles-changed': [
+    'pet-house',
     'today-fishing-records',
     'flea',
     'flea-inventory',

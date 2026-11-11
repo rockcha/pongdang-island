@@ -45,6 +45,8 @@ jobs:
         run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/pet-preview-model.test.ts tests/pet-enhancement.test.ts tests/pet-preview-ui.test.tsx tests/pet-preview-assets.test.ts tests/pet-idle-animation.test.ts tests/pet-needs-animation.test.ts tests/pet-sprite-transition.test.tsx tests/pet-sprite-images.test.ts tests/pet-draw-layout.test.ts tests/pet-jobs-panel.test.tsx tests/operator-guard.test.tsx tests/header-place-navigation.test.tsx tests/page-navigation.test.tsx
       - name: Weather artwork, decorations and preview regressions
         run: npm test -- --maxWorkers=1 --testTimeout=15000 tests/weather-decorations.test.ts tests/shared-decoration-animation.test.ts tests/weather-pongi-assets.test.ts tests/weather-pongi-picker.test.tsx tests/development-weather-catalog.test.ts tests/fishing-weather.test.tsx tests/mythic-swim.test.ts
+      - name: Pet house storefront and animation regressions
+        run: npm test -- --maxWorkers=1 --testTimeout=30000 tests/pet-snack-shop.test.tsx tests/pet-job-cancel.test.ts tests/pet-ground.test.ts tests/pet-horizontal.test.ts tests/bait-shop-ui.test.tsx tests/bait-shop-filters.test.ts
       - run: npm run build
       - uses: actions/upload-artifact@v4
         if: always()

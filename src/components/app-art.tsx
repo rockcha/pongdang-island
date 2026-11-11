@@ -18,6 +18,7 @@ function decorationShopArtwork({className='size-6'}:{className?:string;strokeWid
  return <span aria-hidden="true" className={`relative inline-block shrink-0 ${className}`}><Decoration className="size-full"/><Store className="absolute -bottom-0.5 -right-0.5 size-[45%] rounded-full bg-background p-px text-primary" strokeWidth={2.3}/></span>
 }
 export const appArt={
+ petFood:artwork('pet-food-v1','app-icons','webp'),
  itemCollection:artwork('item-collection'),
  developmentFund:artwork('development-fund','app-icons','svg'),
  decorationShop:decorationShopArtwork,

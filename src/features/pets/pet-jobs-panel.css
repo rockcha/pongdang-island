@@ -26,6 +26,67 @@
   flex-direction: column;
   gap: 18px;
 }
+.pet-job-specialty { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; color: #809177; font-size: 11px; }
+.pet-job-specialty > span { padding: 4px 8px; border-radius: 8px; background: #a6b99c12; }
+.pet-job-description { font-size: 10px; line-height: 1.6; color: var(--muted-foreground); margin: 5px 0 8px; }
+.pet-job-dialog {
+  width: calc(100% - 32px);
+  max-width: 390px;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  padding: 22px;
+  gap: 18px;
+  background: var(--background);
+}
+.pet-job-dialog .pet-jobs-panel { gap: 14px; }
+.pet-job-dialog .pet-jobs-panel button {
+  cursor: pointer;
+  border-radius: 10px;
+  min-height: 40px;
+  padding: 9px 12px;
+  font: inherit;
+  font-size: 12px;
+}
+.pet-job-dialog .pet-jobs-panel button:disabled { opacity: .4; cursor: default; }
+.pet-job-dialog .pet-jobs-panel button:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.pet-job-dialog .pet-job-intro h3 { display: none; }
+.pet-job-dialog .pet-job-option-copy > strong { word-break: keep-all; overflow-wrap: anywhere; }
+.pet-job-dialog .pet-job-description { word-break: keep-all; }
+.pet-job-dialog .pet-job-guide { font-size: 11px !important; color: var(--muted-foreground); }
+.pet-job-tab-dot { display: inline-block; margin-left: 4px; vertical-align: middle; width: 4px; height: 4px; border-radius: 50%; background: #b6a17b; }
+.pet-job-tab-dot.is-done { background: #82a17c; }
+.pet-work-cancel { width: 100%; margin-top: 12px; border: 1px solid var(--border); color: #96735f; background: #f3e9db55; }
+.pet-work-portrait { width: 100%; height: 100%; object-fit: contain; }
+.pet-work-job-icon { position: absolute; right: -4px; bottom: -4px; width: 22px; height: 22px; border: 1px solid var(--border); border-radius: 7px; background: var(--background); }
+.pet-work-job-icon svg { width: 100%; height: 100%; }
+.pet-work-cancel-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+.pet-work-cancel-actions button { padding: 10px 12px; min-height: 40px; border-radius: 10px; font-size: 12px; }
+.pet-work-cancel-actions button:last-child { background: var(--secondary); }
+.pet-work-cancel-actions button:disabled { opacity: .4; }
+.pet-job-status { flex: 1; min-height: 0; }
+.pet-job-status .pet-work-card { padding: 16px; }
+.pet-job-status .pet-work-countdown { padding: 14px 0; }
+.pet-job-status .pet-work-countdown > span { margin-bottom: 5px; }
+.pet-job-status .pet-work-countdown > time { font-size: 34px; }
+.pet-job-status .pet-work-countdown > p { margin-top: 5px; }
+.pet-job-status .pet-work-reward { margin-top: 12px; padding-top: 12px; }
+.pet-job-status .pet-work-hint { font-size: 10px; text-align: center; color: var(--muted-foreground); }
+.pet-work-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 0; text-align: center; }
+.pet-work-empty > svg { color: #b7a284; }
+.pet-work-empty h3 { font-size: 14px; font-weight: 600; }
+.pet-work-empty p { color: var(--muted-foreground); font-size: 11px; }
+.pet-work-empty button { padding: 9px 16px; background: var(--secondary); }
+.pet-job-intro { position: relative; }
+.pet-job-intro .pet-job-change-pet { font-size: 10px !important; margin-top: 4px; }
+@media (max-height:740px) {
+ .pet-job-status .pet-work-card { padding: 12px; }
+ .pet-job-status .pet-work-art { width: 40px; height: 40px; }
+ .pet-job-status .pet-work-countdown { padding: 8px 0; }
+ .pet-job-status .pet-work-countdown > time { font-size: 30px; }
+ .pet-job-status .pet-work-countdown > p { margin-top: 3px; }
+ .pet-job-status .pet-work-reward { margin-top: 8px; padding-top: 8px; }
+ .pet-preview .pet-job-status .pet-work-cancel { min-height: 34px; padding: 6px; margin-top: 8px; }
+}
 .pet-work-card {
   border: 1px solid var(--border);
   border-radius: 22px;

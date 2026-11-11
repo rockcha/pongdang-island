@@ -1,7 +1,9 @@
 import { useId } from 'react'
-import type { PetJobId } from './pet-catalog'
+import { petJobById, type PetJobId } from './pet-catalog'
 
-export function PetJobArtwork({ jobId }: { jobId: PetJobId }) {
+export function PetJobArtwork({ jobId: selectedJobId }: { jobId: PetJobId }) {
+  const job = petJobById(selectedJobId)
+  const jobId = job && 'artwork' in job ? job.artwork : selectedJobId
   const id = `pet-job-${useId().replaceAll(':', '')}`
   return (
     <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">

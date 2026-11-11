@@ -1,7 +1,7 @@
 import { useEffect, useId, useState } from 'react'
 import { ArrowRight, Check, Sparkles } from 'lucide-react'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
-import { PET_MAX_LEVEL, petJobs, petSpeciesById } from './pet-catalog'
+import { PET_MAX_LEVEL, petJobBonus, petSpeciesById } from './pet-catalog'
 import { petEnhancementIssue, type PreviewPet } from './pet-preview-model'
 import './pet-enhancement.css'
 
@@ -13,7 +13,6 @@ export function PetEnhancementDialog({pet,pets,busy,onClose,onEnhance,onJobs}:Pr
   const material=candidates.find(p=>p.id===materialId)
   const issue=petEnhancementIssue(pet,material)
   const pages=Math.max(1,Math.ceil(candidates.length/4)),at=Math.min(page,pages-1)
-  const unlocked=petJobs.filter(j=>j.requiredLevel===pet.level&&j.requiredLevel>baseline)
   useEffect(()=>{
     if(!result)return
     const timer=setTimeout(()=>setSettled(true),1400)
@@ -29,15 +28,15 @@ export function PetEnhancementDialog({pet,pets,busy,onClose,onEnhance,onJobs}:Pr
         <img src={`/pets/${pet.speciesId}_v1_thumbnail.png`} alt=""/>
         <strong className="pet-enhance-result-level" role="status">+{pet.level}</strong>
       </div>
-      {unlocked.length ? <div className="pet-enhance-unlocks"><p><Check size={14}/> 새로운 알바 3개가 열렸어요</p>{unlocked.map(j=><span key={j.id}>{j.name}</span>)}</div> : <p className="pet-enhance-next">{maxed?'최고 강화 단계에 도달했어요.':`다음 알바 해금까지 ${pet.level<2?2-pet.level:4-pet.level}번 남았어요.`}</p>}
+      <div className="pet-enhance-unlocks"><p><Check size={14}/> 전용 알바 보상 +{petJobBonus(pet.level)}%</p><span>근무 시간은 그대로 · 다음 출발부터 적용돼요</span></div>
       <div className="pet-enhance-footer">{!maxed&&<button disabled={!settled} onClick={()=>{setBaseline(pet.level);setMaterialId(null);setReviewing(false);setSettled(false);setPage(0)}}>계속 강화</button>}<button className="is-primary" onClick={onJobs}>알바 보러 가기</button></div>
     </> : reviewing&&material ? <>
       <div className="pet-enhance-pair">{portrait(material,'재료 · 사라져요')}<ArrowRight size={20} aria-hidden="true"/>{portrait(pet,'강화 대상')}</div>
-      <div className="pet-enhance-summary"><span>강화 결과</span><strong>{pet.name} +{pet.level} <ArrowRight size={12}/> +{pet.level+1}</strong><small>성공 확률 100% · 재료 1마리 소모</small></div>
+      <div className="pet-enhance-summary"><span>강화 결과</span><strong>{pet.name} +{pet.level} <ArrowRight size={12}/> +{pet.level+1}</strong><small>알바 보상 +{petJobBonus(pet.level)}% → +{petJobBonus(pet.level+1)}%</small><small>성공 확률 100% · 재료 1마리 소모</small></div>
       <div className="pet-enhance-footer"><button onClick={()=>setReviewing(false)}>돌아가기</button><button className="is-primary" disabled={busy||!!issue} onClick={()=>onEnhance(material.id,pet.level)}>확인하고 강화</button></div>
     </> : <>
       <div className="pet-enhance-target">{portrait(pet)}<span className="pet-enhance-target-step">{maxed?'MAX':<>+{pet.level}<ArrowRight size={13}/>+{pet.level+1}</>}</span></div>
-      {maxed ? <p className="pet-enhance-next">모든 아르바이트가 열렸어요.</p> : pet.job ? <p className="pet-enhance-next">알바 보상을 받은 뒤 강화할 수 있어요.</p> : <>
+      {maxed ? <p className="pet-enhance-next">최고 강화 +5 · 전용 알바 보상 +15%</p> : pet.job ? <p className="pet-enhance-next">알바 보상을 받은 뒤 강화할 수 있어요.</p> : <>
         <div className="pet-enhance-material-heading"><span>재료 선택</span><small>{petSpeciesById(pet.speciesId).name} · +0</small></div>
         {candidates.length ? <div className="pet-enhance-materials">{candidates.slice(at*4,at*4+4).map(p=><button key={p.id} aria-label={`${p.name} +0`} aria-pressed={materialId===p.id} onClick={()=>setMaterialId(p.id)}><img src={`/pets/${p.speciesId}_v1_thumbnail.png`} alt=""/><span>{p.name}<small>+0</small></span>{materialId===p.id&&<Check size={14}/>}</button>)}</div> : <p className="pet-enhance-empty">같은 종의 +0 친구가 필요해요.<br/>운영자 테스트 도구에서 같은 종을 추가해 볼 수 있어요.</p>}
         {pages>1&&<div className="pet-pagination"><button disabled={!at} onClick={()=>setPage(at-1)}>이전</button><span>{at+1} / {pages}</span><button disabled={at===pages-1} onClick={()=>setPage(at+1)}>다음</button></div>}

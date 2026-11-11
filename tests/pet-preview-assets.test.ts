@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import { createHash } from 'node:crypto'
 import sharp from 'sharp'
 import { expect, it } from 'vitest'
-import { petSpecies } from '@/features/pets/pet-catalog'
+import { petSpecies, petUsesAtlas } from '@/features/pets/pet-catalog'
 import layouts from '@/features/pets/pet-sprite-layouts.json'
 import calmLayouts from '@/features/pets/pet-calm-idle-layouts.json'
 import eatingLayouts from '@/features/pets/pet-eating-layouts.json'
@@ -13,7 +13,7 @@ it('ships four blink companions with bounded opaque eye patches and verified alp
   const base='assets/storage-upload/new/20261110-160000'
   const m=JSON.parse(fs.readFileSync(`${base}/manifest.json`,'utf8'))
   expect(m.items).toHaveLength(4)
-  for(const pet of petSpecies){
+  for(const pet of petSpecies.filter(p=>!petUsesAtlas(p.id))){
     const layout=blinkLayouts[`${pet.id}-needs-blink` as keyof typeof blinkLayouts]
     const entry=m.items.find((e:{pet_id:string})=>e.pet_id===pet.id)
     const bytes=fs.readFileSync(`public/${entry.sprite_sheet_path}`),meta=await sharp(bytes).metadata()
@@ -51,7 +51,7 @@ it('ships all four dedicated eating sheets with the reviewed alpha and hash', as
     fs.readFileSync('assets/storage-upload/new/20261109-203000/manifest.json', 'utf8'),
   )
   expect(m.items).toHaveLength(4)
-  for (const pet of petSpecies) {
+  for (const pet of petSpecies.filter(p=>!petUsesAtlas(p.id))) {
     const id = `${pet.id}-eat` as keyof typeof eatingLayouts,
       layout = eatingLayouts[id],
       entry = m.items.find((s: { id: string }) => s.id === id)
@@ -65,9 +65,9 @@ it('ships all four dedicated eating sheets with the reviewed alpha and hash', as
   }
 })
 it('ships four pet identities and all twelve alpha sheets with the reviewed layout', async () => {
-  expect(manifest.pets.map((p: { id: string }) => p.id)).toEqual(petSpecies.map((p) => p.id))
+  expect(manifest.pets.map((p: { id: string }) => p.id)).toEqual(petSpecies.filter(p=>!petUsesAtlas(p.id)).map((p) => p.id))
   expect(manifest.items).toHaveLength(12)
-  for (const p of petSpecies) {
+  for (const p of petSpecies.filter(p=>!petUsesAtlas(p.id))) {
     expect(fs.existsSync(`public/pets/${p.id}_v1_thumbnail.png`)).toBe(true)
     for (const [kind, suffix, columns] of [
       ['idle', 'idle8', 4],
@@ -92,7 +92,7 @@ it('ships the calm idle revision with stable silhouettes and baked head alignmen
   const calm = JSON.parse(fs.readFileSync(`${path}/manifest.json`, 'utf8'))
   const reg = JSON.parse(fs.readFileSync(`${path}/registration.json`, 'utf8'))
   expect(calm.items).toHaveLength(4)
-  for (const p of petSpecies) {
+  for (const p of petSpecies.filter(p=>!petUsesAtlas(p.id))) {
     const id = `${p.id}-idle` as keyof typeof calmLayouts,
       layout = calmLayouts[id]
     const entry = calm.items.find((s: { id: string }) => s.id === id),

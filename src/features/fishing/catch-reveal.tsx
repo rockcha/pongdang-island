@@ -48,11 +48,12 @@ export function CatchReveal({species,failure,onDismiss,practice=false,preview=fa
     {species?<span className="flex w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
      {nativeRegion&&<img src={nativeRegion.src} alt={`${nativeRegion.name} 고유종`} title={`${nativeRegion.name} 고유종`} className="size-8 shrink-0 object-contain drop-shadow-md sm:size-9"/>}
      <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.kind==='relic'&&<span role="img" aria-label="유물" className="mr-1.5 inline-flex align-middle"><RelicIcon className="size-[1em] shrink-0"/></span>}{species.id.startsWith('halloween-')&&<span aria-label="할로윈 한정" className="mr-1.5 inline-flex align-middle"><HalloweenIcon className="size-[1em] shrink-0"/></span>}{species.name}</span>
-     <span className="inline-flex shrink-0 items-center gap-2">{species.weather_type?<span role="img" aria-label={weatherNames[species.weather_type]} title={weatherNames[species.weather_type]}><WeatherIcon kind={species.weather_type} className="size-7 drop-shadow"/></span>:<span className="inline-flex h-7 items-center rounded px-2 text-xs font-bold leading-5" style={{backgroundColor:badge.background,color:badge.text,colorScheme:'only light'}}>{rarities[rarity].label}</span>}{firstDiscovery&&!practice&&<NewDiscoveryBadge size="md"/>}</span>
+     <span className="inline-flex shrink-0 items-center gap-2">{species.weather_type?<span role="img" aria-label={weatherNames[species.weather_type]} title={weatherNames[species.weather_type]}><WeatherIcon kind={species.weather_type} className="size-7 drop-shadow"/></span>:<span className="inline-flex h-7 items-center rounded px-2 text-xs font-bold leading-5" style={{backgroundColor:badge.background,color:badge.text,colorScheme:'only light'}}>{species.kind==='pet'?'펫':rarities[rarity].label}</span>}{firstDiscovery&&!practice&&<NewDiscoveryBadge size="md"/>}</span>
     </span>:<>
      <span className="text-2xl font-bold tracking-tight text-white">낚시 실패</span>
     </>}
     {species&&<span className="h-px w-12 bg-gradient-to-r from-transparent via-current to-transparent opacity-70" aria-hidden="true"/>}
+    {species?.kind==='pet'&&!practice&&<span className="text-xs text-white/80">펫 하우스의 펫 목록에 새 친구가 도착했어요.</span>}
     {species?.description&&<span className="max-w-xs text-pretty break-keep px-2 text-sm font-normal leading-7 text-white/85 drop-shadow-sm">{species.description}</span>}
     {!species&&<span className="max-w-xs text-sm leading-6 text-white/90">{chanceFailure?chanceMessage:failure}</span>}
     {practice&&<span className="text-xs text-white/60">{species?'연습 결과예요. 실제 보상은 지급되지 않아요.':'연습에서는 미끼를 사용하지 않아요.'}</span>}

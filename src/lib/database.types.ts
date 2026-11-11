@@ -6,6 +6,7 @@ type RequestRow = Omit<FriendRequest, 'sender' | 'recipient'>
 type NotificationRow = Omit<AppNotification, 'request'>
 export type Database = {
   public: {
+    // Pet ownership is private; access is through account-scoped RPCs.
     Tables: {
       bug_reports: {Row:import('@/features/bugs/api').BugReport;Insert:import('@/features/bugs/api').BugReportDraft;Update:Partial<Omit<import('@/features/bugs/api').BugReportDraft,'id'>>;Relationships:[]}
       suggestion_posts: {Row:import('@/features/suggestions/api').Suggestion;Insert:import('@/features/suggestions/api').SuggestionDraft;Update:Partial<Omit<import('@/features/suggestions/api').SuggestionDraft,'id'>>;Relationships:[]}
@@ -36,6 +37,9 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      pet_house_state: {Args:Record<string,never>;Returns:import('@/features/pets/pet-preview-model').PetPreviewState}
+      pet_house_command: {Args:{p_operation_id:string;p_command:Record<string,unknown>};Returns:import('@/features/pets/pet-preview-model').PetPreviewState & {delta:number;replayed:boolean}}
+      buy_pet_food: {Args:{p_operation_id:string;p_quantity:number};Returns:import('@/features/gold/api').GoldState & {delta:number;replayed:boolean}}
         billiards_state:{Args:Record<string,never>;Returns:import('@/features/arcade/billiards-api').BilliardsAccountState}
         billiards_start:{Args:{p_operation_id:string;p_engine_version?:number};Returns:import('@/features/arcade/billiards-api').BilliardsAccountState}
         billiards_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/shadow-api').ShadowLeaderboard}

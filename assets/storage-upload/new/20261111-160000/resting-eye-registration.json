@@ -1,0 +1,1016 @@
+{
+  "sand-golem": {
+    "0": {
+      "path": "public/pets/sand-golem_idle8_v2_sprite.png",
+      "sourceSha256": "3a3c29bd06ded3aea3f8913d378a71ed8faef736a342e0beac6c59df9446919c",
+      "cell": 462,
+      "expected": [
+        [
+          190.5,
+          162.5
+        ],
+        [
+          258,
+          149.5
+        ]
+      ],
+      "boxes": [
+        [
+          203.28,
+          168.63,
+          33.495,
+          40.425
+        ],
+        [
+          281.82,
+          153.615,
+          32.34,
+          39.27
+        ]
+      ]
+    }
+  },
+  "wave-cat": {
+    "0": {
+      "path": "public/pets/wave-cat_idle8_v2_sprite.png",
+      "sourceSha256": "4035e0f64195f55b986bf5467f5bbeffa23f0fd7a60378652cb280641a3f8836",
+      "cell": 462,
+      "expected": [
+        [
+          207.5,
+          171.5
+        ],
+        [
+          274,
+          153
+        ]
+      ],
+      "boxes": [
+        [
+          212.52,
+          175.56,
+          56.595,
+          45.045
+        ],
+        [
+          293.37,
+          154.77,
+          47.355,
+          43.89
+        ]
+      ]
+    }
+  },
+  "mochi-dragon": {
+    "0": {
+      "path": "public/pets/mochi-dragon_idle8_v2_sprite.png",
+      "sourceSha256": "94348142a913c96da45bd78548f3f766bc53f83d601fb2ac5fc58429334b23a8",
+      "cell": 460,
+      "expected": [
+        [
+          157,
+          154
+        ],
+        [
+          230.5,
+          170
+        ]
+      ],
+      "boxes": [
+        [
+          162.15,
+          157.55,
+          37.95,
+          35.65
+        ],
+        [
+          243.8,
+          174.8,
+          43.7,
+          37.95
+        ]
+      ]
+    }
+  },
+  "jelly-seal": {
+    "0": {
+      "path": "public/pets/jelly-seal_idle8_v2_sprite.png",
+      "sourceSha256": "231c49034b2ae9f78838d167ccd086d520bb249ad696d239d07c34e5b1668281",
+      "cell": 462,
+      "expected": [
+        [
+          141.5,
+          154
+        ],
+        [
+          212.5,
+          172.5
+        ]
+      ],
+      "boxes": [
+        [
+          144.375,
+          159.39,
+          39.27,
+          38.115
+        ],
+        [
+          226.38,
+          180.18,
+          39.27,
+          39.27
+        ]
+      ]
+    }
+  },
+  "maple-panda": {
+    "0": {
+      "path": "public/pets/maple-panda_atlas16_v1_sprite.png",
+      "sourceSha256": "b91f7eb1a55d98e6fe6be7c5477062ff3058f9289cfe9409c764112dfec33c11",
+      "cell": 320,
+      "expected": [
+        [
+          218,
+          207
+        ],
+        [
+          275,
+          188
+        ]
+      ],
+      "boxes": [
+        [
+          152,
+          140,
+          40,
+          32
+        ],
+        [
+          205.6,
+          128.8,
+          32,
+          29.6
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/maple-panda_atlas16_v1_sprite.png",
+      "sourceSha256": "b91f7eb1a55d98e6fe6be7c5477062ff3058f9289cfe9409c764112dfec33c11",
+      "cell": 320,
+      "expected": [
+        [
+          217,
+          190
+        ],
+        [
+          274,
+          171
+        ]
+      ],
+      "boxes": [
+        [
+          151.2,
+          124,
+          39.2,
+          34.4
+        ],
+        [
+          203.2,
+          113.6,
+          34.4,
+          30.4
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/maple-panda_atlas16_v1_sprite.png",
+      "sourceSha256": "b91f7eb1a55d98e6fe6be7c5477062ff3058f9289cfe9409c764112dfec33c11",
+      "cell": 320,
+      "expected": [
+        [
+          217,
+          187
+        ],
+        [
+          274,
+          168
+        ]
+      ],
+      "boxes": [
+        [
+          152,
+          122.4,
+          41.6,
+          33.6
+        ],
+        [
+          205.6,
+          114.4,
+          33.6,
+          28.8
+        ]
+      ]
+    }
+  },
+  "poka-shark": {
+    "0": {
+      "path": "public/pets/poka-shark_atlas16_v1_sprite.png",
+      "sourceSha256": "9362041e18dbf6c3cdcb3bd31d16bea6a74ea8bc4052c0207dcc3ffb250fb1ca",
+      "cell": 320,
+      "expected": [
+        [
+          231,
+          193
+        ],
+        [
+          295,
+          173
+        ]
+      ],
+      "boxes": [
+        [
+          155.2,
+          131.2,
+          47.2,
+          42.4
+        ],
+        [
+          224,
+          117.6,
+          36,
+          37.6
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/poka-shark_atlas16_v1_sprite.png",
+      "sourceSha256": "9362041e18dbf6c3cdcb3bd31d16bea6a74ea8bc4052c0207dcc3ffb250fb1ca",
+      "cell": 320,
+      "expected": [
+        [
+          223,
+          207
+        ],
+        [
+          287,
+          187
+        ]
+      ],
+      "boxes": [
+        [
+          164,
+          137.6,
+          39.2,
+          33.6
+        ],
+        [
+          223.2,
+          121.6,
+          31.2,
+          34.4
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/poka-shark_atlas16_v1_sprite.png",
+      "sourceSha256": "9362041e18dbf6c3cdcb3bd31d16bea6a74ea8bc4052c0207dcc3ffb250fb1ca",
+      "cell": 320,
+      "expected": [
+        [
+          239,
+          207
+        ],
+        [
+          303,
+          187
+        ]
+      ],
+      "boxes": [
+        [
+          161.6,
+          151.2,
+          44,
+          40
+        ],
+        [
+          227.2,
+          142.4,
+          35.2,
+          32.8
+        ]
+      ]
+    }
+  },
+  "acorn-squirrel": {
+    "0": {
+      "path": "public/pets/acorn-squirrel_atlas16_v1_sprite.png",
+      "sourceSha256": "eb7583197aa36ee8be9d01f955e21c3dc27a4ab01cb9f90d4d41edcd0e767bac",
+      "cell": 320,
+      "expected": [
+        [
+          229,
+          194
+        ],
+        [
+          286,
+          177
+        ]
+      ],
+      "boxes": [
+        [
+          156,
+          128.8,
+          45.6,
+          33.6
+        ],
+        [
+          215.2,
+          113.6,
+          32,
+          32
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/acorn-squirrel_atlas16_v1_sprite.png",
+      "sourceSha256": "eb7583197aa36ee8be9d01f955e21c3dc27a4ab01cb9f90d4d41edcd0e767bac",
+      "cell": 320,
+      "expected": [
+        [
+          228,
+          194
+        ],
+        [
+          285,
+          177
+        ]
+      ],
+      "boxes": [
+        [
+          156,
+          128.8,
+          46.4,
+          35.2
+        ],
+        [
+          215.2,
+          114.4,
+          33.6,
+          32.8
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/acorn-squirrel_atlas16_v1_sprite.png",
+      "sourceSha256": "eb7583197aa36ee8be9d01f955e21c3dc27a4ab01cb9f90d4d41edcd0e767bac",
+      "cell": 320,
+      "expected": [
+        [
+          237,
+          209
+        ],
+        [
+          294,
+          192
+        ]
+      ],
+      "boxes": [
+        [
+          160,
+          146.4,
+          43.2,
+          32
+        ],
+        [
+          218.4,
+          133.6,
+          35.2,
+          32
+        ]
+      ]
+    }
+  },
+  "hedge-pin": {
+    "0": {
+      "path": "public/pets/hedge-pin_atlas16_v1_sprite.png",
+      "sourceSha256": "3a0f890881671c4922edbb2c8f6568bd930b21589cb482bdfbebedda063d3950",
+      "cell": 320,
+      "expected": [
+        [
+          208,
+          212
+        ],
+        [
+          281,
+          187
+        ]
+      ],
+      "boxes": [
+        [
+          139.2,
+          141.6,
+          44.8,
+          37.6
+        ],
+        [
+          208,
+          126.4,
+          36,
+          34.4
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/hedge-pin_atlas16_v1_sprite.png",
+      "sourceSha256": "3a0f890881671c4922edbb2c8f6568bd930b21589cb482bdfbebedda063d3950",
+      "cell": 320,
+      "expected": [
+        [
+          208,
+          212
+        ],
+        [
+          281,
+          187
+        ]
+      ],
+      "boxes": [
+        [
+          139.2,
+          141.6,
+          44.8,
+          36.8
+        ],
+        [
+          207.2,
+          127.2,
+          36.8,
+          32.8
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/hedge-pin_atlas16_v1_sprite.png",
+      "sourceSha256": "3a0f890881671c4922edbb2c8f6568bd930b21589cb482bdfbebedda063d3950",
+      "cell": 320,
+      "expected": [
+        [
+          211,
+          222
+        ],
+        [
+          284,
+          197
+        ]
+      ],
+      "boxes": [
+        [
+          140.8,
+          152,
+          45.6,
+          36.8
+        ],
+        [
+          211.2,
+          141.6,
+          35.2,
+          34.4
+        ]
+      ]
+    }
+  },
+  "bonbon-triceratops": {
+    "0": {
+      "path": "public/pets/bonbon-triceratops_atlas16_v1_sprite.png",
+      "sourceSha256": "3d4d0ddc2552824250a8ecccd17e4e810250bfa7ec6c18061a11d2d20dfa042d",
+      "cell": 320,
+      "expected": [
+        [
+          225,
+          200
+        ],
+        [
+          285,
+          176
+        ]
+      ],
+      "boxes": [
+        [
+          150.4,
+          136,
+          40,
+          32
+        ],
+        [
+          209.6,
+          121.6,
+          35.2,
+          33.6
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/bonbon-triceratops_atlas16_v1_sprite.png",
+      "sourceSha256": "3d4d0ddc2552824250a8ecccd17e4e810250bfa7ec6c18061a11d2d20dfa042d",
+      "cell": 320,
+      "expected": [
+        [
+          223,
+          193
+        ],
+        [
+          283,
+          169
+        ]
+      ],
+      "boxes": [
+        [
+          148.8,
+          132,
+          42.4,
+          42.4
+        ],
+        [
+          208,
+          119.2,
+          36.8,
+          33.6
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/bonbon-triceratops_atlas16_v1_sprite.png",
+      "sourceSha256": "3d4d0ddc2552824250a8ecccd17e4e810250bfa7ec6c18061a11d2d20dfa042d",
+      "cell": 320,
+      "expected": [
+        [
+          232,
+          207
+        ],
+        [
+          292,
+          183
+        ]
+      ],
+      "boxes": [
+        [
+          156,
+          144.8,
+          39.2,
+          32.8
+        ],
+        [
+          214.4,
+          137.6,
+          32.8,
+          29.6
+        ]
+      ]
+    }
+  },
+  "nurung-fox": {
+    "0": {
+      "path": "public/pets/nurung-fox_atlas16_v1_sprite.png",
+      "sourceSha256": "3f9026a4c403a7f870d50b8c96338e76ccacc4e65c4cb75abf03024b966effed",
+      "cell": 320,
+      "expected": [
+        [
+          226,
+          198
+        ],
+        [
+          287,
+          179
+        ]
+      ],
+      "boxes": [
+        [
+          152.8,
+          136,
+          42.4,
+          32
+        ],
+        [
+          212,
+          124.8,
+          33.6,
+          30.4
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/nurung-fox_atlas16_v1_sprite.png",
+      "sourceSha256": "3f9026a4c403a7f870d50b8c96338e76ccacc4e65c4cb75abf03024b966effed",
+      "cell": 320,
+      "expected": [
+        [
+          225,
+          198
+        ],
+        [
+          286,
+          179
+        ]
+      ],
+      "boxes": [
+        [
+          152.8,
+          134.4,
+          43.2,
+          32.8
+        ],
+        [
+          212,
+          123.2,
+          33.6,
+          31.2
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/nurung-fox_atlas16_v1_sprite.png",
+      "sourceSha256": "3f9026a4c403a7f870d50b8c96338e76ccacc4e65c4cb75abf03024b966effed",
+      "cell": 320,
+      "expected": [
+        [
+          227,
+          182
+        ],
+        [
+          288,
+          163
+        ]
+      ],
+      "boxes": [
+        [
+          152,
+          127.2,
+          42.4,
+          35.2
+        ],
+        [
+          210.4,
+          116.8,
+          35.2,
+          30.4
+        ]
+      ]
+    }
+  },
+  "ppinu-penguin": {
+    "0": {
+      "path": "public/pets/ppinu-penguin_atlas16_v1_sprite.png",
+      "sourceSha256": "e3683455437dbe424ebe05e07d729bbc6f45ba38bbb7e4e908995de5d064105d",
+      "cell": 320,
+      "expected": [
+        [
+          205,
+          177
+        ],
+        [
+          270,
+          160
+        ]
+      ],
+      "boxes": [
+        [
+          136.8,
+          121.6,
+          49.6,
+          40.8
+        ],
+        [
+          212,
+          104.8,
+          34.4,
+          36.8
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/ppinu-penguin_atlas16_v1_sprite.png",
+      "sourceSha256": "e3683455437dbe424ebe05e07d729bbc6f45ba38bbb7e4e908995de5d064105d",
+      "cell": 320,
+      "expected": [
+        [
+          206,
+          176
+        ],
+        [
+          271,
+          159
+        ]
+      ],
+      "boxes": [
+        [
+          136,
+          118.4,
+          50.4,
+          40.8
+        ],
+        [
+          211.2,
+          103.2,
+          35.2,
+          37.6
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/ppinu-penguin_atlas16_v1_sprite.png",
+      "sourceSha256": "e3683455437dbe424ebe05e07d729bbc6f45ba38bbb7e4e908995de5d064105d",
+      "cell": 320,
+      "expected": [
+        [
+          204,
+          196
+        ],
+        [
+          269,
+          179
+        ]
+      ],
+      "boxes": [
+        [
+          134.4,
+          140.8,
+          52,
+          39.2
+        ],
+        [
+          211.2,
+          128,
+          34.4,
+          33.6
+        ]
+      ]
+    }
+  },
+  "coco-capybara": {
+    "0": {
+      "path": "public/pets/coco-capybara_atlas16_v1_sprite.png",
+      "sourceSha256": "bfe4c44959fb33ac641c8dd377abc0d96a60435c34ad3c1d657c28f10bf7c1c5",
+      "cell": 320,
+      "expected": [
+        [
+          220,
+          164
+        ],
+        [
+          310,
+          144
+        ]
+      ],
+      "boxes": [
+        [
+          146.4,
+          108.8,
+          37.6,
+          34.4
+        ],
+        [
+          227.2,
+          89.6,
+          29.6,
+          30.4
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/coco-capybara_atlas16_v1_sprite.png",
+      "sourceSha256": "bfe4c44959fb33ac641c8dd377abc0d96a60435c34ad3c1d657c28f10bf7c1c5",
+      "cell": 320,
+      "expected": [
+        [
+          219,
+          163
+        ],
+        [
+          309,
+          143
+        ]
+      ],
+      "boxes": [
+        [
+          145.6,
+          107.2,
+          38.4,
+          36.8
+        ],
+        [
+          226.4,
+          86.4,
+          32.8,
+          32.8
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/coco-capybara_atlas16_v1_sprite.png",
+      "sourceSha256": "bfe4c44959fb33ac641c8dd377abc0d96a60435c34ad3c1d657c28f10bf7c1c5",
+      "cell": 320,
+      "expected": [
+        [
+          220,
+          199
+        ],
+        [
+          310,
+          179
+        ]
+      ],
+      "boxes": [
+        [
+          146.4,
+          132,
+          39.2,
+          35.2
+        ],
+        [
+          228,
+          118.4,
+          28,
+          29.6
+        ]
+      ]
+    }
+  },
+  "peach-axolotl": {
+    "0": {
+      "path": "public/pets/peach-axolotl_atlas16_v1_sprite.png",
+      "sourceSha256": "16fa8ac0180d8be88b68f180084a82f65a5b6b1c4a1c53b1c92c0529ec00f260",
+      "cell": 320,
+      "expected": [
+        [
+          205,
+          194
+        ],
+        [
+          278,
+          175
+        ]
+      ],
+      "boxes": [
+        [
+          138.4,
+          127.2,
+          45.6,
+          35.2
+        ],
+        [
+          208.8,
+          112,
+          36,
+          32.8
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/peach-axolotl_atlas16_v1_sprite.png",
+      "sourceSha256": "16fa8ac0180d8be88b68f180084a82f65a5b6b1c4a1c53b1c92c0529ec00f260",
+      "cell": 320,
+      "expected": [
+        [
+          202,
+          196
+        ],
+        [
+          275,
+          177
+        ]
+      ],
+      "boxes": [
+        [
+          137.6,
+          128.8,
+          47.2,
+          32
+        ],
+        [
+          208.8,
+          113.6,
+          30.4,
+          28
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/peach-axolotl_atlas16_v1_sprite.png",
+      "sourceSha256": "16fa8ac0180d8be88b68f180084a82f65a5b6b1c4a1c53b1c92c0529ec00f260",
+      "cell": 320,
+      "expected": [
+        [
+          201,
+          198
+        ],
+        [
+          274,
+          179
+        ]
+      ],
+      "boxes": [
+        [
+          138.4,
+          135.2,
+          48,
+          35.2
+        ],
+        [
+          209.6,
+          118.4,
+          36,
+          33.6
+        ]
+      ]
+    }
+  },
+  "cloud-alpaca": {
+    "0": {
+      "path": "public/pets/cloud-alpaca_atlas16_v1_sprite.png",
+      "sourceSha256": "92492fc43f032255d76019f54750b5ee45d42285473b98b3dd3a2d414599e75d",
+      "cell": 320,
+      "expected": [
+        [
+          220,
+          201
+        ],
+        [
+          287,
+          182
+        ]
+      ],
+      "boxes": [
+        [
+          146.4,
+          132.8,
+          47.2,
+          32.8
+        ],
+        [
+          212.8,
+          117.6,
+          33.6,
+          32
+        ]
+      ]
+    },
+    "4": {
+      "path": "public/pets/cloud-alpaca_atlas16_v1_sprite.png",
+      "sourceSha256": "92492fc43f032255d76019f54750b5ee45d42285473b98b3dd3a2d414599e75d",
+      "cell": 320,
+      "expected": [
+        [
+          220,
+          198
+        ],
+        [
+          287,
+          179
+        ]
+      ],
+      "boxes": [
+        [
+          146.4,
+          130.4,
+          47.2,
+          32
+        ],
+        [
+          212.8,
+          115.2,
+          35.2,
+          32
+        ]
+      ]
+    },
+    "8": {
+      "path": "public/pets/cloud-alpaca_atlas16_v1_sprite.png",
+      "sourceSha256": "92492fc43f032255d76019f54750b5ee45d42285473b98b3dd3a2d414599e75d",
+      "cell": 320,
+      "expected": [
+        [
+          221,
+          204
+        ],
+        [
+          288,
+          185
+        ]
+      ],
+      "boxes": [
+        [
+          147.2,
+          136,
+          42.4,
+          33.6
+        ],
+        [
+          212,
+          124,
+          35.2,
+          32.8
+        ]
+      ]
+    }
+  }
+}

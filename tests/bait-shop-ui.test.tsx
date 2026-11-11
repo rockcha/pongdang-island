@@ -3,11 +3,26 @@ import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {BaitShop} from '@/features/fishing/bait-shop'
 import {BaitTarget} from '@/features/fishing/bait-info'
 import type {FishingBait} from '@/features/fishing/api'
+import {petBaits} from '@/features/pets/pet-catalog'
 const mock=vi.hoisted(()=>({transact:vi.fn().mockResolvedValue(undefined),load:vi.fn()}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:1000,inventory:{}},transact:mock.transact,batchEffects:async(work:()=>Promise<void>)=>work(),loading:false,busy:false,error:''})}))
 vi.mock('@/features/fishing/api',()=>({loadFishing:mock.load}))
 beforeEach(()=>mock.load.mockResolvedValue({baits:[{id:'bait',name:'테스트 미끼',description:'미끼',image_path:'/bait.png',price:10,effect_description:'효과'}]}))
 afterEach(()=>{cleanup();vi.clearAllMocks()})
+it('shows all three pet baits in the pet filter and buys the server-priced starter pouch',async()=>{
+ const petItems=petBaits.map(b=>({id:'bait_pet_'+b.id,name:b.name,description:b.description,price:b.price,image_path:`/pets/items/${b.id}_v1.webp`,pet_bp:b.petBp,common_bp:b.commonBp,rare_bp:b.rareBp,epic_bp:b.epicBp,mythic_bp:b.mythicBp,failure_bp:0,mechanicsVersion:2,effect_kind:'fish',effect_description:''}))
+ mock.load.mockResolvedValue({baits:[{id:'bait',name:'일반 미끼',description:'',price:48,image_path:'/bait.png'},...petItems]})
+ render(<BaitShop/>);await screen.findByRole('button',{name:'일반 미끼 상세 보기'})
+ fireEvent.click(screen.getByRole('combobox',{name:'미끼 포획 대상'}));fireEvent.keyDown(await screen.findByRole('option',{name:'펫 미끼'}),{key:'Enter'})
+ await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
+ expect(screen.queryByRole('button',{name:'일반 미끼 상세 보기'})).toBeNull()
+ for(const b of petItems){const card=screen.getByRole('button',{name:b.name+' 상세 보기'});expect(within(card).getByText(String(b.price))).toBeTruthy();expect(within(card).getByText('펫 '+b.pet_bp/100+'%')).toBeTruthy();expect(card.querySelector('img')?.getAttribute('src')).toBe(b.image_path)}
+ fireEvent.click(screen.getByRole('button',{name:'포슬포슬 간식주머니 상세 보기'}))
+ expect(within(screen.getByRole('dialog')).getByText('펫 2%')).toBeTruthy()
+ fireEvent.change(screen.getByRole('spinbutton',{name:'구매 수량'}),{target:{value:'3'}})
+ fireEvent.click(screen.getByRole('button',{name:'포슬포슬 간식주머니 3개 구매'}))
+ await waitFor(()=>expect(mock.transact).toHaveBeenCalledWith({type:'buy',id:'fishing:bait_pet_starter',name:'포슬포슬 간식주머니',quantity:3,expectedPrice:120}))
+})
 it('buys the entire quantity in one transaction at the relic-discounted unit price',async()=>{
  mock.load.mockResolvedValue({baits:[{id:'bait',name:'테스트 미끼',description:'미끼',image_path:'/bait.png',price:8,base_price:10,priceDiscountGold:2,effect_description:'효과'}]})
  render(<BaitShop/>);fireEvent.click(await screen.findByRole('button',{name:'테스트 미끼 상세 보기'}))

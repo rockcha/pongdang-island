@@ -3,6 +3,7 @@ const RelicRoulettePage=lazy(()=>import('@/features/relic-roulette/roulette-page
 const ExplorationStatTestPage=lazy(()=>import('@/features/exploration/exploration-stat-test-page').then(module=>({default:module.ExplorationStatTestPage})))
 import {DecorationShopPage} from '@/features/gold/decoration-shop-page'
 import {lazy} from 'react'
+const PetHousePage=lazy(()=>import('@/features/pets/pet-house-page').then(module=>({default:module.PetHousePage})))
 const PetPreviewPage=lazy(()=>import('@/features/pets/pet-preview-page').then(module=>({default:module.PetPreviewPage})))
 import { OperatorGuard } from '@/components/operator-guard'
 import { Navigate, Route, Routes } from 'react-router'
@@ -93,6 +94,7 @@ export function AppRoutes() {
             <Route path="my-island" element={<Navigate to="/farm" replace />} />
             <Route path="aquarium/:tankId?" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
+            <Route path="pet-house" element={<PetHousePage/>} />
             <Route path="pet-house-test" element={<OperatorGuard><PetPreviewPage/></OperatorGuard>} />
             <Route path="item-collection" element={<CollectionPage items />} />
             <Route path="storage" element={<StoragePage />} />

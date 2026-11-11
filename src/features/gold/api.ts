@@ -1,6 +1,7 @@
 import {questProgressChanged} from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
 import { readAccountResource } from '@/lib/account-cache'
+import {accountCommand} from '@/lib/account-command'
 import type { Trade, Wallet } from './wallet'
 export type GoldState = Wallet & { testClaimed: boolean; testEnabled: boolean }
 export function goldError(cause: unknown): string {
@@ -26,16 +27,20 @@ export async function readGold(signal: AbortSignal) {
   return data
 }
 export async function transactGold(action: Trade, operationId: string) {
+ return accountCommand(async()=>{
+  if(action.type==='buy'&&action.id==='pet:food'){
+    const {data,error}=await createClient().rpc('buy_pet_food',{p_operation_id:operationId,p_quantity:action.quantity??1})
+    if(error)throw error
+    return data
+  }
   if(action.type==='buy'&&action.id.startsWith('map:')){
     const {data,error}=await createClient().rpc('buy_region_map',{p_region_id:action.id.slice(4),p_operation_id:operationId})
     if(error)throw error
-    if(typeof window!=='undefined')window.dispatchEvent(new Event('region-maps-changed'))
     return data
   }
   if(action.type!=='charge'&&action.id.startsWith('rod:')){
     const {data,error}=await createClient().rpc('trade_fishing_rod',{p_rod_id:action.id.slice(4),p_action:action.type,p_operation_id:operationId})
     if(error)throw error
-    if(typeof window!=='undefined')window.dispatchEvent(new Event('fishing-rods-changed'))
     return data
   }
   if(action.type==='sell'&&action.id.startsWith('collectibles:')){
@@ -62,16 +67,19 @@ export async function transactGold(action: Trade, operationId: string) {
   if (action.type === 'buy' && action.id === 'aquarium:tank') {
     const { data, error } = await createClient().rpc('buy_aquarium_tank', { p_operation_id: operationId })
     if (error) throw error
-    questProgressChanged()
     return data
   }
   if (action.type === 'buy' && action.id.startsWith('background:')) {
     const { data, error } = await createClient().rpc('aquarium_background', { p_id: action.id.slice(11), p_action: 'buy', p_operation_id: operationId })
     if (error) throw error
-    questProgressChanged()
     return data
   }
   const { data, error } = await createClient().rpc('trade_gold', { p_operation_id: operationId, p_action: action.type, ...(action.type === 'charge' ? {} : { p_item_id: action.id }) })
   if (error) throw error
   return data
+ },{invalidate:action.type==='buy'&&action.id==='pet:food'?['pet-house']:[],after:()=>{
+  if(action.type!=='charge'&&action.id.startsWith('map:'))window.dispatchEvent(new Event('region-maps-changed'))
+  if(action.type!=='charge'&&action.id.startsWith('rod:'))window.dispatchEvent(new Event('fishing-rods-changed'))
+  if(action.type==='buy'&&(action.id==='aquarium:tank'||action.id.startsWith('background:')))questProgressChanged()
+ }})
 }

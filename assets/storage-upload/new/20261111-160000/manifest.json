@@ -1,0 +1,190 @@
+{
+  "generator": "built-in image_gen",
+  "styleReference": "public/pets/wave-cat_v1_thumbnail.png",
+  "scope": "Operator sandbox pet characters, not aquarium collectibles",
+  "motion": "Fixed seated stage, no travel; four resting/blink poses each for neutral, hungry and lonely, two happy poses and two eating poses",
+  "processing": "Fixed whole-sheet resize, equal cell extraction and identical transparent padding. No alpha threshold or background removal.",
+  "items": [
+    {
+      "id": "maple-panda",
+      "name": "단풍콩",
+      "description": "Baby red panda, warm apricot red fur, cream eyebrow markings and cheeks, short chocolate paws, enormous striped tail curled alongside body, small maple-shaped fur marking below one ear.",
+      "source": "sources/maple-panda.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby red panda, warm apricot red fur, cream eyebrow markings and cheeks, short chocolate paws, enormous striped tail curled alongside body, small maple-shaped fur marking below one ear.",
+      "source_sha256": "364155098e58705d6eec17c4a425d98e609e5e04cca871e36726acde60ad09c9",
+      "sprite_sheet_path": "pets/maple-panda_atlas16_v1_sprite.png",
+      "sprite_sha256": "b91f7eb1a55d98e6fe6be7c5477062ff3058f9289cfe9409c764112dfec33c11",
+      "thumbnail_path": "pets/maple-panda_v1_thumbnail.png",
+      "thumbnail_sha256": "66feaa01ece9b6909545eaf9ca2cce1faece367ee7ae5061c0061a8237243ba1",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32,
+      "editPrompt": "Edit this sprite atlas: preserve the red panda identity, 4x4 layout and exact existing poses. Remove ALL of the cream paper background and floor shadows cleanly, making every pixel outside the sixteen animals completely transparent alpha zero. No residual white speckles, no halos, no backdrop. Keep the animals' complete fur, tails and fine brown outlines. Shrink each animal uniformly within its own square cell enough to ensure a generous clear transparent margin of 12% around all sides, same scale and head/feet positions across cells. Actual transparent PNG with no checkerboard."
+    },
+    {
+      "id": "poka-shark",
+      "name": "포카롱",
+      "description": "Baby shark seated resting belly on ground with two little pectoral fins, pastel blue-grey skin, milk white belly, big round head, stubby curved tail and small dorsal fin, a single tiny tooth in a cute smile. Clearly shark, not dolphin.",
+      "source": "sources/poka-shark.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby shark seated resting belly on ground with two little pectoral fins, pastel blue-grey skin, milk white belly, big round head, stubby curved tail and small dorsal fin, a single tiny tooth in a cute smile. Clearly shark, not dolphin.\nCRITICAL: alpha=0 everywhere outside the animal, absolutely no paper texture, off-white fill or cell background, no shadows. Occupancy at most 74% of cell width and height.",
+      "source_sha256": "c3cb580226512e19bb98f0c8e4a9774df0bd1d5879133f9914f1f630cba5b300",
+      "sprite_sheet_path": "pets/poka-shark_atlas16_v1_sprite.png",
+      "sprite_sha256": "9362041e18dbf6c3cdcb3bd31d16bea6a74ea8bc4052c0207dcc3ffb250fb1ca",
+      "thumbnail_path": "pets/poka-shark_v1_thumbnail.png",
+      "thumbnail_sha256": "6ac43635cf158a83404f817c1de8d8b8024e65f0c046f6b3acf8e5fa526d87bc",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "acorn-squirrel",
+      "name": "도토롱",
+      "description": "Baby squirrel, warm chestnut fur, butter cream cheeks, tiny round ears, enormous fluffy chestnut tail curled upward behind head, small paws together against belly.",
+      "source": "sources/acorn-squirrel.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby squirrel, warm chestnut fur, butter cream cheeks, tiny round ears, enormous fluffy chestnut tail curled upward behind head, small paws together against belly.\nCRITICAL: alpha=0 everywhere outside the animal, absolutely no paper texture, off-white fill or cell background, no shadows. Occupancy at most 74% of cell width and height.",
+      "source_sha256": "849262e8aeca845d90764ebbe59be898d2093aa369ac930d0429631714b84012",
+      "sprite_sheet_path": "pets/acorn-squirrel_atlas16_v1_sprite.png",
+      "sprite_sha256": "eb7583197aa36ee8be9d01f955e21c3dc27a4ab01cb9f90d4d41edcd0e767bac",
+      "thumbnail_path": "pets/acorn-squirrel_v1_thumbnail.png",
+      "thumbnail_sha256": "dbab7cc4fb0b83db7bad0b315fbfba5d21d54a3931eec6a9679d26d44290caa2",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "hedge-pin",
+      "name": "토닥핀",
+      "description": "Baby hedgehog with soft rounded chestnut short spines shaped like a fluffy chestnut shell, cream round face, tiny brown nose, short visible paws, gentle eyes.",
+      "source": "sources/hedge-pin.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby hedgehog with soft rounded chestnut short spines shaped like a fluffy chestnut shell, cream round face, tiny brown nose, short visible paws, gentle eyes.\nCRITICAL: alpha=0 everywhere outside the animal, absolutely no paper texture, off-white fill or cell background, no shadows. Occupancy at most 74% of cell width and height.",
+      "source_sha256": "7ee1b43fae37a097e21621ed92a2b1c010b00ff0aa5004e24bb801a78918d6b4",
+      "sprite_sheet_path": "pets/hedge-pin_atlas16_v1_sprite.png",
+      "sprite_sha256": "3a0f890881671c4922edbb2c8f6568bd930b21589cb482bdfbebedda063d3950",
+      "thumbnail_path": "pets/hedge-pin_v1_thumbnail.png",
+      "thumbnail_sha256": "81758cabf5419eb25b5ccb3b2e76624ebc6ddcd8e42d8e8e3a0314b66ebf35c8",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "bonbon-triceratops",
+      "name": "봉봉룡",
+      "description": "Baby triceratops, pale mint green round chunky body, small rounded neck frill, three tiny cream horns, peach blush, stubby four legs, short tail. No wings, clearly triceratops.",
+      "source": "sources/bonbon-triceratops.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby triceratops, pale mint green round chunky body, small rounded neck frill, three tiny cream horns, peach blush, stubby four legs, short tail. No wings, clearly triceratops.\nCRITICAL: alpha=0 everywhere outside animal; no paper or background texture, no off-white fill, no floor shadows. Keep at least 12% margins.",
+      "source_sha256": "bdac0d7c91e7b2f2467ef52ef437ebfadb6a011785d03d2938374724123ec51c",
+      "sprite_sheet_path": "pets/bonbon-triceratops_atlas16_v1_sprite.png",
+      "sprite_sha256": "3d4d0ddc2552824250a8ecccd17e4e810250bfa7ec6c18061a11d2d20dfa042d",
+      "thumbnail_path": "pets/bonbon-triceratops_v1_thumbnail.png",
+      "thumbnail_sha256": "8bfc2a758b82d98d7df21382d44ca477352565582a885a4c9f2be114800bea45",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "nurung-fox",
+      "name": "누룽콩",
+      "description": "Baby fennec fox, toasted biscuit cream fur, very large pointed ears with peach inner ears, tiny paws, thick cream-tipped tail curled next to feet, honey eyes.",
+      "source": "sources/nurung-fox.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby fennec fox, toasted biscuit cream fur, very large pointed ears with peach inner ears, tiny paws, thick cream-tipped tail curled next to feet, honey eyes.\nCRITICAL: alpha=0 everywhere outside animal; no paper or background texture, no off-white fill, no floor shadows. Keep at least 12% margins.",
+      "source_sha256": "a5e60a087098078889544d46148401b11d699d1c7506b25d6fbba6b390363ae6",
+      "sprite_sheet_path": "pets/nurung-fox_atlas16_v1_sprite.png",
+      "sprite_sha256": "3f9026a4c403a7f870d50b8c96338e76ccacc4e65c4cb75abf03024b966effed",
+      "thumbnail_path": "pets/nurung-fox_v1_thumbnail.png",
+      "thumbnail_sha256": "ab95383d232950466169e3cfd64f2750d18301e5082f72df4d3484ccd7181493",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "ppinu-penguin",
+      "name": "삐누",
+      "description": "Baby penguin, fluffy soft silver grey round body, cream face mask, short grey wings, tiny apricot beak and feet, glossy dark eyes.",
+      "source": "sources/ppinu-penguin.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby penguin, fluffy soft silver grey round body, cream face mask, short grey wings, tiny apricot beak and feet, glossy dark eyes.\nCRITICAL: alpha=0 everywhere outside animal; no paper or background texture, no off-white fill, no floor shadows. Keep at least 12% margins.",
+      "source_sha256": "9b871d2bd36c4c45435178fa9dc5b79a66e094e94424610b707cbec762325c46",
+      "sprite_sheet_path": "pets/ppinu-penguin_atlas16_v1_sprite.png",
+      "sprite_sha256": "e3683455437dbe424ebe05e07d729bbc6f45ba38bbb7e4e908995de5d064105d",
+      "thumbnail_path": "pets/ppinu-penguin_v1_thumbnail.png",
+      "thumbnail_sha256": "09768cf52043ac0f8801c5e8706301593f3c291f90bef80fcb1fec6dec901dee",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "coco-capybara",
+      "name": "코코팡",
+      "description": "Baby capybara, cocoa beige smooth fluffy fur, distinct broad rectangular blunt muzzle, tiny rounded ears, short legs, gentle sleepy expression, seated rounded body. Clearly capybara, not bear.",
+      "source": "sources/coco-capybara.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby capybara, cocoa beige smooth fluffy fur, distinct broad rectangular blunt muzzle, tiny rounded ears, short legs, gentle sleepy expression, seated rounded body. Clearly capybara, not bear.\nCRITICAL clean alpha=0 outside animal. No paper, texture, cell backgrounds, shadows, isolated pixels, aura, halos. 12% clear margin within each cell.",
+      "source_sha256": "3ee0422c12a16849976674535b2c34340d0fe14c738f3267874dd605e54b1af6",
+      "sprite_sheet_path": "pets/coco-capybara_atlas16_v1_sprite.png",
+      "sprite_sha256": "bfe4c44959fb33ac641c8dd377abc0d96a60435c34ad3c1d657c28f10bf7c1c5",
+      "thumbnail_path": "pets/coco-capybara_v1_thumbnail.png",
+      "thumbnail_sha256": "ebf6ef9026743c8aaed568bda6482079e5101aeed0d405a2860077c3d5904275",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "peach-axolotl",
+      "name": "복숭뇽",
+      "description": "Baby axolotl, peach milk pastel pink plump body, six external petal-like feathery pink gills around head, short four paws, curled translucent pink tail, glossy dark eyes, gentle smile.",
+      "source": "sources/peach-axolotl.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby axolotl, peach milk pastel pink plump body, six external petal-like feathery pink gills around head, short four paws, curled translucent pink tail, glossy dark eyes, gentle smile.\nCRITICAL clean alpha=0 outside animal. No paper, texture, cell backgrounds, shadows, isolated pixels, aura, halos. 12% clear margin within each cell.",
+      "source_sha256": "1f87cf3fce2c9cea6eee03ef5a0450550853be00c4dc52a6289472691465d555",
+      "sprite_sheet_path": "pets/peach-axolotl_atlas16_v1_sprite.png",
+      "sprite_sha256": "16fa8ac0180d8be88b68f180084a82f65a5b6b1c4a1c53b1c92c0529ec00f260",
+      "thumbnail_path": "pets/peach-axolotl_v1_thumbnail.png",
+      "thumbnail_sha256": "884c04df0da1698c40628f085829e6fd145669adf2ca9dd1c030b1b0fb48a155",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    },
+    {
+      "id": "cloud-alpaca",
+      "name": "구름파카",
+      "description": "Baby alpaca, warm ivory curly cloud wool, rounded fluffy fringe, two long upright ears with apricot interiors, short neck, fluffy round cheeks, stubby legs visible below wool, gentle dark eyes. No horn.",
+      "source": "sources/cloud-alpaca.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG 4x4 sprite atlas for a cozy pet house game. Reference image is STYLE ONLY: match its polished soft fantasy children's illustration, fine warm brown outlines, delicate painterly shading, glossy expressive eyes, baby proportions and clean alpha edges. Do NOT copy the cat anatomy or blue coloring.\nCreate ONE character identity repeated in exactly 16 square cells, four equal columns and four equal rows, row-major. Same near-front three-quarter seated pose, head position, scale and grounded feet anchor in EVERY cell. All character parts must fit EACH cell with at least 12% transparent margins. Fixed camera. True transparent background, NO grid, NO text, NO badges, no floor, no baked shadows or props.\nROW 1: neutral idle open eyes / same pose half-closed eyes / same pose fully closed eyelid lines / neutral open eyes again. Only eyelids change.\nROW 2: hungry expression, paws/fins lightly resting near belly, slightly pleading gaze: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 3: lonely expression, ears/gills lowered when appropriate, shy downcast face: open eyes / half closed / fully closed eyelids / open. Body held still.\nROW 4: happy content eyes smiling and tiny paw gesture / happy subtle continuation of SAME gesture / eating tiny chewing mouth with paws close to mouth / eating subtle continuation. No food bowl or floating icons.\nNo whole-character jumping, no zoom, no exaggerated pose shifts. Preserve identity, markings and anatomy in all 16 cells. Entire image square, high resolution, clean transparent silhouette. Character description: Baby alpaca, warm ivory curly cloud wool, rounded fluffy fringe, two long upright ears with apricot interiors, short neck, fluffy round cheeks, stubby legs visible below wool, gentle dark eyes. No horn.\nCRITICAL clean alpha=0 outside animal. No paper, texture, cell backgrounds, shadows, isolated pixels, aura, halos. 12% clear margin within each cell.",
+      "source_sha256": "0a98499bf84af72e537d6875a40460c88f197f0773a11b60e10d66afde9eba5a",
+      "sprite_sheet_path": "pets/cloud-alpaca_atlas16_v1_sprite.png",
+      "sprite_sha256": "92492fc43f032255d76019f54750b5ee45d42285473b98b3dd3a2d414599e75d",
+      "thumbnail_path": "pets/cloud-alpaca_v1_thumbnail.png",
+      "thumbnail_sha256": "7cd19efa4d9a53aa73f81148e726ec31e2158fddd14e9a6a0ed517ffb6ef5465",
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "padding": 32
+    }
+  ]
+}

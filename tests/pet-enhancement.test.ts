@@ -1,6 +1,6 @@
 import { expect,it } from 'vitest'
 import {createPetPreview,petPreviewReducer,restorePetPreview,type PetPreviewState,type PetPreviewAction} from '@/features/pets/pet-preview-model'
-import {petJobs,PET_MAX_LEVEL} from '@/features/pets/pet-catalog'
+import {petJobs,petSpecies,petJobRewards,PET_MAX_LEVEL} from '@/features/pets/pet-catalog'
 const now=1_800_000_000_000
 const run=(s:PetPreviewState,a:Record<string,unknown>,at=now)=>petPreviewReducer(s,{...a,now:at} as PetPreviewAction)
 function pair(){const initial=createPetPreview(now);const s=run(initial,{type:'add-pet',speciesId:initial.pets[0].speciesId});return {s,target:s.pets[0].id,material:s.pets.at(-1)!.id}}
@@ -27,14 +27,14 @@ it('blocks enhancement during care and while either pet has an unclaimed job',()
   const {s,target,material}=pair(),command={type:'enhance',targetId:target,materialId:material,expectedLevel:0}
   const care=run(s,{type:'care',action:'stroke',id:'care'})
   expect(run(care,command).pets).toEqual(care.pets)
-  const working=run(s,{type:'start-job',jobId:'bakery',roll:0})
+  const working=run(s,{type:'start-job',jobId:'sand-golem-clay',roll:0})
   expect(run(working,command).pets).toEqual(working.pets)
   const completed=run(working,command,now+3600000)
   expect(completed.pets[0].level).toBe(0)
   s.pets.at(-1)!.job=working.pets[0].job
   expect(run(s,command).pets).toEqual(s.pets)
 })
-it('caps at +4 and safely replaces a displayed material with the retained target',()=>{
+it('caps at +5 and safely replaces a displayed material with the retained target',()=>{
   let {s,target,material}=pair()
   s=run(s,{type:'select',id:material})
   s=run(s,{type:'enhance',targetId:target,materialId:material,expectedLevel:0})
@@ -43,18 +43,19 @@ it('caps at +4 and safely replaces a displayed material with the retained target
     s=run(s,{type:'add-pet',speciesId:s.pets[0].speciesId})
     s=run(s,{type:'enhance',targetId:target,materialId:s.pets.at(-1)!.id,expectedLevel:level})
   }
-  expect(s.pets[0].level).toBe(4)
+  expect(s.pets[0].level).toBe(5)
   s=run(s,{type:'add-pet',speciesId:s.pets[0].speciesId})
-  expect(run(s,{type:'enhance',targetId:target,materialId:s.pets.at(-1)!.id,expectedLevel:4}).pets).toEqual(s.pets)
+  expect(run(s,{type:'enhance',targetId:target,materialId:s.pets.at(-1)!.id,expectedLevel:5}).pets).toEqual(s.pets)
 })
-it.each([0,1,2,3,4])('unlocks the correct 3 / 6 / 9 jobs at +%s and samples minute durations',level=>{
-  const allowed=petJobs.filter(j=>j.requiredLevel<=level)
-  expect(allowed).toHaveLength(level<2?3:level<4?6:9)
+it.each([0,1,2,3,4,5])('allows exactly two species jobs at +%s with a linear reward bonus and fixed duration',level=>{
+  for(const species of petSpecies) expect(petJobs.filter(j=>j.speciesId===species.id)).toHaveLength(2)
   for(const job of petJobs){
-    const s=createPetPreview(now);s.pets[0].level=level
+    const s=createPetPreview(now),pet=s.pets.find(p=>p.speciesId===job.speciesId)!
+    pet.level=level;s.activeId=pet.id
     const sent=run(s,{type:'start-job',jobId:job.id,roll:0})
-    if(job.requiredLevel>level)expect(sent.pets[0].job).toBeNull()
-    else expect(sent.pets[0].job).toMatchObject({endsAt:now+job.minutes*60000,reward:job.min,minReward:job.min,maxReward:job.max})
+    const range=petJobRewards(job,level)
+    expect(sent.pets.find(p=>p.id===pet.id)!.job).toMatchObject({endsAt:now+job.minutes*60000,reward:range.min,minReward:range.min,maxReward:range.max})
+    if(job.speciesId!==s.pets[0].speciesId){s.activeId=s.pets[0].id;expect(run(s,{type:'start-job',jobId:job.id,roll:0}).pets.every(p=>!p.job)).toBe(true)}
   }
 })
 it('restores old saves at +0 while keeping previously dispatched rewards and deadlines',()=>{

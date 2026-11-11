@@ -1,6 +1,8 @@
 import {
   petSpecies,
   petJobs,
+  petJobById,
+  petJobRewards,
   petBaits,
   petActions,
   PET_DECAY_MS,
@@ -10,6 +12,7 @@ import {
   PET_FOOD_PRICE,
   PET_SELL_PRICE,
   PET_MAX_LEVEL,
+  PET_NAME_MAX_LENGTH,
   type PetSpeciesId,
   type PetCareAction,
   type PetInteractionAction,
@@ -17,7 +20,8 @@ import {
   type PetBaitId,
 } from './pet-catalog'
 
-export type PreviewJob = { id: PetJobId; startedAt: number; endsAt: number; reward: number; minReward?: number; maxReward?: number }
+export type PreviewJob = { id: PetJobId; runId?: string; startedAt: number; endsAt: number; reward: number; minReward?: number; maxReward?: number }
+export const petJobRunKey = (job: PreviewJob) => job.runId ?? `${job.id}:${job.startedAt}:${job.endsAt}`
 export type PreviewPet = {
   id: string
   speciesId: PetSpeciesId
@@ -37,6 +41,7 @@ export type PreviewCare = {
 export type PetCatchKind = 'pet' | 'common' | 'rare' | 'epic' | 'mythic'
 export type PetPreviewState = {
   version: 1
+  catalogVersion?: 2
   pets: PreviewPet[]
   activeId: string | null
   gold: number
@@ -47,6 +52,7 @@ export type PetPreviewState = {
   care: PreviewCare | null
   notice: string
   lastCatch: { kind: PetCatchKind; speciesId?: PetSpeciesId } | null
+  baitInventory?:Partial<Record<PetBaitId,number>>
 }
 type Timed = { now: number }
 export type PetPreviewAction = Timed &
@@ -56,9 +62,11 @@ export type PetPreviewAction = Timed &
     | { type: 'feed'; id?: string }
     | { type: 'care'; action: PetCareAction; id: string }
     | { type: 'complete-care'; id: string }
-    | { type: 'buy-food' }
+    | { type: 'buy-food';quantity?:number }
+    | { type: 'buy-bait';baitId:PetBaitId;quantity:number }
     | { type: 'start-job'; jobId: PetJobId; roll: number }
     | { type: 'claim-job'; id: string }
+    | { type: 'cancel-job'; id: string; runKey: string }
     | { type: 'sell'; id: string }
     | { type: 'enhance'; targetId: string; materialId: string; expectedLevel: number }
     | { type: 'fish'; baitId: PetBaitId; roll: number; speciesRoll: number }
@@ -97,12 +105,13 @@ function makePet(speciesId: PetSpeciesId, id: number, now: number): PreviewPet {
 export function createPetPreview(now: number): PetPreviewState {
   return {
     version: 1,
+    catalogVersion: 2,
     pets: petSpecies.map((s, i) => makePet(s.id, i + 1, now)),
     activeId: 'preview-pet-1',
     gold: 10000,
     food: 10,
     offset: 0,
-    nextId: 5,
+    nextId: petSpecies.length + 1,
     lastNow: now,
     care: null,
     notice: '',
@@ -193,7 +202,7 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
         : s
     case 'rename': {
       const name = a.name.trim()
-      if (!name || Array.from(name).length > 12) return message(s, '이름은 1~12자로 지어주세요.')
+      if (!name || Array.from(name).length > PET_NAME_MAX_LENGTH) return message(s, `이름은 1~${PET_NAME_MAX_LENGTH}자로 지어주세요.`)
       if (!s.pets.some((p) => p.id === a.id)) return s
       return { ...update(a.id, (p) => ({ ...p, name })), notice: '새 이름으로 불러주세요.' }
     }
@@ -223,15 +232,24 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
         notice: '',
       }
     }
-    case 'buy-food':
-      return s.gold < PET_FOOD_PRICE
+    case 'buy-bait': {
+      const bait=petBaits.find(b=>b.id===a.baitId)
+      if(!bait||!Number.isInteger(a.quantity)||a.quantity<1||a.quantity>99)return message(s,'수량은 1~99개로 선택해주세요.')
+      if(s.gold<bait.price*a.quantity)return message(s,'테스트 골드가 부족해요.')
+      return {...s,gold:s.gold-bait.price*a.quantity,baitInventory:{...s.baitInventory,[bait.id]:(s.baitInventory?.[bait.id]??0)+a.quantity},notice:`${bait.name} ${a.quantity}개를 구매했어요.`}
+    }
+    case 'buy-food': {
+      const quantity=a.quantity??1
+      if(!Number.isInteger(quantity)||quantity<1||quantity>99)return message(s,'수량은 1~99개로 선택해주세요.')
+      return s.gold < PET_FOOD_PRICE*quantity
         ? message(s, '테스트 골드가 부족해요.')
         : {
             ...s,
-            gold: s.gold - PET_FOOD_PRICE,
-            food: s.food + 1,
-            notice: '사료 1개를 구매했어요.',
+            gold: s.gold - PET_FOOD_PRICE*quantity,
+            food: s.food + quantity,
+            notice: `사료 ${quantity}개를 구매했어요.`,
           }
+    }
     case 'start-job': {
       if (!active) return message(s, '알바를 보낼 펫을 꺼내주세요.')
       if (s.pets.some((p) => p.job)) return message(s, '진행 중인 알바를 마치고 보상을 받아주세요.')
@@ -239,20 +257,23 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
         return message(s, '포만도와 애정이 모두 80 이상이어야 해요.')
       const job = petJobs.find((j) => j.id === a.jobId)
       if (!job || !Number.isFinite(a.roll) || a.roll < 0 || a.roll >= 1) return s
-      if (active.level < job.requiredLevel) return message(s, `+${job.requiredLevel} 강화부터 보낼 수 있어요.`)
-      const reward = job.min + Math.floor(a.roll * (job.max - job.min + 1))
+      if (job.speciesId !== active.speciesId) return message(s, '이 친구의 전용 알바를 골라주세요.')
+      const range = petJobRewards(job, active.level)
+      const reward = range.min + Math.floor(a.roll * (range.max - range.min + 1))
       return {
         ...update(active.id, (p) => ({
           ...p,
           job: {
             id: job.id,
+            runId: `preview-job-${s.nextId}`,
             startedAt: s.lastNow,
             endsAt: s.lastNow + job.minutes * 60000,
             reward,
-            minReward: job.min,
-            maxReward: job.max,
+            minReward: range.min,
+            maxReward: range.max,
           },
         })),
+        nextId: s.nextId + 1,
         notice: `${active.name}이 알바를 떠났어요.`,
       }
     }
@@ -263,6 +284,16 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
         ...update(p.id, (p) => ({ ...p, job: null })),
         gold: s.gold + p.job.reward,
         notice: `수고했어요! 테스트 골드 ${p.job.reward.toLocaleString()}를 받았어요.`,
+      }
+    }
+    case 'cancel-job': {
+      const p = s.pets.find(p => p.id === a.id)
+      if (!p?.job || petJobRunKey(p.job) !== a.runKey) return s
+      if (p.job.endsAt <= s.lastNow) return message(s, '이미 끝난 알바예요. 보상을 받아주세요.')
+      return {
+        ...update(p.id, p => ({...p, job:null})),
+        activeId: p.id,
+        notice: `${p.name}의 알바를 취소했어요. 보상은 지급되지 않아요.`,
       }
     }
     case 'sell': {
@@ -300,7 +331,9 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
         a.speciesRoll >= 1
       )
         return s
-      if (s.gold < bait.price) return message(s, '테스트 골드가 부족해요.')
+      const stocked=s.baitInventory?.[bait.id]??0,cost=stocked>0?0:bait.price
+      if (s.gold < cost) return message(s, '테스트 골드가 부족해요.')
+      if(stocked>0)s={...s,baitInventory:{...s.baitInventory,[bait.id]:stocked-1}}
       const kind = drawPetCatch(bait.id, a.roll)
       if (kind === 'pet') {
         const species = petSpecies[Math.floor(a.speciesRoll * petSpecies.length)],
@@ -310,14 +343,14 @@ export function petPreviewReducer(before: PetPreviewState, a: PetPreviewAction):
           pets: [...s.pets, p],
           activeId: s.activeId ?? p.id,
           nextId: s.nextId + 1,
-          gold: s.gold - bait.price,
+          gold: s.gold - cost,
           lastCatch: { kind, speciesId: species.id },
           notice: `${species.name}을 만났어요! 펫 목록에 추가했어요.`,
         }
       }
       return {
         ...s,
-        gold: s.gold - bait.price,
+        gold: s.gold - cost,
         lastCatch: { kind },
         notice: '일반 낚시 보상으로 추첨됐어요. 테스트에서는 실제 개체를 지급하지 않아요.',
       }
@@ -379,7 +412,7 @@ export function restorePetPreview(raw: string | null, now: number): PetPreviewSt
           p.affection < 0 ||
           p.affection > 100 ||
           (p.job &&
-            (!petJobs.some((j) => j.id === p.job!.id) ||
+            (!petJobById(p.job.id) ||
               !Number.isFinite(p.job.endsAt) ||
               !Number.isFinite(p.job.startedAt) ||
               !Number.isSafeInteger(p.job.reward) ||
@@ -389,6 +422,16 @@ export function restorePetPreview(raw: string | null, now: number): PetPreviewSt
       throw Error('Invalid pet')
     if (new Set(s.pets.map((p) => p.id)).size !== s.pets.length)
       throw Error('Duplicate sandbox IDs')
+    // New catalog entries must not reuse IDs from existing sandbox pets.
+    s.nextId = Math.max(s.nextId, ...s.pets.map(p => Number(p.id.match(/^preview-pet-(\d+)$/)?.[1] ?? 0) + 1))
+    // One-time sandbox upgrade: make new species reviewable without resetting
+    // names, reinforced pets or an already-running receipt. Later sales persist.
+    if (s.catalogVersion !== 2) {
+      for (const species of petSpecies.filter(p => 'atlas' in p)) {
+        if (!s.pets.some(p => p.speciesId === species.id)) s.pets.push(makePet(species.id, s.nextId++, now + s.offset))
+      }
+      s.catalogVersion = 2
+    }
     // Old operator saves predate enhancement. Keep their pets and running-job
     // receipts; only missing levels default to zero.
     s.pets = s.pets.map(p => ({...p, level: p.level === undefined ? 0 : p.level}))

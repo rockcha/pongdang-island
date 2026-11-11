@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Check, Clock3, Heart, Utensils, LockKeyhole } from 'lucide-react'
+import { Check, Clock3, Heart, Utensils, BriefcaseBusiness } from 'lucide-react'
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { petJobs, PET_JOB_TIERS, petJobDuration, type PetJobId } from './pet-catalog'
-import type { PreviewPet } from './pet-preview-model'
+import { petJobsFor, petJobById, petJobBonus, petJobRewards, petSpeciesById, petJobDuration, PET_MAX_LEVEL, type PetJobId } from './pet-catalog'
+import {petJobRunKey, type PreviewPet} from './pet-preview-model'
 import { PetJobArtwork } from './pet-job-artwork'
 import './pet-jobs-panel.css'
 
@@ -39,6 +39,9 @@ type Props = {
   onChoosePet: () => void
   onCare: () => void
   onEnhance?: () => void
+  statusOnly?: boolean
+  onOpenJobs?: () => void
+  onCancel?: (id: string, runKey: string) => void
 }
 export function PetJobsPanel({
   pets,
@@ -50,13 +53,16 @@ export function PetJobsPanel({
   onChoosePet,
   onCare,
   onEnhance,
+  statusOnly = false,
+  onOpenJobs,
+  onCancel,
 }: Props) {
-  const [tier, setTier] = useState<number>(() => active && active.level >= 4 ? 4 : active && active.level >= 2 ? 2 : 0)
   const [showOptions, setShowOptions] = useState(false)
   const [guideOpen, setGuideOpen] = useState(false)
+  const [cancelTarget, setCancelTarget] = useState<{id:string;key:string;name:string}|null>(null)
   const employed = pets.find((p) => p.job),
     run = employed?.job,
-    job = petJobs.find((j) => j.id === run?.id),
+    job = run ? petJobById(run.id) : undefined,
     done = !!run && run.endsAt <= now
   const progress = run
     ? Math.max(
@@ -66,15 +72,15 @@ export function PetJobsPanel({
     : 0
   const eligible = !!active && active.fullness >= 80 && active.affection >= 80
   return (
-    <section className="pet-jobs-panel" aria-label="펫 아르바이트">
-      {employed && run && job ? (!showOptions && (
+    <section className={`pet-jobs-panel ${statusOnly ? 'pet-job-status' : ''}`} aria-label="펫 아르바이트">
+      {employed && run && job ? ((!showOptions || statusOnly) && (
         <>
           <article className={`pet-work-card ${done ? 'is-done' : ''}`}>
             <header className="pet-work-heading">
               <div className="pet-work-art">
-                <PetJobArtwork jobId={job.id} />
+                <span className="pet-work-job-icon"><PetJobArtwork jobId={job.id} /></span>
                 <img
-                  className="pet-work-companion"
+                  className="pet-work-portrait"
                   src={`/pets/${employed.speciesId}_v1_thumbnail.png`}
                   alt=""
                 />
@@ -134,19 +140,25 @@ export function PetJobsPanel({
                 보상 받기
               </button>
             )}
+            {!done && onCancel && <button className="pet-work-cancel" disabled={busy} onClick={() => setCancelTarget({id:employed.id,key:petJobRunKey(run),name:employed.name})}>알바 취소</button>}
           </article>
-          <p className="pet-work-hint">
+          {!statusOnly && <p className="pet-work-hint">
             {done
               ? '보상을 받으면 다음 알바를 보낼 수 있어요.'
               : `${employed.name}이 돌아오면 다시 보낼 수 있어요.`}
-          </p>
+          </p>}
+          {statusOnly && !done && <p className="pet-work-hint">취소하면 보상은 지급되지 않아요.</p>}
         </>
-      )) : (
+      )) : statusOnly ? (
+        <div className="pet-work-empty"><BriefcaseBusiness size={30}/><h3>진행 중인 알바가 없어요</h3><p>{active ? `${active.name}의 전용 알바를 골라보세요.` : '함께할 친구를 먼저 골라주세요.'}</p><button disabled={busy} onClick={active ? onOpenJobs : onChoosePet}>{active ? '알바 보내기' : '펫 고르기'}</button></div>
+      ) : (
         <div className="pet-job-intro">
           <h3>오늘은 어디로 가볼까요?</h3>
           {active ? (
             <>
-              <p>{active.name} <span className="pet-level-badge">+{active.level}</span> · 열려 있는 알바 {petJobs.filter(j => j.requiredLevel <= active.level).length}개</p>
+              <p>{active.name} <span className="pet-level-badge">+{active.level}</span> · 전용 알바 2개</p>
+              <button className="pet-job-change-pet" disabled={busy} onClick={onChoosePet}>친구 바꾸기</button>
+              <div className="pet-job-specialty"><span>{'profile' in petSpeciesById(active.speciesId) ? (petSpeciesById(active.speciesId) as {profile: string}).profile : '나만의 특기'}</span><span>강화 보너스 +{petJobBonus(active.level)}%</span></div>
               <div className="pet-job-conditions" aria-label="출발 조건">
                 <span className={active.fullness >= 80 ? 'is-met' : ''}>
                   <Utensils size={12} />
@@ -170,47 +182,50 @@ export function PetJobsPanel({
           )}
         </div>
       )}
-      {run && <button onClick={() => setShowOptions(!showOptions)}>{showOptions ? '근무 현황 보기' : '알바 목록 보기'}</button>}
-      {(!run || showOptions) && <div className="pet-job-options">
-        <div className="pet-job-tiers" role="group" aria-label="알바 해금 단계">
-          {PET_JOB_TIERS.map(level => <button key={level} aria-pressed={tier === level} onClick={() => setTier(level)}>{level === 0 ? '기본' : `+${level}`}{(!active || active.level < level) && level > 0 && <LockKeyhole size={11}/>}</button>)}
-        </div>
-        {active && active.level < tier && !run && <p className="pet-job-tier-hint">+{tier} 강화하면 열려요. <button onClick={onEnhance ?? onCare}>강화하러 가기</button></p>}
-        {petJobs
-          .filter((j) => j.requiredLevel === tier)
-          .map((j) => (
+      {!statusOnly && run && <button onClick={() => setShowOptions(!showOptions)}>{showOptions ? '근무 현황 보기' : '알바 목록 보기'}</button>}
+      {!statusOnly && active && (!run || showOptions) && <div className="pet-job-options">
+        {petJobsFor(active.speciesId).map((j) => {
+          const range = petJobRewards(j, active.level)
+          return (
             <article className="pet-job-option" key={j.id}>
               <div className="pet-job-thumb">
                 <PetJobArtwork jobId={j.id} />
               </div>
               <div className="pet-job-option-copy">
                 <strong>{j.name}</strong>
+                <p className="pet-job-description">{j.description}</p>
                 <div className="pet-job-option-meta">
                   <span>
                     <Clock3 size={11} />
                     {petJobDuration(j.minutes)}
                   </span>
                   <span className="pet-job-meta-dot">·</span>
-                  <PetGold value={`${j.min.toLocaleString()}~${j.max.toLocaleString()}`} />
+                  <PetGold value={`${range.min.toLocaleString()}~${range.max.toLocaleString()}`} />
                 </div>
               </div>
               {!run && (
                 <button
-                  disabled={busy || !eligible || !active || active.level < j.requiredLevel}
-                  onClick={() => onStart(j.id)}
-                  aria-label={active && active.level < j.requiredLevel ? `${j.name} +${j.requiredLevel} 강화 필요` : `${j.name} 보내기`}
+                  disabled={busy || !eligible}
+                  onClick={() => { setShowOptions(false); onStart(j.id) }}
+                  aria-label={`${j.name} 보내기`}
                 >
-                  {active && active.level < j.requiredLevel ? `+${j.requiredLevel} 필요` : '보내기'}
+                  보내기
                 </button>
               )}
             </article>
-          ))}
+          )})}
+        {onEnhance && !run && active.level < PET_MAX_LEVEL && <button className="pet-job-guide" onClick={onEnhance}>강화로 보상 높이기</button>}
       </div>}
       <button className="pet-job-guide" onClick={() => setGuideOpen(true)}>알바 안내</button>
+      <Dialog open={!!cancelTarget} onOpenChange={open => {if(!open)setCancelTarget(null)}}><DialogContent>
+        <DialogTitle>알바를 취소할까요?</DialogTitle>
+        <DialogDescription>{cancelTarget?.name}이 바로 돌아와요. 지금까지 일한 시간의 보상도 지급되지 않아요. 다시 출발할 때 포만도·애정 80 이상 조건을 확인해요.</DialogDescription>
+        <div className="pet-work-cancel-actions"><button onClick={() => setCancelTarget(null)}>계속 근무하기</button><button disabled={busy || !run || !cancelTarget || employed?.id!==cancelTarget.id || petJobRunKey(run)!==cancelTarget.key || done} onClick={() => {if(cancelTarget){onCancel?.(cancelTarget.id,cancelTarget.key);setCancelTarget(null)}}}>취소하고 다시 고르기</button></div>
+      </DialogContent></Dialog>
       <Dialog open={guideOpen} onOpenChange={setGuideOpen}><DialogContent>
         <DialogTitle>알바 안내</DialogTitle>
         <DialogDescription>출발할 때 포만도와 애정이 모두 80 이상이어야 해요. 한 번에 한 마리만 보낼 수 있어요.
-          강화 +0, +2, +4에서 알바가 세 개씩 열려요. 이전 단계의 알바도 계속 보낼 수 있어요.
+          펫마다 전용 알바 2개가 처음부터 열려요. 같은 종을 합성해 +5까지 강화할 수 있고, 단계마다 기본 보상의 3%씩, 최대 15%가 더해져요. 근무 시간은 바뀌지 않아요.
           근무 중과 미접속 중에도 10분마다 포만도·애정이 1씩 줄지만, 출발한 알바는 끝까지 마쳐요.
         </DialogDescription>
       </DialogContent></Dialog>

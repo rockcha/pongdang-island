@@ -1,0 +1,13 @@
+{
+  "generator": "image_gen built-in",
+  "items": [
+    {
+      "id": "starter",
+      "prompt": "One single inventory icon for a cozy Korean fantasy mobile game: a small plump oatmeal linen drawstring snack pouch tied with a sage-green ribbon, a simple stitched cream paw emblem, two small golden round paw-print biscuits peeking from the opening and one biscuit at the base. Beginner-friendly modest snack gift, simpler and smaller than luxurious macaron packaging. Soft hand-painted gouache watercolor with warm caramel outlines and crisp clean silhouette, pastel cream sage honey palette, matching a cozy pet-food item collection. Entire pouch visible centered, 12% empty margin, transparent background with clean alpha edges. No text, no numbers, no stars, no interface, no scene, no ground plane or external cast shadow.",
+      "source": "sources/starter.png",
+      "output": "public/pets/items/starter_v1.webp",
+      "sourceSha256": "b30447cceb9851a2c47a182494ec2320dd85fb78f583b7567e577d245c5365dd",
+      "sha256": "59bb8eea1dd123daed3dca197a908aa8e4628b214e239b8269fa51433f3cd6d3"
+    }
+  ]
+}

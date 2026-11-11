@@ -1,0 +1,10 @@
+{
+  "generator": "image_gen built-in",
+  "prompt": "Create one polished UI navigation icon for a cozy Korean fantasy mobile game: a small rounded sage-green ceramic pet food bowl filled with a few large golden-brown kibble pieces. Front three-quarter view, simple cream paw emblem centered on the bowl, warm cream rim, gentle caramel outline. Soft hand-painted gouache watercolor style matching cream kraft pet-food packaging, restrained warm pastel sage and oatmeal palette. Very simple bold clean silhouette readable at 28x28 pixels, minimal detail, no tiny floating decorations, no text, no letters, no numerals, no UI frame, no ground plane, no cast shadow outside the object. Entire object centered and large within a square with 12% clear margin. Beautiful crisp anti-aliased edges, truly transparent background.",
+  "source": "sources/pet-food-tab.png",
+  "output": "public/app-icons/pet-food-v1.webp",
+  "usage": "Item shop food tab; 28 CSS pixels",
+  "transparentBackground": true,
+  "sourceSha256": "41bbf478555fc9832079fc74a977b1f7fb97780a104874035d0e9c74c163e928",
+  "sha256": "8736a95028ae03aaa0b61305f141f04acffebf7aaa6692581d50c35fd143e732"
+}

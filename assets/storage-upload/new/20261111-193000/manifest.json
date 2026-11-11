@@ -1,0 +1,32 @@
+{
+  "generator": "image_gen built-in",
+  "items": [
+    {
+      "id": "food",
+      "prompt": "A single cozy Korean fantasy mobile game inventory item icon: small cream kraft pet food pouch with sage green top, simple embossed paw emblem (no letters), a few warm brown kibble pieces at its foot. Soft hand-painted watercolor gouache, delicate brown outlines, rounded charming shapes, warm pastel ivory palette, beautiful polished 2D game asset. Centered entire object with generous transparent margins. No text, no numbers, no scene, no UI, no bowl. Transparent background.",
+      "source": "sources/food.png",
+      "output": "public/pets/items/food_v1.webp",
+      "generatedFile": "exec-9d56ab6d-12a8-4799-9b5f-a7ff1c966dc1.png",
+      "sourceSha256": "f7f33d853e8fe7012086c9b9d935432149710996ef252776b3c4db4b84c88de2",
+      "sha256": "caa6e1c64338a95af5ca40a12619e544bc29d1c23df909554fc6ff739117eb6a"
+    },
+    {
+      "id": "biscuit",
+      "prompt": "A single cozy Korean fantasy mobile game inventory item icon: small cream linen drawstring snack pouch tied with a caramel ribbon, a golden star-shaped biscuit peeking from the opening and two tiny star biscuits by the base. Soft hand-painted watercolor gouache, delicate brown outlines, rounded charming shapes, warm pastel ivory caramel palette, beautiful polished 2D game asset. Centered entire object with generous transparent margins. No text, no numbers, no scene, no UI. Transparent background.",
+      "source": "sources/biscuit.png",
+      "output": "public/pets/items/biscuit_v1.webp",
+      "generatedFile": "exec-fd701407-e0d6-4fba-8d41-c334be241001.png",
+      "sourceSha256": "5604f23d790efbd2d95be8229e62232bc9e58f5ec2bab7363b3e80666c19f520",
+      "sha256": "3eb83d3349f8298bbdfce26166c370fd6383a2a09da86cab91df8b40ac509bd8"
+    },
+    {
+      "id": "macaron",
+      "prompt": "A single cozy Korean fantasy mobile game inventory item icon: small pale pink satin drawstring snack pouch tied with a lavender ribbon, a pink macaron peeking from the opening and a pastel lavender macaron beside the base, tiny embroidered crescent emblem. Soft hand-painted watercolor gouache, delicate brown outlines, rounded charming shapes, warm pastel ivory pink lavender palette, beautiful polished 2D game asset. Centered entire object with generous transparent margins. No text, no numbers, no scene, no UI. Transparent background.",
+      "source": "sources/macaron.png",
+      "output": "public/pets/items/macaron_v1.webp",
+      "generatedFile": "exec-69290890-3a11-4c50-8173-8c4c9ceb47ed.png",
+      "sourceSha256": "392c382e9a484518133a21f4836e168d17130dca0ba406d4fc683c3b3405f987",
+      "sha256": "63b765079b81dff527f62dc506fb175ff11f617f746bbe971ef1374718a39306"
+    }
+  ]
+}

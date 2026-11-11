@@ -2,11 +2,11 @@ import fs from 'node:fs'
 import sharp from 'sharp'
 import { expect, it } from 'vitest'
 import { petDrawLayout } from '@/features/pets/pet-draw-layout'
-import { petSpecies } from '@/features/pets/pet-catalog'
+import { petSpecies, petUsesAtlas } from '@/features/pets/pet-catalog'
 const landmarks=JSON.parse(fs.readFileSync('assets/storage-upload/new/20261110-160000/motion-landmarks.json','utf8')).pets
 it('keeps face scale, horizontal center and floor close across idle and reactions', () => {
   const review=JSON.parse(fs.readFileSync('assets/storage-upload/new/20261110-160000/motion-registration-review.json','utf8'))
-  for(const pet of petSpecies){
+  for(const pet of petSpecies.filter(p=>!petUsesAtlas(p.id))){
     const ref=review[pet.id].idle
     const referenceDraw=petDrawLayout(pet.id,'idle')
     const referenceEyes=landmarks[pet.id].idle.map(([x,y]:number[])=>[referenceDraw.x+x*ref.cell/400*referenceDraw.scale,referenceDraw.y+y*ref.cell/400*referenceDraw.scale])
@@ -23,7 +23,7 @@ it('keeps face scale, horizontal center and floor close across idle and reaction
   }
 })
 it('keeps complete silhouettes inside the stage for every pet, pose and frame', async () => {
-  for (const pet of petSpecies)
+  for (const pet of petSpecies.filter(p=>!petUsesAtlas(p.id)))
     for (const [kind, suffix, columns] of [
       ['idle', 'idle8_v2', 4],
       ['hungry', 'hungry4_v1', 2],

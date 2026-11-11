@@ -27,14 +27,14 @@ async function open(add?:()=>void){
  await screen.findByRole('article',{name:'공통 물고기'})
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
-it('shows both unpublished meteor Pongi in the development book without inventing discoveries',async()=>{
+it('shows meteor creatures and decorations in the development book without inventing discoveries',async()=>{
  weatherPreview.enabled=true
  load.mockResolvedValue({items:[],catalog:[shared]})
  render(<CollectionBook rememberFiltersFor="me"/>)
  await screen.findByRole('article',{name:shared.name})
  await choose('날씨 개체','유성우')
- expect(cards().sort()).toEqual(['별 줍는 퐁이','유성 꼬리 퐁이'].sort())
- expect(screen.getByText('발견 0/2')).toBeTruthy()
+ expect(cards().sort()).toEqual(['별 줍는 퐁이','유성 꼬리 퐁이','유성의 정령 루온','밤하늘을 감는 태엽'].sort())
+ expect(screen.getByText('발견 0/4')).toBeTruthy()
  expect(screen.getByText(/날씨 퐁이는 로컬 미리보기/)).toBeTruthy()
 })
 it('filters weather creatures independently of grade and clears the weather chip',async()=>{

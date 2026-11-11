@@ -23,6 +23,12 @@ jobs:
             /assets/**/
             !/assets/**/*.*
             /assets/**/*.json
+            /assets/storage-upload/new/20261021-123316/decorations/epic/*.png
+            /assets/storage-upload/new/20261021-134600/decorations/epic/*.png
+            /assets/storage-upload/new/20261025-044359/decorations/mythic/*.png
+            /assets/storage-upload/new/20261104-170551/fish/normal/*.png
+            /assets/storage-upload/new/20261109-170000/fish/mythic/*.png
+            /assets/storage-upload/new/20261109-173320/decorations/epic/*.png
       - uses: actions/setup-node@v4
         with:
           node-version: 24

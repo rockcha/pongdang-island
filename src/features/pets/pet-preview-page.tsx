@@ -3,10 +3,12 @@ import {PetShopCategories,type PetShopCategory} from './pet-shop-categories'
 import {PetJobCompletionDialog,type PetJobCompletion} from './pet-job-completion-dialog'
 import {PetSnackShop} from './pet-snack-shop'
 import {PetPurchaseQuantity} from './pet-purchase-quantity'
+import {PetCollectionDialog} from './pet-collection-dialog'
 import {playPurchaseSound} from '@/features/gold/purchase-sound'
 import { petGroundY } from './pet-draw-layout'
 import {
   Bath,
+  BookOpen,
   BriefcaseBusiness,
   Hand,
   Camera,
@@ -98,6 +100,7 @@ function Gauge({
 export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:PetPreviewState;busy:boolean;error:string;send:(a:PetHouseCommand)=>Promise<boolean>;completion?:PetJobCompletion|null;onDismissCompletion?:()=>void} }) {
   const [completion,setCompletion]=useState<PetJobCompletion|null>(null)
   const [choosing, setChoosing] = useState(false)
+  const [collectionOpen,setCollectionOpen]=useState(false)
   const [jobsOpen, setJobsOpen] = useState(false)
   const [enhancing, setEnhancing] = useState<string|null>(null)
   const [options, setOptions] = useState<string | null>(null)
@@ -364,7 +367,8 @@ export function PetPreviewBoard({ owner,live }: { owner: string;live?:{state:Pet
 
         </section>
       )}
-      {tab === 'pets' && <section className="pet-list pet-roster-panel">{roster()}</section>}
+      {tab === 'pets' && <section className="pet-list pet-roster-panel"><div className="pet-roster-heading"><h3>함께하는 친구들</h3><button onClick={()=>setCollectionOpen(true)}><BookOpen size={15}/>펫도감</button></div>{roster()}</section>}
+      <PetCollectionDialog open={collectionOpen} onOpenChange={setCollectionOpen} pets={pets}/>
       {tab === 'jobs' && renderJobs(true)}
       <Dialog open={jobsOpen} onOpenChange={setJobsOpen}><DialogContent className="pet-job-dialog">
         <DialogTitle>아르바이트</DialogTitle>

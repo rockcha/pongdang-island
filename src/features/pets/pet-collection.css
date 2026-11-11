@@ -1,0 +1,41 @@
+.pet-collection-dialog { width:calc(100% - 28px); max-width:540px; max-height:85dvh; padding:22px; gap:16px; border-radius:22px; overflow:hidden; display:flex; flex-direction:column; }
+.pet-collection-header { display:flex; align-items:center; gap:12px; padding-right:24px; flex-shrink:0; }
+.pet-collection-header > svg { color:var(--muted-foreground); }
+.pet-collection-header h2 { font-size:18px; }
+.pet-collection-header p { margin-top:5px; font-size:12px; }
+.pet-collection-summary { padding:14px 16px; border:1px solid var(--border); border-radius:14px; flex-shrink:0; }
+.pet-collection-summary > span { display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--muted-foreground); }
+.pet-collection-summary strong { color:var(--foreground); font-size:18px; }
+.pet-collection-summary small { color:var(--muted-foreground); font-size:12px; font-weight:400; }
+.pet-collection-summary progress { display:block; width:100%; height:5px; margin-top:10px; accent-color:var(--primary); }
+.pet-collection-search { display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; color:var(--muted-foreground); flex-shrink:0; }
+.pet-collection-search:focus-within { outline:2px solid var(--ring); outline-offset:2px; }
+.pet-collection-search input { width:100%; min-width:0; font-size:13px; background:transparent; outline:none; color:var(--foreground); }
+.pet-collection-body { overflow-y:auto; min-height:0; padding:2px; }
+.pet-collection-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.pet-collection-card { display:flex; flex-direction:column; align-items:center; padding:10px 6px 12px; gap:6px; border:1px solid var(--border); border-radius:15px; background:var(--background); cursor:pointer; }
+.pet-collection-card:hover { background:var(--muted); }
+.pet-collection-card:focus-visible { outline:2px solid var(--ring); outline-offset:-2px; }
+.pet-collection-art { width:100%; aspect-ratio:1; max-width:115px; }
+.pet-collection-art img { width:100%; height:100%; object-fit:contain; }
+.pet-collection-card > strong { font-size:13px; }
+.pet-collection-owned { display:flex; align-items:center; gap:3px; font-size:10px; color:var(--muted-foreground); }
+.pet-collection-owned[data-owned=true] { color:var(--primary); }
+.pet-collection-empty { padding:30px 0; text-align:center; color:var(--muted-foreground); font-size:13px; }
+.pet-collection-back { display:flex; align-items:center; gap:4px; font-size:12px; color:var(--muted-foreground); padding:6px 0; }
+.pet-collection-profile { display:flex; flex-direction:column; align-items:center; text-align:center; padding:4px 8px 24px; gap:8px; }
+.pet-collection-profile img { width:160px; height:160px; object-fit:contain; }
+.pet-collection-profile h3 { font-size:20px; font-weight:700; }
+.pet-collection-profile p { font-size:13px; line-height:1.7; color:var(--muted-foreground); }
+.pet-collection-badge { padding:3px 9px; border-radius:20px; background:var(--muted); font-size:11px; }
+.pet-collection-job-title { font-size:13px; font-weight:600; margin-bottom:10px; }
+.pet-collection-job-title small { display:block; margin-top:4px; font-size:10px; font-weight:400; color:var(--muted-foreground); }
+.pet-collection-jobs { display:grid; gap:8px; }
+.pet-collection-jobs article { padding:14px; border:1px solid var(--border); border-radius:12px; }
+.pet-collection-jobs strong { font-size:12px; }
+.pet-collection-jobs p { margin:5px 0 10px; font-size:11px; line-height:1.6; color:var(--muted-foreground); }
+.pet-collection-jobs article > div { display:flex; justify-content:space-between; font-size:11px; }
+.pet-roster-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.pet-roster-heading h3 { font-size:14px; font-weight:600; }
+.pet-roster-heading button { display:flex; align-items:center; gap:6px; padding:8px 12px; border:1px solid var(--border); border-radius:10px; background:var(--background); font-size:12px; }
+@media(max-width:360px) { .pet-collection-dialog { padding:16px; } .pet-collection-grid { gap:6px; } }

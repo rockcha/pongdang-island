@@ -17,6 +17,12 @@ export const MONSTER_KINDS = [
   'flyingFish',
   'airJelly',
   'cuttlefish',
+  'ironCrab',
+  'emberMako',
+  'crystalCuttlefish',
+  'crownHealer',
+  'ironKing',
+  'eclipseDragon',
 ] as const
 export type EnemyKind = (typeof MONSTER_KINDS)[number]
 type MonsterSpec = {
@@ -66,7 +72,8 @@ export const MONSTERS: Record<EnemyKind, MonsterSpec> = {
   splitter: spec('분열 불가사리', 34, 0.8, 2, 2, 8, 0xd5a0a9),
   mini: spec('아기 불가사리', 10, 1.1, 1, 1, 9, 0xe3c0bd),
   overlord: spec('심해왕 문어', 8100, 0.28, 10, 200, 10, 0xab94ce, true),
-  abyss: spec('심연의 소라왕', 14850, 0.24, 15, 300, 11, 0x83b6b5, true),
+  // Flying ignores maze detours; a slower approach preserves a fair anti-air damage window.
+  abyss: spec('월식의 바다용', 14850, 0.16, 15, 300, 11, 0xb69bdf, true, 'air'),
   // New base health already includes the expansion's difficulty adjustment.
   shark: spec('철갑 백상아리', 180, 0.5, 4, 12, 12, 0x8c9eac, false, 'ground', false),
   mako: spec('돌격 청상아리', 90, 0.85, 3, 9, 13, 0x668eae, false, 'ground', false),
@@ -74,6 +81,12 @@ export const MONSTERS: Record<EnemyKind, MonsterSpec> = {
   flyingFish: spec('하늘 날치', 24, 0.7, 1, 5, 15, 0x89bddd, false, 'air', false),
   airJelly: spec('풍선 해파리', 18, 0.6, 1, 4, 16, 0xd4a9d4, false, 'air', false),
   cuttlefish: spec('비행 갑오징어', 95, 0.5, 3, 12, 17, 0xc4a4bf, false, 'air', false),
+  ironCrab: spec('흑철 왕게', 220, 0.48, 4, 20, 18, 0x8992a8, false, 'ground', false),
+  emberMako: spec('홍련 청상아리', 115, 0.95, 3, 16, 19, 0xe38d7d, false, 'ground', false),
+  crystalCuttlefish: spec('수정 갑오징어', 150, 0.56, 4, 22, 20, 0xb49edb, false, 'air', false),
+  crownHealer: spec('왕관 진주소라', 100, 0.6, 3, 18, 21, 0xd6bf81, false, 'ground', false),
+  ironKing: spec('심연의 철갑왕', 26000, 0.22, 15, 600, 22, 0x8992a8, true),
+  eclipseDragon: spec('완전월식의 바다용', 36000, 0.13, 30, 1000, 23, 0xd792b0, true, 'air'),
 }
 type Wave = {
   counts: Partial<Record<EnemyKind, number>>
@@ -285,10 +298,10 @@ const BASE_WAVES: readonly Wave[] = [
     { armored: 8, shield: 4, healer: 3, swift: 8, rusher: 6, swarm: 12, splitter: 5, abyss: 1 },
     0.6,
     500,
-    '최종 보스 · 왼쪽 입구에 심연의 소라왕 등장',
+    '공중 보스 · 월식의 바다용! 처치 후 31웨이브부터 타워 특화가 열려요',
   ),
 ]
-export const WAVES: readonly Wave[] = BASE_WAVES.map((base, index) => {
+const OPENING_WAVES = BASE_WAVES.map((base, index) => {
   const wave = index + 1
   const counts = { ...base.counts }
   if (wave >= 8) counts.flyingFish = 2 + Math.floor((wave - 8) / 4)
@@ -308,8 +321,33 @@ export const WAVES: readonly Wave[] = BASE_WAVES.map((base, index) => {
   }
   return { ...base, counts, hint: debut[wave] ?? base.hint }
 })
+// Replace weak fodder with compact elite squads; health and income remain independently tunable.
+const LATE_WAVES: readonly Wave[] = [
+ wave({ironCrab:8,shark:6,mako:6},.7,220,'흑철 왕게 등장 · 튼튼한 정예를 집중 공격하세요',0),
+ wave({ironCrab:9,emberMako:8,shark:5},.65,230,'홍련 청상아리 등장 · 준비 동작 뒤 강하게 돌진해요',1),
+ wave({ironCrab:9,crystalCuttlefish:6,cuttlefish:4},.7,240,'수정 갑오징어 등장 · 공중 화력을 보강하세요'),
+ wave({ironCrab:10,emberMako:8,crownHealer:2},.65,250,'왕관 진주소라 등장 · 정예 부대를 회복해요',2),
+ wave({ironCrab:12,emberMako:8,crystalCuttlefish:6},.6,270,'지상 탱커와 공중 정예가 함께 찾아와요',2),
+ wave({ironCrab:13,emberMako:10,crownHealer:2},.58,280,'회복 소라가 흑철 왕게를 지원해요',0),
+ wave({emberMako:14,crystalCuttlefish:9,ironCrab:6},.55,300,'빠른 돌진과 공중 정예의 동시 공격',1),
+ wave({ironCrab:14,crystalCuttlefish:8,crownHealer:3},.55,320,'소수 정예 전투 · 지속 화력을 준비하세요',2),
+ wave({ironCrab:14,emberMako:12,crystalCuttlefish:8,crownHealer:3},.52,340,'다음은 지상 보스 · 단일 집중 화력을 보강하세요',2),
+ wave({ironKing:1,ironCrab:8,emberMako:6,crownHealer:2},.8,700,'40웨이브 보스 · 심연의 철갑왕! 체력이 줄면 철갑 보호막을 펼쳐요',1),
+ wave({ironCrab:16,emberMako:12,crystalCuttlefish:9},.54,360,'최상위 정예 구간 · 화력·연사 특화를 활용하세요',2),
+ wave({ironCrab:17,crownHealer:3,crystalCuttlefish:10},.52,380,'회복 부대와 비행 정예를 함께 막아주세요',0),
+ wave({emberMako:18,ironCrab:12,crystalCuttlefish:10},.5,400,'홍련 청상아리가 오른쪽 입구로 몰려와요',1),
+ wave({ironCrab:18,crownHealer:4,crystalCuttlefish:10},.5,420,'강한 정예를 오래 붙잡아 둘 길목을 준비하세요',2),
+ wave({ironCrab:18,emberMako:16,crystalCuttlefish:12},.48,440,'지상과 공중의 두꺼운 방어선을 시험해요',2),
+ wave({ironCrab:20,emberMako:16,crownHealer:4},.48,460,'흑철 왕게의 대규모 정예 부대',0),
+ wave({crystalCuttlefish:18,emberMako:16,ironCrab:10},.48,480,'공중 정예 집중 공격 · 대공 특화를 준비하세요',1),
+ wave({ironCrab:20,crystalCuttlefish:16,crownHealer:4},.46,500,'회복 소라의 호위를 먼저 정리하세요',2),
+ wave({ironCrab:20,emberMako:18,crystalCuttlefish:16,crownHealer:4},.45,550,'다음은 최종 공중 보스 · 대공 화력과 지상 방어를 함께 준비하세요',2),
+ wave({eclipseDragon:1,ironCrab:10,emberMako:8,crystalCuttlefish:8,crownHealer:2},.75,1200,'최종전 · 완전월식의 바다용! 보호막·공중 호위·마지막 가속에 대비하세요',0),
+]
+export const WAVES: readonly Wave[] = [...OPENING_WAVES,...LATE_WAVES]
 export const healthBoost = (wave: number) => (wave <= 5 ? 1.15 : wave <= 15 ? 1.3 : 1.45)
-export const healthScale = (wave: number) => {
+export const healthScale = (wave: number):number => {
+  if(wave>30)return healthScale(30)*(1+.065*(Math.min(50,wave)-30))
   const n = Math.max(0, wave - 1)
   return 1.15 * (1 + 0.08 * n + 0.005 * n * n)
 }

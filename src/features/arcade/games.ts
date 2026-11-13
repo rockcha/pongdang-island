@@ -154,15 +154,16 @@ export const arcadeGames: ArcadeGame[] = [
   {
     id: 'tower-defense',
     title: '퐁이의 타워디펜스',
-    description: '두 갈래 물길과 바다 성 · 지상·공중 포탑으로 30웨이브와 세 보스를 막아내요.',
+    description:
+      '50웨이브 방어전 · 참가비 30골드 · 통과 스테이지마다 10골드 즉시 지급 · 주간 랭킹 정산.',
     icon: Castle,
     tags: ['brain'],
-    entryFee: 0,
+    entryFee: 30,
     dailyLimit: null,
     status: 'ready',
     component: TowerDefenseGame,
-    practiceOnly: true,
-    thumbnail: '/arcade/tower-defense/thumbnail-v8.svg',
+    thumbnail: '/arcade/tower-defense/thumbnail-v9.webp',
+    rewardMode: 'both',
   },
 ]
 

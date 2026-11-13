@@ -11,9 +11,25 @@ export const TOWER_KINDS = [
   'sniper',
   'harpoon',
   'frost',
+  'cruise',
 ] as const
 export type TowerKind = (typeof TOWER_KINDS)[number]
 export type BuildKind = TowerKind | 'wall'
+export type TowerSpecialization = 'power' | 'rapid' | 'hybrid' | 'bombard' | 'tracking'
+export const SPECIALIZATION_LABELS: Record<TowerSpecialization, string> = {
+  power: '화력 특화',
+  rapid: '연사 특화',
+  hybrid: '겸용 특화',
+  bombard: '폭격 특화',
+  tracking: '추적 특화',
+}
+export function specializationDescription(kind: BuildKind, specialization: TowerSpecialization) {
+  if (specialization === 'bombard') return '직격 피해 유지 · 주변 최대 2마리에 40% 폭발 피해'
+  if (specialization === 'tracking') return '공격력 +20% · 미사일 비행시간 −25%'
+  if (specialization === 'hybrid') return '지상·공중 공격 · 추가 대상 위력 80%'
+  if (specialization === 'rapid') return '공격 주기 −20%'
+  return kind === 'frost' ? '공격력 +30% · 감속 +10%p' : '공격력 +30%'
+}
 export type AttackKind =
   'single' | 'blast' | 'flame' | 'beam' | 'aura' | 'wall' | 'salvo' | 'snipe' | 'frost'
 
@@ -34,6 +50,8 @@ export const TOWER_DESCRIPTIONS: Record<BuildKind, string> = {
     '지상·공중 겸용. 긴 사거리에서 묵직한 작살을 발사해요. 저격탑보다 자주 쏘지만 한 발의 피해는 낮아요.',
   frost:
     '주변 지상 적을 최대 네 마리까지 감속해요. 강화하면 감속이 강해져요. 효과는 중첩되지 않고 보스에게는 절반만 적용돼요.',
+  cruise:
+    '지상·공중 겸용 초장거리 유도미사일. 보스를 먼저, 그다음 최대 체력이 높은 적을 노려요. 느린 한 발로 먼 거리의 정예를 견제해요.',
 }
 type Levels = readonly [number, number, number, number]
 type TowerSpec = {
@@ -160,8 +178,8 @@ export const BUILDINGS: Record<BuildKind, TowerSpec> = {
   salvo: tower(
     '불가사리 다연장 미사일',
     220,
-    18,
-    2.4,
+    26,
+    2,
     3.8,
     [85, 125, 170],
     '공중 최대 네 적을 동시 공격',
@@ -214,6 +232,20 @@ export const BUILDINGS: Record<BuildKind, TowerSpec> = {
     ),
     slow: [0.65, 0.6, 0.55, 0.5],
   },
+  cruise: tower(
+    '월광 순항미사일 기지',
+    550,
+    240,
+    6,
+    8,
+    [220, 320, 440],
+    '초장거리에서 보스·정예 추적',
+    0xa9cddd,
+    'single',
+    1,
+    0,
+    'both',
+  ),
   wall: {
     name: '산호 벽',
     cost: 8,
@@ -246,5 +278,6 @@ export const towerOriginY = (kind: BuildKind) =>
     sniper: 0.5,
     harpoon: 0.5,
     frost: 0.5,
+    cruise: 0.5,
   })[kind]
 export const statNumber = (value: number) => Number(value.toFixed(2)).toString()

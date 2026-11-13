@@ -1,9 +1,22 @@
 import { BUILDINGS, type BuildKind } from './tower-defense-towers'
 
-export function TowerAttackBadge({ kind }: { kind: BuildKind }) {
-  const { attack, targetLayer } = BUILDINGS[kind]
+export function TowerAttackBadge({
+  kind,
+  hybrid = false,
+  bombard = false,
+}: {
+  kind: BuildKind
+  hybrid?: boolean
+  bombard?: boolean
+}) {
+  const { attack } = BUILDINGS[kind]
+  const targetLayer = hybrid ? 'both' : BUILDINGS[kind].targetLayer
   const type =
-    attack === 'single' || attack === 'snipe' ? 'single' : attack === 'wall' ? 'wall' : 'area'
+    (attack === 'single' || attack === 'snipe') && !bombard
+      ? 'single'
+      : attack === 'wall'
+        ? 'wall'
+        : 'area'
   return (
     <>
       {targetLayer === 'air' && <span className="td-air-badge">공중 전용</span>}

@@ -45,6 +45,19 @@ function enemy(s: DefenseState, kind: EnemyKind, cell = cellAt(6, 7)) {
 function ticks(s: DefenseState, n: number) {
   for (let i = 0; i < n; i++) stepDefense(s, 0.05)
 }
+it('makes wave thirty a flying boss that ignores ground-only attacks and takes missile damage', () => {
+  expect(MONSTERS.abyss.layer).toBe('air')
+  expect(WAVES[29].hint).toContain('공중 보스')
+  const s = arena()
+  build(s, cellAt(6, 8), 'seahorse')
+  combat(s)
+  const boss = enemy(s, 'abyss')
+  ticks(s, 25)
+  expect(boss.hp).toBe(boss.maxHp)
+  build(s, cellAt(5, 8), 'missile')
+  ticks(s, 25)
+  expect(boss.hp).toBeLessThan(boss.maxHp)
+})
 it('flies directly across buildings and reaches the castle without following the flow field', () => {
   const s = arena()
   for (let y = 2; y < 14; y++) build(s, cellAt(6, y), 'wall')
@@ -113,6 +126,22 @@ it('salvo launches at four distinct air targets, and only one missile at a lone 
     ticks(s, 10)
     expect(group.filter((e) => e.hp < e.maxHp)).toHaveLength(Math.min(count, 4))
   }
+})
+it('salvo delivers the buffed 26 damage per target and fires again after two seconds', () => {
+  const s = arena()
+  build(s, cellAt(6, 8), 'salvo')
+  combat(s)
+  const group = Array.from({ length: 4 }, () => enemy(s, 'airJelly'))
+  for (const e of group) e.hp = e.maxHp = 10000
+  ticks(s, 1)
+  expect(s.projectiles).toHaveLength(4)
+  expect(s.projectiles.every((p) => p.damage === 26)).toBe(true)
+  ticks(s, 38)
+  expect(s.stats.shots).toBe(4)
+  ticks(s, 3)
+  expect(s.stats.shots).toBe(8)
+  ticks(s, 12)
+  for (const e of group) expect(e.maxHp - e.hp).toBe(52)
 })
 it('missiles track moving air targets with a curved trajectory', () => {
   const s = arena()

@@ -10,6 +10,8 @@ import {
   cellAt,
   spawnEnemy,
   startWave,
+  stepDefense,
+  configureStartingWave,
   type DefenseState,
 } from '@/features/arcade/tower-defense-engine'
 const scene = vi.hoisted(() => ({
@@ -65,7 +67,7 @@ async function start() {
   )
   fireEvent.click(screen.getByRole('button', { name: '연습 시작' }))
   await waitFor(() =>
-    expect(screen.getByRole('button', { name: '1웨이브 시작' }).hasAttribute('disabled')).toBe(
+    expect(screen.getByRole('button', { name: '지금 보내기' }).hasAttribute('disabled')).toBe(
       false,
     ),
   )
@@ -73,6 +75,28 @@ async function start() {
 function openCatalog() {
   fireEvent.click(screen.getByRole('button', { name: '포탑 건설', exact: true }))
 }
+it('shares the arcade start menu while disabling real play and keeping weekly ranking in preparation', async () => {
+  render(
+    <MemoryRouter>
+      <TowerDefenseGame />
+    </MemoryRouter>,
+  )
+  const paid = screen.getByRole('button', { name: '실전 · 준비 중' })
+  expect((paid as HTMLButtonElement).disabled).toBe(true)
+  expect(document.querySelector('img[src="/arcade/tower-defense/poster-v1.webp"]')).toBeTruthy()
+  fireEvent.click(paid)
+  expect(scene.read).toBeNull()
+  fireEvent.click(screen.getByRole('tab', { name: '랭킹' }))
+  expect(screen.getByRole('heading', { name: '주간 랭킹 준비 중' })).toBeTruthy()
+  expect(scene.read).toBeNull()
+  fireEvent.click(screen.getByRole('button', { name: '연습하러 가기' }))
+  fireEvent.click(screen.getByRole('button', { name: '연습 시작' }))
+  await waitFor(() => expect(scene.read).not.toBeNull())
+  expect(
+    screen.getByRole('dialog', { name: '퐁이의 타워디펜스' }).getAttribute('data-layout'),
+  ).toBe('contained')
+  expect(scene.read!().gold).toBe(180)
+})
 it('paints walls across occupied tiles without changing the tool or charging twice, and stops on cancel', async () => {
   await start()
   fireEvent.click(screen.getByRole('button', { name: '산호 벽 8코인' }))
@@ -89,30 +113,22 @@ it('paints walls across occupied tiles without changing the tool or charging twi
   expect(scene.read!().buildings).toHaveLength(2)
   expect(scene.read!().gold).toBe(164)
 })
-it('starts at the selected boss wave with preparation coins and keeps that choice on retry', async () => {
+it('starts automatically after the countdown without a stage selector and resets to wave one on retry', async () => {
   await start()
-  fireEvent.change(screen.getByRole('combobox', { name: '시작 웨이브' }), {
-    target: { value: '10' },
-  })
-  expect(scene.read!().wave).toBe(0)
-  expect(scene.read!().gold).toBeGreaterThan(180)
-  chooseTower('문어포 90코인')
-  act(() => scene.pick!(cellAt(4, 10)))
-  expect(
-    (screen.getByRole('combobox', { name: '시작 웨이브' }) as HTMLSelectElement).disabled,
-  ).toBe(true)
-  fireEvent.click(screen.getByRole('button', { name: '10웨이브 시작' }))
-  expect(scene.read!().wave).toBe(10)
-  expect(scene.read!().plan.filter((k) => k === 'boss')).toHaveLength(1)
   expect(screen.queryByRole('combobox', { name: '시작 웨이브' })).toBeNull()
+  expect(screen.getByText('1웨이브 · 30초 후 시작')).toBeTruthy()
+  act(() => {
+    for (let i = 0; i < 601; i++) stepDefense(scene.read!(), 0.05)
+    scene.notify!()
+  })
+  expect(scene.read!().wave).toBe(1)
+  expect(scene.read!().phase).toBe('combat')
   act(() => {
     scene.read!().phase = 'lost'
     scene.notify!()
   })
   fireEvent.click(screen.getByRole('button', { name: '다시 연습' }))
-  expect((screen.getByRole('combobox', { name: '시작 웨이브' }) as HTMLSelectElement).value).toBe(
-    '10',
-  )
+  expect(screen.getByText('1웨이브 · 30초 후 시작')).toBeTruthy()
   expect(scene.read!().wave).toBe(0)
 })
 it('keeps the stage free of a fixed boss health overlay', async () => {
@@ -133,6 +149,46 @@ function chooseTower(name: string) {
   openCatalog()
   fireEvent.click(screen.getByRole('button', { name }))
 }
+it('paints multiple towers without switching tools or purchasing occupied cells again', async () => {
+  await start()
+  act(() => {
+    configureStartingWave(scene.read!(), 50)
+    scene.notify!()
+  })
+  chooseTower('문어포 90코인')
+  const gold = scene.read!().gold
+  act(() => {
+    scene.paint!(cellAt(2, 8))
+    scene.paint!(cellAt(3, 8))
+    scene.paint!(cellAt(2, 8))
+  })
+  expect(scene.read!().buildings).toHaveLength(2)
+  expect(scene.read!().gold).toBe(gold - 180)
+  fireEvent.click(screen.getByRole('button', { name: '배치 취소' }))
+  act(() => scene.paint!(cellAt(4, 8)))
+  expect(scene.read!().buildings).toHaveLength(2)
+})
+it('moves an upgraded tower without spending coins and cancels further relocation with Escape', async () => {
+  await start()
+  chooseTower('문어포 90코인')
+  const from = cellAt(2, 8),
+    to = cellAt(4, 8)
+  act(() => scene.pick!(from))
+  act(() => scene.pick!(from))
+  fireEvent.click(screen.getByRole('button', { name: '강화 35' }))
+  const gold = scene.read!().gold
+  fireEvent.click(screen.getByRole('button', { name: '이동', exact: true }))
+  act(() => scene.pick!(HOME))
+  expect(scene.read!().buildings[0].cell).toBe(from)
+  expect(screen.getByRole('button', { name: '이동 취소' })).toBeTruthy()
+  act(() => scene.pick!(to))
+  expect(scene.read!().buildings[0]).toMatchObject({ cell: to, level: 1 })
+  expect(scene.read!().gold).toBe(gold)
+  fireEvent.click(screen.getByRole('button', { name: '이동', exact: true }))
+  fireEvent.keyDown(window, { key: 'Escape' })
+  act(() => scene.pick!(cellAt(6, 8)))
+  expect(scene.read!().buildings[0].cell).toBe(to)
+})
 it('installs immediately, selects existing towers without repurchasing and exposes upgrades', async () => {
   await start()
   act(() => scene.pick!(cellAt(2, 11)))
@@ -151,13 +207,13 @@ it('installs immediately, selects existing towers without repurchasing and expos
   act(() => scene.pick!(cellAt(2, 11)))
   fireEvent.click(screen.getByRole('button', { name: '강화 35' }))
   expect(scene.read!().buildings[0].level).toBe(1)
-  fireEvent.click(screen.getByText('능력치 보기'))
-  const comparison = screen.getByRole('table', { name: '문어포 강화 능력치 비교' })
+  fireEvent.click(screen.getByRole('button', { name: '능력치 보기' }))
+  const comparison = await screen.findByRole('table', { name: '문어포 강화 능력치 비교' })
   const attack = within(comparison).getByRole('row', { name: /공격력/ })
   expect(within(attack).getByText('40.5')).toBeTruthy()
   expect(within(attack).getByText('55.5')).toBeTruthy()
-  expect(within(comparison).getByRole('columnheader', { name: '현재' })).toBeTruthy()
-  expect(within(comparison).getByRole('columnheader', { name: '강화 후' })).toBeTruthy()
+  expect(within(comparison).getByRole('columnheader', { name: /^현재/ })).toBeTruthy()
+  expect(within(comparison).getByRole('columnheader', { name: /^강화 후/ })).toBeTruthy()
   expect(document.querySelector('.td-tower-portrait img')?.getAttribute('src')).toContain(
     'octopus-v5.svg',
   )
@@ -183,7 +239,7 @@ it('toggles double speed through pause and resets to normal for a new practice',
 })
 it('lets players build during combat, upgrade the castle and pause from portrait mode', async () => {
   await start()
-  fireEvent.click(screen.getByRole('button', { name: '1웨이브 시작' }))
+  fireEvent.click(screen.getByRole('button', { name: '지금 보내기' }))
   expect(scene.read!().phase).toBe('combat')
   chooseTower('해마포 60코인')
   act(() => scene.pick!(cellAt(6, 11)))
@@ -308,11 +364,15 @@ it('drags a toolbar item onto the map once and cancels an outside drop', async (
   expect(screen.queryByRole('button', { name: '배치 취소' })).toBeNull()
 })
 
-it('offers all twelve towers and gates expensive purchases by available coins', async () => {
+it('offers all thirteen towers and gates expensive purchases by available coins', async () => {
   await start()
   openCatalog()
   const catalog = screen.getByRole('group', { name: '포탑 선택' })
-  expect(within(catalog).getAllByRole('button')).toHaveLength(12)
+  expect(within(catalog).getAllByRole('button')).toHaveLength(13)
+  expect(
+    (screen.getByRole('button', { name: '월광 순항미사일 기지 550코인' }) as HTMLButtonElement)
+      .disabled,
+  ).toBe(true)
   expect(
     (screen.getByRole('button', { name: '진주 레이저 260코인' }) as HTMLButtonElement).disabled,
   ).toBe(true)
@@ -348,15 +408,17 @@ it.each([
   expect(scene.read!().gold).toBe(1000 - cost)
   fireEvent.click(screen.getByRole('button', { name: '배치 취소' }))
   act(() => scene.pick!(cellAt(6, 10)))
-  fireEvent.click(screen.getByText('능력치 보기'))
-  expect(screen.getByRole('table', { name: `${name} 강화 능력치 비교` })).toBeTruthy()
-  expect(screen.getByText(badge)).toBeTruthy()
+  fireEvent.click(screen.getByRole('button', { name: '능력치 보기' }))
+  const stats = await screen.findByRole('table', { name: `${name} 강화 능력치 비교` })
+  expect(stats).toBeTruthy()
+  expect(within(await screen.findByRole('alertdialog')).getByText(badge)).toBeTruthy()
 })
 
 it('announces air enemy names and counts before starting a flying wave', async () => {
   await start()
-  fireEvent.change(screen.getByRole('combobox', { name: '시작 웨이브' }), {
-    target: { value: '8' },
+  act(() => {
+    configureStartingWave(scene.read!(), 8)
+    scene.notify!()
   })
   expect(screen.getByText('공중')).toBeTruthy()
   expect(screen.getByRole('img', { name: '하늘 날치' })).toBeTruthy()
@@ -367,6 +429,9 @@ it('announces air enemy names and counts before starting a flying wave', async (
 
 it('opens castle upgrades from health and hides build panels while paused', async () => {
   await start()
+  const health = screen.getByRole('button', { name: '성 체력 15/15 · 성 강화 선택' })
+  expect(health.closest('.td-hud')).toBeNull()
+  expect(health.closest('.td-stage-wrap')).toBeTruthy()
   expect(
     within(screen.getByRole('group', { name: '건설 도구' })).getAllByRole('button'),
   ).toHaveLength(2)
@@ -406,9 +471,10 @@ it('filters the purchase modal by target layer and sorts every view by price', a
     'harpoon',
     'laser',
     'sniper',
+    'cruise',
   ])
   fireEvent.click(screen.getByRole('button', { name: '공중', exact: true }))
-  expect(kinds()).toEqual(['missile', 'salvo', 'harpoon', 'sniper'])
+  expect(kinds()).toEqual(['missile', 'salvo', 'harpoon', 'sniper', 'cruise'])
   fireEvent.click(screen.getByRole('button', { name: '지상', exact: true }))
   expect(kinds()).toEqual([
     'seahorse',
@@ -421,9 +487,10 @@ it('filters the purchase modal by target layer and sorts every view by price', a
     'harpoon',
     'laser',
     'sniper',
+    'cruise',
   ])
   fireEvent.click(screen.getByRole('button', { name: '전체', exact: true }))
-  expect(kinds()).toHaveLength(12)
+  expect(kinds()).toHaveLength(13)
   fireEvent.keyDown(window, { key: 'Escape' })
   expect(screen.queryByRole('dialog', { name: '포탑 구매' })).toBeNull()
   expect(document.activeElement).toBe(

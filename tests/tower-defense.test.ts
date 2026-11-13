@@ -42,7 +42,7 @@ const advance = (s: DefenseState, seconds: number) => {
 }
 it('configures a bounded practice start before building, with reproducible earlier-wave income', () => {
   const s = prepared()
-  for (const invalid of [0, 31, 1.5, NaN, Infinity])
+  for (const invalid of [0, 51, 1.5, NaN, Infinity])
     expect(configureStartingWave(s, invalid)).toBe(false)
   expect(s.gold).toBe(180)
   expect(configureStartingWave(s, 2)).toBe(true)
@@ -66,23 +66,34 @@ function combat(s: DefenseState) {
   s.spawned = s.plan.length
   s.spawnTimer = Infinity
 }
-it('starts with 15 health and unlimited first preparation, then gives exactly 20 seconds between waves', () => {
+it('automatically sends the first wave after preparation and preserves manual pause', () => {
+  const s = prepared()
+  advance(s, 7)
+  expect(s.wave).toBe(0)
+  expect(s.prep).toBeCloseTo(23)
+  pauseDefense(s, true)
+  advance(s, 30)
+  expect(s.prep).toBeCloseTo(23)
+  pauseDefense(s, false)
+  advance(s, 23.1)
+  expect(s.wave).toBe(1)
+  expect(s.phase).toBe('combat')
+})
+it('starts with 15 health and gives exactly 30 seconds between waves', () => {
   const s = prepared()
   expect(s.lives).toBe(15)
   expect(s.gold).toBe(180)
-  advance(s, 100)
-  expect(s.wave).toBe(0)
   combat(s)
   stepDefense(s, 0.05)
   expect(s.phase).toBe('build')
-  expect(s.prep).toBe(20)
+  expect(s.prep).toBe(30)
   advance(s, 7)
-  expect(s.prep).toBeCloseTo(13)
+  expect(s.prep).toBeCloseTo(23)
   pauseDefense(s, true)
   advance(s, 30)
-  expect(s.prep).toBeCloseTo(13)
+  expect(s.prep).toBeCloseTo(23)
   pauseDefense(s, false)
-  advance(s, 13.1)
+  advance(s, 23.1)
   expect(s.wave).toBe(2)
   expect(s.phase).toBe('combat')
 })
@@ -325,32 +336,32 @@ it('keeps dense populations, lookup maps, effects and object pools bounded', () 
   expect(s.stats.peakEnemies).toBe(256)
   expect(s.stats.targetVisits).toBeLessThan(256 * 20 * 10)
 })
-it('contains thirty finite waves, with bosses only at ten, twenty and thirty', () => {
-  expect(WAVES).toHaveLength(30)
+it('contains fifty finite waves, with bosses every ten waves', () => {
+  expect(WAVES).toHaveLength(50)
   expect(ENTRANCES).toHaveLength(2)
   expect(WAVES.slice(0, 20).map((w) => Object.values(w.counts).reduce((a, b) => a + b, 0))).toEqual(
     [8, 18, 22, 26, 30, 34, 38, 44, 48, 23, 50, 56, 60, 64, 73, 78, 83, 88, 93, 48],
   )
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 50; i++) {
     const s = prepared()
     s.wave = i
     startWave(s)
     expect(s.plan.filter((k) => MONSTERS[k].boss)).toEqual(
-      i === 9 ? ['boss'] : i === 19 ? ['overlord'] : i === 29 ? ['abyss'] : [],
+      i === 9 ? ['boss'] : i === 19 ? ['overlord'] : i === 29 ? ['abyss'] : i===39?['ironKing']:i===49?['eclipseDragon']:[],
     )
   }
 })
 it('can clear all thirty waves with a paid maze and anti-air strategy across a small seed sample', () => {
   let wins = 0
   for (const seed of [1, 7, 42, 91, 731, 2026]) {
-    const { state: s, checkpoints } = campaignStrategy(seed)
-    expect(['won', 'lost']).toContain(s.phase)
+    const { state: s, checkpoints } = campaignStrategy(seed,31)
+    expect(['combat', 'lost']).toContain(s.phase)
     expect(s.gold).toBeGreaterThanOrEqual(0)
-    if (s.phase === 'won') {
+    if (s.wave === 31) {
       wins++
-      expect(s.wave).toBe(30)
-      expect(s.finalDefeated).toBe(true)
-      expect(checkpoints).toHaveLength(29)
+      expect(s.wave).toBe(31)
+      expect(s.finalDefeated).toBe(false)
+      expect(checkpoints).toHaveLength(30)
       expect(s.lives).toBeGreaterThan(0)
     } else expect(s.lives === 0 || s.finalEscaped).toBe(true)
   }

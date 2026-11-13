@@ -1,0 +1,27 @@
+{
+  "source": "scripts/build-tower-defense-lunar-boss.mjs",
+  "baseAtlas": "arcade/tower-defense/enemies-v6-sprite.png",
+  "replacedRow": 11,
+  "cell": 256,
+  "columns": 4,
+  "rows": 18,
+  "animation": "Fixed head/body anchor; four gentle fin, whisker and tail poses. Strict overhead view.",
+  "files": [
+    {
+      "path": "arcade/tower-defense/lunar-dragon-v1.svg",
+      "sha256": "28cc9fecd9c4d895fc51ac6e3d056a5906e7ee3a587f64c3b1b18aae91618bd2"
+    },
+    {
+      "path": "arcade/tower-defense/lunar-dragon-v1-sheet.svg",
+      "sha256": "441d6b100fdc6fb79032289aef44e99e0f65177618b328b716e3a9d739529f8a"
+    },
+    {
+      "path": "arcade/tower-defense/lunar-dragon-v1-sprite.png",
+      "sha256": "f35ea1a9c5b771284a9fb31266615c9c795a87c46adea9682ac2b1539df03fc4"
+    },
+    {
+      "path": "arcade/tower-defense/enemies-v7-sprite.png",
+      "sha256": "1e2607cd9aa6a8e15818237c1a85c1a1d47d794c57ba291cabc6c7b5d518d083"
+    }
+  ]
+}

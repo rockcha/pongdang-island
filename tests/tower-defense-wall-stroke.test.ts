@@ -1,6 +1,10 @@
 // @vitest-environment node
 import { expect, it } from 'vitest'
-import { WallStroke } from '../src/features/arcade/tower-defense-placement'
+import {
+  BuildStroke,
+  WallStroke,
+  wallConnections,
+} from '../src/features/arcade/tower-defense-placement'
 import {
   createDefense,
   beginDefense,
@@ -77,4 +81,35 @@ it('stops spending once funds run out even when the finger continues across new 
   stroke.move(cellAt(6, 4))
   expect(s.buildings).toHaveLength(2)
   expect(s.gold).toBe(1)
+})
+it('places towers continuously, skips duplicate cells, and stops charging when funds run out', () => {
+  const s = createDefense()
+  beginDefense(s)
+  s.gold = 185
+  const stroke = new BuildStroke((c) => {
+    build(s, c, 'octopus')
+  })
+  stroke.start(cellAt(1, 8))
+  stroke.move(cellAt(5, 8))
+  stroke.move(cellAt(1, 8))
+  stroke.end()
+  expect(s.buildings.map((b) => b.cell)).toEqual([cellAt(1, 8), cellAt(2, 8)])
+  expect(s.gold).toBe(5)
+})
+it('connects orthogonal wall junctions once, excludes towers and diagonals, and does not wrap rows', () => {
+  const cells = [
+    [3, 3],
+    [2, 3],
+    [4, 3],
+    [3, 2],
+    [3, 4],
+    [11, 5],
+    [0, 6],
+  ]
+  const buildings = cells.map(([x, y]) => ({ cell: cellAt(x, y), kind: 'wall' as const }))
+  const links = wallConnections([...buildings, { cell: cellAt(4, 4), kind: 'octopus' }])
+  expect(links).toHaveLength(4)
+  expect(new Set(links.map(([a, b]) => [a, b].sort((a, b) => a - b).join(','))).size).toBe(4)
+  expect(links.every(([a, b]) => a === cellAt(3, 3) || b === cellAt(3, 3))).toBe(true)
+  expect(wallConnections(buildings.filter((b) => b.cell !== cellAt(3, 3)))).toEqual([])
 })

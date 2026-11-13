@@ -1,0 +1,25 @@
+{
+  "source": "scripts/build-tower-defense-cruise-art.mjs",
+  "method": "Native editable SVG extending the established overhead tower artwork; no external bitmap references.",
+  "frameAnchor": {
+    "x": 128,
+    "y": 128
+  },
+  "columns": 4,
+  "rows": 1,
+  "cell": 256,
+  "files": [
+    {
+      "path": "arcade/tower-defense/cruise-v1.svg",
+      "sha256": "ebc32b116370f621eea545df5297bd7c1d0062dc2f0ae1f81e32c306183084f8"
+    },
+    {
+      "path": "arcade/tower-defense/cruise-v1-sheet.svg",
+      "sha256": "c327e179889baaf429b4b7c07a58301e37751f1609afbaa5be7e7e07dff44d0c"
+    },
+    {
+      "path": "arcade/tower-defense/cruise-v1-sprite.png",
+      "sha256": "efef0ef68ccfb2c318eac96705859f067051d346fcd91339d8ea10add13538e8"
+    }
+  ]
+}

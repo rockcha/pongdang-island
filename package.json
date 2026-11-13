@@ -6,6 +6,8 @@
   "scripts": {
     "billiards:engine": "node scripts/build-billiards-replay.mjs",
     "billiards:engine:check": "node scripts/build-billiards-replay.mjs --check",
+    "tower-defense:engine": "node scripts/build-tower-defense-replay.mjs",
+    "tower-defense:engine:check": "node scripts/build-tower-defense-replay.mjs --check",
     "client-data:check": "node scripts/check-client-data.mjs",
     "farm:engine": "node scripts/build-farm-engine.mjs",
     "farm:engine:check": "node scripts/build-farm-engine.mjs --check",

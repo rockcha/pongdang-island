@@ -159,20 +159,20 @@ it('summons exactly eight unrewarded minions at two final-boss thresholds', () =
   expect(s.phase).toBe('build')
 })
 it('requires a final boss kill even when the castle survives the breach', () => {
-  const s = arena(30)
-  s.lives = 30
-  s.maxLives = 30
-  enemy(s, 'abyss', HOME)
+  const s = arena(50)
+  s.lives = 60
+  s.maxLives = 60
+  enemy(s, 'eclipseDragon', HOME)
   stepDefense(s, 0.05)
-  expect(s.lives).toBe(15)
+  expect(s.lives).toBe(30)
   expect(s.finalEscaped).toBe(true)
   expect(s.finalDefeated).toBe(false)
   expect(s.phase).toBe('lost')
-  const empty = arena(30)
+  const empty = arena(50)
   stepDefense(empty, 0.05)
   expect(empty.phase).toBe('lost')
 })
-it('triggers the final conch king phases once and wins only after the summoned rushers resolve', () => {
+it('keeps wave thirty phases and continues after its summoned rushers resolve', () => {
   const s = arena(30),
     e = enemy(s, 'abyss')
   hit(s, e, e.maxHp * 0.31)
@@ -189,10 +189,21 @@ it('triggers the final conch king phases once and wins only after the summoned r
   expect(e.phaseFlags).toBe(7)
   expect(e.shield).toBe(0)
   hit(s, e, e.hp)
-  expect(s.finalDefeated).toBe(true)
+  expect(s.finalDefeated).toBe(false)
   expect(s.phase).toBe('combat')
   for (const add of [...s.enemies]) hit(s, add, add.hp)
-  expect(s.phase).toBe('won')
+  expect(s.phase).toBe('build')
+})
+it('wins wave fifty only after the awakened dragon and unrewarded flying escorts are defeated',()=>{
+ const s=arena(50),boss=enemy(s,'eclipseDragon')
+ hit(s,boss,boss.maxHp*.31);expect(boss.shield).toBe(2200)
+ hit(s,boss,2200);hit(s,boss,boss.hp-boss.maxHp*.39)
+ const escorts=s.enemies.filter(e=>e.kind==='crystalCuttlefish')
+ expect(escorts).toHaveLength(2);expect(escorts.every(e=>e.reward===0)).toBe(true)
+ hit(s,boss,boss.hp-boss.maxHp*.19);expect(boss.phaseFlags).toBe(7)
+ hit(s,boss,boss.hp);expect(s.finalDefeated).toBe(true);expect(s.phase).toBe('combat')
+ for(const e of [...s.enemies])hit(s,e,e.hp)
+ expect(s.phase).toBe('won')
 })
 it('assigns late-wave tank and rush squads to separate entrances', () => {
   const s = arena(21)

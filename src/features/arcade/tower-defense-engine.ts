@@ -1,5 +1,6 @@
 // Account-independent practice simulation. Fixed-step logic has no Phaser or DOM dependency.
 import { MONSTERS, WAVES, healthScale, healthBoost, type EnemyKind } from './tower-defense-waves.ts'
+import { missilePoint } from './tower-defense-flight.ts'
 export {
   MONSTERS,
   MONSTER_KINDS,
@@ -7,7 +8,7 @@ export {
   healthScale,
   type EnemyKind,
 } from './tower-defense-waves.ts'
-import { BUILDINGS, type BuildKind } from './tower-defense-towers.ts'
+import { BUILDINGS, type BuildKind, type TowerSpecialization } from './tower-defense-towers.ts'
 export { BUILDINGS, TOWER_KINDS, type BuildKind, type TowerKind } from './tower-defense-towers.ts'
 export const GRID = { columns: 12, rows: 15, cell: 36, x: 18, y: 28 }
 export const FIELD = {
@@ -41,8 +42,8 @@ function cornerCells(a: number, b: number) {
     cellAt(b % GRID.columns, Math.floor(a / GRID.columns)),
   ]
 }
-export const PREPARATION = 20,
-  MAX_WAVES = 30,
+export const PREPARATION = 30,
+  MAX_WAVES = 50,
   ENEMY_LIMIT = 256,
   PROJECTILE_LIMIT = 128,
   EFFECT_LIMIT = 96
@@ -50,6 +51,7 @@ export const waveSize = (wave: number) =>
   Object.values(WAVES[wave - 1]?.counts ?? {}).reduce<number>((a, b) => a + (b ?? 0), 0)
 export const waveHint = (wave: number) => WAVES[Math.max(0, Math.min(MAX_WAVES - 1, wave - 1))].hint
 export type Building = {
+  specialization?: TowerSpecialization
   cell: number
   kind: BuildKind
   level: number
@@ -88,6 +90,11 @@ export type Enemy = {
   slowRemaining: number
 }
 export type Projectile = {
+  area?: number
+  cap?: number
+  targetLayer?: 'ground' | 'air' | 'both'
+  nativeLayer?: 'ground' | 'air' | 'both'
+  hybrid?: boolean
   source: BuildKind
   blast: boolean
   missile: boolean
@@ -118,7 +125,7 @@ export type Effect = {
 }
 export type Phase = 'ready' | 'build' | 'combat' | 'paused' | 'won' | 'lost'
 type SpawnRequest = {
-  kind: 'mini' | 'swarm' | 'rusher'
+  kind: EnemyKind
   x: number
   y: number
   cell: number
@@ -159,6 +166,7 @@ export type DefenseState = {
   scratchFlow: Float32Array
   scratchNext: Int16Array
   blocked: Uint8Array
+  scratchBlocked: Uint8Array
   queue: Int16Array
   buckets: Enemy[][]
   pending: SpawnRequest[]
@@ -216,7 +224,7 @@ export function createDefense(seed = 42): DefenseState {
     castleLevel: 0,
     score: 0,
     kills: 0,
-    prep: 20,
+    prep: PREPARATION,
     elapsed: 0,
     tick: 0,
     buildings: [],
@@ -265,6 +273,7 @@ export function createDefense(seed = 42): DefenseState {
     scratchFlow: new Float32Array(CELL_COUNT),
     scratchNext: new Int16Array(CELL_COUNT),
     blocked: new Uint8Array(CELL_COUNT),
+    scratchBlocked: new Uint8Array(CELL_COUNT),
     queue: new Int16Array(CELL_COUNT),
     buckets: Array.from({ length: CELL_COUNT }, () => []),
     pending: [],
@@ -327,10 +336,17 @@ export const pointCell = (x: number, y: number) =>
     Math.max(0, Math.min(GRID.columns - 1, Math.floor((x - GRID.x) / GRID.cell))),
     Math.max(0, Math.min(GRID.rows - 1, Math.floor((y - GRID.y) / GRID.cell))),
   )
-function fillFlow(s: DefenseState, flow: Float32Array, next: Int16Array, candidate = -1) {
-  s.blocked.fill(0)
-  for (const b of s.buildings) s.blocked[b.cell] = 1
-  if (candidate >= 0) s.blocked[candidate] = 1
+function fillFlow(
+  s: DefenseState,
+  flow: Float32Array,
+  next: Int16Array,
+  candidate = -1,
+  ignoreCell = -1,
+) {
+  const blocked = flow === s.flow ? s.blocked : s.scratchBlocked
+  blocked.fill(0)
+  for (const b of s.buildings) if (b.cell !== ignoreCell) blocked[b.cell] = 1
+  if (candidate >= 0) blocked[candidate] = 1
   flow.fill(Infinity)
   next.fill(-1)
   flow[HOME] = 0
@@ -348,9 +364,9 @@ function fillFlow(s: DefenseState, flow: Float32Array, next: Int16Array, candida
     if (current < 0) break
     s.queue[current] = 1
     for (const n of NEIGHBORS[current]) {
-      if (s.blocked[n] || s.queue[n]) continue
+      if (blocked[n] || s.queue[n]) continue
       const diag = diagonal(current, n)
-      if (diag && cornerCells(current, n).some((c) => s.blocked[c])) continue
+      if (diag && cornerCells(current, n).some((c) => blocked[c])) continue
       const cost = best + (diag ? Math.SQRT2 : 1)
       if (cost < flow[n] - 1e-5) {
         flow[n] = cost
@@ -382,6 +398,9 @@ export function routeCells(s: DefenseState, entrance = ENTRANCES[0], candidate =
 }
 const editable = (s: DefenseState) => s.phase === 'build' || s.phase === 'combat'
 export function canPlace(s: DefenseState, cell: number, kind: BuildKind) {
+  return placementError(s, cell, kind)
+}
+function placementError(s: DefenseState, cell: number, kind: BuildKind, movingFrom = -1) {
   if (!editable(s)) return '진행 중이거나 정비 시간에 설치할 수 있어요.'
   if (!Number.isInteger(cell) || cell < 0 || cell >= CELL_COUNT) return '전장 안에 놓아 주세요.'
   if (cell === HOME || ENTRANCES.includes(cell)) return '입구와 성은 비워 주세요.'
@@ -400,14 +419,15 @@ export function canPlace(s: DefenseState, cell: number, kind: BuildKind) {
   if (
     s.pending.some(
       (e) =>
-        e.cell === cell ||
-        e.nav === cell ||
-        (diagonal(e.cell, e.nav) && cornerCells(e.cell, e.nav).includes(cell)),
+        MONSTERS[e.kind].layer === 'ground' &&
+        (e.cell === cell ||
+          e.nav === cell ||
+          (diagonal(e.cell, e.nav) && cornerCells(e.cell, e.nav).includes(cell))),
     )
   )
     return '새 친구가 나오는 칸이에요.'
-  if (s.gold < BUILDINGS[kind].cost) return '연습 코인이 부족해요.'
-  fillFlow(s, s.scratchFlow, s.scratchNext, cell)
+  if (movingFrom < 0 && s.gold < BUILDINGS[kind].cost) return '연습 코인이 부족해요.'
+  fillFlow(s, s.scratchFlow, s.scratchNext, cell, movingFrom)
   s.stats.candidateBuilds++
   if (
     ENTRANCES.some((c) => !Number.isFinite(s.scratchFlow[c])) ||
@@ -415,10 +435,30 @@ export function canPlace(s: DefenseState, cell: number, kind: BuildKind) {
       (e) =>
         e.hp > 0 && MONSTERS[e.kind].layer === 'ground' && !Number.isFinite(s.scratchFlow[e.nav]),
     ) ||
-    s.pending.some((e) => !Number.isFinite(s.scratchFlow[e.nav]))
+    s.pending.some(
+      (e) => MONSTERS[e.kind].layer === 'ground' && !Number.isFinite(s.scratchFlow[e.nav]),
+    )
   )
     return '길을 완전히 막을 수 없어요. 한 칸은 열어 주세요.'
   return ''
+}
+export function canMove(s: DefenseState, from: number, to: number) {
+  const tower = s.buildings.find((b) => b.cell === from)
+  if (!tower || tower.kind === 'wall') return '이동할 포탑을 선택해 주세요.'
+  if (from === to) return '현재 위치예요.'
+  return placementError(s, to, tower.kind, from)
+}
+export function moveTower(s: DefenseState, from: number, to: number) {
+  if (canMove(s, from, to)) return false
+  const tower = s.buildings.find((b) => b.cell === from)!
+  tower.cell = to
+  tower.charge = 0
+  tower.chargeTarget = 0
+  tower.flash = 0
+  s.version++
+  refreshFlow(s)
+  emit(s, 'build', SITES[to].x, SITES[to].y, 0xd5bb97)
+  return true
 }
 export function build(s: DefenseState, cell: number, kind: BuildKind) {
   if (canPlace(s, cell, kind)) return false
@@ -443,6 +483,57 @@ export function build(s: DefenseState, cell: number, kind: BuildKind) {
 }
 export const upgradeCost = (b: Building) => BUILDINGS[b.kind].upgrades[b.level] ?? Infinity
 export const rangeOf = (b: Building) => BUILDINGS[b.kind].range[b.level] * GRID.cell
+export const damageOf = (b: Building) =>
+  BUILDINGS[b.kind].damage[b.level] *
+  (b.specialization === 'power' ? 1.3 : b.specialization === 'tracking' ? 1.2 : 1)
+export const intervalOf = (b: Building) =>
+  BUILDINGS[b.kind].interval[b.level] * (b.specialization === 'rapid' ? 0.8 : 1)
+export const targetLayerOf = (b: Building) =>
+  b.specialization === 'hybrid' ? 'both' : BUILDINGS[b.kind].targetLayer
+export const specializationOptions = (kind: BuildKind): readonly TowerSpecialization[] =>
+  kind === 'wall'
+    ? []
+    : kind === 'cruise'
+      ? ['bombard', 'tracking']
+      : BUILDINGS[kind].targetLayer === 'both'
+        ? ['power', 'rapid']
+        : ['power', 'rapid', 'hybrid']
+export const specializationCost = (
+  b: Building,
+  kind: TowerSpecialization = b.specialization ?? specializationOptions(b.kind)[0] ?? 'power',
+) =>
+  Math.ceil(
+    (BUILDINGS[b.kind].cost + (BUILDINGS[b.kind].upgrades[2] ?? 0)) *
+      0.75 *
+      (kind === 'hybrid' ? 1.2 : 1),
+  )
+const crossLayerFactor = (b: Building, e: Enemy) =>
+  b.specialization === 'hybrid' && BUILDINGS[b.kind].targetLayer !== MONSTERS[e.kind].layer
+    ? 0.8
+    : 1
+export const damageAgainst = (b: Building, e: Enemy) => damageOf(b) * crossLayerFactor(b, e)
+export const specializationUnlocked = (s: DefenseState) =>
+  s.startingWave > 30 || s.wave > 30 || (s.wave === 30 && s.phase === 'build')
+export function specialize(s: DefenseState, cell: number, kind: TowerSpecialization) {
+  const b = s.buildings.find((b) => b.cell === cell)
+  if (
+    !editable(s) ||
+    !specializationUnlocked(s) ||
+    !b ||
+    b.kind === 'wall' ||
+    b.level !== 3 ||
+    b.specialization ||
+    !specializationOptions(b.kind).includes(kind) ||
+    s.gold < specializationCost(b, kind)
+  )
+    return false
+  const cost = specializationCost(b, kind)
+  s.gold -= cost
+  b.spent += cost
+  b.specialization = kind
+  emit(s, 'purchase', SITES[cell].x, SITES[cell].y, 0xe4bd65)
+  return true
+}
 export function upgrade(s: DefenseState, cell: number) {
   const b = s.buildings.find((b) => b.cell === cell)
   if (!editable(s) || !b || b.level >= 3 || s.gold < upgradeCost(b)) return false
@@ -634,7 +725,7 @@ function hit(s: DefenseState, e: Enemy, damage: number) {
       s.lives = Math.min(s.maxLives, s.lives + 5)
       emit(s, 'heal', SITES[HOME].x, SITES[HOME].y, 0x95ceae)
     }
-    if (e.kind === 'abyss') s.finalDefeated = true
+    if (e.kind === 'eclipseDragon') s.finalDefeated = true
     return
   }
   if (e.kind === 'boss' && e.hp <= e.maxHp * 0.5 && !(e.phaseFlags & 1)) {
@@ -653,18 +744,29 @@ function hit(s: DefenseState, e: Enemy, damage: number) {
         queueChildren(s, e, 'swarm', 4, 0)
         emit(s, 'pulse', e.x, e.y, 0xb4a3d8, { radius: 40 })
       }
-  if (e.kind === 'abyss') {
+  if (e.kind === 'ironKing' && e.hp <= e.maxHp * 0.5 && !(e.phaseFlags & 1)) {
+    e.phaseFlags |= 1
+    e.shield = e.shieldMax = 4000
+    emit(s, 'pulse', e.x, e.y, 0xc3b996, { radius: 48 })
+  }
+  if (e.kind === 'abyss' || e.kind === 'eclipseDragon') {
     if (e.hp <= e.maxHp * 0.7 && !(e.phaseFlags & 1)) {
       e.phaseFlags |= 1
-      e.shield = e.shieldMax = 1000
+      e.shield = e.shieldMax = e.kind === 'eclipseDragon' ? 2200 : 1000
       emit(s, 'pulse', e.x, e.y, 0x8fc8cb, { radius: 45 })
     }
     if (e.hp <= e.maxHp * 0.4 && !(e.phaseFlags & 2)) {
       e.phaseFlags |= 2
       const cell = ENTRANCES[1],
         p = SITES[cell]
-      for (let i = 0; i < 6; i++)
-        s.pending.push({ kind: 'rusher', ...p, cell, nav: cell, reward: 0 })
+      for (let i = 0; i < (e.kind === 'eclipseDragon' ? 2 : 6); i++)
+        s.pending.push({
+          kind: e.kind === 'eclipseDragon' ? 'crystalCuttlefish' : 'rusher',
+          ...p,
+          cell,
+          nav: cell,
+          reward: 0,
+        })
       emit(s, 'pulse', p.x, p.y, 0xe1c38d, { radius: 32 })
     }
     if (e.hp <= e.maxHp * 0.2) e.phaseFlags |= 4
@@ -710,8 +812,8 @@ function collect(
   })
   return result
 }
-function canTarget(kind: BuildKind, enemy: Enemy) {
-  const layer = BUILDINGS[kind].targetLayer
+function canTarget(b: Building, enemy: Enemy) {
+  const layer = targetLayerOf(b)
   return layer === 'both' || layer === MONSTERS[enemy.kind].layer
 }
 function distanceToCastle(s: DefenseState, enemy: Enemy) {
@@ -719,6 +821,10 @@ function distanceToCastle(s: DefenseState, enemy: Enemy) {
     ? Math.hypot(enemy.x - SITES[HOME].x, enemy.y - SITES[HOME].y)
     : s.flow[enemy.nav] * GRID.cell +
         Math.hypot(enemy.x - SITES[enemy.nav].x, enemy.y - SITES[enemy.nav].y)
+}
+// Preserve existing area-target ordering; mixed layers need comparable world distances.
+function areaTargetPriority(s: DefenseState, b: Building, e: Enemy) {
+  return b.specialization === 'hybrid' ? distanceToCastle(s, e) : s.flow[e.nav]
 }
 function fireBeam(s: DefenseState, b: Building) {
   const c = BUILDINGS[b.kind],
@@ -728,14 +834,14 @@ function fireBeam(s: DefenseState, b: Building) {
     dy = Math.sin(b.aim),
     width = (c.area * GRID.cell) / 2
   const targets = collect(s, origin.x, origin.y, r, c.cap, (e) => {
-    if (!canTarget(b.kind, e)) return Infinity
+    if (!canTarget(b, e)) return Infinity
     const x = e.x - origin.x,
       y = e.y - origin.y,
       along = x * dx + y * dy
     return along >= 0 && along <= r && Math.abs(x * dy - y * dx) <= width ? along : Infinity
   })
   for (let i = 0; i < targets.length; i++)
-    hit(s, targets[i], c.damage[b.level] * (i === 0 ? 1 : 0.75))
+    hit(s, targets[i], damageAgainst(b, targets[i]) * (i === 0 ? 1 : 0.75))
   emit(s, 'beam', origin.x, origin.y, c.color, {
     tx: origin.x + dx * r,
     ty: origin.y + dy * r,
@@ -752,7 +858,7 @@ function beamAim(s: DefenseState, b: Building) {
     width = (c.area * GRID.cell) / 2
   // Consider at most eight forward targets; avoid an all-pairs enemy scan.
   const candidates = collect(s, p.x, p.y, r, 8, (e) =>
-    canTarget(b.kind, e) ? s.flow[e.nav] : Infinity,
+    canTarget(b, e) ? areaTargetPriority(s, b, e) : Infinity,
   )
   let aim = b.aim,
     best = 0,
@@ -763,17 +869,17 @@ function beamAim(s: DefenseState, b: Building) {
       dy = Math.sin(angle)
     let count = 0
     nearby(s, p.x, p.y, r, (e) => {
-      if (!canTarget(b.kind, e)) return
+      if (!canTarget(b, e)) return
       const x = e.x - p.x,
         y = e.y - p.y,
         along = x * dx + y * dy
       if (along >= 0 && along <= r && Math.abs(x * dy - y * dx) <= width)
         count = Math.min(c.cap, count + 1)
     })
-    if (count > best || (count === best && s.flow[candidate.nav] < progress)) {
+    if (count > best || (count === best && areaTargetPriority(s, b, candidate) < progress)) {
       aim = angle
       best = count
-      progress = s.flow[candidate.nav]
+      progress = areaTargetPriority(s, b, candidate)
     }
   }
   return aim
@@ -800,15 +906,20 @@ function launchProjectile(s: DefenseState, b: Building, target: Enemy) {
   if (!p) return
   const c = BUILDINGS[b.kind],
     origin = SITES[b.cell]
-  const missile = c.targetLayer === 'air'
+  const missile = c.targetLayer === 'air' || b.kind === 'cruise'
   const duration =
-    b.kind === 'sniper'
-      ? 0.12
-      : b.kind === 'harpoon'
-        ? 0.35
-        : missile || c.attack === 'blast'
-          ? 0.45
-          : 0.24
+    b.kind === 'cruise'
+      ? Math.max(
+          0.9,
+          Math.min(1.6, Math.hypot(target.x - origin.x, target.y - origin.y) / (GRID.cell * 5)),
+        ) * (b.specialization === 'tracking' ? 0.75 : 1)
+      : b.kind === 'sniper'
+        ? 0.12
+        : b.kind === 'harpoon'
+          ? 0.35
+          : missile || c.attack === 'blast'
+            ? 0.45
+            : 0.24
   Object.assign(p, {
     source: b.kind,
     x: origin.x,
@@ -820,13 +931,18 @@ function launchProjectile(s: DefenseState, b: Building, target: Enemy) {
     target: target.id,
     life: duration,
     duration,
-    damage: c.damage[b.level],
+    damage: c.attack === 'blast' ? damageOf(b) : damageAgainst(b, target),
+    targetLayer: targetLayerOf(b),
+    nativeLayer: c.targetLayer,
+    hybrid: b.specialization === 'hybrid',
     color: c.color,
-    blast: c.attack === 'blast',
+    blast: c.attack === 'blast' || b.specialization === 'bombard',
+    area: b.specialization === 'bombard' ? 0.75 : c.area,
+    cap: b.specialization === 'bombard' ? 3 : c.cap,
     missile,
   })
   s.projectiles.push(p)
-  if (!p.blast) target.incoming += p.damage
+  if (!p.blast || p.source === 'cruise') target.incoming += p.damage
   s.stats.shots++
   s.stats.peakProjectiles = Math.max(s.stats.peakProjectiles, s.projectiles.length)
 }
@@ -846,10 +962,8 @@ export function stepDefense(s: DefenseState, dt: number) {
     }
   }
   if (s.phase === 'build') {
-    if (s.wave > 0) {
-      s.prep = Math.max(0, s.prep - dt)
-      if (s.prep === 0) startWave(s)
-    }
+    s.prep = Math.max(0, s.prep - dt)
+    if (s.prep === 0) startWave(s)
     return
   }
   refreshFlow(s)
@@ -864,17 +978,21 @@ export function stepDefense(s: DefenseState, dt: number) {
           ? 1
           : kind === 'abyss'
             ? 0
-            : gate === 2
-              ? ['armored', 'shield', 'healer'].includes(kind)
+            : kind === 'ironKing'
+              ? 1
+              : kind === 'eclipseDragon'
                 ? 0
-                : ['swift', 'rusher', 'swarm'].includes(kind)
-                  ? 1
-                  : s.spawned % 2
-              : gate < 0
-                ? s.spawned % ENTRANCES.length
-                : s.spawned % 10 < 7
-                  ? gate
-                  : 1 - gate
+                : gate === 2
+                  ? ['armored', 'shield', 'healer', 'ironCrab', 'crownHealer'].includes(kind)
+                    ? 0
+                    : ['swift', 'rusher', 'swarm', 'emberMako'].includes(kind)
+                      ? 1
+                      : s.spawned % 2
+                  : gate < 0
+                    ? s.spawned % ENTRANCES.length
+                    : s.spawned % 10 < 7
+                      ? gate
+                      : 1 - gate
     spawnEnemy(s, kind, ENTRANCES[side])
     s.spawned++
     s.spawnTimer =
@@ -896,7 +1014,7 @@ export function stepDefense(s: DefenseState, dt: number) {
       e.cell = e.nav
       if (e.cell === HOME) {
         e.hp = 0
-        if (e.kind === 'abyss') s.finalEscaped = true
+        if (e.kind === 'eclipseDragon') s.finalEscaped = true
         s.lives = Math.max(0, s.lives - e.leak)
         emit(s, 'breach', e.x, e.y, 0xe6a48c)
         continue
@@ -913,14 +1031,16 @@ export function stepDefense(s: DefenseState, dt: number) {
       const rushCycle = e.age % 6
       e.rushing =
         (e.kind === 'rusher' && s.flow[e.nav] <= 3) ||
-        (e.kind === 'mako' && rushCycle >= 1 && rushCycle < 4)
+        ((e.kind === 'mako' || e.kind === 'emberMako') && rushCycle >= 1 && rushCycle < 4)
       const boost = e.rushing
-        ? e.kind === 'mako'
-          ? 1.4 / 0.85
+        ? e.kind === 'mako' || e.kind === 'emberMako'
+          ? e.kind === 'emberMako'
+            ? 1.8 / 0.95
+            : 1.4 / 0.85
           : 1.8
-        : e.kind === 'mako' && rushCycle < 1
+        : (e.kind === 'mako' || e.kind === 'emberMako') && rushCycle < 1
           ? 0.25
-          : e.kind === 'abyss' && e.phaseFlags & 4
+          : (e.kind === 'abyss' || e.kind === 'eclipseDragon') && e.phaseFlags & 4
             ? 1.4
             : e.kind === 'overlord' && e.hp <= e.maxHp * 0.35
               ? 1.15
@@ -934,10 +1054,10 @@ export function stepDefense(s: DefenseState, dt: number) {
     s.buckets[pointCell(e.x, e.y)].push(e)
   }
   for (const e of s.enemies)
-    if (e.hp > 0 && e.kind === 'healer') {
+    if (e.hp > 0 && (e.kind === 'healer' || e.kind === 'crownHealer')) {
       e.healTimer -= dt
       if (e.healTimer <= 0) {
-        e.healTimer = 3
+        e.healTimer = e.kind === 'crownHealer' ? 4 : 3
         const healing = collect(s, e.x, e.y, GRID.cell * 1.8, 3, (t) =>
           t !== e &&
           MONSTERS[t.kind].layer === 'ground' &&
@@ -948,7 +1068,10 @@ export function stepDefense(s: DefenseState, dt: number) {
             : Infinity,
         )
         for (const t of healing) {
-          t.hp = Math.min(t.maxHp, t.hp + Math.max(1, Math.round(t.maxHp * 0.04)))
+          t.hp = Math.min(
+            t.maxHp,
+            t.hp + Math.max(1, Math.round(t.maxHp * (e.kind === 'crownHealer' ? 0.025 : 0.04))),
+          )
           t.healedAt = s.tick
         }
         emit(s, 'heal', e.x, e.y, 0x95ceae)
@@ -960,7 +1083,7 @@ export function stepDefense(s: DefenseState, dt: number) {
     // IDs survive object recycling; a pooled replacement must never receive an old shot.
     const found = s.byId.get(p.target),
       target = found && found.hp > 0 ? found : undefined
-    if (target && !p.blast) {
+    if (target && (!p.blast || p.source === 'cruise')) {
       p.tx = target.x
       p.ty = target.y
     }
@@ -968,26 +1091,33 @@ export function stepDefense(s: DefenseState, dt: number) {
     p.x = p.sx + (p.tx - p.sx) * a
     p.y = p.sy + (p.ty - p.sy) * a
     if (p.blast) p.y -= Math.sin(a * Math.PI) * 28
-    if (p.missile) {
-      const length = Math.hypot(p.tx - p.sx, p.ty - p.sy) || 1
-      const arc = Math.sin(a * Math.PI) * 18
-      p.x -= ((p.ty - p.sy) / length) * arc
-      p.y += ((p.tx - p.sx) / length) * arc
-    }
+    if (p.missile) missilePoint(p, a, p)
     if (p.life <= 0) {
       if (p.blast) {
         const targets = collect(
           s,
           p.tx,
           p.ty,
-          BUILDINGS.mortar.area * GRID.cell,
-          BUILDINGS.mortar.cap,
+          (p.area ?? BUILDINGS.mortar.area) * GRID.cell,
+          p.cap ?? BUILDINGS.mortar.cap,
           (e) =>
-            MONSTERS[e.kind].layer === 'ground' ? (e.x - p.tx) ** 2 + (e.y - p.ty) ** 2 : Infinity,
+            (p.targetLayer ?? 'ground') === 'both' ||
+            MONSTERS[e.kind].layer === (p.targetLayer ?? 'ground')
+              ? p.source === 'cruise' && e.id === p.target
+                ? -1
+                : (e.x - p.tx) ** 2 + (e.y - p.ty) ** 2
+              : Infinity,
         )
-        for (let j = 0; j < targets.length; j++) hit(s, targets[j], p.damage * (j === 0 ? 1 : 0.5))
+        for (let j = 0; j < targets.length; j++)
+          hit(
+            s,
+            targets[j],
+            p.damage *
+              (j === 0 ? 1 : p.source === 'cruise' ? 0.4 : 0.5) *
+              (p.hybrid && MONSTERS[targets[j].kind].layer !== p.nativeLayer ? 0.8 : 1),
+          )
         emit(s, 'blast', p.tx, p.ty, p.color, {
-          radius: BUILDINGS.mortar.area * GRID.cell,
+          radius: (p.area ?? BUILDINGS.mortar.area) * GRID.cell,
           source: p.source,
         })
       } else if (target) {
@@ -1002,7 +1132,7 @@ export function stepDefense(s: DefenseState, dt: number) {
   // Single-target turrets avoid spending a second lethal shot on an enemy
   // already covered by a homing projectile. Blast/beam attacks remain spatial.
   for (const p of s.projectiles)
-    if (!p.blast) {
+    if (!p.blast || p.source === 'cruise') {
       const e = s.byId.get(p.target)
       if (e && e.hp > 0) e.incoming += p.damage
     }
@@ -1018,7 +1148,7 @@ export function stepDefense(s: DefenseState, dt: number) {
         if (
           !target ||
           target.hp <= 0 ||
-          !canTarget(b.kind, target) ||
+          !canTarget(b, target) ||
           Math.hypot(target.x - origin.x, target.y - origin.y) > r
         ) {
           b.charge = 0
@@ -1049,22 +1179,24 @@ export function stepDefense(s: DefenseState, dt: number) {
     if (b.cooldown > 1e-6) continue
     if (c.attack === 'aura' || c.attack === 'frost') {
       const targets = collect(s, origin.x, origin.y, r, c.cap, (e) =>
-        canTarget(b.kind, e) ? s.flow[e.nav] : Infinity,
+        canTarget(b, e) ? areaTargetPriority(s, b, e) : Infinity,
       )
       if (!targets.length) continue
       for (const e of targets) {
         if (c.attack === 'frost') {
-          const factor = 1 - (1 - c.slow[b.level]) * (MONSTERS[e.kind].boss ? 0.5 : 1)
+          const slow =
+            b.specialization === 'power' ? Math.max(0.35, c.slow[b.level] - 0.1) : c.slow[b.level]
+          const factor = 1 - (1 - slow) * (MONSTERS[e.kind].boss ? 0.5 : 1) * crossLayerFactor(b, e)
           if (factor <= e.slowFactor) {
             e.slowFactor = factor
             e.slowRemaining = 1.2
           }
         }
-        hit(s, e, c.damage[b.level])
+        hit(s, e, damageAgainst(b, e))
         if (c.attack === 'aura')
           emit(s, 'impact', e.x, e.y, c.color, { tx: origin.x, ty: origin.y, source: b.kind })
       }
-      b.cooldown = c.interval[b.level]
+      b.cooldown = intervalOf(b)
       b.flash = 0.4
       s.stats.shots++
       emit(s, 'pulse', origin.x, origin.y, c.color, { radius: r, source: b.kind })
@@ -1078,24 +1210,30 @@ export function stepDefense(s: DefenseState, dt: number) {
         r,
         Math.min(c.cap, s.projectilePool.length),
         (e) =>
-          MONSTERS[e.kind].layer === 'air' && e.incoming < e.hp + e.shield
-            ? Math.hypot(e.x - SITES[HOME].x, e.y - SITES[HOME].y)
-            : Infinity,
+          canTarget(b, e) && e.incoming < e.hp + e.shield ? distanceToCastle(s, e) : Infinity,
       )
       if (!targets.length) continue
       for (const e of targets) launchProjectile(s, b, e)
       b.aim = Math.atan2(targets[0].y - origin.y, targets[0].x - origin.x)
-      b.cooldown = c.interval[b.level]
+      b.cooldown = intervalOf(b)
       b.flash = 0.4
       continue
     }
     let target: Enemy | undefined,
-      best = Infinity
+      best = Infinity,
+      bestRank = Infinity
     nearby(s, origin.x, origin.y, r, (e) => {
-      if (!canTarget(b.kind, e)) return
+      if (!canTarget(b, e)) return
       if ((c.attack === 'single' || c.attack === 'snipe') && e.incoming >= e.hp + e.shield) return
-      const distance = c.attack === 'snipe' ? -e.maxHp : distanceToCastle(s, e)
-      if (distance < best || (distance === best && target && e.id < target.id)) {
+      const distance =
+          c.attack === 'snipe' || b.kind === 'cruise' ? -e.maxHp : distanceToCastle(s, e),
+        rank = b.kind === 'cruise' && MONSTERS[e.kind].boss ? 0 : 1
+      if (
+        rank < bestRank ||
+        (rank === bestRank &&
+          (distance < best || (distance === best && target && e.id < target.id)))
+      ) {
+        bestRank = rank
         best = distance
         target = e
       }
@@ -1107,7 +1245,7 @@ export function stepDefense(s: DefenseState, dt: number) {
       if (c.attack === 'beam') b.aim = beamAim(s, b)
       b.chargeTarget = t.id
       b.charge = c.chargeTime
-      b.cooldown = c.interval[b.level]
+      b.cooldown = intervalOf(b)
       continue
     }
     if (c.attack === 'flame') {
@@ -1115,21 +1253,21 @@ export function stepDefense(s: DefenseState, dt: number) {
         dy = Math.sin(b.aim),
         cos = Math.cos(c.area)
       const targets = collect(s, origin.x, origin.y, r, c.cap, (e) => {
-        if (!canTarget(b.kind, e)) return Infinity
+        if (!canTarget(b, e)) return Infinity
         const x = e.x - origin.x,
           y = e.y - origin.y,
           d = Math.hypot(x, y)
-        return d < 0.001 || (x * dx + y * dy) / d >= cos ? s.flow[e.nav] : Infinity
+        return d < 0.001 || (x * dx + y * dy) / d >= cos ? areaTargetPriority(s, b, e) : Infinity
       })
-      for (const e of targets) hit(s, e, c.damage[b.level] * c.interval[b.level])
-      b.cooldown = c.interval[b.level]
+      for (const e of targets) hit(s, e, damageAgainst(b, e) * BUILDINGS[b.kind].interval[b.level])
+      b.cooldown = intervalOf(b)
       b.flash = 0.4
       s.stats.shots++
       continue
     }
     if (!s.projectilePool.length) continue
     launchProjectile(s, b, t)
-    b.cooldown = c.interval[b.level]
+    b.cooldown = intervalOf(b)
     b.flash = 0.4
   }
   for (let i = s.enemies.length - 1; i >= 0; i--)
@@ -1167,7 +1305,7 @@ export function stepDefense(s: DefenseState, dt: number) {
     if (s.wave === MAX_WAVES) s.phase = s.finalDefeated ? 'won' : 'lost'
     else {
       s.phase = 'build'
-      s.prep = 20
+      s.prep = PREPARATION
     }
   }
 }

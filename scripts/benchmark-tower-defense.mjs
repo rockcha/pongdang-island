@@ -15,6 +15,7 @@ import {
   MONSTER_KINDS,
   MONSTERS,
   GRID,
+  MAX_WAVES,
   refreshFlow,
 } from '../src/features/arcade/tower-defense-engine.ts'
 const records = [1, 7, 42, 91, 731, 2026].map((seed) => {
@@ -71,7 +72,7 @@ const started = performance.now()
 for (let i = 0; i < 2400; i++) stepDefense(dense, 0.05)
 const duration = performance.now() - started
 if (
-  !records.some((r) => r.phase === 'won' && r.wave === 30 && r.finalDefeated) ||
+  !records.some((r) => r.phase === 'won' && r.wave === MAX_WAVES && r.finalDefeated) ||
   records.some((r) => !['won', 'lost'].includes(r.phase))
 )
   throw Error('Campaign must terminate and the paid mixed strategy must be capable of a clear')

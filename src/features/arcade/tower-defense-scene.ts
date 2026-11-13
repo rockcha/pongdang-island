@@ -2,8 +2,9 @@ import Phaser from 'phaser'
 import { gameIsCovered } from './game-interaction'
 import { createDefenseAudio } from './tower-defense-audio'
 import { advanceDefenseClock } from './tower-defense-clock'
-import { WallStroke } from './tower-defense-placement'
+import { BuildStroke, wallConnections } from './tower-defense-placement'
 import { towerOriginY } from './tower-defense-towers'
+import { missilePoint, missileAngle } from './tower-defense-flight'
 import { DEFENSE_ART, towerFrame } from './tower-defense-assets'
 import {
   BUILDINGS,
@@ -15,6 +16,7 @@ import {
   SITES,
   ENEMY_LIMIT,
   canPlace,
+  canMove,
   cellAt,
   rangeOf,
   type BuildKind,
@@ -32,27 +34,32 @@ export function mountTowerDefense(
   readTool: () => BuildKind | null,
   onError: (message: string) => void = () => {},
   readDragCell: () => number | null | undefined = () => undefined,
-  onPaintWall: (cell: number) => void = onSelect,
+  onPaintBuild: (cell: number) => void = onSelect,
+  readMovingCell: () => number | null = () => null,
 ) {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const density = window.devicePixelRatio > 1 ? 2 : 1
   class DefenseScene extends Phaser.Scene {
     private marks!: Phaser.GameObjects.Graphics
+    private wallLinks!: Phaser.GameObjects.Graphics
     private bars!: Phaser.GameObjects.Graphics
     private effects!: Phaser.GameObjects.Graphics
+    private trailPoint = { x: 0, y: 0 }
     private walls = new Map<number, Phaser.GameObjects.Image>()
     private dragging = false
     private gesturePointer: number | null = null
-    private wallStroke = new WallStroke(onPaintWall)
+    private buildStroke = new BuildStroke(onPaintBuild)
     private audio?: ReturnType<typeof createDefenseAudio>
     private lastEffectId = 0
     private castle!: Phaser.GameObjects.Image
     private hovered: number | null = null
     private ghost!: Phaser.GameObjects.Sprite
     private units: (Phaser.GameObjects.Sprite | undefined)[] = new Array(ENEMY_LIMIT)
+    private bossGlows: (Phaser.GameObjects.Sprite[] | undefined)[] = new Array(ENEMY_LIMIT)
     private towers = new Map<number, Phaser.GameObjects.Sprite>()
     private badges = new Map<number, Phaser.GameObjects.Text>()
     private castleBadge!: Phaser.GameObjects.Text
+    private castleHealth!: Phaser.GameObjects.Text
     private used = new Uint8Array(ENEMY_LIMIT)
     private unitSizes = new Uint8Array(ENEMY_LIMIT)
     private airBadges: (Phaser.GameObjects.Text | undefined)[] = new Array(ENEMY_LIMIT)
@@ -64,6 +71,7 @@ export function mountTowerDefense(
     private wallKey = ''
     private coverageAt = 0
     private covered = false
+    private clockCovered = false
     private slowFrames = 0
     private failed = false
     preload() {
@@ -111,7 +119,18 @@ export function mountTowerDefense(
         })
         .setDepth(8)
         .setVisible(false)
+      this.castleHealth = this.add
+        .text(h.x, h.y - 65, '', {
+          fontFamily: 'sans-serif',
+          fontSize: 12,
+          color: '#4f6158',
+          backgroundColor: '#fffaf0',
+          padding: { x: 7, y: 3 },
+        })
+        .setOrigin(0.5, 0)
+        .setDepth(8)
       this.marks = this.add.graphics().setDepth(1)
+      this.wallLinks = this.add.graphics().setDepth(1.8)
       this.bars = this.add.graphics().setDepth(6)
       this.shadows = this.add.graphics().setDepth(3)
       this.effects = this.add.graphics().setDepth(7)
@@ -122,6 +141,12 @@ export function mountTowerDefense(
         .setDepth(5)
         .setVisible(false)
       const pointCell = (p: Phaser.Input.Pointer) => {
+        if (
+          Math.abs(p.x / density - h.x) <= 43 &&
+          p.y / density >= h.y - 67 &&
+          p.y / density <= h.y - 39
+        )
+          return HOME
         const col = Math.floor((p.x / density - GRID.x) / GRID.cell)
         const row = Math.floor((p.y / density - GRID.y) / GRID.cell)
         return col >= 0 && col < GRID.columns && row >= 0 && row < GRID.rows
@@ -134,23 +159,32 @@ export function mountTowerDefense(
         this.hovered = cell
         this.dragging = true
         this.gesturePointer = p.id
-        if (readTool() === 'wall') this.wallStroke.start(cell)
+        // Clicking an existing tower still selects it; only empty tiles start a build stroke.
+        if (
+          readTool() &&
+          readMovingCell() === null &&
+          cell !== null &&
+          cell !== HOME &&
+          !read().buildings.some((b) => b.cell === cell)
+        )
+          this.buildStroke.start(cell)
       })
       this.input.on('pointermove', (p: Phaser.Input.Pointer) => {
         if (this.covered) return
         this.hovered = pointCell(p)
         if (this.dragging && p.id === this.gesturePointer) {
-          if (readTool() === 'wall') this.wallStroke.move(this.hovered)
-          else this.wallStroke.end()
+          if (readTool() && readMovingCell() === null) this.buildStroke.move(this.hovered)
+          else this.buildStroke.end()
         }
       })
       this.input.on('pointerup', (p: Phaser.Input.Pointer) => {
         if (p.id !== this.gesturePointer) return
         const cell = pointCell(p),
           commit = this.dragging
-        const painting = this.wallStroke.active
-        if (!this.covered && painting && readTool() === 'wall') this.wallStroke.move(cell)
-        this.wallStroke.end()
+        const painting = this.buildStroke.active
+        if (!this.covered && painting && readTool() && readMovingCell() === null)
+          this.buildStroke.move(cell)
+        this.buildStroke.end()
         this.dragging = false
         this.gesturePointer = null
         if (!this.covered && commit && !painting && cell !== null) onSelect(cell)
@@ -158,13 +192,13 @@ export function mountTowerDefense(
       this.input.on('gameout', () => {
         this.dragging = false
         this.gesturePointer = null
-        this.wallStroke.end()
+        this.buildStroke.end()
         this.hovered = null
       })
       const stopGesture = () => {
         this.dragging = false
         this.gesturePointer = null
-        this.wallStroke.end()
+        this.buildStroke.end()
       }
       this.input.on('pointerupoutside', stopGesture)
       this.game.canvas.addEventListener('pointercancel', stopGesture)
@@ -180,26 +214,42 @@ export function mountTowerDefense(
     private preview(s: DefenseState) {
       const external = readDragCell(),
         tool = readTool(),
+        movingFrom = readMovingCell(),
+        source = s.buildings.find((b) => b.cell === movingFrom),
         selected =
           external !== undefined
             ? external
-            : tool || this.dragging
+            : tool || source || this.dragging
               ? this.hovered
               : (selection() ?? this.hovered),
-        key = `${s.version}:${s.gold}:${s.phase}:${selected}:${tool}`
+        key = `${s.version}:${s.gold}:${s.phase}:${selected}:${tool}:${movingFrom}`
       if (key === this.previewKey) return
       this.previewKey = key
       this.marks.clear()
       this.ghost.setVisible(false)
       const b = s.buildings.find((b) => b.cell === selected),
         editable = s.phase === 'build' || s.phase === 'combat',
-        candidate = editable && tool && selected !== null && selected !== HOME && !b ? selected : -1
-      const valid = candidate >= 0 && tool ? !canPlace(s, candidate, tool) : true
+        candidate =
+          editable && (tool || source) && selected !== null && selected !== HOME ? selected : -1
+      const valid =
+        candidate >= 0
+          ? source
+            ? !canMove(s, source.cell, candidate)
+            : tool
+              ? !canPlace(s, candidate, tool)
+              : true
+          : !source
       if (selected === null || selected === HOME) return
       const p = SITES[selected]
       if (!p) return
-      const kind = b?.kind ?? tool,
-        r = b ? rangeOf(b) : kind ? BUILDINGS[kind].range[0] * GRID.cell : 0,
+      const kind = source?.kind ?? b?.kind ?? tool,
+        r = source
+          ? rangeOf(source)
+          : b
+            ? rangeOf(b)
+            : kind
+              ? BUILDINGS[kind].range[0] * GRID.cell
+              : 0,
         color = valid ? 0x4f9c7b : 0xc97765
       if (!kind) return
       if (r) {
@@ -208,7 +258,7 @@ export function mountTowerDefense(
       }
       this.marks.fillStyle(color, 0.12).fillRoundedRect(p.x - 17, p.y - 17, 34, 34, 5)
       this.marks.lineStyle(2, color).strokeRoundedRect(p.x - 17, p.y - 17, 34, 34, 5)
-      if (candidate >= 0)
+      if (candidate >= 0 && (!b || source))
         this.ghost
           .setTexture(kind, 0)
           .setOrigin(0.5, towerOriginY(kind))
@@ -232,16 +282,17 @@ export function mountTowerDefense(
         this.previewKey = ''
         this.wallKey = ''
         this.lastEffectId = 0
-        this.wallStroke.end()
+        this.buildStroke.end()
         this.dragging = false
         this.gesturePointer = null
       }
       // Dialog/style queries are throttled, never repeated for each unit or fixed step.
       if (time - this.coverageAt > 100) {
         this.covered = gameIsCovered(parent) || document.hidden
+        this.clockCovered = gameIsCovered(parent, '.td-catalog') || document.hidden
         this.coverageAt = time
       }
-      if (!this.covered) {
+      if (!this.clockCovered) {
         this.accumulator = advanceDefenseClock(s, this.accumulator, delta / 1000)
       } else this.accumulator = 0
       if (delta > 28) this.slowFrames = Math.min(40, this.slowFrames + 1)
@@ -250,9 +301,24 @@ export function mountTowerDefense(
       this.castleBadge
         .setVisible(s.castleLevel > 0)
         .setText(s.castleLevel ? String(s.castleLevel) : '')
+      const castleRatio = Math.max(0, Math.min(1, s.lives / s.maxLives))
+      this.castleHealth
+        .setText(`${s.lives} / ${s.maxLives}`)
+        .setColor(castleRatio <= 0.3 ? '#b55c53' : '#4f6158')
       const wallKey = `${s.version}`
       if (wallKey !== this.wallKey) {
         this.wallKey = wallKey
+        this.wallLinks.clear()
+        const links = wallConnections(s.buildings)
+        for (const [width, color] of [
+          [22, 0x9f8d79],
+          [18, 0xdec4a9],
+          [3, 0xecd8c0],
+        ]) {
+          this.wallLinks.lineStyle(width, color)
+          for (const [from, to] of links)
+            this.wallLinks.lineBetween(SITES[from].x, SITES[from].y, SITES[to].x, SITES[to].y)
+        }
         for (const [cell, sprite] of this.walls)
           if (!s.buildings.some((b) => b.cell === cell && b.kind === 'wall')) {
             sprite.destroy()
@@ -297,6 +363,7 @@ export function mountTowerDefense(
           !reduced && age < 0.22 ? 54 * (0.94 + 0.12 * Math.sin((Math.PI * age) / 0.22)) : 54
         if (sprite.displayWidth !== size) sprite.setDisplaySize(size, size)
         sprite
+          .setAlpha(readMovingCell() === b.cell ? 0.4 : 1)
           .setFrame(towerFrame(b.flash, reduced))
           .setRotation(b.kind === 'anemone' || b.kind === 'frost' ? 0 : b.aim + Math.PI / 2)
         if (b.level) {
@@ -313,12 +380,19 @@ export function mountTowerDefense(
               .setDepth(8)
             this.badges.set(b.cell, badge)
           }
-          badge.setText(String(b.level))
+          badge.setText(`${b.level}${b.specialization ? '★' : ''}`)
         }
       }
       const alpha = s.phase === 'combat' ? Math.min(1, this.accumulator / 0.05) : 1
       this.used.fill(0)
       this.bars.clear()
+      const home = SITES[HOME]
+      this.bars.fillStyle(0xfffaf0, 0.95).fillRoundedRect(home.x - 40, home.y - 46, 80, 8, 4)
+      this.bars.fillStyle(0xe4ddcc, 1).fillRoundedRect(home.x - 38, home.y - 44, 76, 4, 2)
+      if (castleRatio > 0)
+        this.bars
+          .fillStyle(castleRatio <= 0.3 ? 0xc9766c : 0x76ad92, 1)
+          .fillRoundedRect(home.x - 38, home.y - 44, 76 * castleRatio, 4, 2)
       this.shadows.clear()
       for (const e of s.enemies) {
         if (e.hp <= 0) continue
@@ -331,19 +405,29 @@ export function mountTowerDefense(
         const x = e.px + (e.x - e.px) * alpha,
           y = e.py + (e.y - e.py) * alpha,
           size =
-            e.kind === 'abyss'
-              ? 90
-              : e.kind === 'overlord'
-                ? 80
-                : e.kind === 'boss'
-                  ? 68
-                  : e.kind === 'mini'
-                    ? 29
-                    : e.kind === 'swarm'
-                      ? 33
-                      : ['shark', 'mako', 'dolphin'].includes(e.kind)
-                        ? 62
-                        : 45
+            e.kind === 'abyss' || e.kind === 'eclipseDragon'
+              ? 112
+              : e.kind === 'ironKing'
+                ? 104
+                : e.kind === 'overlord'
+                  ? 80
+                  : e.kind === 'boss'
+                    ? 68
+                    : e.kind === 'mini'
+                      ? 29
+                      : e.kind === 'swarm'
+                        ? 33
+                        : [
+                              'shark',
+                              'mako',
+                              'dolphin',
+                              'ironCrab',
+                              'emberMako',
+                              'crystalCuttlefish',
+                              'crownHealer',
+                            ].includes(e.kind)
+                          ? 62
+                          : 45
         const frame = MONSTERS[e.kind].frame + (reduced ? 0 : Math.floor(s.elapsed * 6 + e.id) % 4),
           rotation = e.angle - Math.PI / 2
         if (!sprite.visible) sprite.setVisible(true)
@@ -356,6 +440,38 @@ export function mountTowerDefense(
         if (sprite.rotation !== rotation) sprite.setRotation(rotation)
         const airborne = MONSTERS[e.kind].layer === 'air'
         sprite.setDepth(airborne ? 5 : 4)
+        const boss = MONSTERS[e.kind].boss
+        let glows = this.bossGlows[e.slot]
+        if (boss) {
+          if (!glows) {
+            glows = [
+              this.add.sprite(0, 0, 'enemies', frame),
+              this.add.sprite(0, 0, 'enemies', frame),
+            ]
+            this.bossGlows[e.slot] = glows
+          }
+          const shimmer = reduced ? 0.6 : 0.6 + 0.12 * Math.sin(s.elapsed * 2)
+          for (let layer = 0; layer < glows.length; layer++) {
+            glows[layer]
+              .setVisible(true)
+              .setPosition(x, y)
+              .setFrame(frame)
+              .setRotation(rotation)
+              .setDisplaySize(size * (layer ? 1.045 : 1.12), size * (layer ? 1.045 : 1.12))
+              .setTint(
+                e.kind === 'abyss' || e.kind === 'eclipseDragon'
+                  ? layer
+                    ? 0xffe3c0
+                    : 0xbb9af0
+                  : layer
+                    ? 0xffefc1
+                    : 0xe7bb70,
+              )
+              .setTintMode(Phaser.TintModes.FILL)
+              .setAlpha(layer ? shimmer : shimmer * 0.35)
+              .setDepth((airborne ? 5 : 4) - (layer ? 0.1 : 0.2))
+          }
+        } else glows?.forEach((glow) => glow.setVisible(false))
         let airBadge = this.airBadges[e.slot]
         if (airborne) {
           this.shadows.fillStyle(0x476a79, 0.18).fillEllipse(x, y + 13, size * 0.55, size * 0.18)
@@ -375,7 +491,7 @@ export function mountTowerDefense(
           airBadge.setPosition(x, y - size * 0.55 - 6).setVisible(true)
         } else airBadge?.setVisible(false)
         const tint =
-          e.kind === 'abyss' && e.phaseFlags & 4
+          (e.kind === 'abyss' || e.kind === 'eclipseDragon') && e.phaseFlags & 4
             ? 0xf4c7a4
             : e.kind === 'mako' && e.age % 6 < 1 && !reduced
               ? 0xffdda4
@@ -384,8 +500,7 @@ export function mountTowerDefense(
         if (e.slowRemaining > 0) {
           this.bars.lineStyle(1.5, 0x92dae7, 0.8).strokeEllipse(x, y + 6, size * 0.65, size * 0.32)
         }
-        const boss = MONSTERS[e.kind].boss,
-          barWidth = boss ? 40 : 22,
+        const barWidth = boss ? 40 : 22,
           barY = y - size * (boss || airborne ? 0.55 : 0.38)
         if (e.shield > 0) {
           this.bars.lineStyle(1.6, 0x91c8e2, 0.65).strokeCircle(x, y, size * 0.34)
@@ -413,6 +528,7 @@ export function mountTowerDefense(
         if (!this.used[i]) {
           this.units[i]?.setVisible(false)
           this.airBadges[i]?.setVisible(false)
+          this.bossGlows[i]?.forEach((glow) => glow.setVisible(false))
         }
       }
       this.effects.clear()
@@ -422,7 +538,7 @@ export function mountTowerDefense(
         if (effect.kind === 'breach') this.castle.setTint(0xf0a18b)
         if (effect.id > previousEffectId) {
           if (
-            !this.covered &&
+            !this.clockCovered &&
             (effect.kind === 'purchase' ||
               effect.kind === 'breach' ||
               effect.kind === 'beam' ||
@@ -460,7 +576,15 @@ export function mountTowerDefense(
             }
           }
         }
-        if (c.attack === 'flame' && b.flash > 0) {
+        if (b.kind === 'cruise' && b.flash > 0) {
+          const alpha = b.flash / 0.4
+          this.effects.lineStyle(1.5, 0xe7c98f, alpha).strokeCircle(p.x, p.y, 12 + 7 * (1 - alpha))
+          if (!reduced)
+            for (let i = 0; i < 3; i++)
+              this.effects
+                .fillStyle(0xd7edfa, alpha * 0.7)
+                .fillCircle(p.x + (i - 1) * 5, p.y - 12 - 25 * (1 - alpha), 2 * alpha)
+        } else if (c.attack === 'flame' && b.flash > 0) {
           const alpha = Math.min(1, b.flash / 0.2),
             spread = c.area
           for (let i = 0; i < 5; i++) {
@@ -545,27 +669,53 @@ export function mountTowerDefense(
           continue
         }
         if (p.missile) {
-          const angle = Math.atan2(p.ty - p.y, p.tx - p.x)
+          const progress = Math.max(0, Math.min(1, 1 - p.life / p.duration)),
+            angle = missileAngle(p, progress),
+            dx = Math.cos(angle),
+            dy = Math.sin(angle)
+          if (!reduced) {
+            let x = p.x,
+              y = p.y
+            // Trace the same curve as the engine, with a bounded, tapered exhaust trail.
+            for (let i = 1; i <= 7; i++) {
+              const t = Math.max(0, progress - i * 0.022)
+              missilePoint(p, t, this.trailPoint)
+              const { x: nx, y: ny } = this.trailPoint
+              this.effects
+                .lineStyle(4 - i * 0.4, p.color, (8 - i) * 0.065)
+                .lineBetween(x, y, nx, ny)
+              x = nx
+              y = ny
+            }
+          }
           this.effects
-            .lineStyle(4, p.color, 1)
-            .lineBetween(
-              p.x - Math.cos(angle) * 4,
-              p.y - Math.sin(angle) * 4,
-              p.x + Math.cos(angle) * 4,
-              p.y + Math.sin(angle) * 4,
+            .lineStyle(5, p.color, 1)
+            .lineBetween(p.x - dx * 4, p.y - dy * 4, p.x + dx * 4, p.y + dy * 4)
+          this.effects
+            .fillStyle(0xf5fcff)
+            .fillTriangle(
+              p.x + dx * 8,
+              p.y + dy * 8,
+              p.x + dy * 2.5,
+              p.y - dx * 2.5,
+              p.x - dy * 2.5,
+              p.y + dx * 2.5,
             )
-          this.effects
-            .fillStyle(0xffd394, 0.9)
-            .fillCircle(p.x - Math.cos(angle) * 6, p.y - Math.sin(angle) * 6, 2)
-          if (!reduced)
+          this.effects.fillStyle(0xffd394, 0.9).fillCircle(p.x - dx * 7, p.y - dy * 7, 2.5)
+          this.effects.fillStyle(0xfff5d5).fillCircle(p.x - dx * 6, p.y - dy * 6, 1.2)
+          if (p.source === 'cruise') {
             this.effects
-              .lineStyle(2, p.color, 0.3)
-              .lineBetween(
-                p.x - Math.cos(angle) * 8,
-                p.y - Math.sin(angle) * 8,
-                p.x - Math.cos(angle) * 20,
-                p.y - Math.sin(angle) * 20,
-              )
+              .lineStyle(1, 0xe7c98f, 0.65)
+              .strokeCircle(p.tx, p.ty, reduced ? 10 : 16 - 7 * progress)
+            this.effects
+              .lineStyle(1, 0xe7c98f, 0.5)
+              .lineBetween(p.tx - 4, p.ty, p.tx + 4, p.ty)
+              .lineBetween(p.tx, p.ty - 4, p.tx, p.ty + 4)
+            if (!reduced)
+              this.effects
+                .fillStyle(0xf5fcff, 0.7)
+                .fillCircle(p.x - dx * 12 - dy * 4, p.y - dy * 12 + dx * 4, 1.3)
+          }
           continue
         }
         if (p.source === 'seahorse') {
@@ -595,6 +745,24 @@ export function mountTowerDefense(
           decorations++ >= budget
         )
           continue
+        if ((e.kind === 'impact' || e.kind === 'blast') && e.source === 'cruise') {
+          const radius = e.kind === 'blast' ? e.radius : 22,
+            ring = radius * (0.3 + 0.7 * t)
+          this.effects.fillStyle(0xfff1ce, a * 0.24).fillCircle(e.x, e.y, ring)
+          this.effects.lineStyle(2, 0xe7c98f, a).strokeCircle(e.x, e.y, ring)
+          this.effects.lineStyle(1, 0xcde6f5, a * 0.7).strokeCircle(e.x, e.y, ring * 0.7)
+          if (!reduced)
+            for (let i = 0; i < 6; i++) {
+              const angle = (i * Math.PI) / 3,
+                x = e.x + Math.cos(angle) * ring,
+                y = e.y + Math.sin(angle) * ring
+              this.effects
+                .lineStyle(1.3, 0xffebbf, a)
+                .lineBetween(x - 3 * a, y, x + 3 * a, y)
+                .lineBetween(x, y - 3 * a, x, y + 3 * a)
+            }
+          continue
+        }
         if (e.kind === 'impact' && e.source === 'anemone') {
           const mx = (e.x + e.tx) / 2,
             my = (e.y + e.ty) / 2
@@ -623,6 +791,25 @@ export function mountTowerDefense(
                 e.y + Math.sin(angle) * (5 + t * 15),
               )
           }
+          continue
+        }
+        if (e.kind === 'impact' && (e.source === 'missile' || e.source === 'salvo')) {
+          this.effects.fillStyle(0xfff2d0, a * 0.55).fillCircle(e.x, e.y, 3 + 6 * t)
+          this.effects.lineStyle(1.8, e.color, a).strokeCircle(e.x, e.y, 5 + 12 * t)
+          if (!reduced)
+            for (let i = 0; i < 4; i++) {
+              const angle = (i * Math.PI) / 2 + Math.PI / 4,
+                inner = 7 + 7 * t,
+                outer = inner + 5 * a
+              this.effects
+                .lineStyle(1.5, 0xffdc9b, a)
+                .lineBetween(
+                  e.x + Math.cos(angle) * inner,
+                  e.y + Math.sin(angle) * inner,
+                  e.x + Math.cos(angle) * outer,
+                  e.y + Math.sin(angle) * outer,
+                )
+            }
           continue
         }
         if (e.kind === 'pulse' && e.source === 'frost') {

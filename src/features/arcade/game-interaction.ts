@@ -1,11 +1,12 @@
 /** DOM dialogs can leave canvas keyboard listeners alive underneath them. */
-export function gameIsCovered(host: HTMLElement) {
+export function gameIsCovered(host: HTMLElement, liveOwnedDialog?: string) {
   const owner = host.closest('dialog')
   if (owner?.dataset.gameActive === 'false') return true
   return Array.from(
     document.querySelectorAll<HTMLElement>('dialog[open],[role="dialog"],[role="alertdialog"]'),
   ).some((dialog) => {
     if (dialog === owner || dialog.contains(host)) return false
+    if (liveOwnedDialog && owner?.contains(dialog) && dialog.matches(liveOwnedDialog)) return false
     for (let node: HTMLElement | null = dialog; node; node = node.parentElement) {
       if (
         node.hidden ||

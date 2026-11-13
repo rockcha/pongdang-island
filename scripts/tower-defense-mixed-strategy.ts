@@ -4,15 +4,26 @@ import {
   build,
   upgrade,
   upgradeCastle,
+  sell,
   startWave,
   stepDefense,
   cellAt,
+  GRID,
+  specialize,
+  BUILDINGS,
   type BuildKind,
+  type DefenseState,
 } from '../src/features/arcade/tower-defense-engine.ts'
 
 type Purchase = { kind: BuildKind | 'upgrade'; x: number; y: number; minGold?: number }
 // Deterministic purchases using earned income and normal game commands.
-export function campaignStrategy(seed: number, stopAtWave = 31, expanded = false) {
+export function campaignStrategy(
+  seed: number,
+  stopAtWave = 51,
+  expanded = false,
+  hybridMix = false,
+  observe?: (state: DefenseState, stage: 'prepared' | 'before-step' | 'after-step') => void,
+) {
   const s = createDefense(seed)
   beginDefense(s)
   for (const x of [5, 6]) build(s, cellAt(x, 8), 'seahorse')
@@ -89,7 +100,26 @@ export function campaignStrategy(seed: number, stopAtWave = 31, expanded = false
   }[] = []
   const execute = (p: Purchase) =>
     p.kind === 'upgrade' ? upgrade(s, cellAt(p.x, p.y)) : build(s, cellAt(p.x, p.y), p.kind)
+  const specializationFor = (b: { kind: BuildKind; cell: number }): 'power' | 'rapid' | 'hybrid' =>
+    hybridMix && BUILDINGS[b.kind].targetLayer === 'air' && Math.floor(b.cell / GRID.columns) < 10
+      ? 'hybrid'
+      : b.kind === 'frost'
+        ? 'power'
+        : 'rapid'
   function prepare() {
+    // The final boss flies over the maze: use normal sale refunds to pivot to anti-air.
+    if (s.wave === 29) {
+      for (const b of [...s.buildings]) {
+        if (Math.floor(b.cell / GRID.columns) !== 2 || !['plasma', 'laser'].includes(b.kind))
+          continue
+        if (!sell(s, b.cell) || !build(s, b.cell, 'missile')) continue
+        for (let level = 0; level < 3; level++) upgrade(s, b.cell)
+      }
+      for (const x of [5, 6, 7]) {
+        const cell = cellAt(x, 12)
+        if (build(s, cell, 'missile')) for (let level = 0; level < 3; level++) upgrade(s, cell)
+      }
+    }
     while (airCursor < air.length && air[airCursor].wave <= s.wave) {
       if (!execute(air[airCursor])) return
       airCursor++
@@ -101,8 +131,49 @@ export function campaignStrategy(seed: number, stopAtWave = 31, expanded = false
       cursor++
     }
     if (cursor === purchases.length) upgradeCastle(s)
+    if (s.wave >= 30) {
+      for (const b of s.buildings)
+        if (b.level === 3 && !b.specialization) specialize(s, b.cell, specializationFor(b))
+      for (const [kind, x, y] of [
+        ['plasma', 4, 8],
+        ['plasma', 7, 8],
+        ['missile', 4, 11],
+        ['missile', 8, 11],
+        ['sniper', 3, 8],
+        ['harpoon', 8, 8],
+      ] as const) {
+        const cell = cellAt(x, y)
+        if (!s.buildings.some((b) => b.cell === cell)) build(s, cell, kind)
+        const b = s.buildings.find((b) => b.cell === cell)
+        if (b) {
+          while (b.level < 3 && upgrade(s, cell)) {}
+          specialize(s, cell, kind === 'sniper' ? 'power' : 'rapid')
+        }
+      }
+    }
+    if (s.wave >= 35) {
+      for (const [kind, x, y] of [
+        ['frost', 5, 6],
+        ['frost', 7, 6],
+        ['plasma', 2, 5],
+        ['plasma', 9, 5],
+        ['plasma', 3, 8],
+        ['plasma', 8, 6],
+        ['missile', 4, 12],
+        ['missile', 8, 12],
+      ] as const) {
+        const cell = cellAt(x, y)
+        if (!s.buildings.some((b) => b.cell === cell)) build(s, cell, kind)
+        const b = s.buildings.find((b) => b.cell === cell)
+        if (b) {
+          while (b.level < 3 && upgrade(s, cell)) {}
+          specialize(s, cell, kind === 'frost' ? 'power' : 'rapid')
+        }
+      }
+    }
   }
   startWave(s)
+  observe?.(s, 'prepared')
   for (let n = 0; n < 240000 && !['won', 'lost'].includes(s.phase); n++) {
     if (s.phase === 'build') {
       checkpoints.push({
@@ -114,9 +185,12 @@ export function campaignStrategy(seed: number, stopAtWave = 31, expanded = false
       })
       prepare()
       startWave(s)
+      observe?.(s, 'prepared')
     }
     if (s.wave === stopAtWave) break
+    observe?.(s, 'before-step')
     stepDefense(s, 0.05)
+    observe?.(s, 'after-step')
   }
   return {
     state: s,

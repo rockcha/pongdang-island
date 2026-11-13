@@ -1,7 +1,7 @@
-import { FIELD, GRID, cellAt } from './tower-defense-engine'
+import { FIELD, GRID, cellAt, type BuildKind } from './tower-defense-engine'
 
 /** One stroke visits each tile once and fills gaps between sparse pointer events. */
-export class WallStroke {
+export class BuildStroke {
   private last: number | null = null
   private visited = new Set<number>()
   active = false
@@ -54,6 +54,18 @@ export class WallStroke {
     this.last = null
     this.visited.clear()
   }
+}
+export { BuildStroke as WallStroke }
+
+/** Each orthogonal wall link appears once; row ends never wrap around. */
+export function wallConnections(buildings: readonly { cell: number; kind: BuildKind }[]) {
+  const walls = new Set(buildings.filter((b) => b.kind === 'wall').map((b) => b.cell)),
+    links: [number, number][] = []
+  for (const cell of walls) {
+    if (cell % GRID.columns < GRID.columns - 1 && walls.has(cell + 1)) links.push([cell, cell + 1])
+    if (walls.has(cell + GRID.columns)) links.push([cell, cell + GRID.columns])
+  }
+  return links
 }
 
 /** Canvas CSS bounds already include Phaser's fit/letterboxing; DPR is irrelevant here. */

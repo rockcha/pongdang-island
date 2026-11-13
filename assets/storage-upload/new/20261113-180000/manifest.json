@@ -1,0 +1,69 @@
+{
+  "source": "scripts/build-tower-defense-late-art.mjs",
+  "baseAtlas": "arcade/tower-defense/enemies-v7-sprite.png",
+  "enemyOrder": [
+    "ironCrab",
+    "emberMako",
+    "crystalCuttlefish",
+    "crownHealer",
+    "ironKing",
+    "eclipseDragon"
+  ],
+  "columns": 4,
+  "rows": 24,
+  "cell": 256,
+  "files": [
+    {
+      "path": "arcade/tower-defense/ironCrab-v1-sheet.svg",
+      "sha256": "ad91b4b6db5f236a04ff972485bfbb3688a597381780ef16f462ec1755034c1b"
+    },
+    {
+      "path": "arcade/tower-defense/ironCrab-v1-sprite.png",
+      "sha256": "6bc145fcdcaa242a512aad7d9e6addeda7b816f9ff34ec8c9a48a534b2009e1d"
+    },
+    {
+      "path": "arcade/tower-defense/emberMako-v1-sheet.svg",
+      "sha256": "474f46239a68b89685518c969a16836f67b098f6aaa160ed13b6d799c5d441b9"
+    },
+    {
+      "path": "arcade/tower-defense/emberMako-v1-sprite.png",
+      "sha256": "804e8890462f87028a9abe10fd42b0541587407a3d68c89f7c312e836e88834a"
+    },
+    {
+      "path": "arcade/tower-defense/crystalCuttlefish-v1-sheet.svg",
+      "sha256": "7f79a231a7127d19252983b385bb76a488ac51116e692168ee2a7fe6788e6b65"
+    },
+    {
+      "path": "arcade/tower-defense/crystalCuttlefish-v1-sprite.png",
+      "sha256": "6a4f9aebc38e32f1c548b824f733890b5994c398f84246e8a283a68233aa5008"
+    },
+    {
+      "path": "arcade/tower-defense/crownHealer-v1-sheet.svg",
+      "sha256": "d169c46f8bd12fce4356e5bd2c5087ac3b6a701b6df904fd4a6efe532081bb03"
+    },
+    {
+      "path": "arcade/tower-defense/crownHealer-v1-sprite.png",
+      "sha256": "65c52016a1d5b2d01aa3e58499fa27fbca5da5e76b5496c5c6586a4b34819e97"
+    },
+    {
+      "path": "arcade/tower-defense/ironKing-v1-sheet.svg",
+      "sha256": "1073e4452ec420384123796826104d7f04cb5477c12b66f7820283ae33d704b0"
+    },
+    {
+      "path": "arcade/tower-defense/ironKing-v1-sprite.png",
+      "sha256": "92696d6177a190487fc26f883d6fc4e773a86732dd674105e9802d8da893ba3b"
+    },
+    {
+      "path": "arcade/tower-defense/eclipseDragon-v1-sheet.svg",
+      "sha256": "06b796e123905fbf403f2ec7049731bd7092491203a35405c7fc1af73c9d66f4"
+    },
+    {
+      "path": "arcade/tower-defense/eclipseDragon-v1-sprite.png",
+      "sha256": "52bb0f7b137b41246b2fbb23a907207085b6fe328ce8cc1c308165b9af1a388b"
+    },
+    {
+      "path": "arcade/tower-defense/enemies-v8-sprite.png",
+      "sha256": "4285ca9f70bed5dd6d8af71438e26fe3bf1df32e6e6c189dd8ff34ffe4eed170"
+    }
+  ]
+}

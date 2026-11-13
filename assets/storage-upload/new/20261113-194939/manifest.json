@@ -1,0 +1,26 @@
+{
+  "tool": "imagegen built-in",
+  "purpose": "Tower-defense arcade thumbnail and shared game start poster",
+  "prompt": "Use case: ads-marketing. Asset type: a polished 4:3 landscape thumbnail and start-screen poster for the Korean cozy arcade game 'Pongi Tower Defense'. Create a beautiful original hand-painted fantasy game cover, no text or logos. A cute expressive baby brown sea otter with a small coral-pink starfish hair ornament acts as the friendly defender, holding a tiny pearl-tipped commander baton beside a small ivory-and-gold sea castle. The scene clearly communicates tower defense: a winding turquoise shallow-water path, short connected coral stone walls, a charming pink octopus cannon and an aqua seahorse turret guarding the approaches. A slim pearl-white crescent-moon missile tower sends a delicate curved blue-white missile trail high overhead; friendly little armored crabs approach in the distance. Warm peach sunlight, luminous seafoam and turquoise water, soft cream stone, restrained coral and gold accents. Soft detailed painted fur, large dark sparkling eyes and rounded friendly forms, consistent with a premium cozy animal mobile game, playful strategic adventure rather than violence. Strong readable central castle silhouette and otter character at small thumbnail sizes, elegant depth, balanced composition, keep all important subjects inside the central 80 percent for responsive cropping. Leave the bottom quarter visually quieter and darker teal for a separate UI overlay. Full bleed opaque illustrated background. No typography, letters, numbers, interface controls, borders, watermarks or mockup frames.",
+  "source": "arcade/tower-defense/poster-source.png",
+  "outputs": [
+    "arcade/tower-defense/poster-v1.webp",
+    "arcade/tower-defense/thumbnail-v9.webp"
+  ],
+  "files": [
+    {
+      "path": "arcade/tower-defense/poster-v1.webp",
+      "sha256": "960dadfc7f398cdb93310b81d8ac55e95b503bb50951c55345c68a886ba24914",
+      "bytes": 244284,
+      "width": 1200,
+      "height": 900
+    },
+    {
+      "path": "arcade/tower-defense/thumbnail-v9.webp",
+      "sha256": "d7cb4bdb7614903927a34dc4d02662742a11a6199d36fb590823de372971fe8a",
+      "bytes": 175870,
+      "width": 960,
+      "height": 720
+    }
+  ]
+}

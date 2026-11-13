@@ -1,5 +1,13 @@
 # 원격 DB 조회 요약
 
+## 2026-11-13 타워디펜스 실전·즉시 보상·주간 정산
+
+프로젝트 `ewafafphiovbpjwogwzn`의 신규 객체 부재와 변경 대상 주간 정산 함수·우편 보상 제약을 사전 조회했다. 최근 원격 전용 콘텐츠와 기존 migration 번호 차이는 유지하고, 로컬 `20261113120557_tower_defense_paid_stages_weekly.sql`만 원격 `20261113134739_tower_defense_paid_stages_weekly`로 적용했다. baseline 재실행이나 이력 repair는 하지 않았다.
+
+13:51 UTC 재조회에서 관련 함수 14개와 제약 2개의 정의 해시가 로컬 기대 상태와 일치했고, RLS·클라이언트 직접 접근 차단·서비스 전용 정산 권한과 주간 정산 Cron 활성 상태를 확인했다. 비공개 기록 테이블의 [RLS 정책 없음 INFO](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy)는 직접 접근을 차단하고 검증 RPC만 허용하기 위한 상태다.
+
+운영 검증 중 jsonb가 명령 객체의 필드 순서를 바꿔 재확인을 거절하는 문제를 발견해, 검증된 필드의 내용으로 비교하도록 수정했다. Edge Function v3의 소스 2개와 인증 설정을 로컬과 대조했다. 13:58 UTC 별도 합성 계정으로 실제 Auth·RPC·Edge 요청을 수행해 참가비 차감·즉시 지급·동일 요청 재확인·패배 시 자동 종료·달성 시각 랭킹·비공개 checkpoint 접근 차단을 검증하고 계정과 세션을 삭제했다. 실제 플레이어의 잔액·기록은 수정하지 않았다. 전체 원격 구조 비교와 실제 사용자 기기의 플레이는 미검증이다.
+
 ## 2026-11-09 당구 실전과 농장 저장 개선
 
 프로젝트 URL로 `ewafafphiovbpjwogwzn`을 식별하고 당구 객체 부재·변경 대상 주간 정산 함수의 기존 정의·우편 보상 제약·정산 cron 활성 상태를 확인했다. 기존 로컬·원격 이력 번호 차이는 유지하고, 로컬 `20261109070446_billiards_paid_weekly.sql`만 원격 `20261109073024_billiards_paid_weekly`로 적용했다. baseline 재실행이나 이력 repair는 하지 않았다.

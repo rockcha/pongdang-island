@@ -339,3 +339,7 @@ verify_jwt = false
 [functions.exploration-game]
 # The worker validates the bearer token with Auth /user before using service credentials.
 verify_jwt = false
+
+[functions.tower-defense-game]
+# The worker validates the bearer token with Auth /user before using service credentials.
+verify_jwt = false

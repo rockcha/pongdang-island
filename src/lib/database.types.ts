@@ -40,6 +40,9 @@ export type Database = {
       pet_house_state: {Args:Record<string,never>;Returns:import('@/features/pets/pet-preview-model').PetPreviewState}
       pet_house_command: {Args:{p_operation_id:string;p_command:Record<string,unknown>};Returns:import('@/features/pets/pet-preview-model').PetPreviewState & {delta:number;replayed:boolean}}
       buy_pet_food: {Args:{p_operation_id:string;p_quantity:number};Returns:import('@/features/gold/api').GoldState & {delta:number;replayed:boolean}}
+        tower_defense_state:{Args:Record<string,never>;Returns:import('@/features/arcade/tower-defense-api').TowerAccountState}
+        tower_defense_start:{Args:{p_operation_id:string;p_engine_version?:number};Returns:import('@/features/arcade/tower-defense-api').TowerAccountState}
+        tower_defense_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/shadow-api').ShadowLeaderboard}
         billiards_state:{Args:Record<string,never>;Returns:import('@/features/arcade/billiards-api').BilliardsAccountState}
         billiards_start:{Args:{p_operation_id:string;p_engine_version?:number};Returns:import('@/features/arcade/billiards-api').BilliardsAccountState}
         billiards_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/shadow-api').ShadowLeaderboard}

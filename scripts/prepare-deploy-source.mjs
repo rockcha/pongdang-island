@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url'
 // Only the production build inputs. Raw artwork and its review history stay in Git.
 const roots=['src/','build/','public/','scripts/']
 const exact=new Set(['package.json','package-lock.json','index.html','vite.config.ts','vercel.json','.vercelignore',
- 'supabase/catalog/catalog.json','supabase/voyage-bets/companies.json','supabase/functions/_shared/push-presentation.ts','supabase/functions/_shared/farm-engine.js','supabase/functions/_shared/billiards-replay.js'])
+ 'supabase/catalog/catalog.json','supabase/voyage-bets/companies.json','supabase/functions/_shared/push-presentation.ts','supabase/functions/_shared/farm-engine.js','supabase/functions/_shared/billiards-replay.js','supabase/functions/_shared/tower-defense-replay.js'])
 export function isDeploymentSource(file){
  if(file.includes('\\')||file.split('/').some(part=>part==='..'||part.startsWith('.env'))||path.posix.isAbsolute(file)||file.includes(':'))return false
  return exact.has(file)||/^tsconfig(?:\.[a-z-]+)?\.json$/.test(file)||roots.some(root=>file.startsWith(root))

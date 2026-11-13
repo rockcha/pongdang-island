@@ -1,4 +1,5 @@
 const root = '/arcade/tower-defense'
+export const DEFENSE_POSTER = `${root}/poster-v1.webp`
 export const DEFENSE_ART = {
   octopus: `${root}/octopus-v5-sprite.png`,
   seahorse: `${root}/seahorse-v5-sprite.png`,
@@ -12,7 +13,8 @@ export const DEFENSE_ART = {
   sniper: `${root}/sniper-v1-sprite.png`,
   harpoon: `${root}/harpoon-v1-sprite.png`,
   frost: `${root}/frost-v1-sprite.png`,
-  enemies: `${root}/enemies-v6-sprite.png`,
+  cruise: `${root}/cruise-v1-sprite.png`,
+  enemies: `${root}/enemies-v8-sprite.png`,
   field: `${root}/field-v5.svg`,
   castle: `${root}/castle-v2.svg`,
   wall: `${root}/wall-v2.svg`,

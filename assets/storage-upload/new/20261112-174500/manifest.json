@@ -1,0 +1,848 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Portrait tower-defense practice sprites, no collectible catalog changes",
+  "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+  "items": [
+    {
+      "id": "octopus",
+      "file": "octopus-v1.png",
+      "prompt": "Production transparent GAME SPRITE SHEET, FOUR columns by TWO rows, EIGHT equal SQUARE cells, 2:1 landscape. STRICT TOP-DOWN ORTHOGRAPHIC CAMERA looking straight down at the back/top of the subject. NOT frontal, not profile, not isometric, no visible vertical pedestal front. Subject forward points to the TOP of EVERY cell. Lock body center and scale, no rotation across frames. Complete shape fits central 65% of each cell, minimum 15% truly transparent padding on all sides. Clean alpha outside character, no floor, shadows outside body, glow cloud, text, labels, grid, checkerboard, background or detached particles. A coral-lilac OCTOPUS CANNON turret viewed directly overhead, exactly eight short smoothly curved arms spread around its round mantle, ivory suction details, small sea-glass cannon nozzle pointing UP, small circular pale stone mounting ring visible only from above. Rows read left to right. Top row frames0–3 calm tiny arm-tip curling cycle. Bottom row frames4–7 prepare (nozzle compresses), fire (nozzle extends), recoil, recover. Body anchor stays fixed, only arm tips/nozzle flex. No projectile drawn into sprite. Soft polished Pongdang Island game cartoon, clean warm colored contours, rounded readable forms, gentle painted shading, restrained highlights. Reference is PAINTING STYLE ONLY; do not copy the otter, fishing line, starfish or front-view pose."
+    },
+    {
+      "id": "seahorse",
+      "file": "seahorse-v1.png",
+      "prompt": "Production transparent GAME SPRITE SHEET, FOUR columns by TWO rows, EIGHT equal SQUARE cells, 2:1 landscape. STRICT TOP-DOWN ORTHOGRAPHIC CAMERA looking straight down at the back/top of the subject. NOT frontal, not profile, not isometric, no visible vertical pedestal front. Subject forward points to the TOP of EVERY cell. Lock body center and scale, no rotation across frames. Complete shape fits central 65% of each cell, minimum 15% truly transparent padding on all sides. Clean alpha outside character, no floor, shadows outside body, glow cloud, text, labels, grid, checkerboard, background or detached particles. A mint-turquoise SEAHORSE WATER CANNON turret viewed from directly ABOVE: recognizable seahorse curved slender body and tightly curled tail, small golden dorsal fin, tubular snout points UP. It rests on a small circular pale stone mounting ring seen directly overhead. Show the top/back, no upright standing side-view seahorse. Top row frames0–3 calm small fin/tail motion cycle. Bottom row frames4–7 aim/prepare, water-shot snout extension, recoil, recover. No projectile drawn into sprite. Soft polished Pongdang Island game cartoon, clean warm colored contours, rounded readable forms, gentle painted shading, restrained highlights. Reference is PAINTING STYLE ONLY; do not copy the otter, fishing line, starfish or front-view pose."
+    },
+    {
+      "id": "enemies",
+      "file": "enemies-v1.png",
+      "prompt": "Production transparent game sprite sheet FOUR columns by FIVE rows, TWENTY equal square cells, total portrait aspect4:5. STRICT TOP-DOWN ORTHOGRAPHIC view looking directly down, subject forward points to BOTTOM in EVERY cell, no frontal faces or isometric views. Each row is ONE consistent species in FOUR connected locomotion poses, centered same scale and baseline; complete body in central65%, 15% true transparent margin. Row1 small coral-red HERMIT CRAB with ivory spiral shell, two claws and small walking legs. Row2 slender mint-green SHRIMP with segmented curved back, tail fan, two antennae and tiny swimming legs. Row3 broad slate-purple ARMORED CRAB, clear segmented stone-like carapace and two chunky claws. Row4 pale pearl-gold SEA SNAIL SUPPORT, large spiral nacre shell, broad small foot and two antennae, no extra human face or limbs. Row5 larger royal coral-red KING CRAB with ornate small GOLD CROWN mounted flat on its back, two large claws, same topdown style. Frames eachrow: neutral, left leg sweep, opposite leg sweep, recover (snail foot and antennae flex). Consistent readable soft game silhouettes. No labels, text, grid lines, UI, backgrounds, shadows, particles or glow cloud. True alpha transparency. Soft polished Pongdang Island game cartoon, clean warm colored contours, rounded readable forms, gentle painted shading, restrained highlights. Reference is PAINTING STYLE ONLY; do not copy the otter, fishing line, starfish or front-view pose."
+    }
+  ],
+  "files": [
+    {
+      "id": "octopus",
+      "path": "arcade/tower-defense/octopus-v1.png",
+      "source": "sources/octopus-2ae388c75dcc.source",
+      "sourceSha256": "2ae388c75dcc8db9705af243d0e29170c1ab31b5cdf88041ca0731cd4a47deee",
+      "sha256": "8562a3e49dec4e9e6bc3e1c5c226e3432632014babde3a7e69e4a7380c872e3b",
+      "width": 1024,
+      "height": 512,
+      "columns": 4,
+      "rows": 2,
+      "cell": 256,
+      "tool": "built-in image_gen",
+      "review": "verified-local",
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            35,
+            41,
+            220,
+            216
+          ],
+          "margin": 35,
+          "transparent": 40671
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            38,
+            41,
+            218,
+            213
+          ],
+          "margin": 37,
+          "transparent": 40726
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            42,
+            41,
+            214,
+            207
+          ],
+          "margin": 41,
+          "transparent": 42377
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            36,
+            41,
+            220,
+            213
+          ],
+          "margin": 35,
+          "transparent": 41816
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            36,
+            53,
+            220,
+            213
+          ],
+          "margin": 35,
+          "transparent": 39076
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            36,
+            34,
+            220,
+            212
+          ],
+          "margin": 34,
+          "transparent": 37744
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            37,
+            41,
+            218,
+            209
+          ],
+          "margin": 37,
+          "transparent": 40976
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            36,
+            44,
+            220,
+            213
+          ],
+          "margin": 35,
+          "transparent": 40830
+        }
+      ],
+      "transparentPadding": 4
+    },
+    {
+      "id": "seahorse",
+      "path": "arcade/tower-defense/seahorse-v1.png",
+      "source": "sources/seahorse-966723d41261.source",
+      "sourceSha256": "966723d4126150086693445916b1d58bdf6d62983a064cebcf86d678dd08bb02",
+      "sha256": "47d9ef4fb14a0a88a05f50cec3a7dc44d96eb4bc45099dd5e7acb36699b9175a",
+      "width": 1024,
+      "height": 512,
+      "columns": 4,
+      "rows": 2,
+      "cell": 256,
+      "tool": "built-in image_gen",
+      "review": "verified-local",
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            79,
+            33,
+            176,
+            203
+          ],
+          "margin": 33,
+          "transparent": 53111
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            79,
+            33,
+            176,
+            204
+          ],
+          "margin": 33,
+          "transparent": 52531
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            79,
+            33,
+            176,
+            203
+          ],
+          "margin": 33,
+          "transparent": 52962
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            79,
+            33,
+            176,
+            203
+          ],
+          "margin": 33,
+          "transparent": 53056
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            79,
+            34,
+            176,
+            204
+          ],
+          "margin": 34,
+          "transparent": 52315
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            73,
+            15,
+            182,
+            208
+          ],
+          "margin": 15,
+          "transparent": 50376
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            78,
+            29,
+            177,
+            204
+          ],
+          "margin": 29,
+          "transparent": 51945
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            79,
+            34,
+            176,
+            204
+          ],
+          "margin": 34,
+          "transparent": 52897
+        }
+      ],
+      "transparentPadding": 4
+    },
+    {
+      "id": "enemies",
+      "path": "arcade/tower-defense/enemies-v1.png",
+      "sha256": "152020b05f5453d8a112f7ea5f80497c7cff1b2572d3e3c7109fb8e2561bd8b6",
+      "width": 1024,
+      "height": 1280,
+      "columns": 4,
+      "rows": 5,
+      "cell": 256,
+      "tool": "built-in image_gen",
+      "processing": "Five independently generated 2x2 sheets, equal cell extraction, fixed uniform scale and padding, four poses packed per row",
+      "sources": [
+        {
+          "id": "crab",
+          "original": "sources/enemy-crab-ea5bab32fd56.source",
+          "sourceSha256": "ea5bab32fd566312c3ca90fc35bc576a904a5f3e032975445ca829890962f2ca",
+          "row": "rows/crab.png",
+          "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW1 of reference: small coral-red hermit crab with rounded ivory spiral shell, two claws, compact natural walking legs. No human face or standing front view.\n",
+          "tool": "built-in image_gen"
+        },
+        {
+          "id": "swift",
+          "original": "sources/enemy-swift-b514b353c612.source",
+          "sourceSha256": "b514b353c612301def89ee0be855c7853c03385c3c154da877c9a52558249ae9",
+          "row": "rows/swift.png",
+          "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW2 of reference: slender pale mint shrimp, distinct segmented back, tail fan at top, two long antennae toward bottom and small swimming legs. No crab shell.\n",
+          "tool": "built-in image_gen"
+        },
+        {
+          "id": "armored",
+          "original": "sources/enemy-armored-510bcff4fb7e.source",
+          "sourceSha256": "510bcff4fb7e16f4956e15d63e042fb84ebb996ccf6258ff9d23a0e9787a056f",
+          "row": "rows/armored.png",
+          "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW3 of reference: broad slate-lavender armored crab, stone-like segmented carapace, TWO chunky claws and small walking legs. No spiral snail shell.\n",
+          "tool": "built-in image_gen"
+        },
+        {
+          "id": "healer",
+          "original": "sources/enemy-healer-aa1ceafa94d2.source",
+          "sourceSha256": "aa1ceafa94d2c5fd678882fdd0a538982c4feb7461167a1ea9aea9a2e458f3fd",
+          "row": "rows/healer.png",
+          "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW4 of reference: pearl-gold sea snail with a large nacre spiral shell, small broad foot and TWO antennae toward bottom. No crab legs or claws; only foot and antennae gently undulate.\n",
+          "tool": "built-in image_gen"
+        },
+        {
+          "id": "boss",
+          "original": "sources/enemy-boss-03905b4a79e9.source",
+          "sourceSha256": "03905b4a79e94b4e0dce03eda473505be81c2fc199fcb8838614fc6f284eeeb9",
+          "row": "rows/boss.png",
+          "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW5 of reference: majestic coral-red KING CRAB with small GOLD CROWN lying flat on top of its broad back, TWO big claws, natural walking legs. No upright front view or humanoid anatomy.\n",
+          "tool": "built-in image_gen"
+        }
+      ],
+      "review": "verified-local",
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            72,
+            53,
+            193,
+            199
+          ],
+          "margin": 53,
+          "transparent": 50841
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            55,
+            53,
+            185,
+            197
+          ],
+          "margin": 53,
+          "transparent": 51358
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            72,
+            51,
+            207,
+            197
+          ],
+          "margin": 48,
+          "transparent": 50264
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            70,
+            51,
+            192,
+            198
+          ],
+          "margin": 51,
+          "transparent": 50556
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            98,
+            50,
+            168,
+            204
+          ],
+          "margin": 50,
+          "transparent": 55490
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            75,
+            50,
+            157,
+            205
+          ],
+          "margin": 50,
+          "transparent": 53328
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            100,
+            50,
+            181,
+            204
+          ],
+          "margin": 50,
+          "transparent": 54132
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            89,
+            50,
+            159,
+            204
+          ],
+          "margin": 50,
+          "transparent": 54508
+        },
+        {
+          "frame": 8,
+          "bounds": [
+            62,
+            62,
+            200,
+            188
+          ],
+          "margin": 55,
+          "transparent": 51138
+        },
+        {
+          "frame": 9,
+          "bounds": [
+            44,
+            62,
+            198,
+            192
+          ],
+          "margin": 44,
+          "transparent": 51222
+        },
+        {
+          "frame": 10,
+          "bounds": [
+            58,
+            63,
+            209,
+            192
+          ],
+          "margin": 46,
+          "transparent": 50804
+        },
+        {
+          "frame": 11,
+          "bounds": [
+            53,
+            63,
+            194,
+            189
+          ],
+          "margin": 53,
+          "transparent": 50735
+        },
+        {
+          "frame": 12,
+          "bounds": [
+            73,
+            50,
+            185,
+            207
+          ],
+          "margin": 48,
+          "transparent": 31308
+        },
+        {
+          "frame": 13,
+          "bounds": [
+            63,
+            50,
+            175,
+            207
+          ],
+          "margin": 48,
+          "transparent": 33934
+        },
+        {
+          "frame": 14,
+          "bounds": [
+            73,
+            50,
+            185,
+            207
+          ],
+          "margin": 48,
+          "transparent": 34185
+        },
+        {
+          "frame": 15,
+          "bounds": [
+            63,
+            50,
+            175,
+            207
+          ],
+          "margin": 48,
+          "transparent": 35124
+        },
+        {
+          "frame": 16,
+          "bounds": [
+            59,
+            58,
+            196,
+            187
+          ],
+          "margin": 58,
+          "transparent": 51329
+        },
+        {
+          "frame": 17,
+          "bounds": [
+            38,
+            58,
+            195,
+            190
+          ],
+          "margin": 38,
+          "transparent": 51526
+        },
+        {
+          "frame": 18,
+          "bounds": [
+            60,
+            58,
+            216,
+            190
+          ],
+          "margin": 39,
+          "transparent": 51099
+        },
+        {
+          "frame": 19,
+          "bounds": [
+            59,
+            58,
+            195,
+            187
+          ],
+          "margin": 58,
+          "transparent": 50749
+        }
+      ]
+    }
+  ],
+  "card": {
+    "path": "arcade/tower-defense/thumbnail-v2.png",
+    "original": "sources/card-6a97ef9c7868.source",
+    "sourceSha256": "6a97ef9c7868f9121a3d82db7d234507011624632e215c28fecb24bb773c2b21",
+    "sha256": "d318ffea718b548222d4f2babe12c4f7a97a7f9845a15b0170c30461d0bf08db",
+    "tool": "built-in image_gen",
+    "prompt": "Create ONE beautiful cozy Pongdang Island tower-defense game card illustration, opaque LANDSCAPE 4:3. STRICT TOP-DOWN game map scene: pale jade shallow-water tiled battlefield, THREE distinct small arched enemy entries along the TOP edge, a small ivory-and-teal stone castle at BOTTOM CENTER. A coral-lilac octopus cannon (reference1 identity only) on the left-middle and mint seahorse cannon (reference2 identity only) on right-middle protect the castle, their nozzles face upward. A few small hermit crabs and shrimp approach down three thin winding sandy lanes. A few short coral wall blocks gently redirect paths without completely blocking. Soft polished rounded hand-painted cartoon game rendering, clean coherent scale, premium warm ivory/jade/coral palette, subtle sunlight caustics, restrained details, no characters facing camera, no text, logos, letters, numbers, UI, grid labels, borders or watermarks. Reference1 and2 are sprite SHEETS for turret identity only: do NOT reproduce a sheet or repeat frames; draw a SINGLE coherent illustrative scene with one of each turret.\n",
+    "metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "size": 2622204,
+      "width": 1448,
+      "height": 1086,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1448,
+        "height": 1086
+      }
+    },
+    "review": "verified-local"
+  },
+  "enemySources": [
+    {
+      "id": "crab",
+      "original": "sources/enemy-crab-ea5bab32fd56.source",
+      "sourceSha256": "ea5bab32fd566312c3ca90fc35bc576a904a5f3e032975445ca829890962f2ca",
+      "row": "rows/crab.png",
+      "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW1 of reference: small coral-red hermit crab with rounded ivory spiral shell, two claws, compact natural walking legs. No human face or standing front view.\n",
+      "tool": "built-in image_gen"
+    },
+    {
+      "id": "swift",
+      "original": "sources/enemy-swift-b514b353c612.source",
+      "sourceSha256": "b514b353c612301def89ee0be855c7853c03385c3c154da877c9a52558249ae9",
+      "row": "rows/swift.png",
+      "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW2 of reference: slender pale mint shrimp, distinct segmented back, tail fan at top, two long antennae toward bottom and small swimming legs. No crab shell.\n",
+      "tool": "built-in image_gen"
+    },
+    {
+      "id": "armored",
+      "original": "sources/enemy-armored-510bcff4fb7e.source",
+      "sourceSha256": "510bcff4fb7e16f4956e15d63e042fb84ebb996ccf6258ff9d23a0e9787a056f",
+      "row": "rows/armored.png",
+      "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW3 of reference: broad slate-lavender armored crab, stone-like segmented carapace, TWO chunky claws and small walking legs. No spiral snail shell.\n",
+      "tool": "built-in image_gen"
+    },
+    {
+      "id": "healer",
+      "original": "sources/enemy-healer-aa1ceafa94d2.source",
+      "sourceSha256": "aa1ceafa94d2c5fd678882fdd0a538982c4feb7461167a1ea9aea9a2e458f3fd",
+      "row": "rows/healer.png",
+      "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW4 of reference: pearl-gold sea snail with a large nacre spiral shell, small broad foot and TWO antennae toward bottom. No crab legs or claws; only foot and antennae gently undulate.\n",
+      "tool": "built-in image_gen"
+    },
+    {
+      "id": "boss",
+      "original": "sources/enemy-boss-03905b4a79e9.source",
+      "sourceSha256": "03905b4a79e94b4e0dce03eda473505be81c2fc199fcb8838614fc6f284eeeb9",
+      "row": "rows/boss.png",
+      "prompt": "Generate ONE production game animation sprite sheet with EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells, total SQUARE canvas. STRICT TOP-DOWN ORTHOGRAPHIC camera directly above the back/top of the animal. Its forward direction points to the BOTTOM of every cell. Reference is a multi-species sheet: use ONLY the specified animal identity and soft Pongdang style, never copy other species or the whole multi-row layout. Draw the SAME animal four times in connected locomotion poses (neutral, left limb sweep, right limb sweep, recover). Each complete animal must fit the CENTRAL 60% of its cell with minimum20% empty true transparent margin on EVERY side, including antennae, claws, shell and feet. Cell centers at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of total canvas. Identical scale and back/body center in every frame. No body translation, zoom, turning, labels, text, grid lines, UI, floor, shadows, particles, watermark or background. TRUE clean alpha. Carefully painted charming cartoon, softly colored contours and clean highlights, recognizable small game silhouette. Use ONLY ROW5 of reference: majestic coral-red KING CRAB with small GOLD CROWN lying flat on top of its broad back, TWO big claws, natural walking legs. No upright front view or humanoid anatomy.\n",
+      "tool": "built-in image_gen"
+    }
+  ],
+  "rejected": [
+    {
+      "id": "enemies",
+      "path": "arcade/tower-defense/enemies-v1.png",
+      "source": "sources/enemies-474eb9fbd826.source",
+      "sourceSha256": "474eb9fbd82653e8c39ba5ebb3bb8b7af6d832c2aa8fe42280e219aa7a34fe3f",
+      "sha256": "68c2005a99b85fc12401c7506e425d14adc3c1fad6b175529b3e0b124acee89f",
+      "width": 1024,
+      "height": 1280,
+      "columns": 4,
+      "rows": 5,
+      "cell": 256,
+      "tool": "built-in image_gen",
+      "review": "pending",
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            51,
+            35,
+            216,
+            234
+          ],
+          "margin": 21,
+          "transparent": 32695
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            30,
+            33,
+            209,
+            235
+          ],
+          "margin": 20,
+          "transparent": 29520
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            42,
+            34,
+            223,
+            237
+          ],
+          "margin": 18,
+          "transparent": 30748
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            38,
+            34,
+            207,
+            234
+          ],
+          "margin": 21,
+          "transparent": 31776
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            87,
+            11,
+            182,
+            226
+          ],
+          "margin": 11,
+          "transparent": 38437
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            61,
+            12,
+            182,
+            232
+          ],
+          "margin": 12,
+          "transparent": 34380
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            74,
+            12,
+            189,
+            232
+          ],
+          "margin": 12,
+          "transparent": 37671
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            73,
+            11,
+            169,
+            226
+          ],
+          "margin": 11,
+          "transparent": 43906
+        },
+        {
+          "frame": 8,
+          "bounds": [
+            34,
+            8,
+            234,
+            255
+          ],
+          "margin": 0,
+          "transparent": 16766
+        },
+        {
+          "frame": 9,
+          "bounds": [
+            13,
+            4,
+            232,
+            255
+          ],
+          "margin": 0,
+          "transparent": 14540
+        },
+        {
+          "frame": 10,
+          "bounds": [
+            20,
+            5,
+            236,
+            255
+          ],
+          "margin": 0,
+          "transparent": 15731
+        },
+        {
+          "frame": 11,
+          "bounds": [
+            21,
+            8,
+            220,
+            255
+          ],
+          "margin": 0,
+          "transparent": 20062
+        },
+        {
+          "frame": 12,
+          "bounds": [
+            58,
+            0,
+            209,
+            255
+          ],
+          "margin": 0,
+          "transparent": 11417
+        },
+        {
+          "frame": 13,
+          "bounds": [
+            37,
+            0,
+            208,
+            255
+          ],
+          "margin": 0,
+          "transparent": 9567
+        },
+        {
+          "frame": 14,
+          "bounds": [
+            45,
+            0,
+            214,
+            255
+          ],
+          "margin": 0,
+          "transparent": 10454
+        },
+        {
+          "frame": 15,
+          "bounds": [
+            44,
+            0,
+            199,
+            255
+          ],
+          "margin": 0,
+          "transparent": 16189
+        },
+        {
+          "frame": 16,
+          "bounds": [
+            27,
+            0,
+            237,
+            188
+          ],
+          "margin": 0,
+          "transparent": 26297
+        },
+        {
+          "frame": 17,
+          "bounds": [
+            14,
+            0,
+            235,
+            191
+          ],
+          "margin": 0,
+          "transparent": 24698
+        },
+        {
+          "frame": 18,
+          "bounds": [
+            18,
+            0,
+            236,
+            193
+          ],
+          "margin": 0,
+          "transparent": 23011
+        },
+        {
+          "frame": 19,
+          "bounds": [
+            15,
+            0,
+            226,
+            188
+          ],
+          "margin": 0,
+          "transparent": 27163
+        }
+      ],
+      "reason": "Initial multi-row generation was not aligned to equal cells; rejected before release."
+    }
+  ],
+  "status": "verified-local",
+  "verification": {
+    "verifiedAt": "2026-11-12T09:24:40.266Z",
+    "branch": "타워디펜스",
+    "tests": {
+      "passed": 33,
+      "files": 5
+    },
+    "build": {
+      "status": "success",
+      "startedAt": "2026-11-12T09:18:08.091Z"
+    },
+    "clientDataCheck": true,
+    "runtime": "review/runtime-validation.json",
+    "balanceAndPerformance": "review/balance-and-performance.json",
+    "sourceHashes": {
+      "src/features/arcade/tower-defense-engine.ts": "79251001cbfcb13542c83442030694e3c825c0f688b7dba70678e806db4d9722",
+      "src/features/arcade/tower-defense-game.tsx": "3346b306e00730aae83a241115f759a1df50d1f920183d96c523873a20c963ba",
+      "src/features/arcade/tower-defense-scene.ts": "295af5ff9e47aa2a92a7018fc1849f6ba11b2b14a482958e265acbb874180481",
+      "src/features/arcade/tower-defense-art.tsx": "4071ce3fbad5660446f83c0ffd3ad4d7519d18eddac9574ee4eac329d446733d",
+      "src/features/arcade/tower-defense.css": "a6275099889dc2ce3fd487b6e1dbe03d89b37c458482664a57090c50bbb3f6a6",
+      "src/features/arcade/games.ts": "20c89f65496aa8bc343cfd5423a841d8dd6fef440830209179562475b2646aa2"
+    },
+    "productionDeployment": false,
+    "databaseChanges": false,
+    "performanceScope": "Pooled 256-enemy local simulation and actual headless Phaser renderer. No claim about physical-phone FPS."
+  }
+}

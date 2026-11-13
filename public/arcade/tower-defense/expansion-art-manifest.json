@@ -1,0 +1,151 @@
+{
+  "source": "scripts/build-tower-defense-expansion-art.mjs",
+  "cell": 256,
+  "enemyOrder": [
+    "shark",
+    "mako",
+    "dolphin",
+    "flyingFish",
+    "airJelly",
+    "cuttlefish"
+  ],
+  "baseAtlas": "enemies-v5-sprite.png",
+  "files": [
+    {
+      "path": "arcade/tower-defense/shark-v1.svg",
+      "sha256": "382467db72f426cb315ca2d93898f5127e3bdf655d820e679d942a3e9c2ce1f4"
+    },
+    {
+      "path": "arcade/tower-defense/shark-v1-sheet.svg",
+      "sha256": "ac66a3c73eb66c3e7c183238df9f336e66c4bd807a9f3202536dc1ec64c5e5e3"
+    },
+    {
+      "path": "arcade/tower-defense/shark-v1-sprite.png",
+      "sha256": "06f126c6eb14f02500232f64d0c7e434cdb3bc1285c5fdcd7e508b4c25c39111"
+    },
+    {
+      "path": "arcade/tower-defense/mako-v1.svg",
+      "sha256": "a6203268bde6370616f1e1ff400171006b8b481b1fc6a87b568e5a1d9c252d28"
+    },
+    {
+      "path": "arcade/tower-defense/mako-v1-sheet.svg",
+      "sha256": "bee9b724600ada007353bfd88894244ed9af0adac6f896d2465e3023534dda90"
+    },
+    {
+      "path": "arcade/tower-defense/mako-v1-sprite.png",
+      "sha256": "2b3cccdbc58dc4fee8b54b0613d74094526088c4bf9d24daea4dca3b946d745c"
+    },
+    {
+      "path": "arcade/tower-defense/dolphin-v1.svg",
+      "sha256": "fc5b0d36693e2ab1d42fe3a3a70f4ca7f3fa7690bfbc4b6ff002f1583f634b04"
+    },
+    {
+      "path": "arcade/tower-defense/dolphin-v1-sheet.svg",
+      "sha256": "ee66459472fbcc29ff6f3b7c3f6b2f997d8828bf5e9923cde5f34e49b9704838"
+    },
+    {
+      "path": "arcade/tower-defense/dolphin-v1-sprite.png",
+      "sha256": "a7ab6b374dafd9ad078d4ffbb8a0e435227443a1bcff27c9d3cf2d203dde2432"
+    },
+    {
+      "path": "arcade/tower-defense/flyingFish-v1.svg",
+      "sha256": "56dc1c4b8d3355cdf60ffcdb78a42998bf7091d884520c54abcb6c6131455972"
+    },
+    {
+      "path": "arcade/tower-defense/flyingFish-v1-sheet.svg",
+      "sha256": "dfd09a39996b5c48e805d8d54ba6c928584d5432a31c2f4ca8b525b12a3c4e71"
+    },
+    {
+      "path": "arcade/tower-defense/flyingFish-v1-sprite.png",
+      "sha256": "291df5bddcfeac6a6249f8735ca96a47b76821a925cc0dbf2cea4797fcf8c746"
+    },
+    {
+      "path": "arcade/tower-defense/airJelly-v1.svg",
+      "sha256": "4ca0e31ea54bdd7da313dd9dce2cbf7be99680603f023c81af7dd03b9c9ac29e"
+    },
+    {
+      "path": "arcade/tower-defense/airJelly-v1-sheet.svg",
+      "sha256": "2555f01f4141c477bbfd03437aa8434432680f26c8adf603d0deaf3c9679e33d"
+    },
+    {
+      "path": "arcade/tower-defense/airJelly-v1-sprite.png",
+      "sha256": "82ee47206088183595d465aca985ff8eaa8e26b8748b730a8cc6ab9afe2a19c1"
+    },
+    {
+      "path": "arcade/tower-defense/cuttlefish-v1.svg",
+      "sha256": "9ff82c7684439496249973137baae0479bba88feeb19344eae8d6ecb888b81e8"
+    },
+    {
+      "path": "arcade/tower-defense/cuttlefish-v1-sheet.svg",
+      "sha256": "7c47ddfb83185fd9dd8d9113c357ed79b1497049d0afe76170898a4c4fe8a9fa"
+    },
+    {
+      "path": "arcade/tower-defense/cuttlefish-v1-sprite.png",
+      "sha256": "3cbddb733fa76051a4e8e01139879a3b04c1c474e12190ce10bdd7eae03699f2"
+    },
+    {
+      "path": "arcade/tower-defense/missile-v1.svg",
+      "sha256": "da41def1139e447684ccdc8dca006307f86ac9735c1788936f847611fc043592"
+    },
+    {
+      "path": "arcade/tower-defense/missile-v1-sheet.svg",
+      "sha256": "1972abefa8547f0aa0c6d702b2becbb994b241bfc43fb89bd5ce273bdaa3acc9"
+    },
+    {
+      "path": "arcade/tower-defense/missile-v1-sprite.png",
+      "sha256": "37a54430db4e610e6da8794854a3b720f57f948eafae6633c968c739c0ef5685"
+    },
+    {
+      "path": "arcade/tower-defense/salvo-v1.svg",
+      "sha256": "26a207fed56a661d59aff798534e2f7534536ba3127cccdccd17f515ecfd1e9b"
+    },
+    {
+      "path": "arcade/tower-defense/salvo-v1-sheet.svg",
+      "sha256": "df34d1f78b2a8a5852ac111da0ffb6f4501f35af3e10f5ac649ab7ecf53216a2"
+    },
+    {
+      "path": "arcade/tower-defense/salvo-v1-sprite.png",
+      "sha256": "df9c0949712085de248e27da5fcb4d5187f77014ea2687b3ed0ddabcaaf8d592"
+    },
+    {
+      "path": "arcade/tower-defense/sniper-v1.svg",
+      "sha256": "91da8a16d35f99fa04165b0817e572749aed5eadd33c46f1ab2ada899f872c0e"
+    },
+    {
+      "path": "arcade/tower-defense/sniper-v1-sheet.svg",
+      "sha256": "770b60285100bf0829c824e99448491d2f4248ffebe4e88c3fc326b94d2e8e58"
+    },
+    {
+      "path": "arcade/tower-defense/sniper-v1-sprite.png",
+      "sha256": "a32a6f91903aa4b103a3337f34577362d3eb651e5d9fb09d7de410ac14755fe7"
+    },
+    {
+      "path": "arcade/tower-defense/harpoon-v1.svg",
+      "sha256": "d121828d701df79b848d417edbbd226b7c1c1909c1dbe48d9077d7d534d76fcf"
+    },
+    {
+      "path": "arcade/tower-defense/harpoon-v1-sheet.svg",
+      "sha256": "2c6fb83a5b4e1739a83bc28cfc20c507136326af4afd34a43c32a18d2efe507a"
+    },
+    {
+      "path": "arcade/tower-defense/harpoon-v1-sprite.png",
+      "sha256": "9e1bcb6b0e9a3546214826bdf6c3b9282c0d7b7a3de79fe32b3c04342eaa68af"
+    },
+    {
+      "path": "arcade/tower-defense/frost-v1.svg",
+      "sha256": "3e65471915938a3ce96982927cc3d46adb1b46823cc016de48ec8eac73dfa8e3"
+    },
+    {
+      "path": "arcade/tower-defense/frost-v1-sheet.svg",
+      "sha256": "a8c62b80add7802484dc5510ff053f59d7d3abc3c7b582411d2e4696601ee67d"
+    },
+    {
+      "path": "arcade/tower-defense/frost-v1-sprite.png",
+      "sha256": "5da38846373fe6deae903411d0e0b5dea18561b3c23a8d73ca349305e2a6c4fd"
+    },
+    {
+      "path": "arcade/tower-defense/enemies-v6-sprite.png",
+      "sha256": "4e89ef266d8a3cf8644ee7952ca18706dc3a57618a76b27f22934aa3b98c0155"
+    }
+  ]
+}

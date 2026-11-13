@@ -1,0 +1,251 @@
+{
+  "status": "verified-local",
+  "generator": "repo-native SVG with lossless PNG sprite export",
+  "reference": "User sketch: one round pink body, two dot eyes, one funnel nozzle. No mouths, upright faces or mounting plates. All seven towers and monsters use strict overhead silhouettes; new attack families have distinct colours and silhouettes.",
+  "animation": "Turrets hold frame 0 at rest and use frames 1-3 only while firing. No idle body, limb or nozzle movement.",
+  "files": [
+    {
+      "id": "octopus-v5",
+      "path": "arcade/tower-defense/octopus-v5.svg",
+      "type": "svg",
+      "sha256": "c0a570c1440965adb2384ff83d2883e4039eb203e26b8051148646383eff9a20",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "octopus-v5-sprite",
+      "path": "arcade/tower-defense/octopus-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "eeab04bf73bcb99a6d10d2cdb413fc99fa5b7228f54f143d2b2add9c532c10cb",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/octopus-v5-sprite.png",
+        "sha256": "08040add5afd22e3a7e3d58d8c50cf4645ed0c1d107123c45b01d45c8644a7f7",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "seahorse-v5",
+      "path": "arcade/tower-defense/seahorse-v5.svg",
+      "type": "svg",
+      "sha256": "5d291a532420ae7900cc7fc3d48cbac00395303bf689b78c2a6a7e77d8e11a83",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "seahorse-v5-sprite",
+      "path": "arcade/tower-defense/seahorse-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "4dd7d5a83aeab888785bd20a3a28affc69778b77b41106cbf7470ee0a02ddbc3",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/seahorse-v5-sprite.png",
+        "sha256": "67324b14e82f02cef01ea92c0446b72827b1bdd33d515e2fa09f62f8923f2086",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "mortar-v5",
+      "path": "arcade/tower-defense/mortar-v5.svg",
+      "type": "svg",
+      "sha256": "25b730540df6477e863a0dc4ed330a7d3d24bd5ba91cff56b8a7ec953643f9d7",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "mortar-v5-sprite",
+      "path": "arcade/tower-defense/mortar-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "35085ed3b538ef24ec01ded740228e4d62c690475dbcfc5614e5fc94fe976426",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/mortar-v5-sprite.png",
+        "sha256": "99a58632ca9bae6e44655b1c63720a5a314e8acc858611a9917b1240835a92f5",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "flame-v5",
+      "path": "arcade/tower-defense/flame-v5.svg",
+      "type": "svg",
+      "sha256": "4eccda22606009de0922be7b88e4a7c603bb897bb8d446bbfd88b22681e8f8c9",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "flame-v5-sprite",
+      "path": "arcade/tower-defense/flame-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "70405c893f1073629be04d5845ae3e3e29e368df8c5cd5cf734b3ea88206eb6a",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/flame-v5-sprite.png",
+        "sha256": "f7b3e3928758152957856f70004aabd827d0aeb71ee239503d451ff4d8d45837",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "laser-v5",
+      "path": "arcade/tower-defense/laser-v5.svg",
+      "type": "svg",
+      "sha256": "010255c0479dad3621d03062ec95643ea6a8beecb3773f5c839a6937f9f1745c",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "laser-v5-sprite",
+      "path": "arcade/tower-defense/laser-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "671bb4d71479309c55d875f3f3f73c203abbf7a13ba7519b4210934010206b89",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/laser-v5-sprite.png",
+        "sha256": "84d1bbbd46111736c71294c765ef16b04d11c06f2e58f69524f7022aee4ff055",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "plasma-v5",
+      "path": "arcade/tower-defense/plasma-v5.svg",
+      "type": "svg",
+      "sha256": "11e432fabc041bbf0c865f12f5bf538f69640e50b02ae666f9c9e88381ca92cc",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "plasma-v5-sprite",
+      "path": "arcade/tower-defense/plasma-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "b8e14a9b36165e4ed7619247738ae09763113b2b499750e10e128f8af42eb139",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/plasma-v5-sprite.png",
+        "sha256": "29199698b2a554e8e7020f524e9e4625ea2f2521fae1d9ac5ecd2e874ae33638",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "anemone-v5",
+      "path": "arcade/tower-defense/anemone-v5.svg",
+      "type": "svg",
+      "sha256": "b157e7c0b0e223b502827fa8a7c623055a81902f413b838bc776f08594f15e13",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "anemone-v5-sprite",
+      "path": "arcade/tower-defense/anemone-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "95a025225528a089184b35e1c0d90dffec7d6dd9faa393e62b1eaffaf5f542bb",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/anemone-v5-sprite.png",
+        "sha256": "08f218b2cfb295466f383ca5ccd672c743b44ac9be6fa815097e2b437ea1ef34",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "enemies-v5-sprite",
+      "path": "arcade/tower-defense/enemies-v5-sprite.svg",
+      "type": "svg",
+      "sha256": "311acea4ca7086c904706165e8b4c8b0a4416646e203a9dc7d240d4f2e204bf7",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 12,
+      "sprite": {
+        "path": "arcade/tower-defense/enemies-v5-sprite.png",
+        "sha256": "40f30f7cc8f6e03ba6a2fdb4acc1026ac78528b47162459114a95c3b8887b753",
+        "cell": 256,
+        "width": 1024,
+        "height": 3072
+      }
+    },
+    {
+      "id": "wall-v2",
+      "path": "arcade/tower-defense/wall-v2.svg",
+      "type": "svg",
+      "sha256": "557fc50d790d7e6c1aeaa77b4039626a9dc4c13d82077381c2669255f7caabe5",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "castle-v2",
+      "path": "arcade/tower-defense/castle-v2.svg",
+      "type": "svg",
+      "sha256": "0730d8b2243f929716ea0d2540eed948997f0652226154f85f3b3f7012ff229a",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "field-v4",
+      "path": "arcade/tower-defense/field-v4.svg",
+      "type": "svg",
+      "sha256": "b2de4237da2f5ad8ccc2e535f2076d187043675a1698d8e3c14f01f5a94c65e1",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "thumbnail-v8",
+      "path": "arcade/tower-defense/thumbnail-v8.svg",
+      "type": "svg",
+      "sha256": "17778a8bef56e418842e5761312f73f039bc3f1a6c8466070d21054fef37708f",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    }
+  ],
+  "validation": {
+    "verifiedAt": "2026-11-12T16:09:18.175Z",
+    "scope": "Local 30-wave application; paid full-campaign simulations; headless software WebGL. No physical-device FPS or production deployment claim.",
+    "tests": {
+      "files": 9,
+      "passed": 83
+    },
+    "build": "artifacts/deploy/build-report.json",
+    "campaign": "review/campaign-benchmark.json",
+    "runtime": "review/runtime-validation.json",
+    "bosses": "review/campaign-replay.json",
+    "startingWave": "review/wave-selection-validation.json",
+    "isolatedDenseRenderer": "review/dense-tower-validation.json",
+    "frames": "review/actors-at-game-scale.png",
+    "bossFloatingBars": false
+  }
+}

@@ -58,13 +58,10 @@ it('shows free aquarium ordering under brain and weekly settlement',()=>{
  expect(card.getAttribute('href')).toBe('/arcade/calculation')
 })
 function setup(path='/arcade') { render(<MemoryRouter initialEntries={[path]}><Banner/><Routes><Route path="/arcade" element={<ArcadePage />} /><Route path="/arcade/:gameId" element={<ArcadeGamePage />} /><Route path="/collection" element={<p>일반 도감</p>}/></Routes></MemoryRouter>) }
-it('opens a coming-soon game and returns to the lobby without charging admission', () => {
+it('opens the free tower-defense practice from the lobby', async () => {
  setup()
  fireEvent.click(screen.getByRole('link', { name: /퐁이의 타워디펜스/ }))
- expect(screen.getByText('게임을 준비하고 있어요.')).toBeTruthy()
- expect(screen.getByText('무료')).toBeTruthy()
- fireEvent.click(screen.getByRole('link',{name:'목록으로'}))
- expect(screen.getByRole('region', { name: '오락실 게임 목록' })).toBeTruthy()
+ expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })
 it('handles an unknown game with a route back to the lobby', () => {
  setup('/arcade/missing')
@@ -72,20 +69,20 @@ it('handles an unknown game with a route back to the lobby', () => {
  expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/arcade')
 })
 
-it('lists tower defense but shows its coming-soon screen when opened',async()=>{
+it('lists tower defense as free practice and opens its playable screen',async()=>{
  setup()
  expect(screen.getByRole('link',{name:/퐁이의 타워디펜스/})).toBeTruthy()
  cleanup();setup('/arcade/tower-defense')
- expect(await screen.findByText('게임을 준비하고 있어요.')).toBeTruthy()
+ expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })
-it('keeps tower defense coming soon while operator permission is pending',async()=>{
+it('allows free tower defense while operator permission is pending',async()=>{
  access.loading=true;setup('/arcade/tower-defense')
- expect(await screen.findByText('게임을 준비하고 있어요.')).toBeTruthy()
+ expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })
-it('also keeps tower defense coming soon for a verified operator',async()=>{
+it('also opens tower defense for a verified operator',async()=>{
  access.operator=true;setup()
  fireEvent.click(screen.getByRole('link',{name:/퐁이의 타워디펜스/}))
- expect(await screen.findByText('게임을 준비하고 있어요.')).toBeTruthy()
+ expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })
 it('places exploration in brain and instant rewards and opens its existing lobby',async()=>{
  setup()

@@ -28,6 +28,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "arcade:engine": "node scripts/build-brick-replay.mjs",
+    "tower-defense:benchmark": "node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/benchmark-tower-defense.mjs",
     "arcade:engine:check": "node scripts/build-brick-replay.mjs --check",
     "images:thumbnails": "node scripts/build-collectible-thumbnails.mjs",
     "images:background-previews": "node scripts/build-background-previews.mjs",

@@ -1,0 +1,47 @@
+{
+  "verifiedAt": "2026-11-12T09:22:14.301Z",
+  "complete": true,
+  "scope": "Actual React UI and Phaser renderer, account-free local fixture; headless Chrome/software GPU timings are not physical mobile FPS.",
+  "phoneSizes": [
+    [
+      390,
+      844
+    ],
+    [
+      360,
+      740
+    ],
+    [
+      320,
+      667
+    ]
+  ],
+  "firstWave": true,
+  "placementConfirmation": true,
+  "upgradeBadges": true,
+  "castleUpgrade": true,
+  "reducedMotion": true,
+  "stress": {
+    "errors": [],
+    "ready": true,
+    "enemies": 256,
+    "stats": {
+      "flowBuilds": 4,
+      "candidateBuilds": 4,
+      "targetVisits": 4008,
+      "shots": 48,
+      "peakEnemies": 256,
+      "peakProjectiles": 4,
+      "peakEffects": 2
+    },
+    "frameSamples": 300,
+    "medianFrameMs": 16.700000000000728,
+    "p95FrameMs": 50,
+    "sprites": 271,
+    "resources": [
+      "http://127.0.0.1:5180/arcade/tower-defense/octopus-v1.png",
+      "http://127.0.0.1:5180/arcade/tower-defense/seahorse-v1.png",
+      "http://127.0.0.1:5180/arcade/tower-defense/enemies-v1.png"
+    ]
+  }
+}

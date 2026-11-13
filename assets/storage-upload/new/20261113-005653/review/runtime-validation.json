@@ -1,0 +1,174 @@
+{
+  "verifiedAt": "2026-11-12T16:09:05.163Z",
+  "complete": true,
+  "scope": "Actual React UI and Phaser renderer, account-free local fixture; headless Chrome/software GPU timings are not physical mobile FPS.",
+  "phoneSizes": [
+    [
+      390,
+      844
+    ],
+    [
+      360,
+      740
+    ],
+    [
+      320,
+      667
+    ]
+  ],
+  "firstWave": true,
+  "immediatePlacement": true,
+  "inspectorChecks": [
+    {
+      "width": 390,
+      "image": true,
+      "headers": [
+        "능력치",
+        "현재",
+        "강화 후"
+      ],
+      "fits": true,
+      "cellsFit": true
+    },
+    {
+      "width": 360,
+      "image": true,
+      "headers": [
+        "능력치",
+        "현재",
+        "강화 후"
+      ],
+      "fits": true,
+      "cellsFit": true
+    },
+    {
+      "width": 320,
+      "image": true,
+      "headers": [
+        "능력치",
+        "현재",
+        "강화 후"
+      ],
+      "fits": true,
+      "cellsFit": true
+    }
+  ],
+  "speedToggle": true,
+  "roster": {
+    "kinds": [
+      "octopus",
+      "seahorse",
+      "mortar",
+      "flame",
+      "laser",
+      "plasma",
+      "anemone"
+    ],
+    "textures": [
+      "octopus",
+      "seahorse",
+      "mortar",
+      "flame",
+      "laser",
+      "plasma",
+      "anemone"
+    ],
+    "effects": [
+      "impact",
+      "blast",
+      "pulse",
+      "impact",
+      "beam"
+    ],
+    "flaming": true
+  },
+  "toolbarDrag": true,
+  "touchDrag": true,
+  "repeatPlacement": true,
+  "placementCancellation": true,
+  "neutralTapsSafe": true,
+  "stableBattlefield": true,
+  "outsideDropCancelled": true,
+  "breach": {
+    "lives": 14,
+    "effect": true,
+    "tint": 15769995
+  },
+  "audio": {
+    "contexts": 4,
+    "nodes": 54,
+    "running": true
+  },
+  "upgradeBadges": true,
+  "castleUpgrade": true,
+  "reducedMotion": true,
+  "idleStill": true,
+  "rotatedTurretIntact": true,
+  "firingFrames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hoverPreview": {
+    "visible": true,
+    "x": 180,
+    "y": 406,
+    "expected": {
+      "x": 180,
+      "y": 406
+    },
+    "width": 936,
+    "height": 1192,
+    "world": {
+      "width": 468,
+      "height": 596
+    },
+    "selected": null,
+    "hovered": 124,
+    "pointer": {
+      "x": 360,
+      "y": 811.2170137796514
+    },
+    "covered": false,
+    "rangeCommands": 164
+  },
+  "stress": {
+    "errors": [],
+    "ready": true,
+    "enemies": 256,
+    "stats": {
+      "flowBuilds": 7,
+      "candidateBuilds": 7,
+      "targetVisits": 23162,
+      "shots": 182,
+      "peakEnemies": 256,
+      "peakProjectiles": 4,
+      "peakEffects": 35
+    },
+    "frameSamples": 189,
+    "medianFrameMs": 83.30000000000109,
+    "p95FrameMs": 100.10000000000036,
+    "sprites": 277,
+    "resources": [
+      "http://127.0.0.1:5190/arcade/tower-defense/octopus-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/seahorse-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/mortar-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/flame-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/laser-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/plasma-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/anemone-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/enemies-v5-sprite.png",
+      "http://127.0.0.1:5190/arcade/tower-defense/field-v4.svg",
+      "http://127.0.0.1:5190/arcade/tower-defense/castle-v2.svg",
+      "http://127.0.0.1:5190/arcade/tower-defense/wall-v2.svg"
+    ]
+  },
+  "dense": {
+    "ready": true,
+    "errors": [],
+    "enemies": 256,
+    "towers": 31,
+    "sprites": 31
+  }
+}

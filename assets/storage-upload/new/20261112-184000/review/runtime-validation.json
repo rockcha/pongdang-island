@@ -1,0 +1,81 @@
+{
+  "verifiedAt": "2026-11-12T09:57:21.821Z",
+  "complete": true,
+  "scope": "Actual React UI and Phaser renderer, account-free local fixture; headless Chrome/software GPU timings are not physical mobile FPS.",
+  "phoneSizes": [
+    [
+      390,
+      844
+    ],
+    [
+      360,
+      740
+    ],
+    [
+      320,
+      667
+    ]
+  ],
+  "firstWave": true,
+  "placementConfirmation": true,
+  "upgradeBadges": true,
+  "castleUpgrade": true,
+  "reducedMotion": true,
+  "idleStill": true,
+  "rotatedTurretIntact": true,
+  "firingFrames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hoverPreview": {
+    "visible": true,
+    "x": 180,
+    "y": 406,
+    "expected": {
+      "x": 180,
+      "y": 406
+    },
+    "width": 864,
+    "height": 1120,
+    "world": {
+      "width": 432,
+      "height": 560
+    },
+    "selected": null,
+    "hovered": 114,
+    "pointer": {
+      "x": 358.8923076923077,
+      "y": 810.8446917014372
+    },
+    "covered": false,
+    "rangeCommands": 92
+  },
+  "stress": {
+    "errors": [],
+    "ready": true,
+    "enemies": 256,
+    "stats": {
+      "flowBuilds": 4,
+      "candidateBuilds": 4,
+      "targetVisits": 1406,
+      "shots": 26,
+      "peakEnemies": 256,
+      "peakProjectiles": 4,
+      "peakEffects": 2
+    },
+    "frameSamples": 214,
+    "medianFrameMs": 83.29999999999927,
+    "p95FrameMs": 83.40000000000055,
+    "sprites": 271,
+    "resources": [
+      "http://127.0.0.1:5181/arcade/tower-defense/octopus-v2-sprite.png",
+      "http://127.0.0.1:5181/arcade/tower-defense/seahorse-v2-sprite.png",
+      "http://127.0.0.1:5181/arcade/tower-defense/enemies-v2-sprite.png",
+      "http://127.0.0.1:5181/arcade/tower-defense/field-v2.svg",
+      "http://127.0.0.1:5181/arcade/tower-defense/castle-v2.svg",
+      "http://127.0.0.1:5181/arcade/tower-defense/wall-v2.svg"
+    ]
+  }
+}

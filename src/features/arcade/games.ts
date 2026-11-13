@@ -9,6 +9,7 @@ const OddEvenGame = lazy(() => import('./odd-even-game'))
 const BrickBreakerGame = lazy(() => import('./brick-breaker-game'))
 const LadderGame = lazy(() => import('./ladder-game'))
 const PongiWhackGame = lazy(() => import('./pongi-whack-game'))
+const TowerDefenseGame = lazy(() => import('./tower-defense-game'))
 const ExplorationGame = lazy(() =>
   import('../exploration/exploration-page').then((module) => ({ default: module.ExplorationPage })),
 )
@@ -153,13 +154,15 @@ export const arcadeGames: ArcadeGame[] = [
   {
     id: 'tower-defense',
     title: '퐁이의 타워디펜스',
-    description: '새로운 방어전을 준비하고 있어요.',
+    description: '두 갈래 물길과 바다 성 · 지상·공중 포탑으로 30웨이브와 세 보스를 막아내요.',
     icon: Castle,
     tags: ['brain'],
     entryFee: 0,
     dailyLimit: null,
-    status: 'coming-soon',
-    thumbnail: '/arcade/tower-defense/thumbnail.svg',
+    status: 'ready',
+    component: TowerDefenseGame,
+    practiceOnly: true,
+    thumbnail: '/arcade/tower-defense/thumbnail-v8.svg',
   },
 ]
 

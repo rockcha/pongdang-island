@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-11-12T10:00:17.976Z",
+  "scope": "Headless Chrome software GPU; measured after the app build completed; not physical-phone FPS.",
+  "stress": {
+    "errors": [],
+    "ready": true,
+    "enemies": 256,
+    "stats": {
+      "flowBuilds": 4,
+      "candidateBuilds": 4,
+      "targetVisits": 1948,
+      "shots": 36,
+      "peakEnemies": 256,
+      "peakProjectiles": 4,
+      "peakEffects": 2
+    },
+    "frameSamples": 252,
+    "medianFrameMs": 66.70000000000073,
+    "p95FrameMs": 83.40000000000009,
+    "sprites": 271,
+    "resources": [
+      "http://127.0.0.1:5181/arcade/tower-defense/octopus-v2-sprite.png",
+      "http://127.0.0.1:5181/arcade/tower-defense/seahorse-v2-sprite.png",
+      "http://127.0.0.1:5181/arcade/tower-defense/enemies-v2-sprite.png",
+      "http://127.0.0.1:5181/arcade/tower-defense/field-v2.svg",
+      "http://127.0.0.1:5181/arcade/tower-defense/castle-v2.svg",
+      "http://127.0.0.1:5181/arcade/tower-defense/wall-v2.svg"
+    ]
+  }
+}

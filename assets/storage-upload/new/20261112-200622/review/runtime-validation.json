@@ -1,0 +1,132 @@
+{
+  "verifiedAt": "2026-11-12T11:20:09.220Z",
+  "complete": true,
+  "scope": "Actual React UI and Phaser renderer, account-free local fixture; headless Chrome/software GPU timings are not physical mobile FPS.",
+  "phoneSizes": [
+    [
+      390,
+      844
+    ],
+    [
+      360,
+      740
+    ],
+    [
+      320,
+      667
+    ]
+  ],
+  "firstWave": true,
+  "immediatePlacement": true,
+  "roster": {
+    "kinds": [
+      "octopus",
+      "seahorse",
+      "mortar",
+      "flame",
+      "laser",
+      "plasma",
+      "anemone"
+    ],
+    "textures": [
+      "octopus",
+      "seahorse",
+      "mortar",
+      "flame",
+      "laser",
+      "plasma",
+      "anemone"
+    ],
+    "effects": [
+      "impact",
+      "impact",
+      "impact",
+      "blast",
+      "pulse",
+      "impact",
+      "beam"
+    ],
+    "flaming": true
+  },
+  "toolbarDrag": true,
+  "touchDrag": true,
+  "automaticDisarm": true,
+  "neutralTapsSafe": true,
+  "stableBattlefield": true,
+  "outsideDropCancelled": true,
+  "breach": {
+    "lives": 14,
+    "effect": true,
+    "tint": 15769995
+  },
+  "audio": {
+    "contexts": 3,
+    "nodes": 94,
+    "running": true
+  },
+  "upgradeBadges": true,
+  "castleUpgrade": true,
+  "reducedMotion": true,
+  "idleStill": true,
+  "rotatedTurretIntact": true,
+  "firingFrames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hoverPreview": {
+    "visible": true,
+    "x": 180,
+    "y": 406,
+    "expected": {
+      "x": 180,
+      "y": 406
+    },
+    "width": 864,
+    "height": 1120,
+    "world": {
+      "width": 432,
+      "height": 560
+    },
+    "selected": null,
+    "hovered": 114,
+    "pointer": {
+      "x": 358.8923076923077,
+      "y": 810.8446917014372
+    },
+    "covered": false,
+    "rangeCommands": 164
+  },
+  "stress": {
+    "errors": [],
+    "ready": true,
+    "enemies": 256,
+    "stats": {
+      "flowBuilds": 7,
+      "candidateBuilds": 7,
+      "targetVisits": 19596,
+      "shots": 174,
+      "peakEnemies": 256,
+      "peakProjectiles": 4,
+      "peakEffects": 35
+    },
+    "frameSamples": 300,
+    "medianFrameMs": 33.30000000000109,
+    "p95FrameMs": 33.399999999999636,
+    "sprites": 277,
+    "resources": [
+      "http://127.0.0.1:5184/arcade/tower-defense/octopus-v4-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/seahorse-v4-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/mortar-v4-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/flame-v4-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/field-v2.svg",
+      "http://127.0.0.1:5184/arcade/tower-defense/castle-v2.svg",
+      "http://127.0.0.1:5184/arcade/tower-defense/laser-v4-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/plasma-v4-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/anemone-v4-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/enemies-v3-sprite.png",
+      "http://127.0.0.1:5184/arcade/tower-defense/wall-v2.svg"
+    ]
+  }
+}

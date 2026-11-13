@@ -1,0 +1,126 @@
+{
+  "status": "verified-local",
+  "generator": "repo-native SVG with lossless PNG sprite export",
+  "reference": "User sketch: one round pink body, two dot eyes, one funnel nozzle. No mouths, upright faces or mounting plates. All actors use strict overhead silhouettes.",
+  "animation": "Turrets hold frame 0 at rest and use frames 1-3 only while firing. No idle body, limb or nozzle movement.",
+  "files": [
+    {
+      "id": "octopus-v3",
+      "path": "arcade/tower-defense/octopus-v3.svg",
+      "type": "svg",
+      "sha256": "2ee0a7d84efe1d4b9dfa75f66a5ace1fb8fb50bff5eac9ec1a4b3790f9528e54",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "octopus-v3-sprite",
+      "path": "arcade/tower-defense/octopus-v3-sprite.svg",
+      "type": "svg",
+      "sha256": "c248a94491e78f351b6803022d8d63fa65b148e26baf397092dfe9c152a70dae",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/octopus-v3-sprite.png",
+        "sha256": "2fb3b9a873d4304c6855ff4e874f7f68f8a48de423b74ddef621d48cce52b1c7",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "seahorse-v3",
+      "path": "arcade/tower-defense/seahorse-v3.svg",
+      "type": "svg",
+      "sha256": "b83fd8308f9fc90cf0f9c0ace2882b7dea3ee3dd93f99e6e541d350168ad5d9c",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "seahorse-v3-sprite",
+      "path": "arcade/tower-defense/seahorse-v3-sprite.svg",
+      "type": "svg",
+      "sha256": "19e78c9442302b77a810fae10cea39aa537a2ed05a9806dfe849206dcb3e6d57",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 1,
+      "sprite": {
+        "path": "arcade/tower-defense/seahorse-v3-sprite.png",
+        "sha256": "76ce433acd7dad6b1711f5086822a364eacf1025ba12f29e86ed399520a954bf",
+        "cell": 256,
+        "width": 1024,
+        "height": 256
+      }
+    },
+    {
+      "id": "enemies-v3-sprite",
+      "path": "arcade/tower-defense/enemies-v3-sprite.svg",
+      "type": "svg",
+      "sha256": "ab589c370050b2284515580af2e819c6164288bb9bfcda27115a8a1f50a818c1",
+      "generator": "repo-native SVG",
+      "columns": 4,
+      "rows": 5,
+      "sprite": {
+        "path": "arcade/tower-defense/enemies-v3-sprite.png",
+        "sha256": "7592387e0ac4880c7e695bfbd769f5adcc53b09dc66608efe96f411d52a6be27",
+        "cell": 256,
+        "width": 1024,
+        "height": 1280
+      }
+    },
+    {
+      "id": "wall-v2",
+      "path": "arcade/tower-defense/wall-v2.svg",
+      "type": "svg",
+      "sha256": "557fc50d790d7e6c1aeaa77b4039626a9dc4c13d82077381c2669255f7caabe5",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "castle-v2",
+      "path": "arcade/tower-defense/castle-v2.svg",
+      "type": "svg",
+      "sha256": "0730d8b2243f929716ea0d2540eed948997f0652226154f85f3b3f7012ff229a",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "field-v2",
+      "path": "arcade/tower-defense/field-v2.svg",
+      "type": "svg",
+      "sha256": "baf19b6d6896beef5425d0eee4df4df62f36fef1d45959e6a5b9fd362aab3b0d",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": "thumbnail-v4",
+      "path": "arcade/tower-defense/thumbnail-v4.svg",
+      "type": "svg",
+      "sha256": "219c273b495f6e6a47d5578e654718b30678186f81301adc53375f10e90ea63b",
+      "generator": "repo-native SVG",
+      "columns": 1,
+      "rows": 1
+    }
+  ],
+  "validation": {
+    "verifiedAt": "2026-11-12T10:42:28.310Z",
+    "tests": {
+      "files": 6,
+      "passed": 41
+    },
+    "clientData": "passed",
+    "build": {
+      "status": "success",
+      "startedAt": "2026-11-12T10:41:45.630Z"
+    },
+    "artReview": "review/actors-at-game-scale.png",
+    "browser": "artifacts/tower-defense/browser/review/runtime-validation.json",
+    "layout": "artifacts/tower-defense/browser/review/layout-validation.json",
+    "scope": "Local tower-defense branch; no production deployment or account data changes."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "verifiedAt": "2026-11-12T16:04:26.227Z",
+  "scope": "Isolated local headless software WebGL; not physical-phone FPS",
+  "records": [
+    {
+      "ready": true,
+      "errors": [],
+      "enemies": 256,
+      "towers": 31,
+      "sprites": 31,
+      "frames": 2,
+      "reduced": false,
+      "framesAfter": 11
+    },
+    {
+      "ready": true,
+      "errors": [],
+      "enemies": 256,
+      "towers": 31,
+      "sprites": 31,
+      "frames": 3,
+      "reduced": true,
+      "framesAfter": 12
+    }
+  ]
+}

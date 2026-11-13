@@ -1,0 +1,939 @@
+{
+  "balance": [
+    {
+      "seed": 1,
+      "phase": "won",
+      "wave": 20,
+      "hp": 30,
+      "kills": 973,
+      "gold": 1317,
+      "finalDefeated": true,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 79,
+          "kills": 12,
+          "buildings": 3
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 95,
+          "kills": 30,
+          "buildings": 3
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 128,
+          "kills": 52,
+          "buildings": 3
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 217,
+          "kills": 78,
+          "buildings": 3
+        },
+        {
+          "wave": 5,
+          "hp": 15,
+          "gold": 160,
+          "kills": 108,
+          "buildings": 4
+        },
+        {
+          "wave": 6,
+          "hp": 20,
+          "gold": 164,
+          "kills": 142,
+          "buildings": 4
+        },
+        {
+          "wave": 7,
+          "hp": 20,
+          "gold": 225,
+          "kills": 180,
+          "buildings": 4
+        },
+        {
+          "wave": 8,
+          "hp": 19,
+          "gold": 405,
+          "kills": 221,
+          "buildings": 4
+        },
+        {
+          "wave": 9,
+          "hp": 19,
+          "gold": 286,
+          "kills": 267,
+          "buildings": 5
+        },
+        {
+          "wave": 10,
+          "hp": 20,
+          "gold": 342,
+          "kills": 288,
+          "buildings": 5
+        },
+        {
+          "wave": 11,
+          "hp": 20,
+          "gold": 288,
+          "kills": 336,
+          "buildings": 6
+        },
+        {
+          "wave": 12,
+          "hp": 20,
+          "gold": 406,
+          "kills": 388,
+          "buildings": 6
+        },
+        {
+          "wave": 13,
+          "hp": 20,
+          "gold": 257,
+          "kills": 450,
+          "buildings": 6
+        },
+        {
+          "wave": 14,
+          "hp": 25,
+          "gold": 407,
+          "kills": 518,
+          "buildings": 6
+        },
+        {
+          "wave": 15,
+          "hp": 25,
+          "gold": 305,
+          "kills": 590,
+          "buildings": 8
+        },
+        {
+          "wave": 16,
+          "hp": 25,
+          "gold": 407,
+          "kills": 666,
+          "buildings": 8
+        },
+        {
+          "wave": 17,
+          "hp": 25,
+          "gold": 553,
+          "kills": 748,
+          "buildings": 8
+        },
+        {
+          "wave": 18,
+          "hp": 30,
+          "gold": 373,
+          "kills": 836,
+          "buildings": 8
+        },
+        {
+          "wave": 19,
+          "hp": 30,
+          "gold": 727,
+          "kills": 928,
+          "buildings": 8
+        }
+      ],
+      "stats": {
+        "flowBuilds": 8,
+        "candidateBuilds": 8,
+        "targetVisits": 44208,
+        "shots": 4013,
+        "peakEnemies": 28,
+        "peakProjectiles": 5,
+        "peakEffects": 13
+      }
+    },
+    {
+      "seed": 7,
+      "phase": "won",
+      "wave": 20,
+      "hp": 30,
+      "kills": 974,
+      "gold": 1319,
+      "finalDefeated": true,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 79,
+          "kills": 12,
+          "buildings": 3
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 95,
+          "kills": 30,
+          "buildings": 3
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 128,
+          "kills": 52,
+          "buildings": 3
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 217,
+          "kills": 78,
+          "buildings": 3
+        },
+        {
+          "wave": 5,
+          "hp": 15,
+          "gold": 160,
+          "kills": 108,
+          "buildings": 4
+        },
+        {
+          "wave": 6,
+          "hp": 20,
+          "gold": 164,
+          "kills": 142,
+          "buildings": 4
+        },
+        {
+          "wave": 7,
+          "hp": 20,
+          "gold": 225,
+          "kills": 180,
+          "buildings": 4
+        },
+        {
+          "wave": 8,
+          "hp": 20,
+          "gold": 407,
+          "kills": 222,
+          "buildings": 4
+        },
+        {
+          "wave": 9,
+          "hp": 20,
+          "gold": 288,
+          "kills": 268,
+          "buildings": 5
+        },
+        {
+          "wave": 10,
+          "hp": 20,
+          "gold": 344,
+          "kills": 289,
+          "buildings": 5
+        },
+        {
+          "wave": 11,
+          "hp": 20,
+          "gold": 290,
+          "kills": 337,
+          "buildings": 6
+        },
+        {
+          "wave": 12,
+          "hp": 20,
+          "gold": 223,
+          "kills": 389,
+          "buildings": 6
+        },
+        {
+          "wave": 13,
+          "hp": 20,
+          "gold": 259,
+          "kills": 451,
+          "buildings": 6
+        },
+        {
+          "wave": 14,
+          "hp": 25,
+          "gold": 409,
+          "kills": 519,
+          "buildings": 6
+        },
+        {
+          "wave": 15,
+          "hp": 25,
+          "gold": 307,
+          "kills": 591,
+          "buildings": 8
+        },
+        {
+          "wave": 16,
+          "hp": 25,
+          "gold": 409,
+          "kills": 667,
+          "buildings": 8
+        },
+        {
+          "wave": 17,
+          "hp": 25,
+          "gold": 555,
+          "kills": 749,
+          "buildings": 8
+        },
+        {
+          "wave": 18,
+          "hp": 30,
+          "gold": 375,
+          "kills": 837,
+          "buildings": 8
+        },
+        {
+          "wave": 19,
+          "hp": 30,
+          "gold": 729,
+          "kills": 929,
+          "buildings": 8
+        }
+      ],
+      "stats": {
+        "flowBuilds": 8,
+        "candidateBuilds": 8,
+        "targetVisits": 44013,
+        "shots": 4004,
+        "peakEnemies": 38,
+        "peakProjectiles": 5,
+        "peakEffects": 11
+      }
+    },
+    {
+      "seed": 42,
+      "phase": "won",
+      "wave": 20,
+      "hp": 30,
+      "kills": 974,
+      "gold": 1319,
+      "finalDefeated": true,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 79,
+          "kills": 12,
+          "buildings": 3
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 95,
+          "kills": 30,
+          "buildings": 3
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 128,
+          "kills": 52,
+          "buildings": 3
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 217,
+          "kills": 78,
+          "buildings": 3
+        },
+        {
+          "wave": 5,
+          "hp": 15,
+          "gold": 160,
+          "kills": 108,
+          "buildings": 4
+        },
+        {
+          "wave": 6,
+          "hp": 20,
+          "gold": 164,
+          "kills": 142,
+          "buildings": 4
+        },
+        {
+          "wave": 7,
+          "hp": 20,
+          "gold": 225,
+          "kills": 180,
+          "buildings": 4
+        },
+        {
+          "wave": 8,
+          "hp": 20,
+          "gold": 407,
+          "kills": 222,
+          "buildings": 4
+        },
+        {
+          "wave": 9,
+          "hp": 20,
+          "gold": 288,
+          "kills": 268,
+          "buildings": 5
+        },
+        {
+          "wave": 10,
+          "hp": 20,
+          "gold": 344,
+          "kills": 289,
+          "buildings": 5
+        },
+        {
+          "wave": 11,
+          "hp": 20,
+          "gold": 290,
+          "kills": 337,
+          "buildings": 6
+        },
+        {
+          "wave": 12,
+          "hp": 20,
+          "gold": 223,
+          "kills": 389,
+          "buildings": 6
+        },
+        {
+          "wave": 13,
+          "hp": 20,
+          "gold": 259,
+          "kills": 451,
+          "buildings": 6
+        },
+        {
+          "wave": 14,
+          "hp": 25,
+          "gold": 409,
+          "kills": 519,
+          "buildings": 6
+        },
+        {
+          "wave": 15,
+          "hp": 25,
+          "gold": 307,
+          "kills": 591,
+          "buildings": 8
+        },
+        {
+          "wave": 16,
+          "hp": 25,
+          "gold": 409,
+          "kills": 667,
+          "buildings": 8
+        },
+        {
+          "wave": 17,
+          "hp": 25,
+          "gold": 555,
+          "kills": 749,
+          "buildings": 8
+        },
+        {
+          "wave": 18,
+          "hp": 30,
+          "gold": 375,
+          "kills": 837,
+          "buildings": 8
+        },
+        {
+          "wave": 19,
+          "hp": 30,
+          "gold": 729,
+          "kills": 929,
+          "buildings": 8
+        }
+      ],
+      "stats": {
+        "flowBuilds": 8,
+        "candidateBuilds": 8,
+        "targetVisits": 43334,
+        "shots": 3995,
+        "peakEnemies": 33,
+        "peakProjectiles": 5,
+        "peakEffects": 10
+      }
+    },
+    {
+      "seed": 91,
+      "phase": "won",
+      "wave": 20,
+      "hp": 30,
+      "kills": 974,
+      "gold": 1319,
+      "finalDefeated": true,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 79,
+          "kills": 12,
+          "buildings": 3
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 95,
+          "kills": 30,
+          "buildings": 3
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 128,
+          "kills": 52,
+          "buildings": 3
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 217,
+          "kills": 78,
+          "buildings": 3
+        },
+        {
+          "wave": 5,
+          "hp": 15,
+          "gold": 160,
+          "kills": 108,
+          "buildings": 4
+        },
+        {
+          "wave": 6,
+          "hp": 20,
+          "gold": 164,
+          "kills": 142,
+          "buildings": 4
+        },
+        {
+          "wave": 7,
+          "hp": 20,
+          "gold": 225,
+          "kills": 180,
+          "buildings": 4
+        },
+        {
+          "wave": 8,
+          "hp": 20,
+          "gold": 407,
+          "kills": 222,
+          "buildings": 4
+        },
+        {
+          "wave": 9,
+          "hp": 20,
+          "gold": 288,
+          "kills": 268,
+          "buildings": 5
+        },
+        {
+          "wave": 10,
+          "hp": 20,
+          "gold": 344,
+          "kills": 289,
+          "buildings": 5
+        },
+        {
+          "wave": 11,
+          "hp": 20,
+          "gold": 290,
+          "kills": 337,
+          "buildings": 6
+        },
+        {
+          "wave": 12,
+          "hp": 20,
+          "gold": 223,
+          "kills": 389,
+          "buildings": 6
+        },
+        {
+          "wave": 13,
+          "hp": 20,
+          "gold": 259,
+          "kills": 451,
+          "buildings": 6
+        },
+        {
+          "wave": 14,
+          "hp": 25,
+          "gold": 409,
+          "kills": 519,
+          "buildings": 6
+        },
+        {
+          "wave": 15,
+          "hp": 25,
+          "gold": 307,
+          "kills": 591,
+          "buildings": 8
+        },
+        {
+          "wave": 16,
+          "hp": 25,
+          "gold": 409,
+          "kills": 667,
+          "buildings": 8
+        },
+        {
+          "wave": 17,
+          "hp": 25,
+          "gold": 555,
+          "kills": 749,
+          "buildings": 8
+        },
+        {
+          "wave": 18,
+          "hp": 30,
+          "gold": 375,
+          "kills": 837,
+          "buildings": 8
+        },
+        {
+          "wave": 19,
+          "hp": 30,
+          "gold": 729,
+          "kills": 929,
+          "buildings": 8
+        }
+      ],
+      "stats": {
+        "flowBuilds": 8,
+        "candidateBuilds": 8,
+        "targetVisits": 44700,
+        "shots": 3943,
+        "peakEnemies": 33,
+        "peakProjectiles": 4,
+        "peakEffects": 11
+      }
+    },
+    {
+      "seed": 731,
+      "phase": "won",
+      "wave": 20,
+      "hp": 30,
+      "kills": 974,
+      "gold": 1319,
+      "finalDefeated": true,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 79,
+          "kills": 12,
+          "buildings": 3
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 95,
+          "kills": 30,
+          "buildings": 3
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 128,
+          "kills": 52,
+          "buildings": 3
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 217,
+          "kills": 78,
+          "buildings": 3
+        },
+        {
+          "wave": 5,
+          "hp": 15,
+          "gold": 160,
+          "kills": 108,
+          "buildings": 4
+        },
+        {
+          "wave": 6,
+          "hp": 20,
+          "gold": 164,
+          "kills": 142,
+          "buildings": 4
+        },
+        {
+          "wave": 7,
+          "hp": 20,
+          "gold": 225,
+          "kills": 180,
+          "buildings": 4
+        },
+        {
+          "wave": 8,
+          "hp": 20,
+          "gold": 407,
+          "kills": 222,
+          "buildings": 4
+        },
+        {
+          "wave": 9,
+          "hp": 20,
+          "gold": 288,
+          "kills": 268,
+          "buildings": 5
+        },
+        {
+          "wave": 10,
+          "hp": 20,
+          "gold": 344,
+          "kills": 289,
+          "buildings": 5
+        },
+        {
+          "wave": 11,
+          "hp": 20,
+          "gold": 290,
+          "kills": 337,
+          "buildings": 6
+        },
+        {
+          "wave": 12,
+          "hp": 20,
+          "gold": 223,
+          "kills": 389,
+          "buildings": 6
+        },
+        {
+          "wave": 13,
+          "hp": 20,
+          "gold": 259,
+          "kills": 451,
+          "buildings": 6
+        },
+        {
+          "wave": 14,
+          "hp": 25,
+          "gold": 409,
+          "kills": 519,
+          "buildings": 6
+        },
+        {
+          "wave": 15,
+          "hp": 25,
+          "gold": 307,
+          "kills": 591,
+          "buildings": 8
+        },
+        {
+          "wave": 16,
+          "hp": 25,
+          "gold": 409,
+          "kills": 667,
+          "buildings": 8
+        },
+        {
+          "wave": 17,
+          "hp": 25,
+          "gold": 555,
+          "kills": 749,
+          "buildings": 8
+        },
+        {
+          "wave": 18,
+          "hp": 30,
+          "gold": 375,
+          "kills": 837,
+          "buildings": 8
+        },
+        {
+          "wave": 19,
+          "hp": 30,
+          "gold": 729,
+          "kills": 929,
+          "buildings": 8
+        }
+      ],
+      "stats": {
+        "flowBuilds": 8,
+        "candidateBuilds": 8,
+        "targetVisits": 42646,
+        "shots": 3987,
+        "peakEnemies": 29,
+        "peakProjectiles": 4,
+        "peakEffects": 12
+      }
+    },
+    {
+      "seed": 2026,
+      "phase": "won",
+      "wave": 20,
+      "hp": 30,
+      "kills": 974,
+      "gold": 1319,
+      "finalDefeated": true,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 79,
+          "kills": 12,
+          "buildings": 3
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 95,
+          "kills": 30,
+          "buildings": 3
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 128,
+          "kills": 52,
+          "buildings": 3
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 217,
+          "kills": 78,
+          "buildings": 3
+        },
+        {
+          "wave": 5,
+          "hp": 15,
+          "gold": 160,
+          "kills": 108,
+          "buildings": 4
+        },
+        {
+          "wave": 6,
+          "hp": 20,
+          "gold": 164,
+          "kills": 142,
+          "buildings": 4
+        },
+        {
+          "wave": 7,
+          "hp": 20,
+          "gold": 225,
+          "kills": 180,
+          "buildings": 4
+        },
+        {
+          "wave": 8,
+          "hp": 20,
+          "gold": 407,
+          "kills": 222,
+          "buildings": 4
+        },
+        {
+          "wave": 9,
+          "hp": 20,
+          "gold": 288,
+          "kills": 268,
+          "buildings": 5
+        },
+        {
+          "wave": 10,
+          "hp": 20,
+          "gold": 344,
+          "kills": 289,
+          "buildings": 5
+        },
+        {
+          "wave": 11,
+          "hp": 20,
+          "gold": 290,
+          "kills": 337,
+          "buildings": 6
+        },
+        {
+          "wave": 12,
+          "hp": 20,
+          "gold": 223,
+          "kills": 389,
+          "buildings": 6
+        },
+        {
+          "wave": 13,
+          "hp": 20,
+          "gold": 259,
+          "kills": 451,
+          "buildings": 6
+        },
+        {
+          "wave": 14,
+          "hp": 25,
+          "gold": 409,
+          "kills": 519,
+          "buildings": 6
+        },
+        {
+          "wave": 15,
+          "hp": 25,
+          "gold": 307,
+          "kills": 591,
+          "buildings": 8
+        },
+        {
+          "wave": 16,
+          "hp": 25,
+          "gold": 409,
+          "kills": 667,
+          "buildings": 8
+        },
+        {
+          "wave": 17,
+          "hp": 25,
+          "gold": 555,
+          "kills": 749,
+          "buildings": 8
+        },
+        {
+          "wave": 18,
+          "hp": 30,
+          "gold": 375,
+          "kills": 837,
+          "buildings": 8
+        },
+        {
+          "wave": 19,
+          "hp": 30,
+          "gold": 729,
+          "kills": 929,
+          "buildings": 8
+        }
+      ],
+      "stats": {
+        "flowBuilds": 8,
+        "candidateBuilds": 8,
+        "targetVisits": 43387,
+        "shots": 3983,
+        "peakEnemies": 30,
+        "peakProjectiles": 5,
+        "peakEffects": 11
+      }
+    }
+  ],
+  "stress": {
+    "enemies": 256,
+    "steps": 2400,
+    "simulatedSeconds": 120,
+    "wallMilliseconds": 118.53379999999993,
+    "microsecondsPerStep": 49.3890833333333,
+    "stats": {
+      "flowBuilds": 7,
+      "candidateBuilds": 7,
+      "targetVisits": 200510,
+      "shots": 1458,
+      "peakEnemies": 256,
+      "peakProjectiles": 4,
+      "peakEffects": 35
+    },
+    "scope": "Local Node CPU simulation; not mobile FPS or WebGL performance."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "verifiedAt": "2026-11-12T12:02:55.287Z",
+  "scope": "Real paid campaign replay from wave one, local headless Chrome WebGL",
+  "records": [
+    {
+      "errors": [],
+      "wave": 10,
+      "phase": "combat",
+      "gold": 34,
+      "hp": 20,
+      "boss": {
+        "kind": "boss",
+        "hp": 1800,
+        "cell": 2,
+        "frame": 19,
+        "size": 68
+      },
+      "castle": {
+        "x": 252,
+        "y": 550,
+        "rotation": 0
+      },
+      "entrances": [
+        {
+          "x": 108,
+          "y": 46
+        },
+        {
+          "x": 360,
+          "y": 46
+        }
+      ],
+      "textures": 45
+    },
+    {
+      "errors": [],
+      "wave": 20,
+      "phase": "combat",
+      "gold": 737,
+      "hp": 30,
+      "boss": {
+        "kind": "overlord",
+        "hp": 4800,
+        "cell": 9,
+        "frame": 42,
+        "size": 80
+      },
+      "castle": {
+        "x": 252,
+        "y": 550,
+        "rotation": 0
+      },
+      "entrances": [
+        {
+          "x": 108,
+          "y": 46
+        },
+        {
+          "x": 360,
+          "y": 46
+        }
+      ],
+      "textures": 45
+    }
+  ]
+}

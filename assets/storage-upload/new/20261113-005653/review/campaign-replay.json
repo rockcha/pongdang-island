@@ -1,0 +1,96 @@
+{
+  "verifiedAt": "2026-11-12T15:59:52.599Z",
+  "scope": "Real paid campaign replay from wave one, local headless Chrome WebGL",
+  "records": [
+    {
+      "errors": [],
+      "wave": 10,
+      "phase": "combat",
+      "gold": 22,
+      "hp": 14,
+      "boss": {
+        "kind": "boss",
+        "hp": 2250,
+        "cell": 2,
+        "frame": 18,
+        "size": 68
+      },
+      "castle": {
+        "x": 252,
+        "y": 550,
+        "rotation": 0
+      },
+      "entrances": [
+        {
+          "x": 108,
+          "y": 46
+        },
+        {
+          "x": 360,
+          "y": 46
+        }
+      ],
+      "textures": 49
+    },
+    {
+      "errors": [],
+      "wave": 20,
+      "phase": "combat",
+      "gold": 162,
+      "hp": 17,
+      "boss": {
+        "kind": "overlord",
+        "hp": 6000,
+        "cell": 9,
+        "frame": 40,
+        "size": 80
+      },
+      "castle": {
+        "x": 252,
+        "y": 550,
+        "rotation": 0
+      },
+      "entrances": [
+        {
+          "x": 108,
+          "y": 46
+        },
+        {
+          "x": 360,
+          "y": 46
+        }
+      ],
+      "textures": 49
+    },
+    {
+      "errors": [],
+      "wave": 30,
+      "phase": "combat",
+      "gold": 350,
+      "hp": 15,
+      "boss": {
+        "kind": "abyss",
+        "hp": 11000,
+        "cell": 2,
+        "frame": 47,
+        "size": 90
+      },
+      "castle": {
+        "x": 252,
+        "y": 550,
+        "rotation": 0
+      },
+      "entrances": [
+        {
+          "x": 108,
+          "y": 46
+        },
+        {
+          "x": 360,
+          "y": 46
+        }
+      ],
+      "textures": 49
+    }
+  ]
+}

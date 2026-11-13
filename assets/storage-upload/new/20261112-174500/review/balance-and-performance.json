@@ -1,0 +1,279 @@
+{
+  "balance": [
+    {
+      "seed": 1,
+      "phase": "won",
+      "wave": 5,
+      "hp": 15,
+      "kills": 108,
+      "gold": 350,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 118,
+          "kills": 12
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 131,
+          "kills": 30
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 160,
+          "kills": 50
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 216,
+          "kills": 77
+        }
+      ],
+      "stats": {
+        "flowBuilds": 6,
+        "candidateBuilds": 6,
+        "targetVisits": 2529,
+        "shots": 212,
+        "peakEnemies": 16,
+        "peakProjectiles": 3,
+        "peakEffects": 4
+      }
+    },
+    {
+      "seed": 7,
+      "phase": "won",
+      "wave": 5,
+      "hp": 12,
+      "kills": 107,
+      "gold": 340,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 118,
+          "kills": 12
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 131,
+          "kills": 30
+        },
+        {
+          "wave": 3,
+          "hp": 12,
+          "gold": 150,
+          "kills": 49
+        },
+        {
+          "wave": 4,
+          "hp": 12,
+          "gold": 206,
+          "kills": 76
+        }
+      ],
+      "stats": {
+        "flowBuilds": 6,
+        "candidateBuilds": 6,
+        "targetVisits": 2565,
+        "shots": 217,
+        "peakEnemies": 16,
+        "peakProjectiles": 3,
+        "peakEffects": 4
+      }
+    },
+    {
+      "seed": 42,
+      "phase": "won",
+      "wave": 5,
+      "hp": 15,
+      "kills": 108,
+      "gold": 350,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 118,
+          "kills": 12
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 131,
+          "kills": 30
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 160,
+          "kills": 50
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 216,
+          "kills": 77
+        }
+      ],
+      "stats": {
+        "flowBuilds": 6,
+        "candidateBuilds": 6,
+        "targetVisits": 2243,
+        "shots": 222,
+        "peakEnemies": 17,
+        "peakProjectiles": 3,
+        "peakEffects": 5
+      }
+    },
+    {
+      "seed": 91,
+      "phase": "won",
+      "wave": 5,
+      "hp": 15,
+      "kills": 108,
+      "gold": 350,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 118,
+          "kills": 12
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 131,
+          "kills": 30
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 160,
+          "kills": 50
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 216,
+          "kills": 77
+        }
+      ],
+      "stats": {
+        "flowBuilds": 6,
+        "candidateBuilds": 6,
+        "targetVisits": 2177,
+        "shots": 224,
+        "peakEnemies": 18,
+        "peakProjectiles": 3,
+        "peakEffects": 4
+      }
+    },
+    {
+      "seed": 731,
+      "phase": "won",
+      "wave": 5,
+      "hp": 14,
+      "kills": 107,
+      "gold": 346,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 118,
+          "kills": 12
+        },
+        {
+          "wave": 2,
+          "hp": 14,
+          "gold": 127,
+          "kills": 29
+        },
+        {
+          "wave": 3,
+          "hp": 14,
+          "gold": 156,
+          "kills": 49
+        },
+        {
+          "wave": 4,
+          "hp": 14,
+          "gold": 212,
+          "kills": 76
+        }
+      ],
+      "stats": {
+        "flowBuilds": 6,
+        "candidateBuilds": 6,
+        "targetVisits": 1907,
+        "shots": 221,
+        "peakEnemies": 17,
+        "peakProjectiles": 3,
+        "peakEffects": 5
+      }
+    },
+    {
+      "seed": 2026,
+      "phase": "won",
+      "wave": 5,
+      "hp": 15,
+      "kills": 108,
+      "gold": 350,
+      "checkpoints": [
+        {
+          "wave": 1,
+          "hp": 15,
+          "gold": 118,
+          "kills": 12
+        },
+        {
+          "wave": 2,
+          "hp": 15,
+          "gold": 131,
+          "kills": 30
+        },
+        {
+          "wave": 3,
+          "hp": 15,
+          "gold": 160,
+          "kills": 50
+        },
+        {
+          "wave": 4,
+          "hp": 15,
+          "gold": 216,
+          "kills": 77
+        }
+      ],
+      "stats": {
+        "flowBuilds": 6,
+        "candidateBuilds": 6,
+        "targetVisits": 2221,
+        "shots": 224,
+        "peakEnemies": 16,
+        "peakProjectiles": 3,
+        "peakEffects": 4
+      }
+    }
+  ],
+  "stress": {
+    "enemies": 256,
+    "steps": 2400,
+    "simulatedSeconds": 120,
+    "wallMilliseconds": 49.32060000000001,
+    "microsecondsPerStep": 20.550250000000005,
+    "stats": {
+      "flowBuilds": 2,
+      "candidateBuilds": 2,
+      "targetVisits": 9720,
+      "shots": 160,
+      "peakEnemies": 256,
+      "peakProjectiles": 2,
+      "peakEffects": 1
+    },
+    "scope": "Local Node CPU simulation; not mobile FPS or WebGL performance."
+  }
+}

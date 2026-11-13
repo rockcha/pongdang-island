@@ -1,0 +1,9 @@
+# Portrait tower-defense practice art
+
+This batch supplies the account-independent five-wave practice under Arcade. Built-in ImageGen creates top-down turret animation sheets, independently generated enemy locomotion sheets and the lobby card. Prompts, style references, original sources and hashes are preserved in `manifest.json`.
+
+Turrets use four idle frames followed by four firing/recovery frames. Each enemy is generated as a separate 2×2 square sheet, then mechanically extracted at one uniform scale with identical transparent padding and packed into a shared four-column atlas. The initial multi-species source did not align to equal cell boundaries and is retained as rejected evidence, not shipped art. Exported PNG recompression preserves decoded RGBA. Light/dark review boards and browser screenshots live in `review/`.
+
+The simulation owns practice coins and combat state; it never calls account or reward APIs. Reverse BFS is shared and invalidated by topology changes. Placement tests use retained scratch buffers and verify every entry and live monster destination. Spatial buckets bound target and splash searches. Enemy, projectile and effect pools are bounded, and full enemy capacity delays spawning rather than dropping a wave member. Projectile IDs prevent recycled objects from inheriting an old hit. The Phaser renderer reuses sprites by pool slot, batches health/effect drawings, throttles React HUD updates and limits particles under sustained slow frames. Damage and timing must not change with visual quality.
+
+Run the tower-defense engine/UI and Arcade routing tests plus `client-data:check` and the app build. The browser fixture checks portrait sizes, placement confirmation, upgrades, a natural first wave, dense rendering and reduced motion without an account. Local simulation or headless software-GPU measurements do not establish physical-phone FPS. This is branch work; no operating DB migration is needed.

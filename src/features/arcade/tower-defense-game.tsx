@@ -1,137 +1,212 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import {
-  Shield,
-  Clock3,
-  Pause,
-  Play,
-  Target,
-  Waves,
-  RotateCcw,
-  ArrowUp,
-  Coins,
-  Maximize2,
-  X,
-  Smartphone,
-} from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { GameTabs, type GameTab } from './game-controls'
+import { Castle, Coins, Heart, Pause, Play, RotateCcw, Waves, X, Plus } from 'lucide-react'
 import { GameModal } from './game-modal'
 import { TowerArt } from './tower-defense-art'
+import { TowerAttackBadge } from './tower-defense-attack-badge'
+import { placementCell } from './tower-defense-placement'
+import { TowerInspector } from './tower-defense-inspector'
+import { DEFENSE_ART } from './tower-defense-assets'
+import { TOWER_DESCRIPTIONS } from './tower-defense-towers'
 import {
   BUILDINGS,
+  TOWER_KINDS,
+  MONSTERS,
+  MONSTER_KINDS,
+  WAVES,
+  HOME,
   MAX_WAVES,
-  GRID,
-  CELL_COUNT,
-  cellAt,
-  rangeOf,
   beginDefense,
   build,
   canPlace,
+  castleUpgradeCost,
   createDefense,
+  configureStartingWave,
   pauseDefense,
   sell,
-  upgrade,
-  upgradeCost,
-  waveHint,
   startWave,
+  upgrade,
+  upgradeCastle,
+  waveHint,
+  waveSize,
   type BuildKind,
 } from './tower-defense-engine'
 import './tower-defense.css'
 
-type Best = { wave: number; score: number; won: boolean }
-// Keep records separate from the former single-gate, larger-wave practice rules.
-const key = 'pongdang:tower-defense:practice-best:v2'
-function readBest(): Best | null {
-  try {
-    const b = JSON.parse(localStorage.getItem(key) ?? 'null')
-    return b &&
-      Number.isInteger(b.wave) &&
-      b.wave >= 0 &&
-      b.wave <= 5 &&
-      Number.isInteger(b.score) &&
-      b.score >= 0 &&
-      b.score < 1000000 &&
-      typeof b.won === 'boolean'
-      ? b
-      : null
-  } catch {
-    return null
-  }
-}
-function portraitScreen() {
-  return (
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(orientation: portrait)').matches &&
-    window.innerWidth < 900
-  )
-}
 export default function TowerDefenseGame() {
-  const [initial] = useState(createDefense)
-  const state = useRef(initial),
+  const state = useRef(createDefense()),
     host = useRef<HTMLDivElement>(null),
     selection = useRef<number | null>(null),
-    ownedFullscreen = useRef(false),
-    completed = useRef(false)
-  const [hud, setHud] = useState(() => ({ ...initial })),
-    [open, setOpen] = useState(false),
+    toolRef = useRef<BuildKind | null>(null),
+    drag = useRef<{ id: number; x: number; y: number; kind: BuildKind; moved: boolean } | null>(
+      null,
+    ),
+    dragCell = useRef<number | null | undefined>(undefined),
+    ignoreClickUntil = useRef(0),
+    catalogVisible = useRef(false)
+  const catalogPanel = useRef<HTMLDivElement>(null)
+  const catalogTrigger = useRef<HTMLButtonElement>(null)
+  const [open, setOpen] = useState(false),
     [ready, setReady] = useState(false),
+    [loadFailed, setLoadFailed] = useState(false),
     [error, setError] = useState(''),
-    [tab, setTab] = useState<GameTab>('game'),
-    [tool, setTool] = useState<BuildKind>('shell'),
+    [tool, setTool] = useState<BuildKind | null>(null),
+    [notice, setNotice] = useState(''),
+    [catalogOpen, setCatalogOpen] = useState(false),
+    [catalogFilter, setCatalogFilter] = useState<'all' | 'ground' | 'air'>('all'),
+    [catalogDragging, setCatalogDragging] = useState(false),
     [selected, setSelected] = useState<number | null>(null),
-    [best, setBest] = useState(readBest)
-  const [portrait, setPortrait] = useState(portraitScreen)
-  const sync = useCallback(() => {
-    const s = state.current
-    if ((s.phase === 'won' || s.phase === 'lost') && !completed.current) {
-      completed.current = true
-      const record = { wave: s.wave, score: s.score, won: s.phase === 'won' }
-      const previous = readBest()
-      if (
-        !previous ||
-        record.wave > previous.wave ||
-        (record.wave === previous.wave &&
-          ((record.won && !previous.won) ||
-            (record.won === previous.won && record.score > previous.score)))
-      ) {
-        setBest(record)
-        try {
-          localStorage.setItem(key, JSON.stringify(record))
-        } catch {
-          /* Practice still works without storage. */
-        }
+    [, render] = useState(0)
+  const sync = useCallback(() => render((n) => n + 1), [])
+  const catalogPaused = state.current.phase === 'paused'
+  useEffect(() => {
+    if (!open || !catalogOpen || catalogDragging || catalogPaused) return
+    const panel = catalogPanel.current
+    if (!panel) return
+    panel.querySelector<HTMLButtonElement>('button')?.focus()
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return
+      const buttons = Array.from(panel.querySelectorAll<HTMLButtonElement>('button:not(:disabled)'))
+      const first = buttons[0],
+        last = buttons.at(-1)
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
       }
     }
-    setHud({ ...s })
-  }, [])
-  const select = useCallback((cell: number | null) => {
+    panel.addEventListener('keydown', trapFocus)
+    return () => {
+      panel.removeEventListener('keydown', trapFocus)
+      catalogTrigger.current?.focus()
+    }
+  }, [open, catalogOpen, catalogDragging, catalogPaused])
+  const choose = useCallback((cell: number | null) => {
     selection.current = cell
     setSelected(cell)
+    setError('')
   }, [])
-  const latestTool = useRef<BuildKind>('shell')
-  const chooseCell = useCallback(
-    (cell: number) => {
-      const s = state.current
-      if (s.buildings.some((b) => b.cell === cell)) {
-        select(cell)
-        setError('')
+  const showCatalog = useCallback((value: boolean) => {
+    catalogVisible.current = value
+    setCatalogOpen(value)
+  }, [])
+  const cancel = useCallback(() => {
+    toolRef.current = null
+    dragCell.current = undefined
+    setTool(null)
+    showCatalog(false)
+    setCatalogDragging(false)
+    choose(null)
+  }, [choose, showCatalog])
+  const arm = useCallback(
+    (kind: BuildKind) => {
+      toolRef.current = kind
+      setTool(kind)
+      setNotice('')
+      choose(null)
+    },
+    [choose],
+  )
+  const place = useCallback(
+    (cell: number, painting = false) => {
+      const current = state.current
+      if (painting && toolRef.current !== 'wall') return
+      if (cell === HOME || current.buildings.some((b) => b.cell === cell)) {
+        if (painting) return
+        cancel()
+        choose(cell)
         return
       }
-      if (s.phase !== 'build') {
-        select(cell)
+      const kind = toolRef.current
+      if (!kind) {
+        choose(null)
         return
       }
-      const message = canPlace(s, cell, latestTool.current)
+      const message = canPlace(current, cell, kind)
       if (message) {
         setError(message)
         return
       }
-      build(s, cell, latestTool.current)
-      select(cell)
-      setError('')
+      build(current, cell, kind)
+      dragCell.current = undefined
+      showCatalog(false)
+      setCatalogDragging(false)
+      choose(null)
+      setNotice(`${BUILDINGS[kind].name} 설치 · -${BUILDINGS[kind].cost}`)
       sync()
     },
-    [select, sync],
+    [choose, cancel, showCatalog, sync],
+  )
+  const paintWall = useCallback((cell: number) => place(cell, true), [place])
+  useEffect(() => {
+    if (!notice) return
+    const timer = window.setTimeout(() => setNotice(''), 1100)
+    return () => window.clearTimeout(timer)
+  }, [notice])
+  useEffect(() => {
+    if (!open) return
+    const cellAtPointer = (event: PointerEvent) => {
+      const canvas = host.current?.querySelector('canvas')
+      return canvas
+        ? placementCell(event.clientX, event.clientY, canvas.getBoundingClientRect())
+        : null
+    }
+    const move = (event: PointerEvent) => {
+      const gesture = drag.current
+      if (!gesture || gesture.id !== event.pointerId) return
+      if (!gesture.moved && Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) > 8) {
+        gesture.moved = true
+        arm(gesture.kind)
+        setCatalogDragging(true)
+      }
+      if (gesture.moved) dragCell.current = cellAtPointer(event)
+    }
+    const end = (event: PointerEvent) => {
+      const gesture = drag.current
+      if (!gesture || gesture.id !== event.pointerId) return
+      drag.current = null
+      if (!gesture.moved && Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) > 8) {
+        gesture.moved = true
+        arm(gesture.kind)
+      }
+      if (gesture.moved) {
+        ignoreClickUntil.current = performance.now() + 300
+        const cell = cellAtPointer(event)
+        if (event.type === 'pointercancel' || cell === null) cancel()
+        else place(cell)
+        showCatalog(false)
+      }
+      setCatalogDragging(false)
+      dragCell.current = undefined
+    }
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && (toolRef.current || catalogVisible.current)) {
+        event.preventDefault()
+        event.stopPropagation()
+        drag.current = null
+        cancel()
+      }
+    }
+    window.addEventListener('pointermove', move)
+    window.addEventListener('pointerup', end)
+    window.addEventListener('pointercancel', end)
+    window.addEventListener('keydown', escape, true)
+    return () => {
+      window.removeEventListener('pointermove', move)
+      window.removeEventListener('pointerup', end)
+      window.removeEventListener('pointercancel', end)
+      window.removeEventListener('keydown', escape, true)
+      drag.current = null
+      dragCell.current = undefined
+    }
+  }, [open, arm, cancel, place, showCatalog])
+  const pause = useCallback(
+    (value: boolean) => {
+      pauseDefense(state.current, value)
+      sync()
+    },
+    [sync],
   )
   useEffect(() => {
     if (!open) return
@@ -144,448 +219,507 @@ export default function TowerDefenseGame() {
           host.current,
           () => state.current,
           () => selection.current,
-          chooseCell,
+          place,
           () => {
             if (!cancelled) {
               setReady(true)
               sync()
             }
           },
-          () => latestTool.current,
+          () => toolRef.current,
+          (message) => {
+            if (!cancelled) {
+              setError(message)
+              setLoadFailed(true)
+            }
+          },
+          () => dragCell.current,
+          paintWall,
         )
       })
       .catch(() => {
-        if (!cancelled) setError('전장을 불러오지 못했어요. 나갔다가 다시 시작해 주세요.')
+        if (!cancelled) {
+          setLoadFailed(true)
+          setError('전장을 불러오지 못했어요. 나갔다가 다시 시작해 주세요.')
+        }
       })
-    const pause = () => {
-      pauseDefense(state.current, true)
-      sync()
-    }
-    const visibility = () => {
-      if (document.hidden) pause()
-    }
-    window.addEventListener('blur', pause)
+    const blur = () => pause(true),
+      visibility = () => {
+        if (document.hidden) pause(true)
+      }
+    window.addEventListener('blur', blur)
     document.addEventListener('visibilitychange', visibility)
     return () => {
       cancelled = true
       game?.destroy(true)
-      window.removeEventListener('blur', pause)
+      window.removeEventListener('blur', blur)
       document.removeEventListener('visibilitychange', visibility)
     }
-  }, [open, chooseCell, sync])
-  useEffect(() => {
-    if (!open) return
-    const check = () => {
-      const rotated = portraitScreen()
-      setPortrait(rotated)
-      if (rotated) {
-        pauseDefense(state.current, true)
-        sync()
-      }
-    }
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [open, sync])
-  async function fullScreen() {
-    try {
-      if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
-        await document.documentElement.requestFullscreen()
-        ownedFullscreen.current = true
-      }
-      const orientation = screen.orientation as ScreenOrientation & {
-        lock?: (value: string) => Promise<void>
-      }
-      await orientation?.lock?.('landscape')
-    } catch {
-      /* The wide layout also works when fullscreen or rotation lock is unavailable. */
-    }
-  }
-  function closeGame() {
-    pauseDefense(state.current, true)
-    setOpen(false)
-    if (ownedFullscreen.current && document.fullscreenElement)
-      void document.exitFullscreen().catch(() => {})
-    ownedFullscreen.current = false
-  }
-  function start() {
-    state.current = createDefense()
+  }, [open, place, paintWall, pause, sync])
+  const s = state.current,
+    b = s.buildings.find((b) => b.cell === selected),
+    active = s.phase === 'build' || s.phase === 'combat',
+    finished = s.phase === 'won' || s.phase === 'lost'
+  const previewWave = s.wave === 0 ? s.startingWave : s.phase === 'build' ? s.wave + 1 : s.wave
+  const catalogTowers = TOWER_KINDS.filter(
+    (kind) =>
+      catalogFilter === 'all' ||
+      BUILDINGS[kind].targetLayer === 'both' ||
+      BUILDINGS[kind].targetLayer === catalogFilter,
+  ).sort((a, b) => BUILDINGS[a].cost - BUILDINGS[b].cost)
+  const enemyPreview = MONSTER_KINDS.filter((kind) => WAVES[previewWave - 1]?.counts[kind]).sort(
+    (a, b) => {
+      const left = MONSTERS[a],
+        right = MONSTERS[b]
+      if (left.boss !== right.boss) return left.boss ? -1 : 1
+      return Number(right.layer === 'air') - Number(left.layer === 'air')
+    },
+  )
+  function reset() {
+    const startingWave = state.current.startingWave
+    state.current = createDefense(Math.floor(Math.random() * 4294967296))
     beginDefense(state.current)
-    const rotated = portraitScreen()
-    setPortrait(rotated)
-    if (rotated) pauseDefense(state.current, true)
-    completed.current = false
-    select(null)
-    latestTool.current = 'shell'
-    setTool('shell')
+    configureStartingWave(state.current, startingWave)
+    cancel()
+    setNotice('')
     setError('')
-    if (!open) setReady(false)
     sync()
-    setOpen(true)
   }
-  const building = hud.buildings.find((b) => b.cell === selected),
-    ended = hud.phase === 'won' || hud.phase === 'lost',
-    active = !ended && hud.phase !== 'ready',
-    editable = hud.phase === 'build' && ready
-  const kind = building?.kind ?? tool,
-    info = BUILDINGS[kind],
-    level = building?.level ?? 1
-  const radius = (building ? rangeOf(building) : info.range) / GRID.cell
-  return (
-    <section className="tdp-page" aria-label="타워디펜스 연습 게임">
-      <GameTabs id="tower-defense" value={tab} onChange={setTab} />
-      {tab === 'game' ? (
-        <div
-          className="tdp-menu"
-          role="tabpanel"
-          id="tower-defense-game-panel"
-          aria-labelledby="tower-defense-game-tab"
-        >
-          <img
-            className="tdp-poster"
-            src="/arcade/tower-defense/thumbnail.svg"
-            alt="넓은 섬에서 포탑과 산호 벽으로 금고를 지키는 타워디펜스"
-          />
-          <div className="tdp-intro">
-            <span className="tdp-badge">무료 연습판</span>
-            <h2>퐁이의 타워디펜스</h2>
-            <p>두 입구에서 찾아오는 손님들로부터 조개금고를 지켜요.</p>
-            <div className="tdp-rules">
-              <span>
-                <Maximize2 size={15} />
-                가로 전장
-              </span>
-              <span>
-                <Clock3 size={15} />
-                준비 30초
-              </span>
-              <span>
-                <Target size={15} />
-                포탑 3종
-              </span>
-            </div>
-            <p className="tdp-note">실제 골드·보상·공식 순위에는 반영되지 않는 연습 게임이에요.</p>
-          </div>
-          <Button className="tdp-start" onClick={start}>
-            연습 시작 <Play size={15} />
-          </Button>
-        </div>
-      ) : (
-        <div
-          className="tdp-record"
-          role="tabpanel"
-          id="tower-defense-rank-panel"
-          aria-labelledby="tower-defense-rank-tab"
-        >
-          <Shield size={38} />
-          <h2>이 기기의 최고 연습 기록</h2>
-          {best ? (
-            <>
-              <strong>
-                {best.score.toLocaleString()}
-                <small>점</small>
-              </strong>
-              <p>{best.won ? '5웨이브 방어 성공' : best.wave + '웨이브 도전'}</p>
-            </>
-          ) : (
-            <p>첫 방어 기록을 남겨 보세요.</p>
+  function run(action: () => boolean, message = '연습 코인이 부족하거나 지금은 사용할 수 없어요.') {
+    if (!action()) setError(message)
+    else setError('')
+    sync()
+  }
+  function buildButton(kind: BuildKind) {
+    return (
+      <button
+        key={kind}
+        data-td-build-kind={kind}
+        aria-pressed={tool === kind}
+        aria-label={`${BUILDINGS[kind].name} ${BUILDINGS[kind].cost}코인`}
+        disabled={!active || !ready || s.gold < BUILDINGS[kind].cost}
+        onDragStart={(event) => event.preventDefault()}
+        onPointerDown={(event) => {
+          if (event.button !== 0) return
+          drag.current = {
+            id: event.pointerId,
+            x: event.clientX,
+            y: event.clientY,
+            kind,
+            moved: false,
+          }
+          event.currentTarget.setPointerCapture?.(event.pointerId)
+        }}
+        onClick={() => {
+          if (performance.now() < ignoreClickUntil.current) return
+          if (toolRef.current === kind) cancel()
+          else {
+            arm(kind)
+            showCatalog(false)
+          }
+        }}
+      >
+        <TowerArt kind={kind} />
+        <span>
+          <strong>{BUILDINGS[kind].name}</strong>
+          <small>
+            <Coins size={11} />
+            {BUILDINGS[kind].cost}
+          </small>
+          {kind !== 'wall' && (
+            <em>
+              <TowerAttackBadge kind={kind} />
+              <span>{BUILDINGS[kind].role}</span>
+            </em>
           )}
-          <p className="tdp-note">기록은 이 브라우저에 저장돼요.</p>
-          <Button variant="outline" onClick={() => setTab('game')}>
-            게임으로 돌아가기
-          </Button>
-        </div>
+        </span>
+      </button>
+    )
+  }
+  return (
+    <div className="td-lobby">
+      {!open && (
+        <>
+          <div className="td-intro-art">
+            <TowerArt kind="octopus" />
+            <Castle size={44} />
+            <TowerArt kind="seahorse" />
+          </div>
+          <span className="td-eyebrow">무료 연습 · 세로 플레이</span>
+          <h2>퐁이의 타워디펜스</h2>
+          <p>
+            두 갈래 물길에서 몰려오는 친구들!
+            <br />
+            문어포와 해마포로 작은 바다 성을 지켜요.
+          </p>
+          <button
+            className="td-primary"
+            onClick={() => {
+              reset()
+              setReady(false)
+              setLoadFailed(false)
+              setOpen(true)
+            }}
+          >
+            연습 시작
+          </button>
+          <div className="td-guide">
+            <p>
+              <strong>30웨이브 · 성 체력 15</strong>
+              <br />
+              타워와 성은 세 번까지 강화해요. 10·20·30웨이브에는 보스가 등장해요.
+            </p>
+            <p>
+              도구를 고르고 빈 칸을 누르거나, 도구를 맵으로 끌어놓으세요. 벽으로 길을 늘릴 수 있지만
+              완전히 막을 수는 없어요. 공중 적은 성까지 직진해요. 공중 전용 미사일 타워로 막아
+              주세요.
+            </p>
+            <p>
+              웨이브 사이 20초 정비 · 바로 보내기 가능
+              <br />
+              전용 연습 코인을 사용하며 참가비와 실제 골드 보상은 없어요.
+            </p>
+          </div>
+        </>
       )}
-      <div className={open ? 'contents' : 'hidden'}>
-        <GameModal
-          open={open}
-          title="타워디펜스"
-          practice
-          active={active}
-          modeLabel="무료 연습"
-          layout="fullscreen"
-          showHeader={false}
-          onExit={closeGame}
-          onPause={(paused) => {
-            pauseDefense(state.current, paused)
-            sync()
-          }}
-        >
-          {(exit) =>
-            open && (
-              <div className="tdp-game">
-                <div className="tdp-hud" inert={portrait}>
-                  <span className="tdp-game-name">방어 연습</span>
-                  <span>
-                    <Waves size={15} />
-                    <b>{hud.wave || 1}</b>
-                    <small>/{MAX_WAVES}</small>
-                  </span>
-                  <span aria-label={'금고 체력 ' + hud.lives}>
-                    <Shield size={15} />
-                    <b>{hud.lives}</b>
-                  </span>
-                  <span className="tdp-gold" aria-label={'건설 골드 ' + hud.gold}>
-                    <Coins size={16} />
-                    <b>{hud.gold}</b>
-                  </span>
-                  <span className="tdp-score" aria-label={'점수 ' + hud.score}>
-                    {hud.score.toLocaleString()}
-                    <small>점</small>
-                  </span>
-                  <button
-                    className="tdp-pause"
-                    aria-label={hud.phase === 'paused' ? '계속하기' : '일시정지'}
-                    disabled={ended || !ready}
-                    onClick={() => {
-                      pauseDefense(state.current, hud.phase !== 'paused')
-                      sync()
-                    }}
-                  >
-                    {hud.phase === 'paused' ? <Play size={15} /> : <Pause size={15} />}
-                  </button>
-                  <button
-                    className="tdp-pause"
-                    aria-label="전체 화면"
-                    onClick={() => void fullScreen()}
-                  >
-                    <Maximize2 size={15} />
-                  </button>
-                  <button className="tdp-pause" aria-label="게임 나가기" onClick={exit}>
-                    <X size={16} />
+      <GameModal
+        open={open}
+        title="타워디펜스"
+        active={!finished}
+        practice
+        layout="fullscreen"
+        modeLabel="30웨이브 방어"
+        onExit={() => {
+          pause(true)
+          setOpen(false)
+        }}
+        onPause={pause}
+      >
+        {open && (
+          <div className="td-game" role="application" aria-label="세로형 타워디펜스 연습">
+            <div className="td-hud">
+              <button
+                className="td-health"
+                aria-label={`성 체력 ${s.lives}/${s.maxLives} · 성 강화 선택`}
+                title="성 강화"
+                disabled={!active}
+                aria-pressed={selected === HOME}
+                onClick={() => {
+                  cancel()
+                  choose(HOME)
+                }}
+              >
+                <Heart size={16} />
+                <strong>{s.lives}</strong>
+                <small>/{s.maxLives}</small>
+              </button>
+              <span aria-label={`연습 코인 ${s.gold}`}>
+                <Coins size={16} />
+                <strong>{s.gold}</strong>
+              </span>
+              <span>
+                <Waves size={15} />
+                {s.wave}/{MAX_WAVES}
+              </span>
+              <button
+                className="td-speed"
+                aria-label={s.playbackRate === 2 ? '2배속 끄기' : '2배속 켜기'}
+                aria-pressed={s.playbackRate === 2}
+                title="전투와 정비 시간을 2배 빠르게 진행해요."
+                disabled={finished}
+                onClick={() => {
+                  s.playbackRate = s.playbackRate === 2 ? 1 : 2
+                  sync()
+                }}
+              >
+                {s.playbackRate}×
+              </button>
+              <button
+                aria-label={s.phase === 'paused' ? '계속하기' : '일시정지'}
+                onClick={() => pause(s.phase !== 'paused')}
+                disabled={!active && s.phase !== 'paused'}
+              >
+                {s.phase === 'paused' ? <Play size={17} /> : <Pause size={17} />}
+              </button>
+            </div>
+            <div className="td-wave">
+              <div className="td-wave-summary">
+                {s.wave === 0 ? (
+                  <label className="td-start-wave">
+                    시작 웨이브
+                    <select
+                      aria-label="시작 웨이브"
+                      value={s.startingWave}
+                      disabled={s.phase !== 'build' || s.buildings.length > 0}
+                      title="시설을 짓기 전에 선택하세요. 이전 웨이브의 예상 수입을 준비 코인으로 받아요."
+                      onChange={(event) =>
+                        run(() => configureStartingWave(s, Number(event.target.value)))
+                      }
+                    >
+                      {Array.from({ length: MAX_WAVES }, (_, i) => (
+                        <option key={i + 1} value={i + 1}>
+                          {i + 1}웨이브{(i + 1) % 10 === 0 ? ' · 보스' : ''}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                ) : (
+                  <strong>
+                    {s.phase === 'build'
+                      ? `정비 ${Math.ceil(s.prep)}초`
+                      : s.phase === 'paused'
+                        ? '잠깐 쉬어가요'
+                        : finished
+                          ? '연습 종료'
+                          : `${s.wave}웨이브 · 남은 적 ${s.enemies.length + s.pending.length + waveSize(s.wave) - s.spawned}`}
+                  </strong>
+                )}
+                <span className="sr-only">{waveHint(previewWave)}</span>
+                <ul
+                  className="td-enemy-preview"
+                  aria-label={`${previewWave}웨이브 등장 적`}
+                  title={waveHint(previewWave)}
+                >
+                  {enemyPreview.map((kind) => {
+                    const monster = MONSTERS[kind],
+                      count = WAVES[previewWave - 1].counts[kind]
+                    const airborne = monster.layer === 'air'
+                    const label = `${monster.name} ${count}마리${airborne ? ' · 공중' : ''}`
+                    return (
+                      <li key={kind} title={label} aria-label={label}>
+                        <span
+                          role="img"
+                          aria-label={monster.name}
+                          className="td-enemy-portrait"
+                          style={{
+                            backgroundImage: `url(${DEFENSE_ART.enemies})`,
+                            backgroundSize: `128px ${MONSTER_KINDS.length * 32}px`,
+                            backgroundPosition: `0 -${Math.floor(monster.frame / 4) * 32}px`,
+                          }}
+                        />
+                        {airborne && <span className="td-enemy-air">공중</span>}
+                        <span className="td-enemy-count">×{count}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+              <button
+                className="td-primary"
+                disabled={!ready || s.phase !== 'build'}
+                onClick={() => run(() => startWave(s))}
+              >
+                {s.wave === 0 ? `${s.startingWave}웨이브 시작` : '바로 보내기'}
+              </button>
+            </div>
+            <div className="td-stage-wrap">
+              <div
+                ref={host}
+                className="td-stage"
+                aria-label="위쪽 두 입구와 아래쪽 성이 있는 세로 전장"
+                onContextMenu={(event) => {
+                  if (toolRef.current) {
+                    event.preventDefault()
+                    cancel()
+                  }
+                }}
+              />
+              {notice && (
+                <div className="td-placement-toast" role="status">
+                  {notice}
+                </div>
+              )}
+              {!ready && (
+                <div className="td-overlay" role="status">
+                  <p>
+                    {loadFailed
+                      ? '전장을 불러오지 못했어요. 다시 시작해 주세요.'
+                      : '바다 성을 준비하고 있어요…'}
+                  </p>
+                  {loadFailed && (
+                    <button className="td-primary" onClick={() => setOpen(false)}>
+                      시작 화면으로
+                    </button>
+                  )}
+                </div>
+              )}
+              {s.phase === 'paused' && (
+                <div className="td-overlay">
+                  <h3>잠깐 쉬어가요</h3>
+                  <button className="td-primary" onClick={() => pause(false)}>
+                    계속하기
                   </button>
                 </div>
-                <div className="tdp-phase" role="status" inert={portrait}>
-                  {hud.phase === 'build' ? (
+              )}
+              {finished && (
+                <div className="td-overlay">
+                  <span className="td-eyebrow">
+                    {s.phase === 'won' ? '30웨이브 클리어' : '다시 도전해 볼까요?'}
+                  </span>
+                  <h3>
+                    {s.phase === 'won'
+                      ? '바다 성을 지켰어요!'
+                      : s.finalEscaped
+                        ? '심연의 소라왕이 성에 도착했어요'
+                        : '성의 불빛이 꺼졌어요'}
+                  </h3>
+                  <p>
+                    {s.kills}마리 처치 · 성 체력 {s.lives}/{s.maxLives}
+                  </p>
+                  <button className="td-primary" onClick={reset}>
+                    <RotateCcw size={15} /> 다시 연습
+                  </button>
+                </div>
+              )}
+            </div>
+            {s.phase !== 'paused' && (
+              <div className="td-inspector" aria-live="polite">
+                <div
+                  className={`td-selection${b ? ' has-structure' : ''}${tool ? ' has-tool' : ''}`}
+                >
+                  {tool ? (
+                    <div className="td-placement-panel">
+                      <strong title={TOWER_DESCRIPTIONS[tool]}>
+                        <TowerArt kind={tool} />
+                        {BUILDINGS[tool].name}
+                        <TowerAttackBadge kind={tool} />
+                        <small>{BUILDINGS[tool].cost} 코인</small>
+                      </strong>
+                      <div className="td-placement-controls">
+                        <span>
+                          {tool === 'wall'
+                            ? '맵을 드래그해 벽을 이어 놓아요.'
+                            : '빈 칸을 눌러 계속 설치해요.'}
+                        </span>
+                        <button onClick={cancel}>
+                          <X size={13} /> 배치 취소
+                        </button>
+                      </div>
+                    </div>
+                  ) : selected === HOME ? (
                     <>
-                      <Clock3 size={13} />
-                      <b>준비 {Math.ceil(hud.prep)}초</b>
-                      <span>{waveHint(hud.wave + 1)}</span>
+                      <strong>
+                        <Castle size={15} /> 바다 성{' '}
+                        {s.castleLevel > 0 && <b className="td-level">{s.castleLevel}</b>}
+                      </strong>
+                      <span>
+                        체력 {s.lives}/{s.maxLives}
+                        {s.castleLevel < 3 ? ' → 최대 체력 +5 · 현재 체력 +5' : ' · 최대 강화'}
+                      </span>
+                      <button
+                        disabled={!active || s.gold < castleUpgradeCost(s)}
+                        onClick={() => run(() => upgradeCastle(s))}
+                      >
+                        {s.castleLevel === 3 ? '최대 강화 3' : `성 강화 ${castleUpgradeCost(s)}`}
+                      </button>
                     </>
+                  ) : b ? (
+                    <TowerInspector
+                      key={b.cell}
+                      building={b}
+                      active={active}
+                      gold={s.gold}
+                      onUpgrade={() => run(() => upgrade(s, b.cell))}
+                      onSell={() => {
+                        if (sell(s, b.cell)) {
+                          choose(null)
+                          sync()
+                        }
+                      }}
+                    />
                   ) : (
                     <>
-                      <Waves size={13} />
-                      <b>
-                        {ended ? '방어 종료' : hud.phase === 'paused' ? '잠시 쉬는 중' : '습격 중'}
-                      </b>
-                      <span>{hud.kills}마리 처치</span>
+                      <span className="td-empty-hint">
+                        도구를 골라 배치하거나, 시설을 눌러 강화하세요.
+                      </span>
                     </>
                   )}
-                </div>
-                <div className="tdp-board" inert={portrait}>
-                  <div
-                    ref={host}
-                    className="tdp-canvas"
-                    tabIndex={0}
-                    role="application"
-                    aria-label="오른쪽 두 입구에서 찾아오는 적을 막는 가로 전장. 포탑을 고르면 사거리를 미리 볼 수 있어요. 방향키로 칸 이동, Enter로 설치 또는 선택."
-                    onKeyDown={(event) => {
-                      const offset = {
-                        ArrowLeft: -1,
-                        ArrowRight: 1,
-                        ArrowUp: -GRID.columns,
-                        ArrowDown: GRID.columns,
-                      }[event.key]
-                      if (offset) {
-                        event.preventDefault()
-                        const current = selection.current ?? cellAt(14, 2),
-                          next = current + offset
-                        if (
-                          next >= 0 &&
-                          next < CELL_COUNT &&
-                          (Math.abs(offset) !== 1 ||
-                            Math.floor(current / GRID.columns) === Math.floor(next / GRID.columns))
-                        )
-                          select(next)
-                      } else if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault()
-                        chooseCell(selection.current ?? cellAt(14, 2))
-                      }
-                    }}
-                  />
-                  {!ready && (
-                    <div className="tdp-overlay">
-                      <span className="tdp-badge">전장을 준비하는 중…</span>
-                    </div>
-                  )}
-                  {hud.phase === 'paused' && (
-                    <div className="tdp-overlay">
-                      <div className="tdp-result">
-                        <Pause size={30} />
-                        <h3>잠깐 쉬어가요</h3>
-                        <p>준비 시간과 전투가 멈춰 있어요.</p>
-                        <Button
-                          onClick={() => {
-                            pauseDefense(state.current, false)
-                            sync()
-                          }}
-                        >
-                          계속하기
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                  {ended && (
-                    <div className="tdp-overlay">
-                      <div className="tdp-result">
-                        <Shield size={35} />
-                        <span className="tdp-badge">연습 결과</span>
-                        <h3>
-                          {hud.phase === 'won'
-                            ? '조개금고를 지켰어요!'
-                            : '다음엔 한 번 더 버텨봐요'}
-                        </h3>
-                        <strong>
-                          {hud.score.toLocaleString()}
-                          <small>점</small>
-                        </strong>
-                        <p>
-                          {hud.wave}웨이브 · {hud.kills}마리 처치
-                        </p>
-                        {best && <p>이 기기 최고 {best.score.toLocaleString()}점</p>}
-                        <Button onClick={start}>
-                          <RotateCcw size={14} />
-                          다시 연습
-                        </Button>
-                        <Button variant="ghost" onClick={closeGame}>
-                          연습 마치기
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div className="tdp-controls" inert={portrait}>
-                  <div className="tdp-shop" role="group" aria-label="건설 시설">
-                    {(Object.keys(BUILDINGS) as BuildKind[]).map((item) => (
-                      <button
-                        key={item}
-                        aria-label={BUILDINGS[item].name + ' ' + BUILDINGS[item].cost + '골드'}
-                        aria-pressed={tool === item && !building}
-                        disabled={!editable || hud.gold < BUILDINGS[item].cost}
-                        onClick={() => {
-                          latestTool.current = item
-                          setTool(item)
-                          select(null)
-                          setError('')
-                        }}
-                      >
-                        <TowerArt kind={item} />
-                        <b>{BUILDINGS[item].name}</b>
-                        <span>
-                          <Coins size={11} />
-                          {BUILDINGS[item].cost}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="tdp-detail">
-                    <div className="tdp-tool-summary">
-                      <TowerArt kind={kind} />
-                      <div>
-                        <b>
-                          {info.name}
-                          {building && kind !== 'wall' && ' · Lv.' + building.level}
-                        </b>
-                        <span>{info.role}</span>
-                        {kind !== 'wall' && (
-                          <dl className="tdp-stats">
-                            <div>
-                              <dt>사거리</dt>
-                              <dd>{Number(radius.toFixed(1))}칸</dd>
-                            </div>
-                            <div>
-                              <dt>공격력</dt>
-                              <dd>{Number((info.damage * (1 + (level - 1) * 0.75)).toFixed(1))}</dd>
-                            </div>
-                            <div>
-                              <dt>공격 간격</dt>
-                              <dd>
-                                {Number((info.interval / (1 + (level - 1) * 0.15)).toFixed(2))}초
-                              </dd>
-                            </div>
-                          </dl>
-                        )}
-                      </div>
-                    </div>
-                    {building && (
-                      <div className="tdp-actions">
-                        {kind !== 'wall' && (
-                          <button
-                            disabled={
-                              !editable || building.level === 3 || hud.gold < upgradeCost(building)
-                            }
-                            onClick={() => {
-                              upgrade(state.current, building.cell)
-                              sync()
-                            }}
-                          >
-                            <ArrowUp size={13} />
-                            {building.level === 3 ? '최대 강화' : '강화 ' + upgradeCost(building)}
-                          </button>
-                        )}
-                        <button
-                          disabled={!editable}
-                          onClick={() => {
-                            sell(state.current, building.cell)
-                            select(null)
-                            sync()
-                          }}
-                        >
-                          판매 +{Math.floor(building.spent * 0.7)}
-                        </button>
-                        <button onClick={() => select(null)}>선택 해제</button>
-                      </div>
-                    )}
-                    <p
-                      className={'tdp-help ' + (error ? 'tdp-error' : '')}
-                      role={error ? 'alert' : undefined}
+                  {!tool && selected !== null && (
+                    <button
+                      className="td-dismiss"
+                      aria-label="선택 취소"
+                      onClick={() => {
+                        selection.current = null
+                        setSelected(null)
+                        setError('')
+                      }}
                     >
-                      {error ||
-                        (!ready
-                          ? '전장을 불러오고 있어요.'
-                          : editable
-                            ? '빈 칸에 건설 · 금고까지 가는 길은 열어 두세요.'
-                            : '포탑을 누르면 사거리를 확인할 수 있어요.')}
-                    </p>
-                  </div>
-                  <button
-                    className="tdp-wave"
-                    disabled={!editable}
-                    onClick={() => {
-                      startWave(state.current)
-                      select(null)
-                      setError('')
-                      sync()
-                    }}
-                  >
-                    <Play size={15} />
-                    {hud.phase === 'build'
-                      ? '준비 완료 · 바로 시작'
-                      : ended
-                        ? '방어 종료'
-                        : '방어 중'}
-                  </button>
+                      <X size={14} />
+                    </button>
+                  )}
                 </div>
-                {portrait && (
-                  <div className="tdp-rotate">
-                    <Smartphone size={46} />
-                    <h3>가로로 넓게 플레이해요</h3>
-                    <p>
-                      기기를 가로로 돌려 주세요.
-                      <br />
-                      준비 시간과 전투는 멈춰 있어요.
-                    </p>
-                    <Button onClick={() => void fullScreen()}>
-                      <Maximize2 size={15} />
-                      전체 화면으로 전환
-                    </Button>
-                    <button onClick={exit}>메뉴로 돌아가기</button>
-                  </div>
+                {error && (
+                  <p className="td-message" role="alert">
+                    {error}
+                  </p>
                 )}
               </div>
-            )
-          }
-        </GameModal>
-      </div>
-    </section>
+            )}
+            {catalogOpen && s.phase !== 'paused' && (
+              <>
+                <button
+                  className={`td-catalog-shade ${catalogDragging ? 'is-dragging' : ''}`}
+                  aria-label="건설 목록 닫기"
+                  onClick={cancel}
+                />
+                <div
+                  ref={catalogPanel}
+                  className={`td-catalog ${catalogDragging ? 'is-dragging' : ''}`}
+                  role={catalogDragging ? 'group' : 'dialog'}
+                  aria-modal={!catalogDragging}
+                  aria-label="포탑 구매"
+                >
+                  <div className="td-catalog-header">
+                    <strong>포탑 건설</strong>
+                    <button aria-label="포탑 목록 닫기" onClick={cancel}>
+                      <X size={18} />
+                    </button>
+                  </div>
+                  <div className="td-catalog-options">
+                    <div className="td-catalog-filters" role="group" aria-label="공격 대상 필터">
+                      {(['all', 'ground', 'air'] as const).map((filter) => (
+                        <button
+                          key={filter}
+                          aria-pressed={catalogFilter === filter}
+                          onClick={() => setCatalogFilter(filter)}
+                        >
+                          {filter === 'all' ? '전체' : filter === 'ground' ? '지상' : '공중'}
+                        </button>
+                      ))}
+                    </div>
+                    <small>낮은 가격순</small>
+                  </div>
+                  <div className="td-catalog-grid" role="group" aria-label="포탑 선택">
+                    {catalogTowers.map((kind) => buildButton(kind))}
+                  </div>
+                </div>
+              </>
+            )}
+            {s.phase !== 'paused' && (
+              <div className="td-tools" role="group" aria-label="건설 도구">
+                <button
+                  ref={catalogTrigger}
+                  aria-label="포탑 건설"
+                  aria-expanded={catalogOpen}
+                  aria-pressed={!!tool && tool !== 'wall'}
+                  disabled={!active || !ready}
+                  onClick={() => {
+                    const next = !catalogVisible.current
+                    cancel()
+                    showCatalog(next)
+                  }}
+                >
+                  <Plus size={26} />
+                  <span>
+                    포탑 건설<small>{TOWER_KINDS.length}종</small>
+                  </span>
+                </button>
+                {buildButton('wall')}
+              </div>
+            )}
+          </div>
+        )}
+      </GameModal>
+    </div>
   )
 }

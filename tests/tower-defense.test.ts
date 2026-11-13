@@ -1,356 +1,391 @@
 // @vitest-environment node
 import { expect, it } from 'vitest'
+import { campaignStrategy } from '../scripts/tower-defense-campaign-strategy'
 import {
-  beginDefense,
-  build,
-  canPlace,
-  cellAt,
-  createDefense,
+  BUILDINGS,
+  CELL_COUNT,
+  EFFECT_LIMIT,
+  ENEMY_LIMIT,
   ENTRANCES,
   HOME,
   GRID,
-  CELL_COUNT,
+  MONSTERS,
+  PROJECTILE_LIMIT,
+  SITES,
+  WAVES,
+  beginDefense,
+  build,
+  canPlace,
+  castleUpgradeCost,
+  cellAt,
+  createDefense,
+  configureStartingWave,
   pauseDefense,
   refreshFlow,
-  ROCKS,
   routeCells,
   sell,
-  SITES,
+  spawnEnemy,
   startWave,
   stepDefense,
   upgrade,
-  waveSize,
+  upgradeCastle,
+  upgradeCost,
   type DefenseState,
-  type Enemy,
 } from '../src/features/arcade/tower-defense-engine'
-
-function prepared() {
+const prepared = () => {
   const s = createDefense(42)
   beginDefense(s)
   return s
 }
-const ENTRANCE = ENTRANCES[0]
-function advance(s: DefenseState, seconds: number) {
-  for (let i = 0; i < Math.round(seconds / 0.05); i++) stepDefense(s, 0.05)
+const advance = (s: DefenseState, seconds: number) => {
+  for (let i = 0; i < seconds * 20; i++) stepDefense(s, 0.05)
 }
-function enemy(id: number, cell: number, hp = 100): Enemy {
-  return {
-    id,
-    kind: 'crab',
-    ...SITES[cell],
-    nav: cell,
-    hp,
-    maxHp: hp,
-    speed: 38,
-    reward: 1,
-    leak: 1,
-    slowedUntil: 0,
-  }
-}
+it('configures a bounded practice start before building, with reproducible earlier-wave income', () => {
+  const s = prepared()
+  for (const invalid of [0, 31, 1.5, NaN, Infinity])
+    expect(configureStartingWave(s, invalid)).toBe(false)
+  expect(s.gold).toBe(180)
+  expect(configureStartingWave(s, 2)).toBe(true)
+  expect(s.gold).toBe(251)
+  expect(configureStartingWave(s, 2)).toBe(true)
+  expect(s.gold).toBe(251)
+  expect(configureStartingWave(s, 1)).toBe(true)
+  expect(s.gold).toBe(180)
+  expect(configureStartingWave(s, 30)).toBe(true)
+  const gold = s.gold
+  build(s, cellAt(4, 10), 'octopus')
+  expect(configureStartingWave(s, 1)).toBe(false)
+  expect(s.gold).toBe(gold - 90)
+  startWave(s)
+  expect(s.wave).toBe(30)
+  expect(s.plan.filter((k) => k === 'abyss')).toHaveLength(1)
+  expect(configureStartingWave(s, 1)).toBe(false)
+})
 function combat(s: DefenseState) {
   startWave(s)
-  s.spawned = waveSize(s.wave)
+  s.spawned = s.plan.length
   s.spawnTimer = Infinity
 }
-
-it('offers 30 seconds before every wave, permits early start, and pauses both clocks', () => {
+it('starts with 15 health and unlimited first preparation, then gives exactly 20 seconds between waves', () => {
   const s = prepared()
-  advance(s, 12)
-  expect(s.prep).toBeCloseTo(18)
-  pauseDefense(s, true)
-  advance(s, 50)
-  expect(s.prep).toBeCloseTo(18)
-  pauseDefense(s, false)
-  advance(s, 18.05)
-  expect(s.phase).toBe('combat')
-  expect(s.wave).toBe(1)
-  const elapsed = s.elapsed,
-    spawned = s.spawned
-  pauseDefense(s, true)
-  advance(s, 50)
-  expect(s.elapsed).toBe(elapsed)
-  expect(s.spawned).toBe(spawned)
-  expect(build(s, cellAt(0, 1), 'wall')).toBe(false)
-  pauseDefense(s, false)
-  s.spawned = waveSize(1)
-  s.enemies.length = 0
+  expect(s.lives).toBe(15)
+  expect(s.gold).toBe(180)
+  advance(s, 100)
+  expect(s.wave).toBe(0)
+  combat(s)
   stepDefense(s, 0.05)
   expect(s.phase).toBe('build')
-  expect(s.prep).toBe(30)
-  expect(startWave(s)).toBe(true)
+  expect(s.prep).toBe(20)
+  advance(s, 7)
+  expect(s.prep).toBeCloseTo(13)
+  pauseDefense(s, true)
+  advance(s, 30)
+  expect(s.prep).toBeCloseTo(13)
+  pauseDefense(s, false)
+  advance(s, 13.1)
   expect(s.wave).toBe(2)
-  expect(startWave(s)).toBe(false)
+  expect(s.phase).toBe('combat')
 })
-
-it('charges only successful builds and rejects rocks, reserved rows, occupied cells and overspending', () => {
-  const s = prepared(),
-    site = cellAt(3, 7)
-  for (const cell of [-1, 0.2, CELL_COUNT, HOME, ...ENTRANCES, ...ROCKS])
-    expect(build(s, cell, 'shell')).toBe(false)
-  expect(s.gold).toBe(120)
-  expect(build(s, site, 'shell')).toBe(true)
-  expect(build(s, site, 'wall')).toBe(false)
-  expect(s.gold).toBe(80)
-  expect(build(s, cellAt(5, 7), 'puffer')).toBe(true)
-  expect(build(s, cellAt(6, 7), 'shell')).toBe(false)
-  expect(s.gold).toBe(10)
+it('uses two top entrances and a shared shortest eight-direction route to the bottom castle', () => {
+  const s = prepared()
+  for (const entrance of ENTRANCES) {
+    const route = routeCells(s, entrance)
+    expect(route[0]).toBe(entrance)
+    expect(route.at(-1)).toBe(HOME)
+    expect(route.length).toBe(GRID.rows)
+    const dx = Math.abs((entrance % GRID.columns) - (HOME % GRID.columns))
+    const dy = Math.abs(Math.floor(entrance / GRID.columns) - Math.floor(HOME / GRID.columns))
+    expect(s.flow[entrance]).toBeCloseTo(dy + (Math.SQRT2 - 1) * dx, 4)
+    for (let i = 1; i < route.length; i++)
+      expect([1, GRID.columns, GRID.columns - 1, GRID.columns + 1]).toContain(
+        Math.abs(route[i] - route[i - 1]),
+      )
+  }
+  const builds = s.stats.flowBuilds
+  for (let i = 0; i < 100; i++) refreshFlow(s)
+  expect(s.stats.flowBuilds).toBe(builds)
 })
-
-it('caps walls and towers independently', () => {
+it('rejects a sealed route for every entrance without changing coins or the live path', () => {
   const s = prepared()
   s.gold = 10000
-  for (let cell = GRID.columns; cell < CELL_COUNT - GRID.columns; cell++)
-    if (!canPlace(s, cell, 'wall')) build(s, cell, 'wall')
-  expect(s.buildings).toHaveLength(20)
-  for (let cell = GRID.columns; cell < CELL_COUNT - GRID.columns; cell++)
-    if (!canPlace(s, cell, 'shell')) build(s, cell, 'shell')
-  expect(s.buildings.filter((b) => b.kind === 'shell')).toHaveLength(12)
-})
-
-it('upgrades towers to level three and refunds 70 percent only in preparation', () => {
-  const s = prepared(),
-    site = cellAt(3, 7)
-  s.gold = 1000
-  build(s, site, 'shell')
-  const b = s.buildings[0]
-  expect(upgrade(s, site)).toBe(true)
-  expect(upgrade(s, site)).toBe(true)
-  expect(upgrade(s, site)).toBe(false)
-  expect(b.level).toBe(3)
-  build(s, cellAt(0, 7), 'wall')
-  expect(upgrade(s, cellAt(0, 7))).toBe(false)
-  combat(s)
-  expect(upgrade(s, site)).toBe(false)
-  expect(sell(s, site)).toBe(false)
-  s.phase = 'build'
-  const before = s.gold
-  expect(sell(s, site)).toBe(true)
-  expect(s.gold - before).toBe(98)
-  expect(sell(s, site)).toBe(false)
-})
-
-it('routes through the shortest open path and rejects the last wall or tower without charging', () => {
-  const s = prepared()
-  s.gold = 1000
-  expect(routeCells(s)).toHaveLength(24)
-  for (let col = 1; col < GRID.columns; col++) expect(build(s, cellAt(col, 8), 'wall')).toBe(true)
+  for (let x = 0; x < GRID.columns - 1; x++) expect(build(s, cellAt(x, 7), 'wall')).toBe(true)
   const before = { gold: s.gold, version: s.version, route: routeCells(s) }
-  for (const kind of ['wall', 'shell', 'jelly', 'puffer'] as const) {
-    expect(canPlace(s, cellAt(0, 8), kind)).toContain('길을 완전히 막을 수 없어요')
-    expect(build(s, cellAt(0, 8), kind)).toBe(false)
-  }
+  expect(canPlace(s, cellAt(GRID.columns - 1, 7), 'octopus')).toContain(
+    '길을 완전히 막을 수 없어요',
+  )
+  expect(build(s, cellAt(GRID.columns - 1, 7), 'octopus')).toBe(false)
   expect(s.gold).toBe(before.gold)
   expect(s.version).toBe(before.version)
   expect(routeCells(s)).toEqual(before.route)
-  const route = routeCells(s)
-  expect(route.at(-1)).toBe(HOME)
-  expect(route).toHaveLength(28)
-  expect(route).toContain(cellAt(0, 8))
-  expect(route.some((cell) => s.buildings.some((b) => b.cell === cell))).toBe(false)
-  expect(route.some((cell) => ROCKS.has(cell))).toBe(false)
-  const version = s.flowVersion
-  refreshFlow(s)
-  expect(s.flowVersion).toBe(version)
-  expect(sell(s, cellAt(4, 8))).toBe(true)
-  expect(routeCells(s)).toHaveLength(24)
 })
-
-it('walks from the top entrance to the bottom vault and never attacks or crosses walls', () => {
+it('does not trap an existing enemy even when both entrances still have another route', () => {
   const s = prepared()
-  s.gold = 1000
-  expect(SITES[ENTRANCE].y).toBeLessThan(SITES[HOME].y)
-  for (let col = 0; col < GRID.columns - 1; col++) build(s, cellAt(col, 8), 'wall')
-  const structures = JSON.stringify(s.buildings)
+  s.gold = 10000
   combat(s)
-  const e = enemy(501, ENTRANCE, 10000)
-  s.enemies.push(e)
-  let maximumY = e.y
-  for (let i = 0; i < 1500 && s.phase === 'combat'; i++) {
-    stepDefense(s, 0.05)
-    maximumY = Math.max(maximumY, e.y)
-    if (s.enemies.length)
-      expect(
-        s.buildings.some(
-          (b) => Math.abs(SITES[b.cell].x - e.x) < 0.01 && Math.abs(SITES[b.cell].y - e.y) < 0.01,
-        ),
-      ).toBe(false)
+  spawnEnemy(s, 'crab', cellAt(4, 5))
+  s.enemies[0].speed = 0
+  for (const c of [cellAt(3, 5), cellAt(5, 5), cellAt(4, 4)]) expect(build(s, c, 'wall')).toBe(true)
+  expect(canPlace(s, cellAt(4, 6), 'wall')).toContain('길을 완전히 막')
+  expect(canPlace(s, cellAt(4, 5), 'wall')).toContain('몬스터')
+})
+it('allows more than six walls near entrances and the castle while preserving all routes', () => {
+  const s = prepared()
+  s.gold = 10000
+  for (let x = 0; x < GRID.columns; x++) {
+    const cell = cellAt(x, 0)
+    if (!ENTRANCES.includes(cell)) expect(build(s, cell, 'wall')).toBe(true)
   }
-  expect(maximumY).toBe(SITES[HOME].y)
-  expect(s.phase).toBe('build')
-  expect(s.lives).toBe(9)
-  expect(JSON.stringify(s.buildings)).toBe(structures)
+  for (const cell of [
+    cellAt(0, GRID.rows - 1),
+    cellAt(10, GRID.rows - 1),
+    cellAt(4, GRID.rows - 2),
+  ])
+    expect(build(s, cell, 'wall')).toBe(true)
+  expect(s.buildings).toHaveLength(GRID.columns + 1)
+  for (const entry of ENTRANCES) expect(routeCells(s, entry).at(-1)).toBe(HOME)
+  for (const cell of [...ENTRANCES, HOME, -1, CELL_COUNT])
+    expect(build(s, cell, 'wall')).toBe(false)
 })
-
-it('moves through cell centres without cutting through the fixed rocks', () => {
+it('allows a nearly sealed wall row and rejects only the last closing wall', () => {
   const s = prepared()
+  s.gold = 10000
+  for (let x = 0; x < GRID.columns - 1; x++) expect(build(s, cellAt(x, 7), 'wall')).toBe(true)
+  const gold = s.gold,
+    version = s.version
+  expect(build(s, cellAt(GRID.columns - 1, 7), 'wall')).toBe(false)
+  expect(s.gold).toBe(gold)
+  expect(s.version).toBe(version)
+})
+it('supports combat placement, reserves actual entrances/castle and charges only valid builds', () => {
+  const s = prepared()
+  for (const c of [-1, 0.3, ...ENTRANCES, HOME, CELL_COUNT])
+    expect(build(s, c, 'octopus')).toBe(false)
+  expect(build(s, cellAt(2, 11), 'octopus')).toBe(true)
+  expect(s.gold).toBe(90)
   combat(s)
-  const e = enemy(500, ENTRANCE, 10000)
-  s.enemies.push(e)
-  for (let i = 0; i < 600; i++) {
-    stepDefense(s, 0.05)
-    if (!s.enemies.length) break
-    const atCentreX = SITES.some((p) => Math.abs(p.x - e.x) < 0.01)
-    const atCentreY = SITES.some((p) => Math.abs(p.y - e.y) < 0.01)
-    expect(atCentreX || atCentreY).toBe(true)
+  expect(build(s, cellAt(6, 11), 'seahorse')).toBe(true)
+  expect(s.gold).toBe(30)
+  expect(build(s, cellAt(5, 11), 'octopus')).toBe(false)
+  expect(s.gold).toBe(30)
+})
+it('allows exactly three upgrades after purchase and never rebuilds navigation for stat-only upgrades', () => {
+  const s = prepared()
+  s.gold = 10000
+  build(s, cellAt(2, 11), 'octopus')
+  const b = s.buildings[0],
+    version = s.stats.flowBuilds
+  expect(b.level).toBe(0)
+  for (const cost of [35, 55, 70]) {
+    expect(upgradeCost(b)).toBe(cost)
+    expect(upgrade(s, b.cell)).toBe(true)
   }
-  expect(s.enemies).toHaveLength(0)
-  expect(s.lives).toBe(9)
-})
-
-it('rejects a build that traps only the upper gate while the lower gate still has a route', () => {
-  const s = prepared()
-  s.gold = 1000
-  for (let col = 0; col < GRID.columns - 1; col++)
-    if (!ROCKS.has(cellAt(col, 2))) expect(build(s, cellAt(col, 2), 'wall')).toBe(true)
-  expect(routeCells(s, ENTRANCES[1]).at(-1)).toBe(HOME)
-  const before = s.gold
-  expect(build(s, cellAt(GRID.columns - 1, 2), 'wall')).toBe(false)
-  expect(s.gold).toBe(before)
-  for (const gate of ENTRANCES) expect(routeCells(s, gate).at(-1)).toBe(HOME)
-})
-
-it('rejects trapping the lower gate even when the upper route is open', () => {
-  const s = prepared()
-  s.gold = 1000
-  expect(build(s, cellAt(16, 5), 'wall')).toBe(true)
-  expect(build(s, cellAt(17, 4), 'wall')).toBe(true)
-  const before = s.gold
-  expect(canPlace(s, cellAt(17, 6), 'puffer')).toContain('길을 완전히 막을 수 없어요')
-  expect(build(s, cellAt(17, 6), 'wall')).toBe(false)
-  expect(s.gold).toBe(before)
-  for (const gate of ENTRANCES) expect(routeCells(s, gate).at(-1)).toBe(HOME)
-})
-
-it('chooses either right-hand gate independently for each enemy, with reproducible seeded runs', () => {
-  function entrances(seed: number) {
-    const s = createDefense(seed)
-    beginDefense(s)
-    startWave(s)
-    s.wave = 5
-    const seen = new Set<number>(),
-      gates: number[] = []
-    for (let i = 0; i < 1000 && s.spawned < waveSize(5); i++) {
-      stepDefense(s, 0.05)
-      for (const e of s.enemies) {
-        if (!seen.has(e.id)) {
-          seen.add(e.id)
-          expect(ENTRANCES).toContain(e.nav)
-          expect(e.y).toBe(SITES[e.nav].y)
-          expect(e.x).toBeGreaterThan(SITES[e.nav].x)
-          gates.push(e.nav)
-        }
-        e.speed = 0
-      }
-    }
-    return gates
-  }
-  const gates = entrances(42)
-  expect(gates).toHaveLength(28)
-  expect(new Set(gates).size).toBe(2)
-  expect(gates.some((gate, i) => i > 0 && gate === gates[i - 1])).toBe(true)
-  expect(entrances(42)).toEqual(gates)
-  expect(entrances(43)).not.toEqual(gates)
-})
-
-it('uses smaller waves and leaves more time between arrivals', () => {
-  expect([1, 2, 3, 4, 5].map(waveSize)).toEqual([10, 14, 18, 22, 28])
-  const s = prepared()
-  startWave(s)
-  advance(s, 5)
-  expect(s.spawned).toBeLessThanOrEqual(4)
-  expect(s.spawned).toBeGreaterThanOrEqual(3)
-})
-
-it('awards each splash kill only once and recycles enemies and effects', () => {
-  const s = prepared()
-  s.gold = 1000
-  build(s, cellAt(3, 7), 'puffer')
-  build(s, cellAt(5, 7), 'puffer')
-  combat(s)
-  const before = s.gold
-  s.enemies.push(enemy(10, cellAt(4, 7), 10), enemy(11, cellAt(4, 7), 10))
-  stepDefense(s, 0.05)
-  expect(s.kills).toBe(2)
-  expect(s.enemyPool).toHaveLength(2)
-  expect(s.gold).toBe(before + 2 + 30)
-  expect(s.effects.filter((e) => e.kind === 'pop')).toHaveLength(2)
-  advance(s, 0.45)
-  expect(s.effects).toHaveLength(0)
-  expect(s.buildings.every((b) => b.flash === 0)).toBe(true)
-  expect(s.effectPool.length).toBeGreaterThanOrEqual(2)
-  startWave(s)
-  s.spawnTimer = 0
-  stepDefense(s, 0.05)
-  expect(s.enemyPool).toHaveLength(1)
-  expect(s.enemies[0].maxHp).toBeCloseTo(28.75)
-  expect(s.enemies[0].id).not.toBe(10)
-  expect(s.enemies[0].slowedUntil).toBe(0)
-})
-
-it('slows enemies with jelly and lets armored enemies resist shell damage', () => {
-  const s = prepared()
-  s.gold = 1000
-  build(s, cellAt(3, 7), 'jelly')
-  combat(s)
-  const e = enemy(10, cellAt(4, 7))
-  s.enemies.push(e)
-  stepDefense(s, 0.05)
-  expect(e.slowedUntil).toBeGreaterThan(s.elapsed)
-  const y = e.y
-  stepDefense(s, 0.05)
-  expect(Math.abs(e.y - y)).toBeCloseTo(38 * 0.55 * 0.05)
-  const t = prepared()
-  build(t, cellAt(3, 7), 'shell')
-  combat(t)
-  const armored = enemy(50, cellAt(4, 7))
-  armored.kind = 'armored'
-  t.enemies.push(armored)
-  stepDefense(t, 0.05)
-  expect(armored.hp).toBe(91)
-})
-
-it('does not pay for leaks, stops on defeat and ignores invalid or unbounded time steps', () => {
-  const s = prepared()
-  combat(s)
-  s.lives = 1
-  s.enemies.push(enemy(9, HOME))
+  expect(b.level).toBe(3)
+  expect(upgrade(s, b.cell)).toBe(false)
+  expect(s.stats.flowBuilds).toBe(version)
+  expect(BUILDINGS.octopus.interval).toEqual([2, 2, 2, 2])
+  expect(Math.min(...BUILDINGS.seahorse.interval)).toBeGreaterThanOrEqual(1)
   const gold = s.gold
-  for (const dt of [NaN, Infinity, -1, 0]) stepDefense(s, dt)
-  expect(s.elapsed).toBe(0)
-  stepDefense(s, 100)
-  expect(s.elapsed).toBe(0.1)
-  expect(s.phase).toBe('lost')
+  expect(sell(s, b.cell)).toBe(true)
+  expect(s.gold - gold).toBe(Math.floor(b.spent / 2))
+})
+it('allows more than twelve towers while keeping both entrances connected', () => {
+  const s = prepared()
+  s.gold = 100000
+  const cells = [
+    ...Array.from({ length: GRID.columns }, (_, x) => cellAt(x, GRID.rows - 1)).filter(
+      (c) => c !== HOME,
+    ),
+    ...Array.from({ length: 5 }, (_, x) => cellAt(x, GRID.rows - 2)),
+  ]
+  for (const c of cells) expect(build(s, c, 'seahorse')).toBe(true)
+  expect(s.buildings.length).toBeGreaterThan(12)
+  for (const entry of ENTRANCES) expect(routeCells(s, entry).at(-1)).toBe(HOME)
+})
+it('upgrades castle health by five without erasing existing damage, and caps at three upgrades', () => {
+  const s = prepared()
+  s.gold = 1000
+  s.lives = 8
+  for (const cost of [60, 120, 220]) {
+    expect(castleUpgradeCost(s)).toBe(cost)
+    expect(upgradeCastle(s)).toBe(true)
+  }
+  expect([s.lives, s.maxLives, s.castleLevel]).toEqual([23, 30, 3])
+  expect(upgradeCastle(s)).toBe(false)
+})
+it('applies each monster’s own breach damage once and never awards coins for leaks', () => {
+  const s = prepared()
+  combat(s)
+  spawnEnemy(s, 'boss', HOME)
+  spawnEnemy(s, 'crab')
+  s.enemies[1].speed = 0
+  const gold = s.gold
+  stepDefense(s, 0.05)
+  expect(s.lives).toBe(10)
   expect(s.gold).toBe(gold)
   expect(s.kills).toBe(0)
+  expect(s.enemies).toHaveLength(1)
+  s.lives = 2
+  spawnEnemy(s, 'armored', HOME)
+  stepDefense(s, 0.05)
+  expect(s.lives).toBe(0)
+  expect(s.phase).toBe('lost')
+})
+it('deals damage on projectile arrival and recycles all projectile objects', () => {
+  const s = prepared()
+  build(s, cellAt(2, 11), 'seahorse')
+  combat(s)
+  spawnEnemy(s, 'armored', cellAt(1, 11))
+  const e = s.enemies[0]
+  e.speed = 0
+  stepDefense(s, 0.05)
+  expect(s.projectiles).toHaveLength(1)
+  expect(e.hp).toBe(e.maxHp)
+  advance(s, 0.25)
+  expect(e.hp).toBe(e.maxHp - 12)
+  expect(s.projectilePool.length + s.projectiles.length).toBe(PROJECTILE_LIMIT)
+})
+it.each(['octopus', 'seahorse'] as const)(
+  '%s damages only the locked target even when monsters overlap',
+  (kind) => {
+    const s = prepared()
+    build(s, cellAt(2, 11), kind)
+    combat(s)
+    spawnEnemy(s, 'armored', cellAt(1, 11))
+    spawnEnemy(s, 'armored', cellAt(1, 11))
+    const [target, neighbour] = s.enemies
+    target.speed = 0
+    neighbour.speed = 0
+    stepDefense(s, 0.05)
+    expect(s.projectiles[0].target).toBe(target.id)
+    expect(target.hp).toBe(target.maxHp)
+    advance(s, 0.25)
+    expect(target.hp).toBe(target.maxHp - BUILDINGS[kind].damage[0])
+    expect(neighbour.hp).toBe(neighbour.maxHp)
+  },
+)
+it('heals nearby other monsters by four percent with no same-tick stacking', () => {
+  const s = prepared()
+  combat(s)
+  spawnEnemy(s, 'crab', cellAt(4, 6))
+  spawnEnemy(s, 'healer', cellAt(3, 6))
+  spawnEnemy(s, 'healer', cellAt(5, 6))
+  for (const e of s.enemies) {
+    e.speed = 0
+    e.healTimer = 0
+  }
+  const e = s.enemies[0]
+  e.hp = 10
+  stepDefense(s, 0.05)
+  expect(e.hp).toBe(11)
+})
+it.each(['octopus', 'seahorse'] as const)(
+  '%s does not transfer an in-flight shot to a recycled enemy object',
+  (kind) => {
+    const s = prepared()
+    build(s, cellAt(2, 11), kind)
+    combat(s)
+    spawnEnemy(s, 'crab', cellAt(1, 11))
+    const old = s.enemies[0]
+    old.speed = 0
+    stepDefense(s, 0.05)
+    const oldId = old.id
+    expect(s.projectiles[0].target).toBe(oldId)
+    old.hp = 0
+    stepDefense(s, 0.05)
+    spawnEnemy(s, 'armored', cellAt(1, 11))
+    const replacement = s.enemies[0]
+    replacement.speed = 0
+    expect(replacement).toBe(old)
+    expect(replacement.id).not.toBe(oldId)
+    advance(s, 0.3)
+    expect(replacement.hp).toBe(replacement.maxHp)
+  },
+)
+it('keeps dense populations, lookup maps, effects and object pools bounded', () => {
+  const s = prepared()
+  s.gold = 10000
+  build(s, cellAt(2, 11), 'octopus')
+  combat(s)
+  for (let i = 0; i < ENEMY_LIMIT; i++) {
+    expect(
+      spawnEnemy(s, 'armored', cellAt(i % GRID.columns, 4 + (Math.floor(i / GRID.columns) % 3))),
+    ).toBe(true)
+    const e = s.enemies.at(-1)!
+    e.speed = 0
+    e.hp = 10000
+  }
+  expect(spawnEnemy(s, 'crab')).toBe(false)
+  const flowBuilds = s.stats.flowBuilds
   advance(s, 10)
-  expect(s.elapsed).toBe(0.1)
+  expect(s.stats.flowBuilds).toBe(flowBuilds)
+  expect(s.enemies.length + s.enemyPool.length).toBe(ENEMY_LIMIT)
+  expect(s.byId.size).toBe(s.enemies.length)
+  expect(s.projectiles.length + s.projectilePool.length).toBe(PROJECTILE_LIMIT)
+  expect(s.effects.length + s.effectPool.length).toBe(EFFECT_LIMIT)
+  expect(s.stats.peakEnemies).toBe(256)
+  expect(s.stats.targetVisits).toBeLessThan(256 * 20 * 10)
+})
+it('contains thirty finite waves, with bosses only at ten, twenty and thirty', () => {
+  expect(WAVES).toHaveLength(30)
+  expect(ENTRANCES).toHaveLength(2)
+  expect(WAVES.slice(0, 20).map((w) => Object.values(w.counts).reduce((a, b) => a + b, 0))).toEqual(
+    [8, 18, 22, 26, 30, 34, 38, 44, 48, 23, 50, 56, 60, 64, 73, 78, 83, 88, 93, 48],
+  )
+  for (let i = 0; i < 30; i++) {
+    const s = prepared()
+    s.wave = i
+    startWave(s)
+    expect(s.plan.filter((k) => MONSTERS[k].boss)).toEqual(
+      i === 9 ? ['boss'] : i === 19 ? ['overlord'] : i === 29 ? ['abyss'] : [],
+    )
+  }
+})
+it('can clear all thirty waves with a paid maze and anti-air strategy across a small seed sample', () => {
+  let wins = 0
+  for (const seed of [1, 7, 42, 91, 731, 2026]) {
+    const { state: s, checkpoints } = campaignStrategy(seed)
+    expect(['won', 'lost']).toContain(s.phase)
+    expect(s.gold).toBeGreaterThanOrEqual(0)
+    if (s.phase === 'won') {
+      wins++
+      expect(s.wave).toBe(30)
+      expect(s.finalDefeated).toBe(true)
+      expect(checkpoints).toHaveLength(29)
+      expect(s.lives).toBeGreaterThan(0)
+    } else expect(s.lives === 0 || s.finalEscaped).toBe(true)
+  }
+  expect(wins).toBeGreaterThan(0)
 })
 
-it('can finish all five practice waves using only the earned construction budget', () => {
+it('uses the shortest weighted detour without cutting blocked corners and refreshes after a sale', () => {
   const s = prepared()
-  build(s, cellAt(15, 4), 'shell')
-  build(s, cellAt(14, 6), 'puffer')
-  const reports: unknown[] = []
-  for (let wave = 1; wave <= 5; wave++) {
-    if (wave > 1) {
-      for (const [col, row, kind] of [
-        [12, 7, 'shell'],
-        [10, 6, 'puffer'],
-        [9, 6, 'jelly'],
-        [6, 8, 'puffer'],
-      ] as const)
-        if (!s.buildings.some((b) => b.cell === cellAt(col, row))) build(s, cellAt(col, row), kind)
-      for (const b of s.buildings) if (b.kind === 'puffer') upgrade(s, b.cell)
-    }
-    expect(startWave(s)).toBe(true)
-    for (let i = 0; i < 6000 && s.phase === 'combat'; i++) stepDefense(s, 0.05)
-    reports.push({ wave: s.wave, phase: s.phase, lives: s.lives, gold: s.gold, kills: s.kills })
-    expect(s.phase, JSON.stringify(reports)).toBe(wave === 5 ? 'won' : 'build')
-    expect(s.gold).toBeGreaterThanOrEqual(0)
-  }
-  expect(s.wave).toBe(5)
-  expect(s.kills).toBeGreaterThan(80)
-  const score = s.score
-  advance(s, 10)
-  expect(s.score).toBe(score)
+  s.gold = 10000
+  const start = cellAt(6, 10),
+    wall = cellAt(6, 11)
+  refreshFlow(s)
+  expect(s.flow[start]).toBeCloseTo(4)
+  expect(build(s, wall, 'wall')).toBe(true)
+  expect(s.flow[start]).toBeCloseTo(4 + Math.SQRT2, 4)
+  expect([cellAt(5, 10), cellAt(7, 10)]).toContain(s.next[start])
+  const effectCount = s.effects.length
+  expect(build(s, wall, 'wall')).toBe(false)
+  expect(s.effects).toHaveLength(effectCount)
+  expect(sell(s, wall)).toBe(true)
+  expect(s.flow[start]).toBeCloseTo(4)
+})
+it('emits bounded placement dust, purchase feedback and castle damage events', () => {
+  const s = prepared()
+  build(s, cellAt(3, 11), 'octopus')
+  expect(s.effects.map((e) => e.kind)).toEqual(['build', 'purchase'])
+  expect(new Set(s.effects.map((e) => e.id)).size).toBe(2)
+  upgrade(s, cellAt(3, 11))
+  expect(s.effects.at(-1)?.kind).toBe('purchase')
+  s.gold = 100
+  upgradeCastle(s)
+  expect(s.effects.at(-1)?.kind).toBe('purchase')
+  combat(s)
+  spawnEnemy(s, 'armored', HOME)
+  stepDefense(s, 0.05)
+  expect(s.lives).toBe(17)
+  expect(s.effects.some((e) => e.kind === 'breach')).toBe(true)
 })

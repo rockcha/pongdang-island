@@ -1,0 +1,9 @@
+# Two-gate overhead defense campaign
+
+Native SVG artwork follows the user's round body, dot eyes and funnel sketch. Preserve mouthless overhead silhouettes, editable SVG originals and lossless sprite exports. Towers stay on frame zero at rest; only attacks animate recoil, emitters or petals. New monsters differ by silhouette as well as colour so their roles remain readable at game scale. Use restrained muzzle bubbles, flame cores, beam glow and concentric impact rings without covering the target.
+
+The castle sits at the bottom centre; two gates enter from the top. Preserve the portrait, top-to-bottom combat direction. Navigation uses one shared weighted eight-direction flow field. A placement must preserve routes for both gates, live monsters and queued split children, including diagonal corner clearance. Children inherit the parent's world position and navigation segment. They wait for pooled slots rather than disappearing or ending a wave early.
+
+Bosses appear only at their designated campaign milestones. Threshold flags prevent repeated shields or summons. Healers exclude bosses; summoned boss minions award no coins. Castle healing requires a midboss kill, and victory requires the final boss to die and every remaining enemy to resolve. Do not infer victory solely from castle health or an empty spawn plan.
+
+Regenerate with `scripts/build-tower-defense-art.mjs`. Verify alpha margins, every frame on light/dark backgrounds and actual game scale. Run tower-defense engine, campaign, roster, art, audio and UI tests, the paid campaign benchmark and the application build. Browser fixtures cover drag/touch placement, reduced motion, simultaneous tower effects and pooled populations; campaign replay uses paid progression from the first wave. Local Node timings and headless software WebGL do not establish physical-phone FPS. This free practice has no account reward or database contract.

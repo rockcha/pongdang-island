@@ -40,14 +40,14 @@ export function campaignStrategy(
   up(6, 8)
   up(6, 10)
   const firstWall = purchases.length
-  for (let x = 0; x < 11; x++) buy('wall', x, 7)
-  for (let x = 1; x < 12; x++) if (x !== 6) buy('wall', x, 10)
-  purchases[firstWall].minGold = 21 * 8
+  for (let x = 0; x < GRID.columns - 1; x++) buy('wall', x, 7)
+  for (let x = 1; x < GRID.columns; x++) if (x !== 6) buy('wall', x, 10)
+  purchases[firstWall].minGold = (2 * GRID.columns - 3) * BUILDINGS.wall.cost
   up(5, 8)
   up(6, 8)
   up(6, 10)
-  for (let x = 1; x < 12; x++) buy('wall', x, 4)
-  for (let x = 0; x < 11; x++) buy('wall', x, 1)
+  for (let x = 1; x < GRID.columns; x++) buy('wall', x, 4)
+  for (let x = 0; x < GRID.columns - 1; x++) buy('wall', x, 1)
   for (const [kind, x, y] of [
     ['mortar', 5, 5],
     ['plasma', 6, 5],

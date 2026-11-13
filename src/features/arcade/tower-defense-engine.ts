@@ -10,14 +10,14 @@ export {
 } from './tower-defense-waves.ts'
 import { BUILDINGS, type BuildKind, type TowerSpecialization } from './tower-defense-towers.ts'
 export { BUILDINGS, TOWER_KINDS, type BuildKind, type TowerKind } from './tower-defense-towers.ts'
-export const GRID = { columns: 12, rows: 15, cell: 36, x: 18, y: 28 }
+export const GRID = { columns: 11, rows: 15, cell: 36, x: 18, y: 28 }
 export const FIELD = {
   width: GRID.columns * GRID.cell + GRID.x * 2,
   height: GRID.rows * GRID.cell + GRID.y * 2,
 }
 export const CELL_COUNT = GRID.columns * GRID.rows
 export const cellAt = (col: number, row: number) => row * GRID.columns + col
-export const HOME = cellAt(6, GRID.rows - 1)
+export const HOME = cellAt(Math.floor(GRID.columns / 2), GRID.rows - 1)
 export const ENTRANCES = [cellAt(0, 0), cellAt(GRID.columns - 1, 0)]
 export const SITES = Array.from({ length: CELL_COUNT }, (_, i) => ({
   x: GRID.x + ((i % GRID.columns) + 0.5) * GRID.cell,

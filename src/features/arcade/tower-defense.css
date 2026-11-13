@@ -954,6 +954,8 @@
   word-break: keep-all;
   min-height: 0;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px;
@@ -1000,7 +1002,7 @@
   border-radius: 12px;
   background: #f3f6eb;
   text-align: left;
-  touch-action: none;
+  touch-action: pan-y;
   user-select: none;
 }
 .td-catalog-grid button:disabled {

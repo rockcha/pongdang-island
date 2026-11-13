@@ -60,9 +60,10 @@ it('makes wave thirty a flying boss that ignores ground-only attacks and takes m
 })
 it('flies directly across buildings and reaches the castle without following the flow field', () => {
   const s = arena()
-  for (let y = 2; y < 14; y++) build(s, cellAt(6, y), 'wall')
+  const center = HOME % GRID.columns
+  for (let y = 2; y < 14; y++) build(s, cellAt(center, y), 'wall')
   combat(s)
-  spawnEnemy(s, 'flyingFish', cellAt(6, 0))
+  spawnEnemy(s, 'flyingFish', cellAt(center, 0))
   const e = s.enemies[0],
     startY = e.y,
     hp = s.lives

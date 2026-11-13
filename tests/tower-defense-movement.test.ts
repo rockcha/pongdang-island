@@ -61,9 +61,9 @@ it('moves the same upgraded and specialized tower for free, preserving its coold
 it('validates the destination with the source removed so relocating a corridor entrance stays possible', () => {
   const s = arena(),
     from = cellAt(0, 7),
-    to = cellAt(11, 7)
+    to = cellAt(GRID.columns - 1, 7)
   build(s, from, 'octopus')
-  for (let x = 1; x < 11; x++) expect(build(s, cellAt(x, 7), 'wall')).toBe(true)
+  for (let x = 1; x < GRID.columns - 1; x++) expect(build(s, cellAt(x, 7), 'wall')).toBe(true)
   expect(canPlace(s, to, 'octopus')).toMatch(/길/)
   expect(canMove(s, from, to)).toBe('')
   expect(moveTower(s, from, to)).toBe(true)
@@ -72,9 +72,9 @@ it('validates the destination with the source removed so relocating a corridor e
 it('rejects a move that closes a path without changing live topology, funds, or effects', () => {
   const s = arena(),
     from = cellAt(5, 10),
-    to = cellAt(11, 7)
+    to = cellAt(GRID.columns - 1, 7)
   build(s, from, 'octopus')
-  for (let x = 0; x < 11; x++) build(s, cellAt(x, 7), 'wall')
+  for (let x = 0; x < GRID.columns - 1; x++) build(s, cellAt(x, 7), 'wall')
   const snapshot = {
     buildings: structuredClone(s.buildings),
     gold: s.gold,

@@ -586,7 +586,7 @@ var BUILDINGS = {
 //#endregion
 //#region src/features/arcade/tower-defense-engine.ts
 var GRID = {
-	columns: 12,
+	columns: 11,
 	rows: 15,
 	cell: 36,
 	x: 18,
@@ -595,7 +595,7 @@ var GRID = {
 GRID.columns * GRID.cell + GRID.x * 2, GRID.rows * GRID.cell + GRID.y * 2;
 var CELL_COUNT = GRID.columns * GRID.rows;
 var cellAt = (col, row) => row * GRID.columns + col;
-var HOME = cellAt(6, GRID.rows - 1);
+var HOME = cellAt(Math.floor(GRID.columns / 2), GRID.rows - 1);
 var ENTRANCES = [cellAt(0, 0), cellAt(GRID.columns - 1, 0)];
 var SITES = Array.from({ length: CELL_COUNT }, (_, i) => ({
 	x: GRID.x + (i % GRID.columns + .5) * GRID.cell,

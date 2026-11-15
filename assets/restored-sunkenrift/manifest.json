@@ -1,0 +1,51 @@
+{
+  "operation": "restore-existing-artwork",
+  "source": ".cache/deploy-pet-anatomy-20261112",
+  "note": "Existing release assets restored unchanged from the retained deployment source. No image generation or database changes.",
+  "files": [
+    {
+      "path": "public/regions/sunkenrift/overview-v2.png",
+      "sha256": "f4b1818470aad08c12a97aa70d212cfe0f864717fd70f2facd9bc2c0176e84e0"
+    },
+    {
+      "path": "public/regions/sunkenrift/map-v2.png",
+      "sha256": "0f57124ca310ea053e3dd8a24e7fcf4e78e42ede13144ecfe93778ffc94a82e3"
+    },
+    {
+      "path": "public/region-icons/sunkenrift.svg",
+      "sha256": "24a01b0f6b4d2202e23f2f8785d83cdd56a9e873e10b55a5dc9b20e19c7df530"
+    },
+    {
+      "path": "public/aquarium/swim/sunkenrift-baron_swim8_v2_sprite.png",
+      "sha256": "7f86adec976d507437dac73ca7e3a6adbca8e37cd476806ce877f08d24f4137f"
+    },
+    {
+      "path": "public/aquarium/swim/sunkenrift-elder_swim8_v2_sprite.png",
+      "sha256": "8fb21f3a1e8a7171356e7526660cd98e79d6f63f9d2797404948177c3f3cc294"
+    },
+    {
+      "path": "public/aquarium/swim/sunkenrift-pongmi_swim8_v1_sprite.png",
+      "sha256": "bc31c703c1288e7604371d1acc50b5fd177d13690cf7e0eb3599c408d007739d"
+    },
+    {
+      "path": "public/aquarium/swim/sunkenrift-pongraka_swim8_v1_sprite.png",
+      "sha256": "ccd95dc8eb948db2376bf1d67ff41d61c9c2d285d62e592b167bf6438c5fe024"
+    },
+    {
+      "path": "public/aquarium/swim/sunkenrift-pongriana_swim8_v1_sprite.png",
+      "sha256": "df0985a91a11977b877cc454e60375d60e6761ec52a723405bbae701d4c8ecf9"
+    },
+    {
+      "path": "public/aquarium/swim/sunkenrift-pongsandra_swim8_v1_sprite.png",
+      "sha256": "8c2d603c6b237e9c480cf90e6310420fd4b8729325cf3746f6a49fc98fc6cd07"
+    },
+    {
+      "path": "src/features/aquarium/sunkenrift-mythic-action-layouts.json",
+      "sha256": "23c1f7532026739ae43c3ad4f57b0da1062b8cff210f7090aa98ef591c5305e6"
+    },
+    {
+      "path": "src/features/aquarium/sunkenrift-refinement-mythic-action-layouts.json",
+      "sha256": "be7baee8c1de2788acb5083196b82798d05cb315b0989f3c0f2931792229eef0"
+    }
+  ]
+}

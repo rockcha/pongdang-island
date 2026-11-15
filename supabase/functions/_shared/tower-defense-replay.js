@@ -1499,11 +1499,16 @@ function towerCheckpoint(s, seed) {
 	return {
 		version: 1,
 		seed,
+		grid: {
+			columns: GRID.columns,
+			rows: GRID.rows
+		},
 		state: JSON.parse(JSON.stringify(stored))
 	};
 }
 function restoreTowerCheckpoint(checkpoint, seed, ticks) {
 	if (!checkpoint || checkpoint.version !== 1 || checkpoint.seed !== seed || checkpoint.state?.tick !== ticks) throw Error("INVALID_CHECKPOINT");
+	if (checkpoint.grid && (checkpoint.grid.columns !== GRID.columns || checkpoint.grid.rows !== GRID.rows)) throw Error("ENGINE_VERSION_MISMATCH");
 	const s = createDefense(seed);
 	Object.assign(s, JSON.parse(JSON.stringify(checkpoint.state)));
 	if (s.enemies.length + s.enemyPool.length !== 256 || s.projectiles.length + s.projectilePool.length !== 128 || s.effects.length + s.effectPool.length !== 96 || new Set([...s.enemies, ...s.enemyPool].map((e) => e.slot)).size !== 256) throw Error("INVALID_CHECKPOINT");
@@ -1529,6 +1534,15 @@ function verifyTowerReplay(value, seed, options = {}) {
 	if (options.availableSeconds !== void 0 && replay.ticks * .05 > Math.max(0, options.availableSeconds) * 2 * 2 + 2) throw Error("REPLAY_TOO_FAST");
 	const saved = options.previous?.checkpoint;
 	if ((previous.ticks > 0 || previous.commands.length > 0) && !saved) throw Error("INVALID_CHECKPOINT");
+	if (saved && !saved.grid) {
+		const expected = verifyTowerReplay(previous, seed).checkpoint;
+		const canonical = (value) => {
+			if (Array.isArray(value)) return value.map(canonical);
+			if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b)).map(([key, item]) => [key, canonical(item)]));
+			return value;
+		};
+		if (JSON.stringify(canonical(saved.state)) !== JSON.stringify(canonical(expected.state))) throw Error("ENGINE_VERSION_MISMATCH");
+	}
 	const s = saved ? restoreTowerCheckpoint(saved, seed, previous.ticks) : createDefense(seed);
 	if (!saved) beginDefense(s);
 	let index = previous.commands.length;

@@ -68,6 +68,7 @@ Deno.serve(async (req: Request) => {
         'tower-defense replay rejected',
         /^[A-Z_]+$/.test(reason) ? reason : 'INVALID_REPLAY',
       )
+      if (reason === 'ENGINE_VERSION_MISMATCH') return json({ error: reason }, 409)
       return json({ error: 'INVALID_REPLAY' }, 400)
     }
     const result = await fetch(url + '/rest/v1/rpc/tower_defense_settle', {

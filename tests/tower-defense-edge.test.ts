@@ -6,7 +6,7 @@ import {
   startWave,
   stepDefense,
 } from '@/features/arcade/tower-defense-engine'
-import { emptyTowerReplay } from '@/features/arcade/tower-defense-replay'
+import { emptyTowerReplay, verifyTowerReplay } from '@/features/arcade/tower-defense-replay'
 let handler: (request: Request) => Promise<Response>,
   stored: any,
   wallet: number,
@@ -164,4 +164,15 @@ it('finalizes actual loss even when the client does not request finalization', a
   expect(stored.finished_at).toBe('done')
   expect(stored.abandoned).toBe(false)
   expect(stored.cleared_stage).toBe(state.wave - 1)
+})
+it('does not settle an incompatible legacy checkpoint using the new board width', async () => {
+  const saved = verifyTowerReplay(stageReplay,42)
+  delete saved.checkpoint.grid
+  saved.checkpoint.state.gold++
+  stored = {...stored,replay:stageReplay,checkpoint:saved.checkpoint}
+  const response = await handler(request({runId:id,replay:stageReplay,final:false}))
+  expect(response.status).toBe(409)
+  expect(await response.json()).toEqual({error:'ENGINE_VERSION_MISMATCH'})
+  expect(fetcher.mock.calls.filter(([url])=>String(url).endsWith('/tower_defense_settle'))).toHaveLength(0)
+  expect(wallet).toBe(970)
 })

@@ -5,6 +5,7 @@ import {
   PROJECTILE_LIMIT,
   EFFECT_LIMIT,
   MAX_WAVES,
+  GRID,
   beginDefense,
   build,
   createDefense,
@@ -47,7 +48,12 @@ type Derived =
   | 'buckets'
   | 'targets'
   | 'byId'
-export type TowerCheckpoint = { version: 1; seed: number; state: Omit<DefenseState, Derived> }
+export type TowerCheckpoint = {
+  version: 1
+  seed: number
+  grid?: { columns: number; rows: number }
+  state: Omit<DefenseState, Derived>
+}
 export const emptyTowerReplay = (): TowerReplay => ({
   version: TOWER_ENGINE_VERSION,
   ticks: 0,
@@ -144,7 +150,12 @@ export function towerCheckpoint(s: DefenseState, seed: number): TowerCheckpoint 
     byId: _ids,
     ...stored
   } = s
-  return { version: 1, seed, state: JSON.parse(JSON.stringify(stored)) }
+  return {
+    version: 1,
+    seed,
+    grid: { columns: GRID.columns, rows: GRID.rows },
+    state: JSON.parse(JSON.stringify(stored)),
+  }
 }
 export function restoreTowerCheckpoint(checkpoint: TowerCheckpoint, seed: number, ticks: number) {
   if (
@@ -154,6 +165,11 @@ export function restoreTowerCheckpoint(checkpoint: TowerCheckpoint, seed: number
     checkpoint.state?.tick !== ticks
   )
     throw Error('INVALID_CHECKPOINT')
+  if (
+    checkpoint.grid &&
+    (checkpoint.grid.columns !== GRID.columns || checkpoint.grid.rows !== GRID.rows)
+  )
+    throw Error('ENGINE_VERSION_MISMATCH')
   const s = createDefense(seed)
   Object.assign(s, JSON.parse(JSON.stringify(checkpoint.state)))
   if (
@@ -215,6 +231,23 @@ export function verifyTowerReplay(
   const saved = options.previous?.checkpoint
   if ((previous.ticks > 0 || previous.commands.length > 0) && !saved)
     throw Error('INVALID_CHECKPOINT')
+  if (saved && !saved.grid) {
+    // Older deployments used the same engine version for two different board widths.
+    // Verify unmarked checkpoints against a fresh replay once, never reinterpret their cells.
+    const expected = verifyTowerReplay(previous, seed).checkpoint
+    const canonical = (value: unknown): unknown => {
+      if (Array.isArray(value)) return value.map(canonical)
+      if (value && typeof value === 'object')
+        return Object.fromEntries(
+          Object.entries(value)
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([key, item]) => [key, canonical(item)]),
+        )
+      return value
+    }
+    if (JSON.stringify(canonical(saved.state)) !== JSON.stringify(canonical(expected.state)))
+      throw Error('ENGINE_VERSION_MISMATCH')
+  }
   const s = saved ? restoreTowerCheckpoint(saved, seed, previous.ticks) : createDefense(seed)
   if (!saved) beginDefense(s)
   let index = previous.commands.length

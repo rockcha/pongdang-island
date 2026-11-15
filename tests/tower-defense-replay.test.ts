@@ -71,6 +71,24 @@ it('restores live target references and pools and produces identical incremental
   expect(comparable(incremental.state)).toEqual(comparable(full.state))
   expect(incremental.cleared).toBe(full.cleared)
 })
+it('upgrades compatible unmarked checkpoints but refuses checkpoints made under different board rules', () => {
+  const a = recorder()
+  a.action({type:'build',kind:'seahorse',cell:cellAt(3,7)})
+  a.steps(20)
+  const saved = verifyTowerReplay(structuredClone(a.replay),42)
+  const legacy = structuredClone(saved.checkpoint)
+  delete legacy.grid
+  a.steps(20)
+  const upgraded = verifyTowerReplay(a.replay,42,{previous:{replay:saved.replay,checkpoint:legacy}})
+  expect(upgraded.checkpoint.grid).toEqual({columns:11,rows:15})
+  expect(comparable(upgraded.state)).toEqual(comparable(a.state))
+  const incompatible = structuredClone(legacy)
+  incompatible.state.buildings[0].cell++
+  expect(()=>verifyTowerReplay(a.replay,42,{previous:{replay:saved.replay,checkpoint:incompatible}})).toThrow('ENGINE_VERSION_MISMATCH')
+  const otherGrid = {...saved.checkpoint,grid:{columns:12,rows:15}}
+  expect(()=>restoreTowerCheckpoint(otherGrid,42,saved.replay.ticks)).toThrow('ENGINE_VERSION_MISMATCH')
+  expect(()=>serverVerify(a.replay,42,{previous:{replay:saved.replay,checkpoint:incompatible}})).toThrow('ENGINE_VERSION_MISMATCH')
+})
 it('accepts additional commands at the saved tick, but rejects rewriting or inserting commands in accepted history', () => {
   const a = recorder(),
     first = verifyTowerReplay(structuredClone(a.replay), 42)

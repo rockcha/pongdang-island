@@ -1,6 +1,7 @@
 import { act, cleanup, render } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { PetSprite } from '@/features/pets/pet-sprite'
+import {petSpriteSheetUrl} from '@/features/pets/pet-sprite-sheets'
 import { createPetBlinkSchedule } from '@/features/pets/pet-idle-animation'
 import { petNeedsFrame } from '@/features/pets/pet-needs-animation'
 import {petSpecies,petUsesAtlas} from '@/features/pets/pet-catalog'
@@ -33,7 +34,7 @@ it.each(petSpecies.flatMap(p=>['idleA','idleB','hungry','lonely'].map(clip=>({id
   const atlas=petUsesAtlas(id),needs=clip==='hungry'||clip==='lonely'
   const cell=atlas?320:petDrawLayout(id,needs?'needs':'idle').cell
   const main={width:cell*4,height:cell*(atlas?4:2)} as HTMLImageElement
-  images.ready.set(`/pets/${id}_${atlas?'atlas16_v1':needs?'needs8_v1':'idle8_v2'}_sprite.png`,main)
+  images.ready.set(petSpriteSheetUrl(id,atlas?'atlas16':needs?'needs8':'idle8'),main)
   if(needs&&!atlas){const c=petDrawLayout(id,'needsBlink').cell;images.ready.set(`/pets/${id}_needs_blink8_v1_sprite.png`,{width:c*4,height:c*2} as HTMLImageElement)}
   render(<PetSprite speciesId={id} clip={clip} label="대기"/>)
   act(()=>vi.advanceTimersByTime(18000))
@@ -97,7 +98,7 @@ it.each(['sand-golem', 'wave-cat', 'mochi-dragon', 'jelly-seal'] as const)('hold
   vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({
     clearRect: vi.fn(), drawImage: draw, save: vi.fn(), restore: vi.fn(), translate: vi.fn(), rotate,
   } as unknown as CanvasRenderingContext2D)
-  images.ready.set(`/pets/${speciesId}_needs8_v1_sprite.png`, {width:1848,height:924} as HTMLImageElement)
+  images.ready.set(petSpriteSheetUrl(speciesId,'needs8'), {width:1848,height:924} as HTMLImageElement)
   render(<PetSprite speciesId={speciesId} clip="lonely" label="애정 부족" />)
   act(() => vi.advanceTimersByTime(1000))
   expect(draw).toHaveBeenCalledTimes(1)

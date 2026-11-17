@@ -1,0 +1,46 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "created_at": "2026-11-17T08:45:44.896Z",
+  "style_references_inspected": [
+    "public/items/baits/halfmoon-honey-jelly.png",
+    "public/items/baits/sunny-honey-dumpling.png"
+  ],
+  "processing": "Downscaled generated alpha PNG to 512px using Sharp; original generated images retained in Codex generated_images.",
+  "assets": [
+    {
+      "id": "bait_map_compass_jelly",
+      "file": "public/items/baits/map-compass-honey-jelly-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: final transparent PNG fishing bait inventory icon for a cozy Korean fantasy fishing game, one isolated item. Subject: '나침반 꿀젤리 / Compass Honey Jelly' — a plump translucent teal and golden honey jelly shaped like a small round nautical compass, a simple readable gold compass rose and a tiny coral-red needle suspended INSIDE the edible jelly, honey pooled at its base with one small attached honey drop, elegant curved golden fishing hook attached diagonally behind the upper right. Match a polished hand-painted fantasy game item: softly colored outlines, luminous translucent material, delicate warm highlights and smooth painterly shading; a compact recognizable silhouette that reads clearly at 48px. Not a mechanical metal compass: distinctly soft edible jelly. Center the entire item within a square canvas, about 76 percent occupancy, generous clear margin on all sides. True alpha transparent background, no background scene, no label, no letters, no watermark, no border, no cast shadow outside silhouette, no loose particles or disconnected sparkles, no white or black matte fringe. One item only.",
+      "width": 512,
+      "height": 512,
+      "bytes": 59019,
+      "sha256": "9da3fdb15ad0097b036e39f07a0d8f25c79d7ada86c3956ed39e9fff144adb8f",
+      "original_sha256": "539eb29e8f22cebd77d5244fd7a52897446a3a37d2fb7df73ac2e64f9fbdc17e",
+      "transparent_pixels": 159544,
+      "alpha_bounds": [
+        67,
+        43,
+        475,
+        463
+      ]
+    },
+    {
+      "id": "bait_map_lantern_berry",
+      "file": "public/items/baits/map-wayfinder-lantern-berry-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: final transparent PNG fishing bait inventory icon for a cozy Korean fantasy fishing game, one isolated item. Subject: '길잡이 등불열매 / Wayfinder Lantern Berry' — a ripe warm amber-orange berry with a rounded tapered Chinese-lantern-plant husk, gently translucent vertical petal-like ribs surrounding a golden seed that glows softly inside, topped by a small curled green stem and two small sage-green leaves. A delicate curved golden fishing hook is attached behind the berry on the upper right, making the item read unmistakably as a magical fishing bait. No literal lantern hardware, no hanging cage: a magical edible fruit. Polished hand-painted fantasy game item illustration, softly colored outlines, rich natural gradients, warm restrained inner glow and small glossy highlights, the same cozy collectible item family as honey jelly fishing bait. Compact recognizable silhouette readable at 48px. Center the complete berry and hook within a square canvas, occupy about 76 percent with generous clear margins. Actual alpha transparent background, no scene, no labels or letters, no watermark, no border, no loose sparkles or particles, no detached decorations, no ground shadow, no white or black matte fringe. One item only.",
+      "width": 512,
+      "height": 512,
+      "bytes": 49536,
+      "sha256": "cd63ab4397ef45e0e8f94fb0b0f20ec3f1c062df8d95364b55c6a54571613d4f",
+      "original_sha256": "73ad829e1d9cecd2659371c4315afe0a74cc6435ee864ae1f3b2c213b5f22621",
+      "transparent_pixels": 189271,
+      "alpha_bounds": [
+        87,
+        52,
+        423,
+        449
+      ]
+    }
+  ]
+}

@@ -39,7 +39,7 @@ export function applyFarmCommand(state:TopviewState,command:FarmCommand,now:numb
  switch(command.type){
   case 'simulate':{
    if(!Number.isSafeInteger(command.id)||!command.action||typeof command.action.type!=='string')return fail()
-   if('quantity'in command.action&&(!Number.isSafeInteger(command.action.quantity)||command.action.quantity<1||command.action.quantity>1000))return fail()
+   if('quantity'in command.action&&(typeof command.action.quantity!=='number'||!Number.isSafeInteger(command.action.quantity)||command.action.quantity<1||command.action.quantity>1000))return fail()
    const result=simulateFarm(state,command.id,command.action,now)
    if(result.state===state)throw new Error(result.message)
    return result.state

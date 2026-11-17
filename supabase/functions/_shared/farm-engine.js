@@ -1501,7 +1501,7 @@ function initialFarmSimulation() {
 }
 function farmAnimalHousing(state, animal) {
 	const isAnimal = (kind) => topviewItems[kind].group === "동물";
-	const placed = state.objects.filter((o) => isAnimal(o.kind)).length, stored = state.stored.filter(isAnimal).length, pending = Object.values(state.simulation.animalPurchaseJobs).length;
+	const placed = state.objects.filter((o) => isAnimal(o.kind)).length, stored = state.stored.filter(isAnimal).length, pending = Object.values(state.simulation.animalPurchaseJobs).reduce((total, job) => total + (job.quantity ?? 1), 0);
 	return {
 		capacity: livestockCapacity(state),
 		placed,
@@ -1513,7 +1513,7 @@ function farmAnimalHousing(state, animal) {
 }
 function farmLimits(state) {
 	const count = (kind) => state.objects.filter((o) => o.kind === kind).length;
-	const usedAnimals = state.objects.filter((object) => topviewItems[object.kind].group === "동물").length, storedAnimals = state.stored.filter((kind) => topviewItems[kind].group === "동물").length, pendingAnimals = Object.keys(state.simulation.animalPurchaseJobs).length;
+	const usedAnimals = state.objects.filter((object) => topviewItems[object.kind].group === "동물").length, storedAnimals = state.stored.filter((kind) => topviewItems[kind].group === "동물").length, pendingAnimals = Object.values(state.simulation.animalPurchaseJobs).reduce((total, job) => total + (job.quantity ?? 1), 0);
 	return {
 		plots: activeBuildings(state, "office").reduce((sum, o) => sum + buildingCapacity(o), 0),
 		animals: livestockCapacity(state),
@@ -1715,7 +1715,7 @@ function simulateFarm(state, sourceId, action, now) {
 		processingJobs: { ...sim.processingJobs }
 	};
 	let gold = state.gold, message = "", place, effect;
-	if ("quantity" in action && (!Number.isSafeInteger(action.quantity) || action.quantity < 1)) return reject("수량을 확인해주세요.");
+	if ("quantity" in action && (typeof action.quantity !== "number" || !Number.isSafeInteger(action.quantity) || action.quantity < 1)) return reject("수량을 확인해주세요.");
 	switch (action.type) {
 		case "buySupply": {
 			if (source.kind !== "agriShop" || !isFarmSupply(action.supply)) return reject("농업용품점에서 구매할 비료를 선택해주세요.");
@@ -1963,24 +1963,31 @@ function simulateFarm(state, sourceId, action, now) {
 			break;
 		}
 		case "animal": {
+			const quantity = action.quantity === void 0 ? 1 : action.quantity;
+			if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 5) return reject("한 번에 1~5마리까지 구매할 수 있어요.");
 			if (!isFarmAnimal(action.animal) || source.kind !== farmAnimals[action.animal].housing) return reject("해당 동물의 시설을 이용해주세요.");
 			const error = farmPlacementError(state, action.animal);
 			if (error) return reject(error);
 			if (sim.animalPurchaseJobs[sourceId]) return reject("이미 동물을 준비하고 있어요.");
-			const price = farmAnimals[action.animal].price;
+			const housing = farmAnimalHousing(state, action.animal);
+			if (housing.total + quantity > housing.capacity) return reject("동물 정원이 부족해요. 구매 수량을 줄이거나 퐁이 돌봄터를 추가해주세요.");
+			const price = farmAnimals[action.animal].price * quantity;
 			if (gold < price) return reject("골드가 부족해요.");
 			gold -= price;
 			next.animalPurchaseJobs[sourceId] = {
 				animal: action.animal,
+				...quantity > 1 ? { quantity } : {},
 				startedAt: now,
-				readyAt: now + 1e4
+				readyAt: now + 10 * quantity * 1e3
 			};
-			message = "동물을 준비하고 있어요. 10초 후 건물 위 말풍선을 눌러 받아주세요.";
+			message = `동물 ${quantity}마리를 준비하고 있어요. ${10 * quantity}초 후 건물 위 말풍선을 눌러 받아주세요.`;
 			break;
 		}
 		case "completeAnimalPurchase": {
 			const job = sim.animalPurchaseJobs[sourceId];
 			if (!job || job.readyAt > now || source.kind !== farmAnimals[job.animal].housing) return reject("아직 동물을 준비하고 있어요.");
+			const quantity = job.quantity ?? 1;
+			if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 5) return reject("동물 준비 수량을 확인해주세요.");
 			delete next.animalPurchaseJobs[sourceId];
 			return {
 				state: {
@@ -1989,14 +1996,14 @@ function simulateFarm(state, sourceId, action, now) {
 						...next,
 						unlockedAnimals: [.../* @__PURE__ */ new Set([...sim.unlockedAnimals ?? ["cow", "chicken"], job.animal])]
 					},
-					stored: [...state.stored, job.animal]
+					stored: [...state.stored, ...Array.from({ length: quantity }, () => job.animal)]
 				},
-				message: "새 동물이 보관함에 도착했어요. 원하는 곳에 배치해주세요.",
+				message: `동물 ${quantity}마리가 보관함에 도착했어요. 원하는 곳에 배치해주세요.`,
 				effect: {
 					type: "received",
 					good: farmAnimals[job.animal].product,
 					animal: job.animal,
-					quantity: 1
+					quantity
 				}
 			};
 		}
@@ -2854,7 +2861,7 @@ function applyFarmCommand(state, command, now) {
 	switch (command.type) {
 		case "simulate": {
 			if (!Number.isSafeInteger(command.id) || !command.action || typeof command.action.type !== "string") return fail();
-			if ("quantity" in command.action && (!Number.isSafeInteger(command.action.quantity) || command.action.quantity < 1 || command.action.quantity > 1e3)) return fail();
+			if ("quantity" in command.action && (typeof command.action.quantity !== "number" || !Number.isSafeInteger(command.action.quantity) || command.action.quantity < 1 || command.action.quantity > 1e3)) return fail();
 			const result = simulateFarm(state, command.id, command.action, now);
 			if (result.state === state) throw new Error(result.message);
 			return result.state;

@@ -9,6 +9,10 @@ export function fenceConnections(objects:TopviewObject[],object:Pick<TopviewObje
  const at=(dx:number,dy:number)=>objects.some(other=>other.id!==object.id&&isFarmFence(other.kind)&&other.x===object.x+dx&&other.y===object.y+dy)
  return {north:at(0,-1),east:at(1,0),south:at(0,1),west:at(-1,0)}
 }
+export function farmFenceConnectionIndex(objects:TopviewObject[]){
+ const fences=objects.filter(object=>isFarmFence(object.kind)),cells=new Set(fences.map(object=>`${object.x},${object.y}`))
+ return new Map(fences.map(object=>[object.id,{north:cells.has(`${object.x},${object.y-1}`),east:cells.has(`${object.x+1},${object.y}`),south:cells.has(`${object.x},${object.y+1}`),west:cells.has(`${object.x-1},${object.y}`)}]))
+}
 
 // Reuse the original wood texture for rails and posts; neighbors share a single
 // center post. Geometry stays in map coordinates, independent of sprite mirroring.
@@ -30,8 +34,9 @@ export function ConnectedFenceArt({connections:c,kind='fence',postsOnly=false}:{
 
 export function fenceSegments(objects:TopviewObject[]){
  const fences=objects.filter(object=>isFarmFence(object.kind))
+ const connections=farmFenceConnectionIndex(fences)
  return fences.flatMap(object=>{
-  const c=fenceConnections(fences,object)
+  const c=connections.get(object.id)!
   return ([['east',c.east],['south',c.south]] as const).filter(([,connected])=>connected).map(([direction])=>({object,direction}))
  })
 }

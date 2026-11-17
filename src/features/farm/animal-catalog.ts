@@ -8,5 +8,6 @@ export type FarmAnimal=keyof typeof farmAnimals
 export const farmAnimalKinds=Object.keys(farmAnimals) as FarmAnimal[]
 export const animalGoods=farmAnimalKinds.map(animal=>farmAnimals[animal].product)
 export const ANIMAL_PURCHASE_SECONDS=10
+export const MAX_ANIMAL_PURCHASE_QUANTITY=5
 export const ANIMAL_PRODUCTION_OUTPUT=2
 export const isFarmAnimal=(kind:string):kind is FarmAnimal=>Object.hasOwn(farmAnimals,kind)

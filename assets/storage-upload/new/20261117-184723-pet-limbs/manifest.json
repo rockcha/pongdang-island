@@ -1,0 +1,715 @@
+{
+  "generator": "built-in image_gen",
+  "scope": "Repair extra pet forelimbs in 7 species. No species, prices, jobs or behavior changes.",
+  "processing": "Edited pose cells normalized to original cell size. Original upper head pixels retained, 12px neck seam feathered, corrected lower body translated to original foot support row. Detached alpha islands removed without eroding the connected silhouette. Unaffected cells copied byte-for-byte in decoded RGBA. Original v1 assets remain unchanged. Final PNG encoding uses palette:false to retain exact RGBA, not indexed palette quantization.",
+  "items": [
+    {
+      "id": "bonbon-triceratops",
+      "source": "public/pets/bonbon-triceratops_atlas16_v1_sprite.png",
+      "source_sha256": "3d4d0ddc2552824250a8ecccd17e4e810250bfa7ec6c18061a11d2d20dfa042d",
+      "edited_poses": "sources/bonbon-triceratops-edited-poses.png",
+      "edited_poses_sha256": "bda948c1a4c0ebb7b8f3a2711395a5497a5e4b1bf839b8ee3c4dd4171a1e2201",
+      "sprite_sheet_path": "pets/bonbon-triceratops_atlas16_v2_sprite.png",
+      "sprite_sha256": "e44e0f70226fd397381192f9a9a5688bfb32475cef248c3ebd0e82bb754a4348",
+      "width": 1280,
+      "height": 1280,
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "headPreservationCut": 194,
+      "repairedFrames": [
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15
+      ],
+      "measurements": [
+        {
+          "frame": 4,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 271,
+          "headPreserved": true,
+          "headPixels": 19026,
+          "detachedPixelsRemoved": 1100
+        },
+        {
+          "frame": 5,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 271,
+          "headPreserved": true,
+          "headPixels": 19027,
+          "detachedPixelsRemoved": 1625
+        },
+        {
+          "frame": 6,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 271,
+          "headPreserved": true,
+          "headPixels": 19024,
+          "detachedPixelsRemoved": 1674
+        },
+        {
+          "frame": 7,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 271,
+          "headPreserved": true,
+          "headPixels": 19041,
+          "detachedPixelsRemoved": 1836
+        },
+        {
+          "frame": 12,
+          "generatedCell": 1,
+          "bodyTranslationY": 0,
+          "ground": 271,
+          "headPreserved": true,
+          "headPixels": 19701,
+          "detachedPixelsRemoved": 1946
+        },
+        {
+          "frame": 13,
+          "generatedCell": 2,
+          "bodyTranslationY": -1,
+          "ground": 270,
+          "headPreserved": true,
+          "headPixels": 19773,
+          "detachedPixelsRemoved": 2492
+        },
+        {
+          "frame": 14,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 271,
+          "headPreserved": true,
+          "headPixels": 19720,
+          "detachedPixelsRemoved": 1645
+        },
+        {
+          "frame": 15,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 271,
+          "headPreserved": true,
+          "headPixels": 19745,
+          "detachedPixelsRemoved": 1978
+        }
+      ],
+      "input_image": "sources/bonbon-triceratops-edit-input.png",
+      "prompt": "Precise sprite anatomy correction, NOT a redesign. Edit the supplied 2x2 transparent sprite sheet in place. Preserve the exact four-cell arrangement, existing head positions and size within each cell, facial expressions, eye shape, colors, proportions, direction, tail and original soft outlined game illustration style. Every character must have EXACTLY FOUR limbs total: two forelimbs and two hindlimbs. The current error is extra forelimbs on the chest while their old legs remain on the ground. REMOVE the duplicate grounded forelegs, reconnect the belly naturally and retain the existing raised gestures. TOP LEFT: hungry, both forepaws held at chest, only TWO hindfeet on ground. TOP RIGHT and BOTTOM LEFT: happy, ONE forepaw raised, the other forepaw and TWO hindfeet on the ground, exactly THREE grounded feet total. BOTTOM RIGHT: eating, TWO forepaws held near mouth, only TWO hindfeet grounded. No spare paw nubs or concealed duplicate legs. Keep the original shoulders, hip position, head and floor baseline stable. All four complete sprites must remain in their own equally sized square cells, with generous transparent margins. Genuine alpha transparency, no black/white/checkerboard background, no particles or glow around silhouette, no text or cell borders. Count the limb roots carefully; toes and tail do not count as limbs. Character identity: the same mint-green baby triceratops Bonbon, with three cream horns and its yellow-edged green neck frill. Horns, tail, face and frill remain unchanged.",
+      "anatomyReview": "Manually reviewed all repaired body poses: two forelimbs plus two hindlimbs; existing face preserved; wings/tail excluded from count."
+    },
+    {
+      "id": "coco-capybara",
+      "source": "public/pets/coco-capybara_atlas16_v1_sprite.png",
+      "source_sha256": "bfe4c44959fb33ac641c8dd377abc0d96a60435c34ad3c1d657c28f10bf7c1c5",
+      "edited_poses": "sources/coco-capybara-edited-poses.png",
+      "edited_poses_sha256": "ee349db1a6f4e8b96bee0613c9f602df8171075b44307e727a550a2d4ef17486",
+      "sprite_sheet_path": "pets/coco-capybara_atlas16_v2_sprite.png",
+      "sprite_sha256": "44ad5bb7bf5e4cb5fddc45087203df89d8ca3c04614e013537a328d3254837bb",
+      "width": 1280,
+      "height": 1280,
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "headPreservationCut": 194,
+      "repairedFrames": [
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15
+      ],
+      "measurements": [
+        {
+          "frame": 4,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19570,
+          "detachedPixelsRemoved": 1582
+        },
+        {
+          "frame": 5,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19517,
+          "detachedPixelsRemoved": 1626
+        },
+        {
+          "frame": 6,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19521,
+          "detachedPixelsRemoved": 1489
+        },
+        {
+          "frame": 7,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19524,
+          "detachedPixelsRemoved": 1708
+        },
+        {
+          "frame": 12,
+          "generatedCell": 1,
+          "bodyTranslationY": -1,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19859,
+          "detachedPixelsRemoved": 631
+        },
+        {
+          "frame": 13,
+          "generatedCell": 2,
+          "bodyTranslationY": 0,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19578,
+          "detachedPixelsRemoved": 909
+        },
+        {
+          "frame": 14,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19650,
+          "detachedPixelsRemoved": 777
+        },
+        {
+          "frame": 15,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 273,
+          "headPreserved": true,
+          "headPixels": 19586,
+          "detachedPixelsRemoved": 733
+        }
+      ],
+      "input_image": "sources/coco-capybara-edit-input.png",
+      "prompt": "Precise sprite anatomy correction, NOT a redesign. Edit the supplied 2x2 transparent sprite sheet in place. Preserve the exact four-cell arrangement, existing head positions and size within each cell, facial expressions, eye shape, colors, proportions, direction, tail and original soft outlined game illustration style. Every character must have EXACTLY FOUR limbs total: two forelimbs and two hindlimbs. The current error is extra forelimbs on the chest while their old legs remain on the ground. REMOVE the duplicate grounded forelegs, reconnect the belly naturally and retain the existing raised gestures. TOP LEFT: hungry, both forepaws held at chest, only TWO hindfeet on ground. TOP RIGHT and BOTTOM LEFT: happy, ONE forepaw raised, the other forepaw and TWO hindfeet on the ground, exactly THREE grounded feet total. BOTTOM RIGHT: eating, TWO forepaws held near mouth, only TWO hindfeet grounded. No spare paw nubs or concealed duplicate legs. Keep the original shoulders, hip position, head and floor baseline stable. All four complete sprites must remain in their own equally sized square cells, with generous transparent margins. Genuine alpha transparency, no black/white/checkerboard background, no particles or glow around silhouette, no text or cell borders. Count the limb roots carefully; toes and tail do not count as limbs. Character identity: the same warm brown baby capybara Coco, with large rounded brown muzzle and small rounded ears. Preserve the fur, muzzle, eyes and expression in each cell.",
+      "anatomyReview": "Manually reviewed all repaired body poses: two forelimbs plus two hindlimbs; existing face preserved; wings/tail excluded from count."
+    },
+    {
+      "id": "nurung-fox",
+      "source": "public/pets/nurung-fox_atlas16_v1_sprite.png",
+      "source_sha256": "3f9026a4c403a7f870d50b8c96338e76ccacc4e65c4cb75abf03024b966effed",
+      "edited_poses": "sources/nurung-fox-edited-poses.png",
+      "edited_poses_sha256": "64f8b1fddcc55f4cdbf1fe56cba680a3481a2c6fe863c9bf22946f0999496d2d",
+      "sprite_sheet_path": "pets/nurung-fox_atlas16_v2_sprite.png",
+      "sprite_sha256": "b8d08ba0226203f9049ef1e93642d0d0db9c9ae9548929cb79e27bb25cb43361",
+      "width": 1280,
+      "height": 1280,
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "headPreservationCut": 194,
+      "repairedFrames": [
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15
+      ],
+      "measurements": [
+        {
+          "frame": 4,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 21030,
+          "detachedPixelsRemoved": 2603
+        },
+        {
+          "frame": 5,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 21010,
+          "detachedPixelsRemoved": 2595
+        },
+        {
+          "frame": 6,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 21023,
+          "detachedPixelsRemoved": 2841
+        },
+        {
+          "frame": 7,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 21002,
+          "detachedPixelsRemoved": 2614
+        },
+        {
+          "frame": 12,
+          "generatedCell": 1,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 20686,
+          "detachedPixelsRemoved": 3008
+        },
+        {
+          "frame": 13,
+          "generatedCell": 2,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 20684,
+          "detachedPixelsRemoved": 3052
+        },
+        {
+          "frame": 14,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 20645,
+          "detachedPixelsRemoved": 2664
+        },
+        {
+          "frame": 15,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 20665,
+          "detachedPixelsRemoved": 2610
+        }
+      ],
+      "input_image": "sources/nurung-fox-edit-input.png",
+      "prompt": "Precise sprite anatomy correction, NOT a redesign. Edit the supplied 2x2 transparent sprite sheet in place. Preserve the exact four-cell arrangement, existing head positions and size within each cell, facial expressions, eye shape, colors, proportions, direction, tail and original soft outlined game illustration style. Every character must have EXACTLY FOUR limbs total: two forelimbs and two hindlimbs. The current error is extra forelimbs on the chest while their old legs remain on the ground. REMOVE the duplicate grounded forelegs, reconnect the belly naturally and retain the existing raised gestures. TOP LEFT: hungry, both forepaws held at chest, only TWO hindfeet on ground. TOP RIGHT and BOTTOM LEFT: happy, ONE forepaw raised, the other forepaw and TWO hindfeet on the ground, exactly THREE grounded feet total. BOTTOM RIGHT: eating, TWO forepaws held near mouth, only TWO hindfeet grounded. No spare paw nubs or concealed duplicate legs. Keep the original shoulders, hip position, head and floor baseline stable. All four complete sprites must remain in their own equally sized square cells, with generous transparent margins. Genuine alpha transparency, no black/white/checkerboard background, no particles or glow around silhouette, no text or cell borders. Count the limb roots carefully; toes and tail do not count as limbs. Character identity: exactly the same small cream and sandy-orange fennec fox with very large ears, fluffy cream chest, golden-brown eyes and a curled fluffy tail on its left. Preserve each original expression and paw gesture. The corrected two hind paws rest far left and far right; remove the two old vertical front legs when both arms are raised.",
+      "anatomyReview": "Manually reviewed all repaired body poses: two forelimbs plus two hindlimbs; existing face preserved; wings/tail excluded from count."
+    },
+    {
+      "id": "peach-axolotl",
+      "source": "public/pets/peach-axolotl_atlas16_v1_sprite.png",
+      "source_sha256": "16fa8ac0180d8be88b68f180084a82f65a5b6b1c4a1c53b1c92c0529ec00f260",
+      "edited_poses": "sources/peach-axolotl-edited-poses.png",
+      "edited_poses_sha256": "439ed38ef6fc58728e8048cbde29327e86ad163fcb3ead1144f122266f49811d",
+      "sprite_sheet_path": "pets/peach-axolotl_atlas16_v2_sprite.png",
+      "sprite_sha256": "8fcd9b138c49a8d4537e9c13b090b2ddfa28e5e246accbf7d803ccef401136b9",
+      "width": 1280,
+      "height": 1280,
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "headPreservationCut": 194,
+      "repairedFrames": [
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15
+      ],
+      "measurements": [
+        {
+          "frame": 4,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20460,
+          "detachedPixelsRemoved": 1995
+        },
+        {
+          "frame": 5,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20428,
+          "detachedPixelsRemoved": 1987
+        },
+        {
+          "frame": 6,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20435,
+          "detachedPixelsRemoved": 1803
+        },
+        {
+          "frame": 7,
+          "generatedCell": 0,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20445,
+          "detachedPixelsRemoved": 1842
+        },
+        {
+          "frame": 12,
+          "generatedCell": 1,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20512,
+          "detachedPixelsRemoved": 2471
+        },
+        {
+          "frame": 13,
+          "generatedCell": 2,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20384,
+          "detachedPixelsRemoved": 2747
+        },
+        {
+          "frame": 14,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20430,
+          "detachedPixelsRemoved": 2842
+        },
+        {
+          "frame": 15,
+          "generatedCell": 3,
+          "bodyTranslationY": 0,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 20474,
+          "detachedPixelsRemoved": 2943
+        }
+      ],
+      "input_image": "sources/peach-axolotl-edit-input.png",
+      "prompt": "Precise sprite anatomy correction, NOT a redesign. Edit the supplied 2x2 transparent sprite sheet in place. Preserve the exact four-cell arrangement, existing head positions and size within each cell, facial expressions, eye shape, colors, proportions, direction, tail and original soft outlined game illustration style. Every character must have EXACTLY FOUR limbs total: two forelimbs and two hindlimbs. The current error is extra forelimbs on the chest while their old legs remain on the ground. REMOVE the duplicate grounded forelegs, reconnect the belly naturally and retain the existing raised gestures. TOP LEFT: hungry, both forepaws held at chest, only TWO hindfeet on ground. TOP RIGHT and BOTTOM LEFT: happy, ONE forepaw raised, the other forepaw and TWO hindfeet on the ground, exactly THREE grounded feet total. BOTTOM RIGHT: eating, TWO forepaws held near mouth, only TWO hindfeet grounded. No spare paw nubs or concealed duplicate legs. Keep the original shoulders, hip position, head and floor baseline stable. All four complete sprites must remain in their own equally sized square cells, with generous transparent margins. Genuine alpha transparency, no black/white/checkerboard background, no particles or glow around silhouette, no text or cell borders. Count the limb roots carefully; toes and tail do not count as limbs. Character identity: exactly the same peach-pink baby axolotl with rosy eyes, six petal-like external gill branches and a translucent broad pink tail to the left. Its gills and tail are not limbs and must be preserved. In BOTH happy cells preserve two raised forepaws as in the input (one waving, one near chest); therefore ONLY TWO hindfeet remain on ground in these cells as well. Erase all duplicated central front legs and reconstruct the pale pink belly.",
+      "anatomyReview": "Manually reviewed all repaired body poses: two forelimbs plus two hindlimbs; existing face preserved; wings/tail excluded from count."
+    },
+    {
+      "id": "cloud-alpaca",
+      "source": "public/pets/cloud-alpaca_atlas16_v1_sprite.png",
+      "source_sha256": "92492fc43f032255d76019f54750b5ee45d42285473b98b3dd3a2d414599e75d",
+      "edited_poses": "sources/cloud-alpaca-edited-poses.png",
+      "edited_poses_sha256": "7e3e2e189f2b55b4903f361998762689dce254b1ce734b49147f27df315f4745",
+      "sprite_sheet_path": "pets/cloud-alpaca_atlas16_v2_sprite.png",
+      "sprite_sha256": "ba2668cfe5ae8e4fda7e35fdab55be445b333c47aa12811a8adf1abba77f675d",
+      "width": 1280,
+      "height": 1280,
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "headPreservationCut": 194,
+      "repairedFrames": [
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15
+      ],
+      "measurements": [
+        {
+          "frame": 4,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18087,
+          "detachedPixelsRemoved": 5593
+        },
+        {
+          "frame": 5,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18065,
+          "detachedPixelsRemoved": 4661
+        },
+        {
+          "frame": 6,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18064,
+          "detachedPixelsRemoved": 3798
+        },
+        {
+          "frame": 7,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18078,
+          "detachedPixelsRemoved": 5118
+        },
+        {
+          "frame": 12,
+          "generatedCell": 1,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18137,
+          "detachedPixelsRemoved": 5942
+        },
+        {
+          "frame": 13,
+          "generatedCell": 2,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18152,
+          "detachedPixelsRemoved": 4261
+        },
+        {
+          "frame": 14,
+          "generatedCell": 3,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18114,
+          "detachedPixelsRemoved": 4477
+        },
+        {
+          "frame": 15,
+          "generatedCell": 3,
+          "bodyTranslationY": -1,
+          "ground": 272,
+          "headPreserved": true,
+          "headPixels": 18127,
+          "detachedPixelsRemoved": 4744
+        }
+      ],
+      "input_image": "sources/cloud-alpaca-edit-input.png",
+      "prompt": "Precise sprite anatomy correction, NOT a redesign. Edit the supplied 2x2 transparent sprite sheet in place. Preserve the exact four-cell arrangement, existing head positions and size within each cell, facial expressions, eye shape, colors, proportions, direction, tail and original soft outlined game illustration style. Every character must have EXACTLY FOUR limbs total: two forelimbs and two hindlimbs. The current error is extra forelimbs on the chest while their old legs remain on the ground. REMOVE the duplicate grounded forelegs, reconnect the belly naturally and retain the existing raised gestures. TOP LEFT: hungry, both forepaws held at chest, only TWO hindfeet on ground. TOP RIGHT and BOTTOM LEFT: happy, ONE forepaw raised, the other forepaw and TWO hindfeet on the ground, exactly THREE grounded feet total. BOTTOM RIGHT: eating, TWO forepaws held near mouth, only TWO hindfeet grounded. No spare paw nubs or concealed duplicate legs. Keep the original shoulders, hip position, head and floor baseline stable. All four complete sprites must remain in their own equally sized square cells, with generous transparent margins. Genuine alpha transparency, no black/white/checkerboard background, no particles or glow around silhouette, no text or cell borders. Count the limb roots carefully; toes and tail do not count as limbs. Character identity: the same ivory baby alpaca with curly cream wool, long upright ears, small brown hooves and short fluffy tail. Never add human hands or a second pair of arms. TWO forelegs must turn into the lifted hooves rather than remaining on the floor. The only floor feet in top-left and bottom-right are the two hind hooves. Retain the existing warm wool shading.",
+      "anatomyReview": "Manually reviewed all repaired body poses: two forelimbs plus two hindlimbs; existing face preserved; wings/tail excluded from count."
+    },
+    {
+      "id": "hedge-pin",
+      "source": "public/pets/hedge-pin_atlas16_v1_sprite.png",
+      "source_sha256": "3a0f890881671c4922edbb2c8f6568bd930b21589cb482bdfbebedda063d3950",
+      "edited_poses": "sources/hedge-pin-edited-poses.png",
+      "edited_poses_sha256": "cd1e7067baaaf89f572738a72797291ce903f6050f1a1d372a66dbf53360be24",
+      "sprite_sheet_path": "pets/hedge-pin_atlas16_v2_sprite.png",
+      "sprite_sha256": "a543e628ba26e09d74bfaa71dadbf93551fd82d28ff3740feb3f065c1e41a9be",
+      "width": 1280,
+      "height": 1280,
+      "cell": 320,
+      "grid": [
+        4,
+        4
+      ],
+      "headPreservationCut": 194,
+      "repairedFrames": [
+        4,
+        5,
+        6,
+        7,
+        14,
+        15
+      ],
+      "measurements": [
+        {
+          "frame": 4,
+          "generatedCell": 0,
+          "bodyTranslationY": -2,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 19137,
+          "detachedPixelsRemoved": 3741
+        },
+        {
+          "frame": 5,
+          "generatedCell": 0,
+          "bodyTranslationY": -2,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 19147,
+          "detachedPixelsRemoved": 3854
+        },
+        {
+          "frame": 6,
+          "generatedCell": 0,
+          "bodyTranslationY": -2,
+          "ground": 269,
+          "headPreserved": true,
+          "headPixels": 19121,
+          "detachedPixelsRemoved": 3898
+        },
+        {
+          "frame": 7,
+          "generatedCell": 0,
+          "bodyTranslationY": -1,
+          "ground": 270,
+          "headPreserved": true,
+          "headPixels": 19140,
+          "detachedPixelsRemoved": 3459
+        },
+        {
+          "frame": 14,
+          "generatedCell": 2,
+          "bodyTranslationY": -1,
+          "ground": 270,
+          "headPreserved": true,
+          "headPixels": 19485,
+          "detachedPixelsRemoved": 4874
+        },
+        {
+          "frame": 15,
+          "generatedCell": 3,
+          "bodyTranslationY": -1,
+          "ground": 270,
+          "headPreserved": true,
+          "headPixels": 19504,
+          "detachedPixelsRemoved": 3230
+        }
+      ],
+      "input_image": "sources/hedge-pin-edit-input.png",
+      "prompt": "Precise anatomical repair of this existing 2x2 transparent game sprite sheet, not a character redesign. Keep the exact four-cell 2x2 grid, equal square cells, the same head and eye positions, facial expressions, proportions, camera, illustration style, colors, tail, floor baseline and transparent margins. Correct extra limbs only. Each character must have EXACTLY TWO forelimbs and TWO hindlimbs: four total, never five or six. When a forepaw is lifted, its old grounded foreleg and foot MUST be removed and replaced by a smooth natural belly. No extra paw nubs behind a leg. Preserve the original face and all non-limb details. Clean true alpha transparent background, no matte fringe, particles, glow, labels or grid lines; complete uncropped silhouettes in every cell. Character identity: the same brown baby hedgehog with layered brown spines and soft cream chest. ALL FOUR CELLS show two small forepaws already lifted in front of the chest or mouth; keep those two forepaws, remove ALL duplicate grounded FRONT paws, and leave ONLY TWO rounded hindfeet on the floor. TOP LEFT hungry with open eyes; TOP RIGHT same hungry pose with closed eyes; BOTTOM LEFT and BOTTOM RIGHT eating poses with open eyes. Do not change the eye expression in any cell.",
+      "anatomyReview": "Manually reviewed all repaired body poses: two forelimbs plus two hindlimbs; existing face preserved; wings/tail excluded from count."
+    },
+    {
+      "id": "mochi-dragon",
+      "source": "public/pets/mochi-dragon_needs8_v1_sprite.png",
+      "source_sha256": "f7f7dcf7371c7bc4429937c7520e13ba0e37d3f92efc6671adc1f8b64a8538ef",
+      "edited_poses": "sources/mochi-dragon-edited-poses.png",
+      "edited_poses_sha256": "1d460338e02c24949238a0b55b5bca1568b4d495d0e8fe2b2119960cf948802d",
+      "sprite_sheet_path": "pets/mochi-dragon_needs8_v2_sprite.png",
+      "sprite_sha256": "b4840cd3b5fa04741c3ea533d6b5f219308c44fd3f8eef22a60410b4ad9ca54a",
+      "width": 1856,
+      "height": 928,
+      "cell": 464,
+      "grid": [
+        4,
+        2
+      ],
+      "headPreservationCut": 284,
+      "repairedFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "measurements": [
+        {
+          "frame": 0,
+          "generatedCell": 0,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 48708,
+          "detachedPixelsRemoved": 18205
+        },
+        {
+          "frame": 1,
+          "generatedCell": 0,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 48601,
+          "detachedPixelsRemoved": 22098
+        },
+        {
+          "frame": 2,
+          "generatedCell": 0,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 48598,
+          "detachedPixelsRemoved": 25578
+        },
+        {
+          "frame": 3,
+          "generatedCell": 0,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 48657,
+          "detachedPixelsRemoved": 21406
+        },
+        {
+          "frame": 4,
+          "generatedCell": 2,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 48351,
+          "detachedPixelsRemoved": 25284
+        },
+        {
+          "frame": 5,
+          "generatedCell": 2,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 48249,
+          "detachedPixelsRemoved": 29892
+        },
+        {
+          "frame": 6,
+          "generatedCell": 2,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 47660,
+          "detachedPixelsRemoved": 26522
+        },
+        {
+          "frame": 7,
+          "generatedCell": 2,
+          "bodyTranslationY": -2,
+          "ground": 403,
+          "headPreserved": true,
+          "headPixels": 48245,
+          "detachedPixelsRemoved": 28997
+        }
+      ],
+      "input_image": "sources/mochi-dragon-edit-input.png",
+      "prompt": "Precise anatomical repair of this existing 2x2 transparent game sprite sheet, not a character redesign. Keep the exact four-cell 2x2 grid, equal square cells, the same head and eye positions, facial expressions, proportions, camera, illustration style, colors, tail, floor baseline and transparent margins. Correct extra limbs only. Each character must have EXACTLY TWO forelimbs and TWO hindlimbs: four total, never five or six. When a forepaw is lifted, its old grounded foreleg and foot MUST be removed and replaced by a smooth natural belly. No extra paw nubs behind a leg. Preserve the original face and all non-limb details. Clean true alpha transparent background, no matte fringe, particles, glow, labels or grid lines; complete uncropped silhouettes in every cell. Character identity: the same peach and cream baby dragon with small horns, two small bat wings, broad pink hind paw pads, and peach tail. Keep the wings and tail; they are NOT limbs. TOP ROW: hungry, one forepaw on the chest and the other forepaw on the ground, plus two big hindfeet; exactly three grounded paws and one raised paw. REMOVE the duplicate grounded forepaw on the side of the raised hand. BOTTOM ROW: lonely, BOTH forepaws held under the chin; remove BOTH duplicated grounded forelegs, leaving ONLY the two broad hind paw pads on the ground. In all frames, total limbs = two forearms + two hindlegs. Keep head, face, horns, ears, wing silhouette and pink pads unchanged.",
+      "anatomyReview": "Manually reviewed all repaired body poses: two forelimbs plus two hindlimbs; existing face preserved; wings/tail excluded from count."
+    }
+  ]
+}

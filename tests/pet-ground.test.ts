@@ -1,6 +1,7 @@
 import sharp from 'sharp'
 import {expect,it} from 'vitest'
 import {petSpecies,petUsesAtlas} from '@/features/pets/pet-catalog'
+import {petSpriteSheetUrl} from '@/features/pets/pet-sprite-sheets'
 import {petFrameDrawLayout} from '@/features/pets/pet-draw-layout'
 
 it.each(petSpecies)('keeps $name grounded across all resting, eating and interaction frames',async pet=>{
@@ -8,8 +9,8 @@ it.each(petSpecies)('keeps $name grounded across all resting, eating and interac
   const kinds=atlas?['happy'] as const:['idle','happy','eat','needs'] as const
   const grounds:number[]=[]
   for(const kind of kinds){
-    const suffix=atlas?'atlas16_v1':kind==='idle'?'idle8_v2':`${kind}8_v1`
-    const {data,info}=await sharp(`public/pets/${pet.id}_${suffix}_sprite.png`).ensureAlpha().raw().toBuffer({resolveWithObject:true})
+    const sheet=atlas?'atlas16':kind==='idle'?'idle8':kind==='needs'?'needs8':kind==='eat'?'eat8':'happy8'
+    const {data,info}=await sharp(`public${petSpriteSheetUrl(pet.id,sheet)}`).ensureAlpha().raw().toBuffer({resolveWithObject:true})
     const cell=info.width/4
     for(let frame=0;frame<(atlas?16:8);frame++){
       const rows:number[]=[]

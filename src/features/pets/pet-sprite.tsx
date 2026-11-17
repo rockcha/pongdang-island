@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { petUsesAtlas, type PetClip, type PetSpeciesId } from './pet-catalog'
 import { petAtlasFrame } from './pet-atlas'
+import { petSpriteSheetUrl } from './pet-sprite-sheets'
 import { petDrawLayout, petFrameDrawLayout, petBlinkEyes } from './pet-draw-layout'
 import { loadPetImage, readyPetImage } from './pet-sprite-images'
 import { createPetBlinkSchedule, petIdleFrame, petBlinkStep } from './pet-idle-animation'
@@ -12,7 +13,7 @@ export function usePetReactionReady(
   motion: 'happy' | 'eat' = 'happy',
 ) {
   const [ready, setReady] = useState<string | null>(null)
-  const url = speciesId ? petUsesAtlas(speciesId) ? `/pets/${speciesId}_atlas16_v1_sprite.png` : `/pets/${speciesId}_${motion}8_v1_sprite.png` : null
+  const url = speciesId ? petSpriteSheetUrl(speciesId, petUsesAtlas(speciesId) ? 'atlas16' : motion === 'eat' ? 'eat8' : 'happy8') : null
   useEffect(() => {
     if (!url) return
     let alive = true
@@ -160,7 +161,7 @@ export function PetSprite({
         paint()
       }
     }
-    const url = `/pets/${speciesId}_${sheet}_v${sheet === 'idle8' ? 2 : 1}_sprite.png`
+    const url = petSpriteSheetUrl(speciesId, sheet)
     if (sheet === 'needs8' && !reduced) {
       const blinkUrl = `/pets/${speciesId}_needs_blink8_v1_sprite.png`
       blinkImg = readyPetImage(blinkUrl)

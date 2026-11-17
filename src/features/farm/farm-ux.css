@@ -8,6 +8,5 @@
 @media(prefers-reduced-motion:no-preference){[data-warning=true] .farm-status-ready{animation-duration:1s}}
 .farm-action-card>.farm-receipt-destination{display:block;margin-top:12px;font-size:11px;color:#947855;line-height:1.6}.farm-action-art>.farm-received-animal{display:block;width:80px;height:80px}.farm-received-animal>svg{width:100%;height:100%}
 .farm-action-art>.farm-good-icon>svg{display:block;width:100%;height:100%}
-.farm-shore-foam{opacity:.18;animation:farm-shore-wash 6s ease-in-out infinite}
-@keyframes farm-shore-wash{0%,100%{opacity:.08;stroke-dashoffset:0}50%{opacity:.23;stroke-dashoffset:-8}}
+.farm-shore-foam{opacity:.15}
 @media(prefers-reduced-motion:reduce){.farm-shore-foam{animation:none;opacity:.15}}

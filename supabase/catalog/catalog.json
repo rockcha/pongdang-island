@@ -1063,6 +1063,42 @@
       "alternating": false
     },
     {
+      "id": "bait_map_compass_jelly",
+      "name": "나침반 꿀젤리",
+      "description": "꿀 속에 떠 있는 나침반이 잊힌 항로를 가리켜요. 직접 낚시 지도 조각 확률 8%에 유물 보너스가 더해져요.",
+      "price": 160,
+      "image_path": "/items/baits/map-compass-honey-jelly-v1.png",
+      "sort_order": 127,
+      "common_bp": 6700,
+      "rare_bp": 3000,
+      "epic_bp": 300,
+      "mythic_bp": 0,
+      "failure_bp": 0,
+      "effect_kind": "fish",
+      "effect_description": "꿀 속에 떠 있는 나침반이 잊힌 항로를 가리켜요. 직접 낚시 지도 조각 확률 8%에 유물 보너스가 더해져요.",
+      "success_chance_bp": 10000,
+      "fish_only": false,
+      "alternating": false
+    },
+    {
+      "id": "bait_map_lantern_berry",
+      "name": "길잡이 등불열매",
+      "description": "은은한 등불처럼 빛나는 열매가 숨은 항로를 밝혀요. 직접 낚시 지도 조각 확률 10%에 유물 보너스가 더해져요.",
+      "price": 280,
+      "image_path": "/items/baits/map-wayfinder-lantern-berry-v1.png",
+      "sort_order": 128,
+      "common_bp": 3200,
+      "rare_bp": 6500,
+      "epic_bp": 300,
+      "mythic_bp": 0,
+      "failure_bp": 0,
+      "effect_kind": "fish",
+      "effect_description": "은은한 등불처럼 빛나는 열매가 숨은 항로를 밝혀요. 직접 낚시 지도 조각 확률 10%에 유물 보너스가 더해져요.",
+      "success_chance_bp": 10000,
+      "fish_only": false,
+      "alternating": false
+    },
+    {
       "id": "bait_mermaid_whisper_candy",
       "name": "인어의 귓속말 캔디",
       "description": "인어의 달콤한 노래가 희귀 물고기를 유혹해요.",
@@ -49047,7 +49083,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_aurora_clockwork_bug",
@@ -49069,7 +49106,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_breadcrumbs",
@@ -49092,7 +49130,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_cloud_dough",
@@ -49113,7 +49152,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_coral_pollen",
@@ -49135,7 +49175,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_cracked_star",
@@ -49156,7 +49197,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_deep_sleep_sachet",
@@ -49179,7 +49221,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_epic",
@@ -49202,7 +49245,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_firefly_pupa",
@@ -49223,7 +49267,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_first_greeting",
@@ -49246,7 +49291,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_forbidden_star",
@@ -49269,7 +49315,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_goblin_bell_cherry",
@@ -49290,7 +49337,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_grain_dumpling",
@@ -49313,7 +49361,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_grubby_magnet",
@@ -49334,7 +49383,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_halfmoon_honey",
@@ -49355,7 +49405,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_honey_dumpling",
@@ -49377,7 +49428,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_lightning_stardust",
@@ -49398,7 +49450,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_magnet",
@@ -49419,7 +49472,56 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
+    },
+    {
+      "id": "bait_map_compass_jelly",
+      "name": "나침반 꿀젤리",
+      "price": 160,
+      "success_chance_bp": 10000,
+      "common_bp": 6700,
+      "rare_bp": 3000,
+      "epic_bp": 300,
+      "mythic_bp": 0,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
+      "target_kinds": [
+        "fish",
+        "trash",
+        "decoration"
+      ],
+      "effect_kind": "standard",
+      "native_multiplier": 1,
+      "night_common_bp": null,
+      "night_rare_bp": null,
+      "night_wait_min_seconds": null,
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 800
+    },
+    {
+      "id": "bait_map_lantern_berry",
+      "name": "길잡이 등불열매",
+      "price": 280,
+      "success_chance_bp": 10000,
+      "common_bp": 3200,
+      "rare_bp": 6500,
+      "epic_bp": 300,
+      "mythic_bp": 0,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
+      "target_kinds": [
+        "fish",
+        "trash",
+        "decoration"
+      ],
+      "effect_kind": "standard",
+      "native_multiplier": 1,
+      "night_common_bp": null,
+      "night_rare_bp": null,
+      "night_wait_min_seconds": null,
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 1000
     },
     {
       "id": "bait_mermaid_whisper_candy",
@@ -49440,7 +49542,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_moonshade_dumpling",
@@ -49463,7 +49566,8 @@
       "night_common_bp": 4500,
       "night_rare_bp": 5500,
       "night_wait_min_seconds": 13,
-      "night_wait_max_seconds": 25
+      "night_wait_max_seconds": 25,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_pearl_bubble",
@@ -49485,7 +49589,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_pet_biscuit",
@@ -49508,7 +49613,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_pet_macaron",
@@ -49531,7 +49637,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_pet_starter",
@@ -49554,7 +49661,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_safe",
@@ -49575,7 +49683,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_sea_memory",
@@ -49598,7 +49707,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_shell_crumbs",
@@ -49619,7 +49729,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_shooting_star_tail",
@@ -49642,7 +49753,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_snowflake_salt",
@@ -49665,7 +49777,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_special",
@@ -49688,7 +49801,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_starlight_wax",
@@ -49709,7 +49823,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     },
     {
       "id": "bait_zigzag_jelly",
@@ -49730,7 +49845,8 @@
       "night_common_bp": null,
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
-      "night_wait_max_seconds": null
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 300
     }
   ],
   "bait_production_facilities": [

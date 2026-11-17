@@ -31,7 +31,7 @@ export function fishingDisplayBait(bait:FishingBait,prepared?:PreparedFishing|nu
  const profile=prepared?.bait_id===bait.id?prepared.bait_profile:null
  if(!profile)return bait
  const alternating=profile.effect_kind==='alternating'
- return {...bait,pet_bp:profile.pet_bp??bait.pet_bp,common_bp:alternating?(prepared?.rarity==='common'?10000:0):profile.common_bp,
+ return {...bait,baseMapChanceBp:profile.map_chance_bp??bait.baseMapChanceBp,mapChanceBp:profile.effective_map_chance_bp??bait.mapChanceBp,pet_bp:profile.pet_bp??bait.pet_bp,common_bp:alternating?(prepared?.rarity==='common'?10000:0):profile.common_bp,
   rare_bp:alternating?(prepared?.rarity==='rare'?10000:0):profile.rare_bp,
   epic_bp:profile.epic_bp,mythic_bp:profile.mythic_bp,period:profile.period??undefined,target_kinds:profile.target_kinds}
 }

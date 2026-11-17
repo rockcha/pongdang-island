@@ -65,10 +65,9 @@
 .top-farm-edit-actions>button:disabled { opacity:.35; cursor:default; }
 .top-farm-edit-actions>.top-farm-edit-done { padding:0 13px; border-radius:9px; background:#95613d; color:#fff6e7; }
 @media(prefers-reduced-motion:no-preference) {
- .top-farm-waves { animation:top-farm-tide 4s ease-in-out infinite; }
  .top-farm-new-land { animation:top-farm-land-arrive .6s ease-out; }
 }
-@keyframes top-farm-tide { 0%,100% { opacity:.45; } 50% { opacity:.9; } }
+.top-farm-waves { opacity:.65; }
 @keyframes top-farm-land-arrive { from { opacity:.15; } to { opacity:1; } }
 .farm-sim-dialog { width:calc(100vw - 32px); max-width:420px; max-height:85dvh; padding:22px 18px; border-radius:20px; overflow-y:auto; background:#fff9ee; color:#74563c; border-color:#e4cfb2; }
 .farm-sim-title-art { width:70px; height:64px; margin:0 auto 6px; }

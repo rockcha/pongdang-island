@@ -112,6 +112,12 @@
 .farm-animal-dialog .farm-animal-products>div{padding:8px;min-height:58px}
 .farm-animal-purchase-footer{display:flex;flex-direction:column;gap:8px;flex:none;margin-top:auto;padding-top:10px;border-top:1px solid #eadbc5;background:#fff9ee}
 .farm-animal-purchase-footer>p{margin:0;font-size:11px;line-height:1.5;text-align:center;color:#967b5c}
+.farm-animal-quantity{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#886643;font-size:12px}
+.farm-animal-quantity>label{display:flex;flex-direction:column;gap:3px}.farm-animal-quantity small{font-size:10px;color:#a38a6b}
+.farm-animal-quantity-stepper{display:grid;grid-template-columns:36px 42px 36px;min-width:0;height:38px;border:1px solid #e3ceb0;border-radius:9px;overflow:hidden;background:#fff9ee}
+.farm-animal-quantity-stepper>button{display:grid;place-items:center;padding:0;border:0;background:transparent;color:#886643}.farm-animal-quantity-stepper>button:disabled{opacity:.3}
+.farm-animal-quantity-stepper>input{width:100%;min-width:0;padding:0;border:0;border-radius:0;background:transparent;color:#745331;text-align:center;font-size:14px;font-variant-numeric:tabular-nums;appearance:textfield}.farm-animal-quantity-stepper>input::-webkit-inner-spin-button,.farm-animal-quantity-stepper>input::-webkit-outer-spin-button{appearance:none;margin:0}
+.farm-animal-quantity-stepper>:focus-visible{outline:2px solid #ac7f4a;outline-offset:-2px}
 .farm-animal-dialog .farm-animal-purchase-footer>.farm-sim-primary{width:100%;min-height:48px;flex:none}
 .farm-animal-dialog .farm-building-store{position:static;flex:none;padding:0;margin:0;background:none}
 .farm-animal-dialog .farm-building-actions>button{min-height:40px;padding:6px}

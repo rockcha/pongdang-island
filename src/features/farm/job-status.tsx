@@ -8,8 +8,8 @@ import {farmWorkPosition} from './work-status'
 import {farmUpgradeArt} from './upgrade-art'
 import {farmResearchJobs} from './research-jobs'
 export type FarmCompletedWork={objectId:number;kind:'upgrade'|'research'|'harvest'|'clearing';good?:FarmGood;expiresAt:number}
-export function FarmJobStatus({object,simulation,now,onActivate,completed}:{object:TopviewObject;simulation:FarmSimulation;now:number;onActivate:()=>void;completed?:FarmCompletedWork}){
- const research=farmResearchJobs(simulation)[object.id],craft=simulation.processingJobs[object.id],mill=simulation.millJobs[object.id]??null,crop=simulation.cropJobs[object.id]
+export function FarmJobStatus({object,simulation,now,onActivate,completed,researchJobs}:{object:TopviewObject;simulation:FarmSimulation;now:number;onActivate:()=>void;completed?:FarmCompletedWork;researchJobs?:ReturnType<typeof farmResearchJobs>}){
+ const research=(researchJobs??farmResearchJobs(simulation))[object.id],craft=simulation.processingJobs[object.id],mill=simulation.millJobs[object.id]??null,crop=simulation.cropJobs[object.id]
  const {x,y}=farmWorkPosition(object)
  if(object.constructionReadyAt||simulation.upgradeJobs[object.id])return null
  if(crop){

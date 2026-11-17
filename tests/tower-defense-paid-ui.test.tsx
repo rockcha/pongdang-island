@@ -131,3 +131,71 @@ it('does not open a paid game after an account switch while entry is pending', a
   })
   expect(mocks.scene.read).toBeNull()
 })
+it('stops repeated successful but stale saves, keeps the request and resumes only after verified confirmation', async () => {
+  mocks.save
+    .mockResolvedValueOnce(snapshot(run()))
+    .mockImplementationOnce(async (_id, replay) =>
+      snapshot({ ...run(), cleared_stage: 1, reward: 10, replay }),
+    )
+    .mockImplementationOnce(async (_id, replay) =>
+      snapshot({ ...run(), cleared_stage: 2, reward: 20, replay }),
+    )
+  await enter()
+  fireEvent.click(screen.getByRole('button', { name: '지금 보내기' }))
+  act(() => {
+    const s = mocks.scene.read!()
+    for (let i = 0; i < 2000 && clearedTowerStages(s) < 1; i++) stepDefense(s, 0.05)
+    mocks.scene.notify!()
+  })
+  const retry = await screen.findByRole('button', { name: '저장 결과 다시 확인' })
+  expect(screen.getByText(/저장된 진행 기록이 일치하지/)).toBeTruthy()
+  expect(mocks.scene.read!().phase).toBe('paused')
+  for (let i = 0; i < 5; i++) act(() => mocks.scene.notify!())
+  fireEvent.click(screen.getByRole('button', { name: '계속하기' }))
+  expect(mocks.save).toHaveBeenCalledTimes(1)
+  expect(mocks.scene.read!().phase).toBe('paused')
+  fireEvent.click(retry)
+  await screen.findByText('1스테이지 통과 · 10골드 지급')
+  expect(mocks.save.mock.calls[0]).toEqual(mocks.save.mock.calls[1])
+  for (let i = 0; i < 5; i++) act(() => mocks.scene.notify!())
+  expect(mocks.save).toHaveBeenCalledTimes(2)
+  // Keep this regression focused on saving across waves, rather than losing an undefended castle.
+  mocks.scene.read!().lives = 1000
+  mocks.scene.read!().maxLives = 1000
+  fireEvent.click(screen.getByRole('button', { name: '지금 보내기' }))
+  act(() => {
+    const s = mocks.scene.read!()
+    for (let i = 0; i < 2000 && clearedTowerStages(s) < 2; i++) stepDefense(s, 0.05)
+    mocks.scene.notify!()
+  })
+  await screen.findByText('2스테이지 통과 · 10골드 지급')
+  expect(mocks.save).toHaveBeenCalledTimes(3)
+})
+it('saves periodic checkpoints once and still finalizes at the same tick', async () => {
+  mocks.save.mockImplementation(async (_id, replay, final) =>
+    snapshot({ ...run(), replay, finished_at: final ? new Date().toISOString() : null }),
+  )
+  await enter()
+  act(() => {
+    mocks.scene.read!().tick = 2000
+    mocks.scene.notify!()
+  })
+  await waitFor(() => expect(mocks.scene.read!().phase).toBe('build'))
+  expect(mocks.save).toHaveBeenCalledTimes(1)
+  expect(mocks.save.mock.calls[0][2]).toBe(false)
+  for (let i = 0; i < 5; i++) act(() => mocks.scene.notify!())
+  expect(mocks.save).toHaveBeenCalledTimes(1)
+  act(() => {
+    mocks.scene.read!().phase = 'lost'
+    mocks.scene.notify!()
+  })
+  await waitFor(() => expect(mocks.save).toHaveBeenCalledTimes(2))
+  await waitFor(() =>
+    expect(
+      screen.getByRole('button', { name: '다시 도전 · 30골드' }).hasAttribute('disabled'),
+    ).toBe(false),
+  )
+  expect(mocks.save.mock.calls[1][2]).toBe(true)
+  for (let i = 0; i < 5; i++) act(() => mocks.scene.notify!())
+  expect(mocks.save).toHaveBeenCalledTimes(2)
+})

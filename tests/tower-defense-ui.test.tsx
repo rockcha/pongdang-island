@@ -330,9 +330,24 @@ it('keeps drag-placed towers armed for the next tap and lets Escape cancel the r
   expect(screen.queryByRole('alertdialog')).toBeNull()
 })
 
-function pointer(target: EventTarget, type: string, x: number, y: number) {
+it('allows touch scrolling in the catalog without arming or placing a tower', async () => {
+  await start()
+  openCatalog()
+  const button = screen.getByRole('button', { name: '문어포 90코인' })
+  pointer(button, 'pointerdown', 30, 700, 'touch')
+  pointer(window, 'pointermove', SITES[cellAt(3, 11)].x, SITES[cellAt(3, 11)].y + 100, 'touch')
+  pointer(window, 'pointercancel', 30, 600, 'touch')
+  expect(screen.getByRole('dialog', { name: '포탑 구매' })).toBeTruthy()
+  expect(scene.read!().buildings).toHaveLength(0)
+  expect(screen.queryByRole('button', { name: '배치 취소' })).toBeNull()
+  fireEvent.click(button)
+  expect(screen.getByRole('button', { name: '배치 취소' })).toBeTruthy()
+})
+
+function pointer(target: EventTarget, type: string, x: number, y: number, pointerType = 'mouse') {
   const event = new MouseEvent(type, { bubbles: true, clientX: x, clientY: y, button: 0 })
   Object.defineProperty(event, 'pointerId', { value: 1 })
+  Object.defineProperty(event, 'pointerType', { value: pointerType })
   fireEvent(target, event)
 }
 it('cancels placement with Escape without spending or opening the exit dialog', async () => {

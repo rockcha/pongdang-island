@@ -371,13 +371,14 @@ it('can clear all thirty waves with a paid maze and anti-air strategy across a s
 it('uses the shortest weighted detour without cutting blocked corners and refreshes after a sale', () => {
   const s = prepared()
   s.gold = 10000
-  const start = cellAt(6, 10),
-    wall = cellAt(6, 11)
+  const center = HOME % GRID.columns
+  const start = cellAt(center, 10),
+    wall = cellAt(center, 11)
   refreshFlow(s)
   expect(s.flow[start]).toBeCloseTo(4)
   expect(build(s, wall, 'wall')).toBe(true)
   expect(s.flow[start]).toBeCloseTo(4 + Math.SQRT2, 4)
-  expect([cellAt(5, 10), cellAt(7, 10)]).toContain(s.next[start])
+  expect([cellAt(center - 1, 10), cellAt(center + 1, 10)]).toContain(s.next[start])
   const effectCount = s.effects.length
   expect(build(s, wall, 'wall')).toBe(false)
   expect(s.effects).toHaveLength(effectCount)

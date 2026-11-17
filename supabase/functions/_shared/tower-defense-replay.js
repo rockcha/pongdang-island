@@ -586,7 +586,7 @@ var BUILDINGS = {
 //#endregion
 //#region src/features/arcade/tower-defense-engine.ts
 var GRID = {
-	columns: 12,
+	columns: 11,
 	rows: 15,
 	cell: 36,
 	x: 18,
@@ -595,7 +595,7 @@ var GRID = {
 GRID.columns * GRID.cell + GRID.x * 2, GRID.rows * GRID.cell + GRID.y * 2;
 var CELL_COUNT = GRID.columns * GRID.rows;
 var cellAt = (col, row) => row * GRID.columns + col;
-var HOME = cellAt(6, GRID.rows - 1);
+var HOME = cellAt(Math.floor(GRID.columns / 2), GRID.rows - 1);
 var ENTRANCES = [cellAt(0, 0), cellAt(GRID.columns - 1, 0)];
 var SITES = Array.from({ length: CELL_COUNT }, (_, i) => ({
 	x: GRID.x + (i % GRID.columns + .5) * GRID.cell,
@@ -1499,11 +1499,16 @@ function towerCheckpoint(s, seed) {
 	return {
 		version: 1,
 		seed,
+		grid: {
+			columns: GRID.columns,
+			rows: GRID.rows
+		},
 		state: JSON.parse(JSON.stringify(stored))
 	};
 }
 function restoreTowerCheckpoint(checkpoint, seed, ticks) {
 	if (!checkpoint || checkpoint.version !== 1 || checkpoint.seed !== seed || checkpoint.state?.tick !== ticks) throw Error("INVALID_CHECKPOINT");
+	if (checkpoint.grid && (checkpoint.grid.columns !== GRID.columns || checkpoint.grid.rows !== GRID.rows)) throw Error("ENGINE_VERSION_MISMATCH");
 	const s = createDefense(seed);
 	Object.assign(s, JSON.parse(JSON.stringify(checkpoint.state)));
 	if (s.enemies.length + s.enemyPool.length !== 256 || s.projectiles.length + s.projectilePool.length !== 128 || s.effects.length + s.effectPool.length !== 96 || new Set([...s.enemies, ...s.enemyPool].map((e) => e.slot)).size !== 256) throw Error("INVALID_CHECKPOINT");
@@ -1529,6 +1534,15 @@ function verifyTowerReplay(value, seed, options = {}) {
 	if (options.availableSeconds !== void 0 && replay.ticks * .05 > Math.max(0, options.availableSeconds) * 2 * 2 + 2) throw Error("REPLAY_TOO_FAST");
 	const saved = options.previous?.checkpoint;
 	if ((previous.ticks > 0 || previous.commands.length > 0) && !saved) throw Error("INVALID_CHECKPOINT");
+	if (saved && !saved.grid) {
+		const expected = verifyTowerReplay(previous, seed).checkpoint;
+		const canonical = (value) => {
+			if (Array.isArray(value)) return value.map(canonical);
+			if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b)).map(([key, item]) => [key, canonical(item)]));
+			return value;
+		};
+		if (JSON.stringify(canonical(saved.state)) !== JSON.stringify(canonical(expected.state))) throw Error("ENGINE_VERSION_MISMATCH");
+	}
 	const s = saved ? restoreTowerCheckpoint(saved, seed, previous.ticks) : createDefense(seed);
 	if (!saved) beginDefense(s);
 	let index = previous.commands.length;

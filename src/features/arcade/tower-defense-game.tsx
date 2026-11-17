@@ -368,6 +368,8 @@ export default function TowerDefenseGame() {
         onDragStart={(event) => event.preventDefault()}
         onPointerDown={(event) => {
           if (event.button !== 0) return
+          // Let touch gestures scroll the catalog; tapping still selects a tower.
+          if (event.pointerType === 'touch' && kind !== 'wall') return
           drag.current = {
             id: event.pointerId,
             x: event.clientX,

@@ -24,9 +24,9 @@ function trace(seed: number, maze: boolean) {
   s.lives = s.maxLives = 100
   if (maze)
     for (const [row, gap] of [
-      [3, 11],
+      [3, GRID.columns - 1],
       [6, 0],
-      [9, 11],
+      [9, GRID.columns - 1],
     ])
       for (let x = 0; x < GRID.columns; x++)
         if (x !== gap) expect(build(s, cellAt(x, row), 'wall')).toBe(true)
@@ -67,6 +67,8 @@ function trace(seed: number, maze: boolean) {
 }
 
 it('places entrance markers on the leftmost and rightmost top cells', () => {
+  expect(GRID.columns).toBe(11)
+  expect(SITES[HOME].x).toBe((SITES[ENTRANCES[0]].x + SITES[ENTRANCES[1]].x) / 2)
   expect(ENTRANCES).toEqual([cellAt(0, 0), cellAt(GRID.columns - 1, 0)])
   const board = fs.readFileSync('public/arcade/tower-defense/field-v5.svg', 'utf8')
   for (const gate of ENTRANCES)

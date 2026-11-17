@@ -5,6 +5,7 @@ import { useAccountResource } from '@/lib/account-query'
 import { randomId } from '@/lib/random-id'
 import { pauseDefense, type DefenseState } from './tower-defense-engine'
 import {
+  assertTowerSaveResponse,
   readTowerDefense,
   saveTowerDefense,
   startTowerDefense,
@@ -20,7 +21,13 @@ import {
   type TowerReplay,
 } from './tower-defense-replay'
 
-type Pending = { runId: string; replay: TowerReplay; final: boolean; resume: boolean }
+type Pending = {
+  runId: string
+  replay: TowerReplay
+  final: boolean
+  resume: boolean
+  clearedStage: number
+}
 
 /** Financial requests retain their exact payload until a confirmed response. */
 export function useTowerDefenseRun(
@@ -38,6 +45,7 @@ export function useTowerDefenseRun(
     operation = useRef<string | null>(null)
   const pending = useRef<Pending | null>(null),
     alive = useRef(true)
+  const confirmed = useRef<string | null>(null)
   const [paid, setPaid] = useState(false),
     [busy, setBusy] = useState(false)
   const [error, setError] = useState(''),
@@ -52,6 +60,7 @@ export function useTowerDefenseRun(
     paidRef.current = false
     run.current = null
     pending.current = null
+    confirmed.current = null
     operation.current = null
     locked.current = false
     replay.current = emptyTowerReplay()
@@ -88,6 +97,7 @@ export function useTowerDefenseRun(
       replay.current = structuredClone(data.run.replay)
       run.current = data.run
       pending.current = null
+      confirmed.current = null
       operation.current = null
       paidRef.current = true
       setPaid(true)
@@ -115,6 +125,7 @@ export function useTowerDefenseRun(
         replay: { ...structuredClone(replay.current), ticks: state.current.tick },
         final,
         resume: state.current.phase !== 'paused',
+        clearedStage: clearedTowerStages(state.current),
       }
       const request = pending.current
       locked.current = true
@@ -123,11 +134,24 @@ export function useTowerDefenseRun(
       setError('')
       sync()
       try {
-        const data = await saveTowerDefense(request.runId, request.replay, request.final)
+        const data = await saveTowerDefense(
+          request.runId,
+          request.replay,
+          request.final,
+          request.clearedStage,
+        )
         if (!alive.current || !isCurrentAccount(scope)) return false
-        if (!data.run || data.run.id !== request.runId) throw Error('RUN_UNAVAILABLE')
+        assertTowerSaveResponse(
+          data,
+          request.runId,
+          request.replay,
+          request.final,
+          request.clearedStage,
+        )
+        if (!data.run) throw Error('RUN_UNAVAILABLE')
         const earned = data.run.reward - run.current.reward
         run.current = data.run
+        confirmed.current = `${request.runId}:${request.replay.ticks}:${request.replay.commands.length}:${request.final}`
         pending.current = null
         if (earned > 0) setReceipt(`${data.run.cleared_stage}스테이지 통과 · ${earned}골드 지급`)
         if (request.resume && !request.final) pauseDefense(state.current, false)
@@ -160,6 +184,10 @@ export function useTowerDefenseRun(
     )
       return
     const terminal = s.phase === 'won' || s.phase === 'lost'
+    if (
+      confirmed.current === `${current.id}:${s.tick}:${replay.current.commands.length}:${terminal}`
+    )
+      return
     if (
       terminal ||
       clearedTowerStages(s) > current.cleared_stage ||

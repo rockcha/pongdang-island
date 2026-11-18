@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "c6d51d2f584803e08cd5b9a88c8914764a75dee6075dffb733a864b112fdb855",
+  "migrationHash": "1ca2722f45002eb6beb3b3873669e58f8b421cf3a05462844b05d351dcc34ef4",
   "structure": {
     "enums": [
       {
@@ -17003,6 +17003,13 @@
         "definition": "CREATE TRIGGER production_ready_notice_reset BEFORE UPDATE OF started_at ON app_private.production_sites FOR EACH ROW WHEN ((old.started_at IS DISTINCT FROM new.started_at)) EXECUTE FUNCTION app_private.reset_production_ready_notice()"
       },
       {
+        "name": "schedule_completion_push_window",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER schedule_completion_push_window BEFORE INSERT ON app_private.push_deliveries FOR EACH ROW EXECUTE FUNCTION app_private.schedule_completion_push_window()"
+      },
+      {
         "name": "title_daily_quest",
         "table": "quest_claims",
         "schema": "app_private",
@@ -20503,6 +20510,16 @@
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.savings_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_now timestamptz:=clock_timestamp();v_account jsonb;v_history jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select app_private.savings_payload(a,v_now) into v_account from public.shell_savings a where a.user_id=v_uid and a.closed_at is null;\n select coalesce(jsonb_agg(q.payload),'[]'::jsonb) into v_history from (\n  select app_private.savings_payload(a,v_now) payload from public.shell_savings a\n  where a.user_id=v_uid and a.closed_at is not null order by a.closed_at desc,a.id limit 5\n ) q;\n return jsonb_build_object('relicBonusPercent',least(50,greatest(0,app_private.relic_bonus('savings_interest_bonus_percent'))),'account',v_account,'history',v_history,'serverNow',v_now,\n  'gold',coalesce((select gold from public.player_wallets where user_id=v_uid),0));\nend;\n$function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "schedule_completion_push_window",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.schedule_completion_push_window()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if new.category in ('production','bait-production','expedition','harbor')\n  and new.notification_id is not null and new.status='pending' and new.attempts=0 then\n  new.available_at:=greatest(new.available_at,date_trunc('minute',clock_timestamp())+interval '1 minute');\n end if;\n return new;\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "sell_collectibles",
@@ -48713,6 +48730,27 @@
       },
       {
         "name": "savings_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "schedule_completion_push_window",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "schedule_completion_push_window",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "schedule_completion_push_window",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,

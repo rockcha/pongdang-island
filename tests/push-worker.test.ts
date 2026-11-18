@@ -72,6 +72,34 @@ it('restricts click targets and reuses an existing same-origin window',async()=>
  expect(close).toHaveBeenCalled();expect(app.navigate).toHaveBeenCalledWith('https://pongdang.test/settings')
  expect(app.focus).toHaveBeenCalled();expect(app.openWindow).not.toHaveBeenCalled()
 })
+it('merges a later batch and retry into the existing category notification, retaining individual identities',async()=>{
+ const a={tag:'notice:1',title:'ready',body:'fuel',quantity:10}
+ const expired={...a,tag:'notice:expired',expiresAt:new Date(Date.now()-1000).toISOString()}
+ const old={userId:'owner',category:'production',url:'/production',tag:'old-batch',title:'ready',body:'fuel',members:[a,expired]}
+ const close=vi.fn(),app=setup('owner',{notices:[{tag:'old-batch',data:{userId:'owner',payload:old},close}]})
+ const later={...old,tag:'another-batch',members:[a,{...a,tag:'notice:2',quantity:20}]}
+ await app.send('push',{data:{json:()=>later}})
+ const options=app.showNotification.mock.calls[0][1]
+ expect(options.tag).toBe('pongdang:owner:production')
+ expect(options.renotify).toBe(false)
+ expect(options.body).toContain('2곳 · 연료 30개')
+ expect(options.data.payload.members.map(m=>m.tag)).toEqual(['notice:1','notice:2'])
+ expect(close).toHaveBeenCalledOnce()
+})
+it('serializes simultaneous batches so neither notification loses its members',async()=>{
+ const notices=[] as any[]
+ const app=setup('owner',{notices})
+ app.showNotification.mockImplementation(async(title,options)=>{
+  await Promise.resolve()
+  const next={tag:options.tag,data:options.data,close:vi.fn()}
+  const index=notices.findIndex(n=>n.tag===options.tag)
+  if(index<0)notices.push(next);else notices[index]=next
+ })
+ const payload=id=>({userId:'owner',category:'production',title:'ready',body:'fuel',quantity:10,url:'/production',tag:'notice:'+id})
+ await Promise.all([app.send('push',{data:{json:()=>payload(1)}}),app.send('push',{data:{json:()=>payload(2)}})])
+ expect(notices).toHaveLength(1)
+ expect(notices[0].data.payload.members.map(m=>m.tag)).toEqual(['notice:1','notice:2'])
+})
 it('does not reopen another account notification after logout',async()=>{
  const app=setup('new-account')
  await app.send('notificationclick',{notification:{close:vi.fn(),data:{userId:'owner',url:'/port'}}})

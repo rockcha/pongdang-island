@@ -16,6 +16,15 @@ it('does not invent quantities and deduplicates notification identities',()=>{
  expect(presentPush(payload,[one,one,two]).body).toBe('생산소 2곳에서 준비를 마쳤어요. 한 번에 챙겨가세요.')
  expect(presentPush(payload,[one]).body).toBe('실제 문구')
 })
+it('keeps one category tag across independent batches, retries and size splits',()=>{
+ const first=groupPushDeliveries([delivery(1)])[0].payload
+ const later=groupPushDeliveries([delivery(2)])[0].payload
+ expect(first.tag).toBe('pongdang:owner:production')
+ expect(later.tag).toBe(first.tag)
+ expect(first.members?.map(m=>m.tag)).toEqual(['notice:1'])
+ expect(later.members?.map(m=>m.tag)).toEqual(['notice:2'])
+ expect(groupPushDeliveries([delivery(3,'other')])[0].payload.tag).not.toBe(first.tag)
+})
 it('splits oversized batches without losing leases',()=>{
  const deliveries=Array.from({length:20},(_,i)=>({...delivery(i),payload:{...delivery(i).payload,body:'가'.repeat(200)}}))
  const groups=groupPushDeliveries(deliveries)

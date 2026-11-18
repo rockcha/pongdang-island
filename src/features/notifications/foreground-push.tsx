@@ -13,6 +13,7 @@ function AccountPush({owner}:{owner:string}){
  const navigate=useNavigate(),query=useAccountResource('push-active',readActivePush,{staleTime:0})
  const [entries,setEntries]=useState<Entry[]>([])
  const seen=useRef(new Set<string>())
+ const lastShown=useRef(new Map<string,number>())
  useEffect(()=>{
   let active=true
   let timer:ReturnType<typeof setTimeout>|undefined,hide:ReturnType<typeof setTimeout>|undefined
@@ -36,9 +37,15 @@ function AccountPush({owner}:{owner:string}){
      const incoming=[...waiting.values()].map(v=>({payload:v.payload,receivedAt:Date.now()}))
      for(const entry of incoming)for(const m of membersOf(entry.payload))seen.current.add(m.tag)
      while(seen.current.size>500)seen.current.delete(seen.current.values().next().value!)
+     const allowed=new Set<string>(),now=Date.now()
+     for(const entry of incoming){const key=entry.payload.category??entry.payload.tag;if(now-(lastShown.current.get(key)??-Infinity)>=60000){allowed.add(key);lastShown.current.set(key,now)}}
      setEntries(previous=>{
       const next=[...previous]
-      for(const entry of incoming){const index=next.findIndex(e=>e.payload.category===entry.payload.category);if(index<0)next.push(entry);else next[index]={...entry,payload:presentPush(entry.payload,[...membersOf(next[index].payload),...membersOf(entry.payload)])}}
+      for(const entry of incoming){
+       const key=entry.payload.category??entry.payload.tag,index=next.findIndex(e=>(e.payload.category??e.payload.tag)===key)
+       if(index>=0)next[index]={...entry,payload:presentPush(entry.payload,[...membersOf(next[index].payload),...membersOf(entry.payload)])}
+       else if(allowed.has(key))next.push(entry)
+      }
       return next.slice(-2)
      })
      clearTimeout(hide);hide=setTimeout(()=>setEntries([]),7000)

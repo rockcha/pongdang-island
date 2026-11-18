@@ -9,6 +9,26 @@ async function asUser(id,sql,args=[]){await db.exec('set role authenticated');tr
 async function device(id,action,sub=subscription,categories=['production','bait-production','expedition','harbor']){return (await asUser(id,'select public.web_push_device($1,$2,$3) result',[action,sub,categories])).rows[0].result}
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [owner,other]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,id.slice(-4)])}},60000)
 afterAll(async()=>{await db?.close()})
+it('holds new completion pushes for a minute window and rechecks collection before sending',async()=>{
+ await db.exec('begin')
+ try{
+  await device(owner,'save')
+  const sites=(await db.query("insert into app_private.production_sites(user_id,facility_id,started_at,completes_at,expires_at,run_output) select $1,f.id,clock_timestamp()-interval '1 hour',clock_timestamp()-interval '1 minute',clock_timestamp()+interval '1 hour',7 from (select id from public.production_facilities limit 1) f cross join generate_series(1,2) returning id",[owner])).rows.map(r=>r.id)
+  await db.query('select app_private.notify_due_production_sites()')
+  const queued=(await db.query("select q.id,q.available_at,q.available_at>clock_timestamp() held,extract(second from q.available_at)=0 minute_boundary from app_private.push_deliveries q join public.notifications n on n.id=q.notification_id where n.production_site_id=any($1::uuid[])",[sites])).rows
+  expect(queued).toHaveLength(2)
+  for(const q of queued){expect(q.held).toBe(true);expect(q.minute_boundary).toBe(true);expect(new Date(q.available_at).getTime()-Date.now()).toBeLessThan(61000)}
+  const early=(await db.query('select public.claim_web_push() items')).rows[0].items
+  expect(early.some(q=>queued.some(row=>row.id===q.id))).toBe(false)
+  await db.query('update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where id=$1',[sites[0]])
+  await db.query("update app_private.push_deliveries set available_at=clock_timestamp()-interval '1 second' where id=any($1::bigint[])",[queued.map(q=>q.id)])
+  const due=(await db.query('select public.claim_web_push() items')).rows[0].items.filter(q=>queued.some(row=>row.id===q.id))
+  expect(due).toHaveLength(1)
+  expect(due[0].payload.quantity).toBe(7)
+  expect((await db.query('select count(*)::integer n from public.notifications where production_site_id=any($1::uuid[])',[sites])).rows[0].n).toBe(2)
+  for(const role of ['anon','authenticated'])expect((await db.query("select has_function_privilege($1,'app_private.schedule_completion_push_window()','execute') permitted",[role])).rows[0].permitted).toBe(false)
+ }finally{await db.exec('rollback')}
+})
 it('schedules the 30-second test on the server and rejects arbitrary delays',async()=>{
  await db.exec('begin')
  try{
@@ -79,6 +99,7 @@ it('enqueues future completion notifications and suppresses claimed or expired b
  expect((await db.query('select public.claim_web_push() items')).rows[0].items).toEqual([])
  const valid=await make();await make(-1)
  await db.query('select app_private.notify_due_bait_production_sites()')
+ await db.exec("update app_private.push_deliveries set available_at=clock_timestamp()-interval '1 second' where category='bait-production' and status='pending'")
  const items=(await db.query('select public.claim_web_push() items')).rows[0].items
  expect(items).toHaveLength(1);expect(items[0].payload.url).toBe('/bait-production')
  await db.query('select public.finish_web_push($1,$2,201)',[items[0].id,items[0].leaseToken])

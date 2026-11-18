@@ -3,11 +3,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.groupedCategories = exports.pushTitles = void 0;
+exports.pushGroupTag = pushGroupTag;
 exports.membersOf = membersOf;
 exports.presentPush = presentPush;
 exports.groupPushDeliveries = groupPushDeliveries;
 exports.pushTitles = { production: '🔥 따끈한 연료가 준비됐어요', 'bait-production': '🪱 미끼 도시락 완성!', expedition: '🐟 통발에 손님이 왔어요!', harbor: '⛵ 배가 돌아왔어요!', 'production-expiring': '⏳ 연료가 기다리고 있어요', 'bait-production-expiring': '⏳ 미끼가 기다리고 있어요', test: '💌 퐁이가 소식을 가져왔어요' };
 exports.groupedCategories = ['production', 'bait-production', 'expedition', 'harbor', 'production-expiring', 'bait-production-expiring'];
+function pushGroupTag(payload) { return exports.groupedCategories.includes(payload.category ?? '') ? `pongdang:${payload.userId}:${payload.category}` : payload.tag; }
 function membersOf(payload) { return payload.members?.length ? payload.members : [{ tag: payload.tag, title: payload.title, body: payload.body, quantity: payload.quantity, expiresAt: payload.expiresAt }]; }
 function presentPush(payload, members = membersOf(payload)) {
     const unique = [...new Map(members.map(m => [m.tag, m])).values()];
@@ -42,7 +44,8 @@ function groupPushDeliveries(deliveries) {
             group.payload = combined;
         }
         else {
-            const next = { deliveries: [delivery], payload: presentPush({ ...p, tag: exports.groupedCategories.includes(c) ? `pongdang:${p.userId}:${c}:${delivery.id}` : p.tag }), subscription: delivery.subscription };
+            const next = { deliveries: [delivery], payload: presentPush(p), subscription: delivery.subscription };
+            next.payload.tag = pushGroupTag(p);
             groups.set(key, next);
             result.push(next);
         }

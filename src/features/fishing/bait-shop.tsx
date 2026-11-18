@@ -1,14 +1,24 @@
 import {BaitEffectDetails,baitPercent} from './bait-effect-details'
 import {ProductSkeleton} from '@/components/product-skeleton'
 import {LandscapeImage} from '@/components/landscape-image'
+import {appArt} from '@/components/app-art'
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
 import {useEffect,useRef,useState} from 'react'
 import {Minus,Plus} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {GoldIcon,useGold} from '@/features/gold/gold-provider'
 import {loadFishing,type FishingBait} from './api'
-import {BaitTarget} from './bait-info'
+import {BaitTarget,isPetFishingBait} from './bait-info'
 import {BaitShopFilters,filterBaitShop,initialBaitShopFilter} from './bait-shop-filters'
+
+function BaitSpecialtyBadge({bait}:{bait:FishingBait}){
+ const map=(bait.baseMapChanceBp??0)>300,pet=isPetFishingBait(bait)
+ if(!map&&!pet)return null
+ return <span className="pointer-events-none absolute left-1 top-1 z-10 flex gap-1">
+  {map&&<span role="img" aria-label="지도 확률 보정 미끼" title="지도 확률 보정 미끼" className="grid size-7 place-items-center rounded-lg border border-primary/10 bg-background/95 shadow-sm"><appArt.map className="size-6"/></span>}
+  {pet&&<span role="img" aria-label="펫 획득 미끼" title="펫 획득 미끼" className="grid size-7 place-items-center rounded-lg border border-[#db8fa9]/20 bg-[#fff4f7]/95 shadow-sm"><appArt.pet className="size-6"/></span>}
+ </span>
+}
 
 export function BaitShop(){
  const {wallet,transact,loading,busy,error:goldError}=useGold()
@@ -48,7 +58,7 @@ export function BaitShop(){
  if(error)return <div role="alert" className="space-y-2 text-sm"><p>{error}</p><Button variant="outline" onClick={()=>setAttempt(a=>a+1)}>다시 불러오기</Button></div>
  if(!items)return <ProductSkeleton/>
  const visibleItems=filterBaitShop(items,filter)
- return <><BaitShopFilters value={filter} onChange={setFilter}/>{visibleItems.length===0&&<div className="space-y-3 px-4 py-10 text-center"><p className="text-xs text-muted-foreground">조건에 맞는 미끼가 없어요.</p><Button variant="outline" className="min-h-11 text-xs" onClick={()=>setFilter(initialBaitShopFilter)}>검색·필터 초기화</Button></div>}<ul className="grid grid-cols-3 border-border/60">{visibleItems.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(quotes.current.get(item.id)?.item??item);setQuantity(quotes.current.get(item.id)?.quantity??1);setPurchaseError('');setDetailOpen(true)}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/></div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
+ return <><BaitShopFilters value={filter} onChange={setFilter}/>{visibleItems.length===0&&<div className="space-y-3 px-4 py-10 text-center"><p className="text-xs text-muted-foreground">조건에 맞는 미끼가 없어요.</p><Button variant="outline" className="min-h-11 text-xs" onClick={()=>setFilter(initialBaitShopFilter)}>검색·필터 초기화</Button></div>}<ul className="grid grid-cols-3 border-border/60">{visibleItems.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(quotes.current.get(item.id)?.item??item);setQuantity(quotes.current.get(item.id)?.quantity??1);setPurchaseError('');setDetailOpen(true)}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/><BaitSpecialtyBadge bait={item}/></div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
  <Dialog open={detailOpen} onOpenChange={value=>{if(!value&&!purchasing)setDetailOpen(false)}} onOpenChangeComplete={open=>{if(!open&&!detailOpen)setDetail(null)}}>
   <DialogContent className="flex max-h-[85dvh] w-[calc(100%-2rem)] min-w-0 max-w-md flex-col gap-0 overflow-hidden rounded-2xl p-0 [--bait-detail-inset:max(1rem,env(safe-area-inset-left,0px),env(safe-area-inset-right,0px))] sm:max-w-md">
    <DialogHeader className="min-w-0 shrink-0 px-[var(--bait-detail-inset)] pt-4 pb-3 pr-12">

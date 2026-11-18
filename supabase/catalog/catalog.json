@@ -741,7 +741,7 @@
     {
       "id": "bait",
       "name": "퐁당 지렁이",
-      "description": "익숙한 향기로 바다 친구들을 부르는 기본 미끼예요.",
+      "description": "비가 갠 뒤 촉촉한 흙에서 조심스럽게 데려온 퐁당섬의 작은 길잡이예요. 낚싯바늘 끝에서 꼬물거리는 모습을 보고 있으면, 처음 바다를 만났던 날의 설렘이 떠올라요.",
       "price": 48,
       "image_path": "/items/baits/pongdang-worm.png",
       "sort_order": 101,
@@ -751,7 +751,7 @@
       "mythic_bp": 20,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "익숙한 향기로 바다 친구들을 부르는 기본 미끼예요.",
+      "effect_description": "비가 갠 뒤 촉촉한 흙에서 조심스럽게 데려온 퐁당섬의 작은 길잡이예요. 낚싯바늘 끝에서 꼬물거리는 모습을 보고 있으면, 처음 바다를 만났던 날의 설렘이 떠올라요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -759,7 +759,7 @@
     {
       "id": "bait_aurora_clockwork_bug",
       "name": "오로라 태엽벌레",
-      "description": "오색으로 빛나는 태엽이 물고기와 장식물을 끌어당겨요.",
+      "description": "작은 날개 사이로 오로라 빛이 흐르는 태엽벌레예요. 등 뒤의 태엽을 감아 물속에 내려보내면, 조용한 바닷속에서 잊고 있던 자장가가 들려온대요.",
       "price": 188,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/aurora-clockwork-bug.png",
       "sort_order": 124,
@@ -769,7 +769,7 @@
       "mythic_bp": 80,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "오색으로 빛나는 태엽이 물고기와 장식물을 끌어당겨요.",
+      "effect_description": "작은 날개 사이로 오로라 빛이 흐르는 태엽벌레예요. 등 뒤의 태엽을 감아 물속에 내려보내면, 조용한 바닷속에서 잊고 있던 자장가가 들려온대요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -777,7 +777,7 @@
     {
       "id": "bait_breadcrumbs",
       "name": "보슬보슬 빵가루",
-      "description": "보슬보슬한 빵가루로 물고기부터 물밑의 작은 물건까지 두루 만나요.",
+      "description": "동네 빵집에서 아침마다 구워 내는 빵의 가장 부드러운 부분을 모았어요. 손끝에 남은 고소한 향이 물결을 따라 퍼지면, 바다에도 따뜻한 아침 식탁이 차려져요.",
       "price": 18,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/soft-breadcrumbs.png",
       "sort_order": 99,
@@ -787,7 +787,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "보슬보슬한 빵가루로 물고기부터 물밑의 작은 물건까지 두루 만나요.",
+      "effect_description": "동네 빵집에서 아침마다 구워 내는 빵의 가장 부드러운 부분을 모았어요. 손끝에 남은 고소한 향이 물결을 따라 퍼지면, 바다에도 따뜻한 아침 식탁이 차려져요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -795,7 +795,7 @@
     {
       "id": "bait_cloud_dough",
       "name": "솜구름 반죽",
-      "description": "폭신한 구름 향기로 일반 등급 물고기를 불러요.",
+      "description": "해가 뜨기 전 낮게 내려온 구름을 살짝 떼어 반죽한 것처럼 폭신해요. 물 위에 올려놓으면 천천히 풀어지며, 바닷속 친구들에게 하얀 이불을 덮어 주는 듯해요.",
       "price": 31,
       "image_path": "/items/baits/cloud-dough.png",
       "sort_order": 110,
@@ -805,7 +805,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "폭신한 구름 향기로 일반 등급 물고기를 불러요.",
+      "effect_description": "해가 뜨기 전 낮게 내려온 구름을 살짝 떼어 반죽한 것처럼 폭신해요. 물 위에 올려놓으면 천천히 풀어지며, 바닷속 친구들에게 하얀 이불을 덮어 주는 듯해요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -813,7 +813,7 @@
     {
       "id": "bait_coral_pollen",
       "name": "산호 꽃가루",
-      "description": "은은한 산호꽃 향기로 물고기와 장식물을 모으며 특급도 만나요.",
+      "description": "산호 정원에서 꽃이 피는 짧은 순간에만 모을 수 있는 은은한 가루예요. 작은 병을 기울이면 바다의 봄을 닮은 향이 번지고, 잠들어 있던 정원이 기지개를 켜요.",
       "price": 60,
       "image_path": "/items/baits/coral-pollen.png",
       "sort_order": 118,
@@ -823,7 +823,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "은은한 산호꽃 향기로 물고기와 장식물을 모으며 특급도 만나요.",
+      "effect_description": "산호 정원에서 꽃이 피는 짧은 순간에만 모을 수 있는 은은한 가루예요. 작은 병을 기울이면 바다의 봄을 닮은 향이 번지고, 잠들어 있던 정원이 기지개를 켜요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -831,7 +831,7 @@
     {
       "id": "bait_cracked_star",
       "name": "금 간 별조각",
-      "description": "갈라진 별빛으로 희귀 물고기를 부르며, 드물게 신화 물고기도 만나요.",
+      "description": "밤바다에 떨어진 별에서 조심스럽게 떼어 낸 조각이에요. 금이 간 틈으로 새어 나오는 빛은 아직 따뜻해서, 손에 쥐면 먼 하늘의 이야기가 전해지는 것 같아요.",
       "price": 245,
       "image_path": "/items/baits/cracked-star.png",
       "sort_order": 115,
@@ -841,7 +841,7 @@
       "mythic_bp": 70,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "갈라진 별빛으로 희귀 물고기를 부르며, 드물게 신화 물고기도 만나요.",
+      "effect_description": "밤바다에 떨어진 별에서 조심스럽게 떼어 낸 조각이에요. 금이 간 틈으로 새어 나오는 빛은 아직 따뜻해서, 손에 쥐면 먼 하늘의 이야기가 전해지는 것 같아요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -849,7 +849,7 @@
     {
       "id": "bait_deep_sleep_sachet",
       "name": "깊은잠 향낭",
-      "description": "깊은 향기로 희귀 등급 이상의 바다 손님을 불러요.",
+      "description": "달빛에 말린 꽃잎과 바닷바람을 작은 주머니에 담았어요. 매듭을 느슨하게 풀면 포근한 향이 흘러나와, 잠들지 못한 밤에도 잔잔한 꿈을 꾸게 해 준대요.",
       "price": 361,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/deep-sleep-sachet-v1.png",
       "sort_order": 305,
@@ -859,7 +859,7 @@
       "mythic_bp": 100,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "깊은 향기로 희귀 등급 이상의 바다 손님을 불러요.",
+      "effect_description": "달빛에 말린 꽃잎과 바닷바람을 작은 주머니에 담았어요. 매듭을 느슨하게 풀면 포근한 향이 흘러나와, 잠들지 못한 밤에도 잔잔한 꿈을 꾸게 해 준대요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -867,7 +867,7 @@
     {
       "id": "bait_epic",
       "name": "별잠의 유혹",
-      "description": "신비로운 보랏빛 잔광이 특급 등급의 바다 친구들을 이끌어요.",
+      "description": "별이 잠드는 시간에만 빛나는 보랏빛 미끼예요. 물속으로 내려갈수록 잔광이 길게 이어져, 바다 아래에도 누군가의 꿈이 펼쳐지는 것처럼 보여요.",
       "price": null,
       "image_path": "/items/baits/starlit-allure.png",
       "sort_order": 108,
@@ -877,7 +877,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "신비로운 보랏빛 잔광이 특급 등급의 바다 친구들을 이끌어요.",
+      "effect_description": "별이 잠드는 시간에만 빛나는 보랏빛 미끼예요. 물속으로 내려갈수록 잔광이 길게 이어져, 바다 아래에도 누군가의 꿈이 펼쳐지는 것처럼 보여요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -885,7 +885,7 @@
     {
       "id": "bait_firefly_pupa",
       "name": "반딧불 번데기",
-      "description": "깊은 곳까지 번지는 작은 불빛이 특급 물고기를 유혹해요.",
+      "description": "이슬 맺힌 풀숲에서 발견한 작은 빛을 조심히 감싸 두었어요. 바닷속에 내려보내도 꺼지지 않는 불빛이 깜빡이며, 길을 잃은 여행자에게 인사를 건네요.",
       "price": 65,
       "image_path": "/items/baits/firefly-pupa.png",
       "sort_order": 112,
@@ -895,7 +895,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "깊은 곳까지 번지는 작은 불빛이 특급 물고기를 유혹해요.",
+      "effect_description": "이슬 맺힌 풀숲에서 발견한 작은 빛을 조심히 감싸 두었어요. 바닷속에 내려보내도 꺼지지 않는 불빛이 깜빡이며, 길을 잃은 여행자에게 인사를 건네요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -903,7 +903,7 @@
     {
       "id": "bait_first_greeting",
       "name": "소라의 첫인사",
-      "description": "처음 맡는 향기로 아직 발견하지 못한 개체만 불러요.",
+      "description": "빈 소라에 바람을 불어넣자 한 번도 들어 보지 못한 작은 인사가 흘러나왔어요. 낚싯줄 끝에서 소라가 살랑일 때마다, 오늘은 누구를 처음 만나게 될지 궁금해져요.",
       "price": null,
       "image_path": "/items/baits/conch-first-greeting.png",
       "sort_order": 109,
@@ -913,7 +913,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "처음 맡는 향기로 아직 발견하지 못한 개체만 불러요.",
+      "effect_description": "빈 소라에 바람을 불어넣자 한 번도 들어 보지 못한 작은 인사가 흘러나왔어요. 낚싯줄 끝에서 소라가 살랑일 때마다, 오늘은 누구를 처음 만나게 될지 궁금해져요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -921,7 +921,7 @@
     {
       "id": "bait_forbidden_star",
       "name": "금단의 별사탕",
-      "description": "금지된 별가루의 달콤한 향기가 특급·신화 등급의 기회를 높여요.",
+      "description": "아무도 모르는 별빛 찬장에서 꺼낸 달콤한 사탕이에요. 포장지를 벗기면 먼 은하의 향기가 나지만, 누가 처음 만들었는지는 섬의 가장 오래된 이야기에도 남아 있지 않아요.",
       "price": 133,
       "image_path": "/items/baits/forbidden-star-candy.png",
       "sort_order": 105,
@@ -931,7 +931,7 @@
       "mythic_bp": 80,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "금지된 별가루의 달콤한 향기가 특급·신화 등급의 기회를 높여요.",
+      "effect_description": "아무도 모르는 별빛 찬장에서 꺼낸 달콤한 사탕이에요. 포장지를 벗기면 먼 은하의 향기가 나지만, 누가 처음 만들었는지는 섬의 가장 오래된 이야기에도 남아 있지 않아요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -939,7 +939,7 @@
     {
       "id": "bait_goblin_bell_cherry",
       "name": "도깨비 방울체리",
-      "description": "신비로운 방울 소리에 주로 희귀 물고기가 모이고, 가끔 특급 물고기도 찾아와요.",
+      "description": "숲속 도깨비가 가지 끝에 매달아 둔 방울을 닮은 체리예요. 물결에 흔들릴 때마다 작은 소리가 울려, 고요한 바다에서도 장난스러운 웃음이 들리는 듯해요.",
       "price": 207,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/goblin-bell-cherry.png",
       "sort_order": 123,
@@ -949,7 +949,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "신비로운 방울 소리에 주로 희귀 물고기가 모이고, 가끔 특급 물고기도 찾아와요.",
+      "effect_description": "숲속 도깨비가 가지 끝에 매달아 둔 방울을 닮은 체리예요. 물결에 흔들릴 때마다 작은 소리가 울려, 고요한 바다에서도 장난스러운 웃음이 들리는 듯해요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -957,7 +957,7 @@
     {
       "id": "bait_grain_dumpling",
       "name": "노릇노릇 곡물경단",
-      "description": "노릇하게 구운 곡물 향기로 다양한 바다 친구들과 물밑의 물건을 불러요.",
+      "description": "섬에서 거둔 곡물을 곱게 빻아 노릇하게 구운 경단이에요. 따뜻할 때 살짝 눌러 만든 자국에는, 오늘도 무사히 돌아오라는 빵집 할머니의 마음이 담겨 있어요.",
       "price": 24,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/toasted-grain-dumpling.png",
       "sort_order": 100,
@@ -967,7 +967,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "노릇하게 구운 곡물 향기로 다양한 바다 친구들과 물밑의 물건을 불러요.",
+      "effect_description": "섬에서 거둔 곡물을 곱게 빻아 노릇하게 구운 경단이에요. 따뜻할 때 살짝 눌러 만든 자국에는, 오늘도 무사히 돌아오라는 빵집 할머니의 마음이 담겨 있어요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -975,7 +975,7 @@
     {
       "id": "bait_grubby_magnet",
       "name": "꼬질 자석경단",
-      "description": "꼬질한 향기로 물밑에 버려진 쓰레기만 끌어모아요.",
+      "description": "주머니 구석에서 오래 굴러다닌 듯 꼬질꼬질한 경단이에요. 속에 숨겨 둔 작은 자석은 반짝이는 보물보다 누군가 잃어버린 낡은 물건에 더 마음이 가는 모양이에요.",
       "price": 8,
       "image_path": "/items/baits/grubby-magnet-dumpling.png",
       "sort_order": 103,
@@ -985,7 +985,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "꼬질한 향기로 물밑에 버려진 쓰레기만 끌어모아요.",
+      "effect_description": "주머니 구석에서 오래 굴러다닌 듯 꼬질꼬질한 경단이에요. 속에 숨겨 둔 작은 자석은 반짝이는 보물보다 누군가 잃어버린 낡은 물건에 더 마음이 가는 모양이에요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -993,7 +993,7 @@
     {
       "id": "bait_halfmoon_honey",
       "name": "반달 꿀젤리",
-      "description": "반달 모양 꿀젤리에 일반·희귀 물고기가 고르게 모여요.",
+      "description": "초승달이 조금 통통해진 날, 꿀을 천천히 졸여 만든 반달 모양 젤리예요. 말랑한 표면에 비친 달빛을 보고 있으면, 물결도 잠시 걸음을 늦추는 것 같아요.",
       "price": 122,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/halfmoon-honey-jelly.png",
       "sort_order": 120,
@@ -1003,7 +1003,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "반달 모양 꿀젤리에 일반·희귀 물고기가 고르게 모여요.",
+      "effect_description": "초승달이 조금 통통해진 날, 꿀을 천천히 졸여 만든 반달 모양 젤리예요. 말랑한 표면에 비친 달빛을 보고 있으면, 물결도 잠시 걸음을 늦추는 것 같아요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -1011,7 +1011,7 @@
     {
       "id": "bait_honey_dumpling",
       "name": "햇살 꿀경단",
-      "description": "달콤한 꿀 향기로 일반·희귀 물고기와 쓰레기를 모아요.",
+      "description": "햇살이 가장 따뜻한 오후에 꿀을 듬뿍 발라 만든 작은 경단이에요. 바다에 내려보내면 고소하고 달콤한 향이 퍼져, 멀리서도 소풍 바구니를 열어 둔 것처럼 느껴져요.",
       "price": 50,
       "image_path": "/items/baits/sunny-honey-dumpling.png",
       "sort_order": 116,
@@ -1021,7 +1021,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "달콤한 꿀 향기로 일반·희귀 물고기와 쓰레기를 모아요.",
+      "effect_description": "햇살이 가장 따뜻한 오후에 꿀을 듬뿍 발라 만든 작은 경단이에요. 바다에 내려보내면 고소하고 달콤한 향이 퍼져, 멀리서도 소풍 바구니를 열어 둔 것처럼 느껴져요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1029,7 +1029,7 @@
     {
       "id": "bait_lightning_stardust",
       "name": "벼락 별가루",
-      "description": "강렬한 번개빛이 희귀·특급 물고기를 끌어당겨요.",
+      "description": "폭풍이 물러간 밤, 바위 틈에 남은 번개빛을 모은 별가루예요. 병을 가볍게 흔들면 사라진 천둥의 장난기가 깨어나 손끝에서 작게 반짝여요.",
       "price": 264,
       "image_path": "/items/baits/lightning-stardust.png",
       "sort_order": 114,
@@ -1039,7 +1039,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "강렬한 번개빛이 희귀·특급 물고기를 끌어당겨요.",
+      "effect_description": "폭풍이 물러간 밤, 바위 틈에 남은 번개빛을 모은 별가루예요. 병을 가볍게 흔들면 사라진 천둥의 장난기가 깨어나 손끝에서 작게 반짝여요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -1047,7 +1047,7 @@
     {
       "id": "bait_magnet",
       "name": "심해 인력석",
-      "description": "바닷속에 잠든 장식물만 끌어올리는 인양 미끼예요.",
+      "description": "바다 깊은 곳에서 건져 올린 매끈한 돌에 푸른 빛이 맴돌아요. 가까이 대면 오래 잠들어 있던 물건들이 살짝 떨려, 돌이 잃어버린 기억을 부르는 것만 같아요.",
       "price": 46,
       "image_path": "/items/baits/abyss-lodestone.png",
       "sort_order": 106,
@@ -1057,7 +1057,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "decoration",
-      "effect_description": "바닷속에 잠든 장식물만 끌어올리는 인양 미끼예요.",
+      "effect_description": "바다 깊은 곳에서 건져 올린 매끈한 돌에 푸른 빛이 맴돌아요. 가까이 대면 오래 잠들어 있던 물건들이 살짝 떨려, 돌이 잃어버린 기억을 부르는 것만 같아요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1065,7 +1065,7 @@
     {
       "id": "bait_map_compass_jelly",
       "name": "나침반 꿀젤리",
-      "description": "꿀 속에 떠 있는 나침반이 잊힌 항로를 가리켜요. 직접 낚시 지도 조각 확률 8%에 유물 보너스가 더해져요.",
+      "description": "말랑한 꿀젤리 속에 작은 금빛 나침반이 둥실 떠 있어요. 바람 한 점 없는 날에도 바늘은 천천히 움직이며, 오래전 뱃사람들이 접어 둔 항로의 꿈을 가리켜요.",
       "price": 160,
       "image_path": "/items/baits/map-compass-honey-jelly-v1.png",
       "sort_order": 127,
@@ -1075,7 +1075,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "꿀 속에 떠 있는 나침반이 잊힌 항로를 가리켜요. 직접 낚시 지도 조각 확률 8%에 유물 보너스가 더해져요.",
+      "effect_description": "말랑한 꿀젤리 속에 작은 금빛 나침반이 둥실 떠 있어요. 바람 한 점 없는 날에도 바늘은 천천히 움직이며, 오래전 뱃사람들이 접어 둔 항로의 꿈을 가리켜요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1083,7 +1083,7 @@
     {
       "id": "bait_map_lantern_berry",
       "name": "길잡이 등불열매",
-      "description": "은은한 등불처럼 빛나는 열매가 숨은 항로를 밝혀요. 직접 낚시 지도 조각 확률 10%에 유물 보너스가 더해져요.",
+      "description": "해가 지면 껍질 안쪽에서 따뜻한 불빛이 피어나는 신비로운 열매예요. 안개 낀 밤에 이 열매를 매달고 돌아온 선원들은, 바다가 먼저 집으로 가는 길을 알려 주었다고 말해요.",
       "price": 280,
       "image_path": "/items/baits/map-wayfinder-lantern-berry-v1.png",
       "sort_order": 128,
@@ -1093,7 +1093,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "은은한 등불처럼 빛나는 열매가 숨은 항로를 밝혀요. 직접 낚시 지도 조각 확률 10%에 유물 보너스가 더해져요.",
+      "effect_description": "해가 지면 껍질 안쪽에서 따뜻한 불빛이 피어나는 신비로운 열매예요. 안개 낀 밤에 이 열매를 매달고 돌아온 선원들은, 바다가 먼저 집으로 가는 길을 알려 주었다고 말해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1101,7 +1101,7 @@
     {
       "id": "bait_map_star_chart_pearl",
       "name": "별지도를 품은 진주",
-      "description": "보랏빛 조개 속 진주에 금빛 별항로가 비쳐요. 직접 낚시 지도 조각 확률 20%에 유물 보너스가 더해져요. 특급 비율은 35%예요.",
+      "description": "보랏빛 조개가 품은 진주 안에 금빛 별항로가 천천히 떠올라요. 달빛이 닿으면 오래전 항해자들이 남긴 약속처럼 별들이 이어지고, 귀를 기울이면 이름 모를 섬의 파도 소리가 들려오는 듯해요.",
       "price": 680,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/map-star-chart-pearl-v1.png",
       "sort_order": 129,
@@ -1111,7 +1111,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "보랏빛 조개 속 진주에 금빛 별항로가 비쳐요. 직접 낚시 지도 조각 확률 20%에 유물 보너스가 더해져요. 특급 비율은 35%예요.",
+      "effect_description": "보랏빛 조개가 품은 진주 안에 금빛 별항로가 천천히 떠올라요. 달빛이 닿으면 오래전 항해자들이 남긴 약속처럼 별들이 이어지고, 귀를 기울이면 이름 모를 섬의 파도 소리가 들려오는 듯해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1119,7 +1119,7 @@
     {
       "id": "bait_mermaid_whisper_candy",
       "name": "인어의 귓속말 캔디",
-      "description": "인어의 달콤한 노래가 희귀 물고기를 유혹해요.",
+      "description": "파도가 잔잔한 밤이면 인어가 몰래 두고 간다는 작은 사탕이에요. 달콤한 향 사이에 숨은 바다의 노랫소리는 귀로 듣기보다 마음으로 느껴야 한다고 해요.",
       "price": 155,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/mermaid-whisper-candy.png",
       "sort_order": 125,
@@ -1129,7 +1129,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "인어의 달콤한 노래가 희귀 물고기를 유혹해요.",
+      "effect_description": "파도가 잔잔한 밤이면 인어가 몰래 두고 간다는 작은 사탕이에요. 달콤한 향 사이에 숨은 바다의 노랫소리는 귀로 듣기보다 마음으로 느껴야 한다고 해요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -1137,7 +1137,7 @@
     {
       "id": "bait_moonshade_dumpling",
       "name": "달그늘 경단",
-      "description": "낮에는 일반, 밤에는 희귀 등급을 조금 더 자주 만나요.",
+      "description": "해가 비칠 때와 달이 뜰 때 서로 다른 향을 내는 신기한 경단이에요. 그늘에 잠시 두었다가 꺼내 보면 색이 살짝 달라져, 바다가 흘려보낸 시간을 담고 있는 것 같아요.",
       "price": 107,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/moonshade-dumpling-v1.png",
       "sort_order": 317,
@@ -1147,7 +1147,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "낮에는 일반, 밤에는 희귀 등급을 조금 더 자주 만나요.",
+      "effect_description": "해가 비칠 때와 달이 뜰 때 서로 다른 향을 내는 신기한 경단이에요. 그늘에 잠시 두었다가 꺼내 보면 색이 살짝 달라져, 바다가 흘려보낸 시간을 담고 있는 것 같아요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1155,7 +1155,7 @@
     {
       "id": "bait_pearl_bubble",
       "name": "진주 거품방울",
-      "description": "반짝이는 거품이 희귀 장식물과 쓰레기를 끌어당겨요.",
+      "description": "진주를 닦던 물 위에 떠오른 거품을 살며시 굳혀 만들었어요. 터질 듯 말 듯 맑게 빛나는 표면에는, 바닷속 작은 방에 놓일 물건들의 꿈이 비쳐요.",
       "price": 60,
       "image_path": "/items/baits/pearl-bubble.png",
       "sort_order": 117,
@@ -1165,7 +1165,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "반짝이는 거품이 희귀 장식물과 쓰레기를 끌어당겨요.",
+      "effect_description": "진주를 닦던 물 위에 떠오른 거품을 살며시 굳혀 만들었어요. 터질 듯 말 듯 맑게 빛나는 표면에는, 바닷속 작은 방에 놓일 물건들의 꿈이 비쳐요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1173,7 +1173,7 @@
     {
       "id": "bait_pet_biscuit",
       "name": "바삭별 비스킷",
-      "description": "별 모양 비스킷의 고소한 향이 작은 친구들을 불러요.",
+      "description": "작은 별 모양으로 구워 바삭한 소리가 기분 좋은 비스킷이에요. 봉투를 열면 버터 향이 솔솔 흘러나와, 멀찍이 숨어 있던 작은 친구도 코끝을 내밀고 주변을 살피게 돼요.",
       "price": 200,
       "image_path": "/pets/items/biscuit_v1.webp",
       "sort_order": 318,
@@ -1183,7 +1183,7 @@
       "mythic_bp": 20,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "펫 3% · 어느 해역에서나 작은 친구를 만날 수 있어요.",
+      "effect_description": "작은 별 모양으로 구워 바삭한 소리가 기분 좋은 비스킷이에요. 봉투를 열면 버터 향이 솔솔 흘러나와, 멀찍이 숨어 있던 작은 친구도 코끝을 내밀고 주변을 살피게 돼요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1191,7 +1191,7 @@
     {
       "id": "bait_pet_macaron",
       "name": "포근꿈 마카롱",
-      "description": "포근한 크림과 달콤한 향에 수줍은 친구도 다가와요.",
+      "description": "폭신한 크림을 사이에 넣고 분홍빛 리본으로 묶은 마카롱이에요. 반쪽을 조심히 건네고 기다리면, 수줍은 친구와 나란히 앉아 달콤한 오후를 나누는 상상을 하게 돼요.",
       "price": 300,
       "image_path": "/pets/items/macaron_v1.webp",
       "sort_order": 319,
@@ -1201,7 +1201,7 @@
       "mythic_bp": 20,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "펫 5% · 어느 해역에서나 작은 친구를 만날 수 있어요.",
+      "effect_description": "폭신한 크림을 사이에 넣고 분홍빛 리본으로 묶은 마카롱이에요. 반쪽을 조심히 건네고 기다리면, 수줍은 친구와 나란히 앉아 달콤한 오후를 나누는 상상을 하게 돼요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1209,7 +1209,7 @@
     {
       "id": "bait_pet_starter",
       "name": "포슬포슬 간식주머니",
-      "description": "작은 간식을 담은 입문용 주머니예요. 작은 친구와 희귀한 개체를 함께 기다려요.",
+      "description": "작은 과자들을 아낌없이 담아 포슬포슬한 끈으로 묶은 간식주머니예요. 어디로 산책을 나서든 주머니가 살짝 흔들리면, 함께 걸을 친구를 기다리는 마음까지 고소하게 퍼져요.",
       "price": 120,
       "image_path": "/pets/items/starter_v1.webp",
       "sort_order": 320,
@@ -1219,7 +1219,7 @@
       "mythic_bp": 20,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "입문용 · 펫 2% · 희귀 18% · 직접 낚시 전용",
+      "effect_description": "작은 과자들을 아낌없이 담아 포슬포슬한 끈으로 묶은 간식주머니예요. 어디로 산책을 나서든 주머니가 살짝 흔들리면, 함께 걸을 친구를 기다리는 마음까지 고소하게 퍼져요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1227,7 +1227,7 @@
     {
       "id": "bait_safe",
       "name": "이슬잎 경단",
-      "description": "맑은 이슬 향기로 물고기만 불러요. 지렁이보다 희귀·특급 물고기를 조금 더 자주 만나요.",
+      "description": "새벽의 맑은 이슬을 머금은 잎으로 감싼 촉촉한 경단이에요. 조용히 물에 띄우면 잎맥을 따라 은은한 향이 번져, 바다 한가운데에도 작은 풀숲이 생긴 듯해요.",
       "price": 57,
       "image_path": "/items/baits/dewleaf-dumpling.png",
       "sort_order": 102,
@@ -1237,7 +1237,7 @@
       "mythic_bp": 20,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "맑은 이슬 향기로 물고기만 불러요. 지렁이보다 희귀·특급 물고기를 조금 더 자주 만나요.",
+      "effect_description": "새벽의 맑은 이슬을 머금은 잎으로 감싼 촉촉한 경단이에요. 조용히 물에 띄우면 잎맥을 따라 은은한 향이 번져, 바다 한가운데에도 작은 풀숲이 생긴 듯해요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -1245,7 +1245,7 @@
     {
       "id": "bait_sea_memory",
       "name": "바다기억 조개알",
-      "description": "익숙한 바다의 향기로 현재 해역의 토착종을 더 자주 만나요.",
+      "description": "여러 해 동안 파도에 다듬어진 조개 안에 바다의 향을 담았어요. 어느 해안에서 열어 보아도 그곳의 바람을 닮은 냄새가 나, 고향을 기억하는 작은 상자라고 불려요.",
       "price": 84,
       "image_path": "/items/baits/sea-memory-clam-pearl.png",
       "sort_order": 104,
@@ -1255,7 +1255,7 @@
       "mythic_bp": 20,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "익숙한 바다의 향기로 현재 해역의 토착종을 더 자주 만나요.",
+      "effect_description": "여러 해 동안 파도에 다듬어진 조개 안에 바다의 향을 담았어요. 어느 해안에서 열어 보아도 그곳의 바람을 닮은 냄새가 나, 고향을 기억하는 작은 상자라고 불려요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1263,7 +1263,7 @@
     {
       "id": "bait_shell_crumbs",
       "name": "조개 부스러기",
-      "description": "고소한 조개 향기를 좋아하는 일반·희귀 물고기가 찾아와요.",
+      "description": "해변에서 모은 조개를 곱게 부수고 고소한 향을 더했어요. 햇빛 아래 펼쳐 놓으면 자잘한 무늬들이 반짝여, 누군가 모래 위에 써 둔 짧은 편지처럼 보여요.",
       "price": 46,
       "image_path": "/items/baits/shell-crumbs.png",
       "sort_order": 111,
@@ -1273,7 +1273,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "고소한 조개 향기를 좋아하는 일반·희귀 물고기가 찾아와요.",
+      "effect_description": "해변에서 모은 조개를 곱게 부수고 고소한 향을 더했어요. 햇빛 아래 펼쳐 놓으면 자잘한 무늬들이 반짝여, 누군가 모래 위에 써 둔 짧은 편지처럼 보여요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -1281,7 +1281,7 @@
     {
       "id": "bait_shooting_star_tail",
       "name": "별똥별 꼬리젤리",
-      "description": "대부분 일반 쓰레기를 건지지만, 가끔 신화 등급의 뜻밖의 발견을 만나요.",
+      "description": "하늘을 가로지른 별똥별의 꼬리를 닮은 길쭉한 젤리예요. 엉뚱한 물건을 유난히 좋아하지만, 가끔은 주머니 깊이 숨겨 둔 소중한 이야기를 슬쩍 보여 줄지도 몰라요.",
       "price": 46,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/shooting-star-tail-jelly-teal.png",
       "sort_order": 122,
@@ -1291,7 +1291,7 @@
       "mythic_bp": 80,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "대부분 일반 쓰레기를 건지지만, 가끔 신화 등급의 뜻밖의 발견을 만나요.",
+      "effect_description": "하늘을 가로지른 별똥별의 꼬리를 닮은 길쭉한 젤리예요. 엉뚱한 물건을 유난히 좋아하지만, 가끔은 주머니 깊이 숨겨 둔 소중한 이야기를 슬쩍 보여 줄지도 몰라요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1299,7 +1299,7 @@
     {
       "id": "bait_snowflake_salt",
       "name": "눈꽃 소금사탕",
-      "description": "토착종을 제외한 공통종 물고기·쓰레기·장식물을 불러요. 희귀·특급 공통종에 집중하며 신화는 나오지 않아요.",
+      "description": "첫눈처럼 가벼운 소금 알갱이를 모아 투명한 사탕으로 굳혔어요. 물에 닿으면 가장자리부터 작은 눈꽃이 피었다가 사라져, 따뜻한 바다에도 잠깐의 겨울을 선물해요.",
       "price": 52,
       "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/snowflake-salt-candy.png",
       "sort_order": 121,
@@ -1309,7 +1309,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "토착종을 제외한 공통종 물고기·쓰레기·장식물을 불러요. 희귀·특급 공통종에 집중하며 신화는 나오지 않아요.",
+      "effect_description": "첫눈처럼 가벼운 소금 알갱이를 모아 투명한 사탕으로 굳혔어요. 물에 닿으면 가장자리부터 작은 눈꽃이 피었다가 사라져, 따뜻한 바다에도 잠깐의 겨울을 선물해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1317,7 +1317,7 @@
     {
       "id": "bait_special",
       "name": "달빛 진주새우",
-      "description": "진주새우의 반짝임으로 희귀 등급의 바다 친구들을 불러요.",
+      "description": "달빛이 고인 웅덩이에서 헤엄치던 진주빛 새우예요. 작은 몸을 움직일 때마다 은은한 빛이 따라 흘러, 낚싯줄 끝에 달을 한 조각 걸어 둔 것 같아요.",
       "price": null,
       "image_path": "/items/baits/special.png",
       "sort_order": 107,
@@ -1327,7 +1327,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "진주새우의 반짝임으로 희귀 등급의 바다 친구들을 불러요.",
+      "effect_description": "달빛이 고인 웅덩이에서 헤엄치던 진주빛 새우예요. 작은 몸을 움직일 때마다 은은한 빛이 따라 흘러, 낚싯줄 끝에 달을 한 조각 걸어 둔 것 같아요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -1335,7 +1335,7 @@
     {
       "id": "bait_starlight_wax",
       "name": "별빛 밀랍",
-      "description": "은은하게 번지는 별빛에 드물게 신화 물고기가 이끌려 와요.",
+      "description": "별이 유난히 낮게 뜬 밤에 밀랍을 얇게 펴서 굳혔어요. 손바닥의 온기만으로도 희미한 빛이 살아나, 아직 끝나지 않은 밤하늘의 이야기를 들려줘요.",
       "price": 41,
       "image_path": "/items/baits/starlight-wax.png",
       "sort_order": 119,
@@ -1345,7 +1345,7 @@
       "mythic_bp": 50,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "은은하게 번지는 별빛에 드물게 신화 물고기가 이끌려 와요.",
+      "effect_description": "별이 유난히 낮게 뜬 밤에 밀랍을 얇게 펴서 굳혔어요. 손바닥의 온기만으로도 희미한 빛이 살아나, 아직 끝나지 않은 밤하늘의 이야기를 들려줘요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": false
@@ -1353,7 +1353,7 @@
     {
       "id": "bait_zigzag_jelly",
       "name": "지그재그 젤리",
-      "description": "두 가지 맛으로 일반·희귀 물고기를 번갈아 불러요.",
+      "description": "서로 다른 맛의 젤리를 번갈아 꼬아 만든 알록달록한 간식이에요. 한 입마다 다른 풍경이 떠오른다는 말에, 섬의 아이들은 여행을 떠나는 날이면 꼭 하나씩 챙겨요.",
       "price": 126,
       "image_path": "/items/baits/zigzag-jelly.png",
       "sort_order": 113,
@@ -1363,7 +1363,7 @@
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "두 가지 맛으로 일반·희귀 물고기를 번갈아 불러요.",
+      "effect_description": "서로 다른 맛의 젤리를 번갈아 꼬아 만든 알록달록한 간식이에요. 한 입마다 다른 풍경이 떠오른다는 말에, 섬의 아이들은 여행을 떠나는 날이면 꼭 하나씩 챙겨요.",
       "success_chance_bp": 10000,
       "fish_only": true,
       "alternating": true
@@ -49515,7 +49515,7 @@
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
       "night_wait_max_seconds": null,
-      "map_chance_bp": 800
+      "map_chance_bp": 1300
     },
     {
       "id": "bait_map_lantern_berry",
@@ -49539,7 +49539,7 @@
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
       "night_wait_max_seconds": null,
-      "map_chance_bp": 1000
+      "map_chance_bp": 1500
     },
     {
       "id": "bait_map_star_chart_pearl",
@@ -49563,7 +49563,7 @@
       "night_rare_bp": null,
       "night_wait_min_seconds": null,
       "night_wait_max_seconds": null,
-      "map_chance_bp": 2000
+      "map_chance_bp": 2500
     },
     {
       "id": "bait_mermaid_whisper_candy",

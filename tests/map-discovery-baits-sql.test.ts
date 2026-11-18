@@ -72,9 +72,9 @@ async function finish(id: string, won = true) {
 it('publishes the agreed prices, grade odds, local artwork and separate base map odds', async () => {
   const s = await state()
   for (const [id, price, common, rare, epic, map] of [
-    [compass, 160, 6700, 3000, 300, 800],
-    [lantern, 280, 3200, 6500, 300, 1000],
-    [pearl, 680, 1500, 5000, 3500, 2000],
+    [compass, 160, 6700, 3000, 300, 1300],
+    [lantern, 280, 3200, 6500, 300, 1500],
+    [pearl, 680, 1500, 5000, 3500, 2500],
   ] as const) {
     const b = s.baits.find((b) => b.id === id)
     expect(b).toMatchObject({
@@ -93,7 +93,7 @@ it('publishes the agreed prices, grade odds, local artwork and separate base map
   }
   expect(s.baits.find((b) => b.id === 'bait').baseMapChanceBp).toBeUndefined()
 })
-it.each([800, 1000, 2000])(
+it.each([1300, 1500, 2500])(
   'uses exact category ranges for map base %i and stacks the lens without consuming relic odds',
   async (base) => {
     for (const bonus of [0, 500]) {
@@ -131,9 +131,9 @@ it('keeps existing bait map odds at 3% plus its original relic bonus', async () 
     relic: 300,
   })
   const s = await state()
-  expect(s.baits.find((b) => b.id === compass).mapChanceBp).toBe(1300)
-  expect(s.baits.find((b) => b.id === lantern).mapChanceBp).toBe(1500)
-  expect(s.baits.find((b) => b.id === pearl).mapChanceBp).toBe(2500)
+  expect(s.baits.find((b) => b.id === compass).mapChanceBp).toBe(1800)
+  expect(s.baits.find((b) => b.id === lantern).mapChanceBp).toBe(2000)
+  expect(s.baits.find((b) => b.id === pearl).mapChanceBp).toBe(3000)
 })
 it.each([
   [compass, 160],
@@ -163,8 +163,8 @@ it('reserves the rolled grade and bonus once, then grants one map piece on a suc
   expect(p.species.kind).toBe('map')
   expect(p.rarity).toBe('rare')
   expect(p.bait_profile).toMatchObject({
-    map_chance_bp: 800,
-    effective_map_chance_bp: 1300,
+    map_chance_bp: 1300,
+    effective_map_chance_bp: 1800,
     mythic_bp: 0,
   })
   await db.query('select public.equip_relic(null,$1,500)', [crypto.randomUUID()])
@@ -195,8 +195,8 @@ it('reserves and grants an epic map with the pearl profile without consuming the
   expect(p.species.kind).toBe('map')
   expect(p.rarity).toBe('epic')
   expect(p.bait_profile).toMatchObject({
-    map_chance_bp: 2000,
-    effective_map_chance_bp: 2000,
+    map_chance_bp: 2500,
+    effective_map_chance_bp: 2500,
     common_bp: 1500,
     rare_bp: 5000,
     epic_bp: 3500,

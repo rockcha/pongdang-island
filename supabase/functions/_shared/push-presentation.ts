@@ -3,6 +3,7 @@ export type PushMember={tag:string;title:string;body:string;quantity?:number|nul
 export type PushPayload=PushMember&{userId:string;category?:string;url:string;members?:PushMember[]}
 export const pushTitles:Record<string,string>={production:'🔥 따끈한 연료가 준비됐어요','bait-production':'🪱 미끼 도시락 완성!',expedition:'🐟 통발에 손님이 왔어요!',harbor:'⛵ 배가 돌아왔어요!','production-expiring':'⏳ 연료가 기다리고 있어요','bait-production-expiring':'⏳ 미끼가 기다리고 있어요',test:'💌 퐁이가 소식을 가져왔어요'}
 export const groupedCategories=['production','bait-production','expedition','harbor','production-expiring','bait-production-expiring']
+export function pushGroupTag(payload:PushPayload){return groupedCategories.includes(payload.category??'')?`pongdang:${payload.userId}:${payload.category}`:payload.tag}
 export function membersOf(payload:PushPayload):PushMember[]{return payload.members?.length?payload.members:[{tag:payload.tag,title:payload.title,body:payload.body,quantity:payload.quantity,expiresAt:payload.expiresAt}]}
 export function presentPush(payload:PushPayload,members=membersOf(payload)):PushPayload{
  const unique=[...new Map(members.map(m=>[m.tag,m])).values()]
@@ -30,7 +31,7 @@ export function groupPushDeliveries(deliveries:PushDelivery[]){
   const group=groups.get(key)
   const combined=group?presentPush(group.payload,[...membersOf(group.payload),...membersOf(p)]):null
   if(group&&combined&&new TextEncoder().encode(JSON.stringify(combined)).length<=3500){group.deliveries.push(delivery);group.payload=combined}
-  else{const next={deliveries:[delivery],payload:presentPush({...p,tag:groupedCategories.includes(c)?`pongdang:${p.userId}:${c}:${delivery.id}`:p.tag}),subscription:delivery.subscription};groups.set(key,next);result.push(next)}
+  else{const next={deliveries:[delivery],payload:presentPush(p),subscription:delivery.subscription};next.payload.tag=pushGroupTag(p);groups.set(key,next);result.push(next)}
  }
  return result
 }

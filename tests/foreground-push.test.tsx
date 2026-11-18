@@ -1,6 +1,7 @@
 import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {MemoryRouter,useLocation} from 'react-router'
+import {StrictMode} from 'react'
 import {ForegroundPush} from '@/features/notifications/foreground-push'
 import {foregroundNoticeEvent} from '@/features/notifications/foreground-notice'
 import {appQueryClient,setQueryAccount} from '@/lib/account-cache'
@@ -16,7 +17,7 @@ beforeEach(()=>{
 })
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.restoreAllMocks();vi.clearAllMocks();appQueryClient.clear();setQueryAccount(null)})
 it('groups fresh realtime notifications and navigates from the Pongi card',async()=>{
- render(<MemoryRouter><View/></MemoryRouter>)
+ render(<StrictMode><MemoryRouter><View/></MemoryRouter></StrictMode>)
  act(()=>{for(const id of ['1','2'])window.dispatchEvent(new CustomEvent(foregroundNoticeEvent,{detail:payload(id)}))})
  expect(await screen.findByText('🔥 따끈한 연료가 준비됐어요')).toBeTruthy()
  expect(screen.getByText(/생산소 2곳 · 연료 20개/)).toBeTruthy()
@@ -42,4 +43,18 @@ it('clears a claimed card after a new authoritative snapshot and not from an old
  await act(async()=>{await appQueryClient.refetchQueries()})
  await waitFor(()=>expect(screen.queryByText('🔥 따끈한 연료가 준비됐어요')).toBeNull())
  expect(mock.post).toHaveBeenCalledWith(expect.objectContaining({type:'PUSHDATA_RECONCILE',userId:'owner'}))
+})
+it('does not reopen a dismissed category card for new members within a minute',async()=>{
+ render(<MemoryRouter><View/></MemoryRouter>)
+ act(()=>window.dispatchEvent(new CustomEvent(foregroundNoticeEvent,{detail:payload('1')})))
+ await screen.findByText('🔥 따끈한 연료가 준비됐어요')
+ fireEvent.click(screen.getByRole('button',{name:'퐁이 소식 닫기'}))
+ const postMessage=vi.fn()
+ act(()=>mock.listener?.({data:{type:'PONGDANG_PUSH',payload:payload('2')},ports:[{postMessage,close:vi.fn()}],origin:location.origin} as unknown as MessageEvent))
+ await waitFor(()=>expect(postMessage).toHaveBeenCalledWith({shown:true}))
+ expect(screen.queryByText('🔥 따끈한 연료가 준비됐어요')).toBeNull()
+ const actualNow=Date.now()
+ vi.spyOn(Date,'now').mockReturnValue(actualNow+61000)
+ act(()=>window.dispatchEvent(new CustomEvent(foregroundNoticeEvent,{detail:payload('3')})))
+ expect(await screen.findByText('🔥 따끈한 연료가 준비됐어요')).toBeTruthy()
 })

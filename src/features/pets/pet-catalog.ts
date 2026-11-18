@@ -1,3 +1,5 @@
+import {baitWaitFlavor} from '@/features/fishing/bait-wait-flavor'
+
 export const petSpecies = [
   {
     id: 'sand-golem',
@@ -441,7 +443,7 @@ export const petBaits = [
     rareBp: 1800,
     epicBp: 180,
     mythicBp: 20,
-    description: '작은 간식을 담은 입문용 주머니예요. 작은 친구와 희귀한 개체를 함께 기다려요.',
+    description: baitWaitFlavor('bait_pet_starter'),
   },
   {
     id: 'biscuit',
@@ -452,7 +454,7 @@ export const petBaits = [
     rareBp: 1200,
     epicBp: 280,
     mythicBp: 20,
-    description: '별 모양 비스킷의 고소한 향이 작은 친구들을 불러요.',
+    description: baitWaitFlavor('bait_pet_biscuit'),
   },
   {
     id: 'macaron',
@@ -463,7 +465,7 @@ export const petBaits = [
     rareBp: 1200,
     epicBp: 280,
     mythicBp: 20,
-    description: '포근한 크림과 달콤한 향에 수줍은 친구도 다가와요.',
+    description: baitWaitFlavor('bait_pet_macaron'),
   },
 ] as const
 export type PetBaitId = (typeof petBaits)[number]['id']

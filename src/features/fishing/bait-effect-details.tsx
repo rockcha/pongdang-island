@@ -32,7 +32,7 @@ export function BaitEffectDetails({bait,compact=false,minimal=false}:{bait:Fishi
   :tail?{icon:Trash2,title:'쓰레기 속 신화의 기회',text:`성공 시 일반 쓰레기 ${baitPercent(bait.common_bp)} · 신화 등급 개체 ${baitPercent(bait.mythic_bp)}예요. 신화는 물고기·쓰레기·장식물 중에서 포획해요.`}:null
  const bonus=bait.successChanceBp!==undefined&&bait.baseSuccessChanceBp!==undefined?Math.max(0,bait.successChanceBp-bait.baseSuccessChanceBp):0
  return <section aria-label="미끼 효과" className={compact?"min-w-0 space-y-3":"min-w-0 space-y-5 py-1"}>
-  {compact&&bait.description&&<p className={minimal?'text-xs leading-6 text-foreground/80':'rounded-xl border border-primary/10 bg-secondary/30 px-3 py-2.5 text-xs leading-6 text-foreground/80'}>{bait.description}</p>}
+  {compact&&(baitWaitFlavor(bait.id)||bait.description)&&<p className={minimal?'text-xs leading-6 text-foreground/80':'rounded-xl border border-primary/10 bg-secondary/30 px-3 py-2.5 text-xs leading-6 text-foreground/80'}>{baitWaitFlavor(bait.id)||bait.description}</p>}
   {!compact&&<div>
    <div className="flex items-center justify-between gap-3"><span className="text-xs text-muted-foreground">낚시 성공률</span><strong className="text-xl font-semibold tabular-nums text-primary">{chance===undefined?'—':baitPercent(chance)}</strong></div>
   </div>}

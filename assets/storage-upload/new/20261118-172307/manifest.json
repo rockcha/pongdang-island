@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "created_at": "2026-11-18T08:23:07.369Z",
+  "prompt": "Use case: stylized-concept. Asset type: small transparent PNG animal paw badge icon for a cozy Korean fantasy fishing game shop. One centered front-facing friendly stylized animal paw print, exactly ONE large rounded central heart-like paw pad and FOUR smaller rounded toe pads evenly arcing above it. The five pads together form a single compact iconic paw silhouette, intentional clean gaps between pads. No actual animal, no leg, no lettering, no badge frame. Soft warm rosy pink with subtle peach-pink highlights, delicate darker rose outline and gentle hand-painted shading, polished cozy storybook game inventory illustration. Keep shading very simple and readable at 20–28 pixels, rounded forms, high clarity, no fur texture, no tiny details. Match the soft illustrated honey-jelly and pearl bait art family rather than a glossy plastic or photoreal 3D object. Square composition, paw centered and occupying about 74 percent of canvas, generous transparent margin. Genuine alpha transparent background, no white or black background, no cast shadow outside pads, no glow, no particles or detached speckles beyond the five intentional paw pads, no watermark.",
+  "reference_inspected": "public/items/baits/map-compass-honey-jelly-v1.png",
+  "source": "assets/storage-upload/new/20261118-172307/original.imagegen",
+  "final": "assets/storage-upload/new/20261118-172307/app-icons/pet-paw-v1.png",
+  "public_path": "public/app-icons/pet-paw-v1.png",
+  "processing": "256px downscale with Sharp; lossless RGBA PNG; transparent margin preserved",
+  "sha256": "8190c8456580a81cb69e74288f753f041b16fe7c02c0f40741d3ca37b72a9090",
+  "width": 256,
+  "height": 256,
+  "has_alpha": true
+}

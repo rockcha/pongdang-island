@@ -9,6 +9,9 @@ import { imageRuntimeCaching } from './build/image-cache.ts'
 // Watching them creates thousands of Windows filesystem watchers before loading.
 const devWatchIgnored = ['artifacts', 'assets', 'docs', 'supabase', 'tests', 'scripts', 'tmp', '.cache', '.agents', '.github']
   .map(directory => fileURLToPath(new URL(`./${directory}`, import.meta.url)).replaceAll('\\', '/'))
+// Client bait stories import this catalog directly. Watch its file and parent
+// directories so edits invalidate Vite's JSON module cache without watching SQL.
+const clientCatalogSource = fileURLToPath(new URL('./supabase/catalog/catalog.json', import.meta.url)).replaceAll('\\', '/')
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,6 +19,7 @@ export default defineConfig({
     watch: {
       ignored: path => {
         const normalized = path.replaceAll('\\', '/')
+        if (normalized === clientCatalogSource || clientCatalogSource.startsWith(`${normalized}/`)) return false
         return devWatchIgnored.some(directory => normalized === directory || normalized.startsWith(`${directory}/`))
       },
     },

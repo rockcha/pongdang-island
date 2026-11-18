@@ -16,13 +16,13 @@ declare s jsonb;b jsonb;r jsonb;p jsonb;again jsonb;buy_op uuid:=gen_random_uuid
 begin
  s:=public.fishing_state();
  select value into b from jsonb_array_elements(s->'baits') where value->>'id'=bait;
- if b is null or (b->>'price')::integer<>680 or (b->>'baseMapChanceBp')::integer<>2000 or (b->>'mapChanceBp')::integer<>2000 or (b->>'epic_bp')::integer<>3500 then raise exception 'PEARL_SHOP_MISMATCH';end if;
+ if b is null or (b->>'price')::integer<>680 or (b->>'baseMapChanceBp')::integer<>2500 or (b->>'mapChanceBp')::integer<>2500 or (b->>'epic_bp')::integer<>3500 then raise exception 'PEARL_SHOP_MISMATCH';end if;
  r:=public.buy_fishing_bait_bulk(bait,2,buy_op,680);
  if (r->>'gold')::integer<>8640 or (r->'inventory'->>bait)::integer<>2 then raise exception 'PEARL_PURCHASE_MISMATCH';end if;
  r:=public.buy_fishing_bait_bulk(bait,2,buy_op,680);
  if (r->>'gold')::integer<>8640 or (r->>'delta')::integer<>0 or not (r->>'replayed')::boolean then raise exception 'PEARL_DUPLICATE_PURCHASE';end if;
  p:=public.prepare_discovery_fishing('pongdang',bait,cast_op,false);
- if (p->'bait_profile'->>'map_chance_bp')::integer<>2000 or (p->'bait_profile'->>'epic_bp')::integer<>3500 or (p->'bait_profile'->>'mythic_bp')::integer<>0 then raise exception 'PEARL_PREPARE_MISMATCH';end if;
+ if (p->'bait_profile'->>'map_chance_bp')::integer<>2500 or (p->'bait_profile'->>'epic_bp')::integer<>3500 or (p->'bait_profile'->>'mythic_bp')::integer<>0 then raise exception 'PEARL_PREPARE_MISMATCH';end if;
  again:=public.prepare_discovery_fishing('pongdang',bait,cast_op,false);
  if again->'species' is distinct from p->'species' or again->'bait_profile' is distinct from p->'bait_profile' then raise exception 'PEARL_REROLLED';end if;
  s:=public.fishing_state();

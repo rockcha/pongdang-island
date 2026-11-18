@@ -1,4 +1,7 @@
+import {loveletterArt} from './loveletter-art'
+
 export const regionIcons:Record<string,{name:string;src:string}>={
+ loveletter:{name:loveletterArt.name,src:loveletterArt.icon},
  sunkenrift:{name:'가라앉은 소환사의 협곡',src:'/region-icons/sunkenrift.svg'},
  hologram:{name:'홀로그램 심해도시',src:'/region-icons/hologram.svg'},
  galaxy:{name:'은하수의 끝자락',src:'/region-icons/galaxy.svg'},

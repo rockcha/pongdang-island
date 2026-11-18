@@ -12,6 +12,7 @@ import {waitingFloatRipples} from './waiting-float-ripples'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
+ loveletter:{top:'#bb7f92',bottom:'#7f4d66',light:'#ffd5db'},
  sunkenrift:{top:'#1d6474',bottom:'#0b2c42',light:'#9fe3e6'},
  hologram:{top:'#0a2032',bottom:'#030a14',light:'#5cdaef'},
  galaxy:{top:'#11182e',bottom:'#050916',light:'#d9d7f1'},

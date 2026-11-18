@@ -56,7 +56,12 @@ it('keeps the rod straight while scouting and bends only after the first pull st
  expect(rod()).not.toBe(straight)
 })
 it('keeps region water and terrain assets independently framed',()=>{
- for(const id of Object.keys(fishingEnvironments).filter(id=>id!=='sunkenrift')){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).platformFallbackSrc]);unmount()}
+ for(const id of Object.keys(fishingEnvironments).filter(id=>!['sunkenrift','loveletter'].includes(id))){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).platformFallbackSrc]);unmount()}
+})
+it('uses the swimming Pongsuni painting as the complete Love Letter fishing scene',()=>{
+ const {container}=render(<FishingStandby regionId="loveletter"/>)
+ expect(container.querySelector('[data-fishing-sea="loveletter"] image')?.getAttribute('href')).toBe('/regions/loveletter/overview-v1.png')
+ expect(container.querySelector('[data-fishing-platform]')).toBeNull()
 })
 it('uses the painted Sunken Rift bank for both standby and active fishing',()=>{
  const regionId='sunkenrift'

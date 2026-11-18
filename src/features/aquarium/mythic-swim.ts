@@ -1,3 +1,4 @@
+import loveletterMythicSheets from './loveletter-mythic-action-layouts.json'
 import sunkenriftMythicSheets from './sunkenrift-mythic-action-layouts.json'
 import sunkenriftRefinedSheets from './sunkenrift-refinement-mythic-action-layouts.json'
 import additionalSheets from './mythic-action-layouts.json'
@@ -24,6 +25,7 @@ export function mythicSheetColumns(path:string){return sharedDecorationColumns(p
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
+ ...loveletterMythicSheets,
  ...sunkenriftRefinedSheets,
  ...sunkenriftMythicSheets,
  ...weatherSpiritSheets,
@@ -65,7 +67,7 @@ for(const sheet of sheets){
 }
 const sheetFor=(path:string)=>canonicalSheets.get(path)
 const plunderPaths=new Set(plunderMythicSheets.map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
-const reversibleActionPaths=new Set([...sunkenriftMythicSheets,...weatherSpiritSheets,...hologramMythicSheets,...galaxyMythicSheets,...hangangMythicSheets,...pharaohMythicSheets,...fireflyMythicSheets,...starruinsBluegoldSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
+const reversibleActionPaths=new Set([...loveletterMythicSheets,...sunkenriftMythicSheets,...weatherSpiritSheets,...hologramMythicSheets,...galaxyMythicSheets,...hangangMythicSheets,...pharaohMythicSheets,...fireflyMythicSheets,...starruinsBluegoldSheets,...mechsanctumMythicSheets,...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].map(s=>`fish/mythic/${s.id}_swim8_sprite.png`))
 export function mythicSwimAsset(path:string,rarity:string){
  if(rarity!=='mythic')return null
  const decoration=sharedDecorationAsset(path)

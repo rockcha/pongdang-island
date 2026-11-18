@@ -5,7 +5,7 @@ import {fishingEnvironment,fishingEnvironments} from '@/features/fishing/fishing
 
 it.each(Object.keys(fishingEnvironments))('has the expected camera paintings and valid local assets for %s',id=>{
  const theme=fishingEnvironment(id)
- if(id==='sunkenrift'||id==='nyamnyam')expect(theme.src).toBe(theme.frontSrc)
+ if(['sunkenrift','nyamnyam','loveletter'].includes(id))expect(theme.src).toBe(theme.frontSrc)
  else expect(theme.src).not.toBe(theme.frontSrc)
  const sources=id==='nyamnyam'
   ? [theme.platformSrc??theme.platformFallbackSrc]

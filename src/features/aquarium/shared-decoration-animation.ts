@@ -5,6 +5,12 @@ const rates:Record<string,number>={
  'parasol-sponge-tree':1.5,
  'waterwheel-cascade-tower':4,
  'levitating-stone-spire':1,
+ 'loveletter-shell-planter':1,
+ 'loveletter-twin-shell-lamps':1,
+ 'loveletter-two-letters-have-arrived':1.25,
+ 'loveletter-cherry-water-wheel':2,
+ 'loveletter-harbors-last-lantern':1,
+ 'loveletter-love-letter-music-box':1.25,
 }
 export const platformWorkSpritePath='decorations/mythic/pongi-subsea-drilling-platform_work8_v1_sprite.png'
 export const platformCompatSpritePath='decorations/mythic/pongi-subsea-drilling-platform_compat_v1_sprite.png'

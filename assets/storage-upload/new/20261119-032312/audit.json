@@ -1,0 +1,3181 @@
+{
+  "results": [
+    {
+      "id": "loveletter-petal-anchovy",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-anchovy-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            78,
+            485,
+            1101,
+            270
+          ],
+          "margin": 75,
+          "occupancy": 0.8779904306220095,
+          "opaque": 156895,
+          "transparent": 1408733,
+          "soft": 163167
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-petal-anchovy",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-anchovy-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            65,
+            231,
+            505,
+            132
+          ],
+          "margin": 57,
+          "occupancy": 0.8054226475279107,
+          "opaque": 37168,
+          "transparent": 79425,
+          "soft": 313622
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            63,
+            231,
+            507,
+            132
+          ],
+          "margin": 57,
+          "occupancy": 0.8086124401913876,
+          "opaque": 37701,
+          "transparent": 88356,
+          "soft": 304686
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            64,
+            229,
+            506,
+            134
+          ],
+          "margin": 57,
+          "occupancy": 0.8070175438596491,
+          "opaque": 36715,
+          "transparent": 103028,
+          "soft": 290018
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            62,
+            231,
+            508,
+            132
+          ],
+          "margin": 57,
+          "occupancy": 0.810207336523126,
+          "opaque": 35931,
+          "transparent": 112172,
+          "soft": 280841
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-flower-shade-goby",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-flower-shade-goby-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            46,
+            401,
+            1138,
+            479
+          ],
+          "margin": 46,
+          "occupancy": 0.9074960127591707,
+          "opaque": 339792,
+          "transparent": 1221150,
+          "soft": 350624
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-flower-shade-goby",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-flower-shade-goby-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            74,
+            193,
+            515,
+            236
+          ],
+          "margin": 38,
+          "occupancy": 0.8213716108452951,
+          "opaque": 78399,
+          "transparent": 308523,
+          "soft": 84417
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            52,
+            198,
+            509,
+            234
+          ],
+          "margin": 52,
+          "occupancy": 0.8118022328548644,
+          "opaque": 77867,
+          "transparent": 307132,
+          "soft": 85751
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            66,
+            195,
+            522,
+            236
+          ],
+          "margin": 39,
+          "occupancy": 0.8325358851674641,
+          "opaque": 79634,
+          "transparent": 304535,
+          "soft": 88395
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            41,
+            196,
+            522,
+            235
+          ],
+          "margin": 41,
+          "occupancy": 0.8325358851674641,
+          "opaque": 79224,
+          "transparent": 305494,
+          "soft": 87413
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-peach-surfperch",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-peach-surfperch-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            88,
+            256,
+            1021,
+            708
+          ],
+          "margin": 88,
+          "occupancy": 0.8141945773524721,
+          "opaque": 455310,
+          "transparent": 1110561,
+          "soft": 461055
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-peach-surfperch",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-peach-surfperch-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            120,
+            156,
+            393,
+            284
+          ],
+          "margin": 114,
+          "occupancy": 0.6267942583732058,
+          "opaque": 72138,
+          "transparent": 305671,
+          "soft": 87339
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            140,
+            158,
+            370,
+            283
+          ],
+          "margin": 117,
+          "occupancy": 0.5901116427432217,
+          "opaque": 67971,
+          "transparent": 312641,
+          "soft": 80382
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            122,
+            156,
+            391,
+            285
+          ],
+          "margin": 114,
+          "occupancy": 0.6236044657097288,
+          "opaque": 71148,
+          "transparent": 297279,
+          "soft": 95718
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            104,
+            155,
+            409,
+            286
+          ],
+          "margin": 104,
+          "occupancy": 0.6523125996810207,
+          "opaque": 73447,
+          "transparent": 301389,
+          "soft": 91606
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-pink-sand-flounder",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-pink-sand-flounder-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            81,
+            325,
+            1081,
+            612
+          ],
+          "margin": 81,
+          "occupancy": 0.8620414673046252,
+          "opaque": 435233,
+          "transparent": 1018492,
+          "soft": 553631
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-pink-sand-flounder",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-pink-sand-flounder-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            66,
+            156,
+            494,
+            292
+          ],
+          "margin": 66,
+          "occupancy": 0.7878787878787878,
+          "opaque": 97339,
+          "transparent": 285671,
+          "soft": 107293
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            99,
+            154,
+            460,
+            293
+          ],
+          "margin": 68,
+          "occupancy": 0.733652312599681,
+          "opaque": 91942,
+          "transparent": 294110,
+          "soft": 98875
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            68,
+            155,
+            492,
+            294
+          ],
+          "margin": 67,
+          "occupancy": 0.784688995215311,
+          "opaque": 97230,
+          "transparent": 279943,
+          "soft": 113028
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            47,
+            155,
+            513,
+            294
+          ],
+          "margin": 47,
+          "occupancy": 0.8181818181818182,
+          "opaque": 98513,
+          "transparent": 284868,
+          "soft": 108094
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-dusk-pipefish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-dusk-pipefish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            64,
+            520,
+            1125,
+            262
+          ],
+          "margin": 64,
+          "occupancy": 0.8971291866028708,
+          "opaque": 81790,
+          "transparent": 1474672,
+          "soft": 97212
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-dusk-pipefish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-dusk-pipefish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            58,
+            253,
+            515,
+            102
+          ],
+          "margin": 54,
+          "occupancy": 0.8213716108452951,
+          "opaque": 20761,
+          "transparent": 21793,
+          "soft": 370918
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            70,
+            254,
+            504,
+            115
+          ],
+          "margin": 53,
+          "occupancy": 0.8038277511961722,
+          "opaque": 22046,
+          "transparent": 24885,
+          "soft": 367971
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            56,
+            254,
+            517,
+            97
+          ],
+          "margin": 54,
+          "occupancy": 0.8245614035087719,
+          "opaque": 20975,
+          "transparent": 34407,
+          "soft": 358413
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            62,
+            254,
+            512,
+            116
+          ],
+          "margin": 53,
+          "occupancy": 0.8165869218500797,
+          "opaque": 20263,
+          "transparent": 38986,
+          "soft": 353848
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-calyx-eel-catfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-calyx-eel-catfish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            64,
+            403,
+            1126,
+            467
+          ],
+          "margin": 64,
+          "occupancy": 0.89792663476874,
+          "opaque": 265758,
+          "transparent": 1298004,
+          "soft": 273770
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-calyx-eel-catfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-calyx-eel-catfish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            63,
+            192,
+            530,
+            221
+          ],
+          "margin": 34,
+          "occupancy": 0.8452950558213717,
+          "opaque": 66004,
+          "transparent": 314350,
+          "soft": 78504
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            57,
+            192,
+            536,
+            220
+          ],
+          "margin": 34,
+          "occupancy": 0.8548644338118022,
+          "opaque": 63484,
+          "transparent": 321202,
+          "soft": 71683
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            54,
+            192,
+            539,
+            218
+          ],
+          "margin": 34,
+          "occupancy": 0.8596491228070176,
+          "opaque": 64753,
+          "transparent": 314467,
+          "soft": 78386
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            54,
+            163,
+            539,
+            244
+          ],
+          "margin": 34,
+          "occupancy": 0.8596491228070176,
+          "opaque": 67075,
+          "transparent": 303882,
+          "soft": 88948
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-double-blossom-filefish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-double-blossom-filefish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            90,
+            234,
+            1048,
+            785
+          ],
+          "margin": 90,
+          "occupancy": 0.835725677830941,
+          "opaque": 456202,
+          "transparent": 1087154,
+          "soft": 484553
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-double-blossom-filefish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-double-blossom-filefish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            73,
+            111,
+            470,
+            360
+          ],
+          "margin": 73,
+          "occupancy": 0.7496012759170654,
+          "opaque": 94270,
+          "transparent": 294458,
+          "soft": 98149
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            86,
+            111,
+            458,
+            338
+          ],
+          "margin": 83,
+          "occupancy": 0.7304625199362041,
+          "opaque": 88936,
+          "transparent": 299069,
+          "soft": 93557
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            74,
+            111,
+            469,
+            355
+          ],
+          "margin": 74,
+          "occupancy": 0.748006379585327,
+          "opaque": 93497,
+          "transparent": 291851,
+          "soft": 100742
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            66,
+            111,
+            478,
+            374
+          ],
+          "margin": 66,
+          "occupancy": 0.7623604465709729,
+          "opaque": 96102,
+          "transparent": 290372,
+          "soft": 102166
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-pearl-shell-puffer",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-pearl-shell-puffer-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            63,
+            243,
+            1082,
+            769
+          ],
+          "margin": 63,
+          "occupancy": 0.8628389154704944,
+          "opaque": 542862,
+          "transparent": 1017929,
+          "soft": 553725
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-pearl-shell-puffer",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-pearl-shell-puffer-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            64,
+            120,
+            504,
+            379
+          ],
+          "margin": 59,
+          "occupancy": 0.8038277511961722,
+          "opaque": 126547,
+          "transparent": 221710,
+          "soft": 171117
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            98,
+            120,
+            470,
+            379
+          ],
+          "margin": 59,
+          "occupancy": 0.7496012759170654,
+          "opaque": 120710,
+          "transparent": 216737,
+          "soft": 176122
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            67,
+            120,
+            501,
+            379
+          ],
+          "margin": 59,
+          "occupancy": 0.7990430622009569,
+          "opaque": 124885,
+          "transparent": 198745,
+          "soft": 194096
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            44,
+            120,
+            524,
+            379
+          ],
+          "margin": 44,
+          "occupancy": 0.835725677830941,
+          "opaque": 128419,
+          "transparent": 199908,
+          "soft": 192916
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-dusk-fan-fish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-dusk-fan-fish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            317,
+            1119,
+            602
+          ],
+          "margin": 52,
+          "occupancy": 0.8923444976076556,
+          "opaque": 426899,
+          "transparent": 1138719,
+          "soft": 432836
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-dusk-fan-fish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-dusk-fan-fish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            68,
+            164,
+            497,
+            279
+          ],
+          "margin": 62,
+          "occupancy": 0.7926634768740032,
+          "opaque": 91328,
+          "transparent": 23533,
+          "soft": 369449
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            74,
+            184,
+            484,
+            259
+          ],
+          "margin": 69,
+          "occupancy": 0.7719298245614035,
+          "opaque": 81732,
+          "transparent": 39425,
+          "soft": 353577
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            75,
+            182,
+            490,
+            260
+          ],
+          "margin": 62,
+          "occupancy": 0.7814992025518341,
+          "opaque": 85616,
+          "transparent": 88874,
+          "soft": 304091
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            50,
+            155,
+            508,
+            287
+          ],
+          "margin": 50,
+          "occupancy": 0.810207336523126,
+          "opaque": 93878,
+          "transparent": 97816,
+          "soft": 295206
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-envelope-gurnard",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-envelope-gurnard-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            44,
+            244,
+            1165,
+            767
+          ],
+          "margin": 44,
+          "occupancy": 0.9290271132376395,
+          "opaque": 484505,
+          "transparent": 1066484,
+          "soft": 505121
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-envelope-gurnard",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-envelope-gurnard-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            68,
+            139,
+            493,
+            297
+          ],
+          "margin": 66,
+          "occupancy": 0.7862838915470495,
+          "opaque": 86467,
+          "transparent": 288287,
+          "soft": 104526
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            68,
+            139,
+            493,
+            344
+          ],
+          "margin": 66,
+          "occupancy": 0.7862838915470495,
+          "opaque": 95168,
+          "transparent": 282058,
+          "soft": 110688
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            68,
+            139,
+            493,
+            380
+          ],
+          "margin": 66,
+          "occupancy": 0.7862838915470495,
+          "opaque": 108061,
+          "transparent": 254325,
+          "soft": 138360
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            68,
+            139,
+            492,
+            345
+          ],
+          "margin": 67,
+          "occupancy": 0.784688995215311,
+          "opaque": 95192,
+          "transparent": 274008,
+          "soft": 118711
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-brass-button-seahorse",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-brass-button-seahorse-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            217,
+            85,
+            819,
+            1092
+          ],
+          "margin": 77,
+          "occupancy": 0.8708133971291866,
+          "opaque": 443136,
+          "transparent": 1109656,
+          "soft": 462025
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-brass-button-seahorse",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-brass-button-seahorse-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            158,
+            61,
+            333,
+            490
+          ],
+          "margin": 61,
+          "occupancy": 0.7814992025518341,
+          "opaque": 84500,
+          "transparent": 278118,
+          "soft": 114643
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            155,
+            61,
+            336,
+            491
+          ],
+          "margin": 61,
+          "occupancy": 0.7830940988835726,
+          "opaque": 82991,
+          "transparent": 276549,
+          "soft": 116239
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            147,
+            61,
+            344,
+            489
+          ],
+          "margin": 61,
+          "occupancy": 0.7799043062200957,
+          "opaque": 83649,
+          "transparent": 279207,
+          "soft": 113598
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            155,
+            61,
+            336,
+            493
+          ],
+          "margin": 61,
+          "occupancy": 0.7862838915470495,
+          "opaque": 84797,
+          "transparent": 272788,
+          "soft": 119940
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-petal-rain-lionfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-rain-lionfish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            66,
+            111,
+            1061,
+            973
+          ],
+          "margin": 66,
+          "occupancy": 0.8460925039872408,
+          "opaque": 537767,
+          "transparent": 600788,
+          "soft": 970909
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-petal-rain-lionfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-rain-lionfish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            56,
+            74,
+            505,
+            471
+          ],
+          "margin": 56,
+          "occupancy": 0.8054226475279107,
+          "opaque": 124936,
+          "transparent": 247043,
+          "soft": 145176
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            95,
+            74,
+            466,
+            464
+          ],
+          "margin": 66,
+          "occupancy": 0.7432216905901117,
+          "opaque": 113433,
+          "transparent": 260158,
+          "soft": 132109
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            55,
+            75,
+            506,
+            472
+          ],
+          "margin": 55,
+          "occupancy": 0.8070175438596491,
+          "opaque": 125057,
+          "transparent": 236259,
+          "soft": 155941
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            42,
+            75,
+            519,
+            475
+          ],
+          "margin": 42,
+          "occupancy": 0.8277511961722488,
+          "opaque": 127755,
+          "transparent": 240916,
+          "soft": 151279
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-pink-shell-sea-turtle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-pink-shell-sea-turtle-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            81,
+            238,
+            1084,
+            802
+          ],
+          "margin": 81,
+          "occupancy": 0.8644338118022329,
+          "opaque": 473288,
+          "transparent": 1081418,
+          "soft": 490383
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-pink-shell-sea-turtle",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-pink-shell-sea-turtle-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            130,
+            488,
+            319
+          ],
+          "margin": 61,
+          "occupancy": 0.7783094098883573,
+          "opaque": 92196,
+          "transparent": 257522,
+          "soft": 135446
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            67,
+            130,
+            482,
+            367
+          ],
+          "margin": 67,
+          "occupancy": 0.7687400318979266,
+          "opaque": 97346,
+          "transparent": 259020,
+          "soft": 133881
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            70,
+            130,
+            479,
+            394
+          ],
+          "margin": 70,
+          "occupancy": 0.7639553429027113,
+          "opaque": 100515,
+          "transparent": 237764,
+          "soft": 155129
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            61,
+            130,
+            488,
+            320
+          ],
+          "margin": 61,
+          "occupancy": 0.7783094098883573,
+          "opaque": 95095,
+          "transparent": 250194,
+          "soft": 142748
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-sunset-baby-seal",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-sunset-baby-seal-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            103,
+            293,
+            1070,
+            667
+          ],
+          "margin": 81,
+          "occupancy": 0.8532695374800638,
+          "opaque": 380003,
+          "transparent": 1183686,
+          "soft": 387850
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-sunset-baby-seal",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-sunset-baby-seal-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            56,
+            142,
+            514,
+            332
+          ],
+          "margin": 56,
+          "occupancy": 0.8197767145135566,
+          "opaque": 92021,
+          "transparent": 294695,
+          "soft": 98100
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            56,
+            142,
+            514,
+            332
+          ],
+          "margin": 56,
+          "occupancy": 0.8197767145135566,
+          "opaque": 91829,
+          "transparent": 295328,
+          "soft": 97415
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            66,
+            141,
+            504,
+            333
+          ],
+          "margin": 57,
+          "occupancy": 0.8038277511961722,
+          "opaque": 89793,
+          "transparent": 294285,
+          "soft": 98485
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            58,
+            141,
+            512,
+            333
+          ],
+          "margin": 57,
+          "occupancy": 0.8165869218500797,
+          "opaque": 91817,
+          "transparent": 290841,
+          "soft": 101920
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-petal-rain-squid",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-rain-squid-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            317,
+            1093,
+            615
+          ],
+          "margin": 49,
+          "occupancy": 0.8716108452950558,
+          "opaque": 401196,
+          "transparent": 1161322,
+          "soft": 410356
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-petal-rain-squid",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-rain-squid-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            59,
+            160,
+            504,
+            328
+          ],
+          "margin": 59,
+          "occupancy": 0.8038277511961722,
+          "opaque": 100560,
+          "transparent": 277892,
+          "soft": 114876
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            61,
+            160,
+            501,
+            305
+          ],
+          "margin": 61,
+          "occupancy": 0.7990430622009569,
+          "opaque": 93897,
+          "transparent": 288508,
+          "soft": 104362
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            58,
+            160,
+            509,
+            330
+          ],
+          "margin": 58,
+          "occupancy": 0.8118022328548644,
+          "opaque": 101755,
+          "transparent": 275413,
+          "soft": 117371
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            61,
+            160,
+            501,
+            319
+          ],
+          "margin": 61,
+          "occupancy": 0.7990430622009569,
+          "opaque": 98723,
+          "transparent": 284577,
+          "soft": 108260
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-flower-ripple-pongsuni",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-flower-ripple-pongsuni-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            53,
+            341,
+            1150,
+            557
+          ],
+          "margin": 51,
+          "occupancy": 0.9170653907496013,
+          "opaque": 399231,
+          "transparent": 1142029,
+          "soft": 430337
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-flower-ripple-pongsuni",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-flower-ripple-pongsuni-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            54,
+            162,
+            518,
+            267
+          ],
+          "margin": 54,
+          "occupancy": 0.8261562998405104,
+          "opaque": 88026,
+          "transparent": 286335,
+          "soft": 106701
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            50,
+            161,
+            509,
+            269
+          ],
+          "margin": 50,
+          "occupancy": 0.8118022328548644,
+          "opaque": 86134,
+          "transparent": 289103,
+          "soft": 103908
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            48,
+            161,
+            524,
+            269
+          ],
+          "margin": 48,
+          "occupancy": 0.835725677830941,
+          "opaque": 88120,
+          "transparent": 279407,
+          "soft": 113626
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            48,
+            161,
+            528,
+            269
+          ],
+          "margin": 48,
+          "occupancy": 0.8421052631578947,
+          "opaque": 88883,
+          "transparent": 278798,
+          "soft": 114198
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-shell-courier-pongsuni",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-shell-courier-pongsuni-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            75,
+            278,
+            1113,
+            670
+          ],
+          "margin": 66,
+          "occupancy": 0.8875598086124402,
+          "opaque": 473647,
+          "transparent": 712388,
+          "soft": 859871
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-shell-courier-pongsuni",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-shell-courier-pongsuni-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            37,
+            113,
+            539,
+            360
+          ],
+          "margin": 37,
+          "occupancy": 0.8596491228070176,
+          "opaque": 119468,
+          "transparent": 237376,
+          "soft": 155635
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            37,
+            114,
+            545,
+            351
+          ],
+          "margin": 37,
+          "occupancy": 0.8692185007974481,
+          "opaque": 120136,
+          "transparent": 244638,
+          "soft": 148401
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            28,
+            113,
+            549,
+            377
+          ],
+          "margin": 28,
+          "occupancy": 0.8755980861244019,
+          "opaque": 122033,
+          "transparent": 225148,
+          "soft": 167848
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            26,
+            114,
+            550,
+            361
+          ],
+          "margin": 26,
+          "occupancy": 0.8771929824561403,
+          "opaque": 120654,
+          "transparent": 230531,
+          "soft": 162453
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-bottle-letter-pongsuni",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-bottle-letter-pongsuni-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            40,
+            345,
+            1171,
+            558
+          ],
+          "margin": 40,
+          "occupancy": 0.9338118022328549,
+          "opaque": 363019,
+          "transparent": 1188226,
+          "soft": 383961
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-bottle-letter-pongsuni",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-bottle-letter-pongsuni-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            55,
+            169,
+            545,
+            269
+          ],
+          "margin": 27,
+          "occupancy": 0.8692185007974481,
+          "opaque": 82348,
+          "transparent": 294486,
+          "soft": 98479
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            55,
+            169,
+            532,
+            268
+          ],
+          "margin": 40,
+          "occupancy": 0.8484848484848485,
+          "opaque": 80906,
+          "transparent": 296725,
+          "soft": 96255
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            54,
+            168,
+            546,
+            271
+          ],
+          "margin": 27,
+          "occupancy": 0.8708133971291866,
+          "opaque": 82584,
+          "transparent": 291351,
+          "soft": 101607
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            53,
+            168,
+            535,
+            269
+          ],
+          "margin": 39,
+          "occupancy": 0.8532695374800638,
+          "opaque": 81310,
+          "transparent": 291888,
+          "soft": 101061
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-love-letter-date",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-love-letter-date-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            321,
+            1157,
+            639
+          ],
+          "margin": 45,
+          "occupancy": 0.9226475279106858,
+          "opaque": 474838,
+          "transparent": 1065652,
+          "soft": 506459
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-love-letter-date",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-love-letter-date-sprite.source",
+      "width": 2048,
+      "height": 1024,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            142,
+            184,
+            269,
+            167
+          ],
+          "margin": 101,
+          "occupancy": 0.525390625,
+          "opaque": 29791,
+          "transparent": 213577,
+          "soft": 48323
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            74,
+            184,
+            273,
+            167
+          ],
+          "margin": 74,
+          "occupancy": 0.533203125,
+          "opaque": 30014,
+          "transparent": 212163,
+          "soft": 49721
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            133,
+            163,
+            278,
+            167
+          ],
+          "margin": 101,
+          "occupancy": 0.54296875,
+          "opaque": 30308,
+          "transparent": 212720,
+          "soft": 49128
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            74,
+            163,
+            273,
+            167
+          ],
+          "margin": 74,
+          "occupancy": 0.533203125,
+          "opaque": 29949,
+          "transparent": 210101,
+          "soft": 51745
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            148,
+            176,
+            281,
+            162
+          ],
+          "margin": 83,
+          "occupancy": 0.548828125,
+          "opaque": 29627,
+          "transparent": 224406,
+          "soft": 37520
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            68,
+            176,
+            288,
+            162
+          ],
+          "margin": 68,
+          "occupancy": 0.5625,
+          "opaque": 30079,
+          "transparent": 223303,
+          "soft": 38590
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            151,
+            149,
+            278,
+            162
+          ],
+          "margin": 83,
+          "occupancy": 0.54296875,
+          "opaque": 29809,
+          "transparent": 221733,
+          "soft": 40185
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            69,
+            150,
+            287,
+            161
+          ],
+          "margin": 69,
+          "occupancy": 0.560546875,
+          "opaque": 29841,
+          "transparent": 224411,
+          "soft": 37483
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-meet-on-whale",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-meet-on-whale-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            17,
+            267,
+            1197,
+            703
+          ],
+          "margin": 17,
+          "occupancy": 0.9545454545454546,
+          "opaque": 455157,
+          "transparent": 1098344,
+          "soft": 473713
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-meet-on-whale",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-meet-on-whale-sprite.source",
+      "width": 2048,
+      "height": 1024,
+      "cell": 512,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            125,
+            172,
+            286,
+            174
+          ],
+          "margin": 101,
+          "occupancy": 0.55859375,
+          "opaque": 26426,
+          "transparent": 231649,
+          "soft": 30063
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            78,
+            176,
+            279,
+            170
+          ],
+          "margin": 78,
+          "occupancy": 0.544921875,
+          "opaque": 25408,
+          "transparent": 233043,
+          "soft": 28679
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            127,
+            140,
+            284,
+            173
+          ],
+          "margin": 101,
+          "occupancy": 0.5546875,
+          "opaque": 26989,
+          "transparent": 230979,
+          "soft": 30720
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            71,
+            141,
+            286,
+            171
+          ],
+          "margin": 71,
+          "occupancy": 0.55859375,
+          "opaque": 26587,
+          "transparent": 229913,
+          "soft": 31773
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            105,
+            163,
+            297,
+            188
+          ],
+          "margin": 105,
+          "occupancy": 0.580078125,
+          "opaque": 32819,
+          "transparent": 214235,
+          "soft": 47494
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            96,
+            163,
+            307,
+            190
+          ],
+          "margin": 96,
+          "occupancy": 0.599609375,
+          "opaque": 32525,
+          "transparent": 213970,
+          "soft": 47788
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            96,
+            161,
+            306,
+            193
+          ],
+          "margin": 96,
+          "occupancy": 0.59765625,
+          "opaque": 32920,
+          "transparent": 207115,
+          "soft": 54576
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            101,
+            162,
+            302,
+            192
+          ],
+          "margin": 101,
+          "occupancy": 0.58984375,
+          "opaque": 32848,
+          "transparent": 212048,
+          "soft": 49678
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-one-two-three",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-one-two-three-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            46,
+            267,
+            1150,
+            709
+          ],
+          "margin": 46,
+          "occupancy": 0.9170653907496013,
+          "opaque": 526143,
+          "transparent": 1012496,
+          "soft": 559837
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-one-two-three",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-one-two-three-sprite.source",
+      "width": 1774,
+      "height": 887,
+      "cell": 443.5,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            41,
+            109,
+            355,
+            228
+          ],
+          "margin": 41,
+          "occupancy": 0.8004509582863585,
+          "opaque": 55073,
+          "transparent": 71550,
+          "soft": 124574
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            43,
+            101,
+            352,
+            233
+          ],
+          "margin": 43,
+          "occupancy": 0.7936865839909808,
+          "opaque": 54540,
+          "transparent": 57093,
+          "soft": 139045
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            41,
+            109,
+            355,
+            225
+          ],
+          "margin": 41,
+          "occupancy": 0.8004509582863585,
+          "opaque": 54842,
+          "transparent": 58034,
+          "soft": 138073
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            42,
+            108,
+            353,
+            226
+          ],
+          "margin": 42,
+          "occupancy": 0.7959413754227734,
+          "opaque": 54050,
+          "transparent": 59126,
+          "soft": 137023
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            42,
+            108,
+            354,
+            226
+          ],
+          "margin": 42,
+          "occupancy": 0.798196166854566,
+          "opaque": 54752,
+          "transparent": 53676,
+          "soft": 142517
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            42,
+            104,
+            354,
+            230
+          ],
+          "margin": 42,
+          "occupancy": 0.798196166854566,
+          "opaque": 54189,
+          "transparent": 47137,
+          "soft": 149058
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            43,
+            108,
+            353,
+            226
+          ],
+          "margin": 43,
+          "occupancy": 0.7959413754227734,
+          "opaque": 54384,
+          "transparent": 45454,
+          "soft": 150758
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            42,
+            108,
+            353,
+            225
+          ],
+          "margin": 42,
+          "occupancy": 0.7959413754227734,
+          "opaque": 54571,
+          "transparent": 50007,
+          "soft": 146196
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-waterlogged-envelope",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-waterlogged-envelope-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            90,
+            231,
+            1072,
+            779
+          ],
+          "margin": 90,
+          "occupancy": 0.8548644338118022,
+          "opaque": 583881,
+          "transparent": 978108,
+          "soft": 593894
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-stamp-corner",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-stamp-corner-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            84,
+            122,
+            1078,
+            977
+          ],
+          "margin": 84,
+          "occupancy": 0.8596491228070176,
+          "opaque": 612940,
+          "transparent": 945443,
+          "soft": 626484
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-loose-bouquet-ribbon",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-loose-bouquet-ribbon-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            183,
+            180,
+            849,
+            898
+          ],
+          "margin": 176,
+          "occupancy": 0.7161084529505582,
+          "opaque": 215036,
+          "transparent": 1340750,
+          "soft": 230949
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-empty-candy-tin",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-empty-candy-tin-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            138,
+            174,
+            933,
+            926
+          ],
+          "margin": 138,
+          "occupancy": 0.7440191387559809,
+          "opaque": 717819,
+          "transparent": 844577,
+          "soft": 727592
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-broken-shell-comb",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-broken-shell-comb-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            99,
+            221,
+            1054,
+            827
+          ],
+          "margin": 99,
+          "occupancy": 0.8405103668261563,
+          "opaque": 536661,
+          "transparent": 1013250,
+          "soft": 558566
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-backwards-wax-seal",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-backwards-wax-seal-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            143,
+            199,
+            958,
+            862
+          ],
+          "margin": 143,
+          "occupancy": 0.7639553429027113,
+          "opaque": 595975,
+          "transparent": 969867,
+          "soft": 602102
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-broken-shell-clip",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-broken-shell-clip-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            113,
+            201,
+            1024,
+            855
+          ],
+          "margin": 113,
+          "occupancy": 0.8165869218500797,
+          "opaque": 587414,
+          "transparent": 964541,
+          "soft": 606851
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-smudged-letter-bottle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-smudged-letter-bottle-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            99,
+            200,
+            996,
+            847
+          ],
+          "margin": 99,
+          "occupancy": 0.7942583732057417,
+          "opaque": 520575,
+          "transparent": 1033301,
+          "soft": 538711
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-mailbox-handle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-mailbox-handle-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            202,
+            146,
+            869,
+            995
+          ],
+          "margin": 113,
+          "occupancy": 0.7934609250398724,
+          "opaque": 510405,
+          "transparent": 1049401,
+          "soft": 522185
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-same-day-postcards",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-same-day-postcards-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            114,
+            230,
+            1030,
+            797
+          ],
+          "margin": 110,
+          "occupancy": 0.8213716108452951,
+          "opaque": 600633,
+          "transparent": 961556,
+          "soft": 610232
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-blossom-pebbles",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-blossom-pebbles-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            138,
+            275,
+            980,
+            740
+          ],
+          "margin": 136,
+          "occupancy": 0.7814992025518341,
+          "opaque": 510058,
+          "transparent": 1050589,
+          "soft": 521441
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-shell-letter-holder",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-shell-letter-holder-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            187,
+            196,
+            865,
+            866
+          ],
+          "margin": 187,
+          "occupancy": 0.6905901116427432,
+          "opaque": 552094,
+          "transparent": 982713,
+          "soft": 589332
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-harbor-rope-post",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-harbor-rope-post-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            253,
+            157,
+            721,
+            979
+          ],
+          "margin": 118,
+          "occupancy": 0.7807017543859649,
+          "opaque": 602267,
+          "transparent": 963188,
+          "soft": 608225
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-striped-teacup",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-striped-teacup-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            148,
+            208,
+            982,
+            865
+          ],
+          "margin": 124,
+          "occupancy": 0.7830940988835726,
+          "opaque": 614055,
+          "transparent": 211722,
+          "soft": 1360582
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-petal-paper-boat",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-paper-boat-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            91,
+            297,
+            1079,
+            664
+          ],
+          "margin": 84,
+          "occupancy": 0.8604465709728868,
+          "opaque": 427820,
+          "transparent": 1132007,
+          "soft": 439706
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-petal-shell-dish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-petal-shell-dish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            131,
+            220,
+            993,
+            811
+          ],
+          "margin": 130,
+          "occupancy": 0.7918660287081339,
+          "opaque": 557290,
+          "transparent": 940449,
+          "soft": 631284
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-blossom-stepping-stones",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-blossom-stepping-stones-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            109,
+            325,
+            1055,
+            643
+          ],
+          "margin": 90,
+          "occupancy": 0.8413078149920256,
+          "opaque": 323674,
+          "transparent": 1238089,
+          "soft": 333565
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-pink-lantern-bottle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-pink-lantern-bottle-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            246,
+            80,
+            773,
+            1090
+          ],
+          "margin": 80,
+          "occupancy": 0.8692185007974481,
+          "opaque": 516183,
+          "transparent": 1043035,
+          "soft": 528358
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-shell-planter",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-shell-planter-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            275,
+            77,
+            695,
+            1060
+          ],
+          "margin": 77,
+          "occupancy": 0.8452950558213717,
+          "opaque": 427799,
+          "transparent": 1030928,
+          "soft": 540191
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-shell-planter",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-shell-planter-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            162,
+            63,
+            322,
+            504
+          ],
+          "margin": 60,
+          "occupancy": 0.8038277511961722,
+          "opaque": 99839,
+          "transparent": 261665,
+          "soft": 130783
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            144,
+            63,
+            320,
+            504
+          ],
+          "margin": 60,
+          "occupancy": 0.8038277511961722,
+          "opaque": 99076,
+          "transparent": 249649,
+          "soft": 142855
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            162,
+            64,
+            322,
+            501
+          ],
+          "margin": 62,
+          "occupancy": 0.7990430622009569,
+          "opaque": 98341,
+          "transparent": 248588,
+          "soft": 143861
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            144,
+            63,
+            320,
+            502
+          ],
+          "margin": 62,
+          "occupancy": 0.8006379585326954,
+          "opaque": 99609,
+          "transparent": 240399,
+          "soft": 152029
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-blue-shell-mailbox",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-blue-shell-mailbox-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            242,
+            60,
+            766,
+            1139
+          ],
+          "margin": 55,
+          "occupancy": 0.9082934609250398,
+          "opaque": 478776,
+          "transparent": 1079419,
+          "soft": 492131
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-blossom-shade-bench",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-blossom-shade-bench-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            171,
+            99,
+            909,
+            1070
+          ],
+          "margin": 85,
+          "occupancy": 0.8532695374800638,
+          "opaque": 580826,
+          "transparent": 959743,
+          "soft": 610835
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-dusk-stone-bridge",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-dusk-stone-bridge-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            314,
+            1160,
+            666
+          ],
+          "margin": 42,
+          "occupancy": 0.9250398724082934,
+          "opaque": 439961,
+          "transparent": 1116511,
+          "soft": 455275
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-twin-shell-lamps",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-twin-shell-lamps-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            263,
+            82,
+            710,
+            1094
+          ],
+          "margin": 78,
+          "occupancy": 0.8724082934609251,
+          "opaque": 366406,
+          "transparent": 1188250,
+          "soft": 382958
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-twin-shell-lamps",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-twin-shell-lamps-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            150,
+            67,
+            321,
+            497
+          ],
+          "margin": 63,
+          "occupancy": 0.7926634768740032,
+          "opaque": 76538,
+          "transparent": 295331,
+          "soft": 97370
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            124,
+            67,
+            321,
+            497
+          ],
+          "margin": 63,
+          "occupancy": 0.7926634768740032,
+          "opaque": 76321,
+          "transparent": 295130,
+          "soft": 97440
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            150,
+            67,
+            321,
+            497
+          ],
+          "margin": 63,
+          "occupancy": 0.7926634768740032,
+          "opaque": 76475,
+          "transparent": 294468,
+          "soft": 98173
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            124,
+            67,
+            321,
+            497
+          ],
+          "margin": 63,
+          "occupancy": 0.7926634768740032,
+          "opaque": 76312,
+          "transparent": 295253,
+          "soft": 97303
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-two-letters-have-arrived",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-two-letters-have-arrived-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            135,
+            1164,
+            991
+          ],
+          "margin": 33,
+          "occupancy": 0.9282296650717703,
+          "opaque": 735679,
+          "transparent": 778085,
+          "soft": 794123
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-two-letters-have-arrived",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-two-letters-have-arrived-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            45,
+            71,
+            550,
+            469
+          ],
+          "margin": 32,
+          "occupancy": 0.8771929824561403,
+          "opaque": 164816,
+          "transparent": 201549,
+          "soft": 191120
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            47,
+            71,
+            547,
+            469
+          ],
+          "margin": 33,
+          "occupancy": 0.8724082934609251,
+          "opaque": 164574,
+          "transparent": 200952,
+          "soft": 191676
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            47,
+            71,
+            548,
+            469
+          ],
+          "margin": 32,
+          "occupancy": 0.8740031897926634,
+          "opaque": 164430,
+          "transparent": 191688,
+          "soft": 200951
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            47,
+            71,
+            549,
+            469
+          ],
+          "margin": 31,
+          "occupancy": 0.8755980861244019,
+          "opaque": 165047,
+          "transparent": 192172,
+          "soft": 200454
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-cherry-water-wheel",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-cherry-water-wheel-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            85,
+            83,
+            1059,
+            1069
+          ],
+          "margin": 83,
+          "occupancy": 0.8524720893141946,
+          "opaque": 767527,
+          "transparent": 711323,
+          "soft": 861103
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-cherry-water-wheel",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-cherry-water-wheel-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            61,
+            40,
+            494,
+            497
+          ],
+          "margin": 40,
+          "occupancy": 0.7926634768740032,
+          "opaque": 167533,
+          "transparent": 182820,
+          "soft": 209904
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            61,
+            42,
+            494,
+            495
+          ],
+          "margin": 42,
+          "occupancy": 0.7894736842105263,
+          "opaque": 168428,
+          "transparent": 169989,
+          "soft": 222706
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            61,
+            35,
+            494,
+            502
+          ],
+          "margin": 35,
+          "occupancy": 0.8006379585326954,
+          "opaque": 168809,
+          "transparent": 147401,
+          "soft": 245321
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            61,
+            37,
+            494,
+            500
+          ],
+          "margin": 37,
+          "occupancy": 0.7974481658692185,
+          "opaque": 170791,
+          "transparent": 131567,
+          "soft": 261169
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-harbors-last-lantern",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-harbors-last-lantern-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            148,
+            55,
+            946,
+            1111
+          ],
+          "margin": 55,
+          "occupancy": 0.8859649122807017,
+          "opaque": 663316,
+          "transparent": 243359,
+          "soft": 1328868
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-harbors-last-lantern",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-harbors-last-lantern-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            93,
+            36,
+            445,
+            518
+          ],
+          "margin": 36,
+          "occupancy": 0.8261562998405104,
+          "opaque": 156078,
+          "transparent": 214338,
+          "soft": 178030
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            80,
+            36,
+            446,
+            518
+          ],
+          "margin": 36,
+          "occupancy": 0.8261562998405104,
+          "opaque": 156582,
+          "transparent": 216212,
+          "soft": 176123
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            93,
+            29,
+            446,
+            518
+          ],
+          "margin": 29,
+          "occupancy": 0.8261562998405104,
+          "opaque": 156658,
+          "transparent": 211109,
+          "soft": 181256
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            80,
+            29,
+            446,
+            518
+          ],
+          "margin": 29,
+          "occupancy": 0.8261562998405104,
+          "opaque": 156832,
+          "transparent": 218179,
+          "soft": 174207
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-love-letter-music-box",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-love-letter-music-box-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            160,
+            30,
+            920,
+            1197
+          ],
+          "margin": 27,
+          "occupancy": 0.9545454545454546,
+          "opaque": 830367,
+          "transparent": 685443,
+          "soft": 886860
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "loveletter-love-letter-music-box",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261119-032312\\sources\\loveletter-love-letter-music-box-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            98,
+            27,
+            431,
+            557
+          ],
+          "margin": 27,
+          "occupancy": 0.8883572567783095,
+          "opaque": 181435,
+          "transparent": 200095,
+          "soft": 192305
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            98,
+            27,
+            431,
+            557
+          ],
+          "margin": 27,
+          "occupancy": 0.8883572567783095,
+          "opaque": 181317,
+          "transparent": 203250,
+          "soft": 189066
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            98,
+            27,
+            431,
+            557
+          ],
+          "margin": 27,
+          "occupancy": 0.8883572567783095,
+          "opaque": 181327,
+          "transparent": 202593,
+          "soft": 189738
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            98,
+            27,
+            431,
+            557
+          ],
+          "margin": 27,
+          "occupancy": 0.8883572567783095,
+          "opaque": 181300,
+          "transparent": 202577,
+          "soft": 189734
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

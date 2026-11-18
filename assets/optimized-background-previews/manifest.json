@@ -1,10 +1,10 @@
 {
   "profile": "webp-q90-inside-960-v1",
   "summary": {
-    "count": 79,
-    "sourceBytes": 206159694,
-    "previewBytes": 14863442,
-    "reductionPercent": 92.79
+    "count": 81,
+    "sourceBytes": 210279446,
+    "previewBytes": 15094810,
+    "reductionPercent": 92.82
   },
   "items": [
     {
@@ -551,6 +551,34 @@
         "bytes": 182368,
         "width": 960,
         "height": 568
+      }
+    },
+    {
+      "key": "loveletter-night-post-office-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261119-040305/aquarium-backgrounds/loveletter-night-post-office-panorama-v1.png",
+      "sourceHash": "4bd0c5dee1b6c871503c8db8611e934b201a6030ca21ab223c343ff0fd078c8d",
+      "sourceBytes": 2025811,
+      "sourceWidth": 1629,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/9cccf3b5b944d0526e2be283-960.webp",
+        "bytes": 108500,
+        "width": 960,
+        "height": 569
+      }
+    },
+    {
+      "key": "loveletter-petal-harbor-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261119-040305/aquarium-backgrounds/loveletter-petal-harbor-panorama-v1.png",
+      "sourceHash": "086449966652b80cc6feab3d67698b9c0993574f08b89a16c17681641c052185",
+      "sourceBytes": 2093941,
+      "sourceWidth": 1629,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/dd977f04bfb55ca75154143f-960.webp",
+        "bytes": 122868,
+        "width": 960,
+        "height": 569
       }
     },
     {

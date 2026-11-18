@@ -1,0 +1,38 @@
+{
+  "files": [
+    {
+      "theme_id": "loveletter-petal-harbor",
+      "original_image_path": "loveletter-petal-harbor-panorama-v1.png",
+      "local_path": "aquarium-backgrounds/loveletter-petal-harbor-panorama-v1.png",
+      "storage_path": "loveletter-petal-harbor-panorama-v1.png",
+      "status": "generated",
+      "uploaded": true,
+      "prompt": "Use case: stylized-concept. Single continuous wide landscape underwater environment around 27:16 ratio for a three-screen horizontally pannable aquarium game. Use the supplied Love Letter fishing scene only as inspiration for location and painterly materials, not its viewpoint or character. Camera is entirely below water and looking across a submerged destination from just above the sand, layered depth, soft ripples and light through real underwater haze. Beautiful polished cozy game environment with readable special-tier architecture. All three thirds deliberately composed, main themes readable in each narrow crop, but leave broad uninterrupted clean midwater across the frame and a good wide level foreground band of pale sand for user decorations. Props built into the edges and back depth, keep foreground corners simple. No animals, fish or characters, no text or marks, no logos, no UI, no borders, no dividing seams or panels, no gameplay overlays. Full bleed opaque image. Daytime beneath the shallow pink cherry-blossom harbor, clearly sunlit, apricot-peach sunlight refracts through pale turquoise mixed with a very soft rosy color. Warm ivory sandy bottom. Left background has a low curving cream stone harbor wall and a little sunken mooring post. Right background has two elegant short pale stone arch supports with sparse pink sea plants and one small pink-blossom-covered stone stair descending into the sand. Some petals resting on the sand, subtle sun caustics. Soft ivory peach and rose tones accented by refreshing desaturated sea glass colors, vividly daytime and openly spacious.",
+      "reference_image": "public/regions/loveletter/overview-v1.png",
+      "tool": "built-in ImageGen",
+      "width": 1629,
+      "height": 965,
+      "sha256": "086449966652b80cc6feab3d67698b9c0993574f08b89a16c17681641c052185",
+      "generated_sha256": "b0804575c0ef950d54d0195f40ed9c3b2c391de57e26756de15b54a11648f6bf",
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-18T19:04:12.579Z"
+    },
+    {
+      "theme_id": "loveletter-night-post-office",
+      "original_image_path": "loveletter-night-post-office-panorama-v1.png",
+      "local_path": "aquarium-backgrounds/loveletter-night-post-office-panorama-v1.png",
+      "storage_path": "loveletter-night-post-office-panorama-v1.png",
+      "status": "generated",
+      "uploaded": true,
+      "prompt": "Use case: stylized-concept. Single continuous wide landscape underwater environment around 27:16 ratio for a three-screen horizontally pannable aquarium game. Use the supplied Love Letter fishing scene only as inspiration for location and painterly materials, not its viewpoint or character. Camera is entirely below water and looking across a submerged destination from just above the sand, layered depth, soft ripples and light through real underwater haze. Beautiful polished cozy game environment with readable special-tier architecture. All three thirds deliberately composed, main themes readable in each narrow crop, but leave broad uninterrupted clean midwater across the frame and a good wide level foreground band of pale sand for user decorations. Props built into the edges and back depth, keep foreground corners simple. No animals, fish or characters, no text or marks, no logos, no UI, no borders, no dividing seams or panels, no gameplay overlays. Full bleed opaque image. The submerged night post office of the pink cherry-blossom harbor. Mysterious but welcoming deep twilight violet, lavender and dusty berry water. At mid-distance slightly right of center, on a low ivory stone terrace, an elegant small rounded pavilion in shell-pink with a glowing single honey-gold lantern and a clearly recognizable sky-blue scallop-shell mailbox at its foot. On left distance, low rounded stone steps and glimpses of a stone arch; rightmost edge only small violet sea plants and partial curved terrace. A few tiny drifted petals hug the upper edge. Reflected soft amber under each lantern, subtle purple gradient and a faint moon beam. Reserve lower-center and a broad strip through the middle for pink fish and in-game decor. Keep darker lavender contrast but readable in mobile display, no black void.",
+      "reference_image": "public/regions/loveletter/overview-v1.png",
+      "tool": "built-in ImageGen",
+      "width": 1629,
+      "height": 965,
+      "sha256": "4bd0c5dee1b6c871503c8db8611e934b201a6030ca21ab223c343ff0fd078c8d",
+      "generated_sha256": "96974a66d6afc9656287299d3202358009087c1acef827ddb57f4cb4f86e1ee6",
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-18T19:04:15.326Z"
+    }
+  ]
+}

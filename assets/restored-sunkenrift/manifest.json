@@ -4,6 +4,10 @@
   "note": "Existing release assets restored unchanged from the retained deployment source. No image generation or database changes.",
   "files": [
     {
+      "path": "public/fishing/scenery/sunkenrift-v2.png",
+      "sha256": "0792f3165f553b4c49b03d81a2db79383dd9c8207df32ee74ef6569dd8db7501"
+    },
+    {
       "path": "public/regions/sunkenrift/overview-v2.png",
       "sha256": "f4b1818470aad08c12a97aa70d212cfe0f864717fd70f2facd9bc2c0176e84e0"
     },

@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { expect, it } from 'vitest'
 import { mythicSheetColumns, mythicSwimAsset, mythicSwimFrame, mythicSwimLayout } from '@/features/aquarium/mythic-swim'
 import { regionIcons } from '@/features/regions/region-icons'
+import { fishingBannerPath } from '@/features/regions/fishing-banner'
 import sheets from '@/features/aquarium/sunkenrift-mythic-action-layouts.json'
 
 it('ships the overview, map and icon referenced by the released Sunken Rift region', () => {
@@ -12,6 +13,13 @@ it('ships the overview, map and icon referenced by the released Sunken Rift regi
     expect(png.readUInt32BE(20)).toBeGreaterThan(900)
   }
   expect(readFileSync('public' + regionIcons.sunkenrift.src, 'utf8')).toContain('<svg')
+})
+
+it('ships the Sunken Rift fishing painting and uses its overview as the banner', () => {
+  const png = readFileSync('public/fishing/scenery/sunkenrift-v2.png')
+  expect(png.subarray(1, 4).toString()).toBe('PNG')
+  expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([1024, 1536])
+  expect(fishingBannerPath('sunkenrift')).toBe('/regions/sunkenrift/overview-v2.png')
 })
 
 it('crops one square pose from each released eight-frame mythic sheet, including versioned aliases', () => {

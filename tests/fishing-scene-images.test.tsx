@@ -31,6 +31,13 @@ it('prepares the dedicated pirate harbor, close water and ship bow without start
  images.forEach(image=>image.onload())
  await prepared
 })
+it('prepares the Sunken Rift painting once for both cameras and preloads the overview',async()=>{
+ const {prepareFishingScene}=await import('@/features/fishing/scene-images')
+ const prepared=prepareFishingScene('sunkenrift')
+ expect(images.map(image=>image.src)).toEqual(['/fishing/scenery/sunkenrift-v2.png','/regions/sunkenrift/overview-v2.png'])
+ images.forEach(image=>image.onload())
+ await prepared
+})
 it('shares completed sailing preparation with the destination without a second loading screen',async()=>{
  const {prepareFishingScene,useFishingSceneImages}=await import('@/features/fishing/scene-images')
  const progress:number[]=[]

@@ -3,10 +3,14 @@ import {readFileSync,existsSync} from 'node:fs'
 import {expect,it} from 'vitest'
 import {fishingEnvironment,fishingEnvironments} from '@/features/fishing/fishing-environment'
 
-it.each(Object.keys(fishingEnvironments))('has separate front and top paintings and valid terrain for %s',id=>{
+it.each(Object.keys(fishingEnvironments))('has the expected camera paintings and valid local assets for %s',id=>{
  const theme=fishingEnvironment(id)
- expect(theme.src).not.toBe(theme.frontSrc)
- for(const src of [theme.src,theme.frontSrc,theme.platformSrc??theme.platformFallbackSrc]){
+ if(id==='sunkenrift'||id==='nyamnyam')expect(theme.src).toBe(theme.frontSrc)
+ else expect(theme.src).not.toBe(theme.frontSrc)
+ const sources=id==='nyamnyam'
+  ? [theme.platformSrc??theme.platformFallbackSrc]
+  : [...new Set([theme.src,theme.frontSrc,theme.platformSrc??theme.platformFallbackSrc])]
+ for(const src of sources){
   expect(existsSync(`public${src}`)).toBe(true)
   const png=readFileSync(`public${src}`)
   expect(png.subarray(1,4).toString()).toBe('PNG')

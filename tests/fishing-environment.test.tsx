@@ -1,7 +1,7 @@
 ﻿import {cleanup,fireEvent,render} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>`/collectibles/${path}`}))
-import {FishingSea,FishingPlatform,fishingEnvironments,fishingEnvironment} from '@/features/fishing/fishing-environment'
+import {FishingSea,FishingPlatform,FishingStandby,fishingEnvironments,fishingEnvironment} from '@/features/fishing/fishing-environment'
 import {FishingWater} from '@/features/fishing/fishing-water'
 import {newTensionGame,fishingBiteSeconds} from '@/features/fishing/tension-game'
 afterEach(cleanup)
@@ -56,7 +56,18 @@ it('keeps the rod straight while scouting and bends only after the first pull st
  expect(rod()).not.toBe(straight)
 })
 it('keeps region water and terrain assets independently framed',()=>{
- for(const id of Object.keys(fishingEnvironments)){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).platformFallbackSrc]);unmount()}
+ for(const id of Object.keys(fishingEnvironments).filter(id=>id!=='sunkenrift')){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).platformFallbackSrc]);unmount()}
+})
+it('uses the painted Sunken Rift bank for both standby and active fishing',()=>{
+ const regionId='sunkenrift'
+ const {container,rerender}=render(<FishingStandby regionId={regionId}/>)
+ for(const view of ['front','top']){
+  if(view==='top')rerender(<FishingWater regionId={regionId} game={newTensionGame(()=>.5)} visual={{time:0,tension:38,reel:0,ending:0}} mood="recover" active reduced/>)
+  const sea=container.querySelector(`[data-fishing-sea="sunkenrift"][data-fishing-view="${view}"]`)
+  expect(sea?.getAttribute('preserveAspectRatio')).toBe('xMidYMax slice')
+  expect(sea?.querySelector('image')?.getAttribute('href')).toBe('/fishing/scenery/sunkenrift-v2.png')
+  expect(container.querySelector('[data-fishing-platform]')).toBeNull()
+ }
 })
 it('recovers image loading for the next region after a missing asset',()=>{
  const {container,rerender}=render(<FishingSea regionId="coral"/>);fireEvent.error(container.querySelector('image')!);expect(container.querySelector('image')).toBeNull();rerender(<FishingSea regionId="mistmoon"/>);expect(container.querySelector('image')?.getAttribute('href')).toContain('mistmoon.png')

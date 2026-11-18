@@ -6,9 +6,11 @@ import {pharaohArt} from '@/features/regions/pharaoh-art'
 import {hangangArt} from '@/features/regions/hangang-art'
 import {galaxyArt} from '@/features/regions/galaxy-art'
 import {hologramArt} from '@/features/regions/hologram-art'
+import {sunkenriftArt} from '@/features/regions/sunkenrift-art'
 import { memo,useState } from 'react'
 
 export const fishingEnvironments={
+ sunkenrift:{name:'가라앉은 소환사의 협곡',water:'#103f50',deck:'#9bafaa',edge:'#8ce2dc',waterEnd:1536,deckStart:1065},
  hologram:{name:'홀로그램 심해도시',water:'#061322',deck:'#122137',edge:'#42d7e9',waterEnd:1536,deckStart:1065},
  galaxy:{name:'은하수의 끝자락',water:'#090e20',deck:'#c4c7d0',edge:'#848da9',waterEnd:1536,deckStart:1065},
  hangang:{name:'한강의 불빛나루',water:'#153b59',deck:'#75543d',edge:'#ccaf79',waterEnd:1536,deckStart:1065},
@@ -33,6 +35,7 @@ export const fishingEnvironments={
 const platformMaterials:Record<string,string>={plunder:'wood',nyamnyam:'bamboo',siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
+ if(id==='sunkenrift')return {id,...fishingEnvironments[id],src:sunkenriftArt.fishing.water,frontSrc:sunkenriftArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:sunkenriftArt.fishing.scenery,platformSrc:null,material:'sandstone'}
  if(id==='hologram')return {id,...fishingEnvironments[id],src:hologramArt.fishing.water,frontSrc:hologramArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:hologramArt.fishing.scenery,platformSrc:hologramArt.fishing.platform,material:'metal'}
  if(id==='galaxy')return {id,...fishingEnvironments[id],src:galaxyArt.fishing.water,frontSrc:galaxyArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:galaxyArt.fishing.scenery,platformSrc:galaxyArt.fishing.platform,material:'metal'}
  if(id==='hangang')return {id,...fishingEnvironments[id],src:hangangArt.fishing.water,frontSrc:hangangArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:hangangArt.fishing.scenery,platformSrc:hangangArt.fishing.platform,material:'wood'}
@@ -51,13 +54,13 @@ export function fishingEnvironment(regionId:string){
 // Platforms keep their own source so changing camera never changes the terrain.
 const width=1024,height=1536
 export function fishingPlatformSize(regionId:string){
- return regionId==='galaxy'||regionId==='hologram'?{min:96,max:144,ratio:.2}:{min:160,max:220,ratio:.32}
+ return regionId==='galaxy'||regionId==='hologram'||regionId==='sunkenrift'?{min:96,max:144,ratio:.2}:{min:160,max:220,ratio:.32}
 }
 export function FishingSea({regionId,view='top'}:{regionId:string;view?:'front'|'top'}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
  const src=view==='front'?theme.frontSrc:theme.src
  const opacity=view==='top'&&theme.id==='whitenight'?.72:1
- return <svg viewBox={`0 0 ${width} ${view==='front'?theme.frontWaterEnd:theme.waterEnd}`} preserveAspectRatio={view==='front'?'xMidYMin slice':'xMidYMid slice'} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id} data-fishing-view={view}>
+ return <svg viewBox={`0 0 ${width} ${view==='front'?theme.frontWaterEnd:theme.waterEnd}`} preserveAspectRatio={theme.id==='sunkenrift'?'xMidYMax slice':view==='front'?'xMidYMin slice':'xMidYMid slice'} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id} data-fishing-view={view}>
   <rect width={width} height={height} fill={theme.water} />{failed!==src&&<image href={src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===src?opacity:0} onLoad={()=>setLoaded(src)} onError={()=>setFailed(src)}/>}
  </svg>
 }
@@ -65,11 +68,12 @@ export const FishingStandby=memo(function FishingStandby({regionId}:{regionId:st
  const platform=fishingPlatformSize(regionId)
  return <div className="absolute inset-0">
   <FishingSea regionId={regionId} view="front"/>
-  <svg viewBox="0 0 400 180" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-0 bottom-0 w-full" style={{height:`clamp(${platform.min}px,${platform.ratio*100}%,${platform.max}px)`}} aria-hidden="true"><FishingPlatform regionId={regionId} y={0} platformHeight={180}/></svg>
+  {regionId!=='sunkenrift'&&<svg viewBox="0 0 400 180" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-0 bottom-0 w-full" style={{height:`clamp(${platform.min}px,${platform.ratio*100}%,${platform.max}px)`}} aria-hidden="true"><FishingPlatform regionId={regionId} y={0} platformHeight={180}/></svg>}
  </div>
 })
 export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string;y:number;platformHeight?:number}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
+ if(theme.id==='sunkenrift')return null
  // Crop transparent margins and side caps so the deck continues past the screen edges.
  const deckTop:Record<string,number>={hologram:184,galaxy:184,mechsanctum:281,firefly:94,hangang:173,pharaoh:138,plunder:154,nyamnyam:161,pongdang:136,bluegrove:81,cloudferry:77,coral:127,dreamabyss:82,mistmoon:108,primal:31,scrapisle:158,starruins:117,whitenight:126}
  const top=deckTop[theme.id]??0,bottom=theme.id==='galaxy'||theme.id==='hologram'?392:480

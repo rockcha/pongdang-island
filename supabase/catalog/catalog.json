@@ -1099,6 +1099,24 @@
       "alternating": false
     },
     {
+      "id": "bait_map_star_chart_pearl",
+      "name": "별지도를 품은 진주",
+      "description": "보랏빛 조개 속 진주에 금빛 별항로가 비쳐요. 직접 낚시 지도 조각 확률 20%에 유물 보너스가 더해져요. 특급 비율은 35%예요.",
+      "price": 680,
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/map-star-chart-pearl-v1.png",
+      "sort_order": 129,
+      "common_bp": 1500,
+      "rare_bp": 5000,
+      "epic_bp": 3500,
+      "mythic_bp": 0,
+      "failure_bp": 0,
+      "effect_kind": "fish",
+      "effect_description": "보랏빛 조개 속 진주에 금빛 별항로가 비쳐요. 직접 낚시 지도 조각 확률 20%에 유물 보너스가 더해져요. 특급 비율은 35%예요.",
+      "success_chance_bp": 10000,
+      "fish_only": false,
+      "alternating": false
+    },
+    {
       "id": "bait_mermaid_whisper_candy",
       "name": "인어의 귓속말 캔디",
       "description": "인어의 달콤한 노래가 희귀 물고기를 유혹해요.",
@@ -49522,6 +49540,30 @@
       "night_wait_min_seconds": null,
       "night_wait_max_seconds": null,
       "map_chance_bp": 1000
+    },
+    {
+      "id": "bait_map_star_chart_pearl",
+      "name": "별지도를 품은 진주",
+      "price": 680,
+      "success_chance_bp": 10000,
+      "common_bp": 1500,
+      "rare_bp": 5000,
+      "epic_bp": 3500,
+      "mythic_bp": 0,
+      "wait_min_seconds": 13,
+      "wait_max_seconds": 25,
+      "target_kinds": [
+        "fish",
+        "trash",
+        "decoration"
+      ],
+      "effect_kind": "standard",
+      "native_multiplier": 1,
+      "night_common_bp": null,
+      "night_rare_bp": null,
+      "night_wait_min_seconds": null,
+      "night_wait_max_seconds": null,
+      "map_chance_bp": 2000
     },
     {
       "id": "bait_mermaid_whisper_candy",

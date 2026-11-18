@@ -28,6 +28,18 @@ it('shows the base chance without inventing an equipped bonus', () => {
   expect(screen.getByText(/지도 확률 유물과 함께 적용돼요/)).toBeTruthy()
   expect(screen.queryByText(/유물 \+/)).toBeNull()
 })
+it('shows the premium pearl map chance separately from its epic grade ratio', () => {
+  const pearl = {
+    ...catalog.fishing_baits.find((b) => b.id === 'bait_map_star_chart_pearl')!,
+    mechanicsVersion: 2,
+    baseMapChanceBp: 2000,
+    mapChanceBp: 2000,
+  } as FishingBait
+  render(<BaitEffectDetails bait={pearl} compact minimal />)
+  expect(within(screen.getByLabelText('지도 조각 추첨 확률')).getByText('20%')).toBeTruthy()
+  for (const percent of ['15%', '50%', '35%']) expect(screen.getByText(percent)).toBeTruthy()
+  expect(screen.queryByText('신화')).toBeNull()
+})
 it('uses reserved map odds during an ongoing cast after equipment changes', () => {
   const prepared = {
     bait_id: compass.id,

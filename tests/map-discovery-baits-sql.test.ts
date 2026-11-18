@@ -6,6 +6,7 @@ let db: Awaited<ReturnType<typeof createLocalDatabase>>
 let uid: string
 const compass = 'bait_map_compass_jelly'
 const lantern = 'bait_map_lantern_berry'
+const pearl = 'bait_map_star_chart_pearl'
 beforeAll(async () => {
   db = await createLocalDatabase()
   await replayMigrations(db)
@@ -22,7 +23,7 @@ beforeEach(async () => {
   ])
   await db.query("select set_config('request.jwt.claim.sub',$1,false)", [uid])
   await db.exec(`select app_private.get_gold_wallet();
-    update public.player_wallets set gold=10000,inventory=jsonb_build_object('${compass}',10,'${lantern}',10) where user_id=auth.uid();
+    update public.player_wallets set gold=10000,inventory=jsonb_build_object('${compass}',10,'${lantern}',10,'${pearl}',10) where user_id=auth.uid();
     insert into public.player_navigation(user_id,region_id) values(auth.uid(),'pongdang') on conflict(user_id) do update set region_id='pongdang';
     create or replace function app_private.fishing_weather_at(p_at timestamptz) returns jsonb language sql security definer set search_path='' as $$select null::jsonb$$;
     update public.fishing_map_blueprints set enabled=false;
@@ -49,7 +50,7 @@ async function prepare(id = crypto.randomUUID(), bait = compass) {
     await db.query("select public.prepare_discovery_fishing('pongdang',$1,$2,false) p", [bait, id])
   ).rows[0].p
 }
-async function pinMapRoll() {
+async function pinMapRoll(grade: 'rare' | 'epic' = 'rare') {
   // Pin the random input only; retain the real bonus calculation and category boundaries.
   const definition = (
     await db.query(
@@ -58,7 +59,7 @@ async function pinMapRoll() {
   ).rows[0].d
   await db.exec(definition.replace('begin\n', 'begin\n p_roll:=0.90;\n'))
   await db.exec(
-    `create or replace function app_private.profile_fishing_rarity(p_profile jsonb) returns public.game_rarity language sql set search_path='' as $$select 'rare'::public.game_rarity$$`,
+    `create or replace function app_private.profile_fishing_rarity(p_profile jsonb) returns public.game_rarity language sql set search_path='' as $$select '${grade}'::public.game_rarity$$`,
   )
 }
 async function finish(id: string, won = true) {
@@ -70,28 +71,29 @@ async function finish(id: string, won = true) {
 }
 it('publishes the agreed prices, grade odds, local artwork and separate base map odds', async () => {
   const s = await state()
-  for (const [id, price, common, rare, map] of [
-    [compass, 160, 6700, 3000, 800],
-    [lantern, 280, 3200, 6500, 1000],
+  for (const [id, price, common, rare, epic, map] of [
+    [compass, 160, 6700, 3000, 300, 800],
+    [lantern, 280, 3200, 6500, 300, 1000],
+    [pearl, 680, 1500, 5000, 3500, 2000],
   ] as const) {
     const b = s.baits.find((b) => b.id === id)
     expect(b).toMatchObject({
       price,
       common_bp: common,
       rare_bp: rare,
-      epic_bp: 300,
+      epic_bp: epic,
       mythic_bp: 0,
       baseMapChanceBp: map,
       mapChanceBp: map,
     })
-    expect(b.image_path).toMatch(/^\/items\/baits\/map-.+-v1\.png$/)
+    expect(b.image_path).toMatch(/\/items\/baits\/map-.+-v1\.png$/)
     const profile = (await db.query('select app_private.fishing_bait_balance_at($1) p', [id]))
       .rows[0].p
     expect(profile.map_chance_bp).toBe(map)
   }
   expect(s.baits.find((b) => b.id === 'bait').baseMapChanceBp).toBeUndefined()
 })
-it.each([800, 1000])(
+it.each([800, 1000, 2000])(
   'uses exact category ranges for map base %i and stacks the lens without consuming relic odds',
   async (base) => {
     for (const bonus of [0, 500]) {
@@ -131,10 +133,12 @@ it('keeps existing bait map odds at 3% plus its original relic bonus', async () 
   const s = await state()
   expect(s.baits.find((b) => b.id === compass).mapChanceBp).toBe(1300)
   expect(s.baits.find((b) => b.id === lantern).mapChanceBp).toBe(1500)
+  expect(s.baits.find((b) => b.id === pearl).mapChanceBp).toBe(2500)
 })
 it.each([
   [compass, 160],
   [lantern, 280],
+  [pearl, 680],
 ] as const)(
   'buys %s in bulk through the existing purchase boundary without charging retries',
   async (id, price) => {
@@ -182,6 +186,36 @@ it('reserves the rolled grade and bonus once, then grants one map piece on a suc
     (await db.query('select * from public.player_collectibles where user_id=$1', [uid])).rows,
   ).toHaveLength(0)
 })
+it('reserves and grants an epic map with the pearl profile without consuming the bait twice', async () => {
+  await db.exec(
+    "update public.regions set rarity='epic' where id='map-bait-test'; update public.fishing_map_blueprints set rarity='epic' where region_id='map-bait-test'",
+  )
+  await pinMapRoll('epic')
+  const p = await prepare(crypto.randomUUID(), pearl)
+  expect(p.species.kind).toBe('map')
+  expect(p.rarity).toBe('epic')
+  expect(p.bait_profile).toMatchObject({
+    map_chance_bp: 2000,
+    effective_map_chance_bp: 2000,
+    common_bp: 1500,
+    rare_bp: 5000,
+    epic_bp: 3500,
+    mythic_bp: 0,
+  })
+  const retry = await prepare(p.operation_id, pearl)
+  expect(retry.species).toEqual(p.species)
+  expect(
+    (await db.query('select inventory from public.player_wallets where user_id=$1', [uid])).rows[0]
+      .inventory[pearl],
+  ).toBe(9)
+  await finish(p.operation_id)
+  await finish(p.operation_id)
+  expect(
+    (await db.query('select * from app_private.player_fishing_map_pieces where user_id=$1', [uid]))
+      .rows,
+  ).toHaveLength(1)
+})
+
 it('falls back to an ordinary catch of the same grade when no map piece remains', async () => {
   await pinMapRoll()
   await db.exec('update public.fishing_map_blueprints set enabled=false')

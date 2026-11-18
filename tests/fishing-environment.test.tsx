@@ -69,8 +69,8 @@ it('uses the painted Sunken Rift bank for both standby and active fishing',()=>{
  for(const view of ['front','top']){
   if(view==='top')rerender(<FishingWater regionId={regionId} game={newTensionGame(()=>.5)} visual={{time:0,tension:38,reel:0,ending:0}} mood="recover" active reduced/>)
   const sea=container.querySelector(`[data-fishing-sea="sunkenrift"][data-fishing-view="${view}"]`)
-  expect(sea?.getAttribute('preserveAspectRatio')).toBe('xMidYMax slice')
-  expect(sea?.querySelector('image')?.getAttribute('href')).toBe('/fishing/scenery/sunkenrift-v2.png')
+  expect(sea?.querySelector('source[media="(orientation: portrait)"]')?.getAttribute('srcset')).toBe('/fishing/scenery/sunkenrift-portrait-v3.png')
+  expect(sea?.querySelector('img')?.getAttribute('src')).toBe('/fishing/scenery/sunkenrift-v3.png')
   expect(container.querySelector('[data-fishing-platform]')).toBeNull()
  }
 })

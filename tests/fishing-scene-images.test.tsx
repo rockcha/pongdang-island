@@ -31,10 +31,14 @@ it('prepares the dedicated pirate harbor, close water and ship bow without start
  images.forEach(image=>image.onload())
  await prepared
 })
-it('prepares the Sunken Rift painting once for both cameras and preloads the overview',async()=>{
+it.each([
+ [false,'/fishing/scenery/sunkenrift-v3.png'],
+ [true,'/fishing/scenery/sunkenrift-portrait-v3.png'],
+])('preloads the matching Sunken Rift painting in portrait=%s and the overview',async(portrait,path)=>{
+ vi.stubGlobal('matchMedia',vi.fn(()=>({matches:portrait})))
  const {prepareFishingScene}=await import('@/features/fishing/scene-images')
  const prepared=prepareFishingScene('sunkenrift')
- expect(images.map(image=>image.src)).toEqual(['/fishing/scenery/sunkenrift-v2.png','/regions/sunkenrift/overview-v2.png'])
+ expect(images.map(image=>image.src)).toEqual([path,'/regions/sunkenrift/overview-v2.png'])
  images.forEach(image=>image.onload())
  await prepared
 })

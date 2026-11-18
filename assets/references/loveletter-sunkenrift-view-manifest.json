@@ -1,0 +1,29 @@
+{
+  "tool": "built-in ImageGen",
+  "files": [
+    {
+      "file": "public/regions/loveletter/showcase-v1.png",
+      "reference": "public/regions/loveletter/overview-v1.png",
+      "prompt": "Use case: stylized-concept. Create a NEW single portrait 2:3 region showcase card background for the user's own cozy fishing game and the region 퐁순이의 러브레터. The local supplied original is a reference only for existing fantasy brushwork, pink peach golden-hour palette, and identity of the pink-roof round post gazebo, blue scallop mailbox, cherry trees, ivory arch bridge and crescent beach. Give a much higher viewpoint and a truly expansive distant overview, viewed obliquely from a hillside lookout. Show the complete crescent-shaped blossom harbor and winding waterway at once, from its peach beach at lower right, across the ivory bridge in the mid-ground, to the pink lantern gazebo in the lower-left middle distance and faraway soft rose hills and islands. Make blue mailbox a small recognizable blue accent on the pavilion terrace. Pink cherry crowns frame the edges and horizon, full coastline left and right visible at once. Put soft peach-rose sky and low-detail far hills under the title zone across the upper central 25 percent; the central middle and lower thirds must leave calm areas for overlay text and collectible cards. Still a fully painted scene throughout; lower half use shoreline curve, depth and spread of pink water with moderate quiet detail, not endless plain water and not a top-down parchment map. Keep the look airy, warmly romantic, richly painted and cohesive with reference. No large characters, no fish, no rod, no lettering, no numbers, no labels, no UI overlays, no border or watermark.",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "e84009264356ca3fdd282cc6ebaad948fc7b0f9cb82c5ad7d302af1dcb230439"
+    },
+    {
+      "file": "public/fishing/scenery/sunkenrift-v3.png",
+      "reference": "User-supplied bright canyon fishing mockup",
+      "prompt": "Use case: stylized-concept. Create clean original landscape fishing background art ONLY for the user's fishing game, with the mood and broad layout of the second image from the user (bright blue canyon fishing mockup). Use it only to guide atmosphere, terrain distribution and vertical camera angle; ignore the first pink UI-card image and strip away all interface and fishing props. Single landscape 3:2 or wide 16:9 scene, painterly colorful cozy fantasy environment. Standing at the water's edge with eye-level camera overlooking a broad clear aquamarine river. Blue midday sky and painterly cumulus; far conifer valley ridges. Blue faceted crystals set into a few original stylized stone ruin towers (generic original architecture, no copied logos or landmark geometry). On the left-middle a small broad waterfall down a rocky shelf, in the distance a stone arch spanning the river, on right-middle old wall and crystal beside greenery. A short foreground strip of integrated weathered wooden landing across the bottom 10% with low stone bank edges and one warm dock lantern placed toward a side; no characters or obvious big objects. Composition should work on both portrait and landscape UI: position the waterfall's inner end around 32% from the left, a blue crystal ruin around 60% width, and distant arch around 50%; key silhouettes remain recognizable in center crop. Horizon and skyline in upper third. Broad uncluttered blue water and surface ripples in central two-thirds for real dynamic fishing float; lilies and reeds restricted to far sides, no central flowers or rocks. Upper skyline quite bright and open, banks saturated green rather than gloomy. No rod, no bobber, no line, no fish, no chest, no mascot, no UI controls, menus, text, numbers, clock, hooks, logo, overlay, borders, split view, signature or watermark. Just the standalone game background.",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "2ace2fd88d3256377c4f8ccb9b6121ccdac37581a2da98e5ab782b0328c102b2"
+    },
+    {
+      "file": "public/fishing/scenery/sunkenrift-portrait-v3.png",
+      "reference": "public/fishing/scenery/sunkenrift-v3.png",
+      "prompt": "Use case: stylized-concept. Produce a portrait 2:3 mobile composition of exactly the same original blue crystal river fishing setting shown in the reference. Recompose the environment into a narrow taller camera framing but keep identical painterly finish, midday sky, warm natural sunlight, cool saturated turquoise water, rock and tower architecture. All three landmarks must still fit in the vertical image: a waterfall descending into the left bank in the upper-middle, a distant bridge visible close to top-center and a tall blue crystal ruin distinct on the upper right. Bring all three within the center 70% width, and place sky only in the upper 18% and the distant horizon near 34% from the top. Lower middle and more than half of the full frame is open gently rippling clear water for gameplay. At the very bottom a compact continuous shallow timber landing across the width, 8-12% of image height, with rock and tiny lantern at left edge; the view from this fishing place is at water level. Keep the main water area empty and readable. A single continuous portrait illustration, native 2:3 aspect ratio, not a stretched crop or panoramic band. No characters, fish, items, rod, bobber, floating decorative UI, clock, buttons, text or borders. Same location and brushwork as image 1.",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "706e98d52122faec0f0a8629b2186dd38d23a9719bae9446af4173d467b6ee11"
+    }
+  ]
+}

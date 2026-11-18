@@ -5,6 +5,7 @@ import {appArt} from '@/components/app-art'
 import {useAuth} from '@/components/auth-provider'
 import {Button} from '@/components/ui/button'
 import {RegionLandscape} from '@/features/regions/region-landscape'
+import {loveletterArt} from '@/features/regions/loveletter-art'
 import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs'
 import {loadRegionMap,type Region} from '@/features/regions/api'
 import {loadHarborCatalog} from '@/features/regions/harbor-catalog'
@@ -45,6 +46,7 @@ function IslandHome(){
  const recent=regions.filter(r=>{const date=Date.parse(r.created_at);return date<=now&&date>=now-7*24*60*60*1000}).sort((a,b)=>Date.parse(b.created_at)-Date.parse(a.created_at)||b.sort_order-a.sort_order)
  const index=Math.max(0,recent.findIndex(r=>r.id===selected))
  const region=recent[index]
+ const hasLoveletterShowcase=region?.id==='loveletter'
  function move(direction:number){if(recent.length>1)setSelected(recent[(index+direction+recent.length)%recent.length].id)}
  const mythics=region?regionalMythics(catalog,region.id).map(item=>({...item,discovered:false})):[]
  return <section className="flex min-h-0 min-w-0 flex-1 flex-col">
@@ -54,7 +56,7 @@ function IslandHome(){
     {regionError?<HomeError onRetry={()=>setRetry(v=>v+1)}/>:!loaded?<HomeLoading/>:region?<>
      <article key={region.id} aria-roledescription="슬라이드" aria-label={`새로운 해역 ${index+1}/${recent.length}`} tabIndex={0} onKeyDown={event=>{if(event.target!==event.currentTarget)return;if(event.key==='ArrowLeft'){event.preventDefault();move(-1)}if(event.key==='ArrowRight'){event.preventDefault();move(1)}}} onTouchStart={event=>{const touch=event.touches[0];swipe.current={x:touch.clientX,y:touch.clientY}}} onTouchEnd={event=>{const touch=event.changedTouches[0],start=swipe.current;swipe.current=null;if(start&&Math.abs(touch.clientX-start.x)>50&&Math.abs(touch.clientX-start.x)>Math.abs(touch.clientY-start.y)*1.5)move(touch.clientX<start.x?1:-1)}} className="relative isolate flex h-full min-h-[26rem] touch-pan-y flex-col items-center justify-between overflow-hidden px-5 pb-7 pt-14 text-center text-white outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary">
       <span className="absolute right-4 top-3 rounded-full border border-white/25 bg-black/30 px-3 py-1 text-xs tabular-nums backdrop-blur-sm" aria-live="polite">{index+1}/{recent.length}</span>
-      <RegionLandscape region={region} alt={`${region.name} 풍경`} position="bottom" className="-z-20"/>
+      <RegionLandscape region={hasLoveletterShowcase?{...region,image_path:loveletterArt.showcase}:region} alt={`${region.name} 풍경`} position={hasLoveletterShowcase?'center':'bottom'} className="-z-20"/>
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/20 to-black/65"/>
       <div className="max-w-sm space-y-3"><h2 className="flex items-center justify-center gap-2 text-2xl font-medium drop-shadow-md"><img src={regionIcons[region.id]?.src??'/region-icons/pongdang.svg'} alt="" className="size-9 shrink-0 object-contain"/>{region.name}</h2><p className="text-sm leading-7 text-white/95 drop-shadow-md">{region.description}</p></div>
       {mythics.length>0&&<div className="flex min-h-0 w-full flex-1 items-center justify-center pb-6 pt-4"><HarborMythicShowcase key={region.id} items={mythics} regionName={region.name} interactive={false} isNew/></div>}

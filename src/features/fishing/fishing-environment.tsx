@@ -38,7 +38,7 @@ const platformMaterials:Record<string,string>={plunder:'wood',nyamnyam:'bamboo',
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
  if(id==='loveletter')return {id,...fishingEnvironments[id],src:loveletterArt.overview,frontSrc:loveletterArt.overview,frontWaterEnd:1536,platformFallbackSrc:loveletterArt.overview,platformSrc:null,material:'sandstone'}
- if(id==='sunkenrift')return {id,...fishingEnvironments[id],src:sunkenriftArt.fishing.water,frontSrc:sunkenriftArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:sunkenriftArt.fishing.scenery,platformSrc:null,material:'sandstone'}
+ if(id==='sunkenrift')return {id,...fishingEnvironments[id],src:sunkenriftArt.fishing.scenery,frontSrc:sunkenriftArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:sunkenriftArt.fishing.scenery,platformSrc:null,material:'sandstone'}
  if(id==='hologram')return {id,...fishingEnvironments[id],src:hologramArt.fishing.water,frontSrc:hologramArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:hologramArt.fishing.scenery,platformSrc:hologramArt.fishing.platform,material:'metal'}
  if(id==='galaxy')return {id,...fishingEnvironments[id],src:galaxyArt.fishing.water,frontSrc:galaxyArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:galaxyArt.fishing.scenery,platformSrc:galaxyArt.fishing.platform,material:'metal'}
  if(id==='hangang')return {id,...fishingEnvironments[id],src:hangangArt.fishing.water,frontSrc:hangangArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:hangangArt.fishing.scenery,platformSrc:hangangArt.fishing.platform,material:'wood'}
@@ -62,9 +62,16 @@ export function fishingPlatformSize(regionId:string){
 }
 export function FishingSea({regionId,view='top'}:{regionId:string;view?:'front'|'top'}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
+ if(theme.id==='sunkenrift'){
+  const {scenery,portrait,portraitMedia}=sunkenriftArt.fishing
+  return <picture className="pointer-events-none absolute inset-0 block" style={{backgroundColor:theme.water}} aria-hidden="true" data-fishing-sea={theme.id} data-fishing-view={view}>
+   <source media={portraitMedia} srcSet={portrait}/>
+   <img src={scenery} alt="" className="size-full object-cover object-bottom"/>
+  </picture>
+ }
  const src=view==='front'?theme.frontSrc:theme.src
  const opacity=view==='top'&&theme.id==='whitenight'?.72:1
- return <svg viewBox={`0 0 ${width} ${view==='front'?theme.frontWaterEnd:theme.waterEnd}`} preserveAspectRatio={theme.id==='sunkenrift'?'xMidYMax slice':view==='front'?'xMidYMin slice':'xMidYMid slice'} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id} data-fishing-view={view}>
+ return <svg viewBox={`0 0 ${width} ${view==='front'?theme.frontWaterEnd:theme.waterEnd}`} preserveAspectRatio={view==='front'?'xMidYMin slice':'xMidYMid slice'} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id} data-fishing-view={view}>
   <rect width={width} height={height} fill={theme.water} />{failed!==src&&<image href={src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===src?opacity:0} onLoad={()=>setLoaded(src)} onError={()=>setFailed(src)}/>}
  </svg>
 }

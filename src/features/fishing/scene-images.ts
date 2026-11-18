@@ -1,9 +1,19 @@
 import {useEffect,useState} from 'react'
 import {fishingBannerPath} from '@/features/regions/fishing-banner'
+import {currentSunkenriftFishingArt} from '@/features/regions/sunkenrift-art'
 import {fishingEnvironment} from './fishing-environment'
 
 const pending=new Map<string,Promise<void>>()
 const preparedScenes=new Set<string>()
+function sceneSources(regionId:string){
+ const theme=fishingEnvironment(regionId),banner=fishingBannerPath(regionId)
+ const banners=banner?[banner]:[]
+ if(regionId==='sunkenrift'){
+  const water=currentSunkenriftFishingArt()
+  return {standby:[water,...banners],water}
+ }
+ return {standby:[theme.frontSrc,theme.platformSrc??theme.platformFallbackSrc,...banners],water:theme.src}
+}
 export function preloadSceneImage(src:string){
  let task=pending.get(src)
  if(!task){
@@ -18,8 +28,8 @@ export function preloadSceneImage(src:string){
  return task
 }
 export async function prepareFishingScene(regionId:string,onProgress?:(fraction:number)=>void){
- const theme=fishingEnvironment(regionId),banner=fishingBannerPath(regionId)
- const sources=[...new Set([theme.frontSrc,theme.src,theme.platformSrc??theme.platformFallbackSrc,...(banner?[banner]:[])])]
+ const {standby,water}=sceneSources(regionId)
+ const sources=[...new Set([...standby,water])]
  let completed=0,timeout:ReturnType<typeof setTimeout>|undefined
  try{
   await Promise.race([
@@ -33,13 +43,12 @@ export function useFishingSceneImages(regionId:string){
  const [settled,setSettled]=useState(()=>preparedScenes.has(regionId)?regionId:'')
  useEffect(()=>{
   let active=true
-  const theme=fishingEnvironment(regionId),banner=fishingBannerPath(regionId)
-  const sources=[theme.frontSrc,theme.platformSrc??theme.platformFallbackSrc,...(banner?[banner]:[])]
+  const {standby,water}=sceneSources(regionId)
   const finish=()=>{if(active)setSettled(regionId)}
   // A slow asset must not trap the player behind a permanent loading screen.
   const timeout=setTimeout(finish,8000)
-  void Promise.allSettled(sources.map(preloadSceneImage)).then(()=>{clearTimeout(timeout);finish()})
-  void preloadSceneImage(theme.src).catch(()=>{})
+  void Promise.allSettled(standby.map(preloadSceneImage)).then(()=>{clearTimeout(timeout);finish()})
+  void preloadSceneImage(water).catch(()=>{})
   return()=>{active=false;clearTimeout(timeout)}
  },[regionId])
  return settled===regionId

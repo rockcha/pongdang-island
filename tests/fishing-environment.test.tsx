@@ -56,12 +56,16 @@ it('keeps the rod straight while scouting and bends only after the first pull st
  expect(rod()).not.toBe(straight)
 })
 it('keeps region water and terrain assets independently framed',()=>{
- for(const id of Object.keys(fishingEnvironments).filter(id=>!['sunkenrift','loveletter'].includes(id))){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).platformFallbackSrc]);unmount()}
+ for(const id of Object.keys(fishingEnvironments).filter(id=>id!=='sunkenrift')){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).platformFallbackSrc]);unmount()}
 })
-it('uses the swimming Pongsuni painting as the complete Love Letter fishing scene',()=>{
- const {container}=render(<FishingStandby regionId="loveletter"/>)
- expect(container.querySelector('[data-fishing-sea="loveletter"] image')?.getAttribute('href')).toBe('/regions/loveletter/overview-v1.png')
- expect(container.querySelector('[data-fishing-platform]')).toBeNull()
+it('shows the swimming Pongsuni painting and the Love Letter wood platform in both views',()=>{
+ const regionId='loveletter'
+ const {container,rerender}=render(<FishingStandby regionId={regionId}/>)
+ for(const view of ['front','top']){
+  if(view==='top')rerender(<FishingWater regionId={regionId} game={newTensionGame(()=>.5)} visual={{time:0,tension:38,reel:0,ending:0}} mood="recover" active reduced/>)
+  expect(container.querySelector(`[data-fishing-sea="loveletter"][data-fishing-view="${view}"] image`)?.getAttribute('href')).toBe('/regions/loveletter/overview-v1.png')
+  expect(container.querySelector('[data-fishing-platform="loveletter"][data-platform-material="wood"] image')?.getAttribute('href')).toBe('/fishing/platforms/loveletter-v1.png')
+ }
 })
 it('uses the painted Sunken Rift bank for both standby and active fishing',()=>{
  const regionId='sunkenrift'

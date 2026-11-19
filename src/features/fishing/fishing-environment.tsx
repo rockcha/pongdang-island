@@ -37,7 +37,7 @@ export const fishingEnvironments={
 const platformMaterials:Record<string,string>={plunder:'wood',nyamnyam:'bamboo',siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
- if(id==='loveletter')return {id,...fishingEnvironments[id],src:loveletterArt.overview,frontSrc:loveletterArt.overview,frontWaterEnd:1536,platformFallbackSrc:loveletterArt.overview,platformSrc:null,material:'sandstone'}
+ if(id==='loveletter')return {id,...fishingEnvironments[id],src:loveletterArt.overview,frontSrc:loveletterArt.overview,frontWaterEnd:1536,platformFallbackSrc:loveletterArt.overview,platformSrc:loveletterArt.platform,material:'wood'}
  if(id==='sunkenrift')return {id,...fishingEnvironments[id],src:sunkenriftArt.fishing.scenery,frontSrc:sunkenriftArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:sunkenriftArt.fishing.scenery,platformSrc:null,material:'sandstone'}
  if(id==='hologram')return {id,...fishingEnvironments[id],src:hologramArt.fishing.water,frontSrc:hologramArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:hologramArt.fishing.scenery,platformSrc:hologramArt.fishing.platform,material:'metal'}
  if(id==='galaxy')return {id,...fishingEnvironments[id],src:galaxyArt.fishing.water,frontSrc:galaxyArt.fishing.scenery,frontWaterEnd:1536,platformFallbackSrc:galaxyArt.fishing.scenery,platformSrc:galaxyArt.fishing.platform,material:'metal'}
@@ -56,8 +56,9 @@ export function fishingEnvironment(regionId:string){
 // Standby landscapes and close, oblique fishing views have independent source crops.
 // Platforms keep their own source so changing camera never changes the terrain.
 const width=1024,height=1536
-const regionsWithoutSeparatePlatform=new Set(['sunkenrift','loveletter'])
+const regionsWithoutSeparatePlatform=new Set(['sunkenrift'])
 export function fishingPlatformSize(regionId:string){
+ if(regionId==='loveletter')return {min:72,max:112,ratio:.14}
  return regionId==='galaxy'||regionId==='hologram'||regionsWithoutSeparatePlatform.has(regionId)?{min:96,max:144,ratio:.2}:{min:160,max:220,ratio:.32}
 }
 export function FishingSea({regionId,view='top'}:{regionId:string;view?:'front'|'top'}){
@@ -86,9 +87,10 @@ export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
  if(regionsWithoutSeparatePlatform.has(theme.id))return null
  // Crop transparent margins and side caps so the deck continues past the screen edges.
- const deckTop:Record<string,number>={hologram:184,galaxy:184,mechsanctum:281,firefly:94,hangang:173,pharaoh:138,plunder:154,nyamnyam:161,pongdang:136,bluegrove:81,cloudferry:77,coral:127,dreamabyss:82,mistmoon:108,primal:31,scrapisle:158,starruins:117,whitenight:126}
+ const deckTop:Record<string,number>={loveletter:315,hologram:184,galaxy:184,mechsanctum:281,firefly:94,hangang:173,pharaoh:138,plunder:154,nyamnyam:161,pongdang:136,bluegrove:81,cloudferry:77,coral:127,dreamabyss:82,mistmoon:108,primal:31,scrapisle:158,starruins:117,whitenight:126}
  const top=deckTop[theme.id]??0,bottom=theme.id==='galaxy'||theme.id==='hologram'?392:480
- if(theme.platformSrc)return <svg x={-4} y={y} width={408} height={platformHeight} viewBox={`144 ${top} 912 ${bottom-top}`} preserveAspectRatio="none" overflow="hidden" data-fishing-platform={theme.id} data-platform-material={theme.material}>
+ const sideInset=theme.id==='loveletter'?12:144
+ if(theme.platformSrc)return <svg x={-4} y={y} width={408} height={platformHeight} viewBox={`${sideInset} ${top} ${1200-2*sideInset} ${bottom-top}`} preserveAspectRatio="none" overflow="hidden" data-fishing-platform={theme.id} data-platform-material={theme.material}>
   <rect x="0" y={top+24} width="1200" height={480-top} fill={theme.deck}/>
   {failed!==theme.platformSrc?<image className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===theme.platformSrc?1:0} onLoad={()=>setLoaded(theme.platformSrc)} href={theme.platformSrc} width="1200" height="480" preserveAspectRatio="none" onError={()=>setFailed(theme.platformSrc)}/>:<>
    <path d="M0 75 140 55 265 80 430 58 615 82 780 50 980 77 1200 58V480H0Z" fill={theme.deck}/>

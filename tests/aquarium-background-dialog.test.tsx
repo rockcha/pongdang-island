@@ -102,8 +102,11 @@ it('keeps the background sheet open when applying fails',async()=>{
  expect(screen.getByRole('dialog')).toBeTruthy()
 })
 
-it('shows the complete panorama at its natural ratio directly in the list without charging',async()=>{
- const onAct=vi.fn(),state={owned:[],catalog:[{id:'coral',name:'산호 정원',price:500,image_path:'coral.png'}]} as AquariumState
+it('keeps differently sized panoramas in matching preview boxes without cropping or charging',async()=>{
+ const onAct=vi.fn(),state={owned:[],catalog:[
+  {id:'coral',name:'산호 정원',price:500,image_path:'coral.png'},
+  {id:'petal-harbor',name:'꽃잎이 잠든 포구',price:4800,image_path:'loveletter-petal-harbor-panorama-v1.png'},
+ ]} as AquariumState
  render(<AquariumBackgroundDialog state={state} selectedId="default" gold={1000} busy={false} loading={false} error={false} onAct={onAct}/>)
  fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}));expect(screen.queryByRole('tab',{name:'장식물'})).toBeNull()
  fireEvent.click(screen.getByRole('tab',{name:'구매'}))
@@ -111,10 +114,17 @@ it('shows the complete panorama at its natural ratio directly in the list withou
  expect(image.getAttribute('src')).toBe(backgroundPreviewArt('coral.png')!.url)
  expect(image.getAttribute('loading')).toBe('lazy')
  expect(image.getAttribute('decoding')).toBe('async')
- Object.defineProperties(image,{naturalWidth:{value:1800},naturalHeight:{value:1000}})
- fireEvent.load(image)
- expect(parseFloat(image.parentElement!.style.aspectRatio)).toBe(1.8)
- expect(image.className).toContain('object-contain')
+ const harbor=screen.getByRole('img',{name:'꽃잎이 잠든 포구'}) as HTMLImageElement
+ for(const [preview,naturalWidth,naturalHeight] of [[image,960,320],[harbor,960,569]] as const){
+  Object.defineProperties(preview,{naturalWidth:{value:naturalWidth},naturalHeight:{value:naturalHeight}})
+  const frame=preview.parentElement!
+  const frameClass=frame.className
+  fireEvent.load(preview)
+  expect(frame.className).toBe(frameClass)
+  expect(frame.classList.contains('aquarium-background-preview')).toBe(true)
+  expect(frame.style.aspectRatio).toBe('')
+  expect(preview.className).toContain('object-contain')
+ }
  expect(screen.queryByRole('button',{name:'큰 화면으로 보기'})).toBeNull()
  expect(screen.getAllByRole('dialog')).toHaveLength(1)
  expect(onAct).not.toHaveBeenCalled()

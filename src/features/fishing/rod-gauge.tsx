@@ -3,6 +3,7 @@
 import {RodGaugeCharm} from './rod-gauge-charm'
 
 const themes:Record<string,{ink:string;light:string;pattern:string}>={
+ loveletter:{ink:'#502d45',light:'#f3c79f',pattern:'radial-gradient(ellipse at 85% 15%,#e69aab3b,transparent 65%)'},
  hologram:{ink:'#0c1d30',light:'#65e0eb',pattern:'repeating-linear-gradient(0deg,transparent 0 13px,#45e3f018 14px 15px)'},
  galaxy:{ink:'#24283e',light:'#e7dfc7',pattern:'radial-gradient(ellipse at 20% 80%,#b9b3e533,transparent 65%)'},
  hangang:{ink:'#263953',light:'#f4e5c4',pattern:'linear-gradient(135deg,#cc344414,transparent 45%,#2863ac18)'},

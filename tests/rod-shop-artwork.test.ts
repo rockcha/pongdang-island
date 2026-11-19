@@ -6,9 +6,10 @@ import sharp from 'sharp'
 import manifest from '../assets/optimized-rod-shop/manifest.json'
 import assets from '../src/features/fishing/rod-shop-assets.json'
 import geometry from '../src/features/fishing/rod-artwork.json'
+import {hasGeneratedRod} from '@/features/fishing/generated-rod-parts'
 
-it('packages separate immutable thumbnails and reels for every existing rod without editing originals',async()=>{
- expect(manifest.items.map(item=>item.id).sort()).toEqual(Object.keys(geometry).sort())
+it('packages separate immutable thumbnails and reels for the rods that still use the legacy shop artwork',async()=>{
+ expect(manifest.items.map(item=>item.id).filter(id=>!hasGeneratedRod(id)).sort()).toEqual(Object.keys(geometry).filter(id=>!hasGeneratedRod(id)).sort())
  for(const item of manifest.items){
   for(const source of Object.values(item.sources))expect(createHash('sha256').update(readFileSync(source.source)).digest('hex')).toBe(source.sourceHash)
   for(const part of ['thumbnail','reel'] as const){

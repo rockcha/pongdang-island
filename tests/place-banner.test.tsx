@@ -86,7 +86,7 @@ it('keeps the place title readable if an image fails, then loads the next place'
  const view=render(<PlaceBanner pathname="/island-news"/>)
  fireEvent.error(screen.getByRole('img'))
  expect(screen.getByRole('heading',{name:'퐁당섬 소식'})).toBeTruthy()
- expect(screen.getByRole('img').getAttribute('src')).toBe('/fallback-image.svg')
+ expect(screen.getByRole('img').getAttribute('src')).toBe('/fallback-image-v2.webp')
  view.rerender(<PlaceBanner pathname="/harbor"/>)
  expect(screen.getByRole('img').getAttribute('src')).toBe('/banners/harbor.png')
 })

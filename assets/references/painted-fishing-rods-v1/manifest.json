@@ -1,0 +1,822 @@
+{
+  "tool": "OpenAI ImageGen (built-in)",
+  "format": "six-part transparent WebP",
+  "entries": [
+    {
+      "id": "loveletter",
+      "source": "assets/references/painted-fishing-rods-v1/originals/loveletter.png",
+      "sourceHash": "3198fdd3fae39692a98c002eb5ea945882b926adc582068489f874d102fc45ea",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Cherry blossom love letters at a rosy harbor. Dark dried-rose lacquer with thin champagne-gold ferrules, ivory handle with a tiny dusty blue engraved scallop shell near the butt, aged delicately beveled champagne-brass frame, asymmetric burgundy pink WAX SEAL rotating face with shallow pressed five-petal cherry blossom in the wax and subtle semi-matte wax patina. The float is a snug warm cream envelope with a deep rose seal and dark rose edges, no red dot elsewhere.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/loveletter/frame.webp",
+          "sha256": "aa4a0510918c31ac785451e22697cf72153da8d5124bd1ba3ac1f7443e6df885",
+          "sourceRect": [
+            68,
+            41,
+            394,
+            423
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/loveletter/rotor.webp",
+          "sha256": "8e8e918e4af78b696e0486f9f9dd7abdba481eb25481a0c26f5eebb7a5fafa18",
+          "sourceRect": [
+            608,
+            106,
+            319,
+            322
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/loveletter/float.webp",
+          "sha256": "40b334daa755c1511a0bdb6fbeabee2cb45905d1ea2f06851bc89f0af9fb6f57",
+          "sourceRect": [
+            1179,
+            91,
+            200,
+            339
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/loveletter/grip.webp",
+          "sha256": "51ac62b29f65169c0abd5af8792f869bdcee1673f1a89120016a98b1b515b0d7",
+          "sourceRect": [
+            222,
+            564,
+            85,
+            418
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/loveletter/shaft.webp",
+          "sha256": "aaedade1e9d9cefff14ad09fcb1f9498616973251e704c4e19d4e1d9a5dcba65",
+          "sourceRect": [
+            537,
+            751,
+            460,
+            35
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/loveletter/thumbnail.webp",
+          "sha256": "28e6c51a45b2a34eac930f509da6a56313ac2c70884644284704c90beb100c64",
+          "sourceRect": [
+            1053,
+            546,
+            453,
+            439
+          ]
+        }
+      }
+    },
+    {
+      "id": "hologram",
+      "source": "assets/references/painted-fishing-rods-v1/originals/hologram.png",
+      "sourceHash": "0ed442dbcb480412cebd4432c26b0e88c7994f27821574c0c63ca60041592408",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Hologram deep sea city. Deep midnight navy metal and luminous restrained aquamarine etched circuits, flat hollow chamfered square outer reel frame with one magenta node, cyan holographic hex core in exact center of rotary piece, clear cyan beveled cube float with a single magenta corner. Futuristic precision machined finish.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/hologram/frame.webp",
+          "sha256": "1d9e7e59944ef35b51c5dbd12db1020eacc95b048d86da18470b822b3820aea5",
+          "sourceRect": [
+            77,
+            49,
+            390,
+            394
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/hologram/rotor.webp",
+          "sha256": "d0d333a821aa007e6e77fcc5f97194568929be10ffbe94e0ed0b6b6bfac802c1",
+          "sourceRect": [
+            616,
+            104,
+            304,
+            301
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/hologram/float.webp",
+          "sha256": "0dec5449151a1e440719a17c2646aa0954756982bf57079fa569788a9cc69782",
+          "sourceRect": [
+            1180,
+            103,
+            197,
+            294
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/hologram/grip.webp",
+          "sha256": "9bf2419e30a13e434722ba766cfe89c0fbae94017ed9277719ea3174303a5c0b",
+          "sourceRect": [
+            232,
+            561,
+            84,
+            411
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/hologram/shaft.webp",
+          "sha256": "95b9ae501cde924fcb074ed885fe6aaad8ecb655c3d51ed69d01679d15f7734e",
+          "sourceRect": [
+            539,
+            743,
+            458,
+            34
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/hologram/thumbnail.webp",
+          "sha256": "167a885e7320849c393b51551be64fb1aa2f089769c332e74d72cc385feb132c",
+          "sourceRect": [
+            1053,
+            543,
+            439,
+            436
+          ]
+        }
+      }
+    },
+    {
+      "id": "galaxy",
+      "source": "assets/references/painted-fishing-rods-v1/originals/galaxy.png",
+      "sourceHash": "34401822d17299013aa8482125c9312f2788e6bea2607655a5afebb1619dd008",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Milky Way edge. Ink-blue enamel with fine silver glints, antique silver reel outer frame with one diagonally tilted thin champagne gold orbit fixed to rim, pearl lavender moon rotary disc with little warm satellite kept close, cream beige Saturn float with clearly visible rings.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/galaxy/frame.webp",
+          "sha256": "cf6d15c31f1a78f7a655327fb99823bc46b01c04895df60af91420371897b1eb",
+          "sourceRect": [
+            91,
+            45,
+            380,
+            417
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/galaxy/rotor.webp",
+          "sha256": "191882029c07944e7160e07f33b3df10f6f9b1875e8a2779ce631d31193a1120",
+          "sourceRect": [
+            620,
+            114,
+            296,
+            294
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/galaxy/float.webp",
+          "sha256": "c34aeb418a5c336ba67209b1aa2e9f0968c8c24c5e08d91012d44711049d96d1",
+          "sourceRect": [
+            1135,
+            99,
+            259,
+            311
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/galaxy/grip.webp",
+          "sha256": "28a2126f3a4700cb9af2450d5b8357ab5943ea9223428763fa3ca0e49c43d7d3",
+          "sourceRect": [
+            222,
+            553,
+            95,
+            415
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/galaxy/shaft.webp",
+          "sha256": "0631e025d3f56c35639a1b1bbffe4babc04ddec026629e3957f4a693fdd84d62",
+          "sourceRect": [
+            542,
+            740,
+            452,
+            37
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/galaxy/thumbnail.webp",
+          "sha256": "1f9dad95c93231e9e754d31c25e17484bf6b3c0675a6eecc4014186243cc28f0",
+          "sourceRect": [
+            1053,
+            553,
+            440,
+            410
+          ]
+        }
+      }
+    },
+    {
+      "id": "hangang",
+      "source": "assets/references/painted-fishing-rods-v1/originals/hangang.png",
+      "sourceHash": "0d17f5357c9e2c9bb44a707439ab4136571d8b8098bd3feb88c5c19df83d773f",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Korean riverside lantern quay. Indigo lacquered bamboo with golden thread ties and a traditional red/cream woven knot at grip foot, antique brass paper lantern shaped outer reel with a rounded rectangular outline and narrow brass ribs, golden amber enamel disc, small ochre-gold paper lantern bobber with dark cap and handle.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/hangang/frame.webp",
+          "sha256": "396daf6049c86e18ca622f3e1e126707572adc7c5f9a3de197e2ae82a0bec270",
+          "sourceRect": [
+            48,
+            38,
+            415,
+            427
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/hangang/rotor.webp",
+          "sha256": "005cc1542d97f35a119ec109473250cf4f867a5f33bfbee779f2c029356e6387",
+          "sourceRect": [
+            614,
+            96,
+            305,
+            311
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/hangang/float.webp",
+          "sha256": "b81121212b3b76a6d727256d88b63485f5d3f4f527babce7981b38d231af4801",
+          "sourceRect": [
+            1182,
+            86,
+            192,
+            321
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/hangang/grip.webp",
+          "sha256": "4421c73b987b825c629f596371a7da7ff6273fb060aae078b74cccc3fce0e298",
+          "sourceRect": [
+            211,
+            552,
+            92,
+            430
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/hangang/shaft.webp",
+          "sha256": "8972d20f255b99041542b81d999d4236a99ab367aed7d4a81a9bedc9e8d2eeac",
+          "sourceRect": [
+            536,
+            745,
+            459,
+            28
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/hangang/thumbnail.webp",
+          "sha256": "62b092ad2dc8b3abea4057b765734860b55f3201050a43bea994646f5ecc8deb",
+          "sourceRect": [
+            1066,
+            537,
+            432,
+            432
+          ]
+        }
+      }
+    },
+    {
+      "id": "pharaoh",
+      "source": "assets/references/painted-fishing-rods-v1/originals/pharaoh.png",
+      "sourceHash": "67aff08cc5b82a6d1cbf1c9ac672fc778f053dff406a28fc7a69c8797876a12a",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Ancient Egyptian golden sea. Warm sand-gold polished shaft, lapis lazuli and old gold inlay, antique golden scarab wings framing cobalt reel center, rotating disc of polished blue lapis with subtle engraved fluting, small warm sandstone obelisk float with lapis base.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/pharaoh/frame.webp",
+          "sha256": "cc447532cff4ce0836ffbdc1f5ce95e325e2551935287f367da447ba124a39ff",
+          "sourceRect": [
+            60,
+            35,
+            388,
+            425
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/pharaoh/rotor.webp",
+          "sha256": "87ef09b3c4c70bc58373c10c309718d6eb1bcc1aa38fed38347be46475449135",
+          "sourceRect": [
+            618,
+            104,
+            299,
+            304
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/pharaoh/float.webp",
+          "sha256": "4c2415cc87f0c544bcc21c99350d058b831dde1d02cef25c641b20c34c0673b8",
+          "sourceRect": [
+            1194,
+            81,
+            165,
+            352
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/pharaoh/grip.webp",
+          "sha256": "a9905dd9480ca4d87b4c338a52e4359add0a4f78aa36825cea70072d0bf9008a",
+          "sourceRect": [
+            208,
+            552,
+            95,
+            424
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/pharaoh/shaft.webp",
+          "sha256": "d94b4afb4d9e63b264c8efcbace938c56cfd823c324594de30e377faefaaf064",
+          "sourceRect": [
+            537,
+            737,
+            460,
+            47
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/pharaoh/thumbnail.webp",
+          "sha256": "a20549ceaa72b799d92cddae9a562d312c1da24978f3b88e49aa8a4233337559",
+          "sourceRect": [
+            1068,
+            561,
+            421,
+            405
+          ]
+        }
+      }
+    },
+    {
+      "id": "firefly",
+      "source": "assets/references/painted-fishing-rods-v1/originals/firefly.png",
+      "sourceHash": "c31468126d964e1df61180b87ac151ae396a3e6e0215bda8f8fc7b8db245b037",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Firefly fairy shallows. Warm walnut small branch shaft with natural color grain and one restrained green leaf winding at heel, dark green leaf-cup outer reel, honey-amber seed rotating face, tiny luminous honey-yellow hanging bell flower float with moss green cap, painterly fairy woodland botanical style.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/firefly/frame.webp",
+          "sha256": "2184198dd1bedeabc78d622ec6e52fe7d0533ca941f5afd072e266d38881120e",
+          "sourceRect": [
+            56,
+            50,
+            409,
+            410
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/firefly/rotor.webp",
+          "sha256": "e1952c17d476167c0f9b20d6dd60b4af2717e67d91541a1911992bc2d778b2de",
+          "sourceRect": [
+            608,
+            116,
+            315,
+            316
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/firefly/float.webp",
+          "sha256": "d2670182ca0f2e337b28f0cddc9bb6e8ff5ae6b54b1aa5296ce29d87ceb2d936",
+          "sourceRect": [
+            1176,
+            112,
+            220,
+            300
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/firefly/grip.webp",
+          "sha256": "04f561305fb945e2c797baedaa2f2aa9d589187aaecadd67388f42641d3b766a",
+          "sourceRect": [
+            222,
+            566,
+            92,
+            407
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/firefly/shaft.webp",
+          "sha256": "7f358faf6b332d678f022efc7dc255bc14e4dbe59df527b1998bf6aa5750d8d4",
+          "sourceRect": [
+            545,
+            747,
+            441,
+            38
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/firefly/thumbnail.webp",
+          "sha256": "e7b4d0be19131997dbd96e085526d5646ed7f7258e78e8ca5b318f9f4ae42df4",
+          "sourceRect": [
+            1051,
+            562,
+            434,
+            410
+          ]
+        }
+      }
+    },
+    {
+      "id": "mechsanctum",
+      "source": "assets/references/painted-fishing-rods-v1/originals/mechsanctum.png",
+      "sourceHash": "0955bc64b349777f41059af80a0c4d7020c0db43a278c6d33287da08230cd248",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Mechanical sanctuary. Near-black gunmetal with brass joints, warm copper and little visible spring engravings, irregular dark iron reel frame with bronze fittings and space for gear face, rotary antique brass gear with teal axle, tiny glazed mint pressure gauge bobber with dark needle and antique brass rim.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/mechsanctum/frame.webp",
+          "sha256": "dd16f7046b5dd79c8c74febef850e7f1b3235933cbb48a90c51ee21e0234bcb9",
+          "sourceRect": [
+            66,
+            42,
+            401,
+            411
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/mechsanctum/rotor.webp",
+          "sha256": "b3ee1f4227ea1370309e0cd5f90369033afa9f73266bc986ef13b5c8545a8b00",
+          "sourceRect": [
+            619,
+            98,
+            298,
+            297
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/mechsanctum/float.webp",
+          "sha256": "e524a9c7bad833b5a10ff09cbf388da43916ec42b7bfd15189d7ece5943d19bd",
+          "sourceRect": [
+            1173,
+            80,
+            198,
+            340
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/mechsanctum/grip.webp",
+          "sha256": "47803b0ad4f4f98748ae8d3922c6e9313a1ccac621efe7cfa2d6c707facfd362",
+          "sourceRect": [
+            220,
+            561,
+            84,
+            406
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/mechsanctum/shaft.webp",
+          "sha256": "fc6606cf2739bf88bf8522c606b086b7c1a21ca0fd6f008595f4bd5a29d83c1b",
+          "sourceRect": [
+            549,
+            736,
+            437,
+            36
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/mechsanctum/thumbnail.webp",
+          "sha256": "1291aaf06226f369af576e558accff9ca1167ed4fb6799dcff7f1750d6b792dc",
+          "sourceRect": [
+            1060,
+            556,
+            430,
+            405
+          ]
+        }
+      }
+    },
+    {
+      "id": "plunder",
+      "source": "assets/references/painted-fishing-rods-v1/originals/plunder.png",
+      "sourceHash": "773fb0bf7c6507c528c1236ab9f6a21ef9956dd3541d3f261b10ef9a29dbee16",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Pirate waters. Charcoal scorched wood shaft, burgundy brown leather handle with handsome stitched seams, octagonal aged brass compass housing, rotary aged nautical dial with ivory and wine-colored compass needle, cork bobber shaped as a tiny skiff with folded black sail.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/plunder/frame.webp",
+          "sha256": "ba760efe98b13b790241d98c8b673b104a9d7db6c5fc2c1c77bf3766f6a2b3fc",
+          "sourceRect": [
+            65,
+            33,
+            397,
+            420
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/plunder/rotor.webp",
+          "sha256": "4363dcad30e962c04e51289bcf801fd144bad3b6773d6e71e1dbba8f29c5bc9a",
+          "sourceRect": [
+            614,
+            96,
+            311,
+            305
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/plunder/float.webp",
+          "sha256": "c23c4cacb49ca686b393e107a9c04dcc82079c8cc87ddf843ba074f8c8c1a37e",
+          "sourceRect": [
+            1165,
+            68,
+            224,
+            374
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/plunder/grip.webp",
+          "sha256": "0b19682e11607d5008f0c1833577b77967698562516f25249ffe118526b2f9b1",
+          "sourceRect": [
+            218,
+            554,
+            97,
+            433
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/plunder/shaft.webp",
+          "sha256": "02e5b7b15f7b8f6c386f7a412326bf79d8d702a9de1e264d0f9f167abf5bc33f",
+          "sourceRect": [
+            543,
+            752,
+            452,
+            33
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/plunder/thumbnail.webp",
+          "sha256": "5146a0dde369292dd1c908821e177702c19c22e9e3cdeb6339b6d19bfb56c802",
+          "sourceRect": [
+            1050,
+            544,
+            464,
+            435
+          ]
+        }
+      }
+    },
+    {
+      "id": "mukhyang",
+      "source": "assets/references/painted-fishing-rods-v1/originals/mukhyang.png",
+      "sourceHash": "9baf7b21ea1e2534aa16e3a7d8bf9c7a3e9a54f7cc7566de3daf03871145c2cc",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Cozy Korean ink-painting waters. Restrained ink-wash jade black bamboo shaft, ivory jade grip with one tiny dark carmine seal, smooth black inkstone shaped reel frame with rounded rectangle and brushed gray soft highlights, silver stone-disc rotor, ivory carved rectangular stamp float with a carmine flat cap.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/mukhyang/frame.webp",
+          "sha256": "b09f09618b359d352b45416f9405bcd5b2f16b1e05b3fa1902ab3fba95d03224",
+          "sourceRect": [
+            88,
+            57,
+            377,
+            394
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/mukhyang/rotor.webp",
+          "sha256": "49d6e2fb4995c56daf06ed1f10aaf44e808c3018b823674bdd0a2ddbce8e1c38",
+          "sourceRect": [
+            625,
+            112,
+            295,
+            302
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/mukhyang/float.webp",
+          "sha256": "9ddd7ab07e92e1d32026b36a8eca1263cc25ac59bd34b210c9f2f06fb2c416ec",
+          "sourceRect": [
+            1198,
+            98,
+            137,
+            314
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/mukhyang/grip.webp",
+          "sha256": "8a00c8a0b598f8e4b791bfc317f3af280ed2041155f6944df879bb0a1377071d",
+          "sourceRect": [
+            225,
+            554,
+            98,
+            413
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/mukhyang/shaft.webp",
+          "sha256": "ec4a863e100cf765b13dd30bf9a11c15d5d3c4b80bf71e9c6d905d0fe5669478",
+          "sourceRect": [
+            539,
+            743,
+            459,
+            32
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/mukhyang/thumbnail.webp",
+          "sha256": "4781b381982ec81c18bdbae52bf586cd4809bbd8bd1f2b478fd81918e138a2b7",
+          "sourceRect": [
+            1067,
+            542,
+            406,
+            425
+          ]
+        }
+      }
+    },
+    {
+      "id": "whitenight",
+      "source": "assets/references/painted-fishing-rods-v1/originals/whitenight.png",
+      "sourceHash": "556dc394c56643c6ff8918240f65f78be1b7a94cac3a6ac6d9bffc1284c54819",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: White night glacier. Prismatic pale blue ice shaft made from layered translucent blue enamel, frosted silver grip, thick hexagonal frosted ice reel housing, partly translucent frosty crystal blue snowflake rotor, clear blue faceted ice crystal float with opaque white highlight on crown.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/whitenight/frame.webp",
+          "sha256": "bcf83f43cf3e0e84714cf8ed751c869551ad5cf11e6ab76916eece353734d07f",
+          "sourceRect": [
+            63,
+            36,
+            394,
+            443
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/whitenight/rotor.webp",
+          "sha256": "b5c487e983e7e81bb7784f5875f578fbf5ecf78b5d398b6d99e0cabffa5d47de",
+          "sourceRect": [
+            613,
+            113,
+            314,
+            325
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/whitenight/float.webp",
+          "sha256": "c6af214b5da9953b3881a17395dc7ef1231239fa4919ced65c8a8fa7e4bbf767",
+          "sourceRect": [
+            1191,
+            113,
+            179,
+            309
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/whitenight/grip.webp",
+          "sha256": "3b7d55ddc1f158af93e18469414a03e8e67482729d49b39b965bab0f6bd74ce0",
+          "sourceRect": [
+            208,
+            557,
+            99,
+            422
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/whitenight/shaft.webp",
+          "sha256": "bcf7f2fc9daf6880a2f5a4758558c7f24c0a1e82ab9b5773d587b835f21de8d6",
+          "sourceRect": [
+            546,
+            755,
+            447,
+            41
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/whitenight/thumbnail.webp",
+          "sha256": "15cffb9e92bea41fd18529fadac4c3f8c2eb32ecfd107c41a285bdf28e1eb817",
+          "sourceRect": [
+            1064,
+            557,
+            434,
+            417
+          ]
+        }
+      }
+    },
+    {
+      "id": "scrapisle",
+      "source": "assets/references/painted-fishing-rods-v1/originals/scrapisle.png",
+      "sourceHash": "060cb4c0844b4c51a5d91349add265b4d5c3aaeb908eb727849fd4db17266f2e",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Mossy scrapyard. Patched weathered copper and blue green iron rod shaft with small warm copper welds, oxidized teal grip, irregular salvaged dark brass toothed reel housing, reddish copper reel face with repaired teacup-handle crank, muted copper lid cork bobber with visible green verdigris fleck.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/scrapisle/frame.webp",
+          "sha256": "005e3bc9bfb80274ff0e0a457ff0dec6c836f5cff545912505051780994aaabe",
+          "sourceRect": [
+            57,
+            32,
+            402,
+            436
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/scrapisle/rotor.webp",
+          "sha256": "af3dd1636fd5e5176f1660adac2c4aee17c9cbd864987ea53d06a61e49eb5bed",
+          "sourceRect": [
+            616,
+            112,
+            308,
+            301
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/scrapisle/float.webp",
+          "sha256": "9ed6aa8f53d0a3ec011437d774ece7918d08ff1df2cbb23f297114accf23bdb6",
+          "sourceRect": [
+            1194,
+            109,
+            170,
+            302
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/scrapisle/grip.webp",
+          "sha256": "15fb0e55b02284d15332fb8fad60319dbe55f839d075e956c0bcd87364d3b8a7",
+          "sourceRect": [
+            206,
+            560,
+            98,
+            423
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/scrapisle/shaft.webp",
+          "sha256": "eda862f0896849627060f2cca90a0470dae65f815fb62dac4a54bab8d43fa513",
+          "sourceRect": [
+            544,
+            748,
+            448,
+            31
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/scrapisle/thumbnail.webp",
+          "sha256": "468dd9d5167d514463179d4795cfdbe065725a81fe3ac374a1e0a0b215943fae",
+          "sourceRect": [
+            1068,
+            548,
+            428,
+            442
+          ]
+        }
+      }
+    },
+    {
+      "id": "nyamnyam",
+      "source": "assets/references/painted-fishing-rods-v1/originals/nyamnyam.png",
+      "sourceHash": "e11ac362eaeffe9120a9bec85bbd3b8fe3c9d4cf7c755e790aac1ced806299aa",
+      "prompt": "Create a production 2D game sprite sheet on truly transparent alpha. Wide landscape exact 3 columns by 2 rows, six independent components, margins around EVERY slot and around all external edges, centered inside each of six equal cells. No contact across cells, no grid, no UI, no letters, no surface, no exterior shadow. All assets are softly hand-painted, polished, deep and dimensional cozy fantasy game illustrations, miniature product rendering with rich natural subtle texture, warm soft upper-left lighting, fine edge highlights and strong tiny-scale silhouettes. Make the components easily separable in this exact arrangement:\nTOP LEFT: front-on circular or themed fishing reel HOUSING ONLY, center axle perfectly in the middle of the cell, dark recessed empty center with no visible flower or crank, occupies 72 percent of cell width.\nTOP CENTER: front-on ROTATING REEL FACE only, isolated compact round decorative solid disc including a tiny crank handle inside its perimeter where suitable. Exact axle in center of cell, occupies 55 percent of cell width. No outer housing.\nTOP RIGHT: fishing FLOAT bobber only, solid silhouette facing forward and small clearly visible eyelet at the top, occupies 50 percent of cell width. No water or line.\nBOTTOM LEFT: the slim straight fishing rod GRIP only, exactly VERTICAL, symmetrical centered shape, fully visible with decorative collar and material detail, no reel attached, height 72 percent of cell.\nBOTTOM CENTER: standalone long thin polished rod SHAFT STRIP ONLY, exactly HORIZONTAL tip to the RIGHT, uniform orientation, isolated on alpha, visible material, finely painted gradient and tight decorative bands, width 76 percent of cell and height 8 percent of cell, no hooks or accessories.\nBOTTOM RIGHT: complete single matched fishing rod inventory icon in compact bottom-left to top-right diagonal composition, with same reel near the handle and with the matching bobber beside the rod. Must fit complete in its own cell with ample margins. No labels or UI.\nSpecific design for all six pieces: Cozy feast sea. Warm honey bamboo with a dark nori green narrow binding, beautifully twisted straw wrap grip, richly painted little roasted wood bento box reel with rounded Japanese wooden corners, ume plum pink round ceramic rotary face, salmon nigiri sushi float with creamy off-white rice and beautiful warm salmon pink stripe.",
+      "assets": {
+        "frame": {
+          "path": "public/fishing/equipment/painted-rods-v1/nyamnyam/frame.webp",
+          "sha256": "dbf7c93b4fd7ebe7f7835da47728939e665bd906bc9140e7ce11ea5fc95a50b2",
+          "sourceRect": [
+            85,
+            79,
+            370,
+            374
+          ]
+        },
+        "rotor": {
+          "path": "public/fishing/equipment/painted-rods-v1/nyamnyam/rotor.webp",
+          "sha256": "701cd33c135c74a4885ff642dbcbc6bd95bc7f9ed5e13f3b6ad65aed00eed8ba",
+          "sourceRect": [
+            618,
+            124,
+            292,
+            296
+          ]
+        },
+        "float": {
+          "path": "public/fishing/equipment/painted-rods-v1/nyamnyam/float.webp",
+          "sha256": "7d0404c96fae2acb5c891d028e968b444010e15dc3f1d1c159080e269eb0c8f5",
+          "sourceRect": [
+            1175,
+            112,
+            194,
+            308
+          ]
+        },
+        "grip": {
+          "path": "public/fishing/equipment/painted-rods-v1/nyamnyam/grip.webp",
+          "sha256": "fae7df4d445ed4c94224480132197e26a843d43fc08037ee75182ffb4035d284",
+          "sourceRect": [
+            231,
+            570,
+            80,
+            391
+          ]
+        },
+        "shaft": {
+          "path": "public/fishing/equipment/painted-rods-v1/nyamnyam/shaft.webp",
+          "sha256": "84e3cb508dab55cb71ced527ee4bec05bd0caa5f2f4c2a9d4803f9c89c3b1a13",
+          "sourceRect": [
+            550,
+            752,
+            429,
+            31
+          ]
+        },
+        "thumbnail": {
+          "path": "public/fishing/equipment/painted-rods-v1/nyamnyam/thumbnail.webp",
+          "sha256": "4e5b03197b2a014d852763d7c9407a66e8d295144a8d252b5534aba01459e998",
+          "sourceRect": [
+            1073,
+            553,
+            417,
+            415
+          ]
+        }
+      }
+    }
+  ]
+}

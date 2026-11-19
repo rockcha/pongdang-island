@@ -1,7 +1,9 @@
 import type {ComponentProps,ReactNode} from 'react'
 import {memo} from 'react'
+import {loveletterArt} from '@/features/regions/loveletter-art'
 
 const charms:Record<string,ReactNode>={
+ loveletter:<image href={loveletterArt.icon} x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  hologram:<image href="/region-icons/hologram.svg" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  galaxy:<image href="/region-icons/galaxy-v1.png" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  hangang:<image href="/region-icons/hangang.svg" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,

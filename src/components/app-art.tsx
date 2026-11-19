@@ -1,9 +1,10 @@
 import type {ComponentProps} from 'react'
 import {Cog,Store} from 'lucide-react'
+import {fallbackImageUrl} from './fallback-image'
 
 function artwork(name:string,folder='app-icons',extension='png'){
  return function Artwork({className='size-6',strokeWidth:_strokeWidth,...props}:Omit<ComponentProps<'img'>,'src'|'alt'>&{strokeWidth?:number}){
-  return <img {...props} onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src='/fallback-image.svg'}} src={`/${folder}/${name}.${extension}`} alt="" aria-hidden={props['aria-hidden']??true} width={128} height={128} decoding="async" draggable={false} className={`${className} shrink-0 object-contain`}/>
+  return <img {...props} onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src=fallbackImageUrl}} src={`/${folder}/${name}.${extension}`} alt="" aria-hidden={props['aria-hidden']??true} width={128} height={128} decoding="async" draggable={false} className={`${className} shrink-0 object-contain`}/>
  }
 }
 function productionArtwork(kind:'bait'|'fuel',shop=false){
@@ -18,7 +19,6 @@ function decorationShopArtwork({className='size-6'}:{className?:string;strokeWid
  return <span aria-hidden="true" className={`relative inline-block shrink-0 ${className}`}><Decoration className="size-full"/><Store className="absolute -bottom-0.5 -right-0.5 size-[45%] rounded-full bg-background p-px text-primary" strokeWidth={2.3}/></span>
 }
 export const appArt={
- pet:artwork('pet-paw-v1'),
  petFood:artwork('pet-food-v1','app-icons','webp'),
  itemCollection:artwork('item-collection'),
  developmentFund:artwork('development-fund','app-icons','svg'),

@@ -1,6 +1,8 @@
 import { useEffect,useMemo,useRef,useState } from 'react'
 import {baitWaitFlavor} from './bait-wait-flavor'
 import { TensionFishingGame } from './tension-fishing-game'
+import {fishingRods} from './fishing-rods'
+import {rodThumbnailUrl} from './rod-image-assets'
 import {
   labBaits,
   labBaitsAt,
@@ -38,7 +40,10 @@ export default function BaitLabPage() {
   const [state, setState] = useState(readState)
   const current = useRef(state)
   const [selected, setSelected] = useState(state.pending?.baitId ?? 'bait')
-  const [region, setRegion] = useState(state.pending?.regionId ?? 'pongdang')
+  const [region, setRegion] = useState(state.pending?.regionId??'pongdang')
+  const [rodId,setRodId]=useState(()=>new URLSearchParams(location.search).get('rod')??'basic')
+  const rod=fishingRods.find(item=>item.id===rodId)??fishingRods[0]
+  const rodRegion=labRegions.find(item=>item.id===rod.region)
   const [playing, setPlaying] = useState(false)
   const [message, setMessage] = useState('미끼를 선택하고 낚시를 시작해 보세요.')
   const [now,setNow]=useState(Date.now)
@@ -171,6 +176,16 @@ export default function BaitLabPage() {
           className="order-1 flex min-h-[75dvh] flex-col md:order-last md:min-h-0"
           aria-label="로컬 낚시 테스트"
         >
+          <div className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 border-b px-4 py-2">
+            <img src={rodThumbnailUrl(rod.id)} alt="" className="size-11 shrink-0 object-contain"/>
+            <label className="min-w-40 flex-1 text-xs">
+              낚싯대 외형
+              <select className="mt-1 min-h-9 w-full rounded-lg border bg-background px-2 text-sm" value={rod.id} disabled={!!cast} onChange={event=>setRodId(event.target.value)}>
+                {fishingRods.map(item=><option key={item.id} value={item.id}>{item.name}</option>)}
+              </select>
+            </label>
+            {rodRegion&&region!==rodRegion.id&&<button type="button" className="min-h-9 rounded-lg border px-2 text-xs" disabled={!!cast} onClick={()=>setRegion(rodRegion.id)}>{rod.id==='loveletter'?'러브레터 해역':rodRegion.name}에서 보기</button>}
+          </div>
           <div className="flex shrink-0 items-center justify-between gap-2 border-b px-4 py-2 text-sm">
             <label className="min-w-0 flex-1">
               <span className="sr-only">테스트 미끼 선택</span>
@@ -205,6 +220,7 @@ export default function BaitLabPage() {
               active={playing}
               castId={cast?.id ?? 'lab-ready'}
               regionId={region}
+              rodPreview={rod}
               regionName={labRegions.find((r) => r.id === region)?.name}
               baitImage={bait.image_path}
               outline={cast?.species}

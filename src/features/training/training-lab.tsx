@@ -3,6 +3,7 @@ import {Link} from 'react-router'
 import {ArrowLeft,ArrowRight,Box,Check,Heart,RotateCcw,Shield,Sparkles,Swords,Target} from 'lucide-react'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from '@/components/ui/dialog'
 import {collectibleUrl} from '@/features/collection/api'
+import {fallbackImageUrl} from '@/components/fallback-image'
 import {companionDefinition,statsAtLevel,trainingChances,trainingRarityNames,TRAINING_MAX_LEVEL,TRAINING_XP,xpForLevel,statusNames,statusDescriptions,type CompanionDefinition,type Status} from './catalog'
 import {newTrainingSave,restoreTrainingSave,trainCompanion,trainingStorageKey,isEligible,type LocalCompanion,type TrainingSave} from './local-state'
 import {abilityBlock,newTrainingBattle,practiceAction,testIncomingHit,type Fighter} from './battle'
@@ -10,7 +11,7 @@ import {BondShard,TrainingDummy,TrainingGlyph} from './art'
 import './training.css'
 
 export function UnitArtwork({definition,className=''}:{definition:CompanionDefinition;className?:string}){
- return <img src={collectibleUrl(definition.image)} alt={definition.name} draggable={false} className={`training-unit-art ${className}`} onError={event=>{event.currentTarget.onerror=null;event.currentTarget.src='/fallback-image.svg'}}/>
+ return <img key={definition.image} src={collectibleUrl(definition.image)} alt={definition.name} draggable={false} className={`training-unit-art ${className}`} onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src=fallbackImageUrl}}/>
 }
 function Meter({value,max,label}:{value:number;max:number;label:string}){return <progress className="training-meter" aria-label={label} max={max} value={value}/>}
 function StatusBadges({actor,focus=0}:{actor:Fighter;focus?:number}){

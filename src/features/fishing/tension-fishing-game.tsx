@@ -1,5 +1,5 @@
 import {useRods} from './rod-provider'
-import {fishingRods} from './fishing-rods'
+import {fishingRods,type FishingRod} from './fishing-rods'
 import { fishingMessage } from './fishing-messages'
 import type { Species } from '@/features/collection/api'
 import type { TensionOptions } from './tension-game'
@@ -21,10 +21,10 @@ import { fishBehavior, fishForce, fishStrength, newTensionGame, stepTensionGame,
 import {readBiteConfirmation} from './bite-confirmation-preference'
 import {fishingSplash,useFishingAudio} from './fishing-audio'
 
-export function TensionFishingGame({onCaught,active=true,paused=false,regionId='pongdang',regionName,toolbarTarget,quiet=false,guided=false,castId,challenge,outline,onFailed,practice=false,start,baitImage,onAdvanceWait,waitReductionSeconds=0,expiresAt,backgroundMusic=false,serverNow,onStartFight}:{serverNow?:string;onStartFight?:()=>Promise<boolean>;backgroundMusic?:boolean;expiresAt?:string;onAdvanceWait?:()=>void|Promise<void>;waitReductionSeconds?:number;baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;guided?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean;paused?:boolean}){
+export function TensionFishingGame({onCaught,active=true,paused=false,regionId='pongdang',regionName,toolbarTarget,quiet=false,guided=false,castId,challenge,outline,onFailed,practice=false,start,baitImage,onAdvanceWait,waitReductionSeconds=0,expiresAt,backgroundMusic=false,serverNow,onStartFight,rodPreview}:{rodPreview?:FishingRod;serverNow?:string;onStartFight?:()=>Promise<boolean>;backgroundMusic?:boolean;expiresAt?:string;onAdvanceWait?:()=>void|Promise<void>;waitReductionSeconds?:number;baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;guided?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean;paused?:boolean}){
  const fishingTools=useFishingTools()
  const {selected}=useRods()
- const rod=fishingRods.find(r=>r.id===selected)??fishingRods[0]
+ const rod=rodPreview??fishingRods.find(r=>r.id===selected)??fishingRods[0]
  const [game,setGame]=useState(()=>newTensionGame(Math.random,{...challenge,confirmBite:challenge?.confirmBite??readBiteConfirmation()}))
  const current=useRef(game),holding=useRef(false),completed=useRef(false),failed=useRef(false),pointer=useRef<number|null>(null),pullButton=useRef<HTMLButtonElement>(null)
  const caught=useRef(onCaught),failure=useRef(onFailed)

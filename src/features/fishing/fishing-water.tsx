@@ -1,5 +1,7 @@
 import {hasRodImages} from './rod-image-assets'
 import {FloatingRodGauge} from './rod-gauge'
+import {RodLineGuides} from './rod-line-guides'
+import {GeneratedRodShaft,hasGeneratedRod} from './generated-rod-parts'
 import {hasRodSkin,RodSkinFloat,RodSkinFrame,RodSkinRotor,RodSkinGrip,RodSkinShaft,rodShaftOutlineWidth} from './rod-skin-art'
 import type {FishingRod} from './fishing-rods'
 import { FishingSea,FishingPlatform,fishingPlatformSize } from './fishing-environment'
@@ -60,7 +62,11 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const lift=won?(reduced?1:1-Math.pow(1-end,3)):0
  const tip={x:263+bend*28+recoil-lift*62,y:112-fishingLift+bend*56-lift*65-(active&&waiting&&!reduced&&game.time<.85?Math.sin(game.time/.85*Math.PI)*50:0)}
  const baseY=329+bottom-fishingLift
- const rodPath=`M303 ${baseY} C${303+(tip.x-303)*.33+bend*65} ${baseY+(tip.y-baseY)*.33},${303+(tip.x-303)*.7+bend*100} ${baseY+(tip.y-baseY)*.7-bend*30},${tip.x} ${tip.y}`
+ const base={x:303,y:baseY}
+ const lower={x:303+(tip.x-303)*.33+bend*65,y:baseY+(tip.y-baseY)*.33}
+ const upper={x:303+(tip.x-303)*.7+bend*100,y:baseY+(tip.y-baseY)*.7-bend*30}
+ const paintedId=hasGeneratedRod(rod?.id)?rod?.id:undefined
+ const rodPath=`M${base.x} ${base.y} C${lower.x} ${lower.y},${upper.x} ${upper.y},${tip.x} ${tip.y}`
  const cast=active&&waiting?Math.min(1,game.time/.85):1
  const casting=active&&waiting&&cast<1
  const bobX=200+(!reduced&&active?Math.sin(t*2)*4:0)+Math.sin(t*15)*motionTug*4
@@ -148,7 +154,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   {/* SVG paint order keeps the gauge behind the line, float and rod. Anchor to calm water, not bobbing motion. */}
   {showGauge&&<FloatingRodGauge x={96} y={Math.max(30,nearWater-48)} rod={rod} tension={visual.tension} idle={!(active&&canBite&&!waiting&&!won&&!lost)}/>}
   <path data-fishing-line="true" d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45*(1-tug*.8)} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':rod?.id==='mukhyang'?'#5d716b':'#e1edf2'} strokeWidth={1.2+tug*.8}/>
-  {!(snapped&&end>.5)&&<g data-fishing-float="true" transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
+  {!(snapped&&end>.5)&&<g data-fishing-float="true" transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id} edgeTilt={rod?.id==='loveletter'?dip*24:undefined}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
   {baitImage&&casting&&!reduced&&<g data-fishing-cast-bait="true" transform={`translate(${bx} ${by}) rotate(${Math.sin(cast*Math.PI)*12})`} pointerEvents="none"><path d="M0 9v14" fill="none" stroke="#e1edf2" strokeWidth="1"/><image href={baitImage} x="-16" y="21" width="32" height="32" preserveAspectRatio="xMidYMid meet"/></g>}
   {(splash||reducedSplash)&&<g data-fishing-water-impact="true" data-reduced-motion={reduced} transform={`translate(${bx} ${by+10})`} pointerEvents="none">
    <ellipse rx="28" ry="8" fill="#e6fbff" fillOpacity=".08" stroke="#efffff" strokeWidth="2" opacity=".85"/>
@@ -156,13 +162,17 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   </g>}
   {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24+motionTug*22))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8+motionTug*12)} rx="2.3" ry="3.7" fill="#efffff" opacity={(1-phase)*.9}/>})}
   {!sceneryOverlay&&<FishingPlatform regionId={regionId} y={platformY} platformHeight={platformHeight}/>}
+  {paintedId?<GeneratedRodShaft id={paintedId} curve={[base,lower,upper,tip]}/>:<>
   <path d={rodPath} fill="none" stroke="#102b42" strokeWidth={rodShaftOutlineWidth(rod?.id)} strokeLinecap="round"/>
   <path d={rodPath} fill="none" data-equipped-rod={rod?.id??"basic"} stroke={rod&&rod.id!=="basic"?rod.color:"#97c8d2"} strokeWidth="2.3" strokeLinecap="round"/>
   {hasRodSkin(rod?.id)&&<RodSkinShaft id={rod!.id} path={rodPath}/>}
-  <g transform={`translate(0 ${bottom-62-fishingLift})`}><path d="M303 392l-27-52" stroke={rod?.color??"#76503a"} strokeWidth="13" strokeLinecap="round"/>
-  {rod?.id==='mukhyang'&&<g transform={`translate(${tip.x} ${tip.y})`}><path d="M-3 6Q-8-1 0-15Q7-3 3 6Z" fill="#293b35"/><path d="M0-13V4" stroke="#8eaaa0" strokeWidth=".7"/></g>}
+  <RodLineGuides curve={[base,lower,upper,tip]} accent={rod?.accent??'#e7d6b6'}/></>}
+  <g transform={`translate(0 ${bottom-62-fishingLift})`}>
+  {!paintedId&&<><path d="M303 392l-27-52" stroke="#38232b" strokeWidth="15.5" strokeLinecap="round"/>
+  <path d="M303 392l-27-52" stroke={rod?.color??"#76503a"} strokeWidth="12" strokeLinecap="round"/>
   <path d="M299 382l-18-34" stroke={rod&&rod.id!=="basic"?rod.accent:"#c89c6e"} strokeWidth="7" strokeLinecap="round"/>
-  {(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<><g transform="translate(283 344)"><RodSkinGrip id={rod!.id}/></g><g transform="translate(282 358) scale(.4)"><RodSkinFrame id={rod!.id}/><g transform={`rotate(${reduced?0:visual.reel})`}><RodSkinRotor id={rod!.id}/></g></g></>:<>  <g transform={`translate(282 358) rotate(${reduced?0:visual.reel})`}><circle r="12" fill={rod&&rod.id!=="basic"?rod.color:"#183b53"} stroke={rod&&rod.id!=="basic"?rod.accent:"#abc7ce"} strokeWidth="2"/><path d="M-8 0H8M0-8V8" stroke="#abc7ce" strokeWidth="2"/><circle r="4" fill={rod?.accent??"#d7b388"}/><circle cx="8" cy="0" r="3" fill="#d7b388"/></g></>}
+  <path d="m303 388-25-47" stroke={rod?.accent??'#e7d6b6'} strokeOpacity=".65" strokeWidth="1.3" strokeLinecap="round"/></>}
+  {(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<><g transform="translate(283 344)"><RodSkinGrip id={rod!.id}/></g><g transform="translate(282 358) scale(.4)"><RodSkinFrame id={rod!.id} rotation={rod?.id==='mechsanctum'&&!reduced?visual.reel:undefined}/><g transform={`rotate(${reduced?0:visual.reel})`}><RodSkinRotor id={rod!.id}/></g></g></>:<>  <g transform={`translate(282 358) rotate(${reduced?0:visual.reel})`}><circle r="12" fill={rod&&rod.id!=="basic"?rod.color:"#183b53"} stroke={rod&&rod.id!=="basic"?rod.accent:"#abc7ce"} strokeWidth="2"/><path d="M-8 0H8M0-8V8" stroke="#abc7ce" strokeWidth="2"/><circle r="4" fill={rod?.accent??"#d7b388"}/><circle cx="8" cy="0" r="3" fill="#d7b388"/></g></>}
   </g>{active&&canBite&&game.phase==='playing'&&game.time<.7&&<text x="200" y="72" textAnchor="middle" fill="#fff1d4" fontSize="18" fontWeight="bold" opacity={1-game.time/.7}>입질이 왔어요!</text>}
 
  </svg>{label&&<p role="status" className="pointer-events-none absolute -translate-x-1/2 whitespace-nowrap text-center text-sm font-semibold text-white drop-shadow-[0_2px_3px_#174575]" style={{left:bx/400*100+'%',top:(by+27)/sceneHeight*100+'%'}}>{label}</p>}</div>

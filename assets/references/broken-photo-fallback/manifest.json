@@ -1,0 +1,13 @@
+{
+  "tool": "OpenAI ImageGen (built-in)",
+  "source": "assets/references/broken-photo-fallback/original.png",
+  "output": "public/fallback-image-v2.webp",
+  "crop": {
+    "left": 262,
+    "top": 286,
+    "width": 726,
+    "height": 699
+  },
+  "sha256": "b4417068bbaae20a2f3076db52535c2ee364adafc89d0cad7089dfe376b04370",
+  "prompt": "One small centered universal broken-image placeholder for a cozy Korean seaside game, on real transparent alpha. A single compact antique ivory photo card of a quiet muted teal sea with two distant slate teal mountain silhouettes and a tiny matte ochre sun, split through the entire card on one clear jagged diagonal tear from upper right to lower left. The two substantial pieces have a clearly visible empty transparent gap all along their shared tear, and the lower-right half is displaced a few pixels down and to the right. Viewer reads two shifted halves of the same small photo immediately, even shrunk to 24 pixels. The broken card is centered, near square silhouette with a little room on all sides, cohesive warm cream, desaturated sage teal and gray-brown outlines, simple shapes, very restrained hand-painted soft matte paper grain and slightly rounded exterior card corners. Flat front-facing view, eye-level, no perspective. No extra scraps, sea creatures, starfish, character, shiny glass, hands, scenery outside the card, typography, letters, controls, frame outside the card, cast drop shadow, background color, or gradient outside the artwork. Strong silhouette, spare detail, production mobile UI fallback icon."
+}

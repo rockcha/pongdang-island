@@ -6,6 +6,7 @@ import {useMusic} from '@/features/music/music-provider'
 import {youtubeId,youtubeTitle,type MusicTrack} from '@/features/music/music-library'
 import {toast} from 'sonner'
 import {Select} from '@base-ui/react/select'
+import {fallbackImageUrl} from '@/components/fallback-image'
 
 const trackTitle=(track:MusicTrack)=>track.customName||track.title||'유튜브 음악'
 const inputClass='mt-2 w-full rounded-lg border bg-background px-3 py-2.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring'
@@ -75,7 +76,7 @@ export function MusicRoomPage(){
   {music.error&&<div role="alert" className="flex shrink-0 items-center justify-between gap-2 text-xs text-destructive"><span>{music.error}</span><Button variant="ghost" size="sm" onClick={music.reload}>다시 시도</Button></div>}
   {current?<div className="flex min-h-0 flex-1 flex-col gap-3">
    <div className="music-cover relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-secondary">
-    <img key={current.id} src={`https://i.ytimg.com/vi/${current.id}/hqdefault.jpg`} alt={trackTitle(current)+' 썸네일'} className="absolute inset-0 h-full w-full object-cover" onError={event=>{if(!event.currentTarget.dataset.fallback){event.currentTarget.dataset.fallback='true';event.currentTarget.src='/fallback-image.svg'}}}/>
+    <img key={current.id} src={`https://i.ytimg.com/vi/${current.id}/hqdefault.jpg`} alt={trackTitle(current)+' 썸네일'} className="absolute inset-0 h-full w-full object-cover data-[fallback=true]:object-contain data-[fallback=true]:p-6" onError={event=>{if(!event.currentTarget.dataset.fallback){event.currentTarget.dataset.fallback='true';event.currentTarget.src=fallbackImageUrl}}}/>
     {playing&&<div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 to-transparent"><div className="music-equalizer absolute bottom-4 left-1/2 flex h-6 -translate-x-1/2 items-end gap-1">{[0,1,2,3,4].map(index=><span key={index} style={{animationDelay:`-${index*.19}s`}} className="w-1 rounded-full bg-white/90"/>)}</div></div>}
    </div>
    <div className="shrink-0 text-center"><h2 className="line-clamp-2 text-sm font-medium leading-5">{trackTitle(current)}</h2><p role="status" className="mt-1 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground"><Repeat className="size-3"/>{playing?'반복 재생 중':music.activeId===current.id?'일시정지 · 한 곡 반복':'한 곡 반복'}</p></div>

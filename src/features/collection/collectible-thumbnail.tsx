@@ -4,6 +4,7 @@ import {collectibleUrl} from './api'
 import type {Species} from './api'
 import {NativeRegionBadge} from './native-region-badge'
 import {ImageLoadingSpinner} from '@/components/image-loading-spinner'
+import {fallbackImageUrl} from '@/components/fallback-image'
 import {optimizedThumbnailUrl} from './thumbnail-art'
 
 // Remember successes across filters and dialog reopening; retain no image objects.
@@ -35,7 +36,7 @@ function ThumbnailImage({url,fallbackUrl,name,className='size-16',species,fadeIn
  }
  return <span className={`${className} relative inline-flex shrink-0`} aria-busy={!loaded&&!unavailable}>
   {!loaded&&!unavailable&&<ImageLoadingSpinner/>}
-  {unavailable?<img src="/fallback-image.svg" alt={`${name} 이미지 없음`} className="size-full rounded-lg object-contain"/>:<img key={currentUrl+attempt} src={src} alt={name} loading={loading} decoding="async" draggable={false} className={`size-full object-contain ${fadeIn?'transition-opacity duration-150 motion-reduce:transition-none':''} ${loaded?'opacity-100':'opacity-0'}`} ref={image=>{if(image?.complete&&image.naturalWidth>0&&!loaded)ready()}} onLoad={ready} onError={fail}/>}
+  {unavailable?<img src={fallbackImageUrl} alt={`${name} 이미지 없음`} className="size-full rounded-lg object-contain"/>:<img key={currentUrl+attempt} src={src} alt={name} loading={loading} decoding="async" draggable={false} className={`size-full object-contain ${fadeIn?'transition-opacity duration-150 motion-reduce:transition-none':''} ${loaded?'opacity-100':'opacity-0'}`} ref={image=>{if(image?.complete&&image.naturalWidth>0&&!loaded)ready()}} onLoad={ready} onError={fail}/>}
   {species?.id?.startsWith('halloween-')?<span aria-label="??? ?? ??" title="??? ?? ??" className="absolute -bottom-0.5 -right-0.5 inline-flex size-6 items-center justify-center rounded-full border border-background bg-background p-0.5"><HalloweenIcon className="size-5"/></span>:species&&<NativeRegionBadge species={species}/>}
  </span>
 }

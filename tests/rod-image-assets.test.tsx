@@ -4,10 +4,11 @@ vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collec
 import {RodSkinFrame,RodSkinRotor,RodSkinFloat} from '@/features/fishing/rod-skin-art'
 import {hasRodImages,rodImagePath,rodThumbnailUrl} from '@/features/fishing/rod-image-assets'
 import {fishingRods} from '@/features/fishing/fishing-rods'
+import {generatedRodAsset,hasGeneratedRod} from '@/features/fishing/generated-rod-parts'
 
 afterEach(cleanup)
 it('loads each image part from Storage and falls back when an image fails',()=>{
- for(const {id} of fishingRods){
+ for(const {id} of fishingRods.filter(rod=>!hasGeneratedRod(rod.id))){
   expect(hasRodImages(id)).toBe(true)
   const view=render(<svg><RodSkinFrame id={id}/><g transform="rotate(144)"><RodSkinRotor id={id}/></g><RodSkinFloat id={id}/></svg>)
   const images=view.container.querySelectorAll('image')
@@ -20,11 +21,12 @@ it('loads each image part from Storage and falls back when an image fails',()=>{
   view.unmount()
  }
 })
-it('keeps the starter equipment ID and uses Storage thumbnails for every rod',()=>{
+it('uses the packaged thumbnail for the Love Letter rod and keeps the existing image paths',()=>{
  expect(fishingRods[0]).toMatchObject({id:'basic',name:'입문용 낚싯대',price:0,failureReductionBp:0,nativeBonusBp:0})
  expect(fishingRods.find(r=>r.id==='bronze')).toMatchObject({name:'청동 낚싯대',failureReductionBp:0,nativeBonusBp:0,waitReductionSeconds:1})
  for(const rod of fishingRods){
-  expect(rodThumbnailUrl(rod.id)).toContain(rodImagePath(rod.id,'thumbnail'))
+  if(hasGeneratedRod(rod.id))expect(rodThumbnailUrl(rod.id)).toBe(generatedRodAsset(rod.id,'thumbnail'))
+  else expect(rodThumbnailUrl(rod.id)).toContain(rodImagePath(rod.id,'thumbnail'))
   if(rod.region)expect(rod).toMatchObject({failureReductionBp:200,nativeBonusBp:200})
  }
  expect(fishingRods.find(r=>r.id==='calm')).toMatchObject({failureReductionBp:0,waitReductionSeconds:2})

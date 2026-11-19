@@ -46100,6 +46100,15 @@
       "wait_reduction_seconds": 1
     },
     {
+      "id": "loveletter",
+      "name": "벚꽃 소인 낚싯대",
+      "price": 3000,
+      "region_id": "loveletter",
+      "failure_reduction_bp": 200,
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
+    },
+    {
       "id": "lunea",
       "name": "루네아의 축복",
       "price": 800,

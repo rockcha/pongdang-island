@@ -4,7 +4,7 @@ import { MemoryRouter, useLocation } from 'react-router'
 import { HarborPage } from '@/pages/harbor-page'
 const {load,catalog}=vi.hoisted(()=>({load:vi.fn(),catalog:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
-vi.mock('@/features/regions/api',()=>({loadRegionMap:load,regionImageUrl:(path:string)=>`/test/${path}`}))
+vi.mock('@/features/regions/api',()=>({loadRegionMap:load,regionImageUrl:(path:string)=>path.startsWith('/')?path:`/test/${path}`}))
 vi.mock('@/features/regions/harbor-catalog',()=>({loadHarborCatalog:catalog}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span role="img" aria-label={name}/>}))
 afterEach(()=>{cleanup();vi.clearAllMocks()})
@@ -13,7 +13,8 @@ function setup(){
  localStorage.clear()
  load.mockResolvedValue({currentRegion:'pongdang',regions:[
  {id:'pongdang',name:'퐁당섬 앞바다',description:'잔잔한 바다',rarity:'common',image_path:'pongdang.png',requires_map_fragment:false,unlocked:true,hasFragment:false},
- {id:'starruins',name:'별잠 유적',description:'별빛을 품은 유적',rarity:'epic',image_path:'starruins.png',requires_map_fragment:true,unlocked:false,hasFragment:false}]})
+ {id:'starruins',name:'별잠 유적',description:'별빛을 품은 유적',rarity:'epic',image_path:'starruins.png',requires_map_fragment:true,unlocked:false,hasFragment:false},
+ {id:'loveletter',name:'퐁순이의 러브레터',description:'벚꽃 포구',rarity:'epic',image_path:'/regions/loveletter/overview-v1.png',requires_map_fragment:true,unlocked:true,hasFragment:true}]})
  catalog.mockResolvedValue([{id:'native',name:'퐁당 물고기',description:'작은 친구',rarity:'rare',is_native:true,native_region_id:'pongdang',discovered:true,thumbnail_path:'fish.png'}])
  render(<MemoryRouter initialEntries={['/harbor']}><HarborPage/><Location/></MemoryRouter>)
 }
@@ -35,4 +36,9 @@ it('opens expedition setup from the selected unlocked sea',async()=>{
  setup()
  fireEvent.click(await screen.findByRole('button',{name:'통발 설치'}))
  expect(screen.getByLabelText('경로').textContent).toBe('/expeditions')
+})
+it('shows the Love Letter showcase panorama behind its map card',async()=>{
+ setup()
+ fireEvent.click(await screen.findByRole('button',{name:'퐁순이의 러브레터 지도'}))
+ expect(screen.getByRole('img',{name:'퐁순이의 러브레터'}).getAttribute('src')).toBe('/regions/loveletter/showcase-v1.png')
 })

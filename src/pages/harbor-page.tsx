@@ -3,6 +3,7 @@ import {HarborMythicShowcase,regionalMythics} from '@/features/regions/harbor-my
 import {appArt} from '@/components/app-art'
 import { NativeSpeciesStrip } from '@/features/regions/native-species-strip'
 import {RegionLandscape} from '@/features/regions/region-landscape'
+import {loveletterArt} from '@/features/regions/loveletter-art'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '@/components/auth-provider'
@@ -19,7 +20,8 @@ import {rememberRegion,rememberedRegionIndex} from '@/features/regions/remembere
 import {JourneyProgress} from '@/features/regions/journey-progress'
 
 function Landscape({region}:{region:Region}){
- return <RegionLandscape region={region} locked={!region.unlocked}/>
+ const landscape=region.id==='loveletter'?{...region,image_path:loveletterArt.showcase}:region
+ return <RegionLandscape region={landscape} locked={!region.unlocked}/>
 }
 export function HarborPage(){
  const {session}=useAuth()

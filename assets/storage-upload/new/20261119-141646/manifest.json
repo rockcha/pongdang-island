@@ -1,0 +1,38 @@
+{
+  "files": [
+    {
+      "theme_id": "hologram-glass-dome",
+      "original_image_path": "hologram-glass-dome-panorama-v1.png",
+      "local_path": "aquarium-backgrounds/hologram-glass-dome-panorama-v1.png",
+      "storage_path": "hologram-glass-dome-panorama-v1.png",
+      "status": "generated",
+      "uploaded": true,
+      "prompt": "Use case: stylized-concept. A finished single continuous wide 27:16 landscape panorama for the inside of an aquarium, three horizontally pannable portrait views. Camera entirely under water at low eye level. Use provided in-game Hologram Deep Sea City art only for architecture and subdued cyan and magenta technology accents. Clear broad uninterrupted calm midwater and low-detail central half for bright and dark fish to read, even clean bottom band covering lower quarter for decorations. No fish, marine animals, characters, UI, text, numbers, signs, border, graphics, panels, watermarks, platform at center front, heavy outline, noisy particle effects, repeating geometry, busy glowing city wall. Polished painterly environment with gentle depth, spacious and tidy. Full bleed opaque asset. A quiet modern submerged observatory. Blue-gray open water with clear cyan light shafts from top center, beautiful shell-like glass dome framework arcing gently around the upper edges, a small pale-blue futuristic observation annex with one slim holographic ring far to the left, a low translucent observation window and minimal cyan floor edging far to the right. Pale muted blue-gray sand and fine soft natural caustics. Clean bright sea-glass colors, teal-blue glow only at cold metal edges, no magenta except a very few dim small accents. Architectural structure is concentrated on sides; center is mostly lightly graduated clear blue water. The upper beams frame the composition unobtrusively.",
+      "reference_image": "public/regions/hologram/overview-v1.png",
+      "tool": "built-in ImageGen",
+      "width": 1629,
+      "height": 965,
+      "sha256": "f36843c7063ae3ffe9c92dadcc5cbb9cc4602c3275bf2e315e777dde97c53637",
+      "generated_sha256": "e51408faf0f8887a38550ad143c95556959e4505c12531bbc868467d23d9f81c",
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-19T05:18:03.198Z"
+    },
+    {
+      "theme_id": "hologram-dusk-transit",
+      "original_image_path": "hologram-dusk-transit-panorama-v1.png",
+      "local_path": "aquarium-backgrounds/hologram-dusk-transit-panorama-v1.png",
+      "storage_path": "hologram-dusk-transit-panorama-v1.png",
+      "status": "generated",
+      "uploaded": true,
+      "prompt": "Use case: stylized-concept. A finished single continuous wide 27:16 landscape panorama for the inside of an aquarium, three horizontally pannable portrait views. Camera entirely under water at low eye level. Use provided in-game Hologram Deep Sea City art only for architecture and subdued cyan and magenta technology accents. Clear broad uninterrupted calm midwater and low-detail central half for bright and dark fish to read, even clean bottom band covering lower quarter for decorations. No fish, marine animals, characters, UI, text, numbers, signs, border, graphics, panels, watermarks, platform at center front, heavy outline, noisy particle effects, repeating geometry, busy glowing city wall. Polished painterly environment with gentle depth, spacious and tidy. Full bleed opaque asset. A quiet violet midnight transit station under the deep ocean. One small streamlined silver train resting far in the right third on a narrow elevated curved stone-metal viaduct; keep the structure behind the swimming space and give its windows dim amber highlights. The left edge has one unlettered translucent platform arch with a thin cyan contour and small muted orchids, the track dissolves into soft depth behind a large clean center. Deep blue-plum clear water with thin magenta light strip accents confined to right rail and distant architecture. Muted slate-violet sand is clear in foreground to welcome player decorations. Keep some gentle lamp glow for silhouettes and legibility, elegant rather than neon-soaked. No real signs, pictograms or timetable.",
+      "reference_image": "public/regions/hologram/overview-v1.png",
+      "tool": "built-in ImageGen",
+      "width": 1629,
+      "height": 965,
+      "sha256": "1edf97ef010bcdfc567457d4865deb79ad24fd4d1676239f224c1af22b86972b",
+      "generated_sha256": "1671ed6d940d99a22526a013e3d4c9ad8add328fcc714704e333e7474e562310",
+      "uploaded_project": "ewafafphiovbpjwogwzn",
+      "verified_at": "2026-11-19T05:18:12.350Z"
+    }
+  ]
+}

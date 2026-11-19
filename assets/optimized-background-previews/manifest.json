@@ -1,10 +1,10 @@
 {
   "profile": "webp-q90-inside-960-v1",
   "summary": {
-    "count": 81,
-    "sourceBytes": 210279446,
-    "previewBytes": 15094810,
-    "reductionPercent": 92.82
+    "count": 83,
+    "sourceBytes": 213712740,
+    "previewBytes": 15226334,
+    "reductionPercent": 92.88
   },
   "items": [
     {
@@ -495,6 +495,34 @@
         "bytes": 198334,
         "width": 960,
         "height": 640
+      }
+    },
+    {
+      "key": "hologram-dusk-transit-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261119-141646/aquarium-backgrounds/hologram-dusk-transit-panorama-v1.png",
+      "sourceHash": "1edf97ef010bcdfc567457d4865deb79ad24fd4d1676239f224c1af22b86972b",
+      "sourceBytes": 1667278,
+      "sourceWidth": 1629,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/7296dd669d7d174cd73681b9-960.webp",
+        "bytes": 60072,
+        "width": 960,
+        "height": 569
+      }
+    },
+    {
+      "key": "hologram-glass-dome-panorama-v1.png",
+      "source": "assets/storage-upload/new/20261119-141646/aquarium-backgrounds/hologram-glass-dome-panorama-v1.png",
+      "sourceHash": "f36843c7063ae3ffe9c92dadcc5cbb9cc4602c3275bf2e315e777dde97c53637",
+      "sourceBytes": 1766016,
+      "sourceWidth": 1629,
+      "sourceHeight": 965,
+      "preview": {
+        "url": "/game-art/background-previews/3eef2cb3b4dc6c7ddb0b91b3-960.webp",
+        "bytes": 71452,
+        "width": 960,
+        "height": 569
       }
     },
     {

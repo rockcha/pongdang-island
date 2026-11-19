@@ -5,12 +5,14 @@ import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db
 const uid='00000000-0000-0000-0000-000000000709'
 const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).aquarium_backgrounds
-const loveletterThemes=[
+const recentSpecialThemes=[
  {id:'loveletter-petal-harbor',name:'꽃잎이 잠든 포구',price:4800,tier:'special',image_path:'loveletter-petal-harbor-panorama-v1.png'},
  {id:'loveletter-night-post-office',name:'밤에도 불 켜진 우체국',price:5300,tier:'special',image_path:'loveletter-night-post-office-panorama-v1.png'},
+ {id:'hologram-glass-dome',name:'유리돔 관측소',price:1800,tier:'special',image_path:'hologram-glass-dome-panorama-v1.png'},
+ {id:'hologram-dusk-transit',name:'심해의 마지막 열차',price:3200,tier:'special',image_path:'hologram-dusk-transit-panorama-v1.png'},
 ]
 const themes=['20261019-085100','20261019-085940','20261019-090840','20261019-092750','20261021-150650','20261021-151542','20261022-cozy-doll-room','20261024-003808'].flatMap(batch=>JSON.parse(readFileSync(`assets/storage-upload/new/${batch}/manifest.json`,'utf8')).items).map(theme=>({...theme,price:catalog.find(item=>item.id===theme.id).price,image_path:catalog.find(item=>item.id===theme.id).image_path})).concat(catalog.filter(theme=>['sunlit-coral-street','pearl-lantern-street','sunlit-tropical-aquascape','black-sail-cove','fairy-dew-grove','fairy-petal-palace','fairy-moonlit-lake','halloween-pumpkin-teahouse','halloween-ghost-glasshouse','halloween-witch-lavender-room','pharaoh-sleeping-pyramid-court','pharaoh-sunken-sun-tomb','hangang-fireworks-night','cheomseongdae-stars'].includes(theme.id)))
-const purchasableThemes=[...themes,...loveletterThemes]
+const purchasableThemes=[...themes,...recentSpecialThemes]
 const initialGold=purchasableThemes.reduce((sum,theme)=>sum+theme.price,0)+10000
 beforeAll(async()=>{
  db=await createLocalDatabase();await replayMigrations(db)
